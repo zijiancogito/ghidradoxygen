@@ -1,0 +1,181 @@
+\hypertarget{class_type_op_int_left}{}\section{Type\+Op\+Int\+Left Class Reference}
+\label{class_type_op_int_left}\index{TypeOpIntLeft@{TypeOpIntLeft}}
+
+
+Information about the I\+N\+T\+\_\+\+L\+E\+FT op-\/code.  
+
+
+
+
+{\ttfamily \#include $<$typeop.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Op\+Int\+Left\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{class_type_op_int_left__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Op\+Int\+Left\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_int_left__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_op_int_left_ae5588fc066e2cad01eec97d484545f0c}{Type\+Op\+Int\+Left}} (\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_op_int_left_a4451bade27542ad853dbb21bb26f1191}{push}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_int_left_ace4697dce938154ffc5098b0c582cf3b}{get\+Input\+Local}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, int4 slot) const
+\begin{DoxyCompactList}\small\item\em Find the minimal (or suggested) data-\/type of an input to {\bfseries{this}} op-\/code. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_int_left_a0c99823cd347ae28c3608a3f02fdda09}{get\+Output\+Token}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$cast\+Strategy) const
+\begin{DoxyCompactList}\small\item\em Find the data-\/type of the output that would be assigned by a compiler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Information about the I\+N\+T\+\_\+\+L\+E\+FT op-\/code. 
+
+Definition at line 447 of file typeop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_op_int_left_ae5588fc066e2cad01eec97d484545f0c}\label{class_type_op_int_left_ae5588fc066e2cad01eec97d484545f0c}} 
+\index{TypeOpIntLeft@{TypeOpIntLeft}!TypeOpIntLeft@{TypeOpIntLeft}}
+\index{TypeOpIntLeft@{TypeOpIntLeft}!TypeOpIntLeft@{TypeOpIntLeft}}
+\subsubsection{\texorpdfstring{TypeOpIntLeft()}{TypeOpIntLeft()}}
+{\footnotesize\ttfamily Type\+Op\+Int\+Left\+::\+Type\+Op\+Int\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 1096 of file typeop.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_op_int_left_ace4697dce938154ffc5098b0c582cf3b}\label{class_type_op_int_left_ace4697dce938154ffc5098b0c582cf3b}} 
+\index{TypeOpIntLeft@{TypeOpIntLeft}!getInputLocal@{getInputLocal}}
+\index{getInputLocal@{getInputLocal}!TypeOpIntLeft@{TypeOpIntLeft}}
+\subsubsection{\texorpdfstring{getInputLocal()}{getInputLocal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Int\+Left\+::get\+Input\+Local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{int4}]{slot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the minimal (or suggested) data-\/type of an input to {\bfseries{this}} op-\/code. 
+
+The result should depend only on the op-\/code itself (and the size of the input) 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} being considered \\
+\hline
+{\em slot} & is the input being considered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_binary_a6b8460b8ee0e97579321c6d02fe4fd29}{Type\+Op\+Binary}}.
+
+
+
+Definition at line 1104 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_int_left_ace4697dce938154ffc5098b0c582cf3b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_int_left_a0c99823cd347ae28c3608a3f02fdda09}\label{class_type_op_int_left_a0c99823cd347ae28c3608a3f02fdda09}} 
+\index{TypeOpIntLeft@{TypeOpIntLeft}!getOutputToken@{getOutputToken}}
+\index{getOutputToken@{getOutputToken}!TypeOpIntLeft@{TypeOpIntLeft}}
+\subsubsection{\texorpdfstring{getOutputToken()}{getOutputToken()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Int\+Left\+::get\+Output\+Token (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$}]{cast\+Strategy }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the data-\/type of the output that would be assigned by a compiler. 
+
+Calculate the actual data-\/type of the output for a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as would be assigned by a C compiler parsing a grammar containing this op. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em cast\+Strategy} & is the current casting strategy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a7150ac93bb03a993735c829deb5237e7}{Type\+Op}}.
+
+
+
+Definition at line 1112 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_int_left_a0c99823cd347ae28c3608a3f02fdda09_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_int_left_a4451bade27542ad853dbb21bb26f1191}\label{class_type_op_int_left_a4451bade27542ad853dbb21bb26f1191}} 
+\index{TypeOpIntLeft@{TypeOpIntLeft}!push@{push}}
+\index{push@{push}!TypeOpIntLeft@{TypeOpIntLeft}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily virtual void Type\+Op\+Int\+Left\+::push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. 
+
+Given a specific language and \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}, emit the expression rooted at the operation. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} to emit \\
+\hline
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_type_op_ac9c9544203ed74dabe6ac662b653b2af}{Type\+Op}}.
+
+
+
+Definition at line 450 of file typeop.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_type_op_int_left_a4451bade27542ad853dbb21bb26f1191_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8hh}{typeop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8cc}{typeop.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,132 @@
+.TH "TypeUnicode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeUnicode \- The unicode data-type: i\&.e\&. wchar\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBTypeBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeUnicode\fP (void)"
+.br
+.RI "For use with restoreXml\&. "
+.ti -1c
+.RI "\fBTypeUnicode\fP (const \fBTypeUnicode\fP &op)"
+.br
+.RI "Construct from another \fBTypeUnicode\fP\&. "
+.ti -1c
+.RI "\fBTypeUnicode\fP (const string &nm, int4 sz, \fBtype_metatype\fP m)"
+.br
+.RI "Construct given name,size, meta-type\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore data-type from XML\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The unicode data-type: i\&.e\&. wchar\&. 
+
+This supports encoding elements that are wider than 1-byte 
+.PP
+Definition at line 188 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeUnicode::TypeUnicode (void)\fC [inline]\fP"
+
+.PP
+For use with restoreXml\&. 
+.PP
+Definition at line 194 of file type\&.hh\&.
+.SS "TypeUnicode::TypeUnicode (const \fBTypeUnicode\fP & op)\fC [inline]\fP"
+
+.PP
+Construct from another \fBTypeUnicode\fP\&. 
+.PP
+Definition at line 195 of file type\&.hh\&.
+.SS "TypeUnicode::TypeUnicode (const string & nm, int4 sz, \fBtype_metatype\fP m)"
+
+.PP
+Construct given name,size, meta-type\&. 
+.PP
+Definition at line 359 of file type\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* TypeUnicode::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Reimplemented from \fBTypeBase\fP\&.
+.PP
+Definition at line 197 of file type\&.hh\&.
+.SS "void TypeUnicode::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Restore data-type from XML\&. Restore a \fBDatatype\fP object from an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the underlying \fBTypeFactory\fP that will hold the new object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 351 of file type\&.cc\&.
+.SS "void TypeUnicode::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 365 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 191 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

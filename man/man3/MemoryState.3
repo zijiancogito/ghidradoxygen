@@ -1,0 +1,313 @@
+.TH "MemoryState" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryState \- All storage/state for a pcode machine\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memstate\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryState\fP (\fBTranslate\fP *t)"
+.br
+.RI "A constructor for \fBMemoryState\fP\&. "
+.ti -1c
+.RI "\fB~MemoryState\fP (void)"
+.br
+.ti -1c
+.RI "\fBTranslate\fP * \fBgetTranslate\fP (void) const"
+.br
+.RI "Get the \fBTranslate\fP object\&. "
+.ti -1c
+.RI "void \fBsetMemoryBank\fP (\fBMemoryBank\fP *bank)"
+.br
+.RI "Map a memory bank into the state\&. "
+.ti -1c
+.RI "\fBMemoryBank\fP * \fBgetMemoryBank\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Get a memory bank associated with a particular space\&. "
+.ti -1c
+.RI "void \fBsetValue\fP (\fBAddrSpace\fP *spc, \fBuintb\fP off, int4 size, \fBuintb\fP cval)"
+.br
+.RI "Set a value on the memory state\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetValue\fP (\fBAddrSpace\fP *spc, \fBuintb\fP off, int4 size) const"
+.br
+.RI "Retrieve a memory value from the memory state\&. "
+.ti -1c
+.RI "void \fBsetValue\fP (const string &nm, \fBuintb\fP cval)"
+.br
+.RI "Set a value on a named register in the memory state\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetValue\fP (const string &nm) const"
+.br
+.RI "Retrieve a value from a named register in the memory state\&. "
+.ti -1c
+.RI "void \fBsetValue\fP (const \fBVarnodeData\fP *vn, \fBuintb\fP cval)"
+.br
+.RI "Set value on a given \fBvarnode\fP\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetValue\fP (const \fBVarnodeData\fP *vn) const"
+.br
+.RI "Get a value from a \fBvarnode\fP\&. "
+.ti -1c
+.RI "void \fBgetChunk\fP (uint1 *res, \fBAddrSpace\fP *spc, \fBuintb\fP off, int4 size) const"
+.br
+.RI "Get a chunk of data from memory state\&. "
+.ti -1c
+.RI "void \fBsetChunk\fP (const uint1 *val, \fBAddrSpace\fP *spc, \fBuintb\fP off, int4 size)"
+.br
+.RI "Set a chunk of data from memory state\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTranslate\fP * \fBtrans\fP"
+.br
+.RI "\fBArchitecture\fP information about memory spaces\&. "
+.ti -1c
+.RI "vector< \fBMemoryBank\fP * > \fBmemspace\fP"
+.br
+.RI "Memory banks associated with each address space\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+All storage/state for a pcode machine\&. 
+
+Every piece of information in a pcode machine is representable as a triple (\fBAddrSpace\fP,offset,size)\&. This class allows getting and setting of all state information of this form\&. 
+.PP
+Definition at line 148 of file memstate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MemoryState::MemoryState (\fBTranslate\fP * t)\fC [inline]\fP"
+
+.PP
+A constructor for \fBMemoryState\fP\&. The \fBMemoryState\fP needs a \fBTranslate\fP object in order to be able to convert register names into varnodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP is the translator 
+.RE
+.PP
+
+.PP
+Definition at line 171 of file memstate\&.hh\&.
+.SS "MemoryState::~MemoryState (void)\fC [inline]\fP"
+
+.PP
+Definition at line 154 of file memstate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void MemoryState::getChunk (uint1 * res, \fBAddrSpace\fP * spc, \fBuintb\fP off, int4 size) const"
+
+.PP
+Get a chunk of data from memory state\&. This is the main interface for reading a range of bytes from the MemorySate\&. The \fBMemoryBank\fP associated with the address space of the query is looked up and the request is forwarded to the getChunk method on the \fBMemoryBank\fP\&. If there is no registered \fBMemoryBank\fP or some other error, an exception is thrown 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP is a pointer to the result buffer for storing retrieved bytes 
+.br
+\fIspc\fP is the desired address space 
+.br
+\fIoff\fP is the starting offset of the byte range being queried 
+.br
+\fIsize\fP is the number of bytes being queried 
+.RE
+.PP
+
+.PP
+Definition at line 710 of file memstate\&.cc\&.
+.SS "\fBMemoryBank\fP * MemoryState::getMemoryBank (\fBAddrSpace\fP * spc) const"
+
+.PP
+Get a memory bank associated with a particular space\&. Any \fBMemoryBank\fP that has been registered with this \fBMemoryState\fP can be retrieved via this method if the \fBMemoryBank\fP's associated address space is known\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space of the desired \fBMemoryBank\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBMemoryBank\fP or \fBnull\fP if no bank is associated with \fIspc\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 634 of file memstate\&.cc\&.
+.SS "\fBTranslate\fP * MemoryState::getTranslate (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBTranslate\fP object\&. Retrieve the actual pcode translator being used by this machine state 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBTranslate\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 179 of file memstate\&.hh\&.
+.SS "\fBuintb\fP MemoryState::getValue (\fBAddrSpace\fP * spc, \fBuintb\fP off, int4 size) const"
+
+.PP
+Retrieve a memory value from the memory state\&. This is the main interface for reading values from the \fBMemoryState\fP\&. If there is no registered \fBMemoryBank\fP for the desired address space, or if there is some other error, an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space being queried 
+.br
+\fIoff\fP is the offset of the value being queried 
+.br
+\fIsize\fP is the number of bytes to query 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the queried value 
+.RE
+.PP
+
+.PP
+Definition at line 666 of file memstate\&.cc\&.
+.SS "\fBuintb\fP MemoryState::getValue (const string & nm) const"
+
+.PP
+Retrieve a value from a named register in the memory state\&. This is a convenience method for reading registers by name\&. Any register name known to the \fBTranslate\fP object can be used as a read location\&. The associated address space, offset, and size is looked up and automatically passed to the main getValue routine\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the register 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value associated with that register 
+.RE
+.PP
+
+.PP
+Definition at line 695 of file memstate\&.cc\&.
+.SS "\fBuintb\fP MemoryState::getValue (const \fBVarnodeData\fP * vn) const\fC [inline]\fP"
+
+.PP
+Get a value from a \fBvarnode\fP\&. A convenience method for reading a value directly from a varnode rather than querying for the offset and space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is a pointer to the varnode to be read 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value read from the varnode 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file memstate\&.hh\&.
+.SS "void MemoryState::setChunk (const uint1 * val, \fBAddrSpace\fP * spc, \fBuintb\fP off, int4 size)"
+
+.PP
+Set a chunk of data from memory state\&. This is the main interface for setting values for a range of bytes in the \fBMemoryState\fP\&. The \fBMemoryBank\fP associated with the desired address space is looked up and the write is forwarded to the setChunk method on the \fBMemoryBank\fP\&. If there is no registered \fBMemoryBank\fP or some other error, an exception is throw\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is a pointer to the byte values to be written into the \fBMemoryState\fP 
+.br
+\fIspc\fP is the address space being written 
+.br
+\fIoff\fP is the starting offset of the range being written 
+.br
+\fIsize\fP is the number of bytes to write 
+.RE
+.PP
+
+.PP
+Definition at line 727 of file memstate\&.cc\&.
+.SS "void MemoryState::setMemoryBank (\fBMemoryBank\fP * bank)"
+
+.PP
+Map a memory bank into the state\&. MemoryBanks associated with specific address spaces must be registers with this \fBMemoryState\fP via this method\&. Each address space that will be used during emulation must be registered separately\&. The \fBMemoryState\fP object does \fInot\fP assume responsibility for freeing the \fBMemoryBank\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbank\fP is a pointer to the \fBMemoryBank\fP to be registered 
+.RE
+.PP
+
+.PP
+Definition at line 618 of file memstate\&.cc\&.
+.SS "void MemoryState::setValue (\fBAddrSpace\fP * spc, \fBuintb\fP off, int4 size, \fBuintb\fP cval)"
+
+.PP
+Set a value on the memory state\&. This is the main interface for writing values to the \fBMemoryState\fP\&. If there is no registered \fBMemoryBank\fP for the desired address space, or if there is some other error, an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space to write to 
+.br
+\fIoff\fP is the offset where the value should be written 
+.br
+\fIsize\fP is the number of bytes to be written 
+.br
+\fIcval\fP is the value to be written 
+.RE
+.PP
+
+.PP
+Definition at line 650 of file memstate\&.cc\&.
+.SS "void MemoryState::setValue (const string & nm, \fBuintb\fP cval)"
+
+.PP
+Set a value on a named register in the memory state\&. This is a convenience method for setting registers by name\&. Any register name known to the \fBTranslate\fP object can be used as a write location\&. The associated address space, offset, and size is looked up and automatically passed to the main setValue routine\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the register 
+.br
+\fIcval\fP is the value to write to the register 
+.RE
+.PP
+
+.PP
+Definition at line 682 of file memstate\&.cc\&.
+.SS "void MemoryState::setValue (const \fBVarnodeData\fP * vn, \fBuintb\fP cval)\fC [inline]\fP"
+
+.PP
+Set value on a given \fBvarnode\fP\&. A convenience method for setting a value directly on a varnode rather than breaking out the components 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is a pointer to the varnode to be written 
+.br
+\fIcval\fP is the value to write into the varnode 
+.RE
+.PP
+
+.PP
+Definition at line 189 of file memstate\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vector<\fBMemoryBank\fP *> MemoryState::memspace\fC [protected]\fP"
+
+.PP
+Memory banks associated with each address space\&. 
+.PP
+Definition at line 151 of file memstate\&.hh\&.
+.SS "\fBTranslate\fP* MemoryState::trans\fC [protected]\fP"
+
+.PP
+\fBArchitecture\fP information about memory spaces\&. 
+.PP
+Definition at line 150 of file memstate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

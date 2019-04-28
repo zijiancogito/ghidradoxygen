@@ -1,0 +1,152 @@
+\hypertarget{class_action_active_return}{}\section{Action\+Active\+Return Class Reference}
+\label{class_action_active_return}\index{ActionActiveReturn@{ActionActiveReturn}}
+
+
+Determine which sub-\/functions have active output Varnodes.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Active\+Return\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_action_active_return__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Active\+Return\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_action_active_return__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_active_return_a174635bc7c09d57fb7d759b4e57e7dcf}{Action\+Active\+Return}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_active_return_af22b0befcda10abe00618917a557f6c2}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_active_return_a69af2f49b35ac17b7e2cab3e6c0be11b}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Determine which sub-\/functions have active output Varnodes. 
+
+This is analogous to \mbox{\hyperlink{class_action_active_param}{Action\+Active\+Param}} but for sub-\/function return values. 
+
+Definition at line 683 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_active_return_a174635bc7c09d57fb7d759b4e57e7dcf}\label{class_action_active_return_a174635bc7c09d57fb7d759b4e57e7dcf}} 
+\index{ActionActiveReturn@{ActionActiveReturn}!ActionActiveReturn@{ActionActiveReturn}}
+\index{ActionActiveReturn@{ActionActiveReturn}!ActionActiveReturn@{ActionActiveReturn}}
+\subsubsection{\texorpdfstring{ActionActiveReturn()}{ActionActiveReturn()}}
+{\footnotesize\ttfamily Action\+Active\+Return\+::\+Action\+Active\+Return (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 685 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{class_action_active_return_a174635bc7c09d57fb7d759b4e57e7dcf_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_active_return_a69af2f49b35ac17b7e2cab3e6c0be11b}\label{class_action_active_return_a69af2f49b35ac17b7e2cab3e6c0be11b}} 
+\index{ActionActiveReturn@{ActionActiveReturn}!apply@{apply}}
+\index{apply@{apply}!ActionActiveReturn@{ActionActiveReturn}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Active\+Return\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 1475 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_active_return_a69af2f49b35ac17b7e2cab3e6c0be11b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_active_return_af22b0befcda10abe00618917a557f6c2}\label{class_action_active_return_af22b0befcda10abe00618917a557f6c2}} 
+\index{ActionActiveReturn@{ActionActiveReturn}!clone@{clone}}
+\index{clone@{clone}!ActionActiveReturn@{ActionActiveReturn}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Active\+Return\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 686 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_action_active_return_af22b0befcda10abe00618917a557f6c2_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,336 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.hh \- All the individual p-code operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string>\fP
+.br
+
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBOpCode\fP { \fBCPUI_COPY\fP = 1, \fBCPUI_LOAD\fP = 2, \fBCPUI_STORE\fP = 3, \fBCPUI_BRANCH\fP = 4, \fBCPUI_CBRANCH\fP = 5, \fBCPUI_BRANCHIND\fP = 6, \fBCPUI_CALL\fP = 7, \fBCPUI_CALLIND\fP = 8, \fBCPUI_CALLOTHER\fP = 9, \fBCPUI_RETURN\fP = 10, \fBCPUI_INT_EQUAL\fP = 11, \fBCPUI_INT_NOTEQUAL\fP = 12, \fBCPUI_INT_SLESS\fP = 13, \fBCPUI_INT_SLESSEQUAL\fP = 14, \fBCPUI_INT_LESS\fP = 15, \fBCPUI_INT_LESSEQUAL\fP = 16, \fBCPUI_INT_ZEXT\fP = 17, \fBCPUI_INT_SEXT\fP = 18, \fBCPUI_INT_ADD\fP = 19, \fBCPUI_INT_SUB\fP = 20, \fBCPUI_INT_CARRY\fP = 21, \fBCPUI_INT_SCARRY\fP = 22, \fBCPUI_INT_SBORROW\fP = 23, \fBCPUI_INT_2COMP\fP = 24, \fBCPUI_INT_NEGATE\fP = 25, \fBCPUI_INT_XOR\fP = 26, \fBCPUI_INT_AND\fP = 27, \fBCPUI_INT_OR\fP = 28, \fBCPUI_INT_LEFT\fP = 29, \fBCPUI_INT_RIGHT\fP = 30, \fBCPUI_INT_SRIGHT\fP = 31, \fBCPUI_INT_MULT\fP = 32, \fBCPUI_INT_DIV\fP = 33, \fBCPUI_INT_SDIV\fP = 34, \fBCPUI_INT_REM\fP = 35, \fBCPUI_INT_SREM\fP = 36, \fBCPUI_BOOL_NEGATE\fP = 37, \fBCPUI_BOOL_XOR\fP = 38, \fBCPUI_BOOL_AND\fP = 39, \fBCPUI_BOOL_OR\fP = 40, \fBCPUI_FLOAT_EQUAL\fP = 41, \fBCPUI_FLOAT_NOTEQUAL\fP = 42, \fBCPUI_FLOAT_LESS\fP = 43, \fBCPUI_FLOAT_LESSEQUAL\fP = 44, \fBCPUI_FLOAT_NAN\fP = 46, \fBCPUI_FLOAT_ADD\fP = 47, \fBCPUI_FLOAT_DIV\fP = 48, \fBCPUI_FLOAT_MULT\fP = 49, \fBCPUI_FLOAT_SUB\fP = 50, \fBCPUI_FLOAT_NEG\fP = 51, \fBCPUI_FLOAT_ABS\fP = 52, \fBCPUI_FLOAT_SQRT\fP = 53, \fBCPUI_FLOAT_INT2FLOAT\fP = 54, \fBCPUI_FLOAT_FLOAT2FLOAT\fP = 55, \fBCPUI_FLOAT_TRUNC\fP = 56, \fBCPUI_FLOAT_CEIL\fP = 57, \fBCPUI_FLOAT_FLOOR\fP = 58, \fBCPUI_FLOAT_ROUND\fP = 59, \fBCPUI_MULTIEQUAL\fP = 60, \fBCPUI_INDIRECT\fP = 61, \fBCPUI_PIECE\fP = 62, \fBCPUI_SUBPIECE\fP = 63, \fBCPUI_CAST\fP = 64, \fBCPUI_PTRADD\fP = 65, \fBCPUI_PTRSUB\fP = 66, \fBCPUI_SEGMENTOP\fP = 67, \fBCPUI_CPOOLREF\fP = 68, \fBCPUI_NEW\fP = 69, \fBCPUI_MAX\fP = 70 }"
+.br
+.RI "The op-code defining a specific p-code operation (\fBPcodeOp\fP) "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBget_opname\fP (\fBOpCode\fP opc)"
+.br
+.RI "Convert an OpCode to the name as a string\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBget_opcode\fP (const string &nm)"
+.br
+.RI "Convert a name string to the matching OpCode\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBget_booleanflip\fP (\fBOpCode\fP opc, bool &reorder)"
+.br
+.RI "Get the complementary OpCode\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+All the individual p-code operations\&. 
+
+
+.PP
+Definition in file \fBopcodes\&.hh\fP\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBOpCode\fP"
+
+.PP
+The op-code defining a specific p-code operation (\fBPcodeOp\fP) These break up into categories:
+.IP "\(bu" 2
+Branching operations
+.IP "\(bu" 2
+Load and Store
+.IP "\(bu" 2
+Comparison operations
+.IP "\(bu" 2
+Arithmetic operations
+.IP "\(bu" 2
+Logical operations
+.IP "\(bu" 2
+Extension and truncation operations 
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICPUI_COPY \fP\fP
+Copy one operand to another\&. 
+.TP
+\fB\fICPUI_LOAD \fP\fP
+Load from a pointer into a specified address space\&. 
+.TP
+\fB\fICPUI_STORE \fP\fP
+Store at a pointer into a specified address space\&. 
+.TP
+\fB\fICPUI_BRANCH \fP\fP
+Always branch\&. 
+.TP
+\fB\fICPUI_CBRANCH \fP\fP
+Conditional branch\&. 
+.TP
+\fB\fICPUI_BRANCHIND \fP\fP
+Indirect branch (jumptable) 
+.TP
+\fB\fICPUI_CALL \fP\fP
+Call to an absolute address\&. 
+.TP
+\fB\fICPUI_CALLIND \fP\fP
+Call through an indirect address\&. 
+.TP
+\fB\fICPUI_CALLOTHER \fP\fP
+User-defined operation\&. 
+.TP
+\fB\fICPUI_RETURN \fP\fP
+Return from subroutine\&. 
+.TP
+\fB\fICPUI_INT_EQUAL \fP\fP
+Integer comparison, equality (==) 
+.TP
+\fB\fICPUI_INT_NOTEQUAL \fP\fP
+Integer comparison, in-equality (!=) 
+.TP
+\fB\fICPUI_INT_SLESS \fP\fP
+Integer comparison, signed less-than (<) 
+.TP
+\fB\fICPUI_INT_SLESSEQUAL \fP\fP
+Integer comparison, signed less-than-or-equal (<=) 
+.TP
+\fB\fICPUI_INT_LESS \fP\fP
+Integer comparison, unsigned less-than (<) 
+.TP
+\fB\fICPUI_INT_LESSEQUAL \fP\fP
+Integer comparison, unsigned less-than-or-equal (<=) 
+.TP
+\fB\fICPUI_INT_ZEXT \fP\fP
+Zero extension\&. 
+.TP
+\fB\fICPUI_INT_SEXT \fP\fP
+Sign extension\&. 
+.TP
+\fB\fICPUI_INT_ADD \fP\fP
+Addition, signed or unsigned (+) 
+.TP
+\fB\fICPUI_INT_SUB \fP\fP
+Subtraction, signed or unsigned (-) 
+.TP
+\fB\fICPUI_INT_CARRY \fP\fP
+Test for unsigned carry\&. 
+.TP
+\fB\fICPUI_INT_SCARRY \fP\fP
+Test for signed carry\&. 
+.TP
+\fB\fICPUI_INT_SBORROW \fP\fP
+Test for signed borrow\&. 
+.TP
+\fB\fICPUI_INT_2COMP \fP\fP
+Twos complement\&. 
+.TP
+\fB\fICPUI_INT_NEGATE \fP\fP
+Logical/bitwise negation (~) 
+.TP
+\fB\fICPUI_INT_XOR \fP\fP
+Logical/bitwise exclusive-or (^) 
+.TP
+\fB\fICPUI_INT_AND \fP\fP
+Logical/bitwise and (&) 
+.TP
+\fB\fICPUI_INT_OR \fP\fP
+Logical/bitwise or (|) 
+.TP
+\fB\fICPUI_INT_LEFT \fP\fP
+Left shift (<<) 
+.TP
+\fB\fICPUI_INT_RIGHT \fP\fP
+Right shift, logical (>>) 
+.TP
+\fB\fICPUI_INT_SRIGHT \fP\fP
+Right shift, arithmetic (>>) 
+.TP
+\fB\fICPUI_INT_MULT \fP\fP
+Integer multiplication, signed and unsigned (*) 
+.TP
+\fB\fICPUI_INT_DIV \fP\fP
+Integer division, unsigned (/) 
+.TP
+\fB\fICPUI_INT_SDIV \fP\fP
+Integer division, signed (/) 
+.TP
+\fB\fICPUI_INT_REM \fP\fP
+Remainder/modulo, unsigned (%) 
+.TP
+\fB\fICPUI_INT_SREM \fP\fP
+Remainder/modulo, signed (%) 
+.TP
+\fB\fICPUI_BOOL_NEGATE \fP\fP
+Boolean negate (!) 
+.TP
+\fB\fICPUI_BOOL_XOR \fP\fP
+Boolean exclusive-or (^^) 
+.TP
+\fB\fICPUI_BOOL_AND \fP\fP
+Boolean and (&&) 
+.TP
+\fB\fICPUI_BOOL_OR \fP\fP
+Boolean or (||) 
+.TP
+\fB\fICPUI_FLOAT_EQUAL \fP\fP
+Floating-point comparison, equality (==) 
+.TP
+\fB\fICPUI_FLOAT_NOTEQUAL \fP\fP
+Floating-point comparison, in-equality (!=) 
+.TP
+\fB\fICPUI_FLOAT_LESS \fP\fP
+Floating-point comparison, less-than (<) 
+.TP
+\fB\fICPUI_FLOAT_LESSEQUAL \fP\fP
+Floating-point comparison, less-than-or-equal (<=) 
+.TP
+\fB\fICPUI_FLOAT_NAN \fP\fP
+Not-a-number test (NaN) 
+.TP
+\fB\fICPUI_FLOAT_ADD \fP\fP
+Floating-point addition (+) 
+.TP
+\fB\fICPUI_FLOAT_DIV \fP\fP
+Floating-point division (/) 
+.TP
+\fB\fICPUI_FLOAT_MULT \fP\fP
+Floating-point multiplication (*) 
+.TP
+\fB\fICPUI_FLOAT_SUB \fP\fP
+Floating-point subtraction (-) 
+.TP
+\fB\fICPUI_FLOAT_NEG \fP\fP
+Floating-point negation (-) 
+.TP
+\fB\fICPUI_FLOAT_ABS \fP\fP
+Floating-point absolute value (abs) 
+.TP
+\fB\fICPUI_FLOAT_SQRT \fP\fP
+Floating-point square root (sqrt) 
+.TP
+\fB\fICPUI_FLOAT_INT2FLOAT \fP\fP
+Convert an integer to a floating-point\&. 
+.TP
+\fB\fICPUI_FLOAT_FLOAT2FLOAT \fP\fP
+Convert between different floating-point sizes\&. 
+.TP
+\fB\fICPUI_FLOAT_TRUNC \fP\fP
+Round towards zero\&. 
+.TP
+\fB\fICPUI_FLOAT_CEIL \fP\fP
+Round towards +infinity\&. 
+.TP
+\fB\fICPUI_FLOAT_FLOOR \fP\fP
+Round towards -infinity\&. 
+.TP
+\fB\fICPUI_FLOAT_ROUND \fP\fP
+Round towards nearest\&. 
+.TP
+\fB\fICPUI_MULTIEQUAL \fP\fP
+Phi-node operator\&. 
+.TP
+\fB\fICPUI_INDIRECT \fP\fP
+Copy with an indirect effect\&. 
+.TP
+\fB\fICPUI_PIECE \fP\fP
+Concatenate\&. 
+.TP
+\fB\fICPUI_SUBPIECE \fP\fP
+Truncate\&. 
+.TP
+\fB\fICPUI_CAST \fP\fP
+Cast from one data-type to another\&. 
+.TP
+\fB\fICPUI_PTRADD \fP\fP
+Index into an array ([]) 
+.TP
+\fB\fICPUI_PTRSUB \fP\fP
+Drill down to a sub-field (->) 
+.TP
+\fB\fICPUI_SEGMENTOP \fP\fP
+Look-up a \fIsegmented\fP address\&. 
+.TP
+\fB\fICPUI_CPOOLREF \fP\fP
+Recover a value from the \fIconstant\fP \fIpool\fP\&. 
+.TP
+\fB\fICPUI_NEW \fP\fP
+Allocate a new object (new) 
+.TP
+\fB\fICPUI_MAX \fP\fP
+Value indicating the end of the op-code values\&. 
+.PP
+Definition at line 35 of file opcodes\&.hh\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBOpCode\fP get_booleanflip (\fBOpCode\fP opc, bool & reorder)"
+
+.PP
+Get the complementary OpCode\&. Every comparison operation has a complementary form that produces the opposite output on the same inputs\&. Set \fBreorder\fP to true if the complimentary operation involves reordering the input parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP is the OpCode to complement 
+.br
+\fIreorder\fP is set to \fBtrue\fP if the inputs need to be reordered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the complementary OpCode or CPUI_MAX if not given a comparison operation 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file opcodes\&.cc\&.
+.SS "\fBOpCode\fP get_opcode (const string & nm)"
+
+.PP
+Convert a name string to the matching OpCode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of an operation 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding OpCode value 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file opcodes\&.cc\&.
+.SS "const char* get_opname (\fBOpCode\fP opc)"
+
+.PP
+Convert an OpCode to the name as a string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP is an OpCode value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the operation as a string 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file opcodes\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

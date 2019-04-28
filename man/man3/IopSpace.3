@@ -1,0 +1,156 @@
+.TH "IopSpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IopSpace \- Space for storing internal \fBPcodeOp\fP pointers as addresses\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <op\&.hh>\fP
+.PP
+Inherits \fBAddrSpace\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIopSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, const string &nm, int4 ind)"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Save an address as XML\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset, int4 size) const"
+.br
+.RI "Save an address and size as XML\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Write an address in this space to a stream\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write the details of this space as XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover the details of this space from XML\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Space for storing internal \fBPcodeOp\fP pointers as addresses\&. 
+
+It is convenient and efficient to replace the formally encoded branch target addresses with a pointer to the actual \fBPcodeOp\fP being branched to\&. This special \fBiop\fP space allows a \fBPcodeOp\fP pointer to be encoded as an address so it can be stored as part of an input varnode, in place of the target address, in a \fIbranching\fP operation\&. The pointer is encoded as an offset within the \fBfspec\fP space\&. 
+.PP
+Definition at line 32 of file op\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "IopSpace::IopSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, const string & nm, int4 ind)"
+\fBConstructor\fP for the \fBiop\fP space\&. There is only one such space, and it is considered internal to the model, i\&.e\&. the \fBTranslate\fP engine should never generate addresses in this space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the associated address space manager 
+.br
+\fIt\fP is the associated processor translator 
+.br
+\fInm\fP is the name of the space (always \fBiop\fP) 
+.br
+\fIind\fP is the associated index 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file op\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void IopSpace::printRaw (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+
+.PP
+Write an address in this space to a stream\&. This is a printing method for the debugging routines\&. It prints taking into account the \fIwordsize\fP, adding a '+n' if the offset is not on-cut with wordsize\&. It also returns the expected/typical size of values from this space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.br
+\fIoffset\fP is the offset to be printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 35 of file op\&.cc\&.
+.SS "void IopSpace::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Recover the details of this space from XML\&. Walk a parsed XML tag and recover all the properties defining this space\&. The processor translator, \fItrans\fP, and the \fItype\fP must already be filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML tag 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 61 of file op\&.cc\&.
+.SS "void IopSpace::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write the details of this space as XML\&. Write a tag fully describing the details of this space suitable for later recovery via restoreXml\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 55 of file op\&.cc\&.
+.SS "virtual void IopSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Save an address as XML\&. Write the main XML attributes for an address within this space The caller provides only the \fIoffset\fP, and this routine fills in other details pertaining to this particular space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIoffset\fP is the offset of the address 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 35 of file op\&.hh\&.
+.SS "virtual void IopSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset, int4 size) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Save an address and size as XML\&. Write the main XML attributes of an address with this space and a size\&. The caller provides the \fIoffset\fP and \fIsize\fP, and other details about this particular space are filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIoffset\fP is the offset of the address 
+.br
+\fIsize\fP is the size of the memory location 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 36 of file op\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,1066 @@
+.TH "AddrSpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AddrSpace \- A region where processor data is stored\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <space\&.hh>\fP
+.PP
+Inherited by \fBConstantSpace\fP, \fBFspecSpace\fP, \fBIopSpace\fP, \fBJoinSpace\fP, \fBOverlaySpace\fP, \fBSpacebaseSpace\fP, and \fBUniqueSpace\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBbig_endian\fP = 1, \fBheritaged\fP = 2, \fBdoes_deadcode\fP = 4, \fBprogramspecific\fP = 8, \fBreverse_justification\fP = 16, \fBoverlay\fP = 32, \fBoverlaybase\fP = 64, \fBtruncated\fP = 128, \fBhasphysical\fP = 256 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAddrSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, \fBspacetype\fP tp, const string &nm, uint4 size, uint4 ws, int4 ind, uint4 fl, int4 dl)"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, \fBspacetype\fP tp)"
+.br
+.RI "For use with restoreXml\&. "
+.ti -1c
+.RI "virtual \fB~AddrSpace\fP (void)"
+.br
+.RI "The address space destructor\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the name\&. "
+.ti -1c
+.RI "\fBAddrSpaceManager\fP * \fBgetManager\fP (void) const"
+.br
+.RI "Get the space manager\&. "
+.ti -1c
+.RI "const \fBTranslate\fP * \fBgetTrans\fP (void) const"
+.br
+.RI "Get the processor translator\&. "
+.ti -1c
+.RI "\fBspacetype\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the type of space\&. "
+.ti -1c
+.RI "int4 \fBgetDelay\fP (void) const"
+.br
+.RI "Get number of heritage passes being delayed\&. "
+.ti -1c
+.RI "int4 \fBgetDeadcodeDelay\fP (void) const"
+.br
+.RI "Get number of passes before deadcode removal is allowed\&. "
+.ti -1c
+.RI "int4 \fBgetIndex\fP (void) const"
+.br
+.RI "Get the integer identifier\&. "
+.ti -1c
+.RI "uint4 \fBgetWordSize\fP (void) const"
+.br
+.RI "Get the addressable unit size\&. "
+.ti -1c
+.RI "uint4 \fBgetAddrSize\fP (void) const"
+.br
+.RI "Get the size of the space\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetHighest\fP (void) const"
+.br
+.RI "Get the highest byte-scaled address\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBwrapOffset\fP (\fBuintb\fP off) const"
+.br
+.RI "Wrap -off- to the offset that fits into this space\&. "
+.ti -1c
+.RI "char \fBgetShortcut\fP (void) const"
+.br
+.RI "Get the shortcut character\&. "
+.ti -1c
+.RI "bool \fBcontain\fP (\fBAddrSpace\fP *id2) const"
+.br
+.RI "Determine if this space contains another\&. "
+.ti -1c
+.RI "bool \fBisHeritaged\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if dataflow has been traced\&. "
+.ti -1c
+.RI "bool \fBdoesDeadcode\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if dead code analysis should be done on this space\&. "
+.ti -1c
+.RI "bool \fBhasPhysical\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if data is physically stored in this\&. "
+.ti -1c
+.RI "bool \fBisBigEndian\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if values in this space are big endian\&. "
+.ti -1c
+.RI "bool \fBisReverseJustified\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if alignment justification does not match endianness\&. "
+.ti -1c
+.RI "bool \fBisOverlay\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this is an overlay space\&. "
+.ti -1c
+.RI "bool \fBisOverlayBase\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if other spaces overlay this space\&. "
+.ti -1c
+.RI "bool \fBisTruncated\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this space is truncated from its original size\&. "
+.ti -1c
+.RI "uintm \fBdata2Uintm\fP (const uint1 *ptr, int4 size) const"
+.br
+.RI "Convert a sequence of bytes into an integer value\&. "
+.ti -1c
+.RI "void \fBprintOffset\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Write an address offset to a stream\&. "
+.ti -1c
+.RI "virtual int4 \fBnumSpacebase\fP (void) const"
+.br
+.RI "Number of base registers associated with this space\&. "
+.ti -1c
+.RI "virtual const \fBVarnodeData\fP & \fBgetSpacebase\fP (int4 i) const"
+.br
+.RI "Get a base register that creates this virtual space\&. "
+.ti -1c
+.RI "virtual const \fBVarnodeData\fP & \fBgetSpacebaseFull\fP (int4 i) const"
+.br
+.RI "Return original spacebase register before truncation\&. "
+.ti -1c
+.RI "virtual bool \fBstackGrowsNegative\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if a stack in this space grows negative\&. "
+.ti -1c
+.RI "virtual \fBAddrSpace\fP * \fBgetContain\fP (void) const"
+.br
+.RI "Return this space's containing space (if any) "
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Save an address as XML\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset, int4 size) const"
+.br
+.RI "Save an address and size as XML\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBrestoreXmlAttributes\fP (const \fBElement\fP *el, uint4 &size) const"
+.br
+.RI "Recover an offset and size\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Write an address in this space to a stream\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBread\fP (const string &s, int4 &size) const"
+.br
+.RI "Read in an address (and possible size) from a string\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write the details of this space as XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover the details of this space from XML\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBuintb\fP \fBaddressToByte\fP (\fBuintb\fP val, uint4 ws)"
+.br
+.RI "Scale from addressable units to byte units\&. "
+.ti -1c
+.RI "static \fBuintb\fP \fBbyteToAddress\fP (\fBuintb\fP val, uint4 ws)"
+.br
+.RI "Scale from byte units to addressable units\&. "
+.ti -1c
+.RI "static int4 \fBaddressToByteInt\fP (int4 val, uint4 ws)"
+.br
+.RI "Scale int4 from addressable units to byte units\&. "
+.ti -1c
+.RI "static int4 \fBbyteToAddressInt\fP (int4 val, uint4 ws)"
+.br
+.RI "Scale int4 from byte units to addressable units\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBcalcScaleMask\fP (void)"
+.br
+.RI "Calculate scale and mask\&. "
+.ti -1c
+.RI "void \fBassignShortcut\fP (void)"
+.br
+.RI "Assign a shortcut character to the space\&. "
+.ti -1c
+.RI "void \fBsetFlags\fP (uint4 fl)"
+.br
+.RI "Set a cached attribute\&. "
+.ti -1c
+.RI "void \fBclearFlags\fP (uint4 fl)"
+.br
+.RI "Clear a cached attribute\&. "
+.ti -1c
+.RI "void \fBsaveBasicAttributes\fP (ostream &s) const"
+.br
+.RI "Write the XML attributes of this space\&. "
+.ti -1c
+.RI "void \fBtruncateSpace\fP (uint4 newsize)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Name of this space\&. "
+.ti -1c
+.RI "uint4 \fBaddressSize\fP"
+.br
+.RI "Size of an address into this space in bytes\&. "
+.ti -1c
+.RI "uint4 \fBwordsize\fP"
+.br
+.RI "Size of unit being addressed (1=byte) "
+.ti -1c
+.RI "int4 \fBindex\fP"
+.br
+.RI "An integer identifier for the space\&. "
+.ti -1c
+.RI "int4 \fBdelay\fP"
+.br
+.RI "Delay in heritaging this space\&. "
+.ti -1c
+.RI "int4 \fBdeadcodedelay\fP"
+.br
+.RI "Delay before deadcode removal is allowed on this space\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBAddrSpaceManager\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A region where processor data is stored\&. 
+
+An \fBAddrSpace\fP (\fBAddress\fP Space) is an arbitrary sequence of bytes where a processor can store data\&. As is usual with most processors' concept of RAM, an integer offset paired with an \fBAddrSpace\fP forms the address (See \fBAddress\fP) of a byte\&. The \fIsize\fP of an \fBAddrSpace\fP indicates the number of bytes that can be separately addressed and is usually described by the number of bytes needed to encode the biggest offset\&. I\&.e\&. a \fI4-byte\fP address space means that there are offsets ranging from 0x00000000 to 0xffffffff within the space for a total of 2^32 addressable bytes within the space\&. There can be multiple address spaces, and it is typical to have spaces
+.IP "\(bu" 2
+\fBram\fP Modelling the main processor address bus
+.IP "\(bu" 2
+\fBregister\fP Modelling a processors registers
+.PP
+.PP
+The processor specification can set up any address spaces it needs in an arbitrary manner, but \fIall\fP data manipulated by the processor, which the specification hopes to model, must be contained in some address space, including RAM, ROM, general registers, special registers, i/o ports, etc\&.
+.PP
+The analysis engine also uses additional address spaces to model special concepts\&. These include
+.IP "\(bu" 2
+\fBconst\fP There is a \fIconstant\fP address space for modelling constant values in pcode expressions (See \fBConstantSpace\fP)
+.IP "\(bu" 2
+\fBunique\fP There is always a \fIunique\fP address space used as a pool for temporary registers\&. (See \fBUniqueSpace\fP) 
+.PP
+
+.PP
+Definition at line 73 of file space\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIbig_endian \fP\fP
+Space is big endian if set, little endian otherwise\&. 
+.TP
+\fB\fIheritaged \fP\fP
+This space is heritaged\&. 
+.TP
+\fB\fIdoes_deadcode \fP\fP
+Dead-code analysis is done on this space\&. 
+.TP
+\fB\fIprogramspecific \fP\fP
+Space is specific to a particular loadimage\&. 
+.TP
+\fB\fIreverse_justification \fP\fP
+Justification within aligned word is opposite of endianness\&. 
+.TP
+\fB\fIoverlay \fP\fP
+This space is an overlay of another space\&. 
+.TP
+\fB\fIoverlaybase \fP\fP
+This is the base space for overlay space(s) 
+.TP
+\fB\fItruncated \fP\fP
+Space is truncated from its original size, expect pointers larger than this size\&. 
+.TP
+\fB\fIhasphysical \fP\fP
+Has physical memory associated with it\&. 
+.PP
+Definition at line 76 of file space\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AddrSpace::AddrSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, \fBspacetype\fP tp, const string & nm, uint4 size, uint4 ws, int4 ind, uint4 fl, int4 dl)"
+Initialize an address space with its basic attributes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the space manager associated with the new space 
+.br
+\fIt\fP is the processor translator associated with the new space 
+.br
+\fItp\fP is the type of the new space (PROCESSOR, CONSTANT, INTERNAL,\&.\&.\&.) 
+.br
+\fInm\fP is the name of the new space 
+.br
+\fIsize\fP is the (offset encoding) size of the new space 
+.br
+\fIws\fP is the number of bytes in an addressable unit 
+.br
+\fIind\fP is the integer identifier for the new space 
+.br
+\fIfl\fP can be 0 or \fBAddrSpace::hasphysical\fP 
+.br
+\fIdl\fP is the number of rounds to delay heritage for the new space 
+.RE
+.PP
+
+.PP
+Definition at line 45 of file space\&.cc\&.
+.SS "AddrSpace::AddrSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, \fBspacetype\fP tp)"
+
+.PP
+For use with restoreXml\&. This is a partial constructor, for initializing a space via XML 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP the associated address space manager 
+.br
+\fIt\fP is the processor translator 
+.br
+\fItp\fP the basic type of the space 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file space\&.cc\&.
+.SS "virtual AddrSpace::~AddrSpace (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+The address space destructor\&. 
+.PP
+Definition at line 111 of file space\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP AddrSpace::addressToByte (\fBuintb\fP val, uint4 ws)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scale from addressable units to byte units\&. Given an offset into an address space based on the addressable unit size (wordsize), convert it into a byte relative offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the offset to convert 
+.br
+\fIws\fP is the number of bytes in the addressable word 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the scaled offset 
+.RE
+.PP
+
+.PP
+Definition at line 447 of file space\&.hh\&.
+.SS "int4 AddrSpace::addressToByteInt (int4 val, uint4 ws)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scale int4 from addressable units to byte units\&. Given an int4 offset into an address space based on the addressable unit size (wordsize), convert it into a byte relative offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the offset to convert 
+.br
+\fIws\fP is the number of bytes in the addressable word 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the scaled offset 
+.RE
+.PP
+
+.PP
+Definition at line 465 of file space\&.hh\&.
+.SS "void AddrSpace::assignShortcut (void)\fC [protected]\fP"
+
+.PP
+Assign a shortcut character to the space\&. Called once during initialization to assign a single character shortcut for the space The character is used as a shorthand when typing addresses on the console command line 
+.PP
+Definition at line 29 of file space\&.cc\&.
+.SS "\fBuintb\fP AddrSpace::byteToAddress (\fBuintb\fP val, uint4 ws)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scale from byte units to addressable units\&. Given an offset in an address space based on bytes, convert it into an offset relative to the addressable unit of the space (wordsize) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the offset to convert 
+.br
+\fIws\fP is the number of bytes in the addressable word 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the scaled offset 
+.RE
+.PP
+
+.PP
+Definition at line 456 of file space\&.hh\&.
+.SS "int4 AddrSpace::byteToAddressInt (int4 val, uint4 ws)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scale int4 from byte units to addressable units\&. Given an int4 offset in an address space based on bytes, convert it into an offset relative to the addressable unit of the space (wordsize) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the offset to convert 
+.br
+\fIws\fP is the number of bytes in the addressable word 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the scaled offset 
+.RE
+.PP
+
+.PP
+Definition at line 474 of file space\&.hh\&.
+.SS "void AddrSpace::calcScaleMask (void)\fC [protected]\fP"
+
+.PP
+Calculate scale and mask\&. Calculate \fIhighest\fP based on \fIaddressSize\fP, and \fIwordsize\fP\&. 
+.PP
+Definition at line 20 of file space\&.cc\&.
+.SS "void AddrSpace::clearFlags (uint4 fl)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Clear a cached attribute\&. An internal method for derived classes to clear space attibutes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfl\fP is the set of attributes to clear 
+.RE
+.PP
+
+.PP
+Definition at line 236 of file space\&.hh\&.
+.SS "bool AddrSpace::contain (\fBAddrSpace\fP * id2) const"
+
+.PP
+Determine if this space contains another\&. Check if this space contains \fBid2\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid2\fP is the space to check 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBid2\fP is contained 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file space\&.cc\&.
+.SS "uintm AddrSpace::data2Uintm (const uint1 * ptr, int4 size) const"
+
+.PP
+Convert a sequence of bytes into an integer value\&. Convert an array of bytes, which we assume are contained in the space, into an integer value\&. The conversion depends on the endian property of the space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the array of bytes 
+.br
+\fIsize\fP is the size of the array to convert 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the converted integer value 
+.RE
+.PP
+
+.PP
+Definition at line 135 of file space\&.cc\&.
+.SS "bool AddrSpace::doesDeadcode (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if dead code analysis should be done on this space\&. Most memory locations should have dead-code analysis performed, and this routine will return \fBtrue\fP\&. For certain special spaces like the \fIconstant\fP space, dead-code analysis doesn't make sense, and this routine returns \fBfalse\fP\&. 
+.PP
+Definition at line 361 of file space\&.hh\&.
+.SS "uint4 AddrSpace::getAddrSize (void) const\fC [inline]\fP"
+
+.PP
+Get the size of the space\&. Return the number of bytes needed to represent an offset into this space\&. A space with 2^32 bytes has an address size of 4, for instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the size of an address 
+.RE
+.PP
+
+.PP
+Definition at line 314 of file space\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpace::getContain (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return this space's containing space (if any) If this space is virtual, then this routine returns the containing address space, otherwise it returns NULL\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the containing space or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSpacebaseSpace\fP\&.
+.PP
+Definition at line 438 of file space\&.hh\&.
+.SS "int4 AddrSpace::getDeadcodeDelay (void) const\fC [inline]\fP"
+
+.PP
+Get number of passes before deadcode removal is allowed\&. The point at which deadcode removal is performed on varnodes within a space can be set to skip some number of heritage passes, in case not all the varnodes are created within a single pass\&. This method gives the number of rounds that should be skipped before deadcode elimination begins 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of rounds to skip deadcode removal 
+.RE
+.PP
+
+.PP
+Definition at line 291 of file space\&.hh\&.
+.SS "int4 AddrSpace::getDelay (void) const\fC [inline]\fP"
+
+.PP
+Get number of heritage passes being delayed\&. If the heritage algorithms need to trace dataflow within this space, the algorithms can delay tracing this space in order to let indirect references into the space resolve themselves\&. This method indicates the number of rounds of dataflow analysis that should be skipped for this space to let this resolution happen 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of rounds to skip heritage 
+.RE
+.PP
+
+.PP
+Definition at line 281 of file space\&.hh\&.
+.SS "\fBuintb\fP AddrSpace::getHighest (void) const\fC [inline]\fP"
+
+.PP
+Get the highest byte-scaled address\&. Get the highest (byte) offset possible for this space 
+.PP
+\fBReturns:\fP
+.RS 4
+the offset 
+.RE
+.PP
+
+.PP
+Definition at line 320 of file space\&.hh\&.
+.SS "int4 AddrSpace::getIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the integer identifier\&. Each address space has an associated index that can be used as an integer encoding of the space\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the unique index 
+.RE
+.PP
+
+.PP
+Definition at line 298 of file space\&.hh\&.
+.SS "\fBAddrSpaceManager\fP * AddrSpace::getManager (void) const\fC [inline]\fP"
+
+.PP
+Get the space manager\&. Every address space is associated with a manager of (all possible) spaces\&. This method recovers the address space manager object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the address space manager 
+.RE
+.PP
+
+.PP
+Definition at line 250 of file space\&.hh\&.
+.SS "const string & AddrSpace::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the name\&. Every address space has a (unique) name, which is referred to especially in configuration files via XML\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the name of this space 
+.RE
+.PP
+
+.PP
+Definition at line 243 of file space\&.hh\&.
+.SS "char AddrSpace::getShortcut (void) const\fC [inline]\fP"
+
+.PP
+Get the shortcut character\&. Return a unique short cut character that is associated with this space\&. The shortcut character can be used by the read method to quickly specify the space of an address\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the shortcut character 
+.RE
+.PP
+
+.PP
+Definition at line 343 of file space\&.hh\&.
+.SS "const \fBVarnodeData\fP & AddrSpace::getSpacebase (int4 i) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get a base register that creates this virtual space\&. For virtual spaces, like the stack space, this routine returns the location information for a base register of the space\&. This routine will throw an exception if the register does not exist 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the base register starting at 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBVarnodeData\fP that describes the register 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSpacebaseSpace\fP\&.
+.PP
+Definition at line 415 of file space\&.hh\&.
+.SS "const \fBVarnodeData\fP & AddrSpace::getSpacebaseFull (int4 i) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return original spacebase register before truncation\&. If a stack pointer is truncated to fit the stack space, we may need to know the extent of the original register 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the base register 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the original register before truncation 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSpacebaseSpace\fP\&.
+.PP
+Definition at line 423 of file space\&.hh\&.
+.SS "const \fBTranslate\fP * AddrSpace::getTrans (void) const\fC [inline]\fP"
+
+.PP
+Get the processor translator\&. Every address space is associated with a processor which may have additional objects like registers etc\&. associated with it\&. This method returns a pointer to that processor translator 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBTranslate\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 258 of file space\&.hh\&.
+.SS "\fBspacetype\fP AddrSpace::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the type of space\&. Return the defining type for this address space\&.
+.IP "\(bu" 2
+IPTR_CONSTANT for the constant space
+.IP "\(bu" 2
+IPTR_PROCESSOR for a normal space
+.IP "\(bu" 2
+IPTR_INTERNAL for the temporary register space
+.IP "\(bu" 2
+IPTR_FSPEC for special \fBFuncCallSpecs\fP references
+.IP "\(bu" 2
+IPTR_IOP for special \fBPcodeOp\fP references 
+.PP
+\fBReturns:\fP
+.RS 4
+the basic type of this space 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 270 of file space\&.hh\&.
+.SS "uint4 AddrSpace::getWordSize (void) const\fC [inline]\fP"
+
+.PP
+Get the addressable unit size\&. This method indicates the number of bytes contained in an \fIaddressable\fP \fIunit\fP of this space\&. This is almost always 1, but can be any other small integer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in a unit 
+.RE
+.PP
+
+.PP
+Definition at line 306 of file space\&.hh\&.
+.SS "bool AddrSpace::hasPhysical (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if data is physically stored in this\&. This routine returns \fBtrue\fP, if, like most spaces, the space has actual read/writeable bytes associated with it\&. Some spaces, like the \fIconstant\fP space, do not\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the space has physical data in it\&. 
+.RE
+.PP
+
+.PP
+Definition at line 369 of file space\&.hh\&.
+.SS "bool AddrSpace::isBigEndian (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if values in this space are big endian\&. If integer values stored in this space are encoded in this space using the big endian format, then return \fBtrue\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the space is big endian 
+.RE
+.PP
+
+.PP
+Definition at line 376 of file space\&.hh\&.
+.SS "bool AddrSpace::isHeritaged (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if dataflow has been traced\&. During analysis, memory locations in most spaces need to have their data-flow traced\&. This method returns \fBtrue\fP for these spaces\&. For some of the special spaces, like the \fIconstant\fP space, tracing data flow makes no sense, and this routine will return \fBfalse\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if this space's data-flow is analyzed 
+.RE
+.PP
+
+.PP
+Definition at line 353 of file space\&.hh\&.
+.SS "bool AddrSpace::isOverlay (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this is an overlay space\&. 
+.PP
+Definition at line 389 of file space\&.hh\&.
+.SS "bool AddrSpace::isOverlayBase (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if other spaces overlay this space\&. 
+.PP
+Definition at line 393 of file space\&.hh\&.
+.SS "bool AddrSpace::isReverseJustified (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if alignment justification does not match endianness\&. Certain architectures or compilers specify an alignment for accessing words within the space The space required for a variable must be rounded up to the alignment\&. For variables smaller than the alignment, there is the issue of how the variable is 'justified' within the aligned word\&. Usually the justification depends on the endianness of the space, for certain weird cases the justification may be the opposite of the endianness\&. 
+.PP
+Definition at line 385 of file space\&.hh\&.
+.SS "bool AddrSpace::isTruncated (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this space is truncated from its original size\&. If this method returns \fBtrue\fP, the logical form of this space is truncated from its actual size Pointers may refer to this original size put the most significant bytes are ignored 
+.PP
+Definition at line 399 of file space\&.hh\&.
+.SS "int4 AddrSpace::numSpacebase (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Number of base registers associated with this space\&. Some spaces are 'virtual', like the stack spaces, where addresses are really relative to a base pointer stored in a register, like the stackpointer\&. This routine will return non-zero if \fBthis\fP space is virtual and there is 1 (or more) associated pointer registers 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of base registers associated with this space 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSpacebaseSpace\fP\&.
+.PP
+Definition at line 407 of file space\&.hh\&.
+.SS "void AddrSpace::printOffset (ostream & s, \fBuintb\fP offset) const"
+
+.PP
+Write an address offset to a stream\&. Print the \fIoffset\fP as hexidecimal digits\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIoffset\fP is the offset to be printed 
+.RE
+.PP
+
+.PP
+Definition at line 221 of file space\&.cc\&.
+.SS "void AddrSpace::printRaw (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+
+.PP
+Write an address in this space to a stream\&. This is a printing method for the debugging routines\&. It prints taking into account the \fIwordsize\fP, adding a '+n' if the offset is not on-cut with wordsize\&. It also returns the expected/typical size of values from this space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.br
+\fIoffset\fP is the offset to be printed 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBFspecSpace\fP, \fBJoinSpace\fP, \fBConstantSpace\fP, and \fBIopSpace\fP\&.
+.PP
+Definition at line 233 of file space\&.cc\&.
+.SS "\fBuintb\fP AddrSpace::read (const string & s, int4 & size) const\fC [virtual]\fP"
+
+.PP
+Read in an address (and possible size) from a string\&. For the console mode, an address space can tailor how it converts user strings into offsets within the space\&. The base routine can read and convert register names as well as absolute hex addresses\&. A size can be indicated by appending a ':' and integer, \&.i\&.e\&. 0x1000:2\&. Offsets within a register can be indicated by appending a '+' and integer, i\&.e\&. eax+2 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the string to be parsed 
+.br
+\fIsize\fP is a reference to the size being returned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the parsed offset 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBJoinSpace\fP\&.
+.PP
+Definition at line 282 of file space\&.cc\&.
+.SS "void AddrSpace::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Recover the details of this space from XML\&. Walk a parsed XML tag and recover all the properties defining this space\&. The processor translator, \fItrans\fP, and the \fItype\fP must already be filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML tag 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBFspecSpace\fP, \fBOverlaySpace\fP, \fBJoinSpace\fP, \fBSpacebaseSpace\fP, \fBConstantSpace\fP, and \fBIopSpace\fP\&.
+.PP
+Definition at line 342 of file space\&.cc\&.
+.SS "\fBuintb\fP AddrSpace::restoreXmlAttributes (const \fBElement\fP * el, uint4 & size) const\fC [virtual]\fP"
+
+.PP
+Recover an offset and size\&. For an XML tag describing an address in this space, this routine recovers the offset and possibly the size described by the tag 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML address tag 
+.br
+\fIsize\fP is a reference where the recovered size should be stored 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the recovered offset 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBJoinSpace\fP\&.
+.PP
+Definition at line 193 of file space\&.cc\&.
+.SS "void AddrSpace::saveBasicAttributes (ostream & s) const\fC [protected]\fP"
+
+.PP
+Write the XML attributes of this space\&. Save the \fIname\fP, \fIindex\fP, \fIbigendian\fP, \fIdelay\fP, \fIsize\fP, \fIwordsize\fP, and \fIphysical\fP attributes which are common with all address spaces derived from \fBAddrSpace\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP the stream where the attributes are written 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file space\&.cc\&.
+.SS "void AddrSpace::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write the details of this space as XML\&. Write a tag fully describing the details of this space suitable for later recovery via restoreXml\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBFspecSpace\fP, \fBOverlaySpace\fP, \fBJoinSpace\fP, \fBUniqueSpace\fP, \fBSpacebaseSpace\fP, \fBConstantSpace\fP, and \fBIopSpace\fP\&.
+.PP
+Definition at line 330 of file space\&.cc\&.
+.SS "void AddrSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+
+.PP
+Save an address as XML\&. Write the main XML attributes for an address within this space The caller provides only the \fIoffset\fP, and this routine fills in other details pertaining to this particular space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIoffset\fP is the offset of the address 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBFspecSpace\fP, \fBJoinSpace\fP, and \fBIopSpace\fP\&.
+.PP
+Definition at line 163 of file space\&.cc\&.
+.SS "void AddrSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset, int4 size) const\fC [virtual]\fP"
+
+.PP
+Save an address and size as XML\&. Write the main XML attributes of an address with this space and a size\&. The caller provides the \fIoffset\fP and \fIsize\fP, and other details about this particular space are filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIoffset\fP is the offset of the address 
+.br
+\fIsize\fP is the size of the memory location 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBFspecSpace\fP, \fBJoinSpace\fP, and \fBIopSpace\fP\&.
+.PP
+Definition at line 178 of file space\&.cc\&.
+.SS "void AddrSpace::setFlags (uint4 fl)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Set a cached attribute\&. An internal method for derived classes to set space attributes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfl\fP is the set of attributes to be set 
+.RE
+.PP
+
+.PP
+Definition at line 230 of file space\&.hh\&.
+.SS "bool AddrSpace::stackGrowsNegative (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return \fBtrue\fP if a stack in this space grows negative\&. For stack (or other spacebase) spaces, this routine returns \fBtrue\fP if the space can viewed as a stack and a \fBpush\fP operation causes the spacebase pointer to be decreased (grow negative) 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if stacks grow in negative direction\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSpacebaseSpace\fP\&.
+.PP
+Definition at line 430 of file space\&.hh\&.
+.SS "void AddrSpace::truncateSpace (uint4 newsize)\fC [protected]\fP"
+The logical form of the space is truncated from its actual size Pointers may refer to this original size put the most significant bytes are ignored 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewsize\fP is the size (in bytes) of the truncated (logical) space 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file space\&.cc\&.
+.SS "\fBuintb\fP AddrSpace::wrapOffset (\fBuintb\fP off) const\fC [inline]\fP"
+
+.PP
+Wrap -off- to the offset that fits into this space\&. Calculate \fIoff\fP modulo the size of this address space in order to construct the offset 'equivalent' to \fIoff\fP that fits properly into this space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset requested 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the wrapped offset 
+.RE
+.PP
+
+.PP
+Definition at line 329 of file space\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBAddrSpaceManager\fP\fC [friend]\fP"
+
+.PP
+Definition at line 74 of file space\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 AddrSpace::addressSize\fC [protected]\fP"
+
+.PP
+Size of an address into this space in bytes\&. 
+.PP
+Definition at line 97 of file space\&.hh\&.
+.SS "int4 AddrSpace::deadcodedelay\fC [protected]\fP"
+
+.PP
+Delay before deadcode removal is allowed on this space\&. 
+.PP
+Definition at line 101 of file space\&.hh\&.
+.SS "int4 AddrSpace::delay\fC [protected]\fP"
+
+.PP
+Delay in heritaging this space\&. 
+.PP
+Definition at line 100 of file space\&.hh\&.
+.SS "int4 AddrSpace::index\fC [protected]\fP"
+
+.PP
+An integer identifier for the space\&. 
+.PP
+Definition at line 99 of file space\&.hh\&.
+.SS "string AddrSpace::name\fC [protected]\fP"
+
+.PP
+Name of this space\&. 
+.PP
+Definition at line 96 of file space\&.hh\&.
+.SS "uint4 AddrSpace::wordsize\fC [protected]\fP"
+
+.PP
+Size of unit being addressed (1=byte) 
+.PP
+Definition at line 98 of file space\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,334 @@
+.TH "SleighBase" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SleighBase \- Common core of classes that read or write SLEIGH specification files natively\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sleighbase\&.hh>\fP
+.PP
+Inherits \fBTranslate\fP\&.
+.PP
+Inherited by \fBSleigh\fP, and \fBSleighCompile\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSleighBase\fP (void)"
+.br
+.RI "Construct an uninitialized translator\&. "
+.ti -1c
+.RI "bool \fBisInitialized\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is initialized\&. "
+.ti -1c
+.RI "virtual \fB~SleighBase\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBaddRegister\fP (const string &nm, \fBAddrSpace\fP *base, \fBuintb\fP offset, int4 size)"
+.br
+.RI "Add a named register to the model for this processor\&. "
+.ti -1c
+.RI "virtual const \fBVarnodeData\fP & \fBgetRegister\fP (const string &nm) const"
+.br
+.RI "Get a register as \fBVarnodeData\fP given its name\&. "
+.ti -1c
+.RI "virtual string \fBgetRegisterName\fP (\fBAddrSpace\fP *base, \fBuintb\fP off, int4 size) const"
+.br
+.RI "Get the name of a register given its location\&. "
+.ti -1c
+.RI "virtual void \fBgetAllRegisters\fP (map< \fBVarnodeData\fP, string > &reglist) const"
+.br
+.RI "Get a list of all register names and the corresponding location\&. "
+.ti -1c
+.RI "virtual void \fBgetUserOpNames\fP (vector< string > &res) const"
+.br
+.RI "Get a list of all \fIuser-defined\fP pcode ops\&. "
+.ti -1c
+.RI "\fBSleighSymbol\fP * \fBfindSymbol\fP (const string &nm) const"
+.br
+.RI "Find a specific SLEIGH symbol by name in the current scope\&. "
+.ti -1c
+.RI "\fBSleighSymbol\fP * \fBfindSymbol\fP (uintm id) const"
+.br
+.RI "Find a specific SLEIGH symbol by id\&. "
+.ti -1c
+.RI "\fBSleighSymbol\fP * \fBfindGlobalSymbol\fP (const string &nm) const"
+.br
+.RI "Find a specific global SLEIGH symbol by name\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write out the SLEIGH specification as an XML <sleigh> tag\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBbuildXrefs\fP (void)"
+.br
+.RI "Build register map\&. Collect user-ops and context-fields\&. "
+.ti -1c
+.RI "void \fBreregisterContext\fP (void)"
+.br
+.RI "Reregister context fields for a new executable\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Read a SLEIGH specification from XML\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSubtableSymbol\fP * \fBroot\fP"
+.br
+.RI "The root SLEIGH decoding symbol\&. "
+.ti -1c
+.RI "\fBSymbolTable\fP \fBsymtab\fP"
+.br
+.RI "The SLEIGH symbol table\&. "
+.ti -1c
+.RI "uint4 \fBmaxdelayslotbytes\fP"
+.br
+.RI "Maximum number of bytes in a delay-slot directive\&. "
+.ti -1c
+.RI "uint4 \fBunique_allocatemask\fP"
+.br
+.RI "Bits that are guaranteed to be zero in the unique allocation scheme\&. "
+.ti -1c
+.RI "uint4 \fBnumSections\fP"
+.br
+.RI "Number of \fInamed\fP sections\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Common core of classes that read or write SLEIGH specification files natively\&. 
+
+This class represents what's in common across the SLEIGH infrastructure between:
+.IP "\(bu" 2
+Reading the various SLEIGH specification files
+.IP "\(bu" 2
+Building and writing out SLEIGH specification files 
+.PP
+
+.PP
+Definition at line 29 of file sleighbase\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SleighBase::SleighBase (void)"
+
+.PP
+Construct an uninitialized translator\&. 
+.PP
+Definition at line 18 of file sleighbase\&.cc\&.
+.SS "virtual SleighBase::~SleighBase (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 44 of file sleighbase\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SleighBase::addRegister (const string & nm, \fBAddrSpace\fP * base, \fBuintb\fP offset, int4 size)\fC [virtual]\fP"
+
+.PP
+Add a named register to the model for this processor\&. 
+.PP
+\fBDeprecated\fP
+.RS 4
+All registers used to be formally added to the processor model through this method\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the new register 
+.br
+\fIbase\fP is the address space containing the register 
+.br
+\fIoffset\fP is the offset of the register 
+.br
+\fIsize\fP is the number of bytes in the register 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 87 of file sleighbase\&.cc\&.
+.SS "void SleighBase::buildXrefs (void)\fC [protected]\fP"
+
+.PP
+Build register map\&. Collect user-ops and context-fields\&. Assuming the symbol table is populated, iterate through the table collecting registers (for the map), user-op names, and context fields\&. 
+.PP
+Definition at line 29 of file sleighbase\&.cc\&.
+.SS "\fBSleighSymbol\fP* SleighBase::findGlobalSymbol (const string & nm) const\fC [inline]\fP"
+
+.PP
+Find a specific global SLEIGH symbol by name\&. 
+.PP
+Definition at line 53 of file sleighbase\&.hh\&.
+.SS "\fBSleighSymbol\fP* SleighBase::findSymbol (const string & nm) const\fC [inline]\fP"
+
+.PP
+Find a specific SLEIGH symbol by name in the current scope\&. 
+.PP
+Definition at line 51 of file sleighbase\&.hh\&.
+.SS "\fBSleighSymbol\fP* SleighBase::findSymbol (uintm id) const\fC [inline]\fP"
+
+.PP
+Find a specific SLEIGH symbol by id\&. 
+.PP
+Definition at line 52 of file sleighbase\&.hh\&.
+.SS "void SleighBase::getAllRegisters (map< \fBVarnodeData\fP, string > & reglist) const\fC [virtual]\fP"
+
+.PP
+Get a list of all register names and the corresponding location\&. Most processors have a list of named registers and possibly other memory locations that are specific to it\&. This function populates a map from the location information to the name, for every named location known by the translator 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreglist\fP is the map which will be populated by the call 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 131 of file sleighbase\&.cc\&.
+.SS "const \fBVarnodeData\fP & SleighBase::getRegister (const string & nm) const\fC [virtual]\fP"
+
+.PP
+Get a register as \fBVarnodeData\fP given its name\&. Retrieve the location and size of a register given its name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the register 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBVarnodeData\fP for the register 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 94 of file sleighbase\&.cc\&.
+.SS "string SleighBase::getRegisterName (\fBAddrSpace\fP * base, \fBuintb\fP off, int4 size) const\fC [virtual]\fP"
+
+.PP
+Get the name of a register given its location\&. Generic references to locations in a \fIregister\fP space can be translated into the associated register \fIname\fP\&. If the location doesn't match a register \fIexactly\fP, an empty string is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbase\fP is the address space containing the location 
+.br
+\fIoff\fP is the offset of the location 
+.br
+\fIsize\fP is the size of the location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the register, or an empty string 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 105 of file sleighbase\&.cc\&.
+.SS "void SleighBase::getUserOpNames (vector< string > & res) const\fC [virtual]\fP"
+
+.PP
+Get a list of all \fIuser-defined\fP pcode ops\&. The pcode model allows processors to define new pcode instructions that are specific to that processor\&. These \fIuser-defined\fP instructions are all identified by a name and an index\&. This method returns a list of these ops in index order\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP is the resulting vector of user op names 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 137 of file sleighbase\&.cc\&.
+.SS "bool SleighBase::isInitialized (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is initialized\&. 
+.PP
+Definition at line 43 of file sleighbase\&.hh\&.
+.SS "void SleighBase::reregisterContext (void)\fC [protected]\fP"
+
+.PP
+Reregister context fields for a new executable\&. If \fBthis\fP \fBSleighBase\fP is being reused with a new program, the context variables need to be registered with the new program's database 
+.PP
+Definition at line 69 of file sleighbase\&.cc\&.
+.SS "void SleighBase::restoreXml (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Read a SLEIGH specification from XML\&. This parses the main <sleigh> tag (from a \&.sla file), which includes the description of address spaces and the symbol table, with its associated decoding tables 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element 
+.RE
+.PP
+
+.PP
+Definition at line 180 of file sleighbase\&.cc\&.
+.SS "void SleighBase::saveXml (ostream & s) const"
+
+.PP
+Write out the SLEIGH specification as an XML <sleigh> tag\&. This does the bulk of the work of creating a \&.sla file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file sleighbase\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 SleighBase::maxdelayslotbytes\fC [protected]\fP"
+
+.PP
+Maximum number of bytes in a delay-slot directive\&. 
+.PP
+Definition at line 35 of file sleighbase\&.hh\&.
+.SS "uint4 SleighBase::numSections\fC [protected]\fP"
+
+.PP
+Number of \fInamed\fP sections\&. 
+.PP
+Definition at line 37 of file sleighbase\&.hh\&.
+.SS "\fBSubtableSymbol\fP* SleighBase::root\fC [protected]\fP"
+
+.PP
+The root SLEIGH decoding symbol\&. 
+.PP
+Definition at line 33 of file sleighbase\&.hh\&.
+.SS "\fBSymbolTable\fP SleighBase::symtab\fC [protected]\fP"
+
+.PP
+The SLEIGH symbol table\&. 
+.PP
+Definition at line 34 of file sleighbase\&.hh\&.
+.SS "uint4 SleighBase::unique_allocatemask\fC [protected]\fP"
+
+.PP
+Bits that are guaranteed to be zero in the unique allocation scheme\&. 
+.PP
+Definition at line 36 of file sleighbase\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

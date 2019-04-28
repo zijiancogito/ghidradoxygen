@@ -1,0 +1,110 @@
+.TH "ActionRestartGroup" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ActionRestartGroup \- \fBAction\fP which checks if restart (sub)actions have been generated and restarts itself\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <action\&.hh>\fP
+.PP
+Inherits \fBActionGroup\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionRestartGroup\fP (uint4 f, const string &nm, int4 max)"
+.br
+.RI "Construct this providing maximum number of restarts\&. "
+.ti -1c
+.RI "virtual \fBAction\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBAction\fP\&. "
+.ti -1c
+.RI "virtual void \fBreset\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Reset the \fBAction\fP for a new function\&. "
+.ti -1c
+.RI "virtual int4 \fBapply\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Make a single attempt to apply \fBthis\fP \fBAction\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBAction\fP which checks if restart (sub)actions have been generated and restarts itself\&. 
+
+Actions or Rules can request a restart on a \fBFuncdata\fP object by calling setRestartPending(true) on it\&. This action checks for the request then resets and reruns the group of Actions as appropriate\&. 
+.PP
+Definition at line 171 of file action\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ActionRestartGroup::ActionRestartGroup (uint4 f, const string & nm, int4 max)\fC [inline]\fP"
+
+.PP
+Construct this providing maximum number of restarts\&. 
+.PP
+Definition at line 175 of file action\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 ActionRestartGroup::apply (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Make a single attempt to apply \fBthis\fP \fBAction\fP\&. This is the main entry point for applying changes to a function that are specific to \fBthis\fP \fBAction\fP\&. The method can inspect whatever it wants to decide if the \fBAction\fP does or does not apply\&. Changes are indicated by incrementing the \fBcount\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to inspect/modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 for a complete application, -1 for a partial completion (due to breakpoint) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBActionGroup\fP\&.
+.PP
+Definition at line 536 of file action\&.cc\&.
+.SS "\fBAction\fP * ActionRestartGroup::clone (const \fBActionGroupList\fP & grouplist) const\fC [virtual]\fP"
+
+.PP
+Clone the \fBAction\fP\&. If \fBthis\fP \fBAction\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBAction\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBAction\fP or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBActionGroup\fP\&.
+.PP
+Definition at line 512 of file action\&.cc\&.
+.SS "void ActionRestartGroup::reset (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Reset the \fBAction\fP for a new function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the new function \fBthis\fP \fBAction\fP may affect 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBActionGroup\fP\&.
+.PP
+Definition at line 529 of file action\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

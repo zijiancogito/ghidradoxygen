@@ -1,0 +1,167 @@
+.TH "GhidraCommand" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GhidraCommand \- Base class for a \fIcommand\fP to the decompiler as issued by a Ghidra client\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherited by \fBDecompileAt\fP, \fBDeregisterProgram\fP, \fBFlushNative\fP, \fBRegisterProgram\fP, \fBSetAction\fP, \fBSetOptions\fP, and \fBStructureGraph\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGhidraCommand\fP (void)"
+.br
+.RI "Construct given i/o streams\&. "
+.ti -1c
+.RI "virtual \fB~GhidraCommand\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)=0"
+.br
+.RI "Perform the action of the command\&. "
+.ti -1c
+.RI "int4 \fBdoit\fP (void)"
+.br
+.RI "Configure and execute the command, then send back results\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBloadParameters\fP (void)"
+.br
+.RI "Read parameters directing command execution\&. "
+.ti -1c
+.RI "virtual void \fBsendResult\fP (void)"
+.br
+.RI "Send results of the command (if any) back to the Ghidra client\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "istream & \fBsin\fP"
+.br
+.RI "The input stream from the Ghidra client\&. "
+.ti -1c
+.RI "ostream & \fBsout\fP"
+.br
+.RI "The output stream to the Ghidra client\&. "
+.ti -1c
+.RI "\fBArchitectureGhidra\fP * \fBghidra\fP"
+.br
+.RI "The \fBArchitecture\fP on which to perform the command\&. "
+.ti -1c
+.RI "int4 \fBstatus\fP"
+.br
+.RI "Meta-command to system (0=wait for next command, 1=terminate process) "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for a \fIcommand\fP to the decompiler as issued by a Ghidra client\&. 
+
+A command object is provided i/o streams to the client, and the action of the command is performed by calling the \fBdoit()\fP method\&. This wraps the main sequence of methods:
+.IP "\(bu" 2
+\fBloadParameters()\fP
+.IP "\(bu" 2
+\fBrawAction()\fP
+.IP "\(bu" 2
+\fBsendResult()\fP
+.PP
+.PP
+At a minimum, \fBloadParameters()\fP will read an id to select the active \fBArchitectureGhidra\fP object, and \fBsendResult()\fP will send back any accumulated warning/error messages\&. 
+.PP
+Definition at line 71 of file ghidra_process\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GhidraCommand::GhidraCommand (void)\fC [inline]\fP"
+
+.PP
+Construct given i/o streams\&. 
+.PP
+Definition at line 80 of file ghidra_process\&.hh\&.
+.SS "virtual GhidraCommand::~GhidraCommand (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 83 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 GhidraCommand::doit (void)"
+
+.PP
+Configure and execute the command, then send back results\&. This method calls the main overloaded methods:
+.IP "\(bu" 2
+\fBloadParameters()\fP
+.IP "\(bu" 2
+\fBrawAction()\fP
+.IP "\(bu" 2
+\fBsendResult()\fP
+.PP
+.PP
+It wraps the sequence with appropriate error handling and message protocol\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the meta-command (0=continue, 1=terminate) as issued by the command\&. 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file ghidra_process\&.cc\&.
+.SS "void GhidraCommand::loadParameters (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Read parameters directing command execution\&. This method reads an id selecting the \fBArchitecture\fP to act on, but it can be overloaded to read any set of data from the Ghidra client to configure how the command is executed\&. Individual parameters are read using the method protocol\&. 
+.PP
+Definition at line 72 of file ghidra_process\&.cc\&.
+.SS "virtual void GhidraCommand::rawAction (void)\fC [pure virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implemented in \fBSetOptions\fP, \fBSetAction\fP, \fBStructureGraph\fP, \fBDecompileAt\fP, \fBFlushNative\fP, \fBDeregisterProgram\fP, and \fBRegisterProgram\fP\&.
+.SS "void GhidraCommand::sendResult (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Send results of the command (if any) back to the Ghidra client\&. This method sends any warnings accumulated during execution back, but it can be overloaded to send back any kind of information\&. Individual records are sent using the message protocol\&. 
+.PP
+Definition at line 94 of file ghidra_process\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBArchitectureGhidra\fP* GhidraCommand::ghidra\fC [protected]\fP"
+
+.PP
+The \fBArchitecture\fP on which to perform the command\&. 
+.PP
+Definition at line 75 of file ghidra_process\&.hh\&.
+.SS "istream& GhidraCommand::sin\fC [protected]\fP"
+
+.PP
+The input stream from the Ghidra client\&. 
+.PP
+Definition at line 73 of file ghidra_process\&.hh\&.
+.SS "ostream& GhidraCommand::sout\fC [protected]\fP"
+
+.PP
+The output stream to the Ghidra client\&. 
+.PP
+Definition at line 74 of file ghidra_process\&.hh\&.
+.SS "int4 GhidraCommand::status\fC [protected]\fP"
+
+.PP
+Meta-command to system (0=wait for next command, 1=terminate process) 
+.PP
+Definition at line 76 of file ghidra_process\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

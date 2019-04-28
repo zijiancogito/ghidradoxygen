@@ -1,0 +1,126 @@
+.TH "PatternExpression" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PatternExpression
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpatexpress\&.hh>\fP
+.PP
+Inherited by \fBBinaryExpression\fP, \fBPatternValue\fP, and \fBUnaryExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternExpression\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBintb\fP \fBgetValue\fP (\fBParserWalker\fP &walker) const =0"
+.br
+.ti -1c
+.RI "virtual \fBTokenPattern\fP \fBgenMinPattern\fP (const vector< \fBTokenPattern\fP > &ops) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBlistValues\fP (vector< const \fBPatternValue\fP * > &list) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBgetMinMax\fP (vector< \fBintb\fP > &minlist, vector< \fBintb\fP > &maxlist) const =0"
+.br
+.ti -1c
+.RI "virtual \fBintb\fP \fBgetSubValue\fP (const vector< \fBintb\fP > &replace, int4 &listpos) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTranslate\fP *trans)=0"
+.br
+.ti -1c
+.RI "\fBintb\fP \fBgetSubValue\fP (const vector< \fBintb\fP > &replace)"
+.br
+.ti -1c
+.RI "void \fBlayClaim\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBrelease\fP (\fBPatternExpression\fP *p)"
+.br
+.ti -1c
+.RI "static \fBPatternExpression\fP * \fBrestoreExpression\fP (const \fBElement\fP *el, \fBTranslate\fP *trans)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~PatternExpression\fP (void)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 56 of file slghpatexpress\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual PatternExpression::~PatternExpression (void)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 60 of file slghpatexpress\&.hh\&.
+.SS "PatternExpression::PatternExpression (void)\fC [inline]\fP"
+
+.PP
+Definition at line 62 of file slghpatexpress\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBTokenPattern\fP PatternExpression::genMinPattern (const vector< \fBTokenPattern\fP > & ops) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBUnaryExpression\fP, \fBBinaryExpression\fP, \fBOperandValue\fP, \fBEndInstructionValue\fP, \fBStartInstructionValue\fP, \fBConstantValue\fP, \fBContextField\fP, and \fBTokenField\fP\&.
+.SS "virtual void PatternExpression::getMinMax (vector< \fBintb\fP > & minlist, vector< \fBintb\fP > & maxlist) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBUnaryExpression\fP, \fBBinaryExpression\fP, and \fBPatternValue\fP\&.
+.SS "virtual \fBintb\fP PatternExpression::getSubValue (const vector< \fBintb\fP > & replace, int4 & listpos) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBNotExpression\fP, \fBMinusExpression\fP, \fBDivExpression\fP, \fBXorExpression\fP, \fBOrExpression\fP, \fBAndExpression\fP, \fBRightShiftExpression\fP, \fBLeftShiftExpression\fP, \fBMultExpression\fP, \fBSubExpression\fP, \fBPlusExpression\fP, \fBOperandValue\fP, and \fBPatternValue\fP\&.
+.SS "\fBintb\fP PatternExpression::getSubValue (const vector< \fBintb\fP > & replace)\fC [inline]\fP"
+
+.PP
+Definition at line 70 of file slghpatexpress\&.hh\&.
+.SS "virtual \fBintb\fP PatternExpression::getValue (\fBParserWalker\fP & walker) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBNotExpression\fP, \fBMinusExpression\fP, \fBDivExpression\fP, \fBXorExpression\fP, \fBOrExpression\fP, \fBAndExpression\fP, \fBRightShiftExpression\fP, \fBLeftShiftExpression\fP, \fBMultExpression\fP, \fBSubExpression\fP, \fBPlusExpression\fP, \fBOperandValue\fP, \fBEndInstructionValue\fP, \fBStartInstructionValue\fP, \fBConstantValue\fP, \fBContextField\fP, and \fBTokenField\fP\&.
+.SS "void PatternExpression::layClaim (void)\fC [inline]\fP"
+
+.PP
+Definition at line 73 of file slghpatexpress\&.hh\&.
+.SS "virtual void PatternExpression::listValues (vector< const \fBPatternValue\fP * > & list) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBUnaryExpression\fP, \fBBinaryExpression\fP, and \fBPatternValue\fP\&.
+.SS "void PatternExpression::release (\fBPatternExpression\fP * p)\fC [static]\fP"
+
+.PP
+Definition at line 417 of file slghpatexpress\&.cc\&.
+.SS "\fBPatternExpression\fP * PatternExpression::restoreExpression (const \fBElement\fP * el, \fBTranslate\fP * trans)\fC [static]\fP"
+
+.PP
+Definition at line 425 of file slghpatexpress\&.cc\&.
+.SS "virtual void PatternExpression::restoreXml (const \fBElement\fP * el, \fBTranslate\fP * trans)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBUnaryExpression\fP, \fBBinaryExpression\fP, \fBOperandValue\fP, \fBEndInstructionValue\fP, \fBStartInstructionValue\fP, \fBConstantValue\fP, \fBContextField\fP, and \fBTokenField\fP\&.
+.SS "virtual void PatternExpression::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBNotExpression\fP, \fBMinusExpression\fP, \fBDivExpression\fP, \fBXorExpression\fP, \fBOrExpression\fP, \fBAndExpression\fP, \fBRightShiftExpression\fP, \fBLeftShiftExpression\fP, \fBMultExpression\fP, \fBSubExpression\fP, \fBPlusExpression\fP, \fBUnaryExpression\fP, \fBBinaryExpression\fP, \fBOperandValue\fP, \fBEndInstructionValue\fP, \fBStartInstructionValue\fP, \fBConstantValue\fP, \fBContextField\fP, and \fBTokenField\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

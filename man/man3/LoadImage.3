@@ -1,0 +1,286 @@
+.TH "LoadImage" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoadImage \- An interface into a particular binary executable image\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <loadimage\&.hh>\fP
+.PP
+Inherited by \fBLoadImageBfd\fP, \fBLoadImageGhidra\fP, \fBLoadImageXml\fP, \fBMyLoadImage\fP, and \fBRawLoadImage\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLoadImage\fP (const string &f)"
+.br
+.RI "\fBLoadImage\fP constructor\&. "
+.ti -1c
+.RI "virtual \fB~LoadImage\fP (void)"
+.br
+.RI "\fBLoadImage\fP destructor\&. "
+.ti -1c
+.RI "const string & \fBgetFileName\fP (void) const"
+.br
+.RI "Get the name of the \fBLoadImage\fP\&. "
+.ti -1c
+.RI "virtual void \fBloadFill\fP (uint1 *ptr, int4 size, const \fBAddress\fP &addr)=0"
+.br
+.RI "Get data from the \fBLoadImage\fP\&. "
+.ti -1c
+.RI "virtual void \fBopenSymbols\fP (void) const"
+.br
+.RI "Prepare to read symbols\&. "
+.ti -1c
+.RI "virtual void \fBcloseSymbols\fP (void) const"
+.br
+.RI "Stop reading symbols\&. "
+.ti -1c
+.RI "virtual bool \fBgetNextSymbol\fP (\fBLoadImageFunc\fP &record) const"
+.br
+.RI "Get the next symbol record\&. "
+.ti -1c
+.RI "virtual void \fBopenSectionInfo\fP (void) const"
+.br
+.RI "Prepare to read section info\&. "
+.ti -1c
+.RI "virtual void \fBcloseSectionInfo\fP (void) const"
+.br
+.RI "Stop reading section info\&. "
+.ti -1c
+.RI "virtual bool \fBgetNextSection\fP (\fBLoadImageSection\fP &sec) const"
+.br
+.RI "Get info on the next section\&. "
+.ti -1c
+.RI "virtual void \fBgetReadonly\fP (\fBRangeList\fP &list) const"
+.br
+.RI "Return list of \fIreadonly\fP address ranges\&. "
+.ti -1c
+.RI "virtual string \fBgetArchType\fP (void) const =0"
+.br
+.RI "Get a string indicating the architecture type\&. "
+.ti -1c
+.RI "virtual void \fBadjustVma\fP (long adjust)=0"
+.br
+.RI "Adjust load addresses with a global offset\&. "
+.ti -1c
+.RI "uint1 * \fBload\fP (int4 size, const \fBAddress\fP &addr)"
+.br
+.RI "Load a chunk of image\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBfilename\fP"
+.br
+.RI "Name of the loadimage\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An interface into a particular binary executable image\&. 
+
+This class provides the abstraction needed by the decompiler for the numerous load file formats used to encode binary executables\&. The data encoding the machine instructions for the executable can be accessed via the addresses where that data would be loaded into RAM\&. Properties other than the main data and instructions of the binary are not supposed to repeatedly queried through this interface\&. This information is intended to be read from this class exactly once, during initialization, and used to populate the main decompiler database\&. This class currently has only rudimentary support for accessing such properties\&. 
+.PP
+Definition at line 71 of file loadimage\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LoadImage::LoadImage (const string & f)\fC [inline]\fP"
+
+.PP
+\fBLoadImage\fP constructor\&. For the base class there is no relevant initialization except the name of the image\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP is the name of the image 
+.RE
+.PP
+
+.PP
+Definition at line 114 of file loadimage\&.hh\&.
+.SS "LoadImage::~LoadImage (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+\fBLoadImage\fP destructor\&. The destructor for the load image object\&. 
+.PP
+Definition at line 119 of file loadimage\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void LoadImage::adjustVma (long adjust)\fC [pure virtual]\fP"
+
+.PP
+Adjust load addresses with a global offset\&. Most load image formats automatically encode information about the true loading address(es) for the data in the image\&. But if this is missing or incorrect, this routine can be used to make a global adjustment to the load address\&. Only one adjustment is made across \fIall\fP addresses in the image\&. The offset passed to this method is added to the stored or default value for any address queried in the image\&. This is most often used in a \fIraw\fP binary file format\&. In this case, the entire executable file is intended to be read straight into RAM, as one contiguous chunk, in order to be executed\&. In the absence of any other info, the first byte of the image file is loaded at offset 0\&. This method then would adjust the load address of the first byte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIadjust\fP is the offset amount to be added to default values 
+.RE
+.PP
+
+.PP
+Implemented in \fBRawLoadImage\fP, \fBMyLoadImage\fP, \fBLoadImageBfd\fP, \fBLoadImageXml\fP, and \fBLoadImageGhidra\fP\&.
+.SS "void LoadImage::closeSectionInfo (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Stop reading section info\&. Once all the section information is read from the load image using the \fBgetNextSection()\fP method, this method should be called to free up any resources used in parsing the section info\&. 
+.PP
+Reimplemented in \fBLoadImageBfd\fP\&.
+.PP
+Definition at line 165 of file loadimage\&.hh\&.
+.SS "void LoadImage::closeSymbols (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Stop reading symbols\&. Once all the symbol information has been read out from the load image via the \fBopenSymbols()\fP and \fBgetNextSymbol()\fP calls, the application should call this method to free up resources used in parsing the symbol information\&. 
+.PP
+Reimplemented in \fBLoadImageBfd\fP\&.
+.PP
+Definition at line 140 of file loadimage\&.hh\&.
+.SS "string LoadImage::getArchType (void) const\fC [pure virtual]\fP"
+
+.PP
+Get a string indicating the architecture type\&. The load image class is intended to be a generic front-end to the large variety of load formats in use\&. This method should return a string that identifies the particular architecture this particular image is intended to run on\&. It is currently the responsibility of any derived \fBLoadImage\fP class to establish a format for this string, but it should generally contain some indication of the operating system and the processor\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the identifier string 
+.RE
+.PP
+
+.PP
+Implemented in \fBRawLoadImage\fP, \fBMyLoadImage\fP, \fBLoadImageBfd\fP, \fBLoadImageXml\fP, and \fBLoadImageGhidra\fP\&.
+.SS "const string & LoadImage::getFileName (void) const\fC [inline]\fP"
+
+.PP
+Get the name of the \fBLoadImage\fP\&. The loadimage is usually associated with a file\&. This routine retrieves the name as a string\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the image 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file loadimage\&.hh\&.
+.SS "bool LoadImage::getNextSection (\fBLoadImageSection\fP & record) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get info on the next section\&. This method is used to read out a record that describes a single section of bytes mapped by the load image\&. This method can be called repeatedly until it returns \fBfalse\fP, to get info on additional sections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrecord\fP is a reference to the info record to be filled in 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if there are more records to read 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBLoadImageBfd\fP\&.
+.PP
+Definition at line 174 of file loadimage\&.hh\&.
+.SS "bool LoadImage::getNextSymbol (\fBLoadImageFunc\fP & record) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the next symbol record\&. This method is used to read out an individual symbol record, \fBLoadImageFunc\fP, from the load image\&. Right now, the only information that can be read out are function starts and the associated function name\&. This method can be called repeatedly to iterate through all the symbols, until it returns \fBfalse\fP\&. This indicates the end of the symbols\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrecord\fP is a reference to the symbol record to be filled in 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if there are more records to read 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBLoadImageBfd\fP, and \fBLoadImageXml\fP\&.
+.PP
+Definition at line 151 of file loadimage\&.hh\&.
+.SS "void LoadImage::getReadonly (\fBRangeList\fP & list) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return list of \fIreadonly\fP address ranges\&. This method should read out information about \fIall\fP address ranges within the load image that are known to be \fBreadonly\fP\&. This method is intended to be called only once, so all information should be written to the passed \fBRangeList\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlist\fP is where readonly info will get put 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBLoadImageBfd\fP, and \fBLoadImageXml\fP\&.
+.PP
+Definition at line 184 of file loadimage\&.hh\&.
+.SS "uint1 * LoadImage::load (int4 size, const \fBAddress\fP & addr)"
+
+.PP
+Load a chunk of image\&. This is a convenience method wrapped around the core \fBloadFill()\fP routine\&. It automatically allocates an array of the desired size, and then fills it with load image data\&. If the array cannot be allocated, an exception is thrown\&. The caller assumes the responsibility of freeing the array after it has been used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP is the number of bytes to read from the image 
+.br
+\fIaddr\fP is the address of the first byte being read 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the desired bytes 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file loadimage\&.cc\&.
+.SS "void LoadImage::loadFill (uint1 * ptr, int4 size, const \fBAddress\fP & addr)\fC [pure virtual]\fP"
+
+.PP
+Get data from the \fBLoadImage\fP\&. This is the \fIcore\fP routine of a \fBLoadImage\fP\&. Given a particular address range, this routine retrieves the exact byte values that are stored at that address when the executable is loaded into RAM\&. The caller must supply a pre-allocated array of bytes where the returned bytes should be stored\&. If the requested address range does not exist in the image, or otherwise can't be retrieved, this method throws an \fBDataUnavailError\fP exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP points to where the resulting bytes will be stored 
+.br
+\fIsize\fP is the number of bytes to retrieve from the image 
+.br
+\fIaddr\fP is the starting address of the bytes to retrieve 
+.RE
+.PP
+
+.PP
+Implemented in \fBRawLoadImage\fP, \fBMyLoadImage\fP, \fBLoadImageBfd\fP, \fBLoadImageXml\fP, and \fBLoadImageGhidra\fP\&.
+.SS "void LoadImage::openSectionInfo (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Prepare to read section info\&. This method initializes iteration over all the sections of bytes that are mapped by the load image\&. Once this is called, information on individual sections should be read out with the \fBgetNextSection()\fP method\&. 
+.PP
+Reimplemented in \fBLoadImageBfd\fP\&.
+.PP
+Definition at line 159 of file loadimage\&.hh\&.
+.SS "void LoadImage::openSymbols (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Prepare to read symbols\&. This routine should read in and parse any symbol information that the load image contains about executable\&. Once this method is called, individual symbol records are read out using the \fBgetNextSymbol()\fP method\&. 
+.PP
+Reimplemented in \fBLoadImageBfd\fP, and \fBLoadImageXml\fP\&.
+.PP
+Definition at line 133 of file loadimage\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "string LoadImage::filename\fC [protected]\fP"
+
+.PP
+Name of the loadimage\&. 
+.PP
+Definition at line 73 of file loadimage\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

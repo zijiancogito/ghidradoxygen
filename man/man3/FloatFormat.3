@@ -1,0 +1,689 @@
+.TH "FloatFormat" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FloatFormat \- Encoding information for a single floating-point format\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <float\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBfloatclass\fP { \fBnormalized\fP = 0, \fBinfinity\fP = 1, \fBzero\fP = 2, \fBnan\fP = 3, \fBdenormalized\fP = 4 }"
+.br
+.RI "The various classes of floating-point encodings\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFloatFormat\fP (void)"
+.br
+.RI "Construct for use with \fBrestoreXml()\fP "
+.ti -1c
+.RI "\fBFloatFormat\fP (int4 sz)"
+.br
+.RI "Construct default IEEE 754 standard settings\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the size of the encoding in bytes\&. "
+.ti -1c
+.RI "double \fBgetHostFloat\fP (\fBuintb\fP encoding, \fBfloatclass\fP *type) const"
+.br
+.RI "Convert an encoding into host's double\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetEncoding\fP (double host) const"
+.br
+.RI "Convert host's double into \fBthis\fP encoding\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBconvertEncoding\fP (\fBuintb\fP encoding, const \fBFloatFormat\fP *formin) const"
+.br
+.RI "Convert between two different formats\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBextractFractionalCode\fP (\fBuintb\fP x) const"
+.br
+.RI "Extract the fractional part of the encoding\&. "
+.ti -1c
+.RI "bool \fBextractSign\fP (\fBuintb\fP x) const"
+.br
+.RI "Extract the sign bit from the encoding\&. "
+.ti -1c
+.RI "int4 \fBextractExponentCode\fP (\fBuintb\fP x) const"
+.br
+.RI "Extract the exponent from the encoding\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBopEqual\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Equality comparison (==) "
+.ti -1c
+.RI "\fBuintb\fP \fBopNotEqual\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Inequality comparison (!=) "
+.ti -1c
+.RI "\fBuintb\fP \fBopLess\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Less-than comparison (<) "
+.ti -1c
+.RI "\fBuintb\fP \fBopLessEqual\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Less-than-or-equal comparison (<=) "
+.ti -1c
+.RI "\fBuintb\fP \fBopNan\fP (\fBuintb\fP a) const"
+.br
+.RI "Test if Not-a-Number (NaN) "
+.ti -1c
+.RI "\fBuintb\fP \fBopAdd\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Addition (+) "
+.ti -1c
+.RI "\fBuintb\fP \fBopDiv\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Division (/) "
+.ti -1c
+.RI "\fBuintb\fP \fBopMult\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Multiplication (*) "
+.ti -1c
+.RI "\fBuintb\fP \fBopSub\fP (\fBuintb\fP a, \fBuintb\fP b) const"
+.br
+.RI "Subtraction (-) "
+.ti -1c
+.RI "\fBuintb\fP \fBopNeg\fP (\fBuintb\fP a) const"
+.br
+.RI "Unary negate\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBopAbs\fP (\fBuintb\fP a) const"
+.br
+.RI "Absolute value (abs) "
+.ti -1c
+.RI "\fBuintb\fP \fBopSqrt\fP (\fBuintb\fP a) const"
+.br
+.RI "Square root (sqrt) "
+.ti -1c
+.RI "\fBuintb\fP \fBopTrunc\fP (\fBuintb\fP a, int4 sizeout) const"
+.br
+.RI "Convert floating-point to integer\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBopCeil\fP (\fBuintb\fP a) const"
+.br
+.RI "Ceiling (ceil) "
+.ti -1c
+.RI "\fBuintb\fP \fBopFloor\fP (\fBuintb\fP a) const"
+.br
+.RI "Floor (floor) "
+.ti -1c
+.RI "\fBuintb\fP \fBopRound\fP (\fBuintb\fP a) const"
+.br
+.RI "Round\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBopInt2Float\fP (\fBuintb\fP a, int4 sizein) const"
+.br
+.RI "Convert integer to floating-point\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBopFloat2Float\fP (\fBuintb\fP a, const \fBFloatFormat\fP &outformat) const"
+.br
+.RI "Convert between floating-point precisions\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save the format to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore the format from XML\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Encoding information for a single floating-point format\&. 
+
+This class supports manipulation of a single floating-point encoding\&. An encoding can be converted to and from the host format and convenience methods allow p-code floating-point operations to be performed on natively encoded operands\&. This follows the IEEE754 standards\&. 
+.PP
+Definition at line 30 of file float\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBFloatFormat::floatclass\fP"
+
+.PP
+The various classes of floating-point encodings\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fInormalized \fP\fP
+A normal floating-point number\&. 
+.TP
+\fB\fIinfinity \fP\fP
+An encoding representing an infinite value\&. 
+.TP
+\fB\fIzero \fP\fP
+An encoding of the value zero\&. 
+.TP
+\fB\fInan \fP\fP
+An invalid encoding, Not-a-Number\&. 
+.TP
+\fB\fIdenormalized \fP\fP
+A denormalized encoding (for very small values) 
+.PP
+Definition at line 33 of file float\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FloatFormat::FloatFormat (void)\fC [inline]\fP"
+
+.PP
+Construct for use with \fBrestoreXml()\fP 
+.PP
+Definition at line 59 of file float\&.hh\&.
+.SS "FloatFormat::FloatFormat (int4 sz)"
+
+.PP
+Construct default IEEE 754 standard settings\&. Set format for a given encoding size according to IEEE 754 standards 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsz\fP is the size of the encoding in bytes 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file float\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP FloatFormat::convertEncoding (\fBuintb\fP encoding, const \fBFloatFormat\fP * formin) const"
+
+.PP
+Convert between two different formats\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIencoding\fP is the value in the \fIother\fP \fBFloatFormat\fP 
+.br
+\fIformin\fP is the \fIother\fP \fBFloatFormat\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the equivalent value in \fBthis\fP \fBFloatFormat\fP 
+.RE
+.PP
+
+.PP
+Definition at line 311 of file float\&.cc\&.
+.SS "int4 FloatFormat::extractExponentCode (\fBuintb\fP x) const"
+
+.PP
+Extract the exponent from the encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the (signed) exponent 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::extractFractionalCode (\fBuintb\fP x) const"
+
+.PP
+Extract the fractional part of the encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the fraction part of the value aligned to the top of the word 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file float\&.cc\&.
+.SS "bool FloatFormat::extractSign (\fBuintb\fP x) const"
+
+.PP
+Extract the sign bit from the encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the sign bit 
+.RE
+.PP
+
+.PP
+Definition at line 136 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::getEncoding (double host) const"
+
+.PP
+Convert host's double into \fBthis\fP encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP is the double value to convert 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the equivalent encoded value 
+.RE
+.PP
+
+.PP
+Definition at line 277 of file float\&.cc\&.
+.SS "double FloatFormat::getHostFloat (\fBuintb\fP encoding, \fBfloatclass\fP * type) const"
+
+.PP
+Convert an encoding into host's double\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIencoding\fP is the encoding value 
+.br
+\fItype\fP points to the floating-point class, which is passed back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the equivalent double value 
+.RE
+.PP
+
+.PP
+Definition at line 233 of file float\&.cc\&.
+.SS "int4 FloatFormat::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the size of the encoding in bytes\&. 
+.PP
+Definition at line 61 of file float\&.hh\&.
+.SS "\fBuintb\fP FloatFormat::opAbs (\fBuintb\fP a) const"
+
+.PP
+Absolute value (abs) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+abs(a) 
+.RE
+.PP
+
+.PP
+Definition at line 472 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opAdd (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Addition (+) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a + b 
+.RE
+.PP
+
+.PP
+Definition at line 415 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opCeil (\fBuintb\fP a) const"
+
+.PP
+Ceiling (ceil) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+ceil(a) 
+.RE
+.PP
+
+.PP
+Definition at line 529 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opDiv (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Division (/) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a / b 
+.RE
+.PP
+
+.PP
+Definition at line 427 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opEqual (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Equality comparison (==) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if (a == b) 
+.RE
+.PP
+
+.PP
+Definition at line 352 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opFloat2Float (\fBuintb\fP a, const \fBFloatFormat\fP & outformat) const"
+
+.PP
+Convert between floating-point precisions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.br
+\fIoutformat\fP is the desired output \fBFloatFormat\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a converted to the output \fBFloatFormat\fP 
+.RE
+.PP
+
+.PP
+Definition at line 505 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opFloor (\fBuintb\fP a) const"
+
+.PP
+Floor (floor) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+floor(a) 
+.RE
+.PP
+
+.PP
+Definition at line 539 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opInt2Float (\fBuintb\fP a, int4 sizein) const"
+
+.PP
+Convert integer to floating-point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is a signed integer value 
+.br
+\fIsizein\fP is the number of bytes in the integer encoding 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a converted to an encoded floating-point value 
+.RE
+.PP
+
+.PP
+Definition at line 493 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opLess (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Less-than comparison (<) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if (a < b) 
+.RE
+.PP
+
+.PP
+Definition at line 378 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opLessEqual (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Less-than-or-equal comparison (<=) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if (a <= b) 
+.RE
+.PP
+
+.PP
+Definition at line 391 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opMult (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Multiplication (*) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a * b 
+.RE
+.PP
+
+.PP
+Definition at line 439 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opNan (\fBuintb\fP a) const"
+
+.PP
+Test if Not-a-Number (NaN) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a is Not-a-Number 
+.RE
+.PP
+
+.PP
+Definition at line 403 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opNeg (\fBuintb\fP a) const"
+
+.PP
+Unary negate\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+-a 
+.RE
+.PP
+
+.PP
+Definition at line 462 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opNotEqual (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Inequality comparison (!=) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if (a != b) 
+.RE
+.PP
+
+.PP
+Definition at line 365 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opRound (\fBuintb\fP a) const"
+
+.PP
+Round\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+round(a) 
+.RE
+.PP
+
+.PP
+Definition at line 549 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opSqrt (\fBuintb\fP a) const"
+
+.PP
+Square root (sqrt) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+sqrt(a) 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opSub (\fBuintb\fP a, \fBuintb\fP b) const"
+
+.PP
+Subtraction (-) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first floating-point value 
+.br
+\fIb\fP is the second floating-point value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a - b 
+.RE
+.PP
+
+.PP
+Definition at line 451 of file float\&.cc\&.
+.SS "\fBuintb\fP FloatFormat::opTrunc (\fBuintb\fP a, int4 sizeout) const"
+
+.PP
+Convert floating-point to integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is an encoded floating-point value 
+.br
+\fIsizeout\fP is the desired encoding size of the output 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an integer encoding of a 
+.RE
+.PP
+
+.PP
+Definition at line 516 of file float\&.cc\&.
+.SS "void FloatFormat::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Restore the format from XML\&. Restore \fBobject\fP from a <floatformat> XML tag 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the element 
+.RE
+.PP
+
+.PP
+Definition at line 576 of file float\&.cc\&.
+.SS "void FloatFormat::saveXml (ostream & s) const"
+
+.PP
+Save the format to an XML stream\&. Write the format out to a <floatformat> XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 559 of file float\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

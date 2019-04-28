@@ -1,0 +1,202 @@
+\hypertarget{class_type_op_copy}{}\section{Type\+Op\+Copy Class Reference}
+\label{class_type_op_copy}\index{TypeOpCopy@{TypeOpCopy}}
+
+
+Information about the C\+O\+PY op-\/code.  
+
+
+
+
+{\ttfamily \#include $<$typeop.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Op\+Copy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{class_type_op_copy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Op\+Copy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_copy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_op_copy_a566e9d481a5ecc686ae9479c9dec4208}{Type\+Op\+Copy}} (\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_copy_a95594caad35bce30d7167b3cecb76e7f}{get\+Input\+Cast}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, int4 slot, const \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$cast\+Strategy) const
+\begin{DoxyCompactList}\small\item\em Find the data-\/type of the input to a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_copy_a2a8b45de9ac53dd673c289e1c13feb08}{get\+Output\+Token}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$cast\+Strategy) const
+\begin{DoxyCompactList}\small\item\em Find the data-\/type of the output that would be assigned by a compiler. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_op_copy_a630b0d476ae53202c12db4e466cfad4f}{push}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_op_copy_a637e83726874a26ba653e6db34d0bb1b}{print\+Raw}} (ostream \&s, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Print (for debugging purposes) {\bfseries{this}} specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Information about the C\+O\+PY op-\/code. 
+
+Definition at line 205 of file typeop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_op_copy_a566e9d481a5ecc686ae9479c9dec4208}\label{class_type_op_copy_a566e9d481a5ecc686ae9479c9dec4208}} 
+\index{TypeOpCopy@{TypeOpCopy}!TypeOpCopy@{TypeOpCopy}}
+\index{TypeOpCopy@{TypeOpCopy}!TypeOpCopy@{TypeOpCopy}}
+\subsubsection{\texorpdfstring{TypeOpCopy()}{TypeOpCopy()}}
+{\footnotesize\ttfamily Type\+Op\+Copy\+::\+Type\+Op\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 326 of file typeop.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_op_copy_a95594caad35bce30d7167b3cecb76e7f}\label{class_type_op_copy_a95594caad35bce30d7167b3cecb76e7f}} 
+\index{TypeOpCopy@{TypeOpCopy}!getInputCast@{getInputCast}}
+\index{getInputCast@{getInputCast}!TypeOpCopy@{TypeOpCopy}}
+\subsubsection{\texorpdfstring{getInputCast()}{getInputCast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Copy\+::get\+Input\+Cast (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{int4}]{slot,  }\item[{const \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$}]{cast\+Strategy }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the data-\/type of the input to a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+Calculate the actual data-\/type of the input to the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. A {\bfseries{null}} result indicates the input data-\/type is the same as or otherwise doesn\textquotesingle{}t need a cast from the data-\/type of the actual input \mbox{\hyperlink{class_varnode}{Varnode}} 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em slot} & is the input to consider \\
+\hline
+{\em cast\+Strategy} & is the current casting strategy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a950c417e4af100d176a701af5816b5ab}{Type\+Op}}.
+
+
+
+Definition at line 333 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_copy_a95594caad35bce30d7167b3cecb76e7f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_copy_a2a8b45de9ac53dd673c289e1c13feb08}\label{class_type_op_copy_a2a8b45de9ac53dd673c289e1c13feb08}} 
+\index{TypeOpCopy@{TypeOpCopy}!getOutputToken@{getOutputToken}}
+\index{getOutputToken@{getOutputToken}!TypeOpCopy@{TypeOpCopy}}
+\subsubsection{\texorpdfstring{getOutputToken()}{getOutputToken()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Copy\+::get\+Output\+Token (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$}]{cast\+Strategy }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the data-\/type of the output that would be assigned by a compiler. 
+
+Calculate the actual data-\/type of the output for a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as would be assigned by a C compiler parsing a grammar containing this op. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em cast\+Strategy} & is the current casting strategy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a7150ac93bb03a993735c829deb5237e7}{Type\+Op}}.
+
+
+
+Definition at line 341 of file typeop.\+cc.
+
+\mbox{\Hypertarget{class_type_op_copy_a637e83726874a26ba653e6db34d0bb1b}\label{class_type_op_copy_a637e83726874a26ba653e6db34d0bb1b}} 
+\index{TypeOpCopy@{TypeOpCopy}!printRaw@{printRaw}}
+\index{printRaw@{printRaw}!TypeOpCopy@{TypeOpCopy}}
+\subsubsection{\texorpdfstring{printRaw()}{printRaw()}}
+{\footnotesize\ttfamily void Type\+Op\+Copy\+::print\+Raw (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print (for debugging purposes) {\bfseries{this}} specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to print \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_type_op_a60717e486917a30cc7cb6e3ce02585e1}{Type\+Op}}.
+
+
+
+Definition at line 347 of file typeop.\+cc.
+
+\mbox{\Hypertarget{class_type_op_copy_a630b0d476ae53202c12db4e466cfad4f}\label{class_type_op_copy_a630b0d476ae53202c12db4e466cfad4f}} 
+\index{TypeOpCopy@{TypeOpCopy}!push@{push}}
+\index{push@{push}!TypeOpCopy@{TypeOpCopy}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily virtual void Type\+Op\+Copy\+::push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. 
+
+Given a specific language and \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}, emit the expression rooted at the operation. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} to emit \\
+\hline
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_type_op_ac9c9544203ed74dabe6ac662b653b2af}{Type\+Op}}.
+
+
+
+Definition at line 210 of file typeop.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{class_type_op_copy_a630b0d476ae53202c12db4e466cfad4f_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8hh}{typeop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8cc}{typeop.\+cc}}\end{DoxyCompactItemize}

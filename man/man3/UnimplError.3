@@ -1,0 +1,62 @@
+.TH "UnimplError" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UnimplError \- Exception for encountering unimplemented pcode\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.PP
+Inherits \fBLowlevelError\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUnimplError\fP (const string &s, int4 l)"
+.br
+.RI "\fBConstructor\fP\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBinstruction_length\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Exception for encountering unimplemented pcode\&. 
+
+This error is thrown when a particular machine instruction cannot be translated into pcode\&. This particular error means that the particular instruction being decoded was valid, but the system doesn't know how to represent it in pcode\&. 
+.PP
+Definition at line 35 of file translate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "UnimplError::UnimplError (const string & s, int4 l)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is a more verbose description of the error 
+.br
+\fIl\fP is the length (in bytes) of the unimplemented instruction 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file translate\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 UnimplError::instruction_length"
+Number of bytes in the unimplemented instruction 
+.PP
+Definition at line 36 of file translate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

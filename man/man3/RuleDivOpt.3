@@ -1,0 +1,150 @@
+.TH "RuleDivOpt" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RuleDivOpt \- Convert INT_MULT and shift forms into INT_DIV or INT_SDIV\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ruleaction\&.hh>\fP
+.PP
+Inherits \fBRule\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRuleDivOpt\fP (const string &g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBRule\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBgetOpList\fP (vector< uint4 > &oplist) const"
+.br
+.RI "List of op codes this rule operates on\&. "
+.ti -1c
+.RI "virtual int4 \fBapplyOp\fP (\fBPcodeOp\fP *op, \fBFuncdata\fP &data)"
+.br
+.RI "Attempt to apply \fBthis\fP \fBRule\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPcodeOp\fP * \fBfindSubshift\fP (\fBPcodeOp\fP *op, int4 &n, \fBOpCode\fP &shiftopc)"
+.br
+.RI "Check for shift form of expression\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Convert INT_MULT and shift forms into INT_DIV or INT_SDIV\&. 
+
+The unsigned and signed variants are:
+.IP "\(bu" 2
+\fCsub( (zext(V)*c)>>n, 0) => V / (2^n/(c-1))\fP
+.IP "\(bu" 2
+\fCsub( (sext(V)*c)s>>n, 0) => V s/ (2^n/(c-1))\fP 
+.PP
+
+.PP
+Definition at line 1099 of file ruleaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RuleDivOpt::RuleDivOpt (const string & g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 1102 of file ruleaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 RuleDivOpt::applyOp (\fBPcodeOp\fP * op, \fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Attempt to apply \fBthis\fP \fBRule\fP\&. This method contains the main logic for applying the \fBRule\fP\&. It must use a given \fBPcodeOp\fP as the point at which the \fBRule\fP applies\&. If it does apply, changes are made directly to the function and 1 (non-zero) is returned, otherwise 0 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP where the \fBRule\fP may apply 
+.br
+\fIdata\fP is the function to which to apply 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 6425 of file ruleaction\&.cc\&.
+.SS "virtual \fBRule\fP* RuleDivOpt::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBRule\fP\&. If \fBthis\fP \fBRule\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBRule\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBRule\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBRule\fP\&.
+.PP
+Definition at line 1103 of file ruleaction\&.hh\&.
+.SS "\fBPcodeOp\fP * RuleDivOpt::findSubshift (\fBPcodeOp\fP * op, int4 & n, \fBOpCode\fP & shiftopc)\fC [static]\fP"
+
+.PP
+Check for shift form of expression\&. Look for the two forms:
+.IP "\(bu" 2
+\fCsub(V,c)\fP or
+.IP "\(bu" 2
+\fCsub(V,c) >> n\fP
+.PP
+.PP
+Pass back whether a shift was involved and the total truncation in bits: \fCn+c*8\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the root of the expression 
+.br
+\fIn\fP is the reference that will hold the total truncation 
+.br
+\fIshiftopc\fP will hold the shift OpCode if used, CPUI_MAX otherwise 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the SUBPIECE op if present or NULL otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 6335 of file ruleaction\&.cc\&.
+.SS "void RuleDivOpt::getOpList (vector< uint4 > & oplist) const\fC [virtual]\fP"
+
+.PP
+List of op codes this rule operates on\&. Populate the given array with all possible OpCodes this \fBRule\fP might apply to\&. By default, this method returns all possible OpCodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoplist\fP is the array to populate 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 6417 of file ruleaction\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

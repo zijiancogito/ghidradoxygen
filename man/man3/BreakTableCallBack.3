@@ -1,0 +1,159 @@
+.TH "BreakTableCallBack" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BreakTableCallBack \- A basic instantiation of a breakpoint table\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emulate\&.hh>\fP
+.PP
+Inherits \fBBreakTable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBreakTableCallBack\fP (\fBTranslate\fP *t)"
+.br
+.RI "Basic breaktable constructor\&. "
+.ti -1c
+.RI "void \fBregisterPcodeCallback\fP (const string &nm, \fBBreakCallBack\fP *func)"
+.br
+.RI "Register a pcode based breakpoint\&. "
+.ti -1c
+.RI "void \fBregisterAddressCallback\fP (const \fBAddress\fP &addr, \fBBreakCallBack\fP *func)"
+.br
+.RI "Register an address based breakpoint\&. "
+.ti -1c
+.RI "virtual void \fBsetEmulate\fP (\fBEmulate\fP *emu)"
+.br
+.RI "Associate an emulator with all breakpoints in the table\&. "
+.ti -1c
+.RI "virtual bool \fBdoPcodeOpBreak\fP (\fBPcodeOpRaw\fP *curop)"
+.br
+.RI "Invoke any breakpoints for the given pcode op\&. "
+.ti -1c
+.RI "virtual bool \fBdoAddressBreak\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Invoke any breakpoints for the given address\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A basic instantiation of a breakpoint table\&. 
+
+This object allows breakpoints to registered in the table via either
+.IP "\(bu" 2
+\fBregisterPcodeCallback()\fP or = \fBregisterAddressCallback()\fP
+.PP
+.PP
+Breakpoints are stored in map containers, and the core \fBBreakTable\fP methods are implemented to search in these containers 
+.PP
+Definition at line 137 of file emulate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BreakTableCallBack::BreakTableCallBack (\fBTranslate\fP * t)\fC [inline]\fP"
+
+.PP
+Basic breaktable constructor\&. The break table needs a translator object so user-defined pcode ops can be registered against by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP is the translator object 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file emulate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool BreakTableCallBack::doAddressBreak (const \fBAddress\fP & addr)\fC [virtual]\fP"
+
+.PP
+Invoke any breakpoints for the given address\&. This routine examines the address based container for any breakpoints associated with the given address\&. If one is found, its addressCallback method is invoked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address being checked for breakpoints 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the breakpoint exists and returns \fBtrue\fP, otherwise return \fBfalse\fP 
+.RE
+.PP
+
+.PP
+Implements \fBBreakTable\fP\&.
+.PP
+Definition at line 87 of file emulate\&.cc\&.
+.SS "bool BreakTableCallBack::doPcodeOpBreak (\fBPcodeOpRaw\fP * curop)\fC [virtual]\fP"
+
+.PP
+Invoke any breakpoints for the given pcode op\&. This routine examines the pcode-op based container for any breakpoints associated with the given op\&. If one is found, its pcodeCallback method is invoked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurop\fP is pcode op being checked for breakpoints 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the breakpoint exists and returns \fBtrue\fP, otherwise return \fBfalse\fP 
+.RE
+.PP
+
+.PP
+Implements \fBBreakTable\fP\&.
+.PP
+Definition at line 72 of file emulate\&.cc\&.
+.SS "void BreakTableCallBack::registerAddressCallback (const \fBAddress\fP & addr, \fBBreakCallBack\fP * func)"
+
+.PP
+Register an address based breakpoint\&. Any time the emulator is about to execute (the pcode translation of) a particular machine instruction at this address, the indicated breakpoint is invoked first\&. The break table does \fInot\fP assume responsibility for freeing the breakpoint object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address associated with the breakpoint 
+.br
+\fIfunc\fP is the breakpoint being registered 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file emulate\&.cc\&.
+.SS "void BreakTableCallBack::registerPcodeCallback (const string & name, \fBBreakCallBack\fP * func)"
+
+.PP
+Register a pcode based breakpoint\&. Any time the emulator is about to execute a user-defined pcode op with the given name, the indicated breakpoint is invoked first\&. The break table does \fInot\fP assume responsibility for freeing the breakpoint object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the user-defined pcode op 
+.br
+\fIfunc\fP is the breakpoint object to associate with the pcode op 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file emulate\&.cc\&.
+.SS "void BreakTableCallBack::setEmulate (\fBEmulate\fP * emu)\fC [virtual]\fP"
+
+.PP
+Associate an emulator with all breakpoints in the table\&. This routine invokes the setEmulate method on each breakpoint currently in the table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemu\fP is the emulator to be associated with the breakpoints 
+.RE
+.PP
+
+.PP
+Implements \fBBreakTable\fP\&.
+.PP
+Definition at line 52 of file emulate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

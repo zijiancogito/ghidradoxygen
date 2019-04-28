@@ -1,0 +1,48 @@
+.TH "PrintfCallBack" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintfCallBack
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBreakCallBack\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBaddressCallback\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Call back method for address based breakpoints\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 213 of file sleighexample\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool PrintfCallBack::addressCallback (const \fBAddress\fP & addr)\fC [virtual]\fP"
+
+.PP
+Call back method for address based breakpoints\&. This routine is invoked during emulation, if this breakpoint has somehow been associated with this address\&. The callback can perform any operation on the emulator context it wants\&. It then returns \fBtrue\fP if these actions are intended to replace the action of the \fBentire\fP machine instruction at this address\&. Or it returns \fBfalse\fP if the machine instruction should still be executed normally\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address where the break has occurred 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the machine instruction should not be executed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBreakCallBack\fP\&.
+.PP
+Definition at line 218 of file sleighexample\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

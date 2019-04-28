@@ -1,0 +1,159 @@
+.TH "FspecSpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FspecSpace \- A special space for encoding \fBFuncCallSpecs\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherits \fBAddrSpace\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFspecSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, const string &nm, int4 ind)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Save an address as XML\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset, int4 size) const"
+.br
+.RI "Save an address and size as XML\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Write an address in this space to a stream\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write the details of this space as XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover the details of this space from XML\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A special space for encoding \fBFuncCallSpecs\fP\&. 
+
+It is efficient and convenient to store the main subfunction object (\fBFuncCallSpecs\fP) in the pcode operation which is actually making the call\&. This address space allows a \fBFuncCallSpecs\fP to be encoded as an address which replaces the formally encoded address of the function being called, when manipulating the operation internally\&. The space stored in the encoded address is this special \fBfspec\fP space, and the offset is the actual value of the pointer 
+.PP
+Definition at line 241 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FspecSpace::FspecSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, const string & nm, int4 ind)"
+
+.PP
+\fBConstructor\fP\&. \fBConstructor\fP for the \fBfspec\fP space\&. There is only one such space, and it is considered internal to the model, i\&.e\&. the \fBTranslate\fP engine should never generate addresses in this space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the associated address space manager 
+.br
+\fIt\fP is the associated processor translator 
+.br
+\fInm\fP is the name of the space (always \fBfspec\fP) 
+.br
+\fIind\fP is the index associated with the space 
+.RE
+.PP
+
+.PP
+Definition at line 1415 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void FspecSpace::printRaw (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+
+.PP
+Write an address in this space to a stream\&. This is a printing method for the debugging routines\&. It prints taking into account the \fIwordsize\fP, adding a '+n' if the offset is not on-cut with wordsize\&. It also returns the expected/typical size of values from this space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.br
+\fIoffset\fP is the offset to be printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 1456 of file fspec\&.cc\&.
+.SS "void FspecSpace::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Recover the details of this space from XML\&. Walk a parsed XML tag and recover all the properties defining this space\&. The processor translator, \fItrans\fP, and the \fItype\fP must already be filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML tag 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 1475 of file fspec\&.cc\&.
+.SS "void FspecSpace::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write the details of this space as XML\&. Write a tag fully describing the details of this space suitable for later recovery via restoreXml\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 1469 of file fspec\&.cc\&.
+.SS "void FspecSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+
+.PP
+Save an address as XML\&. Write the main XML attributes for an address within this space The caller provides only the \fIoffset\fP, and this routine fills in other details pertaining to this particular space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIoffset\fP is the offset of the address 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 1423 of file fspec\&.cc\&.
+.SS "void FspecSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset, int4 size) const\fC [virtual]\fP"
+
+.PP
+Save an address and size as XML\&. Write the main XML attributes of an address with this space and a size\&. The caller provides the \fIoffset\fP and \fIsize\fP, and other details about this particular space are filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIoffset\fP is the offset of the address 
+.br
+\fIsize\fP is the size of the memory location 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 1439 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

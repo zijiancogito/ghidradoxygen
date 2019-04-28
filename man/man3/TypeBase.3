@@ -1,0 +1,92 @@
+.TH "TypeBase" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeBase \- Base class for the fundamental atomic types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBDatatype\fP\&.
+.PP
+Inherited by \fBTypeChar\fP, \fBTypeEnum\fP, and \fBTypeUnicode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeBase\fP (const \fBTypeBase\fP &op)"
+.br
+.RI "Construct \fBTypeBase\fP copying properties from another data-type\&. "
+.ti -1c
+.RI "\fBTypeBase\fP (int4 s, \fBtype_metatype\fP m)"
+.br
+.RI "Construct \fBTypeBase\fP from a size and meta-type\&. "
+.ti -1c
+.RI "\fBTypeBase\fP (int4 s, \fBtype_metatype\fP m, const string &n)"
+.br
+.RI "Construct \fBTypeBase\fP from a size, meta-type, and name\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base class for the fundamental atomic types\&. 
+
+Data-types with a name, size, and meta-type 
+.PP
+Definition at line 157 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeBase::TypeBase (const \fBTypeBase\fP & op)\fC [inline]\fP"
+
+.PP
+Construct \fBTypeBase\fP copying properties from another data-type\&. 
+.PP
+Definition at line 162 of file type\&.hh\&.
+.SS "TypeBase::TypeBase (int4 s, \fBtype_metatype\fP m)\fC [inline]\fP"
+
+.PP
+Construct \fBTypeBase\fP from a size and meta-type\&. 
+.PP
+Definition at line 164 of file type\&.hh\&.
+.SS "TypeBase::TypeBase (int4 s, \fBtype_metatype\fP m, const string & n)\fC [inline]\fP"
+
+.PP
+Construct \fBTypeBase\fP from a size, meta-type, and name\&. 
+.PP
+Definition at line 166 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* TypeBase::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Implements \fBDatatype\fP\&.
+.PP
+Reimplemented in \fBTypeEnum\fP, \fBTypeUnicode\fP, and \fBTypeChar\fP\&.
+.PP
+Definition at line 167 of file type\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 159 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

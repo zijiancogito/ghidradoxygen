@@ -1,0 +1,385 @@
+\hypertarget{class_scope_local}{}\section{Scope\+Local Class Reference}
+\label{class_scope_local}\index{ScopeLocal@{ScopeLocal}}
+
+
+{\ttfamily \#include $<$varmap.\+hh$>$}
+
+
+
+Inheritance diagram for Scope\+Local\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{class_scope_local__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scope\+Local\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scope_local_ac254c3908b456ecd7f2f50ca5a7d3f4d}{Scope\+Local}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$\mbox{\hyperlink{class_scope_a72f6c31e73c46216482a6902d22b3330}{fd}}, \mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\item 
+virtual \mbox{\hyperlink{class_scope_local_ad49851b4336a0a5b5e3327018f51b866}{$\sim$\+Scope\+Local}} (void)
+\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_scope_local_ab1de60987435b80d4a82c5967b163557}{get\+Space\+Id}} (void) const
+\item 
+bool \mbox{\hyperlink{class_scope_local_ac6913e22130acb08f7d075a136c36780}{is\+Unaffected\+Storage}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn) const
+\item 
+void \mbox{\hyperlink{class_scope_local_a560ea5441b79ef3c17b890c7d37ccaf1}{mark\+Not\+Mapped}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} first, int4 sz, bool param)
+\item 
+virtual void \mbox{\hyperlink{class_scope_local_a5ce828992aceb086c5bcc62d8cf2f3ae}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Write out {\bfseries{this}} as a $<$scope$>$ X\+ML tag. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_local_a5eeb1756bc706b8d5211fda106ad82ae}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}} from a $<$scope$>$ X\+ML tag. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_scope_local_a7c86528490f519a64d44ae6dc8438393}{build\+Variable\+Name}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&pc, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct, int4 \&index, uint4 flags) const
+\begin{DoxyCompactList}\small\item\em Given an address and data-\/type, build a suitable generic symbol name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scope_local_a3bf9941188eb64423d2ed49a08dab8ca}{reset\+Local\+Window}} (void)
+\item 
+void \mbox{\hyperlink{class_scope_local_a4f0d61de6d043ae92af2c2cf1836453a}{restructure\+Varnode}} (bool aliasyes)
+\item 
+void \mbox{\hyperlink{class_scope_local_a308e308109ca1964d49d6a3a539a9acf}{restructure\+High}} (void)
+\item 
+bool \mbox{\hyperlink{class_scope_local_aff7d78a874e28f4798f6979d7f2edc50}{make\+Name\+Recommendation}} (string \&res, const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&usepoint) const
+\item 
+void \mbox{\hyperlink{class_scope_local_ae812b32473e4de47b9072370b75de94c}{make\+Name\+Recommendations\+For\+Symbols}} (vector$<$ string $>$ \&resname, vector$<$ \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ $>$ \&ressym) const
+\item 
+void \mbox{\hyperlink{class_scope_local_a288f953a04ec97281b8995d5559a6874}{add\+Recommend\+Name}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&usepoint, const string \&nm, int4 sz)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 115 of file varmap.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_scope_local_ac254c3908b456ecd7f2f50ca5a7d3f4d}\label{class_scope_local_ac254c3908b456ecd7f2f50ca5a7d3f4d}} 
+\index{ScopeLocal@{ScopeLocal}!ScopeLocal@{ScopeLocal}}
+\index{ScopeLocal@{ScopeLocal}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{ScopeLocal()}{ScopeLocal()}}
+{\footnotesize\ttfamily Scope\+Local\+::\+Scope\+Local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_ac254c3908b456ecd7f2f50ca5a7d3f4d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_ad49851b4336a0a5b5e3327018f51b866}\label{class_scope_local_ad49851b4336a0a5b5e3327018f51b866}} 
+\index{ScopeLocal@{ScopeLocal}!````~ScopeLocal@{$\sim$ScopeLocal}}
+\index{````~ScopeLocal@{$\sim$ScopeLocal}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{$\sim$ScopeLocal()}{~ScopeLocal()}}
+{\footnotesize\ttfamily virtual Scope\+Local\+::$\sim$\+Scope\+Local (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 133 of file varmap.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scope_local_a288f953a04ec97281b8995d5559a6874}\label{class_scope_local_a288f953a04ec97281b8995d5559a6874}} 
+\index{ScopeLocal@{ScopeLocal}!addRecommendName@{addRecommendName}}
+\index{addRecommendName@{addRecommendName}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{addRecommendName()}{addRecommendName()}}
+{\footnotesize\ttfamily void Scope\+Local\+::add\+Recommend\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint,  }\item[{const string \&}]{nm,  }\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1025 of file varmap.\+cc.
+
+\mbox{\Hypertarget{class_scope_local_a7c86528490f519a64d44ae6dc8438393}\label{class_scope_local_a7c86528490f519a64d44ae6dc8438393}} 
+\index{ScopeLocal@{ScopeLocal}!buildVariableName@{buildVariableName}}
+\index{buildVariableName@{buildVariableName}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{buildVariableName()}{buildVariableName()}}
+{\footnotesize\ttfamily string Scope\+Local\+::build\+Variable\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{pc,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct,  }\item[{int4 \&}]{index,  }\item[{uint4}]{flags }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Given an address and data-\/type, build a suitable generic symbol name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+{\em pc} & is the address at which the name is getting used \\
+\hline
+{\em ct} & is a data-\/type used to inform the name \\
+\hline
+{\em index} & is a reference to an index used to make the name unique, which will be updated \\
+\hline
+{\em flags} & are boolean properties of the variable we need the name for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new variable name 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_scope_internal_a6009aeaf0d3973344438fb412adccd00}{Scope\+Internal}}.
+
+
+
+Definition at line 178 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a7c86528490f519a64d44ae6dc8438393_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a7c86528490f519a64d44ae6dc8438393_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_ab1de60987435b80d4a82c5967b163557}\label{class_scope_local_ab1de60987435b80d4a82c5967b163557}} 
+\index{ScopeLocal@{ScopeLocal}!getSpaceId@{getSpaceId}}
+\index{getSpaceId@{getSpaceId}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{getSpaceId()}{getSpaceId()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Scope\+Local\+::get\+Space\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 135 of file varmap.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_ab1de60987435b80d4a82c5967b163557_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_ac6913e22130acb08f7d075a136c36780}\label{class_scope_local_ac6913e22130acb08f7d075a136c36780}} 
+\index{ScopeLocal@{ScopeLocal}!isUnaffectedStorage@{isUnaffectedStorage}}
+\index{isUnaffectedStorage@{isUnaffectedStorage}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{isUnaffectedStorage()}{isUnaffectedStorage()}}
+{\footnotesize\ttfamily bool Scope\+Local\+::is\+Unaffected\+Storage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 136 of file varmap.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_scope_local_ac6913e22130acb08f7d075a136c36780_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_aff7d78a874e28f4798f6979d7f2edc50}\label{class_scope_local_aff7d78a874e28f4798f6979d7f2edc50}} 
+\index{ScopeLocal@{ScopeLocal}!makeNameRecommendation@{makeNameRecommendation}}
+\index{makeNameRecommendation@{makeNameRecommendation}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{makeNameRecommendation()}{makeNameRecommendation()}}
+{\footnotesize\ttfamily bool Scope\+Local\+::make\+Name\+Recommendation (\begin{DoxyParamCaption}\item[{string \&}]{res,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 975 of file varmap.\+cc.
+
+\mbox{\Hypertarget{class_scope_local_ae812b32473e4de47b9072370b75de94c}\label{class_scope_local_ae812b32473e4de47b9072370b75de94c}} 
+\index{ScopeLocal@{ScopeLocal}!makeNameRecommendationsForSymbols@{makeNameRecommendationsForSymbols}}
+\index{makeNameRecommendationsForSymbols@{makeNameRecommendationsForSymbols}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{makeNameRecommendationsForSymbols()}{makeNameRecommendationsForSymbols()}}
+{\footnotesize\ttfamily void Scope\+Local\+::make\+Name\+Recommendations\+For\+Symbols (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{resname,  }\item[{vector$<$ \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ $>$ \&}]{ressym }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 987 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_ae812b32473e4de47b9072370b75de94c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_a560ea5441b79ef3c17b890c7d37ccaf1}\label{class_scope_local_a560ea5441b79ef3c17b890c7d37ccaf1}} 
+\index{ScopeLocal@{ScopeLocal}!markNotMapped@{markNotMapped}}
+\index{markNotMapped@{markNotMapped}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{markNotMapped()}{markNotMapped()}}
+{\footnotesize\ttfamily void Scope\+Local\+::mark\+Not\+Mapped (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{first,  }\item[{int4}]{sz,  }\item[{bool}]{param }\end{DoxyParamCaption})}
+
+
+
+Definition at line 136 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a560ea5441b79ef3c17b890c7d37ccaf1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a560ea5441b79ef3c17b890c7d37ccaf1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_a3bf9941188eb64423d2ed49a08dab8ca}\label{class_scope_local_a3bf9941188eb64423d2ed49a08dab8ca}} 
+\index{ScopeLocal@{ScopeLocal}!resetLocalWindow@{resetLocalWindow}}
+\index{resetLocalWindow@{resetLocalWindow}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{resetLocalWindow()}{resetLocalWindow()}}
+{\footnotesize\ttfamily void Scope\+Local\+::reset\+Local\+Window (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a3bf9941188eb64423d2ed49a08dab8ca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a3bf9941188eb64423d2ed49a08dab8ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_a5eeb1756bc706b8d5211fda106ad82ae}\label{class_scope_local_a5eeb1756bc706b8d5211fda106ad82ae}} 
+\index{ScopeLocal@{ScopeLocal}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Scope\+Local\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}} from a $<$scope$>$ X\+ML tag. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_scope_internal_ad79bd78299b2bea6c0f4221682e81b07}{Scope\+Internal}}.
+
+
+
+Definition at line 124 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a5eeb1756bc706b8d5211fda106ad82ae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_a308e308109ca1964d49d6a3a539a9acf}\label{class_scope_local_a308e308109ca1964d49d6a3a539a9acf}} 
+\index{ScopeLocal@{ScopeLocal}!restructureHigh@{restructureHigh}}
+\index{restructureHigh@{restructureHigh}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{restructureHigh()}{restructureHigh()}}
+{\footnotesize\ttfamily void Scope\+Local\+::restructure\+High (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 655 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a308e308109ca1964d49d6a3a539a9acf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a308e308109ca1964d49d6a3a539a9acf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_a4f0d61de6d043ae92af2c2cf1836453a}\label{class_scope_local_a4f0d61de6d043ae92af2c2cf1836453a}} 
+\index{ScopeLocal@{ScopeLocal}!restructureVarnode@{restructureVarnode}}
+\index{restructureVarnode@{restructureVarnode}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{restructureVarnode()}{restructureVarnode()}}
+{\footnotesize\ttfamily void Scope\+Local\+::restructure\+Varnode (\begin{DoxyParamCaption}\item[{bool}]{aliasyes }\end{DoxyParamCaption})}
+
+
+
+Definition at line 628 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a4f0d61de6d043ae92af2c2cf1836453a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a4f0d61de6d043ae92af2c2cf1836453a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_local_a5ce828992aceb086c5bcc62d8cf2f3ae}\label{class_scope_local_a5ce828992aceb086c5bcc62d8cf2f3ae}} 
+\index{ScopeLocal@{ScopeLocal}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!ScopeLocal@{ScopeLocal}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Scope\+Local\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Write out {\bfseries{this}} as a $<$scope$>$ X\+ML tag. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_scope_internal_af73cb738b4a29cf9aa076ce382ff110f}{Scope\+Internal}}.
+
+
+
+Definition at line 113 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_local_a5ce828992aceb086c5bcc62d8cf2f3ae_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{varmap_8hh}{varmap.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{varmap_8cc}{varmap.\+cc}}\end{DoxyCompactItemize}

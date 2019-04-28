@@ -1,0 +1,331 @@
+.TH "coreclasses" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+coreclasses \- Core Classes 
+
+.SH "Introduction"
+.PP
+The decompiler attempts to translate from low-level representations of computer programs into high-level representations\&. Thus it needs to model concepts from both the low-level machine hardware domain and from the high-level software programming domain\&.
+.PP
+Understanding the classes within the source code that implement these models provides the quickest inroad into obtaining an overall understanding of the code\&.
+.PP
+We list all these fundemental classes here, loosely grouped as follows\&. There is one set of classes that describe the \fISyntax\fP \fITrees\fP, which are built up from the original p-code, and transformed during the decompiler's simplification process\&. The \fITranslation\fP classes do the actual building of the syntax trees from binary executables, and the \fITransformation\fP classes do the actual work of transforming the syntax trees\&. Finally there is the \fIHigh-level\fP classes, which for the decompiler represents recovered information, describing familiar software development concepts, like datatypes, prototypes, symbols, variables, etc\&.
+.PP
+\fBSyntax\fP \fBTrees\fP 
+.IP "\(bu" 2
+\fBAddrSpace\fP
+.IP "  \(bu" 4
+A place within the reverse engineering model where data can be stored\&. The typical address spaces are \fBram\fP, modeling the main databus of a processor, and \fBregister\fP, modeling a processors on board registers\&. Data is stored a byte at a time at \fBoffsets\fP within the \fBAddrSpace\fP\&.
+.PP
+
+.IP "\(bu" 2
+\fBAddress\fP
+.IP "  \(bu" 4
+An \fBAddrSpace\fP and an offset within the space forms the \fBAddress\fP of the byte at that offset\&.
+.PP
+
+.IP "\(bu" 2
+\fBVarnode\fP
+.IP "  \(bu" 4
+A contiguous set of bytes, given by an \fBAddress\fP and a size, encoding a single value in the model\&. In terms of SSA syntax tree, a \fBVarnode\fP is also a node in the tree\&.
+.PP
+
+.IP "\(bu" 2
+\fBSeqNum\fP
+.IP "  \(bu" 4
+A \fIsequence\fP \fInumber\fP that extends \fBAddress\fP for distinguishing PcodeOps describing a single instruction\&.
+.IP "  \(bu" 4
+\fBOverview of SeqNum\fP
+.PP
+
+.IP "\(bu" 2
+\fBPcodeOp\fP
+.IP "  \(bu" 4
+A single \fIp-code\fP operation\&. A single machine instruction is translated into (possibly several) operations in this Register Transfer Language\&.
+.IP "  \(bu" 4
+\fBOverview of PcodeOp\fP
+.PP
+
+.IP "\(bu" 2
+\fBBlockBasic\fP
+.IP "  \(bu" 4
+A maximal sequence of p-code operations that always executes from the first \fBPcodeOp\fP to the last\&.
+.IP "  \(bu" 4
+\fBOverview of BlockBasic\fP
+.PP
+
+.IP "\(bu" 2
+\fBFuncdata\fP
+.IP "  \(bu" 4
+The root object holding all information about a function, including: the p-code syntax tree, prototype, and local symbol information\&.
+.IP "  \(bu" 4
+\fBOverview of Funcdata\fP
+.PP
+
+.PP
+\fBTranslation\fP 
+.IP "\(bu" 2
+\fBLoadImage\fP
+.IP "\(bu" 2
+\fBTranslate\fP
+.PP
+.PP
+\fBTransformation\fP 
+.IP "\(bu" 2
+\fBAction\fP
+.IP "\(bu" 2
+\fBRule\fP
+.PP
+.PP
+\fBHigh-level\fP \fBRepresentation\fP 
+.IP "\(bu" 2
+\fBDatatype\fP
+.IP "\(bu" 2
+\fBTypeFactory\fP
+.IP "\(bu" 2
+\fBHighVariable\fP
+.IP "\(bu" 2
+\fBFuncProto\fP
+.IP "\(bu" 2
+\fBFuncCallSpecs\fP
+.IP "\(bu" 2
+\fBSymbol\fP
+.IP "\(bu" 2
+\fBSymbolEntry\fP
+.IP "\(bu" 2
+\fBScope\fP
+.IP "\(bu" 2
+\fBDatabase\fP
+.PP
+.SH "Overview of SeqNum"
+.PP
+A sequence number is a form of extended address for multiple p-code operations that may be associated with the same address\&. There is a normal \fBAddress\fP field\&. There is a \fBtime\fP field which is a static value, determined when an operation is created, that guarantees the uniqueness of the \fBSeqNum\fP\&. There is also an \fBorder\fP field which preserves order information about operations within a basic block\&. This value may change if the syntax tree is manipulated\&.
+.PP
+.PP
+.nf
+Address & getAddr();          // get the Address field
+uintm     getTime();          // get the time field
+uintm     getOrder();         // get the order field
+.fi
+.PP
+.SH "Overview of PcodeOp"
+.PP
+A single operation in the p-code language\&. It has, at most, one \fBVarnode\fP output, and some number of \fBVarnode\fP inputs\&. The inputs are operated on depending on the opcode of the instruction, producing the output\&.
+.PP
+.PP
+.nf
+OpCode       code();             // get the opcode for this op
+Address &    getAddr();          // get Address of the associated processor instruction
+                                 // which generated this op\&.
+SeqNum &     getSeqNum();        // get the full unique identifier for this op
+int4         numInput();         // get number of Varnode inputs to this op
+Varnode *    getOut();           // get Varnode output
+Varnode *    getIn(int4 i);      // get (one of the) Varnode inputs
+BlockBasic * getParent();        // get basic block containing this op
+bool         isDead();           // op may no longer be in syntax tree
+bool         isCall();           // various categories of op
+bool         isBranch();
+bool         isBoolOutput();
+.fi
+.PP
+.SH "Overview of BlockBasic"
+.PP
+A sequence of PcodeOps with a single path of execution\&.
+.PP
+.PP
+.nf
+int4         sizeOut();         // get number of paths flowing out of this block
+int4         sizeIn();          // get number of paths flowing into this block
+BlockBasic *getIn(int4 i)       // get (one of the) blocks flowing into this
+BlockBasic *getOut(int4 i)      // get (one of the) blocks flowing out of this
+SeqNum &    getStart();         // get SeqNum of first operation in block
+SeqNum &    getStop();          // get SeqNum of last operation in block
+BlockBasic *getImmedDom();      // get immediate dominator block
+
+iterator    beginOp();          // get iterator to first PcodeOp in block
+iterator    endOp();
+.fi
+.PP
+.SH "Overview of Funcdata"
+.PP
+This is a container for the sytax tree associated with a single \fIfunction\fP and all other function specific data\&. It has an associated start address, function prototype, and local scope\&.
+.PP
+.PP
+.nf
+string &       getName();           // get name of function
+Address &      getAddress();        // get Address of function's entry point
+int4           numCalls();          // number of subfunctions called by this function
+FuncCallSpecs *getCallSpecs(int4 i); // get specs for one of the subfunctions
+BlockGraph &   getBasicBlocks();    // get the collection of basic blocks
+
+iterator       beginLoc(Address &);                     // Search for Varnodes in tree
+iterator       beginLoc(int4,Address &);                 // based on the Varnode's address
+iterator       beginLoc(int4,Address &,Address &,uintm);
+iterator       beginDef(uint4,Address &);               // Search for Varnode based on the
+                                                        // address of its defining operation
+.fi
+.PP
+.SH "LoadImage"
+.PP
+.SH "Action"
+.PP
+.SH "Rule"
+.PP
+.SH "Translate"
+.PP
+Decodes machine instructions and can produce p-code\&.
+.PP
+.PP
+.nf
+int4  oneInstruction(PcodeEmit &,Address &) const;   // produce pcode for one instruction
+void printAssembly(ostream &,int4,Address &) const;  // print the assembly for one instruction
+.fi
+.PP
+.SH "Datatype"
+.PP
+Many objects have an associated \fBDatatype\fP, including Varnodes, Symbols, and FuncProtos\&. A \fBDatatype\fP is built to resemble the type systems of common high-level languages like C or Java\&.
+.PP
+.PP
+.nf
+type_metatype getMetatype();     // categorize type as VOID, UNKNOWN,
+                                 // INT, UINT, BOOL, CODE, FLOAT,
+                                 // PTR, ARRAY, STRUCT
+string &      getName();         // get name of the type
+int4          getSize();         // get number of bytes encoding this type
+.fi
+.PP
+.PP
+There are base types (in varying sizes) as returned by getMetatype\&.
+.PP
+.PP
+.nf
+enum type_metatype {
+  TYPE_VOID,       // void type
+  TYPE_UNKNOWN,    // unknown type
+  TYPE_INT,        // signed integer
+  TYPE_UINT,       // unsigned integer
+  TYPE_BOOL,       // boolean
+  TYPE_CODE,       // function data
+  TYPE_FLOAT,      // floating point
+};
+.fi
+.PP
+.PP
+Then these can be used to build compound types, with pointer, array, and structure qualifiers\&.
+.PP
+.PP
+.nf
+class TypePointer : public Datatype  {  // pointer to (some other type)
+  Datatype *getBase();                  // get Datatype being pointed to
+};
+class TypeArray : public Datatype {     // array of (some other type)
+  Datatype *getBase();                  // get Datatype of array element
+};
+class TypeStruct : public Datatype {    // structure with fields of (some other types)
+  TypeField *getField(int4,int4,int4 *);   // get Datatype of a field
+};
+.fi
+.PP
+.SH "TypeFactory"
+.PP
+This is a container for Datatypes\&.
+.PP
+.PP
+.nf
+Datatype *findByName(string &);                 // find a Datatype by name
+Datatype *getTypeVoid();                        // retrieve common types
+Datatype *getTypeChar();
+Datatype *getBase(int4 size,type_metatype);
+Datatype *getTypePointer(int4,Datatype *,uint4);   // get a pointer to another type
+Datatype *getTypeArray(int4,Datatype *);         // get an array of another type
+.fi
+.PP
+.SH "HighVariable"
+.PP
+A single high-level variable can move in and out of various memory locations and registers during the course of its lifetime\&. A \fBHighVariable\fP encapsulates this concept\&. It is a collection of (low-level) Varnodes, all of which are used to store data for one high-level variable\&.
+.PP
+.PP
+.nf
+int4       numInstances();      // get number of different Varnodes associated
+                                // with this variable\&.
+Varnode *  getInstance(int4);    // get (one of the) Varnodes associated with
+                                // this variable\&.
+Datatype * getType();           // get Datatype of this variable
+Symbol *   getSymbol();         // get Symbol associated with this variable
+.fi
+.PP
+.SH "FuncProto"
+.PP
+.SH "FuncCallSpecs"
+.PP
+.SH "Symbol"
+.PP
+A particular symbol used for describing memory in the model\&. This behaves like a normal (high-level language) symbol\&. It lives in a scope, has a name, and has a \fBDatatype\fP\&.
+.PP
+.PP
+.nf
+string &      getName();        // get the name of the symbol
+Datatype *    getType();        // get the Datatype of the symbol
+Scope *       getScope();       // get the scope containing the symbol
+SymbolEntry * getFirstWholeMap(); // get the (first) SymbolEntry associated
+                                // with this symbol
+.fi
+.PP
+.SH "SymbolEntry"
+.PP
+This associates a memory location with a particular symbol, i\&.e\&. it \fImaps\fP the symbol to memory\&. Its, in theory, possible to have more than one \fBSymbolEntry\fP associated with a \fBSymbol\fP\&.
+.PP
+.PP
+.nf
+Address &   getAddr();         // get Address of memory location
+int4        getSize();         // get size of memory location
+Symbol *    getSymbol();       // get Symbol associated with location
+RangeList & getUseLimit();     // get range of code addresses for which
+                               // this mapping applies
+.fi
+.PP
+.SH "Scope"
+.PP
+This is a container for symbols\&.
+.PP
+.PP
+.nf
+SymbolEntry *findAddr(Address &,Address &);          // find a Symbol by address
+SymbolEntry *findContainer(Address &,int4,Address &); // find containing symbol
+Funcdata *   findFunction(Address &);                // find a function by entry address
+Symbol *     findByName(string &);                   // find a Symbol by name
+SymbolEntry *queryByAddr(Address &,Address &);       // search for symbols across multiple scopes
+SymbolEntry *queryContainer(Address &,int4,Address &);
+Funcdata *   queryFunction(Address &);
+Scope *      discoverScope(Address &,int4,Address &); // discover scope of an address
+string &     getName();                              // get name of scope
+Scope *      getParent();                            // get parent scope
+.fi
+.PP
+.SH "Database"
+.PP
+This is the container for Scopes\&.
+.PP
+.PP
+.nf
+Scope *getGlobalScope();                // get the root/global scope
+Scope *resolveScope(string &,Scope *);  // resolve a scope by name
+.fi
+.PP
+.SH "Architecture"
+.PP
+This is the repository for all information about a particular processor and executable\&. It holds the symbol table, the processor translator, the load image, the type database, and the transform engine\&.
+.PP
+.PP
+.nf
+class Architecture {
+  Database *     symboltab;   // the symbol table
+  Translate *    translate;   // the processor translator
+  LoadImage *    loader;      // the executable loadimage
+  ActionDatabase allacts;     // transforms which can be performed
+  TypeFactory *  types;       // the Datatype database
+};
+.fi
+.PP
+ 

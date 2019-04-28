@@ -1,0 +1,52 @@
+.TH "ghidra.app.decompiler.DecompilerDisposer" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.DecompilerDisposer
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBdispose\fP (Process process, OutputStream ouputStream, InputStream inputStream)"
+.br
+.ti -1c
+.RI "static void \fBdispose\fP (\fBDecompInterface\fP decompiler)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file DecompilerDisposer\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void ghidra\&.app\&.decompiler\&.DecompilerDisposer\&.dispose (Process process, OutputStream ouputStream, InputStream inputStream)\fC [inline]\fP, \fC [static]\fP"
+Disposes the given Process and related streams from a background thread\&. This is necessary due to a low-probability deadlock that occurs in the JVM\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprocess\fP The process to destroy\&. 
+.br
+\fIouputStream\fP The output stream to close 
+.br
+\fIinputStream\fP The input stream to close 
+.RE
+.PP
+
+.PP
+Definition at line 46 of file DecompilerDisposer\&.java\&.
+.SS "static void ghidra\&.app\&.decompiler\&.DecompilerDisposer\&.dispose (\fBDecompInterface\fP decompiler)\fC [inline]\fP, \fC [static]\fP"
+Calls dispose in the given decompiler from a background thread\&. 
+.PP
+Note:
+.br
+ A class to handle the rare case where the \fBDecompInterface\fP's synchronized methods are blocking while a decompile operation has died and maintained the lock\&. In that scenario, calling dispose on this class will eventually try to enter a synchronized method that will remain blocked forever\&. 
+.PP
+I examined the uses of \fBdispose()\fP on the \fBDecompInterface\fP and determined that calling \fBdispose()\fP is a final operation, which means that you don't have to wait\&. Further, after calling \fBdispose()\fP on this class, you should no longer use it\&. 
+.PP
+Definition at line 67 of file DecompilerDisposer\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,87 @@
+.TH "CastStrategyJava" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CastStrategyJava \- Casting strategies that are specific to the Java language\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cast\&.hh>\fP
+.PP
+Inherits \fBCastStrategyC\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBcastStandard\fP (\fBDatatype\fP *reqtype, \fBDatatype\fP *curtype, bool care_uint_int, bool care_ptr_uint) const"
+.br
+.RI "Does there need to be a visible cast between the given data-types\&. "
+.ti -1c
+.RI "virtual bool \fBisZextCast\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype) const"
+.br
+.RI "Is zero-extending an input data-type, producing an output data-type, considered a cast\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Casting strategies that are specific to the Java language\&. 
+
+This is nearly identical to the strategy for C, but there is some change to account for the way object references are encoded as pointer data-types within the decompiler's data-type system\&. 
+.PP
+Definition at line 167 of file cast\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDatatype\fP * CastStrategyJava::castStandard (\fBDatatype\fP * reqtype, \fBDatatype\fP * curtype, bool care_uint_int, bool care_ptr_uint) const\fC [virtual]\fP"
+
+.PP
+Does there need to be a visible cast between the given data-types\&. The cast is from a \fIcurrent\fP data-type to an \fIexpected\fP data-type\&. NULL is returned if no cast is required, otherwise the data-type to cast to (usually the expected data-type) is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreqtype\fP is the \fIexpected\fP data-type 
+.br
+\fIcurtype\fP is the \fIcurrent\fP data-type 
+.br
+\fIcare_uint_int\fP is \fBtrue\fP if we care about a change in signedness 
+.br
+\fIcare_ptr_uint\fP is \fBtrue\fP if we care about conversions between pointers and unsigned values 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NULL to indicate no cast, or the data-type to cast to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBCastStrategyC\fP\&.
+.PP
+Definition at line 306 of file cast\&.cc\&.
+.SS "bool CastStrategyJava::isZextCast (\fBDatatype\fP * outtype, \fBDatatype\fP * intype) const\fC [virtual]\fP"
+
+.PP
+Is zero-extending an input data-type, producing an output data-type, considered a cast\&. Data-types must be provided from the input and output of an INT_ZEXT operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the INT_ZEXT should be represented as a cast 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBCastStrategyC\fP\&.
+.PP
+Definition at line 364 of file cast\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

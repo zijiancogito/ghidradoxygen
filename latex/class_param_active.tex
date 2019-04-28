@@ -1,0 +1,675 @@
+\hypertarget{class_param_active}{}\section{Param\+Active Class Reference}
+\label{class_param_active}\index{ParamActive@{ParamActive}}
+
+
+Container class for \mbox{\hyperlink{class_param_trial}{Param\+Trial}} objects.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_param_active_aa8913b6e862e54ff8fce9b3c22badc5b}{Param\+Active}} (bool recoversub)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}} an empty container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_afadcd4621258a53d5edd7f7d4430eb7b}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Reset to an empty container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_a43a357162f55b3b8f7e13a013ad207b5}{register\+Trial}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 sz)
+\begin{DoxyCompactList}\small\item\em Add a new trial to the container. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_active_aef5c24a78fbfe7a847eceec2c8854fbb}{get\+Num\+Trials}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of trials in {\bfseries{this}} container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_param_trial}{Param\+Trial}} \& \mbox{\hyperlink{class_param_active_a88fb46565155de0123b634951a186f74}{get\+Trial}} (int4 i)
+\begin{DoxyCompactList}\small\item\em Get the i-\/th trial. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_param_trial}{Param\+Trial}} \& \mbox{\hyperlink{class_param_active_a4ce9f8640c32eb48df409ff71a6e15eb}{get\+Trial\+For\+Input\+Varnode}} (int4 slot) const
+\begin{DoxyCompactList}\small\item\em Get trial corresponding to the given input \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_active_a94904915a57b3a27a68053e85d6d08e1}{which\+Trial}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 sz) const
+\begin{DoxyCompactList}\small\item\em Get the trial overlapping with the given memory range. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_active_a3b308bb5dafd2bafc5e425991deab476}{needs\+Final\+Check}} (void) const
+\begin{DoxyCompactList}\small\item\em Is a final check required. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_a7cf85723002b79c4500f3eba9159b7fa}{mark\+Needs\+Final\+Check}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that a final check is required. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_active_a3335a98aec79bc7b683f6edc0e954c96}{is\+Recover\+Subcall}} (void) const
+\begin{DoxyCompactList}\small\item\em Are these trials for a call to a sub-\/function. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_active_a77a0cc16f6a28aeb1fae38416ed2c3ed}{is\+Fully\+Checked}} (void) const
+\begin{DoxyCompactList}\small\item\em Are all trials checked with no new trials expected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_a139fd20617eb3a88e32bc960e03b9ad1}{mark\+Fully\+Checked}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that all trials are checked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_ad5e20b21265e1788deb66b2f30b3b55b}{set\+Placeholder\+Slot}} (void)
+\begin{DoxyCompactList}\small\item\em Establish a stack placedholder slot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_a42ec2498ce1d913aaed22b67b479d6e5}{free\+Placeholder\+Slot}} (void)
+\begin{DoxyCompactList}\small\item\em Free the stack placeholder slot. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_active_af2221b328688426d4a192c0704ed787e}{get\+Num\+Passes}} (void) const
+\begin{DoxyCompactList}\small\item\em How many trial analysis passes were performed. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_active_a3d3a20decd7830cd778d890f6a41e83b}{get\+Max\+Pass}} (void) const
+\begin{DoxyCompactList}\small\item\em What is the maximum number of passes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_ad4a9012547b34e47de3645ad5e062f4f}{set\+Max\+Pass}} (int4 val)
+\begin{DoxyCompactList}\small\item\em Set the maximum number of passes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_a0cc6c52ae0d0c76d38fb603a10a7b53e}{finish\+Pass}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that an analysis pass has completed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_ac0e9c62853e05738a55adfec7f626726}{sort\+Trials}} (void)
+\begin{DoxyCompactList}\small\item\em Sort the trials in formal parameter order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_a23ffb29ecb4569901e136929a50ac6b2}{delete\+Unused\+Trials}} (void)
+\begin{DoxyCompactList}\small\item\em Remove trials that were found not to be parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_add969ad5cdac4ac6dab2bd7e6b7b3ca5}{split\+Trial}} (int4 i, int4 sz)
+\begin{DoxyCompactList}\small\item\em Split the given trial in two. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_a593685d8f2f13f34e5c48f1f363c793d}{join\+Trial}} (int4 slot, const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 sz)
+\begin{DoxyCompactList}\small\item\em Join adjacent parameter trials. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_active_a9f9fb238c57992903f10a7ccc2ca45ff}{get\+Num\+Used}} (void) const
+\begin{DoxyCompactList}\small\item\em Get number of trials marked as formal parameters. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_active_aa8aaa478177b4ce6d94c4a988059ab3f}{test\+Shrink}} (int4 i, const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 sz) const
+\begin{DoxyCompactList}\small\item\em Test if the given trial can be shrunk to the given range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_active_abce147faf761497f43582dbed22b57c0}{shrink}} (int4 i, const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 sz)
+\begin{DoxyCompactList}\small\item\em Shrink the given trial to a new given range. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container class for \mbox{\hyperlink{class_param_trial}{Param\+Trial}} objects. 
+
+The parameter analysis algorithms use this class to maintain the collection of parameter trials being actively considered for a given function. It holds the \mbox{\hyperlink{class_param_trial}{Param\+Trial}} objects and other information about the current state of analysis.
+
+Trials are maintained in two stages, {\itshape before} parameter decisions have been made and {\itshape after}. Before, trials are in input index order relative to the C\+A\+LL or C\+A\+L\+L\+I\+ND op for a sub-\/function, or they are in address order for input Varnodes to the active function. After, the trials are put into formal parameter order, as dictated by the Prototype\+Model. 
+
+Definition at line 181 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_param_active_aa8913b6e862e54ff8fce9b3c22badc5b}\label{class_param_active_aa8913b6e862e54ff8fce9b3c22badc5b}} 
+\index{ParamActive@{ParamActive}!ParamActive@{ParamActive}}
+\index{ParamActive@{ParamActive}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{ParamActive()}{ParamActive()}}
+{\footnotesize\ttfamily Param\+Active\+::\+Param\+Active (\begin{DoxyParamCaption}\item[{bool}]{recoversub }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}} an empty container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em recoversub} & selects whether a sub-\/function or the active function is being tested \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1238 of file fspec.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_param_active_afadcd4621258a53d5edd7f7d4430eb7b}\label{class_param_active_afadcd4621258a53d5edd7f7d4430eb7b}} 
+\index{ParamActive@{ParamActive}!clear@{clear}}
+\index{clear@{clear}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Param\+Active\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Reset to an empty container. 
+
+
+
+Definition at line 1250 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_param_active_a23ffb29ecb4569901e136929a50ac6b2}\label{class_param_active_a23ffb29ecb4569901e136929a50ac6b2}} 
+\index{ParamActive@{ParamActive}!deleteUnusedTrials@{deleteUnusedTrials}}
+\index{deleteUnusedTrials@{deleteUnusedTrials}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{deleteUnusedTrials()}{deleteUnusedTrials()}}
+{\footnotesize\ttfamily void Param\+Active\+::delete\+Unused\+Trials (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Remove trials that were found not to be parameters. 
+
+Delete any trial for which is\+Used() returns {\bfseries{false}}. This is used in conjunction with setting the active Varnodes on a call, so the slot number is reordered too. 
+
+Definition at line 1313 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a23ffb29ecb4569901e136929a50ac6b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a23ffb29ecb4569901e136929a50ac6b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a0cc6c52ae0d0c76d38fb603a10a7b53e}\label{class_param_active_a0cc6c52ae0d0c76d38fb603a10a7b53e}} 
+\index{ParamActive@{ParamActive}!finishPass@{finishPass}}
+\index{finishPass@{finishPass}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{finishPass()}{finishPass()}}
+{\footnotesize\ttfamily void Param\+Active\+::finish\+Pass (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that an analysis pass has completed. 
+
+
+
+Definition at line 208 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a0cc6c52ae0d0c76d38fb603a10a7b53e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a42ec2498ce1d913aaed22b67b479d6e5}\label{class_param_active_a42ec2498ce1d913aaed22b67b479d6e5}} 
+\index{ParamActive@{ParamActive}!freePlaceholderSlot@{freePlaceholderSlot}}
+\index{freePlaceholderSlot@{freePlaceholderSlot}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{freePlaceholderSlot()}{freePlaceholderSlot()}}
+{\footnotesize\ttfamily void Param\+Active\+::free\+Placeholder\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Free the stack placeholder slot. 
+
+Free up the stack placeholder slot, which may cause trial slots to get adjusted. 
+
+Definition at line 1295 of file fspec.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a42ec2498ce1d913aaed22b67b479d6e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a3d3a20decd7830cd778d890f6a41e83b}\label{class_param_active_a3d3a20decd7830cd778d890f6a41e83b}} 
+\index{ParamActive@{ParamActive}!getMaxPass@{getMaxPass}}
+\index{getMaxPass@{getMaxPass}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{getMaxPass()}{getMaxPass()}}
+{\footnotesize\ttfamily int4 Param\+Active\+::get\+Max\+Pass (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+What is the maximum number of passes. 
+
+
+
+Definition at line 206 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a3d3a20decd7830cd778d890f6a41e83b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_af2221b328688426d4a192c0704ed787e}\label{class_param_active_af2221b328688426d4a192c0704ed787e}} 
+\index{ParamActive@{ParamActive}!getNumPasses@{getNumPasses}}
+\index{getNumPasses@{getNumPasses}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{getNumPasses()}{getNumPasses()}}
+{\footnotesize\ttfamily int4 Param\+Active\+::get\+Num\+Passes (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+How many trial analysis passes were performed. 
+
+
+
+Definition at line 205 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_af2221b328688426d4a192c0704ed787e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_aef5c24a78fbfe7a847eceec2c8854fbb}\label{class_param_active_aef5c24a78fbfe7a847eceec2c8854fbb}} 
+\index{ParamActive@{ParamActive}!getNumTrials@{getNumTrials}}
+\index{getNumTrials@{getNumTrials}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{getNumTrials()}{getNumTrials()}}
+{\footnotesize\ttfamily int4 Param\+Active\+::get\+Num\+Trials (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of trials in {\bfseries{this}} container. 
+
+
+
+Definition at line 194 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_aef5c24a78fbfe7a847eceec2c8854fbb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a9f9fb238c57992903f10a7ccc2ca45ff}\label{class_param_active_a9f9fb238c57992903f10a7ccc2ca45ff}} 
+\index{ParamActive@{ParamActive}!getNumUsed@{getNumUsed}}
+\index{getNumUsed@{getNumUsed}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{getNumUsed()}{getNumUsed()}}
+{\footnotesize\ttfamily int4 Param\+Active\+::get\+Num\+Used (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get number of trials marked as formal parameters. 
+
+This assumes the trials have been sorted. So {\itshape used} trials are first. \begin{DoxyReturn}{Returns}
+the number of formally used trials 
+\end{DoxyReturn}
+
+
+Definition at line 1397 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_param_active_a88fb46565155de0123b634951a186f74}\label{class_param_active_a88fb46565155de0123b634951a186f74}} 
+\index{ParamActive@{ParamActive}!getTrial@{getTrial}}
+\index{getTrial@{getTrial}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{getTrial()}{getTrial()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_param_trial}{Param\+Trial}}\& Param\+Active\+::get\+Trial (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th trial. 
+
+
+
+Definition at line 195 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a88fb46565155de0123b634951a186f74_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a4ce9f8640c32eb48df409ff71a6e15eb}\label{class_param_active_a4ce9f8640c32eb48df409ff71a6e15eb}} 
+\index{ParamActive@{ParamActive}!getTrialForInputVarnode@{getTrialForInputVarnode}}
+\index{getTrialForInputVarnode@{getTrialForInputVarnode}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{getTrialForInputVarnode()}{getTrialForInputVarnode()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_param_trial}{Param\+Trial}} \& Param\+Active\+::get\+Trial\+For\+Input\+Varnode (\begin{DoxyParamCaption}\item[{int4}]{slot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get trial corresponding to the given input \mbox{\hyperlink{class_varnode}{Varnode}}. 
+
+Return the trial associated with the input \mbox{\hyperlink{class_varnode}{Varnode}} to the associated p-\/code C\+A\+LL or C\+A\+L\+L\+I\+ND. We take into account the call address parameter (subtract 1) and if the index occurs {\itshape after} the index holding the stackpointer placeholder, we subtract an additional 1. 
+\begin{DoxyParams}{Parameters}
+{\em slot} & is the input index of the input \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the corresponding parameter trial 
+\end{DoxyReturn}
+
+
+Definition at line 1425 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a4ce9f8640c32eb48df409ff71a6e15eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a77a0cc16f6a28aeb1fae38416ed2c3ed}\label{class_param_active_a77a0cc16f6a28aeb1fae38416ed2c3ed}} 
+\index{ParamActive@{ParamActive}!isFullyChecked@{isFullyChecked}}
+\index{isFullyChecked@{isFullyChecked}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{isFullyChecked()}{isFullyChecked()}}
+{\footnotesize\ttfamily bool Param\+Active\+::is\+Fully\+Checked (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Are all trials checked with no new trials expected. 
+
+
+
+Definition at line 201 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a77a0cc16f6a28aeb1fae38416ed2c3ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a3335a98aec79bc7b683f6edc0e954c96}\label{class_param_active_a3335a98aec79bc7b683f6edc0e954c96}} 
+\index{ParamActive@{ParamActive}!isRecoverSubcall@{isRecoverSubcall}}
+\index{isRecoverSubcall@{isRecoverSubcall}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{isRecoverSubcall()}{isRecoverSubcall()}}
+{\footnotesize\ttfamily bool Param\+Active\+::is\+Recover\+Subcall (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Are these trials for a call to a sub-\/function. 
+
+
+
+Definition at line 200 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a3335a98aec79bc7b683f6edc0e954c96_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a593685d8f2f13f34e5c48f1f363c793d}\label{class_param_active_a593685d8f2f13f34e5c48f1f363c793d}} 
+\index{ParamActive@{ParamActive}!joinTrial@{joinTrial}}
+\index{joinTrial@{joinTrial}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{joinTrial()}{joinTrial()}}
+{\footnotesize\ttfamily void Param\+Active\+::join\+Trial (\begin{DoxyParamCaption}\item[{int4}]{slot,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Join adjacent parameter trials. 
+
+Join the trial at the given slot with the trial in the next slot 
+\begin{DoxyParams}{Parameters}
+{\em slot} & is the given slot \\
+\hline
+{\em addr} & is the address of the new joined memory range \\
+\hline
+{\em sz} & is the size of the new memory range \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1363 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_param_active_a593685d8f2f13f34e5c48f1f363c793d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a593685d8f2f13f34e5c48f1f363c793d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a139fd20617eb3a88e32bc960e03b9ad1}\label{class_param_active_a139fd20617eb3a88e32bc960e03b9ad1}} 
+\index{ParamActive@{ParamActive}!markFullyChecked@{markFullyChecked}}
+\index{markFullyChecked@{markFullyChecked}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{markFullyChecked()}{markFullyChecked()}}
+{\footnotesize\ttfamily void Param\+Active\+::mark\+Fully\+Checked (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that all trials are checked. 
+
+
+
+Definition at line 202 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a139fd20617eb3a88e32bc960e03b9ad1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a7cf85723002b79c4500f3eba9159b7fa}\label{class_param_active_a7cf85723002b79c4500f3eba9159b7fa}} 
+\index{ParamActive@{ParamActive}!markNeedsFinalCheck@{markNeedsFinalCheck}}
+\index{markNeedsFinalCheck@{markNeedsFinalCheck}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{markNeedsFinalCheck()}{markNeedsFinalCheck()}}
+{\footnotesize\ttfamily void Param\+Active\+::mark\+Needs\+Final\+Check (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that a final check is required. 
+
+
+
+Definition at line 199 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a7cf85723002b79c4500f3eba9159b7fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a3b308bb5dafd2bafc5e425991deab476}\label{class_param_active_a3b308bb5dafd2bafc5e425991deab476}} 
+\index{ParamActive@{ParamActive}!needsFinalCheck@{needsFinalCheck}}
+\index{needsFinalCheck@{needsFinalCheck}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{needsFinalCheck()}{needsFinalCheck()}}
+{\footnotesize\ttfamily bool Param\+Active\+::needs\+Final\+Check (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is a final check required. 
+
+
+
+Definition at line 198 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a3b308bb5dafd2bafc5e425991deab476_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_a43a357162f55b3b8f7e13a013ad207b5}\label{class_param_active_a43a357162f55b3b8f7e13a013ad207b5}} 
+\index{ParamActive@{ParamActive}!registerTrial@{registerTrial}}
+\index{registerTrial@{registerTrial}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{registerTrial()}{registerTrial()}}
+{\footnotesize\ttfamily void Param\+Active\+::register\+Trial (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Add a new trial to the container. 
+
+A \mbox{\hyperlink{class_param_trial}{Param\+Trial}} object is created and a slot is assigned. 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the starting address of the memory range \\
+\hline
+{\em sz} & is the number of bytes in the range \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1263 of file fspec.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_a43a357162f55b3b8f7e13a013ad207b5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_ad4a9012547b34e47de3645ad5e062f4f}\label{class_param_active_ad4a9012547b34e47de3645ad5e062f4f}} 
+\index{ParamActive@{ParamActive}!setMaxPass@{setMaxPass}}
+\index{setMaxPass@{setMaxPass}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{setMaxPass()}{setMaxPass()}}
+{\footnotesize\ttfamily void Param\+Active\+::set\+Max\+Pass (\begin{DoxyParamCaption}\item[{int4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the maximum number of passes. 
+
+
+
+Definition at line 207 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_ad4a9012547b34e47de3645ad5e062f4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_ad5e20b21265e1788deb66b2f30b3b55b}\label{class_param_active_ad5e20b21265e1788deb66b2f30b3b55b}} 
+\index{ParamActive@{ParamActive}!setPlaceholderSlot@{setPlaceholderSlot}}
+\index{setPlaceholderSlot@{setPlaceholderSlot}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{setPlaceholderSlot()}{setPlaceholderSlot()}}
+{\footnotesize\ttfamily void Param\+Active\+::set\+Placeholder\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Establish a stack placedholder slot. 
+
+
+
+Definition at line 203 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_ad5e20b21265e1788deb66b2f30b3b55b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_abce147faf761497f43582dbed22b57c0}\label{class_param_active_abce147faf761497f43582dbed22b57c0}} 
+\index{ParamActive@{ParamActive}!shrink@{shrink}}
+\index{shrink@{shrink}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{shrink()}{shrink()}}
+{\footnotesize\ttfamily void Param\+Active\+::shrink (\begin{DoxyParamCaption}\item[{int4}]{i,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{sz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Shrink the given trial to a new given range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & is the index of the given trial \\
+\hline
+{\em addr} & is the new range\textquotesingle{}s starting address \\
+\hline
+{\em sz} & is the new range\textquotesingle{}s size in bytes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 228 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_active_ac0e9c62853e05738a55adfec7f626726}\label{class_param_active_ac0e9c62853e05738a55adfec7f626726}} 
+\index{ParamActive@{ParamActive}!sortTrials@{sortTrials}}
+\index{sortTrials@{sortTrials}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{sortTrials()}{sortTrials()}}
+{\footnotesize\ttfamily void Param\+Active\+::sort\+Trials (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sort the trials in formal parameter order. 
+
+
+
+Definition at line 209 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_active_ac0e9c62853e05738a55adfec7f626726_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_add969ad5cdac4ac6dab2bd7e6b7b3ca5}\label{class_param_active_add969ad5cdac4ac6dab2bd7e6b7b3ca5}} 
+\index{ParamActive@{ParamActive}!splitTrial@{splitTrial}}
+\index{splitTrial@{splitTrial}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{splitTrial()}{splitTrial()}}
+{\footnotesize\ttfamily void Param\+Active\+::split\+Trial (\begin{DoxyParamCaption}\item[{int4}]{i,  }\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Split the given trial in two. 
+
+Split the trial into two trials, where the first piece has the given size. 
+\begin{DoxyParams}{Parameters}
+{\em i} & is the index of the given trial \\
+\hline
+{\em sz} & is the given size \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1333 of file fspec.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_param_active_add969ad5cdac4ac6dab2bd7e6b7b3ca5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_active_aa8aaa478177b4ce6d94c4a988059ab3f}\label{class_param_active_aa8aaa478177b4ce6d94c4a988059ab3f}} 
+\index{ParamActive@{ParamActive}!testShrink@{testShrink}}
+\index{testShrink@{testShrink}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{testShrink()}{testShrink()}}
+{\footnotesize\ttfamily bool Param\+Active\+::test\+Shrink (\begin{DoxyParamCaption}\item[{int4}]{i,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{sz }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Test if the given trial can be shrunk to the given range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & is the index of the given trial \\
+\hline
+{\em addr} & is the new address \\
+\hline
+{\em sz} & is the new size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the trial can be shrunk to the new range 
+\end{DoxyReturn}
+
+
+Definition at line 221 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_active_a94904915a57b3a27a68053e85d6d08e1}\label{class_param_active_a94904915a57b3a27a68053e85d6d08e1}} 
+\index{ParamActive@{ParamActive}!whichTrial@{whichTrial}}
+\index{whichTrial@{whichTrial}!ParamActive@{ParamActive}}
+\subsubsection{\texorpdfstring{whichTrial()}{whichTrial()}}
+{\footnotesize\ttfamily int4 Param\+Active\+::which\+Trial (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{sz }\end{DoxyParamCaption}) const}
+
+
+
+Get the trial overlapping with the given memory range. 
+
+The (index of) the first overlapping trial is returned. 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the starting address of the given range \\
+\hline
+{\em sz} & is the number of bytes in the range \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the overlapping trial, or -\/1 if no trial overlaps 
+\end{DoxyReturn}
+
+
+Definition at line 1282 of file fspec.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

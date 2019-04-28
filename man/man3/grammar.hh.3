@@ -1,0 +1,89 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/grammar.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/grammar.hh
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'funcdata\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBGrammarToken\fP"
+.br
+.ti -1c
+.RI "class \fBGrammarLexer\fP"
+.br
+.ti -1c
+.RI "class \fBTypeModifier\fP"
+.br
+.ti -1c
+.RI "class \fBPointerModifier\fP"
+.br
+.ti -1c
+.RI "class \fBArrayModifier\fP"
+.br
+.ti -1c
+.RI "class \fBFunctionModifier\fP"
+.br
+.ti -1c
+.RI "class \fBTypeDeclarator\fP"
+.br
+.ti -1c
+.RI "struct \fBTypeSpecifiers\fP"
+.br
+.ti -1c
+.RI "struct \fBEnumerator\fP"
+.br
+.ti -1c
+.RI "class \fBCParse\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDatatype\fP * \fBparse_type\fP (istream &s, string &name, \fBArchitecture\fP *glb)"
+.br
+.ti -1c
+.RI "void \fBparse_protopieces\fP (\fBPrototypePieces\fP &pieces, istream &s, \fBArchitecture\fP *glb)"
+.br
+.ti -1c
+.RI "void \fBparse_C\fP (\fBArchitecture\fP *glb, istream &s)"
+.br
+.ti -1c
+.RI "void \fBparse_toseparator\fP (istream &s, string &name)"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBparse_machaddr\fP (istream &s, int4 &defaultsize, const \fBTypeFactory\fP &typegrp, bool ignorecolon=false)"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBparse_varnode\fP (istream &s, int4 &size, \fBAddress\fP &pc, uintm &uq, const \fBTypeFactory\fP &typegrp)"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBparse_op\fP (istream &s, uintm &uq, const \fBTypeFactory\fP &typegrp)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void parse_C (\fBArchitecture\fP * glb, istream & s)"
+
+.SS "\fBAddress\fP parse_machaddr (istream & s, int4 & defaultsize, const \fBTypeFactory\fP & typegrp, bool ignorecolon = \fCfalse\fP)"
+
+.SS "\fBAddress\fP parse_op (istream & s, uintm & uq, const \fBTypeFactory\fP & typegrp)"
+
+.SS "void parse_protopieces (\fBPrototypePieces\fP & pieces, istream & s, \fBArchitecture\fP * glb)"
+
+.SS "void parse_toseparator (istream & s, string & name)"
+
+.SS "\fBDatatype\fP* parse_type (istream & s, string & name, \fBArchitecture\fP * glb)"
+
+.SS "\fBAddress\fP parse_varnode (istream & s, int4 & size, \fBAddress\fP & pc, uintm & uq, const \fBTypeFactory\fP & typegrp)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,371 @@
+.TH "ParamList" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParamList
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherited by \fBParamListStandard\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBp_standard\fP, \fBp_standard_out\fP, \fBp_register\fP, \fBp_merged\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~ParamList\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual uint4 \fBgetType\fP (void) const =0"
+.br
+.RI "Get the type of parameter list\&. "
+.ti -1c
+.RI "virtual void \fBassignMap\fP (const vector< \fBDatatype\fP * > &proto, bool isinput, \fBTypeFactory\fP &typefactory, vector< \fBParameterPieces\fP > &res) const =0"
+.br
+.RI "Given list of data-types, map the list positions to storage locations\&. "
+.ti -1c
+.RI "virtual void \fBfillinMap\fP (\fBParamActive\fP *active) const =0"
+.br
+.RI "Given an unordered list of storage locations, calculate a function prototype\&. "
+.ti -1c
+.RI "virtual bool \fBcheckJoin\fP (const \fBAddress\fP &hiaddr, int4 hisize, const \fBAddress\fP &loaddr, int4 losize) const =0"
+.br
+.RI "Check if the given two storage locations can represent a single logical parameter\&. "
+.ti -1c
+.RI "virtual bool \fBcheckSplit\fP (const \fBAddress\fP &loc, int4 size, int4 splitpoint) const =0"
+.br
+.RI "Check if it makes sense to split a single storage location into two parameters\&. "
+.ti -1c
+.RI "virtual bool \fBpossibleParam\fP (const \fBAddress\fP &loc, int4 size) const =0"
+.br
+.RI "Does the given storage location make sense as a parameter\&. "
+.ti -1c
+.RI "virtual bool \fBpossibleParamWithSlot\fP (const \fBAddress\fP &loc, int4 size, int4 &slot, int4 &slotsize) const =0"
+.br
+.RI "Pass-back the slot and slot size for the given storage location as a parameter\&. "
+.ti -1c
+.RI "virtual bool \fBunjustifiedContainer\fP (const \fBAddress\fP &loc, int4 size, \fBVarnodeData\fP &res) const =0"
+.br
+.RI "Check if the given storage location looks like an \fIunjustified\fP parameter\&. "
+.ti -1c
+.RI "virtual \fBOpCode\fP \fBassumedExtension\fP (const \fBAddress\fP &addr, int4 size, \fBVarnodeData\fP &res) const =0"
+.br
+.RI "Get the type of extension and containing parameter for the given storage\&. "
+.ti -1c
+.RI "virtual \fBAddrSpace\fP * \fBgetSpacebase\fP (void) const =0"
+.br
+.RI "Get the address space associated with any stack based parameters in \fBthis\fP list\&. "
+.ti -1c
+.RI "virtual void \fBgetRangeList\fP (\fBAddrSpace\fP *spc, \fBRangeList\fP &res) const =0"
+.br
+.RI "For a given address space, collect all the parameter locations within that space\&. "
+.ti -1c
+.RI "virtual int4 \fBgetMaxDelay\fP (void) const =0"
+.br
+.RI "Return the maximum heritage delay across all possible parameters\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage, vector< \fBEffectRecord\fP > &effectlist, bool normalstack)=0"
+.br
+.RI "Restore the model from an XML stream\&. "
+.ti -1c
+.RI "virtual \fBParamList\fP * \fBclone\fP (void) const =0"
+.br
+.RI "Clone this parameter list model\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A group of \fBParamEntry\fP objects that form a complete set for passing parameters in one direction (either input or output)\&. The main tasks this class must perform are:
+.IP "\(bu" 2
+\fBpossibleParam()\fP Quick test if a \fBVarnode\fP could ever be a parameter with this prototype
+.IP "\(bu" 2
+\fBfillinMap()\fP Select trials completing prototype, given analysis info
+.IP "\(bu" 2
+\fBassignMap()\fP Derive slot->address map, given a list of types
+.IP "\(bu" 2
+\fBcheckJoin()\fP Can two parameters be considered/converted into a single logical parameter 
+.PP
+
+.PP
+Definition at line 297 of file fspec\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIp_standard \fP\fP
+Standard input parameter model\&. 
+.TP
+\fB\fIp_standard_out \fP\fP
+Standard output (return value) model\&. 
+.TP
+\fB\fIp_register \fP\fP
+Unordered parameter passing locations model\&. 
+.TP
+\fB\fIp_merged \fP\fP
+A merged model (multiple models merged together) 
+.PP
+Definition at line 299 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual ParamList::~ParamList (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 305 of file fspec\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void ParamList::assignMap (const vector< \fBDatatype\fP * > & proto, bool isinput, \fBTypeFactory\fP & typefactory, vector< \fBParameterPieces\fP > & res) const\fC [pure virtual]\fP"
+
+.PP
+Given list of data-types, map the list positions to storage locations\&. If we know the function prototype, recover how parameters are actually stored using the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproto\fP is the ordered list of data-types 
+.br
+\fIisinput\fP is \fBtrue\fP for the input prototype, \fBfalse\fP for output prototype 
+.br
+\fItypefactory\fP is the \fBTypeFactory\fP (for constructing pointers) 
+.br
+\fIres\fP will contain the storage locations corresponding to the datatypes 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListMerged\fP, \fBParamListStandardOut\fP, and \fBParamListStandard\fP\&.
+.SS "virtual \fBOpCode\fP ParamList::assumedExtension (const \fBAddress\fP & addr, int4 size, \fBVarnodeData\fP & res) const\fC [pure virtual]\fP"
+
+.PP
+Get the type of extension and containing parameter for the given storage\&. If the given storage is properly contained within a normal parameter and the model typically extends a small value into the full container, pass back the full container and the type of extension\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the extension operator (INT_ZEXT INT_SEXT) or INT_COPY if there is no extension\&. INT_PIECE indicates the extension is determined by the specific prototype\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+.SS "virtual bool ParamList::checkJoin (const \fBAddress\fP & hiaddr, int4 hisize, const \fBAddress\fP & loaddr, int4 losize) const\fC [pure virtual]\fP"
+
+.PP
+Check if the given two storage locations can represent a single logical parameter\&. Within the conventions of this model, do the two (hi/lo) locations represent consecutive parameter locations that can be replaced by a single logical parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhiaddr\fP is the address of the most significant part of the value 
+.br
+\fIhisize\fP is the size of the most significant part in bytes 
+.br
+\fIloaddr\fP is the address of the least significant part of the value 
+.br
+\fIlosize\fP is the size of the least significant part in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the two pieces can be joined 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+.SS "virtual bool ParamList::checkSplit (const \fBAddress\fP & loc, int4 size, int4 splitpoint) const\fC [pure virtual]\fP"
+
+.PP
+Check if it makes sense to split a single storage location into two parameters\&. A storage location and split point is provided, implying two new storage locations\&. Does \fBthis\fP model allow these locations to be considered parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of provided storage location 
+.br
+\fIsize\fP is the size of the location in bytes 
+.br
+\fIsplitpoint\fP is the number of bytes to consider in the first (in address order) piece 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the storage location can be split 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+.SS "virtual \fBParamList\fP* ParamList::clone (void) const\fC [pure virtual]\fP"
+
+.PP
+Clone this parameter list model\&. 
+.PP
+Implemented in \fBParamListMerged\fP, \fBParamListRegister\fP, \fBParamListStandardOut\fP, and \fBParamListStandard\fP\&.
+.SS "virtual void ParamList::fillinMap (\fBParamActive\fP * active) const\fC [pure virtual]\fP"
+
+.PP
+Given an unordered list of storage locations, calculate a function prototype\&. A list of input (or output) trials is given, which may have holes, invalid inputs etc\&. Decide on the formal ordered parameter list\&. Trials within the \fBParamActive\fP are added, removed, or reordered as needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the given list of trials 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListMerged\fP, \fBParamListRegister\fP, \fBParamListStandardOut\fP, and \fBParamListStandard\fP\&.
+.SS "virtual int4 ParamList::getMaxDelay (void) const\fC [pure virtual]\fP"
+
+.PP
+Return the maximum heritage delay across all possible parameters\&. Depending on the address space, data-flow for a parameter may not be available until extra transform passes have completed\&. This method returns the number of passes that must occur before we can guarantee that all parameters have data-flow info\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the maximum number of passes across all parameters in \fBthis\fP model 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+.SS "virtual void ParamList::getRangeList (\fBAddrSpace\fP * spc, \fBRangeList\fP & res) const\fC [pure virtual]\fP"
+
+.PP
+For a given address space, collect all the parameter locations within that space\&. Pass back the memory ranges for any parameter that is stored in the given address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.br
+\fIres\fP will hold the set of matching memory ranges 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+.SS "virtual \fBAddrSpace\fP* ParamList::getSpacebase (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the address space associated with any stack based parameters in \fBthis\fP list\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the stack address space, if \fBthis\fP models parameters passed on the stack, NULL otherwise 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+.SS "virtual uint4 ParamList::getType (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the type of parameter list\&. 
+.PP
+Implemented in \fBParamListMerged\fP, \fBParamListRegister\fP, \fBParamListStandardOut\fP, and \fBParamListStandard\fP\&.
+.SS "virtual bool ParamList::possibleParam (const \fBAddress\fP & loc, int4 size) const\fC [pure virtual]\fP"
+
+.PP
+Does the given storage location make sense as a parameter\&. Within \fBthis\fP model, decide if the storage location can be considered a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the location can be a parameter 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandardOut\fP, and \fBParamListStandard\fP\&.
+.SS "virtual bool ParamList::possibleParamWithSlot (const \fBAddress\fP & loc, int4 size, int4 & slot, int4 & slotsize) const\fC [pure virtual]\fP"
+
+.PP
+Pass-back the slot and slot size for the given storage location as a parameter\&. This checks if the given storage location acts as a parameter in \fBthis\fP model and passes back the number of slots that it occupies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage location 
+.br
+\fIslot\fP if the \fIslot\fP number to pass back 
+.br
+\fIslotsize\fP is the number of consumed slots to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the location can be a parameter 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+.SS "virtual void ParamList::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage, vector< \fBEffectRecord\fP > & effectlist, bool normalstack)\fC [pure virtual]\fP"
+
+.PP
+Restore the model from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <input> or <output> element 
+.br
+\fImanage\fP is used to resolve references to address spaces 
+.br
+\fIeffectlist\fP is a container collecting EffectRecords across all parameters 
+.br
+\fInormalstack\fP is \fBtrue\fP if parameters are pushed on the stack in the normal order 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandardOut\fP, and \fBParamListStandard\fP\&.
+.SS "virtual bool ParamList::unjustifiedContainer (const \fBAddress\fP & loc, int4 size, \fBVarnodeData\fP & res) const\fC [pure virtual]\fP"
+
+.PP
+Check if the given storage location looks like an \fIunjustified\fP parameter\&. The storage for a value may be contained in a normal parameter location but be unjustified within that container, i\&.e\&. the least significant bytes are not being used\&. If this is the case, pass back the full parameter location and return \fBtrue\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the full parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the given storage is unjustified within its parameter container 
+.RE
+.PP
+
+.PP
+Implemented in \fBParamListStandard\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

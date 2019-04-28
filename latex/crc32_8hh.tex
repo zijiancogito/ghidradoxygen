@@ -1,0 +1,91 @@
+\hypertarget{crc32_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/crc32.hh File Reference}
+\label{crc32_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.hh}}
+
+
+Table and function for computing a C\+R\+C32.  
+
+
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for crc32.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{crc32_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{crc32_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint4 \mbox{\hyperlink{crc32_8hh_a2f8ef4e0e22c330442924367a838a87c}{crc\+\_\+update}} (uint4 reg, uint4 val)
+\begin{DoxyCompactList}\small\item\em Feed 8 bits into a C\+RC register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint4 \mbox{\hyperlink{crc32_8hh_a4b40516b18f2e8bbf32c619a0d9958d0}{crc32tab}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Table for quickly computing a 32-\/bit Cyclic Redundacy Check (C\+RC) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Table and function for computing a C\+R\+C32. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{crc32_8hh_a2f8ef4e0e22c330442924367a838a87c}\label{crc32_8hh_a2f8ef4e0e22c330442924367a838a87c}} 
+\index{crc32.hh@{crc32.hh}!crc\_update@{crc\_update}}
+\index{crc\_update@{crc\_update}!crc32.hh@{crc32.hh}}
+\subsubsection{\texorpdfstring{crc\_update()}{crc\_update()}}
+{\footnotesize\ttfamily uint4 crc\+\_\+update (\begin{DoxyParamCaption}\item[{uint4}]{reg,  }\item[{uint4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Feed 8 bits into a C\+RC register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & is the current state of the C\+RC register \\
+\hline
+{\em val} & holds 8 bits (least significant) to feed in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new value of the register 
+\end{DoxyReturn}
+
+
+Definition at line 31 of file crc32.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{crc32_8hh_a2f8ef4e0e22c330442924367a838a87c_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{crc32_8hh_a4b40516b18f2e8bbf32c619a0d9958d0}\label{crc32_8hh_a4b40516b18f2e8bbf32c619a0d9958d0}} 
+\index{crc32.hh@{crc32.hh}!crc32tab@{crc32tab}}
+\index{crc32tab@{crc32tab}!crc32.hh@{crc32.hh}}
+\subsubsection{\texorpdfstring{crc32tab}{crc32tab}}
+{\footnotesize\ttfamily uint4 crc32tab\mbox{[}$\,$\mbox{]}}
+
+
+
+Table for quickly computing a 32-\/bit Cyclic Redundacy Check (C\+RC) 
+
+
+
+Definition at line 20 of file crc32.\+cc.
+

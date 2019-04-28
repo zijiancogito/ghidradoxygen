@@ -1,0 +1,466 @@
+.TH "Override" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Override \- A container of commands that override the decompiler's default behavior for a single function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <override\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBNONE\fP = 0, \fBBRANCH\fP = 1, \fBCALL\fP = 2, \fBCALL_RETURN\fP = 3, \fBRETURN\fP = 4 }"
+.br
+.RI "Enumeration of possible branch overrides\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fB~Override\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBinsertForceGoto\fP (const \fBAddress\fP &targetpc, const \fBAddress\fP &destpc)"
+.br
+.RI "Force a specific branch instruction to be an unstructured \fIgoto\fP\&. "
+.ti -1c
+.RI "void \fBinsertDeadcodeDelay\fP (\fBAddrSpace\fP *spc, int4 delay)"
+.br
+.RI "\fBOverride\fP the number of passes that are executed before \fIdead-code\fP elimination starts\&. "
+.ti -1c
+.RI "bool \fBhasDeadcodeDelay\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Check if a delay override is already installed for an address space\&. "
+.ti -1c
+.RI "void \fBinsertIndirectOverride\fP (const \fBAddress\fP &callpoint, const \fBAddress\fP &directcall)"
+.br
+.RI "\fBOverride\fP an indirect call turning it into a direct call\&. "
+.ti -1c
+.RI "void \fBinsertProtoOverride\fP (const \fBAddress\fP &callpoint, \fBFuncProto\fP *p)"
+.br
+.RI "\fBOverride\fP the assumed function prototype at a specific call site\&. "
+.ti -1c
+.RI "void \fBinsertMultistageJump\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Flag an indirect jump for multistage analysis\&. "
+.ti -1c
+.RI "void \fBinsertFlowOverride\fP (const \fBAddress\fP &addr, uint4 type)"
+.br
+.RI "Mark a branch instruction with a different flow type\&. "
+.ti -1c
+.RI "void \fBapplyPrototype\fP (\fBFuncdata\fP &data, \fBFuncCallSpecs\fP &fspecs) const"
+.br
+.RI "Look for and apply a function prototype override\&. "
+.ti -1c
+.RI "void \fBapplyIndirect\fP (\fBFuncdata\fP &data, \fBFuncCallSpecs\fP &fspecs) const"
+.br
+.RI "Look for and apply destination overrides of indirect calls\&. "
+.ti -1c
+.RI "bool \fBqueryMultistageJumptable\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Check for a multistage marker for a specific indirect jump\&. "
+.ti -1c
+.RI "void \fBapplyDeadCodeDelay\fP (\fBFuncdata\fP &data) const"
+.br
+.RI "Apply any dead-code delay overrides\&. "
+.ti -1c
+.RI "void \fBapplyForceGoto\fP (\fBFuncdata\fP &data) const"
+.br
+.RI "Push all the force-goto overrides into the function\&. "
+.ti -1c
+.RI "bool \fBhasFlowOverride\fP (void) const"
+.br
+.RI "Are there any flow overrides\&. "
+.ti -1c
+.RI "uint4 \fBgetFlowOverride\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Return the particular flow override at a given address\&. "
+.ti -1c
+.RI "void \fBprintRaw\fP (ostream &s, \fBArchitecture\fP *glb) const"
+.br
+.RI "Dump a description of the overrides to stream\&. "
+.ti -1c
+.RI "void \fBgenerateOverrideMessages\fP (vector< string > &messagelist, \fBArchitecture\fP *glb) const"
+.br
+.RI "Create warning messages that describe current overrides\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s, \fBArchitecture\fP *glb) const"
+.br
+.RI "Write the override commands to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.RI "Read in override commands from XML\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBtypeToString\fP (uint4 tp)"
+.br
+.RI "Convert a flow override type to a string\&. "
+.ti -1c
+.RI "static uint4 \fBstringToType\fP (const string &nm)"
+.br
+.RI "Convert a string to a flow override type\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A container of commands that override the decompiler's default behavior for a single function\&. 
+
+Information about a particular function that can be overridden includes:
+.IP "\(bu" 2
+sub-functions: How they are called and where they call to
+.IP "\(bu" 2
+jumptables: Mark indirect jumps that need multistage analysis
+.IP "\(bu" 2
+deadcode: Details about how dead code is eliminated
+.IP "\(bu" 2
+data-flow: \fBOverride\fP the interpretation of specific branch instructions
+.PP
+.PP
+Commands exist independently of the main data-flow, control-flow, and symbol structures and survive decompilation restart\&. A few analyses, mid transformation, insert a new command to fix a problem that was discovered too late and then force a restart via \fBFuncdata::setRestartPending()\fP
+.PP
+The class accept new commands via the insert* methods\&. The decompiler applies them by calling the apply* or get* methods\&. 
+.PP
+Definition at line 40 of file override\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+Enumeration of possible branch overrides\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINONE \fP\fP
+No override\&. 
+.TP
+\fB\fIBRANCH \fP\fP
+Replace primary CALL or RETURN with suitable BRANCH operation\&. 
+.TP
+\fB\fICALL \fP\fP
+Replace primary BRANCH or RETURN with suitable CALL operation\&. 
+.TP
+\fB\fICALL_RETURN \fP\fP
+Replace primary BRANCH or RETURN with suitable CALL/RETURN operation\&. 
+.TP
+\fB\fIRETURN \fP\fP
+Replace primary BRANCH or CALL with a suitable RETURN operation\&. 
+.PP
+Definition at line 43 of file override\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Override::~Override (void)\fC [inline]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 60 of file override\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Override::applyDeadCodeDelay (\fBFuncdata\fP & data) const"
+
+.PP
+Apply any dead-code delay overrides\&. Look for delays of each address space and apply them to the \fBHeritage\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function 
+.RE
+.PP
+
+.PP
+Definition at line 206 of file override\&.cc\&.
+.SS "void Override::applyForceGoto (\fBFuncdata\fP & data) const"
+
+.PP
+Push all the force-goto overrides into the function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function 
+.RE
+.PP
+
+.PP
+Definition at line 193 of file override\&.cc\&.
+.SS "void Override::applyIndirect (\fBFuncdata\fP & data, \fBFuncCallSpecs\fP & fspecs) const"
+
+.PP
+Look for and apply destination overrides of indirect calls\&. Given an indirect call, look for any overrides, then copy in the overriding target address of the direct call 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is (calling) function 
+.br
+\fIfspecs\fP is a reference to the call specification 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file override\&.cc\&.
+.SS "void Override::applyPrototype (\fBFuncdata\fP & data, \fBFuncCallSpecs\fP & fspecs) const"
+
+.PP
+Look for and apply a function prototype override\&. Given a call point, look for a prototype override and copy the call specification in 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the (calling) function 
+.br
+\fIfspecs\fP is a reference to the call specification 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file override\&.cc\&.
+.SS "void Override::generateOverrideMessages (vector< string > & messagelist, \fBArchitecture\fP * glb) const"
+
+.PP
+Create warning messages that describe current overrides\&. Message are designed to be displayed in the function header comment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessagelist\fP will hold the generated list of messages 
+.br
+\fIglb\fP is the \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 268 of file override\&.cc\&.
+.SS "uint4 Override::getFlowOverride (const \fBAddress\fP & addr) const"
+
+.PP
+Return the particular flow override at a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of a branch instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the override type 
+.RE
+.PP
+
+.PP
+Definition at line 222 of file override\&.cc\&.
+.SS "bool Override::hasDeadcodeDelay (\fBAddrSpace\fP * spc) const"
+
+.PP
+Check if a delay override is already installed for an address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if an override has already been installed 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file override\&.cc\&.
+.SS "bool Override::hasFlowOverride (void) const\fC [inline]\fP"
+
+.PP
+Are there any flow overrides\&. 
+.PP
+Definition at line 74 of file override\&.hh\&.
+.SS "void Override::insertDeadcodeDelay (\fBAddrSpace\fP * spc, int4 delay)"
+
+.PP
+\fBOverride\fP the number of passes that are executed before \fIdead-code\fP elimination starts\&. Every address space has an assigned \fIdelay\fP (which may be zero) before a \fBPcodeOp\fP involving a \fBVarnode\fP in that address space can be eliminated\&. This command allows the delay for a specific address space to be increased so that new \fBVarnode\fP accesses can be discovered\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space to modify 
+.br
+\fIdelay\fP is the size of the delay (in passes) 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file override\&.cc\&.
+.SS "void Override::insertFlowOverride (const \fBAddress\fP & addr, uint4 type)"
+
+.PP
+Mark a branch instruction with a different flow type\&. Change the interpretation of a BRANCH, CALL, or RETURN 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of the branch instruction 
+.br
+\fItype\fP is the type of flow that should be forced 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file override\&.cc\&.
+.SS "void Override::insertForceGoto (const \fBAddress\fP & targetpc, const \fBAddress\fP & destpc)"
+
+.PP
+Force a specific branch instruction to be an unstructured \fIgoto\fP\&. The command is specified as the address of the branch instruction and the destination address of the branch\&. The decompiler will automatically mark this as a \fIunstructured\fP, when trying to structure the control-flow 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItargetpc\fP is the address of the branch instruction 
+.br
+\fIdestpc\fP is the destination address of the branch 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file override\&.cc\&.
+.SS "void Override::insertIndirectOverride (const \fBAddress\fP & callpoint, const \fBAddress\fP & directcall)"
+
+.PP
+\fBOverride\fP an indirect call turning it into a direct call\&. The command consists of the address of the indirect call instruction and the target address of the direct address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallpoint\fP is the address of the indirect call 
+.br
+\fIdirectcall\fP is the target address of the direct call 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file override\&.cc\&.
+.SS "void Override::insertMultistageJump (const \fBAddress\fP & addr)"
+
+.PP
+Flag an indirect jump for multistage analysis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of the indirect jump 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file override\&.cc\&.
+.SS "void Override::insertProtoOverride (const \fBAddress\fP & callpoint, \fBFuncProto\fP * p)"
+
+.PP
+\fBOverride\fP the assumed function prototype at a specific call site\&. The exact input and output storage locations are overridden for a specific call instruction (direct or indirect)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallpoint\fP is the address of the call instruction 
+.br
+\fIp\fP is the overriding function prototype 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file override\&.cc\&.
+.SS "void Override::printRaw (ostream & s, \fBArchitecture\fP * glb) const"
+
+.PP
+Dump a description of the overrides to stream\&. Give a description of each override, one per line, that is suitable for debug 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIglb\fP is the \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 237 of file override\&.cc\&.
+.SS "bool Override::queryMultistageJumptable (const \fBAddress\fP & addr) const"
+
+.PP
+Check for a multistage marker for a specific indirect jump\&. Given the address of an indirect jump, look for the multistate command 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of the indirect jump 
+.RE
+.PP
+
+.PP
+Definition at line 180 of file override\&.cc\&.
+.SS "void Override::restoreXml (const \fBElement\fP * el, \fBArchitecture\fP * glb)"
+
+.PP
+Read in override commands from XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <override> element 
+.br
+\fIglb\fP is the \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 348 of file override\&.cc\&.
+.SS "void Override::saveXml (ostream & s, \fBArchitecture\fP * glb) const"
+
+.PP
+Write the override commands to an XML stream\&. All the commands are written as sub-tags of a root <override> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIglb\fP is the \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 283 of file override\&.cc\&.
+.SS "uint4 Override::stringToType (const string & nm)\fC [static]\fP"
+
+.PP
+Convert a string to a flow override type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the override name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the override enumeration type 
+.RE
+.PP
+
+.PP
+Definition at line 433 of file override\&.cc\&.
+.SS "string Override::typeToString (uint4 tp)\fC [static]\fP"
+
+.PP
+Convert a flow override type to a string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is the override type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding name string 
+.RE
+.PP
+
+.PP
+Definition at line 417 of file override\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

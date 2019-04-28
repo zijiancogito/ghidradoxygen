@@ -1,0 +1,69 @@
+.TH "ContextChange" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextChange
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghsymbol\&.hh>\fP
+.PP
+Inherited by \fBContextCommit\fP, and \fBContextOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~ContextChange\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBvalidate\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBSleighBase\fP *trans)=0"
+.br
+.ti -1c
+.RI "virtual void \fBapply\fP (\fBParserWalkerChange\fP &walker) const =0"
+.br
+.ti -1c
+.RI "virtual \fBContextChange\fP * \fBclone\fP (void) const =0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 421 of file slghsymbol\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual ContextChange::~ContextChange (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 423 of file slghsymbol\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void ContextChange::apply (\fBParserWalkerChange\fP & walker) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBContextCommit\fP, and \fBContextOp\fP\&.
+.SS "virtual \fBContextChange\fP* ContextChange::clone (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBContextCommit\fP, and \fBContextOp\fP\&.
+.SS "virtual void ContextChange::restoreXml (const \fBElement\fP * el, \fBSleighBase\fP * trans)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBContextCommit\fP, and \fBContextOp\fP\&.
+.SS "virtual void ContextChange::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBContextCommit\fP, and \fBContextOp\fP\&.
+.SS "virtual void ContextChange::validate (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBContextCommit\fP, and \fBContextOp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

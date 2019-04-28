@@ -1,0 +1,57 @@
+.TH "IfaceAssemblyEmit" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IfaceAssemblyEmit
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ifacedecomp\&.hh>\fP
+.PP
+Inherits \fBAssemblyEmit\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIfaceAssemblyEmit\fP (ostream *val, int4 mp)"
+.br
+.ti -1c
+.RI "virtual void \fBdump\fP (const \fBAddress\fP &addr, const string &mnem, const string &body)"
+.br
+.RI "The main disassembly emitting method\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 61 of file ifacedecomp\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "IfaceAssemblyEmit::IfaceAssemblyEmit (ostream * val, int4 mp)\fC [inline]\fP"
+
+.PP
+Definition at line 65 of file ifacedecomp\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void IfaceAssemblyEmit::dump (const \fBAddress\fP & addr, const string & mnem, const string & body)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+The main disassembly emitting method\&. The disassembly strings for a single machine instruction are passed back to an application through this method\&. Particular applications can tailor the use of the disassembly by overriding this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fBAddress\fP of the machine instruction 
+.br
+\fImnem\fP is the decoded instruction mnemonic 
+.br
+\fIbody\fP is the decode body (or operands) of the instruction 
+.RE
+.PP
+
+.PP
+Implements \fBAssemblyEmit\fP\&.
+.PP
+Definition at line 66 of file ifacedecomp\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

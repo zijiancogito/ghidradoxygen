@@ -1,0 +1,123 @@
+.TH "ghidra.app.decompiler.DecompilerLocation" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.DecompilerLocation
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ProgramLocation\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompilerLocation\fP (Program program, \fBAddress\fP address, \fBAddress\fP functionEntryPoint, \fBDecompileResults\fP results, \fBClangToken\fP token, int lineNumber, int charPos)"
+.br
+.ti -1c
+.RI "\fBDecompilerLocation\fP ()"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBgetFunctionEntryPoint\fP ()"
+.br
+.ti -1c
+.RI "\fBDecompileResults\fP \fBgetDecompile\fP ()"
+.br
+.ti -1c
+.RI "\fBClangToken\fP \fBgetToken\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetTokenName\fP ()"
+.br
+.ti -1c
+.RI "int \fBhashCode\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBequals\fP (Object obj)"
+.br
+.ti -1c
+.RI "void \fBsaveState\fP (SaveState saveState)"
+.br
+.ti -1c
+.RI "void \fBrestoreState\fP (Program program1, SaveState obj)"
+.br
+.ti -1c
+.RI "int \fBgetLineNumber\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetCharPos\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 23 of file DecompilerLocation\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.DecompilerLocation\&.DecompilerLocation (Program program, \fBAddress\fP address, \fBAddress\fP functionEntryPoint, \fBDecompileResults\fP results, \fBClangToken\fP token, int lineNumber, int charPos)\fC [inline]\fP"
+
+.PP
+Definition at line 31 of file DecompilerLocation\&.java\&.
+.SS "ghidra\&.app\&.decompiler\&.DecompilerLocation\&.DecompilerLocation ()\fC [inline]\fP"
+Default constructor required for restoring a program location from XML\&. 
+.PP
+Definition at line 45 of file DecompilerLocation\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompilerLocation\&.equals (Object obj)\fC [inline]\fP"
+
+.PP
+Definition at line 87 of file DecompilerLocation\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.DecompilerLocation\&.getCharPos ()\fC [inline]\fP"
+
+.PP
+Definition at line 137 of file DecompilerLocation\&.java\&.
+.SS "\fBDecompileResults\fP ghidra\&.app\&.decompiler\&.DecompilerLocation\&.getDecompile ()\fC [inline]\fP"
+Results from the decompilation
+.PP
+\fBReturns:\fP
+.RS 4
+C-AST, DFG, and CFG object\&. Can return null if there are no results attached to this location\&. 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file DecompilerLocation\&.java\&.
+.SS "\fBAddress\fP ghidra\&.app\&.decompiler\&.DecompilerLocation\&.getFunctionEntryPoint ()\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file DecompilerLocation\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.DecompilerLocation\&.getLineNumber ()\fC [inline]\fP"
+
+.PP
+Definition at line 133 of file DecompilerLocation\&.java\&.
+.SS "\fBClangToken\fP ghidra\&.app\&.decompiler\&.DecompilerLocation\&.getToken (void)\fC [inline]\fP"
+C text token at the current cursor location
+.PP
+\fBReturns:\fP
+.RS 4
+token at this location, could be null if there are no decompiler results 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file DecompilerLocation\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompilerLocation\&.getTokenName ()\fC [inline]\fP"
+
+.PP
+Definition at line 70 of file DecompilerLocation\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.DecompilerLocation\&.hashCode ()\fC [inline]\fP"
+
+.PP
+Definition at line 75 of file DecompilerLocation\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompilerLocation\&.restoreState (Program program1, SaveState obj)\fC [inline]\fP"
+
+.PP
+Definition at line 124 of file DecompilerLocation\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompilerLocation\&.saveState (SaveState saveState)\fC [inline]\fP"
+
+.PP
+Definition at line 115 of file DecompilerLocation\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

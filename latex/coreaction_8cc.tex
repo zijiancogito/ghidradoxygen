@@ -1,0 +1,84 @@
+\hypertarget{coreaction_8cc}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/coreaction.cc File Reference}
+\label{coreaction_8cc}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.cc}}
+{\ttfamily \#include \char`\"{}coreaction.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}condexe.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}double.\+hh\char`\"{}}\newline
+Include dependency graph for coreaction.\+cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{coreaction_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_stack_eqn}{Stack\+Eqn}}
+\begin{DoxyCompactList}\small\item\em A stack equation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_stack_solver}{Stack\+Solver}}
+\begin{DoxyCompactList}\small\item\em A class that solves for stack-\/pointer changes across unknown sub-\/functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{coreaction_8cc_a5e88524a287b92d8946d5906103df514}{build\+\_\+defaultactions}} (\mbox{\hyperlink{class_action_database}{Action\+Database}} \&allacts)
+\begin{DoxyCompactList}\small\item\em Build the default actions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coreaction_8cc_a122798abac4d42f44020ef5d71d689e3}{universal\+\_\+action}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$conf)
+\begin{DoxyCompactList}\small\item\em The generic decompilation action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{coreaction_8cc_a5e88524a287b92d8946d5906103df514}\label{coreaction_8cc_a5e88524a287b92d8946d5906103df514}} 
+\index{coreaction.cc@{coreaction.cc}!build\_defaultactions@{build\_defaultactions}}
+\index{build\_defaultactions@{build\_defaultactions}!coreaction.cc@{coreaction.cc}}
+\subsubsection{\texorpdfstring{build\_defaultactions()}{build\_defaultactions()}}
+{\footnotesize\ttfamily void build\+\_\+defaultactions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_action_database}{Action\+Database}} \&}]{allacts }\end{DoxyParamCaption})}
+
+
+
+Build the default actions. 
+
+Build the default {\itshape root} Actions\+: decompile, jumptable, normalize, paramid, register, firstpass 
+\begin{DoxyParams}{Parameters}
+{\em allacts} & is the database that will hold the {\itshape root} Actions \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4429 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{coreaction_8cc_a5e88524a287b92d8946d5906103df514_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{coreaction_8cc_a122798abac4d42f44020ef5d71d689e3}\label{coreaction_8cc_a122798abac4d42f44020ef5d71d689e3}} 
+\index{coreaction.cc@{coreaction.cc}!universal\_action@{universal\_action}}
+\index{universal\_action@{universal\_action}!coreaction.cc@{coreaction.cc}}
+\subsubsection{\texorpdfstring{universal\_action()}{universal\_action()}}
+{\footnotesize\ttfamily void universal\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{conf }\end{DoxyParamCaption})}
+
+
+
+The generic decompilation action. 
+
+Construct the {\bfseries{universal}} \mbox{\hyperlink{class_action}{Action}} that contains all possible components 
+\begin{DoxyParams}{Parameters}
+{\em conf} & is the \mbox{\hyperlink{class_architecture}{Architecture}} that will use the \mbox{\hyperlink{class_action}{Action}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4469 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{coreaction_8cc_a122798abac4d42f44020ef5d71d689e3_cgraph}
+\end{center}
+\end{figure}

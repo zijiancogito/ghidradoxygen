@@ -1,0 +1,106 @@
+.TH "PatternEquation" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PatternEquation
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpatexpress\&.hh>\fP
+.PP
+Inherited by \fBEquationAnd\fP, \fBEquationCat\fP, \fBEquationLeftEllipsis\fP, \fBEquationOr\fP, \fBEquationRightEllipsis\fP, \fBOperandEquation\fP, \fBUnconstrainedEquation\fP, and \fBValExpressEquation\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternEquation\fP (void)"
+.br
+.ti -1c
+.RI "const \fBTokenPattern\fP & \fBgetTokenPattern\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBgenPattern\fP (const vector< \fBTokenPattern\fP > &ops) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBresolveOperandLeft\fP (\fBOperandResolve\fP &state) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBoperandOrder\fP (\fBConstructor\fP *ct, vector< \fBOperandSymbol\fP * > &order) const"
+.br
+.ti -1c
+.RI "void \fBlayClaim\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBrelease\fP (\fBPatternEquation\fP *pateq)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~PatternEquation\fP (void)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTokenPattern\fP \fBresultpattern\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 336 of file slghpatexpress\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual PatternEquation::~PatternEquation (void)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 340 of file slghpatexpress\&.hh\&.
+.SS "PatternEquation::PatternEquation (void)\fC [inline]\fP"
+
+.PP
+Definition at line 342 of file slghpatexpress\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void PatternEquation::genPattern (const vector< \fBTokenPattern\fP > & ops) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBEquationRightEllipsis\fP, \fBEquationLeftEllipsis\fP, \fBEquationCat\fP, \fBEquationOr\fP, \fBEquationAnd\fP, \fBGreaterEqualEquation\fP, \fBGreaterEquation\fP, \fBLessEqualEquation\fP, \fBLessEquation\fP, \fBNotEqualEquation\fP, \fBEqualEquation\fP, \fBUnconstrainedEquation\fP, and \fBOperandEquation\fP\&.
+.SS "const \fBTokenPattern\fP& PatternEquation::getTokenPattern (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 343 of file slghpatexpress\&.hh\&.
+.SS "void PatternEquation::layClaim (void)\fC [inline]\fP"
+
+.PP
+Definition at line 347 of file slghpatexpress\&.hh\&.
+.SS "virtual void PatternEquation::operandOrder (\fBConstructor\fP * ct, vector< \fBOperandSymbol\fP * > & order) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBEquationRightEllipsis\fP, \fBEquationLeftEllipsis\fP, \fBEquationCat\fP, \fBEquationOr\fP, \fBEquationAnd\fP, and \fBOperandEquation\fP\&.
+.PP
+Definition at line 346 of file slghpatexpress\&.hh\&.
+.SS "void PatternEquation::release (\fBPatternEquation\fP * pateq)\fC [static]\fP"
+
+.PP
+Definition at line 1157 of file slghpatexpress\&.cc\&.
+.SS "virtual bool PatternEquation::resolveOperandLeft (\fBOperandResolve\fP & state) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBEquationRightEllipsis\fP, \fBEquationLeftEllipsis\fP, \fBEquationCat\fP, \fBEquationOr\fP, \fBEquationAnd\fP, \fBValExpressEquation\fP, \fBUnconstrainedEquation\fP, and \fBOperandEquation\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBTokenPattern\fP PatternEquation::resultpattern\fC [mutable]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 339 of file slghpatexpress\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,663 @@
+\hypertarget{class_parser_context}{}\section{Parser\+Context Class Reference}
+\label{class_parser_context}\index{ParserContext@{ParserContext}}
+
+
+{\ttfamily \#include $<$context.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_parser_context_aa80b0aff260390f32fc1950107de8b00a441c5ab572992494ae677aad16b91295}{uninitialized}} = 0, 
+\mbox{\hyperlink{class_parser_context_aa80b0aff260390f32fc1950107de8b00ac48cd50415fffd34fba3afcb66e5ecca}{disassembly}} = 1, 
+\mbox{\hyperlink{class_parser_context_aa80b0aff260390f32fc1950107de8b00ad49caf3f9d467ba77037b4d6c3a47517}{pcode}} = 2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_parser_context_a1f9d9209341ee399159bef431641eb08}{Parser\+Context}} (\mbox{\hyperlink{class_context_cache}{Context\+Cache}} $\ast$ccache)
+\item 
+\mbox{\hyperlink{class_parser_context_a8a561cf95869f260c22591de7035914e}{$\sim$\+Parser\+Context}} (void)
+\item 
+uint1 $\ast$ \mbox{\hyperlink{class_parser_context_a48bb82379ee3ff25a90e420a45506b20}{get\+Buffer}} (void)
+\item 
+void \mbox{\hyperlink{class_parser_context_ac8c76cf5ca381b1aedff9adb6334547c}{initialize}} (int4 maxstate, int4 maxparam, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc)
+\item 
+int4 \mbox{\hyperlink{class_parser_context_a092b001f0511b580e0fed894baf20036}{get\+Parser\+State}} (void) const
+\item 
+void \mbox{\hyperlink{class_parser_context_a49b8c4b331d6dad48a146c0675bf08c6}{set\+Parser\+State}} (int4 st)
+\item 
+void \mbox{\hyperlink{class_parser_context_aeadc3c9beab067825f0f0c0a25618f84}{deallocate\+State}} (\mbox{\hyperlink{class_parser_walker_change}{Parser\+Walker\+Change}} \&walker)
+\item 
+void \mbox{\hyperlink{class_parser_context_a93151174575222516e445bd6a06cb93c}{allocate\+Operand}} (int4 i, \mbox{\hyperlink{class_parser_walker_change}{Parser\+Walker\+Change}} \&walker)
+\item 
+void \mbox{\hyperlink{class_parser_context_a2806900c8b222d21f106031876b72e8e}{set\+Addr}} (const \mbox{\hyperlink{class_address}{Address}} \&ad)
+\item 
+void \mbox{\hyperlink{class_parser_context_ae9a4db4a509177c0797092372dfaabcb}{set\+Naddr}} (const \mbox{\hyperlink{class_address}{Address}} \&ad)
+\item 
+void \mbox{\hyperlink{class_parser_context_a804dc3663f33ae4a4ffb7278e7225546}{set\+Calladdr}} (const \mbox{\hyperlink{class_address}{Address}} \&ad)
+\item 
+void \mbox{\hyperlink{class_parser_context_a26c3fe0af432d556742152f7049dfcb9}{add\+Commit}} (\mbox{\hyperlink{class_triple_symbol}{Triple\+Symbol}} $\ast$sym, int4 num, uintm mask, bool flow, \mbox{\hyperlink{struct_construct_state}{Construct\+State}} $\ast$point)
+\item 
+void \mbox{\hyperlink{class_parser_context_ab1b9f2de6217feb73966e15ef89ab4f4}{clear\+Commits}} (void)
+\item 
+void \mbox{\hyperlink{class_parser_context_aa08843c5d8fb8267069a83120b77bed5}{apply\+Commits}} (void)
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_context_a6e19b91b26906e6678f1065d9118da05}{get\+Addr}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_context_aecef32b0b498d6dcb78ca223f2737061}{get\+Naddr}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_context_a85ee6aa4678230479716fbecb6be31cf}{get\+Dest\+Addr}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_context_a98d90338dd2a0605dc74a220fa0a1eb7}{get\+Ref\+Addr}} (void) const
+\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_parser_context_adf3c2cc3d08bbb0da16f307629566942}{get\+Cur\+Space}} (void) const
+\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_parser_context_a9dd73c7794a457c62b25d733e8825161}{get\+Const\+Space}} (void) const
+\item 
+uintm \mbox{\hyperlink{class_parser_context_a5112f754f6655d02c1515a6667e9328e}{get\+Instruction\+Bytes}} (int4 byteoff, int4 numbytes, uint4 off) const
+\item 
+uintm \mbox{\hyperlink{class_parser_context_a9f3ffbc9719247bd2ef63636eff6b0d3}{get\+Context\+Bytes}} (int4 byteoff, int4 numbytes) const
+\item 
+uintm \mbox{\hyperlink{class_parser_context_abe5d087584325bdb7f435bc2b15da64c}{get\+Instruction\+Bits}} (int4 startbit, int4 size, uint4 off) const
+\item 
+uintm \mbox{\hyperlink{class_parser_context_aa501230fbe7d667d8453f5ccc8d4f8f0}{get\+Context\+Bits}} (int4 startbit, int4 size) const
+\item 
+void \mbox{\hyperlink{class_parser_context_a1242790851c096298227efeab13a2df0}{set\+Context\+Word}} (int4 i, uintm val, uintm mask)
+\item 
+void \mbox{\hyperlink{class_parser_context_af07fe028f5e411bdb414b1683bd4c3b6}{load\+Context}} (void)
+\item 
+int4 \mbox{\hyperlink{class_parser_context_a9771627b94baf35822436ae402cce979}{get\+Length}} (void) const
+\item 
+void \mbox{\hyperlink{class_parser_context_a86fae2fe1c96a52c234b8b4533e4687e}{set\+Delay\+Slot}} (int4 val)
+\item 
+int4 \mbox{\hyperlink{class_parser_context_a8a6526b4b2c1d0ee6cfee2cd5935dcbc}{get\+Delay\+Slot}} (void) const
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_parser_context_a556db40b9849665da81ef5456e1d45c0}{Parser\+Walker}}
+\item 
+class \mbox{\hyperlink{class_parser_context_ac7f0ef2000854fe3bbf14fe58f7d3f1d}{Parser\+Walker\+Change}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 68 of file context.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_parser_context_aa80b0aff260390f32fc1950107de8b00}\label{class_parser_context_aa80b0aff260390f32fc1950107de8b00}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{uninitialized@{uninitialized}!ParserContext@{ParserContext}}\index{ParserContext@{ParserContext}!uninitialized@{uninitialized}}}\mbox{\Hypertarget{class_parser_context_aa80b0aff260390f32fc1950107de8b00a441c5ab572992494ae677aad16b91295}\label{class_parser_context_aa80b0aff260390f32fc1950107de8b00a441c5ab572992494ae677aad16b91295}} 
+uninitialized&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{disassembly@{disassembly}!ParserContext@{ParserContext}}\index{ParserContext@{ParserContext}!disassembly@{disassembly}}}\mbox{\Hypertarget{class_parser_context_aa80b0aff260390f32fc1950107de8b00ac48cd50415fffd34fba3afcb66e5ecca}\label{class_parser_context_aa80b0aff260390f32fc1950107de8b00ac48cd50415fffd34fba3afcb66e5ecca}} 
+disassembly&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{pcode@{pcode}!ParserContext@{ParserContext}}\index{ParserContext@{ParserContext}!pcode@{pcode}}}\mbox{\Hypertarget{class_parser_context_aa80b0aff260390f32fc1950107de8b00ad49caf3f9d467ba77037b4d6c3a47517}\label{class_parser_context_aa80b0aff260390f32fc1950107de8b00ad49caf3f9d467ba77037b4d6c3a47517}} 
+pcode&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 72 of file context.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_parser_context_a1f9d9209341ee399159bef431641eb08}\label{class_parser_context_a1f9d9209341ee399159bef431641eb08}} 
+\index{ParserContext@{ParserContext}!ParserContext@{ParserContext}}
+\index{ParserContext@{ParserContext}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{ParserContext()}{ParserContext()}}
+{\footnotesize\ttfamily Parser\+Context\+::\+Parser\+Context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_context_cache}{Context\+Cache}} $\ast$}]{ccache }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file context.\+cc.
+
+\mbox{\Hypertarget{class_parser_context_a8a561cf95869f260c22591de7035914e}\label{class_parser_context_a8a561cf95869f260c22591de7035914e}} 
+\index{ParserContext@{ParserContext}!````~ParserContext@{$\sim$ParserContext}}
+\index{````~ParserContext@{$\sim$ParserContext}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{$\sim$ParserContext()}{~ParserContext()}}
+{\footnotesize\ttfamily Parser\+Context\+::$\sim$\+Parser\+Context (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 94 of file context.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_parser_context_a26c3fe0af432d556742152f7049dfcb9}\label{class_parser_context_a26c3fe0af432d556742152f7049dfcb9}} 
+\index{ParserContext@{ParserContext}!addCommit@{addCommit}}
+\index{addCommit@{addCommit}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{addCommit()}{addCommit()}}
+{\footnotesize\ttfamily void Parser\+Context\+::add\+Commit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_triple_symbol}{Triple\+Symbol}} $\ast$}]{sym,  }\item[{int4}]{num,  }\item[{uintm}]{mask,  }\item[{bool}]{flow,  }\item[{\mbox{\hyperlink{struct_construct_state}{Construct\+State}} $\ast$}]{point }\end{DoxyParamCaption})}
+
+
+
+Definition at line 119 of file context.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a26c3fe0af432d556742152f7049dfcb9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a93151174575222516e445bd6a06cb93c}\label{class_parser_context_a93151174575222516e445bd6a06cb93c}} 
+\index{ParserContext@{ParserContext}!allocateOperand@{allocateOperand}}
+\index{allocateOperand@{allocateOperand}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{allocateOperand()}{allocateOperand()}}
+{\footnotesize\ttfamily void Parser\+Context\+::allocate\+Operand (\begin{DoxyParamCaption}\item[{int4}]{i,  }\item[{\mbox{\hyperlink{class_parser_walker_change}{Parser\+Walker\+Change}} \&}]{walker }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 186 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a93151174575222516e445bd6a06cb93c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_aa08843c5d8fb8267069a83120b77bed5}\label{class_parser_context_aa08843c5d8fb8267069a83120b77bed5}} 
+\index{ParserContext@{ParserContext}!applyCommits@{applyCommits}}
+\index{applyCommits@{applyCommits}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{applyCommits()}{applyCommits()}}
+{\footnotesize\ttfamily void Parser\+Context\+::apply\+Commits (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 133 of file context.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_aa08843c5d8fb8267069a83120b77bed5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_aa08843c5d8fb8267069a83120b77bed5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_ab1b9f2de6217feb73966e15ef89ab4f4}\label{class_parser_context_ab1b9f2de6217feb73966e15ef89ab4f4}} 
+\index{ParserContext@{ParserContext}!clearCommits@{clearCommits}}
+\index{clearCommits@{clearCommits}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{clearCommits()}{clearCommits()}}
+{\footnotesize\ttfamily void Parser\+Context\+::clear\+Commits (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 105 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_ab1b9f2de6217feb73966e15ef89ab4f4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_aeadc3c9beab067825f0f0c0a25618f84}\label{class_parser_context_aeadc3c9beab067825f0f0c0a25618f84}} 
+\index{ParserContext@{ParserContext}!deallocateState@{deallocateState}}
+\index{deallocateState@{deallocateState}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{deallocateState()}{deallocateState()}}
+{\footnotesize\ttfamily void Parser\+Context\+::deallocate\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parser_walker_change}{Parser\+Walker\+Change}} \&}]{walker }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 180 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_aeadc3c9beab067825f0f0c0a25618f84_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_aeadc3c9beab067825f0f0c0a25618f84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a6e19b91b26906e6678f1065d9118da05}\label{class_parser_context_a6e19b91b26906e6678f1065d9118da05}} 
+\index{ParserContext@{ParserContext}!getAddr@{getAddr}}
+\index{getAddr@{getAddr}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getAddr()}{getAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Context\+::get\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 107 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a6e19b91b26906e6678f1065d9118da05_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a48bb82379ee3ff25a90e420a45506b20}\label{class_parser_context_a48bb82379ee3ff25a90e420a45506b20}} 
+\index{ParserContext@{ParserContext}!getBuffer@{getBuffer}}
+\index{getBuffer@{getBuffer}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getBuffer()}{getBuffer()}}
+{\footnotesize\ttfamily uint1$\ast$ Parser\+Context\+::get\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 95 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a48bb82379ee3ff25a90e420a45506b20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a9dd73c7794a457c62b25d733e8825161}\label{class_parser_context_a9dd73c7794a457c62b25d733e8825161}} 
+\index{ParserContext@{ParserContext}!getConstSpace@{getConstSpace}}
+\index{getConstSpace@{getConstSpace}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getConstSpace()}{getConstSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Parser\+Context\+::get\+Const\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 112 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a9dd73c7794a457c62b25d733e8825161_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_aa501230fbe7d667d8453f5ccc8d4f8f0}\label{class_parser_context_aa501230fbe7d667d8453f5ccc8d4f8f0}} 
+\index{ParserContext@{ParserContext}!getContextBits@{getContextBits}}
+\index{getContextBits@{getContextBits}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getContextBits()}{getContextBits()}}
+{\footnotesize\ttfamily uintm Parser\+Context\+::get\+Context\+Bits (\begin{DoxyParamCaption}\item[{int4}]{startbit,  }\item[{int4}]{size }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 100 of file context.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_aa501230fbe7d667d8453f5ccc8d4f8f0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a9f3ffbc9719247bd2ef63636eff6b0d3}\label{class_parser_context_a9f3ffbc9719247bd2ef63636eff6b0d3}} 
+\index{ParserContext@{ParserContext}!getContextBytes@{getContextBytes}}
+\index{getContextBytes@{getContextBytes}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getContextBytes()}{getContextBytes()}}
+{\footnotesize\ttfamily uintm Parser\+Context\+::get\+Context\+Bytes (\begin{DoxyParamCaption}\item[{int4}]{byteoff,  }\item[{int4}]{numbytes }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 81 of file context.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a9f3ffbc9719247bd2ef63636eff6b0d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_adf3c2cc3d08bbb0da16f307629566942}\label{class_parser_context_adf3c2cc3d08bbb0da16f307629566942}} 
+\index{ParserContext@{ParserContext}!getCurSpace@{getCurSpace}}
+\index{getCurSpace@{getCurSpace}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getCurSpace()}{getCurSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Parser\+Context\+::get\+Cur\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 111 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_adf3c2cc3d08bbb0da16f307629566942_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a8a6526b4b2c1d0ee6cfee2cd5935dcbc}\label{class_parser_context_a8a6526b4b2c1d0ee6cfee2cd5935dcbc}} 
+\index{ParserContext@{ParserContext}!getDelaySlot@{getDelaySlot}}
+\index{getDelaySlot@{getDelaySlot}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getDelaySlot()}{getDelaySlot()}}
+{\footnotesize\ttfamily int4 Parser\+Context\+::get\+Delay\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 121 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a8a6526b4b2c1d0ee6cfee2cd5935dcbc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a85ee6aa4678230479716fbecb6be31cf}\label{class_parser_context_a85ee6aa4678230479716fbecb6be31cf}} 
+\index{ParserContext@{ParserContext}!getDestAddr@{getDestAddr}}
+\index{getDestAddr@{getDestAddr}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getDestAddr()}{getDestAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Context\+::get\+Dest\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 109 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a85ee6aa4678230479716fbecb6be31cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_abe5d087584325bdb7f435bc2b15da64c}\label{class_parser_context_abe5d087584325bdb7f435bc2b15da64c}} 
+\index{ParserContext@{ParserContext}!getInstructionBits@{getInstructionBits}}
+\index{getInstructionBits@{getInstructionBits}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getInstructionBits()}{getInstructionBits()}}
+{\footnotesize\ttfamily uintm Parser\+Context\+::get\+Instruction\+Bits (\begin{DoxyParamCaption}\item[{int4}]{startbit,  }\item[{int4}]{size,  }\item[{uint4}]{off }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 62 of file context.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_abe5d087584325bdb7f435bc2b15da64c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a5112f754f6655d02c1515a6667e9328e}\label{class_parser_context_a5112f754f6655d02c1515a6667e9328e}} 
+\index{ParserContext@{ParserContext}!getInstructionBytes@{getInstructionBytes}}
+\index{getInstructionBytes@{getInstructionBytes}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getInstructionBytes()}{getInstructionBytes()}}
+{\footnotesize\ttfamily uintm Parser\+Context\+::get\+Instruction\+Bytes (\begin{DoxyParamCaption}\item[{int4}]{byteoff,  }\item[{int4}]{numbytes,  }\item[{uint4}]{off }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 46 of file context.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a5112f754f6655d02c1515a6667e9328e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a9771627b94baf35822436ae402cce979}\label{class_parser_context_a9771627b94baf35822436ae402cce979}} 
+\index{ParserContext@{ParserContext}!getLength@{getLength}}
+\index{getLength@{getLength}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily int4 Parser\+Context\+::get\+Length (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 119 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a9771627b94baf35822436ae402cce979_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_aecef32b0b498d6dcb78ca223f2737061}\label{class_parser_context_aecef32b0b498d6dcb78ca223f2737061}} 
+\index{ParserContext@{ParserContext}!getNaddr@{getNaddr}}
+\index{getNaddr@{getNaddr}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getNaddr()}{getNaddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Context\+::get\+Naddr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 108 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_aecef32b0b498d6dcb78ca223f2737061_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a092b001f0511b580e0fed894baf20036}\label{class_parser_context_a092b001f0511b580e0fed894baf20036}} 
+\index{ParserContext@{ParserContext}!getParserState@{getParserState}}
+\index{getParserState@{getParserState}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getParserState()}{getParserState()}}
+{\footnotesize\ttfamily int4 Parser\+Context\+::get\+Parser\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 97 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a092b001f0511b580e0fed894baf20036_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a98d90338dd2a0605dc74a220fa0a1eb7}\label{class_parser_context_a98d90338dd2a0605dc74a220fa0a1eb7}} 
+\index{ParserContext@{ParserContext}!getRefAddr@{getRefAddr}}
+\index{getRefAddr@{getRefAddr}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{getRefAddr()}{getRefAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Context\+::get\+Ref\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 110 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a98d90338dd2a0605dc74a220fa0a1eb7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_ac8c76cf5ca381b1aedff9adb6334547c}\label{class_parser_context_ac8c76cf5ca381b1aedff9adb6334547c}} 
+\index{ParserContext@{ParserContext}!initialize@{initialize}}
+\index{initialize@{initialize}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Parser\+Context\+::initialize (\begin{DoxyParamCaption}\item[{int4}]{maxstate,  }\item[{int4}]{maxparam,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file context.\+cc.
+
+\mbox{\Hypertarget{class_parser_context_af07fe028f5e411bdb414b1683bd4c3b6}\label{class_parser_context_af07fe028f5e411bdb414b1683bd4c3b6}} 
+\index{ParserContext@{ParserContext}!loadContext@{loadContext}}
+\index{loadContext@{loadContext}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{loadContext()}{loadContext()}}
+{\footnotesize\ttfamily void Parser\+Context\+::load\+Context (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 118 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_af07fe028f5e411bdb414b1683bd4c3b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a2806900c8b222d21f106031876b72e8e}\label{class_parser_context_a2806900c8b222d21f106031876b72e8e}} 
+\index{ParserContext@{ParserContext}!setAddr@{setAddr}}
+\index{setAddr@{setAddr}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{setAddr()}{setAddr()}}
+{\footnotesize\ttfamily void Parser\+Context\+::set\+Addr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 101 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a2806900c8b222d21f106031876b72e8e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a804dc3663f33ae4a4ffb7278e7225546}\label{class_parser_context_a804dc3663f33ae4a4ffb7278e7225546}} 
+\index{ParserContext@{ParserContext}!setCalladdr@{setCalladdr}}
+\index{setCalladdr@{setCalladdr}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{setCalladdr()}{setCalladdr()}}
+{\footnotesize\ttfamily void Parser\+Context\+::set\+Calladdr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 103 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a804dc3663f33ae4a4ffb7278e7225546_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a1242790851c096298227efeab13a2df0}\label{class_parser_context_a1242790851c096298227efeab13a2df0}} 
+\index{ParserContext@{ParserContext}!setContextWord@{setContextWord}}
+\index{setContextWord@{setContextWord}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{setContextWord()}{setContextWord()}}
+{\footnotesize\ttfamily void Parser\+Context\+::set\+Context\+Word (\begin{DoxyParamCaption}\item[{int4}]{i,  }\item[{uintm}]{val,  }\item[{uintm}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 117 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a1242790851c096298227efeab13a2df0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a86fae2fe1c96a52c234b8b4533e4687e}\label{class_parser_context_a86fae2fe1c96a52c234b8b4533e4687e}} 
+\index{ParserContext@{ParserContext}!setDelaySlot@{setDelaySlot}}
+\index{setDelaySlot@{setDelaySlot}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{setDelaySlot()}{setDelaySlot()}}
+{\footnotesize\ttfamily void Parser\+Context\+::set\+Delay\+Slot (\begin{DoxyParamCaption}\item[{int4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 120 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a86fae2fe1c96a52c234b8b4533e4687e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_ae9a4db4a509177c0797092372dfaabcb}\label{class_parser_context_ae9a4db4a509177c0797092372dfaabcb}} 
+\index{ParserContext@{ParserContext}!setNaddr@{setNaddr}}
+\index{setNaddr@{setNaddr}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{setNaddr()}{setNaddr()}}
+{\footnotesize\ttfamily void Parser\+Context\+::set\+Naddr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 102 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_ae9a4db4a509177c0797092372dfaabcb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_context_a49b8c4b331d6dad48a146c0675bf08c6}\label{class_parser_context_a49b8c4b331d6dad48a146c0675bf08c6}} 
+\index{ParserContext@{ParserContext}!setParserState@{setParserState}}
+\index{setParserState@{setParserState}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{setParserState()}{setParserState()}}
+{\footnotesize\ttfamily void Parser\+Context\+::set\+Parser\+State (\begin{DoxyParamCaption}\item[{int4}]{st }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 98 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_context_a49b8c4b331d6dad48a146c0675bf08c6_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_parser_context_a556db40b9849665da81ef5456e1d45c0}\label{class_parser_context_a556db40b9849665da81ef5456e1d45c0}} 
+\index{ParserContext@{ParserContext}!ParserWalker@{ParserWalker}}
+\index{ParserWalker@{ParserWalker}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{ParserWalker}{ParserWalker}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_parser_walker}{Parser\+Walker}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 69 of file context.\+hh.
+
+\mbox{\Hypertarget{class_parser_context_ac7f0ef2000854fe3bbf14fe58f7d3f1d}\label{class_parser_context_ac7f0ef2000854fe3bbf14fe58f7d3f1d}} 
+\index{ParserContext@{ParserContext}!ParserWalkerChange@{ParserWalkerChange}}
+\index{ParserWalkerChange@{ParserWalkerChange}!ParserContext@{ParserContext}}
+\subsubsection{\texorpdfstring{ParserWalkerChange}{ParserWalkerChange}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_parser_walker_change}{Parser\+Walker\+Change}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 70 of file context.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{context_8hh}{context.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{context_8cc}{context.\+cc}}\end{DoxyCompactItemize}

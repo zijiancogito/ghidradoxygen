@@ -1,0 +1,181 @@
+\hypertarget{class_type_op_unary}{}\section{Type\+Op\+Unary Class Reference}
+\label{class_type_op_unary}\index{TypeOpUnary@{TypeOpUnary}}
+
+
+A generic unary operator\+: one input and one output.  
+
+
+
+
+{\ttfamily \#include $<$typeop.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Op\+Unary\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_unary__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Op\+Unary\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_unary__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_op_unary_ab24fc74e370f34dd61f488825fca2dc7}{Type\+Op\+Unary}} (\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$t, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, const string \&n, \mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} mout, \mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} min)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_unary_a33872e1381109a5fdb1030a2771e0c6e}{get\+Output\+Local}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Find the minimal (or suggested) data-\/type of an output to {\bfseries{this}} op-\/code. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_unary_a80df02d6ff2783f44b3c9dca6f580044}{get\+Input\+Local}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, int4 slot) const
+\begin{DoxyCompactList}\small\item\em Find the minimal (or suggested) data-\/type of an input to {\bfseries{this}} op-\/code. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_op_unary_a05cfe8c1ca862ce3d1e5b994ab98746b}{print\+Raw}} (ostream \&s, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Print (for debugging purposes) {\bfseries{this}} specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A generic unary operator\+: one input and one output. 
+
+All unary op-\/codes have data-\/type for the input value and a data-\/type for the output value 
+
+Definition at line 172 of file typeop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_op_unary_ab24fc74e370f34dd61f488825fca2dc7}\label{class_type_op_unary_ab24fc74e370f34dd61f488825fca2dc7}} 
+\index{TypeOpUnary@{TypeOpUnary}!TypeOpUnary@{TypeOpUnary}}
+\index{TypeOpUnary@{TypeOpUnary}!TypeOpUnary@{TypeOpUnary}}
+\subsubsection{\texorpdfstring{TypeOpUnary()}{TypeOpUnary()}}
+{\footnotesize\ttfamily Type\+Op\+Unary\+::\+Type\+Op\+Unary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$}]{t,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{const string \&}]{n,  }\item[{\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}}}]{mout,  }\item[{\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}}}]{min }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 178 of file typeop.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_op_unary_a80df02d6ff2783f44b3c9dca6f580044}\label{class_type_op_unary_a80df02d6ff2783f44b3c9dca6f580044}} 
+\index{TypeOpUnary@{TypeOpUnary}!getInputLocal@{getInputLocal}}
+\index{getInputLocal@{getInputLocal}!TypeOpUnary@{TypeOpUnary}}
+\subsubsection{\texorpdfstring{getInputLocal()}{getInputLocal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Unary\+::get\+Input\+Local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{int4}]{slot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the minimal (or suggested) data-\/type of an input to {\bfseries{this}} op-\/code. 
+
+The result should depend only on the op-\/code itself (and the size of the input) 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} being considered \\
+\hline
+{\em slot} & is the input being considered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_abe2e4b619932cf94bafb084963a0fc66}{Type\+Op}}.
+
+
+
+Definition at line 287 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_unary_a80df02d6ff2783f44b3c9dca6f580044_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_unary_a33872e1381109a5fdb1030a2771e0c6e}\label{class_type_op_unary_a33872e1381109a5fdb1030a2771e0c6e}} 
+\index{TypeOpUnary@{TypeOpUnary}!getOutputLocal@{getOutputLocal}}
+\index{getOutputLocal@{getOutputLocal}!TypeOpUnary@{TypeOpUnary}}
+\subsubsection{\texorpdfstring{getOutputLocal()}{getOutputLocal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Unary\+::get\+Output\+Local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the minimal (or suggested) data-\/type of an output to {\bfseries{this}} op-\/code. 
+
+The result should depend only on the op-\/code itself (and the size of the output) 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} being considered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a3454cadfb15f6794829123a7ecfe38f5}{Type\+Op}}.
+
+
+
+Definition at line 281 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_unary_a33872e1381109a5fdb1030a2771e0c6e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_unary_a05cfe8c1ca862ce3d1e5b994ab98746b}\label{class_type_op_unary_a05cfe8c1ca862ce3d1e5b994ab98746b}} 
+\index{TypeOpUnary@{TypeOpUnary}!printRaw@{printRaw}}
+\index{printRaw@{printRaw}!TypeOpUnary@{TypeOpUnary}}
+\subsubsection{\texorpdfstring{printRaw()}{printRaw()}}
+{\footnotesize\ttfamily void Type\+Op\+Unary\+::print\+Raw (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print (for debugging purposes) {\bfseries{this}} specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to print \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_type_op_a60717e486917a30cc7cb6e3ce02585e1}{Type\+Op}}.
+
+
+
+Definition at line 293 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_unary_a05cfe8c1ca862ce3d1e5b994ab98746b_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8hh}{typeop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8cc}{typeop.\+cc}}\end{DoxyCompactItemize}

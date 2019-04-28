@@ -1,0 +1,100 @@
+.TH "ScoreProtoModel" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScoreProtoModel \- Class for calculating 'goodness of fit' of parameter trials against a prototype model\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScoreProtoModel\fP (bool isinput, const \fBProtoModel\fP *mod, int4 numparam)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBaddParameter\fP (const \fBAddress\fP &addr, int4 sz)"
+.br
+.RI "Register a trial to be scored\&. "
+.ti -1c
+.RI "void \fBdoScore\fP (void)"
+.br
+.RI "Compute the fitness score\&. "
+.ti -1c
+.RI "int4 \fBgetScore\fP (void) const"
+.br
+.RI "Get the fitness score\&. "
+.ti -1c
+.RI "int4 \fBgetNumMismatch\fP (void) const"
+.br
+.RI "Get the number of mismatched trials\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for calculating 'goodness of fit' of parameter trials against a prototype model\&. 
+
+The class is instantiated with a prototype model (\fBProtoModel\fP)\&. A set of \fBVarnode\fP parameter trials are registered by calling \fBaddParameter()\fP for each trial\&. Then calling \fBdoScore()\fP computes a score that evaluates how well the set of registered trials fit the prototype model\&. A lower score indicates a better fit\&. 
+.PP
+Definition at line 751 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ScoreProtoModel::ScoreProtoModel (bool isinput, const \fBProtoModel\fP * mod, int4 numparam)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisinput\fP is set to \fBtrue\fP to compute scores against the input part of the model 
+.br
+\fImod\fP is the prototype model to score against 
+.br
+\fInumparam\fP is the presumed number of trials that will constitute the score 
+.RE
+.PP
+
+.PP
+Definition at line 1907 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ScoreProtoModel::addParameter (const \fBAddress\fP & addr, int4 sz)"
+
+.PP
+Register a trial to be scored\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the trial 
+.br
+\fIsz\fP is the number of bytes in the trial 
+.RE
+.PP
+
+.PP
+Definition at line 1919 of file fspec\&.cc\&.
+.SS "void ScoreProtoModel::doScore (void)"
+
+.PP
+Compute the fitness score\&. 
+.PP
+Definition at line 1940 of file fspec\&.cc\&.
+.SS "int4 ScoreProtoModel::getNumMismatch (void) const\fC [inline]\fP"
+
+.PP
+Get the number of mismatched trials\&. 
+.PP
+Definition at line 774 of file fspec\&.hh\&.
+.SS "int4 ScoreProtoModel::getScore (void) const\fC [inline]\fP"
+
+.PP
+Get the fitness score\&. 
+.PP
+Definition at line 773 of file fspec\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

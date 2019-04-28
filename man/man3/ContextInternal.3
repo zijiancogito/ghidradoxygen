@@ -1,0 +1,271 @@
+.TH "ContextInternal" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextInternal \- An in-memory implementation of the \fBContextDatabase\fP interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <globalcontext\&.hh>\fP
+.PP
+Inherits \fBContextDatabase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBContextInternal\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~ContextInternal\fP (void)"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetContextSize\fP (void) const"
+.br
+.RI "Retrieve the number of words (uintm) in a context \fIblob\fP\&. "
+.ti -1c
+.RI "virtual void \fBregisterVariable\fP (const string &nm, int4 sbit, int4 ebit)"
+.br
+.RI "Register a new named context variable (as a bit range) with the database\&. "
+.ti -1c
+.RI "virtual const uintm * \fBgetContext\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Get the context blob of values associated with a given address\&. "
+.ti -1c
+.RI "virtual const uintm * \fBgetContext\fP (const \fBAddress\fP &addr, \fBuintb\fP &first, \fBuintb\fP &last) const"
+.br
+.RI "Get the context blob of values associated with a given address and its bounding offsets\&. "
+.ti -1c
+.RI "virtual \fBTrackedSet\fP & \fBgetTrackedDefault\fP (void)"
+.br
+.RI "Get the set of default values for all tracked registers\&. "
+.ti -1c
+.RI "virtual const \fBTrackedSet\fP & \fBgetTrackedSet\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Get the set of tracked register values associated with the given address\&. "
+.ti -1c
+.RI "virtual \fBTrackedSet\fP & \fBcreateSet\fP (const \fBAddress\fP &addr1, const \fBAddress\fP &addr2)"
+.br
+.RI "Create a tracked register set that is valid over the given range\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the entire database to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore the state of \fBthis\fP database object from a serialized XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreFromSpec\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Add initial context state from XML tags in compiler/processor specifications\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An in-memory implementation of the \fBContextDatabase\fP interface\&. 
+
+Context blobs are held in a partition map on addresses\&. Any address within the map indicates a \fIsplit\fP point, where the value of a context variable was explicitly changed\&. Sets of tracked registers are held in a separate partition map\&. 
+.PP
+Definition at line 256 of file globalcontext\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ContextInternal::ContextInternal (void)\fC [inline]\fP"
+
+.PP
+Definition at line 287 of file globalcontext\&.hh\&.
+.SS "virtual ContextInternal::~ContextInternal (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 288 of file globalcontext\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBTrackedSet\fP & ContextInternal::createSet (const \fBAddress\fP & addr1, const \fBAddress\fP & addr2)\fC [virtual]\fP"
+
+.PP
+Create a tracked register set that is valid over the given range\&. This really should be an internal routine\&. The created set is empty, old values are blown away\&. If old/default values are to be preserved, they must be copied back in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr1\fP is the starting address of the given range 
+.br
+\fIaddr2\fP is (1 past) the ending address of the given range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the empty set of tracked register values 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 482 of file globalcontext\&.cc\&.
+.SS "virtual const uintm* ContextInternal::getContext (const \fBAddress\fP & addr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the context blob of values associated with a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the memory region holding the context values for the address 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 292 of file globalcontext\&.hh\&.
+.SS "const uintm * ContextInternal::getContext (const \fBAddress\fP & addr, \fBuintb\fP & first, \fBuintb\fP & last) const\fC [virtual]\fP"
+
+.PP
+Get the context blob of values associated with a given address and its bounding offsets\&. In addition to the memory region, the range of addresses for which the region is valid is passed back as offsets into the address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIfirst\fP will hold the starting offset of the valid range 
+.br
+\fIlast\fP will hold the ending offset of the valid range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the memory region holding the context values for the address 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 419 of file globalcontext\&.cc\&.
+.SS "virtual int4 ContextInternal::getContextSize (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Retrieve the number of words (uintm) in a context \fIblob\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of words 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 289 of file globalcontext\&.hh\&.
+.SS "virtual \fBTrackedSet\fP& ContextInternal::getTrackedDefault (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the set of default values for all tracked registers\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the list of \fBTrackedContext\fP objects 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 295 of file globalcontext\&.hh\&.
+.SS "virtual const \fBTrackedSet\fP& ContextInternal::getTrackedSet (const \fBAddress\fP & addr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the set of tracked register values associated with the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the list of \fBTrackedContext\fP objects 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 296 of file globalcontext\&.hh\&.
+.SS "void ContextInternal::registerVariable (const string & nm, int4 sbit, int4 ebit)\fC [virtual]\fP"
+
+.PP
+Register a new named context variable (as a bit range) with the database\&. A new variable is registered by providing a name and the range of bits the value will occupy within the context blob\&. The full blob size is automatically increased if necessary\&. The variable must be contained within a single word, and all variables must be registered before any values can be set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the new variable 
+.br
+\fIsbit\fP is the position of the variable's most significant bit within the blob 
+.br
+\fIebit\fP is the position of the variable's least significant bit within the blob 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 380 of file globalcontext\&.cc\&.
+.SS "void ContextInternal::restoreFromSpec (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)\fC [virtual]\fP"
+
+.PP
+Add initial context state from XML tags in compiler/processor specifications\&. The database can be configured with a consistent initial state by providing <context_data> tags in either the compiler or processor specification file for the architecture 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is a <context_data> tag 
+.br
+\fImanage\fP is used to resolve address space references 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 539 of file globalcontext\&.cc\&.
+.SS "void ContextInternal::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)\fC [virtual]\fP"
+
+.PP
+Restore the state of \fBthis\fP database object from a serialized XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root element of the XML describing the database state 
+.br
+\fImanage\fP is used to resolve address space references 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 512 of file globalcontext\&.cc\&.
+.SS "void ContextInternal::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the entire database to an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implements \fBContextDatabase\fP\&.
+.PP
+Definition at line 490 of file globalcontext\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

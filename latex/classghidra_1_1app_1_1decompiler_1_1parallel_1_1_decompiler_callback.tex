@@ -1,0 +1,142 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}{}\section{ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback$<$ R $>$ Class Template Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}\index{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}}
+
+
+Inheritance diagram for ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback$<$ R $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback$<$ R $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a7c926a046a5dc4e8021b5120be9391a8}{Decompiler\+Callback}} (Program program, \mbox{\hyperlink{interfaceghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompile_configurer}{Decompile\+Configurer}} configurer)
+\item 
+abstract R \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a88619cf2cd572fb627bf4ff62430ec2f}{process}} (\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results}{Decompile\+Results}} results, Task\+Monitor monitor)  throws Exception
+\item 
+R \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_ae6c111f0e5eb83fadce287f6203868d6}{process}} (Function f, Task\+Monitor monitor)  throws Exception 
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_adec6e5b5a210ecaf2bcb28e1c42415f1}{set\+Timeout}} (int timeout\+Secs)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a652c2f3d7b74015ec26bedb980920049}{dispose}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An implementation of \mbox{\hyperlink{}{Q\+Callback}} that performs the management of the \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}} instances using a Pool.
+
+Clients will get a chance to configure each newly created decompiler via the passed-\/in \mbox{\hyperlink{interfaceghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompile_configurer}{Decompile\+Configurer}}.
+
+Clients must implement \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a88619cf2cd572fb627bf4ff62430ec2f}{process(\+Decompile\+Results, Task\+Monitor)}}, which will be called for each function that is decompiled.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $<$\+R$>$} & the return type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 41 of file Decompiler\+Callback.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a7c926a046a5dc4e8021b5120be9391a8}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a7c926a046a5dc4e8021b5120be9391a8}} 
+\index{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}!DecompilerCallback@{DecompilerCallback}}
+\index{DecompilerCallback@{DecompilerCallback}!ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}}
+\subsubsection{\texorpdfstring{DecompilerCallback()}{DecompilerCallback()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}{ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback}}$<$ R $>$.\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}{Decompiler\+Callback}} (\begin{DoxyParamCaption}\item[{Program}]{program,  }\item[{\mbox{\hyperlink{interfaceghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompile_configurer}{Decompile\+Configurer}}}]{configurer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 46 of file Decompiler\+Callback.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a652c2f3d7b74015ec26bedb980920049}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a652c2f3d7b74015ec26bedb980920049}} 
+\index{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}!dispose@{dispose}}
+\index{dispose@{dispose}!ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}}
+\subsubsection{\texorpdfstring{dispose()}{dispose()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}{ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback}}$<$ R $>$.dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Call this when all work is done so that the pooled decompilers can be disposed 
+
+Definition at line 97 of file Decompiler\+Callback.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a652c2f3d7b74015ec26bedb980920049_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a88619cf2cd572fb627bf4ff62430ec2f}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_a88619cf2cd572fb627bf4ff62430ec2f}} 
+\index{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}!process@{process}}
+\index{process@{process}!ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}}
+\subsubsection{\texorpdfstring{process()}{process()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily abstract R \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}{ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback}}$<$ R $>$.process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results}{Decompile\+Results}}}]{results,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [abstract]}}
+
+This is called when a function is decompiled.
+
+
+\begin{DoxyParams}{Parameters}
+{\em results} & the decompiled results \\
+\hline
+{\em monitor} & the task monitor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the client result 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & if there is any issue processing the given results \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_ae6c111f0e5eb83fadce287f6203868d6}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_ae6c111f0e5eb83fadce287f6203868d6}} 
+\index{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}!process@{process}}
+\index{process@{process}!ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}}
+\subsubsection{\texorpdfstring{process()}{process()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}{ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback}}$<$ R $>$.process (\begin{DoxyParamCaption}\item[{Function}]{f,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 61 of file Decompiler\+Callback.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_adec6e5b5a210ecaf2bcb28e1c42415f1}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback_adec6e5b5a210ecaf2bcb28e1c42415f1}} 
+\index{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}!setTimeout@{setTimeout}}
+\index{setTimeout@{setTimeout}!ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$@{ghidra.app.decompiler.parallel.DecompilerCallback$<$ R $>$}}
+\subsubsection{\texorpdfstring{setTimeout()}{setTimeout()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_decompiler_callback}{ghidra.\+app.\+decompiler.\+parallel.\+Decompiler\+Callback}}$<$ R $>$.set\+Timeout (\begin{DoxyParamCaption}\item[{int}]{timeout\+Secs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the timeout for each decompile
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Secs} & the timeout in seconds \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 90 of file Decompiler\+Callback.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/parallel/\mbox{\hyperlink{_decompiler_callback_8java}{Decompiler\+Callback.\+java}}\end{DoxyCompactItemize}

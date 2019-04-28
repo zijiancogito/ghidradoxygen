@@ -1,0 +1,104 @@
+.TH "ghidra.app.plugin.core.decompile.actions.RenameTask" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.plugin.core.decompile.actions.RenameTask
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameConstantTask\fP, \fBghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameGlobalVariableTask\fP, \fBghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameStructureFieldTask\fP, and \fBghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameVariableTask\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRenameTask\fP (PluginTool \fBtool\fP, String old)"
+.br
+.ti -1c
+.RI "abstract String \fBgetTransactionName\fP ()"
+.br
+.ti -1c
+.RI "abstract boolean \fBisValid\fP (String newNm)"
+.br
+.ti -1c
+.RI "abstract void \fBcommit\fP ()  throws DuplicateNameException, InvalidInputException"
+.br
+.ti -1c
+.RI "String \fBgetNewName\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBrunDialog\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "String \fBnewName\fP = null"
+.br
+.ti -1c
+.RI "String \fBoldName\fP"
+.br
+.ti -1c
+.RI "String \fBerrorMsg\fP = null"
+.br
+.ti -1c
+.RI "PluginTool \fBtool\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for renaming symbols within the decompiler window 
+.PP
+Definition at line 29 of file RenameTask\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.RenameTask (PluginTool tool, String old)\fC [inline]\fP"
+
+.PP
+Definition at line 35 of file RenameTask\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract void ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.commit () throws DuplicateNameException, InvalidInputException\fC [abstract]\fP"
+
+.SS "String ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.getNewName ()\fC [inline]\fP"
+
+.PP
+Definition at line 46 of file RenameTask\&.java\&.
+.SS "abstract String ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.getTransactionName ()\fC [abstract]\fP"
+
+.SS "abstract boolean ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.isValid (String newNm)\fC [abstract]\fP"
+
+.SS "boolean ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.runDialog ()\fC [inline]\fP"
+Bring up a dialog that is initialized with the old name, and allows the user to select a new name 
+.PP
+\fBReturns:\fP
+.RS 4
+true unless the user canceled 
+.RE
+.PP
+
+.PP
+Definition at line 52 of file RenameTask\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "String ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.errorMsg = null\fC [protected]\fP"
+
+.PP
+Definition at line 32 of file RenameTask\&.java\&.
+.SS "String ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.newName = null\fC [protected]\fP"
+
+.PP
+Definition at line 30 of file RenameTask\&.java\&.
+.SS "String ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.oldName\fC [protected]\fP"
+
+.PP
+Definition at line 31 of file RenameTask\&.java\&.
+.SS "PluginTool ghidra\&.app\&.plugin\&.core\&.decompile\&.actions\&.RenameTask\&.tool\fC [protected]\fP"
+
+.PP
+Definition at line 33 of file RenameTask\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

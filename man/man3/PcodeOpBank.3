@@ -1,0 +1,424 @@
+.TH "PcodeOpBank" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeOpBank \- Container class for PcodeOps associated with a single function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <op\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear all PcodeOps from \fBthis\fP container\&. "
+.ti -1c
+.RI "\fBPcodeOpBank\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fB~PcodeOpBank\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetUniqId\fP (uintm val)"
+.br
+.RI "Set the unique id counter\&. "
+.ti -1c
+.RI "uintm \fBgetUniqId\fP (void) const"
+.br
+.RI "Get the next unique id\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBcreate\fP (int4 inputs, const \fBAddress\fP &pc)"
+.br
+.RI "Create a \fBPcodeOp\fP with at a given \fBAddress\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBcreate\fP (int4 inputs, const \fBSeqNum\fP &sq)"
+.br
+.RI "Create a \fBPcodeOp\fP with a given sequence number\&. "
+.ti -1c
+.RI "void \fBdestroy\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Destroy/retire the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBdestroyDead\fP (void)"
+.br
+.RI "Destroy/retire all PcodeOps in the \fIdead\fP list\&. "
+.ti -1c
+.RI "void \fBchangeOpcode\fP (\fBPcodeOp\fP *op, \fBTypeOp\fP *newopc)"
+.br
+.RI "Change the op-code for the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBmarkAlive\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Mark the given \fBPcodeOp\fP as \fIalive\fP\&. "
+.ti -1c
+.RI "void \fBmarkDead\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Mark the given \fBPcodeOp\fP as \fIdead\fP\&. "
+.ti -1c
+.RI "void \fBinsertAfterDead\fP (\fBPcodeOp\fP *op, \fBPcodeOp\fP *prev)"
+.br
+.RI "Insert the given \fBPcodeOp\fP after a point in the \fIdead\fP list\&. "
+.ti -1c
+.RI "void \fBmoveSequenceDead\fP (\fBPcodeOp\fP *firstop, \fBPcodeOp\fP *lastop, \fBPcodeOp\fP *prev)"
+.br
+.RI "Move a sequence of PcodeOps to a point in the \fIdead\fP list\&. "
+.ti -1c
+.RI "bool \fBempty\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if there are no PcodeOps in \fBthis\fP container\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBtarget\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find the first executing \fBPcodeOp\fP for a target address\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBfindOp\fP (const \fBSeqNum\fP &num) const"
+.br
+.RI "Find a \fBPcodeOp\fP by sequence number\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBfallthru\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Find the \fBPcodeOp\fP considered a \fIfallthru\fP of the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBbeginAll\fP (void) const"
+.br
+.RI "Start of all PcodeOps in sequence number order\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBendAll\fP (void) const"
+.br
+.RI "End of all PcodeOps in sequence number order\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBbegin\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Start of all PcodeOps at one \fBAddress\fP\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBend\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "End of all PcodeOps at one \fBAddress\fP\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbeginAlive\fP (void) const"
+.br
+.RI "Start of all PcodeOps marked as \fIalive\fP\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBendAlive\fP (void) const"
+.br
+.RI "End of all PcodeOps marked as \fIalive\fP\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbeginDead\fP (void) const"
+.br
+.RI "Start of all PcodeOps marked as \fIdead\fP\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBendDead\fP (void) const"
+.br
+.RI "End of all PcodeOps marked as \fIdead\fP\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbegin\fP (\fBOpCode\fP opc) const"
+.br
+.RI "Start of all PcodeOps sharing the given op-code\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBend\fP (\fBOpCode\fP opc) const"
+.br
+.RI "End of all PcodeOps sharing the given op-code\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Container class for PcodeOps associated with a single function\&. 
+
+The \fBPcodeOp\fP objects are maintained under multiple different sorting criteria to facilitate quick access in various situations\&. The main sort (PcodeOpTree) is by sequence number (\fBSeqNum\fP)\&. PcodeOps are also grouped into \fIalive\fP and \fIdead\fP lists to distinguish between raw p-code ops and those that are fully linked into control-flow\&. Several lists group PcodeOps with important op-codes (like STORE and RETURN)\&. 
+.PP
+Definition at line 238 of file op\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PcodeOpBank::PcodeOpBank (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 252 of file op\&.hh\&.
+.SS "PcodeOpBank::~PcodeOpBank (void)\fC [inline]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 253 of file op\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "PcodeOpTree::const_iterator PcodeOpBank::begin (const \fBAddress\fP & addr) const"
+
+.PP
+Start of all PcodeOps at one \fBAddress\fP\&. 
+.PP
+Definition at line 829 of file op\&.cc\&.
+.SS "list< \fBPcodeOp\fP * >::const_iterator PcodeOpBank::begin (\fBOpCode\fP opc) const"
+
+.PP
+Start of all PcodeOps sharing the given op-code\&. 
+.PP
+Definition at line 841 of file op\&.cc\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator PcodeOpBank::beginAlive (void) const\fC [inline]\fP"
+
+.PP
+Start of all PcodeOps marked as \fIalive\fP\&. 
+.PP
+Definition at line 283 of file op\&.hh\&.
+.SS "PcodeOpTree::const_iterator PcodeOpBank::beginAll (void) const\fC [inline]\fP"
+
+.PP
+Start of all PcodeOps in sequence number order\&. 
+.PP
+Definition at line 271 of file op\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator PcodeOpBank::beginDead (void) const\fC [inline]\fP"
+
+.PP
+Start of all PcodeOps marked as \fIdead\fP\&. 
+.PP
+Definition at line 289 of file op\&.hh\&.
+.SS "void PcodeOpBank::changeOpcode (\fBPcodeOp\fP * op, \fBTypeOp\fP * newopc)"
+
+.PP
+Change the op-code for the given \fBPcodeOp\fP\&. The \fBPcodeOp\fP is assigned the new op-code, which may involve moving it between the internal op-code specific lists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to change 
+.br
+\fInewopc\fP is the new op-code object 
+.RE
+.PP
+
+.PP
+Definition at line 706 of file op\&.cc\&.
+.SS "void PcodeOpBank::clear (void)"
+
+.PP
+Clear all PcodeOps from \fBthis\fP container\&. 
+.PP
+Definition at line 873 of file op\&.cc\&.
+.SS "\fBPcodeOp\fP * PcodeOpBank::create (int4 inputs, const \fBAddress\fP & pc)"
+
+.PP
+Create a \fBPcodeOp\fP with at a given \fBAddress\fP\&. A new \fBPcodeOp\fP is allocated with the indicated number of input slots, which start out empty\&. A sequence number is assigned, and the op is added to the end of the \fIdead\fP list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputs\fP is the number of input slots 
+.br
+\fIpc\fP is the \fBAddress\fP to associate with the \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 642 of file op\&.cc\&.
+.SS "\fBPcodeOp\fP * PcodeOpBank::create (int4 inputs, const \fBSeqNum\fP & sq)"
+
+.PP
+Create a \fBPcodeOp\fP with a given sequence number\&. A new \fBPcodeOp\fP is allocated with the indicated number of input slots and the specific sequence number, suitable for cloning and restoring from XML\&. The op is added to the end of the \fIdead\fP list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputs\fP is the number of input slots 
+.br
+\fIsq\fP is the specified sequence number 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 658 of file op\&.cc\&.
+.SS "void PcodeOpBank::destroy (\fBPcodeOp\fP * op)"
+
+.PP
+Destroy/retire the given \fBPcodeOp\fP\&. The given \fBPcodeOp\fP is removed from all internal lists and added to a final \fIdeadandgone\fP list\&. The memory is not reclaimed until the whole container is destroyed, in case pointer references still exist\&. These will all still be marked as \fIdead\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to destroy 
+.RE
+.PP
+
+.PP
+Definition at line 690 of file op\&.cc\&.
+.SS "void PcodeOpBank::destroyDead (void)"
+
+.PP
+Destroy/retire all PcodeOps in the \fIdead\fP list\&. 
+.PP
+Definition at line 672 of file op\&.cc\&.
+.SS "bool PcodeOpBank::empty (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if there are no PcodeOps in \fBthis\fP container\&. 
+.PP
+Definition at line 265 of file op\&.hh\&.
+.SS "PcodeOpTree::const_iterator PcodeOpBank::end (const \fBAddress\fP & addr) const"
+
+.PP
+End of all PcodeOps at one \fBAddress\fP\&. 
+.PP
+Definition at line 835 of file op\&.cc\&.
+.SS "list< \fBPcodeOp\fP * >::const_iterator PcodeOpBank::end (\fBOpCode\fP opc) const"
+
+.PP
+End of all PcodeOps sharing the given op-code\&. 
+.PP
+Definition at line 857 of file op\&.cc\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator PcodeOpBank::endAlive (void) const\fC [inline]\fP"
+
+.PP
+End of all PcodeOps marked as \fIalive\fP\&. 
+.PP
+Definition at line 286 of file op\&.hh\&.
+.SS "PcodeOpTree::const_iterator PcodeOpBank::endAll (void) const\fC [inline]\fP"
+
+.PP
+End of all PcodeOps in sequence number order\&. 
+.PP
+Definition at line 274 of file op\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator PcodeOpBank::endDead (void) const\fC [inline]\fP"
+
+.PP
+End of all PcodeOps marked as \fIdead\fP\&. 
+.PP
+Definition at line 292 of file op\&.hh\&.
+.SS "\fBPcodeOp\fP * PcodeOpBank::fallthru (const \fBPcodeOp\fP * op) const"
+
+.PP
+Find the \fBPcodeOp\fP considered a \fIfallthru\fP of the given \fBPcodeOp\fP\&. The term \fIfallthru\fP in this context refers to p-code \fInot\fP assembly instructions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the fallthru \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 793 of file op\&.cc\&.
+.SS "\fBPcodeOp\fP * PcodeOpBank::findOp (const \fBSeqNum\fP & num) const"
+
+.PP
+Find a \fBPcodeOp\fP by sequence number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum\fP is the given sequence number 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBPcodeOp\fP (or NULL) 
+.RE
+.PP
+
+.PP
+Definition at line 782 of file op\&.cc\&.
+.SS "uintm PcodeOpBank::getUniqId (void) const\fC [inline]\fP"
+
+.PP
+Get the next unique id\&. 
+.PP
+Definition at line 255 of file op\&.hh\&.
+.SS "void PcodeOpBank::insertAfterDead (\fBPcodeOp\fP * op, \fBPcodeOp\fP * prev)"
+
+.PP
+Insert the given \fBPcodeOp\fP after a point in the \fIdead\fP list\&. The op is moved to right after a specified op in the \fIdead\fP list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to move 
+.br
+\fIprev\fP is the specified op in the \fIdead\fP list 
+.RE
+.PP
+
+.PP
+Definition at line 740 of file op\&.cc\&.
+.SS "void PcodeOpBank::markAlive (\fBPcodeOp\fP * op)"
+
+.PP
+Mark the given \fBPcodeOp\fP as \fIalive\fP\&. The \fBPcodeOp\fP is moved out of the \fIdead\fP list into the \fIalive\fP list\&. The \fBPcodeOp::isDead()\fP method will now return \fBfalse\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to mark 
+.RE
+.PP
+
+.PP
+Definition at line 718 of file op\&.cc\&.
+.SS "void PcodeOpBank::markDead (\fBPcodeOp\fP * op)"
+
+.PP
+Mark the given \fBPcodeOp\fP as \fIdead\fP\&. The \fBPcodeOp\fP is moved out of the \fIalive\fP list into the \fIdead\fP list\&. The \fBPcodeOp::isDead()\fP method will now return \fBtrue\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to mark 
+.RE
+.PP
+
+.PP
+Definition at line 729 of file op\&.cc\&.
+.SS "void PcodeOpBank::moveSequenceDead (\fBPcodeOp\fP * firstop, \fBPcodeOp\fP * lastop, \fBPcodeOp\fP * prev)"
+
+.PP
+Move a sequence of PcodeOps to a point in the \fIdead\fP list\&. The point is right after a provided op\&. All ops must be in the \fIdead\fP list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirstop\fP is the first \fBPcodeOp\fP in the sequence to be moved 
+.br
+\fIlastop\fP is the last \fBPcodeOp\fP in the sequence to be moved 
+.br
+\fIprev\fP is the provided point to move to 
+.RE
+.PP
+
+.PP
+Definition at line 757 of file op\&.cc\&.
+.SS "void PcodeOpBank::setUniqId (uintm val)\fC [inline]\fP"
+
+.PP
+Set the unique id counter\&. 
+.PP
+Definition at line 254 of file op\&.hh\&.
+.SS "\fBPcodeOp\fP * PcodeOpBank::target (const \fBAddress\fP & addr) const"
+
+.PP
+Find the first executing \fBPcodeOp\fP for a target address\&. Find the first \fBPcodeOp\fP at or after the given \fBAddress\fP assuming they have not yet been broken up into basic blocks\&. Take into account delay slots\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given \fBAddress\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the targeted \fBPcodeOp\fP (or NULL) 
+.RE
+.PP
+
+.PP
+Definition at line 772 of file op\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

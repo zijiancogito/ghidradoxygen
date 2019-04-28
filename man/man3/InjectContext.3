@@ -1,0 +1,149 @@
+.TH "InjectContext" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InjectContext \- Context needed to emit a p-code injection as a full set of p-code operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pcodeinject\&.hh>\fP
+.PP
+Inherited by \fBInjectContextGhidra\fP, and \fBInjectContextSleigh\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~InjectContext\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.RI "Release resources (from last injection) "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.RI "Save \fBthis\fP context to an XML stream as a <context> tag\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBArchitecture\fP * \fBglb\fP"
+.br
+.RI "\fBArchitecture\fP associated with the injection\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBbaseaddr\fP"
+.br
+.RI "\fBAddress\fP of instruction causing inject\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBnextaddr\fP"
+.br
+.RI "\fBAddress\fP of following instruction\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBcalladdr\fP"
+.br
+.RI "If the instruction being injected is a call, this is the address being called\&. "
+.ti -1c
+.RI "vector< \fBVarnodeData\fP > \fBinputlist\fP"
+.br
+.RI "Storage location for input parameters\&. "
+.ti -1c
+.RI "vector< \fBVarnodeData\fP > \fBoutput\fP"
+.br
+.RI "Storage location for output\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Context needed to emit a p-code injection as a full set of p-code operations\&. 
+
+P-code injection works by passing a pre-built template of p-code operations (\fBConstructTpl\fP) to an emitter (\fBPcodeEmit\fP), which makes the final resolution SLEIGH concepts like \fIinst_next\fP to concrete Varnodes\&. This class contains the context dependent data to resolve:
+.IP "\(bu" 2
+inst_start -- the address where the injection occurs
+.IP "\(bu" 2
+inst_next -- the address of the instruction following (the instruction being injected)
+.IP "\(bu" 2
+inst_dest -- Original destination of CALL being injected
+.IP "\(bu" 2
+inst_ref -- Target of reference on injected instruction
+.IP "\(bu" 2
+<input> -- Input \fBVarnode\fP of the injection referenced by name
+.IP "\(bu" 2
+<output> -- Output \fBVarnode\fP of the injection referenced by name 
+.PP
+
+.PP
+Definition at line 56 of file pcodeinject\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual InjectContext::~InjectContext (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 64 of file pcodeinject\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void InjectContext::clear (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Release resources (from last injection) 
+.PP
+Definition at line 65 of file pcodeinject\&.hh\&.
+.SS "virtual void InjectContext::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Save \fBthis\fP context to an XML stream as a <context> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implemented in \fBInjectContextGhidra\fP, and \fBInjectContextSleigh\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBAddress\fP InjectContext::baseaddr"
+
+.PP
+\fBAddress\fP of instruction causing inject\&. 
+.PP
+Definition at line 59 of file pcodeinject\&.hh\&.
+.SS "\fBAddress\fP InjectContext::calladdr"
+
+.PP
+If the instruction being injected is a call, this is the address being called\&. 
+.PP
+Definition at line 61 of file pcodeinject\&.hh\&.
+.SS "\fBArchitecture\fP* InjectContext::glb"
+
+.PP
+\fBArchitecture\fP associated with the injection\&. 
+.PP
+Definition at line 58 of file pcodeinject\&.hh\&.
+.SS "vector<\fBVarnodeData\fP> InjectContext::inputlist"
+
+.PP
+Storage location for input parameters\&. 
+.PP
+Definition at line 62 of file pcodeinject\&.hh\&.
+.SS "\fBAddress\fP InjectContext::nextaddr"
+
+.PP
+\fBAddress\fP of following instruction\&. 
+.PP
+Definition at line 60 of file pcodeinject\&.hh\&.
+.SS "vector<\fBVarnodeData\fP> InjectContext::output"
+
+.PP
+Storage location for output\&. 
+.PP
+Definition at line 63 of file pcodeinject\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,73 @@
+.TH "OptionCommentInstruction" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OptionCommentInstruction \- Toggle whether different comment \fItypes\fP are emitted by the decompiler in the body of a function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <options\&.hh>\fP
+.PP
+Inherits \fBArchOption\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOptionCommentInstruction\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual string \fBapply\fP (\fBArchitecture\fP *glb, const string &p1, const string &p2, const string &p3) const"
+.br
+.RI "Apply a particular configuration option to the \fBArchitecture\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Toggle whether different comment \fItypes\fP are emitted by the decompiler in the body of a function\&. 
+
+The first parameter specifies the comment type: 'warning', 'user1', 'user2', etc\&. The second parameter is the toggle value 'on' or 'off'\&. 
+.PP
+Definition at line 177 of file options\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "OptionCommentInstruction::OptionCommentInstruction (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 179 of file options\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string OptionCommentInstruction::apply (\fBArchitecture\fP * glb, const string & p1, const string & p2, const string & p3) const\fC [virtual]\fP"
+
+.PP
+Apply a particular configuration option to the \fBArchitecture\fP\&. This method is overloaded by the different Option classes to provide possible configuration of different parts of the \fBArchitecture\fP\&. The user can provide up to three optional parameters to tailor a specific type of configuration\&. The method returns a confirmation/failure message as feedback\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglb\fP is the \fBArchitecture\fP being configured 
+.br
+\fIp1\fP is the first optional configuration string 
+.br
+\fIp2\fP is the second optional configuration string 
+.br
+\fIp3\fP is the third optional configuration string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a confirmation/failure message 
+.RE
+.PP
+
+.PP
+Implements \fBArchOption\fP\&.
+.PP
+Definition at line 487 of file options\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

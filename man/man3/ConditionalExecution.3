@@ -1,0 +1,102 @@
+.TH "ConditionalExecution" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConditionalExecution \- A class for simplifying a series of conditionally executed statements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <condexe\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConditionalExecution\fP (\fBFuncdata\fP *f)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "bool \fBtrial\fP (\fBBlockBasic\fP *ib)"
+.br
+.RI "Test for a modifiable configuration around the given block\&. "
+.ti -1c
+.RI "void \fBexecute\fP (void)"
+.br
+.RI "Eliminate the unnecessary path join at \fBiblock\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class for simplifying a series of conditionally executed statements\&. 
+
+This class tries to perform transformations like the following: 
+.PP
+.nf
+if (a) {           if (a) {
+   BODY1
+}          ==>       BODY1
+if (a) {             BODY2
+   BODY2
+}                  }
+
+.fi
+.PP
+ Other similar configurations where two CBRANCHs are based on the same condition are handled\&. The main variation, referred to as a \fBdirectsplit\fP in the code looks like: 
+.PP
+.nf
+if (a) {                      if (a && new_boolean()) {
+   a = new_boolean();
+}                      ==>      BODY1
+if (a) {
+   BODY1
+}                             }
+
+.fi
+.PP
+ The value of 'a' doesn't need to be reevaluated if it is false\&.
+.PP
+In the first scenario, there is a block where two flows come together but don't need to, as the evaluation of the boolean is redundant\&. This block is the \fBiblock\fP\&. The original evaluation of the boolean occurs in \fBinitblock\fP\&. There are two paths from here to \fBiblock\fP, called the \fBprea\fP path and \fBpreb\fP path, either of which may contain additional 1in/1out blocks\&. There are also two paths out of \fBiblock\fP, \fBposta\fP, and \fBpostb\fP\&. The \fBConditionalExecution\fP class determines if the CBRANCH in \fBiblock\fP is redundant by determining if the boolean value is either the same as, or the complement of, the boolean value in \fBinitblock\fP\&. If the CBRANCH is redundant, \fBiblock\fP is removed, linking \fBprea\fP to \fBposta\fP and \fBpreb\fP to \fBpostb\fP (or vice versa depending on whether the booleans are complements of each other)\&. If \fBiblock\fP is to be removed, modifications to data-flow made by \fBiblock\fP must be preserved\&. For MULTIEQUALs in \fBiblock\fP, reads are examined to see if they came from the \fBposta\fP path, or the \fBpostb\fP path, then the are replaced by the MULTIEQUAL slot corresponding to the matching \fBprea\fP or \fBpreb\fP branch\&. If \fBposta\fP and \fBpostb\fP merge at an \fBexitblock\fP, the MULTIEQUAL must be pushed into the \fBexitblock\fP and reads which can't be attributed to the \fBposta\fP or \fBpostb\fP path are replaced by the \fBexitblock\fP MULTIEQUAL\&.
+.PP
+In theory, other operations performed in \fBiblock\fP could be pushed into \fBexitblock\fP if they are not read in the \fBposta\fP or \fBpostb\fP paths, but currently non MULTIEQUAL operations in \fBiblock\fP terminate the action\&.
+.PP
+In the second scenario, the boolean evaluated in \fBinitblock\fP remains unmodified along only one of the two paths out, \fBprea\fP or \fBreb\fP\&. The boolean in \fBiblock\fP (modulo complementing) will evaluate in the same way\&. We define \fBposta\fP as the path out of \fBiblock\fP that will be followed by this unmodified path\&. The transform that needs to be made is to have the unmodified path out of \fBinitblock\fP flow immediately into the \fBposta\fP path without having to reevalute the condition in \fBiblock\fP\&. \fBiblock\fP is not removed because flow from the 'modified' path may also flow into \fBposta\fP, depending on how the boolean was modified\&. Adjustments to data-flow are similar to the first scenario but slightly more complicated\&. The first block along the \fBposta\fP path is referred to as the \fBposta_block\fP, this block will have a new block flowing into it\&. 
+.PP
+Definition at line 131 of file condexe\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConditionalExecution::ConditionalExecution (\fBFuncdata\fP * f)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 163 of file condexe\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ConditionalExecution::execute (void)"
+
+.PP
+Eliminate the unnecessary path join at \fBiblock\fP\&. We assume the last call to verify() returned \fBtrue\fP\&. 
+.PP
+Definition at line 823 of file condexe\&.cc\&.
+.SS "bool ConditionalExecution::trial (\fBBlockBasic\fP * ib)"
+
+.PP
+Test for a modifiable configuration around the given block\&. The given block is tested as a possible \fBiblock\fP\&. If this configuration works and is not a \fBdirectsplit\fP, \fBtrue\fP is returned\&. If the configuration works as a \fBdirectsplit\fP, then recursively check that its \fBposta_block\fP works as an \fBiblock\fP\&. If it does work, keep this \fBiblock\fP, otherwise revert to the \fBdirectsplit\fP configuration\&. In either case return \fBtrue\fP\&. Processing the \fBdirectsplit\fP first may prevent posta_block from being an \fBiblock\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIib\fP is the trial \fBiblock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if (some) configuration is recognized and can be modified 
+.RE
+.PP
+
+.PP
+Definition at line 770 of file condexe\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

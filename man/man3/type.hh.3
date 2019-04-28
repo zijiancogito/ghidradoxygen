@@ -1,0 +1,231 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.hh \- Classes for describing and printing data-types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'address\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDatatype\fP"
+.br
+.RI "The base datatype class for the decompiler\&. "
+.ti -1c
+.RI "struct \fBTypeField\fP"
+.br
+.RI "Specifies subfields of a structure or what a pointer points to\&. "
+.ti -1c
+.RI "struct \fBDatatypeCompare\fP"
+.br
+.RI "Compare two \fBDatatype\fP pointers for equivalence of their description\&. "
+.ti -1c
+.RI "struct \fBDatatypeNameCompare\fP"
+.br
+.RI "Compare two \fBDatatype\fP pointers: first by name, then by id\&. "
+.ti -1c
+.RI "class \fBTypeBase\fP"
+.br
+.RI "Base class for the fundamental atomic types\&. "
+.ti -1c
+.RI "class \fBTypeChar\fP"
+.br
+.RI "Base type for character data-types: i\&.e\&. char\&. "
+.ti -1c
+.RI "class \fBTypeUnicode\fP"
+.br
+.RI "The unicode data-type: i\&.e\&. wchar\&. "
+.ti -1c
+.RI "class \fBTypeVoid\fP"
+.br
+.RI "Formal 'void' data-type object\&. "
+.ti -1c
+.RI "class \fBTypePointer\fP"
+.br
+.RI "\fBDatatype\fP object representing a pointer\&. "
+.ti -1c
+.RI "class \fBTypeArray\fP"
+.br
+.RI "\fBDatatype\fP object representing an array of elements\&. "
+.ti -1c
+.RI "class \fBTypeEnum\fP"
+.br
+.RI "An enumerated \fBDatatype\fP object: an integer with named values\&. "
+.ti -1c
+.RI "class \fBTypeStruct\fP"
+.br
+.RI "A composite \fBDatatype\fP object: A 'structure' with component 'fields'\&. "
+.ti -1c
+.RI "class \fBTypeCode\fP"
+.br
+.RI "\fBDatatype\fP object representing executable code\&. "
+.ti -1c
+.RI "class \fBTypeSpacebase\fP"
+.br
+.RI "Special \fBDatatype\fP object used to describe pointers that index into the symbol table\&. "
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.RI "Container class for all \fBDatatype\fP objects in an \fBArchitecture\fP\&. "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef set< \fBDatatype\fP *, \fBDatatypeCompare\fP > \fBDatatypeSet\fP"
+.br
+.RI "A set of data-types sorted by function\&. "
+.ti -1c
+.RI "typedef set< \fBDatatype\fP *, \fBDatatypeNameCompare\fP > \fBDatatypeNameSet\fP"
+.br
+.RI "A set of data-types sorted by name\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBtype_metatype\fP { \fBTYPE_VOID\fP = 10, \fBTYPE_SPACEBASE\fP = 9, \fBTYPE_UNKNOWN\fP = 8, \fBTYPE_INT\fP = 7, \fBTYPE_UINT\fP = 6, \fBTYPE_BOOL\fP = 5, \fBTYPE_CODE\fP = 4, \fBTYPE_FLOAT\fP = 3, \fBTYPE_PTR\fP = 2, \fBTYPE_ARRAY\fP = 1, \fBTYPE_STRUCT\fP = 0 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprint_data\fP (ostream &s, uint1 *buffer, int4 size, const \fBAddress\fP &baseaddr)"
+.br
+.RI "Print a hex dump of a data buffer to stream\&. "
+.ti -1c
+.RI "void \fBmetatype2string\fP (\fBtype_metatype\fP metatype, string &res)"
+.br
+.RI "Convert type \fBmeta-type\fP to name\&. "
+.ti -1c
+.RI "\fBtype_metatype\fP \fBstring2metatype\fP (const string &metastring)"
+.br
+.RI "Convert string to type \fBmeta-type\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classes for describing and printing data-types\&. 
+
+
+.PP
+Definition in file \fBtype\&.hh\fP\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef set<\fBDatatype\fP *,\fBDatatypeNameCompare\fP> \fBDatatypeNameSet\fP"
+
+.PP
+A set of data-types sorted by name\&. 
+.PP
+Definition at line 152 of file type\&.hh\&.
+.SS "typedef set<\fBDatatype\fP *,\fBDatatypeCompare\fP> \fBDatatypeSet\fP"
+
+.PP
+A set of data-types sorted by function\&. 
+.PP
+Definition at line 149 of file type\&.hh\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBtype_metatype\fP"
+The core meta-types supported by the decompiler\&. These are sizeless templates for the elements making up the type algebra\&. Ordering is important: The lower the number, the more \fBspecific\fP the type, in calculations involving the generality of a type\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITYPE_VOID \fP\fP
+Standard 'void' type, absence of type\&. 
+.TP
+\fB\fITYPE_SPACEBASE \fP\fP
+Placeholder for symbol/type look-up calculations\&. 
+.TP
+\fB\fITYPE_UNKNOWN \fP\fP
+An unknown low-level type\&. Treated as an unsigned integer\&. 
+.TP
+\fB\fITYPE_INT \fP\fP
+Signed integer\&. Signed is considered less specific than unsigned in C\&. 
+.TP
+\fB\fITYPE_UINT \fP\fP
+Unsigned integer\&. 
+.TP
+\fB\fITYPE_BOOL \fP\fP
+Boolean\&. 
+.TP
+\fB\fITYPE_CODE \fP\fP
+Data is actual executable code\&. 
+.TP
+\fB\fITYPE_FLOAT \fP\fP
+Floating-point\&. 
+.TP
+\fB\fITYPE_PTR \fP\fP
+Pointer data-type\&. 
+.TP
+\fB\fITYPE_ARRAY \fP\fP
+Array data-type, made up of a sequence of 'element' datatype\&. 
+.TP
+\fB\fITYPE_STRUCT \fP\fP
+Structure data-type, made up of component datatypes\&. 
+.PP
+Definition at line 33 of file type\&.hh\&.
+.SH "Function Documentation"
+.PP 
+.SS "void metatype2string (\fBtype_metatype\fP metatype, string & res)"
+
+.PP
+Convert type \fBmeta-type\fP to name\&. Convert a type \fBmeta-type\fP into the string name of the meta-type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImetatype\fP is the encoded type meta-type 
+.br
+\fIres\fP will hold the resulting string 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file type\&.cc\&.
+.SS "void print_data (ostream & s, uint1 * buffer, int4 size, const \fBAddress\fP & baseaddr)"
+
+.PP
+Print a hex dump of a data buffer to stream\&. Display an array of bytes as a hex dump at a given address\&. Each line displays an address and 16 bytes in hexadecimal 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIbuffer\fP is a pointer to the bytes 
+.br
+\fIsize\fP is the number of bytes 
+.br
+\fIbaseaddr\fP is the address of the first byte in the buffer 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file type\&.cc\&.
+.SS "\fBtype_metatype\fP string2metatype (const string & metastring)"
+
+.PP
+Convert string to type \fBmeta-type\fP\&. Given a string description of a type \fBmeta-type\fP\&. Return the meta-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImetastring\fP is the description of the meta-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the encoded type meta-type 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file type\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

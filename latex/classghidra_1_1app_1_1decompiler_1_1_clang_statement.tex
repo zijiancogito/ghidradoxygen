@@ -1,0 +1,87 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1_clang_statement}{}\section{ghidra.\+app.\+decompiler.\+Clang\+Statement Class Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1_clang_statement}\index{ghidra.app.decompiler.ClangStatement@{ghidra.app.decompiler.ClangStatement}}
+
+
+Inheritance diagram for ghidra.\+app.\+decompiler.\+Clang\+Statement\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classghidra_1_1app_1_1decompiler_1_1_clang_statement__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ghidra.\+app.\+decompiler.\+Clang\+Statement\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{classghidra_1_1app_1_1decompiler_1_1_clang_statement__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_clang_statement_a77b9609fb93f8dbf907f8cfd99d57177}{Clang\+Statement}} (\mbox{\hyperlink{interfaceghidra_1_1app_1_1decompiler_1_1_clang_node}{Clang\+Node}} par)
+\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_clang_statement_a2b7c3031338fa026930e7211623deb5e}{get\+Pcode\+Op}} ()
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_clang_statement_ad042eadde979f215fd60a9e3aae17cc3}{restore\+From\+X\+ML}} (Xml\+Pull\+Parser parser, Pcode\+Factory pfactory)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A C code statement. What typically appears between the \textquotesingle{};\textquotesingle{} \textquotesingle{}\{\textquotesingle{} and \textquotesingle{}\}\textquotesingle{} characters. A statement must have a pcode operation associated with it. In the case of conditional flow control operations, there are usually two lines associated with the statement one containing the \textquotesingle{}\{\textquotesingle{} and one containing \textquotesingle{}\}\textquotesingle{}. The one containing the actual conditional branch is considered a C statement, while the other one is just considered a blank line. I.\+e. if (expression) \{ is a C statement, while the line containing the closing \textquotesingle{}\}\textquotesingle{} by itself is considered blank 
+
+Definition at line 40 of file Clang\+Statement.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_clang_statement_a77b9609fb93f8dbf907f8cfd99d57177}\label{classghidra_1_1app_1_1decompiler_1_1_clang_statement_a77b9609fb93f8dbf907f8cfd99d57177}} 
+\index{ghidra.app.decompiler.ClangStatement@{ghidra.app.decompiler.ClangStatement}!ClangStatement@{ClangStatement}}
+\index{ClangStatement@{ClangStatement}!ghidra.app.decompiler.ClangStatement@{ghidra.app.decompiler.ClangStatement}}
+\subsubsection{\texorpdfstring{ClangStatement()}{ClangStatement()}}
+{\footnotesize\ttfamily ghidra.\+app.\+decompiler.\+Clang\+Statement.\+Clang\+Statement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceghidra_1_1app_1_1decompiler_1_1_clang_node}{Clang\+Node}}}]{par }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 43 of file Clang\+Statement.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_clang_statement_a2b7c3031338fa026930e7211623deb5e}\label{classghidra_1_1app_1_1decompiler_1_1_clang_statement_a2b7c3031338fa026930e7211623deb5e}} 
+\index{ghidra.app.decompiler.ClangStatement@{ghidra.app.decompiler.ClangStatement}!getPcodeOp@{getPcodeOp}}
+\index{getPcodeOp@{getPcodeOp}!ghidra.app.decompiler.ClangStatement@{ghidra.app.decompiler.ClangStatement}}
+\subsubsection{\texorpdfstring{getPcodeOp()}{getPcodeOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} ghidra.\+app.\+decompiler.\+Clang\+Statement.\+get\+Pcode\+Op (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 44 of file Clang\+Statement.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_clang_statement_ad042eadde979f215fd60a9e3aae17cc3}\label{classghidra_1_1app_1_1decompiler_1_1_clang_statement_ad042eadde979f215fd60a9e3aae17cc3}} 
+\index{ghidra.app.decompiler.ClangStatement@{ghidra.app.decompiler.ClangStatement}!restoreFromXML@{restoreFromXML}}
+\index{restoreFromXML@{restoreFromXML}!ghidra.app.decompiler.ClangStatement@{ghidra.app.decompiler.ClangStatement}}
+\subsubsection{\texorpdfstring{restoreFromXML()}{restoreFromXML()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+Clang\+Statement.\+restore\+From\+X\+ML (\begin{DoxyParamCaption}\item[{Xml\+Pull\+Parser}]{parser,  }\item[{Pcode\+Factory}]{pfactory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 46 of file Clang\+Statement.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_clang_statement_ad042eadde979f215fd60a9e3aae17cc3_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/\mbox{\hyperlink{_clang_statement_8java}{Clang\+Statement.\+java}}\end{DoxyCompactItemize}

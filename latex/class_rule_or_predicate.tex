@@ -1,0 +1,201 @@
+\hypertarget{class_rule_or_predicate}{}\section{Rule\+Or\+Predicate Class Reference}
+\label{class_rule_or_predicate}\index{RuleOrPredicate@{RuleOrPredicate}}
+
+
+Simplify predication constructions involving the I\+N\+T\+\_\+\+OR operator.  
+
+
+
+
+{\ttfamily \#include $<$condexe.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Or\+Predicate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_rule_or_predicate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Or\+Predicate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_rule_or_predicate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_or_predicate_aafc3664581fdf2f48313e070addaad31}{Rule\+Or\+Predicate}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_or_predicate_a190f266ab1a951a70b6413460c48f0fa}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_or_predicate_a40ca266acf32380c57cd5964d8f94adb}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_or_predicate_ae9bd9f602cf43e10c02623d2ee5e6fc7}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Simplify predication constructions involving the I\+N\+T\+\_\+\+OR operator. 
+
+In this form of predication, two variables are set based on a condition and then O\+Red together. Both variables may be set to zero, or to some other value, based on the condition and the zero values are such that at least one of the variables is zero. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tmp1 = cond ? val1 : 0;}
+\DoxyCodeLine{tmp2 = cond ?  0 : val2;}
+\DoxyCodeLine{result = tmp1 | tmp2;}
+\end{DoxyCode}
+ The \mbox{\hyperlink{class_rule_or_predicate}{Rule\+Or\+Predicate}} simplifies this to 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (cond) result = val1; \textcolor{keywordflow}{else} result = val2;}
+\end{DoxyCode}
+ or to be precise 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{newtmp = val1 ? val2;           \textcolor{comment}{// Using a new MULTIEQUAL}}
+\DoxyCodeLine{result = newtmp;}
+\end{DoxyCode}
+ In an alternate form we have 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tmp1 = (val2 == 0) ? val1 : 0}
+\DoxyCodeLine{result = tmp1 | val2;}
+\end{DoxyCode}
+ again, one of val1 or val2 must be zero, so this gets replaced with 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tmp1 = val1 ? val2}
+\DoxyCodeLine{result = tmp1}
+\end{DoxyCode}
+ 
+
+Definition at line 211 of file condexe.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_or_predicate_aafc3664581fdf2f48313e070addaad31}\label{class_rule_or_predicate_aafc3664581fdf2f48313e070addaad31}} 
+\index{RuleOrPredicate@{RuleOrPredicate}!RuleOrPredicate@{RuleOrPredicate}}
+\index{RuleOrPredicate@{RuleOrPredicate}!RuleOrPredicate@{RuleOrPredicate}}
+\subsubsection{\texorpdfstring{RuleOrPredicate()}{RuleOrPredicate()}}
+{\footnotesize\ttfamily Rule\+Or\+Predicate\+::\+Rule\+Or\+Predicate (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 228 of file condexe.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_or_predicate_aafc3664581fdf2f48313e070addaad31_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_or_predicate_ae9bd9f602cf43e10c02623d2ee5e6fc7}\label{class_rule_or_predicate_ae9bd9f602cf43e10c02623d2ee5e6fc7}} 
+\index{RuleOrPredicate@{RuleOrPredicate}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleOrPredicate@{RuleOrPredicate}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Or\+Predicate\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 1031 of file condexe.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_or_predicate_ae9bd9f602cf43e10c02623d2ee5e6fc7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_or_predicate_a190f266ab1a951a70b6413460c48f0fa}\label{class_rule_or_predicate_a190f266ab1a951a70b6413460c48f0fa}} 
+\index{RuleOrPredicate@{RuleOrPredicate}!clone@{clone}}
+\index{clone@{clone}!RuleOrPredicate@{RuleOrPredicate}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Or\+Predicate\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 229 of file condexe.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_or_predicate_a190f266ab1a951a70b6413460c48f0fa_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_or_predicate_a40ca266acf32380c57cd5964d8f94adb}\label{class_rule_or_predicate_a40ca266acf32380c57cd5964d8f94adb}} 
+\index{RuleOrPredicate@{RuleOrPredicate}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleOrPredicate@{RuleOrPredicate}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Or\+Predicate\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 994 of file condexe.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{condexe_8hh}{condexe.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{condexe_8cc}{condexe.\+cc}}\end{DoxyCompactItemize}

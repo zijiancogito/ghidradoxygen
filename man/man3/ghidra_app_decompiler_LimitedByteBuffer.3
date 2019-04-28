@@ -1,0 +1,81 @@
+.TH "ghidra.app.decompiler.LimitedByteBuffer" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.LimitedByteBuffer
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLimitedByteBuffer\fP (int initial, int amax)"
+.br
+.ti -1c
+.RI "void \fBappend\fP (byte b)  throws IOException "
+.br
+.ti -1c
+.RI "ByteArrayInputStream \fBgetInputStream\fP ()"
+.br
+.ti -1c
+.RI "String \fBtoString\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for accumulating bytes into an automatically expanding buffer with an explicit upper limit to the size 
+.PP
+Definition at line 27 of file LimitedByteBuffer\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.LimitedByteBuffer\&.LimitedByteBuffer (int initial, int amax)\fC [inline]\fP"
+Create the buffer specifying its initial and limiting capacity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinitial\fP is the number of bytes to be initially allocated for the buffer 
+.br
+\fIamax\fP is the absolute maximum number of bytes the buffer is allowed to expand to before throwing exceptions 
+.RE
+.PP
+
+.PP
+Definition at line 37 of file LimitedByteBuffer\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ghidra\&.app\&.decompiler\&.LimitedByteBuffer\&.append (byte b) throws IOException\fC [inline]\fP"
+Append a byte into the buffer\&. The buffer's internal storage is expanded as necessary, but only up to the specified maximum\&. If this append exceeds that maximum, then an exception is thrown 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP is the byte to append 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file LimitedByteBuffer\&.java\&.
+.SS "ByteArrayInputStream ghidra\&.app\&.decompiler\&.LimitedByteBuffer\&.getInputStream ()\fC [inline]\fP"
+Generate an InputStream from the bytes that have been appended to the buffer The buffer is NOT copied 
+.PP
+\fBReturns:\fP
+.RS 4
+the new InputStream 
+.RE
+.PP
+
+.PP
+Definition at line 72 of file LimitedByteBuffer\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.LimitedByteBuffer\&.toString ()\fC [inline]\fP"
+
+.PP
+Definition at line 79 of file LimitedByteBuffer\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

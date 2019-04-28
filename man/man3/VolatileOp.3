@@ -1,0 +1,73 @@
+.TH "VolatileOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VolatileOp \- A base class for operations that access volatile memory\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.PP
+Inherits \fBUserPcodeOp\fP\&.
+.PP
+Inherited by \fBVolatileReadOp\fP, and \fBVolatileWriteOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVolatileOp\fP (\fBArchitecture\fP *g, const string &nm, int4 ind)"
+.br
+.RI "\fBConstructor\fP\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBappendSize\fP (const string &base, int4 size)"
+.br
+.RI "Append a suffix to a string encoding a specific size\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A base class for operations that access volatile memory\&. 
+
+The decompiler models volatile memory by converting any direct read or write of the memory to a function that \fIaccesses\fP the memory\&. This class and its derived classes model such functions\&. Within the p-code control-flow, dedicated user defined ops serve as a placeholder for the (possibly unknown) effects of modifying/accessing the memory and prevent accidental constant propagation\&. 
+.PP
+Definition at line 99 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "VolatileOp::VolatileOp (\fBArchitecture\fP * g, const string & nm, int4 ind)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 103 of file userop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string VolatileOp::appendSize (const string & base, int4 size)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Append a suffix to a string encoding a specific size\&. This allows a single user defined operator to have multiple symbol names based on the size of its operands in context\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbase\fP is the string to append the suffix to 
+.br
+\fIsize\fP is the size to encode expressed as the number of bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the appended string 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file userop\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

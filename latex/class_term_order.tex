@@ -1,0 +1,139 @@
+\hypertarget{class_term_order}{}\section{Term\+Order Class Reference}
+\label{class_term_order}\index{TermOrder@{TermOrder}}
+
+
+A class for ordering \mbox{\hyperlink{class_varnode}{Varnode}} terms in an additive expression.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_term_order_a9bf3ae6419089df03778601918b1bbcb}{Term\+Order}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$rt)
+\begin{DoxyCompactList}\small\item\em Construct given root \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_term_order_a80c74328029feca80764dd5daf77332f}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of terms in the expression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_term_order_aa9539a5ed4aa2029cf780dbd18db4370}{collect}} (void)
+\begin{DoxyCompactList}\small\item\em Collect all the terms in the expression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_term_order_aa90a1457bc5dd8acd997cf59ff966893}{sort\+Terms}} (void)
+\begin{DoxyCompactList}\small\item\em Sort the terms using additive\+Compare() \end{DoxyCompactList}\item 
+const vector$<$ \mbox{\hyperlink{class_pcode_op_edge}{Pcode\+Op\+Edge}} $\ast$ $>$ \& \mbox{\hyperlink{class_term_order_a264c1976851310b98f7e65d4becbce56}{get\+Sort}} (void)
+\begin{DoxyCompactList}\small\item\em Get the sorted list of references. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class for ordering \mbox{\hyperlink{class_varnode}{Varnode}} terms in an additive expression. 
+
+Given the final \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} in a data-\/flow expression that sums 2 or more \mbox{\hyperlink{class_varnode}{Varnode}} {\itshape terms}, this class collects all the terms then allows sorting of the terms to facilitate constant collapse and factoring simplifications. 
+
+Definition at line 1002 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_term_order_a9bf3ae6419089df03778601918b1bbcb}\label{class_term_order_a9bf3ae6419089df03778601918b1bbcb}} 
+\index{TermOrder@{TermOrder}!TermOrder@{TermOrder}}
+\index{TermOrder@{TermOrder}!TermOrder@{TermOrder}}
+\subsubsection{\texorpdfstring{TermOrder()}{TermOrder()}}
+{\footnotesize\ttfamily Term\+Order\+::\+Term\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{rt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct given root \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+
+
+Definition at line 1008 of file coreaction.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_term_order_aa9539a5ed4aa2029cf780dbd18db4370}\label{class_term_order_aa9539a5ed4aa2029cf780dbd18db4370}} 
+\index{TermOrder@{TermOrder}!collect@{collect}}
+\index{collect@{collect}!TermOrder@{TermOrder}}
+\subsubsection{\texorpdfstring{collect()}{collect()}}
+{\footnotesize\ttfamily void Term\+Order\+::collect (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Collect all the terms in the expression. 
+
+Assuming root-\/$>$get\+Out() is the root of an expression formed with the C\+P\+U\+I\+\_\+\+I\+N\+T\+\_\+\+A\+DD op, collect all the \mbox{\hyperlink{class_varnode}{Varnode}} {\itshape terms} of the expression. 
+
+Definition at line 4369 of file coreaction.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_term_order_aa9539a5ed4aa2029cf780dbd18db4370_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_term_order_a80c74328029feca80764dd5daf77332f}\label{class_term_order_a80c74328029feca80764dd5daf77332f}} 
+\index{TermOrder@{TermOrder}!getSize@{getSize}}
+\index{getSize@{getSize}!TermOrder@{TermOrder}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Term\+Order\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of terms in the expression. 
+
+
+
+Definition at line 1009 of file coreaction.\+hh.
+
+\mbox{\Hypertarget{class_term_order_a264c1976851310b98f7e65d4becbce56}\label{class_term_order_a264c1976851310b98f7e65d4becbce56}} 
+\index{TermOrder@{TermOrder}!getSort@{getSort}}
+\index{getSort@{getSort}!TermOrder@{TermOrder}}
+\subsubsection{\texorpdfstring{getSort()}{getSort()}}
+{\footnotesize\ttfamily const vector$<$\mbox{\hyperlink{class_pcode_op_edge}{Pcode\+Op\+Edge}} $\ast$$>$\& Term\+Order\+::get\+Sort (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the sorted list of references. 
+
+
+
+Definition at line 1012 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_term_order_a264c1976851310b98f7e65d4becbce56_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_term_order_aa90a1457bc5dd8acd997cf59ff966893}\label{class_term_order_aa90a1457bc5dd8acd997cf59ff966893}} 
+\index{TermOrder@{TermOrder}!sortTerms@{sortTerms}}
+\index{sortTerms@{sortTerms}!TermOrder@{TermOrder}}
+\subsubsection{\texorpdfstring{sortTerms()}{sortTerms()}}
+{\footnotesize\ttfamily void Term\+Order\+::sort\+Terms (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sort the terms using additive\+Compare() 
+
+
+
+Definition at line 4418 of file coreaction.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_term_order_aa90a1457bc5dd8acd997cf59ff966893_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

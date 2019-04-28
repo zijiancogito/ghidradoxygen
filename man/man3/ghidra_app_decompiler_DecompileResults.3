@@ -1,0 +1,173 @@
+.TH "ghidra.app.decompiler.DecompileResults" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.DecompileResults
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompileResults\fP (Function f, Language language, CompilerSpec compilerSpec, PcodeDataTypeManager d, String e, InputStream raw, DecompileProcess\&.DisposeState processState, boolean showNamespace)"
+.br
+.ti -1c
+.RI "boolean \fBdecompileCompleted\fP ()"
+.br
+.ti -1c
+.RI "Function \fBgetFunction\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisTimedOut\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisCancelled\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBfailedToStart\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetErrorMessage\fP ()"
+.br
+.ti -1c
+.RI "HighFunction \fBgetHighFunction\fP ()"
+.br
+.ti -1c
+.RI "HighParamID \fBgetHighParamID\fP ()"
+.br
+.ti -1c
+.RI "\fBClangTokenGroup\fP \fBgetCCodeMarkup\fP ()"
+.br
+.ti -1c
+.RI "\fBDecompiledFunction\fP \fBgetDecompiledFunction\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for getting at the various structures returned by the decompiler\&. Depending on how the \fBDecompInterface\fP was called, you can get C code (with markup), the function' syntax tree, the prototype, etc\&.
+.PP
+To check if the decompileFunction call completed normally use the decompileCompleted method\&. If this returns false, the getErrorMessage method may contain a useful error message\&. Its also possible that getErrorMessage will return warning messages, even if decompileFunction did complete\&.
+.PP
+To get the resulting C code, marked up with XML in terms of the lines and tokens, use the getCCodeMarkup method\&.
+.PP
+To get the resulting C code just as a straight String, use the getDecompiledFunction method which returns a \fBDecompiledFunction\fP\&. Off of this, you can use the getC method to get the raw C code as a String or use the getSignature method to get the functions prototype as a String\&.
+.PP
+To get the syntax tree use the getHighFunction method\&. 
+.PP
+Definition at line 55 of file DecompileResults\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.DecompileResults\&.DecompileResults (Function f, Language language, CompilerSpec compilerSpec, PcodeDataTypeManager d, String e, InputStream raw, DecompileProcess\&.DisposeState processState, boolean showNamespace)\fC [inline]\fP"
+
+.PP
+Definition at line 67 of file DecompileResults\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileResults\&.decompileCompleted ()\fC [inline]\fP"
+Returns true if the decompilation producing these results completed without aborting\&. If it was aborted, there will be no real results in this object, and an error message should be available via getErrorMessage\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompilation completed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file DecompileResults\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileResults\&.failedToStart ()\fC [inline]\fP"
+If the action producing this set of decompiler results didn't complete, this method can be used to determine if the decompiler executable was not found or failed to start properly\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompiler executable was not found\&. 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file DecompileResults\&.java\&.
+.SS "\fBClangTokenGroup\fP ghidra\&.app\&.decompiler\&.DecompileResults\&.getCCodeMarkup ()\fC [inline]\fP"
+Get the marked up C code associated with these decompilation results\&. If there was an error, or code generation was turned off, retur null 
+.PP
+\fBReturns:\fP
+.RS 4
+the resulting root of C markup 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file DecompileResults\&.java\&.
+.SS "\fBDecompiledFunction\fP ghidra\&.app\&.decompiler\&.DecompileResults\&.getDecompiledFunction ()\fC [inline]\fP"
+Converts the C code results into an unadorned string\&. The returned object contains both the whole function and just the prototype as separate strings containing raw C code 
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBDecompiledFunction\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 201 of file DecompileResults\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileResults\&.getErrorMessage ()\fC [inline]\fP"
+Return any error message associated with the decompilation producing these results\&. Generally, there will only be an error if the decompilation was aborted for some reason, but there could conceivably be warnings obtainable via this method, even if the decompilation did complete\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+any error message associated with these results 
+.RE
+.PP
+
+.PP
+Definition at line 160 of file DecompileResults\&.java\&.
+.SS "Function ghidra\&.app\&.decompiler\&.DecompileResults\&.getFunction (void)\fC [inline]\fP"
+
+.PP
+Definition at line 114 of file DecompileResults\&.java\&.
+.SS "HighFunction ghidra\&.app\&.decompiler\&.DecompileResults\&.getHighFunction ()\fC [inline]\fP"
+Get the high-level function structure associated with these decompilation results, or null if there was an error during decompilation 
+.PP
+\fBReturns:\fP
+.RS 4
+the resulting HighFunction object 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file DecompileResults\&.java\&.
+.SS "HighParamID ghidra\&.app\&.decompiler\&.DecompileResults\&.getHighParamID ()\fC [inline]\fP"
+Get the high-level function structure associated with these decompilation results, or null if there was an error during decompilation 
+.PP
+\fBReturns:\fP
+.RS 4
+the resulting HighParamID object 
+.RE
+.PP
+
+.PP
+Definition at line 180 of file DecompileResults\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileResults\&.isCancelled ()\fC [inline]\fP"
+If the action producing this set of decompiler results didn't complete, this method can be used to determine if the action was explicitly cancelled (as opposed to an error, a timeout, or a crash)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if these results were explicitly cancelled 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file DecompileResults\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileResults\&.isTimedOut ()\fC [inline]\fP"
+If the action producing this set of decompiler results didn't complete, this method can be used to determine if the action was halted because its timer expired (as opposed to an error, a crash, or being explicitly cancelled)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the timer cancelled these results 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file DecompileResults\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

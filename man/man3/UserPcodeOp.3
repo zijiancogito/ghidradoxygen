@@ -1,0 +1,151 @@
+.TH "UserPcodeOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UserPcodeOp \- The base class for a detailed definition of a user-defined p-code operation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.PP
+Inherited by \fBInjectedUserOp\fP, \fBJumpAssistOp\fP, \fBTermPatternOp\fP, \fBUnspecializedPcodeOp\fP, and \fBVolatileOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUserPcodeOp\fP (\fBArchitecture\fP *g, const string &nm, int4 ind)"
+.br
+.RI "Construct from name and index\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the low-level name of the p-code op\&. "
+.ti -1c
+.RI "int4 \fBgetIndex\fP (void) const"
+.br
+.RI "Get the constant id of the op\&. "
+.ti -1c
+.RI "virtual \fB~UserPcodeOp\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual string \fBgetOperatorName\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Get the symbol representing this operation in decompiled code\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)=0"
+.br
+.RI "Restore the detailed description from an XML stream\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Low-level name of p-code operator\&. "
+.ti -1c
+.RI "int4 \fBuseropindex\fP"
+.br
+.RI "Index passed in the CALLOTHER op\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBglb\fP"
+.br
+.RI "\fBArchitecture\fP owning the user defined op\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base class for a detailed definition of a user-defined p-code operation\&. 
+
+Within the raw p-code framework, the CALLOTHER opcode represents a user defined operation\&. At this level, the operation is just a placeholder for inputs and outputs to same black-box procedure\&. The first input parameter (index 0) must be a constant id associated with the particular procedure\&. Classes derived off of this base class provide a more specialized definition of an operation/procedure\&. The specialized classes are managed via \fBUserOpManage\fP and are associated with CALLOTHER ops via the constant id\&.
+.PP
+The derived classes can in principle implement any functionality, tailored to the architecture or program\&. At this base level, the only commonality is a formal \fBname\fP of the operator and its CALLOTHER index\&. A facility for reading in implementation details is provided via \fBrestoreXml()\fP\&. 
+.PP
+Definition at line 36 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "UserPcodeOp::UserPcodeOp (\fBArchitecture\fP * g, const string & nm, int4 ind)\fC [inline]\fP"
+
+.PP
+Construct from name and index\&. 
+.PP
+Definition at line 42 of file userop\&.hh\&.
+.SS "virtual UserPcodeOp::~UserPcodeOp (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 46 of file userop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 UserPcodeOp::getIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the constant id of the op\&. 
+.PP
+Definition at line 45 of file userop\&.hh\&.
+.SS "const string& UserPcodeOp::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the low-level name of the p-code op\&. 
+.PP
+Definition at line 44 of file userop\&.hh\&.
+.SS "virtual string UserPcodeOp::getOperatorName (const \fBPcodeOp\fP * op) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the symbol representing this operation in decompiled code\&. This will return the symbol formally displayed in source code, which can be tailored more than the low-level name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the operation (in context) where a symbol is needed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the symbol as a string 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBVolatileWriteOp\fP, and \fBVolatileReadOp\fP\&.
+.PP
+Definition at line 54 of file userop\&.hh\&.
+.SS "virtual void UserPcodeOp::restoreXml (const \fBElement\fP * el)\fC [pure virtual]\fP"
+
+.PP
+Restore the detailed description from an XML stream\&. The details of how a user defined operation behaves can be dynamically configured from an XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element describing the op 
+.RE
+.PP
+
+.PP
+Implemented in \fBJumpAssistOp\fP, \fBSegmentOp\fP, \fBVolatileWriteOp\fP, \fBVolatileReadOp\fP, \fBInjectedUserOp\fP, and \fBUnspecializedPcodeOp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBArchitecture\fP* UserPcodeOp::glb\fC [protected]\fP"
+
+.PP
+\fBArchitecture\fP owning the user defined op\&. 
+.PP
+Definition at line 40 of file userop\&.hh\&.
+.SS "string UserPcodeOp::name\fC [protected]\fP"
+
+.PP
+Low-level name of p-code operator\&. 
+.PP
+Definition at line 38 of file userop\&.hh\&.
+.SS "int4 UserPcodeOp::useropindex\fC [protected]\fP"
+
+.PP
+Index passed in the CALLOTHER op\&. 
+.PP
+Definition at line 39 of file userop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

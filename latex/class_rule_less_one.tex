@@ -1,0 +1,174 @@
+\hypertarget{class_rule_less_one}{}\section{Rule\+Less\+One Class Reference}
+\label{class_rule_less_one}\index{RuleLessOne@{RuleLessOne}}
+
+
+Transform I\+N\+T\+\_\+\+L\+E\+SS of 0 or 1\+: {\ttfamily V $<$ 1 =$>$ V == 0, V $<$= 0 =$>$ V == 0}  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Less\+One\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=155pt]{class_rule_less_one__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Less\+One\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=155pt]{class_rule_less_one__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_less_one_a5205237e5159d2accce095129aef61df}{Rule\+Less\+One}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_less_one_aa048e872f55a1c8034660279f58f8e5b}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_less_one_a5750d5201b5022d8cb8caf71a4fa85d3}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_less_one_ac787cb9aa39e6d205659bdf236920619}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Transform I\+N\+T\+\_\+\+L\+E\+SS of 0 or 1\+: {\ttfamily V $<$ 1 =$>$ V == 0, V $<$= 0 =$>$ V == 0} 
+
+Definition at line 268 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_less_one_a5205237e5159d2accce095129aef61df}\label{class_rule_less_one_a5205237e5159d2accce095129aef61df}} 
+\index{RuleLessOne@{RuleLessOne}!RuleLessOne@{RuleLessOne}}
+\index{RuleLessOne@{RuleLessOne}!RuleLessOne@{RuleLessOne}}
+\subsubsection{\texorpdfstring{RuleLessOne()}{RuleLessOne()}}
+{\footnotesize\ttfamily Rule\+Less\+One\+::\+Rule\+Less\+One (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 270 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_less_one_a5205237e5159d2accce095129aef61df_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_less_one_ac787cb9aa39e6d205659bdf236920619}\label{class_rule_less_one_ac787cb9aa39e6d205659bdf236920619}} 
+\index{RuleLessOne@{RuleLessOne}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleLessOne@{RuleLessOne}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Less\+One\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 1278 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_less_one_ac787cb9aa39e6d205659bdf236920619_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_less_one_aa048e872f55a1c8034660279f58f8e5b}\label{class_rule_less_one_aa048e872f55a1c8034660279f58f8e5b}} 
+\index{RuleLessOne@{RuleLessOne}!clone@{clone}}
+\index{clone@{clone}!RuleLessOne@{RuleLessOne}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Less\+One\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 271 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_less_one_aa048e872f55a1c8034660279f58f8e5b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_less_one_a5750d5201b5022d8cb8caf71a4fa85d3}\label{class_rule_less_one_a5750d5201b5022d8cb8caf71a4fa85d3}} 
+\index{RuleLessOne@{RuleLessOne}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleLessOne@{RuleLessOne}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Less\+One\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 1271 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

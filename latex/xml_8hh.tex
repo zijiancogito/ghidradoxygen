@@ -1,0 +1,225 @@
+\hypertarget{xml_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/xml.hh File Reference}
+\label{xml_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/xml.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/xml.hh}}
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+Include dependency graph for xml.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_attributes}{Attributes}}
+\item 
+class \mbox{\hyperlink{class_content_handler}{Content\+Handler}}
+\item 
+class \mbox{\hyperlink{class_element}{Element}}
+\item 
+class \mbox{\hyperlink{class_document}{Document}}
+\item 
+class \mbox{\hyperlink{class_tree_handler}{Tree\+Handler}}
+\item 
+class \mbox{\hyperlink{class_document_storage}{Document\+Storage}}
+\item 
+struct \mbox{\hyperlink{struct_xml_error}{Xml\+Error}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void $\ast$ \mbox{\hyperlink{xml_8hh_ad34bc338f5e298a1993320898263b741}{Locator}}
+\item 
+typedef vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$ \mbox{\hyperlink{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}{List}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int4 \mbox{\hyperlink{xml_8hh_acb2e6147fb537978820f563506f8e0ff}{xml\+\_\+parse}} (istream \&i, \mbox{\hyperlink{class_content_handler}{Content\+Handler}} $\ast$hand, int4 dbg=0)
+\item 
+\mbox{\hyperlink{class_document}{Document}} $\ast$ \mbox{\hyperlink{xml_8hh_a4e0d1051f142e3711986dbb797049769}{xml\+\_\+tree}} (istream \&i)
+\item 
+void \mbox{\hyperlink{xml_8hh_a18ba74ef06228bed0b1eff1f1abbb7ef}{xml\+\_\+escape}} (ostream \&s, const char $\ast$str)
+\item 
+void \mbox{\hyperlink{xml_8hh_a0fa1b18d881c70abd1489da2ba2f6792}{a\+\_\+v}} (ostream \&s, const string \&attr, const string \&val)
+\item 
+void \mbox{\hyperlink{xml_8hh_aa12f4a381037faf4e90d1876bb44aa02}{a\+\_\+v\+\_\+i}} (ostream \&s, const string \&attr, \mbox{\hyperlink{types_8h_aa925ba3e627c2df89d5b1cfe84fb8572}{intb}} val)
+\item 
+void \mbox{\hyperlink{xml_8hh_af098b9ed0ffa95b5f853eb3f88ec7064}{a\+\_\+v\+\_\+u}} (ostream \&s, const string \&attr, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val)
+\item 
+void \mbox{\hyperlink{xml_8hh_a87634423f394bc832a51957ee6fc85c9}{a\+\_\+v\+\_\+b}} (ostream \&s, const string \&attr, bool val)
+\item 
+bool \mbox{\hyperlink{xml_8hh_ac2d01d7c2986f1143b2f6145311d093e}{xml\+\_\+readbool}} (const string \&attr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}\label{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}} 
+\index{xml.hh@{xml.hh}!List@{List}}
+\index{List@{List}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{List}{List}}
+{\footnotesize\ttfamily typedef vector$<$\mbox{\hyperlink{class_element}{Element}} $\ast$$>$ \mbox{\hyperlink{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}{List}}}
+
+
+
+Definition at line 85 of file xml.\+hh.
+
+\mbox{\Hypertarget{xml_8hh_ad34bc338f5e298a1993320898263b741}\label{xml_8hh_ad34bc338f5e298a1993320898263b741}} 
+\index{xml.hh@{xml.hh}!Locator@{Locator}}
+\index{Locator@{Locator}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{Locator}{Locator}}
+{\footnotesize\ttfamily typedef void$\ast$ \mbox{\hyperlink{xml_8hh_ad34bc338f5e298a1993320898263b741}{Locator}}}
+
+
+
+Definition at line 62 of file xml.\+hh.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xml_8hh_a0fa1b18d881c70abd1489da2ba2f6792}\label{xml_8hh_a0fa1b18d881c70abd1489da2ba2f6792}} 
+\index{xml.hh@{xml.hh}!a\_v@{a\_v}}
+\index{a\_v@{a\_v}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{a\_v()}{a\_v()}}
+{\footnotesize\ttfamily void a\+\_\+v (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const string \&}]{attr,  }\item[{const string \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 170 of file xml.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{xml_8hh_a0fa1b18d881c70abd1489da2ba2f6792_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh_a0fa1b18d881c70abd1489da2ba2f6792_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{xml_8hh_a87634423f394bc832a51957ee6fc85c9}\label{xml_8hh_a87634423f394bc832a51957ee6fc85c9}} 
+\index{xml.hh@{xml.hh}!a\_v\_b@{a\_v\_b}}
+\index{a\_v\_b@{a\_v\_b}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{a\_v\_b()}{a\_v\_b()}}
+{\footnotesize\ttfamily void a\+\_\+v\+\_\+b (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const string \&}]{attr,  }\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 190 of file xml.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh_a87634423f394bc832a51957ee6fc85c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{xml_8hh_aa12f4a381037faf4e90d1876bb44aa02}\label{xml_8hh_aa12f4a381037faf4e90d1876bb44aa02}} 
+\index{xml.hh@{xml.hh}!a\_v\_i@{a\_v\_i}}
+\index{a\_v\_i@{a\_v\_i}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{a\_v\_i()}{a\_v\_i()}}
+{\footnotesize\ttfamily void a\+\_\+v\+\_\+i (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const string \&}]{attr,  }\item[{\mbox{\hyperlink{types_8h_aa925ba3e627c2df89d5b1cfe84fb8572}{intb}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 178 of file xml.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh_aa12f4a381037faf4e90d1876bb44aa02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{xml_8hh_af098b9ed0ffa95b5f853eb3f88ec7064}\label{xml_8hh_af098b9ed0ffa95b5f853eb3f88ec7064}} 
+\index{xml.hh@{xml.hh}!a\_v\_u@{a\_v\_u}}
+\index{a\_v\_u@{a\_v\_u}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{a\_v\_u()}{a\_v\_u()}}
+{\footnotesize\ttfamily void a\+\_\+v\+\_\+u (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const string \&}]{attr,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 184 of file xml.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh_af098b9ed0ffa95b5f853eb3f88ec7064_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{xml_8hh_a18ba74ef06228bed0b1eff1f1abbb7ef}\label{xml_8hh_a18ba74ef06228bed0b1eff1f1abbb7ef}} 
+\index{xml.hh@{xml.hh}!xml\_escape@{xml\_escape}}
+\index{xml\_escape@{xml\_escape}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{xml\_escape()}{xml\_escape()}}
+{\footnotesize\ttfamily void xml\+\_\+escape (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh_a18ba74ef06228bed0b1eff1f1abbb7ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{xml_8hh_acb2e6147fb537978820f563506f8e0ff}\label{xml_8hh_acb2e6147fb537978820f563506f8e0ff}} 
+\index{xml.hh@{xml.hh}!xml\_parse@{xml\_parse}}
+\index{xml\_parse@{xml\_parse}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{xml\_parse()}{xml\_parse()}}
+{\footnotesize\ttfamily int4 xml\+\_\+parse (\begin{DoxyParamCaption}\item[{istream \&}]{i,  }\item[{\mbox{\hyperlink{class_content_handler}{Content\+Handler}} $\ast$}]{hand,  }\item[{int4}]{dbg = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xml_8hh_ac2d01d7c2986f1143b2f6145311d093e}\label{xml_8hh_ac2d01d7c2986f1143b2f6145311d093e}} 
+\index{xml.hh@{xml.hh}!xml\_readbool@{xml\_readbool}}
+\index{xml\_readbool@{xml\_readbool}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{xml\_readbool()}{xml\_readbool()}}
+{\footnotesize\ttfamily bool xml\+\_\+readbool (\begin{DoxyParamCaption}\item[{const string \&}]{attr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 201 of file xml.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh_ac2d01d7c2986f1143b2f6145311d093e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{xml_8hh_a4e0d1051f142e3711986dbb797049769}\label{xml_8hh_a4e0d1051f142e3711986dbb797049769}} 
+\index{xml.hh@{xml.hh}!xml\_tree@{xml\_tree}}
+\index{xml\_tree@{xml\_tree}!xml.hh@{xml.hh}}
+\subsubsection{\texorpdfstring{xml\_tree()}{xml\_tree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_document}{Document}}$\ast$ xml\+\_\+tree (\begin{DoxyParamCaption}\item[{istream \&}]{i }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xml_8hh_a4e0d1051f142e3711986dbb797049769_icgraph}
+\end{center}
+\end{figure}

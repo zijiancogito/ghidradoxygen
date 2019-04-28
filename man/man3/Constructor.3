@@ -1,0 +1,284 @@
+.TH "Constructor" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Constructor
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghsymbol\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConstructor\fP (void)"
+.br
+.ti -1c
+.RI "\fBConstructor\fP (\fBSubtableSymbol\fP *p)"
+.br
+.ti -1c
+.RI "\fB~Constructor\fP (void)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP * \fBbuildPattern\fP (ostream &s)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP * \fBgetPattern\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetMinimumLength\fP (int4 l)"
+.br
+.ti -1c
+.RI "int4 \fBgetMinimumLength\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetId\fP (uintm i)"
+.br
+.ti -1c
+.RI "uintm \fBgetId\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetLineno\fP (int4 ln)"
+.br
+.ti -1c
+.RI "int4 \fBgetLineno\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBaddContext\fP (const vector< \fBContextChange\fP * > &vec)"
+.br
+.ti -1c
+.RI "void \fBaddOperand\fP (\fBOperandSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "void \fBaddInvisibleOperand\fP (\fBOperandSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "void \fBaddSyntax\fP (const string &syn)"
+.br
+.ti -1c
+.RI "void \fBaddEquation\fP (\fBPatternEquation\fP *pe)"
+.br
+.ti -1c
+.RI "void \fBsetMainSection\fP (\fBConstructTpl\fP *tpl)"
+.br
+.ti -1c
+.RI "void \fBsetNamedSection\fP (\fBConstructTpl\fP *tpl, int4 id)"
+.br
+.ti -1c
+.RI "\fBSubtableSymbol\fP * \fBgetParent\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetNumOperands\fP (void) const"
+.br
+.ti -1c
+.RI "\fBOperandSymbol\fP * \fBgetOperand\fP (int4 i) const"
+.br
+.ti -1c
+.RI "\fBPatternEquation\fP * \fBgetPatternEquation\fP (void) const"
+.br
+.ti -1c
+.RI "\fBConstructTpl\fP * \fBgetTempl\fP (void) const"
+.br
+.ti -1c
+.RI "\fBConstructTpl\fP * \fBgetNamedTempl\fP (int4 secnum) const"
+.br
+.ti -1c
+.RI "int4 \fBgetNumSections\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBprintInfo\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBprint\fP (ostream &s, \fBParserWalker\fP &pos) const"
+.br
+.ti -1c
+.RI "void \fBprintMnemonic\fP (ostream &s, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "void \fBprintBody\fP (ostream &s, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "void \fBremoveTrailingSpace\fP (void)"
+.br
+.ti -1c
+.RI "void \fBapplyContext\fP (\fBParserWalkerChange\fP &walker) const"
+.br
+.ti -1c
+.RI "void \fBmarkSubtableOperands\fP (vector< int4 > &check) const"
+.br
+.ti -1c
+.RI "void \fBsetError\fP (bool val) const"
+.br
+.ti -1c
+.RI "bool \fBisError\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisRecursive\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, \fBSleighBase\fP *trans)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 463 of file slghsymbol\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Constructor::Constructor (void)"
+
+.PP
+Definition at line 1351 of file slghsymbol\&.cc\&.
+.SS "Constructor::Constructor (\fBSubtableSymbol\fP * p)"
+
+.PP
+Definition at line 1363 of file slghsymbol\&.cc\&.
+.SS "Constructor::~Constructor (void)"
+
+.PP
+Definition at line 1374 of file slghsymbol\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Constructor::addContext (const vector< \fBContextChange\fP * > & vec)\fC [inline]\fP"
+
+.PP
+Definition at line 491 of file slghsymbol\&.hh\&.
+.SS "void Constructor::addEquation (\fBPatternEquation\fP * pe)"
+
+.PP
+Definition at line 1439 of file slghsymbol\&.cc\&.
+.SS "void Constructor::addInvisibleOperand (\fBOperandSymbol\fP * sym)"
+
+.PP
+Definition at line 1393 of file slghsymbol\&.cc\&.
+.SS "void Constructor::addOperand (\fBOperandSymbol\fP * sym)"
+
+.PP
+Definition at line 1399 of file slghsymbol\&.cc\&.
+.SS "void Constructor::addSyntax (const string & syn)"
+
+.PP
+Definition at line 1408 of file slghsymbol\&.cc\&.
+.SS "void Constructor::applyContext (\fBParserWalkerChange\fP & walker) const\fC [inline]\fP"
+
+.PP
+Definition at line 510 of file slghsymbol\&.hh\&.
+.SS "\fBTokenPattern\fP * Constructor::buildPattern (ostream & s)"
+
+.PP
+Definition at line 1747 of file slghsymbol\&.cc\&.
+.SS "uintm Constructor::getId (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 488 of file slghsymbol\&.hh\&.
+.SS "int4 Constructor::getLineno (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 490 of file slghsymbol\&.hh\&.
+.SS "int4 Constructor::getMinimumLength (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 486 of file slghsymbol\&.hh\&.
+.SS "\fBConstructTpl\fP * Constructor::getNamedTempl (int4 secnum) const"
+
+.PP
+Definition at line 1453 of file slghsymbol\&.cc\&.
+.SS "int4 Constructor::getNumOperands (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 499 of file slghsymbol\&.hh\&.
+.SS "int4 Constructor::getNumSections (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 504 of file slghsymbol\&.hh\&.
+.SS "\fBOperandSymbol\fP* Constructor::getOperand (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 500 of file slghsymbol\&.hh\&.
+.SS "\fBSubtableSymbol\fP* Constructor::getParent (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 498 of file slghsymbol\&.hh\&.
+.SS "\fBTokenPattern\fP* Constructor::getPattern (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 484 of file slghsymbol\&.hh\&.
+.SS "\fBPatternEquation\fP* Constructor::getPatternEquation (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 501 of file slghsymbol\&.hh\&.
+.SS "\fBConstructTpl\fP* Constructor::getTempl (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 502 of file slghsymbol\&.hh\&.
+.SS "bool Constructor::isError (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 517 of file slghsymbol\&.hh\&.
+.SS "bool Constructor::isRecursive (void) const"
+
+.PP
+Definition at line 1545 of file slghsymbol\&.cc\&.
+.SS "void Constructor::markSubtableOperands (vector< int4 > & check) const"
+
+.PP
+Definition at line 1532 of file slghsymbol\&.cc\&.
+.SS "void Constructor::print (ostream & s, \fBParserWalker\fP & pos) const"
+
+.PP
+Definition at line 1461 of file slghsymbol\&.cc\&.
+.SS "void Constructor::printBody (ostream & s, \fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 1499 of file slghsymbol\&.cc\&.
+.SS "void Constructor::printInfo (ostream & s) const"
+
+.PP
+Definition at line 1836 of file slghsymbol\&.cc\&.
+.SS "void Constructor::printMnemonic (ostream & s, \fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 1476 of file slghsymbol\&.cc\&.
+.SS "void Constructor::removeTrailingSpace (void)"
+
+.PP
+Definition at line 1522 of file slghsymbol\&.cc\&.
+.SS "void Constructor::restoreXml (const \fBElement\fP * el, \fBSleighBase\fP * trans)"
+
+.PP
+Definition at line 1588 of file slghsymbol\&.cc\&.
+.SS "void Constructor::saveXml (ostream & s) const"
+
+.PP
+Definition at line 1555 of file slghsymbol\&.cc\&.
+.SS "void Constructor::setError (bool val) const\fC [inline]\fP"
+
+.PP
+Definition at line 516 of file slghsymbol\&.hh\&.
+.SS "void Constructor::setId (uintm i)\fC [inline]\fP"
+
+.PP
+Definition at line 487 of file slghsymbol\&.hh\&.
+.SS "void Constructor::setLineno (int4 ln)\fC [inline]\fP"
+
+.PP
+Definition at line 489 of file slghsymbol\&.hh\&.
+.SS "void Constructor::setMainSection (\fBConstructTpl\fP * tpl)\fC [inline]\fP"
+
+.PP
+Definition at line 496 of file slghsymbol\&.hh\&.
+.SS "void Constructor::setMinimumLength (int4 l)\fC [inline]\fP"
+
+.PP
+Definition at line 485 of file slghsymbol\&.hh\&.
+.SS "void Constructor::setNamedSection (\fBConstructTpl\fP * tpl, int4 id)"
+
+.PP
+Definition at line 1445 of file slghsymbol\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

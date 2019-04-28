@@ -1,0 +1,90 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'opcodes\&.hh'\fP
+.br
+\fC#include 'types\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBget_opname\fP (\fBOpCode\fP opc)"
+.br
+.RI "Convert an OpCode to the name as a string\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBget_opcode\fP (const string &nm)"
+.br
+.RI "Convert a name string to the matching OpCode\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBget_booleanflip\fP (\fBOpCode\fP opc, bool &reorder)"
+.br
+.RI "Get the complementary OpCode\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBOpCode\fP get_booleanflip (\fBOpCode\fP opc, bool & reorder)"
+
+.PP
+Get the complementary OpCode\&. Every comparison operation has a complementary form that produces the opposite output on the same inputs\&. Set \fBreorder\fP to true if the complimentary operation involves reordering the input parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP is the OpCode to complement 
+.br
+\fIreorder\fP is set to \fBtrue\fP if the inputs need to be reordered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the complementary OpCode or CPUI_MAX if not given a comparison operation 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file opcodes\&.cc\&.
+.SS "\fBOpCode\fP get_opcode (const string & nm)"
+
+.PP
+Convert a name string to the matching OpCode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of an operation 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding OpCode value 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file opcodes\&.cc\&.
+.SS "const char* get_opname (\fBOpCode\fP opc)"
+
+.PP
+Convert an OpCode to the name as a string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP is an OpCode value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the operation as a string 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file opcodes\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

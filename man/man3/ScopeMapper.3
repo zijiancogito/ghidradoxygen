@@ -1,0 +1,139 @@
+.TH "ScopeMapper" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScopeMapper \- An \fBAddress\fP range associated with the symbol \fBScope\fP that owns it\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBAddress\fP \fBlinetype\fP"
+.br
+.RI "The linear element for a rangemap\&. "
+.ti -1c
+.RI "typedef NullSubsort \fBsubsorttype\fP"
+.br
+.RI "The sub-sort object for a rangemap\&. "
+.ti -1c
+.RI "typedef \fBScope\fP * \fBinittype\fP"
+.br
+.RI "Initialization data for a \fBScopeMapper\fP\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScopeMapper\fP (\fBAddress\fP f, \fBAddress\fP l)"
+.br
+.RI "Construct given an address range\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetFirst\fP (void) const"
+.br
+.RI "Get the first address in the range\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetLast\fP (void) const"
+.br
+.RI "Get the last address in the range\&. "
+.ti -1c
+.RI "NullSubsort \fBgetSubsort\fP (void) const"
+.br
+.RI "Get the sub-subsort object\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBgetScope\fP (void) const"
+.br
+.RI "Get the \fBScope\fP owning this address range\&. "
+.ti -1c
+.RI "void \fBinitialize\fP (const \fBinittype\fP &data)"
+.br
+.RI "Initialize the range (with the owning \fBScope\fP) "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBDatabase\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBAddress\fP range associated with the symbol \fBScope\fP that owns it\&. 
+
+As part of a rangemap, this forms a map from addresses to \fInamespace\fP Scopes so that the decompiler can quickly find the \fInamespace\fP \fBScope\fP that holds the \fBSymbol\fP it sees accessed\&. 
+.PP
+Definition at line 770 of file database\&.hh\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef \fBScope\fP* \fBScopeMapper::inittype\fP"
+
+.PP
+Initialization data for a \fBScopeMapper\fP\&. 
+.PP
+Definition at line 783 of file database\&.hh\&.
+.SS "typedef \fBAddress\fP \fBScopeMapper::linetype\fP"
+
+.PP
+The linear element for a rangemap\&. 
+.PP
+Definition at line 781 of file database\&.hh\&.
+.SS "typedef NullSubsort \fBScopeMapper::subsorttype\fP"
+
+.PP
+The sub-sort object for a rangemap\&. 
+.PP
+Definition at line 782 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ScopeMapper::ScopeMapper (\fBAddress\fP f, \fBAddress\fP l)\fC [inline]\fP"
+
+.PP
+Construct given an address range\&. 
+.PP
+Definition at line 789 of file database\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBAddress\fP ScopeMapper::getFirst (void) const\fC [inline]\fP"
+
+.PP
+Get the first address in the range\&. 
+.PP
+Definition at line 790 of file database\&.hh\&.
+.SS "\fBAddress\fP ScopeMapper::getLast (void) const\fC [inline]\fP"
+
+.PP
+Get the last address in the range\&. 
+.PP
+Definition at line 791 of file database\&.hh\&.
+.SS "\fBScope\fP* ScopeMapper::getScope (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBScope\fP owning this address range\&. 
+.PP
+Definition at line 793 of file database\&.hh\&.
+.SS "NullSubsort ScopeMapper::getSubsort (void) const\fC [inline]\fP"
+
+.PP
+Get the sub-subsort object\&. 
+.PP
+Definition at line 792 of file database\&.hh\&.
+.SS "void ScopeMapper::initialize (const \fBinittype\fP & data)\fC [inline]\fP"
+
+.PP
+Initialize the range (with the owning \fBScope\fP) 
+.PP
+Definition at line 794 of file database\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBDatabase\fP\fC [friend]\fP"
+
+.PP
+Definition at line 771 of file database\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

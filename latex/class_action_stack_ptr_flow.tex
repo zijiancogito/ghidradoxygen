@@ -1,0 +1,167 @@
+\hypertarget{class_action_stack_ptr_flow}{}\section{Action\+Stack\+Ptr\+Flow Class Reference}
+\label{class_action_stack_ptr_flow}\index{ActionStackPtrFlow@{ActionStackPtrFlow}}
+
+
+Analyze change to the stack pointer across sub-\/function calls.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Stack\+Ptr\+Flow\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_action_stack_ptr_flow__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Stack\+Ptr\+Flow\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_action_stack_ptr_flow__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_stack_ptr_flow_ade2bdc30e166fcb9f5e317bd7b9bae89}{Action\+Stack\+Ptr\+Flow}} (const string \&g, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ss)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_action_stack_ptr_flow_a2baae3d78de2308e628b17ed3db8a625}{reset}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_stack_ptr_flow_a82a95a85172576abdfa446a3faed3ff4}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_stack_ptr_flow_a50ab249d10eef25f05e5e8de38786f7b}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Analyze change to the stack pointer across sub-\/function calls. 
+
+Definition at line 82 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_stack_ptr_flow_ade2bdc30e166fcb9f5e317bd7b9bae89}\label{class_action_stack_ptr_flow_ade2bdc30e166fcb9f5e317bd7b9bae89}} 
+\index{ActionStackPtrFlow@{ActionStackPtrFlow}!ActionStackPtrFlow@{ActionStackPtrFlow}}
+\index{ActionStackPtrFlow@{ActionStackPtrFlow}!ActionStackPtrFlow@{ActionStackPtrFlow}}
+\subsubsection{\texorpdfstring{ActionStackPtrFlow()}{ActionStackPtrFlow()}}
+{\footnotesize\ttfamily Action\+Stack\+Ptr\+Flow\+::\+Action\+Stack\+Ptr\+Flow (\begin{DoxyParamCaption}\item[{const string \&}]{g,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{ss }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 91 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_action_stack_ptr_flow_ade2bdc30e166fcb9f5e317bd7b9bae89_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_stack_ptr_flow_a50ab249d10eef25f05e5e8de38786f7b}\label{class_action_stack_ptr_flow_a50ab249d10eef25f05e5e8de38786f7b}} 
+\index{ActionStackPtrFlow@{ActionStackPtrFlow}!apply@{apply}}
+\index{apply@{apply}!ActionStackPtrFlow@{ActionStackPtrFlow}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Stack\+Ptr\+Flow\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 477 of file coreaction.\+cc.
+
+\mbox{\Hypertarget{class_action_stack_ptr_flow_a82a95a85172576abdfa446a3faed3ff4}\label{class_action_stack_ptr_flow_a82a95a85172576abdfa446a3faed3ff4}} 
+\index{ActionStackPtrFlow@{ActionStackPtrFlow}!clone@{clone}}
+\index{clone@{clone}!ActionStackPtrFlow@{ActionStackPtrFlow}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Stack\+Ptr\+Flow\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 93 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_action_stack_ptr_flow_a82a95a85172576abdfa446a3faed3ff4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_stack_ptr_flow_a2baae3d78de2308e628b17ed3db8a625}\label{class_action_stack_ptr_flow_a2baae3d78de2308e628b17ed3db8a625}} 
+\index{ActionStackPtrFlow@{ActionStackPtrFlow}!reset@{reset}}
+\index{reset@{reset}!ActionStackPtrFlow@{ActionStackPtrFlow}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual void Action\+Stack\+Ptr\+Flow\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the new function {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} may affect \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_ac7c1cf16bb63e0741ba16be5179cf943}{Action}}.
+
+
+
+Definition at line 92 of file coreaction.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

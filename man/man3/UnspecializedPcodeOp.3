@@ -1,0 +1,62 @@
+.TH "UnspecializedPcodeOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UnspecializedPcodeOp \- A user defined p-code op with no specialization\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.PP
+Inherits \fBUserPcodeOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUnspecializedPcodeOp\fP (\fBArchitecture\fP *g, const string &nm, int4 ind)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore the detailed description from an XML stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A user defined p-code op with no specialization\&. 
+
+This class is used by the manager for CALLOTHER indices that have not been mapped to a specialization\&. The p-code operation has the (SLEIGH assigned) name, but still has an unknown effect\&. 
+.PP
+Definition at line 70 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "UnspecializedPcodeOp::UnspecializedPcodeOp (\fBArchitecture\fP * g, const string & nm, int4 ind)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 72 of file userop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void UnspecializedPcodeOp::restoreXml (const \fBElement\fP * el)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Restore the detailed description from an XML stream\&. The details of how a user defined operation behaves can be dynamically configured from an XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element describing the op 
+.RE
+.PP
+
+.PP
+Implements \fBUserPcodeOp\fP\&.
+.PP
+Definition at line 74 of file userop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

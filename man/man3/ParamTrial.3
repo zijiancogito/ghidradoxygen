@@ -1,0 +1,445 @@
+.TH "ParamTrial" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParamTrial \- A register or memory register that may be used to pass a parameter or return value\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBchecked\fP = 1, \fBused\fP = 2, \fBdefnouse\fP = 4, \fBactive\fP = 8, \fBunref\fP = 16, \fBkilledbycall\fP = 32, \fBrem_formed\fP = 64, \fBindcreate_formed\fP = 128, \fBcondexe_effect\fP = 256 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParamTrial\fP (const \fBAddress\fP &ad, int4 sz, int4 sl)"
+.br
+.RI "Construct from components\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddress\fP (void) const"
+.br
+.RI "Get the starting address of \fBthis\fP trial\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the number of bytes in \fBthis\fP trial\&. "
+.ti -1c
+.RI "int4 \fBgetSlot\fP (void) const"
+.br
+.RI "Get the \fIslot\fP associated with \fBthis\fP trial\&. "
+.ti -1c
+.RI "void \fBsetSlot\fP (int4 val)"
+.br
+.RI "Set the \fIslot\fP associated with \fBthis\fP trial\&. "
+.ti -1c
+.RI "const \fBParamEntry\fP * \fBgetEntry\fP (void) const"
+.br
+.RI "Get the model entry associated with \fBthis\fP trial\&. "
+.ti -1c
+.RI "int4 \fBgetOffset\fP (void) const"
+.br
+.RI "Get the offset associated with \fBthis\fP trial\&. "
+.ti -1c
+.RI "void \fBsetEntry\fP (const \fBParamEntry\fP *ent, int4 off)"
+.br
+.RI "Set the model entry for this trial\&. "
+.ti -1c
+.RI "void \fBmarkUsed\fP (void)"
+.br
+.RI "Mark the trial as a formal parameter\&. "
+.ti -1c
+.RI "void \fBmarkActive\fP (void)"
+.br
+.RI "Mark that trial is actively used (in data-flow) "
+.ti -1c
+.RI "void \fBmarkInactive\fP (void)"
+.br
+.RI "Mark that trial is not actively used\&. "
+.ti -1c
+.RI "void \fBmarkNoUse\fP (void)"
+.br
+.RI "Mark trial as definitely \fInot\fP a parameter\&. "
+.ti -1c
+.RI "void \fBmarkUnref\fP (void)"
+.br
+.RI "Mark that \fBthis\fP trial has no \fBVarnode\fP representative\&. "
+.ti -1c
+.RI "void \fBmarkKilledByCall\fP (void)"
+.br
+.RI "Mark that \fBthis\fP storage is \fIkilled-by-call\fP\&. "
+.ti -1c
+.RI "bool \fBisChecked\fP (void) const"
+.br
+.RI "Has \fBthis\fP trial been checked\&. "
+.ti -1c
+.RI "bool \fBisActive\fP (void) const"
+.br
+.RI "Is \fBthis\fP trial actively used in data-flow\&. "
+.ti -1c
+.RI "bool \fBisDefinitelyNotUsed\fP (void) const"
+.br
+.RI "Is \fBthis\fP trial as definitely not a parameter\&. "
+.ti -1c
+.RI "bool \fBisUsed\fP (void) const"
+.br
+.RI "Is \fBthis\fP trial as a formal parameter\&. "
+.ti -1c
+.RI "bool \fBisUnref\fP (void) const"
+.br
+.RI "Does \fBthis\fP trial not have a \fBVarnode\fP representative\&. "
+.ti -1c
+.RI "bool \fBisKilledByCall\fP (void) const"
+.br
+.RI "Is \fBthis\fP storage \fIkilled-by-call\fP\&. "
+.ti -1c
+.RI "void \fBsetRemFormed\fP (void)"
+.br
+.RI "Mark that \fBthis\fP is formed by a INT_REM operation\&. "
+.ti -1c
+.RI "bool \fBisRemFormed\fP (void) const"
+.br
+.RI "Is \fBthis\fP formed by a INT_REM operation\&. "
+.ti -1c
+.RI "void \fBsetIndCreateFormed\fP (void)"
+.br
+.RI "Mark \fBthis\fP trial as formed by \fIindirect\fP \fIcreation\fP\&. "
+.ti -1c
+.RI "bool \fBisIndCreateFormed\fP (void) const"
+.br
+.RI "Is \fBthis\fP trial formed by \fIindirect\fP \fIcreation\fP\&. "
+.ti -1c
+.RI "void \fBsetCondExeEffect\fP (void)"
+.br
+.RI "Mark \fBthis\fP trial as possibly affected by conditional execution\&. "
+.ti -1c
+.RI "bool \fBhasCondExeEffect\fP (void) const"
+.br
+.RI "Is \fBthis\fP trial possibly affected by conditional execution\&. "
+.ti -1c
+.RI "int4 \fBslotGroup\fP (void) const"
+.br
+.RI "Get position of \fBthis\fP within its parameter \fIgroup\fP\&. "
+.ti -1c
+.RI "void \fBsetAddress\fP (const \fBAddress\fP &ad, int4 sz)"
+.br
+.RI "Reset the memory range of \fBthis\fP trial\&. "
+.ti -1c
+.RI "\fBParamTrial\fP \fBsplitHi\fP (int4 sz) const"
+.br
+.RI "Create a trial representing the first part of \fBthis\fP\&. "
+.ti -1c
+.RI "\fBParamTrial\fP \fBsplitLo\fP (int4 sz) const"
+.br
+.RI "Create a trial representing the last part of \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBtestShrink\fP (const \fBAddress\fP &newaddr, int4 sz) const"
+.br
+.RI "Test if \fBthis\fP trial can be made smaller\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBParamTrial\fP &b) const"
+.br
+.RI "Sort trials in formal parameter order\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A register or memory register that may be used to pass a parameter or return value\&. 
+
+The parameter recovery utilities (see \fBParamActive\fP) use this to denote a putative parameter passing storage location\&. It is made up of the address and size of the memory range, a set of properties about the use of the range (as a parameter) in context, and a link to the matching part of the PrototypeModel\&.
+.PP
+Data-flow for the putative parameter is held directly by a \fBVarnode\fP\&. To quickly map to the \fBVarnode\fP (which may or may not exist at points during the \fBParamTrial\fP lifetime), the concept of \fBslot\fP is used\&. ParamTrials are assigned a \fIslot\fP, starting at 1\&. For sub-function parameters, this represents the actual input index of the \fBVarnode\fP in the corresponding CALL or CALLIND op\&. For parameters, this gives the position within the list of possible input Varnodes in address order\&. The \fIslot\fP ordering varies over the course of analysis and is unlikely to match the final parameter ordering\&. The \fBParamTrial\fP comparator sorts the trials in final parameter ordering\&. 
+.PP
+Definition at line 115 of file fspec\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIchecked \fP\fP
+Trial has been checked\&. 
+.TP
+\fB\fIused \fP\fP
+Trial is definitely used (final verdict) 
+.TP
+\fB\fIdefnouse \fP\fP
+Trial is definitely not used\&. 
+.TP
+\fB\fIactive \fP\fP
+Trial looks active (hint that it is used) 
+.TP
+\fB\fIunref \fP\fP
+There is no direct reference to this parameter trial\&. 
+.TP
+\fB\fIkilledbycall \fP\fP
+Data in this location is unlikely to flow thru a func and still be a param\&. 
+.TP
+\fB\fIrem_formed \fP\fP
+The trial is built out of a remainder operation\&. 
+.TP
+\fB\fIindcreate_formed \fP\fP
+The trial is built out of an indirect creation\&. 
+.TP
+\fB\fIcondexe_effect \fP\fP
+This trial may be affected by conditional execution\&. 
+.PP
+Definition at line 117 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParamTrial::ParamTrial (const \fBAddress\fP & ad, int4 sz, int4 sl)\fC [inline]\fP"
+
+.PP
+Construct from components\&. 
+.PP
+Definition at line 137 of file fspec\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBAddress\fP& ParamTrial::getAddress (void) const\fC [inline]\fP"
+
+.PP
+Get the starting address of \fBthis\fP trial\&. 
+.PP
+Definition at line 138 of file fspec\&.hh\&.
+.SS "const \fBParamEntry\fP* ParamTrial::getEntry (void) const\fC [inline]\fP"
+
+.PP
+Get the model entry associated with \fBthis\fP trial\&. 
+.PP
+Definition at line 142 of file fspec\&.hh\&.
+.SS "int4 ParamTrial::getOffset (void) const\fC [inline]\fP"
+
+.PP
+Get the offset associated with \fBthis\fP trial\&. 
+.PP
+Definition at line 143 of file fspec\&.hh\&.
+.SS "int4 ParamTrial::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of bytes in \fBthis\fP trial\&. 
+.PP
+Definition at line 139 of file fspec\&.hh\&.
+.SS "int4 ParamTrial::getSlot (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIslot\fP associated with \fBthis\fP trial\&. 
+.PP
+Definition at line 140 of file fspec\&.hh\&.
+.SS "bool ParamTrial::hasCondExeEffect (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP trial possibly affected by conditional execution\&. 
+.PP
+Definition at line 162 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isActive (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP trial actively used in data-flow\&. 
+.PP
+Definition at line 152 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isChecked (void) const\fC [inline]\fP"
+
+.PP
+Has \fBthis\fP trial been checked\&. 
+.PP
+Definition at line 151 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isDefinitelyNotUsed (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP trial as definitely not a parameter\&. 
+.PP
+Definition at line 153 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isIndCreateFormed (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP trial formed by \fIindirect\fP \fIcreation\fP\&. 
+.PP
+Definition at line 160 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isKilledByCall (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP storage \fIkilled-by-call\fP\&. 
+.PP
+Definition at line 156 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isRemFormed (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP formed by a INT_REM operation\&. 
+.PP
+Definition at line 158 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isUnref (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP trial not have a \fBVarnode\fP representative\&. 
+.PP
+Definition at line 155 of file fspec\&.hh\&.
+.SS "bool ParamTrial::isUsed (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP trial as a formal parameter\&. 
+.PP
+Definition at line 154 of file fspec\&.hh\&.
+.SS "void ParamTrial::markActive (void)\fC [inline]\fP"
+
+.PP
+Mark that trial is actively used (in data-flow) 
+.PP
+Definition at line 146 of file fspec\&.hh\&.
+.SS "void ParamTrial::markInactive (void)\fC [inline]\fP"
+
+.PP
+Mark that trial is not actively used\&. 
+.PP
+Definition at line 147 of file fspec\&.hh\&.
+.SS "void ParamTrial::markKilledByCall (void)\fC [inline]\fP"
+
+.PP
+Mark that \fBthis\fP storage is \fIkilled-by-call\fP\&. 
+.PP
+Definition at line 150 of file fspec\&.hh\&.
+.SS "void ParamTrial::markNoUse (void)\fC [inline]\fP"
+
+.PP
+Mark trial as definitely \fInot\fP a parameter\&. 
+.PP
+Definition at line 148 of file fspec\&.hh\&.
+.SS "void ParamTrial::markUnref (void)\fC [inline]\fP"
+
+.PP
+Mark that \fBthis\fP trial has no \fBVarnode\fP representative\&. 
+.PP
+Definition at line 149 of file fspec\&.hh\&.
+.SS "void ParamTrial::markUsed (void)\fC [inline]\fP"
+
+.PP
+Mark the trial as a formal parameter\&. 
+.PP
+Definition at line 145 of file fspec\&.hh\&.
+.SS "bool ParamTrial::operator< (const \fBParamTrial\fP & b) const"
+
+.PP
+Sort trials in formal parameter order\&. Trials are sorted primarily by the \fIgroup\fP index assigned by the PrototypeModel\&. Trials within the same group are sorted in address order (or its reverse) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP is the other trial to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP should be ordered before the other trial 
+.RE
+.PP
+
+.PP
+Definition at line 1214 of file fspec\&.cc\&.
+.SS "void ParamTrial::setAddress (const \fBAddress\fP & ad, int4 sz)\fC [inline]\fP"
+
+.PP
+Reset the memory range of \fBthis\fP trial\&. 
+.PP
+Definition at line 164 of file fspec\&.hh\&.
+.SS "void ParamTrial::setCondExeEffect (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP trial as possibly affected by conditional execution\&. 
+.PP
+Definition at line 161 of file fspec\&.hh\&.
+.SS "void ParamTrial::setEntry (const \fBParamEntry\fP * ent, int4 off)\fC [inline]\fP"
+
+.PP
+Set the model entry for this trial\&. 
+.PP
+Definition at line 144 of file fspec\&.hh\&.
+.SS "void ParamTrial::setIndCreateFormed (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP trial as formed by \fIindirect\fP \fIcreation\fP\&. 
+.PP
+Definition at line 159 of file fspec\&.hh\&.
+.SS "void ParamTrial::setRemFormed (void)\fC [inline]\fP"
+
+.PP
+Mark that \fBthis\fP is formed by a INT_REM operation\&. 
+.PP
+Definition at line 157 of file fspec\&.hh\&.
+.SS "void ParamTrial::setSlot (int4 val)\fC [inline]\fP"
+
+.PP
+Set the \fIslot\fP associated with \fBthis\fP trial\&. 
+.PP
+Definition at line 141 of file fspec\&.hh\&.
+.SS "int4 ParamTrial::slotGroup (void) const\fC [inline]\fP"
+
+.PP
+Get position of \fBthis\fP within its parameter \fIgroup\fP\&. 
+.PP
+Definition at line 163 of file fspec\&.hh\&.
+.SS "\fBParamTrial\fP ParamTrial::splitHi (int4 sz) const"
+
+.PP
+Create a trial representing the first part of \fBthis\fP\&. Create a new \fBParamTrial\fP based on the first bytes of the memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsz\fP is the number of bytes to include in the new trial 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new trial 
+.RE
+.PP
+
+.PP
+Definition at line 1166 of file fspec\&.cc\&.
+.SS "\fBParamTrial\fP ParamTrial::splitLo (int4 sz) const"
+
+.PP
+Create a trial representing the last part of \fBthis\fP\&. Create a new \fBParamTrial\fP based on the last bytes of the memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsz\fP is the number of bytes to include in the new trial 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new trial 
+.RE
+.PP
+
+.PP
+Definition at line 1177 of file fspec\&.cc\&.
+.SS "bool ParamTrial::testShrink (const \fBAddress\fP & newaddr, int4 sz) const"
+
+.PP
+Test if \fBthis\fP trial can be made smaller\&. A new address and size for the memory range is given, which must respect the endianness of the putative parameter and any existing match with the PrototypeModel 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewaddr\fP is the new address 
+.br
+\fIsz\fP is the new size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the trial can be shrunk to the new range 
+.RE
+.PP
+
+.PP
+Definition at line 1192 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

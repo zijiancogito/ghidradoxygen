@@ -1,0 +1,81 @@
+.TH "CollapseStructure" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CollapseStructure \- Build a code structure from a control-flow graph (\fBBlockGraph\fP)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <blockaction\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollapseStructure\fP (\fBBlockGraph\fP &g)"
+.br
+.RI "Construct given a control-flow graph\&. "
+.ti -1c
+.RI "int4 \fBgetChangeCount\fP (void) const"
+.br
+.RI "Get number of data-flow changes\&. "
+.ti -1c
+.RI "void \fBcollapseAll\fP (void)"
+.br
+.RI "Run the whole algorithm\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Build a code structure from a control-flow graph (\fBBlockGraph\fP)\&. 
+
+This class manages the main control-flow structuring algorithm for the decompiler\&. In short:
+.IP "\(bu" 2
+Start with a control-flow graph of basic blocks\&.
+.IP "\(bu" 2
+Repeatedly apply:
+.IP "  \(bu" 4
+Search for sub-graphs matching specific code structure elements\&.
+.IP "  \(bu" 4
+Note the structure element and collapse the component nodes to a single node\&.
+.PP
+
+.IP "\(bu" 2
+If the process gets stuck, remove appropriate edges, marking them as unstructured\&. 
+.PP
+
+.PP
+Definition at line 190 of file blockaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CollapseStructure::CollapseStructure (\fBBlockGraph\fP & g)"
+
+.PP
+Construct given a control-flow graph\&. The initial \fBBlockGraph\fP should be a copy of the permanent control-flow graph\&. In particular the \fBFlowBlock\fP nodes should be \fBBlockCopy\fP instances\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the (copy of the) control-flow graph 
+.RE
+.PP
+
+.PP
+Definition at line 1848 of file blockaction\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CollapseStructure::collapseAll (void)"
+
+.PP
+Run the whole algorithm\&. Collapse everything in the control-flow graph to isolated blocks with no inputs and outputs\&. 
+.PP
+Definition at line 1855 of file blockaction\&.cc\&.
+.SS "int4 CollapseStructure::getChangeCount (void) const\fC [inline]\fP"
+
+.PP
+Get number of data-flow changes\&. 
+.PP
+Definition at line 222 of file blockaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

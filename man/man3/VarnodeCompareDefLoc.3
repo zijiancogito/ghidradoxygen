@@ -1,0 +1,50 @@
+.TH "VarnodeCompareDefLoc" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VarnodeCompareDefLoc \- Compare two \fBVarnode\fP pointers by definition then location\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <varnode\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator()\fP (const \fBVarnode\fP *a, const \fBVarnode\fP *b) const"
+.br
+.RI "Functional comparison operator\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Compare two \fBVarnode\fP pointers by definition then location\&. 
+.PP
+Definition at line 38 of file varnode\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool VarnodeCompareDefLoc::operator() (const \fBVarnode\fP * a, const \fBVarnode\fP * b) const\fC [inline]\fP"
+
+.PP
+Functional comparison operator\&. Compare by definition then by location\&. This is different than the standard ordering but we still allow multiple identical frees\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBVarnode\fP to compare 
+.br
+\fIb\fP is the second \fBVarnode\fP to compare 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if \fBa\fP occurs earlier than \fBb\fP 
+.RE
+.PP
+
+.PP
+Definition at line 52 of file varnode\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

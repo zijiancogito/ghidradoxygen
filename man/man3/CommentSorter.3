@@ -1,0 +1,160 @@
+.TH "CommentSorter" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CommentSorter \- A class for sorting comments into and within basic blocks\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <comment\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBheader_basic\fP = 0, \fBheader_unplaced\fP = 1 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommentSorter\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBsetupFunctionList\fP (uint4 tp, const \fBFuncdata\fP *fd, const \fBCommentDatabase\fP &db, bool displayUnplaced)"
+.br
+.RI "Collect and sort comments specific to the given function\&. "
+.ti -1c
+.RI "void \fBsetupBlockList\fP (const \fBFlowBlock\fP *bl)"
+.br
+.RI "Prepare to walk comments from a single basic block\&. "
+.ti -1c
+.RI "void \fBsetupOpList\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Establish a p-code landmark within the current set of comments\&. "
+.ti -1c
+.RI "void \fBsetupHeader\fP (uint4 headerType)"
+.br
+.RI "Prepare to walk comments in the header\&. "
+.ti -1c
+.RI "bool \fBhasNext\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if there are more comments to emit in the current set\&. "
+.ti -1c
+.RI "\fBComment\fP * \fBgetNext\fP (void) const"
+.br
+.RI "Advance to the next comment\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class for sorting comments into and within basic blocks\&. 
+
+The decompiler endeavors to display comments within the flow of the source code statements it generates\&. Comments should be placed at or near the statement that encompasses the address of the original instruction to which the comment is attached\&. This is complicated by the fact that instructions may get removed and transformed during decompilation and even whole basic blocks may get removed\&.
+.PP
+This class sorts comments into the basic block that contains it\&. As statements are emitted, comments can get picked up, in the correct order, even if there is no longer a specific p-code operation at the comment's address\&. The decompiler maintains information about basic blocks that have been entirely removed, in which case, the user can elect to not display the corresponding comments\&.
+.PP
+This class also acts as state for walking comments within a specific basic block or within the header\&. 
+.PP
+Definition at line 188 of file comment\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIheader_basic \fP\fP
+Basic header comments\&. 
+.TP
+\fB\fIheader_unplaced \fP\fP
+\fBComment\fP that can't be placed in code flow\&. 
+.PP
+Definition at line 190 of file comment\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CommentSorter::CommentSorter (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 238 of file comment\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBComment\fP* CommentSorter::getNext (void) const\fC [inline]\fP"
+
+.PP
+Advance to the next comment\&. 
+.PP
+Definition at line 244 of file comment\&.hh\&.
+.SS "bool CommentSorter::hasNext (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if there are more comments to emit in the current set\&. 
+.PP
+Definition at line 243 of file comment\&.hh\&.
+.SS "void CommentSorter::setupBlockList (const \fBFlowBlock\fP * bl)"
+
+.PP
+Prepare to walk comments from a single basic block\&. Find iterators that bound everything in the basic block
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the basic block 
+.RE
+.PP
+
+.PP
+Definition at line 372 of file comment\&.cc\&.
+.SS "void CommentSorter::setupFunctionList (uint4 tp, const \fBFuncdata\fP * fd, const \fBCommentDatabase\fP & db, bool displayUnplaced)"
+
+.PP
+Collect and sort comments specific to the given function\&. Only keep comments matching one of a specific set of properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is the set of properties (may be zero) 
+.br
+\fIfd\fP is the given function 
+.br
+\fIdb\fP is the container of comments to collect from 
+.br
+\fIdisplayUnplaced\fP is \fBtrue\fP if unplaced comments should be displayed in the header 
+.RE
+.PP
+
+.PP
+Definition at line 328 of file comment\&.cc\&.
+.SS "void CommentSorter::setupHeader (uint4 headerType)"
+
+.PP
+Prepare to walk comments in the header\&. Header comments are grouped together\&. Set up iterators\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIheaderType\fP selects either \fBheader_basic\fP or \fBheader_unplaced\fP comments 
+.RE
+.PP
+
+.PP
+Definition at line 387 of file comment\&.cc\&.
+.SS "void CommentSorter::setupOpList (const \fBPcodeOp\fP * op)"
+
+.PP
+Establish a p-code landmark within the current set of comments\&. This will generally get called with the root p-code op of a statement being emitted by the decompiler\&. This establishes a key value within the basic block, so it is known where to stop emitting comments within the block for emitting the statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the p-code representing the root of a statement 
+.RE
+.PP
+
+.PP
+Definition at line 355 of file comment\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

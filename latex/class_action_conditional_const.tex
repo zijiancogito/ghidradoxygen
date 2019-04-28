@@ -1,0 +1,193 @@
+\hypertarget{class_action_conditional_const}{}\section{Action\+Conditional\+Const Class Reference}
+\label{class_action_conditional_const}\index{ActionConditionalConst@{ActionConditionalConst}}
+
+
+Propagate conditional constants.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Conditional\+Const\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_action_conditional_const__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Conditional\+Const\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_action_conditional_const__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_conditional_const_add4260c0f90c2baaf341c1e48195dd53}{Action\+Conditional\+Const}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_conditional_const_a5ff6a3cc3aa54f9a8a276c9e8090010f}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_conditional_const_a36547a8bf4913bf94efa661b7f39e461}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_action_conditional_const_ab477e0173dc6a85b8a7aeee5c0c41bfc}{propagate\+Constant}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$var\+Vn, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$const\+Vn, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$const\+Block, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Replace reads of a given \mbox{\hyperlink{class_varnode}{Varnode}} with a constant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Propagate conditional constants. 
+
+Definition at line 514 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_conditional_const_add4260c0f90c2baaf341c1e48195dd53}\label{class_action_conditional_const_add4260c0f90c2baaf341c1e48195dd53}} 
+\index{ActionConditionalConst@{ActionConditionalConst}!ActionConditionalConst@{ActionConditionalConst}}
+\index{ActionConditionalConst@{ActionConditionalConst}!ActionConditionalConst@{ActionConditionalConst}}
+\subsubsection{\texorpdfstring{ActionConditionalConst()}{ActionConditionalConst()}}
+{\footnotesize\ttfamily Action\+Conditional\+Const\+::\+Action\+Conditional\+Const (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 516 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_conditional_const_add4260c0f90c2baaf341c1e48195dd53_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_conditional_const_a36547a8bf4913bf94efa661b7f39e461}\label{class_action_conditional_const_a36547a8bf4913bf94efa661b7f39e461}} 
+\index{ActionConditionalConst@{ActionConditionalConst}!apply@{apply}}
+\index{apply@{apply}!ActionConditionalConst@{ActionConditionalConst}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Conditional\+Const\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 3209 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_conditional_const_a36547a8bf4913bf94efa661b7f39e461_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_conditional_const_a5ff6a3cc3aa54f9a8a276c9e8090010f}\label{class_action_conditional_const_a5ff6a3cc3aa54f9a8a276c9e8090010f}} 
+\index{ActionConditionalConst@{ActionConditionalConst}!clone@{clone}}
+\index{clone@{clone}!ActionConditionalConst@{ActionConditionalConst}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Conditional\+Const\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 517 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_conditional_const_a5ff6a3cc3aa54f9a8a276c9e8090010f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_conditional_const_ab477e0173dc6a85b8a7aeee5c0c41bfc}\label{class_action_conditional_const_ab477e0173dc6a85b8a7aeee5c0c41bfc}} 
+\index{ActionConditionalConst@{ActionConditionalConst}!propagateConstant@{propagateConstant}}
+\index{propagateConstant@{propagateConstant}!ActionConditionalConst@{ActionConditionalConst}}
+\subsubsection{\texorpdfstring{propagateConstant()}{propagateConstant()}}
+{\footnotesize\ttfamily void Action\+Conditional\+Const\+::propagate\+Constant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{var\+Vn,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{const\+Vn,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{const\+Block,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Replace reads of a given \mbox{\hyperlink{class_varnode}{Varnode}} with a constant. 
+
+For each read op, check that is in or dominated by a specific block we known the \mbox{\hyperlink{class_varnode}{Varnode}} is constant in. 
+\begin{DoxyParams}{Parameters}
+{\em var\+Vn} & is the given \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+{\em const\+Vn} & is the constant \mbox{\hyperlink{class_varnode}{Varnode}} to replace with \\
+\hline
+{\em const\+Block} & is the block which dominates ops reading the constant value \\
+\hline
+{\em data} & is the function being analyzed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 3175 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_conditional_const_ab477e0173dc6a85b8a7aeee5c0c41bfc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_conditional_const_ab477e0173dc6a85b8a7aeee5c0c41bfc_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

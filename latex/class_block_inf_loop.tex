@@ -1,0 +1,236 @@
+\hypertarget{class_block_inf_loop}{}\section{Block\+Inf\+Loop Class Reference}
+\label{class_block_inf_loop}\index{BlockInfLoop@{BlockInfLoop}}
+
+
+An infinite loop structure.  
+
+
+
+
+{\ttfamily \#include $<$block.\+hh$>$}
+
+
+
+Inheritance diagram for Block\+Inf\+Loop\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{class_block_inf_loop__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Block\+Inf\+Loop\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{class_block_inf_loop__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} \mbox{\hyperlink{class_block_inf_loop_a798896823e2c790567144b525753eca7}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_inf_loop_a4b07279f936c69240ceacf4d5e8dfebc}{mark\+Label\+Bump\+Up}} (bool bump)
+\begin{DoxyCompactList}\small\item\em Let hierarchical blocks steal labels of their (first) components. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_inf_loop_ad1f92e4b37d7bf19cc409d353ad281ae}{scope\+Break}} (int4 curexit, int4 curloopexit)
+\begin{DoxyCompactList}\small\item\em Mark unstructured edges that should be {\itshape breaks}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_inf_loop_a52090deeaa2673ea5afedca0331d3027}{print\+Header}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print a simple description of {\bfseries{this}} to stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_inf_loop_aa86634144acbb9f7b6b580b9f4566bfe}{emit}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng) const
+\begin{DoxyCompactList}\small\item\em Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_inf_loop_a10ef0de99961f931b7432b2662ac2677}{next\+Flow\+After}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl) const
+\begin{DoxyCompactList}\small\item\em Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An infinite loop structure. 
+
+This has exactly one component with one outgoing edge that flows into itself. The \mbox{\hyperlink{class_block_inf_loop}{Block\+Inf\+Loop}} instance has zero outgoing edges. 
+
+Definition at line 610 of file block.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_block_inf_loop_aa86634144acbb9f7b6b580b9f4566bfe}\label{class_block_inf_loop_aa86634144acbb9f7b6b580b9f4566bfe}} 
+\index{BlockInfLoop@{BlockInfLoop}!emit@{emit}}
+\index{emit@{emit}!BlockInfLoop@{BlockInfLoop}}
+\subsubsection{\texorpdfstring{emit()}{emit()}}
+{\footnotesize\ttfamily virtual void Block\+Inf\+Loop\+::emit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. 
+
+This is the main entry point, at the control-\/flow level, for printing structured code. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} that provides details of the high-\/level language being printed \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f}{Block\+Graph}}.
+
+
+
+Definition at line 616 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{class_block_inf_loop_aa86634144acbb9f7b6b580b9f4566bfe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_inf_loop_a798896823e2c790567144b525753eca7}\label{class_block_inf_loop_a798896823e2c790567144b525753eca7}} 
+\index{BlockInfLoop@{BlockInfLoop}!getType@{getType}}
+\index{getType@{getType}!BlockInfLoop@{BlockInfLoop}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} Block\+Inf\+Loop\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a8e542e109e0acc977218ceaf3c248153}{Block\+Graph}}.
+
+
+
+Definition at line 612 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_inf_loop_a4b07279f936c69240ceacf4d5e8dfebc}\label{class_block_inf_loop_a4b07279f936c69240ceacf4d5e8dfebc}} 
+\index{BlockInfLoop@{BlockInfLoop}!markLabelBumpUp@{markLabelBumpUp}}
+\index{markLabelBumpUp@{markLabelBumpUp}!BlockInfLoop@{BlockInfLoop}}
+\subsubsection{\texorpdfstring{markLabelBumpUp()}{markLabelBumpUp()}}
+{\footnotesize\ttfamily void Block\+Inf\+Loop\+::mark\+Label\+Bump\+Up (\begin{DoxyParamCaption}\item[{bool}]{bump }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Let hierarchical blocks steal labels of their (first) components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bump} & if {\bfseries{true}}, mark that labels for this block are printed by somebody higher in hierarchy \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a67e2a75a80e60655a9936045d40983f6}{Block\+Graph}}.
+
+
+
+Definition at line 2904 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_inf_loop_a4b07279f936c69240ceacf4d5e8dfebc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_inf_loop_a10ef0de99961f931b7432b2662ac2677}\label{class_block_inf_loop_a10ef0de99961f931b7432b2662ac2677}} 
+\index{BlockInfLoop@{BlockInfLoop}!nextFlowAfter@{nextFlowAfter}}
+\index{nextFlowAfter@{nextFlowAfter}!BlockInfLoop@{BlockInfLoop}}
+\subsubsection{\texorpdfstring{nextFlowAfter()}{nextFlowAfter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+Inf\+Loop\+::next\+Flow\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Within the hierarchy of {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, assume the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} will fall-\/thru in its execution at some point. Return the first leaf block (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} or \mbox{\hyperlink{class_block_copy}{Block\+Copy}}) that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} completes, assuming this is a unique block. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the next \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to execute or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6}{Block\+Graph}}.
+
+
+
+Definition at line 2926 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_inf_loop_a10ef0de99961f931b7432b2662ac2677_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_inf_loop_a52090deeaa2673ea5afedca0331d3027}\label{class_block_inf_loop_a52090deeaa2673ea5afedca0331d3027}} 
+\index{BlockInfLoop@{BlockInfLoop}!printHeader@{printHeader}}
+\index{printHeader@{printHeader}!BlockInfLoop@{BlockInfLoop}}
+\subsubsection{\texorpdfstring{printHeader()}{printHeader()}}
+{\footnotesize\ttfamily void Block\+Inf\+Loop\+::print\+Header (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print a simple description of {\bfseries{this}} to stream. 
+
+Only print a header for {\bfseries{this}} single block 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a0d19c5b80186cf289dfbe0ce9e3ce37a}{Flow\+Block}}.
+
+
+
+Definition at line 2919 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_inf_loop_a52090deeaa2673ea5afedca0331d3027_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_inf_loop_ad1f92e4b37d7bf19cc409d353ad281ae}\label{class_block_inf_loop_ad1f92e4b37d7bf19cc409d353ad281ae}} 
+\index{BlockInfLoop@{BlockInfLoop}!scopeBreak@{scopeBreak}}
+\index{scopeBreak@{scopeBreak}!BlockInfLoop@{BlockInfLoop}}
+\subsubsection{\texorpdfstring{scopeBreak()}{scopeBreak()}}
+{\footnotesize\ttfamily void Block\+Inf\+Loop\+::scope\+Break (\begin{DoxyParamCaption}\item[{int4}]{curexit,  }\item[{int4}]{curloopexit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mark unstructured edges that should be {\itshape breaks}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a55618dfd49266bd4185d119f08e8b630}{Block\+Graph}}.
+
+
+
+Definition at line 2912 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_inf_loop_ad1f92e4b37d7bf19cc409d353ad281ae_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8hh}{block.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8cc}{block.\+cc}}\end{DoxyCompactItemize}

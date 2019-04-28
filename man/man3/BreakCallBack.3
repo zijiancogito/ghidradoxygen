@@ -1,0 +1,135 @@
+.TH "BreakCallBack" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BreakCallBack \- A breakpoint object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emulate\&.hh>\fP
+.PP
+Inherited by \fBPrintfCallBack\fP, \fBPutsCallBack\fP, and \fBTerminateCallBack\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBreakCallBack\fP (void)"
+.br
+.RI "Generic breakpoint constructor\&. "
+.ti -1c
+.RI "virtual \fB~BreakCallBack\fP (void)"
+.br
+.ti -1c
+.RI "virtual bool \fBpcodeCallback\fP (\fBPcodeOpRaw\fP *op)"
+.br
+.RI "Call back method for pcode based breakpoints\&. "
+.ti -1c
+.RI "virtual bool \fBaddressCallback\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Call back method for address based breakpoints\&. "
+.ti -1c
+.RI "void \fBsetEmulate\fP (\fBEmulate\fP *emu)"
+.br
+.RI "Associate a particular emulator with this breakpoint\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBEmulate\fP * \fBemulate\fP"
+.br
+.RI "The emulator currently associated with this breakpoint\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A breakpoint object\&. 
+
+This is a base class for breakpoint objects in an emulator\&. The breakpoints are implemented as callback method, which is overridden for the particular behavior needed by the emulator\&. Each derived class must override either
+.IP "\(bu" 2
+\fBpcodeCallback()\fP
+.IP "\(bu" 2
+\fBaddressCallback()\fP
+.PP
+.PP
+depending on whether the breakpoint is tailored for a particular pcode op or for a machine address\&. 
+.PP
+Definition at line 77 of file emulate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BreakCallBack::BreakCallBack (void)\fC [inline]\fP"
+
+.PP
+Generic breakpoint constructor\&. The base breakpoint needs no initialization parameters, the \fBsetEmulate()\fP method must be called before the breakpoint can be invoked 
+.PP
+Definition at line 90 of file emulate\&.hh\&.
+.SS "virtual BreakCallBack::~BreakCallBack (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 82 of file emulate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool BreakCallBack::addressCallback (const \fBAddress\fP & addr)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Call back method for address based breakpoints\&. This routine is invoked during emulation, if this breakpoint has somehow been associated with this address\&. The callback can perform any operation on the emulator context it wants\&. It then returns \fBtrue\fP if these actions are intended to replace the action of the \fBentire\fP machine instruction at this address\&. Or it returns \fBfalse\fP if the machine instruction should still be executed normally\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address where the break has occurred 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the machine instruction should not be executed 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTerminateCallBack\fP, \fBPrintfCallBack\fP, and \fBPutsCallBack\fP\&.
+.PP
+Definition at line 115 of file emulate\&.hh\&.
+.SS "bool BreakCallBack::pcodeCallback (\fBPcodeOpRaw\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Call back method for pcode based breakpoints\&. This routine is invoked during emulation, if this breakpoint has somehow been associated with this kind of pcode op\&. The callback can perform any operation on the emulator context it wants\&. It then returns \fBtrue\fP if these actions are intended to replace the action of the pcode op itself\&. Or it returns \fBfalse\fP if the pcode op should still have its normal effect on the emulator context\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the particular pcode operation where the break occurs\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the normal pcode op action should not occur 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file emulate\&.hh\&.
+.SS "void BreakCallBack::setEmulate (\fBEmulate\fP * emu)\fC [inline]\fP"
+
+.PP
+Associate a particular emulator with this breakpoint\&. Breakpoints can be associated with one emulator at a time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemu\fP is the emulator to associate this breakpoint with 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file emulate\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBEmulate\fP* BreakCallBack::emulate\fC [protected]\fP"
+
+.PP
+The emulator currently associated with this breakpoint\&. 
+.PP
+Definition at line 79 of file emulate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,295 @@
+.TH "BlockSwitch" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockSwitch \- A structured \fIswitch\fP construction\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBBlockGraph\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockSwitch\fP (\fBFlowBlock\fP *ind)"
+.br
+.RI "Construct given the multi-exit root block\&. "
+.ti -1c
+.RI "void \fBgrabCaseBasic\fP (\fBFlowBlock\fP *switchbl, const vector< \fBFlowBlock\fP * > &cs)"
+.br
+.RI "Build annotated CaseOrder objects\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetSwitchBlock\fP (void) const"
+.br
+.RI "Get the root switch component\&. "
+.ti -1c
+.RI "int4 \fBgetNumCaseBlocks\fP (void) const"
+.br
+.RI "Get the number of cases\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetCaseBlock\fP (int4 i) const"
+.br
+.RI "Get the i-th \fIcase\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "int4 \fBgetNumLabels\fP (int4 i) const"
+.br
+.RI "Get the number of labels associated with one \fIcase\fP block\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetLabel\fP (int4 i, int4 j) const"
+.br
+.RI "Get a specific label associated with a \fIcase\fP block\&. "
+.ti -1c
+.RI "bool \fBisDefaultCase\fP (int4 i) const"
+.br
+.RI "Is the i-th \fIcase\fP the \fIdefault\fP case\&. "
+.ti -1c
+.RI "uint4 \fBgetGotoType\fP (int4 i) const"
+.br
+.RI "Get the edge type for the i-th \fIcase\fP block\&. "
+.ti -1c
+.RI "bool \fBisExit\fP (int4 i) const"
+.br
+.RI "Does the i-th \fIcase\fP block exit the switch? "
+.ti -1c
+.RI "const \fBDatatype\fP * \fBgetSwitchType\fP (void) const"
+.br
+.RI "Get the data-type of the switch variable\&. "
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBmarkUnstructured\fP (void)"
+.br
+.RI "Mark target blocks of any unstructured edges\&. "
+.ti -1c
+.RI "virtual void \fBscopeBreak\fP (int4 curexit, int4 curloopexit)"
+.br
+.RI "Mark unstructured edges that should be \fIbreaks\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBnextFlowAfter\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBorderSwitchCases\fP (void) const"
+.br
+.RI "Order \fIcase\fP components of any contained \fBBlockSwitch\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A structured \fIswitch\fP construction\&. 
+
+This always has at least one component, the first, that executes the \fIswitch\fP statement itself and has multiple outgoing edges\&. Each edge flows either to a formal exit block, or to another \fIcase\fP component\&. All additional components are \fBcase\fP components, which have either zero or one outgoing edge\&. If there is an edge, it flows either to another case component or to the formal exit block\&. The \fBBlockSwitch\fP instance has zero or one outgoing edges\&. 
+.PP
+Definition at line 627 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BlockSwitch::BlockSwitch (\fBFlowBlock\fP * ind)"
+
+.PP
+Construct given the multi-exit root block\&. 
+.PP
+Definition at line 2935 of file block\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void BlockSwitch::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 672 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* BlockSwitch::getCaseBlock (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th \fIcase\fP \fBFlowBlock\fP\&. 
+.PP
+Definition at line 649 of file block\&.hh\&.
+.SS "uint4 BlockSwitch::getGotoType (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the edge type for the i-th \fIcase\fP block\&. 
+.PP
+Definition at line 665 of file block\&.hh\&.
+.SS "\fBuintb\fP BlockSwitch::getLabel (int4 i, int4 j) const\fC [inline]\fP"
+
+.PP
+Get a specific label associated with a \fIcase\fP block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the \fIcase\fP block 
+.br
+\fIj\fP is the index of the specific label 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the label as an untyped constant 
+.RE
+.PP
+
+.PP
+Definition at line 662 of file block\&.hh\&.
+.SS "int4 BlockSwitch::getNumCaseBlocks (void) const\fC [inline]\fP"
+
+.PP
+Get the number of cases\&. 
+.PP
+Definition at line 648 of file block\&.hh\&.
+.SS "int4 BlockSwitch::getNumLabels (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the number of labels associated with one \fIcase\fP block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the \fIcase\fP block 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of labels put on the associated block 
+.RE
+.PP
+
+.PP
+Definition at line 655 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* BlockSwitch::getSwitchBlock (void) const\fC [inline]\fP"
+
+.PP
+Get the root switch component\&. 
+.PP
+Definition at line 647 of file block\&.hh\&.
+.SS "const \fBDatatype\fP * BlockSwitch::getSwitchType (void) const"
+
+.PP
+Get the data-type of the switch variable\&. Drill down to the variable associated with the BRANCHIND itself, and return its data-type 
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBDatatype\fP associated with the switch variable 
+.RE
+.PP
+
+.PP
+Definition at line 3043 of file block\&.cc\&.
+.SS "virtual \fBblock_type\fP BlockSwitch::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 668 of file block\&.hh\&.
+.SS "void BlockSwitch::grabCaseBasic (\fBFlowBlock\fP * switchbl, const vector< \fBFlowBlock\fP * > & cs)"
+
+.PP
+Build annotated CaseOrder objects\&. Given the list of components for the switch structure, build the annotated descriptions of the cases\&. Work out flow between cases and if there are any unstructured cases\&. The first \fBFlowBlock\fP in the component list is the switch component itself\&. All other FlowBlocks in the list are the \fIcase\fP components\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIswitchbl\fP is the underlying basic block, with multiple outgoing edges, for the switch 
+.br
+\fIcs\fP is the list of switch and case components 
+.RE
+.PP
+
+.PP
+Definition at line 2974 of file block\&.cc\&.
+.SS "bool BlockSwitch::isDefaultCase (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th \fIcase\fP the \fIdefault\fP case\&. 
+.PP
+Definition at line 664 of file block\&.hh\&.
+.SS "bool BlockSwitch::isExit (int4 i) const\fC [inline]\fP"
+
+.PP
+Does the i-th \fIcase\fP block exit the switch? 
+.PP
+Definition at line 666 of file block\&.hh\&.
+.SS "void BlockSwitch::markUnstructured (void)\fC [virtual]\fP"
+
+.PP
+Mark target blocks of any unstructured edges\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 3050 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * BlockSwitch::nextFlowAfter (const \fBFlowBlock\fP * bl) const\fC [virtual]\fP"
+
+.PP
+Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. Within the hierarchy of \fBthis\fP \fBFlowBlock\fP, assume the given \fBFlowBlock\fP will fall-thru in its execution at some point\&. Return the first leaf block (\fBBlockBasic\fP or \fBBlockCopy\fP) that will execute after the given \fBFlowBlock\fP completes, assuming this is a unique block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next \fBFlowBlock\fP to execute or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 3086 of file block\&.cc\&.
+.SS "void BlockSwitch::orderSwitchCases (void) const\fC [virtual]\fP"
+
+.PP
+Order \fIcase\fP components of any contained \fBBlockSwitch\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 3006 of file block\&.cc\&.
+.SS "void BlockSwitch::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 3079 of file block\&.cc\&.
+.SS "void BlockSwitch::scopeBreak (int4 curexit, int4 curloopexit)\fC [virtual]\fP"
+
+.PP
+Mark unstructured edges that should be \fIbreaks\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 3060 of file block\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

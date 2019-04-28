@@ -1,0 +1,80 @@
+.TH "TermOrder" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TermOrder \- A class for ordering \fBVarnode\fP terms in an additive expression\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coreaction\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTermOrder\fP (\fBPcodeOp\fP *rt)"
+.br
+.RI "Construct given root \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the number of terms in the expression\&. "
+.ti -1c
+.RI "void \fBcollect\fP (void)"
+.br
+.RI "Collect all the terms in the expression\&. "
+.ti -1c
+.RI "void \fBsortTerms\fP (void)"
+.br
+.RI "Sort the terms using additiveCompare() "
+.ti -1c
+.RI "const vector< \fBPcodeOpEdge\fP * > & \fBgetSort\fP (void)"
+.br
+.RI "Get the sorted list of references\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class for ordering \fBVarnode\fP terms in an additive expression\&. 
+
+Given the final \fBPcodeOp\fP in a data-flow expression that sums 2 or more \fBVarnode\fP \fIterms\fP, this class collects all the terms then allows sorting of the terms to facilitate constant collapse and factoring simplifications\&. 
+.PP
+Definition at line 1002 of file coreaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TermOrder::TermOrder (\fBPcodeOp\fP * rt)\fC [inline]\fP"
+
+.PP
+Construct given root \fBPcodeOp\fP\&. 
+.PP
+Definition at line 1008 of file coreaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TermOrder::collect (void)"
+
+.PP
+Collect all the terms in the expression\&. Assuming root->getOut() is the root of an expression formed with the CPUI_INT_ADD op, collect all the \fBVarnode\fP \fIterms\fP of the expression\&. 
+.PP
+Definition at line 4369 of file coreaction\&.cc\&.
+.SS "int4 TermOrder::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of terms in the expression\&. 
+.PP
+Definition at line 1009 of file coreaction\&.hh\&.
+.SS "const vector<\fBPcodeOpEdge\fP *>& TermOrder::getSort (void)\fC [inline]\fP"
+
+.PP
+Get the sorted list of references\&. 
+.PP
+Definition at line 1012 of file coreaction\&.hh\&.
+.SS "void TermOrder::sortTerms (void)"
+
+.PP
+Sort the terms using additiveCompare() 
+.PP
+Definition at line 4418 of file coreaction\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,3349 @@
+.TH "Funcdata" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Funcdata \- Container for data structures associated with a single function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <funcdata\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFuncdata\fP (const string &nm, \fBScope\fP *conf, const \fBAddress\fP &addr, int4 sz=0)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fB~Funcdata\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the function's local symbol name\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddress\fP (void) const"
+.br
+.RI "Get the entry point address\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the function body size in bytes\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.RI "Get the program/architecture owning the function\&. "
+.ti -1c
+.RI "bool \fBisHighOn\fP (void) const"
+.br
+.RI "Are high-level variables assigned to Varnodes\&. "
+.ti -1c
+.RI "bool \fBisProcStarted\fP (void) const"
+.br
+.RI "Has processing of the function started\&. "
+.ti -1c
+.RI "bool \fBisProcComplete\fP (void) const"
+.br
+.RI "Is processing of the function complete\&. "
+.ti -1c
+.RI "bool \fBhasUnreachableBlocks\fP (void) const"
+.br
+.RI "Did this function exhibit unreachable code\&. "
+.ti -1c
+.RI "bool \fBisTypeRecoveryOn\fP (void) const"
+.br
+.RI "Has data-type recovery processes started\&. "
+.ti -1c
+.RI "bool \fBhasNoCode\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP function has no code body\&. "
+.ti -1c
+.RI "void \fBsetNoCode\fP (bool val)"
+.br
+.RI "Toggle whether \fBthis\fP has a body\&. "
+.ti -1c
+.RI "void \fBsetJumptableRecovery\fP (bool val)"
+.br
+.RI "Toggle whether \fBthis\fP is being used for jump-table recovery\&. "
+.ti -1c
+.RI "bool \fBisJumptableRecoveryOn\fP (void) const"
+.br
+.RI "Is \fBthis\fP used for jump-table recovery\&. "
+.ti -1c
+.RI "void \fBsetDoublePrecisRecovery\fP (bool val)"
+.br
+.RI "Toggle whether double precision analysis is used\&. "
+.ti -1c
+.RI "bool \fBisDoublePrecisOn\fP (void) const"
+.br
+.RI "Is double precision analysis enabled\&. "
+.ti -1c
+.RI "bool \fBhasNoStructBlocks\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if no block structuring was performed\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear out old disassembly\&. "
+.ti -1c
+.RI "void \fBwarning\fP (const string &txt, const \fBAddress\fP &ad) const"
+.br
+.RI "Add a warning comment in the function body\&. "
+.ti -1c
+.RI "void \fBwarningHeader\fP (const string &txt) const"
+.br
+.RI "Add a warning comment as part of the function header\&. "
+.ti -1c
+.RI "void \fBstartProcessing\fP (void)"
+.br
+.RI "Start processing for this function\&. "
+.ti -1c
+.RI "void \fBstopProcessing\fP (void)"
+.br
+.RI "Mark that processing has completed for this function\&. "
+.ti -1c
+.RI "bool \fBstartTypeRecovery\fP (void)"
+.br
+.RI "Mark that data-type analysis has started\&. "
+.ti -1c
+.RI "void \fBstartCastPhase\fP (void)"
+.br
+.RI "Start the \fBcast\fP insertion phase\&. "
+.ti -1c
+.RI "uint4 \fBgetCastPhaseIndex\fP (void) const"
+.br
+.RI "Get creation index at the start of \fBcast\fP insertion\&. "
+.ti -1c
+.RI "uint4 \fBgetHighLevelIndex\fP (void) const"
+.br
+.RI "Get creation index at the start of \fBHighVariable\fP creation\&. "
+.ti -1c
+.RI "void \fBstartCleanUp\fP (void)"
+.br
+.RI "Start \fIclean-up\fP phase\&. "
+.ti -1c
+.RI "uint4 \fBgetCleanUpIndex\fP (void) const"
+.br
+.RI "Get creation index at the start of \fBclean-up\fP phase\&. "
+.ti -1c
+.RI "void \fBfollowFlow\fP (const \fBAddress\fP &baddr, const \fBAddress\fP &eadddr, uint4 insn_max)"
+.br
+.RI "Generate raw p-code for the function\&. "
+.ti -1c
+.RI "void \fBtruncatedFlow\fP (const \fBFuncdata\fP *fd, const \fBFlowInfo\fP *flow)"
+.br
+.RI "Generate a clone with truncated control-flow given a partial function\&. "
+.ti -1c
+.RI "bool \fBinlineFlow\fP (\fBFuncdata\fP *inlinefd, \fBFlowInfo\fP &flow, \fBPcodeOp\fP *callop)"
+.br
+.RI "In-line the p-code from another function into \fBthis\fP function\&. "
+.ti -1c
+.RI "void \fBoverrideFlow\fP (const \fBAddress\fP &addr, uint4 type)"
+.br
+.RI "\fBOverride\fP the control-flow p-code for a particular instruction\&. "
+.ti -1c
+.RI "void \fBdoLiveInject\fP (\fBInjectPayload\fP *payload, const \fBAddress\fP &addr, \fBBlockBasic\fP *bl, list< \fBPcodeOp\fP * >::iterator pos)"
+.br
+.RI "Inject p-code from a \fIpayload\fP into \fBthis\fP live function\&. "
+.ti -1c
+.RI "void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print raw p-code op descriptions to a stream\&. "
+.ti -1c
+.RI "void \fBprintVarnodeTree\fP (ostream &s) const"
+.br
+.RI "Print a description of all Varnodes to a stream\&. "
+.ti -1c
+.RI "void \fBprintBlockTree\fP (ostream &s) const"
+.br
+.RI "Print a description of control-flow structuring to a stream\&. "
+.ti -1c
+.RI "void \fBprintLocalRange\fP (ostream &s) const"
+.br
+.RI "Print description of memory ranges associated with local scopes\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s, bool savetree) const"
+.br
+.RI "Emit an XML description of \fBthis\fP function to stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore the state of \fBthis\fP function from an XML description\&. "
+.ti -1c
+.RI "void \fBsaveXmlJumpTable\fP (ostream &s) const"
+.br
+.RI "Emit an XML description of jump-tables to stream\&. "
+.ti -1c
+.RI "void \fBrestoreXmlJumpTable\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore jump-tables from an XML description\&. "
+.ti -1c
+.RI "void \fBsaveXmlTree\fP (ostream &s) const"
+.br
+.RI "Save an XML description of the p-code tree to stream\&. "
+.ti -1c
+.RI "void \fBsaveXmlHigh\fP (ostream &s) const"
+.br
+.RI "Save an XML description of all HighVariables to stream\&. "
+.ti -1c
+.RI "\fBOverride\fP & \fBgetOverride\fP (void)"
+.br
+.RI "Get the \fBOverride\fP object for \fBthis\fP function\&. "
+.ti -1c
+.RI "void \fBsetRestartPending\fP (bool val)"
+.br
+.RI "Toggle whether analysis needs to be restarted for \fBthis\fP function\&. "
+.ti -1c
+.RI "bool \fBhasRestartPending\fP (void) const"
+.br
+.RI "Does \fBthis\fP function need to restart its analysis\&. "
+.ti -1c
+.RI "bool \fBhasUnimplemented\fP (void) const"
+.br
+.RI "Does \fBthis\fP function have instructions marked as \fIunimplemented\fP\&. "
+.ti -1c
+.RI "bool \fBhasBadData\fP (void) const"
+.br
+.RI "Does \fBthis\fP function flow into bad data\&. "
+.ti -1c
+.RI "void \fBspacebase\fP (void)"
+.br
+.RI "Mark registers that map to a virtual address space\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewSpacebasePtr\fP (\fBAddrSpace\fP *id)"
+.br
+.RI "Construct a new \fIspacebase\fP register for a given address space\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindSpacebaseInput\fP (\fBAddrSpace\fP *id) const"
+.br
+.ti -1c
+.RI "void \fBspacebaseConstant\fP (\fBPcodeOp\fP *op, int4 slot, \fBSymbolEntry\fP *entry, const \fBAddress\fP &rampoint, \fBuintb\fP origval, int4 origsize)"
+.br
+.RI "Convert a constant pointer into a \fIram\fP CPUI_PTRSUB\&. "
+.ti -1c
+.RI "int4 \fBnumHeritagePasses\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Get the number of heritage passes performed for the given address space\&. "
+.ti -1c
+.RI "void \fBseenDeadcode\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Mark that dead Varnodes have been seen in a specific address space\&. "
+.ti -1c
+.RI "void \fBsetDeadCodeDelay\fP (\fBAddrSpace\fP *spc, int4 delay)"
+.br
+.RI "Set a delay before removing dead code for a specific address space\&. "
+.ti -1c
+.RI "bool \fBdeadRemovalAllowed\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Check if dead code removal is allowed for a specific address space\&. "
+.ti -1c
+.RI "bool \fBdeadRemovalAllowedSeen\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Check if dead Varnodes have been removed for a specific address space\&. "
+.ti -1c
+.RI "bool \fBisHeritaged\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Check if a specific \fBVarnode\fP has been linked in fully to the syntax tree (SSA) "
+.ti -1c
+.RI "int4 \fBnumCalls\fP (void) const"
+.br
+.RI "Get the number of calls made by \fBthis\fP function\&. "
+.ti -1c
+.RI "\fBFuncCallSpecs\fP * \fBgetCallSpecs\fP (int4 i) const"
+.br
+.RI "Get the i-th call specification\&. "
+.ti -1c
+.RI "\fBFuncCallSpecs\fP * \fBgetCallSpecs\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Get the call specification associated with a CALL op\&. "
+.ti -1c
+.RI "void \fBupdateOpFromSpec\fP (\fBFuncCallSpecs\fP *fc)"
+.br
+.RI "Update CALL \fBPcodeOp\fP properties based on its corresponding call specification\&. "
+.ti -1c
+.RI "int4 \fBfillinExtrapop\fP (void)"
+.br
+.RI "Recover and return the \fIextrapop\fP for this function\&. "
+.ti -1c
+.RI "int4 \fBnumVarnodes\fP (void) const"
+.br
+.RI "Get the total number of Varnodes\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewVarnodeOut\fP (int4 s, const \fBAddress\fP &m, \fBPcodeOp\fP *op)"
+.br
+.RI "Create a new output \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewUniqueOut\fP (int4 s, \fBPcodeOp\fP *op)"
+.br
+.RI "Create a new \fItemporary\fP output \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewVarnode\fP (int4 s, const \fBAddress\fP &m, \fBDatatype\fP *ct=(\fBDatatype\fP *) 0)"
+.br
+.RI "Create a new unattached \fBVarnode\fP object\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewConstant\fP (int4 s, \fBuintb\fP constant_val)"
+.br
+.RI "Create a new \fIconstant\fP \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewVarnode\fP (int4 s, \fBAddrSpace\fP *base, \fBuintb\fP off)"
+.br
+.RI "Create a new \fBVarnode\fP given an address space and offset\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewVarnodeIop\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Create a \fBPcodeOp\fP \fIannotation\fP \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewVarnodeSpace\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Create a constant \fBVarnode\fP referring to an address space\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewVarnodeCallSpecs\fP (\fBFuncCallSpecs\fP *fc)"
+.br
+.RI "Create a call specification \fIannotation\fP \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewUnique\fP (int4 s, \fBDatatype\fP *ct=(\fBDatatype\fP *) 0)"
+.br
+.RI "Create a new \fItemporary\fP \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBnewCodeRef\fP (const \fBAddress\fP &m)"
+.br
+.RI "Create a code address \fIannotation\fP \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBsetInputVarnode\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Mark a \fBVarnode\fP as an input to the function\&. "
+.ti -1c
+.RI "void \fBadjustInputVarnodes\fP (const \fBAddress\fP &addr, int4 size)"
+.br
+.RI "Adjust input Varnodes contained in the given range\&. "
+.ti -1c
+.RI "void \fBdeleteVarnode\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Delete the given varnode\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindCoveredInput\fP (int4 s, const \fBAddress\fP &loc) const"
+.br
+.RI "Find the first input \fBVarnode\fP covered by the given range\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindCoveringInput\fP (int4 s, const \fBAddress\fP &loc) const"
+.br
+.RI "Find the input \fBVarnode\fP that contains the given range\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindVarnodeInput\fP (int4 s, const \fBAddress\fP &loc) const"
+.br
+.RI "Find the input \fBVarnode\fP with the given size and storage address\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindVarnodeWritten\fP (int4 s, const \fBAddress\fP &loc, const \fBAddress\fP &pc, uintm uniq=~((uintm) 0)) const"
+.br
+.RI "Find a defined \fBVarnode\fP via its storage address and its definition address\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (void) const"
+.br
+.RI "Start of all Varnodes sorted by storage\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (void) const"
+.br
+.RI "End of all Varnodes sorted by storage\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (\fBAddrSpace\fP *spaceid) const"
+.br
+.RI "Start of Varnodes stored in a given address space\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (\fBAddrSpace\fP *spaceid) const"
+.br
+.RI "End of Varnodes stored in a given address space\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Start of Varnodes at a storage address\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "End of Varnodes at a storage address\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (int4 s, const \fBAddress\fP &addr) const"
+.br
+.RI "Start of Varnodes with given storage\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (int4 s, const \fBAddress\fP &addr) const"
+.br
+.RI "End of Varnodes with given storage\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (int4 s, const \fBAddress\fP &addr, uint4 fl) const"
+.br
+.RI "Start of Varnodes matching storage and properties\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (int4 s, const \fBAddress\fP &addr, uint4 fl) const"
+.br
+.RI "End of Varnodes matching storage and properties\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (int4 s, const \fBAddress\fP &addr, const \fBAddress\fP &pc, uintm uniq=~((uintm) 0)) const"
+.br
+.RI "Start of Varnodes matching storage and definition address\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (int4 s, const \fBAddress\fP &addr, const \fBAddress\fP &pc, uintm uniq=~((uintm) 0)) const"
+.br
+.RI "End of Varnodes matching storage and definition address\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBbeginDef\fP (void) const"
+.br
+.RI "Start of all Varnodes sorted by definition address\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBendDef\fP (void) const"
+.br
+.RI "End of all Varnodes sorted by definition address\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBbeginDef\fP (uint4 fl) const"
+.br
+.RI "Start of Varnodes with a given definition property\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBendDef\fP (uint4 fl) const"
+.br
+.RI "End of Varnodes with a given definition property\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBbeginDef\fP (uint4 fl, const \fBAddress\fP &addr) const"
+.br
+.RI "Start of (input or free) Varnodes at a given storage address\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBendDef\fP (uint4 fl, const \fBAddress\fP &addr) const"
+.br
+.RI "End of (input or free) Varnodes at a given storage address\&. "
+.ti -1c
+.RI "\fBHighVariable\fP * \fBfindHigh\fP (const string &name) const"
+.br
+.RI "Find a high-level variable by name\&. "
+.ti -1c
+.RI "void \fBmapGlobals\fP (void)"
+.br
+.RI "Make sure there is a \fBSymbol\fP entry for all global Varnodes\&. "
+.ti -1c
+.RI "bool \fBcheckCallDoubleUse\fP (const \fBPcodeOp\fP *opmatch, const \fBPcodeOp\fP *op, const \fBVarnode\fP *vn, const \fBParamTrial\fP &trial) const"
+.br
+.RI "Test for legitimate double use of a parameter trial\&. "
+.ti -1c
+.RI "bool \fBonlyOpUse\fP (const \fBVarnode\fP *invn, const \fBPcodeOp\fP *opmatch, const \fBParamTrial\fP &trial) const"
+.br
+.RI "Test if the given \fBVarnode\fP seems to only be used by a CALL\&. "
+.ti -1c
+.RI "bool \fBancestorOpUse\fP (int4 maxlevel, const \fBVarnode\fP *invn, const \fBPcodeOp\fP *op, \fBParamTrial\fP &trial) const"
+.br
+.RI "Test if the given trial \fBVarnode\fP is likely only used for parameter passing\&. "
+.ti -1c
+.RI "bool \fBupdateFlags\fP (const \fBScopeLocal\fP *lm, bool typesyes)"
+.br
+.RI "Update \fBVarnode\fP boolean properties based on (new) \fBSymbol\fP information\&. "
+.ti -1c
+.RI "void \fBsplitVarnode\fP (\fBVarnode\fP *vn, int4 lowsize, \fBVarnode\fP *&vnlo, \fBVarnode\fP *&vnhi)"
+.br
+.RI "Create two new Varnodes which split the given \fBVarnode\fP\&. "
+.ti -1c
+.RI "bool \fBfillinReadOnly\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Replace the given \fBVarnode\fP with its (constant) value in the load image\&. "
+.ti -1c
+.RI "bool \fBreplaceVolatile\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Replace accesses of the given \fBVarnode\fP with \fIvolatile\fP operations\&. "
+.ti -1c
+.RI "void \fBmarkIndirectOnly\fP (void)"
+.br
+.RI "Mark \fIillegal\fP \fIinput\fP Varnodes used only in INDIRECTs\&. "
+.ti -1c
+.RI "void \fBtotalReplace\fP (\fBVarnode\fP *vn, \fBVarnode\fP *newvn)"
+.br
+.RI "Replace all read references to the first \fBVarnode\fP with a second \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBtotalReplaceConstant\fP (\fBVarnode\fP *vn, \fBuintb\fP val)"
+.br
+.RI "Replace every read reference of the given \fBVarnode\fP with a constant value\&. "
+.ti -1c
+.RI "\fBScopeLocal\fP * \fBgetScopeLocal\fP (void)"
+.br
+.RI "Get the local function scope\&. "
+.ti -1c
+.RI "const \fBScopeLocal\fP * \fBgetScopeLocal\fP (void) const"
+.br
+.RI "Get the local function scope\&. "
+.ti -1c
+.RI "\fBFuncProto\fP & \fBgetFuncProto\fP (void)"
+.br
+.RI "Get the function's prototype object\&. "
+.ti -1c
+.RI "const \fBFuncProto\fP & \fBgetFuncProto\fP (void) const"
+.br
+.RI "Get the function's prototype object\&. "
+.ti -1c
+.RI "void \fBinitActiveOutput\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclearActiveOutput\fP (void)"
+.br
+.RI "Clear any analysis of the function's \fIreturn\fP prototype\&. "
+.ti -1c
+.RI "\fBParamActive\fP * \fBgetActiveOutput\fP (void) const"
+.br
+.RI "Get the \fIreturn\fP prototype recovery object\&. "
+.ti -1c
+.RI "void \fBsetHighLevel\fP (void)"
+.br
+.RI "Turn on \fBHighVariable\fP objects for all Varnodes\&. "
+.ti -1c
+.RI "void \fBclearDeadVarnodes\fP (void)"
+.br
+.RI "Delete any dead Varnodes\&. "
+.ti -1c
+.RI "void \fBcalcNZMask\fP (void)"
+.br
+.RI "Calculate \fInon-zero\fP masks for all Varnodes\&. "
+.ti -1c
+.RI "void \fBclearDeadOps\fP (void)"
+.br
+.RI "Delete any dead PcodeOps\&. "
+.ti -1c
+.RI "\fBSymbol\fP * \fBlinkSymbol\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Find or create \fBSymbol\fP associated with given \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBbuildDynamicSymbol\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Build a \fIdynamic\fP \fBSymbol\fP associated with the given \fBVarnode\fP\&. "
+.ti -1c
+.RI "bool \fBattemptDynamicMapping\fP (\fBSymbolEntry\fP *entry, \fBDynamicHash\fP &dhash)"
+.br
+.RI "Map properties of a dynamic symbol to a \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBMerge\fP & \fBgetMerge\fP (void)"
+.br
+.RI "Get the \fBMerge\fP object for \fBthis\fP function\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBnewOp\fP (int4 inputs, const \fBAddress\fP &pc)"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBnewOp\fP (int4 inputs, const \fBSeqNum\fP &sq)"
+.br
+.RI "Allocate a new \fBPcodeOp\fP with \fBAddress\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBnewOpBefore\fP (\fBPcodeOp\fP *follow, \fBOpCode\fP opc, \fBVarnode\fP *in1, \fBVarnode\fP *in2, \fBVarnode\fP *in3=(\fBVarnode\fP *) 0)"
+.br
+.RI "Allocate a new \fBPcodeOp\fP with sequence number\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBcloneOp\fP (const \fBPcodeOp\fP *op, const \fBSeqNum\fP &seq)"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBcanonicalReturnOp\fP (void) const"
+.br
+.RI "Clone a \fBPcodeOp\fP into \fBthis\fP function\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBnewIndirectOp\fP (\fBPcodeOp\fP *indeffect, const \fBAddress\fP &addr, int4 size)"
+.br
+.RI "Find a representative CPUI_RETURN op for \fBthis\fP function\&. "
+.ti -1c
+.RI "void \fBsetIndirectCreation\fP (\fBPcodeOp\fP *op, \fBPcodeOp\fP *indeffect, \fBVarnode\fP *outvn, bool possibleout)"
+.br
+.RI "Turn given \fBPcodeOp\fP into a CPUI_INDIRECT that \fIindirectly\fP \fIcreates\fP a \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBnewIndirectCreation\fP (\fBPcodeOp\fP *indeffect, const \fBAddress\fP &addr, int4 size, bool possibleout)"
+.br
+.RI "Build a CPUI_INDIRECT op that \fIindirectly\fP \fIcreates\fP a \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBtruncateIndirect\fP (\fBPcodeOp\fP *indop)"
+.br
+.RI "Convert CPUI_INDIRECT into an \fIindirect\fP \fIcreation\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBfindOp\fP (const \fBSeqNum\fP &sq)"
+.br
+.RI "Find \fBPcodeOp\fP with given sequence number\&. "
+.ti -1c
+.RI "void \fBopInsertBefore\fP (\fBPcodeOp\fP *op, \fBPcodeOp\fP *follow)"
+.br
+.RI "Insert given \fBPcodeOp\fP before a specific op\&. "
+.ti -1c
+.RI "void \fBopInsertAfter\fP (\fBPcodeOp\fP *op, \fBPcodeOp\fP *prev)"
+.br
+.RI "Insert given \fBPcodeOp\fP after a specific op\&. "
+.ti -1c
+.RI "void \fBopInsertBegin\fP (\fBPcodeOp\fP *op, \fBBlockBasic\fP *bl)"
+.br
+.RI "Insert given \fBPcodeOp\fP at the beginning of a basic block\&. "
+.ti -1c
+.RI "void \fBopInsertEnd\fP (\fBPcodeOp\fP *op, \fBBlockBasic\fP *bl)"
+.br
+.RI "Insert given \fBPcodeOp\fP at the end of a basic block\&. "
+.ti -1c
+.RI "void \fBopDeadInsertAfter\fP (\fBPcodeOp\fP *op, \fBPcodeOp\fP *prev)"
+.br
+.RI "Moved given \fBPcodeOp\fP to specified point in the \fIdead\fP list\&. "
+.ti -1c
+.RI "void \fBopHeritage\fP (void)"
+.br
+.RI "Perform an entire heritage pass linking \fBVarnode\fP reads to writes\&. "
+.ti -1c
+.RI "void \fBopSetOpcode\fP (\fBPcodeOp\fP *op, \fBOpCode\fP opc)"
+.br
+.RI "Set the op-code for a specific \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopMarkHalt\fP (\fBPcodeOp\fP *op, uint4 flag)"
+.br
+.RI "Mark given CPUI_RETURN op as a \fIspecial\fP halt\&. "
+.ti -1c
+.RI "void \fBopSetOutput\fP (\fBPcodeOp\fP *op, \fBVarnode\fP *vn)"
+.br
+.RI "Set a specific output \fBVarnode\fP for the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopUnsetOutput\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Remove output \fBVarnode\fP from the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopSetInput\fP (\fBPcodeOp\fP *op, \fBVarnode\fP *vn, int4 slot)"
+.br
+.RI "Set a specific input operand for the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopSwapInput\fP (\fBPcodeOp\fP *op, int4 slot1, int4 slot2)"
+.br
+.RI "Swap two input operands in the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopUnsetInput\fP (\fBPcodeOp\fP *op, int4 slot)"
+.br
+.RI "Clear an input operand slot for the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopInsert\fP (\fBPcodeOp\fP *op, \fBBlockBasic\fP *bl, list< \fBPcodeOp\fP * >::iterator iter)"
+.br
+.RI "Insert the given \fBPcodeOp\fP at specific point in a basic block\&. "
+.ti -1c
+.RI "void \fBopUninsert\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Remove the given \fBPcodeOp\fP from its basic block\&. "
+.ti -1c
+.RI "void \fBopUnlink\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Unset inputs/output and remove given PcodeOP from its basic block\&. "
+.ti -1c
+.RI "void \fBopDestroy\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Remove given \fBPcodeOp\fP and destroy its \fBVarnode\fP operands\&. "
+.ti -1c
+.RI "void \fBopDestroyRaw\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Remove the given \fIraw\fP \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopDeadAndGone\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Free resources for the given \fIdead\fP \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopSetAllInput\fP (\fBPcodeOp\fP *op, const vector< \fBVarnode\fP * > &vvec)"
+.br
+.RI "Set all input Varnodes for the given \fBPcodeOp\fP simultaneously\&. "
+.ti -1c
+.RI "void \fBopRemoveInput\fP (\fBPcodeOp\fP *op, int4 slot)"
+.br
+.RI "Remove a specific input slot for the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopInsertInput\fP (\fBPcodeOp\fP *op, \fBVarnode\fP *vn, int4 slot)"
+.br
+.RI "Insert a new \fBVarnode\fP into the operand list for the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopSetFlag\fP (\fBPcodeOp\fP *op, uint4 fl)"
+.br
+.RI "Set a boolean property on the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopClearFlag\fP (\fBPcodeOp\fP *op, uint4 fl)"
+.br
+.RI "Clear a boolean property on the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBopFlipFlag\fP (\fBPcodeOp\fP *op, uint4 fl)"
+.br
+.RI "Flip a boolean property on the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBtarget\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Look up a \fBPcodeOp\fP by an instruction \fBAddress\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBcreateStackRef\fP (\fBAddrSpace\fP *spc, \fBuintb\fP off, \fBPcodeOp\fP *op, \fBVarnode\fP *stackptr, bool insertafter)"
+.br
+.RI "Create an INT_ADD \fBPcodeOp\fP calculating an offset to the \fIspacebase\fP register\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBopStackLoad\fP (\fBAddrSpace\fP *spc, \fBuintb\fP off, uint4 sz, \fBPcodeOp\fP *op, \fBVarnode\fP *stackptr, bool insertafter)"
+.br
+.RI "Create a LOAD expression at an offset relative to a \fIspacebase\fP register for a given address space\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBopStackStore\fP (\fBAddrSpace\fP *spc, \fBuintb\fP off, \fBPcodeOp\fP *op, bool insertafter)"
+.br
+.RI "Create a STORE expression at an offset relative to a \fIspacebase\fP register for a given address space\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbeginOp\fP (\fBOpCode\fP opc) const"
+.br
+.RI "Start of \fBPcodeOp\fP objects with the given op-code\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBendOp\fP (\fBOpCode\fP opc) const"
+.br
+.RI "End of \fBPcodeOp\fP objects with the given op-code\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbeginOpAlive\fP (void) const"
+.br
+.RI "Start of \fBPcodeOp\fP objects in the \fIalive\fP list\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBendOpAlive\fP (void) const"
+.br
+.RI "End of \fBPcodeOp\fP objects in the \fIalive\fP list\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbeginOpDead\fP (void) const"
+.br
+.RI "Start of \fBPcodeOp\fP objects in the \fIdead\fP list\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBendOpDead\fP (void) const"
+.br
+.RI "End of \fBPcodeOp\fP objects in the \fIdead\fP list\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBbeginOpAll\fP (void) const"
+.br
+.RI "Start of all (alive) \fBPcodeOp\fP objects sorted by sequence number\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBendOpAll\fP (void) const"
+.br
+.RI "End of all (alive) \fBPcodeOp\fP objects sorted by sequence number\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBbeginOp\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Start of all (alive) \fBPcodeOp\fP objects attached to a specific \fBAddress\fP\&. "
+.ti -1c
+.RI "PcodeOpTree::const_iterator \fBendOp\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "End of all (alive) \fBPcodeOp\fP objects attached to a specific \fBAddress\fP\&. "
+.ti -1c
+.RI "\fBJumpTable\fP * \fBlinkJumpTable\fP (\fBPcodeOp\fP *op)"
+.br
+.RI "Link jump-table with a given BRANCHIND\&. "
+.ti -1c
+.RI "\fBJumpTable\fP * \fBfindJumpTable\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Find a jump-table associated with a given BRANCHIND\&. "
+.ti -1c
+.RI "\fBJumpTable\fP * \fBinstallJumpTable\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Install a new jump-table for the given \fBAddress\fP\&. "
+.ti -1c
+.RI "\fBJumpTable\fP * \fBrecoverJumpTable\fP (\fBPcodeOp\fP *op, \fBFlowInfo\fP *flow, int4 &failuremode)"
+.br
+.RI "Recover destinations for a BRANCHIND by analyzing nearby data and control-flow\&. "
+.ti -1c
+.RI "int4 \fBnumJumpTables\fP (void) const"
+.br
+.RI "Get the number of jump-tables for \fBthis\fP function\&. "
+.ti -1c
+.RI "\fBJumpTable\fP * \fBgetJumpTable\fP (int4 i)"
+.br
+.RI "Get the i-th jump-table\&. "
+.ti -1c
+.RI "void \fBremoveJumpTable\fP (\fBJumpTable\fP *jt)"
+.br
+.RI "Remove/delete the given jump-table\&. "
+.ti -1c
+.RI "\fBBlockGraph\fP & \fBgetStructure\fP (void)"
+.br
+.RI "Get the current control-flow structuring hierarchy\&. "
+.ti -1c
+.RI "const \fBBlockGraph\fP & \fBgetStructure\fP (void) const"
+.br
+.RI "Get the current control-flow structuring hierarchy\&. "
+.ti -1c
+.RI "const \fBBlockGraph\fP & \fBgetBasicBlocks\fP (void) const"
+.br
+.RI "Get the basic blocks container\&. "
+.ti -1c
+.RI "void \fBsetBasicBlockRange\fP (\fBBlockBasic\fP *bb, const \fBAddress\fP &beg, const \fBAddress\fP &end)"
+.br
+.RI "Set the initial ownership range for the given basic block\&. "
+.ti -1c
+.RI "void \fBremoveDoNothingBlock\fP (\fBBlockBasic\fP *bb)"
+.br
+.RI "Remove a basic block from control-flow that performs no operations\&. "
+.ti -1c
+.RI "bool \fBremoveUnreachableBlocks\fP (bool issuewarning, bool checkexistence)"
+.br
+.RI "Remove any unreachable basic blocks\&. "
+.ti -1c
+.RI "void \fBpushBranch\fP (\fBBlockBasic\fP *bb, int4 slot, \fBBlockBasic\fP *bbnew)"
+.br
+.RI "Move a control-flow edge from one block to another\&. "
+.ti -1c
+.RI "void \fBremoveBranch\fP (\fBBlockBasic\fP *bb, int4 num)"
+.br
+.RI "Remove the indicated branch from a basic block\&. "
+.ti -1c
+.RI "\fBBlockBasic\fP * \fBnodeJoinCreateBlock\fP (\fBBlockBasic\fP *block1, \fBBlockBasic\fP *block2, \fBBlockBasic\fP *exita, \fBBlockBasic\fP *exitb, bool fora_block1ishigh, bool forb_block1ishigh, const \fBAddress\fP &addr)"
+.br
+.RI "Create a new basic block for holding a merged CBRANCH\&. "
+.ti -1c
+.RI "void \fBnodeSplit\fP (\fBBlockBasic\fP *b, int4 inedge)"
+.br
+.RI "Split control-flow into a basic block, duplicating its p-code into a new block\&. "
+.ti -1c
+.RI "bool \fBforceGoto\fP (const \fBAddress\fP &pcop, const \fBAddress\fP &pcdest)"
+.br
+.RI "Force a specific control-flow edge to be marked as \fIunstructured\fP\&. "
+.ti -1c
+.RI "void \fBremoveFromFlowSplit\fP (\fBBlockBasic\fP *bl, bool swap)"
+.br
+.RI "Remove a basic block splitting its control-flow into two distinct paths\&. "
+.ti -1c
+.RI "void \fBswitchEdge\fP (\fBFlowBlock\fP *inblock, \fBBlockBasic\fP *outbefore, \fBFlowBlock\fP *outafter)"
+.br
+.RI "Switch an outgoing edge from the given \fIsource\fP block to flow into another block\&. "
+.ti -1c
+.RI "void \fBspliceBlockBasic\fP (\fBBlockBasic\fP *bl)"
+.br
+.RI "\fBMerge\fP the given basic block with the block it flows into\&. "
+.ti -1c
+.RI "void \fBinstallSwitchDefaults\fP (void)"
+.br
+.RI "Make sure default switch cases are properly labeled\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBreplaceLessequal\fP (\fBFuncdata\fP &data, \fBPcodeOp\fP *op)"
+.br
+.RI "Replace INT_LESSEQUAL and INT_SLESSEQUAL expressions\&. "
+.ti -1c
+.RI "static bool \fBcompareCallspecs\fP (const \fBFuncCallSpecs\fP *a, const \fBFuncCallSpecs\fP *b)"
+.br
+.RI "Compare call specification objects by call site address\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Container for data structures associated with a single function\&. 
+
+This class holds the primary data structures for decompiling a function\&. In particular it holds control-flow, data-flow, and prototype information, plus class instances to help with constructing SSA form, structure control-flow, recover jump-tables, recover parameters, and merge Varnodes\&. In most cases it acts as the main API for querying and accessing these structures\&.
+.PP
+Some important groups of public methods include:
+.IP "\(bu" 2
+\fBPcodeOp\fP manipulation (mostly starting with 'op')
+.IP "\(bu" 2
+\fBPcodeOp\fP search and traversal ('beginOp*' and 'endOp*')
+.IP "\(bu" 2
+\fBVarnode\fP creation ('new*' methods)
+.IP "\(bu" 2
+\fBVarnode\fP search and traversal ('beginLoc' 'endLoc' 'beginDef' and 'endDef')
+.IP "\(bu" 2
+Basic block access and block structuring
+.IP "\(bu" 2
+Access to subfunction prototypes
+.IP "\(bu" 2
+Access to jump-tables (within the body of the function) 
+.PP
+
+.PP
+Definition at line 45 of file funcdata\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Funcdata::Funcdata (const string & nm, \fBScope\fP * scope, const \fBAddress\fP & addr, int4 sz = \fC0\fP)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the (base) name of the function 
+.br
+\fIscope\fP is \fBSymbol\fP scope associated with the function 
+.br
+\fIaddr\fP is the entry address for the function 
+.br
+\fIsz\fP is the number of bytes (of code) in the function body 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file funcdata\&.cc\&.
+.SS "Funcdata::~Funcdata (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 161 of file funcdata\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Funcdata::adjustInputVarnodes (const \fBAddress\fP & addr, int4 size)"
+
+.PP
+Adjust input Varnodes contained in the given range\&. After this call, a single \fIinput\fP \fBVarnode\fP will exist that fills the given range\&. Any previous input Varnodes contained in this range are redefined using a SUBPIECE op off of the new single input\&. If an overlapping \fBVarnode\fP isn't fully contained an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.RE
+.PP
+
+.PP
+Definition at line 369 of file funcdata_varnode\&.cc\&.
+.SS "bool Funcdata::ancestorOpUse (int4 maxlevel, const \fBVarnode\fP * invn, const \fBPcodeOp\fP * op, \fBParamTrial\fP & trial) const"
+
+.PP
+Test if the given trial \fBVarnode\fP is likely only used for parameter passing\&. Flow is followed from the \fBVarnode\fP itself and from ancestors the \fBVarnode\fP was copied from to see if it hits anything other than the CALL operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxlevel\fP is the maximum number of times to recurse through ancestor copies 
+.br
+\fIinvn\fP is the given trial \fBVarnode\fP to test 
+.br
+\fItrial\fP is the associated parameter trial object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBVarnode\fP is only used for the CALL 
+.RE
+.PP
+
+.PP
+Definition at line 1302 of file funcdata_varnode\&.cc\&.
+.SS "bool Funcdata::attemptDynamicMapping (\fBSymbolEntry\fP * entry, \fBDynamicHash\fP & dhash)"
+
+.PP
+Map properties of a dynamic symbol to a \fBVarnode\fP\&. Given a dynamic mapping, try to find the mapped \fBVarnode\fP, then adjust (type and flags) to reflect this mapping\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP is the (dynamic) \fBSymbol\fP entry 
+.br
+\fIdhash\fP is the dynamic mapping information 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a \fBVarnode\fP was adjusted 
+.RE
+.PP
+
+.PP
+Definition at line 992 of file funcdata_varnode\&.cc\&.
+.SS "VarnodeDefSet::const_iterator Funcdata::beginDef (void) const\fC [inline]\fP"
+
+.PP
+Start of all Varnodes sorted by definition address\&. 
+.PP
+Definition at line 328 of file funcdata\&.hh\&.
+.SS "VarnodeDefSet::const_iterator Funcdata::beginDef (uint4 fl) const\fC [inline]\fP"
+
+.PP
+Start of Varnodes with a given definition property\&. 
+.PP
+Definition at line 334 of file funcdata\&.hh\&.
+.SS "VarnodeDefSet::const_iterator Funcdata::beginDef (uint4 fl, const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Start of (input or free) Varnodes at a given storage address\&. 
+.PP
+Definition at line 340 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::beginLoc (void) const\fC [inline]\fP"
+
+.PP
+Start of all Varnodes sorted by storage\&. 
+.PP
+Definition at line 290 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::beginLoc (\fBAddrSpace\fP * spaceid) const\fC [inline]\fP"
+
+.PP
+Start of Varnodes stored in a given address space\&. 
+.PP
+Definition at line 296 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::beginLoc (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Start of Varnodes at a storage address\&. 
+.PP
+Definition at line 302 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::beginLoc (int4 s, const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Start of Varnodes with given storage\&. 
+.PP
+Definition at line 308 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::beginLoc (int4 s, const \fBAddress\fP & addr, uint4 fl) const\fC [inline]\fP"
+
+.PP
+Start of Varnodes matching storage and properties\&. 
+.PP
+Definition at line 314 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::beginLoc (int4 s, const \fBAddress\fP & addr, const \fBAddress\fP & pc, uintm uniq = \fC~((uintm)0)\fP) const\fC [inline]\fP"
+
+.PP
+Start of Varnodes matching storage and definition address\&. 
+.PP
+Definition at line 320 of file funcdata\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator Funcdata::beginOp (\fBOpCode\fP opc) const\fC [inline]\fP"
+
+.PP
+Start of \fBPcodeOp\fP objects with the given op-code\&. 
+.PP
+Definition at line 422 of file funcdata\&.hh\&.
+.SS "PcodeOpTree::const_iterator Funcdata::beginOp (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Start of all (alive) \fBPcodeOp\fP objects attached to a specific \fBAddress\fP\&. 
+.PP
+Definition at line 446 of file funcdata\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator Funcdata::beginOpAlive (void) const\fC [inline]\fP"
+
+.PP
+Start of \fBPcodeOp\fP objects in the \fIalive\fP list\&. 
+.PP
+Definition at line 428 of file funcdata\&.hh\&.
+.SS "PcodeOpTree::const_iterator Funcdata::beginOpAll (void) const\fC [inline]\fP"
+
+.PP
+Start of all (alive) \fBPcodeOp\fP objects sorted by sequence number\&. 
+.PP
+Definition at line 440 of file funcdata\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator Funcdata::beginOpDead (void) const\fC [inline]\fP"
+
+.PP
+Start of \fBPcodeOp\fP objects in the \fIdead\fP list\&. 
+.PP
+Definition at line 434 of file funcdata\&.hh\&.
+.SS "void Funcdata::buildDynamicSymbol (\fBVarnode\fP * vn)"
+
+.PP
+Build a \fIdynamic\fP \fBSymbol\fP associated with the given \fBVarnode\fP\&. If a \fBSymbol\fP is already attached, no change is made\&. Otherwise a special \fIdynamic\fP \fBSymbol\fP is created that is associated with the \fBVarnode\fP via a hash of its local data-flow (rather than its storage address)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 965 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::calcNZMask (void)"
+
+.PP
+Calculate \fInon-zero\fP masks for all Varnodes\&. All Varnodes are initialized assuming that all its bits are possibly non-zero\&. This method looks for situations where a p-code produces a value that is known to have some bits that are guaranteed to be zero\&. It updates the state of the output \fBVarnode\fP then tries to push the information forward through the data-flow until additional changes are apparent\&. 
+.PP
+Definition at line 722 of file funcdata_varnode\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::canonicalReturnOp (void) const"
+
+.PP
+Clone a \fBPcodeOp\fP into \fBthis\fP function\&. Return the CPUI_RETURN op with the most specialized data-type, which is not dead and is not a special halt\&. If HighVariables are not available, just return the first CPUI_RETURN op\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the representative CPUI_RETURN op or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 547 of file funcdata_op\&.cc\&.
+.SS "bool Funcdata::checkCallDoubleUse (const \fBPcodeOp\fP * opmatch, const \fBPcodeOp\fP * op, const \fBVarnode\fP * vn, const \fBParamTrial\fP & trial) const"
+
+.PP
+Test for legitimate double use of a parameter trial\&. The given trial is a \fIputative\fP input to first CALL, but can also trace its data-flow into a second CALL\&. Return \fBfalse\fP if this leads us to conclude that the trial is not a likely parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopmatch\fP is the first CALL linked to the trial 
+.br
+\fIop\fP is the second CALL 
+.br
+\fIvn\fP is the \fBVarnode\fP parameter for the second CALL 
+.br
+\fItrial\fP is the given parameter trial 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP for a legitimate double use 
+.RE
+.PP
+
+.PP
+Definition at line 1188 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::clear (void)"
+
+.PP
+Clear out old disassembly\&. 
+.PP
+Definition at line 64 of file funcdata\&.cc\&.
+.SS "void Funcdata::clearActiveOutput (void)\fC [inline]\fP"
+
+.PP
+Clear any analysis of the function's \fIreturn\fP prototype\&. 
+.PP
+Definition at line 363 of file funcdata\&.hh\&.
+.SS "void Funcdata::clearDeadOps (void)\fC [inline]\fP"
+
+.PP
+Delete any dead PcodeOps\&. 
+.PP
+Definition at line 371 of file funcdata\&.hh\&.
+.SS "void Funcdata::clearDeadVarnodes (void)"
+
+.PP
+Delete any dead Varnodes\&. Free any Varnodes not attached to anything\&. This is only performed at fixed times so that editing operations can detach (and then reattach) Varnodes without losing them\&. 
+.PP
+Definition at line 695 of file funcdata_varnode\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::cloneOp (const \fBPcodeOp\fP * op, const \fBSeqNum\fP & seq)"
+Make a clone of the given \fBPcodeOp\fP, copying control-flow properties as well\&. The data-type is \fInot\fP cloned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP to clone 
+.br
+\fIseq\fP is the (possibly custom) sequence number to associate with the clone 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 529 of file funcdata_op\&.cc\&.
+.SS "bool Funcdata::compareCallspecs (const \fBFuncCallSpecs\fP * a, const \fBFuncCallSpecs\fP * b)\fC [static]\fP"
+
+.PP
+Compare call specification objects by call site address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first call specification to compare 
+.br
+\fIb\fP is the second call specification 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the first call specification should come before the second 
+.RE
+.PP
+
+.PP
+Definition at line 400 of file funcdata\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::createStackRef (\fBAddrSpace\fP * spc, \fBuintb\fP off, \fBPcodeOp\fP * op, \fBVarnode\fP * stackptr, bool insertafter)"
+
+.PP
+Create an INT_ADD \fBPcodeOp\fP calculating an offset to the \fIspacebase\fP register\&. The \fIspacebase\fP register is looked up for the given address space, or an optional previously existing register \fBVarnode\fP can be provided\&. An insertion point op must be provided, and newly generated ops can come either before or after this insertion point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.br
+\fIoff\fP is the offset to calculate relative to the \fIspacebase\fP register 
+.br
+\fIop\fP is the insertion point \fBPcodeOp\fP 
+.br
+\fIstackptr\fP is the \fIspacebase\fP register \fBVarnode\fP (if available) 
+.br
+\fIinsertafter\fP is \fBtrue\fP if new ops are inserted \fIafter\fP the insertion point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fIunique\fP space \fBVarnode\fP holding the calculated offset 
+.RE
+.PP
+
+.PP
+Definition at line 429 of file funcdata_op\&.cc\&.
+.SS "bool Funcdata::deadRemovalAllowed (\fBAddrSpace\fP * spc) const\fC [inline]\fP"
+
+.PP
+Check if dead code removal is allowed for a specific address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the specific address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if dead code removal is allowed 
+.RE
+.PP
+
+.PP
+Definition at line 221 of file funcdata\&.hh\&.
+.SS "bool Funcdata::deadRemovalAllowedSeen (\fBAddrSpace\fP * spc)\fC [inline]\fP"
+
+.PP
+Check if dead Varnodes have been removed for a specific address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the specific address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if dead code removal has happened in the space 
+.RE
+.PP
+
+.PP
+Definition at line 227 of file funcdata\&.hh\&.
+.SS "void Funcdata::deleteVarnode (\fBVarnode\fP * vn)\fC [inline]\fP"
+
+.PP
+Delete the given varnode\&. 
+.PP
+Definition at line 256 of file funcdata\&.hh\&.
+.SS "void Funcdata::doLiveInject (\fBInjectPayload\fP * payload, const \fBAddress\fP & addr, \fBBlockBasic\fP * bl, list< \fBPcodeOp\fP * >::iterator iter)"
+
+.PP
+Inject p-code from a \fIpayload\fP into \fBthis\fP live function\&. Raw PcodeOps are generated from the payload within a given basic block at a specific position in \fBthis\fP function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpayload\fP is the injection payload 
+.br
+\fIaddr\fP is the address at the point of injection 
+.br
+\fIbl\fP is the given basic block holding the new ops 
+.br
+\fIiter\fP indicates the point of insertion 
+.RE
+.PP
+
+.PP
+Definition at line 769 of file funcdata\&.cc\&.
+.SS "VarnodeDefSet::const_iterator Funcdata::endDef (void) const\fC [inline]\fP"
+
+.PP
+End of all Varnodes sorted by definition address\&. 
+.PP
+Definition at line 331 of file funcdata\&.hh\&.
+.SS "VarnodeDefSet::const_iterator Funcdata::endDef (uint4 fl) const\fC [inline]\fP"
+
+.PP
+End of Varnodes with a given definition property\&. 
+.PP
+Definition at line 337 of file funcdata\&.hh\&.
+.SS "VarnodeDefSet::const_iterator Funcdata::endDef (uint4 fl, const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+End of (input or free) Varnodes at a given storage address\&. 
+.PP
+Definition at line 343 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::endLoc (void) const\fC [inline]\fP"
+
+.PP
+End of all Varnodes sorted by storage\&. 
+.PP
+Definition at line 293 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::endLoc (\fBAddrSpace\fP * spaceid) const\fC [inline]\fP"
+
+.PP
+End of Varnodes stored in a given address space\&. 
+.PP
+Definition at line 299 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::endLoc (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+End of Varnodes at a storage address\&. 
+.PP
+Definition at line 305 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::endLoc (int4 s, const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+End of Varnodes with given storage\&. 
+.PP
+Definition at line 311 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::endLoc (int4 s, const \fBAddress\fP & addr, uint4 fl) const\fC [inline]\fP"
+
+.PP
+End of Varnodes matching storage and properties\&. 
+.PP
+Definition at line 317 of file funcdata\&.hh\&.
+.SS "VarnodeLocSet::const_iterator Funcdata::endLoc (int4 s, const \fBAddress\fP & addr, const \fBAddress\fP & pc, uintm uniq = \fC~((uintm)0)\fP) const\fC [inline]\fP"
+
+.PP
+End of Varnodes matching storage and definition address\&. 
+.PP
+Definition at line 324 of file funcdata\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator Funcdata::endOp (\fBOpCode\fP opc) const\fC [inline]\fP"
+
+.PP
+End of \fBPcodeOp\fP objects with the given op-code\&. 
+.PP
+Definition at line 425 of file funcdata\&.hh\&.
+.SS "PcodeOpTree::const_iterator Funcdata::endOp (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+End of all (alive) \fBPcodeOp\fP objects attached to a specific \fBAddress\fP\&. 
+.PP
+Definition at line 449 of file funcdata\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator Funcdata::endOpAlive (void) const\fC [inline]\fP"
+
+.PP
+End of \fBPcodeOp\fP objects in the \fIalive\fP list\&. 
+.PP
+Definition at line 431 of file funcdata\&.hh\&.
+.SS "PcodeOpTree::const_iterator Funcdata::endOpAll (void) const\fC [inline]\fP"
+
+.PP
+End of all (alive) \fBPcodeOp\fP objects sorted by sequence number\&. 
+.PP
+Definition at line 443 of file funcdata\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator Funcdata::endOpDead (void) const\fC [inline]\fP"
+
+.PP
+End of \fBPcodeOp\fP objects in the \fIdead\fP list\&. 
+.PP
+Definition at line 437 of file funcdata\&.hh\&.
+.SS "int4 Funcdata::fillinExtrapop (void)"
+
+.PP
+Recover and return the \fIextrapop\fP for this function\&. If \fIextrapop\fP is unknown, recover it from what we know about this function and set the value permanently for \fBthis\fP \fBFuncdata\fP object\&. If there is no function body it may be impossible to know the value, in which case this returns the reserved value indicating \fIextrapop\fP is unknown\&.
+.PP
+\fBReturns:\fP
+.RS 4
+the recovered value 
+.RE
+.PP
+
+.PP
+Definition at line 441 of file funcdata\&.cc\&.
+.SS "bool Funcdata::fillinReadOnly (\fBVarnode\fP * vn)"
+
+.PP
+Replace the given \fBVarnode\fP with its (constant) value in the load image\&. Treat the given \fBVarnode\fP as read-only, look up its value in \fBLoadImage\fP and replace read references with the value as a constant \fBVarnode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if any change was made 
+.RE
+.PP
+
+.PP
+Definition at line 516 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP* Funcdata::findCoveredInput (int4 s, const \fBAddress\fP & loc) const\fC [inline]\fP"
+
+.PP
+Find the first input \fBVarnode\fP covered by the given range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the range in bytes 
+.br
+\fIloc\fP is the starting address of the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 263 of file funcdata\&.hh\&.
+.SS "\fBVarnode\fP* Funcdata::findCoveringInput (int4 s, const \fBAddress\fP & loc) const\fC [inline]\fP"
+
+.PP
+Find the input \fBVarnode\fP that contains the given range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the range in bytes 
+.br
+\fIloc\fP is the starting address of the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 270 of file funcdata\&.hh\&.
+.SS "\fBHighVariable\fP * Funcdata::findHigh (const string & name) const"
+
+.PP
+Find a high-level variable by name\&. Look up the \fBSymbol\fP visible in \fBthis\fP function's \fBScope\fP and return the \fBHighVariable\fP associated with it\&. If the \fBSymbol\fP doesn't exist or there is no \fBVarnode\fP holding at least part of the value of the \fBSymbol\fP, NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name to search for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBHighVariable\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 294 of file funcdata_varnode\&.cc\&.
+.SS "\fBJumpTable\fP * Funcdata::findJumpTable (const \fBPcodeOp\fP * op) const"
+
+.PP
+Find a jump-table associated with a given BRANCHIND\&. Look up the jump-table object with the matching \fBPcodeOp\fP address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given BRANCHIND \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching jump-table object or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 430 of file funcdata_block\&.cc\&.
+.SS "\fBPcodeOp\fP* Funcdata::findOp (const \fBSeqNum\fP & sq)\fC [inline]\fP"
+
+.PP
+Find \fBPcodeOp\fP with given sequence number\&. 
+.PP
+Definition at line 387 of file funcdata\&.hh\&.
+.SS "\fBVarnode\fP * Funcdata::findSpacebaseInput (\fBAddrSpace\fP * id) const"
+Given an address space, like \fIstack\fP, that is known to have a base register pointing to it, try to locate the unique \fBVarnode\fP that holds the input value of this register\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the \fIstack\fP like address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the input stack-pointer \fBVarnode\fP (or NULL if it doesn't exist) 
+.RE
+.PP
+
+.PP
+Definition at line 261 of file funcdata\&.cc\&.
+.SS "\fBVarnode\fP* Funcdata::findVarnodeInput (int4 s, const \fBAddress\fP & loc) const\fC [inline]\fP"
+
+.PP
+Find the input \fBVarnode\fP with the given size and storage address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size in bytes 
+.br
+\fIloc\fP is the storage address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 277 of file funcdata\&.hh\&.
+.SS "\fBVarnode\fP* Funcdata::findVarnodeWritten (int4 s, const \fBAddress\fP & loc, const \fBAddress\fP & pc, uintm uniq = \fC~((uintm)0)\fP) const\fC [inline]\fP"
+
+.PP
+Find a defined \fBVarnode\fP via its storage address and its definition address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size in bytes 
+.br
+\fIloc\fP is the storage address 
+.br
+\fIpc\fP is the address where the \fBVarnode\fP is defined 
+.br
+\fIuniq\fP is an (optional) sequence number to match 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 286 of file funcdata\&.hh\&.
+.SS "void Funcdata::followFlow (const \fBAddress\fP & baddr, const \fBAddress\fP & eaddr, uint4 insn_max)"
+
+.PP
+Generate raw p-code for the function\&. Follow flow from the entry point generating PcodeOps for each instruction encountered\&. The caller can provide a bounding range that constrains where control can flow to and can also provide a maximum number of instructions that will be followed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaddr\fP is the beginning of the constraining range 
+.br
+\fIeaddr\fP is the end of the constraining range 
+.br
+\fIinsn_max\fP is the maximum number of instructions to follow 
+.RE
+.PP
+
+.PP
+Definition at line 709 of file funcdata_op\&.cc\&.
+.SS "bool Funcdata::forceGoto (const \fBAddress\fP & pcop, const \fBAddress\fP & pcdest)"
+
+.PP
+Force a specific control-flow edge to be marked as \fIunstructured\fP\&. The edge is specified by a source and destination \fBAddress\fP (of the branch)\&. The resulting control-flow structure will have a \fIgoto\fP statement modeling the edge\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpcop\fP is the source \fBAddress\fP 
+.br
+\fIpcdest\fP is the destination \fBAddress\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a control-flow edge was successfully labeled 
+.RE
+.PP
+
+.PP
+Definition at line 648 of file funcdata_block\&.cc\&.
+.SS "\fBParamActive\fP* Funcdata::getActiveOutput (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIreturn\fP prototype recovery object\&. 
+.PP
+Definition at line 367 of file funcdata\&.hh\&.
+.SS "const \fBAddress\fP& Funcdata::getAddress (void) const\fC [inline]\fP"
+
+.PP
+Get the entry point address\&. 
+.PP
+Definition at line 123 of file funcdata\&.hh\&.
+.SS "\fBArchitecture\fP* Funcdata::getArch (void) const\fC [inline]\fP"
+
+.PP
+Get the program/architecture owning the function\&. 
+.PP
+Definition at line 125 of file funcdata\&.hh\&.
+.SS "const \fBBlockGraph\fP& Funcdata::getBasicBlocks (void) const\fC [inline]\fP"
+
+.PP
+Get the basic blocks container\&. 
+.PP
+Definition at line 463 of file funcdata\&.hh\&.
+.SS "\fBFuncCallSpecs\fP* Funcdata::getCallSpecs (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th call specification\&. 
+.PP
+Definition at line 237 of file funcdata\&.hh\&.
+.SS "\fBFuncCallSpecs\fP * Funcdata::getCallSpecs (const \fBPcodeOp\fP * op) const"
+
+.PP
+Get the call specification associated with a CALL op\&. 
+.PP
+Definition at line 357 of file funcdata\&.cc\&.
+.SS "uint4 Funcdata::getCastPhaseIndex (void) const\fC [inline]\fP"
+
+.PP
+Get creation index at the start of \fBcast\fP insertion\&. 
+.PP
+Definition at line 155 of file funcdata\&.hh\&.
+.SS "uint4 Funcdata::getCleanUpIndex (void) const\fC [inline]\fP"
+
+.PP
+Get creation index at the start of \fBclean-up\fP phase\&. 
+.PP
+Definition at line 158 of file funcdata\&.hh\&.
+.SS "\fBFuncProto\fP& Funcdata::getFuncProto (void)\fC [inline]\fP"
+
+.PP
+Get the function's prototype object\&. 
+.PP
+Definition at line 359 of file funcdata\&.hh\&.
+.SS "const \fBFuncProto\fP& Funcdata::getFuncProto (void) const\fC [inline]\fP"
+
+.PP
+Get the function's prototype object\&. 
+.PP
+Definition at line 360 of file funcdata\&.hh\&.
+.SS "uint4 Funcdata::getHighLevelIndex (void) const\fC [inline]\fP"
+
+.PP
+Get creation index at the start of \fBHighVariable\fP creation\&. 
+.PP
+Definition at line 156 of file funcdata\&.hh\&.
+.SS "\fBJumpTable\fP* Funcdata::getJumpTable (int4 i)\fC [inline]\fP"
+
+.PP
+Get the i-th jump-table\&. 
+.PP
+Definition at line 457 of file funcdata\&.hh\&.
+.SS "\fBMerge\fP& Funcdata::getMerge (void)\fC [inline]\fP"
+
+.PP
+Get the \fBMerge\fP object for \fBthis\fP function\&. 
+.PP
+Definition at line 375 of file funcdata\&.hh\&.
+.SS "const string& Funcdata::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the function's local symbol name\&. 
+.PP
+Definition at line 122 of file funcdata\&.hh\&.
+.SS "\fBOverride\fP& Funcdata::getOverride (void)\fC [inline]\fP"
+
+.PP
+Get the \fBOverride\fP object for \fBthis\fP function\&. 
+.PP
+Definition at line 177 of file funcdata\&.hh\&.
+.SS "\fBScopeLocal\fP* Funcdata::getScopeLocal (void)\fC [inline]\fP"
+
+.PP
+Get the local function scope\&. 
+.PP
+Definition at line 357 of file funcdata\&.hh\&.
+.SS "const \fBScopeLocal\fP* Funcdata::getScopeLocal (void) const\fC [inline]\fP"
+
+.PP
+Get the local function scope\&. 
+.PP
+Definition at line 358 of file funcdata\&.hh\&.
+.SS "int4 Funcdata::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the function body size in bytes\&. 
+.PP
+Definition at line 124 of file funcdata\&.hh\&.
+.SS "\fBBlockGraph\fP& Funcdata::getStructure (void)\fC [inline]\fP"
+
+.PP
+Get the current control-flow structuring hierarchy\&. 
+.PP
+Definition at line 461 of file funcdata\&.hh\&.
+.SS "const \fBBlockGraph\fP& Funcdata::getStructure (void) const\fC [inline]\fP"
+
+.PP
+Get the current control-flow structuring hierarchy\&. 
+.PP
+Definition at line 462 of file funcdata\&.hh\&.
+.SS "bool Funcdata::hasBadData (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP function flow into bad data\&. 
+.PP
+Definition at line 194 of file funcdata\&.hh\&.
+.SS "bool Funcdata::hasNoCode (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP function has no code body\&. 
+.PP
+Definition at line 131 of file funcdata\&.hh\&.
+.SS "bool Funcdata::hasNoStructBlocks (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if no block structuring was performed\&. 
+.PP
+Definition at line 147 of file funcdata\&.hh\&.
+.SS "bool Funcdata::hasRestartPending (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP function need to restart its analysis\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if analysis should be restarted 
+.RE
+.PP
+
+.PP
+Definition at line 187 of file funcdata\&.hh\&.
+.SS "bool Funcdata::hasUnimplemented (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP function have instructions marked as \fIunimplemented\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the function's body contains at least one unimplemented instruction 
+.RE
+.PP
+
+.PP
+Definition at line 192 of file funcdata\&.hh\&.
+.SS "bool Funcdata::hasUnreachableBlocks (void) const\fC [inline]\fP"
+
+.PP
+Did this function exhibit unreachable code\&. 
+.PP
+Definition at line 129 of file funcdata\&.hh\&.
+.SS "void Funcdata::initActiveOutput (void)"
+Initialize \fIreturn\fP prototype recovery analysis 
+.PP
+Definition at line 460 of file funcdata_varnode\&.cc\&.
+.SS "bool Funcdata::inlineFlow (\fBFuncdata\fP * inlinefd, \fBFlowInfo\fP & flow, \fBPcodeOp\fP * callop)"
+
+.PP
+In-line the p-code from another function into \fBthis\fP function\&. Raw PcodeOps for the in-line function are generated and then cloned into \fBthis\fP function\&. Depending on the control-flow complexity of the in-line function, the PcodeOps are injected as if they are all part of the call site address (EZModel), or the PcodeOps preserve their address and extra branch instructions are inserted to integrate control-flow of the in-line into the calling function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinlinefd\fP is the function to in-line 
+.br
+\fIflow\fP is the flow object being injected 
+.br
+\fIcallop\fP is the site of the injection 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the injection was successful 
+.RE
+.PP
+
+.PP
+Definition at line 807 of file funcdata_op\&.cc\&.
+.SS "\fBJumpTable\fP * Funcdata::installJumpTable (const \fBAddress\fP & addr)"
+
+.PP
+Install a new jump-table for the given \fBAddress\fP\&. The given address must have a BRANCHIND op attached to it\&. This is suitable for installing an override and must be called before flow has been traced\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given \fBAddress\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new jump-table object 
+.RE
+.PP
+
+.PP
+Definition at line 448 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::installSwitchDefaults (void)"
+
+.PP
+Make sure default switch cases are properly labeled\&. 
+.PP
+Definition at line 594 of file funcdata_block\&.cc\&.
+.SS "bool Funcdata::isDoublePrecisOn (void) const\fC [inline]\fP"
+
+.PP
+Is double precision analysis enabled\&. 
+.PP
+Definition at line 146 of file funcdata\&.hh\&.
+.SS "bool Funcdata::isHeritaged (\fBVarnode\fP * vn)\fC [inline]\fP"
+
+.PP
+Check if a specific \fBVarnode\fP has been linked in fully to the syntax tree (SSA) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the specific \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBVarnode\fP is fully linked 
+.RE
+.PP
+
+.PP
+Definition at line 233 of file funcdata\&.hh\&.
+.SS "bool Funcdata::isHighOn (void) const\fC [inline]\fP"
+
+.PP
+Are high-level variables assigned to Varnodes\&. 
+.PP
+Definition at line 126 of file funcdata\&.hh\&.
+.SS "bool Funcdata::isJumptableRecoveryOn (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP used for jump-table recovery\&. 
+.PP
+Definition at line 139 of file funcdata\&.hh\&.
+.SS "bool Funcdata::isProcComplete (void) const\fC [inline]\fP"
+
+.PP
+Is processing of the function complete\&. 
+.PP
+Definition at line 128 of file funcdata\&.hh\&.
+.SS "bool Funcdata::isProcStarted (void) const\fC [inline]\fP"
+
+.PP
+Has processing of the function started\&. 
+.PP
+Definition at line 127 of file funcdata\&.hh\&.
+.SS "bool Funcdata::isTypeRecoveryOn (void) const\fC [inline]\fP"
+
+.PP
+Has data-type recovery processes started\&. 
+.PP
+Definition at line 130 of file funcdata\&.hh\&.
+.SS "\fBJumpTable\fP * Funcdata::linkJumpTable (\fBPcodeOp\fP * op)"
+
+.PP
+Link jump-table with a given BRANCHIND\&. Look up the jump-table object with the matching \fBPcodeOp\fP address, then attach the given \fBPcodeOp\fP to it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given BRANCHIND \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching jump-table object or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 411 of file funcdata_block\&.cc\&.
+.SS "\fBSymbol\fP * Funcdata::linkSymbol (\fBVarnode\fP * vn)"
+
+.PP
+Find or create \fBSymbol\fP associated with given \fBVarnode\fP\&. The \fBSymbol\fP is really attached to the \fBVarnode\fP's \fBHighVariable\fP (which must exist)\&. The only reason a \fBSymbol\fP doesn't get set is if, the \fBHighVariable\fP is global and there is no pre-existing \fBSymbol\fP\&. (see \fBmapGlobals()\fP) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIis\fP the given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the associated \fBSymbol\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 920 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::mapGlobals (void)"
+
+.PP
+Make sure there is a \fBSymbol\fP entry for all global Varnodes\&. Search for \fIaddrtied\fP Varnodes whose storage falls in the global \fBScope\fP, then build a new global \fBSymbol\fP if one didn't exist before\&. 
+.PP
+Definition at line 1121 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::markIndirectOnly (void)"
+
+.PP
+Mark \fIillegal\fP \fIinput\fP Varnodes used only in INDIRECTs\&. The illegal inputs are additionally marked as \fBindirectonly\fP and isIndirectOnly() returns \fBtrue\fP\&. 
+.PP
+Definition at line 678 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newCodeRef (const \fBAddress\fP & m)"
+
+.PP
+Create a code address \fIannotation\fP \fBVarnode\fP\&. A reference to a specific \fBAddress\fP is encoded in a \fBVarnode\fP\&. The \fBVarnode\fP is an \fIannotation\fP in the sense that it will hold no value in the data-flow, it will will only hold a reference to an address\&. This is used specifically by the branch p-code operations to hold destination addresses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the \fBAddress\fP to encode 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fIannotation\fP \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 217 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newConstant (int4 s, \fBuintb\fP constant_val)"
+
+.PP
+Create a new \fIconstant\fP \fBVarnode\fP\&. A \fBVarnode\fP is allocated which represents the indicated constant value\&. Its storage address is in the \fIconstant\fP address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the \fBVarnode\fP in bytes 
+.br
+\fIconstant_val\fP is the indicated constant value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBVarnode\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file funcdata_varnode\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::newIndirectCreation (\fBPcodeOp\fP * indeffect, const \fBAddress\fP & addr, int4 size, bool possibleout)"
+
+.PP
+Build a CPUI_INDIRECT op that \fIindirectly\fP \fIcreates\fP a \fBVarnode\fP\&. An \fIindirectly\fP \fIcreated\fP \fBVarnode\fP effectively has no data-flow before the INDIRECT op that defines it, and the value contained by the \fBVarnode\fP is not explicitly calculable\&. The new \fBVarnode\fP is allocated with a given storage range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindeffect\fP is the p-code causing the indirect effect 
+.br
+\fIaddr\fP is the starting address of the given storage range 
+.br
+\fIsize\fP is the number of bytes in the storage range 
+.br
+\fIpossibleout\fP is \fBtrue\fP if the output should be treated as a \fIdirectwrite\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new CPUI_INDIRECT op 
+.RE
+.PP
+
+.PP
+Definition at line 663 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::newIndirectOp (\fBPcodeOp\fP * indeffect, const \fBAddress\fP & addr, int4 size)"
+
+.PP
+Find a representative CPUI_RETURN op for \fBthis\fP function\&. Create a new CPUI_INDIRECT around a \fBPcodeOp\fP with an indirect effect\&.
+.PP
+Typically this is used to annotate data-flow, for the given storage range, passing through a CALL or STORE\&. An output \fBVarnode\fP is automatically created\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindeffect\fP is the \fBPcodeOp\fP with the indirect effect 
+.br
+\fIaddr\fP is the starting address of the storage range to protect 
+.br
+\fIsize\fP is the number of bytes in the storage range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new CPUI_INDIRECT op 
+.RE
+.PP
+
+.PP
+Definition at line 612 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::newOp (int4 inputs, const \fBAddress\fP & pc)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputs\fP is the number of operands the new op will have 
+.br
+\fIpc\fP is the \fBAddress\fP associated with the new op 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 295 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::newOp (int4 inputs, const \fBSeqNum\fP & sq)"
+
+.PP
+Allocate a new \fBPcodeOp\fP with \fBAddress\fP\&. This method is typically used for cloning\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputs\fP is the number of operands the new op will have 
+.br
+\fIsq\fP is the sequence number (\fBAddress\fP and sub-index) of the new op 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 305 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::newOpBefore (\fBPcodeOp\fP * follow, \fBOpCode\fP opc, \fBVarnode\fP * in1, \fBVarnode\fP * in2, \fBVarnode\fP * in3 = \fC(\fBVarnode\fP *)0\fP)"
+
+.PP
+Allocate a new \fBPcodeOp\fP with sequence number\&. Create new \fBPcodeOp\fP with 2 or 3 given operands\&.
+.PP
+The new op will have a \fIunique\fP space output \fBVarnode\fP and will be inserted before the given \fIfollow\fP op\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfollow\fP is the \fIfollow\fP up to insert the new \fBPcodeOp\fP before 
+.br
+\fIopc\fP is the op-code of the new \fBPcodeOp\fP 
+.br
+\fIin1\fP is the first operand 
+.br
+\fIin2\fP is the second operand 
+.br
+\fIin3\fP is the optional third param 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 586 of file funcdata_op\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newSpacebasePtr (\fBAddrSpace\fP * id)"
+
+.PP
+Construct a new \fIspacebase\fP register for a given address space\&. Given an address space, like \fIstack\fP, that is known to have a base register pointing to it, construct a \fBVarnode\fP representing that register\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the \fIstack\fP like address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a newly allocated stack-pointer \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 245 of file funcdata\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newUnique (int4 s, \fBDatatype\fP * ct = \fC(\fBDatatype\fP *)0\fP)"
+
+.PP
+Create a new \fItemporary\fP \fBVarnode\fP\&. A new temporary register storage location is allocated from the \fIunique\fP address space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the \fBVarnode\fP in bytes 
+.br
+\fIct\fP is an optional data-type to associated with the \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fItemporary\fP \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newUniqueOut (int4 s, \fBPcodeOp\fP * op)"
+
+.PP
+Create a new \fItemporary\fP output \fBVarnode\fP\&. Allocate a new register from the \fIunique\fP address space and create a new \fBVarnode\fP object representing it as an output to the given \fBPcodeOp\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the new \fBVarnode\fP in bytes 
+.br
+\fIop\fP is the given \fBPcodeOp\fP whose output is created 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new temporary register \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newVarnode (int4 s, const \fBAddress\fP & m, \fBDatatype\fP * ct = \fC(\fBDatatype\fP *)0\fP)"
+
+.PP
+Create a new unattached \fBVarnode\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the new \fBVarnode\fP in bytes 
+.br
+\fIm\fP is the storage \fBAddress\fP of the \fBVarnode\fP 
+.br
+\fIct\fP is a data-type to associate with the \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fBVarnode\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 143 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newVarnode (int4 s, \fBAddrSpace\fP * base, \fBuintb\fP off)"
+
+.PP
+Create a new \fBVarnode\fP given an address space and offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the \fBVarnode\fP in bytes 
+.br
+\fIbase\fP is the address space of the \fBVarnode\fP 
+.br
+\fIoff\fP is the offset into the address space of the \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 234 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newVarnodeCallSpecs (\fBFuncCallSpecs\fP * fc)"
+
+.PP
+Create a call specification \fIannotation\fP \fBVarnode\fP\&. A call specification (\fBFuncCallSpecs\fP) is encoded into an \fIannotation\fP \fBVarnode\fP\&. The \fBVarnode\fP is used specifically as an input to CPUI_CALL ops to speed up access to their associated call specification\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfc\fP is the call specification to encode 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fIannotation\fP \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 200 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newVarnodeIop (\fBPcodeOp\fP * op)"
+
+.PP
+Create a \fBPcodeOp\fP \fIannotation\fP \fBVarnode\fP\&. Create a special \fIannotation\fP \fBVarnode\fP that holds a pointer reference to a specific \fBPcodeOp\fP\&. This is used specifically to let a CPUI_INDIRECT op refer to the \fBPcodeOp\fP it is holding an indirect effect for\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP to encode in the annotation 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fIannotation\fP \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 171 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newVarnodeOut (int4 s, const \fBAddress\fP & m, \fBPcodeOp\fP * op)"
+
+.PP
+Create a new output \fBVarnode\fP\&. Create a new \fBVarnode\fP which is already defined as output of a given \fBPcodeOp\fP\&. This if more efficient as it avoids the initial insertion of the free form of the \fBVarnode\fP into the tree, and queryProperties only needs to be called once\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the new \fBVarnode\fP in bytes 
+.br
+\fIm\fP is the storage \fBAddress\fP of the \fBVarnode\fP 
+.br
+\fIop\fP is the given \fBPcodeOp\fP whose output is created 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBVarnode\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file funcdata_varnode\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::newVarnodeSpace (\fBAddrSpace\fP * spc)"
+
+.PP
+Create a constant \fBVarnode\fP referring to an address space\&. A reference to a particular address space is encoded as a constant \fBVarnode\fP\&. These are used for LOAD and STORE p-code ops in particular\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space to encode 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated constant \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file funcdata_varnode\&.cc\&.
+.SS "\fBBlockBasic\fP * Funcdata::nodeJoinCreateBlock (\fBBlockBasic\fP * block1, \fBBlockBasic\fP * block2, \fBBlockBasic\fP * exita, \fBBlockBasic\fP * exitb, bool fora_block1ishigh, bool forb_block1ishigh, const \fBAddress\fP & addr)"
+
+.PP
+Create a new basic block for holding a merged CBRANCH\&. This is used by \fBConditionalJoin\fP to do the low-level control-flow manipulation to merge identical conditional branches\&. Given basic blocks containing the two CBRANCH ops to merge, the new block gets one of the two out edges from each block, and the remaining out edges are changed to point into the new block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIblock1\fP is the basic block containing the first CBRANCH to merge 
+.br
+\fIblock2\fP is the basic block containing the second CBRANCH 
+.br
+\fIexita\fP is the first common exit block for the CBRANCHs 
+.br
+\fIexitb\fP is the second common exit block 
+.br
+\fIfora_block1ishigh\fP designates which edge is moved for exita 
+.br
+\fIforb_block1ishigh\fP designates which edge is moved for exitb 
+.br
+\fIaddr\fP is the \fBAddress\fP associated with (1 of the) CBRANCH ops 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new basic block 
+.RE
+.PP
+
+.PP
+Definition at line 686 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::nodeSplit (\fBBlockBasic\fP * b, int4 inedge)"
+
+.PP
+Split control-flow into a basic block, duplicating its p-code into a new block\&. P-code is duplicated into another block, and control-flow is modified so that the new block takes over flow from one input edge to the original block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP is the basic block to be duplicated and split 
+.br
+\fIinedge\fP is the index of the input edge to move to the duplicate block 
+.RE
+.PP
+
+.PP
+Definition at line 896 of file funcdata_block\&.cc\&.
+.SS "int4 Funcdata::numCalls (void) const\fC [inline]\fP"
+
+.PP
+Get the number of calls made by \fBthis\fP function\&. 
+.PP
+Definition at line 236 of file funcdata\&.hh\&.
+.SS "int4 Funcdata::numHeritagePasses (\fBAddrSpace\fP * spc)\fC [inline]\fP"
+
+.PP
+Get the number of heritage passes performed for the given address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of passes performed 
+.RE
+.PP
+
+.PP
+Definition at line 204 of file funcdata\&.hh\&.
+.SS "int4 Funcdata::numJumpTables (void) const\fC [inline]\fP"
+
+.PP
+Get the number of jump-tables for \fBthis\fP function\&. 
+.PP
+Definition at line 456 of file funcdata\&.hh\&.
+.SS "int4 Funcdata::numVarnodes (void) const\fC [inline]\fP"
+
+.PP
+Get the total number of Varnodes\&. 
+.PP
+Definition at line 243 of file funcdata\&.hh\&.
+.SS "bool Funcdata::onlyOpUse (const \fBVarnode\fP * invn, const \fBPcodeOp\fP * opmatch, const \fBParamTrial\fP & trial) const"
+
+.PP
+Test if the given \fBVarnode\fP seems to only be used by a CALL\&. Part of testing whether a \fBVarnode\fP makes sense as parameter passing storage is looking for different explicit uses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinvn\fP is the given \fBVarnode\fP 
+.br
+\fIopmatch\fP is the putative CALL op using the \fBVarnode\fP for parameter passing 
+.br
+\fItrial\fP is the parameter trial object associated with the \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBVarnode\fP seems only to be used as parameter to \fBopmatch\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1230 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::opClearFlag (\fBPcodeOp\fP * op, uint4 fl)\fC [inline]\fP"
+
+.PP
+Clear a boolean property on the given \fBPcodeOp\fP\&. 
+.PP
+Definition at line 414 of file funcdata\&.hh\&.
+.SS "void Funcdata::opDeadAndGone (\fBPcodeOp\fP * op)\fC [inline]\fP"
+
+.PP
+Free resources for the given \fIdead\fP \fBPcodeOp\fP\&. 
+.PP
+Definition at line 409 of file funcdata\&.hh\&.
+.SS "void Funcdata::opDeadInsertAfter (\fBPcodeOp\fP * op, \fBPcodeOp\fP * prev)\fC [inline]\fP"
+
+.PP
+Moved given \fBPcodeOp\fP to specified point in the \fIdead\fP list\&. 
+.PP
+Definition at line 394 of file funcdata\&.hh\&.
+.SS "void Funcdata::opDestroy (\fBPcodeOp\fP * op)"
+
+.PP
+Remove given \fBPcodeOp\fP and destroy its \fBVarnode\fP operands\&. All input and output Varnodes to the op are destroyed (their object resources freed), and the op is permanently moved to the \fIdead\fP list\&. To call this routine, make sure that either:
+.IP "\(bu" 2
+The op has no output
+.IP "\(bu" 2
+The op's output has no descendants
+.IP "\(bu" 2
+or all descendants of output are also going to be destroyed
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 201 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opDestroyRaw (\fBPcodeOp\fP * op)"
+
+.PP
+Remove the given \fIraw\fP \fBPcodeOp\fP\&. This is a specialized routine for deleting an op during flow generation that has been replaced by something else\&. The op is expected to be \fIdead\fP with none of its inputs or outputs linked to anything else\&. Both the \fBPcodeOp\fP and all the input/output Varnodes are destroyed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 226 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opFlipFlag (\fBPcodeOp\fP * op, uint4 fl)\fC [inline]\fP"
+
+.PP
+Flip a boolean property on the given \fBPcodeOp\fP\&. 
+.PP
+Definition at line 415 of file funcdata\&.hh\&.
+.SS "void Funcdata::opHeritage (void)\fC [inline]\fP"
+
+.PP
+Perform an entire heritage pass linking \fBVarnode\fP reads to writes\&. 
+.PP
+Definition at line 396 of file funcdata\&.hh\&.
+.SS "void Funcdata::opInsert (\fBPcodeOp\fP * op, \fBBlockBasic\fP * bl, list< \fBPcodeOp\fP * >::iterator iter)"
+
+.PP
+Insert the given \fBPcodeOp\fP at specific point in a basic block\&. The \fBPcodeOp\fP is removed from the \fIdead\fP list and is inserted \fIimmediately\fP before the specified iterator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIbl\fP is the basic block being inserted into 
+.br
+\fIiter\fP indicates exactly where the op is inserted 
+.RE
+.PP
+
+.PP
+Definition at line 148 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opInsertAfter (\fBPcodeOp\fP * op, \fBPcodeOp\fP * prev)"
+
+.PP
+Insert given \fBPcodeOp\fP after a specific op\&. The given \fBPcodeOp\fP is inserted \fIimmediately\fP after the \fIprev\fP op except:
+.IP "\(bu" 2
+MULTIEQUALS in a basic block all occur first
+.IP "\(bu" 2
+INDIRECTs occur immediately before their op
+.IP "\(bu" 2
+a branch op must be the very last op in a basic block
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to insert 
+.br
+\fIprev\fP is the op to insert after 
+.RE
+.PP
+
+.PP
+Definition at line 346 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opInsertBefore (\fBPcodeOp\fP * op, \fBPcodeOp\fP * follow)"
+
+.PP
+Insert given \fBPcodeOp\fP before a specific op\&. The given \fBPcodeOp\fP is inserted \fIimmediately\fP before the \fIfollow\fP op except:
+.IP "\(bu" 2
+MULTIEQUALS in a basic block all occur first
+.IP "\(bu" 2
+INDIRECTs occur immediately before their op
+.IP "\(bu" 2
+a branch op must be the very last op in a basic block
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to insert 
+.br
+\fIfollow\fP is the op to insert before 
+.RE
+.PP
+
+.PP
+Definition at line 318 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opInsertBegin (\fBPcodeOp\fP * op, \fBBlockBasic\fP * bl)"
+
+.PP
+Insert given \fBPcodeOp\fP at the beginning of a basic block\&. The given \fBPcodeOp\fP is inserted as the \fIfirst\fP op in the basic block except:
+.IP "\(bu" 2
+MULTIEQUALS in a basic block all occur first
+.IP "\(bu" 2
+INDIRECTs occur immediately before their op
+.IP "\(bu" 2
+a branch op must be the very last op in a basic block
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to insert 
+.br
+\fIbl\fP is the basic block to insert into 
+.RE
+.PP
+
+.PP
+Definition at line 383 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opInsertEnd (\fBPcodeOp\fP * op, \fBBlockBasic\fP * bl)"
+
+.PP
+Insert given \fBPcodeOp\fP at the end of a basic block\&. The given \fBPcodeOp\fP is inserted as the \fIlast\fP op in the basic block except:
+.IP "\(bu" 2
+MULTIEQUALS in a basic block all occur first
+.IP "\(bu" 2
+INDIRECTs occur immediately before their op
+.IP "\(bu" 2
+a branch op must be the very last op in a basic block
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to insert 
+.br
+\fIbl\fP is the basic block to insert into 
+.RE
+.PP
+
+.PP
+Definition at line 405 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opInsertInput (\fBPcodeOp\fP * op, \fBVarnode\fP * vn, int4 slot)"
+
+.PP
+Insert a new \fBVarnode\fP into the operand list for the given \fBPcodeOp\fP\&. The given \fBVarnode\fP is set into the given operand slot\&. Any existing input Varnodes with slot indices equal to or greater than the specified slot are pushed into the next slot\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIvn\fP is the given \fBVarnode\fP to insert 
+.br
+\fIslot\fP is the input index to insert at 
+.RE
+.PP
+
+.PP
+Definition at line 281 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opMarkHalt (\fBPcodeOp\fP * op, uint4 flag)"
+
+.PP
+Mark given CPUI_RETURN op as a \fIspecial\fP halt\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given CPUI_RETURN op 
+.br
+\fIflag\fP is one of \fIhalt\fP, \fIbadinstruction\fP, \fIunimplemented\fP, \fInoreturn\fP, or \fImissing\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opRemoveInput (\fBPcodeOp\fP * op, int4 slot)"
+
+.PP
+Remove a specific input slot for the given \fBPcodeOp\fP\&. The \fBVarnode\fP in the specified slot is unlinked from the op and the slot itself is removed\&. The slot index for any remaining input Varnodes coming after the specified slot is decreased by one\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIslot\fP is the index of the specified slot to remove 
+.RE
+.PP
+
+.PP
+Definition at line 264 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opSetAllInput (\fBPcodeOp\fP * op, const vector< \fBVarnode\fP * > & vvec)"
+
+.PP
+Set all input Varnodes for the given \fBPcodeOp\fP simultaneously\&. All previously existing input Varnodes are unset\&. The input slots for the op are resized and then filled in from the specified array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to set 
+.br
+\fIvvec\fP is the specified array of new input Varnodes 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opSetFlag (\fBPcodeOp\fP * op, uint4 fl)\fC [inline]\fP"
+
+.PP
+Set a boolean property on the given \fBPcodeOp\fP\&. 
+.PP
+Definition at line 413 of file funcdata\&.hh\&.
+.SS "void Funcdata::opSetInput (\fBPcodeOp\fP * op, \fBVarnode\fP * vn, int4 slot)"
+
+.PP
+Set a specific input operand for the given \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIvn\fP is the operand \fBVarnode\fP to set 
+.br
+\fIslot\fP is the input slot where the \fBVarnode\fP is placed 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opSetOpcode (\fBPcodeOp\fP * op, \fBOpCode\fP opc)"
+
+.PP
+Set the op-code for a specific \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIopc\fP is the op-code to set 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opSetOutput (\fBPcodeOp\fP * op, \fBVarnode\fP * vn)"
+
+.PP
+Set a specific output \fBVarnode\fP for the given \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the specific \fBPcodeOp\fP 
+.br
+\fIvn\fP is the output \fBVarnode\fP to set 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file funcdata_op\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::opStackLoad (\fBAddrSpace\fP * spc, \fBuintb\fP off, uint4 sz, \fBPcodeOp\fP * op, \fBVarnode\fP * stackref, bool insertafter)"
+
+.PP
+Create a LOAD expression at an offset relative to a \fIspacebase\fP register for a given address space\&. The \fIspacebase\fP register is looked up for the given address space, or an optional previously existing register \fBVarnode\fP can be provided\&. An insertion point op must be provided, and newly generated ops can come either before or after this insertion point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.br
+\fIoff\fP is the offset to calculate relative to the \fIspacebase\fP register 
+.br
+\fIsz\fP is the size of the desire LOAD in bytes 
+.br
+\fIop\fP is the insertion point \fBPcodeOp\fP 
+.br
+\fIstackref\fP is the \fIspacebase\fP register \fBVarnode\fP (if available) 
+.br
+\fIinsertafter\fP is \fBtrue\fP if new ops are inserted \fIafter\fP the insertion point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fIunique\fP space \fBVarnode\fP holding the result of the LOAD 
+.RE
+.PP
+
+.PP
+Definition at line 511 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP * Funcdata::opStackStore (\fBAddrSpace\fP * spc, \fBuintb\fP off, \fBPcodeOp\fP * op, bool insertafter)"
+
+.PP
+Create a STORE expression at an offset relative to a \fIspacebase\fP register for a given address space\&. The \fIspacebase\fP register is looked up for the given address space\&. An insertion point op must be provided, and newly generated ops can come either before or after this insertion point\&. The \fBVarnode\fP value being stored must still be set on the returned \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.br
+\fIoff\fP is the offset to calculate relative to the \fIspacebase\fP register 
+.br
+\fIop\fP is the insertion point \fBPcodeOp\fP 
+.br
+\fIinsertafter\fP is \fBtrue\fP if new ops are inserted \fIafter\fP the insertion point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the STORE \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 478 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opSwapInput (\fBPcodeOp\fP * op, int4 slot1, int4 slot2)"
+
+.PP
+Swap two input operands in the given \fBPcodeOp\fP\&. This is convenience method that is more efficient than call \fBopSetInput()\fP twice\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIslot1\fP is the first input slot being switched 
+.br
+\fIslot2\fP is the second input slot 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opUninsert (\fBPcodeOp\fP * op)"
+
+.PP
+Remove the given \fBPcodeOp\fP from its basic block\&. The op is taken out of its basic block and put into the dead list\&. If the removal is permanent the input and output Varnodes should be unset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 162 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opUnlink (\fBPcodeOp\fP * op)"
+
+.PP
+Unset inputs/output and remove given PcodeOP from its basic block\&. The op is extricated from all its \fBVarnode\fP connections to the functions data-flow and removed from its basic block\&. This will \fInot\fP change block connections\&. The \fBPcodeOp\fP objects remains in the \fIdead\fP list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opUnsetInput (\fBPcodeOp\fP * op, int4 slot)"
+
+.PP
+Clear an input operand slot for the given \fBPcodeOp\fP\&. The input \fBVarnode\fP is unlinked from the op\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIslot\fP is the input slot to clear 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::opUnsetOutput (\fBPcodeOp\fP * op)"
+
+.PP
+Remove output \fBVarnode\fP from the given \fBPcodeOp\fP\&. The output \fBVarnode\fP becomes \fIfree\fP but is not immediately deleted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::overrideFlow (const \fBAddress\fP & addr, uint4 type)"
+
+.PP
+\fBOverride\fP the control-flow p-code for a particular instruction\&. P-code in \fBthis\fP function is modified to change the control-flow of the instruction at the given address, based on the \fBOverride\fP type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address of the instruction to modify 
+.br
+\fItype\fP is the \fBOverride\fP type 
+.RE
+.PP
+
+.PP
+Definition at line 918 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::printBlockTree (ostream & s) const"
+
+.PP
+Print a description of control-flow structuring to a stream\&. A description of each block in the current structure hierarchy is printed to stream\&. This is suitable for a console mode or debug view of the state of control-flow structuring at any point during analysis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::printLocalRange (ostream & s) const"
+
+.PP
+Print description of memory ranges associated with local scopes\&. Each scope has a set of memory ranges associated with it, encompassing storage locations of variables that are \fIassumed\fP to be in the scope\&. Each range for each local scope is printed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 493 of file funcdata\&.cc\&.
+.SS "void Funcdata::printRaw (ostream & s) const"
+
+.PP
+Print raw p-code op descriptions to a stream\&. A representation of all PcodeOps in the function body are printed to the stream\&. Depending on the state of analysis, PcodeOps are grouped into their basic blocks, and within a block, ops are displayed sequentially\&. Basic labeling of branch destinations is also printed\&. This is suitable for a console mode or debug view of the state of the function at any given point in its analysis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 180 of file funcdata\&.cc\&.
+.SS "void Funcdata::printVarnodeTree (ostream & s) const"
+
+.PP
+Print a description of all Varnodes to a stream\&. A description of each \fBVarnode\fP currently involved in the data-flow of \fBthis\fP function is printed to the output stream\&. This is suitable as part of a console mode or debug view of the function at any point during its analysis 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 475 of file funcdata\&.cc\&.
+.SS "void Funcdata::pushBranch (\fBBlockBasic\fP * bb, int4 slot, \fBBlockBasic\fP * bbnew)"
+
+.PP
+Move a control-flow edge from one block to another\&. This is intended for eliminating switch guard artifacts\&. The edge must be for a conditional jump and must be moved to a block hosting multiple out edges for a BRANCHIND\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbb\fP is the basic block out of which the edge to move flows 
+.br
+\fIslot\fP is the index of the (out) edge 
+.br
+\fIbbnew\fP is the basic block where the edge should get moved to 
+.RE
+.PP
+
+.PP
+Definition at line 388 of file funcdata_block\&.cc\&.
+.SS "\fBJumpTable\fP * Funcdata::recoverJumpTable (\fBPcodeOp\fP * op, \fBFlowInfo\fP * flow, int4 & failuremode)"
+
+.PP
+Recover destinations for a BRANCHIND by analyzing nearby data and control-flow\&. This is the high-level entry point for jump-table/switch recovery\&. In short, a copy of the current state of data-flow is made, simplification transformations are applied to the copy, and the resulting data-flow tree is examined to enumerate possible values of the input \fBVarnode\fP to the given BRANCHIND \fBPcodeOp\fP\&. This information is stored in a \fBJumpTable\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given BRANCHIND \fBPcodeOp\fP 
+.br
+\fIflow\fP is current flow information for \fBthis\fP function 
+.br
+\fIfailuremode\fP will hold the final success/failure code (0=success) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the recovered \fBJumpTable\fP or NULL if there was no success 
+.RE
+.PP
+
+.PP
+Definition at line 549 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::removeBranch (\fBBlockBasic\fP * bb, int4 num)"
+
+.PP
+Remove the indicated branch from a basic block\&. The edge is removed from control-flow and affected MULTIEQUAL ops are adjusted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbb\fP is the basic block 
+.br
+\fInum\fP is the index of the out edge to remove 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::removeDoNothingBlock (\fBBlockBasic\fP * bb)"
+
+.PP
+Remove a basic block from control-flow that performs no operations\&. The block must contain only \fImarker\fP operations (MULTIEQUAL) and possibly a single unconditional branch operation\&. The block and its PcodeOps are completely removed from the current control-flow and data-flow\&. This forces a reset of the control-flow structuring hierarchy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbb\fP is the given basic block 
+.RE
+.PP
+
+.PP
+Definition at line 312 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::removeFromFlowSplit (\fBBlockBasic\fP * bl, bool swap)"
+
+.PP
+Remove a basic block splitting its control-flow into two distinct paths\&. This is used by \fBConditionalExecution\fP to eliminate unnecessary control-flow joins\&. The given block must have 2 inputs and 2 outputs, (and no operations)\&. The block is removed, and control-flow is adjusted so that In(0) flows to Out(0) and In(1) flows to Out(1), or vice versa\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given basic block 
+.br
+\fIswap\fP is \fBtrue\fP to force In(0)->Out(1) and In(1)->Out(0) 
+.RE
+.PP
+
+.PP
+Definition at line 934 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::removeJumpTable (\fBJumpTable\fP * jt)"
+
+.PP
+Remove/delete the given jump-table\&. The \fBJumpTable\fP object is freed, and the associated BRANCHIND is no longer marked as a \fIswitch\fP point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjt\fP is the given \fBJumpTable\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file funcdata_block\&.cc\&.
+.SS "bool Funcdata::removeUnreachableBlocks (bool issuewarning, bool checkexistence)"
+
+.PP
+Remove any unreachable basic blocks\&. A quick check for unreachable blocks can optionally be made, otherwise the cached state is checked via \fBhasUnreachableBlocks()\fP, which is turned on during analysis by calling the structureReset() method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIissuewarning\fP is \fBtrue\fP if warning comments are desired 
+.br
+\fIcheckexistence\fP is \fBtrue\fP to force an active search for unreachable blocks 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if unreachable blocks were actually found and removed 
+.RE
+.PP
+
+.PP
+Definition at line 331 of file funcdata_block\&.cc\&.
+.SS "bool Funcdata::replaceLessequal (\fBFuncdata\fP & data, \fBPcodeOp\fP * op)\fC [static]\fP"
+
+.PP
+Replace INT_LESSEQUAL and INT_SLESSEQUAL expressions\&. Do in-place replacement of
+.IP "\(bu" 2
+\fC#c <= x\fP with \fC#c-1 < x\fP OR
+.IP "\(bu" 2
+\fCx <= #c\fP with \fCx < #c+1\fP
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being analyzed 
+.br
+\fIop\fP is comparison \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a valid replacement was performed 
+.RE
+.PP
+
+.PP
+Definition at line 979 of file funcdata_op\&.cc\&.
+.SS "bool Funcdata::replaceVolatile (\fBVarnode\fP * vn)"
+
+.PP
+Replace accesses of the given \fBVarnode\fP with \fIvolatile\fP operations\&. The \fBVarnode\fP is assumed not fully linked\&. The read or write action is modeled by inserting a special \fIuser\fP op that represents the action\&. The given \fBVarnode\fP is replaced by a temporary \fBVarnode\fP within the data-flow, and the original address becomes a parameter to the user op\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP to model as volatile 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made 
+.RE
+.PP
+
+.PP
+Definition at line 595 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Restore the state of \fBthis\fP function from an XML description\&. From an XML <function> tag, recover the name, address, prototype, symbol, jump-table, and override information for \fBthis\fP function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <function> tag 
+.RE
+.PP
+
+.PP
+Definition at line 692 of file funcdata\&.cc\&.
+.SS "void Funcdata::restoreXmlJumpTable (const \fBElement\fP * el)"
+
+.PP
+Restore jump-tables from an XML description\&. This parses a <jumptablelist> tag and builds a \fBJumpTable\fP object for each <jumptable> sub-tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <jumptablelist> tag 
+.RE
+.PP
+
+.PP
+Definition at line 509 of file funcdata\&.cc\&.
+.SS "void Funcdata::saveXml (ostream & s, bool savetree) const"
+
+.PP
+Emit an XML description of \fBthis\fP function to stream\&. An XML description of \fBthis\fP function is written to the stream, including name, address, prototype, symbol, jump-table, and override information\&. If indicated by the caller, a description of the entire \fBPcodeOp\fP and \fBVarnode\fP tree is also emitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIsavetree\fP is \fBtrue\fP if the p-code tree should be emitted 
+.RE
+.PP
+
+.PP
+Definition at line 663 of file funcdata\&.cc\&.
+.SS "void Funcdata::saveXmlHigh (ostream & s) const"
+
+.PP
+Save an XML description of all HighVariables to stream\&. This produces a single <highlist> tag, with a <high> sub-tag for each high-level variable (\fBHighVariable\fP) currently associated with \fBthis\fP function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 558 of file funcdata\&.cc\&.
+.SS "void Funcdata::saveXmlJumpTable (ostream & s) const"
+
+.PP
+Emit an XML description of jump-tables to stream\&. A <jumptablelist> tag is written with <jumptable> sub-tags describing each jump-table associated with the control-flow of \fBthis\fP function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 524 of file funcdata\&.cc\&.
+.SS "void Funcdata::saveXmlTree (ostream & s) const"
+
+.PP
+Save an XML description of the p-code tree to stream\&. A single <ast> tag is produced with children describing Varnodes, PcodeOps, and basic blocks making up \fBthis\fP function's current syntax tree\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 613 of file funcdata\&.cc\&.
+.SS "void Funcdata::seenDeadcode (\fBAddrSpace\fP * spc)\fC [inline]\fP"
+
+.PP
+Mark that dead Varnodes have been seen in a specific address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space to mark 
+.RE
+.PP
+
+.PP
+Definition at line 209 of file funcdata\&.hh\&.
+.SS "void Funcdata::setBasicBlockRange (\fBBlockBasic\fP * bb, const \fBAddress\fP & beg, const \fBAddress\fP & end)\fC [inline]\fP"
+
+.PP
+Set the initial ownership range for the given basic block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbb\fP is the given basic block 
+.br
+\fIbeg\fP is the beginning \fBAddress\fP of the owned code range 
+.br
+\fIend\fP is the ending \fBAddress\fP of the owned code range 
+.RE
+.PP
+
+.PP
+Definition at line 470 of file funcdata\&.hh\&.
+.SS "void Funcdata::setDeadCodeDelay (\fBAddrSpace\fP * spc, int4 delay)\fC [inline]\fP"
+
+.PP
+Set a delay before removing dead code for a specific address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the specific address space 
+.br
+\fIdelay\fP is the number of passes to delay 
+.RE
+.PP
+
+.PP
+Definition at line 215 of file funcdata\&.hh\&.
+.SS "void Funcdata::setDoublePrecisRecovery (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether double precision analysis is used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if double precision analysis is enabled 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file funcdata\&.hh\&.
+.SS "void Funcdata::setHighLevel (void)"
+
+.PP
+Turn on \fBHighVariable\fP objects for all Varnodes\&. 
+.PP
+Definition at line 470 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::setIndirectCreation (\fBPcodeOp\fP * op, \fBPcodeOp\fP * indeffect, \fBVarnode\fP * outvn, bool possibleout)"
+
+.PP
+Turn given \fBPcodeOp\fP into a CPUI_INDIRECT that \fIindirectly\fP \fIcreates\fP a \fBVarnode\fP\&. An \fIindirectly\fP \fIcreated\fP \fBVarnode\fP effectively has no data-flow before the INDIRECT op that defines it, and the value contained by the \fBVarnode\fP is not explicitly calculable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP to convert to a CPUI_INDIRECT 
+.br
+\fIindeffect\fP is the p-code causing the indirect effect 
+.br
+\fIoutvn\fP is the (preexisting) \fBVarnode\fP that will be marked as \fIcreated\fP by the INDIRECT 
+.br
+\fIpossibleout\fP is \fBtrue\fP if the output should be treated as a \fIdirectwrite\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 636 of file funcdata_op\&.cc\&.
+.SS "\fBVarnode\fP * Funcdata::setInputVarnode (\fBVarnode\fP * vn)"
+
+.PP
+Mark a \fBVarnode\fP as an input to the function\&. An \fIinput\fP \fBVarnode\fP has a special designation within SSA form as not being defined by a p-code operation and is a formal input to the data-flow of the function\&. It is not necessarily a formal function parameter\&.
+.PP
+The given \fBVarnode\fP to be marked is also returned unless there is an input \fBVarnode\fP that already exists which overlaps the given \fBVarnode\fP\&. If the Varnodes have the same size and storage address, the preexisting input \fBVarnode\fP is returned instead\&. Otherwise an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP to mark as an input 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the marked \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 326 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::setJumptableRecovery (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fBthis\fP is being used for jump-table recovery\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to indicate a jump-table is being recovered 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file funcdata\&.hh\&.
+.SS "void Funcdata::setNoCode (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fBthis\fP has a body\&. 
+.PP
+Definition at line 132 of file funcdata\&.hh\&.
+.SS "void Funcdata::setRestartPending (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether analysis needs to be restarted for \fBthis\fP function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if a reset is required 
+.RE
+.PP
+
+.PP
+Definition at line 182 of file funcdata\&.hh\&.
+.SS "void Funcdata::spacebase (void)"
+
+.PP
+Mark registers that map to a virtual address space\&. This routine searches for an marks \fBVarnode\fP objects, like stack-pointer registers, that are used as a base address for a virtual address space\&. Each \fBVarnode\fP gets a special data-type and is marked so that \fBVarnode::isSpacebase()\fP returns \fBtrue\fP\&. 
+.PP
+Definition at line 201 of file funcdata\&.cc\&.
+.SS "void Funcdata::spacebaseConstant (\fBPcodeOp\fP * op, int4 slot, \fBSymbolEntry\fP * entry, const \fBAddress\fP & rampoint, \fBuintb\fP origval, int4 origsize)"
+
+.PP
+Convert a constant pointer into a \fIram\fP CPUI_PTRSUB\&. A constant known to be a pointer into an address space like \fBram\fP is converted into a \fBVarnode\fP defined by CPUI_PTRSUB, which triggers a \fBSymbol\fP lookup at points during analysis\&. The constant must point to a known \fBSymbol\fP\&.
+.PP
+The PTRSUB takes the constant 0 as its first input, which is marked as a \fIspacebase\fP to indicate this situation\&. The second input to PTRSUB becomes the offset to the \fBSymbol\fP within the address space\&. An additional INT_SUB may be inserted to get from the start of the \fBSymbol\fP to the address indicated by the original constant pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP referencing the constant pointer 
+.br
+\fIslot\fP is the input slot of the constant pointer 
+.br
+\fIentry\fP is the \fBSymbol\fP being pointed (in)to 
+.br
+\fIrampoint\fP is the constant pointer interpreted as an \fBAddress\fP 
+.br
+\fIorigval\fP is the constant 
+.br
+\fIorigsize\fP is the size of the constant 
+.RE
+.PP
+
+.PP
+Definition at line 289 of file funcdata\&.cc\&.
+.SS "void Funcdata::spliceBlockBasic (\fBBlockBasic\fP * bl)"
+
+.PP
+\fBMerge\fP the given basic block with the block it flows into\&. The given block must have a single output block, which will be removed\&. The given block has the p-code from the output block concatenated to its own, and it inherits the output block's out edges\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given basic block 
+.RE
+.PP
+
+.PP
+Definition at line 961 of file funcdata_block\&.cc\&.
+.SS "void Funcdata::splitVarnode (\fBVarnode\fP * vn, int4 lowsize, \fBVarnode\fP *& vnlo, \fBVarnode\fP *& vnhi)"
+
+.PP
+Create two new Varnodes which split the given \fBVarnode\fP\&. \fBAttributes\fP are copied from the original into the split pieces if appropriate 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.br
+\fIlowsize\fP is the desired size in bytes of the least significant portion 
+.br
+\fIvnlo\fP will hold the least significant portion 
+.br
+\fIvnhi\fP will hold the most significant portion 
+.RE
+.PP
+
+.PP
+Definition at line 489 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::startCastPhase (void)\fC [inline]\fP"
+
+.PP
+Start the \fBcast\fP insertion phase\&. 
+.PP
+Definition at line 154 of file funcdata\&.hh\&.
+.SS "void Funcdata::startCleanUp (void)\fC [inline]\fP"
+
+.PP
+Start \fIclean-up\fP phase\&. 
+.PP
+Definition at line 157 of file funcdata\&.hh\&.
+.SS "void Funcdata::startProcessing (void)"
+
+.PP
+Start processing for this function\&. This routine does basic set-up for analyzing the function\&. In particular, it generates the raw p-code, builds basic blocks, and generates the call specification objects\&. 
+.PP
+Definition at line 126 of file funcdata\&.cc\&.
+.SS "bool Funcdata::startTypeRecovery (void)"
+
+.PP
+Mark that data-type analysis has started\&. 
+.PP
+Definition at line 153 of file funcdata\&.cc\&.
+.SS "void Funcdata::stopProcessing (void)"
+
+.PP
+Mark that processing has completed for this function\&. 
+.PP
+Definition at line 144 of file funcdata\&.cc\&.
+.SS "void Funcdata::switchEdge (\fBFlowBlock\fP * inblock, \fBBlockBasic\fP * outbefore, \fBFlowBlock\fP * outafter)"
+
+.PP
+Switch an outgoing edge from the given \fIsource\fP block to flow into another block\&. This does \fInot\fP adjust MULTIEQUAL data-flow\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinblock\fP is the given \fIsource\fP block 
+.br
+\fIoutbefore\fP is the other side of the desired edge 
+.br
+\fIoutafter\fP is the new destination block desired 
+.RE
+.PP
+
+.PP
+Definition at line 950 of file funcdata_block\&.cc\&.
+.SS "\fBPcodeOp\fP* Funcdata::target (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Look up a \fBPcodeOp\fP by an instruction \fBAddress\fP\&. 
+.PP
+Definition at line 416 of file funcdata\&.hh\&.
+.SS "void Funcdata::totalReplace (\fBVarnode\fP * vn, \fBVarnode\fP * newvn)"
+
+.PP
+Replace all read references to the first \fBVarnode\fP with a second \fBVarnode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the first \fBVarnode\fP (being replaced) 
+.br
+\fInewvn\fP is the second \fBVarnode\fP (the replacement) 
+.RE
+.PP
+
+.PP
+Definition at line 1024 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::totalReplaceConstant (\fBVarnode\fP * vn, \fBuintb\fP val)"
+
+.PP
+Replace every read reference of the given \fBVarnode\fP with a constant value\&. A new constant \fBVarnode\fP is created for each read site\&. If there are any marker ops (MULTIEQUAL) a single COPY op is inserted and the marker input is set to be the output of the COPY\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.br
+\fIval\fP is the constant value to replace it with 
+.RE
+.PP
+
+.PP
+Definition at line 1046 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::truncatedFlow (const \fBFuncdata\fP * fd, const \fBFlowInfo\fP * flow)"
+
+.PP
+Generate a clone with truncated control-flow given a partial function\&. Existing p-code is cloned from another function whose flow has not been completely followed\&. Artificial halt operators are inserted wherever flow is incomplete and basic blocks are generated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the partial function to clone 
+.br
+\fIflow\fP is partial function's flow information 
+.RE
+.PP
+
+.PP
+Definition at line 746 of file funcdata_op\&.cc\&.
+.SS "void Funcdata::truncateIndirect (\fBPcodeOp\fP * indop)"
+
+.PP
+Convert CPUI_INDIRECT into an \fIindirect\fP \fIcreation\fP\&. Data-flow through the given CPUI_INDIRECT op is truncated causing the output \fBVarnode\fP to be \fIindirectly\fP \fIcreated\fP\&. An \fIindirectly\fP \fIcreated\fP \fBVarnode\fP effectively has no data-flow before the INDIRECT op that defines it, and the value contained by the \fBVarnode\fP is not explicitly calculable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindop\fP is the given CPUI_INDIRECT op 
+.RE
+.PP
+
+.PP
+Definition at line 688 of file funcdata_op\&.cc\&.
+.SS "bool Funcdata::updateFlags (const \fBScopeLocal\fP * lm, bool typesyes)"
+
+.PP
+Update \fBVarnode\fP boolean properties based on (new) \fBSymbol\fP information\&. Boolean properties \fBaddrtied\fP, \fBaddrforce\fP, \fBauto_live\fP, and \fBnolocalalias\fP for Varnodes are updated based on new \fBSymbol\fP information they map to\&. The caller can elect to update data-type information as well\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlm\fP is the \fBSymbol\fP scope within which to search for mapped Varnodes 
+.br
+\fItypesyes\fP is \fBtrue\fP if the caller wants to update data-types 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if any \fBVarnode\fP was updated 
+.RE
+.PP
+
+.PP
+Definition at line 805 of file funcdata_varnode\&.cc\&.
+.SS "void Funcdata::updateOpFromSpec (\fBFuncCallSpecs\fP * fc)"
+
+.PP
+Update CALL \fBPcodeOp\fP properties based on its corresponding call specification\&. As call specifications for a particular call site are updated, this routine pushes back properties to the particular CALL op that are relevant for analysis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfc\fP is the call specification 
+.RE
+.PP
+
+.PP
+Definition at line 377 of file funcdata\&.cc\&.
+.SS "void Funcdata::warning (const string & txt, const \fBAddress\fP & ad) const"
+
+.PP
+Add a warning comment in the function body\&. The comment is added to the global database, indexed via its placement address and the entry address of the function\&. The emitter will attempt to place the comment before the source expression that maps most closely to the address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItxt\fP is the string body of the comment 
+.br
+\fIad\fP is the placement address 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file funcdata\&.cc\&.
+.SS "void Funcdata::warningHeader (const string & txt) const"
+
+.PP
+Add a warning comment as part of the function header\&. The warning will be emitted as part of the block comment printed right before the prototype\&. The comment is stored in the global comment database, indexed via the function's entry address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItxt\fP is the string body of the comment 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file funcdata\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,1788 @@
+.TH "Varnode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Varnode \- A low-level variable or contiguous set of bytes described by an \fBAddress\fP and a size\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <varnode\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBvarnode_flags\fP { \fBmark\fP = 0x01, \fBconstant\fP = 0x02, \fBannotation\fP = 0x04, \fBinput\fP = 0x08, \fBwritten\fP = 0x10, \fBinsert\fP = 0x20, \fBimplied\fP = 0x40, \fBexplict\fP = 0x80, \fBtypelock\fP = 0x100, \fBnamelock\fP = 0x200, \fBnolocalalias\fP = 0x400, \fBvolatil\fP = 0x800, \fBspacebase_placeholder\fP = 0x1000, \fBexternref\fP = 0x2000, \fBreadonly\fP = 0x4000, \fBpersist\fP = 0x8000, \fBaddrtied\fP = 0x10000, \fBunaffected\fP = 0x20000, \fBspacebase\fP = 0x40000, \fBindirectonly\fP = 0x80000, \fBdirectwrite\fP = 0x100000, \fBaddrforce\fP = 0x200000, \fBmapped\fP = 0x400000, \fBindirect_creation\fP = 0x800000, \fBreturn_address\fP = 0x1000000, \fBcoverdirty\fP = 0x2000000, \fBprecislo\fP = 0x4000000, \fBprecishi\fP = 0x8000000, \fBindirectstorage\fP = 0x10000000, \fBhiddenretparm\fP = 0x20000000, \fBincidental_copy\fP = 0x40000000, \fBauto_live\fP = 0x80000000 }"
+.br
+.ti -1c
+.RI "enum \fBaddl_flags\fP { \fBactiveheritage\fP = 0x01, \fBwritemask\fP = 0x02, \fBvacconsume\fP = 0x04, \fBlisconsume\fP = 0x08, \fBptrcheck\fP = 0x10, \fBptrflow\fP = 0x20, \fBunsignedprint\fP = 0x40, \fBstack_store\fP = 0x80 }"
+.br
+.RI "Additional boolean properties on a \fBVarnode\fP\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetHigh\fP (\fBHighVariable\fP *tv, int2 mg)"
+.br
+.RI "Set the \fBHighVariable\fP owning this \fBVarnode\fP\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddr\fP (void) const"
+.br
+.RI "Get the storage \fBAddress\fP\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (void) const"
+.br
+.RI "Get the \fBAddrSpace\fP storing this \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetOffset\fP (void) const"
+.br
+.RI "Get the offset (within its \fBAddrSpace\fP) where this is stored\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the number of bytes this \fBVarnode\fP stores\&. "
+.ti -1c
+.RI "int2 \fBgetMergeGroup\fP (void) const"
+.br
+.RI "Get the \fIforced\fP \fImerge\fP group of this \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBgetDef\fP (void)"
+.br
+.RI "Get the defining \fBPcodeOp\fP of this \fBVarnode\fP\&. "
+.ti -1c
+.RI "const \fBPcodeOp\fP * \fBgetDef\fP (void) const"
+.br
+.RI "Get the defining \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "\fBHighVariable\fP * \fBgetHigh\fP (void) const"
+.br
+.RI "Get the high-level variable associated with this \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBgetSymbolEntry\fP (void) const"
+.br
+.RI "Get symbol and scope information associated with this \fBVarnode\fP\&. "
+.ti -1c
+.RI "uint4 \fBgetFlags\fP (void) const"
+.br
+.RI "Get all the boolean attributes\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBDatatype\fP associated with this \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBsetTempType\fP (\fBDatatype\fP *t) const"
+.br
+.RI "Set the temporary \fBDatatype\fP\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetTempType\fP (void) const"
+.br
+.RI "Get the temporary \fBDatatype\fP (used during type propagation) "
+.ti -1c
+.RI "uint4 \fBgetCreateIndex\fP (void) const"
+.br
+.RI "Get the creation index\&. "
+.ti -1c
+.RI "\fBCover\fP * \fBgetCover\fP (void) const"
+.br
+.RI "Get \fBVarnode\fP coverage information\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbeginDescend\fP (void) const"
+.br
+.RI "Get iterator to list of syntax tree descendants (reads) "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBendDescend\fP (void) const"
+.br
+.RI "Get the end iterator to list of descendants\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetConsume\fP (void) const"
+.br
+.RI "Get mask of consumed bits\&. "
+.ti -1c
+.RI "void \fBsetConsume\fP (\fBuintb\fP val)"
+.br
+.RI "Set the mask of consumed bits (used by dead-code algorithm) "
+.ti -1c
+.RI "bool \fBisConsumeList\fP (void) const"
+.br
+.RI "Get marker used by dead-code algorithm\&. "
+.ti -1c
+.RI "bool \fBisConsumeVacuous\fP (void) const"
+.br
+.RI "Get marker used by dead-code algorithm\&. "
+.ti -1c
+.RI "void \fBsetConsumeList\fP (void)"
+.br
+.RI "Set marker used by dead-code algorithm\&. "
+.ti -1c
+.RI "void \fBsetConsumeVacuous\fP (void)"
+.br
+.RI "Set marker used by dead-code algorithm\&. "
+.ti -1c
+.RI "void \fBclearConsumeList\fP (void)"
+.br
+.RI "Clear marker used by dead-code algorithm\&. "
+.ti -1c
+.RI "void \fBclearConsumeVacuous\fP (void)"
+.br
+.RI "Clear marker used by dead-code algorithm\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBloneDescend\fP (void) const"
+.br
+.RI "Return unique reading \fBPcodeOp\fP, or \fBnull\fP if there are zero or more than 1\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetUsePoint\fP (const \fBFuncdata\fP &fd) const"
+.br
+.RI "Get \fBAddress\fP when this \fBVarnode\fP first comes into scope\&. "
+.ti -1c
+.RI "int4 \fBprintRawNoMarkup\fP (ostream &s) const"
+.br
+.RI "Print a simple identifier for the \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print a simple identifier plus additional info identifying \fBVarnode\fP with SSA form\&. "
+.ti -1c
+.RI "void \fBprintCover\fP (ostream &s) const"
+.br
+.RI "Print raw coverage info about the \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBprintInfo\fP (ostream &s) const"
+.br
+.RI "Print raw attribute info about the \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP (int4 s, const \fBAddress\fP &m, \fBDatatype\fP *dt)"
+.br
+.RI "Construct a \fIfree\fP \fBVarnode\fP\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBVarnode\fP &op2) const"
+.br
+.RI "Comparison operator on \fBVarnode\fP\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBVarnode\fP &op2) const"
+.br
+.RI "Equality operator\&. "
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBVarnode\fP &op2) const"
+.br
+.RI "Inequality operator\&. "
+.ti -1c
+.RI "\fB~Varnode\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "bool \fBintersects\fP (const \fBVarnode\fP &op) const"
+.br
+.RI "Return \fBtrue\fP if the storage locations intersect\&. "
+.ti -1c
+.RI "bool \fBintersects\fP (const \fBAddress\fP &op2loc, int4 op2size) const"
+.br
+.RI "Check intersection against an \fBAddress\fP range\&. "
+.ti -1c
+.RI "int4 \fBcontains\fP (const \fBVarnode\fP &op) const"
+.br
+.RI "Return info about the containment of \fIop\fP in \fBthis\fP\&. "
+.ti -1c
+.RI "int4 \fBcharacterizeOverlap\fP (const \fBVarnode\fP &op) const"
+.br
+.RI "Return 0, 1, or 2 for 'no overlap', 'partial overlap', 'identical storage'\&. "
+.ti -1c
+.RI "int4 \fBoverlap\fP (const \fBVarnode\fP &op) const"
+.br
+.RI "Return relative point of overlap between two Varnodes\&. "
+.ti -1c
+.RI "int4 \fBoverlap\fP (const \fBAddress\fP &op2loc, int4 op2size) const"
+.br
+.RI "Return relative point of overlap with \fBAddress\fP range\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetNZMask\fP (void) const"
+.br
+.RI "Get the mask of bits within \fBthis\fP that are known to be zero\&. "
+.ti -1c
+.RI "int4 \fBtermOrder\fP (const \fBVarnode\fP *op) const"
+.br
+.RI "Compare two Varnodes based on their term order\&. "
+.ti -1c
+.RI "void \fBprintRawHeritage\fP (ostream &s, int4 depth) const"
+.br
+.RI "Print a simple SSA subtree rooted at \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBisAnnotation\fP (void) const"
+.br
+.RI "Is \fBthis\fP an annotation? "
+.ti -1c
+.RI "bool \fBisImplied\fP (void) const"
+.br
+.RI "Is \fBthis\fP an implied variable? "
+.ti -1c
+.RI "bool \fBisExplicit\fP (void) const"
+.br
+.RI "Is \fBthis\fP an explicitly printed variable? "
+.ti -1c
+.RI "bool \fBisConstant\fP (void) const"
+.br
+.RI "Is \fBthis\fP a constant? "
+.ti -1c
+.RI "bool \fBisFree\fP (void) const"
+.br
+.RI "Is \fBthis\fP free, not in SSA form? "
+.ti -1c
+.RI "bool \fBisInput\fP (void) const"
+.br
+.RI "Is \fBthis\fP an SSA input node? "
+.ti -1c
+.RI "bool \fBisIllegalInput\fP (void) const"
+.br
+.RI "Is \fBthis\fP an abnormal input to the function? "
+.ti -1c
+.RI "bool \fBisIndirectOnly\fP (void) const"
+.br
+.RI "Is \fBthis\fP read only by INDIRECT operations? "
+.ti -1c
+.RI "bool \fBisExternalRef\fP (void) const"
+.br
+.RI "Is \fBthis\fP storage location mapped by the loader to an external location? "
+.ti -1c
+.RI "bool \fBhasActionProperty\fP (void) const"
+.br
+.RI "Will this \fBVarnode\fP be replaced dynamically? "
+.ti -1c
+.RI "bool \fBisReadOnly\fP (void) const"
+.br
+.RI "Is \fBthis\fP a read-only storage location? "
+.ti -1c
+.RI "bool \fBisVolatile\fP (void) const"
+.br
+.RI "Is \fBthis\fP a volatile storage location? "
+.ti -1c
+.RI "bool \fBisPersist\fP (void) const"
+.br
+.RI "Does \fBthis\fP storage location persist beyond the end of the function? "
+.ti -1c
+.RI "bool \fBisDirectWrite\fP (void) const"
+.br
+.RI "Is \fBthis\fP value affected by a legitimate function input\&. "
+.ti -1c
+.RI "bool \fBisAddrTied\fP (void) const"
+.br
+.RI "Are all Varnodes at this storage location components of the same high-level variable? "
+.ti -1c
+.RI "bool \fBisAddrForce\fP (void) const"
+.br
+.RI "Is \fBthis\fP value forced into a particular storage location? "
+.ti -1c
+.RI "bool \fBisAutoLive\fP (void) const"
+.br
+.RI "Is \fBthis\fP varnode exempt from dead-code removal? "
+.ti -1c
+.RI "bool \fBisMapped\fP (void) const"
+.br
+.RI "Is there or should be formal symbol information associated with \fBthis\fP? "
+.ti -1c
+.RI "bool \fBisUnaffected\fP (void) const"
+.br
+.RI "Is \fBthis\fP a value that is supposed to be preserved across the function? "
+.ti -1c
+.RI "bool \fBisSpacebase\fP (void) const"
+.br
+.RI "Is this location used to store the base point for a virtual address space? "
+.ti -1c
+.RI "bool \fBisReturnAddress\fP (void) const"
+.br
+.RI "Is this storage for a calls return address? "
+.ti -1c
+.RI "bool \fBisPtrCheck\fP (void) const"
+.br
+.RI "Has \fBthis\fP been checked as a constant pointer to a mapped symbol? "
+.ti -1c
+.RI "bool \fBisPtrFlow\fP (void) const"
+.br
+.RI "Does this varnode flow to or from a known pointer\&. "
+.ti -1c
+.RI "bool \fBisSpacebasePlaceholder\fP (void) const"
+.br
+.RI "Is \fBthis\fP used specifically to track stackpointer values? "
+.ti -1c
+.RI "bool \fBhasNoLocalAlias\fP (void) const"
+.br
+.RI "Are there (not) any local pointers that might affect \fBthis\fP? "
+.ti -1c
+.RI "bool \fBisMark\fP (void) const"
+.br
+.RI "Has \fBthis\fP been visited by the current algorithm? "
+.ti -1c
+.RI "bool \fBisActiveHeritage\fP (void) const"
+.br
+.RI "Is \fBthis\fP currently being traced by the \fBHeritage\fP algorithm? "
+.ti -1c
+.RI "bool \fBisStackStore\fP (void) const"
+.br
+.RI "Was this originally produced by an explicit STORE\&. "
+.ti -1c
+.RI "bool \fBisIndirectZero\fP (void) const"
+.br
+.RI "Is \fBthis\fP just a special placeholder representing INDIRECT creation? "
+.ti -1c
+.RI "bool \fBisExtraOut\fP (void) const"
+.br
+.RI "Is this \fBVarnode\fP \fBcreated\fP indirectly by a CALL operation? "
+.ti -1c
+.RI "bool \fBisPrecisLo\fP (void) const"
+.br
+.RI "Is \fBthis\fP the low portion of a double precision value? "
+.ti -1c
+.RI "bool \fBisPrecisHi\fP (void) const"
+.br
+.RI "Is \fBthis\fP the high portion of a double precision value? "
+.ti -1c
+.RI "bool \fBisIncidentalCopy\fP (void) const"
+.br
+.RI "Does this varnode get copied as a side-effect\&. "
+.ti -1c
+.RI "bool \fBisWriteMask\fP (void) const"
+.br
+.RI "Is \fBthis\fP (not) considered a true write location when calculating SSA form? "
+.ti -1c
+.RI "bool \fBisUnsignedPrint\fP (void) const"
+.br
+.RI "Must \fBthis\fP be printed as unsigned\&. "
+.ti -1c
+.RI "bool \fBisWritten\fP (void) const"
+.br
+.RI "Does \fBthis\fP have a defining write operation? "
+.ti -1c
+.RI "bool \fBhasCover\fP (void) const"
+.br
+.RI "Does \fBthis\fP have \fBCover\fP information? "
+.ti -1c
+.RI "bool \fBhasNoDescend\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if nothing reads this \fBVarnode\fP\&. "
+.ti -1c
+.RI "bool \fBconstantMatch\fP (\fBuintb\fP val) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is a constant with value \fBval\fP\&. "
+.ti -1c
+.RI "int4 \fBisConstantExtended\fP (\fBuintb\fP &val) const"
+.br
+.ti -1c
+.RI "bool \fBisHeritageKnown\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this \fBVarnode\fP is linked into the SSA tree\&. "
+.ti -1c
+.RI "bool \fBisTypeLock\fP (void) const"
+.br
+.RI "Does \fBthis\fP have a locked \fBDatatype\fP? "
+.ti -1c
+.RI "bool \fBisNameLock\fP (void) const"
+.br
+.RI "Does \fBthis\fP have a locked name? "
+.ti -1c
+.RI "void \fBsetActiveHeritage\fP (void)"
+.br
+.RI "Mark \fBthis\fP as currently being linked into the SSA tree\&. "
+.ti -1c
+.RI "void \fBclearActiveHeritage\fP (void)"
+.br
+.RI "Mark \fBthis\fP as not (actively) being linked into the SSA tree\&. "
+.ti -1c
+.RI "void \fBsetMark\fP (void) const"
+.br
+.RI "Mark this \fBVarnode\fP for breadcrumb algorithms\&. "
+.ti -1c
+.RI "void \fBclearMark\fP (void) const"
+.br
+.RI "Clear the mark on this \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBsetDirectWrite\fP (void)"
+.br
+.RI "Mark \fBthis\fP as directly affected by a legal input\&. "
+.ti -1c
+.RI "void \fBclearDirectWrite\fP (void)"
+.br
+.RI "Mark \fBthis\fP as not directly affected by a legal input\&. "
+.ti -1c
+.RI "void \fBsetAddrForce\fP (void)"
+.br
+.RI "Mark as forcing a value into \fBthis\fP particular storage location\&. "
+.ti -1c
+.RI "void \fBclearAddrForce\fP (void)"
+.br
+.RI "Clear the forcing attribute\&. "
+.ti -1c
+.RI "void \fBsetAutoLive\fP (void)"
+.br
+.RI "Mark varnode as exempt from dead-code removal\&. "
+.ti -1c
+.RI "void \fBclearAutoLive\fP (void)"
+.br
+.RI "Clear exemption for dead-code removal\&. "
+.ti -1c
+.RI "void \fBsetImplied\fP (void)"
+.br
+.RI "Mark \fBthis\fP as an \fIimplied\fP variable in the final C source\&. "
+.ti -1c
+.RI "void \fBclearImplied\fP (void)"
+.br
+.RI "Clear the \fIimplied\fP mark on this \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBsetExplicit\fP (void)"
+.br
+.RI "Mark \fBthis\fP as an \fIexplicit\fP variable in the final C source\&. "
+.ti -1c
+.RI "void \fBclearExplicit\fP (void)"
+.br
+.RI "Clear the \fIexplicit\fP mark on this \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBsetReturnAddress\fP (void)"
+.br
+.RI "Mark as storage location for a return address\&. "
+.ti -1c
+.RI "void \fBclearReturnAddress\fP (void)"
+.br
+.RI "Clear return address attribute\&. "
+.ti -1c
+.RI "void \fBsetPtrCheck\fP (void)"
+.br
+.RI "Set \fBthis\fP as checked for a constant symbol reference\&. "
+.ti -1c
+.RI "void \fBclearPtrCheck\fP (void)"
+.br
+.RI "Clear the pointer check mark on this \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBsetPtrFlow\fP (void)"
+.br
+.RI "Set \fBthis\fP as flowing to or from pointer\&. "
+.ti -1c
+.RI "void \fBclearPtrFlow\fP (void)"
+.br
+.RI "Indicate that this varnode is not flowing to or from pointer\&. "
+.ti -1c
+.RI "void \fBsetSpacebasePlaceholder\fP (void)"
+.br
+.RI "Mark \fBthis\fP as a special \fBVarnode\fP for tracking stackpointer values\&. "
+.ti -1c
+.RI "void \fBclearSpacebasePlaceholder\fP (void)"
+.br
+.RI "Clear the stackpointer tracking mark\&. "
+.ti -1c
+.RI "void \fBsetPrecisLo\fP (void)"
+.br
+.RI "Mark \fBthis\fP as the low portion of a double precision value\&. "
+.ti -1c
+.RI "void \fBclearPrecisLo\fP (void)"
+.br
+.RI "Clear the mark indicating a double precision portion\&. "
+.ti -1c
+.RI "void \fBsetPrecisHi\fP (void)"
+.br
+.RI "Mark \fBthis\fP as the high portion of a double precision value\&. "
+.ti -1c
+.RI "void \fBclearPrecisHi\fP (void)"
+.br
+.RI "Clear the mark indicating a double precision portion\&. "
+.ti -1c
+.RI "void \fBsetWriteMask\fP (void)"
+.br
+.RI "Mark \fBthis\fP as not a true \fIwrite\fP when computing SSA form\&. "
+.ti -1c
+.RI "void \fBclearWriteMask\fP (void)"
+.br
+.RI "Clear the mark indicating \fBthis\fP is not a true write\&. "
+.ti -1c
+.RI "void \fBsetUnsignedPrint\fP (void)"
+.br
+.RI "Force \fBthis\fP to be printed as unsigned\&. "
+.ti -1c
+.RI "bool \fBupdateType\fP (\fBDatatype\fP *ct, bool lock, bool override)"
+.br
+.RI "(Possibly) set the \fBDatatype\fP given various restrictions "
+.ti -1c
+.RI "void \fBsetStackStore\fP (void)"
+.br
+.RI "Mark as produced by explicit CPUI_STORE\&. "
+.ti -1c
+.RI "void \fBcopySymbol\fP (const \fBVarnode\fP *vn)"
+.br
+.RI "Copy symbol info from \fBvn\fP\&. "
+.ti -1c
+.RI "void \fBcopySymbolIfValid\fP (const \fBVarnode\fP *vn)"
+.br
+.RI "Copy symbol info from \fBvn\fP if constant value matches\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetLocalType\fP (void) const"
+.br
+.RI "Calculate type of \fBVarnode\fP based on local information\&. "
+.ti -1c
+.RI "bool \fBcopyShadow\fP (const \fBVarnode\fP *op2) const"
+.br
+.RI "Are \fBthis\fP and \fBop2\fP copied from the same source? "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save a description of \fBthis\fP as an XML tag\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBcomparePointers\fP (const \fBVarnode\fP *a, const \fBVarnode\fP *b)"
+.br
+.RI "Compare Varnodes as pointers\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBVarnodeBank\fP"
+.br
+.ti -1c
+.RI "class \fBMerge\fP"
+.br
+.ti -1c
+.RI "class \fBFuncdata\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A low-level variable or contiguous set of bytes described by an \fBAddress\fP and a size\&. 
+
+A \fBVarnode\fP is the fundemental \fIvariable\fP in the p-code language model\&. A \fBVarnode\fP represents anything that holds data, including registers, stack locations, global RAM locations, and constants\&. It is described most simply as a storage location for some number of bytes, and is identified by
+.IP "\(bu" 2
+an \fBAddress\fP (an \fBAddrSpace\fP and an offset into that space) and
+.IP "\(bu" 2
+a size in bytes
+.PP
+.PP
+In its raw form, the \fBVarnode\fP is referred to as \fBfree\fP, and this pair uniquely identifies the \fBVarnode\fP, as determined by its comparison operators\&. In terms of the Static Single Assignment (SSA) form for the decompiler analysis, the \fBVarnode\fP class also represents a node in the tree\&. In this case the \fBVarnode\fP is not free, and each individual write to a storage location, as per SSA form, creates a unique \fBVarnode\fP, which is represented by a separate instance, so there may be multiple \fBVarnode\fP instances with the same \fBAddress\fP and size\&. 
+.PP
+Definition at line 64 of file varnode\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBVarnode::addl_flags\fP"
+
+.PP
+Additional boolean properties on a \fBVarnode\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIactiveheritage \fP\fP
+The varnode is actively being heritaged\&. 
+.TP
+\fB\fIwritemask \fP\fP
+Should not be considered a write in heritage calculation\&. 
+.TP
+\fB\fIvacconsume \fP\fP
+Vacuous consume\&. 
+.TP
+\fB\fIlisconsume \fP\fP
+In consume worklist\&. 
+.TP
+\fB\fIptrcheck \fP\fP
+The \fBVarnode\fP value is \fINOT\fP a pointer\&. 
+.TP
+\fB\fIptrflow \fP\fP
+If this varnode flows to or from a pointer\&. 
+.TP
+\fB\fIunsignedprint \fP\fP
+Constant that must be explicitly printed as unsigned\&. 
+.TP
+\fB\fIstack_store \fP\fP
+Created by an explicit STORE\&. 
+.PP
+Definition at line 110 of file varnode\&.hh\&.
+.SS "enum \fBVarnode::varnode_flags\fP"
+There are a large number of boolean attributes that can be placed on a \fBVarnode\fP\&. Some are calculated and maintained by the friend classes \fBFuncdata\fP and \fBVarnodeBank\fP, and others can be set and cleared publically by separate subsystems\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fImark \fP\fP
+Prevents infinite loops\&. 
+.TP
+\fB\fIconstant \fP\fP
+The varnode is constant\&. 
+.TP
+\fB\fIannotation \fP\fP
+This varnode is an annotation and has no dataflow\&. 
+.TP
+\fB\fIinput \fP\fP
+This varnode has no ancestor\&. 
+.TP
+\fB\fIwritten \fP\fP
+This varnode has a defining op (def is nonzero) 
+.TP
+\fB\fIinsert \fP\fP
+This varnode has been inserted in a tree This means the varnode is the output of an op \fIor\fP The output is a constant \fIor\fP the output is an input 
+.TP
+\fB\fIimplied \fP\fP
+This varnode is a temporary variable\&. 
+.TP
+\fB\fIexplict \fP\fP
+This varnode \fICANNOT\fP be a temporary variable\&. 
+.TP
+\fB\fItypelock \fP\fP
+The Dataype of the \fBVarnode\fP is locked\&. 
+.TP
+\fB\fInamelock \fP\fP
+The Name of the \fBVarnode\fP is locked\&. 
+.TP
+\fB\fInolocalalias \fP\fP
+There are no aliases pointing to this varnode\&. 
+.TP
+\fB\fIvolatil \fP\fP
+This varnode's value is volatile\&. 
+.TP
+\fB\fIspacebase_placeholder \fP\fP
+This varnode is inserted artificially to track a register value at a specific point in the code 
+.TP
+\fB\fIexternref \fP\fP
+\fBVarnode\fP address is specially mapped by the loader\&. 
+.TP
+\fB\fIreadonly \fP\fP
+\fBVarnode\fP is stored at a readonly location\&. 
+.TP
+\fB\fIpersist \fP\fP
+Persists after (and before) function\&. 
+.TP
+\fB\fIaddrtied \fP\fP
+High-level variable is tied to address\&. 
+.TP
+\fB\fIunaffected \fP\fP
+Input which is unaffected by the function\&. 
+.TP
+\fB\fIspacebase \fP\fP
+This is a base register for an address space\&. 
+.TP
+\fB\fIindirectonly \fP\fP
+If all uses of illegalinput varnode are inputs to INDIRECT\&. 
+.TP
+\fB\fIdirectwrite \fP\fP
+(could be) Directly affected by a valid input 
+.TP
+\fB\fIaddrforce \fP\fP
+\fBVarnode\fP is used to force variable into an address\&. 
+.TP
+\fB\fImapped \fP\fP
+\fBVarnode\fP has a database entry associated with it\&. 
+.TP
+\fB\fIindirect_creation \fP\fP
+The value in this \fBVarnode\fP is created indirectly\&. 
+.TP
+\fB\fIreturn_address \fP\fP
+Is the varnode storage for a return address\&. 
+.TP
+\fB\fIcoverdirty \fP\fP
+\fBCover\fP is not upto date\&. 
+.TP
+\fB\fIprecislo \fP\fP
+Is this \fBVarnode\fP the low part of a double precision value\&. 
+.TP
+\fB\fIprecishi \fP\fP
+Is this \fBVarnode\fP the high part of a double precision value\&. 
+.TP
+\fB\fIindirectstorage \fP\fP
+Is this \fBVarnode\fP storing a pointer to the actual symbol\&. 
+.TP
+\fB\fIhiddenretparm \fP\fP
+Does this varnode point to the return value storage location\&. 
+.TP
+\fB\fIincidental_copy \fP\fP
+Do copies of this varnode happen as a side-effect\&. 
+.TP
+\fB\fIauto_live \fP\fP
+Is this varnode automatically considered live, never removed as dead-code\&. 
+.PP
+Definition at line 69 of file varnode\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Varnode::Varnode (int4 s, const \fBAddress\fP & m, \fBDatatype\fP * dt)"
+
+.PP
+Construct a \fIfree\fP \fBVarnode\fP\&. This is the constructor for making an unmanaged \fBVarnode\fP It creates a \fBfree\fP \fBVarnode\fP with possibly a \fBDatatype\fP attribute\&. Most applications create Varnodes through the \fBFuncdata\fP interface 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the new \fBVarnode\fP 
+.br
+\fIm\fP is the starting storage \fBAddress\fP 
+.br
+\fIdt\fP is the \fBDatatype\fP 
+.RE
+.PP
+
+.PP
+Definition at line 472 of file varnode\&.cc\&.
+.SS "Varnode::~Varnode (void)"
+
+.PP
+Destructor\&. Delete the \fBVarnode\fP object\&. This routine assumes all other cross-references have been removed\&. 
+.PP
+Definition at line 504 of file varnode\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "list<\fBPcodeOp\fP *>::const_iterator Varnode::beginDescend (void) const\fC [inline]\fP"
+
+.PP
+Get iterator to list of syntax tree descendants (reads) 
+.PP
+Definition at line 174 of file varnode\&.hh\&.
+.SS "int4 Varnode::characterizeOverlap (const \fBVarnode\fP & op) const"
+
+.PP
+Return 0, 1, or 2 for 'no overlap', 'partial overlap', 'identical storage'\&. 
+.PP
+Definition at line 147 of file varnode\&.cc\&.
+.SS "void Varnode::clearActiveHeritage (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as not (actively) being linked into the SSA tree\&. 
+.PP
+Definition at line 264 of file varnode\&.hh\&.
+.SS "void Varnode::clearAddrForce (void)\fC [inline]\fP"
+
+.PP
+Clear the forcing attribute\&. 
+.PP
+Definition at line 270 of file varnode\&.hh\&.
+.SS "void Varnode::clearAutoLive (void)\fC [inline]\fP"
+
+.PP
+Clear exemption for dead-code removal\&. 
+.PP
+Definition at line 272 of file varnode\&.hh\&.
+.SS "void Varnode::clearConsumeList (void)\fC [inline]\fP"
+
+.PP
+Clear marker used by dead-code algorithm\&. 
+.PP
+Definition at line 182 of file varnode\&.hh\&.
+.SS "void Varnode::clearConsumeVacuous (void)\fC [inline]\fP"
+
+.PP
+Clear marker used by dead-code algorithm\&. 
+.PP
+Definition at line 183 of file varnode\&.hh\&.
+.SS "void Varnode::clearDirectWrite (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as not directly affected by a legal input\&. 
+.PP
+Definition at line 268 of file varnode\&.hh\&.
+.SS "void Varnode::clearExplicit (void)\fC [inline]\fP"
+
+.PP
+Clear the \fIexplicit\fP mark on this \fBVarnode\fP\&. 
+.PP
+Definition at line 276 of file varnode\&.hh\&.
+.SS "void Varnode::clearImplied (void)\fC [inline]\fP"
+
+.PP
+Clear the \fIimplied\fP mark on this \fBVarnode\fP\&. 
+.PP
+Definition at line 274 of file varnode\&.hh\&.
+.SS "void Varnode::clearMark (void) const\fC [inline]\fP"
+
+.PP
+Clear the mark on this \fBVarnode\fP\&. 
+.PP
+Definition at line 266 of file varnode\&.hh\&.
+.SS "void Varnode::clearPrecisHi (void)\fC [inline]\fP"
+
+.PP
+Clear the mark indicating a double precision portion\&. 
+.PP
+Definition at line 288 of file varnode\&.hh\&.
+.SS "void Varnode::clearPrecisLo (void)\fC [inline]\fP"
+
+.PP
+Clear the mark indicating a double precision portion\&. 
+.PP
+Definition at line 286 of file varnode\&.hh\&.
+.SS "void Varnode::clearPtrCheck (void)\fC [inline]\fP"
+
+.PP
+Clear the pointer check mark on this \fBVarnode\fP\&. 
+.PP
+Definition at line 280 of file varnode\&.hh\&.
+.SS "void Varnode::clearPtrFlow (void)\fC [inline]\fP"
+
+.PP
+Indicate that this varnode is not flowing to or from pointer\&. 
+.PP
+Definition at line 282 of file varnode\&.hh\&.
+.SS "void Varnode::clearReturnAddress (void)\fC [inline]\fP"
+
+.PP
+Clear return address attribute\&. 
+.PP
+Definition at line 278 of file varnode\&.hh\&.
+.SS "void Varnode::clearSpacebasePlaceholder (void)\fC [inline]\fP"
+
+.PP
+Clear the stackpointer tracking mark\&. 
+.PP
+Definition at line 284 of file varnode\&.hh\&.
+.SS "void Varnode::clearWriteMask (void)\fC [inline]\fP"
+
+.PP
+Clear the mark indicating \fBthis\fP is not a true write\&. 
+.PP
+Definition at line 290 of file varnode\&.hh\&.
+.SS "static bool Varnode::comparePointers (const \fBVarnode\fP * a, const \fBVarnode\fP * b)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Compare Varnodes as pointers\&. 
+.PP
+Definition at line 299 of file varnode\&.hh\&.
+.SS "bool Varnode::constantMatch (\fBuintb\fP val) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is a constant with value \fBval\fP\&. 
+.PP
+Definition at line 253 of file varnode\&.hh\&.
+.SS "int4 Varnode::contains (const \fBVarnode\fP & op) const"
+
+.PP
+Return info about the containment of \fIop\fP in \fBthis\fP\&. Return various values depending on the containment of another \fBVarnode\fP within \fBthis\fP\&. Return
+.IP "\(bu" 2
+-1 if op\&.loc starts before -this-
+.IP "\(bu" 2
+0 if op is contained in -this-
+.IP "\(bu" 2
+1 if op\&.start is contained in -this-
+.IP "\(bu" 2
+2 if op\&.loc comes after -this- or
+.IP "\(bu" 2
+3 if op and -this- are in non-comparable spaces 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBVarnode\fP to test for containment 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the integer containment code 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 97 of file varnode\&.cc\&.
+.SS "bool Varnode::copyShadow (const \fBVarnode\fP * op2) const"
+
+.PP
+Are \fBthis\fP and \fBop2\fP copied from the same source? Make a local determination if \fBthis\fP and \fBop2\fP hold the same value\&. We check if there is a common ancester for which both \fBthis\fP and \fBop2\fP are created from a direct sequence of COPY operations\&. NOTE: This is a transitive relationship 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the \fBVarnode\fP to compare to \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the Varnodes are copied from a common ancestor 
+.RE
+.PP
+
+.PP
+Definition at line 717 of file varnode\&.cc\&.
+.SS "void Varnode::copySymbol (const \fBVarnode\fP * vn)"
+
+.PP
+Copy symbol info from \fBvn\fP\&. Copy any symbol and type information from -vn- into this 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to copy from 
+.RE
+.PP
+
+.PP
+Definition at line 390 of file varnode\&.cc\&.
+.SS "void Varnode::copySymbolIfValid (const \fBVarnode\fP * vn)"
+
+.PP
+Copy symbol info from \fBvn\fP if constant value matches\&. \fBSymbol\fP information (if present) is copied from the given constant \fBVarnode\fP into \fBthis\fP, which also must be constant, but only if the two constants are \fIclose\fP in the sense of an equate\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given constant \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 404 of file varnode\&.cc\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator Varnode::endDescend (void) const\fC [inline]\fP"
+
+.PP
+Get the end iterator to list of descendants\&. 
+.PP
+Definition at line 175 of file varnode\&.hh\&.
+.SS "const \fBAddress\fP& Varnode::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the storage \fBAddress\fP\&. 
+.PP
+Definition at line 159 of file varnode\&.hh\&.
+.SS "\fBuintb\fP Varnode::getConsume (void) const\fC [inline]\fP"
+
+.PP
+Get mask of consumed bits\&. 
+.PP
+Definition at line 176 of file varnode\&.hh\&.
+.SS "\fBCover\fP* Varnode::getCover (void) const\fC [inline]\fP"
+
+.PP
+Get \fBVarnode\fP coverage information\&. 
+.PP
+Definition at line 173 of file varnode\&.hh\&.
+.SS "uint4 Varnode::getCreateIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the creation index\&. 
+.PP
+Definition at line 172 of file varnode\&.hh\&.
+.SS "\fBPcodeOp\fP* Varnode::getDef (void)\fC [inline]\fP"
+
+.PP
+Get the defining \fBPcodeOp\fP of this \fBVarnode\fP\&. 
+.PP
+Definition at line 164 of file varnode\&.hh\&.
+.SS "const \fBPcodeOp\fP* Varnode::getDef (void) const\fC [inline]\fP"
+
+.PP
+Get the defining \fBPcodeOp\fP\&. 
+.PP
+Definition at line 165 of file varnode\&.hh\&.
+.SS "uint4 Varnode::getFlags (void) const\fC [inline]\fP"
+
+.PP
+Get all the boolean attributes\&. 
+.PP
+Definition at line 168 of file varnode\&.hh\&.
+.SS "\fBHighVariable\fP * Varnode::getHigh (void) const"
+
+.PP
+Get the high-level variable associated with this \fBVarnode\fP\&. During the course of analysis Varnodes are merged into high-level variables that are intended to be closer to the concept of variables in C source code\&. For a large portion of the decompiler analysis this concept hasn't been built yet, and this routine will return \fBnull\fP\&. But after a certain point, every \fBVarnode\fP managed by the \fBFuncdata\fP object, with the exception of ones that are marked as \fIannotations\fP, is associated with some \fBHighVariable\fP and will return a non-null result\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the associated \fBHighVariable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 80 of file varnode\&.cc\&.
+.SS "\fBDatatype\fP * Varnode::getLocalType (void) const"
+
+.PP
+Calculate type of \fBVarnode\fP based on local information\&. Make an initial determination of the \fBDatatype\fP of this \fBVarnode\fP\&. If a \fBDatatype\fP is already set and locked return it\&. Otherwise look through all the read PcodeOps and the write \fBPcodeOp\fP to determine if the \fBVarnode\fP is getting used as an \fBint\fP, \fBfloat\fP, or \fBpointer\fP, etc\&. Throw an exception if no \fBDatatype\fP can be found at all\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the determined \fBDatatype\fP 
+.RE
+.PP
+
+.PP
+Definition at line 679 of file varnode\&.cc\&.
+.SS "int2 Varnode::getMergeGroup (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIforced\fP \fImerge\fP group of this \fBVarnode\fP\&. 
+.PP
+Definition at line 163 of file varnode\&.hh\&.
+.SS "\fBuintb\fP Varnode::getNZMask (void) const\fC [inline]\fP"
+
+.PP
+Get the mask of bits within \fBthis\fP that are known to be zero\&. 
+.PP
+Definition at line 201 of file varnode\&.hh\&.
+.SS "\fBuintb\fP Varnode::getOffset (void) const\fC [inline]\fP"
+
+.PP
+Get the offset (within its \fBAddrSpace\fP) where this is stored\&. 
+.PP
+Definition at line 161 of file varnode\&.hh\&.
+.SS "int4 Varnode::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of bytes this \fBVarnode\fP stores\&. 
+.PP
+Definition at line 162 of file varnode\&.hh\&.
+.SS "\fBAddrSpace\fP* Varnode::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBAddrSpace\fP storing this \fBVarnode\fP\&. 
+.PP
+Definition at line 160 of file varnode\&.hh\&.
+.SS "\fBSymbolEntry\fP* Varnode::getSymbolEntry (void) const\fC [inline]\fP"
+
+.PP
+Get symbol and scope information associated with this \fBVarnode\fP\&. 
+.PP
+Definition at line 167 of file varnode\&.hh\&.
+.SS "\fBDatatype\fP* Varnode::getTempType (void) const\fC [inline]\fP"
+
+.PP
+Get the temporary \fBDatatype\fP (used during type propagation) 
+.PP
+Definition at line 171 of file varnode\&.hh\&.
+.SS "\fBDatatype\fP* Varnode::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBDatatype\fP associated with this \fBVarnode\fP\&. 
+.PP
+Definition at line 169 of file varnode\&.hh\&.
+.SS "\fBAddress\fP Varnode::getUsePoint (const \fBFuncdata\fP & fd) const"
+
+.PP
+Get \fBAddress\fP when this \fBVarnode\fP first comes into scope\&. A \fBVarnode\fP can be defined as 'coming into scope' at the \fBAddress\fP of the first \fBPcodeOp\fP that writes to that storage location\&. Within SSA form this \fBfirst-use\fP address always exists and is unique if we consider inputs to come into scope at the start \fBAddress\fP of the function they are in 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the \fBFuncdata\fP containing the tree 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the first-use \fBAddress\fP 
+.RE
+.PP
+
+.PP
+Definition at line 538 of file varnode\&.cc\&.
+.SS "bool Varnode::hasActionProperty (void) const\fC [inline]\fP"
+
+.PP
+Will this \fBVarnode\fP be replaced dynamically? 
+.PP
+Definition at line 213 of file varnode\&.hh\&.
+.SS "bool Varnode::hasCover (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP have \fBCover\fP information? 
+.PP
+Definition at line 248 of file varnode\&.hh\&.
+.SS "bool Varnode::hasNoDescend (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if nothing reads this \fBVarnode\fP\&. 
+.PP
+Definition at line 250 of file varnode\&.hh\&.
+.SS "bool Varnode::hasNoLocalAlias (void) const\fC [inline]\fP"
+
+.PP
+Are there (not) any local pointers that might affect \fBthis\fP? 
+.PP
+Definition at line 230 of file varnode\&.hh\&.
+.SS "bool Varnode::intersects (const \fBVarnode\fP & op) const"
+
+.PP
+Return \fBtrue\fP if the storage locations intersect\&. Check whether the storage locations of two varnodes intersect 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBVarnode\fP to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the locations intersect 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file varnode\&.cc\&.
+.SS "bool Varnode::intersects (const \fBAddress\fP & op2loc, int4 op2size) const"
+
+.PP
+Check intersection against an \fBAddress\fP range\&. Check if \fBthis\fP intersects the given \fBAddress\fP range 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2loc\fP is the start of the range 
+.br
+\fIop2size\fP is the size of the range in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP intersects the range 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file varnode\&.cc\&.
+.SS "bool Varnode::isActiveHeritage (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP currently being traced by the \fBHeritage\fP algorithm? 
+.PP
+Definition at line 232 of file varnode\&.hh\&.
+.SS "bool Varnode::isAddrForce (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP value forced into a particular storage location? 
+.PP
+Definition at line 221 of file varnode\&.hh\&.
+.SS "bool Varnode::isAddrTied (void) const\fC [inline]\fP"
+
+.PP
+Are all Varnodes at this storage location components of the same high-level variable? 
+.PP
+Definition at line 220 of file varnode\&.hh\&.
+.SS "bool Varnode::isAnnotation (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP an annotation? 
+.PP
+Definition at line 204 of file varnode\&.hh\&.
+.SS "bool Varnode::isAutoLive (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP varnode exempt from dead-code removal? 
+.PP
+Definition at line 222 of file varnode\&.hh\&.
+.SS "bool Varnode::isConstant (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a constant? 
+.PP
+Definition at line 207 of file varnode\&.hh\&.
+.SS "int4 Varnode::isConstantExtended (\fBuintb\fP & val) const"
+Is \fBthis\fP an (extended) constant
+.PP
+If \fBthis\fP is a constant, or is extended (INT_ZEXT,INT_SEXT) from a constant, the \fIvalue\fP of the constant is passed back and a non-negative integer is returned, either:
+.IP "\(bu" 2
+0 for a normal constant \fBVarnode\fP
+.IP "\(bu" 2
+1 for a zero extension (INT_ZEXT) of a normal constant
+.IP "\(bu" 2
+2 for a sign extension (INT_SEXT) of a normal constant 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is a reference to the constant value that is passed back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the extension code (or -1 if \fBthis\fP cannot be interpreted as a constant) 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 648 of file varnode\&.cc\&.
+.SS "bool Varnode::isConsumeList (void) const\fC [inline]\fP"
+
+.PP
+Get marker used by dead-code algorithm\&. 
+.PP
+Definition at line 178 of file varnode\&.hh\&.
+.SS "bool Varnode::isConsumeVacuous (void) const\fC [inline]\fP"
+
+.PP
+Get marker used by dead-code algorithm\&. 
+.PP
+Definition at line 179 of file varnode\&.hh\&.
+.SS "bool Varnode::isDirectWrite (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP value affected by a legitimate function input\&. 
+.PP
+Definition at line 217 of file varnode\&.hh\&.
+.SS "bool Varnode::isExplicit (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP an explicitly printed variable? 
+.PP
+Definition at line 206 of file varnode\&.hh\&.
+.SS "bool Varnode::isExternalRef (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP storage location mapped by the loader to an external location? 
+.PP
+Definition at line 212 of file varnode\&.hh\&.
+.SS "bool Varnode::isExtraOut (void) const\fC [inline]\fP"
+
+.PP
+Is this \fBVarnode\fP \fBcreated\fP indirectly by a CALL operation? 
+.PP
+Definition at line 239 of file varnode\&.hh\&.
+.SS "bool Varnode::isFree (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP free, not in SSA form? 
+.PP
+Definition at line 208 of file varnode\&.hh\&.
+.SS "bool Varnode::isHeritageKnown (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this \fBVarnode\fP is linked into the SSA tree\&. 
+.PP
+Definition at line 260 of file varnode\&.hh\&.
+.SS "bool Varnode::isIllegalInput (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP an abnormal input to the function? 
+.PP
+Definition at line 210 of file varnode\&.hh\&.
+.SS "bool Varnode::isImplied (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP an implied variable? 
+.PP
+Definition at line 205 of file varnode\&.hh\&.
+.SS "bool Varnode::isIncidentalCopy (void) const\fC [inline]\fP"
+
+.PP
+Does this varnode get copied as a side-effect\&. 
+.PP
+Definition at line 242 of file varnode\&.hh\&.
+.SS "bool Varnode::isIndirectOnly (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP read only by INDIRECT operations? 
+.PP
+Definition at line 211 of file varnode\&.hh\&.
+.SS "bool Varnode::isIndirectZero (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP just a special placeholder representing INDIRECT creation? 
+.PP
+Definition at line 236 of file varnode\&.hh\&.
+.SS "bool Varnode::isInput (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP an SSA input node? 
+.PP
+Definition at line 209 of file varnode\&.hh\&.
+.SS "bool Varnode::isMapped (void) const\fC [inline]\fP"
+
+.PP
+Is there or should be formal symbol information associated with \fBthis\fP? 
+.PP
+Definition at line 223 of file varnode\&.hh\&.
+.SS "bool Varnode::isMark (void) const\fC [inline]\fP"
+
+.PP
+Has \fBthis\fP been visited by the current algorithm? 
+.PP
+Definition at line 231 of file varnode\&.hh\&.
+.SS "bool Varnode::isNameLock (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP have a locked name? 
+.PP
+Definition at line 262 of file varnode\&.hh\&.
+.SS "bool Varnode::isPersist (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP storage location persist beyond the end of the function? 
+.PP
+Definition at line 216 of file varnode\&.hh\&.
+.SS "bool Varnode::isPrecisHi (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP the high portion of a double precision value? 
+.PP
+Definition at line 241 of file varnode\&.hh\&.
+.SS "bool Varnode::isPrecisLo (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP the low portion of a double precision value? 
+.PP
+Definition at line 240 of file varnode\&.hh\&.
+.SS "bool Varnode::isPtrCheck (void) const\fC [inline]\fP"
+
+.PP
+Has \fBthis\fP been checked as a constant pointer to a mapped symbol? 
+.PP
+Definition at line 227 of file varnode\&.hh\&.
+.SS "bool Varnode::isPtrFlow (void) const\fC [inline]\fP"
+
+.PP
+Does this varnode flow to or from a known pointer\&. 
+.PP
+Definition at line 228 of file varnode\&.hh\&.
+.SS "bool Varnode::isReadOnly (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a read-only storage location? 
+.PP
+Definition at line 214 of file varnode\&.hh\&.
+.SS "bool Varnode::isReturnAddress (void) const\fC [inline]\fP"
+
+.PP
+Is this storage for a calls return address? 
+.PP
+Definition at line 226 of file varnode\&.hh\&.
+.SS "bool Varnode::isSpacebase (void) const\fC [inline]\fP"
+
+.PP
+Is this location used to store the base point for a virtual address space? 
+.PP
+Definition at line 225 of file varnode\&.hh\&.
+.SS "bool Varnode::isSpacebasePlaceholder (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP used specifically to track stackpointer values? 
+.PP
+Definition at line 229 of file varnode\&.hh\&.
+.SS "bool Varnode::isStackStore (void) const\fC [inline]\fP"
+
+.PP
+Was this originally produced by an explicit STORE\&. 
+.PP
+Definition at line 233 of file varnode\&.hh\&.
+.SS "bool Varnode::isTypeLock (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP have a locked \fBDatatype\fP? 
+.PP
+Definition at line 261 of file varnode\&.hh\&.
+.SS "bool Varnode::isUnaffected (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a value that is supposed to be preserved across the function? 
+.PP
+Definition at line 224 of file varnode\&.hh\&.
+.SS "bool Varnode::isUnsignedPrint (void) const\fC [inline]\fP"
+
+.PP
+Must \fBthis\fP be printed as unsigned\&. 
+.PP
+Definition at line 244 of file varnode\&.hh\&.
+.SS "bool Varnode::isVolatile (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a volatile storage location? 
+.PP
+Definition at line 215 of file varnode\&.hh\&.
+.SS "bool Varnode::isWriteMask (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP (not) considered a true write location when calculating SSA form? 
+.PP
+Definition at line 243 of file varnode\&.hh\&.
+.SS "bool Varnode::isWritten (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP have a defining write operation? 
+.PP
+Definition at line 245 of file varnode\&.hh\&.
+.SS "\fBPcodeOp\fP * Varnode::loneDescend (void) const"
+
+.PP
+Return unique reading \fBPcodeOp\fP, or \fBnull\fP if there are zero or more than 1\&. This is a convenience method for quickly finding the unique \fBPcodeOp\fP that reads this \fBVarnode\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+only descendant (if there is 1 and ONLY 1) or \fBnull\fP otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 518 of file varnode\&.cc\&.
+.SS "bool Varnode::operator!= (const \fBVarnode\fP & op2) const\fC [inline]\fP"
+
+.PP
+Inequality operator\&. 
+.PP
+Definition at line 193 of file varnode\&.hh\&.
+.SS "bool Varnode::operator< (const \fBVarnode\fP & op2) const"
+
+.PP
+Comparison operator on \fBVarnode\fP\&. Compare two Varnodes
+.IP "\(bu" 2
+First by storage location
+.IP "\(bu" 2
+Second by size
+.IP "\(bu" 2
+Then by defining \fBPcodeOp\fP \fBSeqNum\fP if appropriate
+.PP
+.PP
+\fIInput\fP Varnodes come before \fIwritten\fP Varnodes \fIFree\fP Varnodes come after everything else 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the \fBVarnode\fP to compare \fBthis\fP to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP is less than \fBop2\fP 
+.RE
+.PP
+
+.PP
+Definition at line 427 of file varnode\&.cc\&.
+.SS "bool Varnode::operator== (const \fBVarnode\fP & op2) const"
+
+.PP
+Equality operator\&. Determine if two Varnodes are equivalent\&. They must match
+.IP "\(bu" 2
+Storage location
+.IP "\(bu" 2
+Size
+.IP "\(bu" 2
+Defining \fBPcodeOp\fP if it exists
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the \fBVarnode\fP to compare \fBthis\fP to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if they are equivalent 
+.RE
+.PP
+
+.PP
+Definition at line 450 of file varnode\&.cc\&.
+.SS "int4 Varnode::overlap (const \fBVarnode\fP & op) const"
+
+.PP
+Return relative point of overlap between two Varnodes\&. Return whether \fILeast\fP \fISignifigant\fP \fIByte\fP of \fBthis\fP occurs in \fBop\fP I\&.e\&. return
+.IP "\(bu" 2
+0 if it overlaps op's lsb
+.IP "\(bu" 2
+1 if it overlaps op's second lsb and so on 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is \fBVarnode\fP to test for overlap 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the relative overlap point or -1 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 170 of file varnode\&.cc\&.
+.SS "int4 Varnode::overlap (const \fBAddress\fP & op2loc, int4 op2size) const"
+
+.PP
+Return relative point of overlap with \fBAddress\fP range\&. Return whether \fILeast\fP \fISignifigant\fP \fIByte\fP of \fBthis\fP occurs in an \fBAddress\fP range I\&.e\&. return
+.IP "\(bu" 2
+0 if it overlaps op's lsb
+.IP "\(bu" 2
+1 if it overlaps op's second lsb and so on 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2loc\fP is the starting \fBAddress\fP of the range 
+.br
+\fIop2size\fP is the size of the range in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the relative overlap point or -1 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 190 of file varnode\&.cc\&.
+.SS "void Varnode::printCover (ostream & s) const"
+
+.PP
+Print raw coverage info about the \fBVarnode\fP\&. Print, to a stream, textual information about where \fBthis\fP \fBVarnode\fP is in scope within its particular \fBFuncdata\fP\&. This amounts to a list of address ranges bounding the writes and reads of the \fBVarnode\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 242 of file varnode\&.cc\&.
+.SS "void Varnode::printInfo (ostream & s) const"
+
+.PP
+Print raw attribute info about the \fBVarnode\fP\&. Print boolean attribute information about \fBthis\fP as keywords to a stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 255 of file varnode\&.cc\&.
+.SS "void Varnode::printRaw (ostream & s) const"
+
+.PP
+Print a simple identifier plus additional info identifying \fBVarnode\fP with SSA form\&. Print textual information about this \fBVarnode\fP including a base identifier along with enough size and attribute information to uniquely identify the \fBVarnode\fP within a text SSA listing In particular, the identifiers have either 'i' or defining op \fBSeqNum\fP information appended to them in parantheses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 583 of file varnode\&.cc\&.
+.SS "void Varnode::printRawHeritage (ostream & s, int4 depth) const"
+
+.PP
+Print a simple SSA subtree rooted at \fBthis\fP\&. Recursively print a terse textual representation of the data-flow (SSA) tree rooted at this \fBVarnode\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIdepth\fP is the current depth of the tree we are at 
+.RE
+.PP
+
+.PP
+Definition at line 607 of file varnode\&.cc\&.
+.SS "int4 Varnode::printRawNoMarkup (ostream & s) const"
+
+.PP
+Print a simple identifier for the \fBVarnode\fP\&. Print to the stream either the name of the \fBVarnode\fP, such as a register name, if it exists or print a shortcut character representing the \fBAddrSpace\fP and a hex representation of the offset\&. This function also computes and returns the \fIexpected\fP size of the identifier it prints to facilitate the printing of size modifiers by other print routines 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the expected size 
+.RE
+.PP
+
+.PP
+Definition at line 553 of file varnode\&.cc\&.
+.SS "void Varnode::saveXml (ostream & s) const"
+
+.PP
+Save a description of \fBthis\fP as an XML tag\&. Write an XML tag, \fB<addr>\fP, with at least the following attributes:
+.IP "\(bu" 2
+\fBspace\fP describes the \fBAddrSpace\fP
+.IP "\(bu" 2
+\fBoffset\fP of the \fBVarnode\fP within the space
+.IP "\(bu" 2
+\fBsize\fP of the \fBVarnode\fP is bytes
+.PP
+.PP
+Additionally the tag will contain other optional attributes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write the tag to 
+.RE
+.PP
+
+.PP
+Definition at line 769 of file varnode\&.cc\&.
+.SS "void Varnode::setActiveHeritage (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as currently being linked into the SSA tree\&. 
+.PP
+Definition at line 263 of file varnode\&.hh\&.
+.SS "void Varnode::setAddrForce (void)\fC [inline]\fP"
+
+.PP
+Mark as forcing a value into \fBthis\fP particular storage location\&. 
+.PP
+Definition at line 269 of file varnode\&.hh\&.
+.SS "void Varnode::setAutoLive (void)\fC [inline]\fP"
+
+.PP
+Mark varnode as exempt from dead-code removal\&. 
+.PP
+Definition at line 271 of file varnode\&.hh\&.
+.SS "void Varnode::setConsume (\fBuintb\fP val)\fC [inline]\fP"
+
+.PP
+Set the mask of consumed bits (used by dead-code algorithm) 
+.PP
+Definition at line 177 of file varnode\&.hh\&.
+.SS "void Varnode::setConsumeList (void)\fC [inline]\fP"
+
+.PP
+Set marker used by dead-code algorithm\&. 
+.PP
+Definition at line 180 of file varnode\&.hh\&.
+.SS "void Varnode::setConsumeVacuous (void)\fC [inline]\fP"
+
+.PP
+Set marker used by dead-code algorithm\&. 
+.PP
+Definition at line 181 of file varnode\&.hh\&.
+.SS "void Varnode::setDirectWrite (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as directly affected by a legal input\&. 
+.PP
+Definition at line 267 of file varnode\&.hh\&.
+.SS "void Varnode::setExplicit (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as an \fIexplicit\fP variable in the final C source\&. 
+.PP
+Definition at line 275 of file varnode\&.hh\&.
+.SS "void Varnode::setHigh (\fBHighVariable\fP * tv, int2 mg)\fC [inline]\fP"
+
+.PP
+Set the \fBHighVariable\fP owning this \fBVarnode\fP\&. 
+.PP
+Definition at line 157 of file varnode\&.hh\&.
+.SS "void Varnode::setImplied (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as an \fIimplied\fP variable in the final C source\&. 
+.PP
+Definition at line 273 of file varnode\&.hh\&.
+.SS "void Varnode::setMark (void) const\fC [inline]\fP"
+
+.PP
+Mark this \fBVarnode\fP for breadcrumb algorithms\&. 
+.PP
+Definition at line 265 of file varnode\&.hh\&.
+.SS "void Varnode::setPrecisHi (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as the high portion of a double precision value\&. 
+.PP
+Definition at line 287 of file varnode\&.hh\&.
+.SS "void Varnode::setPrecisLo (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as the low portion of a double precision value\&. 
+.PP
+Definition at line 285 of file varnode\&.hh\&.
+.SS "void Varnode::setPtrCheck (void)\fC [inline]\fP"
+
+.PP
+Set \fBthis\fP as checked for a constant symbol reference\&. 
+.PP
+Definition at line 279 of file varnode\&.hh\&.
+.SS "void Varnode::setPtrFlow (void)\fC [inline]\fP"
+
+.PP
+Set \fBthis\fP as flowing to or from pointer\&. 
+.PP
+Definition at line 281 of file varnode\&.hh\&.
+.SS "void Varnode::setReturnAddress (void)\fC [inline]\fP"
+
+.PP
+Mark as storage location for a return address\&. 
+.PP
+Definition at line 277 of file varnode\&.hh\&.
+.SS "void Varnode::setSpacebasePlaceholder (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as a special \fBVarnode\fP for tracking stackpointer values\&. 
+.PP
+Definition at line 283 of file varnode\&.hh\&.
+.SS "void Varnode::setStackStore (void)\fC [inline]\fP"
+
+.PP
+Mark as produced by explicit CPUI_STORE\&. 
+.PP
+Definition at line 293 of file varnode\&.hh\&.
+.SS "void Varnode::setTempType (\fBDatatype\fP * t) const\fC [inline]\fP"
+
+.PP
+Set the temporary \fBDatatype\fP\&. 
+.PP
+Definition at line 170 of file varnode\&.hh\&.
+.SS "void Varnode::setUnsignedPrint (void)\fC [inline]\fP"
+
+.PP
+Force \fBthis\fP to be printed as unsigned\&. 
+.PP
+Definition at line 291 of file varnode\&.hh\&.
+.SS "void Varnode::setWriteMask (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP as not a true \fIwrite\fP when computing SSA form\&. 
+.PP
+Definition at line 289 of file varnode\&.hh\&.
+.SS "int4 Varnode::termOrder (const \fBVarnode\fP * op) const"
+
+.PP
+Compare two Varnodes based on their term order\&. Compare term order of two Varnodes\&. Used in Term Rewriting strategies to order operands of commutative ops 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBVarnode\fP to order against \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+-1 if \fBthis\fP comes before \fBop\fP, 1 if op before this, or 0 
+.RE
+.PP
+
+.PP
+Definition at line 740 of file varnode\&.cc\&.
+.SS "bool Varnode::updateType (\fBDatatype\fP * ct, bool lock, bool override)"
+
+.PP
+(Possibly) set the \fBDatatype\fP given various restrictions Change the \fBDatatype\fP and lock state associated with this \fBVarnode\fP if various conditions are met
+.IP "\(bu" 2
+Don't change a previously locked \fBDatatype\fP (unless \fBoverride\fP flag is \fBtrue\fP)
+.IP "\(bu" 2
+Don't consider an \fBundefined\fP type to be locked
+.IP "\(bu" 2
+Don't change to an identical \fBDatatype\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the \fBDatatype\fP to change to 
+.br
+\fIlock\fP is \fBtrue\fP if the new \fBDatatype\fP should be locked 
+.br
+\fIoverride\fP is \fBtrue\fP if an old lock should be overridden 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBDatatype\fP or the lock setting was changed 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 371 of file varnode\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBFuncdata\fP\fC [friend]\fP"
+
+.PP
+Definition at line 142 of file varnode\&.hh\&.
+.SS "friend class \fBMerge\fP\fC [friend]\fP"
+
+.PP
+Definition at line 141 of file varnode\&.hh\&.
+.SS "friend class \fBVarnodeBank\fP\fC [friend]\fP"
+
+.PP
+Definition at line 140 of file varnode\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

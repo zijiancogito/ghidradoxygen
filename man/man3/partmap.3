@@ -1,0 +1,307 @@
+.TH "partmap< _linetype, _valuetype >" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+partmap< _linetype, _valuetype > \- A map from a linear space to value objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <partmap\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::map< _linetype, _valuetype > \fBmaptype\fP"
+.br
+.RI "Defining the map from split points to value objects\&. "
+.ti -1c
+.RI "typedef maptype::iterator \fBiterator\fP"
+.br
+.RI "A partmap iterator is an iterator into the map\&. "
+.ti -1c
+.RI "typedef maptype::const_iterator \fBconst_iterator\fP"
+.br
+.RI "A constant iterator\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "_valuetype & \fBgetValue\fP (const _linetype &pnt)"
+.br
+.RI "Get the value object at a point\&. "
+.ti -1c
+.RI "const _valuetype & \fBgetValue\fP (const _linetype &pnt) const"
+.br
+.RI "Get the value object at a point\&. "
+.ti -1c
+.RI "const _valuetype & \fBbounds\fP (const _linetype &pnt, _linetype &before, _linetype &after, int &valid) const"
+.br
+.RI "Get the value object for a given point and return the range over which the value object applies\&. "
+.ti -1c
+.RI "_valuetype & \fBsplit\fP (const _linetype &pnt)"
+.br
+.RI "Introduce a new split point\&. "
+.ti -1c
+.RI "const _valuetype & \fBdefaultValue\fP (void) const"
+.br
+.RI "Get the default value object\&. "
+.ti -1c
+.RI "_valuetype & \fBdefaultValue\fP (void)"
+.br
+.RI "Get the default value object\&. "
+.ti -1c
+.RI "_valuetype & \fBclearRange\fP (const _linetype &pnt1, const _linetype &pnt2)"
+.br
+.RI "Clear a range of split points\&. "
+.ti -1c
+.RI "\fBconst_iterator\fP \fBbegin\fP (void) const"
+.br
+.RI "Beginning of split points\&. "
+.ti -1c
+.RI "\fBconst_iterator\fP \fBend\fP (void) const"
+.br
+.RI "End of split points\&. "
+.ti -1c
+.RI "\fBiterator\fP \fBbegin\fP (void)"
+.br
+.RI "Beginning of split points\&. "
+.ti -1c
+.RI "\fBiterator\fP \fBend\fP (void)"
+.br
+.RI "End of split points\&. "
+.ti -1c
+.RI "\fBconst_iterator\fP \fBbegin\fP (const _linetype &pnt) const"
+.br
+.RI "Get first split point after given point\&. "
+.ti -1c
+.RI "\fBiterator\fP \fBbegin\fP (const _linetype &pnt)"
+.br
+.RI "Get first split point after given point\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear all split points\&. "
+.ti -1c
+.RI "bool \fBempty\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if there are no split points\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename _linetype, typename _valuetype>
+.br
+class partmap< _linetype, _valuetype >"
+A map from a linear space to value objects\&. 
+
+The partmap is a template class taking:
+.IP "\(bu" 2
+_linetype which represents an element in the linear space
+.IP "\(bu" 2
+_valuetype which are the objects that linear space maps to
+.PP
+.PP
+Let R be the linear space with an ordering, and let { a_i } be a finite set of points in R\&. The a_i partition R into a finite number of disjoint sets { x : x < a_0 }, { x : x>=a_0 && x < a_1 }, \&.\&.\&. { x : x>=a_i && x < a_i+1 }, \&.\&.\&. { x : x>=a_n }
+.PP
+A partmap maps elements of this partition to _valuetype objects A _valuetype is then associated with any element x in R by looking up the value associated with the partition element containing x\&.
+.PP
+The map is defined by starting with a \fIdefault\fP value object that applies to the whole linear space\&. Then \fIsplit\fP points are introduced, one at a time, in the linear space\&. At each split point, the associated value object is split into two objects\&. At any point the value object describing some part of the linear space can be changed\&. 
+.PP
+Definition at line 48 of file partmap\&.hh\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename _linetype, typename _valuetype> typedef maptype::const_iterator \fBpartmap\fP< _linetype, _valuetype >::\fBconst_iterator\fP"
+
+.PP
+A constant iterator\&. 
+.PP
+Definition at line 52 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> typedef maptype::iterator \fBpartmap\fP< _linetype, _valuetype >::\fBiterator\fP"
+
+.PP
+A partmap iterator is an iterator into the map\&. 
+.PP
+Definition at line 51 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> typedef std::map<_linetype,_valuetype> \fBpartmap\fP< _linetype, _valuetype >::\fBmaptype\fP"
+
+.PP
+Defining the map from split points to value objects\&. 
+.PP
+Definition at line 50 of file partmap\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename _linetype, typename _valuetype> \fBconst_iterator\fP \fBpartmap\fP< _linetype, _valuetype >::begin (void) const\fC [inline]\fP"
+
+.PP
+Beginning of split points\&. 
+.PP
+Definition at line 64 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> \fBiterator\fP \fBpartmap\fP< _linetype, _valuetype >::begin (void)\fC [inline]\fP"
+
+.PP
+Beginning of split points\&. 
+.PP
+Definition at line 66 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> \fBconst_iterator\fP \fBpartmap\fP< _linetype, _valuetype >::begin (const _linetype & pnt) const\fC [inline]\fP"
+
+.PP
+Get first split point after given point\&. 
+.PP
+Definition at line 68 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> \fBiterator\fP \fBpartmap\fP< _linetype, _valuetype >::begin (const _linetype & pnt)\fC [inline]\fP"
+
+.PP
+Get first split point after given point\&. 
+.PP
+Definition at line 69 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype > const _valuetype & \fBpartmap\fP< _linetype, _valuetype >::bounds (const _linetype & pnt, _linetype & before, _linetype & after, int & valid) const"
+
+.PP
+Get the value object for a given point and return the range over which the value object applies\&. Pass back a \fBbefore\fP and \fBafter\fP point defining the maximal range over which the value applies\&. An additional validity code is passed back describing which of the bounding points apply:
+.IP "\(bu" 2
+0 if both bounds apply
+.IP "\(bu" 2
+1 if there is no lower bound
+.IP "\(bu" 2
+2 if there is no upper bound,
+.IP "\(bu" 2
+3 if there is neither a lower or upper bound 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpnt\fP is the given point around which to compute the range 
+.br
+\fIbefore\fP is a reference to the passed back lower bound 
+.br
+\fIafter\fP is a reference to the passed back upper bound 
+.br
+\fIvalid\fP is a reference to the passed back validity code 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding value object 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 172 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> void \fBpartmap\fP< _linetype, _valuetype >::clear (void)\fC [inline]\fP"
+
+.PP
+Clear all split points\&. 
+.PP
+Definition at line 70 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype > _valuetype & \fBpartmap\fP< _linetype, _valuetype >::clearRange (const _linetype & pnt1, const _linetype & pnt2)"
+
+.PP
+Clear a range of split points\&. Split points are introduced at the two boundary points of the given range, and all split points in between are removed\&. The value object that was initially present at the left-most boundary point becomes the value (as a copy) for the whole range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpnt1\fP is the left-most boundary point of the range 
+.br
+\fIpnt2\fP is the right-most boundary point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value object assigned to the range 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> const _valuetype& \fBpartmap\fP< _linetype, _valuetype >::defaultValue (void) const\fC [inline]\fP"
+
+.PP
+Get the default value object\&. 
+.PP
+Definition at line 61 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> _valuetype& \fBpartmap\fP< _linetype, _valuetype >::defaultValue (void)\fC [inline]\fP"
+
+.PP
+Get the default value object\&. 
+.PP
+Definition at line 62 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> bool \fBpartmap\fP< _linetype, _valuetype >::empty (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if there are no split points\&. 
+.PP
+Definition at line 71 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> \fBconst_iterator\fP \fBpartmap\fP< _linetype, _valuetype >::end (void) const\fC [inline]\fP"
+
+.PP
+End of split points\&. 
+.PP
+Definition at line 65 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype> \fBiterator\fP \fBpartmap\fP< _linetype, _valuetype >::end (void)\fC [inline]\fP"
+
+.PP
+End of split points\&. 
+.PP
+Definition at line 67 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype > _valuetype & \fBpartmap\fP< _linetype, _valuetype >::getValue (const _linetype & pnt)"
+
+.PP
+Get the value object at a point\&. Look up the first split point coming before the given point and return the value object it maps to\&. If there is no earlier split point return the default value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpnt\fP is the given point in the linear space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding value object 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype > const _valuetype & \fBpartmap\fP< _linetype, _valuetype >::getValue (const _linetype & pnt) const"
+
+.PP
+Get the value object at a point\&. Look up the first split point coming before the given point and return the value object it maps to\&. If there is no earlier split point return the default value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpnt\fP is the given point in the linear space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding value object 
+.RE
+.PP
+
+.PP
+Definition at line 100 of file partmap\&.hh\&.
+.SS "template<typename _linetype, typename _valuetype > _valuetype & \fBpartmap\fP< _linetype, _valuetype >::split (const _linetype & pnt)"
+
+.PP
+Introduce a new split point\&. Add (if not already present) a point to the linear partition\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpnt\fP is the (new) point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the (possibly) new value object for the range starting at the point 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file partmap\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,314 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.hh \- Core decompilation actions which are indepedent of any particular architecture\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'ruleaction\&.hh'\fP
+.br
+\fC#include 'blockaction\&.hh'\fP
+.br
+\fC#include 'funcdata\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBActionStart\fP"
+.br
+.RI "Gather raw p-code for a function\&. "
+.ti -1c
+.RI "class \fBActionStop\fP"
+.br
+.RI "Do any post-processing after decompilation\&. "
+.ti -1c
+.RI "class \fBActionStartCleanUp\fP"
+.br
+.RI "Start clean up after main transform phase\&. "
+.ti -1c
+.RI "class \fBActionStartTypes\fP"
+.br
+.RI "Allow type recovery to start happening\&. "
+.ti -1c
+.RI "class \fBActionStackPtrFlow\fP"
+.br
+.RI "Analyze change to the stack pointer across sub-function calls\&. "
+.ti -1c
+.RI "class \fBActionSegmentize\fP"
+.br
+.RI "Make sure pointers into segmented spaces have the correct form\&. "
+.ti -1c
+.RI "class \fBActionForceGoto\fP"
+.br
+.RI "Apply any overridden forced gotos\&. "
+.ti -1c
+.RI "class \fBActionMultiCse\fP"
+.br
+.RI "Perform Common Sub-expression Elimination on CPUI_MULTIEQUAL ops\&. "
+.ti -1c
+.RI "class \fBActionShadowVar\fP"
+.br
+.RI "Check for one CPUI_MULTIEQUAL input set defining more than one \fBVarnode\fP\&. "
+.ti -1c
+.RI "class \fBActionConstantPtr\fP"
+.br
+.RI "Check for constants, with pointer type, that correspond to global symbols\&. "
+.ti -1c
+.RI "class \fBActionDeindirect\fP"
+.br
+.RI "Eliminate locally constant indirect calls\&. "
+.ti -1c
+.RI "class \fBActionVarnodeProps\fP"
+.br
+.RI "Transform read-only variables to constants\&. "
+.ti -1c
+.RI "class \fBActionDirectWrite\fP"
+.br
+.RI "Mark Varnodes built out of \fIlegal\fP parameters\&. "
+.ti -1c
+.RI "class \fBActionConstbase\fP"
+.br
+.RI "Search for input Varnodes that have been officially provided constant values\&. "
+.ti -1c
+.RI "class \fBActionSpacebase\fP"
+.br
+.RI "Mark \fBVarnode\fP objects that hold stack-pointer values and set-up special data-type\&. "
+.ti -1c
+.RI "class \fBActionHeritage\fP"
+.br
+.RI "Build Static Single Assignment (SSA) representation for function\&. "
+.ti -1c
+.RI "class \fBActionNonzeroMask\fP"
+.br
+.RI "Calculate the non-zero mask property on all \fBVarnode\fP objects\&. "
+.ti -1c
+.RI "class \fBActionSetCasts\fP"
+.br
+.RI "Fill-in CPUI_CAST p-code ops as required by the casting strategy\&. "
+.ti -1c
+.RI "class \fBActionAssignHigh\fP"
+.br
+.RI "Assign initial high-level \fBHighVariable\fP objects to each \fBVarnode\fP\&. "
+.ti -1c
+.RI "class \fBActionMarkIndirectOnly\fP"
+.br
+.RI "Mark illegal \fBVarnode\fP inputs used only in CPUI_INDIRECT ops\&. "
+.ti -1c
+.RI "class \fBActionMergeRequired\fP"
+.br
+.RI "Make \fIrequired\fP \fBVarnode\fP merges as dictated by CPUI_MULTIEQUAL, CPUI_INDIRECT, and \fIaddrtied\fP property\&. "
+.ti -1c
+.RI "class \fBActionMergeAdjacent\fP"
+.br
+.RI "Try to merge an op's input \fBVarnode\fP to its output, if they are at the same storage location\&. "
+.ti -1c
+.RI "class \fBActionMergeCopy\fP"
+.br
+.RI "Try to merge the input and output Varnodes of a CPUI_COPY op\&. "
+.ti -1c
+.RI "class \fBActionMergeType\fP"
+.br
+.RI "Try to merge Varnodes of the same type (if they don't hold different values at the same time) "
+.ti -1c
+.RI "class \fBActionMarkExplicit\fP"
+.br
+.RI "Find \fBexplicit\fP Varnodes: Varnodes that have an explicit token representing them in the output\&. "
+.ti -1c
+.RI "class \fBActionMarkImplied\fP"
+.br
+.RI "Mark all the \fIimplied\fP \fBVarnode\fP objects, which will have no explicit token in the output\&. "
+.ti -1c
+.RI "class \fBActionNameVars\fP"
+.br
+.RI "Choose names for all high-level variables (HighVariables) "
+.ti -1c
+.RI "class \fBActionUnreachable\fP"
+.br
+.RI "Remove unreachable blocks\&. "
+.ti -1c
+.RI "class \fBActionDoNothing\fP"
+.br
+.RI "Remove blocks that do nothing\&. "
+.ti -1c
+.RI "class \fBActionRedundBranch\fP"
+.br
+.RI "Get rid of \fBredundant\fP branches: duplicate edges between the same input and output block\&. "
+.ti -1c
+.RI "class \fBActionDeterminedBranch\fP"
+.br
+.RI "Remove conditional branches if the condition is constant\&. "
+.ti -1c
+.RI "class \fBActionDeadCode\fP"
+.br
+.RI "Dead code removal\&. Eliminate \fIdead\fP p-code ops\&. "
+.ti -1c
+.RI "class \fBActionConditionalConst\fP"
+.br
+.RI "Propagate conditional constants\&. "
+.ti -1c
+.RI "class \fBActionSwitchNorm\fP"
+.br
+.RI "Normalize jump-table construction\&. "
+.ti -1c
+.RI "class \fBActionNormalizeSetup\fP"
+.br
+.RI "Prepare function prototypes for 'normalize' simplification\&. "
+.ti -1c
+.RI "class \fBActionPrototypeTypes\fP"
+.br
+.RI "Lay down locked input and output data-type information\&. "
+.ti -1c
+.RI "class \fBActionDefaultParams\fP"
+.br
+.RI "Find a prototype for each sub-function\&. "
+.ti -1c
+.RI "class \fBActionExtraPopSetup\fP"
+.br
+.RI "Define formal link between stack-pointer values before and after sub-function calls\&. "
+.ti -1c
+.RI "class \fBActionFuncLink\fP"
+.br
+.RI "Prepare for data-flow analysis of function parameters\&. "
+.ti -1c
+.RI "class \fBActionFuncLinkOutOnly\fP"
+.br
+.RI "Prepare for data-flow analysis of function parameters, when recovery isn't required\&. "
+.ti -1c
+.RI "class \fBActionParamDouble\fP"
+.br
+.RI "Deal with situations that look like double precision parameters\&. "
+.ti -1c
+.RI "class \fBActionActiveParam\fP"
+.br
+.RI "Determine active parameters to sub-functions\&. "
+.ti -1c
+.RI "class \fBActionActiveReturn\fP"
+.br
+.RI "Determine which sub-functions have active output Varnodes\&. "
+.ti -1c
+.RI "class \fBActionReturnRecovery\fP"
+.br
+.RI "Determine data-flow holding the \fIreturn\fP \fIvalue\fP of the function\&. "
+.ti -1c
+.RI "class \fBActionRestrictLocal\fP"
+.br
+.RI "Restrict possible range of local variables\&. "
+.ti -1c
+.RI "class \fBActionLikelyTrash\fP"
+.br
+.RI "Get rid of registers with trash values\&. "
+.ti -1c
+.RI "class \fBActionRestructureVarnode\fP"
+.br
+.RI "Create symbols that map out the local stack-frame for the function\&. "
+.ti -1c
+.RI "class \fBActionRestructureHigh\fP"
+.br
+.RI "Create symbols that map out the local stack-frame for the function\&. "
+.ti -1c
+.RI "class \fBActionMapGlobals\fP"
+.br
+.RI "Create symbols for any discovered global variables in the function\&. "
+.ti -1c
+.RI "class \fBActionInputPrototype\fP"
+.br
+.RI "Calculate the prototype for the function\&. "
+.ti -1c
+.RI "class \fBActionOutputPrototype\fP"
+.br
+.RI "Set the (already) recovered output data-type as a formal part of the prototype\&. "
+.ti -1c
+.RI "class \fBActionUnjustifiedParams\fP"
+.br
+.RI "Adjust improperly justified parameters\&. "
+.ti -1c
+.RI "class \fBActionInferTypes\fP"
+.br
+.RI "Infer and propagate data-types\&. "
+.ti -1c
+.RI "class \fBActionHideShadow\fP"
+.br
+.RI "Locate \fIshadow\fP Varnodes and adjust them so they are hidden\&. "
+.ti -1c
+.RI "class \fBActionCopyMarker\fP"
+.br
+.RI "Mark COPY operations between Varnodes representing the object as \fInon-printing\fP\&. "
+.ti -1c
+.RI "class \fBActionDynamicMapping\fP"
+.br
+.RI "Attach \fIdynamically\fP mapped symbols to Varnodes in time for data-type propagation\&. "
+.ti -1c
+.RI "class \fBActionDynamicSymbols\fP"
+.br
+.RI "Make final attachments of \fIdynamically\fP mapped symbols to Varnodes\&. "
+.ti -1c
+.RI "class \fBActionPrototypeWarnings\fP"
+.br
+.RI "Add warnings for prototypes that aren't modeled properly\&. "
+.ti -1c
+.RI "class \fBPropagationState\fP"
+.br
+.RI "A class that holds a data-type traversal state during type propagation\&. "
+.ti -1c
+.RI "class \fBPcodeOpEdge\fP"
+.br
+.RI "Class representing a \fIterm\fP in an additive expression\&. "
+.ti -1c
+.RI "class \fBTermOrder\fP"
+.br
+.RI "A class for ordering \fBVarnode\fP terms in an additive expression\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBuniversal_action\fP (\fBArchitecture\fP *conf)"
+.br
+.RI "The generic decompilation action\&. "
+.ti -1c
+.RI "void \fBbuild_defaultactions\fP (\fBActionDatabase\fP &allacts)"
+.br
+.RI "Build the default actions\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Core decompilation actions which are indepedent of any particular architecture\&. 
+
+These are the internal actions\&. They are guaranteed to not to invalidate covers\&. (if they do they must check the covers themselves) 
+.PP
+Definition in file \fBcoreaction\&.hh\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "void build_defaultactions (\fBActionDatabase\fP & allacts)"
+
+.PP
+Build the default actions\&. Build the default \fIroot\fP Actions: decompile, jumptable, normalize, paramid, register, firstpass 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIallacts\fP is the database that will hold the \fIroot\fP Actions 
+.RE
+.PP
+
+.PP
+Definition at line 4429 of file coreaction\&.cc\&.
+.SS "void universal_action (\fBArchitecture\fP * conf)"
+
+.PP
+The generic decompilation action\&. Construct the \fBuniversal\fP \fBAction\fP that contains all possible components 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconf\fP is the \fBArchitecture\fP that will use the \fBAction\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4469 of file coreaction\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

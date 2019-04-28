@@ -1,0 +1,152 @@
+\hypertarget{class_executable_pcode}{}\section{Executable\+Pcode Class Reference}
+\label{class_executable_pcode}\index{ExecutablePcode@{ExecutablePcode}}
+
+
+A snippet of p-\/code that can be executed outside of normal analysis.  
+
+
+
+
+{\ttfamily \#include $<$pcodeinject.\+hh$>$}
+
+
+
+Inheritance diagram for Executable\+Pcode\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_executable_pcode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Executable\+Pcode\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_executable_pcode__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_executable_pcode_adda3ecde2df23fa5ebea51e0f7ded106}{Executable\+Pcode}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, const string \&src, const string \&nm)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_executable_pcode_a62c3040719edcdf18e784424f9404c7a}{$\sim$\+Executable\+Pcode}} (void)
+\item 
+virtual string \mbox{\hyperlink{class_executable_pcode_a778beba39ea7ee969febbfce992d6600}{get\+Source}} (void) const
+\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_executable_pcode_a0ff39a9bb778d67df86b741a20739d75}{evaluate}} (const vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&input)
+\begin{DoxyCompactList}\small\item\em Evaluate the snippet on the given inputs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A snippet of p-\/code that can be executed outside of normal analysis. 
+
+Essentially a p-\/code script. The p-\/code contained in this snippet needs to be processor agnostic, so any register Varnodes must be temporary (out of the {\itshape unique} space) and any control-\/flow operations must be contained within the snippet (p-\/code relative addressing). Input and output to the snippet/script is provided by standard injection parameters. The class contains, as a field, a stripped down emulator to run the script and a convenience method \mbox{\hyperlink{class_executable_pcode_a0ff39a9bb778d67df86b741a20739d75}{evaluate()}} to feed in concrete values to the input parameters and return a value from a single output parameter. 
+
+Definition at line 132 of file pcodeinject.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_executable_pcode_adda3ecde2df23fa5ebea51e0f7ded106}\label{class_executable_pcode_adda3ecde2df23fa5ebea51e0f7ded106}} 
+\index{ExecutablePcode@{ExecutablePcode}!ExecutablePcode@{ExecutablePcode}}
+\index{ExecutablePcode@{ExecutablePcode}!ExecutablePcode@{ExecutablePcode}}
+\subsubsection{\texorpdfstring{ExecutablePcode()}{ExecutablePcode()}}
+{\footnotesize\ttfamily Executable\+Pcode\+::\+Executable\+Pcode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{const string \&}]{src,  }\item[{const string \&}]{nm }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & is the \mbox{\hyperlink{class_architecture}{Architecture}} owning {\bfseries{snippet}} \\
+\hline
+{\em src} & is a string describing the {\itshape source} of the snippet \\
+\hline
+{\em nm} & is the formal name of the snippet \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 101 of file pcodeinject.\+cc.
+
+\mbox{\Hypertarget{class_executable_pcode_a62c3040719edcdf18e784424f9404c7a}\label{class_executable_pcode_a62c3040719edcdf18e784424f9404c7a}} 
+\index{ExecutablePcode@{ExecutablePcode}!````~ExecutablePcode@{$\sim$ExecutablePcode}}
+\index{````~ExecutablePcode@{$\sim$ExecutablePcode}!ExecutablePcode@{ExecutablePcode}}
+\subsubsection{\texorpdfstring{$\sim$ExecutablePcode()}{~ExecutablePcode()}}
+{\footnotesize\ttfamily virtual Executable\+Pcode\+::$\sim$\+Executable\+Pcode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 143 of file pcodeinject.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_executable_pcode_a0ff39a9bb778d67df86b741a20739d75}\label{class_executable_pcode_a0ff39a9bb778d67df86b741a20739d75}} 
+\index{ExecutablePcode@{ExecutablePcode}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!ExecutablePcode@{ExecutablePcode}}
+\subsubsection{\texorpdfstring{evaluate()}{evaluate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Executable\+Pcode\+::evaluate (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Evaluate the snippet on the given inputs. 
+
+The caller provides a list of concrete values that are assigned to the input parameters. The number of values and input parameters must match, and values are assigned in order. Input parameter order is determined either by the order of tags in the defining X\+ML. This method assumes there is exactly 1 relevant output parameter. Once the snippet is executed the value of this parameter is read from the emulator state and returned. 
+\begin{DoxyParams}{Parameters}
+{\em input} & is the ordered list of input values to feed to {\bfseries{this}} script \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the output parameter after script execution 
+\end{DoxyReturn}
+
+
+Definition at line 157 of file pcodeinject.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executable_pcode_a0ff39a9bb778d67df86b741a20739d75_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executable_pcode_a0ff39a9bb778d67df86b741a20739d75_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_executable_pcode_a778beba39ea7ee969febbfce992d6600}\label{class_executable_pcode_a778beba39ea7ee969febbfce992d6600}} 
+\index{ExecutablePcode@{ExecutablePcode}!getSource@{getSource}}
+\index{getSource@{getSource}!ExecutablePcode@{ExecutablePcode}}
+\subsubsection{\texorpdfstring{getSource()}{getSource()}}
+{\footnotesize\ttfamily virtual string Executable\+Pcode\+::get\+Source (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 144 of file pcodeinject.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executable_pcode_a778beba39ea7ee969febbfce992d6600_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{pcodeinject_8hh}{pcodeinject.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{pcodeinject_8cc}{pcodeinject.\+cc}}\end{DoxyCompactItemize}

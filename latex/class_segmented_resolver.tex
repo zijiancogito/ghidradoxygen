@@ -1,0 +1,122 @@
+\hypertarget{class_segmented_resolver}{}\section{Segmented\+Resolver Class Reference}
+\label{class_segmented_resolver}\index{SegmentedResolver@{SegmentedResolver}}
+
+
+A resolver for segmented architectures.  
+
+
+
+
+{\ttfamily \#include $<$architecture.\+hh$>$}
+
+
+
+Inheritance diagram for Segmented\+Resolver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_segmented_resolver__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Segmented\+Resolver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_segmented_resolver__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_segmented_resolver_ab1ab1799920f6045d3fba4388026293c}{Segmented\+Resolver}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$sp, \mbox{\hyperlink{class_segment_op}{Segment\+Op}} $\ast$sop)
+\item 
+virtual \mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_segmented_resolver_aba359676c120311d4f388dd814296db7}{resolve}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val, int4 sz, const \mbox{\hyperlink{class_address}{Address}} \&point)
+\begin{DoxyCompactList}\small\item\em \begin{quote}
+Virtual destructor\end{quote}
+\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A resolver for segmented architectures. 
+
+When the decompiler is attempting to resolve embedded constants as pointers, this class tries to recover segment info for near pointers by looking up tracked registers in context 
+
+Definition at line 276 of file architecture.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_segmented_resolver_ab1ab1799920f6045d3fba4388026293c}\label{class_segmented_resolver_ab1ab1799920f6045d3fba4388026293c}} 
+\index{SegmentedResolver@{SegmentedResolver}!SegmentedResolver@{SegmentedResolver}}
+\index{SegmentedResolver@{SegmentedResolver}!SegmentedResolver@{SegmentedResolver}}
+\subsubsection{\texorpdfstring{SegmentedResolver()}{SegmentedResolver()}}
+{\footnotesize\ttfamily Segmented\+Resolver\+::\+Segmented\+Resolver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{sp,  }\item[{\mbox{\hyperlink{class_segment_op}{Segment\+Op}} $\ast$}]{sop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a segmented resolver 
+\begin{DoxyParams}{Parameters}
+{\em g} & is the owning \mbox{\hyperlink{class_architecture}{Architecture}} \\
+\hline
+{\em sp} & is the segmented space \\
+\hline
+{\em sop} & is the segment operator \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 285 of file architecture.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_segmented_resolver_aba359676c120311d4f388dd814296db7}\label{class_segmented_resolver_aba359676c120311d4f388dd814296db7}} 
+\index{SegmentedResolver@{SegmentedResolver}!resolve@{resolve}}
+\index{resolve@{resolve}!SegmentedResolver@{SegmentedResolver}}
+\subsubsection{\texorpdfstring{resolve()}{resolve()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Segmented\+Resolver\+::resolve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val,  }\item[{int4}]{sz,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\begin{quote}
+Virtual destructor\end{quote}
+
+
+The main resolver method.
+
+Given a native constant in a specific context, resolve what address is being referred to. 
+\begin{DoxyParams}{Parameters}
+{\em val} & is constant to be resolved to an address \\
+\hline
+{\em sz} & is the size of {\itshape val} in context. \\
+\hline
+{\em point} & is the address at which this constant is being used \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the resolved \mbox{\hyperlink{class_address}{Address}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_address_resolver_a5ac794d1a7c5c8c678ac5fecdf0499ff}{Address\+Resolver}}.
+
+
+
+Definition at line 1116 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_segmented_resolver_aba359676c120311d4f388dd814296db7_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{architecture_8hh}{architecture.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{architecture_8cc}{architecture.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,312 @@
+.TH "InjectPayload" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InjectPayload \- An active container for a set of p-code operations that can be injected into data-flow\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pcodeinject\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBCALLFIXUP_TYPE\fP = 1, \fBCALLOTHERFIXUP_TYPE\fP = 2, \fBCALLMECHANISM_TYPE\fP = 3, \fBEXECUTABLEPCODE_TYPE\fP = 4 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInjectPayload\fP (const string &nm, int4 tp)"
+.br
+.RI "Construct for use with restoreXml\&. "
+.ti -1c
+.RI "int4 \fBgetParamShift\fP (void) const"
+.br
+.RI "Get the number of parameters shifted\&. "
+.ti -1c
+.RI "bool \fBisDynamic\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if p-code in the injection is generated dynamically\&. "
+.ti -1c
+.RI "int4 \fBsizeInput\fP (void) const"
+.br
+.RI "Return the number of input parameters\&. "
+.ti -1c
+.RI "int4 \fBsizeOutput\fP (void) const"
+.br
+.RI "Return the number of output parameters\&. "
+.ti -1c
+.RI "\fBInjectParameter\fP & \fBgetInput\fP (int4 i)"
+.br
+.RI "Get the i-th input parameter\&. "
+.ti -1c
+.RI "\fBInjectParameter\fP & \fBgetOutput\fP (int4 i)"
+.br
+.RI "Get the i-th output parameter\&. "
+.ti -1c
+.RI "virtual \fB~InjectPayload\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBinject\fP (\fBInjectContext\fP &context, \fBPcodeEmit\fP &emit) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP payload from an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBprintTemplate\fP (ostream &s) const =0"
+.br
+.RI "Print the p-code ops of the injection to a stream (for debugging) "
+.ti -1c
+.RI "string \fBgetName\fP (void) const"
+.br
+.RI "Return the name of the injection\&. "
+.ti -1c
+.RI "int4 \fBgetType\fP (void) const"
+.br
+.RI "Return the type of injection (CALLFIXUP_TYPE, CALLOTHERFIXUP_TYPE, etc\&.) "
+.ti -1c
+.RI "virtual string \fBgetSource\fP (void) const =0"
+.br
+.RI "Return a string describing the \fIsource\fP of the injection (\&.cspec, prototype model, etc\&.) "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBorderParameters\fP (void)"
+.br
+.RI "Assign an index to parameters\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBreadParameter\fP (const \fBElement\fP *el, string &\fBname\fP, uint4 &size)"
+.br
+.RI "Read in an <input> or <output> XML tag describing an injection parameter\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Formal name of the payload\&. "
+.ti -1c
+.RI "int4 \fBtype\fP"
+.br
+.RI "Type of this payload: CALLFIXUP_TYPE, CALLOTHERFIXUP_TYPE, etc\&. "
+.ti -1c
+.RI "bool \fBdynamic\fP"
+.br
+.RI "True if the injection is generated dynamically\&. "
+.ti -1c
+.RI "int4 \fBparamshift\fP"
+.br
+.RI "Number of parameters shifted in the original call\&. "
+.ti -1c
+.RI "vector< \fBInjectParameter\fP > \fBinputlist\fP"
+.br
+.RI "List of input parameters to this payload\&. "
+.ti -1c
+.RI "vector< \fBInjectParameter\fP > \fBoutput\fP"
+.br
+.RI "List of output parameters\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An active container for a set of p-code operations that can be injected into data-flow\&. 
+
+This is an abstract base class\&. Derived classes manage details of how the p-code is stored\&. The methods provide access to the input/output parameter information, and the main injection is performed with \fBinject()\fP\&. 
+.PP
+Definition at line 78 of file pcodeinject\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICALLFIXUP_TYPE \fP\fP
+Injection that replaces a CALL\&. 
+.TP
+\fB\fICALLOTHERFIXUP_TYPE \fP\fP
+Injection that replaces a user-defined p-code op, CALLOTHER\&. 
+.TP
+\fB\fICALLMECHANISM_TYPE \fP\fP
+Injection to patch up data-flow around the caller/callee boundary\&. 
+.TP
+\fB\fIEXECUTABLEPCODE_TYPE \fP\fP
+Injection running as a stand-alone p-code script\&. 
+.PP
+Definition at line 80 of file pcodeinject\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "InjectPayload::InjectPayload (const string & nm, int4 tp)\fC [inline]\fP"
+
+.PP
+Construct for use with restoreXml\&. 
+.PP
+Definition at line 96 of file pcodeinject\&.hh\&.
+.SS "virtual InjectPayload::~InjectPayload (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 103 of file pcodeinject\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBInjectParameter\fP& InjectPayload::getInput (int4 i)\fC [inline]\fP"
+
+.PP
+Get the i-th input parameter\&. 
+.PP
+Definition at line 101 of file pcodeinject\&.hh\&.
+.SS "string InjectPayload::getName (void) const\fC [inline]\fP"
+
+.PP
+Return the name of the injection\&. 
+.PP
+Definition at line 118 of file pcodeinject\&.hh\&.
+.SS "\fBInjectParameter\fP& InjectPayload::getOutput (int4 i)\fC [inline]\fP"
+
+.PP
+Get the i-th output parameter\&. 
+.PP
+Definition at line 102 of file pcodeinject\&.hh\&.
+.SS "int4 InjectPayload::getParamShift (void) const\fC [inline]\fP"
+
+.PP
+Get the number of parameters shifted\&. 
+.PP
+Definition at line 97 of file pcodeinject\&.hh\&.
+.SS "virtual string InjectPayload::getSource (void) const\fC [pure virtual]\fP"
+
+.PP
+Return a string describing the \fIsource\fP of the injection (\&.cspec, prototype model, etc\&.) 
+.SS "int4 InjectPayload::getType (void) const\fC [inline]\fP"
+
+.PP
+Return the type of injection (CALLFIXUP_TYPE, CALLOTHERFIXUP_TYPE, etc\&.) 
+.PP
+Definition at line 119 of file pcodeinject\&.hh\&.
+.SS "virtual void InjectPayload::inject (\fBInjectContext\fP & context, \fBPcodeEmit\fP & emit) const\fC [pure virtual]\fP"
+Perform the injection of \fBthis\fP payload into data-flow\&.
+.PP
+P-code operations representing \fBthis\fP payload are copied into the controlling analysis context\&. The provided \fBPcodeEmit\fP object dictates exactly where the \fBPcodeOp\fP and \fBVarnode\fP objects are inserted and to what container\&. An \fBInjectContext\fP object specifies how placeholder elements become concrete Varnodes in the appropriate context\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP is the provided InjectConject object 
+.br
+\fIemit\fP is the provovided \fBPcodeEmit\fP object 
+.RE
+.PP
+
+.SS "bool InjectPayload::isDynamic (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if p-code in the injection is generated dynamically\&. 
+.PP
+Definition at line 98 of file pcodeinject\&.hh\&.
+.SS "void InjectPayload::orderParameters (void)\fC [protected]\fP"
+
+.PP
+Assign an index to parameters\&. Input and output parameters are assigned a unique index\&. 
+.PP
+Definition at line 44 of file pcodeinject\&.cc\&.
+.SS "virtual void InjectPayload::printTemplate (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Print the p-code ops of the injection to a stream (for debugging) 
+.SS "void InjectPayload::readParameter (const \fBElement\fP * el, string & name, uint4 & size)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Read in an <input> or <output> XML tag describing an injection parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fIname\fP is used to pass back the parameter name 
+.br
+\fIsize\fP is used to pass back the parameter size 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file pcodeinject\&.cc\&.
+.SS "void InjectPayload::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore \fBthis\fP payload from an XML stream\&. The base class version of this method restores from a <pcode> tag\&. Derived classes may restore from a parent tag and then invoke the base class method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file pcodeinject\&.cc\&.
+.SS "int4 InjectPayload::sizeInput (void) const\fC [inline]\fP"
+
+.PP
+Return the number of input parameters\&. 
+.PP
+Definition at line 99 of file pcodeinject\&.hh\&.
+.SS "int4 InjectPayload::sizeOutput (void) const\fC [inline]\fP"
+
+.PP
+Return the number of output parameters\&. 
+.PP
+Definition at line 100 of file pcodeinject\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool InjectPayload::dynamic\fC [protected]\fP"
+
+.PP
+True if the injection is generated dynamically\&. 
+.PP
+Definition at line 89 of file pcodeinject\&.hh\&.
+.SS "vector<\fBInjectParameter\fP> InjectPayload::inputlist\fC [protected]\fP"
+
+.PP
+List of input parameters to this payload\&. 
+.PP
+Definition at line 91 of file pcodeinject\&.hh\&.
+.SS "string InjectPayload::name\fC [protected]\fP"
+
+.PP
+Formal name of the payload\&. 
+.PP
+Definition at line 87 of file pcodeinject\&.hh\&.
+.SS "vector<\fBInjectParameter\fP> InjectPayload::output\fC [protected]\fP"
+
+.PP
+List of output parameters\&. 
+.PP
+Definition at line 92 of file pcodeinject\&.hh\&.
+.SS "int4 InjectPayload::paramshift\fC [protected]\fP"
+
+.PP
+Number of parameters shifted in the original call\&. 
+.PP
+Definition at line 90 of file pcodeinject\&.hh\&.
+.SS "int4 InjectPayload::type\fC [protected]\fP"
+
+.PP
+Type of this payload: CALLFIXUP_TYPE, CALLOTHERFIXUP_TYPE, etc\&. 
+.PP
+Definition at line 88 of file pcodeinject\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

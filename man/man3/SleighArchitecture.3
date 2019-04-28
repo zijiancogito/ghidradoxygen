@@ -1,0 +1,412 @@
+.TH "SleighArchitecture" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SleighArchitecture \- An \fBArchitecture\fP that uses the decompiler's native SLEIGH translation engine\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sleigh_arch\&.hh>\fP
+.PP
+Inherits \fBArchitecture\fP\&.
+.PP
+Inherited by \fBBfdArchitecture\fP, \fBRawBinaryArchitecture\fP, and \fBXmlArchitecture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSleighArchitecture\fP (const string &fname, const string &targ, ostream *estream)"
+.br
+.RI "Construct given executable file\&. "
+.ti -1c
+.RI "const string & \fBgetFilename\fP (void) const"
+.br
+.RI "Get the executable filename\&. "
+.ti -1c
+.RI "const string & \fBgetTarget\fP (void) const"
+.br
+.RI "Get the \fIlanguage\fP \fIid\fP of the active processor\&. "
+.ti -1c
+.RI "void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.RI "Write out (as XML) basic attributes of the active executable\&. "
+.ti -1c
+.RI "void \fBrestoreXmlHeader\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore from XML basic attributes of an executable\&. "
+.ti -1c
+.RI "virtual void \fBprintMessage\fP (const string &message) const"
+.br
+.RI "Print an error message to console\&. "
+.ti -1c
+.RI "virtual \fB~SleighArchitecture\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBnormalizeProcessor\fP (const string &nm)"
+.br
+.RI "Try to recover a \fIlanguage\fP \fIid\fP processor field\&. "
+.ti -1c
+.RI "static string \fBnormalizeEndian\fP (const string &nm)"
+.br
+.RI "Try to recover a \fIlanguage\fP \fIid\fP endianess field\&. "
+.ti -1c
+.RI "static string \fBnormalizeSize\fP (const string &nm)"
+.br
+.RI "Try to recover a \fIlanguage\fP \fIid\fP size field\&. "
+.ti -1c
+.RI "static string \fBnormalizeArchitecture\fP (const string &nm)"
+.br
+.RI "Try to recover a \fIlanguage\fP \fIid\fP string\&. "
+.ti -1c
+.RI "static void \fBscanForSleighDirectories\fP (const string &rootpath)"
+.br
+.RI "Scan directories for SLEIGH specification files\&. "
+.ti -1c
+.RI "static void \fBshutdown\fP (void)"
+.br
+.RI "Shutdown this \fBSleighArchitecture\fP and free all resources\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBFileManage\fP \fBspecpaths\fP"
+.br
+.RI "Known directories that contain \&.ldefs files\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBTranslate\fP * \fBbuildTranslator\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Build the Translator object\&. "
+.ti -1c
+.RI "virtual \fBPcodeInjectLibrary\fP * \fBbuildPcodeInjectLibrary\fP (void)"
+.br
+.RI "Build the injection library\&. "
+.ti -1c
+.RI "virtual void \fBbuildSpecFile\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Load any relevant specification files\&. "
+.ti -1c
+.RI "virtual void \fBmodifySpaces\fP (\fBTranslate\fP *trans)"
+.br
+.RI "Modify address spaces as required by \fBthis\fP \fBArchitecture\fP\&. "
+.ti -1c
+.RI "virtual void \fBresolveArchitecture\fP (void)"
+.br
+.RI "Figure out the processor and compiler of the target executable\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBcollectSpecFiles\fP (ostream &errs)"
+.br
+.RI "Gather specification files in normal locations\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "ostream * \fBerrorstream\fP"
+.br
+.RI "Error stream associated with \fBthis\fP \fBSleighArchitecture\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBArchitecture\fP that uses the decompiler's native SLEIGH translation engine\&. 
+
+Any \fBArchitecture\fP derived from \fBthis\fP knows how to natively read in:
+.IP "\(bu" 2
+a compiled SLEIGH specification (\&.sla)
+.IP "\(bu" 2
+a processor specification file (\&.pspec), and
+.IP "\(bu" 2
+a compiler specification file (\&.cspec)
+.PP
+.PP
+Generally a \fIlanguage\fP \fIid\fP (i\&.e\&. x86:LE:64:default) is provided, then this object is able to automatically load in configuration and construct the \fBTranslate\fP object\&. 
+.PP
+Definition at line 89 of file sleigh_arch\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SleighArchitecture::SleighArchitecture (const string & fname, const string & targ, ostream * estream)"
+
+.PP
+Construct given executable file\&. Prepare \fBthis\fP \fBSleighArchitecture\fP for analyzing the given executable image\&. Full initialization, including creation of the \fBTranslate\fP object, still must be performed by calling the \fBinit()\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfname\fP is the filename of the given executable image 
+.br
+\fItarg\fP is the optional \fIlanguage\fP \fIid\fP or other target information 
+.br
+\fIestream\fP is a pointer to an output stream for writing error messages 
+.RE
+.PP
+
+.PP
+Definition at line 284 of file sleigh_arch\&.cc\&.
+.SS "SleighArchitecture::~SleighArchitecture (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 122 of file sleigh_arch\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBPcodeInjectLibrary\fP * SleighArchitecture::buildPcodeInjectLibrary (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the injection library\&. This creates the container for p-code injections\&. It is initially empty\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBPcodeInjectLibrary\fP object 
+.RE
+.PP
+
+.PP
+Implements \fBArchitecture\fP\&.
+.PP
+Definition at line 156 of file sleigh_arch\&.cc\&.
+.SS "void SleighArchitecture::buildSpecFile (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Load any relevant specification files\&. Processor/architecture specific configuration files are loaded into the XML store 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is the document store that will hold the configuration 
+.RE
+.PP
+
+.PP
+Implements \fBArchitecture\fP\&.
+.PP
+Definition at line 196 of file sleigh_arch\&.cc\&.
+.SS "\fBTranslate\fP * SleighArchitecture::buildTranslator (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the Translator object\&. This builds the main disassembly component for the \fBArchitecture\fP This does \fInot\fP initially the engine for a specific processor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTranslate\fP object 
+.RE
+.PP
+
+.PP
+Implements \fBArchitecture\fP\&.
+.PP
+Definition at line 142 of file sleigh_arch\&.cc\&.
+.SS "void SleighArchitecture::collectSpecFiles (ostream & errs)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Gather specification files in normal locations\&. This is run once when spinning up the decompiler\&. Look for the root \&.ldefs files within the normal directories and parse them\&. Use these to populate the list of \fIlanguage\fP \fIids\fP that are supported\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIerrs\fP is an output stream for writing error messages 
+.RE
+.PP
+
+.PP
+Definition at line 297 of file sleigh_arch\&.cc\&.
+.SS "const string& SleighArchitecture::getFilename (void) const\fC [inline]\fP"
+
+.PP
+Get the executable filename\&. 
+.PP
+Definition at line 109 of file sleigh_arch\&.hh\&.
+.SS "const string& SleighArchitecture::getTarget (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIlanguage\fP \fIid\fP of the active processor\&. 
+.PP
+Definition at line 110 of file sleigh_arch\&.hh\&.
+.SS "void SleighArchitecture::modifySpaces (\fBTranslate\fP * trans)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Modify address spaces as required by \fBthis\fP \fBArchitecture\fP\&. If spaces need to be truncated or otherwise changed from processor defaults, this routine performs the modification\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrans\fP is the processor disassembly object 
+.RE
+.PP
+
+.PP
+Implements \fBArchitecture\fP\&.
+.PP
+Definition at line 269 of file sleigh_arch\&.cc\&.
+.SS "string SleighArchitecture::normalizeArchitecture (const string & nm)\fC [static]\fP"
+
+.PP
+Try to recover a \fIlanguage\fP \fIid\fP string\&. Try to normalize the target string into a valid \fIlanguage\fP \fIid\fP\&. In general the target string must already look like a \fIlanguage\fP \fIid\fP, but it can drop the compiler field and be a little sloppier in its format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the given target string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the normalized \fIlanguage\fP \fIid\fP 
+.RE
+.PP
+
+.PP
+Definition at line 375 of file sleigh_arch\&.cc\&.
+.SS "string SleighArchitecture::normalizeEndian (const string & nm)\fC [static]\fP"
+
+.PP
+Try to recover a \fIlanguage\fP \fIid\fP endianess field\&. Given an architecture target string try to recover an appropriate endianness string for use in a normalized \fIlanguage\fP \fIid\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the given target string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the endianness field 
+.RE
+.PP
+
+.PP
+Definition at line 341 of file sleigh_arch\&.cc\&.
+.SS "string SleighArchitecture::normalizeProcessor (const string & nm)\fC [static]\fP"
+
+.PP
+Try to recover a \fIlanguage\fP \fIid\fP processor field\&. Given an architecture target string try to recover an appropriate processor name for use in a normalized \fIlanguage\fP \fIid\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the given target string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the processor field 
+.RE
+.PP
+
+.PP
+Definition at line 329 of file sleigh_arch\&.cc\&.
+.SS "string SleighArchitecture::normalizeSize (const string & nm)\fC [static]\fP"
+
+.PP
+Try to recover a \fIlanguage\fP \fIid\fP size field\&. Given an architecture target string try to recover an appropriate size string for use in a normalized \fIlanguage\fP \fIid\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the given target string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the size field 
+.RE
+.PP
+
+.PP
+Definition at line 355 of file sleigh_arch\&.cc\&.
+.SS "virtual void SleighArchitecture::printMessage (const string & message) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Print an error message to console\&. Write the given message to whatever the registered error stream is 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP is the error message 
+.RE
+.PP
+
+.PP
+Implements \fBArchitecture\fP\&.
+.PP
+Definition at line 113 of file sleigh_arch\&.hh\&.
+.SS "void SleighArchitecture::resolveArchitecture (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Figure out the processor and compiler of the target executable\&. 
+.PP
+Implements \fBArchitecture\fP\&.
+.PP
+Definition at line 165 of file sleigh_arch\&.cc\&.
+.SS "void SleighArchitecture::restoreXmlHeader (const \fBElement\fP * el)"
+
+.PP
+Restore from XML basic attributes of an executable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element 
+.RE
+.PP
+
+.PP
+Definition at line 318 of file sleigh_arch\&.cc\&.
+.SS "void SleighArchitecture::saveXmlHeader (ostream & s) const"
+
+.PP
+Write out (as XML) basic attributes of the active executable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the XML output stream 
+.RE
+.PP
+
+.PP
+Definition at line 310 of file sleigh_arch\&.cc\&.
+.SS "void SleighArchitecture::scanForSleighDirectories (const string & rootpath)\fC [static]\fP"
+
+.PP
+Scan directories for SLEIGH specification files\&. This assumes a standard 'Ghidra/Processors/*/data/languages' layout\&. It scans for all matching directories and prepares for reading \&.ldefs files\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrootpath\fP is the root path of the Ghidra installation 
+.RE
+.PP
+
+.PP
+Definition at line 418 of file sleigh_arch\&.cc\&.
+.SS "void SleighArchitecture::shutdown (void)\fC [static]\fP"
+
+.PP
+Shutdown this \fBSleighArchitecture\fP and free all resources\&. 
+.PP
+Definition at line 459 of file sleigh_arch\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "ostream* SleighArchitecture::errorstream\fC [protected]\fP"
+
+.PP
+Error stream associated with \fBthis\fP \fBSleighArchitecture\fP\&. 
+.PP
+Definition at line 99 of file sleigh_arch\&.hh\&.
+.SS "\fBFileManage\fP SleighArchitecture::specpaths\fC [static]\fP"
+
+.PP
+Known directories that contain \&.ldefs files\&. 
+.PP
+Definition at line 122 of file sleigh_arch\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

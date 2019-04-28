@@ -1,0 +1,567 @@
+.TH "SleighCompile" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SleighCompile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slgh_compile\&.hh>\fP
+.PP
+Inherits \fBSleighBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSleighCompile\fP (void)"
+.br
+.ti -1c
+.RI "void \fBreportError\fP (const string &msg, bool includeline)"
+.br
+.ti -1c
+.RI "void \fBreportWarning\fP (const string &msg, bool includeline)"
+.br
+.ti -1c
+.RI "int4 \fBnumErrors\fP (void) const"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBgetUniqueAddr\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetUnnecessaryPcodeWarning\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBsetDeadTempWarning\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBsetEnforceLocalKeyWord\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBsetLenientConflict\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBsetAllNopWarning\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBprocess\fP (void)"
+.br
+.ti -1c
+.RI "void \fBcalcContextLayout\fP (void)"
+.br
+.ti -1c
+.RI "string \fBgrabCurrentFilePath\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBparseFromNewFile\fP (const string &fname)"
+.br
+.ti -1c
+.RI "void \fBparsePreprocMacro\fP (void)"
+.br
+.ti -1c
+.RI "void \fBparseFileFinished\fP (void)"
+.br
+.ti -1c
+.RI "void \fBnextLine\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBgetPreprocValue\fP (const string &nm, string &res) const"
+.br
+.ti -1c
+.RI "void \fBsetPreprocValue\fP (const string &nm, const string &value)"
+.br
+.ti -1c
+.RI "bool \fBundefinePreprocValue\fP (const string &nm)"
+.br
+.ti -1c
+.RI "\fBTokenSymbol\fP * \fBdefineToken\fP (string *name, \fBuintb\fP *sz)"
+.br
+.ti -1c
+.RI "void \fBaddTokenField\fP (\fBTokenSymbol\fP *sym, \fBFieldQuality\fP *qual)"
+.br
+.ti -1c
+.RI "bool \fBaddContextField\fP (\fBVarnodeSymbol\fP *sym, \fBFieldQuality\fP *qual)"
+.br
+.ti -1c
+.RI "void \fBnewSpace\fP (\fBSpaceQuality\fP *qual)"
+.br
+.ti -1c
+.RI "\fBSectionSymbol\fP * \fBnewSectionSymbol\fP (const string &nm)"
+.br
+.ti -1c
+.RI "void \fBsetEndian\fP (int4 end)"
+.br
+.ti -1c
+.RI "void \fBsetAlignment\fP (int4 val)"
+.br
+.ti -1c
+.RI "void \fBdefineVarnodes\fP (\fBSpaceSymbol\fP *spacesym, \fBuintb\fP *off, \fBuintb\fP *size, vector< string > *names)"
+.br
+.ti -1c
+.RI "void \fBdefineBitrange\fP (string *name, \fBVarnodeSymbol\fP *sym, uint4 bitoffset, uint4 numb)"
+.br
+.ti -1c
+.RI "void \fBaddUserOp\fP (vector< string > *names)"
+.br
+.ti -1c
+.RI "void \fBattachValues\fP (vector< \fBSleighSymbol\fP * > *symlist, vector< \fBintb\fP > *numlist)"
+.br
+.ti -1c
+.RI "void \fBattachNames\fP (vector< \fBSleighSymbol\fP * > *symlist, vector< string > *names)"
+.br
+.ti -1c
+.RI "void \fBattachVarnodes\fP (vector< \fBSleighSymbol\fP * > *symlist, vector< \fBSleighSymbol\fP * > *varlist)"
+.br
+.ti -1c
+.RI "\fBSubtableSymbol\fP * \fBnewTable\fP (string *nm)"
+.br
+.ti -1c
+.RI "void \fBnewOperand\fP (\fBConstructor\fP *ct, string *nm)"
+.br
+.ti -1c
+.RI "\fBVarnodeTpl\fP * \fBaddressOf\fP (\fBVarnodeTpl\fP *var, uint4 size)"
+.br
+.ti -1c
+.RI "\fBPatternEquation\fP * \fBconstrainOperand\fP (\fBOperandSymbol\fP *sym, \fBPatternExpression\fP *patexp)"
+.br
+.ti -1c
+.RI "void \fBdefineOperand\fP (\fBOperandSymbol\fP *sym, \fBPatternExpression\fP *patexp)"
+.br
+.ti -1c
+.RI "\fBPatternEquation\fP * \fBdefineInvisibleOperand\fP (\fBTripleSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "void \fBselfDefine\fP (\fBOperandSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "\fBConstructTpl\fP * \fBsetResultVarnode\fP (\fBConstructTpl\fP *ct, \fBVarnodeTpl\fP *vn)"
+.br
+.ti -1c
+.RI "\fBConstructTpl\fP * \fBsetResultStarVarnode\fP (\fBConstructTpl\fP *ct, \fBStarQuality\fP *star, \fBVarnodeTpl\fP *vn)"
+.br
+.ti -1c
+.RI "bool \fBcontextMod\fP (vector< \fBContextChange\fP * > *vec, \fBContextSymbol\fP *sym, \fBPatternExpression\fP *pe)"
+.br
+.ti -1c
+.RI "void \fBcontextSet\fP (vector< \fBContextChange\fP * > *vec, \fBTripleSymbol\fP *sym, \fBContextSymbol\fP *cvar)"
+.br
+.ti -1c
+.RI "\fBMacroSymbol\fP * \fBcreateMacro\fP (string *name, vector< string > *param)"
+.br
+.ti -1c
+.RI "void \fBcompareMacroParams\fP (\fBMacroSymbol\fP *sym, const vector< \fBExprTree\fP * > &param)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBcreateMacroUse\fP (\fBMacroSymbol\fP *sym, vector< \fBExprTree\fP * > *param)"
+.br
+.ti -1c
+.RI "\fBSectionVector\fP * \fBstandaloneSection\fP (\fBConstructTpl\fP *\fBmain\fP)"
+.br
+.ti -1c
+.RI "\fBSectionVector\fP * \fBfirstNamedSection\fP (\fBConstructTpl\fP *\fBmain\fP, \fBSectionSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "\fBSectionVector\fP * \fBnextNamedSection\fP (\fBSectionVector\fP *vec, \fBConstructTpl\fP *section, \fBSectionSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "\fBSectionVector\fP * \fBfinalNamedSection\fP (\fBSectionVector\fP *vec, \fBConstructTpl\fP *section)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBcreateCrossBuild\fP (\fBVarnodeTpl\fP *addr, \fBSectionSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "\fBConstructor\fP * \fBcreateConstructor\fP (\fBSubtableSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "bool \fBisInRoot\fP (\fBConstructor\fP *ct) const"
+.br
+.ti -1c
+.RI "void \fBresetConstructors\fP (void)"
+.br
+.ti -1c
+.RI "void \fBpushWith\fP (\fBSubtableSymbol\fP *ss, \fBPatternEquation\fP *pateq, vector< \fBContextChange\fP * > *contvec)"
+.br
+.ti -1c
+.RI "void \fBpopWith\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbuildConstructor\fP (\fBConstructor\fP *big, \fBPatternEquation\fP *pateq, vector< \fBContextChange\fP * > *contvec, \fBSectionVector\fP *vec)"
+.br
+.ti -1c
+.RI "void \fBbuildMacro\fP (\fBMacroSymbol\fP *sym, \fBConstructTpl\fP *rtl)"
+.br
+.ti -1c
+.RI "void \fBrecordNop\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBinitialize\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Initialize the translator given XML configuration documents\&. "
+.ti -1c
+.RI "virtual int4 \fBinstructionLength\fP (const \fBAddress\fP &baseaddr) const"
+.br
+.RI "Get the length of a machine instruction\&. "
+.ti -1c
+.RI "virtual int4 \fBoneInstruction\fP (\fBPcodeEmit\fP &emit, const \fBAddress\fP &baseaddr) const"
+.br
+.RI "Transform a single machine instruction into pcode\&. "
+.ti -1c
+.RI "virtual int4 \fBprintAssembly\fP (\fBAssemblyEmit\fP &emit, const \fBAddress\fP &baseaddr) const"
+.br
+.RI "Disassemble a single machine instruction\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSleighPcode\fP \fBpcode\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBSleighPcode\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 176 of file slgh_compile\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SleighCompile::SleighCompile (void)"
+
+.PP
+Definition at line 1456 of file slgh_compile\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool SleighCompile::addContextField (\fBVarnodeSymbol\fP * sym, \fBFieldQuality\fP * qual)"
+
+.PP
+Definition at line 1842 of file slgh_compile\&.cc\&.
+.SS "\fBVarnodeTpl\fP* SleighCompile::addressOf (\fBVarnodeTpl\fP * var, uint4 size)"
+
+.SS "void SleighCompile::addTokenField (\fBTokenSymbol\fP * sym, \fBFieldQuality\fP * qual)"
+
+.PP
+Definition at line 1834 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::addUserOp (vector< string > * names)"
+
+.PP
+Definition at line 1945 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::attachNames (vector< \fBSleighSymbol\fP * > * symlist, vector< string > * names)"
+
+.PP
+Definition at line 1992 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::attachValues (vector< \fBSleighSymbol\fP * > * symlist, vector< \fBintb\fP > * numlist)"
+
+.PP
+Definition at line 1973 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::attachVarnodes (vector< \fBSleighSymbol\fP * > * symlist, vector< \fBSleighSymbol\fP * > * varlist)"
+
+.PP
+Definition at line 2011 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::buildConstructor (\fBConstructor\fP * big, \fBPatternEquation\fP * pateq, vector< \fBContextChange\fP * > * contvec, \fBSectionVector\fP * vec)"
+
+.PP
+Definition at line 2530 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::buildMacro (\fBMacroSymbol\fP * sym, \fBConstructTpl\fP * rtl)"
+
+.PP
+Definition at line 2560 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::calcContextLayout (void)"
+
+.PP
+Definition at line 1721 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::compareMacroParams (\fBMacroSymbol\fP * sym, const vector< \fBExprTree\fP * > & param)"
+
+.PP
+Definition at line 2205 of file slgh_compile\&.cc\&.
+.SS "\fBPatternEquation\fP * SleighCompile::constrainOperand (\fBOperandSymbol\fP * sym, \fBPatternExpression\fP * patexp)"
+
+.PP
+Definition at line 2062 of file slgh_compile\&.cc\&.
+.SS "bool SleighCompile::contextMod (vector< \fBContextChange\fP * > * vec, \fBContextSymbol\fP * sym, \fBPatternExpression\fP * pe)"
+
+.PP
+Definition at line 2159 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::contextSet (vector< \fBContextChange\fP * > * vec, \fBTripleSymbol\fP * sym, \fBContextSymbol\fP * cvar)"
+
+.PP
+Definition at line 2176 of file slgh_compile\&.cc\&.
+.SS "\fBConstructor\fP * SleighCompile::createConstructor (\fBSubtableSymbol\fP * sym)"
+
+.PP
+Definition at line 2312 of file slgh_compile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * SleighCompile::createCrossBuild (\fBVarnodeTpl\fP * addr, \fBSectionSymbol\fP * sym)"
+
+.PP
+Definition at line 2295 of file slgh_compile\&.cc\&.
+.SS "\fBMacroSymbol\fP * SleighCompile::createMacro (string * name, vector< string > * param)"
+
+.PP
+Definition at line 2187 of file slgh_compile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * SleighCompile::createMacroUse (\fBMacroSymbol\fP * sym, vector< \fBExprTree\fP * > * param)"
+
+.PP
+Definition at line 2230 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::defineBitrange (string * name, \fBVarnodeSymbol\fP * sym, uint4 bitoffset, uint4 numb)"
+
+.PP
+Definition at line 1913 of file slgh_compile\&.cc\&.
+.SS "\fBPatternEquation\fP * SleighCompile::defineInvisibleOperand (\fBTripleSymbol\fP * sym)"
+
+.PP
+Definition at line 2093 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::defineOperand (\fBOperandSymbol\fP * sym, \fBPatternExpression\fP * patexp)"
+
+.PP
+Definition at line 2078 of file slgh_compile\&.cc\&.
+.SS "\fBTokenSymbol\fP * SleighCompile::defineToken (string * name, \fBuintb\fP * sz)"
+
+.PP
+Definition at line 1815 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::defineVarnodes (\fBSpaceSymbol\fP * spacesym, \fBuintb\fP * off, \fBuintb\fP * size, vector< string > * names)"
+
+.PP
+Definition at line 1898 of file slgh_compile\&.cc\&.
+.SS "\fBSectionVector\fP * SleighCompile::finalNamedSection (\fBSectionVector\fP * vec, \fBConstructTpl\fP * section)"
+
+.PP
+Definition at line 2287 of file slgh_compile\&.cc\&.
+.SS "\fBSectionVector\fP * SleighCompile::firstNamedSection (\fBConstructTpl\fP * main, \fBSectionSymbol\fP * sym)"
+
+.PP
+Definition at line 2258 of file slgh_compile\&.cc\&.
+.SS "bool SleighCompile::getPreprocValue (const string & nm, string & res) const"
+
+.PP
+Definition at line 1789 of file slgh_compile\&.cc\&.
+.SS "\fBuintb\fP SleighCompile::getUniqueAddr (void)"
+
+.PP
+Definition at line 1687 of file slgh_compile\&.cc\&.
+.SS "string SleighCompile::grabCurrentFilePath (void) const"
+
+.PP
+Definition at line 1750 of file slgh_compile\&.cc\&.
+.SS "virtual void SleighCompile::initialize (\fBDocumentStorage\fP & store)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Initialize the translator given XML configuration documents\&. A translator gets initialized once, possibly using XML documents to configure it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is a set of configuration documents 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 284 of file slgh_compile\&.hh\&.
+.SS "virtual int4 SleighCompile::instructionLength (const \fBAddress\fP & baseaddr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the length of a machine instruction\&. This method decodes an instruction at a specific address just enough to find the number of bytes it uses within the instruction stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaseaddr\fP is the \fBAddress\fP of the instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in the instruction 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 285 of file slgh_compile\&.hh\&.
+.SS "bool SleighCompile::isInRoot (\fBConstructor\fP * ct) const\fC [inline]\fP"
+
+.PP
+Definition at line 275 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::newOperand (\fBConstructor\fP * ct, string * nm)"
+
+.PP
+Definition at line 2052 of file slgh_compile\&.cc\&.
+.SS "\fBSectionSymbol\fP * SleighCompile::newSectionSymbol (const string & nm)"
+
+.PP
+Definition at line 1876 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::newSpace (\fBSpaceQuality\fP * qual)"
+
+.PP
+Definition at line 1852 of file slgh_compile\&.cc\&.
+.SS "\fBSubtableSymbol\fP * SleighCompile::newTable (string * nm)"
+
+.PP
+Definition at line 2042 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::nextLine (void)\fC [inline]\fP"
+
+.PP
+Definition at line 236 of file slgh_compile\&.hh\&.
+.SS "\fBSectionVector\fP * SleighCompile::nextNamedSection (\fBSectionVector\fP * vec, \fBConstructTpl\fP * section, \fBSectionSymbol\fP * sym)"
+
+.PP
+Definition at line 2272 of file slgh_compile\&.cc\&.
+.SS "int4 SleighCompile::numErrors (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 221 of file slgh_compile\&.hh\&.
+.SS "virtual int4 SleighCompile::oneInstruction (\fBPcodeEmit\fP & emit, const \fBAddress\fP & baseaddr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Transform a single machine instruction into pcode\&. This is the main interface to the pcode translation engine\&. The \fIdump\fP method in the \fIemit\fP object is invoked exactly once for each pcode operation in the translation for the machine instruction at the given address\&. This routine can throw either
+.IP "\(bu" 2
+\fBUnimplError\fP or
+.IP "\(bu" 2
+\fBBadDataError\fP
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemit\fP is the tailored pcode emitting object 
+.br
+\fIbaseaddr\fP is the \fBAddress\fP of the machine instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in the machine instruction 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 286 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::parseFileFinished (void)"
+
+.PP
+Definition at line 1781 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::parseFromNewFile (const string & fname)"
+
+.PP
+Definition at line 1757 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::parsePreprocMacro (void)"
+
+.PP
+Definition at line 1773 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::popWith (void)"
+
+.PP
+Definition at line 2524 of file slgh_compile\&.cc\&.
+.SS "virtual int4 SleighCompile::printAssembly (\fBAssemblyEmit\fP & emit, const \fBAddress\fP & baseaddr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Disassemble a single machine instruction\&. This is the main interface to the disassembler for the processor\&. It disassembles a single instruction and returns the result to the application via the \fIdump\fP method in the \fIemit\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemit\fP is the disassembly emitting object 
+.br
+\fIbaseaddr\fP is the address of the machine instruction to disassemble 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 287 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::process (void)"
+
+.PP
+Definition at line 1695 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::pushWith (\fBSubtableSymbol\fP * ss, \fBPatternEquation\fP * pateq, vector< \fBContextChange\fP * > * contvec)"
+
+.PP
+Definition at line 2517 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::recordNop (void)"
+
+.PP
+Definition at line 2579 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::reportError (const string & msg, bool includeline)"
+
+.PP
+Definition at line 1664 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::reportWarning (const string & msg, bool includeline)"
+
+.PP
+Definition at line 1678 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::resetConstructors (void)"
+
+.PP
+Definition at line 2328 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::selfDefine (\fBOperandSymbol\fP * sym)"
+
+.PP
+Definition at line 2117 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::setAlignment (int4 val)\fC [inline]\fP"
+
+.PP
+Definition at line 248 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::setAllNopWarning (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 227 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::setDeadTempWarning (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 224 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::setEndian (int4 end)"
+
+.PP
+Definition at line 1890 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::setEnforceLocalKeyWord (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 225 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::setLenientConflict (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 226 of file slgh_compile\&.hh\&.
+.SS "void SleighCompile::setPreprocValue (const string & nm, const string & value)"
+
+.PP
+Definition at line 1798 of file slgh_compile\&.cc\&.
+.SS "\fBConstructTpl\fP * SleighCompile::setResultStarVarnode (\fBConstructTpl\fP * ct, \fBStarQuality\fP * star, \fBVarnodeTpl\fP * vn)"
+
+.PP
+Definition at line 2147 of file slgh_compile\&.cc\&.
+.SS "\fBConstructTpl\fP * SleighCompile::setResultVarnode (\fBConstructTpl\fP * ct, \fBVarnodeTpl\fP * vn)"
+
+.PP
+Definition at line 2138 of file slgh_compile\&.cc\&.
+.SS "void SleighCompile::setUnnecessaryPcodeWarning (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 223 of file slgh_compile\&.hh\&.
+.SS "\fBSectionVector\fP * SleighCompile::standaloneSection (\fBConstructTpl\fP * main)"
+
+.PP
+Definition at line 2251 of file slgh_compile\&.cc\&.
+.SS "bool SleighCompile::undefinePreprocValue (const string & nm)"
+
+.PP
+Definition at line 1804 of file slgh_compile\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBSleighPcode\fP\fC [friend]\fP"
+
+.PP
+Definition at line 177 of file slgh_compile\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBSleighPcode\fP SleighCompile::pcode"
+
+.PP
+Definition at line 179 of file slgh_compile\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

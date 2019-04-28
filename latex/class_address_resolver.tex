@@ -1,0 +1,98 @@
+\hypertarget{class_address_resolver}{}\section{Address\+Resolver Class Reference}
+\label{class_address_resolver}\index{AddressResolver@{AddressResolver}}
+
+
+Abstract class for converting native constants to addresses.  
+
+
+
+
+{\ttfamily \#include $<$translate.\+hh$>$}
+
+
+
+Inheritance diagram for Address\+Resolver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_address_resolver__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_address_resolver_a31eb658deea94b4619c4c1bc4e11be06}{$\sim$\+Address\+Resolver}} (void)
+\item 
+virtual \mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_address_resolver_a5ac794d1a7c5c8c678ac5fecdf0499ff}{resolve}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val, int4 sz, const \mbox{\hyperlink{class_address}{Address}} \&point)=0
+\begin{DoxyCompactList}\small\item\em \begin{quote}
+Virtual destructor\end{quote}
+\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for converting native constants to addresses. 
+
+This class is used if there is a special calculation to get from a constant embedded in the code being analyzed to the actual \mbox{\hyperlink{class_address}{Address}} being referred to. This is used especially in the case of a segmented architecture, where \char`\"{}near\char`\"{} pointers must be extended to a full address with implied segment information. 
+
+Definition at line 140 of file translate.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_address_resolver_a31eb658deea94b4619c4c1bc4e11be06}\label{class_address_resolver_a31eb658deea94b4619c4c1bc4e11be06}} 
+\index{AddressResolver@{AddressResolver}!````~AddressResolver@{$\sim$AddressResolver}}
+\index{````~AddressResolver@{$\sim$AddressResolver}!AddressResolver@{AddressResolver}}
+\subsubsection{\texorpdfstring{$\sim$AddressResolver()}{~AddressResolver()}}
+{\footnotesize\ttfamily virtual Address\+Resolver\+::$\sim$\+Address\+Resolver (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 142 of file translate.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_address_resolver_a5ac794d1a7c5c8c678ac5fecdf0499ff}\label{class_address_resolver_a5ac794d1a7c5c8c678ac5fecdf0499ff}} 
+\index{AddressResolver@{AddressResolver}!resolve@{resolve}}
+\index{resolve@{resolve}!AddressResolver@{AddressResolver}}
+\subsubsection{\texorpdfstring{resolve()}{resolve()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_address}{Address}} Address\+Resolver\+::resolve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val,  }\item[{int4}]{sz,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\begin{quote}
+Virtual destructor\end{quote}
+
+
+The main resolver method.
+
+Given a native constant in a specific context, resolve what address is being referred to. 
+\begin{DoxyParams}{Parameters}
+{\em val} & is constant to be resolved to an address \\
+\hline
+{\em sz} & is the size of {\itshape val} in context. \\
+\hline
+{\em point} & is the address at which this constant is being used \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the resolved \mbox{\hyperlink{class_address}{Address}} 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_segmented_resolver_aba359676c120311d4f388dd814296db7}{Segmented\+Resolver}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_address_resolver_a5ac794d1a7c5c8c678ac5fecdf0499ff_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{translate_8hh}{translate.\+hh}}\end{DoxyCompactItemize}

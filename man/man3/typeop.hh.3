@@ -1,0 +1,320 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/typeop.hh \- Data-type and behavior information associated with specific p-code op-codes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'cpool\&.hh'\fP
+.br
+\fC#include 'variable\&.hh'\fP
+.br
+\fC#include 'opbehavior\&.hh'\fP
+.br
+\fC#include 'printlanguage\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeOp\fP"
+.br
+.RI "Associate data-type and behavior information with a specific p-code op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpBinary\fP"
+.br
+.RI "A generic binary operator: two inputs and one output\&. "
+.ti -1c
+.RI "class \fBTypeOpUnary\fP"
+.br
+.RI "A generic unary operator: one input and one output\&. "
+.ti -1c
+.RI "class \fBTypeOpFunc\fP"
+.br
+.RI "A generic functional operator\&. "
+.ti -1c
+.RI "class \fBTypeOpCopy\fP"
+.br
+.RI "Information about the COPY op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpLoad\fP"
+.br
+.RI "Information about the LOAD op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpStore\fP"
+.br
+.RI "Information about the STORE op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpBranch\fP"
+.br
+.RI "Information about the BRANCH op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpCbranch\fP"
+.br
+.RI "Information about the CBRANCH op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpBranchind\fP"
+.br
+.RI "Information about the BRANCHIND op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpCall\fP"
+.br
+.RI "Information about the CALL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpCallind\fP"
+.br
+.RI "Information about the CALLIND op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpCallother\fP"
+.br
+.RI "Information about the CALLOTHER op-code (user defined p-code operations) "
+.ti -1c
+.RI "class \fBTypeOpReturn\fP"
+.br
+.RI "Information about the RETURN op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpEqual\fP"
+.br
+.RI "Information about the INT_EQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpNotEqual\fP"
+.br
+.RI "Information about the INT_NOTEQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSless\fP"
+.br
+.RI "Information about the INT_SLESS op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSlessEqual\fP"
+.br
+.RI "Information about the INT_SLESSEQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntLess\fP"
+.br
+.RI "Information about the INT_LESS op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntLessEqual\fP"
+.br
+.RI "Information about the INT_LESSEQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntZext\fP"
+.br
+.RI "Information about the INT_ZEXT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSext\fP"
+.br
+.RI "Information about the INT_SEXT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntAdd\fP"
+.br
+.RI "Information about the INT_ADD op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSub\fP"
+.br
+.RI "Information about the INT_SUB op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntCarry\fP"
+.br
+.RI "Information about the INT_CARRY op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntScarry\fP"
+.br
+.RI "Information about the INT_SCARRY op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSborrow\fP"
+.br
+.RI "Information about the INT_SBORROW op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpInt2Comp\fP"
+.br
+.RI "Information about the INT_2COMP op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntNegate\fP"
+.br
+.RI "Information about the INT_NEGATE op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntXor\fP"
+.br
+.RI "Information about the INT_XOR op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntAnd\fP"
+.br
+.RI "Information about the INT_AND op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntOr\fP"
+.br
+.RI "Information about the INT_OR op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntLeft\fP"
+.br
+.RI "Information about the INT_LEFT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntRight\fP"
+.br
+.RI "Information about the INT_RIGHT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSright\fP"
+.br
+.RI "Information about the INT_SRIGHT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntMult\fP"
+.br
+.RI "Information about the INT_MULT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntDiv\fP"
+.br
+.RI "Information about the INT_DIV op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSdiv\fP"
+.br
+.RI "Information about the INT_SDIV op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntRem\fP"
+.br
+.RI "Information about the INT_REM op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIntSrem\fP"
+.br
+.RI "Information about the INT_SREM op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpBoolNegate\fP"
+.br
+.RI "Information about the BOOL_NEGATE op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpBoolXor\fP"
+.br
+.RI "Information about the BOOL_XOR op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpBoolAnd\fP"
+.br
+.RI "Information about the BOOL_AND op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpBoolOr\fP"
+.br
+.RI "Information about the BOOL_OR op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatEqual\fP"
+.br
+.RI "Information about the FLOAT_EQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatNotEqual\fP"
+.br
+.RI "Information about the FLOAT_NOTEQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatLess\fP"
+.br
+.RI "Information about the FLOAT_LESS op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatLessEqual\fP"
+.br
+.RI "Information about the FLOAT_LESSEQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatNan\fP"
+.br
+.RI "Information about the FLOAT_NAN op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatAdd\fP"
+.br
+.RI "Information about the FLOAT_ADD op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatDiv\fP"
+.br
+.RI "Information about the FLOAT_DIV op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatMult\fP"
+.br
+.RI "Information about the FLOAT_MULT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatSub\fP"
+.br
+.RI "Information about the FLOAT_SUB op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatNeg\fP"
+.br
+.RI "Information about the FLOAT_NEG op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatAbs\fP"
+.br
+.RI "Information about the FLOAT_ABS op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatSqrt\fP"
+.br
+.RI "Information about the FLOAT_SQRT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatInt2Float\fP"
+.br
+.RI "Information about the FLOAT_INT2FLOAT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatFloat2Float\fP"
+.br
+.RI "Information about the FLOAT_FLOAT2FLOAT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatTrunc\fP"
+.br
+.RI "Information about the FLOAT_TRUNC op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatCeil\fP"
+.br
+.RI "Information about the FLOAT_CEIL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatFloor\fP"
+.br
+.RI "Information about the FLOAT_FLOOR op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpFloatRound\fP"
+.br
+.RI "Information about the FLOAT_ROUND op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpMulti\fP"
+.br
+.RI "Information about the MULTIEQUAL op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpIndirect\fP"
+.br
+.RI "Information about the INDIRECT op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpPiece\fP"
+.br
+.RI "Information about the PIECE op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpSubpiece\fP"
+.br
+.RI "Information about the SUBPIECE op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpCast\fP"
+.br
+.RI "Information about the CAST op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpPtradd\fP"
+.br
+.RI "Information about the PTRADD op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpPtrsub\fP"
+.br
+.RI "Information about the PTRSUB op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpSegment\fP"
+.br
+.RI "Information about the SEGMENTOP op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpCpoolref\fP"
+.br
+.RI "Information about the CPOOLREF op-code\&. "
+.ti -1c
+.RI "class \fBTypeOpNew\fP"
+.br
+.RI "Information about the NEW op-code\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Data-type and behavior information associated with specific p-code op-codes\&. 
+
+
+.PP
+Definition in file \fBtypeop\&.hh\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

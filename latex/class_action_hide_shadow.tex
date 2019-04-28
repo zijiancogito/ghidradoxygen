@@ -1,0 +1,152 @@
+\hypertarget{class_action_hide_shadow}{}\section{Action\+Hide\+Shadow Class Reference}
+\label{class_action_hide_shadow}\index{ActionHideShadow@{ActionHideShadow}}
+
+
+Locate {\itshape shadow} Varnodes and adjust them so they are hidden.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Hide\+Shadow\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{class_action_hide_shadow__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Hide\+Shadow\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{class_action_hide_shadow__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_hide_shadow_aaaee5d4c8b0ef3ef8556606312c680f4}{Action\+Hide\+Shadow}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_hide_shadow_a5b763cb14e0381b879231c4922d00f5b}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_hide_shadow_a2f3d4cba003d9e55f07c2754280caf22}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Locate {\itshape shadow} Varnodes and adjust them so they are hidden. 
+
+A {\bfseries{shadow}} \mbox{\hyperlink{class_varnode}{Varnode}} is an internal copy of another \mbox{\hyperlink{class_varnode}{Varnode}} that a compiler produces but that really isn\textquotesingle{}t a separate variable. In practice, a \mbox{\hyperlink{class_varnode}{Varnode}} and its shadow get grouped into the same \mbox{\hyperlink{class_high_variable}{High\+Variable}}, then without this \mbox{\hyperlink{class_action}{Action}} the decompiler output shows duplicate C\+O\+PY statements. This \mbox{\hyperlink{class_action}{Action}} alters the defining op of the shadow so that the duplicate statement doesn\textquotesingle{}t print. 
+
+Definition at line 909 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_hide_shadow_aaaee5d4c8b0ef3ef8556606312c680f4}\label{class_action_hide_shadow_aaaee5d4c8b0ef3ef8556606312c680f4}} 
+\index{ActionHideShadow@{ActionHideShadow}!ActionHideShadow@{ActionHideShadow}}
+\index{ActionHideShadow@{ActionHideShadow}!ActionHideShadow@{ActionHideShadow}}
+\subsubsection{\texorpdfstring{ActionHideShadow()}{ActionHideShadow()}}
+{\footnotesize\ttfamily Action\+Hide\+Shadow\+::\+Action\+Hide\+Shadow (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 911 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_hide_shadow_aaaee5d4c8b0ef3ef8556606312c680f4_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_hide_shadow_a2f3d4cba003d9e55f07c2754280caf22}\label{class_action_hide_shadow_a2f3d4cba003d9e55f07c2754280caf22}} 
+\index{ActionHideShadow@{ActionHideShadow}!apply@{apply}}
+\index{apply@{apply}!ActionHideShadow@{ActionHideShadow}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Hide\+Shadow\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 3539 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_hide_shadow_a2f3d4cba003d9e55f07c2754280caf22_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_hide_shadow_a5b763cb14e0381b879231c4922d00f5b}\label{class_action_hide_shadow_a5b763cb14e0381b879231c4922d00f5b}} 
+\index{ActionHideShadow@{ActionHideShadow}!clone@{clone}}
+\index{clone@{clone}!ActionHideShadow@{ActionHideShadow}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Hide\+Shadow\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 912 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_hide_shadow_a5b763cb14e0381b879231c4922d00f5b_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

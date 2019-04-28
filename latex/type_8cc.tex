@@ -1,0 +1,92 @@
+\hypertarget{type_8cc}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/type.cc File Reference}
+\label{type_8cc}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc}}
+{\ttfamily \#include \char`\"{}type.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}funcdata.\+hh\char`\"{}}\newline
+Include dependency graph for type.\+cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{type_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{type_8cc_a796dc3d5c66a81c95642a224e24ddb46}{print\+\_\+data}} (ostream \&s, uint1 $\ast$buffer, int4 size, const \mbox{\hyperlink{class_address}{Address}} \&baseaddr)
+\begin{DoxyCompactList}\small\item\em Print a hex dump of a data buffer to stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{type_8cc_ab61b3376ec08add3c7e899d703d5f34e}{metatype2string}} (\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} metatype, string \&res)
+\begin{DoxyCompactList}\small\item\em Convert type {\bfseries{meta-\/type}} to name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} \mbox{\hyperlink{type_8cc_ae2f04f32a572d784b4c46f6745239c42}{string2metatype}} (const string \&metastring)
+\begin{DoxyCompactList}\small\item\em Convert string to type {\bfseries{meta-\/type}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{type_8cc_ab61b3376ec08add3c7e899d703d5f34e}\label{type_8cc_ab61b3376ec08add3c7e899d703d5f34e}} 
+\index{type.cc@{type.cc}!metatype2string@{metatype2string}}
+\index{metatype2string@{metatype2string}!type.cc@{type.cc}}
+\subsubsection{\texorpdfstring{metatype2string()}{metatype2string()}}
+{\footnotesize\ttfamily void metatype2string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}}}]{metatype,  }\item[{string \&}]{res }\end{DoxyParamCaption})}
+
+
+
+Convert type {\bfseries{meta-\/type}} to name. 
+
+Convert a type {\bfseries{meta-\/type}} into the string name of the meta-\/type 
+\begin{DoxyParams}{Parameters}
+{\em metatype} & is the encoded type meta-\/type \\
+\hline
+{\em res} & will hold the resulting string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file type.\+cc.
+
+\mbox{\Hypertarget{type_8cc_a796dc3d5c66a81c95642a224e24ddb46}\label{type_8cc_a796dc3d5c66a81c95642a224e24ddb46}} 
+\index{type.cc@{type.cc}!print\_data@{print\_data}}
+\index{print\_data@{print\_data}!type.cc@{type.cc}}
+\subsubsection{\texorpdfstring{print\_data()}{print\_data()}}
+{\footnotesize\ttfamily void print\+\_\+data (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{uint1 $\ast$}]{buffer,  }\item[{int4}]{size,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{baseaddr }\end{DoxyParamCaption})}
+
+
+
+Print a hex dump of a data buffer to stream. 
+
+Display an array of bytes as a hex dump at a given address. Each line displays an address and 16 bytes in hexadecimal 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the stream to write to \\
+\hline
+{\em buffer} & is a pointer to the bytes \\
+\hline
+{\em size} & is the number of bytes \\
+\hline
+{\em baseaddr} & is the address of the first byte in the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 27 of file type.\+cc.
+
+\mbox{\Hypertarget{type_8cc_ae2f04f32a572d784b4c46f6745239c42}\label{type_8cc_ae2f04f32a572d784b4c46f6745239c42}} 
+\index{type.cc@{type.cc}!string2metatype@{string2metatype}}
+\index{string2metatype@{string2metatype}!type.cc@{type.cc}}
+\subsubsection{\texorpdfstring{string2metatype()}{string2metatype()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} string2metatype (\begin{DoxyParamCaption}\item[{const string \&}]{metastring }\end{DoxyParamCaption})}
+
+
+
+Convert string to type {\bfseries{meta-\/type}}. 
+
+Given a string description of a type {\bfseries{meta-\/type}}. Return the meta-\/type. 
+\begin{DoxyParams}{Parameters}
+{\em metastring} & is the description of the meta-\/type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the encoded type meta-\/type 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file type.\+cc.
+

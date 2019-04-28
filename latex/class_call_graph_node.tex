@@ -1,0 +1,331 @@
+\hypertarget{class_call_graph_node}{}\section{Call\+Graph\+Node Class Reference}
+\label{class_call_graph_node}\index{CallGraphNode@{CallGraphNode}}
+
+
+{\ttfamily \#include $<$callgraph.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_call_graph_node_a1b0706ea9d368e38db236437df844a1faac8a0472b933fd34c6eb7680e22cdabb}{mark}} = 1, 
+\mbox{\hyperlink{class_call_graph_node_a1b0706ea9d368e38db236437df844a1face9045c6b45ab044475aa669c8ffd2b9}{onlycyclein}} = 2, 
+\mbox{\hyperlink{class_call_graph_node_a1b0706ea9d368e38db236437df844a1fa5426b1a70740484c3a65868c022d429f}{currentcycle}} = 4, 
+\mbox{\hyperlink{class_call_graph_node_a1b0706ea9d368e38db236437df844a1fa8aab166f322718826c9a20fa44822b6e}{entrynode}} = 8
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_call_graph_node_aed74dde8d91adb395775a712655e2d2c}{Call\+Graph\+Node}} (void)
+\item 
+void \mbox{\hyperlink{class_call_graph_node_aa61644a0a00f64254a00c04dec29a054}{clear\+Mark}} (void) const
+\item 
+bool \mbox{\hyperlink{class_call_graph_node_aaa58a7c325e39670fcb45b98fb9882b4}{is\+Mark}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_call_graph_node_a8b884b92324abe22eb8c2442c027b660}{get\+Addr}} (void) const
+\item 
+const string \& \mbox{\hyperlink{class_call_graph_node_a2277f2f032877d1f0251e5bdb6c4b32a}{get\+Name}} (void) const
+\item 
+\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$ \mbox{\hyperlink{class_call_graph_node_af0cc63edc8f21a1fc4abe1d64fd1d17f}{get\+Funcdata}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_call_graph_node_aa6130dd67993dbf34737b9560ff88dbd}{num\+In\+Edge}} (void) const
+\item 
+const \mbox{\hyperlink{class_call_graph_edge}{Call\+Graph\+Edge}} \& \mbox{\hyperlink{class_call_graph_node_a74c8585fd8fb11a824646c42d7abf3a6}{get\+In\+Edge}} (int4 i) const
+\item 
+\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ \mbox{\hyperlink{class_call_graph_node_ab795928265254bfa049b445baf7eabcc}{get\+In\+Node}} (int4 i) const
+\item 
+int4 \mbox{\hyperlink{class_call_graph_node_a0c8f85c80e891f9d7fe71277d0391671}{num\+Out\+Edge}} (void) const
+\item 
+const \mbox{\hyperlink{class_call_graph_edge}{Call\+Graph\+Edge}} \& \mbox{\hyperlink{class_call_graph_node_af4e36e64c9990d6e77a8858217429676}{get\+Out\+Edge}} (int4 i) const
+\item 
+\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ \mbox{\hyperlink{class_call_graph_node_aa3cdd86912417b09815e2a6c478f6ff2}{get\+Out\+Node}} (int4 i) const
+\item 
+void \mbox{\hyperlink{class_call_graph_node_adf4b77eb0513240ef97b1e0381758dad}{set\+Funcdata}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$f)
+\item 
+void \mbox{\hyperlink{class_call_graph_node_a0379699be791f33d9b411adb19bec7a5}{save\+Xml}} (ostream \&s) const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_call_graph_node_a0b6c6ec59775a76b838b3d12c3a454f1}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, \mbox{\hyperlink{class_call_graph}{Call\+Graph}} $\ast$graph)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_call_graph_node_a05afb094c2637ded1f1b905b70d198a9}{Call\+Graph}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 49 of file callgraph.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_call_graph_node_a1b0706ea9d368e38db236437df844a1f}\label{class_call_graph_node_a1b0706ea9d368e38db236437df844a1f}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mark@{mark}!CallGraphNode@{CallGraphNode}}\index{CallGraphNode@{CallGraphNode}!mark@{mark}}}\mbox{\Hypertarget{class_call_graph_node_a1b0706ea9d368e38db236437df844a1faac8a0472b933fd34c6eb7680e22cdabb}\label{class_call_graph_node_a1b0706ea9d368e38db236437df844a1faac8a0472b933fd34c6eb7680e22cdabb}} 
+mark&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{onlycyclein@{onlycyclein}!CallGraphNode@{CallGraphNode}}\index{CallGraphNode@{CallGraphNode}!onlycyclein@{onlycyclein}}}\mbox{\Hypertarget{class_call_graph_node_a1b0706ea9d368e38db236437df844a1face9045c6b45ab044475aa669c8ffd2b9}\label{class_call_graph_node_a1b0706ea9d368e38db236437df844a1face9045c6b45ab044475aa669c8ffd2b9}} 
+onlycyclein&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{currentcycle@{currentcycle}!CallGraphNode@{CallGraphNode}}\index{CallGraphNode@{CallGraphNode}!currentcycle@{currentcycle}}}\mbox{\Hypertarget{class_call_graph_node_a1b0706ea9d368e38db236437df844a1fa5426b1a70740484c3a65868c022d429f}\label{class_call_graph_node_a1b0706ea9d368e38db236437df844a1fa5426b1a70740484c3a65868c022d429f}} 
+currentcycle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{entrynode@{entrynode}!CallGraphNode@{CallGraphNode}}\index{CallGraphNode@{CallGraphNode}!entrynode@{entrynode}}}\mbox{\Hypertarget{class_call_graph_node_a1b0706ea9d368e38db236437df844a1fa8aab166f322718826c9a20fa44822b6e}\label{class_call_graph_node_a1b0706ea9d368e38db236437df844a1fa8aab166f322718826c9a20fa44822b6e}} 
+entrynode&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 51 of file callgraph.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_call_graph_node_aed74dde8d91adb395775a712655e2d2c}\label{class_call_graph_node_aed74dde8d91adb395775a712655e2d2c}} 
+\index{CallGraphNode@{CallGraphNode}!CallGraphNode@{CallGraphNode}}
+\index{CallGraphNode@{CallGraphNode}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{CallGraphNode()}{CallGraphNode()}}
+{\footnotesize\ttfamily Call\+Graph\+Node\+::\+Call\+Graph\+Node (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 67 of file callgraph.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_call_graph_node_aa61644a0a00f64254a00c04dec29a054}\label{class_call_graph_node_aa61644a0a00f64254a00c04dec29a054}} 
+\index{CallGraphNode@{CallGraphNode}!clearMark@{clearMark}}
+\index{clearMark@{clearMark}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{clearMark()}{clearMark()}}
+{\footnotesize\ttfamily void Call\+Graph\+Node\+::clear\+Mark (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 68 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_a8b884b92324abe22eb8c2442c027b660}\label{class_call_graph_node_a8b884b92324abe22eb8c2442c027b660}} 
+\index{CallGraphNode@{CallGraphNode}!getAddr@{getAddr}}
+\index{getAddr@{getAddr}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{getAddr()}{getAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}} Call\+Graph\+Node\+::get\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 70 of file callgraph.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_a8b884b92324abe22eb8c2442c027b660_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_node_af0cc63edc8f21a1fc4abe1d64fd1d17f}\label{class_call_graph_node_af0cc63edc8f21a1fc4abe1d64fd1d17f}} 
+\index{CallGraphNode@{CallGraphNode}!getFuncdata@{getFuncdata}}
+\index{getFuncdata@{getFuncdata}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{getFuncdata()}{getFuncdata()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_funcdata}{Funcdata}}$\ast$ Call\+Graph\+Node\+::get\+Funcdata (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 72 of file callgraph.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_af0cc63edc8f21a1fc4abe1d64fd1d17f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_node_a74c8585fd8fb11a824646c42d7abf3a6}\label{class_call_graph_node_a74c8585fd8fb11a824646c42d7abf3a6}} 
+\index{CallGraphNode@{CallGraphNode}!getInEdge@{getInEdge}}
+\index{getInEdge@{getInEdge}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{getInEdge()}{getInEdge()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_call_graph_edge}{Call\+Graph\+Edge}}\& Call\+Graph\+Node\+::get\+In\+Edge (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 74 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_ab795928265254bfa049b445baf7eabcc}\label{class_call_graph_node_ab795928265254bfa049b445baf7eabcc}} 
+\index{CallGraphNode@{CallGraphNode}!getInNode@{getInNode}}
+\index{getInNode@{getInNode}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{getInNode()}{getInNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}}$\ast$ Call\+Graph\+Node\+::get\+In\+Node (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 75 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_a2277f2f032877d1f0251e5bdb6c4b32a}\label{class_call_graph_node_a2277f2f032877d1f0251e5bdb6c4b32a}} 
+\index{CallGraphNode@{CallGraphNode}!getName@{getName}}
+\index{getName@{getName}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const string\& Call\+Graph\+Node\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 71 of file callgraph.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_a2277f2f032877d1f0251e5bdb6c4b32a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_node_af4e36e64c9990d6e77a8858217429676}\label{class_call_graph_node_af4e36e64c9990d6e77a8858217429676}} 
+\index{CallGraphNode@{CallGraphNode}!getOutEdge@{getOutEdge}}
+\index{getOutEdge@{getOutEdge}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{getOutEdge()}{getOutEdge()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_call_graph_edge}{Call\+Graph\+Edge}}\& Call\+Graph\+Node\+::get\+Out\+Edge (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 77 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_aa3cdd86912417b09815e2a6c478f6ff2}\label{class_call_graph_node_aa3cdd86912417b09815e2a6c478f6ff2}} 
+\index{CallGraphNode@{CallGraphNode}!getOutNode@{getOutNode}}
+\index{getOutNode@{getOutNode}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{getOutNode()}{getOutNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}}$\ast$ Call\+Graph\+Node\+::get\+Out\+Node (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 78 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_aaa58a7c325e39670fcb45b98fb9882b4}\label{class_call_graph_node_aaa58a7c325e39670fcb45b98fb9882b4}} 
+\index{CallGraphNode@{CallGraphNode}!isMark@{isMark}}
+\index{isMark@{isMark}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{isMark()}{isMark()}}
+{\footnotesize\ttfamily bool Call\+Graph\+Node\+::is\+Mark (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 69 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_aa6130dd67993dbf34737b9560ff88dbd}\label{class_call_graph_node_aa6130dd67993dbf34737b9560ff88dbd}} 
+\index{CallGraphNode@{CallGraphNode}!numInEdge@{numInEdge}}
+\index{numInEdge@{numInEdge}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{numInEdge()}{numInEdge()}}
+{\footnotesize\ttfamily int4 Call\+Graph\+Node\+::num\+In\+Edge (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 73 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_a0c8f85c80e891f9d7fe71277d0391671}\label{class_call_graph_node_a0c8f85c80e891f9d7fe71277d0391671}} 
+\index{CallGraphNode@{CallGraphNode}!numOutEdge@{numOutEdge}}
+\index{numOutEdge@{numOutEdge}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{numOutEdge()}{numOutEdge()}}
+{\footnotesize\ttfamily int4 Call\+Graph\+Node\+::num\+Out\+Edge (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 76 of file callgraph.\+hh.
+
+\mbox{\Hypertarget{class_call_graph_node_a0b6c6ec59775a76b838b3d12c3a454f1}\label{class_call_graph_node_a0b6c6ec59775a76b838b3d12c3a454f1}} 
+\index{CallGraphNode@{CallGraphNode}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Call\+Graph\+Node\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{\mbox{\hyperlink{class_call_graph}{Call\+Graph}} $\ast$}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 80 of file callgraph.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_a0b6c6ec59775a76b838b3d12c3a454f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_a0b6c6ec59775a76b838b3d12c3a454f1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_node_a0379699be791f33d9b411adb19bec7a5}\label{class_call_graph_node_a0379699be791f33d9b411adb19bec7a5}} 
+\index{CallGraphNode@{CallGraphNode}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Call\+Graph\+Node\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 69 of file callgraph.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_a0379699be791f33d9b411adb19bec7a5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_node_adf4b77eb0513240ef97b1e0381758dad}\label{class_call_graph_node_adf4b77eb0513240ef97b1e0381758dad}} 
+\index{CallGraphNode@{CallGraphNode}!setFuncdata@{setFuncdata}}
+\index{setFuncdata@{setFuncdata}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{setFuncdata()}{setFuncdata()}}
+{\footnotesize\ttfamily void Call\+Graph\+Node\+::set\+Funcdata (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Definition at line 58 of file callgraph.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_adf4b77eb0513240ef97b1e0381758dad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_node_adf4b77eb0513240ef97b1e0381758dad_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_call_graph_node_a05afb094c2637ded1f1b905b70d198a9}\label{class_call_graph_node_a05afb094c2637ded1f1b905b70d198a9}} 
+\index{CallGraphNode@{CallGraphNode}!CallGraph@{CallGraph}}
+\index{CallGraph@{CallGraph}!CallGraphNode@{CallGraphNode}}
+\subsubsection{\texorpdfstring{CallGraph}{CallGraph}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_call_graph}{Call\+Graph}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 58 of file callgraph.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{callgraph_8hh}{callgraph.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{callgraph_8cc}{callgraph.\+cc}}\end{DoxyCompactItemize}

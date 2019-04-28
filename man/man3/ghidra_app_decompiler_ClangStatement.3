@@ -1,0 +1,48 @@
+.TH "ghidra.app.decompiler.ClangStatement" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.ClangStatement
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBghidra\&.app\&.decompiler\&.ClangTokenGroup\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClangStatement\fP (\fBClangNode\fP par)"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP \fBgetPcodeOp\fP ()"
+.br
+.ti -1c
+.RI "void \fBrestoreFromXML\fP (XmlPullParser parser, PcodeFactory pfactory)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A C code statement\&. What typically appears between the ';' '{' and '}' characters\&. A statement must have a pcode operation associated with it\&. In the case of conditional flow control operations, there are usually two lines associated with the statement one containing the '{' and one containing '}'\&. The one containing the actual conditional branch is considered a C statement, while the other one is just considered a blank line\&. I\&.e\&. if (expression) { is a C statement, while the line containing the closing '}' by itself is considered blank 
+.PP
+Definition at line 40 of file ClangStatement\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.ClangStatement\&.ClangStatement (\fBClangNode\fP par)\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file ClangStatement\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBPcodeOp\fP ghidra\&.app\&.decompiler\&.ClangStatement\&.getPcodeOp ()\fC [inline]\fP"
+
+.PP
+Definition at line 44 of file ClangStatement\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.ClangStatement\&.restoreFromXML (XmlPullParser parser, PcodeFactory pfactory)\fC [inline]\fP"
+
+.PP
+Definition at line 46 of file ClangStatement\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

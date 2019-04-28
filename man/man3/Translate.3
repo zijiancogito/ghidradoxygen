@@ -1,0 +1,458 @@
+.TH "Translate" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Translate \- The interface to a translation engine for a processor\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.PP
+Inherits \fBAddrSpaceManager\fP\&.
+.PP
+Inherited by \fBDummyTranslate\fP, \fBGhidraTranslate\fP, and \fBSleighBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTranslate\fP (void)"
+.br
+.RI "\fBConstructor\fP for the translator\&. "
+.ti -1c
+.RI "void \fBsetDefaultFloatFormats\fP (void)"
+.br
+.RI "If no explicit float formats, set up default formats\&. "
+.ti -1c
+.RI "bool \fBisBigEndian\fP (void) const"
+.br
+.RI "Is the processor big endian? "
+.ti -1c
+.RI "const \fBFloatFormat\fP * \fBgetFloatFormat\fP (int4 size) const"
+.br
+.RI "Get format for a particular floating point encoding\&. "
+.ti -1c
+.RI "int4 \fBgetAlignment\fP (void) const"
+.br
+.RI "Get the instruction alignment for the processor\&. "
+.ti -1c
+.RI "uintm \fBgetUniqueBase\fP (void) const"
+.br
+.RI "Get the base offset for new temporary registers\&. "
+.ti -1c
+.RI "virtual void \fBinitialize\fP (\fBDocumentStorage\fP &store)=0"
+.br
+.RI "Initialize the translator given XML configuration documents\&. "
+.ti -1c
+.RI "virtual void \fBregisterContext\fP (const string &name, int4 sbit, int4 ebit)"
+.br
+.RI "Add a new context variable to the model for this processor\&. "
+.ti -1c
+.RI "virtual void \fBsetContextDefault\fP (const string &name, uintm val)"
+.br
+.RI "Set the default value for a particular context variable\&. "
+.ti -1c
+.RI "virtual void \fBallowContextSet\fP (bool val) const"
+.br
+.RI "Toggle whether disassembly is allowed to affect context\&. "
+.ti -1c
+.RI "virtual void \fBaddRegister\fP (const string &nm, \fBAddrSpace\fP *base, \fBuintb\fP offset, int4 size)=0"
+.br
+.RI "Add a named register to the model for this processor\&. "
+.ti -1c
+.RI "virtual const \fBVarnodeData\fP & \fBgetRegister\fP (const string &nm) const =0"
+.br
+.RI "Get a register as \fBVarnodeData\fP given its name\&. "
+.ti -1c
+.RI "virtual string \fBgetRegisterName\fP (\fBAddrSpace\fP *base, \fBuintb\fP off, int4 size) const =0"
+.br
+.RI "Get the name of a register given its location\&. "
+.ti -1c
+.RI "virtual void \fBgetAllRegisters\fP (map< \fBVarnodeData\fP, string > &reglist) const =0"
+.br
+.RI "Get a list of all register names and the corresponding location\&. "
+.ti -1c
+.RI "virtual void \fBgetUserOpNames\fP (vector< string > &res) const =0"
+.br
+.RI "Get a list of all \fIuser-defined\fP pcode ops\&. "
+.ti -1c
+.RI "virtual int4 \fBinstructionLength\fP (const \fBAddress\fP &baseaddr) const =0"
+.br
+.RI "Get the length of a machine instruction\&. "
+.ti -1c
+.RI "virtual int4 \fBoneInstruction\fP (\fBPcodeEmit\fP &emit, const \fBAddress\fP &baseaddr) const =0"
+.br
+.RI "Transform a single machine instruction into pcode\&. "
+.ti -1c
+.RI "virtual int4 \fBprintAssembly\fP (\fBAssemblyEmit\fP &emit, const \fBAddress\fP &baseaddr) const =0"
+.br
+.RI "Disassemble a single machine instruction\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetBigEndian\fP (bool val)"
+.br
+.RI "Set general endianness to \fBbig\fP if val is \fBtrue\fP\&. "
+.ti -1c
+.RI "void \fBsetUniqueBase\fP (uintm val)"
+.br
+.RI "Set the base offset for new temporary registers\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBalignment\fP"
+.br
+.RI "Byte modulo on which instructions are aligned\&. "
+.ti -1c
+.RI "vector< \fBFloatFormat\fP > \fBfloatformats\fP"
+.br
+.RI "Floating point formats utilized by the processor\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The interface to a translation engine for a processor\&. 
+
+This interface performs translations of instruction data for a particular processor\&. It has two main functions
+.IP "\(bu" 2
+Disassemble single machine instructions
+.IP "\(bu" 2
+Translate single machine instructions into \fIpcode\fP\&.
+.PP
+.PP
+It is also the repository for information about the exact configuration of the reverse engineering model associated with the processor\&. In particular, it knows about all the address spaces, registers, and spacebases for the processor\&. 
+.PP
+Definition at line 277 of file translate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Translate::Translate (void)"
+
+.PP
+\fBConstructor\fP for the translator\&. This constructs only a shell for the \fBTranslate\fP object\&. It won't be usable until it is initialized for a specific processor The main entry point for this is the \fBTranslate::initialize\fP method, which must be overridden by a derived class 
+.PP
+Definition at line 661 of file translate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void Translate::addRegister (const string & nm, \fBAddrSpace\fP * base, \fBuintb\fP offset, int4 size)\fC [pure virtual]\fP"
+
+.PP
+Add a named register to the model for this processor\&. 
+.PP
+\fBDeprecated\fP
+.RS 4
+All registers used to be formally added to the processor model through this method\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the new register 
+.br
+\fIbase\fP is the address space containing the register 
+.br
+\fIoffset\fP is the offset of the register 
+.br
+\fIsize\fP is the number of bytes in the register 
+.RE
+.PP
+
+.PP
+Implemented in \fBDummyTranslate\fP, \fBSleighBase\fP, and \fBGhidraTranslate\fP\&.
+.SS "virtual void Translate::allowContextSet (bool val) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Toggle whether disassembly is allowed to affect context\&. By default the disassembly/pcode translation engine can change the global context, thereby affecting later disassembly\&. Context may be getting determined by something other than control flow in, the disassembly, in which case this function can turn off changes made by the disassembly 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to allow context changes, \fBfalse\fP prevents changes 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSleigh\fP\&.
+.PP
+Definition at line 330 of file translate\&.hh\&.
+.SS "int4 Translate::getAlignment (void) const\fC [inline]\fP"
+
+.PP
+Get the instruction alignment for the processor\&. If machine instructions need to have a specific alignment for this processor, this routine returns it\&. I\&.e\&. a return value of 4, means that the address of all instructions must be a multiple of 4\&. If there is no specific alignment requirement, this routine returns 1\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the instruction alignment 
+.RE
+.PP
+
+.PP
+Definition at line 556 of file translate\&.hh\&.
+.SS "virtual void Translate::getAllRegisters (map< \fBVarnodeData\fP, string > & reglist) const\fC [pure virtual]\fP"
+
+.PP
+Get a list of all register names and the corresponding location\&. Most processors have a list of named registers and possibly other memory locations that are specific to it\&. This function populates a map from the location information to the name, for every named location known by the translator 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreglist\fP is the map which will be populated by the call 
+.RE
+.PP
+
+.PP
+Implemented in \fBDummyTranslate\fP, \fBGhidraTranslate\fP, and \fBSleighBase\fP\&.
+.SS "const \fBFloatFormat\fP * Translate::getFloatFormat (int4 size) const"
+
+.PP
+Get format for a particular floating point encoding\&. The pcode model for floating point encoding assumes that a consistent encoding is used for all values of a given size\&. This routine fetches the \fBFloatFormat\fP object given the size, in bytes, of the desired encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP is the size of the floating-point value in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the floating-point format 
+.RE
+.PP
+
+.PP
+Definition at line 687 of file translate\&.cc\&.
+.SS "virtual const \fBVarnodeData\fP& Translate::getRegister (const string & nm) const\fC [pure virtual]\fP"
+
+.PP
+Get a register as \fBVarnodeData\fP given its name\&. Retrieve the location and size of a register given its name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the register 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBVarnodeData\fP for the register 
+.RE
+.PP
+
+.PP
+Implemented in \fBDummyTranslate\fP, \fBGhidraTranslate\fP, and \fBSleighBase\fP\&.
+.SS "virtual string Translate::getRegisterName (\fBAddrSpace\fP * base, \fBuintb\fP off, int4 size) const\fC [pure virtual]\fP"
+
+.PP
+Get the name of a register given its location\&. Generic references to locations in a \fIregister\fP space can be translated into the associated register \fIname\fP\&. If the location doesn't match a register \fIexactly\fP, an empty string is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbase\fP is the address space containing the location 
+.br
+\fIoff\fP is the offset of the location 
+.br
+\fIsize\fP is the size of the location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the register, or an empty string 
+.RE
+.PP
+
+.PP
+Implemented in \fBDummyTranslate\fP, \fBGhidraTranslate\fP, and \fBSleighBase\fP\&.
+.SS "uintm Translate::getUniqueBase (void) const\fC [inline]\fP"
+
+.PP
+Get the base offset for new temporary registers\&. This routine gets the base offset, within the \fIunique\fP temporary register space, where new registers can be allocated for the simplification process\&. Locations before this offset are reserved registers needed by the pcode translation engine\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the first allocatable offset 
+.RE
+.PP
+
+.PP
+Definition at line 566 of file translate\&.hh\&.
+.SS "virtual void Translate::getUserOpNames (vector< string > & res) const\fC [pure virtual]\fP"
+
+.PP
+Get a list of all \fIuser-defined\fP pcode ops\&. The pcode model allows processors to define new pcode instructions that are specific to that processor\&. These \fIuser-defined\fP instructions are all identified by a name and an index\&. This method returns a list of these ops in index order\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP is the resulting vector of user op names 
+.RE
+.PP
+
+.PP
+Implemented in \fBDummyTranslate\fP, \fBGhidraTranslate\fP, and \fBSleighBase\fP\&.
+.SS "virtual void Translate::initialize (\fBDocumentStorage\fP & store)\fC [pure virtual]\fP"
+
+.PP
+Initialize the translator given XML configuration documents\&. A translator gets initialized once, possibly using XML documents to configure it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is a set of configuration documents 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighCompile\fP, \fBSleigh\fP, \fBDummyTranslate\fP, and \fBGhidraTranslate\fP\&.
+.SS "virtual int4 Translate::instructionLength (const \fBAddress\fP & baseaddr) const\fC [pure virtual]\fP"
+
+.PP
+Get the length of a machine instruction\&. This method decodes an instruction at a specific address just enough to find the number of bytes it uses within the instruction stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaseaddr\fP is the \fBAddress\fP of the instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in the instruction 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighCompile\fP, \fBSleigh\fP, \fBDummyTranslate\fP, and \fBGhidraTranslate\fP\&.
+.SS "bool Translate::isBigEndian (void) const\fC [inline]\fP"
+
+.PP
+Is the processor big endian? Processors can usually be described as using a big endian encoding or a little endian encoding\&. This routine returns \fBtrue\fP if the processor globally uses big endian encoding\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if big endian 
+.RE
+.PP
+
+.PP
+Definition at line 546 of file translate\&.hh\&.
+.SS "virtual int4 Translate::oneInstruction (\fBPcodeEmit\fP & emit, const \fBAddress\fP & baseaddr) const\fC [pure virtual]\fP"
+
+.PP
+Transform a single machine instruction into pcode\&. This is the main interface to the pcode translation engine\&. The \fIdump\fP method in the \fIemit\fP object is invoked exactly once for each pcode operation in the translation for the machine instruction at the given address\&. This routine can throw either
+.IP "\(bu" 2
+\fBUnimplError\fP or
+.IP "\(bu" 2
+\fBBadDataError\fP
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemit\fP is the tailored pcode emitting object 
+.br
+\fIbaseaddr\fP is the \fBAddress\fP of the machine instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in the machine instruction 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighCompile\fP, \fBSleigh\fP, \fBDummyTranslate\fP, and \fBGhidraTranslate\fP\&.
+.SS "virtual int4 Translate::printAssembly (\fBAssemblyEmit\fP & emit, const \fBAddress\fP & baseaddr) const\fC [pure virtual]\fP"
+
+.PP
+Disassemble a single machine instruction\&. This is the main interface to the disassembler for the processor\&. It disassembles a single instruction and returns the result to the application via the \fIdump\fP method in the \fIemit\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemit\fP is the disassembly emitting object 
+.br
+\fIbaseaddr\fP is the address of the machine instruction to disassemble 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighCompile\fP, \fBSleigh\fP, \fBDummyTranslate\fP, and \fBGhidraTranslate\fP\&.
+.SS "virtual void Translate::registerContext (const string & name, int4 sbit, int4 ebit)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Add a new context variable to the model for this processor\&. Add the name of a context register used by the processor and how that register is packed into the context state\&. This information is used by a \fBContextDatabase\fP to associate names with context information and to pack context into a single state variable for the translation engine\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the new context variable 
+.br
+\fIsbit\fP is the first bit of the variable in the packed state 
+.br
+\fIebit\fP is the last bit of the variable in the packed state 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSleigh\fP\&.
+.PP
+Definition at line 311 of file translate\&.hh\&.
+.SS "void Translate::setBigEndian (bool val)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Set general endianness to \fBbig\fP if val is \fBtrue\fP\&. Although endianness is usually specified on the space, most languages set an endianness across the entire processor\&. This routine sets the endianness to \fBbig\fP if the -val- is passed in as \fBtrue\fP\&. Otherwise, the endianness is set to \fBsmall\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if the endianness should be set to \fBbig\fP 
+.RE
+.PP
+
+.PP
+Definition at line 527 of file translate\&.hh\&.
+.SS "virtual void Translate::setContextDefault (const string & name, uintm val)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Set the default value for a particular context variable\&. Set the value to be returned for a context variable when there are no explicit address ranges specifying a value for the variable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the context variable 
+.br
+\fIval\fP is the value to be considered default 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSleigh\fP\&.
+.PP
+Definition at line 320 of file translate\&.hh\&.
+.SS "void Translate::setDefaultFloatFormats (void)"
+
+.PP
+If no explicit float formats, set up default formats\&. If no floating-point format objects were registered by the \fBinitialize\fP method, this method will fill in some suitable default formats\&. These defaults are based on the 4-byte and 8-byte encoding specified by the IEEE 754 standard\&. 
+.PP
+Definition at line 672 of file translate\&.cc\&.
+.SS "void Translate::setUniqueBase (uintm val)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Set the base offset for new temporary registers\&. The \fIunique\fP address space, for allocating temporary registers, is used for both registers needed by the pcode translation engine and, later, by the simplification engine\&. This routine sets the boundary of the portion of the space allocated for the pcode engine, and sets the base offset where registers created by the simplification process can start being allocated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the boundary offset 
+.RE
+.PP
+
+.PP
+Definition at line 538 of file translate\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 Translate::alignment\fC [protected]\fP"
+
+.PP
+Byte modulo on which instructions are aligned\&. 
+.PP
+Definition at line 281 of file translate\&.hh\&.
+.SS "vector<\fBFloatFormat\fP> Translate::floatformats\fC [protected]\fP"
+
+.PP
+Floating point formats utilized by the processor\&. 
+.PP
+Definition at line 282 of file translate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

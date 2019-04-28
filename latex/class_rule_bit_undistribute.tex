@@ -1,0 +1,182 @@
+\hypertarget{class_rule_bit_undistribute}{}\section{Rule\+Bit\+Undistribute Class Reference}
+\label{class_rule_bit_undistribute}\index{RuleBitUndistribute@{RuleBitUndistribute}}
+
+
+Undo distributed operations through I\+N\+T\+\_\+\+A\+ND, I\+N\+T\+\_\+\+OR, and I\+N\+T\+\_\+\+X\+OR.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Bit\+Undistribute\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_rule_bit_undistribute__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Bit\+Undistribute\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_rule_bit_undistribute__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_bit_undistribute_a2159c6998ef524f7ea09b573a08eed3b}{Rule\+Bit\+Undistribute}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_bit_undistribute_a496c93a2aad0d79a776a71160529d830}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_bit_undistribute_ab8b99b7595b2533bde19beab4391a300}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_bit_undistribute_a01122a111d9e7ff6d741128cb8d9999d}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Undo distributed operations through I\+N\+T\+\_\+\+A\+ND, I\+N\+T\+\_\+\+OR, and I\+N\+T\+\_\+\+X\+OR. 
+
+
+\begin{DoxyItemize}
+\item {\ttfamily zext(\+V) \& zext(\+W) =$>$ zext( V \& W )}
+\item {\ttfamily (V $>$$>$ X) $\vert$ (W $>$$>$ X) =$>$ (V $\vert$ W) $>$$>$ X}
+\end{DoxyItemize}
+
+Works with I\+N\+T\+\_\+\+Z\+E\+XT, I\+N\+T\+\_\+\+S\+E\+XT, I\+N\+T\+\_\+\+L\+E\+FT, I\+N\+T\+\_\+\+R\+I\+G\+HT, and I\+N\+T\+\_\+\+S\+R\+I\+G\+HT. 
+
+Definition at line 458 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_bit_undistribute_a2159c6998ef524f7ea09b573a08eed3b}\label{class_rule_bit_undistribute_a2159c6998ef524f7ea09b573a08eed3b}} 
+\index{RuleBitUndistribute@{RuleBitUndistribute}!RuleBitUndistribute@{RuleBitUndistribute}}
+\index{RuleBitUndistribute@{RuleBitUndistribute}!RuleBitUndistribute@{RuleBitUndistribute}}
+\subsubsection{\texorpdfstring{RuleBitUndistribute()}{RuleBitUndistribute()}}
+{\footnotesize\ttfamily Rule\+Bit\+Undistribute\+::\+Rule\+Bit\+Undistribute (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 460 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_rule_bit_undistribute_a2159c6998ef524f7ea09b573a08eed3b_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_bit_undistribute_a01122a111d9e7ff6d741128cb8d9999d}\label{class_rule_bit_undistribute_a01122a111d9e7ff6d741128cb8d9999d}} 
+\index{RuleBitUndistribute@{RuleBitUndistribute}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleBitUndistribute@{RuleBitUndistribute}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Bit\+Undistribute\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 2487 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_bit_undistribute_a01122a111d9e7ff6d741128cb8d9999d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_bit_undistribute_a496c93a2aad0d79a776a71160529d830}\label{class_rule_bit_undistribute_a496c93a2aad0d79a776a71160529d830}} 
+\index{RuleBitUndistribute@{RuleBitUndistribute}!clone@{clone}}
+\index{clone@{clone}!RuleBitUndistribute@{RuleBitUndistribute}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Bit\+Undistribute\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 461 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_rule_bit_undistribute_a496c93a2aad0d79a776a71160529d830_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_bit_undistribute_ab8b99b7595b2533bde19beab4391a300}\label{class_rule_bit_undistribute_ab8b99b7595b2533bde19beab4391a300}} 
+\index{RuleBitUndistribute@{RuleBitUndistribute}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleBitUndistribute@{RuleBitUndistribute}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Bit\+Undistribute\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 2480 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

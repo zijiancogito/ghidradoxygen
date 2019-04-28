@@ -1,0 +1,145 @@
+\hypertarget{class_type_op_int_div}{}\section{Type\+Op\+Int\+Div Class Reference}
+\label{class_type_op_int_div}\index{TypeOpIntDiv@{TypeOpIntDiv}}
+
+
+Information about the I\+N\+T\+\_\+\+D\+IV op-\/code.  
+
+
+
+
+{\ttfamily \#include $<$typeop.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Op\+Int\+Div\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{class_type_op_int_div__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Op\+Int\+Div\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_int_div__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_op_int_div_ad8e8b6a054296860732763e07e30e43f}{Type\+Op\+Int\+Div}} (\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_op_int_div_a8fee65ef2ac0fcc8373355a597459fcb}{push}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_int_div_ad99f05d40d200997ae62febf063b8ce2}{get\+Input\+Cast}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, int4 slot, const \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$cast\+Strategy) const
+\begin{DoxyCompactList}\small\item\em Find the data-\/type of the input to a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Information about the I\+N\+T\+\_\+\+D\+IV op-\/code. 
+
+Definition at line 485 of file typeop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_op_int_div_ad8e8b6a054296860732763e07e30e43f}\label{class_type_op_int_div_ad8e8b6a054296860732763e07e30e43f}} 
+\index{TypeOpIntDiv@{TypeOpIntDiv}!TypeOpIntDiv@{TypeOpIntDiv}}
+\index{TypeOpIntDiv@{TypeOpIntDiv}!TypeOpIntDiv@{TypeOpIntDiv}}
+\subsubsection{\texorpdfstring{TypeOpIntDiv()}{TypeOpIntDiv()}}
+{\footnotesize\ttfamily Type\+Op\+Int\+Div\+::\+Type\+Op\+Int\+Div (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 1217 of file typeop.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_op_int_div_ad99f05d40d200997ae62febf063b8ce2}\label{class_type_op_int_div_ad99f05d40d200997ae62febf063b8ce2}} 
+\index{TypeOpIntDiv@{TypeOpIntDiv}!getInputCast@{getInputCast}}
+\index{getInputCast@{getInputCast}!TypeOpIntDiv@{TypeOpIntDiv}}
+\subsubsection{\texorpdfstring{getInputCast()}{getInputCast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Int\+Div\+::get\+Input\+Cast (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{int4}]{slot,  }\item[{const \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$}]{cast\+Strategy }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the data-\/type of the input to a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+Calculate the actual data-\/type of the input to the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. A {\bfseries{null}} result indicates the input data-\/type is the same as or otherwise doesn\textquotesingle{}t need a cast from the data-\/type of the actual input \mbox{\hyperlink{class_varnode}{Varnode}} 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em slot} & is the input to consider \\
+\hline
+{\em cast\+Strategy} & is the current casting strategy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a950c417e4af100d176a701af5816b5ab}{Type\+Op}}.
+
+
+
+Definition at line 1225 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_int_div_ad99f05d40d200997ae62febf063b8ce2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_int_div_a8fee65ef2ac0fcc8373355a597459fcb}\label{class_type_op_int_div_a8fee65ef2ac0fcc8373355a597459fcb}} 
+\index{TypeOpIntDiv@{TypeOpIntDiv}!push@{push}}
+\index{push@{push}!TypeOpIntDiv@{TypeOpIntDiv}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily virtual void Type\+Op\+Int\+Div\+::push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. 
+
+Given a specific language and \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}, emit the expression rooted at the operation. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} to emit \\
+\hline
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_type_op_ac9c9544203ed74dabe6ac662b653b2af}{Type\+Op}}.
+
+
+
+Definition at line 488 of file typeop.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_type_op_int_div_a8fee65ef2ac0fcc8373355a597459fcb_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8hh}{typeop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8cc}{typeop.\+cc}}\end{DoxyCompactItemize}

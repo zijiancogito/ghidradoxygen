@@ -1,0 +1,109 @@
+\hypertarget{class_volatile_op}{}\section{Volatile\+Op Class Reference}
+\label{class_volatile_op}\index{VolatileOp@{VolatileOp}}
+
+
+A base class for operations that access volatile memory.  
+
+
+
+
+{\ttfamily \#include $<$userop.\+hh$>$}
+
+
+
+Inheritance diagram for Volatile\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{class_volatile_op__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Volatile\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_volatile_op__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_volatile_op_af8e858394ba7b9ae030a30ebb90ed73c}{Volatile\+Op}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, const string \&nm, int4 ind)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_volatile_op_a49723e93482e3ece0899463711b2ba6b}{append\+Size}} (const string \&base, int4 size)
+\begin{DoxyCompactList}\small\item\em Append a suffix to a string encoding a specific size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A base class for operations that access volatile memory. 
+
+The decompiler models volatile memory by converting any direct read or write of the memory to a function that {\itshape accesses} the memory. This class and its derived classes model such functions. Within the p-\/code control-\/flow, dedicated user defined ops serve as a placeholder for the (possibly unknown) effects of modifying/accessing the memory and prevent accidental constant propagation. 
+
+Definition at line 99 of file userop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_volatile_op_af8e858394ba7b9ae030a30ebb90ed73c}\label{class_volatile_op_af8e858394ba7b9ae030a30ebb90ed73c}} 
+\index{VolatileOp@{VolatileOp}!VolatileOp@{VolatileOp}}
+\index{VolatileOp@{VolatileOp}!VolatileOp@{VolatileOp}}
+\subsubsection{\texorpdfstring{VolatileOp()}{VolatileOp()}}
+{\footnotesize\ttfamily Volatile\+Op\+::\+Volatile\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{const string \&}]{nm,  }\item[{int4}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 103 of file userop.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_volatile_op_a49723e93482e3ece0899463711b2ba6b}\label{class_volatile_op_a49723e93482e3ece0899463711b2ba6b}} 
+\index{VolatileOp@{VolatileOp}!appendSize@{appendSize}}
+\index{appendSize@{appendSize}!VolatileOp@{VolatileOp}}
+\subsubsection{\texorpdfstring{appendSize()}{appendSize()}}
+{\footnotesize\ttfamily string Volatile\+Op\+::append\+Size (\begin{DoxyParamCaption}\item[{const string \&}]{base,  }\item[{int4}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Append a suffix to a string encoding a specific size. 
+
+This allows a single user defined operator to have multiple symbol names based on the size of its operands in context. 
+\begin{DoxyParams}{Parameters}
+{\em base} & is the string to append the suffix to \\
+\hline
+{\em size} & is the size to encode expressed as the number of bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the appended string 
+\end{DoxyReturn}
+
+
+Definition at line 39 of file userop.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_volatile_op_a49723e93482e3ece0899463711b2ba6b_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8hh}{userop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8cc}{userop.\+cc}}\end{DoxyCompactItemize}

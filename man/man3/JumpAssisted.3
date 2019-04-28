@@ -1,0 +1,134 @@
+.TH "JumpAssisted" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpAssisted
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.PP
+Inherits \fBJumpModel\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpAssisted\fP (\fBJumpTable\fP *jt)"
+.br
+.ti -1c
+.RI "virtual bool \fBisOverride\fP (void) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetTableSize\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBrecoverModel\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, uint4 matchsize, uint4 maxtablesize)"
+.br
+.ti -1c
+.RI "virtual void \fBbuildAddresses\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable, vector< \fBLoadTable\fP > *loadpoints) const"
+.br
+.ti -1c
+.RI "virtual void \fBfindUnnormalized\fP (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)"
+.br
+.ti -1c
+.RI "virtual void \fBbuildLabels\fP (\fBFuncdata\fP *fd, vector< \fBAddress\fP > &addresstable, vector< \fBuintb\fP > &label, const \fBJumpModel\fP *orig) const"
+.br
+.ti -1c
+.RI "virtual void \fBfoldInNormalization\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop)"
+.br
+.ti -1c
+.RI "virtual bool \fBfoldInGuards\fP (\fBFuncdata\fP *fd, \fBJumpTable\fP *jump)"
+.br
+.ti -1c
+.RI "virtual bool \fBsanityCheck\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable)"
+.br
+.ti -1c
+.RI "virtual \fBJumpModel\fP * \fBclone\fP (\fBJumpTable\fP *jt) const"
+.br
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 330 of file jumptable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JumpAssisted::JumpAssisted (\fBJumpTable\fP * jt)\fC [inline]\fP"
+
+.PP
+Definition at line 336 of file jumptable\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void JumpAssisted::buildAddresses (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable, vector< \fBLoadTable\fP > * loadpoints) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 1757 of file jumptable\&.cc\&.
+.SS "void JumpAssisted::buildLabels (\fBFuncdata\fP * fd, vector< \fBAddress\fP > & addresstable, vector< \fBuintb\fP > & label, const \fBJumpModel\fP * orig) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 1786 of file jumptable\&.cc\&.
+.SS "virtual void JumpAssisted::clear (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpModel\fP\&.
+.PP
+Definition at line 348 of file jumptable\&.hh\&.
+.SS "\fBJumpModel\fP * JumpAssisted::clone (\fBJumpTable\fP * jt) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 1835 of file jumptable\&.cc\&.
+.SS "virtual void JumpAssisted::findUnnormalized (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 342 of file jumptable\&.hh\&.
+.SS "bool JumpAssisted::foldInGuards (\fBFuncdata\fP * fd, \fBJumpTable\fP * jump)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 1827 of file jumptable\&.cc\&.
+.SS "void JumpAssisted::foldInNormalization (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 1813 of file jumptable\&.cc\&.
+.SS "virtual int4 JumpAssisted::getTableSize (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 339 of file jumptable\&.hh\&.
+.SS "virtual bool JumpAssisted::isOverride (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 338 of file jumptable\&.hh\&.
+.SS "bool JumpAssisted::recoverModel (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, uint4 matchsize, uint4 maxtablesize)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 1719 of file jumptable\&.cc\&.
+.SS "virtual bool JumpAssisted::sanityCheck (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 346 of file jumptable\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,83 @@
+.TH "ConstantSpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConstantSpace \- Special \fBAddrSpace\fP for representing constants during analysis\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <space\&.hh>\fP
+.PP
+Inherits \fBAddrSpace\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConstantSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, const string &nm, int4 ind)"
+.br
+.RI "Only constructor\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Special \fBAddrSpace\fP for representing constants during analysis\&. 
+
+The underlying RTL (See \fBPcodeOp\fP) represents all data in terms of an \fBAddress\fP, which is made up of an \fBAddrSpace\fP and offset pair\&. In order to represent constants in the semantics of the RTL, there is a special \fIconstant\fP address space\&. An \fIoffset\fP within the address space encodes the actual constant represented by the pair\&. I\&.e\&. the pair (\fBconst\fP,4) represents the constant \fB4\fP within the RTL\&. The \fIsize\fP of the \fBConstantSpace\fP has no meaning, as we always want to be able to represent an arbitrarily large constant\&. In practice, the size of a constant is limited by the offset field of an \fBAddress\fP\&. 
+.PP
+Definition at line 167 of file space\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConstantSpace::ConstantSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, const string & nm, int4 ind)"
+
+.PP
+Only constructor\&. This constructs the unique constant space By convention, the name is always 'const' and the index is always 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the associated address space manager 
+.br
+\fIt\fP is the associated processor translator 
+.br
+\fInm\fP is the name 
+.br
+\fIind\fP is the integer identifier 
+.RE
+.PP
+
+.PP
+Definition at line 405 of file space\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ConstantSpace::printRaw (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+Constants are always printed as hexidecimal values in the debugger and console dumps 
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 416 of file space\&.cc\&.
+.SS "void ConstantSpace::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+As the \fBConstantSpace\fP is never saved, it should never get restored either\&. 
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 432 of file space\&.cc\&.
+.SS "void ConstantSpace::saveXml (ostream & s) const\fC [virtual]\fP"
+The \fBConstantSpace\fP should never be explicitly saved as it is always built automatically 
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 424 of file space\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

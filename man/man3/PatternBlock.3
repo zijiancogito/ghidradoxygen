@@ -1,0 +1,158 @@
+.TH "PatternBlock" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PatternBlock
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpattern\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternBlock\fP (int4 off, uintm msk, uintm val)"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP (bool tf)"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP (const \fBPatternBlock\fP *a, const \fBPatternBlock\fP *b)"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP (vector< \fBPatternBlock\fP * > &list)"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP * \fBcommonSubPattern\fP (const \fBPatternBlock\fP *b) const"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP * \fBintersect\fP (const \fBPatternBlock\fP *b) const"
+.br
+.ti -1c
+.RI "bool \fBspecializes\fP (const \fBPatternBlock\fP *op2) const"
+.br
+.ti -1c
+.RI "bool \fBidentical\fP (const \fBPatternBlock\fP *op2) const"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP * \fBclone\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBshift\fP (int4 sa)"
+.br
+.ti -1c
+.RI "int4 \fBgetLength\fP (void) const"
+.br
+.ti -1c
+.RI "uintm \fBgetMask\fP (int4 startbit, int4 size) const"
+.br
+.ti -1c
+.RI "uintm \fBgetValue\fP (int4 startbit, int4 size) const"
+.br
+.ti -1c
+.RI "bool \fBalwaysTrue\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBalwaysFalse\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisInstructionMatch\fP (\fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "bool \fBisContextMatch\fP (\fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 22 of file slghpattern\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PatternBlock::PatternBlock (int4 off, uintm msk, uintm val)"
+
+.PP
+Definition at line 225 of file slghpattern\&.cc\&.
+.SS "PatternBlock::PatternBlock (bool tf)"
+
+.PP
+Definition at line 235 of file slghpattern\&.cc\&.
+.SS "PatternBlock::PatternBlock (const \fBPatternBlock\fP * a, const \fBPatternBlock\fP * b)"
+
+.PP
+Definition at line 245 of file slghpattern\&.cc\&.
+.SS "PatternBlock::PatternBlock (vector< \fBPatternBlock\fP * > & list)"
+
+.PP
+Definition at line 256 of file slghpattern\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool PatternBlock::alwaysFalse (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file slghpattern\&.hh\&.
+.SS "bool PatternBlock::alwaysTrue (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 42 of file slghpattern\&.hh\&.
+.SS "\fBPatternBlock\fP * PatternBlock::clone (void) const"
+
+.PP
+Definition at line 279 of file slghpattern\&.cc\&.
+.SS "\fBPatternBlock\fP * PatternBlock::commonSubPattern (const \fBPatternBlock\fP * b) const"
+
+.PP
+Definition at line 291 of file slghpattern\&.cc\&.
+.SS "int4 PatternBlock::getLength (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 39 of file slghpattern\&.hh\&.
+.SS "uintm PatternBlock::getMask (int4 startbit, int4 size) const"
+
+.PP
+Definition at line 401 of file slghpattern\&.cc\&.
+.SS "uintm PatternBlock::getValue (int4 startbit, int4 size) const"
+
+.PP
+Definition at line 433 of file slghpattern\&.cc\&.
+.SS "bool PatternBlock::identical (const \fBPatternBlock\fP * op2) const"
+
+.PP
+Definition at line 376 of file slghpattern\&.cc\&.
+.SS "\fBPatternBlock\fP * PatternBlock::intersect (const \fBPatternBlock\fP * b) const"
+
+.PP
+Definition at line 319 of file slghpattern\&.cc\&.
+.SS "bool PatternBlock::isContextMatch (\fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 473 of file slghpattern\&.cc\&.
+.SS "bool PatternBlock::isInstructionMatch (\fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 460 of file slghpattern\&.cc\&.
+.SS "void PatternBlock::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Definition at line 500 of file slghpattern\&.cc\&.
+.SS "void PatternBlock::saveXml (ostream & s) const"
+
+.PP
+Definition at line 486 of file slghpattern\&.cc\&.
+.SS "void PatternBlock::shift (int4 sa)\fC [inline]\fP"
+
+.PP
+Definition at line 38 of file slghpattern\&.hh\&.
+.SS "bool PatternBlock::specializes (const \fBPatternBlock\fP * op2) const"
+
+.PP
+Definition at line 353 of file slghpattern\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

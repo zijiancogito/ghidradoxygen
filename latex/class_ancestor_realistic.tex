@@ -1,0 +1,78 @@
+\hypertarget{class_ancestor_realistic}{}\section{Ancestor\+Realistic Class Reference}
+\label{class_ancestor_realistic}\index{AncestorRealistic@{AncestorRealistic}}
+
+
+Helper class for determining if Varnodes can trace their value from a legitimate source.  
+
+
+
+
+{\ttfamily \#include $<$funcdata.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_ancestor_realistic_a5812787dc51e5f5238f8b595ed8cf084}{execute}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, int4 slot, \mbox{\hyperlink{class_param_trial}{Param\+Trial}} $\ast$t, bool allow\+Fail)
+\begin{DoxyCompactList}\small\item\em Perform a full ancestor check on a given parameter trial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class for determining if Varnodes can trace their value from a legitimate source. 
+
+Try to determine if a \mbox{\hyperlink{class_varnode}{Varnode}} (expressed as a particular input to a C\+A\+LL, C\+A\+L\+L\+I\+ND, or R\+E\+T\+U\+RN op) makes sense as parameter passing (or return value) storage by examining the \mbox{\hyperlink{class_varnode}{Varnode}}\textquotesingle{}s ancestors. If it has ancestors that are {\itshape unaffected}, {\itshape abnormal} inputs, or {\itshape killedbycall}, then this is a sign that the \mbox{\hyperlink{class_varnode}{Varnode}} doesn\textquotesingle{}t make a good parameter. 
+
+Definition at line 539 of file funcdata.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ancestor_realistic_a5812787dc51e5f5238f8b595ed8cf084}\label{class_ancestor_realistic_a5812787dc51e5f5238f8b595ed8cf084}} 
+\index{AncestorRealistic@{AncestorRealistic}!execute@{execute}}
+\index{execute@{execute}!AncestorRealistic@{AncestorRealistic}}
+\subsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily bool Ancestor\+Realistic\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{int4}]{slot,  }\item[{\mbox{\hyperlink{class_param_trial}{Param\+Trial}} $\ast$}]{t,  }\item[{bool}]{allow\+Fail }\end{DoxyParamCaption})}
+
+
+
+Perform a full ancestor check on a given parameter trial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & is the C\+A\+LL or R\+E\+T\+U\+RN to test parameter passing for \\
+\hline
+{\em slot} & is the index of the particular input varnode to test \\
+\hline
+{\em t} & is the \mbox{\hyperlink{class_param_trial}{Param\+Trial}} object corresponding to the varnode \\
+\hline
+{\em allow\+Failing\+Path} & is true if we allow and test for failing paths due to conditional execution \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the varnode has realistic ancestors for a parameter passing location 
+\end{DoxyReturn}
+
+
+Definition at line 1520 of file funcdata\+\_\+varnode.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ancestor_realistic_a5812787dc51e5f5238f8b595ed8cf084_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ancestor_realistic_a5812787dc51e5f5238f8b595ed8cf084_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{funcdata_8hh}{funcdata.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{funcdata__varnode_8cc}{funcdata\+\_\+varnode.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,216 @@
+.TH "TypeSpacebase" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeSpacebase \- Special \fBDatatype\fP object used to describe pointers that index into the symbol table\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBDatatype\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeSpacebase\fP (const \fBTypeSpacebase\fP &op)"
+.br
+.RI "Construct from another \fBTypeSpacebase\fP\&. "
+.ti -1c
+.RI "\fBTypeSpacebase\fP (\fBAddrSpace\fP *\fBid\fP, const \fBAddress\fP &frame, \fBArchitecture\fP *g)"
+.br
+.RI "Construct given an address space, scope, and architecture\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBgetMap\fP (void) const"
+.br
+.RI "Get the symbol table indexed by \fBthis\fP\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetAddress\fP (\fBuintb\fP off, int4 sz, const \fBAddress\fP &point) const"
+.br
+.RI "Construct an \fBAddress\fP given an offset\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetSubType\fP (\fBuintb\fP off, \fBuintb\fP *newoff) const"
+.br
+.RI "Recover component data-type one-level down\&. "
+.ti -1c
+.RI "virtual int4 \fBcompare\fP (const \fBDatatype\fP &op, int4 level) const"
+.br
+.RI "Compare for functional equivalence\&. "
+.ti -1c
+.RI "virtual int4 \fBcompareDependency\fP (const \fBDatatype\fP &op) const"
+.br
+.RI "Compare for storage in tree structure\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Special \fBDatatype\fP object used to describe pointers that index into the symbol table\&. 
+
+A \fBTypeSpacebase\fP treats a specific \fBAddrSpace\fP as 'structure' that will get indexed in to\&. This facilitates type propagation from local symbols into the stack space and from global symbols into the RAM space\&. 
+.PP
+Definition at line 355 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeSpacebase::TypeSpacebase (const \fBTypeSpacebase\fP & op)\fC [inline]\fP"
+
+.PP
+Construct from another \fBTypeSpacebase\fP\&. 
+.PP
+Definition at line 363 of file type\&.hh\&.
+.SS "TypeSpacebase::TypeSpacebase (\fBAddrSpace\fP * id, const \fBAddress\fP & frame, \fBArchitecture\fP * g)\fC [inline]\fP"
+
+.PP
+Construct given an address space, scope, and architecture\&. 
+.PP
+Definition at line 367 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* TypeSpacebase::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Implements \fBDatatype\fP\&.
+.PP
+Definition at line 374 of file type\&.hh\&.
+.SS "int4 TypeSpacebase::compare (const \fBDatatype\fP & op, int4 level) const\fC [virtual]\fP"
+
+.PP
+Compare for functional equivalence\&. Compare \fBthis\fP with another data-type\&. 0 (equality) means the data-types are functionally equivalent (even if names differ) Smaller types come earlier\&. More specific types come earlier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.br
+\fIlevel\fP is maximum level to descend when recursively comparing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1143 of file type\&.cc\&.
+.SS "int4 TypeSpacebase::compareDependency (const \fBDatatype\fP & op) const\fC [virtual]\fP"
+
+.PP
+Compare for storage in tree structure\&. Ordering of data-types for the main \fBTypeFactory\fP container\&. Comparison only goes down one-level in the component structure, before just comparing pointers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1149 of file type\&.cc\&.
+.SS "\fBAddress\fP TypeSpacebase::getAddress (\fBuintb\fP off, int4 sz, const \fBAddress\fP & point) const"
+
+.PP
+Construct an \fBAddress\fP given an offset\&. Return the \fBAddress\fP being referred to by a specific offset relative to a pointer with \fBthis\fP \fBDatatype\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset relative to the pointer 
+.br
+\fIsz\fP is the size of offset (as a pointer) 
+.br
+\fIpoint\fP is a 'context' reference for the request 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the referred to \fBAddress\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1167 of file type\&.cc\&.
+.SS "\fBScope\fP * TypeSpacebase::getMap (void) const"
+
+.PP
+Get the symbol table indexed by \fBthis\fP\&. This data-type can index either a local or the global scope 
+.PP
+\fBReturns:\fP
+.RS 4
+the symbol table \fBScope\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1111 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeSpacebase::getSubType (\fBuintb\fP off, \fBuintb\fP * newoff) const\fC [virtual]\fP"
+
+.PP
+Recover component data-type one-level down\&. Given an offset into \fBthis\fP data-type, return the component data-type at that offset\&. Also, pass back a 'renormalized' offset suitable for recursize \fBgetSubType()\fP calls: i\&.e\&. if the original offset hits the exact start of the sub-type, 0 is passed back\&. If there is no valid component data-type at the offset, return NULL and pass back the original offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset into \fBthis\fP data-type 
+.br
+\fInewoff\fP is a pointer to the passed-back offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the component data-type or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1123 of file type\&.cc\&.
+.SS "void TypeSpacebase::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1173 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 356 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

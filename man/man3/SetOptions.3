@@ -1,0 +1,75 @@
+.TH "SetOptions" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SetOptions \- Command to \fBtoggle\fP \fBoptions\fP within the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBGhidraCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSetOptions\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~SetOptions\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)"
+.br
+.RI "Perform the action of the command\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBres\fP"
+.br
+.RI "Set to \fBtrue\fP if the option change succeeded\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Command to \fBtoggle\fP \fBoptions\fP within the decompiler\&. 
+
+The decompiler supports configuration of a variety of named options that affect everything from how code is transformed to how it is displayed (See \fBArchOption\fP)\&. The command expects 2 string parameters: the encoded integer id of the program, and an XML document containing an <optionslist> tag\&. The <optionslist> tag contains one child tag for each option to be configured\&. The command returns a single character message, 't' or 'f', indicating whether the configuration succeeded\&. 
+.PP
+Definition at line 222 of file ghidra_process\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SetOptions::SetOptions (void)"
+
+.PP
+Definition at line 406 of file ghidra_process\&.cc\&.
+.SS "SetOptions::~SetOptions (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 412 of file ghidra_process\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SetOptions::rawAction (void)\fC [virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implements \fBGhidraCommand\fP\&.
+.PP
+Definition at line 430 of file ghidra_process\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool SetOptions::res"
+
+.PP
+Set to \fBtrue\fP if the option change succeeded\&. 
+.PP
+Definition at line 229 of file ghidra_process\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

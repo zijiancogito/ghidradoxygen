@@ -1,0 +1,192 @@
+\hypertarget{class_option_database}{}\section{Option\+Database Class Reference}
+\label{class_option_database}\index{OptionDatabase@{OptionDatabase}}
+
+
+A Dispatcher for possible \mbox{\hyperlink{class_arch_option}{Arch\+Option}} commands.  
+
+
+
+
+{\ttfamily \#include $<$options.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_option_database_ae5f5fef1aa229bae7fa2188cab44275a}{Option\+Database}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Construct given the owning \mbox{\hyperlink{class_architecture}{Architecture}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_option_database_a5b4621e877dfce85e719f9bdf11e275f}{$\sim$\+Option\+Database}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_option_database_aaec7650371cbbb2a17a88393347c9ffc}{set}} (const string \&nm, const string \&p1=\char`\"{}\char`\"{}, const string \&p2=\char`\"{}\char`\"{}, const string \&p3=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Issue an option command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_option_database_ae8bf1e8bf96b3bbb863ddd6f99214d5b}{parse\+One}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Unwrap and execute a single option X\+ML tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_option_database_afe0ea0f1c7a7cd2591ac159027082149}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Execute a series of {\itshape option} {\itshape commands} passed by X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Dispatcher for possible \mbox{\hyperlink{class_arch_option}{Arch\+Option}} commands. 
+
+An {\bfseries{option}} {\bfseries{command}} is a specific request by a user to change the configuration options for an \mbox{\hyperlink{class_architecture}{Architecture}}. This class takes care of dispatching the command to the proper \mbox{\hyperlink{class_arch_option}{Arch\+Option}} derived class, which does the work of actually modifying the configuration. The command is issued either through the \mbox{\hyperlink{class_option_database_aaec7650371cbbb2a17a88393347c9ffc}{set()}} method directly, or via an X\+ML tag handed to the \mbox{\hyperlink{class_option_database_afe0ea0f1c7a7cd2591ac159027082149}{restore\+Xml()}} method. The \mbox{\hyperlink{class_option_database_afe0ea0f1c7a7cd2591ac159027082149}{restore\+Xml()}} method expects an $<$optionslist$>$ tag with one or more sub-\/tags. The sub-\/tag names match the registered name of the option and have up to three child tags, $<$param1$>$, $<$param2$>$ and $<$param3$>$, whose content is provided as the optional parameters to command. 
+
+Definition at line 63 of file options.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_option_database_ae5f5fef1aa229bae7fa2188cab44275a}\label{class_option_database_ae5f5fef1aa229bae7fa2188cab44275a}} 
+\index{OptionDatabase@{OptionDatabase}!OptionDatabase@{OptionDatabase}}
+\index{OptionDatabase@{OptionDatabase}!OptionDatabase@{OptionDatabase}}
+\subsubsection{\texorpdfstring{OptionDatabase()}{OptionDatabase()}}
+{\footnotesize\ttfamily Option\+Database\+::\+Option\+Database (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Construct given the owning \mbox{\hyperlink{class_architecture}{Architecture}}. 
+
+Register all possible \mbox{\hyperlink{class_arch_option}{Arch\+Option}} objects with this database and set-\/up the parsing map. 
+\begin{DoxyParams}{Parameters}
+{\em g} & is the \mbox{\hyperlink{class_architecture}{Architecture}} owning {\bfseries{this}} database \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file options.\+cc.
+
+\mbox{\Hypertarget{class_option_database_a5b4621e877dfce85e719f9bdf11e275f}\label{class_option_database_a5b4621e877dfce85e719f9bdf11e275f}} 
+\index{OptionDatabase@{OptionDatabase}!````~OptionDatabase@{$\sim$OptionDatabase}}
+\index{````~OptionDatabase@{$\sim$OptionDatabase}!OptionDatabase@{OptionDatabase}}
+\subsubsection{\texorpdfstring{$\sim$OptionDatabase()}{~OptionDatabase()}}
+{\footnotesize\ttfamily Option\+Database\+::$\sim$\+Option\+Database (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line 84 of file options.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_option_database_ae8bf1e8bf96b3bbb863ddd6f99214d5b}\label{class_option_database_ae8bf1e8bf96b3bbb863ddd6f99214d5b}} 
+\index{OptionDatabase@{OptionDatabase}!parseOne@{parseOne}}
+\index{parseOne@{parseOne}!OptionDatabase@{OptionDatabase}}
+\subsubsection{\texorpdfstring{parseOne()}{parseOne()}}
+{\footnotesize\ttfamily void Option\+Database\+::parse\+One (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Unwrap and execute a single option X\+ML tag. 
+
+Unwrap the name and optional parameters and call method \mbox{\hyperlink{class_option_database_aaec7650371cbbb2a17a88393347c9ffc}{set()}} 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the command X\+ML tag \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 111 of file options.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_option_database_ae8bf1e8bf96b3bbb863ddd6f99214d5b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_option_database_ae8bf1e8bf96b3bbb863ddd6f99214d5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_option_database_afe0ea0f1c7a7cd2591ac159027082149}\label{class_option_database_afe0ea0f1c7a7cd2591ac159027082149}} 
+\index{OptionDatabase@{OptionDatabase}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!OptionDatabase@{OptionDatabase}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Option\+Database\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Execute a series of {\itshape option} {\itshape commands} passed by X\+ML. 
+
+Parse the $<$optionslist$>$ tag, treating each sub-\/tag as an {\itshape option} {\itshape command}. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the $<$optionslist$>$ tag \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 142 of file options.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_option_database_afe0ea0f1c7a7cd2591ac159027082149_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_option_database_afe0ea0f1c7a7cd2591ac159027082149_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_option_database_aaec7650371cbbb2a17a88393347c9ffc}\label{class_option_database_aaec7650371cbbb2a17a88393347c9ffc}} 
+\index{OptionDatabase@{OptionDatabase}!set@{set}}
+\index{set@{set}!OptionDatabase@{OptionDatabase}}
+\subsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily string Option\+Database\+::set (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{const string \&}]{p1 = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const string \&}]{p2 = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const string \&}]{p3 = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Issue an option command. 
+
+Perform an {\itshape option} {\itshape command} directly, given its name and optional parameters 
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the registered name of the option \\
+\hline
+{\em p1} & is the first optional parameter \\
+\hline
+{\em p2} & is the second optional parameter \\
+\hline
+{\em p3} & is the third optional parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the confirmation/failure method after trying to apply the option 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file options.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{class_option_database_aaec7650371cbbb2a17a88393347c9ffc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_option_database_aaec7650371cbbb2a17a88393347c9ffc_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{options_8hh}{options.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{options_8cc}{options.\+cc}}\end{DoxyCompactItemize}

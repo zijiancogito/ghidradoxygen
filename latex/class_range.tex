@@ -1,0 +1,402 @@
+\hypertarget{class_range}{}\section{Range Class Reference}
+\label{class_range}\index{Range@{Range}}
+
+
+A contiguous range of bytes in some address space.  
+
+
+
+
+{\ttfamily \#include $<$address.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_range_a208021cd8c43af2067942ae261fd833b}{Range}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$s, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} f, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} l)
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{class_range}{Range}} from offsets. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_range_aa5fc8bb184422b8e1c42584475979f10}{Range}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_range_aca96ab5fbb1da6940d807547a9d9ed30}{get\+Space}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the address space containing {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_range_a40c5034428ad9d55e1c4fd4429d3ab45}{get\+First}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the offset of the first byte in {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_range_afbcec6b1a5499f299dc8ff7d078cd83c}{get\+Last}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the offset of the last byte in {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_range_abdedc039293f93e7687ecb43a21cdf38}{get\+First\+Addr}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the address of the first byte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_range_a1fdc16eafa7a33a122ad682822c7d7d1}{get\+Last\+Addr}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the address of the last byte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_range_af5cc1b4a92034ab87269b25950f0fe8f}{get\+Last\+Addr\+Open}} (const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage) const
+\begin{DoxyCompactList}\small\item\em Get address of first byte after {\bfseries{this}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_range_a88b49f65bc500d33d15941f053db4e11}{contains}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Determine if the address is in {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_range_af79209e97d5e8df1e26846b478722909}{operator$<$}} (const \mbox{\hyperlink{class_range}{Range}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Sorting operator for Ranges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_a6b1d50b9238ca3d02a08c07f81e1b7c5}{print\+Bounds}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}} to a stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_a81bddd68f2b25699cba18e279d67e75c}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}} to an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_ad88a42471281f5bc6abf1dc1fb79f12b}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} from X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_range_aefb7602862bfe0af2bf90410672c7c0d}{Range\+List}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A contiguous range of bytes in some address space. 
+
+Definition at line 159 of file address.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_range_a208021cd8c43af2067942ae261fd833b}\label{class_range_a208021cd8c43af2067942ae261fd833b}} 
+\index{Range@{Range}!Range@{Range}}
+\index{Range@{Range}!Range@{Range}}
+\subsubsection{\texorpdfstring{Range()}{Range()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Range\+::\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{s,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{f,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a \mbox{\hyperlink{class_range}{Range}} from offsets. 
+
+Offsets must expressed in {\itshape bytes} as opposed to addressable {\itshape words} 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the address space containing the range \\
+\hline
+{\em f} & is the offset of the first byte in the range \\
+\hline
+{\em l} & is the offset of the last byte in the range \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 171 of file address.\+hh.
+
+\mbox{\Hypertarget{class_range_aa5fc8bb184422b8e1c42584475979f10}\label{class_range_aa5fc8bb184422b8e1c42584475979f10}} 
+\index{Range@{Range}!Range@{Range}}
+\index{Range@{Range}!Range@{Range}}
+\subsubsection{\texorpdfstring{Range()}{Range()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Range\+::\+Range (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml. 
+
+
+
+Definition at line 173 of file address.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_range_a88b49f65bc500d33d15941f053db4e11}\label{class_range_a88b49f65bc500d33d15941f053db4e11}} 
+\index{Range@{Range}!contains@{contains}}
+\index{contains@{contains}!Range@{Range}}
+\subsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily bool Range\+::contains (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine if the address is in {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the \mbox{\hyperlink{class_address}{Address}} to test for containment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if addr is in {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}} 
+\end{DoxyReturn}
+
+
+Definition at line 456 of file address.\+hh.
+
+\mbox{\Hypertarget{class_range_a40c5034428ad9d55e1c4fd4429d3ab45}\label{class_range_a40c5034428ad9d55e1c4fd4429d3ab45}} 
+\index{Range@{Range}!getFirst@{getFirst}}
+\index{getFirst@{getFirst}!Range@{Range}}
+\subsubsection{\texorpdfstring{getFirst()}{getFirst()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Range\+::get\+First (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the offset of the first byte in {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. 
+
+
+
+Definition at line 175 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_a40c5034428ad9d55e1c4fd4429d3ab45_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_abdedc039293f93e7687ecb43a21cdf38}\label{class_range_abdedc039293f93e7687ecb43a21cdf38}} 
+\index{Range@{Range}!getFirstAddr@{getFirstAddr}}
+\index{getFirstAddr@{getFirstAddr}!Range@{Range}}
+\subsubsection{\texorpdfstring{getFirstAddr()}{getFirstAddr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Range\+::get\+First\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address of the first byte. 
+
+
+
+Definition at line 177 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_abdedc039293f93e7687ecb43a21cdf38_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_afbcec6b1a5499f299dc8ff7d078cd83c}\label{class_range_afbcec6b1a5499f299dc8ff7d078cd83c}} 
+\index{Range@{Range}!getLast@{getLast}}
+\index{getLast@{getLast}!Range@{Range}}
+\subsubsection{\texorpdfstring{getLast()}{getLast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Range\+::get\+Last (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the offset of the last byte in {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. 
+
+
+
+Definition at line 176 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_afbcec6b1a5499f299dc8ff7d078cd83c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_a1fdc16eafa7a33a122ad682822c7d7d1}\label{class_range_a1fdc16eafa7a33a122ad682822c7d7d1}} 
+\index{Range@{Range}!getLastAddr@{getLastAddr}}
+\index{getLastAddr@{getLastAddr}!Range@{Range}}
+\subsubsection{\texorpdfstring{getLastAddr()}{getLastAddr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Range\+::get\+Last\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address of the last byte. 
+
+
+
+Definition at line 178 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_a1fdc16eafa7a33a122ad682822c7d7d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_af5cc1b4a92034ab87269b25950f0fe8f}\label{class_range_af5cc1b4a92034ab87269b25950f0fe8f}} 
+\index{Range@{Range}!getLastAddrOpen@{getLastAddrOpen}}
+\index{getLastAddrOpen@{getLastAddrOpen}!Range@{Range}}
+\subsubsection{\texorpdfstring{getLastAddrOpen()}{getLastAddrOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Range\+::get\+Last\+Addr\+Open (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption}) const}
+
+
+
+Get address of first byte after {\bfseries{this}}. 
+
+Get the last address +1, updating the space, or returning the extremal address if necessary 
+\begin{DoxyParams}{Parameters}
+{\em manage} & is used to fetch the next address space \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 213 of file address.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_af5cc1b4a92034ab87269b25950f0fe8f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_af5cc1b4a92034ab87269b25950f0fe8f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_aca96ab5fbb1da6940d807547a9d9ed30}\label{class_range_aca96ab5fbb1da6940d807547a9d9ed30}} 
+\index{Range@{Range}!getSpace@{getSpace}}
+\index{getSpace@{getSpace}!Range@{Range}}
+\subsubsection{\texorpdfstring{getSpace()}{getSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Range\+::get\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address space containing {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}}. 
+
+
+
+Definition at line 174 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_aca96ab5fbb1da6940d807547a9d9ed30_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_af79209e97d5e8df1e26846b478722909}\label{class_range_af79209e97d5e8df1e26846b478722909}} 
+\index{Range@{Range}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Range@{Range}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Range\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_range}{Range}} \&}]{op2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sorting operator for Ranges. 
+
+Compare based on address space, then the starting offset 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the \mbox{\hyperlink{class_range}{Range}} to compare with {\bfseries{this}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} comes before op2 
+\end{DoxyReturn}
+
+
+Definition at line 187 of file address.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{class_range_af79209e97d5e8df1e26846b478722909_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_a6b1d50b9238ca3d02a08c07f81e1b7c5}\label{class_range_a6b1d50b9238ca3d02a08c07f81e1b7c5}} 
+\index{Range@{Range}!printBounds@{printBounds}}
+\index{printBounds@{printBounds}!Range@{Range}}
+\subsubsection{\texorpdfstring{printBounds()}{printBounds()}}
+{\footnotesize\ttfamily void Range\+::print\+Bounds (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Print {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}} to a stream. 
+
+Output a description of this \mbox{\hyperlink{class_range}{Range}} like\+: ram\+: 7f-\/9c 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 231 of file address.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_range_a6b1d50b9238ca3d02a08c07f81e1b7c5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_ad88a42471281f5bc6abf1dc1fb79f12b}\label{class_range_ad88a42471281f5bc6abf1dc1fb79f12b}} 
+\index{Range@{Range}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!Range@{Range}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Range\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Restore {\bfseries{this}} from X\+ML stream. 
+
+Reconstruct this object from an X\+ML $<$range$>$ element 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+{\em manage} & is the space manage for recovering \mbox{\hyperlink{class_addr_space}{Addr\+Space}} objects \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 253 of file address.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_ad88a42471281f5bc6abf1dc1fb79f12b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_ad88a42471281f5bc6abf1dc1fb79f12b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_a81bddd68f2b25699cba18e279d67e75c}\label{class_range_a81bddd68f2b25699cba18e279d67e75c}} 
+\index{Range@{Range}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!Range@{Range}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Range\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save {\bfseries{this}} \mbox{\hyperlink{class_range}{Range}} to an X\+ML stream. 
+
+Write this object to a stream as a $<$range$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 240 of file address.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_a81bddd68f2b25699cba18e279d67e75c_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_range_aefb7602862bfe0af2bf90410672c7c0d}\label{class_range_aefb7602862bfe0af2bf90410672c7c0d}} 
+\index{Range@{Range}!RangeList@{RangeList}}
+\index{RangeList@{RangeList}!Range@{Range}}
+\subsubsection{\texorpdfstring{RangeList}{RangeList}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_range_list}{Range\+List}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 160 of file address.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{address_8hh}{address.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{address_8cc}{address.\+cc}}\end{DoxyCompactItemize}

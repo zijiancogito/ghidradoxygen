@@ -1,0 +1,109 @@
+.TH "RawBinaryArchitectureCapability" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RawBinaryArchitectureCapability \- Extension point for building an \fBArchitecture\fP that reads in raw images\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <raw_arch\&.hh>\fP
+.PP
+Inherits \fBArchitectureCapability\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~RawBinaryArchitectureCapability\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBArchitecture\fP * \fBbuildArchitecture\fP (const string &filename, const string &target, ostream *estream)"
+.br
+.RI "Build an \fBArchitecture\fP given a raw file or data\&. "
+.ti -1c
+.RI "virtual bool \fBisFileMatch\fP (const string &filename) const"
+.br
+.RI "Determine if this extension can handle this file\&. "
+.ti -1c
+.RI "virtual bool \fBisXmlMatch\fP (\fBDocument\fP *doc) const"
+.br
+.RI "Determine is this extension can handle this XML document\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Extension point for building an \fBArchitecture\fP that reads in raw images\&. 
+.PP
+Definition at line 22 of file raw_arch\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RawBinaryArchitectureCapability::~RawBinaryArchitectureCapability (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 27 of file raw_arch\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBArchitecture\fP * RawBinaryArchitectureCapability::buildArchitecture (const string & filename, const string & target, ostream * estream)\fC [virtual]\fP"
+
+.PP
+Build an \fBArchitecture\fP given a raw file or data\&. This is implemented by each separate extension\&. The method is handed a \fIfilename\fP and possibly external target information and must build the \fBArchitecture\fP object, initializing all the major subcomponents, using just this info\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP is the path to the executable file to examine 
+.br
+\fItarget\fP if non-empty is a language id string 
+.br
+\fIestream\fP is an output stream for error messages 
+.RE
+.PP
+
+.PP
+Implements \fBArchitectureCapability\fP\&.
+.PP
+Definition at line 33 of file raw_arch\&.cc\&.
+.SS "bool RawBinaryArchitectureCapability::isFileMatch (const string & filename) const\fC [virtual]\fP"
+
+.PP
+Determine if this extension can handle this file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP is the name of the file to examine 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP is \fBthis\fP extension is suitable for analyzing the file 
+.RE
+.PP
+
+.PP
+Implements \fBArchitectureCapability\fP\&.
+.PP
+Definition at line 39 of file raw_arch\&.cc\&.
+.SS "bool RawBinaryArchitectureCapability::isXmlMatch (\fBDocument\fP * doc) const\fC [virtual]\fP"
+
+.PP
+Determine is this extension can handle this XML document\&. If a file to analyze is XML based, this method examines the XML parse to determine if \fBthis\fP extension can understand the document 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdoc\fP is the parsed XML document 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP extension understands the XML 
+.RE
+.PP
+
+.PP
+Implements \fBArchitectureCapability\fP\&.
+.PP
+Definition at line 45 of file raw_arch\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

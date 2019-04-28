@@ -1,0 +1,83 @@
+.TH "InjectParameter" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InjectParameter \- An input or output parameter to a p-code injection payload\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pcodeinject\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInjectParameter\fP (const string &nm, uint4 sz)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the parameter name\&. "
+.ti -1c
+.RI "int4 \fBgetIndex\fP (void) const"
+.br
+.RI "Get the assigned index\&. "
+.ti -1c
+.RI "uint4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the size of the parameter in bytes\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBInjectPayload\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An input or output parameter to a p-code injection payload\&. 
+
+Within the chunk of p-code being injected, this is a placeholder for Varnodes that serve as inputs or outputs to the chunk, which are filled-in in the context of the injection\&. For instance, for a \fIcall-fixup\fP that injects a user-defined p-code op, the input Varnodes would be substituted with the actual input Varnodes to the user-defined op\&. 
+.PP
+Definition at line 33 of file pcodeinject\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "InjectParameter::InjectParameter (const string & nm, uint4 sz)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 39 of file pcodeinject\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 InjectParameter::getIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the assigned index\&. 
+.PP
+Definition at line 41 of file pcodeinject\&.hh\&.
+.SS "const string& InjectParameter::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the parameter name\&. 
+.PP
+Definition at line 40 of file pcodeinject\&.hh\&.
+.SS "uint4 InjectParameter::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the size of the parameter in bytes\&. 
+.PP
+Definition at line 42 of file pcodeinject\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBInjectPayload\fP\fC [friend]\fP"
+
+.PP
+Definition at line 34 of file pcodeinject\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

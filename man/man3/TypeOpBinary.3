@@ -1,0 +1,120 @@
+.TH "TypeOpBinary" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeOpBinary \- A generic binary operator: two inputs and one output\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typeop\&.hh>\fP
+.PP
+Inherits \fBTypeOp\fP\&.
+.PP
+Inherited by \fBTypeOpBoolAnd\fP, \fBTypeOpBoolOr\fP, \fBTypeOpBoolXor\fP, \fBTypeOpEqual\fP, \fBTypeOpFloatAdd\fP, \fBTypeOpFloatDiv\fP, \fBTypeOpFloatEqual\fP, \fBTypeOpFloatLess\fP, \fBTypeOpFloatLessEqual\fP, \fBTypeOpFloatMult\fP, \fBTypeOpFloatNotEqual\fP, \fBTypeOpFloatSub\fP, \fBTypeOpIntAdd\fP, \fBTypeOpIntAnd\fP, \fBTypeOpIntDiv\fP, \fBTypeOpIntLeft\fP, \fBTypeOpIntLess\fP, \fBTypeOpIntLessEqual\fP, \fBTypeOpIntMult\fP, \fBTypeOpIntOr\fP, \fBTypeOpIntRem\fP, \fBTypeOpIntRight\fP, \fBTypeOpIntSdiv\fP, \fBTypeOpIntSless\fP, \fBTypeOpIntSlessEqual\fP, \fBTypeOpIntSrem\fP, \fBTypeOpIntSright\fP, \fBTypeOpIntSub\fP, \fBTypeOpIntXor\fP, and \fBTypeOpNotEqual\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeOpBinary\fP (\fBTypeFactory\fP *t, \fBOpCode\fP opc, const string &n, \fBtype_metatype\fP mout, \fBtype_metatype\fP min)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetOutputLocal\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Find the minimal (or suggested) data-type of an output to \fBthis\fP op-code\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetInputLocal\fP (const \fBPcodeOp\fP *op, int4 slot) const"
+.br
+.RI "Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, const \fBPcodeOp\fP *op)"
+.br
+.RI "Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A generic binary operator: two inputs and one output\&. 
+
+All binary op-codes have a single data-type for input values and a data-type for the output value 
+.PP
+Definition at line 155 of file typeop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeOpBinary::TypeOpBinary (\fBTypeFactory\fP * t, \fBOpCode\fP opc, const string & n, \fBtype_metatype\fP mout, \fBtype_metatype\fP min)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 161 of file typeop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDatatype\fP * TypeOpBinary::getInputLocal (const \fBPcodeOp\fP * op, int4 slot) const\fC [virtual]\fP"
+
+.PP
+Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. The result should depend only on the op-code itself (and the size of the input) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP being considered 
+.br
+\fIslot\fP is the input being considered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeOp\fP\&.
+.PP
+Reimplemented in \fBTypeOpIntSright\fP, \fBTypeOpIntRight\fP, and \fBTypeOpIntLeft\fP\&.
+.PP
+Definition at line 265 of file typeop\&.cc\&.
+.SS "\fBDatatype\fP * TypeOpBinary::getOutputLocal (const \fBPcodeOp\fP * op) const\fC [virtual]\fP"
+
+.PP
+Find the minimal (or suggested) data-type of an output to \fBthis\fP op-code\&. The result should depend only on the op-code itself (and the size of the output) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP being considered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeOp\fP\&.
+.PP
+Definition at line 259 of file typeop\&.cc\&.
+.SS "void TypeOpBinary::printRaw (ostream & s, const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP to print 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Reimplemented in \fBTypeOpIntSright\fP\&.
+.PP
+Definition at line 271 of file typeop\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

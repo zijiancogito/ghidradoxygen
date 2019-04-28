@@ -1,0 +1,199 @@
+.TH "ghidra.app.decompiler.component.DecompilerController" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.DecompilerController
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by ghidra\&.app\&.decompiler\&.component\&.CDisplayPanel\&.ExtendedDecompilerController\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompilerController\fP (\fBDecompilerCallbackHandler\fP handler, \fBDecompileOptions\fP options, \fBDecompileClipboardProvider\fP clipboard)"
+.br
+.ti -1c
+.RI "\fBDecompilerPanel\fP \fBgetDecompilerPanel\fP ()"
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.ti -1c
+.RI "void \fBdisplay\fP (Program program, ProgramLocation location, ViewerPosition viewerPosition)"
+.br
+.ti -1c
+.RI "void \fBsetSelection\fP (ProgramSelection selection)"
+.br
+.ti -1c
+.RI "void \fBsetOptions\fP (\fBDecompileOptions\fP decompilerOptions)"
+.br
+.ti -1c
+.RI "boolean \fBisDecompiling\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetMouseNavigationEnabled\fP (boolean enabled)"
+.br
+.ti -1c
+.RI "void \fBsetDecompileData\fP (\fBDecompileData\fP decompileData)"
+.br
+.ti -1c
+.RI "void \fBrefreshDisplay\fP (Program program, ProgramLocation location, File debugFile)"
+.br
+.ti -1c
+.RI "\fBClangTokenGroup\fP \fBgetCCodeModel\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetStatusMessage\fP (String message)"
+.br
+.ti -1c
+.RI "Program \fBgetProgram\fP ()"
+.br
+.ti -1c
+.RI "Function \fBgetFunction\fP ()"
+.br
+.ti -1c
+.RI "HighFunction \fBgetHighFunction\fP ()"
+.br
+.ti -1c
+.RI "ProgramLocation \fBgetLocation\fP ()"
+.br
+.ti -1c
+.RI "\fBDecompileData\fP \fBgetDecompileData\fP ()"
+.br
+.ti -1c
+.RI "void \fBexportLocation\fP ()"
+.br
+.ti -1c
+.RI "void \fBclearCache\fP ()"
+.br
+.ti -1c
+.RI "void \fBprogramClosed\fP (Program closedProgram)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Coordinates the interactions between the DecompilerProvider, \fBDecompilerPanel\fP, and the \fBDecompilerManager\fP 
+.PP
+Definition at line 38 of file DecompilerController\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.DecompilerController (\fBDecompilerCallbackHandler\fP handler, \fBDecompileOptions\fP options, \fBDecompileClipboardProvider\fP clipboard)\fC [inline]\fP"
+
+.PP
+Definition at line 47 of file DecompilerController\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.clear (void)\fC [inline]\fP"
+clears all internal state and releases all resources\&. Called when the provider is no longer visible or the currently displayed program is closed\&. 
+.PP
+Definition at line 81 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.clearCache (void)\fC [inline]\fP"
+
+.PP
+Definition at line 290 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.display (Program program, ProgramLocation location, ViewerPosition viewerPosition)\fC [inline]\fP"
+Shows the function containing the given location in the decompilerPanel\&. Also, positions the decompilerPanel's cursor to the closest equivalent position\&. If the decompilerPanel is already displaying the function, then only the cursor is repositioned\&. To force a re-decompile use \fBrefreshDisplay(Program, ProgramLocation)\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprogram\fP the program for the given location 
+.br
+\fIlocation\fP the location containing the function to be displayed and the location in that function to position the cursor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.dispose ()\fC [inline]\fP"
+Called by the provider when the provider is disposed\&. Once dispose is called, it should never be used again\&. 
+.PP
+Definition at line 71 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.exportLocation ()\fC [inline]\fP"
+
+.PP
+Definition at line 277 of file DecompilerController\&.java\&.
+.SS "\fBClangTokenGroup\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.getCCodeModel ()\fC [inline]\fP"
+
+.PP
+Definition at line 200 of file DecompilerController\&.java\&.
+.SS "\fBDecompileData\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.getDecompileData ()\fC [inline]\fP"
+
+.PP
+Definition at line 273 of file DecompilerController\&.java\&.
+.SS "\fBDecompilerPanel\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.getDecompilerPanel ()\fC [inline]\fP"
+
+.PP
+Definition at line 60 of file DecompilerController\&.java\&.
+.SS "Function ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.getFunction (void)\fC [inline]\fP"
+
+.PP
+Definition at line 215 of file DecompilerController\&.java\&.
+.SS "HighFunction ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.getHighFunction ()\fC [inline]\fP"
+
+.PP
+Definition at line 222 of file DecompilerController\&.java\&.
+.SS "ProgramLocation ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.getLocation ()\fC [inline]\fP"
+
+.PP
+Definition at line 229 of file DecompilerController\&.java\&.
+.SS "Program ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.getProgram ()\fC [inline]\fP"
+
+.PP
+Definition at line 208 of file DecompilerController\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.isDecompiling ()\fC [inline]\fP"
+
+.PP
+Definition at line 150 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.programClosed (Program closedProgram)\fC [inline]\fP"
+
+.PP
+Definition at line 294 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.refreshDisplay (Program program, ProgramLocation location, File debugFile)\fC [inline]\fP"
+Always decompiles the function containing the given location before positioning the decompilerPanel's cursor to the closest equivalent position\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprogram\fP the program for the given location 
+.br
+\fIlocation\fP the location containing the function to be displayed and the location in that function to position the cursor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 195 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.setDecompileData (\fBDecompileData\fP decompileData)\fC [inline]\fP"
+Called by the \fBDecompilerManager\fP to update the currently displayed \fBDecompileData\fP\&. 
+.PP
+Definition at line 165 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.setMouseNavigationEnabled (boolean enabled)\fC [inline]\fP"
+
+.PP
+Definition at line 154 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.setOptions (\fBDecompileOptions\fP decompilerOptions)\fC [inline]\fP"
+Sets new decompiler options and triggers a new decompile\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdecompilerOptions\fP 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.setSelection (ProgramSelection selection)\fC [inline]\fP"
+
+.PP
+Definition at line 132 of file DecompilerController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerController\&.setStatusMessage (String message)\fC [inline]\fP"
+
+.PP
+Definition at line 204 of file DecompilerController\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

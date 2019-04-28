@@ -1,0 +1,230 @@
+.TH "RulePullsubMulti" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RulePullsubMulti \- Pull SUBPIECE back through MULTIEQUAL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ruleaction\&.hh>\fP
+.PP
+Inherits \fBRule\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRulePullsubMulti\fP (const string &g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBRule\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBgetOpList\fP (vector< uint4 > &oplist) const"
+.br
+.RI "List of op codes this rule operates on\&. "
+.ti -1c
+.RI "virtual int4 \fBapplyOp\fP (\fBPcodeOp\fP *op, \fBFuncdata\fP &data)"
+.br
+.RI "Attempt to apply \fBthis\fP \fBRule\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBminMaxUse\fP (\fBVarnode\fP *vn, int4 &maxByte, int4 &minByte)"
+.br
+.RI "Compute minimum and maximum bytes being used\&. "
+.ti -1c
+.RI "static void \fBreplaceDescendants\fP (\fBVarnode\fP *origVn, \fBVarnode\fP *newVn, int4 maxByte, int4 minByte, \fBFuncdata\fP &data)"
+.br
+.ti -1c
+.RI "static bool \fBacceptableSize\fP (int4 size)"
+.br
+.RI "Return \fBtrue\fP if given size is a suitable truncated size\&. "
+.ti -1c
+.RI "static \fBVarnode\fP * \fBbuildSubpiece\fP (\fBVarnode\fP *basevn, uint4 outsize, uint4 shift, \fBFuncdata\fP &data)"
+.br
+.RI "Build a SUBPIECE of given base \fBVarnode\fP\&. "
+.ti -1c
+.RI "static \fBVarnode\fP * \fBfindSubpiece\fP (\fBVarnode\fP *basevn, uint4 outsize, uint4 shift)"
+.br
+.RI "Find a predefined SUBPIECE of a base \fBVarnode\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Pull SUBPIECE back through MULTIEQUAL\&. 
+.PP
+Definition at line 202 of file ruleaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RulePullsubMulti::RulePullsubMulti (const string & g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 204 of file ruleaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool RulePullsubMulti::acceptableSize (int4 size)\fC [static]\fP"
+
+.PP
+Return \fBtrue\fP if given size is a suitable truncated size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP is the given size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if it is acceptable 
+.RE
+.PP
+
+.PP
+Definition at line 743 of file ruleaction\&.cc\&.
+.SS "int4 RulePullsubMulti::applyOp (\fBPcodeOp\fP * op, \fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Attempt to apply \fBthis\fP \fBRule\fP\&. This method contains the main logic for applying the \fBRule\fP\&. It must use a given \fBPcodeOp\fP as the point at which the \fBRule\fP applies\&. If it does apply, changes are made directly to the function and 1 (non-zero) is returned, otherwise 0 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP where the \fBRule\fP may apply 
+.br
+\fIdata\fP is the function to which to apply 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 863 of file ruleaction\&.cc\&.
+.SS "\fBVarnode\fP * RulePullsubMulti::buildSubpiece (\fBVarnode\fP * basevn, uint4 outsize, uint4 shift, \fBFuncdata\fP & data)\fC [static]\fP"
+
+.PP
+Build a SUBPIECE of given base \fBVarnode\fP\&. The \fBPcodeOp\fP is constructed and inserted near the definition of the base \fBVarnode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbasevn\fP is the given base \fBVarnode\fP 
+.br
+\fIoutsize\fP is the required truncated size in bytes 
+.br
+\fIshift\fP is the number of least significant bytes to truncate 
+.br
+\fIdata\fP is the function being analyzed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output \fBVarnode\fP of the new SUBPIECE 
+.RE
+.PP
+
+.PP
+Definition at line 761 of file ruleaction\&.cc\&.
+.SS "virtual \fBRule\fP* RulePullsubMulti::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBRule\fP\&. If \fBthis\fP \fBRule\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBRule\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBRule\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBRule\fP\&.
+.PP
+Definition at line 205 of file ruleaction\&.hh\&.
+.SS "\fBVarnode\fP * RulePullsubMulti::findSubpiece (\fBVarnode\fP * basevn, uint4 outsize, uint4 shift)\fC [static]\fP"
+
+.PP
+Find a predefined SUBPIECE of a base \fBVarnode\fP\&. Given a \fBVarnode\fP and desired dimensions (size and shift), search for a preexisting truncation defined in the same block as the original \fBVarnode\fP or return NULL 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbasevn\fP is the base \fBVarnode\fP 
+.br
+\fIoutsize\fP is the desired truncation size 
+.br
+\fIshift\fP if the desired truncation shift 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the truncated \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 832 of file ruleaction\&.cc\&.
+.SS "void RulePullsubMulti::getOpList (vector< uint4 > & oplist) const\fC [virtual]\fP"
+
+.PP
+List of op codes this rule operates on\&. Populate the given array with all possible OpCodes this \fBRule\fP might apply to\&. By default, this method returns all possible OpCodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoplist\fP is the array to populate 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 857 of file ruleaction\&.cc\&.
+.SS "void RulePullsubMulti::minMaxUse (\fBVarnode\fP * vn, int4 & maxByte, int4 & minByte)\fC [static]\fP"
+
+.PP
+Compute minimum and maximum bytes being used\&. For bytes in given \fBVarnode\fP pass back the largest and smallest index (lsb=0) consumed by an immediate descendant\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.br
+\fImaxByte\fP will hold the index of the maximum byte 
+.br
+\fIminByte\fP will hold the index of the minimum byte 
+.RE
+.PP
+
+.PP
+Definition at line 668 of file ruleaction\&.cc\&.
+.SS "void RulePullsubMulti::replaceDescendants (\fBVarnode\fP * origVn, \fBVarnode\fP * newVn, int4 maxByte, int4 minByte, \fBFuncdata\fP & data)\fC [static]\fP"
+Replace given \fBVarnode\fP with (smaller) \fBnewVn\fP in all descendants
+.PP
+If \fBminMaxUse()\fP indicates not all bytes are used, this should always succeed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorigVn\fP is the given \fBVarnode\fP 
+.br
+\fInewVn\fP is the new \fBVarnode\fP to replace with 
+.br
+\fImaxByte\fP is the maximum byte immediately used in \fBorigVn\fP 
+.br
+\fIminByte\fP is the minimum byte immediately used in \fBorigVn\fP 
+.br
+\fIdata\fP is the function being analyzed 
+.RE
+.PP
+
+.PP
+Definition at line 704 of file ruleaction\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

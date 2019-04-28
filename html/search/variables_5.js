@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['fd',['fd',['../class_scope.html#a72f6c31e73c46216482a6902d22b3330',1,'Scope::fd()'],['../class_iface_decomp_data.html#a6448c8594d5fc954dd79f896f449e058',1,'IfaceDecompData::fd()'],['../class_token_split.html#a63fd12d0d061d8b99038c354fbb8d422',1,'TokenSplit::fd()'],['../struct_print_language_1_1_atom.html#ae49c0974aa418e7f84d9ce686ddf7198',1,'PrintLanguage::Atom::fd()']]],
+  ['featuremask',['featuremask',['../struct_target_feature.html#a53d464667186576f442d0d6d1269a421',1,'TargetFeature']]],
+  ['field',['field',['../struct_partial_symbol_entry.html#ab70c112a5a6a83784896b1834f9398f4',1,'PartialSymbolEntry::field()'],['../class_type_struct.html#a4d5a49b12324fb588f6c1631c35bc37d',1,'TypeStruct::field()'],['../classghidra_1_1app_1_1decompiler_1_1_clang_x_m_l.html#a187ccf13da951e4731b0ffaa59f433ac',1,'ghidra.app.decompiler.ClangXML.FIELD()']]],
+  ['fieldname',['fieldname',['../struct_partial_symbol_entry.html#a10cb26ea8e9f2c70ab883e1094fd6a32',1,'PartialSymbolEntry']]],
+  ['filename',['filename',['../class_load_image.html#a4d95f3891fc75d7549277d5f26fa06fc',1,'LoadImage']]],
+  ['fileoptr',['fileoptr',['../class_iface_status.html#ac17129c5b310027bbdf5cea44c0de3d6',1,'IfaceStatus']]],
+  ['findreferencesaction',['findReferencesAction',['../classghidra_1_1app_1_1plugin_1_1core_1_1decompile_1_1_abstract_decompiler_find_references_action_test.html#abd101d9164795cceef897f26ba6c0c1f',1,'ghidra::app::plugin::core::decompile::AbstractDecompilerFindReferencesActionTest']]],
+  ['flags',['flags',['../class_action.html#a94208349db3026a47e0bcf3af6f51d55',1,'Action::flags()'],['../class_code_unit.html#a53d8c1ce994f42820230c2bac0a65a88',1,'CodeUnit::flags()'],['../struct_disassembly_result.html#af848ddf0a7556f24164e2d8063ad4341',1,'DisassemblyResult::flags()'],['../class_symbol.html#ae27fc3f664b0edbd5cedf859acfb0707',1,'Symbol::flags()'],['../struct_parameter_pieces.html#aedb19159c26f9137c4ec68238f25933a',1,'ParameterPieces::flags()'],['../struct_type_specifiers.html#ae3c1cae0216fef561e4261f50355a3a9',1,'TypeSpecifiers::flags()'],['../struct_load_image_section.html#a3cbd878bd8ba2890c81ef5b236633374',1,'LoadImageSection::flags()'],['../class_datatype.html#a82e59a9379488b5afdae69817c0955fb',1,'Datatype::flags()'],['../struct_map_range.html#afa1d0275d37ed7ed5e7971fcca0e9814',1,'MapRange::flags()']]],
+  ['flatprogramapi',['flatProgramAPI',['../classghidra_1_1app_1_1decompiler_1_1flatapi_1_1_flat_decompiler_a_p_i.html#ad3d370c5dfc4c684a11c360595f9b15b',1,'ghidra::app::decompiler::flatapi::FlatDecompilerAPI']]],
+  ['floatformats',['floatformats',['../class_translate.html#af609b454fe5a71cd72d9eaf525299fb5',1,'Translate']]],
+  ['flow',['flow',['../struct_context_set.html#a5cc09b961a0da9fa2a9503fb511703b8',1,'ContextSet::flow()'],['../struct_field_quality.html#a64c5ba59f7b60f7ba0df52018ef410fb',1,'FieldQuality::flow()']]],
+  ['flowoptions',['flowoptions',['../class_architecture.html#a4ed18744b8dc08d3ca81d6b1b6df682e',1,'Architecture']]],
+  ['fromto_5fcrossref',['fromto_crossref',['../class_code_data_analysis.html#aa4095aa8e677214f3a6b7abe817d24f4',1,'CodeDataAnalysis']]],
+  ['funcname',['funcname',['../struct_import_record.html#a988b2e50b452326a4a16c7faeba7d776',1,'ImportRecord::funcname()'],['../classghidra_1_1app_1_1decompiler_1_1_clang_x_m_l.html#a4c777527ea0eceaa646e10b709b33d37',1,'ghidra.app.decompiler.ClangXML.FUNCNAME()']]],
+  ['funcname_5fcolor',['FUNCNAME_COLOR',['../classghidra_1_1app_1_1decompiler_1_1_clang_x_m_l.html#a662c054609a801110dbef9551d5988ac',1,'ghidra::app::decompiler::ClangXML']]],
+  ['funcproto',['FUNCPROTO',['../classghidra_1_1app_1_1decompiler_1_1_clang_x_m_l.html#a2a1d3db7e28fa2ae2c1a725dd46532f7',1,'ghidra::app::decompiler::ClangXML']]],
+  ['funcptr_5falign',['funcptr_align',['../class_architecture.html#af1b94f4312717f6cd89eb784e3e73611',1,'Architecture']]],
+  ['funcstart',['funcstart',['../class_target_hit.html#a42ab0e3c3352543d9cb200d17b7e74b7',1,'TargetHit']]],
+  ['function',['FUNCTION',['../classghidra_1_1app_1_1decompiler_1_1_clang_x_m_l.html#a2f4edc3bde043ca9fb21ab76932f40d0',1,'ghidra::app::decompiler::ClangXML']]],
+  ['function_5fcall',['function_call',['../class_print_c.html#a808485afc527ab6629ad9193fe0db7f6',1,'PrintC']]],
+  ['function_5fcolor',['FUNCTION_COLOR',['../classghidra_1_1app_1_1decompiler_1_1_clang_token.html#a307ac69187f8fbc3370c870097a5fb26',1,'ghidra::app::decompiler::ClangToken']]],
+  ['function_5fspecifier',['function_specifier',['../struct_type_specifiers.html#a85855a0fe7fb74ea6d1702bdc0ee346d',1,'TypeSpecifiers']]]
+];

@@ -1,0 +1,104 @@
+.TH "CallGraphEdge" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CallGraphEdge
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <callgraph\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBcycle\fP = 1, \fBdontfollow\fP = 2 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCallGraphEdge\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBisCycle\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetCallSiteAddr\fP (void) const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBrestoreXml\fP (const \fBElement\fP *el, \fBCallGraph\fP *graph)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBCallGraphNode\fP"
+.br
+.ti -1c
+.RI "class \fBCallGraph\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 27 of file callgraph\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIcycle \fP\fP
+.TP
+\fB\fIdontfollow \fP\fP
+.PP
+Definition at line 29 of file callgraph\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CallGraphEdge::CallGraphEdge (void)\fC [inline]\fP"
+
+.PP
+Definition at line 42 of file callgraph\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBAddress\fP& CallGraphEdge::getCallSiteAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 45 of file callgraph\&.hh\&.
+.SS "bool CallGraphEdge::isCycle (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file callgraph\&.hh\&.
+.SS "void CallGraphEdge::restoreXml (const \fBElement\fP * el, \fBCallGraph\fP * graph)\fC [static]\fP"
+
+.PP
+Definition at line 32 of file callgraph\&.cc\&.
+.SS "void CallGraphEdge::saveXml (ostream & s) const"
+
+.PP
+Definition at line 19 of file callgraph\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBCallGraph\fP\fC [friend]\fP"
+
+.PP
+Definition at line 35 of file callgraph\&.hh\&.
+.SS "friend class \fBCallGraphNode\fP\fC [friend]\fP"
+
+.PP
+Definition at line 34 of file callgraph\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

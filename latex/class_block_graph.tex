@@ -1,0 +1,1813 @@
+\hypertarget{class_block_graph}{}\section{Block\+Graph Class Reference}
+\label{class_block_graph}\index{BlockGraph@{BlockGraph}}
+
+
+A control-\/flow block built out of sub-\/components.  
+
+
+
+
+{\ttfamily \#include $<$block.\+hh$>$}
+
+
+
+Inheritance diagram for Block\+Graph\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Block\+Graph\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{class_block_graph__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_block_graph_a1220886c0c0cad9c8f482afe53dba5d4}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear all component \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_block_graph_abfd6feefb295ef518337a4715992f533}{$\sim$\+Block\+Graph}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+const vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \& \mbox{\hyperlink{class_block_graph_a48c7e5338645dcbc38521bf1722dd728}{get\+List}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the list of component \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_block_graph_a12bc7480ffcc4c163a2a2cd800742f09}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of components. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_graph_ac87b63ceb9f08a4f8667da43e25c7e5e}{get\+Block}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th component. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} \mbox{\hyperlink{class_block_graph_a8e542e109e0acc977218ceaf3c248153}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_graph_a57ca5980b8c1ba97c468f82888bf0033}{sub\+Block}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th component block. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_a6047a66449b05bf62b33a2bef8642033}{mark\+Unstructured}} (void)
+\begin{DoxyCompactList}\small\item\em Mark target blocks of any unstructured edges. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_a67e2a75a80e60655a9936045d40983f6}{mark\+Label\+Bump\+Up}} (bool bump)
+\begin{DoxyCompactList}\small\item\em Let hierarchical blocks steal labels of their (first) components. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_a55618dfd49266bd4185d119f08e8b630}{scope\+Break}} (int4 curexit, int4 curloopexit)
+\begin{DoxyCompactList}\small\item\em Mark unstructured edges that should be {\itshape breaks}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_add1908219c53b2687c4d1c6c9132c11e}{print\+Tree}} (ostream \&s, int4 level) const
+\begin{DoxyCompactList}\small\item\em Print tree structure of any blocks owned by {\bfseries{this}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_abcae771fc675bcc52c78b2f1dc0ab98a}{print\+Raw}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print raw instructions contained in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f}{emit}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng) const
+\begin{DoxyCompactList}\small\item\em Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6}{next\+Flow\+After}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl) const
+\begin{DoxyCompactList}\small\item\em Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_aaab258bf71213db644bb8e1764f81b1f}{order\+Switch\+Cases}} (void) const
+\begin{DoxyCompactList}\small\item\em Order {\itshape case} components of any contained \mbox{\hyperlink{class_block_switch}{Block\+Switch}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_a881076195239ce5c2e5c865f22714d03}{save\+Xml\+Body}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save detail about components to an X\+ML stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_graph_a7a1c54e577b11af83f2635f9c5ad0545}{restore\+Xml\+Body}} (List\+::const\+\_\+iterator \&iter, List\+::const\+\_\+iterator enditer, \mbox{\hyperlink{class_block_map}{Block\+Map}} \&resolver)
+\begin{DoxyCompactList}\small\item\em Restore details about {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} from an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a90d67a53a21174345f5f376c75ca6067}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} \mbox{\hyperlink{class_block_graph}{Block\+Graph}} from an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a0bd135694f8274979c03d005d796d81f}{add\+Edge}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$begin, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$end)
+\begin{DoxyCompactList}\small\item\em Add a directed edge between component Flow\+Blocks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_af4f0c927ad7c32721de2474b6180cb48}{add\+Loop\+Edge}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$begin, int4 outindex)
+\begin{DoxyCompactList}\small\item\em Mark a given edge as a {\itshape loop} edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a2fe87e9f6a5a250a09869028bf1bb11d}{remove\+Edge}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$begin, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$end)
+\begin{DoxyCompactList}\small\item\em Remove an edge between component Flow\+Blocks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a238a3ecac594008e2893b2fa1f85d95b}{switch\+Edge}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$in, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$outbefore, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$outafter)
+\begin{DoxyCompactList}\small\item\em Move an edge from one out \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to another. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a4a1dcf88374cbf4b9886d26dced7c533}{move\+Out\+Edge}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$blold, int4 slot, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$blnew)
+\begin{DoxyCompactList}\small\item\em Move indicated {\itshape out} edge to a new \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a566cbe393f781703c640a691e27a4f90}{remove\+Block}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Remove a \mbox{\hyperlink{class_flow_block}{Flow\+Block}} from {\bfseries{this}} \mbox{\hyperlink{class_block_graph}{Block\+Graph}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_ae61430ab00f3437f85016b0c76907e94}{remove\+From\+Flow}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Remove given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} preserving flow in {\bfseries{this}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a8c6e3329fe131f587a472413dfd60fcd}{remove\+From\+Flow\+Split}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl, bool flipflow)
+\begin{DoxyCompactList}\small\item\em Remove \mbox{\hyperlink{class_flow_block}{Flow\+Block}} splitting flow between input and output edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a4f6da43f90aeadf0b19ddbcd95544fd3}{splice\+Block}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Splice given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} together with its output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a8bc1763c69f71a1c6a088340ae4a256f}{set\+Start\+Block}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Set the entry point \mbox{\hyperlink{class_flow_block}{Flow\+Block}} for {\bfseries{this}} graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_graph_ae4f8f8599ed5e3eb803536f1c9595f09}{get\+Start\+Block}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the entry point \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_graph_aa8afd0ba5e6abe328dee3b21473f0e2c}{new\+Block}} (void)
+\begin{DoxyCompactList}\small\item\em Build a new plain \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$ \mbox{\hyperlink{class_block_graph_a0d05f223a305365c86c4b6efea82f1c0}{new\+Block\+Basic}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_basic}{Block\+Basic}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_copy}{Block\+Copy}} $\ast$ \mbox{\hyperlink{class_block_graph_a29ab85a9a7a5d1f6785d2e93ce1e502d}{new\+Block\+Copy}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_copy}{Block\+Copy}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_goto}{Block\+Goto}} $\ast$ \mbox{\hyperlink{class_block_graph_a1f0931166f699006e3a6335c60138ee7}{new\+Block\+Goto}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_goto}{Block\+Goto}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_multi_goto}{Block\+Multi\+Goto}} $\ast$ \mbox{\hyperlink{class_block_graph_aea5dbfcf345da8fe5fa335b07613e1af}{new\+Block\+Multi\+Goto}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl, int4 outedge)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_multi_goto}{Block\+Multi\+Goto}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_list}{Block\+List}} $\ast$ \mbox{\hyperlink{class_block_graph_aafe64866a81e07fdb5eb92ab74a171ac}{new\+Block\+List}} (const vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&nodes)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_list}{Block\+List}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_condition}{Block\+Condition}} $\ast$ \mbox{\hyperlink{class_block_graph_a9b468774a4463d9abc43c21d032a850b}{new\+Block\+Condition}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$b1, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$b2)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_condition}{Block\+Condition}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_if}{Block\+If}} $\ast$ \mbox{\hyperlink{class_block_graph_ad25eb345760dc1732c0117f7bb0a72ce}{new\+Block\+If\+Goto}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$cond)
+\begin{DoxyCompactList}\small\item\em Build a new Block\+If\+Goto. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_if}{Block\+If}} $\ast$ \mbox{\hyperlink{class_block_graph_a76871ba6558fd5899d92cb5bfb6d9b60}{new\+Block\+If}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$cond, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$tc)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_if}{Block\+If}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_if}{Block\+If}} $\ast$ \mbox{\hyperlink{class_block_graph_acea0ea1a425020062f5d6e3b87a69fe0}{new\+Block\+If\+Else}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$cond, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$tc, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$fc)
+\begin{DoxyCompactList}\small\item\em Build a new Block\+If\+Else. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_while_do}{Block\+While\+Do}} $\ast$ \mbox{\hyperlink{class_block_graph_af1dfcc22ff51892b053cfe62cc7bf124}{new\+Block\+While\+Do}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$cond, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$cl)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_while_do}{Block\+While\+Do}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_do_while}{Block\+Do\+While}} $\ast$ \mbox{\hyperlink{class_block_graph_ae61c4c6c6ab865760a6855ced92ae809}{new\+Block\+Do\+While}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$condcl)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_do_while}{Block\+Do\+While}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_inf_loop}{Block\+Inf\+Loop}} $\ast$ \mbox{\hyperlink{class_block_graph_a4729c7a662b511b4112361e063336c36}{new\+Block\+Inf\+Loop}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$body)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_inf_loop}{Block\+Inf\+Loop}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_switch}{Block\+Switch}} $\ast$ \mbox{\hyperlink{class_block_graph_a2e96df7e537a3f92320addcf01515e5d}{new\+Block\+Switch}} (const vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&cs)
+\begin{DoxyCompactList}\small\item\em Build a new \mbox{\hyperlink{class_block_switch}{Block\+Switch}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a1da91d469ca3583ac7408e90443f0e09}{order\+Blocks}} (void)
+\item 
+void \mbox{\hyperlink{class_block_graph_a85422522e8c61496c5253f410f140fcc}{build\+Copy}} (const \mbox{\hyperlink{class_block_graph}{Block\+Graph}} \&graph)
+\begin{DoxyCompactList}\small\item\em Build a copy of a \mbox{\hyperlink{class_block_graph}{Block\+Graph}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_ad5a3ac8db8d8d2e4fc0ddc1c6b1dab0d}{clear\+Visit\+Count}} (void)
+\begin{DoxyCompactList}\small\item\em Clear the visit count in all node Flow\+Blocks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a9026a993cc70a3e67c5eeb19d33a9d98}{calc\+Forward\+Dominator}} (const vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&rootlist)
+\begin{DoxyCompactList}\small\item\em Calculate forward dominators. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_ab762df4b2281775e41b38a38d9f5509f}{build\+Dom\+Tree}} (vector$<$ vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ $>$ \&child) const
+\begin{DoxyCompactList}\small\item\em Build the dominator tree. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_block_graph_afc33c821dd221280e2d73d24011a5aa7}{build\+Dom\+Depth}} (vector$<$ int4 $>$ \&depth) const
+\begin{DoxyCompactList}\small\item\em Calculate dominator depths. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a044fa551f0aae9c919884772774e11ee}{build\+Dom\+Sub\+Tree}} (vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&res, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$root) const
+\begin{DoxyCompactList}\small\item\em Collect nodes from a dominator sub-\/tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_aa65051f403ce79d384a76c4399cdad80}{calc\+Loop}} (void)
+\begin{DoxyCompactList}\small\item\em Calculate loop edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a48b70c7238548053a1cc3629b8df081b}{collect\+Reachable}} (vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&res, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl, bool un) const
+\begin{DoxyCompactList}\small\item\em Collect reachable/unreachable Flow\+Blocks from a given start \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_graph_a468717bd5cf1e3bd34e5221a5d425bd9}{structure\+Loops}} (vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&rootlist)
+\begin{DoxyCompactList}\small\item\em Label loop edges. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_block_graph_ab7f8b2b90699d158b7b617012598f61c}{swap\+Blocks}} (int4 i, int4 j)
+\begin{DoxyCompactList}\small\item\em Swap the positions two component Flow\+Blocks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_block_graph_ad522a7201e4327411cd161b04d57f1da}{mark\+Copy\+Block}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl, uint4 fl)
+\begin{DoxyCompactList}\small\item\em Set properties on the first leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A control-\/flow block built out of sub-\/components. 
+
+This is the core class for building a hierarchy of control-\/flow blocks. A set of control-\/flow blocks can be grouped together and viewed as a single block, with its own input and output blocks. All the code structuring elements (\mbox{\hyperlink{class_block_list}{Block\+List}}, \mbox{\hyperlink{class_block_if}{Block\+If}}, \mbox{\hyperlink{class_block_while_do}{Block\+While\+Do}}, etc.) derive from this. 
+
+Definition at line 267 of file block.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_block_graph_abfd6feefb295ef518337a4715992f533}\label{class_block_graph_abfd6feefb295ef518337a4715992f533}} 
+\index{BlockGraph@{BlockGraph}!````~BlockGraph@{$\sim$BlockGraph}}
+\index{````~BlockGraph@{$\sim$BlockGraph}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{$\sim$BlockGraph()}{~BlockGraph()}}
+{\footnotesize\ttfamily virtual Block\+Graph\+::$\sim$\+Block\+Graph (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 283 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_block_graph_abfd6feefb295ef518337a4715992f533_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_block_graph_a0bd135694f8274979c03d005d796d81f}\label{class_block_graph_a0bd135694f8274979c03d005d796d81f}} 
+\index{BlockGraph@{BlockGraph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Block\+Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{begin,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{end }\end{DoxyParamCaption})}
+
+
+
+Add a directed edge between component Flow\+Blocks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & is the start \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em end} & is the stop \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1263 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a0bd135694f8274979c03d005d796d81f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_af4f0c927ad7c32721de2474b6180cb48}\label{class_block_graph_af4f0c927ad7c32721de2474b6180cb48}} 
+\index{BlockGraph@{BlockGraph}!addLoopEdge@{addLoopEdge}}
+\index{addLoopEdge@{addLoopEdge}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{addLoopEdge()}{addLoopEdge()}}
+{\footnotesize\ttfamily void Block\+Graph\+::add\+Loop\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{begin,  }\item[{int4}]{outindex }\end{DoxyParamCaption})}
+
+
+
+Mark a given edge as a {\itshape loop} edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & is a given component \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em outindex} & is the index of the {\itshape out} edge to mark as a loop \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1275 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_af4f0c927ad7c32721de2474b6180cb48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a85422522e8c61496c5253f410f140fcc}\label{class_block_graph_a85422522e8c61496c5253f410f140fcc}} 
+\index{BlockGraph@{BlockGraph}!buildCopy@{buildCopy}}
+\index{buildCopy@{buildCopy}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{buildCopy()}{buildCopy()}}
+{\footnotesize\ttfamily void Block\+Graph\+::build\+Copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_block_graph}{Block\+Graph}} \&}]{graph }\end{DoxyParamCaption})}
+
+
+
+Build a copy of a \mbox{\hyperlink{class_block_graph}{Block\+Graph}}. 
+
+Construct a copy of the given \mbox{\hyperlink{class_block_graph}{Block\+Graph}} in {\bfseries{this}}. The nodes of the copy will be official \mbox{\hyperlink{class_block_copy}{Block\+Copy}} objects which will contain a reference to their corresponding \mbox{\hyperlink{class_flow_block}{Flow\+Block}} in the given graph. All edges will be duplicated. 
+\begin{DoxyParams}{Parameters}
+{\em graph} & is the given \mbox{\hyperlink{class_block_graph}{Block\+Graph}} to copy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1739 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a85422522e8c61496c5253f410f140fcc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a85422522e8c61496c5253f410f140fcc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_afc33c821dd221280e2d73d24011a5aa7}\label{class_block_graph_afc33c821dd221280e2d73d24011a5aa7}} 
+\index{BlockGraph@{BlockGraph}!buildDomDepth@{buildDomDepth}}
+\index{buildDomDepth@{buildDomDepth}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{buildDomDepth()}{buildDomDepth()}}
+{\footnotesize\ttfamily int4 Block\+Graph\+::build\+Dom\+Depth (\begin{DoxyParamCaption}\item[{vector$<$ int4 $>$ \&}]{depth }\end{DoxyParamCaption}) const}
+
+
+
+Calculate dominator depths. 
+
+Associate every \mbox{\hyperlink{class_flow_block}{Flow\+Block}} node in {\bfseries{this}} graph with its depth in the dominator tree. The dominator root has depth 1, the nodes it immediately dominates have depth 2, etc. 
+\begin{DoxyParams}{Parameters}
+{\em depth} & is array that will be populated with depths \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the maximum depth across all nodes 
+\end{DoxyReturn}
+
+
+Definition at line 1870 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_afc33c821dd221280e2d73d24011a5aa7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a044fa551f0aae9c919884772774e11ee}\label{class_block_graph_a044fa551f0aae9c919884772774e11ee}} 
+\index{BlockGraph@{BlockGraph}!buildDomSubTree@{buildDomSubTree}}
+\index{buildDomSubTree@{buildDomSubTree}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{buildDomSubTree()}{buildDomSubTree()}}
+{\footnotesize\ttfamily void Block\+Graph\+::build\+Dom\+Sub\+Tree (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&}]{res,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{root }\end{DoxyParamCaption}) const}
+
+
+
+Collect nodes from a dominator sub-\/tree. 
+
+Collect all nodes in the dominator sub-\/tree starting at a given root \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. We assume blocks in are reverse post order. 
+\begin{DoxyParams}{Parameters}
+{\em res} & will hold the list of nodes in the sub-\/tree \\
+\hline
+{\em root} & is the given root \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1894 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a044fa551f0aae9c919884772774e11ee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_ab762df4b2281775e41b38a38d9f5509f}\label{class_block_graph_ab762df4b2281775e41b38a38d9f5509f}} 
+\index{BlockGraph@{BlockGraph}!buildDomTree@{buildDomTree}}
+\index{buildDomTree@{buildDomTree}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{buildDomTree()}{buildDomTree()}}
+{\footnotesize\ttfamily void Block\+Graph\+::build\+Dom\+Tree (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ $>$ \&}]{child }\end{DoxyParamCaption}) const}
+
+
+
+Build the dominator tree. 
+
+Associate dominator children with each node via a list (of lists) indexed by the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} index. 
+\begin{DoxyParams}{Parameters}
+{\em child} & is the initially empty list of lists \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1850 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_graph_a9026a993cc70a3e67c5eeb19d33a9d98}\label{class_block_graph_a9026a993cc70a3e67c5eeb19d33a9d98}} 
+\index{BlockGraph@{BlockGraph}!calcForwardDominator@{calcForwardDominator}}
+\index{calcForwardDominator@{calcForwardDominator}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{calcForwardDominator()}{calcForwardDominator()}}
+{\footnotesize\ttfamily void Block\+Graph\+::calc\+Forward\+Dominator (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&}]{rootlist }\end{DoxyParamCaption})}
+
+
+
+Calculate forward dominators. 
+
+Calculate the immediate dominator for each \mbox{\hyperlink{class_flow_block}{Flow\+Block}} node in {\bfseries{this}} \mbox{\hyperlink{class_block_graph}{Block\+Graph}}, for forward control-\/flow. The algorithm must be provided a list of entry points for the graph. We assume the blocks are in reverse post-\/order and this is reflected in the index field. Using an algorithm by Cooper, Harvey, and Kennedy. Softw. Pract. Exper. 2001; 4\+: 1-\/10 
+\begin{DoxyParams}{Parameters}
+{\em rootlist} & is the list of entry point Flow\+Blocks \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1768 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a9026a993cc70a3e67c5eeb19d33a9d98_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a9026a993cc70a3e67c5eeb19d33a9d98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_aa65051f403ce79d384a76c4399cdad80}\label{class_block_graph_aa65051f403ce79d384a76c4399cdad80}} 
+\index{BlockGraph@{BlockGraph}!calcLoop@{calcLoop}}
+\index{calcLoop@{calcLoop}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{calcLoop()}{calcLoop()}}
+{\footnotesize\ttfamily void Block\+Graph\+::calc\+Loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Calculate loop edges. 
+
+This algorithm identifies a set of edges such that, if the edges are removed, the remaining graph has NO directed cycles The algorithm works as follows\+: Starting from the start block, do a depth first search through the \char`\"{}out\char`\"{} edges of the block. If the outblock is already on the current path from root to node, we have found a cycle, we add the last edge to the list and continue pretending that edge didn\textquotesingle{}t exist. If the outblock is not on the current path but has been visited before, we can truncate the search. This is now only applied as a failsafe if the graph has irreducible edges. 
+
+Definition at line 1918 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_aa65051f403ce79d384a76c4399cdad80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_aa65051f403ce79d384a76c4399cdad80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a1220886c0c0cad9c8f482afe53dba5d4}\label{class_block_graph_a1220886c0c0cad9c8f482afe53dba5d4}} 
+\index{BlockGraph@{BlockGraph}!clear@{clear}}
+\index{clear@{clear}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Block\+Graph\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear all component \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects. 
+
+
+
+Definition at line 1089 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_block_graph_a1220886c0c0cad9c8f482afe53dba5d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_ad5a3ac8db8d8d2e4fc0ddc1c6b1dab0d}\label{class_block_graph_ad5a3ac8db8d8d2e4fc0ddc1c6b1dab0d}} 
+\index{BlockGraph@{BlockGraph}!clearVisitCount@{clearVisitCount}}
+\index{clearVisitCount@{clearVisitCount}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{clearVisitCount()}{clearVisitCount()}}
+{\footnotesize\ttfamily void Block\+Graph\+::clear\+Visit\+Count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear the visit count in all node Flow\+Blocks. 
+
+
+
+Definition at line 1754 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_ad5a3ac8db8d8d2e4fc0ddc1c6b1dab0d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a48b70c7238548053a1cc3629b8df081b}\label{class_block_graph_a48b70c7238548053a1cc3629b8df081b}} 
+\index{BlockGraph@{BlockGraph}!collectReachable@{collectReachable}}
+\index{collectReachable@{collectReachable}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{collectReachable()}{collectReachable()}}
+{\footnotesize\ttfamily void Block\+Graph\+::collect\+Reachable (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&}]{res,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl,  }\item[{bool}]{un }\end{DoxyParamCaption}) const}
+
+
+
+Collect reachable/unreachable Flow\+Blocks from a given start \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+If the boolean {\bfseries{un}} is {\bfseries{true}}, collect unreachable blocks. Otherwise collect reachable blocks. 
+\begin{DoxyParams}{Parameters}
+{\em res} & will hold the reachable or unreachable Flow\+Blocks \\
+\hline
+{\em bl} & is the starting \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em un} & toggles reachable,unreachable \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1968 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a48b70c7238548053a1cc3629b8df081b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a48b70c7238548053a1cc3629b8df081b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f}\label{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f}} 
+\index{BlockGraph@{BlockGraph}!emit@{emit}}
+\index{emit@{emit}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{emit()}{emit()}}
+{\footnotesize\ttfamily virtual void Block\+Graph\+::emit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. 
+
+This is the main entry point, at the control-\/flow level, for printing structured code. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} that provides details of the high-\/level language being printed \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a9baddec2635c95a5ac9019d6b21d3eab}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_switch_ad1102b97e80c4dd7afa66891eb67a0d6}{Block\+Switch}}, \mbox{\hyperlink{class_block_inf_loop_aa86634144acbb9f7b6b580b9f4566bfe}{Block\+Inf\+Loop}}, \mbox{\hyperlink{class_block_do_while_aa3ab4da82b72f8de35ad9de5f5dff9a2}{Block\+Do\+While}}, \mbox{\hyperlink{class_block_while_do_a8596786848701d23bc4e4a7fc3730889}{Block\+While\+Do}}, \mbox{\hyperlink{class_block_if_a81d526be9d8cca137f9008ac7a12d410}{Block\+If}}, \mbox{\hyperlink{class_block_condition_a952361756ea8b84dc0234d00d628c164}{Block\+Condition}}, \mbox{\hyperlink{class_block_list_a391529d850ca5f97c74acee00c080c43}{Block\+List}}, \mbox{\hyperlink{class_block_multi_goto_a8eee38e26a13873ceaff6d37b46eaafd}{Block\+Multi\+Goto}}, and \mbox{\hyperlink{class_block_goto_a0efc3af4b5fda8bf5f04b0fbca784935}{Block\+Goto}}.
+
+
+
+Definition at line 294 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_ac87b63ceb9f08a4f8667da43e25c7e5e}\label{class_block_graph_ac87b63ceb9f08a4f8667da43e25c7e5e}} 
+\index{BlockGraph@{BlockGraph}!getBlock@{getBlock}}
+\index{getBlock@{getBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{getBlock()}{getBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Block\+Graph\+::get\+Block (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th component. 
+
+
+
+Definition at line 286 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_graph_a48c7e5338645dcbc38521bf1722dd728}\label{class_block_graph_a48c7e5338645dcbc38521bf1722dd728}} 
+\index{BlockGraph@{BlockGraph}!getList@{getList}}
+\index{getList@{getList}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{getList()}{getList()}}
+{\footnotesize\ttfamily const vector$<$\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$$>$\& Block\+Graph\+::get\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the list of component \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects. 
+
+
+
+Definition at line 284 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a48c7e5338645dcbc38521bf1722dd728_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a12bc7480ffcc4c163a2a2cd800742f09}\label{class_block_graph_a12bc7480ffcc4c163a2a2cd800742f09}} 
+\index{BlockGraph@{BlockGraph}!getSize@{getSize}}
+\index{getSize@{getSize}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Block\+Graph\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of components. 
+
+
+
+Definition at line 285 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a12bc7480ffcc4c163a2a2cd800742f09_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_ae4f8f8599ed5e3eb803536f1c9595f09}\label{class_block_graph_ae4f8f8599ed5e3eb803536f1c9595f09}} 
+\index{BlockGraph@{BlockGraph}!getStartBlock@{getStartBlock}}
+\index{getStartBlock@{getStartBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{getStartBlock()}{getStartBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+Graph\+::get\+Start\+Block (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the entry point \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Throw an exception if no entry point is registered \begin{DoxyReturn}{Returns}
+the entry point \mbox{\hyperlink{class_flow_block}{Flow\+Block}} 
+\end{DoxyReturn}
+
+
+Definition at line 1473 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_ae4f8f8599ed5e3eb803536f1c9595f09_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a8e542e109e0acc977218ceaf3c248153}\label{class_block_graph_a8e542e109e0acc977218ceaf3c248153}} 
+\index{BlockGraph@{BlockGraph}!getType@{getType}}
+\index{getType@{getType}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} Block\+Graph\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_ae036068cc610d97a5461f9bcf75bd43d}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_switch_a9796f852aa205ba32346ae9d249f94c1}{Block\+Switch}}, \mbox{\hyperlink{class_block_inf_loop_a798896823e2c790567144b525753eca7}{Block\+Inf\+Loop}}, \mbox{\hyperlink{class_block_do_while_a3700fcac8afffc121249a49af054269e}{Block\+Do\+While}}, \mbox{\hyperlink{class_block_while_do_a7bb1454de32707fac664051525c58d47}{Block\+While\+Do}}, \mbox{\hyperlink{class_block_if_a6fb92878f6e42112610ac0dee44c63a9}{Block\+If}}, \mbox{\hyperlink{class_block_condition_a654b72b19819b68c6f09e507dfee4ddd}{Block\+Condition}}, \mbox{\hyperlink{class_block_list_ab77ac8f833192e59773b7e3829823dc5}{Block\+List}}, \mbox{\hyperlink{class_block_multi_goto_a9fd5bfdaa3202a1cd604213c2be88bf2}{Block\+Multi\+Goto}}, and \mbox{\hyperlink{class_block_goto_a11f324c0fdd3849a53250a0d67b6c94e}{Block\+Goto}}.
+
+
+
+Definition at line 287 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_graph_ad522a7201e4327411cd161b04d57f1da}\label{class_block_graph_ad522a7201e4327411cd161b04d57f1da}} 
+\index{BlockGraph@{BlockGraph}!markCopyBlock@{markCopyBlock}}
+\index{markCopyBlock@{markCopyBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{markCopyBlock()}{markCopyBlock()}}
+{\footnotesize\ttfamily void Block\+Graph\+::mark\+Copy\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl,  }\item[{uint4}]{fl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Set properties on the first leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+For the given \mbox{\hyperlink{class_block_graph}{Block\+Graph}} find the first component leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} and set its properties 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_block_graph}{Block\+Graph}} \\
+\hline
+{\em fl} & is the property to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1083 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_ad522a7201e4327411cd161b04d57f1da_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_ad522a7201e4327411cd161b04d57f1da_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a67e2a75a80e60655a9936045d40983f6}\label{class_block_graph_a67e2a75a80e60655a9936045d40983f6}} 
+\index{BlockGraph@{BlockGraph}!markLabelBumpUp@{markLabelBumpUp}}
+\index{markLabelBumpUp@{markLabelBumpUp}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{markLabelBumpUp()}{markLabelBumpUp()}}
+{\footnotesize\ttfamily void Block\+Graph\+::mark\+Label\+Bump\+Up (\begin{DoxyParamCaption}\item[{bool}]{bump }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Let hierarchical blocks steal labels of their (first) components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bump} & if {\bfseries{true}}, mark that labels for this block are printed by somebody higher in hierarchy \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a0882ce85a017e4988eda779de6a86089}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_inf_loop_a4b07279f936c69240ceacf4d5e8dfebc}{Block\+Inf\+Loop}}, \mbox{\hyperlink{class_block_do_while_ab391ccd9276eec9200396ea6e8db7a96}{Block\+Do\+While}}, and \mbox{\hyperlink{class_block_while_do_ac850d56fa3365a195b91373ef00d7bd3}{Block\+While\+Do}}.
+
+
+
+Definition at line 1108 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a67e2a75a80e60655a9936045d40983f6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a67e2a75a80e60655a9936045d40983f6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a6047a66449b05bf62b33a2bef8642033}\label{class_block_graph_a6047a66449b05bf62b33a2bef8642033}} 
+\index{BlockGraph@{BlockGraph}!markUnstructured@{markUnstructured}}
+\index{markUnstructured@{markUnstructured}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{markUnstructured()}{markUnstructured()}}
+{\footnotesize\ttfamily void Block\+Graph\+::mark\+Unstructured (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mark target blocks of any unstructured edges. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_ad06e84d3405ffe52bc29837265402d78}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_switch_ac0f9b63b617ff225b3240f8dda6cf56b}{Block\+Switch}}, \mbox{\hyperlink{class_block_if_a7e394df8ba02a9ba48bd9ec239e84d52}{Block\+If}}, and \mbox{\hyperlink{class_block_goto_acc562547e24a946794c7583e61208553}{Block\+Goto}}.
+
+
+
+Definition at line 1099 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a6047a66449b05bf62b33a2bef8642033_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a4a1dcf88374cbf4b9886d26dced7c533}\label{class_block_graph_a4a1dcf88374cbf4b9886d26dced7c533}} 
+\index{BlockGraph@{BlockGraph}!moveOutEdge@{moveOutEdge}}
+\index{moveOutEdge@{moveOutEdge}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{moveOutEdge()}{moveOutEdge()}}
+{\footnotesize\ttfamily void Block\+Graph\+::move\+Out\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{blold,  }\item[{int4}]{slot,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{blnew }\end{DoxyParamCaption})}
+
+
+
+Move indicated {\itshape out} edge to a new \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Given an edge specified by its input \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, replace that input with new \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+\begin{DoxyParams}{Parameters}
+{\em blold} & is the original input \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em slot} & is the index of the {\itshape out} edge of {\bfseries{blold}} \\
+\hline
+{\em blnew} & is the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will become the input to the edge \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1326 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a4a1dcf88374cbf4b9886d26dced7c533_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a4a1dcf88374cbf4b9886d26dced7c533_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_aa8afd0ba5e6abe328dee3b21473f0e2c}\label{class_block_graph_aa8afd0ba5e6abe328dee3b21473f0e2c}} 
+\index{BlockGraph@{BlockGraph}!newBlock@{newBlock}}
+\index{newBlock@{newBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlock()}{newBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+Graph\+::new\+Block (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Build a new plain \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Add the new \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to {\bfseries{this}} \begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_flow_block}{Flow\+Block}} 
+\end{DoxyReturn}
+
+
+Definition at line 1483 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_block_graph_aa8afd0ba5e6abe328dee3b21473f0e2c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a0d05f223a305365c86c4b6efea82f1c0}\label{class_block_graph_a0d05f223a305365c86c4b6efea82f1c0}} 
+\index{BlockGraph@{BlockGraph}!newBlockBasic@{newBlockBasic}}
+\index{newBlockBasic@{newBlockBasic}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockBasic()}{newBlockBasic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$ Block\+Graph\+::new\+Block\+Basic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_basic}{Block\+Basic}}. 
+
+Add the new \mbox{\hyperlink{class_block_basic}{Block\+Basic}} to {\bfseries{this}} 
+\begin{DoxyParams}{Parameters}
+{\em fd} & is the function underlying the basic block \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_basic}{Block\+Basic}} 
+\end{DoxyReturn}
+
+
+Definition at line 1494 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a0d05f223a305365c86c4b6efea82f1c0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a9b468774a4463d9abc43c21d032a850b}\label{class_block_graph_a9b468774a4463d9abc43c21d032a850b}} 
+\index{BlockGraph@{BlockGraph}!newBlockCondition@{newBlockCondition}}
+\index{newBlockCondition@{newBlockCondition}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockCondition()}{newBlockCondition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_condition}{Block\+Condition}} $\ast$ Block\+Graph\+::new\+Block\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{b1,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{b2 }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_condition}{Block\+Condition}}. 
+
+Add the new \mbox{\hyperlink{class_block_condition}{Block\+Condition}} to {\bfseries{this}}, collapsing its pieces into it. 
+\begin{DoxyParams}{Parameters}
+{\em b1} & is the first \mbox{\hyperlink{class_flow_block}{Flow\+Block}} piece \\
+\hline
+{\em b2} & is the second \mbox{\hyperlink{class_flow_block}{Flow\+Block}} piece \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_condition}{Block\+Condition}} 
+\end{DoxyReturn}
+
+
+Definition at line 1597 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a9b468774a4463d9abc43c21d032a850b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a29ab85a9a7a5d1f6785d2e93ce1e502d}\label{class_block_graph_a29ab85a9a7a5d1f6785d2e93ce1e502d}} 
+\index{BlockGraph@{BlockGraph}!newBlockCopy@{newBlockCopy}}
+\index{newBlockCopy@{newBlockCopy}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockCopy()}{newBlockCopy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_copy}{Block\+Copy}} $\ast$ Block\+Graph\+::new\+Block\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_copy}{Block\+Copy}}. 
+
+Add the new \mbox{\hyperlink{class_block_copy}{Block\+Copy}} to {\bfseries{this}} 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} underlying the copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_copy}{Block\+Copy}} 
+\end{DoxyReturn}
+
+
+Definition at line 1505 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a29ab85a9a7a5d1f6785d2e93ce1e502d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_ae61c4c6c6ab865760a6855ced92ae809}\label{class_block_graph_ae61c4c6c6ab865760a6855ced92ae809}} 
+\index{BlockGraph@{BlockGraph}!newBlockDoWhile@{newBlockDoWhile}}
+\index{newBlockDoWhile@{newBlockDoWhile}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockDoWhile()}{newBlockDoWhile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_do_while}{Block\+Do\+While}} $\ast$ Block\+Graph\+::new\+Block\+Do\+While (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{condcl }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_do_while}{Block\+Do\+While}}. 
+
+Add the new \mbox{\hyperlink{class_block_do_while}{Block\+Do\+While}} to {\bfseries{this}}, collapsing the condition clause \mbox{\hyperlink{class_flow_block}{Flow\+Block}} into it. 
+\begin{DoxyParams}{Parameters}
+{\em condcl} & is the condition clause \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_do_while}{Block\+Do\+While}} 
+\end{DoxyReturn}
+
+
+Definition at line 1691 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_graph_a1f0931166f699006e3a6335c60138ee7}\label{class_block_graph_a1f0931166f699006e3a6335c60138ee7}} 
+\index{BlockGraph@{BlockGraph}!newBlockGoto@{newBlockGoto}}
+\index{newBlockGoto@{newBlockGoto}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockGoto()}{newBlockGoto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_goto}{Block\+Goto}} $\ast$ Block\+Graph\+::new\+Block\+Goto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_goto}{Block\+Goto}}. 
+
+Add the new \mbox{\hyperlink{class_block_goto}{Block\+Goto}} to {\bfseries{this}}, incorporating the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} whose outgoing edge is to be marked as a {\itshape goto} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_goto}{Block\+Goto}} 
+\end{DoxyReturn}
+
+
+Definition at line 1526 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a1f0931166f699006e3a6335c60138ee7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a76871ba6558fd5899d92cb5bfb6d9b60}\label{class_block_graph_a76871ba6558fd5899d92cb5bfb6d9b60}} 
+\index{BlockGraph@{BlockGraph}!newBlockIf@{newBlockIf}}
+\index{newBlockIf@{newBlockIf}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockIf()}{newBlockIf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_if}{Block\+If}} $\ast$ Block\+Graph\+::new\+Block\+If (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{cond,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{tc }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_if}{Block\+If}}. 
+
+Add the new \mbox{\hyperlink{class_block_if}{Block\+If}} to {\bfseries{this}}, collapsing the condition and body Flow\+Blocks into it. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & is the condition \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em tc} & is the body \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_if}{Block\+If}} 
+\end{DoxyReturn}
+
+
+Definition at line 1639 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_graph_acea0ea1a425020062f5d6e3b87a69fe0}\label{class_block_graph_acea0ea1a425020062f5d6e3b87a69fe0}} 
+\index{BlockGraph@{BlockGraph}!newBlockIfElse@{newBlockIfElse}}
+\index{newBlockIfElse@{newBlockIfElse}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockIfElse()}{newBlockIfElse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_if}{Block\+If}} $\ast$ Block\+Graph\+::new\+Block\+If\+Else (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{cond,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{tc,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{fc }\end{DoxyParamCaption})}
+
+
+
+Build a new Block\+If\+Else. 
+
+Add the new Block\+If\+Else to {\bfseries{this}}, collapsing the condition, true clause, and false clause into it. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & is the condition \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em tc} & is the true clause \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em fc} & is the false clause \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_if}{Block\+If}} 
+\end{DoxyReturn}
+
+
+Definition at line 1657 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_graph_ad25eb345760dc1732c0117f7bb0a72ce}\label{class_block_graph_ad25eb345760dc1732c0117f7bb0a72ce}} 
+\index{BlockGraph@{BlockGraph}!newBlockIfGoto@{newBlockIfGoto}}
+\index{newBlockIfGoto@{newBlockIfGoto}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockIfGoto()}{newBlockIfGoto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_if}{Block\+If}} $\ast$ Block\+Graph\+::new\+Block\+If\+Goto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{cond }\end{DoxyParamCaption})}
+
+
+
+Build a new Block\+If\+Goto. 
+
+Add the new Block\+If\+Goto to {\bfseries{this}}, collapsing the given condition \mbox{\hyperlink{class_flow_block}{Flow\+Block}} into it. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & is the given condition \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new Block\+If\+Goto 
+\end{DoxyReturn}
+
+
+Definition at line 1616 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_ad25eb345760dc1732c0117f7bb0a72ce_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a4729c7a662b511b4112361e063336c36}\label{class_block_graph_a4729c7a662b511b4112361e063336c36}} 
+\index{BlockGraph@{BlockGraph}!newBlockInfLoop@{newBlockInfLoop}}
+\index{newBlockInfLoop@{newBlockInfLoop}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockInfLoop()}{newBlockInfLoop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_inf_loop}{Block\+Inf\+Loop}} $\ast$ Block\+Graph\+::new\+Block\+Inf\+Loop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{body }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_inf_loop}{Block\+Inf\+Loop}}. 
+
+Add the new \mbox{\hyperlink{class_block_inf_loop}{Block\+Inf\+Loop}} to {\bfseries{this}}, collapsing the body \mbox{\hyperlink{class_flow_block}{Flow\+Block}} into it. 
+\begin{DoxyParams}{Parameters}
+{\em body} & is the body \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_inf_loop}{Block\+Inf\+Loop}} 
+\end{DoxyReturn}
+
+
+Definition at line 1706 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_graph_aafe64866a81e07fdb5eb92ab74a171ac}\label{class_block_graph_aafe64866a81e07fdb5eb92ab74a171ac}} 
+\index{BlockGraph@{BlockGraph}!newBlockList@{newBlockList}}
+\index{newBlockList@{newBlockList}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockList()}{newBlockList()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_list}{Block\+List}} $\ast$ Block\+Graph\+::new\+Block\+List (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&}]{nodes }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_list}{Block\+List}}. 
+
+Add the new \mbox{\hyperlink{class_block_list}{Block\+List}} to {\bfseries{this}}, collapsing the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} components into it. 
+\begin{DoxyParams}{Parameters}
+{\em nodes} & is the given set of Flow\+Blocks components \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_list}{Block\+List}} 
+\end{DoxyReturn}
+
+
+Definition at line 1575 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_block_graph_aafe64866a81e07fdb5eb92ab74a171ac_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_aea5dbfcf345da8fe5fa335b07613e1af}\label{class_block_graph_aea5dbfcf345da8fe5fa335b07613e1af}} 
+\index{BlockGraph@{BlockGraph}!newBlockMultiGoto@{newBlockMultiGoto}}
+\index{newBlockMultiGoto@{newBlockMultiGoto}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockMultiGoto()}{newBlockMultiGoto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_multi_goto}{Block\+Multi\+Goto}} $\ast$ Block\+Graph\+::new\+Block\+Multi\+Goto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl,  }\item[{int4}]{outedge }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_multi_goto}{Block\+Multi\+Goto}}. 
+
+The given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} may already be a \mbox{\hyperlink{class_block_multi_goto}{Block\+Multi\+Goto}}, otherwise we add the new \mbox{\hyperlink{class_block_multi_goto}{Block\+Multi\+Goto}} to {\bfseries{this}}. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} with the new {\itshape goto} edge \\
+\hline
+{\em outedge} & is the index of the outgoing edge to make into a {\itshape goto} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the (possibly new) \mbox{\hyperlink{class_block_multi_goto}{Block\+Multi\+Goto}} 
+\end{DoxyReturn}
+
+
+Definition at line 1544 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_aea5dbfcf345da8fe5fa335b07613e1af_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a2e96df7e537a3f92320addcf01515e5d}\label{class_block_graph_a2e96df7e537a3f92320addcf01515e5d}} 
+\index{BlockGraph@{BlockGraph}!newBlockSwitch@{newBlockSwitch}}
+\index{newBlockSwitch@{newBlockSwitch}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockSwitch()}{newBlockSwitch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_switch}{Block\+Switch}} $\ast$ Block\+Graph\+::new\+Block\+Switch (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&}]{cs }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_switch}{Block\+Switch}}. 
+
+Add the new \mbox{\hyperlink{class_block_switch}{Block\+Switch}} to {\bfseries{this}}, collapsing all the case Flow\+Blocks into it. 
+\begin{DoxyParams}{Parameters}
+{\em cs} & is the list of case Flow\+Blocks \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_switch}{Block\+Switch}} 
+\end{DoxyReturn}
+
+
+Definition at line 1720 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a2e96df7e537a3f92320addcf01515e5d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_af1dfcc22ff51892b053cfe62cc7bf124}\label{class_block_graph_af1dfcc22ff51892b053cfe62cc7bf124}} 
+\index{BlockGraph@{BlockGraph}!newBlockWhileDo@{newBlockWhileDo}}
+\index{newBlockWhileDo@{newBlockWhileDo}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{newBlockWhileDo()}{newBlockWhileDo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_while_do}{Block\+While\+Do}} $\ast$ Block\+Graph\+::new\+Block\+While\+Do (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{cond,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{cl }\end{DoxyParamCaption})}
+
+
+
+Build a new \mbox{\hyperlink{class_block_while_do}{Block\+While\+Do}}. 
+
+Add the new \mbox{\hyperlink{class_block_while_do}{Block\+While\+Do}} to {\bfseries{this}}, collapsing the condition and clause into it. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & is the condition \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em cl} & is the clause \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new \mbox{\hyperlink{class_block_while_do}{Block\+While\+Do}} 
+\end{DoxyReturn}
+
+
+Definition at line 1675 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6}\label{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6}} 
+\index{BlockGraph@{BlockGraph}!nextFlowAfter@{nextFlowAfter}}
+\index{nextFlowAfter@{nextFlowAfter}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{nextFlowAfter()}{nextFlowAfter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+Graph\+::next\+Flow\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Within the hierarchy of {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, assume the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} will fall-\/thru in its execution at some point. Return the first leaf block (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} or \mbox{\hyperlink{class_block_copy}{Block\+Copy}}) that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} completes, assuming this is a unique block. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the next \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to execute or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a400c220d6c728958396286f54de6dd9e}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_switch_ae13e717fc62265c1f9b5024cb0e9cd1a}{Block\+Switch}}, \mbox{\hyperlink{class_block_inf_loop_a10ef0de99961f931b7432b2662ac2677}{Block\+Inf\+Loop}}, \mbox{\hyperlink{class_block_do_while_a996ef387d4f6d645c38544d2aa4ba438}{Block\+Do\+While}}, \mbox{\hyperlink{class_block_while_do_a28f4f91e7ec3b4cc2bde0a0d432e0fe8}{Block\+While\+Do}}, \mbox{\hyperlink{class_block_if_adbc4cd5fb6cad60aa333c12532b55e1f}{Block\+If}}, \mbox{\hyperlink{class_block_condition_aefdc0e19b1623ebefa07b05b5bd85408}{Block\+Condition}}, \mbox{\hyperlink{class_block_multi_goto_a44d0021262e569ac4ecf6ecddbdf1d41}{Block\+Multi\+Goto}}, and \mbox{\hyperlink{class_block_goto_acc1628a26572e23d61f4b4dad717816e}{Block\+Goto}}.
+
+
+
+Definition at line 1161 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a1da91d469ca3583ac7408e90443f0e09}\label{class_block_graph_a1da91d469ca3583ac7408e90443f0e09}} 
+\index{BlockGraph@{BlockGraph}!orderBlocks@{orderBlocks}}
+\index{orderBlocks@{orderBlocks}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{orderBlocks()}{orderBlocks()}}
+{\footnotesize\ttfamily void Block\+Graph\+::order\+Blocks (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+$<$ Sort blocks using the final ordering 
+
+Definition at line 329 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a1da91d469ca3583ac7408e90443f0e09_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a1da91d469ca3583ac7408e90443f0e09_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_aaab258bf71213db644bb8e1764f81b1f}\label{class_block_graph_aaab258bf71213db644bb8e1764f81b1f}} 
+\index{BlockGraph@{BlockGraph}!orderSwitchCases@{orderSwitchCases}}
+\index{orderSwitchCases@{orderSwitchCases}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{orderSwitchCases()}{orderSwitchCases()}}
+{\footnotesize\ttfamily void Block\+Graph\+::order\+Switch\+Cases (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Order {\itshape case} components of any contained \mbox{\hyperlink{class_block_switch}{Block\+Switch}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_abd18da44c1332bbb2e495fde85863eb5}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_switch_a3413057234f7606357b6037a516627a6}{Block\+Switch}}.
+
+
+
+Definition at line 1181 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_graph_abcae771fc675bcc52c78b2f1dc0ab98a}\label{class_block_graph_abcae771fc675bcc52c78b2f1dc0ab98a}} 
+\index{BlockGraph@{BlockGraph}!printRaw@{printRaw}}
+\index{printRaw@{printRaw}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{printRaw()}{printRaw()}}
+{\footnotesize\ttfamily void Block\+Graph\+::print\+Raw (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print raw instructions contained in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_aa5bd09d25026872141e42118b03119b1}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_multi_goto_a56b9c331488b4bf0c0f01cc583192630}{Block\+Multi\+Goto}}, and \mbox{\hyperlink{class_block_goto_aa665d1bc9ba041f0c90c52322abf5727}{Block\+Goto}}.
+
+
+
+Definition at line 1150 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_abcae771fc675bcc52c78b2f1dc0ab98a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_abcae771fc675bcc52c78b2f1dc0ab98a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_add1908219c53b2687c4d1c6c9132c11e}\label{class_block_graph_add1908219c53b2687c4d1c6c9132c11e}} 
+\index{BlockGraph@{BlockGraph}!printTree@{printTree}}
+\index{printTree@{printTree}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{printTree()}{printTree()}}
+{\footnotesize\ttfamily void Block\+Graph\+::print\+Tree (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{int4}]{level }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print tree structure of any blocks owned by {\bfseries{this}}. 
+
+Recursively print out the hierarchical structure of {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+{\em level} & is the current level of indentation \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_ae00f14fc1916599ec34074fbb010c74b}{Flow\+Block}}.
+
+
+
+Definition at line 1140 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_add1908219c53b2687c4d1c6c9132c11e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_add1908219c53b2687c4d1c6c9132c11e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a566cbe393f781703c640a691e27a4f90}\label{class_block_graph_a566cbe393f781703c640a691e27a4f90}} 
+\index{BlockGraph@{BlockGraph}!removeBlock@{removeBlock}}
+\index{removeBlock@{removeBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{removeBlock()}{removeBlock()}}
+{\footnotesize\ttfamily void Block\+Graph\+::remove\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Remove a \mbox{\hyperlink{class_flow_block}{Flow\+Block}} from {\bfseries{this}} \mbox{\hyperlink{class_block_graph}{Block\+Graph}}. 
+
+The indicated block is pulled out of the component list and deleted. Any edges between it and the rest of the \mbox{\hyperlink{class_block_graph}{Block\+Graph}} are simply removed. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the indicated block \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1341 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a566cbe393f781703c640a691e27a4f90_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a566cbe393f781703c640a691e27a4f90_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a2fe87e9f6a5a250a09869028bf1bb11d}\label{class_block_graph_a2fe87e9f6a5a250a09869028bf1bb11d}} 
+\index{BlockGraph@{BlockGraph}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily void Block\+Graph\+::remove\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{begin,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{end }\end{DoxyParamCaption})}
+
+
+
+Remove an edge between component Flow\+Blocks. 
+
+The edge must already exist 
+\begin{DoxyParams}{Parameters}
+{\em begin} & is the incoming \mbox{\hyperlink{class_flow_block}{Flow\+Block}} of the edge \\
+\hline
+{\em end} & is the outgoing \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1293 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a2fe87e9f6a5a250a09869028bf1bb11d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_ae61430ab00f3437f85016b0c76907e94}\label{class_block_graph_ae61430ab00f3437f85016b0c76907e94}} 
+\index{BlockGraph@{BlockGraph}!removeFromFlow@{removeFromFlow}}
+\index{removeFromFlow@{removeFromFlow}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{removeFromFlow()}{removeFromFlow()}}
+{\footnotesize\ttfamily void Block\+Graph\+::remove\+From\+Flow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Remove given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} preserving flow in {\bfseries{this}}. 
+
+This should be applied only if the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} has 0 or 1 outputs. If there is an output \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, all incoming edges to the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} are moved so they flow into the output \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, then all remaining edges into or out of the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} are removed. The given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} is {\bfseries{not}} removed from {\bfseries{this}}. This routine doesn\textquotesingle{}t preserve loopedge information 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} component \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1369 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_ae61430ab00f3437f85016b0c76907e94_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a8c6e3329fe131f587a472413dfd60fcd}\label{class_block_graph_a8c6e3329fe131f587a472413dfd60fcd}} 
+\index{BlockGraph@{BlockGraph}!removeFromFlowSplit@{removeFromFlowSplit}}
+\index{removeFromFlowSplit@{removeFromFlowSplit}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{removeFromFlowSplit()}{removeFromFlowSplit()}}
+{\footnotesize\ttfamily void Block\+Graph\+::remove\+From\+Flow\+Split (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl,  }\item[{bool}]{flipflow }\end{DoxyParamCaption})}
+
+
+
+Remove \mbox{\hyperlink{class_flow_block}{Flow\+Block}} splitting flow between input and output edges. 
+
+Remove the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} from the flow of the graph. It must have 2 inputs, and 2 outputs. The edges will be remapped so that
+\begin{DoxyItemize}
+\item In(0) -\/$>$ Out(0) and
+\item In(1) -\/$>$ Out(1)
+\end{DoxyItemize}
+
+Or if {\bfseries{flipflow}} is true\+:
+\begin{DoxyItemize}
+\item In(0) -\/$>$ Out(1)
+\item In(1) -\/$>$ Out(0) 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em flipflow} & indicates how the edges are remapped \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+Definition at line 1399 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a8c6e3329fe131f587a472413dfd60fcd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a8c6e3329fe131f587a472413dfd60fcd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a90d67a53a21174345f5f376c75ca6067}\label{class_block_graph_a90d67a53a21174345f5f376c75ca6067}} 
+\index{BlockGraph@{BlockGraph}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Block\+Graph\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+Restore {\bfseries{this}} \mbox{\hyperlink{class_block_graph}{Block\+Graph}} from an X\+ML stream. 
+
+This is currently just a wrapper around the \mbox{\hyperlink{class_flow_block_a002ddc14dc84098dcb14b513f8b973c1}{Flow\+Block\+::restore\+Xml()}} that sets of the \mbox{\hyperlink{class_block_map}{Block\+Map}} resolver 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root $<$block$>$ tag \\
+\hline
+{\em m} & is the address space manager \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1253 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a90d67a53a21174345f5f376c75ca6067_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a90d67a53a21174345f5f376c75ca6067_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a7a1c54e577b11af83f2635f9c5ad0545}\label{class_block_graph_a7a1c54e577b11af83f2635f9c5ad0545}} 
+\index{BlockGraph@{BlockGraph}!restoreXmlBody@{restoreXmlBody}}
+\index{restoreXmlBody@{restoreXmlBody}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{restoreXmlBody()}{restoreXmlBody()}}
+{\footnotesize\ttfamily void Block\+Graph\+::restore\+Xml\+Body (\begin{DoxyParamCaption}\item[{List\+::const\+\_\+iterator \&}]{iter,  }\item[{List\+::const\+\_\+iterator}]{enditer,  }\item[{\mbox{\hyperlink{class_block_map}{Block\+Map}} \&}]{resolver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore details about {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} from an X\+ML stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iter} & is an iterator to X\+ML elements containing component tags etc. \\
+\hline
+{\em enditer} & marks the end of the X\+ML tags \\
+\hline
+{\em resolver} & is used to recover \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects based on X\+ML references \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_aea33ed5d172e8486557198c2e18c88ae}{Flow\+Block}}.
+
+
+
+Definition at line 1217 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a7a1c54e577b11af83f2635f9c5ad0545_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a881076195239ce5c2e5c865f22714d03}\label{class_block_graph_a881076195239ce5c2e5c865f22714d03}} 
+\index{BlockGraph@{BlockGraph}!saveXmlBody@{saveXmlBody}}
+\index{saveXmlBody@{saveXmlBody}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{saveXmlBody()}{saveXmlBody()}}
+{\footnotesize\ttfamily void Block\+Graph\+::save\+Xml\+Body (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Save detail about components to an X\+ML stream. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a05d5939fe8f00edba7320799bf3f177b}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_if_ae2abef245decb84faf212ce156389d9e}{Block\+If}}, \mbox{\hyperlink{class_block_multi_goto_ac537bd161b597061aeca88bcc01e260c}{Block\+Multi\+Goto}}, and \mbox{\hyperlink{class_block_goto_a4210ef977a85a74b9923e405057b093b}{Block\+Goto}}.
+
+
+
+Definition at line 1189 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a881076195239ce5c2e5c865f22714d03_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a881076195239ce5c2e5c865f22714d03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a55618dfd49266bd4185d119f08e8b630}\label{class_block_graph_a55618dfd49266bd4185d119f08e8b630}} 
+\index{BlockGraph@{BlockGraph}!scopeBreak@{scopeBreak}}
+\index{scopeBreak@{scopeBreak}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{scopeBreak()}{scopeBreak()}}
+{\footnotesize\ttfamily void Block\+Graph\+::scope\+Break (\begin{DoxyParamCaption}\item[{int4}]{curexit,  }\item[{int4}]{curloopexit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mark unstructured edges that should be {\itshape breaks}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a392611cfd24306f58ea6e18371809223}{Flow\+Block}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_block_switch_a85ad912114b4e2ac355ac2bc2f3be12c}{Block\+Switch}}, \mbox{\hyperlink{class_block_inf_loop_ad1f92e4b37d7bf19cc409d353ad281ae}{Block\+Inf\+Loop}}, \mbox{\hyperlink{class_block_do_while_a6a6254c0020641ccffd791f6206461cc}{Block\+Do\+While}}, \mbox{\hyperlink{class_block_while_do_a87ab7a000da06ffdca299db53495eae0}{Block\+While\+Do}}, \mbox{\hyperlink{class_block_if_afeafc0ad59b47dde90d4b477a2ef7637}{Block\+If}}, \mbox{\hyperlink{class_block_condition_ab25a80cf066d355146cd5b4a67d91f46}{Block\+Condition}}, \mbox{\hyperlink{class_block_multi_goto_a1957286b0a3a4a2d280caae3c1f19cc7}{Block\+Multi\+Goto}}, and \mbox{\hyperlink{class_block_goto_ad409112a4ad46f076a923bd152428a83}{Block\+Goto}}.
+
+
+
+Definition at line 1120 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a55618dfd49266bd4185d119f08e8b630_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a8bc1763c69f71a1c6a088340ae4a256f}\label{class_block_graph_a8bc1763c69f71a1c6a088340ae4a256f}} 
+\index{BlockGraph@{BlockGraph}!setStartBlock@{setStartBlock}}
+\index{setStartBlock@{setStartBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{setStartBlock()}{setStartBlock()}}
+{\footnotesize\ttfamily void Block\+Graph\+::set\+Start\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Set the entry point \mbox{\hyperlink{class_flow_block}{Flow\+Block}} for {\bfseries{this}} graph. 
+
+The component list is reordered to make the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} first. The {\itshape f\+\_\+entry\+\_\+point} property is updated. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to make the entry point \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1449 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a8bc1763c69f71a1c6a088340ae4a256f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a4f6da43f90aeadf0b19ddbcd95544fd3}\label{class_block_graph_a4f6da43f90aeadf0b19ddbcd95544fd3}} 
+\index{BlockGraph@{BlockGraph}!spliceBlock@{spliceBlock}}
+\index{spliceBlock@{spliceBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{spliceBlock()}{spliceBlock()}}
+{\footnotesize\ttfamily void Block\+Graph\+::splice\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Splice given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} together with its output. 
+
+The given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} must have exactly one output. That output must have exactly one input. The output \mbox{\hyperlink{class_flow_block}{Flow\+Block}} is removed and any outgoing edges it has become outgoing edge of the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. The output \mbox{\hyperlink{class_flow_block}{Flow\+Block}} is permanently removed. It is viewed as being {\itshape spliced} together with the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1421 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a4f6da43f90aeadf0b19ddbcd95544fd3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a4f6da43f90aeadf0b19ddbcd95544fd3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a468717bd5cf1e3bd34e5221a5d425bd9}\label{class_block_graph_a468717bd5cf1e3bd34e5221a5d425bd9}} 
+\index{BlockGraph@{BlockGraph}!structureLoops@{structureLoops}}
+\index{structureLoops@{structureLoops}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{structureLoops()}{structureLoops()}}
+{\footnotesize\ttfamily void Block\+Graph\+::structure\+Loops (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ $>$ \&}]{rootlist }\end{DoxyParamCaption})}
+
+
+
+Label loop edges. 
+
+
+\begin{DoxyItemize}
+\item Find irreducible edges
+\item Find a spanning tree
+\item Set \mbox{\hyperlink{class_flow_block}{Flow\+Block}} indices in reverse-\/post order
+\item Label tree-\/edges, forward-\/edges, cross-\/edges, and back-\/edges 
+\begin{DoxyParams}{Parameters}
+{\em rootlist} & will contain the entry points for the graph \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+Definition at line 2008 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a468717bd5cf1e3bd34e5221a5d425bd9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a468717bd5cf1e3bd34e5221a5d425bd9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a57ca5980b8c1ba97c468f82888bf0033}\label{class_block_graph_a57ca5980b8c1ba97c468f82888bf0033}} 
+\index{BlockGraph@{BlockGraph}!subBlock@{subBlock}}
+\index{subBlock@{subBlock}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{subBlock()}{subBlock()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Block\+Graph\+::sub\+Block (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the i-\/th component block. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a42070515fd8db6cc23916b359e259f4e}{Flow\+Block}}.
+
+
+
+Definition at line 288 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_graph_ab7f8b2b90699d158b7b617012598f61c}\label{class_block_graph_ab7f8b2b90699d158b7b617012598f61c}} 
+\index{BlockGraph@{BlockGraph}!swapBlocks@{swapBlocks}}
+\index{swapBlocks@{swapBlocks}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{swapBlocks()}{swapBlocks()}}
+{\footnotesize\ttfamily void Block\+Graph\+::swap\+Blocks (\begin{DoxyParamCaption}\item[{int4}]{i,  }\item[{int4}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Swap the positions two component Flow\+Blocks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & is the position of the first \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to swap \\
+\hline
+{\em j} & is the position of the second \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1071 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_ab7f8b2b90699d158b7b617012598f61c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_graph_a238a3ecac594008e2893b2fa1f85d95b}\label{class_block_graph_a238a3ecac594008e2893b2fa1f85d95b}} 
+\index{BlockGraph@{BlockGraph}!switchEdge@{switchEdge}}
+\index{switchEdge@{switchEdge}!BlockGraph@{BlockGraph}}
+\subsubsection{\texorpdfstring{switchEdge()}{switchEdge()}}
+{\footnotesize\ttfamily void Block\+Graph\+::switch\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{in,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{outbefore,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{outafter }\end{DoxyParamCaption})}
+
+
+
+Move an edge from one out \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to another. 
+
+The edge from {\bfseries{in}} to {\bfseries{outbefore}} must already exist. It will get removed and replaced with an edge from {\bfseries{in}} to {\bfseries{outafter}}. The new edge index will be the same as the removed edge, and all other edge ordering will be preserved. 
+\begin{DoxyParams}{Parameters}
+{\em in} & is the input \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em outbefore} & is the initial output \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+{\em outafter} & is the new output \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1313 of file block.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_graph_a238a3ecac594008e2893b2fa1f85d95b_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8hh}{block.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8cc}{block.\+cc}}\end{DoxyCompactItemize}

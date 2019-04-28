@@ -1,0 +1,345 @@
+.TH "MemoryBank" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryBank \- Memory storage/state for a single AddressSpace\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memstate\&.hh>\fP
+.PP
+Inherited by \fBMemoryHashOverlay\fP, \fBMemoryImage\fP, and \fBMemoryPageOverlay\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryBank\fP (\fBAddrSpace\fP *spc, int4 ws, int4 ps)"
+.br
+.RI "Generic constructor for a memory bank\&. "
+.ti -1c
+.RI "virtual \fB~MemoryBank\fP (void)"
+.br
+.ti -1c
+.RI "int4 \fBgetWordSize\fP (void) const"
+.br
+.RI "Get the number of bytes in a word for this memory bank\&. "
+.ti -1c
+.RI "int4 \fBgetPageSize\fP (void) const"
+.br
+.RI "Get the number of bytes in a page for this memory bank\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (void) const"
+.br
+.RI "Get the address space associated with this memory bank\&. "
+.ti -1c
+.RI "void \fBsetValue\fP (\fBuintb\fP offset, int4 size, \fBuintb\fP val)"
+.br
+.RI "Set the value of a (small) range of bytes\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetValue\fP (\fBuintb\fP offset, int4 size) const"
+.br
+.RI "Retrieve the value encoded in a (small) range of bytes\&. "
+.ti -1c
+.RI "void \fBsetChunk\fP (\fBuintb\fP offset, int4 size, const uint1 *val)"
+.br
+.RI "Set values of an arbitrary sequence of bytes\&. "
+.ti -1c
+.RI "void \fBgetChunk\fP (\fBuintb\fP offset, int4 size, uint1 *res) const"
+.br
+.RI "Retrieve an arbitrary sequence of bytes\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBuintb\fP \fBconstructValue\fP (const uint1 *ptr, int4 size, bool bigendian)"
+.br
+.RI "Decode bytes to value\&. "
+.ti -1c
+.RI "static void \fBdeconstructValue\fP (uint1 *ptr, \fBuintb\fP val, int4 size, bool bigendian)"
+.br
+.RI "Encode value to bytes\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBinsert\fP (\fBuintb\fP addr, \fBuintb\fP val)=0"
+.br
+.RI "Insert a word in memory bank at an aligned location\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBfind\fP (\fBuintb\fP addr) const =0"
+.br
+.RI "Retrieve a word from memory bank at an aligned location\&. "
+.ti -1c
+.RI "virtual void \fBgetPage\fP (\fBuintb\fP addr, uint1 *res, int4 skip, int4 size) const"
+.br
+.RI "Retrieve data from a memory \fIpage\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetPage\fP (\fBuintb\fP addr, const uint1 *val, int4 skip, int4 size)"
+.br
+.RI "Write data into a memory page\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBMemoryPageOverlay\fP"
+.br
+.ti -1c
+.RI "class \fBMemoryHashOverlay\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Memory storage/state for a single AddressSpace\&. 
+
+Class for setting and getting memory values within a space The basic API is to get/set arrays of byte values via offset within the space\&. Helper functions getValue and setValue easily retrieve/store integers of various sizes from memory, using the endianness encoding specified by the space\&. Accesses through the public interface, are automatically broken down into \fBword\fP accesses, through the private insert/find methods, and \fBpage\fP accesses through getPage/setPage\&. So these are the virtual methods that need to be overridden in the derived classes\&. 
+.PP
+Definition at line 36 of file memstate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MemoryBank::MemoryBank (\fBAddrSpace\fP * spc, int4 ws, int4 ps)"
+
+.PP
+Generic constructor for a memory bank\&. A \fBMemoryBank\fP must be associated with a specific address space, have a preferred or natural \fIwordsize\fP and a natural \fIpagesize\fP\&. Both the \fIwordsize\fP and \fIpagesize\fP must be a power of 2\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the associated address space 
+.br
+\fIws\fP is the number of bytes in the preferred wordsize 
+.br
+\fIps\fP is the number of bytes in a page 
+.RE
+.PP
+
+.PP
+Definition at line 73 of file memstate\&.cc\&.
+.SS "virtual MemoryBank::~MemoryBank (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 49 of file memstate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP MemoryBank::constructValue (const uint1 * ptr, int4 size, bool bigendian)\fC [static]\fP"
+
+.PP
+Decode bytes to value\&. This is a static convenience routine for decoding a value from a sequence of bytes depending on the desired endianness 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the pointer to the bytes to decode 
+.br
+\fIsize\fP is the number of bytes 
+.br
+\fIbigendian\fP is \fBtrue\fP if the bytes are encoded in big endian form 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the decoded value 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file memstate\&.cc\&.
+.SS "void MemoryBank::deconstructValue (uint1 * ptr, \fBuintb\fP val, int4 size, bool bigendian)\fC [static]\fP"
+
+.PP
+Encode value to bytes\&. This is a static convenience routine for encoding bytes from a given value, depending on the desired endianness 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is a pointer to the location to write the encoded bytes 
+.br
+\fIval\fP is the value to be encoded 
+.br
+\fIsize\fP is the number of bytes to encode 
+.br
+\fIbigendian\fP is \fBtrue\fP if a big endian encoding is desired 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file memstate\&.cc\&.
+.SS "virtual \fBuintb\fP MemoryBank::find (\fBuintb\fP addr) const\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Retrieve a word from memory bank at an aligned location\&. 
+.PP
+Implemented in \fBMemoryHashOverlay\fP, \fBMemoryPageOverlay\fP, and \fBMemoryImage\fP\&.
+.SS "void MemoryBank::getChunk (\fBuintb\fP offset, int4 size, uint1 * res) const"
+
+.PP
+Retrieve an arbitrary sequence of bytes\&. This is the most general method for reading a sequence of bytes from the memory bank\&. There is no restriction on the offset or the number of bytes to read, except that the range must be contained in the address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the start of the byte range to read 
+.br
+\fIsize\fP is the number of bytes to read 
+.br
+\fIres\fP is a pointer to where the retrieved bytes should be stored 
+.RE
+.PP
+
+.PP
+Definition at line 333 of file memstate\&.cc\&.
+.SS "void MemoryBank::getPage (\fBuintb\fP addr, uint1 * res, int4 skip, int4 size) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Retrieve data from a memory \fIpage\fP\&. This routine only retrieves data from a single \fIpage\fP in the memory bank\&. Bytes need not be retrieved from the exact start of a page, but all bytes must come from \fIone\fP page\&. A page is a fixed number of bytes, and the address of a page is always aligned based on that number of bytes\&. This routine may be overridden for a page based implementation of the \fBMemoryBank\fP\&. The default implementation retrieves the page as aligned words using the find method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fIaligned\fP offset of the desired page 
+.br
+\fIres\fP is a pointer to where fetched data should be written 
+.br
+\fIskip\fP is the offset \fIinto\fP \fIthe\fP \fIpage\fP to get the bytes from 
+.br
+\fIsize\fP is the number of bytes to retrieve 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBMemoryPageOverlay\fP, and \fBMemoryImage\fP\&.
+.PP
+Definition at line 91 of file memstate\&.cc\&.
+.SS "int4 MemoryBank::getPageSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of bytes in a page for this memory bank\&. A \fBMemoryBank\fP is instantiated with a \fInatural\fP page size\&. Requests for large chunks of data may be broken down into units of this size\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in a \fIpage\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file memstate\&.hh\&.
+.SS "\fBAddrSpace\fP * MemoryBank::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the address space associated with this memory bank\&. A \fBMemoryBank\fP is a contiguous sequence of bytes associated with a particular address space\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the AddressSpace associated with this bank\&. 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file memstate\&.hh\&.
+.SS "\fBuintb\fP MemoryBank::getValue (\fBuintb\fP offset, int4 size) const"
+
+.PP
+Retrieve the value encoded in a (small) range of bytes\&. This routine gets the value from a range of bytes at an arbitrary address\&. It takes into account the endianness of the underlying space when decoding the value\&. The value is constructed by making one or more aligned word queries, using the find method\&. The desired value may span multiple words and is reconstructed properly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the start of the byte range encoding the value 
+.br
+\fIsize\fP is the number of bytes in the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the decoded value 
+.RE
+.PP
+
+.PP
+Definition at line 250 of file memstate\&.cc\&.
+.SS "int4 MemoryBank::getWordSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of bytes in a word for this memory bank\&. A \fBMemoryBank\fP is instantiated with a \fInatural\fP word size\&. Requests for arbitrary byte ranges may be broken down into units of this size\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in a \fIword\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file memstate\&.hh\&.
+.SS "virtual void MemoryBank::insert (\fBuintb\fP addr, \fBuintb\fP val)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Insert a word in memory bank at an aligned location\&. 
+.PP
+Implemented in \fBMemoryHashOverlay\fP, \fBMemoryPageOverlay\fP, and \fBMemoryImage\fP\&.
+.SS "void MemoryBank::setChunk (\fBuintb\fP offset, int4 size, const uint1 * val)"
+
+.PP
+Set values of an arbitrary sequence of bytes\&. This the most general method for writing a sequence of bytes into the memory bank\&. There is no restriction on the offset to write to or the number of bytes to be written, except that the range must be contained in the address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the start of the byte range to be written 
+.br
+\fIsize\fP is the number of bytes to write 
+.br
+\fIval\fP is a pointer to the sequence of bytes to be written into the bank 
+.RE
+.PP
+
+.PP
+Definition at line 300 of file memstate\&.cc\&.
+.SS "void MemoryBank::setPage (\fBuintb\fP addr, const uint1 * val, int4 skip, int4 size)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Write data into a memory page\&. This routine writes data only to a single \fIpage\fP of the memory bank\&. Bytes need not be written to the exact start of the page, but all bytes must be written to only one page when using this routine\&. A page is a fixed number of bytes, and the address of a page is always aligned based on this size\&. This routine may be overridden for a page based implementation of the \fBMemoryBank\fP\&. The default implementation writes the page as a sequence of aligned words, using the insert method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fIaligned\fP offset of the desired page 
+.br
+\fIval\fP is a pointer to the bytes to be written into the page 
+.br
+\fIskip\fP is the offset \fIinto\fP \fIthe\fP \fIpage\fP where bytes will be written 
+.br
+\fIsize\fP is the number of bytes to be written 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBMemoryPageOverlay\fP\&.
+.PP
+Definition at line 134 of file memstate\&.cc\&.
+.SS "void MemoryBank::setValue (\fBuintb\fP offset, int4 size, \fBuintb\fP val)"
+
+.PP
+Set the value of a (small) range of bytes\&. This routine is used to set a single value in the memory bank at an arbitrary address It takes into account the endianness of the associated address space when encoding the value as bytes in the bank\&. The value is broken up into aligned pieces of \fIwordsize\fP and the actual \fBwrite\fP is performed with the insert routine\&. If only parts of aligned words are written to, then the remaining parts are filled in with the original value, via the find routine\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the start of the byte range to write 
+.br
+\fIsize\fP is the number of bytes in the range to write 
+.br
+\fIval\fP is the value to be written 
+.RE
+.PP
+
+.PP
+Definition at line 180 of file memstate\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBMemoryHashOverlay\fP\fC [friend]\fP"
+
+.PP
+Definition at line 38 of file memstate\&.hh\&.
+.SS "friend class \fBMemoryPageOverlay\fP\fC [friend]\fP"
+
+.PP
+Definition at line 37 of file memstate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

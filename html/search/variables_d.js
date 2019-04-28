@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['name',['NAME',['../classghidra_1_1app_1_1decompiler_1_1component_1_1hover_1_1_reference_decompiler_hover.html#ae4c879ed414e0bec22ecd296a4db5a17',1,'ghidra.app.decompiler.component.hover.ReferenceDecompilerHover.NAME()'],['../classghidra_1_1app_1_1decompiler_1_1component_1_1hover_1_1_scalar_value_decompiler_hover.html#a5f64a9f4b002493455ec37a5e064f70b',1,'ghidra.app.decompiler.component.hover.ScalarValueDecompilerHover.NAME()'],['../class_action.html#ab73b13cffdb1b32679cf46b783c7e404',1,'Action::name()'],['../class_architecture_capability.html#a685df0ea6f90347afa6eb27d0b3fd3cc',1,'ArchitectureCapability::name()'],['../struct_target_feature.html#a86b9919cac7a18dc97559b1d1b2c69a3',1,'TargetFeature::name()'],['../class_symbol.html#a0254b578a75d2bd6f7e145fe081cb6dd',1,'Symbol::name()'],['../class_scope.html#abb4900f6409e8a82c1b1cea827e4e2c5',1,'Scope::name()'],['../struct_prototype_pieces.html#ac0eadd4acbffa119e16210b39e32623e',1,'PrototypePieces::name()'],['../class_ghidra_capability.html#acb74036589d576cd7241c92337ca0eb4',1,'GhidraCapability::name()'],['../class_iface_capability.html#adaca15af193ff9e326a0f9f96a87e6e2',1,'IfaceCapability::name()'],['../struct_load_image_func.html#a1f3c54ce75f8f381ea597fa5f127a26c',1,'LoadImageFunc::name()'],['../class_arch_option.html#a4c9a1914e575636d12be5c3ecc4aede3',1,'ArchOption::name()'],['../class_inject_payload.html#a709732dc6d429767b1ef8046cc0f5573',1,'InjectPayload::name()'],['../class_print_language_capability.html#ac286f0481d6c9ebfcf2cd497cc786e8b',1,'PrintLanguageCapability::name()'],['../struct_print_language_1_1_atom.html#a1956638b6944bf2c4ad7e4a0dc60a64c',1,'PrintLanguage::Atom::name()'],['../struct_space_quality.html#a537fc899e2cd5e0a66bb0cf7d2505734',1,'SpaceQuality::name()'],['../struct_field_quality.html#aae4142548f31eee7c90a60aa77136333',1,'FieldQuality::name()'],['../class_addr_space.html#aa0df0a80bf601ab9e4384a36e72f0c72',1,'AddrSpace::name()'],['../class_datatype.html#a66d6613a73e69cd4665c90441c4613b3',1,'Datatype::name()'],['../struct_type_field.html#a61abd462b68f2dd96a65467121c9901d',1,'TypeField::name()'],['../class_type_op.html#a1b6f0e6b45be588062370b446d9abc4a',1,'TypeOp::name()'],['../class_user_pcode_op.html#acb610a4cec8ff71dc665819de35c420e',1,'UserPcodeOp::name()']]],
+  ['namededup',['nameDedup',['../class_symbol.html#afe1f39b8146a552928c3d0d505a03efa',1,'Symbol']]],
+  ['namemap',['namemap',['../class_type_enum.html#af66c4e826f409305dd0114399b9dcdf2',1,'TypeEnum']]],
+  ['nametree',['nametree',['../class_scope_internal.html#ad4084595095b578e1c8fd25301ffb02d',1,'ScopeInternal']]],
+  ['negate',['negate',['../class_op_token.html#a7bb898ee28b397177f1a47bc2892c9fd',1,'OpToken']]],
+  ['new_5fop',['new_op',['../class_print_c.html#af0b5719ea9e507609137db7749ef8aef',1,'PrintC']]],
+  ['newname',['newName',['../classghidra_1_1app_1_1plugin_1_1core_1_1decompile_1_1actions_1_1_rename_task.html#abd8ba546b7598a64f2fa8b7f0fd1255d',1,'ghidra::app::plugin::core::decompile::actions::RenameTask']]],
+  ['nextaddr',['nextaddr',['../class_inject_context.html#a202c30189f3ea69e9fa7b107809a7691',1,'InjectContext']]],
+  ['nm',['nm',['../struct_ident_rec.html#a62ae3cc7b240f9161d9ecddb11ae0eb0',1,'IdentRec']]],
+  ['node',['node',['../struct_leaf_iterator.html#a50bc8b78fc5fa1d76a08b72689bed13a',1,'LeafIterator']]],
+  ['nohighptr',['nohighptr',['../class_architecture.html#a693da460aeb788e4fbaf3361bd07756a',1,'Architecture']]],
+  ['nonfloatgroup',['nonfloatgroup',['../class_param_list_standard.html#a512864be48d391ee4903d0a38147438c',1,'ParamListStandard']]],
+  ['nonmult',['nonmult',['../class_add_tree_state.html#ac11cb69f9f85a57c23ddd3fe369bfbff',1,'AddTreeState']]],
+  ['nonmultsum',['nonmultsum',['../class_add_tree_state.html#a0673da5a1c73b83c06a96730b3676778',1,'AddTreeState']]],
+  ['normalvn',['normalvn',['../class_jump_basic.html#ab2aa4072b79d87215a6aeb27aa8d4464',1,'JumpBasic']]],
+  ['normqvn',['normqvn',['../class_jump_values_range.html#aa3d96b6af86c45bd140407a40e98026b',1,'JumpValuesRange']]],
+  ['not_5fdisposed',['NOT_DISPOSED',['../enumghidra_1_1app_1_1decompiler_1_1_decompile_process_1_1_dispose_state.html#aa39c6635250fd783afa5ed6e728310b3',1,'ghidra::app::decompiler::DecompileProcess::DisposeState']]],
+  ['not_5fequal',['not_equal',['../class_print_c.html#a115f90343fffd0f9bb3645b078fa98f8',1,'PrintC']]],
+  ['nulltoken',['nullToken',['../class_print_c.html#a1bf3bef78d048160d91639467b0c9278',1,'PrintC']]],
+  ['num',['num',['../struct_context_set.html#a126fb90570bd829504d844bd3ff3dd8c',1,'ContextSet']]],
+  ['numgroup',['numgroup',['../class_param_list_standard.html#ae129a4db3bb767656a32daeffee806a5',1,'ParamListStandard']]],
+  ['numlabels',['numlabels',['../class_construct_tpl.html#a493c686762fdacfa88a7508a9cd87896',1,'ConstructTpl']]],
+  ['numsections',['numSections',['../class_sleigh_base.html#ad2fa79db86516492f21ed6d826e7b2c4',1,'SleighBase']]]
+];

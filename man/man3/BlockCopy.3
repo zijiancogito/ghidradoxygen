@@ -1,0 +1,236 @@
+.TH "BlockCopy" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockCopy \- This class is used to mirror the \fBBlockBasic\fP objects in the fixed control-flow graph for a function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBFlowBlock\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockCopy\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Construct given the block to copy\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBsubBlock\fP (int4 i) const"
+.br
+.RI "Get the i-th component block\&. "
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBprintTree\fP (ostream &s, int4 level) const"
+.br
+.RI "Print tree structure of any blocks owned by \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual const \fBFlowBlock\fP * \fBgetExitLeaf\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. "
+.ti -1c
+.RI "virtual \fBPcodeOp\fP * \fBlastOp\fP (void) const"
+.br
+.RI "Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual bool \fBnegateCondition\fP (bool toporbottom)"
+.br
+.RI "Flip the condition computed by \fBthis\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBgetSplitPoint\fP (void)"
+.br
+.RI "Get the leaf splitting block\&. "
+.ti -1c
+.RI "virtual bool \fBisComplex\fP (void) const"
+.br
+.RI "Is \fBthis\fP too complex to be a condition (\fBBlockCondition\fP) "
+.ti -1c
+.RI "virtual void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.RI "Save basic information as XML attributes\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This class is used to mirror the \fBBlockBasic\fP objects in the fixed control-flow graph for a function\&. 
+
+The decompiler does control-flow structuring by making an initial copy of the control-flow graph, then iteratively collapsing nodes (in the copy) into \fIstructured\fP nodes\&. So an instance of this class acts as the mirror of an original basic block within the copy of the graph\&. During the structuring process, an instance will start with an exact mirror of its underlying basic block's edges, but as the algorithm proceeds, edges may get replaced as neighboring basic blocks get collapsed, and eventually the instance will get collapsed itself and become a component of one of the \fIstructured\fP block objects (\fBBlockIf\fP, \fBBlockDoWhile\fP, etc)\&. The block that incorporates the \fBBlockCopy\fP as a component is accessible through \fBgetParent()\fP\&. 
+.PP
+Definition at line 414 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BlockCopy::BlockCopy (\fBFlowBlock\fP * bl)\fC [inline]\fP"
+
+.PP
+Construct given the block to copy\&. 
+.PP
+Definition at line 417 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void BlockCopy::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 423 of file block\&.hh\&.
+.SS "virtual const \fBFlowBlock\fP* BlockCopy::getExitLeaf (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 424 of file block\&.hh\&.
+.SS "virtual \fBFlowBlock\fP* BlockCopy::getSplitPoint (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the leaf splitting block\&. If \fBthis\fP block ends with a conditional branch, return the deepest component block that performs the split\&. This component needs to be able to perform \fBflipInPlaceTest()\fP and \fBflipInPlaceExecute()\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+the component \fBFlowBlock\fP or NULL if this doesn't end in a conditional branch 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 427 of file block\&.hh\&.
+.SS "virtual \fBblock_type\fP BlockCopy::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 419 of file block\&.hh\&.
+.SS "virtual bool BlockCopy::isComplex (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Is \fBthis\fP too complex to be a condition (\fBBlockCondition\fP) 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 428 of file block\&.hh\&.
+.SS "virtual \fBPcodeOp\fP* BlockCopy::lastOp (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 425 of file block\&.hh\&.
+.SS "virtual bool BlockCopy::negateCondition (bool toporbottom)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Flip the condition computed by \fBthis\fP\&. Flip the order of outgoing edges (at least)\&. This should also affect the original op causing the condition\&. Note: we don't have to flip at all levels of the hierarchy only at the top and at the bottom 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoporbottom\fP is \fBtrue\fP if \fBthis\fP is the top outermost block of the hierarchy getting negated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made to data-flow 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 426 of file block\&.hh\&.
+.SS "void BlockCopy::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2522 of file block\&.cc\&.
+.SS "virtual void BlockCopy::printRaw (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 422 of file block\&.hh\&.
+.SS "void BlockCopy::printTree (ostream & s, int4 level) const\fC [virtual]\fP"
+
+.PP
+Print tree structure of any blocks owned by \fBthis\fP\&. Recursively print out the hierarchical structure of \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIlevel\fP is the current level of indentation 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2529 of file block\&.cc\&.
+.SS "void BlockCopy::saveXmlHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save basic information as XML attributes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2535 of file block\&.cc\&.
+.SS "virtual \fBFlowBlock\fP* BlockCopy::subBlock (int4 i) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the i-th component block\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 418 of file block\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

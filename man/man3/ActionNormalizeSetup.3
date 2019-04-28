@@ -1,0 +1,93 @@
+.TH "ActionNormalizeSetup" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ActionNormalizeSetup \- Prepare function prototypes for 'normalize' simplification\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coreaction\&.hh>\fP
+.PP
+Inherits \fBAction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionNormalizeSetup\fP (const string &g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBAction\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBAction\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBapply\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Make a single attempt to apply \fBthis\fP \fBAction\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Prepare function prototypes for 'normalize' simplification\&. 
+
+The 'normalize' simplification style has the fundamental requirement that the input parameter types must not be locked, as locking can cause changes in the data-flow that 'normalize' is trying to normalize, because: 1) The decompiler views locking as useful aliasing information 2) Locking forces varnodes to exist up-front, which can affect subflow analysis 3) \&.\&.\&. probably other differences
+.PP
+This action removes any input symbols on the function, locked or otherwise, Similarly there should be no lock on the output and no lock on the prototype model 
+.PP
+Definition at line 550 of file coreaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ActionNormalizeSetup::ActionNormalizeSetup (const string & g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 552 of file coreaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 ActionNormalizeSetup::apply (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Make a single attempt to apply \fBthis\fP \fBAction\fP\&. This is the main entry point for applying changes to a function that are specific to \fBthis\fP \fBAction\fP\&. The method can inspect whatever it wants to decide if the \fBAction\fP does or does not apply\&. Changes are indicated by incrementing the \fBcount\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to inspect/modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 for a complete application, -1 for a partial completion (due to breakpoint) 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Definition at line 3278 of file coreaction\&.cc\&.
+.SS "virtual \fBAction\fP* ActionNormalizeSetup::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBAction\fP\&. If \fBthis\fP \fBAction\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBAction\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBAction\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Definition at line 553 of file coreaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

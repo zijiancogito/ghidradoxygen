@@ -1,0 +1,172 @@
+.TH "OpToken" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpToken \- A token representing an operator in the high-level language\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printlanguage\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBtokentype\fP { \fBbinary\fP, \fBunary_prefix\fP, \fBpostsurround\fP, \fBpresurround\fP, \fBspace\fP }"
+.br
+.RI "The possible types of operator token\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBparentheses\fP (const \fBOpToken\fP &op2, int4 \fBstage\fP) const"
+.br
+.RI "Determine if the given token should be emitted in its own parenthetic expression\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBprint\fP"
+.br
+.RI "Printing characters for the token\&. "
+.ti -1c
+.RI "int4 \fBstage\fP"
+.br
+.RI "Additional elements consumed from the RPN stack when emitting this token\&. "
+.ti -1c
+.RI "int4 \fBprecedence\fP"
+.br
+.RI "Precedence level of this token (higher binds more tightly) "
+.ti -1c
+.RI "bool \fBassociative\fP"
+.br
+.RI "True if the operator is associative\&. "
+.ti -1c
+.RI "\fBtokentype\fP \fBtype\fP"
+.br
+.RI "The basic token type\&. "
+.ti -1c
+.RI "int4 \fBspacing\fP"
+.br
+.RI "Spaces to print around operator\&. "
+.ti -1c
+.RI "int4 \fBbump\fP"
+.br
+.RI "Spaces to indent if we break here\&. "
+.ti -1c
+.RI "\fBOpToken\fP * \fBnegate\fP"
+.br
+.RI "The token representing the negation of this token\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A token representing an operator in the high-level language\&. 
+
+The token knows how to print itself and other syntax information like precedence level and associativity within the language, desired spacing, and how operator groups its input expressions\&. Note that an operator has a broader meaning than just p-code operators in this context\&. 
+.PP
+Definition at line 81 of file printlanguage\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBOpToken::tokentype\fP"
+
+.PP
+The possible types of operator token\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIbinary \fP\fP
+Binary operator form (printed between its inputs) 
+.TP
+\fB\fIunary_prefix \fP\fP
+Unary operator form (printed before its input) 
+.TP
+\fB\fIpostsurround \fP\fP
+Function or array operator form\&. 
+.TP
+\fB\fIpresurround \fP\fP
+Modifier form (like a cast operation) 
+.TP
+\fB\fIspace \fP\fP
+No explicitly printed token\&. 
+.PP
+Definition at line 84 of file printlanguage\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool OpToken::parentheses (const \fBOpToken\fP & op2, int4 stage) const"
+
+.PP
+Determine if the given token should be emitted in its own parenthetic expression\&. This token is being emitted\&. Check if its input expression, ending with the given operator token, needs to be surrounded by parentheses to convey the proper meaning\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the input token to \fBthis\fP operator 
+.br
+\fIstage\fP is the stage of \fBthis\fP operator currently being printed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBop2\fP (as input to \fBthis\fP) should be parenthesized 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file printlanguage\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool OpToken::associative"
+
+.PP
+True if the operator is associative\&. 
+.PP
+Definition at line 94 of file printlanguage\&.hh\&.
+.SS "int4 OpToken::bump"
+
+.PP
+Spaces to indent if we break here\&. 
+.PP
+Definition at line 97 of file printlanguage\&.hh\&.
+.SS "\fBOpToken\fP* OpToken::negate"
+
+.PP
+The token representing the negation of this token\&. 
+.PP
+Definition at line 98 of file printlanguage\&.hh\&.
+.SS "int4 OpToken::precedence"
+
+.PP
+Precedence level of this token (higher binds more tightly) 
+.PP
+Definition at line 93 of file printlanguage\&.hh\&.
+.SS "const char* OpToken::print"
+
+.PP
+Printing characters for the token\&. 
+.PP
+Definition at line 91 of file printlanguage\&.hh\&.
+.SS "int4 OpToken::spacing"
+
+.PP
+Spaces to print around operator\&. 
+.PP
+Definition at line 96 of file printlanguage\&.hh\&.
+.SS "int4 OpToken::stage"
+
+.PP
+Additional elements consumed from the RPN stack when emitting this token\&. 
+.PP
+Definition at line 92 of file printlanguage\&.hh\&.
+.SS "\fBtokentype\fP OpToken::type"
+
+.PP
+The basic token type\&. 
+.PP
+Definition at line 95 of file printlanguage\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

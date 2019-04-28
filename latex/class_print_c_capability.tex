@@ -1,0 +1,81 @@
+\hypertarget{class_print_c_capability}{}\section{Print\+C\+Capability Class Reference}
+\label{class_print_c_capability}\index{PrintCCapability@{PrintCCapability}}
+
+
+Factory and static initializer for the \char`\"{}c-\/language\char`\"{} back-\/end to the decompiler.  
+
+
+
+
+{\ttfamily \#include $<$printc.\+hh$>$}
+
+
+
+Inheritance diagram for Print\+C\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_print_c_capability__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Print\+C\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_print_c_capability__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$ \mbox{\hyperlink{class_print_c_capability_a248a6da5b381c20a11eb43e11f58f60f}{build\+Language}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$glb)
+\begin{DoxyCompactList}\small\item\em Build the main \mbox{\hyperlink{class_print_language}{Print\+Language}} object corresponding to {\bfseries{this}} capability. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Factory and static initializer for the \char`\"{}c-\/language\char`\"{} back-\/end to the decompiler. 
+
+The singleton adds itself to the list of possible back-\/end languages for the decompiler and it acts as a factory for producing the \mbox{\hyperlink{class_print_c}{PrintC}} object for emitting c-\/language tokens. 
+
+Definition at line 32 of file printc.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_print_c_capability_a248a6da5b381c20a11eb43e11f58f60f}\label{class_print_c_capability_a248a6da5b381c20a11eb43e11f58f60f}} 
+\index{PrintCCapability@{PrintCCapability}!buildLanguage@{buildLanguage}}
+\index{buildLanguage@{buildLanguage}!PrintCCapability@{PrintCCapability}}
+\subsubsection{\texorpdfstring{buildLanguage()}{buildLanguage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$ Print\+C\+Capability\+::build\+Language (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{glb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Build the main \mbox{\hyperlink{class_print_language}{Print\+Language}} object corresponding to {\bfseries{this}} capability. 
+
+An \mbox{\hyperlink{class_architecture}{Architecture}} will call this once. All decompiling from this \mbox{\hyperlink{class_architecture}{Architecture}} will use this same emitter. 
+\begin{DoxyParams}{Parameters}
+{\em glb} & is the \mbox{\hyperlink{class_architecture}{Architecture}} that will own the new emitter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the instantiated \mbox{\hyperlink{class_print_language}{Print\+Language}} emittter 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_print_language_capability_a50e2abb3f0b4cf3ab67556f77eacc51e}{Print\+Language\+Capability}}.
+
+
+
+Definition at line 85 of file printc.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{printc_8hh}{printc.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{printc_8cc}{printc.\+cc}}\end{DoxyCompactItemize}

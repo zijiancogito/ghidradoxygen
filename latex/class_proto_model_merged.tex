@@ -1,0 +1,258 @@
+\hypertarget{class_proto_model_merged}{}\section{Proto\+Model\+Merged Class Reference}
+\label{class_proto_model_merged}\index{ProtoModelMerged@{ProtoModelMerged}}
+
+
+A prototype model made by merging together other models.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+
+
+Inheritance diagram for Proto\+Model\+Merged\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{class_proto_model_merged__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Proto\+Model\+Merged\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{class_proto_model_merged__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_proto_model_merged_a89ae5cb14a23eedeba04de6475d46f70}{Proto\+Model\+Merged}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_proto_model_merged_ae9e2963a988d626416b0020fe1229a47}{$\sim$\+Proto\+Model\+Merged}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_proto_model_merged_a529627f8459b79d8f6d0e70210425ba2}{num\+Models}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of constituent models. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ \mbox{\hyperlink{class_proto_model_merged_a661295ea5cf3542cfc25b28fefb6a264}{get\+Model}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_proto_model_merged_a735f43c1161758dcb6e8e2caf6e1c51c}{fold\+In}} (\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$model)
+\begin{DoxyCompactList}\small\item\em Fold-\/in an additional prototype model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ \mbox{\hyperlink{class_proto_model_merged_a3679cbe7a72e251e72d9b7140c0fac40}{select\+Model}} (\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$active) const
+\begin{DoxyCompactList}\small\item\em Select the best model given a set of trials. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_proto_model_merged_aea3dceb1497499800015607bbfd2d863}{is\+Merged}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} a merged prototype model. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_proto_model_merged_a1c80c617c086b0edacb483f8315d12e9}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} model from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A prototype model made by merging together other models. 
+
+This model serves as a placeholder for multiple models, when the exact model hasn\textquotesingle{}t been immediately determined. At the time of active parameter recovery the correct model is selected for the given set of trials from among the constituent prototype models used to build {\bfseries{this}}, by calling the method \mbox{\hyperlink{class_proto_model_merged_a3679cbe7a72e251e72d9b7140c0fac40}{select\+Model()}}. Up to this time, {\bfseries{this}} serves as a merged form of the models so that all potential parameter trials will be included in the analysis. The parameter recovery for the output part of the model is currently limited, so the constituent models must all share the same output model, and this part is {\itshape not} currently merged. 
+
+Definition at line 788 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_proto_model_merged_a89ae5cb14a23eedeba04de6475d46f70}\label{class_proto_model_merged_a89ae5cb14a23eedeba04de6475d46f70}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!ProtoModelMerged@{ProtoModelMerged}}
+\index{ProtoModelMerged@{ProtoModelMerged}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{ProtoModelMerged()}{ProtoModelMerged()}}
+{\footnotesize\ttfamily Proto\+Model\+Merged\+::\+Proto\+Model\+Merged (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 793 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_proto_model_merged_ae9e2963a988d626416b0020fe1229a47}\label{class_proto_model_merged_ae9e2963a988d626416b0020fe1229a47}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!````~ProtoModelMerged@{$\sim$ProtoModelMerged}}
+\index{````~ProtoModelMerged@{$\sim$ProtoModelMerged}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{$\sim$ProtoModelMerged()}{~ProtoModelMerged()}}
+{\footnotesize\ttfamily virtual Proto\+Model\+Merged\+::$\sim$\+Proto\+Model\+Merged (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 794 of file fspec.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_proto_model_merged_a735f43c1161758dcb6e8e2caf6e1c51c}\label{class_proto_model_merged_a735f43c1161758dcb6e8e2caf6e1c51c}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!foldIn@{foldIn}}
+\index{foldIn@{foldIn}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{foldIn()}{foldIn()}}
+{\footnotesize\ttfamily void Proto\+Model\+Merged\+::fold\+In (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$}]{model }\end{DoxyParamCaption})}
+
+
+
+Fold-\/in an additional prototype model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & is the new prototype model to add to the merge \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2034 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_proto_model_merged_a735f43c1161758dcb6e8e2caf6e1c51c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_model_merged_a735f43c1161758dcb6e8e2caf6e1c51c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_model_merged_a661295ea5cf3542cfc25b28fefb6a264}\label{class_proto_model_merged_a661295ea5cf3542cfc25b28fefb6a264}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!getModel@{getModel}}
+\index{getModel@{getModel}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{getModel()}{getModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_model}{Proto\+Model}}$\ast$ Proto\+Model\+Merged\+::get\+Model (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th model. 
+
+
+
+Definition at line 796 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_model_merged_a661295ea5cf3542cfc25b28fefb6a264_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_model_merged_aea3dceb1497499800015607bbfd2d863}\label{class_proto_model_merged_aea3dceb1497499800015607bbfd2d863}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!isMerged@{isMerged}}
+\index{isMerged@{isMerged}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{isMerged()}{isMerged()}}
+{\footnotesize\ttfamily virtual bool Proto\+Model\+Merged\+::is\+Merged (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Is {\bfseries{this}} a merged prototype model. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_proto_model_a580207b945d3734b6f1e6023b3ca2678}{Proto\+Model}}.
+
+
+
+Definition at line 799 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_proto_model_merged_a529627f8459b79d8f6d0e70210425ba2}\label{class_proto_model_merged_a529627f8459b79d8f6d0e70210425ba2}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!numModels@{numModels}}
+\index{numModels@{numModels}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{numModels()}{numModels()}}
+{\footnotesize\ttfamily int4 Proto\+Model\+Merged\+::num\+Models (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of constituent models. 
+
+
+
+Definition at line 795 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_proto_model_merged_a1c80c617c086b0edacb483f8315d12e9}\label{class_proto_model_merged_a1c80c617c086b0edacb483f8315d12e9}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Proto\+Model\+Merged\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore {\bfseries{this}} model from an X\+ML stream. 
+
+Read in details about {\bfseries{this}} model from a $<$prototype$>$ tag 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the $<$prototype$>$ element \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_proto_model_a8fe30abbc7fe1c709b1b8fe9c81803b8}{Proto\+Model}}.
+
+
+
+Definition at line 2103 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_model_merged_a1c80c617c086b0edacb483f8315d12e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_model_merged_a3679cbe7a72e251e72d9b7140c0fac40}\label{class_proto_model_merged_a3679cbe7a72e251e72d9b7140c0fac40}} 
+\index{ProtoModelMerged@{ProtoModelMerged}!selectModel@{selectModel}}
+\index{selectModel@{selectModel}!ProtoModelMerged@{ProtoModelMerged}}
+\subsubsection{\texorpdfstring{selectModel()}{selectModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ Proto\+Model\+Merged\+::select\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$}]{active }\end{DoxyParamCaption}) const}
+
+
+
+Select the best model given a set of trials. 
+
+The model that best matches the given set of input parameter trials is returned. This method currently uses the \mbox{\hyperlink{class_score_proto_model}{Score\+Proto\+Model}} object to score the different prototype models. 
+\begin{DoxyParams}{Parameters}
+{\em active} & is the set of parameter trials \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the prototype model that scores the best 
+\end{DoxyReturn}
+
+
+Definition at line 2076 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_model_merged_a3679cbe7a72e251e72d9b7140c0fac40_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_model_merged_a3679cbe7a72e251e72d9b7140c0fac40_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

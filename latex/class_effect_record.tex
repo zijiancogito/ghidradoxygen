@@ -1,0 +1,340 @@
+\hypertarget{class_effect_record}{}\section{Effect\+Record Class Reference}
+\label{class_effect_record}\index{EffectRecord@{EffectRecord}}
+
+
+Description of the indirect effect a sub-\/function has on a memory range.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0a3488da6d6b149499cbe384f7b57d0564}{unaffected}} = 1, 
+\mbox{\hyperlink{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0aacd8991c4ebdeb4057e15faf1d08abc2}{killedbycall}} = 2, 
+\mbox{\hyperlink{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0afa04c6c617a1044c79c7bc9b7d661be2}{return\+\_\+address}} = 3, 
+\mbox{\hyperlink{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0a02697f294ad0f4b53317da792c577a10}{unknown\+\_\+effect}} = 4
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_effect_record_a1a7281494fb82c6ee35958e9d98d3160}{Effect\+Record}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}} for use with \mbox{\hyperlink{class_effect_record_a4d01d27a405f3e595bc4e36bebfd33ca}{restore\+Xml()}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_effect_record_ab05dcd1cc8377142d6a1427fedddcf21}{Effect\+Record}} (const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&op2)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_effect_record_af6e5a41aef5377b54447548ee514d0fc}{Effect\+Record}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 size)
+\begin{DoxyCompactList}\small\item\em Construct a memory range with an unknown effect. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_effect_record_ab660482ee12ca9bf6c341c004f161b3f}{Effect\+Record}} (const \mbox{\hyperlink{class_param_entry}{Param\+Entry}} \&entry, uint4 t)
+\begin{DoxyCompactList}\small\item\em Construct an effect on a parameter storage location. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_effect_record_a7404377ab3098d76448992abb3785666}{Effect\+Record}} (const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \&addr, uint4 t)
+\begin{DoxyCompactList}\small\item\em Construct an effect on a memory range. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_effect_record_a524045f2df2655c5d37c99e4297acfdf}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the type of effect. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_effect_record_a121118c3ba7a9efc73b04ce710af8dfe}{get\+Address}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the starting address of the affected range. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_effect_record_a30bb645ee7f1a917b62cb9adb3f5dc75}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the size of the affected range. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_effect_record_a2d5a13546e325d96f0224cb5a8b09403}{operator$<$}} (const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Comparator for Effect\+Records. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_effect_record_a2836f374f09e7ed7839505f5dd8b17b7}{operator==}} (const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Equality operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_effect_record_a5291ec5070dde1ee06f3cfefb2fcc21a}{operator!=}} (const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Inequality operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_effect_record_a58c8ebeac9a93e93722adc7354e8748b}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save the record to an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_effect_record_a4d01d27a405f3e595bc4e36bebfd33ca}{restore\+Xml}} (uint4 grouptype, const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage)
+\begin{DoxyCompactList}\small\item\em Restore the record from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description of the indirect effect a sub-\/function has on a memory range. 
+
+This object applies only to the specific memory range, which is seen from the point of view of the calling function as a particular sub-\/function gets called. The main enumeration below lists the possible effects. 
+
+Definition at line 263 of file fspec.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0}\label{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{unaffected@{unaffected}!EffectRecord@{EffectRecord}}\index{EffectRecord@{EffectRecord}!unaffected@{unaffected}}}\mbox{\Hypertarget{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0a3488da6d6b149499cbe384f7b57d0564}\label{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0a3488da6d6b149499cbe384f7b57d0564}} 
+unaffected&The sub-\/function does not change the value at all. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{killedbycall@{killedbycall}!EffectRecord@{EffectRecord}}\index{EffectRecord@{EffectRecord}!killedbycall@{killedbycall}}}\mbox{\Hypertarget{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0aacd8991c4ebdeb4057e15faf1d08abc2}\label{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0aacd8991c4ebdeb4057e15faf1d08abc2}} 
+killedbycall&The memory is changed and is completely unrelated to its original value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{return\_address@{return\_address}!EffectRecord@{EffectRecord}}\index{EffectRecord@{EffectRecord}!return\_address@{return\_address}}}\mbox{\Hypertarget{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0afa04c6c617a1044c79c7bc9b7d661be2}\label{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0afa04c6c617a1044c79c7bc9b7d661be2}} 
+return\+\_\+address&The memory is being used to pass back a return value from the sub-\/function. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{unknown\_effect@{unknown\_effect}!EffectRecord@{EffectRecord}}\index{EffectRecord@{EffectRecord}!unknown\_effect@{unknown\_effect}}}\mbox{\Hypertarget{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0a02697f294ad0f4b53317da792c577a10}\label{class_effect_record_a9a77875d39274819c56d6e4df5f23ab0a02697f294ad0f4b53317da792c577a10}} 
+unknown\+\_\+effect&An unknown effect (indicates the absence of an \mbox{\hyperlink{class_effect_record}{Effect\+Record}}) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 265 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_effect_record_a1a7281494fb82c6ee35958e9d98d3160}\label{class_effect_record_a1a7281494fb82c6ee35958e9d98d3160}} 
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{EffectRecord()}{EffectRecord()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily Effect\+Record\+::\+Effect\+Record (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}} for use with \mbox{\hyperlink{class_effect_record_a4d01d27a405f3e595bc4e36bebfd33ca}{restore\+Xml()}} 
+
+
+
+Definition at line 275 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_ab05dcd1cc8377142d6a1427fedddcf21}\label{class_effect_record_ab05dcd1cc8377142d6a1427fedddcf21}} 
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{EffectRecord()}{EffectRecord()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily Effect\+Record\+::\+Effect\+Record (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. 
+
+
+
+Definition at line 276 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_af6e5a41aef5377b54447548ee514d0fc}\label{class_effect_record_af6e5a41aef5377b54447548ee514d0fc}} 
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{EffectRecord()}{EffectRecord()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily Effect\+Record\+::\+Effect\+Record (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{size }\end{DoxyParamCaption})}
+
+
+
+Construct a memory range with an unknown effect. 
+
+The type is set to {\itshape unknown\+\_\+effect} 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the start of the memory range \\
+\hline
+{\em size} & is the number of bytes in the memory range \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1484 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_effect_record_ab660482ee12ca9bf6c341c004f161b3f}\label{class_effect_record_ab660482ee12ca9bf6c341c004f161b3f}} 
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{EffectRecord()}{EffectRecord()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily Effect\+Record\+::\+Effect\+Record (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_param_entry}{Param\+Entry}} \&}]{entry,  }\item[{uint4}]{t }\end{DoxyParamCaption})}
+
+
+
+Construct an effect on a parameter storage location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & is a model of the parameter storage \\
+\hline
+{\em t} & is the effect type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1495 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_effect_record_ab660482ee12ca9bf6c341c004f161b3f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_effect_record_a7404377ab3098d76448992abb3785666}\label{class_effect_record_a7404377ab3098d76448992abb3785666}} 
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\index{EffectRecord@{EffectRecord}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{EffectRecord()}{EffectRecord()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily Effect\+Record\+::\+Effect\+Record (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \&}]{data,  }\item[{uint4}]{t }\end{DoxyParamCaption})}
+
+
+
+Construct an effect on a memory range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the memory range affected \\
+\hline
+{\em t} & is the effect type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1506 of file fspec.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_effect_record_a121118c3ba7a9efc73b04ce710af8dfe}\label{class_effect_record_a121118c3ba7a9efc73b04ce710af8dfe}} 
+\index{EffectRecord@{EffectRecord}!getAddress@{getAddress}}
+\index{getAddress@{getAddress}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{getAddress()}{getAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Effect\+Record\+::get\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the starting address of the affected range. 
+
+
+
+Definition at line 281 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_a30bb645ee7f1a917b62cb9adb3f5dc75}\label{class_effect_record_a30bb645ee7f1a917b62cb9adb3f5dc75}} 
+\index{EffectRecord@{EffectRecord}!getSize@{getSize}}
+\index{getSize@{getSize}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Effect\+Record\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the size of the affected range. 
+
+
+
+Definition at line 282 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_a524045f2df2655c5d37c99e4297acfdf}\label{class_effect_record_a524045f2df2655c5d37c99e4297acfdf}} 
+\index{EffectRecord@{EffectRecord}!getType@{getType}}
+\index{getType@{getType}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily uint4 Effect\+Record\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the type of effect. 
+
+
+
+Definition at line 280 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_a5291ec5070dde1ee06f3cfefb2fcc21a}\label{class_effect_record_a5291ec5070dde1ee06f3cfefb2fcc21a}} 
+\index{EffectRecord@{EffectRecord}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Effect\+Record\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&}]{op2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inequality operator. 
+
+
+
+Definition at line 1450 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_a2d5a13546e325d96f0224cb5a8b09403}\label{class_effect_record_a2d5a13546e325d96f0224cb5a8b09403}} 
+\index{EffectRecord@{EffectRecord}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Effect\+Record\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&}]{op2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Comparator for Effect\+Records. 
+
+Sort on the memory range, then the effect type 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the other record to compare with {\bfseries{this}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} should be ordered before the other record 
+\end{DoxyReturn}
+
+
+Definition at line 1435 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_a2836f374f09e7ed7839505f5dd8b17b7}\label{class_effect_record_a2836f374f09e7ed7839505f5dd8b17b7}} 
+\index{EffectRecord@{EffectRecord}!operator==@{operator==}}
+\index{operator==@{operator==}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Effect\+Record\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_effect_record}{Effect\+Record}} \&}]{op2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Equality operator. 
+
+
+
+Definition at line 1443 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_effect_record_a4d01d27a405f3e595bc4e36bebfd33ca}\label{class_effect_record_a4d01d27a405f3e595bc4e36bebfd33ca}} 
+\index{EffectRecord@{EffectRecord}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Effect\+Record\+::restore\+Xml (\begin{DoxyParamCaption}\item[{uint4}]{grouptype,  }\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Restore the record from an X\+ML stream. 
+
+Reads an $<$addr$>$ tag to get the memory range. The effect type is inherited from the parent. 
+\begin{DoxyParams}{Parameters}
+{\em grouptype} & is the effect inherited from the parent \\
+\hline
+{\em el} & is address element \\
+\hline
+{\em manage} & is a manager to resolve address space references \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1529 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_effect_record_a4d01d27a405f3e595bc4e36bebfd33ca_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_effect_record_a58c8ebeac9a93e93722adc7354e8748b}\label{class_effect_record_a58c8ebeac9a93e93722adc7354e8748b}} 
+\index{EffectRecord@{EffectRecord}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!EffectRecord@{EffectRecord}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Effect\+Record\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save the record to an X\+ML stream. 
+
+Writes just an $<$addr$>$ tag. The effect type is indicated by the parent tag. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1515 of file fspec.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

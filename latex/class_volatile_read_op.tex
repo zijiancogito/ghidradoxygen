@@ -1,0 +1,141 @@
+\hypertarget{class_volatile_read_op}{}\section{Volatile\+Read\+Op Class Reference}
+\label{class_volatile_read_op}\index{VolatileReadOp@{VolatileReadOp}}
+
+
+An operation that reads from volatile memory.  
+
+
+
+
+{\ttfamily \#include $<$userop.\+hh$>$}
+
+
+
+Inheritance diagram for Volatile\+Read\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_volatile_read_op__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Volatile\+Read\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_volatile_read_op__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_volatile_read_op_ac1160599dd0ba9ebf8370a039e24f9a2}{Volatile\+Read\+Op}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, const string \&nm, int4 ind)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_volatile_read_op_afb60313306e36c095f37000b325142a0}{get\+Operator\+Name}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Get the symbol representing this operation in decompiled code. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_volatile_read_op_abdb0f4262d311abca0c8a3fe07ed758e}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore the detailed description from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An operation that reads from volatile memory. 
+
+This C\+A\+L\+L\+O\+T\+H\+ER p-\/code operation takes as its input parameter, after the constant id, a reference \mbox{\hyperlink{class_varnode}{Varnode}} to the memory being read. The output returned by this operation is the actual value read from memory. 
+
+Definition at line 112 of file userop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_volatile_read_op_ac1160599dd0ba9ebf8370a039e24f9a2}\label{class_volatile_read_op_ac1160599dd0ba9ebf8370a039e24f9a2}} 
+\index{VolatileReadOp@{VolatileReadOp}!VolatileReadOp@{VolatileReadOp}}
+\index{VolatileReadOp@{VolatileReadOp}!VolatileReadOp@{VolatileReadOp}}
+\subsubsection{\texorpdfstring{VolatileReadOp()}{VolatileReadOp()}}
+{\footnotesize\ttfamily Volatile\+Read\+Op\+::\+Volatile\+Read\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{const string \&}]{nm,  }\item[{int4}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 114 of file userop.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_volatile_read_op_afb60313306e36c095f37000b325142a0}\label{class_volatile_read_op_afb60313306e36c095f37000b325142a0}} 
+\index{VolatileReadOp@{VolatileReadOp}!getOperatorName@{getOperatorName}}
+\index{getOperatorName@{getOperatorName}!VolatileReadOp@{VolatileReadOp}}
+\subsubsection{\texorpdfstring{getOperatorName()}{getOperatorName()}}
+{\footnotesize\ttfamily string Volatile\+Read\+Op\+::get\+Operator\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the symbol representing this operation in decompiled code. 
+
+This will return the symbol formally displayed in source code, which can be tailored more than the low-\/level name 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the operation (in context) where a symbol is needed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the symbol as a string 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_user_pcode_op_a7529472e93f9077d5bfdb9cc1142bfbb}{User\+Pcode\+Op}}.
+
+
+
+Definition at line 55 of file userop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_volatile_read_op_afb60313306e36c095f37000b325142a0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_volatile_read_op_abdb0f4262d311abca0c8a3fe07ed758e}\label{class_volatile_read_op_abdb0f4262d311abca0c8a3fe07ed758e}} 
+\index{VolatileReadOp@{VolatileReadOp}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!VolatileReadOp@{VolatileReadOp}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Volatile\+Read\+Op\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore the detailed description from an X\+ML stream. 
+
+The details of how a user defined operation behaves can be dynamically configured from an X\+ML tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root X\+ML element describing the op \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_user_pcode_op_a2a7b7c637369bc4fba4604cd83a937af}{User\+Pcode\+Op}}.
+
+
+
+Definition at line 62 of file userop.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_volatile_read_op_abdb0f4262d311abca0c8a3fe07ed758e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8hh}{userop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8cc}{userop.\+cc}}\end{DoxyCompactItemize}

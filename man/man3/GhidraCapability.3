@@ -1,0 +1,111 @@
+.TH "GhidraCapability" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GhidraCapability \- Registration point and dispatcher for commands sent to the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBCapabilityPoint\fP\&.
+.PP
+Inherited by \fBGhidraDecompCapability\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the capability name\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int4 \fBreadCommand\fP (istream &sin, ostream &out)"
+.br
+.RI "Dispatch a Ghidra command\&. "
+.ti -1c
+.RI "static void \fBshutDown\fP (void)"
+.br
+.RI "Release all \fBGhidraCommand\fP resources\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Identifier for capability and associated commands\&. "
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static map< string, \fBGhidraCommand\fP * > \fBcommandmap\fP"
+.br
+.RI "The central map from \fIname\fP to Ghidra command\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Registration point and dispatcher for commands sent to the decompiler\&. 
+
+This is the base class for \fBcommand\fP \fBcapabilities\fP (sets of commands)\&. All sets register their commands with a static \fBcommandmap\fP\&. This class provides the method \fBreadCommand()\fP, which does the work of parsing a command from the stream and dispatching to the correct \fBGhidraCommand\fP object\&. 
+.PP
+Definition at line 38 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const string& GhidraCapability::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the capability name\&. 
+.PP
+Definition at line 43 of file ghidra_process\&.hh\&.
+.SS "int4 GhidraCapability::readCommand (istream & sin, ostream & out)\fC [static]\fP"
+
+.PP
+Dispatch a Ghidra command\&. A command is read from the Ghidra client\&. The matching \fBGhidraCommand\fP object is looked up in the \fBcommandmap\fP, and control is handed over to the command, with the i/o streams\&. The command must be issued following the proper message protocol (see \fBArchitectureGhidra::readToAnyBurst\fP) or an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsin\fP is the input stream from the client 
+.br
+\fIout\fP is the output stream to the client 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the result code of the command 
+.RE
+.PP
+
+.PP
+Definition at line 458 of file ghidra_process\&.cc\&.
+.SS "void GhidraCapability::shutDown (void)\fC [static]\fP"
+
+.PP
+Release all \fBGhidraCommand\fP resources\&. 
+.PP
+Definition at line 482 of file ghidra_process\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "map< string, \fBGhidraCommand\fP * > GhidraCapability::commandmap\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The central map from \fIname\fP to Ghidra command\&. 
+.PP
+Definition at line 40 of file ghidra_process\&.hh\&.
+.SS "string GhidraCapability::name\fC [protected]\fP"
+
+.PP
+Identifier for capability and associated commands\&. 
+.PP
+Definition at line 41 of file ghidra_process\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

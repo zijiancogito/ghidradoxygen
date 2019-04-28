@@ -1,0 +1,606 @@
+.TH "EmitNoXml" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EmitNoXml \- A trivial emitter that outputs syntax straight to the stream\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <prettyprint\&.hh>\fP
+.PP
+Inherits \fBEmitXml\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmitNoXml\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBbeginDocument\fP (void)"
+.br
+.RI "Begin a whole document of output\&. "
+.ti -1c
+.RI "virtual void \fBendDocument\fP (int4 id)"
+.br
+.RI "End a whole document of output\&. "
+.ti -1c
+.RI "virtual int4 \fBbeginFunction\fP (const \fBFuncdata\fP *fd)"
+.br
+.RI "Begin a whole declaration and body of a function\&. "
+.ti -1c
+.RI "virtual void \fBendFunction\fP (int4 id)"
+.br
+.RI "End a whole declaration and body of a function\&. "
+.ti -1c
+.RI "virtual int4 \fBbeginBlock\fP (const \fBFlowBlock\fP *bl)"
+.br
+.RI "Begin a control-flow element\&. "
+.ti -1c
+.RI "virtual void \fBendBlock\fP (int4 id)"
+.br
+.RI "End a control-flow element\&. "
+.ti -1c
+.RI "virtual void \fBtagLine\fP (int4 indent)"
+.br
+.RI "Force a line break and indent level\&. "
+.ti -1c
+.RI "virtual int4 \fBbeginReturnType\fP (const \fBVarnode\fP *vn)"
+.br
+.RI "Begin a return type declaration\&. "
+.ti -1c
+.RI "virtual void \fBendReturnType\fP (int4 id)"
+.br
+.RI "End a return type declaration\&. "
+.ti -1c
+.RI "virtual int4 \fBbeginVarDecl\fP (const \fBSymbol\fP *sym)"
+.br
+.RI "Begin a variable declaration\&. "
+.ti -1c
+.RI "virtual void \fBendVarDecl\fP (int4 id)"
+.br
+.RI "End a variable declaration\&. "
+.ti -1c
+.RI "virtual int4 \fBbeginStatement\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Begin a source code statement\&. "
+.ti -1c
+.RI "virtual void \fBendStatement\fP (int4 id)"
+.br
+.RI "End a source code statement\&. "
+.ti -1c
+.RI "virtual int4 \fBbeginFuncProto\fP (void)"
+.br
+.RI "Begin a function prototype declaration\&. "
+.ti -1c
+.RI "virtual void \fBendFuncProto\fP (int4 id)"
+.br
+.RI "End a function prototype declaration\&. "
+.ti -1c
+.RI "virtual void \fBtagVariable\fP (const char *ptr, \fBsyntax_highlight\fP hl, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a variable token\&. "
+.ti -1c
+.RI "virtual void \fBtagOp\fP (const char *ptr, \fBsyntax_highlight\fP hl, const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit an operation token\&. "
+.ti -1c
+.RI "virtual void \fBtagFuncName\fP (const char *ptr, \fBsyntax_highlight\fP hl, const \fBFuncdata\fP *fd, const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a function identifier\&. "
+.ti -1c
+.RI "virtual void \fBtagType\fP (const char *ptr, \fBsyntax_highlight\fP hl, const \fBDatatype\fP *ct)"
+.br
+.RI "Emit a data-type identifier\&. "
+.ti -1c
+.RI "virtual void \fBtagField\fP (const char *ptr, \fBsyntax_highlight\fP hl, const \fBDatatype\fP *ct, int4 off)"
+.br
+.RI "Emit an identifier for a field within a structured data-type\&. "
+.ti -1c
+.RI "virtual void \fBtagComment\fP (const char *ptr, \fBsyntax_highlight\fP hl, const \fBAddrSpace\fP *spc, \fBuintb\fP off)"
+.br
+.RI "Emit a comment string as part of the generated source code\&. "
+.ti -1c
+.RI "virtual void \fBtagLabel\fP (const char *ptr, \fBsyntax_highlight\fP hl, const \fBAddrSpace\fP *spc, \fBuintb\fP off)"
+.br
+.RI "Emit a code label identifier\&. "
+.ti -1c
+.RI "virtual void \fBprint\fP (const char *str, \fBsyntax_highlight\fP hl=\fBno_color\fP)"
+.br
+.RI "Emit other (more unusual) syntax as part of source code generation\&. "
+.ti -1c
+.RI "virtual int4 \fBopenParen\fP (char o, int4 id=0)"
+.br
+.RI "Emit an open parenthesis\&. "
+.ti -1c
+.RI "virtual void \fBcloseParen\fP (char c, int4 id)"
+.br
+.RI "Emit a close parenthesis\&. "
+.ti -1c
+.RI "virtual bool \fBemitsXml\fP (void) const"
+.br
+.RI "Determine if \fBthis\fP is an XML markup emitter\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A trivial emitter that outputs syntax straight to the stream\&. 
+
+This emitter does neither pretty printing nor XML markup\&. It dumps any tokens straight to the final output stream\&. It can be used as the low-level back-end for \fBEmitPrettyPrint\fP\&. 
+.PP
+Definition at line 220 of file prettyprint\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "EmitNoXml::EmitNoXml (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 222 of file prettyprint\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int4 EmitNoXml::beginBlock (const \fBFlowBlock\fP * bl)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Begin a control-flow element\&. Inform the emitter that a new control-flow section is starting\&. This is a source code unit usually surrounded with curly braces '{' and '}'\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the block structure object associated with the section 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the section 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 227 of file prettyprint\&.hh\&.
+.SS "virtual int4 EmitNoXml::beginDocument (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Begin a whole document of output\&. Inform the emitter that generation of the source code document has begun 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the document 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 223 of file prettyprint\&.hh\&.
+.SS "virtual int4 EmitNoXml::beginFuncProto (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Begin a function prototype declaration\&. Inform the emitter that a function prototype is starting\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the prototype 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 237 of file prettyprint\&.hh\&.
+.SS "virtual int4 EmitNoXml::beginFunction (const \fBFuncdata\fP * fd)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Begin a whole declaration and body of a function\&. Inform the emitter that generation of a function body has begun 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the function body 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 225 of file prettyprint\&.hh\&.
+.SS "virtual int4 EmitNoXml::beginReturnType (const \fBVarnode\fP * vn)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Begin a return type declaration\&. Inform the emitter that generation of a function's return type is starting\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP (if non-null) is the storage location for the return value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the return type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 231 of file prettyprint\&.hh\&.
+.SS "virtual int4 EmitNoXml::beginStatement (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Begin a source code statement\&. Inform the emitter that a source code statement is beginning\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the root p-code operation of the statement 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the statement 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 235 of file prettyprint\&.hh\&.
+.SS "virtual int4 EmitNoXml::beginVarDecl (const \fBSymbol\fP * sym)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Begin a variable declaration\&. Inform the emitter that a variable declaration has started\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the symbol being declared 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the declaration 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 233 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::closeParen (char c, int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a close parenthesis\&. This method emits the parenthesis character itself and ends the printing unit that was started by the matching open parenthesis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP is the close parenthesis character to emit 
+.br
+\fIid\fP is the id associated with the matching open parenthesis (as returned by openParen) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 260 of file prettyprint\&.hh\&.
+.SS "virtual bool EmitNoXml::emitsXml (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Determine if \fBthis\fP is an XML markup emitter\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP produces an XML markup of its emitted source code 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 262 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::endBlock (int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+End a control-flow element\&. Inform the emitter that a control-flow section is ending\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the section (as returned by beginBlock) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 228 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::endDocument (int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+End a whole document of output\&. Inform the emitter that generation of the source code document is finished 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the document (as returned by beginDocument) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 224 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::endFuncProto (int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+End a function prototype declaration\&. Inform the emitter that a function prototype is ending\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the prototype (as returned by beginFuncProto) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 238 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::endFunction (int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+End a whole declaration and body of a function\&. Inform the emitter that generation of a function body has ended 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the function body (as returned by beginFunction) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 226 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::endReturnType (int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+End a return type declaration\&. Inform the emitter that generation of a function's return type is ending\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the return type (as returned by beginReturnType) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 232 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::endStatement (int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+End a source code statement\&. Inform the emitter that a source code statement is ending\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the statement (as returned by beginStatement) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 236 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::endVarDecl (int4 id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+End a variable declaration\&. Inform the emitter that a variable declaration has ended\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the declaration (as returned by beginVarDecl) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 234 of file prettyprint\&.hh\&.
+.SS "virtual int4 EmitNoXml::openParen (char o, int4 id = \fC0\fP)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit an open parenthesis\&. This method emits the parenthesis character itself and also starts a printing unit of the source code being surrounded by the parentheses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP is the open parenthesis character to emit 
+.br
+\fIid\fP is an id to associate with the parenthesis 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the parenthesis 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 258 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::print (const char * str, \fBsyntax_highlight\fP hl = \fC\fBno_color\fP\fP)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit other (more unusual) syntax as part of source code generation\&. This method is used to emit syntax not covered by the other methods, such as spaces, semi-colons, braces, and other punctuation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP is the character data of the syntax being emitted 
+.br
+\fIhl\fP indicates how the syntax should be highlighted 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 256 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagComment (const char * ptr, \fBsyntax_highlight\fP hl, const \fBAddrSpace\fP * spc, \fBuintb\fP off)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a comment string as part of the generated source code\&. Individual comments can be broken up and emitted using multiple calls to this method, but ultimately the comment delimiters and the body of the comment are both emitted with this method, which may provide addition markup\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the comment 
+.br
+\fIhl\fP indicates how the comment should be highlighted 
+.br
+\fIspc\fP is the address space of the address where the comment is attached 
+.br
+\fIoff\fP is the offset of the address where the comment is attached 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 250 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagField (const char * ptr, \fBsyntax_highlight\fP hl, const \fBDatatype\fP * ct, int4 o)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit an identifier for a field within a structured data-type\&. A string representing an individual component of a structured data-type is emitted, possibly with additional markup\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIhl\fP indicates how the identifier should be highlighted 
+.br
+\fIct\fP is the data-type associated with the field 
+.br
+\fIo\fP is the (byte) offset of the field within its structured data-type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 248 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagFuncName (const char * ptr, \fBsyntax_highlight\fP hl, const \fBFuncdata\fP * fd, const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a function identifier\&. An identifier string representing the symbol name of the function is emitted, possible with additional markup\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIhl\fP indicates how the identifier should be highlighted 
+.br
+\fIfd\fP is the function 
+.br
+\fIop\fP is the CALL operation associated within the syntax tree or null for a declaration 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 244 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagLabel (const char * ptr, \fBsyntax_highlight\fP hl, const \fBAddrSpace\fP * spc, \fBuintb\fP off)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a code label identifier\&. A string describing a control-flow destination, as appropriate for the source language is output, possibly with additional markup\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data of the label 
+.br
+\fIhl\fP indicates how the label should be highlighted 
+.br
+\fIspc\fP is the address space of the code address being labeled 
+.br
+\fIoff\fP is the offset of the code address being labeled 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 253 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagLine (int4 indent)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Force a line break and indent level\&. Tell the emitter that a new line is desired at a specific indent level\&. The indent level is overridden only for the line, then it returns to its previous value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindent\fP is the desired indent level for the new line 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 229 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagOp (const char * ptr, \fBsyntax_highlight\fP hl, const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit an operation token\&. The string representing the operation as appropriate for the source language is emitted, possibly with additional markup\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the emitted representation 
+.br
+\fIhl\fP indicates how the token should be highlighted 
+.br
+\fIop\fP is the \fBPcodeOp\fP object associated with the operation with the syntax tree 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 242 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagType (const char * ptr, \fBsyntax_highlight\fP hl, const \fBDatatype\fP * ct)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a data-type identifier\&. A string representing the name of a data-type, as appropriate for the source language is emitted, possibly with additional markup\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIhl\fP indicates how the identifier should be highlighted 
+.br
+\fIct\fP is the data-type description object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 246 of file prettyprint\&.hh\&.
+.SS "virtual void EmitNoXml::tagVariable (const char * ptr, \fBsyntax_highlight\fP hl, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a variable token\&. An identifier string representing the variable is output, possibly with additional markup\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIhl\fP indicates how the identifier should be highlighted 
+.br
+\fIvn\fP is the \fBVarnode\fP representing the variable within the syntax tree 
+.br
+\fIop\fP is a p-code operation related to the use of the variable (may be null) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEmitXml\fP\&.
+.PP
+Definition at line 239 of file prettyprint\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

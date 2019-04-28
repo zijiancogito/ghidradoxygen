@@ -1,0 +1,174 @@
+\hypertarget{class_rule_subfloat_convert}{}\section{Rule\+Subfloat\+Convert Class Reference}
+\label{class_rule_subfloat_convert}\index{RuleSubfloatConvert@{RuleSubfloatConvert}}
+
+
+Perform \mbox{\hyperlink{class_subfloat_flow}{Subfloat\+Flow}} analysis triggered by F\+L\+O\+A\+T\+\_\+\+F\+L\+O\+A\+T2\+F\+L\+O\+AT.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Subfloat\+Convert\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_rule_subfloat_convert__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Subfloat\+Convert\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_rule_subfloat_convert__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_subfloat_convert_af755e88d66f2d4b0103c2fcda26b55e0}{Rule\+Subfloat\+Convert}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_subfloat_convert_a017d2e6711abb9521250a93a85938856}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_subfloat_convert_a68e8f0b1861ca36ef9c19cf166533008}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_subfloat_convert_a53fecdf028f4d41f37ff015677d7731d}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Perform \mbox{\hyperlink{class_subfloat_flow}{Subfloat\+Flow}} analysis triggered by F\+L\+O\+A\+T\+\_\+\+F\+L\+O\+A\+T2\+F\+L\+O\+AT. 
+
+Definition at line 1263 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_subfloat_convert_af755e88d66f2d4b0103c2fcda26b55e0}\label{class_rule_subfloat_convert_af755e88d66f2d4b0103c2fcda26b55e0}} 
+\index{RuleSubfloatConvert@{RuleSubfloatConvert}!RuleSubfloatConvert@{RuleSubfloatConvert}}
+\index{RuleSubfloatConvert@{RuleSubfloatConvert}!RuleSubfloatConvert@{RuleSubfloatConvert}}
+\subsubsection{\texorpdfstring{RuleSubfloatConvert()}{RuleSubfloatConvert()}}
+{\footnotesize\ttfamily Rule\+Subfloat\+Convert\+::\+Rule\+Subfloat\+Convert (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 1265 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_rule_subfloat_convert_af755e88d66f2d4b0103c2fcda26b55e0_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_subfloat_convert_a53fecdf028f4d41f37ff015677d7731d}\label{class_rule_subfloat_convert_a53fecdf028f4d41f37ff015677d7731d}} 
+\index{RuleSubfloatConvert@{RuleSubfloatConvert}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleSubfloatConvert@{RuleSubfloatConvert}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Subfloat\+Convert\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 7228 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_subfloat_convert_a53fecdf028f4d41f37ff015677d7731d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_subfloat_convert_a017d2e6711abb9521250a93a85938856}\label{class_rule_subfloat_convert_a017d2e6711abb9521250a93a85938856}} 
+\index{RuleSubfloatConvert@{RuleSubfloatConvert}!clone@{clone}}
+\index{clone@{clone}!RuleSubfloatConvert@{RuleSubfloatConvert}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Subfloat\+Convert\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 1266 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{class_rule_subfloat_convert_a017d2e6711abb9521250a93a85938856_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_subfloat_convert_a68e8f0b1861ca36ef9c19cf166533008}\label{class_rule_subfloat_convert_a68e8f0b1861ca36ef9c19cf166533008}} 
+\index{RuleSubfloatConvert@{RuleSubfloatConvert}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleSubfloatConvert@{RuleSubfloatConvert}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Subfloat\+Convert\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 7222 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

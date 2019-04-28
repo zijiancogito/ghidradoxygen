@@ -1,0 +1,93 @@
+.TH "OpFollow" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpFollow \- A simple node used to dynamically define a sequence of operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOpFollow\fP (void)"
+.br
+.RI "Construct an empty object\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP node from an XML stream\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBOpCode\fP \fBopc\fP"
+.br
+.RI "The particular p-code operation\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBval\fP"
+.br
+.RI "A possible constant second input\&. "
+.ti -1c
+.RI "int4 \fBslot\fP"
+.br
+.RI "Slot to follow\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A simple node used to dynamically define a sequence of operations\&. 
+
+This should be deprecated in favor of \fBExecutablePcode\fP objects\&. This class holds a single operation (within a sequence)\&. It acts on the output of the previous operation with an optional constant value as the second input\&. 
+.PP
+Definition at line 169 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "OpFollow::OpFollow (void)\fC [inline]\fP"
+
+.PP
+Construct an empty object\&. 
+.PP
+Definition at line 173 of file userop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void OpFollow::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Restore \fBthis\fP node from an XML stream\&. Process either a <baseop> or <innerop> element\&. Currently this only supports INT_ZEXT, INT_LEFT, and INT_AND operations 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element 
+.RE
+.PP
+
+.PP
+Definition at line 84 of file userop\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBOpCode\fP OpFollow::opc"
+
+.PP
+The particular p-code operation\&. 
+.PP
+Definition at line 170 of file userop\&.hh\&.
+.SS "int4 OpFollow::slot"
+
+.PP
+Slot to follow\&. 
+.PP
+Definition at line 172 of file userop\&.hh\&.
+.SS "\fBuintb\fP OpFollow::val"
+
+.PP
+A possible constant second input\&. 
+.PP
+Definition at line 171 of file userop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

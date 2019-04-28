@@ -1,0 +1,378 @@
+.TH "ParamActive" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParamActive \- Container class for \fBParamTrial\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParamActive\fP (bool recoversub)"
+.br
+.RI "\fBConstructor\fP an empty container\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Reset to an empty container\&. "
+.ti -1c
+.RI "void \fBregisterTrial\fP (const \fBAddress\fP &addr, int4 sz)"
+.br
+.RI "Add a new trial to the container\&. "
+.ti -1c
+.RI "int4 \fBgetNumTrials\fP (void) const"
+.br
+.RI "Get the number of trials in \fBthis\fP container\&. "
+.ti -1c
+.RI "\fBParamTrial\fP & \fBgetTrial\fP (int4 i)"
+.br
+.RI "Get the i-th trial\&. "
+.ti -1c
+.RI "const \fBParamTrial\fP & \fBgetTrialForInputVarnode\fP (int4 slot) const"
+.br
+.RI "Get trial corresponding to the given input \fBVarnode\fP\&. "
+.ti -1c
+.RI "int4 \fBwhichTrial\fP (const \fBAddress\fP &addr, int4 sz) const"
+.br
+.RI "Get the trial overlapping with the given memory range\&. "
+.ti -1c
+.RI "bool \fBneedsFinalCheck\fP (void) const"
+.br
+.RI "Is a final check required\&. "
+.ti -1c
+.RI "void \fBmarkNeedsFinalCheck\fP (void)"
+.br
+.RI "Mark that a final check is required\&. "
+.ti -1c
+.RI "bool \fBisRecoverSubcall\fP (void) const"
+.br
+.RI "Are these trials for a call to a sub-function\&. "
+.ti -1c
+.RI "bool \fBisFullyChecked\fP (void) const"
+.br
+.RI "Are all trials checked with no new trials expected\&. "
+.ti -1c
+.RI "void \fBmarkFullyChecked\fP (void)"
+.br
+.RI "Mark that all trials are checked\&. "
+.ti -1c
+.RI "void \fBsetPlaceholderSlot\fP (void)"
+.br
+.RI "Establish a stack placedholder slot\&. "
+.ti -1c
+.RI "void \fBfreePlaceholderSlot\fP (void)"
+.br
+.RI "Free the stack placeholder slot\&. "
+.ti -1c
+.RI "int4 \fBgetNumPasses\fP (void) const"
+.br
+.RI "How many trial analysis passes were performed\&. "
+.ti -1c
+.RI "int4 \fBgetMaxPass\fP (void) const"
+.br
+.RI "What is the maximum number of passes\&. "
+.ti -1c
+.RI "void \fBsetMaxPass\fP (int4 val)"
+.br
+.RI "Set the maximum number of passes\&. "
+.ti -1c
+.RI "void \fBfinishPass\fP (void)"
+.br
+.RI "Mark that an analysis pass has completed\&. "
+.ti -1c
+.RI "void \fBsortTrials\fP (void)"
+.br
+.RI "Sort the trials in formal parameter order\&. "
+.ti -1c
+.RI "void \fBdeleteUnusedTrials\fP (void)"
+.br
+.RI "Remove trials that were found not to be parameters\&. "
+.ti -1c
+.RI "void \fBsplitTrial\fP (int4 i, int4 sz)"
+.br
+.RI "Split the given trial in two\&. "
+.ti -1c
+.RI "void \fBjoinTrial\fP (int4 slot, const \fBAddress\fP &addr, int4 sz)"
+.br
+.RI "Join adjacent parameter trials\&. "
+.ti -1c
+.RI "int4 \fBgetNumUsed\fP (void) const"
+.br
+.RI "Get number of trials marked as formal parameters\&. "
+.ti -1c
+.RI "bool \fBtestShrink\fP (int4 i, const \fBAddress\fP &addr, int4 sz) const"
+.br
+.RI "Test if the given trial can be shrunk to the given range\&. "
+.ti -1c
+.RI "void \fBshrink\fP (int4 i, const \fBAddress\fP &addr, int4 sz)"
+.br
+.RI "Shrink the given trial to a new given range\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Container class for \fBParamTrial\fP objects\&. 
+
+The parameter analysis algorithms use this class to maintain the collection of parameter trials being actively considered for a given function\&. It holds the \fBParamTrial\fP objects and other information about the current state of analysis\&.
+.PP
+Trials are maintained in two stages, \fIbefore\fP parameter decisions have been made and \fIafter\fP\&. Before, trials are in input index order relative to the CALL or CALLIND op for a sub-function, or they are in address order for input Varnodes to the active function\&. After, the trials are put into formal parameter order, as dictated by the PrototypeModel\&. 
+.PP
+Definition at line 181 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParamActive::ParamActive (bool recoversub)"
+
+.PP
+\fBConstructor\fP an empty container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrecoversub\fP selects whether a sub-function or the active function is being tested 
+.RE
+.PP
+
+.PP
+Definition at line 1238 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ParamActive::clear (void)"
+
+.PP
+Reset to an empty container\&. 
+.PP
+Definition at line 1250 of file fspec\&.cc\&.
+.SS "void ParamActive::deleteUnusedTrials (void)"
+
+.PP
+Remove trials that were found not to be parameters\&. Delete any trial for which isUsed() returns \fBfalse\fP\&. This is used in conjunction with setting the active Varnodes on a call, so the slot number is reordered too\&. 
+.PP
+Definition at line 1313 of file fspec\&.cc\&.
+.SS "void ParamActive::finishPass (void)\fC [inline]\fP"
+
+.PP
+Mark that an analysis pass has completed\&. 
+.PP
+Definition at line 208 of file fspec\&.hh\&.
+.SS "void ParamActive::freePlaceholderSlot (void)"
+
+.PP
+Free the stack placeholder slot\&. Free up the stack placeholder slot, which may cause trial slots to get adjusted\&. 
+.PP
+Definition at line 1295 of file fspec\&.cc\&.
+.SS "int4 ParamActive::getMaxPass (void) const\fC [inline]\fP"
+
+.PP
+What is the maximum number of passes\&. 
+.PP
+Definition at line 206 of file fspec\&.hh\&.
+.SS "int4 ParamActive::getNumPasses (void) const\fC [inline]\fP"
+
+.PP
+How many trial analysis passes were performed\&. 
+.PP
+Definition at line 205 of file fspec\&.hh\&.
+.SS "int4 ParamActive::getNumTrials (void) const\fC [inline]\fP"
+
+.PP
+Get the number of trials in \fBthis\fP container\&. 
+.PP
+Definition at line 194 of file fspec\&.hh\&.
+.SS "int4 ParamActive::getNumUsed (void) const"
+
+.PP
+Get number of trials marked as formal parameters\&. This assumes the trials have been sorted\&. So \fIused\fP trials are first\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of formally used trials 
+.RE
+.PP
+
+.PP
+Definition at line 1397 of file fspec\&.cc\&.
+.SS "\fBParamTrial\fP& ParamActive::getTrial (int4 i)\fC [inline]\fP"
+
+.PP
+Get the i-th trial\&. 
+.PP
+Definition at line 195 of file fspec\&.hh\&.
+.SS "const \fBParamTrial\fP & ParamActive::getTrialForInputVarnode (int4 slot) const\fC [inline]\fP"
+
+.PP
+Get trial corresponding to the given input \fBVarnode\fP\&. Return the trial associated with the input \fBVarnode\fP to the associated p-code CALL or CALLIND\&. We take into account the call address parameter (subtract 1) and if the index occurs \fIafter\fP the index holding the stackpointer placeholder, we subtract an additional 1\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslot\fP is the input index of the input \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding parameter trial 
+.RE
+.PP
+
+.PP
+Definition at line 1425 of file fspec\&.hh\&.
+.SS "bool ParamActive::isFullyChecked (void) const\fC [inline]\fP"
+
+.PP
+Are all trials checked with no new trials expected\&. 
+.PP
+Definition at line 201 of file fspec\&.hh\&.
+.SS "bool ParamActive::isRecoverSubcall (void) const\fC [inline]\fP"
+
+.PP
+Are these trials for a call to a sub-function\&. 
+.PP
+Definition at line 200 of file fspec\&.hh\&.
+.SS "void ParamActive::joinTrial (int4 slot, const \fBAddress\fP & addr, int4 sz)"
+
+.PP
+Join adjacent parameter trials\&. Join the trial at the given slot with the trial in the next slot 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslot\fP is the given slot 
+.br
+\fIaddr\fP is the address of the new joined memory range 
+.br
+\fIsz\fP is the size of the new memory range 
+.RE
+.PP
+
+.PP
+Definition at line 1363 of file fspec\&.cc\&.
+.SS "void ParamActive::markFullyChecked (void)\fC [inline]\fP"
+
+.PP
+Mark that all trials are checked\&. 
+.PP
+Definition at line 202 of file fspec\&.hh\&.
+.SS "void ParamActive::markNeedsFinalCheck (void)\fC [inline]\fP"
+
+.PP
+Mark that a final check is required\&. 
+.PP
+Definition at line 199 of file fspec\&.hh\&.
+.SS "bool ParamActive::needsFinalCheck (void) const\fC [inline]\fP"
+
+.PP
+Is a final check required\&. 
+.PP
+Definition at line 198 of file fspec\&.hh\&.
+.SS "void ParamActive::registerTrial (const \fBAddress\fP & addr, int4 sz)"
+
+.PP
+Add a new trial to the container\&. A \fBParamTrial\fP object is created and a slot is assigned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the memory range 
+.br
+\fIsz\fP is the number of bytes in the range 
+.RE
+.PP
+
+.PP
+Definition at line 1263 of file fspec\&.cc\&.
+.SS "void ParamActive::setMaxPass (int4 val)\fC [inline]\fP"
+
+.PP
+Set the maximum number of passes\&. 
+.PP
+Definition at line 207 of file fspec\&.hh\&.
+.SS "void ParamActive::setPlaceholderSlot (void)\fC [inline]\fP"
+
+.PP
+Establish a stack placedholder slot\&. 
+.PP
+Definition at line 203 of file fspec\&.hh\&.
+.SS "void ParamActive::shrink (int4 i, const \fBAddress\fP & addr, int4 sz)\fC [inline]\fP"
+
+.PP
+Shrink the given trial to a new given range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the given trial 
+.br
+\fIaddr\fP is the new range's starting address 
+.br
+\fIsz\fP is the new range's size in bytes 
+.RE
+.PP
+
+.PP
+Definition at line 228 of file fspec\&.hh\&.
+.SS "void ParamActive::sortTrials (void)\fC [inline]\fP"
+
+.PP
+Sort the trials in formal parameter order\&. 
+.PP
+Definition at line 209 of file fspec\&.hh\&.
+.SS "void ParamActive::splitTrial (int4 i, int4 sz)"
+
+.PP
+Split the given trial in two\&. Split the trial into two trials, where the first piece has the given size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the given trial 
+.br
+\fIsz\fP is the given size 
+.RE
+.PP
+
+.PP
+Definition at line 1333 of file fspec\&.cc\&.
+.SS "bool ParamActive::testShrink (int4 i, const \fBAddress\fP & addr, int4 sz) const\fC [inline]\fP"
+
+.PP
+Test if the given trial can be shrunk to the given range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the given trial 
+.br
+\fIaddr\fP is the new address 
+.br
+\fIsz\fP is the new size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the trial can be shrunk to the new range 
+.RE
+.PP
+
+.PP
+Definition at line 221 of file fspec\&.hh\&.
+.SS "int4 ParamActive::whichTrial (const \fBAddress\fP & addr, int4 sz) const"
+
+.PP
+Get the trial overlapping with the given memory range\&. The (index of) the first overlapping trial is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given range 
+.br
+\fIsz\fP is the number of bytes in the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the index of the overlapping trial, or -1 if no trial overlaps 
+.RE
+.PP
+
+.PP
+Definition at line 1282 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,114 @@
+.TH "BlockMap" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockMap \- Helper class for resolving cross-references while deserializing \fBBlockGraph\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockMap\fP (const \fBAddrSpaceManager\fP *m)"
+.br
+.RI "Construct given an address space manager\&. "
+.ti -1c
+.RI "\fBBlockMap\fP (const \fBBlockMap\fP &op2)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "const \fBAddrSpaceManager\fP * \fBgetAddressManager\fP (void) const"
+.br
+.RI "Get the address space manager\&. "
+.ti -1c
+.RI "void \fBsortList\fP (void)"
+.br
+.RI "Sort the list of \fBFlowBlock\fP objects\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBfindLevelBlock\fP (int4 index) const"
+.br
+.RI "Find the \fBFlowBlock\fP matching the given index\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBcreateBlock\fP (const string &name)"
+.br
+.RI "Create a \fBFlowBlock\fP of the named type\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class for resolving cross-references while deserializing \fBBlockGraph\fP objects\&. 
+
+\fBFlowBlock\fP objects are serialized with their associated \fBindex\fP value and edges are serialized with the indices of the \fBFlowBlock\fP end-points\&. During deserialization, this class maintains a list of \fBFlowBlock\fP objects sorted by index and then looks up the \fBFlowBlock\fP matching a given index as edges specify them\&. 
+.PP
+Definition at line 683 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BlockMap::BlockMap (const \fBAddrSpaceManager\fP * m)\fC [inline]\fP"
+
+.PP
+Construct given an address space manager\&. 
+.PP
+Definition at line 689 of file block\&.hh\&.
+.SS "BlockMap::BlockMap (const \fBBlockMap\fP & op2)"
+
+.PP
+Copy constructor\&. 
+.PP
+Definition at line 3105 of file block\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFlowBlock\fP * BlockMap::createBlock (const string & name)"
+
+.PP
+Create a \fBFlowBlock\fP of the named type\&. Given the name of a block (deserialized from a <bhead> tag), build the corresponding type of block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the block type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a new instance of the named \fBFlowBlock\fP type 
+.RE
+.PP
+
+.PP
+Definition at line 3162 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP* BlockMap::findLevelBlock (int4 index) const\fC [inline]\fP"
+
+.PP
+Find the \fBFlowBlock\fP matching the given index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP is the given index 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBFlowBlock\fP matching the index 
+.RE
+.PP
+
+.PP
+Definition at line 698 of file block\&.hh\&.
+.SS "const \fBAddrSpaceManager\fP* BlockMap::getAddressManager (void) const\fC [inline]\fP"
+
+.PP
+Get the address space manager\&. 
+.PP
+Definition at line 691 of file block\&.hh\&.
+.SS "void BlockMap::sortList (void)"
+
+.PP
+Sort the list of \fBFlowBlock\fP objects\&. 
+.PP
+Definition at line 3152 of file block\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

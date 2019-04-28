@@ -1,0 +1,568 @@
+\hypertarget{class_emulate_pcode_op}{}\section{Emulate\+Pcode\+Op Class Reference}
+\label{class_emulate_pcode_op}\index{EmulatePcodeOp@{EmulatePcodeOp}}
+
+
+Emulation based on (existing) Pcode\+Ops and Varnodes.  
+
+
+
+
+{\ttfamily \#include $<$emulateutil.\+hh$>$}
+
+
+
+Inheritance diagram for Emulate\+Pcode\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_emulate_pcode_op__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Emulate\+Pcode\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_emulate_pcode_op_aa09cc9bcd0f6a983c4410d2c6137c002}{Emulate\+Pcode\+Op}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_emulate_pcode_op_a873b709e6195d1417d83dd8b122663dd}{set\+Current\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Establish the current \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} being emulated. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_emulate_pcode_op_a55356dba15ee255dc6d9a7d2dd3832c0}{get\+Execute\+Address}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the address of the current instruction being executed. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_a44bfa9a3b6d87135a6bfc6680d01ea27}{set\+Varnode\+Value}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val)=0
+\begin{DoxyCompactList}\small\item\em Given a specific \mbox{\hyperlink{class_varnode}{Varnode}}, set the given value for it in the current machine state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_emulate_pcode_op_a90f1046ddac488b5a88b5b151a307eca}{get\+Varnode\+Value}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn) const =0
+\begin{DoxyCompactList}\small\item\em Given a specific \mbox{\hyperlink{class_varnode}{Varnode}}, retrieve the current value for it from the machine state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_emulate_pcode_op_ad0820672a7c9f2a1a2457239f8d59378}{get\+Load\+Image\+Value}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} offset, int4 sz) const
+\begin{DoxyCompactList}\small\item\em Pull a value from the load-\/image given a specific address. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_acdcfb1ee505eb8eeac882ddef564f18e}{execute\+Unary}} (void)
+\begin{DoxyCompactList}\small\item\em Execute a unary arithmetic/logical operation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_ac33f956b6cf8b205b32324d0a84b38cb}{execute\+Binary}} (void)
+\begin{DoxyCompactList}\small\item\em Execute a binary arithmetic/logical operation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_ab665b04ab8db4b7025e1a5b6a05189ea}{execute\+Load}} (void)
+\begin{DoxyCompactList}\small\item\em Standard behavior for a p-\/code L\+O\+AD. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_a3e050bb94bc5f0cca844cc60aa0e4702}{execute\+Store}} (void)
+\begin{DoxyCompactList}\small\item\em Standard behavior for a p-\/code S\+T\+O\+RE. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_emulate_pcode_op_a5aa70550f3f75829976b082a87d50d8f}{execute\+Cbranch}} (void)
+\begin{DoxyCompactList}\small\item\em Check if the conditional of a C\+B\+R\+A\+N\+CH is {\bfseries{true}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_a0d8951da9a7c253ad8bf4892fff9760a}{execute\+Multiequal}} (void)
+\begin{DoxyCompactList}\small\item\em Standard behavior for a M\+U\+L\+T\+I\+E\+Q\+U\+AL (phi-\/node) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_ab092522c4b63f02b633dbeb98d9ecaba}{execute\+Indirect}} (void)
+\begin{DoxyCompactList}\small\item\em Standard behavior for an I\+N\+D\+I\+R\+E\+CT op. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_a4335b878ca40061dcde8f45fabb82e16}{execute\+Segment\+Op}} (void)
+\begin{DoxyCompactList}\small\item\em Behavior for a S\+E\+G\+M\+E\+N\+T\+OP. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_aa1075926534682debaaab82d47f51a03}{execute\+Cpool\+Ref}} (void)
+\begin{DoxyCompactList}\small\item\em Standard behavior for a C\+P\+O\+O\+L\+R\+EF (constant pool reference) op. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_emulate_pcode_op_a7aecdf665942b8b429e02d3f56fce887}{execute\+New}} (void)
+\begin{DoxyCompactList}\small\item\em Standard behavior for (low-\/level) N\+EW op. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_emulate_pcode_op_a42e18029a70d836acb3fd457a185b11a}{glb}}
+\begin{DoxyCompactList}\small\item\em The underlying \mbox{\hyperlink{class_architecture}{Architecture}} for the program being emulated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_emulate_pcode_op_ab52f4b9da769c03f03988e9500a565e8}{current\+Op}}
+\begin{DoxyCompactList}\small\item\em Current \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} being executed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_emulate_pcode_op_a37c1a6611accb11ed7f4fc242e1d6a3b}{last\+Op}}
+\begin{DoxyCompactList}\small\item\em Last \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} that was executed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Emulation based on (existing) Pcode\+Ops and Varnodes. 
+
+This is still an abstract class. It does most of the work of emulating p-\/code using \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} and \mbox{\hyperlink{class_varnode}{Varnode}} objects (as opposed to \mbox{\hyperlink{class_pcode_op_raw}{Pcode\+Op\+Raw}} and \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}}). This class leaves implementation of control-\/flow to the derived class. This class implements most operations by going through new virtual methods\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_emulate_pcode_op_a90f1046ddac488b5a88b5b151a307eca}{get\+Varnode\+Value()}}
+\item \mbox{\hyperlink{class_emulate_pcode_op_a44bfa9a3b6d87135a6bfc6680d01ea27}{set\+Varnode\+Value()}}
+\item \mbox{\hyperlink{class_emulate_pcode_op_ad0820672a7c9f2a1a2457239f8d59378}{get\+Load\+Image\+Value()}}
+\end{DoxyItemize}
+
+The default \mbox{\hyperlink{class_emulate_pcode_op_ab665b04ab8db4b7025e1a5b6a05189ea}{execute\+Load()}} implementation pulls values from the underlying \mbox{\hyperlink{class_load_image}{Load\+Image}} object. The following p-\/code ops are provided {\itshape N\+U\+LL} implementations, as some tasks don\textquotesingle{}t need hard emulation of them\+:
+\begin{DoxyItemize}
+\item S\+T\+O\+RE
+\item C\+P\+O\+O\+L\+R\+EF
+\item N\+EW 
+\end{DoxyItemize}
+
+Definition at line 41 of file emulateutil.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_emulate_pcode_op_aa09cc9bcd0f6a983c4410d2c6137c002}\label{class_emulate_pcode_op_aa09cc9bcd0f6a983c4410d2c6137c002}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!EmulatePcodeOp@{EmulatePcodeOp}}
+\index{EmulatePcodeOp@{EmulatePcodeOp}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{EmulatePcodeOp()}{EmulatePcodeOp()}}
+{\footnotesize\ttfamily Emulate\+Pcode\+Op\+::\+Emulate\+Pcode\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & is the \mbox{\hyperlink{class_architecture}{Architecture}} providing the \mbox{\hyperlink{class_load_image}{Load\+Image}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 20 of file emulateutil.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_emulate_pcode_op_ac33f956b6cf8b205b32324d0a84b38cb}\label{class_emulate_pcode_op_ac33f956b6cf8b205b32324d0a84b38cb}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeBinary@{executeBinary}}
+\index{executeBinary@{executeBinary}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeBinary()}{executeBinary()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Binary (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Execute a binary arithmetic/logical operation. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_a278171740465666a64442716187a1505}{Emulate}}.
+
+
+
+Definition at line 54 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_ac33f956b6cf8b205b32324d0a84b38cb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a5aa70550f3f75829976b082a87d50d8f}\label{class_emulate_pcode_op_a5aa70550f3f75829976b082a87d50d8f}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeCbranch@{executeCbranch}}
+\index{executeCbranch@{executeCbranch}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeCbranch()}{executeCbranch()}}
+{\footnotesize\ttfamily bool Emulate\+Pcode\+Op\+::execute\+Cbranch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Check if the conditional of a C\+B\+R\+A\+N\+CH is {\bfseries{true}}. 
+
+This routine only checks if the condition for a p-\/code C\+B\+R\+A\+N\+CH is true. It does {\itshape not} perform the actual branch. \begin{DoxyReturn}{Returns}
+the boolean state indicated by the condition 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_emulate_ac0dbab7129d69471d8400a75c0c7c1b5}{Emulate}}.
+
+
+
+Definition at line 85 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_a5aa70550f3f75829976b082a87d50d8f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_aa1075926534682debaaab82d47f51a03}\label{class_emulate_pcode_op_aa1075926534682debaaab82d47f51a03}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeCpoolRef@{executeCpoolRef}}
+\index{executeCpoolRef@{executeCpoolRef}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeCpoolRef()}{executeCpoolRef()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Cpool\+Ref (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Standard behavior for a C\+P\+O\+O\+L\+R\+EF (constant pool reference) op. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_a544e0f87351d29a0336b56c06fe8b3c3}{Emulate}}.
+
+
+
+Definition at line 136 of file emulateutil.\+cc.
+
+\mbox{\Hypertarget{class_emulate_pcode_op_ab092522c4b63f02b633dbeb98d9ecaba}\label{class_emulate_pcode_op_ab092522c4b63f02b633dbeb98d9ecaba}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeIndirect@{executeIndirect}}
+\index{executeIndirect@{executeIndirect}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeIndirect()}{executeIndirect()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Indirect (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Standard behavior for an I\+N\+D\+I\+R\+E\+CT op. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_aa791523787e5154d73bfe0e846a2cd38}{Emulate}}.
+
+
+
+Definition at line 110 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_ab092522c4b63f02b633dbeb98d9ecaba_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_ab665b04ab8db4b7025e1a5b6a05189ea}\label{class_emulate_pcode_op_ab665b04ab8db4b7025e1a5b6a05189ea}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeLoad@{executeLoad}}
+\index{executeLoad@{executeLoad}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeLoad()}{executeLoad()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Load (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Standard behavior for a p-\/code L\+O\+AD. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_acc9c4d2ddbfe4ff639e320d30a212e56}{Emulate}}.
+
+
+
+Definition at line 64 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_ab665b04ab8db4b7025e1a5b6a05189ea_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a0d8951da9a7c253ad8bf4892fff9760a}\label{class_emulate_pcode_op_a0d8951da9a7c253ad8bf4892fff9760a}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeMultiequal@{executeMultiequal}}
+\index{executeMultiequal@{executeMultiequal}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeMultiequal()}{executeMultiequal()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Multiequal (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Standard behavior for a M\+U\+L\+T\+I\+E\+Q\+U\+AL (phi-\/node) 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_ab98cf68b6d37869f65825f3fdf03019c}{Emulate}}.
+
+
+
+Definition at line 94 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_a0d8951da9a7c253ad8bf4892fff9760a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a7aecdf665942b8b429e02d3f56fce887}\label{class_emulate_pcode_op_a7aecdf665942b8b429e02d3f56fce887}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeNew@{executeNew}}
+\index{executeNew@{executeNew}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeNew()}{executeNew()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+New (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Standard behavior for (low-\/level) N\+EW op. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_ad6d1b182791e6d69b6469ea159729372}{Emulate}}.
+
+
+
+Definition at line 142 of file emulateutil.\+cc.
+
+\mbox{\Hypertarget{class_emulate_pcode_op_a4335b878ca40061dcde8f45fabb82e16}\label{class_emulate_pcode_op_a4335b878ca40061dcde8f45fabb82e16}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeSegmentOp@{executeSegmentOp}}
+\index{executeSegmentOp@{executeSegmentOp}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeSegmentOp()}{executeSegmentOp()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Segment\+Op (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Behavior for a S\+E\+G\+M\+E\+N\+T\+OP. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_ac4c13159c340cd33ca6f3b69d2b50e38}{Emulate}}.
+
+
+
+Definition at line 120 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_a4335b878ca40061dcde8f45fabb82e16_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a3e050bb94bc5f0cca844cc60aa0e4702}\label{class_emulate_pcode_op_a3e050bb94bc5f0cca844cc60aa0e4702}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeStore@{executeStore}}
+\index{executeStore@{executeStore}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeStore()}{executeStore()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Store (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Standard behavior for a p-\/code S\+T\+O\+RE. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_a634f0261bf49be73e7d31a2baf9f6e4d}{Emulate}}.
+
+
+
+Definition at line 76 of file emulateutil.\+cc.
+
+\mbox{\Hypertarget{class_emulate_pcode_op_acdcfb1ee505eb8eeac882ddef564f18e}\label{class_emulate_pcode_op_acdcfb1ee505eb8eeac882ddef564f18e}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!executeUnary@{executeUnary}}
+\index{executeUnary@{executeUnary}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{executeUnary()}{executeUnary()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::execute\+Unary (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Execute a unary arithmetic/logical operation. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_a95111238fb3061b23db2e94ec280b34f}{Emulate}}.
+
+
+
+Definition at line 45 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_acdcfb1ee505eb8eeac882ddef564f18e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a55356dba15ee255dc6d9a7d2dd3832c0}\label{class_emulate_pcode_op_a55356dba15ee255dc6d9a7d2dd3832c0}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!getExecuteAddress@{getExecuteAddress}}
+\index{getExecuteAddress@{getExecuteAddress}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{getExecuteAddress()}{getExecuteAddress()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_address}{Address}} Emulate\+Pcode\+Op\+::get\+Execute\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the address of the current instruction being executed. 
+
+
+
+Implements \mbox{\hyperlink{class_emulate_aeca3c773876b391304afffe2a5eff9de}{Emulate}}.
+
+
+
+Definition at line 80 of file emulateutil.\+hh.
+
+\mbox{\Hypertarget{class_emulate_pcode_op_ad0820672a7c9f2a1a2457239f8d59378}\label{class_emulate_pcode_op_ad0820672a7c9f2a1a2457239f8d59378}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!getLoadImageValue@{getLoadImageValue}}
+\index{getLoadImageValue@{getLoadImageValue}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{getLoadImageValue()}{getLoadImageValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Emulate\+Pcode\+Op\+::get\+Load\+Image\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{offset,  }\item[{int4}]{sz }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Pull a value from the load-\/image given a specific address. 
+
+A contiguous chunk of memory is pulled from the load-\/image and returned as a constant value, respecting the endianess of the address space. The default implementation of this method pulls the value directly from the \mbox{\hyperlink{class_load_image}{Load\+Image}} object. 
+\begin{DoxyParams}{Parameters}
+{\em spc} & is the address space to pull the value from \\
+\hline
+{\em offset} & is the starting address offset (from within the space) to pull the value from \\
+\hline
+{\em sz} & is the number of bytes to pull from memory \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+indicated bytes arranged as a constant value 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file emulateutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_ad0820672a7c9f2a1a2457239f8d59378_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_ad0820672a7c9f2a1a2457239f8d59378_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a90f1046ddac488b5a88b5b151a307eca}\label{class_emulate_pcode_op_a90f1046ddac488b5a88b5b151a307eca}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!getVarnodeValue@{getVarnodeValue}}
+\index{getVarnodeValue@{getVarnodeValue}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{getVarnodeValue()}{getVarnodeValue()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Emulate\+Pcode\+Op\+::get\+Varnode\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Given a specific \mbox{\hyperlink{class_varnode}{Varnode}}, retrieve the current value for it from the machine state. 
+
+This is the placeholder internal operation for obtaining a \mbox{\hyperlink{class_varnode}{Varnode}} value during emulation. The value is {\itshape loaded} using the \mbox{\hyperlink{class_varnode}{Varnode}} as the {\itshape address} and {\itshape storage} {\itshape size}. 
+\begin{DoxyParams}{Parameters}
+{\em vn} & is the specific \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the corresponding value from the machine state 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_emulate_function_aea3a1fca2e8073ab6e7bcff5f05a74ca}{Emulate\+Function}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_a90f1046ddac488b5a88b5b151a307eca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a873b709e6195d1417d83dd8b122663dd}\label{class_emulate_pcode_op_a873b709e6195d1417d83dd8b122663dd}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!setCurrentOp@{setCurrentOp}}
+\index{setCurrentOp@{setCurrentOp}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{setCurrentOp()}{setCurrentOp()}}
+{\footnotesize\ttfamily void Emulate\+Pcode\+Op\+::set\+Current\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Establish the current \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} being emulated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} that will next be executed via \mbox{\hyperlink{class_emulate_aad37ba97a90d7cd5338a75afce3a21b9}{execute\+Current\+Op()}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 79 of file emulateutil.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_a873b709e6195d1417d83dd8b122663dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_a873b709e6195d1417d83dd8b122663dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_emulate_pcode_op_a44bfa9a3b6d87135a6bfc6680d01ea27}\label{class_emulate_pcode_op_a44bfa9a3b6d87135a6bfc6680d01ea27}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!setVarnodeValue@{setVarnodeValue}}
+\index{setVarnodeValue@{setVarnodeValue}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{setVarnodeValue()}{setVarnodeValue()}}
+{\footnotesize\ttfamily virtual void Emulate\+Pcode\+Op\+::set\+Varnode\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Given a specific \mbox{\hyperlink{class_varnode}{Varnode}}, set the given value for it in the current machine state. 
+
+This is the placeholder internal operation for setting a \mbox{\hyperlink{class_varnode}{Varnode}} value during emulation. The value is {\itshape stored} using the \mbox{\hyperlink{class_varnode}{Varnode}} as the {\itshape address} and {\itshape storage} {\itshape size}. 
+\begin{DoxyParams}{Parameters}
+{\em vn} & is the specific \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+{\em val} & is the constant value to store \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_emulate_function_a9b130aee822f3e00552259a3ecaf14ff}{Emulate\+Function}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_emulate_pcode_op_a44bfa9a3b6d87135a6bfc6680d01ea27_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_emulate_pcode_op_ab52f4b9da769c03f03988e9500a565e8}\label{class_emulate_pcode_op_ab52f4b9da769c03f03988e9500a565e8}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!currentOp@{currentOp}}
+\index{currentOp@{currentOp}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{currentOp}{currentOp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Emulate\+Pcode\+Op\+::current\+Op\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Current \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} being executed. 
+
+
+
+Definition at line 44 of file emulateutil.\+hh.
+
+\mbox{\Hypertarget{class_emulate_pcode_op_a42e18029a70d836acb3fd457a185b11a}\label{class_emulate_pcode_op_a42e18029a70d836acb3fd457a185b11a}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!glb@{glb}}
+\index{glb@{glb}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{glb}{glb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ Emulate\+Pcode\+Op\+::glb\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The underlying \mbox{\hyperlink{class_architecture}{Architecture}} for the program being emulated. 
+
+
+
+Definition at line 43 of file emulateutil.\+hh.
+
+\mbox{\Hypertarget{class_emulate_pcode_op_a37c1a6611accb11ed7f4fc242e1d6a3b}\label{class_emulate_pcode_op_a37c1a6611accb11ed7f4fc242e1d6a3b}} 
+\index{EmulatePcodeOp@{EmulatePcodeOp}!lastOp@{lastOp}}
+\index{lastOp@{lastOp}!EmulatePcodeOp@{EmulatePcodeOp}}
+\subsubsection{\texorpdfstring{lastOp}{lastOp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Emulate\+Pcode\+Op\+::last\+Op\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Last \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} that was executed. 
+
+
+
+Definition at line 45 of file emulateutil.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{emulateutil_8hh}{emulateutil.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{emulateutil_8cc}{emulateutil.\+cc}}\end{DoxyCompactItemize}

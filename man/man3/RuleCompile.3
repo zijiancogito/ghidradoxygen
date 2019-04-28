@@ -1,0 +1,295 @@
+.TH "RuleCompile" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RuleCompile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rulecompile\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRuleCompile\fP (void)"
+.br
+.ti -1c
+.RI "\fB~RuleCompile\fP (void)"
+.br
+.ti -1c
+.RI "void \fBruleError\fP (const char *s)"
+.br
+.ti -1c
+.RI "int4 \fBnumErrors\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetLineNo\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetFullRule\fP (\fBConstraintGroup\fP *full)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBgetRule\fP (void)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBreleaseRule\fP (void)"
+.br
+.ti -1c
+.RI "const map< string, int4 > & \fBgetNameMap\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBfindIdentifier\fP (string *nm)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBnewOp\fP (int4 id)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBnewVarnode\fP (int4 id)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBnewConst\fP (int4 id)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopCopy\fP (\fBConstraintGroup\fP *base, int4 opid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopInput\fP (\fBConstraintGroup\fP *base, int8 *slot, int4 varid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopInputAny\fP (\fBConstraintGroup\fP *base, int4 varid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopInputConstVal\fP (\fBConstraintGroup\fP *base, int8 *slot, \fBRHSConstant\fP *rhs)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopOutput\fP (\fBConstraintGroup\fP *base, int4 varid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBvarCopy\fP (\fBConstraintGroup\fP *base, int4 varid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBvarConst\fP (\fBConstraintGroup\fP *base, \fBRHSConstant\fP *ex, \fBRHSConstant\fP *sz)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBvarDef\fP (\fBConstraintGroup\fP *base, int4 opid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBvarDescend\fP (\fBConstraintGroup\fP *base, int4 opid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBvarUniqueDescend\fP (\fBConstraintGroup\fP *base, int4 opid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopCodeConstraint\fP (\fBConstraintGroup\fP *base, vector< \fBOpCode\fP > *oplist)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopCompareConstraint\fP (\fBConstraintGroup\fP *base, int4 opid, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBvarCompareConstraint\fP (\fBConstraintGroup\fP *base, int4 varid, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBconstCompareConstraint\fP (\fBConstraintGroup\fP *base, int4 constid, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBconstNamedExpression\fP (int4 id, \fBRHSConstant\fP *expr)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBemptyGroup\fP (void)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBemptyOrGroup\fP (void)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBmergeGroups\fP (\fBConstraintGroup\fP *a, \fBConstraintGroup\fP *b)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBaddOr\fP (\fBConstraintGroup\fP *base, \fBConstraintGroup\fP *newor)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBopCreation\fP (int4 newid, \fBOpCode\fP oc, bool iafter, int4 oldid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBnewUniqueOut\fP (\fBConstraintGroup\fP *base, int4 varid, int4 sz)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBnewSetInput\fP (\fBConstraintGroup\fP *base, \fBRHSConstant\fP *slot, int4 varid)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBnewSetInputConstVal\fP (\fBConstraintGroup\fP *base, \fBRHSConstant\fP *slot, \fBRHSConstant\fP *val, \fBRHSConstant\fP *sz)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBremoveInput\fP (\fBConstraintGroup\fP *base, \fBRHSConstant\fP *slot)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBnewSetOpcode\fP (\fBConstraintGroup\fP *base, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "\fBConstraintGroup\fP * \fBbooleanConstraint\fP (bool ist, \fBRHSConstant\fP *expr)"
+.br
+.ti -1c
+.RI "\fBRHSConstant\fP * \fBconstNamed\fP (int4 id)"
+.br
+.ti -1c
+.RI "\fBRHSConstant\fP * \fBconstAbsolute\fP (int8 *val)"
+.br
+.ti -1c
+.RI "\fBRHSConstant\fP * \fBconstBinaryExpression\fP (\fBRHSConstant\fP *ex1, \fBOpCode\fP opc, \fBRHSConstant\fP *ex2)"
+.br
+.ti -1c
+.RI "\fBRHSConstant\fP * \fBconstVarnodeSize\fP (int4 varindex)"
+.br
+.ti -1c
+.RI "\fBRHSConstant\fP * \fBdotIdentifier\fP (int4 id, string *str)"
+.br
+.ti -1c
+.RI "int4 \fBnextToken\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetErrorStream\fP (ostream &t)"
+.br
+.ti -1c
+.RI "void \fBrun\fP (istream &s, bool debug)"
+.br
+.ti -1c
+.RI "void \fBpostProcess\fP (void)"
+.br
+.ti -1c
+.RI "int4 \fBpostProcessRule\fP (vector< \fBOpCode\fP > &opcodelist)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBConstraintGroup\fP * \fBbuildUnifyer\fP (const string &rule, const vector< string > &idlist, vector< int4 > &res)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 74 of file rulecompile\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RuleCompile::RuleCompile (void)"
+
+.SS "RuleCompile::~RuleCompile (void)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBConstraintGroup\fP* RuleCompile::addOr (\fBConstraintGroup\fP * base, \fBConstraintGroup\fP * newor)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::booleanConstraint (bool ist, \fBRHSConstant\fP * expr)"
+
+.SS "static \fBConstraintGroup\fP* RuleCompile::buildUnifyer (const string & rule, const vector< string > & idlist, vector< int4 > & res)\fC [static]\fP"
+
+.SS "\fBRHSConstant\fP* RuleCompile::constAbsolute (int8 * val)"
+
+.SS "\fBRHSConstant\fP* RuleCompile::constBinaryExpression (\fBRHSConstant\fP * ex1, \fBOpCode\fP opc, \fBRHSConstant\fP * ex2)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::constCompareConstraint (\fBConstraintGroup\fP * base, int4 constid, \fBOpCode\fP opc)"
+
+.SS "\fBRHSConstant\fP* RuleCompile::constNamed (int4 id)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::constNamedExpression (int4 id, \fBRHSConstant\fP * expr)"
+
+.SS "\fBRHSConstant\fP* RuleCompile::constVarnodeSize (int4 varindex)"
+
+.SS "\fBRHSConstant\fP* RuleCompile::dotIdentifier (int4 id, string * str)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::emptyGroup (void)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::emptyOrGroup (void)"
+
+.SS "int4 RuleCompile::findIdentifier (string * nm)"
+
+.SS "int4 RuleCompile::getLineNo (void)\fC [inline]\fP"
+
+.PP
+Definition at line 86 of file rulecompile\&.hh\&.
+.SS "const map<string,int4>& RuleCompile::getNameMap (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 90 of file rulecompile\&.hh\&.
+.SS "\fBConstraintGroup\fP* RuleCompile::getRule (void)\fC [inline]\fP"
+
+.PP
+Definition at line 88 of file rulecompile\&.hh\&.
+.SS "\fBConstraintGroup\fP* RuleCompile::mergeGroups (\fBConstraintGroup\fP * a, \fBConstraintGroup\fP * b)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::newConst (int4 id)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::newOp (int4 id)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::newSetInput (\fBConstraintGroup\fP * base, \fBRHSConstant\fP * slot, int4 varid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::newSetInputConstVal (\fBConstraintGroup\fP * base, \fBRHSConstant\fP * slot, \fBRHSConstant\fP * val, \fBRHSConstant\fP * sz)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::newSetOpcode (\fBConstraintGroup\fP * base, \fBOpCode\fP opc)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::newUniqueOut (\fBConstraintGroup\fP * base, int4 varid, int4 sz)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::newVarnode (int4 id)"
+
+.SS "int4 RuleCompile::nextToken (void)\fC [inline]\fP"
+
+.PP
+Definition at line 134 of file rulecompile\&.hh\&.
+.SS "int4 RuleCompile::numErrors (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 85 of file rulecompile\&.hh\&.
+.SS "\fBConstraintGroup\fP* RuleCompile::opCodeConstraint (\fBConstraintGroup\fP * base, vector< \fBOpCode\fP > * oplist)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::opCompareConstraint (\fBConstraintGroup\fP * base, int4 opid, \fBOpCode\fP opc)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::opCopy (\fBConstraintGroup\fP * base, int4 opid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::opCreation (int4 newid, \fBOpCode\fP oc, bool iafter, int4 oldid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::opInput (\fBConstraintGroup\fP * base, int8 * slot, int4 varid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::opInputAny (\fBConstraintGroup\fP * base, int4 varid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::opInputConstVal (\fBConstraintGroup\fP * base, int8 * slot, \fBRHSConstant\fP * rhs)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::opOutput (\fBConstraintGroup\fP * base, int4 varid)"
+
+.SS "void RuleCompile::postProcess (void)"
+
+.SS "int4 RuleCompile::postProcessRule (vector< \fBOpCode\fP > & opcodelist)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::releaseRule (void)\fC [inline]\fP"
+
+.PP
+Definition at line 89 of file rulecompile\&.hh\&.
+.SS "\fBConstraintGroup\fP* RuleCompile::removeInput (\fBConstraintGroup\fP * base, \fBRHSConstant\fP * slot)"
+
+.SS "void RuleCompile::ruleError (const char * s)"
+
+.SS "void RuleCompile::run (istream & s, bool debug)"
+
+.SS "void RuleCompile::setErrorStream (ostream & t)\fC [inline]\fP"
+
+.PP
+Definition at line 136 of file rulecompile\&.hh\&.
+.SS "void RuleCompile::setFullRule (\fBConstraintGroup\fP * full)\fC [inline]\fP"
+
+.PP
+Definition at line 87 of file rulecompile\&.hh\&.
+.SS "\fBConstraintGroup\fP* RuleCompile::varCompareConstraint (\fBConstraintGroup\fP * base, int4 varid, \fBOpCode\fP opc)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::varConst (\fBConstraintGroup\fP * base, \fBRHSConstant\fP * ex, \fBRHSConstant\fP * sz)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::varCopy (\fBConstraintGroup\fP * base, int4 varid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::varDef (\fBConstraintGroup\fP * base, int4 opid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::varDescend (\fBConstraintGroup\fP * base, int4 opid)"
+
+.SS "\fBConstraintGroup\fP* RuleCompile::varUniqueDescend (\fBConstraintGroup\fP * base, int4 opid)"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,103 @@
+.TH "TraceDAG" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TraceDAG \- Algorithm for selecting unstructured edges based an Directed Acyclic Graphs (DAG)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <blockaction\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTraceDAG\fP (list< \fBFloatingEdge\fP > &lg)"
+.br
+.RI "Clear the \fBvisitcount\fP field of any \fBFlowBlock\fP we have modified\&. "
+.ti -1c
+.RI "\fB~TraceDAG\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBaddRoot\fP (\fBFlowBlock\fP *root)"
+.br
+.RI "Add a root \fBFlowBlock\fP to the trace\&. "
+.ti -1c
+.RI "void \fBinitialize\fP (void)"
+.br
+.RI "Create the initial BranchPoint and BlockTrace objects\&. "
+.ti -1c
+.RI "void \fBpushBranches\fP (void)"
+.br
+.RI "Push the trace through, removing edges as necessary\&. "
+.ti -1c
+.RI "void \fBsetFinishBlock\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Mark an exit point not to trace beyond\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Algorithm for selecting unstructured edges based an Directed Acyclic Graphs (DAG) 
+
+With the exception of the back edges in loops, structured code tends to form a DAG\&. Within the DAG, all building blocks of structured code have a single node entry point and (at most) one exit block\&. Given root points, this class traces edges with this kind of structure\&. Paths can recursively split at any point, starting a new \fIactive\fP BranchPoint, but the BranchPoint can't be \fIretired\fP until all paths emanating from its start either terminate or come back together at the same \fBFlowBlock\fP node\&. Once a BranchPoint is retired, all the edges traversed from the start \fBFlowBlock\fP to the end \fBFlowBlock\fP are likely structurable\&. After pushing the traces as far as possible and retiring as much as possible, any \fIactive\fP edge left is a candidate for an unstructured branch\&.
+.PP
+Ultimately this produces a list of \fIlikely\fP \fIgotos\fP, which is used whenever the structuring algorithm (\fBActionBlockStructure\fP) gets stuck\&.
+.PP
+The tracing can be restricted to a \fIloopbody\fP by setting the top \fBFlowBlock\fP of the loop as the root, and the loop exit block as the finish block\&. Additionally, any edges that exit the loop should be marked using \fBLoopBody::setExitMarks()\fP\&. 
+.PP
+Definition at line 94 of file blockaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TraceDAG::TraceDAG (list< \fBFloatingEdge\fP > & lg)"
+
+.PP
+Clear the \fBvisitcount\fP field of any \fBFlowBlock\fP we have modified\&. Construct given the container for likely unstructured edges
+.PP
+Prepare for a new trace using the provided storage for the likely unstructured edges that will be discovered\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlg\fP is the container for likely unstructured edges 
+.RE
+.PP
+
+.PP
+Definition at line 944 of file blockaction\&.cc\&.
+.SS "TraceDAG::~TraceDAG (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 951 of file blockaction\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TraceDAG::addRoot (\fBFlowBlock\fP * root)\fC [inline]\fP"
+
+.PP
+Add a root \fBFlowBlock\fP to the trace\&. 
+.PP
+Definition at line 175 of file blockaction\&.hh\&.
+.SS "void TraceDAG::initialize (void)"
+
+.PP
+Create the initial BranchPoint and BlockTrace objects\&. Given the registered root FlowBlocks, create the initial (virtual) BranchPoint and an associated BlockTrace for each root \fBFlowBlock\fP\&. 
+.PP
+Definition at line 960 of file blockaction\&.cc\&.
+.SS "void TraceDAG::pushBranches (void)"
+
+.PP
+Push the trace through, removing edges as necessary\&. From the root BranchPoint, recursively push the trace\&. At any point where pushing is no longer possible, select an appropriate edge to remove and add it to the list of likely unstructured edges\&. Then continue pushing the trace\&. 
+.PP
+Definition at line 976 of file blockaction\&.cc\&.
+.SS "void TraceDAG::setFinishBlock (\fBFlowBlock\fP * bl)\fC [inline]\fP"
+
+.PP
+Mark an exit point not to trace beyond\&. 
+.PP
+Definition at line 178 of file blockaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

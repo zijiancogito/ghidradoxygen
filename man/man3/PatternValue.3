@@ -1,0 +1,78 @@
+.TH "PatternValue" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PatternValue
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpatexpress\&.hh>\fP
+.PP
+Inherits \fBPatternExpression\fP\&.
+.PP
+Inherited by \fBConstantValue\fP, \fBContextField\fP, \fBEndInstructionValue\fP, \fBOperandValue\fP, \fBStartInstructionValue\fP, and \fBTokenField\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBTokenPattern\fP \fBgenPattern\fP (\fBintb\fP val) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBlistValues\fP (vector< const \fBPatternValue\fP * > &list) const"
+.br
+.ti -1c
+.RI "virtual void \fBgetMinMax\fP (vector< \fBintb\fP > &minlist, vector< \fBintb\fP > &maxlist) const"
+.br
+.ti -1c
+.RI "virtual \fBintb\fP \fBgetSubValue\fP (const vector< \fBintb\fP > &replace, int4 &listpos) const"
+.br
+.ti -1c
+.RI "virtual \fBintb\fP \fBminValue\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual \fBintb\fP \fBmaxValue\fP (void) const =0"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 78 of file slghpatexpress\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBTokenPattern\fP PatternValue::genPattern (\fBintb\fP val) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOperandValue\fP, \fBEndInstructionValue\fP, \fBStartInstructionValue\fP, \fBConstantValue\fP, \fBContextField\fP, and \fBTokenField\fP\&.
+.SS "virtual void PatternValue::getMinMax (vector< \fBintb\fP > & minlist, vector< \fBintb\fP > & maxlist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPatternExpression\fP\&.
+.PP
+Definition at line 82 of file slghpatexpress\&.hh\&.
+.SS "virtual \fBintb\fP PatternValue::getSubValue (const vector< \fBintb\fP > & replace, int4 & listpos) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPatternExpression\fP\&.
+.PP
+Reimplemented in \fBOperandValue\fP\&.
+.PP
+Definition at line 84 of file slghpatexpress\&.hh\&.
+.SS "virtual void PatternValue::listValues (vector< const \fBPatternValue\fP * > & list) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPatternExpression\fP\&.
+.PP
+Definition at line 81 of file slghpatexpress\&.hh\&.
+.SS "virtual \fBintb\fP PatternValue::maxValue (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOperandValue\fP, \fBEndInstructionValue\fP, \fBStartInstructionValue\fP, \fBConstantValue\fP, \fBContextField\fP, and \fBTokenField\fP\&.
+.SS "virtual \fBintb\fP PatternValue::minValue (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOperandValue\fP, \fBEndInstructionValue\fP, \fBStartInstructionValue\fP, \fBConstantValue\fP, \fBContextField\fP, and \fBTokenField\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

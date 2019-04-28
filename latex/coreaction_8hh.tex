@@ -1,0 +1,220 @@
+\hypertarget{coreaction_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/coreaction.hh File Reference}
+\label{coreaction_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/coreaction.hh}}
+
+
+Core decompilation actions which are indepedent of any particular architecture.  
+
+
+{\ttfamily \#include \char`\"{}ruleaction.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}blockaction.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}funcdata.\+hh\char`\"{}}\newline
+Include dependency graph for coreaction.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{coreaction_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{coreaction_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_action_start}{Action\+Start}}
+\begin{DoxyCompactList}\small\item\em Gather raw p-\/code for a function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_stop}{Action\+Stop}}
+\begin{DoxyCompactList}\small\item\em Do any post-\/processing after decompilation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_start_clean_up}{Action\+Start\+Clean\+Up}}
+\begin{DoxyCompactList}\small\item\em Start clean up after main transform phase. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_start_types}{Action\+Start\+Types}}
+\begin{DoxyCompactList}\small\item\em Allow type recovery to start happening. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_stack_ptr_flow}{Action\+Stack\+Ptr\+Flow}}
+\begin{DoxyCompactList}\small\item\em Analyze change to the stack pointer across sub-\/function calls. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_segmentize}{Action\+Segmentize}}
+\begin{DoxyCompactList}\small\item\em Make sure pointers into segmented spaces have the correct form. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_force_goto}{Action\+Force\+Goto}}
+\begin{DoxyCompactList}\small\item\em Apply any overridden forced gotos. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_multi_cse}{Action\+Multi\+Cse}}
+\begin{DoxyCompactList}\small\item\em Perform Common Sub-\/expression Elimination on C\+P\+U\+I\+\_\+\+M\+U\+L\+T\+I\+E\+Q\+U\+AL ops. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_shadow_var}{Action\+Shadow\+Var}}
+\begin{DoxyCompactList}\small\item\em Check for one C\+P\+U\+I\+\_\+\+M\+U\+L\+T\+I\+E\+Q\+U\+AL input set defining more than one \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_constant_ptr}{Action\+Constant\+Ptr}}
+\begin{DoxyCompactList}\small\item\em Check for constants, with pointer type, that correspond to global symbols. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_deindirect}{Action\+Deindirect}}
+\begin{DoxyCompactList}\small\item\em Eliminate locally constant indirect calls. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_varnode_props}{Action\+Varnode\+Props}}
+\begin{DoxyCompactList}\small\item\em Transform read-\/only variables to constants. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_direct_write}{Action\+Direct\+Write}}
+\begin{DoxyCompactList}\small\item\em Mark Varnodes built out of {\itshape legal} parameters. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_constbase}{Action\+Constbase}}
+\begin{DoxyCompactList}\small\item\em Search for input Varnodes that have been officially provided constant values. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_spacebase}{Action\+Spacebase}}
+\begin{DoxyCompactList}\small\item\em Mark \mbox{\hyperlink{class_varnode}{Varnode}} objects that hold stack-\/pointer values and set-\/up special data-\/type. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_heritage}{Action\+Heritage}}
+\begin{DoxyCompactList}\small\item\em Build Static Single Assignment (S\+SA) representation for function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_nonzero_mask}{Action\+Nonzero\+Mask}}
+\begin{DoxyCompactList}\small\item\em Calculate the non-\/zero mask property on all \mbox{\hyperlink{class_varnode}{Varnode}} objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_set_casts}{Action\+Set\+Casts}}
+\begin{DoxyCompactList}\small\item\em Fill-\/in C\+P\+U\+I\+\_\+\+C\+A\+ST p-\/code ops as required by the casting strategy. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_assign_high}{Action\+Assign\+High}}
+\begin{DoxyCompactList}\small\item\em Assign initial high-\/level \mbox{\hyperlink{class_high_variable}{High\+Variable}} objects to each \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_mark_indirect_only}{Action\+Mark\+Indirect\+Only}}
+\begin{DoxyCompactList}\small\item\em Mark illegal \mbox{\hyperlink{class_varnode}{Varnode}} inputs used only in C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+CT ops. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_merge_required}{Action\+Merge\+Required}}
+\begin{DoxyCompactList}\small\item\em Make {\itshape required} \mbox{\hyperlink{class_varnode}{Varnode}} merges as dictated by C\+P\+U\+I\+\_\+\+M\+U\+L\+T\+I\+E\+Q\+U\+AL, C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+CT, and {\itshape addrtied} property. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_merge_adjacent}{Action\+Merge\+Adjacent}}
+\begin{DoxyCompactList}\small\item\em Try to merge an op\textquotesingle{}s input \mbox{\hyperlink{class_varnode}{Varnode}} to its output, if they are at the same storage location. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_merge_copy}{Action\+Merge\+Copy}}
+\begin{DoxyCompactList}\small\item\em Try to merge the input and output Varnodes of a C\+P\+U\+I\+\_\+\+C\+O\+PY op. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_merge_type}{Action\+Merge\+Type}}
+\begin{DoxyCompactList}\small\item\em Try to merge Varnodes of the same type (if they don\textquotesingle{}t hold different values at the same time) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_mark_explicit}{Action\+Mark\+Explicit}}
+\begin{DoxyCompactList}\small\item\em Find {\bfseries{explicit}} Varnodes\+: Varnodes that have an explicit token representing them in the output. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_mark_implied}{Action\+Mark\+Implied}}
+\begin{DoxyCompactList}\small\item\em Mark all the {\itshape implied} \mbox{\hyperlink{class_varnode}{Varnode}} objects, which will have no explicit token in the output. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_name_vars}{Action\+Name\+Vars}}
+\begin{DoxyCompactList}\small\item\em Choose names for all high-\/level variables (High\+Variables) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_unreachable}{Action\+Unreachable}}
+\begin{DoxyCompactList}\small\item\em Remove unreachable blocks. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_do_nothing}{Action\+Do\+Nothing}}
+\begin{DoxyCompactList}\small\item\em Remove blocks that do nothing. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_redund_branch}{Action\+Redund\+Branch}}
+\begin{DoxyCompactList}\small\item\em Get rid of {\bfseries{redundant}} branches\+: duplicate edges between the same input and output block. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_determined_branch}{Action\+Determined\+Branch}}
+\begin{DoxyCompactList}\small\item\em Remove conditional branches if the condition is constant. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_dead_code}{Action\+Dead\+Code}}
+\begin{DoxyCompactList}\small\item\em Dead code removal. Eliminate {\itshape dead} p-\/code ops. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_conditional_const}{Action\+Conditional\+Const}}
+\begin{DoxyCompactList}\small\item\em Propagate conditional constants. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_switch_norm}{Action\+Switch\+Norm}}
+\begin{DoxyCompactList}\small\item\em Normalize jump-\/table construction. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_normalize_setup}{Action\+Normalize\+Setup}}
+\begin{DoxyCompactList}\small\item\em Prepare function prototypes for \char`\"{}normalize\char`\"{} simplification. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_prototype_types}{Action\+Prototype\+Types}}
+\begin{DoxyCompactList}\small\item\em Lay down locked input and output data-\/type information. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_default_params}{Action\+Default\+Params}}
+\begin{DoxyCompactList}\small\item\em Find a prototype for each sub-\/function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_extra_pop_setup}{Action\+Extra\+Pop\+Setup}}
+\begin{DoxyCompactList}\small\item\em Define formal link between stack-\/pointer values before and after sub-\/function calls. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_func_link}{Action\+Func\+Link}}
+\begin{DoxyCompactList}\small\item\em Prepare for data-\/flow analysis of function parameters. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_func_link_out_only}{Action\+Func\+Link\+Out\+Only}}
+\begin{DoxyCompactList}\small\item\em Prepare for data-\/flow analysis of function parameters, when recovery isn\textquotesingle{}t required. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_param_double}{Action\+Param\+Double}}
+\begin{DoxyCompactList}\small\item\em Deal with situations that look like double precision parameters. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_active_param}{Action\+Active\+Param}}
+\begin{DoxyCompactList}\small\item\em Determine active parameters to sub-\/functions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_active_return}{Action\+Active\+Return}}
+\begin{DoxyCompactList}\small\item\em Determine which sub-\/functions have active output Varnodes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_return_recovery}{Action\+Return\+Recovery}}
+\begin{DoxyCompactList}\small\item\em Determine data-\/flow holding the {\itshape return} {\itshape value} of the function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_restrict_local}{Action\+Restrict\+Local}}
+\begin{DoxyCompactList}\small\item\em Restrict possible range of local variables. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_likely_trash}{Action\+Likely\+Trash}}
+\begin{DoxyCompactList}\small\item\em Get rid of registers with trash values. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_restructure_varnode}{Action\+Restructure\+Varnode}}
+\begin{DoxyCompactList}\small\item\em Create symbols that map out the local stack-\/frame for the function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_restructure_high}{Action\+Restructure\+High}}
+\begin{DoxyCompactList}\small\item\em Create symbols that map out the local stack-\/frame for the function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_map_globals}{Action\+Map\+Globals}}
+\begin{DoxyCompactList}\small\item\em Create symbols for any discovered global variables in the function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_input_prototype}{Action\+Input\+Prototype}}
+\begin{DoxyCompactList}\small\item\em Calculate the prototype for the function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_output_prototype}{Action\+Output\+Prototype}}
+\begin{DoxyCompactList}\small\item\em Set the (already) recovered output data-\/type as a formal part of the prototype. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_unjustified_params}{Action\+Unjustified\+Params}}
+\begin{DoxyCompactList}\small\item\em Adjust improperly justified parameters. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_infer_types}{Action\+Infer\+Types}}
+\begin{DoxyCompactList}\small\item\em Infer and propagate data-\/types. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_hide_shadow}{Action\+Hide\+Shadow}}
+\begin{DoxyCompactList}\small\item\em Locate {\itshape shadow} Varnodes and adjust them so they are hidden. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_copy_marker}{Action\+Copy\+Marker}}
+\begin{DoxyCompactList}\small\item\em Mark C\+O\+PY operations between Varnodes representing the object as {\itshape non-\/printing}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_dynamic_mapping}{Action\+Dynamic\+Mapping}}
+\begin{DoxyCompactList}\small\item\em Attach {\itshape dynamically} mapped symbols to Varnodes in time for data-\/type propagation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_dynamic_symbols}{Action\+Dynamic\+Symbols}}
+\begin{DoxyCompactList}\small\item\em Make final attachments of {\itshape dynamically} mapped symbols to Varnodes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_action_prototype_warnings}{Action\+Prototype\+Warnings}}
+\begin{DoxyCompactList}\small\item\em Add warnings for prototypes that aren\textquotesingle{}t modeled properly. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_propagation_state}{Propagation\+State}}
+\begin{DoxyCompactList}\small\item\em A class that holds a data-\/type traversal state during type propagation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_pcode_op_edge}{Pcode\+Op\+Edge}}
+\begin{DoxyCompactList}\small\item\em Class representing a {\itshape term} in an additive expression. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_term_order}{Term\+Order}}
+\begin{DoxyCompactList}\small\item\em A class for ordering \mbox{\hyperlink{class_varnode}{Varnode}} terms in an additive expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{coreaction_8hh_a122798abac4d42f44020ef5d71d689e3}{universal\+\_\+action}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$conf)
+\begin{DoxyCompactList}\small\item\em The generic decompilation action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coreaction_8hh_a5e88524a287b92d8946d5906103df514}{build\+\_\+defaultactions}} (\mbox{\hyperlink{class_action_database}{Action\+Database}} \&allacts)
+\begin{DoxyCompactList}\small\item\em Build the default actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Core decompilation actions which are indepedent of any particular architecture. 
+
+These are the internal actions. They are guaranteed to not to invalidate covers. (if they do they must check the covers themselves) 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{coreaction_8hh_a5e88524a287b92d8946d5906103df514}\label{coreaction_8hh_a5e88524a287b92d8946d5906103df514}} 
+\index{coreaction.hh@{coreaction.hh}!build\_defaultactions@{build\_defaultactions}}
+\index{build\_defaultactions@{build\_defaultactions}!coreaction.hh@{coreaction.hh}}
+\subsubsection{\texorpdfstring{build\_defaultactions()}{build\_defaultactions()}}
+{\footnotesize\ttfamily void build\+\_\+defaultactions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_action_database}{Action\+Database}} \&}]{allacts }\end{DoxyParamCaption})}
+
+
+
+Build the default actions. 
+
+Build the default {\itshape root} Actions\+: decompile, jumptable, normalize, paramid, register, firstpass 
+\begin{DoxyParams}{Parameters}
+{\em allacts} & is the database that will hold the {\itshape root} Actions \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4429 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{coreaction_8hh_a5e88524a287b92d8946d5906103df514_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{coreaction_8hh_a122798abac4d42f44020ef5d71d689e3}\label{coreaction_8hh_a122798abac4d42f44020ef5d71d689e3}} 
+\index{coreaction.hh@{coreaction.hh}!universal\_action@{universal\_action}}
+\index{universal\_action@{universal\_action}!coreaction.hh@{coreaction.hh}}
+\subsubsection{\texorpdfstring{universal\_action()}{universal\_action()}}
+{\footnotesize\ttfamily void universal\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{conf }\end{DoxyParamCaption})}
+
+
+
+The generic decompilation action. 
+
+Construct the {\bfseries{universal}} \mbox{\hyperlink{class_action}{Action}} that contains all possible components 
+\begin{DoxyParams}{Parameters}
+{\em conf} & is the \mbox{\hyperlink{class_architecture}{Architecture}} that will use the \mbox{\hyperlink{class_action}{Action}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4469 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{coreaction_8hh_a122798abac4d42f44020ef5d71d689e3_cgraph}
+\end{center}
+\end{figure}

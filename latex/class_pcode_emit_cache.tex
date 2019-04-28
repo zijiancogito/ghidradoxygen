@@ -1,0 +1,124 @@
+\hypertarget{class_pcode_emit_cache}{}\section{Pcode\+Emit\+Cache Class Reference}
+\label{class_pcode_emit_cache}\index{PcodeEmitCache@{PcodeEmitCache}}
+
+
+P-\/code emitter that dumps its raw Varnodes and Pcode\+Ops to an in memory cache.  
+
+
+
+
+{\ttfamily \#include $<$emulate.\+hh$>$}
+
+
+
+Inheritance diagram for Pcode\+Emit\+Cache\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{class_pcode_emit_cache__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pcode\+Emit\+Cache\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{class_pcode_emit_cache__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pcode_emit_cache_a478720d9338eec8533c3450c5b216781}{Pcode\+Emit\+Cache}} (vector$<$ \mbox{\hyperlink{class_pcode_op_raw}{Pcode\+Op\+Raw}} $\ast$ $>$ \&ocache, vector$<$ \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$ $>$ \&vcache, const vector$<$ \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} $\ast$ $>$ \&in, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} uniq\+Reserve)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_pcode_emit_cache_a493e849e384f3a63cbf1676c43d6bbe1}{dump}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$outvar, \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$vars, int4 isize)
+\begin{DoxyCompactList}\small\item\em The main pcode emit method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+P-\/code emitter that dumps its raw Varnodes and Pcode\+Ops to an in memory cache. 
+
+This is used for emulation when full \mbox{\hyperlink{class_varnode}{Varnode}} and \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} objects aren\textquotesingle{}t needed 
+
+Definition at line 278 of file emulate.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pcode_emit_cache_a478720d9338eec8533c3450c5b216781}\label{class_pcode_emit_cache_a478720d9338eec8533c3450c5b216781}} 
+\index{PcodeEmitCache@{PcodeEmitCache}!PcodeEmitCache@{PcodeEmitCache}}
+\index{PcodeEmitCache@{PcodeEmitCache}!PcodeEmitCache@{PcodeEmitCache}}
+\subsubsection{\texorpdfstring{PcodeEmitCache()}{PcodeEmitCache()}}
+{\footnotesize\ttfamily Pcode\+Emit\+Cache\+::\+Pcode\+Emit\+Cache (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_pcode_op_raw}{Pcode\+Op\+Raw}} $\ast$ $>$ \&}]{ocache,  }\item[{vector$<$ \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$ $>$ \&}]{vcache,  }\item[{const vector$<$ \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} $\ast$ $>$ \&}]{in,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{uniq\+Reserve }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+Provide the emitter with the containers that will hold the cached p-\/code ops and varnodes. 
+\begin{DoxyParams}{Parameters}
+{\em ocache} & is the container for cached \mbox{\hyperlink{class_pcode_op_raw}{Pcode\+Op\+Raw}} \\
+\hline
+{\em vcache} & is the container for cached \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \\
+\hline
+{\em in} & is the map of \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} \\
+\hline
+{\em uniq\+Reserve} & is the starting offset for temporaries in the {\itshape unique} space \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 102 of file emulate.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pcode_emit_cache_a493e849e384f3a63cbf1676c43d6bbe1}\label{class_pcode_emit_cache_a493e849e384f3a63cbf1676c43d6bbe1}} 
+\index{PcodeEmitCache@{PcodeEmitCache}!dump@{dump}}
+\index{dump@{dump}!PcodeEmitCache@{PcodeEmitCache}}
+\subsubsection{\texorpdfstring{dump()}{dump()}}
+{\footnotesize\ttfamily void Pcode\+Emit\+Cache\+::dump (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$}]{outvar,  }\item[{\mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$}]{vars,  }\item[{int4}]{isize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The main pcode emit method. 
+
+A single pcode instruction is returned to the application via this method. Particular applications override it to tailor how the operations are used. 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the \mbox{\hyperlink{class_address}{Address}} of the machine instruction \\
+\hline
+{\em opc} & is the opcode of the particular pcode instruction \\
+\hline
+{\em outvar} & if not {\itshape null} is a pointer to data about the output varnode \\
+\hline
+{\em vars} & is a pointer to an array of \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} for each input varnode \\
+\hline
+{\em isize} & is the number of input varnodes \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_pcode_emit_a00f25999bbdea677b82577b21bdfff8e}{Pcode\+Emit}}.
+
+
+
+Definition at line 121 of file emulate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_cache_a493e849e384f3a63cbf1676c43d6bbe1_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{emulate_8hh}{emulate.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{emulate_8cc}{emulate.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,97 @@
+\hypertarget{options_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/options.hh File Reference}
+\label{options_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.hh}}
+
+
+Classes for processing architecture configuration options.  
+
+
+{\ttfamily \#include \char`\"{}error.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xml.\+hh\char`\"{}}\newline
+Include dependency graph for options.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{options_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{options_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_arch_option}{Arch\+Option}}
+\begin{DoxyCompactList}\small\item\em Base class for options classes that affect the configuration of the \mbox{\hyperlink{class_architecture}{Architecture}} object. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_database}{Option\+Database}}
+\begin{DoxyCompactList}\small\item\em A Dispatcher for possible \mbox{\hyperlink{class_arch_option}{Arch\+Option}} commands. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_extra_pop}{Option\+Extra\+Pop}}
+\begin{DoxyCompactList}\small\item\em Set the {\bfseries{extrapop}} parameter used by the (default) prototype model. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_read_only}{Option\+Read\+Only}}
+\begin{DoxyCompactList}\small\item\em Toggle whether read-\/only memory locations have their value propagated. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_default_prototype}{Option\+Default\+Prototype}}
+\begin{DoxyCompactList}\small\item\em Set the default prototype model for analyzing unknown functions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_infer_const_ptr}{Option\+Infer\+Const\+Ptr}}
+\begin{DoxyCompactList}\small\item\em Toggle whether the decompiler attempts to infer constant pointers. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_inline}{Option\+Inline}}
+\begin{DoxyCompactList}\small\item\em Mark/unmark a specific function as {\itshape inline}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_no_return}{Option\+No\+Return}}
+\begin{DoxyCompactList}\small\item\em Mark/unmark a specific function with the {\itshape noreturn} property. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_struct_align}{Option\+Struct\+Align}}
+\begin{DoxyCompactList}\small\item\em Alter the \char`\"{}structure alignment\char`\"{} data organization setting. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_warning}{Option\+Warning}}
+\begin{DoxyCompactList}\small\item\em Toggle whether a warning should be issued if a specific action/rule is applied. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_null_printing}{Option\+Null\+Printing}}
+\begin{DoxyCompactList}\small\item\em Toggle whether null pointers should be printed as the string \char`\"{}\+N\+U\+L\+L\char`\"{}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_in_place_ops}{Option\+In\+Place\+Ops}}
+\begin{DoxyCompactList}\small\item\em Toggle whether {\itshape in-\/place} operators (+=, $\ast$=, \&=, etc.) are emitted by the decompiler. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_convention_printing}{Option\+Convention\+Printing}}
+\begin{DoxyCompactList}\small\item\em Toggle whether the {\itshape calling} {\itshape convention} is printed when emitting function prototypes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_no_cast_printing}{Option\+No\+Cast\+Printing}}
+\begin{DoxyCompactList}\small\item\em Toggle whether {\itshape cast} syntax is emitted by the decompiler or stripped. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_max_line_width}{Option\+Max\+Line\+Width}}
+\begin{DoxyCompactList}\small\item\em Set the maximum number of characters per decompiled line. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_indent_increment}{Option\+Indent\+Increment}}
+\begin{DoxyCompactList}\small\item\em Set the number of characters to indent per nested scope. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_comment_indent}{Option\+Comment\+Indent}}
+\begin{DoxyCompactList}\small\item\em How many characters to indent comment lines. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_comment_style}{Option\+Comment\+Style}}
+\begin{DoxyCompactList}\small\item\em Set the style of comment emitted by the decompiler. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_comment_header}{Option\+Comment\+Header}}
+\begin{DoxyCompactList}\small\item\em Toggle whether different comment {\itshape types} are emitted by the decompiler in the header for a function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_comment_instruction}{Option\+Comment\+Instruction}}
+\begin{DoxyCompactList}\small\item\em Toggle whether different comment {\itshape types} are emitted by the decompiler in the body of a function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_integer_format}{Option\+Integer\+Format}}
+\begin{DoxyCompactList}\small\item\em Set the formatting strategy used by the decompiler to emit integers. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_set_action}{Option\+Set\+Action}}
+\begin{DoxyCompactList}\small\item\em Establish a new root \mbox{\hyperlink{class_action}{Action}} for the decompiler. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_current_action}{Option\+Current\+Action}}
+\begin{DoxyCompactList}\small\item\em Toggle a sub-\/group of actions within a root \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_allow_context_set}{Option\+Allow\+Context\+Set}}
+\begin{DoxyCompactList}\small\item\em Toggle whether the disassembly engine is allowed to modify context. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_ignore_unimplemented}{Option\+Ignore\+Unimplemented}}
+\begin{DoxyCompactList}\small\item\em Toggle whether unimplemented instructions are treated as a {\itshape no-\/operation}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_error_unimplemented}{Option\+Error\+Unimplemented}}
+\begin{DoxyCompactList}\small\item\em Toggle whether unimplemented instructions are treated as a fatal error. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_error_reinterpreted}{Option\+Error\+Reinterpreted}}
+\begin{DoxyCompactList}\small\item\em Toggle whether off-\/cut reinterpretation of an instruction is a fatal error. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_error_too_many_instructions}{Option\+Error\+Too\+Many\+Instructions}}
+\begin{DoxyCompactList}\small\item\em Toggle whether too many instructions in one function body is considered a fatal error. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_proto_eval}{Option\+Proto\+Eval}}
+\begin{DoxyCompactList}\small\item\em Set the prototype model to use when evaluating the parameters of the {\itshape current} function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_set_language}{Option\+Set\+Language}}
+\begin{DoxyCompactList}\small\item\em Set the current language emitted by the decompiler. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_jump_load}{Option\+Jump\+Load}}
+\begin{DoxyCompactList}\small\item\em Toggle whether the decompiler should try to recover the table used to evaluate a switch. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_option_toggle_rule}{Option\+Toggle\+Rule}}
+\begin{DoxyCompactList}\small\item\em Toggle whether a specific \mbox{\hyperlink{class_rule}{Rule}} is applied in the current \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classes for processing architecture configuration options. 
+

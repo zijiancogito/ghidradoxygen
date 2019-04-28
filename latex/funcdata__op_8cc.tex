@@ -1,0 +1,200 @@
+\hypertarget{funcdata__op_8cc}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/funcdata\+\_\+op.cc File Reference}
+\label{funcdata__op_8cc}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata\_op.cc@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata\_op.cc}}
+{\ttfamily \#include \char`\"{}funcdata.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flow.\+hh\char`\"{}}\newline
+Include dependency graph for funcdata\+\_\+op.\+cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcdata__op_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int4 \mbox{\hyperlink{funcdata__op_8cc_a297da0f17b1920199962c68f91daab29}{op\+Flip\+In\+Place\+Test}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, vector$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$ \&fliplist)
+\begin{DoxyCompactList}\small\item\em Trace a boolean value to a set of Pcode\+Ops that can be changed to flip the boolean value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcdata__op_8cc_a0a7a4ee0c419ed55c99f44d914284828}{op\+Flip\+In\+Place\+Execute}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, vector$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$ \&fliplist)
+\begin{DoxyCompactList}\small\item\em Perform op-\/code flips (in-\/place) to change a boolean value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{funcdata__op_8cc_a953cc2ffb86fa99f4dc76a4829d5865c}{earliest\+Use\+In\+Block}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn, \mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Get the earliest use/read of a \mbox{\hyperlink{class_varnode}{Varnode}} in a specified basic block. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{funcdata__op_8cc_a33643c2050e663261f9d07c4cab70868}{cse\+Find\+In\+Block}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn, \mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$bl, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$earliest)
+\begin{DoxyCompactList}\small\item\em Find a duplicate calculation of a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} reading a specific \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{funcdata__op_8cc_aec60042aabc4e62a2625348cf20d321c}{cse\+Elimination}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op1, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op2)
+\begin{DoxyCompactList}\small\item\em Perform a Common Subexpression Elimination step. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcdata__op_8cc_ae9a4fb024ff5b75071188b12a9bcdce0}{cse\+Eliminate\+List}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, vector$<$ pair$<$ uintm, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$ $>$ \&list, vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&outlist)
+\begin{DoxyCompactList}\small\item\em Perform Common Subexpression Elimination on a list of \mbox{\hyperlink{class_varnode}{Varnode}} descendants. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{funcdata__op_8cc_ae9a4fb024ff5b75071188b12a9bcdce0}\label{funcdata__op_8cc_ae9a4fb024ff5b75071188b12a9bcdce0}} 
+\index{funcdata\_op.cc@{funcdata\_op.cc}!cseEliminateList@{cseEliminateList}}
+\index{cseEliminateList@{cseEliminateList}!funcdata\_op.cc@{funcdata\_op.cc}}
+\subsubsection{\texorpdfstring{cseEliminateList()}{cseEliminateList()}}
+{\footnotesize\ttfamily void cse\+Eliminate\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{vector$<$ pair$<$ uintm, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$ $>$ \&}]{list,  }\item[{vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&}]{outlist }\end{DoxyParamCaption})}
+
+
+
+Perform Common Subexpression Elimination on a list of \mbox{\hyperlink{class_varnode}{Varnode}} descendants. 
+
+The list consists of \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} descendants of a single \mbox{\hyperlink{class_varnode}{Varnode}} paired with a hash value. The hash serves as a primary test for duplicate calculations; if it doesn\textquotesingle{}t match the Pcode\+Ops aren\textquotesingle{}t common subexpressions. This method searches for hash matches then does secondary testing and eliminates any redundancy it finds. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function being modified \\
+\hline
+{\em list} & is the list of (hash, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}) pairs \\
+\hline
+{\em outlist} & will hold Varnodes produced by duplicate calculations \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1248 of file funcdata\+\_\+op.\+cc.
+
+\mbox{\Hypertarget{funcdata__op_8cc_aec60042aabc4e62a2625348cf20d321c}\label{funcdata__op_8cc_aec60042aabc4e62a2625348cf20d321c}} 
+\index{funcdata\_op.cc@{funcdata\_op.cc}!cseElimination@{cseElimination}}
+\index{cseElimination@{cseElimination}!funcdata\_op.cc@{funcdata\_op.cc}}
+\subsubsection{\texorpdfstring{cseElimination()}{cseElimination()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ cse\+Elimination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op1,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op2 }\end{DoxyParamCaption})}
+
+
+
+Perform a Common Subexpression Elimination step. 
+
+Assuming the two given Pcode\+Ops perform the identical operation on identical operands (depth 1 functional equivalence) eliminate the redundancy. Return the remaining (dominating) \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. If neither op dominates the other, both are eliminated, and a new \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is built at a commonly accessible point. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function being modified \\
+\hline
+{\em op1} & is the first of the given Pcode\+Ops \\
+\hline
+{\em op2} & is the second given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the dominating \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} 
+\end{DoxyReturn}
+
+
+Definition at line 1185 of file funcdata\+\_\+op.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcdata__op_8cc_aec60042aabc4e62a2625348cf20d321c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{funcdata__op_8cc_a33643c2050e663261f9d07c4cab70868}\label{funcdata__op_8cc_a33643c2050e663261f9d07c4cab70868}} 
+\index{funcdata\_op.cc@{funcdata\_op.cc}!cseFindInBlock@{cseFindInBlock}}
+\index{cseFindInBlock@{cseFindInBlock}!funcdata\_op.cc@{funcdata\_op.cc}}
+\subsubsection{\texorpdfstring{cseFindInBlock()}{cseFindInBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ cse\+Find\+In\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn,  }\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$}]{bl,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{earliest }\end{DoxyParamCaption})}
+
+
+
+Find a duplicate calculation of a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} reading a specific \mbox{\hyperlink{class_varnode}{Varnode}}. 
+
+We only match 1 level of calculation. Additionally the duplicate must occur in the indicated basic block, earlier than a specified op. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em vn} & is the specific \mbox{\hyperlink{class_varnode}{Varnode}} that must be involved in the calculation \\
+\hline
+{\em bl} & is the indicated basic block \\
+\hline
+{\em earliest} & is the specified op to be earlier than \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the discovered duplicate \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 1152 of file funcdata\+\_\+op.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{funcdata__op_8cc_a33643c2050e663261f9d07c4cab70868_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{funcdata__op_8cc_a953cc2ffb86fa99f4dc76a4829d5865c}\label{funcdata__op_8cc_a953cc2ffb86fa99f4dc76a4829d5865c}} 
+\index{funcdata\_op.cc@{funcdata\_op.cc}!earliestUseInBlock@{earliestUseInBlock}}
+\index{earliestUseInBlock@{earliestUseInBlock}!funcdata\_op.cc@{funcdata\_op.cc}}
+\subsubsection{\texorpdfstring{earliestUseInBlock()}{earliestUseInBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ earliest\+Use\+In\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn,  }\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Get the earliest use/read of a \mbox{\hyperlink{class_varnode}{Varnode}} in a specified basic block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vn} & is the \mbox{\hyperlink{class_varnode}{Varnode}} to search for \\
+\hline
+{\em bl} & is the specified basic block in which to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the earliest \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} reading the \mbox{\hyperlink{class_varnode}{Varnode}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 1124 of file funcdata\+\_\+op.\+cc.
+
+\mbox{\Hypertarget{funcdata__op_8cc_a0a7a4ee0c419ed55c99f44d914284828}\label{funcdata__op_8cc_a0a7a4ee0c419ed55c99f44d914284828}} 
+\index{funcdata\_op.cc@{funcdata\_op.cc}!opFlipInPlaceExecute@{opFlipInPlaceExecute}}
+\index{opFlipInPlaceExecute@{opFlipInPlaceExecute}!funcdata\_op.cc@{funcdata\_op.cc}}
+\subsubsection{\texorpdfstring{opFlipInPlaceExecute()}{opFlipInPlaceExecute()}}
+{\footnotesize\ttfamily void op\+Flip\+In\+Place\+Execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{vector$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$ \&}]{fliplist }\end{DoxyParamCaption})}
+
+
+
+Perform op-\/code flips (in-\/place) to change a boolean value. 
+
+The precomputed list of Pcode\+Ops have their op-\/codes modified to facilitate the flip. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function being modified \\
+\hline
+{\em fliplist} & is the list of Pcode\+Ops to modify \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1084 of file funcdata\+\_\+op.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funcdata__op_8cc_a0a7a4ee0c419ed55c99f44d914284828_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{funcdata__op_8cc_a297da0f17b1920199962c68f91daab29}\label{funcdata__op_8cc_a297da0f17b1920199962c68f91daab29}} 
+\index{funcdata\_op.cc@{funcdata\_op.cc}!opFlipInPlaceTest@{opFlipInPlaceTest}}
+\index{opFlipInPlaceTest@{opFlipInPlaceTest}!funcdata\_op.cc@{funcdata\_op.cc}}
+\subsubsection{\texorpdfstring{opFlipInPlaceTest()}{opFlipInPlaceTest()}}
+{\footnotesize\ttfamily int4 op\+Flip\+In\+Place\+Test (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{vector$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$ \&}]{fliplist }\end{DoxyParamCaption})}
+
+
+
+Trace a boolean value to a set of Pcode\+Ops that can be changed to flip the boolean value. 
+
+The boolean \mbox{\hyperlink{class_varnode}{Varnode}} is either the output of the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} or the first input if the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is a C\+B\+R\+A\+N\+CH. The list of ops that need flipping is returned in an array 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em fliplist} & is the array that will hold the ops to flip \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the change normalizes, 1 if the change is ambivalent, 2 if the change does not normalize 
+\end{DoxyReturn}
+
+
+Definition at line 1024 of file funcdata\+\_\+op.\+cc.
+

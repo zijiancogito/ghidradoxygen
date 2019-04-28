@@ -1,0 +1,177 @@
+\hypertarget{class_action_segmentize}{}\section{Action\+Segmentize Class Reference}
+\label{class_action_segmentize}\index{ActionSegmentize@{ActionSegmentize}}
+
+
+Make sure pointers into segmented spaces have the correct form.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Segmentize\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_action_segmentize__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Segmentize\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_action_segmentize__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_segmentize_ad2206f23e2af24a5361533763eebfed3}{Action\+Segmentize}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_action_segmentize_a97b99ceaa938b5d08789e2d4e59ae67a}{reset}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_segmentize_a0fd9bb73aa71eefad72a93cde61a288b}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_segmentize_a3219ac91c09b6c6061d7e91ad1ed9111}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Make sure pointers into segmented spaces have the correct form. 
+
+Convert user-\/defined ops defined as segment p-\/code ops by a cspec tag into the internal C\+P\+U\+I\+\_\+\+S\+E\+G\+M\+E\+N\+T\+OP 
+
+Definition at line 103 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_segmentize_ad2206f23e2af24a5361533763eebfed3}\label{class_action_segmentize_ad2206f23e2af24a5361533763eebfed3}} 
+\index{ActionSegmentize@{ActionSegmentize}!ActionSegmentize@{ActionSegmentize}}
+\index{ActionSegmentize@{ActionSegmentize}!ActionSegmentize@{ActionSegmentize}}
+\subsubsection{\texorpdfstring{ActionSegmentize()}{ActionSegmentize()}}
+{\footnotesize\ttfamily Action\+Segmentize\+::\+Action\+Segmentize (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 106 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_segmentize_ad2206f23e2af24a5361533763eebfed3_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_segmentize_a3219ac91c09b6c6061d7e91ad1ed9111}\label{class_action_segmentize_a3219ac91c09b6c6061d7e91ad1ed9111}} 
+\index{ActionSegmentize@{ActionSegmentize}!apply@{apply}}
+\index{apply@{apply}!ActionSegmentize@{ActionSegmentize}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Segmentize\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 497 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_segmentize_a3219ac91c09b6c6061d7e91ad1ed9111_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_segmentize_a0fd9bb73aa71eefad72a93cde61a288b}\label{class_action_segmentize_a0fd9bb73aa71eefad72a93cde61a288b}} 
+\index{ActionSegmentize@{ActionSegmentize}!clone@{clone}}
+\index{clone@{clone}!ActionSegmentize@{ActionSegmentize}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Segmentize\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 108 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_segmentize_a0fd9bb73aa71eefad72a93cde61a288b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_segmentize_a97b99ceaa938b5d08789e2d4e59ae67a}\label{class_action_segmentize_a97b99ceaa938b5d08789e2d4e59ae67a}} 
+\index{ActionSegmentize@{ActionSegmentize}!reset@{reset}}
+\index{reset@{reset}!ActionSegmentize@{ActionSegmentize}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual void Action\+Segmentize\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the new function {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} may affect \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_ac7c1cf16bb63e0741ba16be5179cf943}{Action}}.
+
+
+
+Definition at line 107 of file coreaction.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,329 @@
+.TH "Cover" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Cover \- A description of the topological scope of a single variable object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cover\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear \fBthis\fP to an empty \fBCover\fP\&. "
+.ti -1c
+.RI "int4 \fBcompareTo\fP (const \fBCover\fP &op2) const"
+.br
+.RI "Give ordering of \fBthis\fP and another \fBCover\fP\&. "
+.ti -1c
+.RI "const \fBCoverBlock\fP & \fBgetCoverBlock\fP (int4 i) const"
+.br
+.RI "Get the \fBCoverBlock\fP corresponding to the i-th block\&. "
+.ti -1c
+.RI "int4 \fBintersect\fP (const \fBCover\fP &op2) const"
+.br
+.RI "Characterize the intersection between \fBthis\fP and another \fBCover\fP\&. "
+.ti -1c
+.RI "int4 \fBintersectByBlock\fP (int4 blk, const \fBCover\fP &op2) const"
+.br
+.RI "Characterize the intersection on a specific block\&. "
+.ti -1c
+.RI "void \fBintersectList\fP (vector< int4 > &listout, const \fBCover\fP &op2, int4 level) const"
+.br
+.RI "Generate a list of blocks that intersect\&. "
+.ti -1c
+.RI "bool \fBcontain\fP (const \fBPcodeOp\fP *op, int4 max) const"
+.br
+.RI "Does \fBthis\fP contain the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "int4 \fBcontainVarnodeDef\fP (const \fBVarnode\fP *vn) const"
+.br
+.RI "Check the definition of a \fBVarnode\fP for containment\&. "
+.ti -1c
+.RI "void \fBmerge\fP (const \fBCover\fP &op2)"
+.br
+.RI "\fBMerge\fP \fBthis\fP with another \fBCover\fP block by block\&. "
+.ti -1c
+.RI "void \fBrebuild\fP (const \fBVarnode\fP *vn)"
+.br
+.RI "Reset \fBthis\fP based on def-use of a single \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBaddDefPoint\fP (const \fBVarnode\fP *vn)"
+.br
+.RI "Reset to the single point where the given \fBVarnode\fP is defined\&. "
+.ti -1c
+.RI "void \fBaddRefPoint\fP (const \fBPcodeOp\fP *ref, const \fBVarnode\fP *vn)"
+.br
+.RI "Add a variable read to \fBthis\fP \fBCover\fP\&. "
+.ti -1c
+.RI "void \fBprint\fP (ostream &s) const"
+.br
+.RI "Dump a description of \fBthis\fP cover to stream\&. "
+.ti -1c
+.RI "map< int4, \fBCoverBlock\fP >::const_iterator \fBbegin\fP (void) const"
+.br
+.RI "Get beginning of CoverBlocks\&. "
+.ti -1c
+.RI "map< int4, \fBCoverBlock\fP >::const_iterator \fBend\fP (void) const"
+.br
+.RI "Get end of CoverBlocks\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A description of the topological scope of a single variable object\&. 
+
+The \fBtopological\fP \fBscope\fP of a variable within a function is the set of locations within the code of the function where that variable holds a variable\&. For the decompiler, a high-level variable in this sense, \fBHighVariable\fP, is a collection of \fBVarnode\fP objects\&. In order to merge Varnodes into a \fBHighVariable\fP, the topological scope of each \fBVarnode\fP must not intersect because that would mean the high-level variable holds different values at the same point in the function\&.
+.PP
+Internally this is implemented as a map from basic block to their non-empty \fBCoverBlock\fP 
+.PP
+Definition at line 68 of file cover\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Cover::addDefPoint (const \fBVarnode\fP * vn)"
+
+.PP
+Reset to the single point where the given \fBVarnode\fP is defined\&. Any previous cover is removed\&. Calling this with an input \fBVarnode\fP still produces a valid \fBCover\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 438 of file cover\&.cc\&.
+.SS "void Cover::addRefPoint (const \fBPcodeOp\fP * ref, const \fBVarnode\fP * vn)"
+
+.PP
+Add a variable read to \fBthis\fP \fBCover\fP\&. Given a \fBVarnode\fP being read and the \fBPcodeOp\fP which reads it, add the point of the read to \fBthis\fP and recursively fill in backwards until we run into existing cover\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIref\fP is the reading \fBPcodeOp\fP 
+.br
+\fIvn\fP is the \fBVarnode\fP being read 
+.RE
+.PP
+
+.PP
+Definition at line 502 of file cover\&.cc\&.
+.SS "map<int4,\fBCoverBlock\fP>::const_iterator Cover::begin (void) const\fC [inline]\fP"
+
+.PP
+Get beginning of CoverBlocks\&. 
+.PP
+Definition at line 88 of file cover\&.hh\&.
+.SS "void Cover::clear (void)\fC [inline]\fP"
+
+.PP
+Clear \fBthis\fP to an empty \fBCover\fP\&. 
+.PP
+Definition at line 73 of file cover\&.hh\&.
+.SS "int4 Cover::compareTo (const \fBCover\fP & op2) const"
+
+.PP
+Give ordering of \fBthis\fP and another \fBCover\fP\&. Compare \fBthis\fP with another \fBCover\fP by comparing just the indices of the first blocks respectively that are partly covered\&. Return -1, 0, or 1 if \fBthis\fP \fBCover\fP's first block has a smaller, equal, or bigger index than the other \fBCover\fP's first block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other \fBCover\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the comparison value 
+.RE
+.PP
+
+.PP
+Definition at line 219 of file cover\&.cc\&.
+.SS "bool Cover::contain (const \fBPcodeOp\fP * op, int4 max) const"
+
+.PP
+Does \fBthis\fP contain the given \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fImax\fP is 1 to test for any containment, 2 to force interior containment 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if there is containment 
+.RE
+.PP
+
+.PP
+Definition at line 361 of file cover\&.cc\&.
+.SS "int4 Cover::containVarnodeDef (const \fBVarnode\fP * vn) const"
+
+.PP
+Check the definition of a \fBVarnode\fP for containment\&. If the given \fBVarnode\fP has a defining \fBPcodeOp\fP this is checked for containment\&. If the \fBVarnode\fP is an input, check if \fBthis\fP covers the start of the function\&.
+.PP
+Return:
+.IP "\(bu" 2
+0 if cover does not contain varnode definition
+.IP "\(bu" 2
+1 if there if it is contained in interior
+.IP "\(bu" 2
+2 if the defining points intersect
+.IP "\(bu" 2
+3 if \fBCover\fP's tail is the varnode definition
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the containment characterization 
+.RE
+.PP
+
+.PP
+Definition at line 389 of file cover\&.cc\&.
+.SS "map<int4,\fBCoverBlock\fP>::const_iterator Cover::end (void) const\fC [inline]\fP"
+
+.PP
+Get end of CoverBlocks\&. 
+.PP
+Definition at line 89 of file cover\&.hh\&.
+.SS "const \fBCoverBlock\fP & Cover::getCoverBlock (int4 i) const"
+
+.PP
+Get the \fBCoverBlock\fP corresponding to the i-th block\&. Return a representative \fBCoverBlock\fP describing how much of the given block is covered by \fBthis\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the given block 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to the corresponding \fBCoverBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 249 of file cover\&.cc\&.
+.SS "int4 Cover::intersect (const \fBCover\fP & op2) const"
+
+.PP
+Characterize the intersection between \fBthis\fP and another \fBCover\fP\&. Return
+.IP "\(bu" 2
+0 if there is no intersection
+.IP "\(bu" 2
+1 if the only intersection is on a boundary point
+.IP "\(bu" 2
+2 if the intersection contains a range of p-code ops
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other \fBCover\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the intersection characterization 
+.RE
+.PP
+
+.PP
+Definition at line 265 of file cover\&.cc\&.
+.SS "int4 Cover::intersectByBlock (int4 blk, const \fBCover\fP & op2) const"
+
+.PP
+Characterize the intersection on a specific block\&. Looking only at the given block, Return
+.IP "\(bu" 2
+0 if there is no intersection
+.IP "\(bu" 2
+1 if the only intersection is on a boundary point
+.IP "\(bu" 2
+2 if the intersection contains a range of p-code ops
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIblk\fP is the index of the given block 
+.br
+\fIop2\fP is the other \fBCover\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the characterization 
+.RE
+.PP
+
+.PP
+Definition at line 340 of file cover\&.cc\&.
+.SS "void Cover::intersectList (vector< int4 > & listout, const \fBCover\fP & op2, int4 level) const"
+
+.PP
+Generate a list of blocks that intersect\&. For each block for which \fBthis\fP and another \fBCover\fP intersect, and the block's index to a result list if the type of intersection exceeds a characterization level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlistout\fP will hold the list of intersecting block indices 
+.br
+\fIop2\fP is the other \fBCover\fP 
+.br
+\fIlevel\fP is the characterization threshold which must be exceeded 
+.RE
+.PP
+
+.PP
+Definition at line 303 of file cover\&.cc\&.
+.SS "void Cover::merge (const \fBCover\fP & op2)"
+
+.PP
+\fBMerge\fP \fBthis\fP with another \fBCover\fP block by block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other \fBCover\fP 
+.RE
+.PP
+
+.PP
+Definition at line 413 of file cover\&.cc\&.
+.SS "void Cover::print (ostream & s) const"
+
+.PP
+Dump a description of \fBthis\fP cover to stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 552 of file cover\&.cc\&.
+.SS "void Cover::rebuild (const \fBVarnode\fP * vn)"
+
+.PP
+Reset \fBthis\fP based on def-use of a single \fBVarnode\fP\&. The cover is set to all p-code ops between the point where the \fBVarnode\fP is defined and all the points where it is read 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the single \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 425 of file cover\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

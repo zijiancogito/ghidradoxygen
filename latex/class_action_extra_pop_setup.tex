@@ -1,0 +1,152 @@
+\hypertarget{class_action_extra_pop_setup}{}\section{Action\+Extra\+Pop\+Setup Class Reference}
+\label{class_action_extra_pop_setup}\index{ActionExtraPopSetup@{ActionExtraPopSetup}}
+
+
+Define formal link between stack-\/pointer values before and after sub-\/function calls.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Extra\+Pop\+Setup\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_action_extra_pop_setup__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Extra\+Pop\+Setup\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_action_extra_pop_setup__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_extra_pop_setup_a4359e4f80655118c2e8e8ac146166319}{Action\+Extra\+Pop\+Setup}} (const string \&g, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ss)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_extra_pop_setup_aa4e0ef3d72672cf8fad9dea555a99cb8}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_extra_pop_setup_a1518c4ca7772ccb59b6cde0857cf657c}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Define formal link between stack-\/pointer values before and after sub-\/function calls. 
+
+Change to the stack-\/pointer across a sub-\/function is called {\bfseries{extrapop}}. This class makes sure there is p-\/code relationship between the \mbox{\hyperlink{class_varnode}{Varnode}} coming into a sub-\/function and the \mbox{\hyperlink{class_varnode}{Varnode}} coming out. If the {\itshape extrapop} is known, the p-\/code will be a C\+P\+U\+I\+\_\+\+C\+O\+PY or C\+P\+U\+I\+\_\+\+A\+DD. If it is unknown, a C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+CT will be inserted that gets filled in by \mbox{\hyperlink{class_action_stack_ptr_flow}{Action\+Stack\+Ptr\+Flow}}. 
+
+Definition at line 598 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_extra_pop_setup_a4359e4f80655118c2e8e8ac146166319}\label{class_action_extra_pop_setup_a4359e4f80655118c2e8e8ac146166319}} 
+\index{ActionExtraPopSetup@{ActionExtraPopSetup}!ActionExtraPopSetup@{ActionExtraPopSetup}}
+\index{ActionExtraPopSetup@{ActionExtraPopSetup}!ActionExtraPopSetup@{ActionExtraPopSetup}}
+\subsubsection{\texorpdfstring{ActionExtraPopSetup()}{ActionExtraPopSetup()}}
+{\footnotesize\ttfamily Action\+Extra\+Pop\+Setup\+::\+Action\+Extra\+Pop\+Setup (\begin{DoxyParamCaption}\item[{const string \&}]{g,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{ss }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 601 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_action_extra_pop_setup_a4359e4f80655118c2e8e8ac146166319_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_extra_pop_setup_a1518c4ca7772ccb59b6cde0857cf657c}\label{class_action_extra_pop_setup_a1518c4ca7772ccb59b6cde0857cf657c}} 
+\index{ActionExtraPopSetup@{ActionExtraPopSetup}!apply@{apply}}
+\index{apply@{apply}!ActionExtraPopSetup@{ActionExtraPopSetup}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Extra\+Pop\+Setup\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 1155 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_extra_pop_setup_a1518c4ca7772ccb59b6cde0857cf657c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_extra_pop_setup_aa4e0ef3d72672cf8fad9dea555a99cb8}\label{class_action_extra_pop_setup_aa4e0ef3d72672cf8fad9dea555a99cb8}} 
+\index{ActionExtraPopSetup@{ActionExtraPopSetup}!clone@{clone}}
+\index{clone@{clone}!ActionExtraPopSetup@{ActionExtraPopSetup}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Extra\+Pop\+Setup\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 602 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_extra_pop_setup_aa4e0ef3d72672cf8fad9dea555a99cb8_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

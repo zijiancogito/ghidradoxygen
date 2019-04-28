@@ -1,0 +1,172 @@
+.TH "SleighSymbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SleighSymbol
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghsymbol\&.hh>\fP
+.PP
+Inherited by \fBBitrangeSymbol\fP, \fBLabelSymbol\fP, \fBMacroSymbol\fP, \fBSectionSymbol\fP, \fBSpaceSymbol\fP, \fBTokenSymbol\fP, \fBTripleSymbol\fP, and \fBUserOpSymbol\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBsymbol_type\fP { \fBspace_symbol\fP, \fBtoken_symbol\fP, \fBuserop_symbol\fP, \fBvalue_symbol\fP, \fBvaluemap_symbol\fP, \fBname_symbol\fP, \fBvarnode_symbol\fP, \fBvarnodelist_symbol\fP, \fBoperand_symbol\fP, \fBstart_symbol\fP, \fBend_symbol\fP, \fBsubtable_symbol\fP, \fBmacro_symbol\fP, \fBsection_symbol\fP, \fBbitrange_symbol\fP, \fBcontext_symbol\fP, \fBepsilon_symbol\fP, \fBlabel_symbol\fP, \fBdummy_symbol\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSleighSymbol\fP (void)"
+.br
+.ti -1c
+.RI "\fBSleighSymbol\fP (const string &nm)"
+.br
+.ti -1c
+.RI "virtual \fB~SleighSymbol\fP (void)"
+.br
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.ti -1c
+.RI "uintm \fBgetId\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBsymbol_type\fP \fBgetType\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXmlHeader\fP (const \fBElement\fP *el)"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBSleighBase\fP *trans)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBSymbolTable\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 23 of file slghsymbol\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBSleighSymbol::symbol_type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIspace_symbol \fP\fP
+.TP
+\fB\fItoken_symbol \fP\fP
+.TP
+\fB\fIuserop_symbol \fP\fP
+.TP
+\fB\fIvalue_symbol \fP\fP
+.TP
+\fB\fIvaluemap_symbol \fP\fP
+.TP
+\fB\fIname_symbol \fP\fP
+.TP
+\fB\fIvarnode_symbol \fP\fP
+.TP
+\fB\fIvarnodelist_symbol \fP\fP
+.TP
+\fB\fIoperand_symbol \fP\fP
+.TP
+\fB\fIstart_symbol \fP\fP
+.TP
+\fB\fIend_symbol \fP\fP
+.TP
+\fB\fIsubtable_symbol \fP\fP
+.TP
+\fB\fImacro_symbol \fP\fP
+.TP
+\fB\fIsection_symbol \fP\fP
+.TP
+\fB\fIbitrange_symbol \fP\fP
+.TP
+\fB\fIcontext_symbol \fP\fP
+.TP
+\fB\fIepsilon_symbol \fP\fP
+.TP
+\fB\fIlabel_symbol \fP\fP
+.TP
+\fB\fIdummy_symbol \fP\fP
+.PP
+Definition at line 26 of file slghsymbol\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SleighSymbol::SleighSymbol (void)\fC [inline]\fP"
+
+.PP
+Definition at line 36 of file slghsymbol\&.hh\&.
+.SS "SleighSymbol::SleighSymbol (const string & nm)\fC [inline]\fP"
+
+.PP
+Definition at line 37 of file slghsymbol\&.hh\&.
+.SS "virtual SleighSymbol::~SleighSymbol (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 38 of file slghsymbol\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "uintm SleighSymbol::getId (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 40 of file slghsymbol\&.hh\&.
+.SS "const string& SleighSymbol::getName (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 39 of file slghsymbol\&.hh\&.
+.SS "virtual \fBsymbol_type\fP SleighSymbol::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBLabelSymbol\fP, \fBMacroSymbol\fP, \fBSubtableSymbol\fP, \fBFlowRefSymbol\fP, \fBFlowDestSymbol\fP, \fBEndSymbol\fP, \fBStartSymbol\fP, \fBOperandSymbol\fP, \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBBitrangeSymbol\fP, \fBVarnodeSymbol\fP, \fBNameSymbol\fP, \fBValueMapSymbol\fP, \fBValueSymbol\fP, \fBEpsilonSymbol\fP, \fBUserOpSymbol\fP, \fBSectionSymbol\fP, \fBTokenSymbol\fP, and \fBSpaceSymbol\fP\&.
+.PP
+Definition at line 41 of file slghsymbol\&.hh\&.
+.SS "virtual void SleighSymbol::restoreXml (const \fBElement\fP * el, \fBSleighBase\fP * trans)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBSubtableSymbol\fP, \fBFlowRefSymbol\fP, \fBFlowDestSymbol\fP, \fBEndSymbol\fP, \fBStartSymbol\fP, \fBOperandSymbol\fP, \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBVarnodeSymbol\fP, \fBNameSymbol\fP, \fBValueMapSymbol\fP, \fBValueSymbol\fP, \fBEpsilonSymbol\fP, \fBPatternlessSymbol\fP, and \fBUserOpSymbol\fP\&.
+.PP
+Definition at line 45 of file slghsymbol\&.hh\&.
+.SS "void SleighSymbol::restoreXmlHeader (const \fBElement\fP * el)"
+
+.PP
+Definition at line 365 of file slghsymbol\&.cc\&.
+.SS "virtual void SleighSymbol::saveXml (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBSubtableSymbol\fP, \fBFlowRefSymbol\fP, \fBFlowDestSymbol\fP, \fBEndSymbol\fP, \fBStartSymbol\fP, \fBOperandSymbol\fP, \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBVarnodeSymbol\fP, \fBNameSymbol\fP, \fBValueMapSymbol\fP, \fBValueSymbol\fP, \fBEpsilonSymbol\fP, \fBPatternlessSymbol\fP, and \fBUserOpSymbol\fP\&.
+.PP
+Definition at line 44 of file slghsymbol\&.hh\&.
+.SS "void SleighSymbol::saveXmlHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBSubtableSymbol\fP, \fBFlowRefSymbol\fP, \fBFlowDestSymbol\fP, \fBEndSymbol\fP, \fBStartSymbol\fP, \fBOperandSymbol\fP, \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBVarnodeSymbol\fP, \fBNameSymbol\fP, \fBValueMapSymbol\fP, \fBValueSymbol\fP, \fBEpsilonSymbol\fP, and \fBUserOpSymbol\fP\&.
+.PP
+Definition at line 357 of file slghsymbol\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBSymbolTable\fP\fC [friend]\fP"
+
+.PP
+Definition at line 24 of file slghsymbol\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

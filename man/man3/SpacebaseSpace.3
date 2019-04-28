@@ -1,0 +1,227 @@
+.TH "SpacebaseSpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SpacebaseSpace \- A virtual space \fIstack\fP space\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.PP
+Inherits \fBAddrSpace\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSpacebaseSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, const string &nm, int4 ind, int4 sz, \fBAddrSpace\fP *base, int4 dl)"
+.br
+.ti -1c
+.RI "\fBSpacebaseSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t)"
+.br
+.RI "For use with restoreXml\&. "
+.ti -1c
+.RI "virtual int4 \fBnumSpacebase\fP (void) const"
+.br
+.RI "Number of base registers associated with this space\&. "
+.ti -1c
+.RI "virtual const \fBVarnodeData\fP & \fBgetSpacebase\fP (int4 i) const"
+.br
+.RI "Get a base register that creates this virtual space\&. "
+.ti -1c
+.RI "virtual const \fBVarnodeData\fP & \fBgetSpacebaseFull\fP (int4 i) const"
+.br
+.RI "Return original spacebase register before truncation\&. "
+.ti -1c
+.RI "virtual bool \fBstackGrowsNegative\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if a stack in this space grows negative\&. "
+.ti -1c
+.RI "virtual \fBAddrSpace\fP * \fBgetContain\fP (void) const"
+.br
+.RI "Return containing space\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write the details of this space as XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover the details of this space from XML\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBAddrSpaceManager\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A virtual space \fIstack\fP space\&. 
+
+In a lot of analysis situations it is convenient to extend the notion of an address space to mean bytes that are indexed relative to some base register\&. The canonical example of this is the \fBstack\fP space, which models the concept of local variables stored on the stack\&. An address of (\fBstack\fP, 8) might model the address of a function parameter on the stack for instance, and (\fBstack\fP, 0xfffffff4) might be the address of a local variable\&. A space like this is inherently \fIvirtual\fP and contained within whatever space is being indexed into\&. 
+.PP
+Definition at line 165 of file translate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SpacebaseSpace::SpacebaseSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, const string & nm, int4 ind, int4 sz, \fBAddrSpace\fP * base, int4 dl)"
+Construct a virtual space\&. This is usually used for the stack space, but multiple such spaces are allowed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the manager for this \fBprogram\fP \fBspecific\fP address space 
+.br
+\fIt\fP is associated processor translator 
+.br
+\fInm\fP is the name of the space 
+.br
+\fIind\fP is the integer identifier 
+.br
+\fIsz\fP is the size of the space 
+.br
+\fIbase\fP is the containing space 
+.br
+\fIdl\fP is the heritage delay 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file translate\&.cc\&.
+.SS "SpacebaseSpace::SpacebaseSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t)"
+
+.PP
+For use with restoreXml\&. This is a partial constructor, which must be followed up with restoreXml in order to fillin the rest of the spaces attributes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the associated address space manager 
+.br
+\fIt\fP is the associated processor translator 
+.RE
+.PP
+
+.PP
+Definition at line 52 of file translate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBAddrSpace\fP* SpacebaseSpace::getContain (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return containing space\&. 
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 180 of file translate\&.hh\&.
+.SS "const \fBVarnodeData\fP & SpacebaseSpace::getSpacebase (int4 i) const\fC [virtual]\fP"
+
+.PP
+Get a base register that creates this virtual space\&. For virtual spaces, like the stack space, this routine returns the location information for a base register of the space\&. This routine will throw an exception if the register does not exist 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the base register starting at 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBVarnodeData\fP that describes the register 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 89 of file translate\&.cc\&.
+.SS "const \fBVarnodeData\fP & SpacebaseSpace::getSpacebaseFull (int4 i) const\fC [virtual]\fP"
+
+.PP
+Return original spacebase register before truncation\&. If a stack pointer is truncated to fit the stack space, we may need to know the extent of the original register 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the base register 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the original register before truncation 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 97 of file translate\&.cc\&.
+.SS "int4 SpacebaseSpace::numSpacebase (void) const\fC [virtual]\fP"
+
+.PP
+Number of base registers associated with this space\&. Some spaces are 'virtual', like the stack spaces, where addresses are really relative to a base pointer stored in a register, like the stackpointer\&. This routine will return non-zero if \fBthis\fP space is virtual and there is 1 (or more) associated pointer registers 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of base registers associated with this space 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 83 of file translate\&.cc\&.
+.SS "void SpacebaseSpace::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Recover the details of this space from XML\&. Walk a parsed XML tag and recover all the properties defining this space\&. The processor translator, \fItrans\fP, and the \fItype\fP must already be filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML tag 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 114 of file translate\&.cc\&.
+.SS "void SpacebaseSpace::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write the details of this space as XML\&. Write a tag fully describing the details of this space suitable for later recovery via restoreXml\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 105 of file translate\&.cc\&.
+.SS "virtual bool SpacebaseSpace::stackGrowsNegative (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return \fBtrue\fP if a stack in this space grows negative\&. For stack (or other spacebase) spaces, this routine returns \fBtrue\fP if the space can viewed as a stack and a \fBpush\fP operation causes the spacebase pointer to be decreased (grow negative) 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if stacks grow in negative direction\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 179 of file translate\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBAddrSpaceManager\fP\fC [friend]\fP"
+
+.PP
+Definition at line 166 of file translate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

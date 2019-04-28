@@ -1,0 +1,119 @@
+.TH "OptionDatabase" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OptionDatabase \- A Dispatcher for possible \fBArchOption\fP commands\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <options\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOptionDatabase\fP (\fBArchitecture\fP *g)"
+.br
+.RI "Construct given the owning \fBArchitecture\fP\&. "
+.ti -1c
+.RI "\fB~OptionDatabase\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "string \fBset\fP (const string &nm, const string &p1='', const string &p2='', const string &p3='')"
+.br
+.RI "Issue an option command\&. "
+.ti -1c
+.RI "void \fBparseOne\fP (const \fBElement\fP *el)"
+.br
+.RI "Unwrap and execute a single option XML tag\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Execute a series of \fIoption\fP \fIcommands\fP passed by XML\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A Dispatcher for possible \fBArchOption\fP commands\&. 
+
+An \fBoption\fP \fBcommand\fP is a specific request by a user to change the configuration options for an \fBArchitecture\fP\&. This class takes care of dispatching the command to the proper \fBArchOption\fP derived class, which does the work of actually modifying the configuration\&. The command is issued either through the \fBset()\fP method directly, or via an XML tag handed to the \fBrestoreXml()\fP method\&. The \fBrestoreXml()\fP method expects an <optionslist> tag with one or more sub-tags\&. The sub-tag names match the registered name of the option and have up to three child tags, <param1>, <param2> and <param3>, whose content is provided as the optional parameters to command\&. 
+.PP
+Definition at line 63 of file options\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "OptionDatabase::OptionDatabase (\fBArchitecture\fP * g)"
+
+.PP
+Construct given the owning \fBArchitecture\fP\&. Register all possible \fBArchOption\fP objects with this database and set-up the parsing map\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the \fBArchitecture\fP owning \fBthis\fP database 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file options\&.cc\&.
+.SS "OptionDatabase::~OptionDatabase (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 84 of file options\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void OptionDatabase::parseOne (const \fBElement\fP * el)"
+
+.PP
+Unwrap and execute a single option XML tag\&. Unwrap the name and optional parameters and call method \fBset()\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the command XML tag 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file options\&.cc\&.
+.SS "void OptionDatabase::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Execute a series of \fIoption\fP \fIcommands\fP passed by XML\&. Parse the <optionslist> tag, treating each sub-tag as an \fIoption\fP \fIcommand\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <optionslist> tag 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file options\&.cc\&.
+.SS "string OptionDatabase::set (const string & nm, const string & p1 = \fC''\fP, const string & p2 = \fC''\fP, const string & p3 = \fC''\fP)"
+
+.PP
+Issue an option command\&. Perform an \fIoption\fP \fIcommand\fP directly, given its name and optional parameters 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the registered name of the option 
+.br
+\fIp1\fP is the first optional parameter 
+.br
+\fIp2\fP is the second optional parameter 
+.br
+\fIp3\fP is the third optional parameter 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the confirmation/failure method after trying to apply the option 
+.RE
+.PP
+
+.PP
+Definition at line 98 of file options\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

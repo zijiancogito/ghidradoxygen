@@ -1,0 +1,274 @@
+.TH "OpBehavior" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OpBehavior \- Class encapsulating the action/behavior of specific pcode opcodes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <opbehavior\&.hh>\fP
+.PP
+Inherited by \fBOpBehaviorBoolAnd\fP, \fBOpBehaviorBoolNegate\fP, \fBOpBehaviorBoolOr\fP, \fBOpBehaviorBoolXor\fP, \fBOpBehaviorCopy\fP, \fBOpBehaviorEqual\fP, \fBOpBehaviorFloatAbs\fP, \fBOpBehaviorFloatAdd\fP, \fBOpBehaviorFloatCeil\fP, \fBOpBehaviorFloatDiv\fP, \fBOpBehaviorFloatEqual\fP, \fBOpBehaviorFloatFloat2Float\fP, \fBOpBehaviorFloatFloor\fP, \fBOpBehaviorFloatInt2Float\fP, \fBOpBehaviorFloatLess\fP, \fBOpBehaviorFloatLessEqual\fP, \fBOpBehaviorFloatMult\fP, \fBOpBehaviorFloatNan\fP, \fBOpBehaviorFloatNeg\fP, \fBOpBehaviorFloatNotEqual\fP, \fBOpBehaviorFloatRound\fP, \fBOpBehaviorFloatSqrt\fP, \fBOpBehaviorFloatSub\fP, \fBOpBehaviorFloatTrunc\fP, \fBOpBehaviorInt2Comp\fP, \fBOpBehaviorIntAdd\fP, \fBOpBehaviorIntAnd\fP, \fBOpBehaviorIntCarry\fP, \fBOpBehaviorIntDiv\fP, \fBOpBehaviorIntLeft\fP, \fBOpBehaviorIntLess\fP, \fBOpBehaviorIntLessEqual\fP, \fBOpBehaviorIntMult\fP, \fBOpBehaviorIntNegate\fP, \fBOpBehaviorIntOr\fP, \fBOpBehaviorIntRem\fP, \fBOpBehaviorIntRight\fP, \fBOpBehaviorIntSborrow\fP, \fBOpBehaviorIntScarry\fP, \fBOpBehaviorIntSdiv\fP, \fBOpBehaviorIntSext\fP, \fBOpBehaviorIntSless\fP, \fBOpBehaviorIntSlessEqual\fP, \fBOpBehaviorIntSrem\fP, \fBOpBehaviorIntSright\fP, \fBOpBehaviorIntSub\fP, \fBOpBehaviorIntXor\fP, \fBOpBehaviorIntZext\fP, \fBOpBehaviorNotEqual\fP, \fBOpBehaviorPiece\fP, and \fBOpBehaviorSubpiece\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOpBehavior\fP (\fBOpCode\fP opc, bool isun)"
+.br
+.RI "A behavior constructor\&. "
+.ti -1c
+.RI "\fBOpBehavior\fP (\fBOpCode\fP opc, bool isun, bool isspec)"
+.br
+.RI "A special behavior constructor\&. "
+.ti -1c
+.RI "virtual \fB~OpBehavior\fP (void)"
+.br
+.ti -1c
+.RI "\fBOpCode\fP \fBgetOpcode\fP (void) const"
+.br
+.RI "Get the opcode for this pcode operation\&. "
+.ti -1c
+.RI "bool \fBisSpecial\fP (void) const"
+.br
+.RI "Check if this is a special operator\&. "
+.ti -1c
+.RI "bool \fBisUnary\fP (void) const"
+.br
+.RI "Check if operator is unary\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBevaluateUnary\fP (int4 sizeout, int4 sizein, \fBuintb\fP in1) const"
+.br
+.RI "\fBEmulate\fP the unary op-code on an input value\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBevaluateBinary\fP (int4 sizeout, int4 sizein, \fBuintb\fP in1, \fBuintb\fP in2) const"
+.br
+.RI "\fBEmulate\fP the binary op-code on input values\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBrecoverInputBinary\fP (int4 slot, int4 sizeout, \fBuintb\fP out, int4 sizein, \fBuintb\fP in) const"
+.br
+.RI "Reverse the binary op-code operation, recovering an input value\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBrecoverInputUnary\fP (int4 sizeout, \fBuintb\fP out, int4 sizein) const"
+.br
+.RI "Reverse the unary op-code operation, recovering the input value\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBregisterInstructions\fP (vector< \fBOpBehavior\fP * > &inst, const \fBTranslate\fP *trans)"
+.br
+.RI "Build all pcode behaviors\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class encapsulating the action/behavior of specific pcode opcodes\&. 
+
+At the lowest level, a pcode op is one of a small set of opcodes that operate on varnodes (address space, offset, size)\&. Classes derived from this base class encapsulate this basic behavior for each possible opcode\&. These classes describe the most basic behaviors and include:
+.IP "\(bu" 2
+uintb evaluateBinary(int4 sizeout,int4 sizein,uintb in1,uintb int2)
+.IP "\(bu" 2
+uintb evaluateUnary(int4 sizeout,int4 sizein,uintb in1)
+.IP "\(bu" 2
+uintb recoverInputBinary(int4 slot,int4 sizeout,uintb out,int4 sizein,uintb in)
+.IP "\(bu" 2
+uintb recoverInputUnary(int4 sizeout,uintb out,int4 sizein) 
+.PP
+
+.PP
+Definition at line 42 of file opbehavior\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "OpBehavior::OpBehavior (\fBOpCode\fP opc, bool isun)\fC [inline]\fP"
+
+.PP
+A behavior constructor\&. This kind of \fBOpBehavior\fP is associated with a particular opcode and is either unary or binary 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP is the opcode of the behavior 
+.br
+\fIisun\fP is \fBtrue\fP if the behavior is unary, \fBfalse\fP if binary 
+.RE
+.PP
+
+.PP
+Definition at line 80 of file opbehavior\&.hh\&.
+.SS "OpBehavior::OpBehavior (\fBOpCode\fP opc, bool isun, bool isspec)\fC [inline]\fP"
+
+.PP
+A special behavior constructor\&. This kind of \fBOpBehavior\fP can be set to \fBspecial\fP, if it neither unary or binary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP is the opcode of the behavior 
+.br
+\fIisun\fP is \fBtrue\fP if the behavior is unary 
+.br
+\fIisspec\fP is \fBtrue\fP if the behavior is neither unary or binary 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file opbehavior\&.hh\&.
+.SS "virtual OpBehavior::~OpBehavior (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 51 of file opbehavior\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP OpBehavior::evaluateBinary (int4 sizeout, int4 sizein, \fBuintb\fP in1, \fBuintb\fP in2) const\fC [virtual]\fP"
+
+.PP
+\fBEmulate\fP the binary op-code on input values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIsizein\fP is the size of the inputs in bytes 
+.br
+\fIin1\fP is the first input value 
+.br
+\fIin2\fP is the second input value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output value 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBOpBehaviorSubpiece\fP, \fBOpBehaviorPiece\fP, \fBOpBehaviorFloatSub\fP, \fBOpBehaviorFloatMult\fP, \fBOpBehaviorFloatDiv\fP, \fBOpBehaviorFloatAdd\fP, \fBOpBehaviorFloatLessEqual\fP, \fBOpBehaviorFloatLess\fP, \fBOpBehaviorFloatNotEqual\fP, \fBOpBehaviorFloatEqual\fP, \fBOpBehaviorBoolOr\fP, \fBOpBehaviorBoolAnd\fP, \fBOpBehaviorBoolXor\fP, \fBOpBehaviorIntSrem\fP, \fBOpBehaviorIntRem\fP, \fBOpBehaviorIntSdiv\fP, \fBOpBehaviorIntDiv\fP, \fBOpBehaviorIntMult\fP, \fBOpBehaviorIntSright\fP, \fBOpBehaviorIntRight\fP, \fBOpBehaviorIntLeft\fP, \fBOpBehaviorIntOr\fP, \fBOpBehaviorIntAnd\fP, \fBOpBehaviorIntXor\fP, \fBOpBehaviorIntSborrow\fP, \fBOpBehaviorIntScarry\fP, \fBOpBehaviorIntCarry\fP, \fBOpBehaviorIntSub\fP, \fBOpBehaviorIntAdd\fP, \fBOpBehaviorIntLessEqual\fP, \fBOpBehaviorIntLess\fP, \fBOpBehaviorIntSlessEqual\fP, \fBOpBehaviorIntSless\fP, \fBOpBehaviorNotEqual\fP, and \fBOpBehaviorEqual\fP\&.
+.PP
+Definition at line 120 of file opbehavior\&.cc\&.
+.SS "\fBuintb\fP OpBehavior::evaluateUnary (int4 sizeout, int4 sizein, \fBuintb\fP in1) const\fC [virtual]\fP"
+
+.PP
+\fBEmulate\fP the unary op-code on an input value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIsizein\fP is the size of the input in bytes 
+.br
+\fIin1\fP is the input value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output value 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBOpBehaviorFloatRound\fP, \fBOpBehaviorFloatFloor\fP, \fBOpBehaviorFloatCeil\fP, \fBOpBehaviorFloatTrunc\fP, \fBOpBehaviorFloatFloat2Float\fP, \fBOpBehaviorFloatInt2Float\fP, \fBOpBehaviorFloatSqrt\fP, \fBOpBehaviorFloatAbs\fP, \fBOpBehaviorFloatNeg\fP, \fBOpBehaviorFloatNan\fP, \fBOpBehaviorBoolNegate\fP, \fBOpBehaviorIntNegate\fP, \fBOpBehaviorInt2Comp\fP, \fBOpBehaviorIntSext\fP, \fBOpBehaviorIntZext\fP, and \fBOpBehaviorCopy\fP\&.
+.PP
+Definition at line 108 of file opbehavior\&.cc\&.
+.SS "\fBOpCode\fP OpBehavior::getOpcode (void) const\fC [inline]\fP"
+
+.PP
+Get the opcode for this pcode operation\&. There is an internal enumeration value for each type of pcode operation\&. This routine returns that value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the opcode value 
+.RE
+.PP
+
+.PP
+Definition at line 103 of file opbehavior\&.hh\&.
+.SS "bool OpBehavior::isSpecial (void) const\fC [inline]\fP"
+
+.PP
+Check if this is a special operator\&. If this function returns false, the operation is a normal unary or binary operation which can be evaluated calling \fBevaluateBinary()\fP or \fBevaluateUnary()\fP\&. Otherwise, the operation requires special handling to emulate properly 
+.PP
+Definition at line 110 of file opbehavior\&.hh\&.
+.SS "bool OpBehavior::isUnary (void) const\fC [inline]\fP"
+
+.PP
+Check if operator is unary\&. The operated can either be evaluated as unary or binary 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the operator is unary 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file opbehavior\&.hh\&.
+.SS "\fBuintb\fP OpBehavior::recoverInputBinary (int4 slot, int4 sizeout, \fBuintb\fP out, int4 sizein, \fBuintb\fP in) const\fC [virtual]\fP"
+
+.PP
+Reverse the binary op-code operation, recovering an input value\&. If the output value and one of the input values is known, recover the value of the other input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslot\fP is the input slot to recover 
+.br
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIout\fP is the output value 
+.br
+\fIsizein\fP is the size of the inputs in bytes 
+.br
+\fIin\fP is the known input value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the input value corresponding to the \fBslot\fP 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBOpBehaviorIntSright\fP, \fBOpBehaviorIntRight\fP, \fBOpBehaviorIntLeft\fP, \fBOpBehaviorIntSub\fP, and \fBOpBehaviorIntAdd\fP\&.
+.PP
+Definition at line 146 of file opbehavior\&.cc\&.
+.SS "\fBuintb\fP OpBehavior::recoverInputUnary (int4 sizeout, \fBuintb\fP out, int4 sizein) const\fC [virtual]\fP"
+
+.PP
+Reverse the unary op-code operation, recovering the input value\&. If the output value is known, recover the input value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIout\fP is the output value 
+.br
+\fIsizein\fP is the size of the input in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the input value 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBOpBehaviorIntSext\fP, \fBOpBehaviorIntZext\fP, and \fBOpBehaviorCopy\fP\&.
+.PP
+Definition at line 132 of file opbehavior\&.cc\&.
+.SS "void OpBehavior::registerInstructions (vector< \fBOpBehavior\fP * > & inst, const \fBTranslate\fP * trans)\fC [static]\fP"
+
+.PP
+Build all pcode behaviors\&. This routine generates a vector of \fBOpBehavior\fP objects indexed by opcode 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinst\fP is the vector of behaviors to be filled 
+.br
+\fItrans\fP is the translator object needed by the floating point behaviors 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file opbehavior\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,341 @@
+\hypertarget{class_comment_database}{}\section{Comment\+Database Class Reference}
+\label{class_comment_database}\index{CommentDatabase@{CommentDatabase}}
+
+
+An interface to a container of comments.  
+
+
+
+
+{\ttfamily \#include $<$comment.\+hh$>$}
+
+
+
+Inheritance diagram for Comment\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_comment_database_a64f6c407ba9610d5375d228236e8d26f}{Comment\+Database}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_comment_database_a0851784ab66cc52511427c6ec31073cd}{$\sim$\+Comment\+Database}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_comment_database_a11e384fc79f6cf6e8c7af6c608df4baa}{clear}} (void)=0
+\begin{DoxyCompactList}\small\item\em Clear all comments from this container. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_comment_database_af4467b35ea8555ddc77e810453051a96}{clear\+Type}} (const \mbox{\hyperlink{class_address}{Address}} \&fad, uint4 tp)=0
+\begin{DoxyCompactList}\small\item\em Clear all comments matching (one of) the indicated types. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_comment_database_a0e7bd4fd808c28610f4867af22589f0c}{add\+Comment}} (uint4 tp, const \mbox{\hyperlink{class_address}{Address}} \&fad, const \mbox{\hyperlink{class_address}{Address}} \&ad, const string \&txt)=0
+\begin{DoxyCompactList}\small\item\em Add a new comment to the container. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_comment_database_a41b306ed1b9ac26a4b2c80a927be3364}{add\+Comment\+No\+Duplicate}} (uint4 tp, const \mbox{\hyperlink{class_address}{Address}} \&fad, const \mbox{\hyperlink{class_address}{Address}} \&ad, const string \&txt)=0
+\begin{DoxyCompactList}\small\item\em Add a new comment to the container, making sure there is no duplicate. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_comment_database_ac41202723e47b57dd4996d484629d019}{delete\+Comment}} (\mbox{\hyperlink{class_comment}{Comment}} $\ast$com)=0
+\begin{DoxyCompactList}\small\item\em Remove the given \mbox{\hyperlink{class_comment}{Comment}} object from the container. \end{DoxyCompactList}\item 
+virtual Comment\+Set\+::const\+\_\+iterator \mbox{\hyperlink{class_comment_database_a4eb1eb37180fc092244b37ea11f7f2a4}{begin\+Comment}} (const \mbox{\hyperlink{class_address}{Address}} \&fad) const =0
+\begin{DoxyCompactList}\small\item\em Get an iterator to the beginning of comments for a single function. \end{DoxyCompactList}\item 
+virtual Comment\+Set\+::const\+\_\+iterator \mbox{\hyperlink{class_comment_database_a51e0634dc24c921507426298910336f4}{end\+Comment}} (const \mbox{\hyperlink{class_address}{Address}} \&fad) const =0
+\begin{DoxyCompactList}\small\item\em Get an iterator to the ending of comments for a single function. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_comment_database_ab80e2cbdabe2e275695c5980b8f8eb9a}{save\+Xml}} (ostream \&s) const =0
+\begin{DoxyCompactList}\small\item\em Save all comments in the container to an X\+ML stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_comment_database_a21e8b98e7f4276e239f6b2ea59191ded}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage)=0
+\begin{DoxyCompactList}\small\item\em Restore all comments from X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An interface to a container of comments. 
+
+Comments can be added (and removed) from a database, keying on the function and address the \mbox{\hyperlink{class_comment}{Comment}} is attached to. The interface can generate a {\itshape begin} and {\itshape end} iterator covering all \mbox{\hyperlink{class_comment}{Comment}} objects for a single function. 
+
+Definition at line 84 of file comment.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_comment_database_a64f6c407ba9610d5375d228236e8d26f}\label{class_comment_database_a64f6c407ba9610d5375d228236e8d26f}} 
+\index{CommentDatabase@{CommentDatabase}!CommentDatabase@{CommentDatabase}}
+\index{CommentDatabase@{CommentDatabase}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{CommentDatabase()}{CommentDatabase()}}
+{\footnotesize\ttfamily Comment\+Database\+::\+Comment\+Database (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 86 of file comment.\+hh.
+
+\mbox{\Hypertarget{class_comment_database_a0851784ab66cc52511427c6ec31073cd}\label{class_comment_database_a0851784ab66cc52511427c6ec31073cd}} 
+\index{CommentDatabase@{CommentDatabase}!````~CommentDatabase@{$\sim$CommentDatabase}}
+\index{````~CommentDatabase@{$\sim$CommentDatabase}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{$\sim$CommentDatabase()}{~CommentDatabase()}}
+{\footnotesize\ttfamily virtual Comment\+Database\+::$\sim$\+Comment\+Database (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 87 of file comment.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_comment_database_a0e7bd4fd808c28610f4867af22589f0c}\label{class_comment_database_a0e7bd4fd808c28610f4867af22589f0c}} 
+\index{CommentDatabase@{CommentDatabase}!addComment@{addComment}}
+\index{addComment@{addComment}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{addComment()}{addComment()}}
+{\footnotesize\ttfamily virtual void Comment\+Database\+::add\+Comment (\begin{DoxyParamCaption}\item[{uint4}]{tp,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{fad,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad,  }\item[{const string \&}]{txt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add a new comment to the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tp} & is a set of properties to associate with the new comment (may be zero) \\
+\hline
+{\em fad} & is the address of the function to which the comment belongs \\
+\hline
+{\em ad} & is the address to which the comment is attached \\
+\hline
+{\em txt} & is the body of the comment \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_af6169fd8d7de0aa0d41a80c38a179d6d}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_ac4391823aa263f7c1b3488a825a534a9}{Comment\+Database\+Ghidra}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database_a0e7bd4fd808c28610f4867af22589f0c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_database_a41b306ed1b9ac26a4b2c80a927be3364}\label{class_comment_database_a41b306ed1b9ac26a4b2c80a927be3364}} 
+\index{CommentDatabase@{CommentDatabase}!addCommentNoDuplicate@{addCommentNoDuplicate}}
+\index{addCommentNoDuplicate@{addCommentNoDuplicate}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{addCommentNoDuplicate()}{addCommentNoDuplicate()}}
+{\footnotesize\ttfamily virtual bool Comment\+Database\+::add\+Comment\+No\+Duplicate (\begin{DoxyParamCaption}\item[{uint4}]{tp,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{fad,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad,  }\item[{const string \&}]{txt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add a new comment to the container, making sure there is no duplicate. 
+
+If there is already a comment at the same address with the same body, no new comment is added. 
+\begin{DoxyParams}{Parameters}
+{\em tp} & is a set of properties to associate with the new comment (may be zero) \\
+\hline
+{\em fad} & is the address of the function to which the comment belongs \\
+\hline
+{\em ad} & is the address to which the comment is attached \\
+\hline
+{\em txt} & is the body of the comment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if a new \mbox{\hyperlink{class_comment}{Comment}} was created, {\bfseries{false}} if there was a duplicate 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_af3ba80fc4fd50954903bf2d0c54f36a8}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_a39ad32e0b6abb1ee32c96780ac9b446c}{Comment\+Database\+Ghidra}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database_a41b306ed1b9ac26a4b2c80a927be3364_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_database_a4eb1eb37180fc092244b37ea11f7f2a4}\label{class_comment_database_a4eb1eb37180fc092244b37ea11f7f2a4}} 
+\index{CommentDatabase@{CommentDatabase}!beginComment@{beginComment}}
+\index{beginComment@{beginComment}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{beginComment()}{beginComment()}}
+{\footnotesize\ttfamily virtual Comment\+Set\+::const\+\_\+iterator Comment\+Database\+::begin\+Comment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{fad }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get an iterator to the beginning of comments for a single function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fad} & is the address of the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the beginning iterator 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_a23097880c0ad74fdbe692772957844f6}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_a3fc25277281f61f2aa851b4bbb1e33f1}{Comment\+Database\+Ghidra}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database_a4eb1eb37180fc092244b37ea11f7f2a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_database_a11e384fc79f6cf6e8c7af6c608df4baa}\label{class_comment_database_a11e384fc79f6cf6e8c7af6c608df4baa}} 
+\index{CommentDatabase@{CommentDatabase}!clear@{clear}}
+\index{clear@{clear}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily virtual void Comment\+Database\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clear all comments from this container. 
+
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_a19c22a8d1e9ea5ea38c321e778e7c063}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_a723dd4415e6eab6c4b5edacbc97a9332}{Comment\+Database\+Ghidra}}.
+
+\mbox{\Hypertarget{class_comment_database_af4467b35ea8555ddc77e810453051a96}\label{class_comment_database_af4467b35ea8555ddc77e810453051a96}} 
+\index{CommentDatabase@{CommentDatabase}!clearType@{clearType}}
+\index{clearType@{clearType}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{clearType()}{clearType()}}
+{\footnotesize\ttfamily virtual void Comment\+Database\+::clear\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{fad,  }\item[{uint4}]{tp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clear all comments matching (one of) the indicated types. 
+
+Clearing is restricted to comments belonging to a specific function and matching at least one of the given properties 
+\begin{DoxyParams}{Parameters}
+{\em fad} & is the address of the owning function \\
+\hline
+{\em tp} & is a set of one or more properties \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_a5ab44b5d53ca52aef756c9ad476e2b34}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_ac5b963863187535cd0c2150bc7df4510}{Comment\+Database\+Ghidra}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database_af4467b35ea8555ddc77e810453051a96_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_database_ac41202723e47b57dd4996d484629d019}\label{class_comment_database_ac41202723e47b57dd4996d484629d019}} 
+\index{CommentDatabase@{CommentDatabase}!deleteComment@{deleteComment}}
+\index{deleteComment@{deleteComment}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{deleteComment()}{deleteComment()}}
+{\footnotesize\ttfamily virtual void Comment\+Database\+::delete\+Comment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_comment}{Comment}} $\ast$}]{com }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Remove the given \mbox{\hyperlink{class_comment}{Comment}} object from the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em com} & is the given \mbox{\hyperlink{class_comment}{Comment}} \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_a623dac65760a7c7a328c652f34ee714a}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_a988787294b6b5657f7b895d0f8ecce92}{Comment\+Database\+Ghidra}}.
+
+\mbox{\Hypertarget{class_comment_database_a51e0634dc24c921507426298910336f4}\label{class_comment_database_a51e0634dc24c921507426298910336f4}} 
+\index{CommentDatabase@{CommentDatabase}!endComment@{endComment}}
+\index{endComment@{endComment}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{endComment()}{endComment()}}
+{\footnotesize\ttfamily virtual Comment\+Set\+::const\+\_\+iterator Comment\+Database\+::end\+Comment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{fad }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get an iterator to the ending of comments for a single function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fad} & is the address of the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the ending iterator 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_a67ef8bcfd5778dd45acfd533ffd56189}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_aab66e37f898fbd4f15dedfe11d024b9c}{Comment\+Database\+Ghidra}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database_a51e0634dc24c921507426298910336f4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_database_a21e8b98e7f4276e239f6b2ea59191ded}\label{class_comment_database_a21e8b98e7f4276e239f6b2ea59191ded}} 
+\index{CommentDatabase@{CommentDatabase}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily virtual void Comment\+Database\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Restore all comments from X\+ML. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root $<$commentdb$>$ element \\
+\hline
+{\em manage} & is a manager for resolving address space references \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_a461a9fbe7e898e251637bd605d5758e2}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_ab787aca7833ed057ba06d82fc258e738}{Comment\+Database\+Ghidra}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database_a21e8b98e7f4276e239f6b2ea59191ded_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_database_ab80e2cbdabe2e275695c5980b8f8eb9a}\label{class_comment_database_ab80e2cbdabe2e275695c5980b8f8eb9a}} 
+\index{CommentDatabase@{CommentDatabase}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!CommentDatabase@{CommentDatabase}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily virtual void Comment\+Database\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Save all comments in the container to an X\+ML stream. 
+
+Writes a $<$commentdb$>$ tag, with $<$comment$>$ sub-\/tags for each \mbox{\hyperlink{class_comment}{Comment}} object. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_comment_database_internal_ace5b454d66acbc275e8cf20defc0e242}{Comment\+Database\+Internal}}, and \mbox{\hyperlink{class_comment_database_ghidra_aed8e6973a2bfb1077970a2db93e4bde1}{Comment\+Database\+Ghidra}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_database_ab80e2cbdabe2e275695c5980b8f8eb9a_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{comment_8hh}{comment.\+hh}}\end{DoxyCompactItemize}

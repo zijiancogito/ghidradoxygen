@@ -1,0 +1,107 @@
+.TH "BreakTable" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BreakTable \- A collection of breakpoints for the emulator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emulate\&.hh>\fP
+.PP
+Inherited by \fBBreakTableCallBack\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~BreakTable\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBsetEmulate\fP (\fBEmulate\fP *emu)=0"
+.br
+.RI "Associate a particular emulator with breakpoints in this table\&. "
+.ti -1c
+.RI "virtual bool \fBdoPcodeOpBreak\fP (\fBPcodeOpRaw\fP *curop)=0"
+.br
+.RI "Invoke any breakpoints associated with this particular pcodeop\&. "
+.ti -1c
+.RI "virtual bool \fBdoAddressBreak\fP (const \fBAddress\fP &addr)=0"
+.br
+.RI "Invoke any breakpoints associated with this machine address\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A collection of breakpoints for the emulator\&. 
+
+A \fBBreakTable\fP keeps track of an arbitrary number of breakpoints for an emulator\&. Breakpoints are either associated with a particular user-defined pcode op, or with a specific machine address (as in a standard debugger)\&. Through the \fBBreakTable\fP object, an emulator can invoke breakpoints through the two methods
+.IP "\(bu" 2
+\fBdoPcodeOpBreak()\fP
+.IP "\(bu" 2
+\fBdoAddressBreak()\fP
+.PP
+.PP
+depending on the type of breakpoint they currently want to invoke 
+.PP
+Definition at line 37 of file emulate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual BreakTable::~BreakTable (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 39 of file emulate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool BreakTable::doAddressBreak (const \fBAddress\fP & addr)\fC [pure virtual]\fP"
+
+.PP
+Invoke any breakpoints associated with this machine address\&. Within the table, the first breakpoint which is designed to work with at this address is invoked\&. If there was a breakpoint, and if it was designed to \fIreplace\fP the action of the machine instruction, then \fBtrue\fP is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is address to test for breakpoints 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the machine instruction has been replaced by a breakpoint 
+.RE
+.PP
+
+.PP
+Implemented in \fBBreakTableCallBack\fP\&.
+.SS "virtual bool BreakTable::doPcodeOpBreak (\fBPcodeOpRaw\fP * curop)\fC [pure virtual]\fP"
+
+.PP
+Invoke any breakpoints associated with this particular pcodeop\&. Within the table, the first breakpoint which is designed to work with this particular kind of pcode operation is invoked\&. If there was a breakpoint and it was designed to \fIreplace\fP the action of the pcode op, then \fBtrue\fP is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurop\fP is the instance of a pcode op to test for breakpoints 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the action of the pcode op is performed by the breakpoint 
+.RE
+.PP
+
+.PP
+Implemented in \fBBreakTableCallBack\fP\&.
+.SS "virtual void BreakTable::setEmulate (\fBEmulate\fP * emu)\fC [pure virtual]\fP"
+
+.PP
+Associate a particular emulator with breakpoints in this table\&. Breakpoints may need access to the context in which they are invoked\&. This routine provides the context for all breakpoints in the table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemu\fP is the \fBEmulate\fP context 
+.RE
+.PP
+
+.PP
+Implemented in \fBBreakTableCallBack\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

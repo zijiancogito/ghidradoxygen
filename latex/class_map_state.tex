@@ -1,0 +1,268 @@
+\hypertarget{class_map_state}{}\section{Map\+State Class Reference}
+\label{class_map_state}\index{MapState@{MapState}}
+
+
+{\ttfamily \#include $<$varmap.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_state_a0f570a682e1cadffc4b60a8fd50837cf}{Map\+State}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, const \mbox{\hyperlink{class_range_list}{Range\+List}} \&rn, const \mbox{\hyperlink{class_range_list}{Range\+List}} \&pm, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$dt)
+\item 
+\mbox{\hyperlink{class_map_state_a39729b68f74a378c3a0fda232bbc1500}{$\sim$\+Map\+State}} (void)
+\item 
+void \mbox{\hyperlink{class_map_state_a89375399460ed36e13fbc9518ae7dad7}{add\+Range}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} st, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct, uint4 fl, bool ay, int4 lo, int4 hi)
+\item 
+void \mbox{\hyperlink{class_map_state_a0ed32adc04fe0dc1edbbdc63ee693481}{add\+Range}} (const \mbox{\hyperlink{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}{Entry\+Map}} $\ast$\mbox{\hyperlink{classrangemap}{rangemap}})
+\item 
+bool \mbox{\hyperlink{class_map_state_a517ee785ba7b8b397e76b75d8e085bae}{initialize}} (void)
+\item 
+void \mbox{\hyperlink{class_map_state_a609b3e862e2b69d179e2f500c59a0a53}{sort\+Alias}} (void)
+\item 
+const vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \& \mbox{\hyperlink{class_map_state_ac012c72e8f7813346c8d74ce76f3faf0}{get\+Alias}} (void)
+\item 
+void \mbox{\hyperlink{class_map_state_a83662d09d19a51e0ecbf8b09e63e9628}{gather\+Varnodes}} (const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&fd)
+\item 
+void \mbox{\hyperlink{class_map_state_ac3a0c8da3331067931f75269daa81aed}{gather\+Highs}} (const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&fd)
+\item 
+void \mbox{\hyperlink{class_map_state_a43f627e6a51815b273f5dfbcc71ac605}{gather\+Open}} (const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&fd)
+\item 
+\mbox{\hyperlink{struct_map_range}{Map\+Range}} $\ast$ \mbox{\hyperlink{class_map_state_aaf25115c1c0c0f92190524ca722a2aa6}{next}} (void)
+\item 
+bool \mbox{\hyperlink{class_map_state_a94ebfd56a48cd7ce01899a4726c619c7}{get\+Next}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 87 of file varmap.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_map_state_a0f570a682e1cadffc4b60a8fd50837cf}\label{class_map_state_a0f570a682e1cadffc4b60a8fd50837cf}} 
+\index{MapState@{MapState}!MapState@{MapState}}
+\index{MapState@{MapState}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{MapState()}{MapState()}}
+{\footnotesize\ttfamily Map\+State\+::\+Map\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{rn,  }\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{pm,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{dt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 462 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{class_map_state_a0f570a682e1cadffc4b60a8fd50837cf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_a39729b68f74a378c3a0fda232bbc1500}\label{class_map_state_a39729b68f74a378c3a0fda232bbc1500}} 
+\index{MapState@{MapState}!````~MapState@{$\sim$MapState}}
+\index{````~MapState@{$\sim$MapState}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{$\sim$MapState()}{~MapState()}}
+{\footnotesize\ttfamily Map\+State\+::$\sim$\+Map\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 479 of file varmap.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_map_state_a89375399460ed36e13fbc9518ae7dad7}\label{class_map_state_a89375399460ed36e13fbc9518ae7dad7}} 
+\index{MapState@{MapState}!addRange@{addRange}}
+\index{addRange@{addRange}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{addRange()}{addRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Map\+State\+::add\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{st,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct,  }\item[{uint4}]{fl,  }\item[{bool}]{ay,  }\item[{int4}]{lo,  }\item[{int4}]{hi }\end{DoxyParamCaption})}
+
+
+
+Definition at line 487 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_a89375399460ed36e13fbc9518ae7dad7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_a89375399460ed36e13fbc9518ae7dad7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_a0ed32adc04fe0dc1edbbdc63ee693481}\label{class_map_state_a0ed32adc04fe0dc1edbbdc63ee693481}} 
+\index{MapState@{MapState}!addRange@{addRange}}
+\index{addRange@{addRange}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{addRange()}{addRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Map\+State\+::add\+Range (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}{Entry\+Map}} $\ast$}]{rangemap }\end{DoxyParamCaption})}
+
+
+
+Definition at line 512 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_a0ed32adc04fe0dc1edbbdc63ee693481_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_ac3a0c8da3331067931f75269daa81aed}\label{class_map_state_ac3a0c8da3331067931f75269daa81aed}} 
+\index{MapState@{MapState}!gatherHighs@{gatherHighs}}
+\index{gatherHighs@{gatherHighs}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{gatherHighs()}{gatherHighs()}}
+{\footnotesize\ttfamily void Map\+State\+::gather\+Highs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 568 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_ac3a0c8da3331067931f75269daa81aed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_ac3a0c8da3331067931f75269daa81aed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_a43f627e6a51815b273f5dfbcc71ac605}\label{class_map_state_a43f627e6a51815b273f5dfbcc71ac605}} 
+\index{MapState@{MapState}!gatherOpen@{gatherOpen}}
+\index{gatherOpen@{gatherOpen}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{gatherOpen()}{gatherOpen()}}
+{\footnotesize\ttfamily void Map\+State\+::gather\+Open (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 594 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_a43f627e6a51815b273f5dfbcc71ac605_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_a83662d09d19a51e0ecbf8b09e63e9628}\label{class_map_state_a83662d09d19a51e0ecbf8b09e63e9628}} 
+\index{MapState@{MapState}!gatherVarnodes@{gatherVarnodes}}
+\index{gatherVarnodes@{gatherVarnodes}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{gatherVarnodes()}{gatherVarnodes()}}
+{\footnotesize\ttfamily void Map\+State\+::gather\+Varnodes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 548 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_a83662d09d19a51e0ecbf8b09e63e9628_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_a83662d09d19a51e0ecbf8b09e63e9628_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_ac012c72e8f7813346c8d74ce76f3faf0}\label{class_map_state_ac012c72e8f7813346c8d74ce76f3faf0}} 
+\index{MapState@{MapState}!getAlias@{getAlias}}
+\index{getAlias@{getAlias}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{getAlias()}{getAlias()}}
+{\footnotesize\ttfamily const vector$<$\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}$>$\& Map\+State\+::get\+Alias (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 107 of file varmap.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_map_state_ac012c72e8f7813346c8d74ce76f3faf0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_a94ebfd56a48cd7ce01899a4726c619c7}\label{class_map_state_a94ebfd56a48cd7ce01899a4726c619c7}} 
+\index{MapState@{MapState}!getNext@{getNext}}
+\index{getNext@{getNext}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{getNext()}{getNext()}}
+{\footnotesize\ttfamily bool Map\+State\+::get\+Next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 112 of file varmap.\+hh.
+
+\mbox{\Hypertarget{class_map_state_a517ee785ba7b8b397e76b75d8e085bae}\label{class_map_state_a517ee785ba7b8b397e76b75d8e085bae}} 
+\index{MapState@{MapState}!initialize@{initialize}}
+\index{initialize@{initialize}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily bool Map\+State\+::initialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 528 of file varmap.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_map_state_a517ee785ba7b8b397e76b75d8e085bae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_map_state_aaf25115c1c0c0f92190524ca722a2aa6}\label{class_map_state_aaf25115c1c0c0f92190524ca722a2aa6}} 
+\index{MapState@{MapState}!next@{next}}
+\index{next@{next}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_map_range}{Map\+Range}}$\ast$ Map\+State\+::next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 111 of file varmap.\+hh.
+
+\mbox{\Hypertarget{class_map_state_a609b3e862e2b69d179e2f500c59a0a53}\label{class_map_state_a609b3e862e2b69d179e2f500c59a0a53}} 
+\index{MapState@{MapState}!sortAlias@{sortAlias}}
+\index{sortAlias@{sortAlias}!MapState@{MapState}}
+\subsubsection{\texorpdfstring{sortAlias()}{sortAlias()}}
+{\footnotesize\ttfamily void Map\+State\+::sort\+Alias (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 106 of file varmap.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_map_state_a609b3e862e2b69d179e2f500c59a0a53_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{varmap_8hh}{varmap.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{varmap_8cc}{varmap.\+cc}}\end{DoxyCompactItemize}

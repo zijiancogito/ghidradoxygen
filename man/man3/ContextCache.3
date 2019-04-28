@@ -1,0 +1,134 @@
+.TH "ContextCache" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextCache \- A helper class for caching the active context blob to minimize database lookups\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <globalcontext\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBContextCache\fP (\fBContextDatabase\fP *db)"
+.br
+.RI "Construct given a context database\&. "
+.ti -1c
+.RI "\fBContextDatabase\fP * \fBgetDatabase\fP (void) const"
+.br
+.RI "Retrieve the encapsulated database object\&. "
+.ti -1c
+.RI "void \fBallowSet\fP (bool val)"
+.br
+.RI "Toggle whether \fBsetContext()\fP calls are ignored\&. "
+.ti -1c
+.RI "void \fBgetContext\fP (const \fBAddress\fP &addr, uintm *buf) const"
+.br
+.RI "Retrieve the context blob for the given address\&. "
+.ti -1c
+.RI "void \fBsetContext\fP (const \fBAddress\fP &addr, int4 num, uintm mask, uintm value)"
+.br
+.RI "Change the value of a context variable at the given address with no bound\&. "
+.ti -1c
+.RI "void \fBsetContext\fP (const \fBAddress\fP &addr1, const \fBAddress\fP &addr2, int4 num, uintm mask, uintm value)"
+.br
+.RI "Change the value of a context variable across an explicit address range\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A helper class for caching the active context blob to minimize database lookups\&. 
+
+This merely caches the last retrieved context blob ('array of words') and the range of addresses over which the blob is valid\&. It encapsulates the \fBContextDatabase\fP itself and exposes a minimal interface (\fBgetContext()\fP and \fBsetContext()\fP)\&. 
+.PP
+Definition at line 309 of file globalcontext\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ContextCache::ContextCache (\fBContextDatabase\fP * db)"
+
+.PP
+Construct given a context database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdb\fP is the context database that will be encapsulated 
+.RE
+.PP
+
+.PP
+Definition at line 570 of file globalcontext\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ContextCache::allowSet (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fBsetContext()\fP calls are ignored\&. 
+.PP
+Definition at line 319 of file globalcontext\&.hh\&.
+.SS "void ContextCache::getContext (const \fBAddress\fP & addr, uintm * buf) const"
+
+.PP
+Retrieve the context blob for the given address\&. Check if the address is in the current valid range\&. If it is, return the cached blob\&. Otherwise, make a call to the database and cache a new block and valid range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIbuf\fP is where the blob should be stored 
+.RE
+.PP
+
+.PP
+Definition at line 582 of file globalcontext\&.cc\&.
+.SS "\fBContextDatabase\fP* ContextCache::getDatabase (void) const\fC [inline]\fP"
+
+.PP
+Retrieve the encapsulated database object\&. 
+.PP
+Definition at line 318 of file globalcontext\&.hh\&.
+.SS "void ContextCache::setContext (const \fBAddress\fP & addr, int4 num, uintm mask, uintm value)"
+
+.PP
+Change the value of a context variable at the given address with no bound\&. The context value is set starting at the given address and \fIpaints\fP memory up to the next explicit change point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address 
+.br
+\fInum\fP is the word index of the context variable 
+.br
+\fImask\fP is the mask delimiting the context variable 
+.br
+\fIvalue\fP is the (already shifted) value to set 
+.RE
+.PP
+
+.PP
+Definition at line 601 of file globalcontext\&.cc\&.
+.SS "void ContextCache::setContext (const \fBAddress\fP & addr1, const \fBAddress\fP & addr2, int4 num, uintm mask, uintm value)"
+
+.PP
+Change the value of a context variable across an explicit address range\&. The context value is \fIpainted\fP across the range\&. The context variable is marked as explicitly changing at the starting address of the range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr1\fP is the starting address of the given range 
+.br
+\fIaddr2\fP is the ending address of the given range 
+.br
+\fInum\fP is the word index of the context variable 
+.br
+\fImask\fP is the mask delimiting the context variable 
+.br
+\fIvalue\fP is the (already shifted) value to set 
+.RE
+.PP
+
+.PP
+Definition at line 619 of file globalcontext\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

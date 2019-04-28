@@ -1,0 +1,90 @@
+.TH "TypeOpIntSdiv" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeOpIntSdiv \- Information about the INT_SDIV op-code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typeop\&.hh>\fP
+.PP
+Inherits \fBTypeOpBinary\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeOpIntSdiv\fP (\fBTypeFactory\fP *t)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBpush\fP (\fBPrintLanguage\fP *lng, const \fBPcodeOp\fP *op) const"
+.br
+.RI "Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetInputCast\fP (const \fBPcodeOp\fP *op, int4 slot, const \fBCastStrategy\fP *castStrategy) const"
+.br
+.RI "Find the data-type of the input to a specific \fBPcodeOp\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Information about the INT_SDIV op-code\&. 
+.PP
+Definition at line 493 of file typeop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeOpIntSdiv::TypeOpIntSdiv (\fBTypeFactory\fP * t)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 1233 of file typeop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDatatype\fP * TypeOpIntSdiv::getInputCast (const \fBPcodeOp\fP * op, int4 slot, const \fBCastStrategy\fP * castStrategy) const\fC [virtual]\fP"
+
+.PP
+Find the data-type of the input to a specific \fBPcodeOp\fP\&. Calculate the actual data-type of the input to the specific \fBPcodeOp\fP\&. A \fBnull\fP result indicates the input data-type is the same as or otherwise doesn't need a cast from the data-type of the actual input \fBVarnode\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the specific \fBPcodeOp\fP 
+.br
+\fIslot\fP is the input to consider 
+.br
+\fIcastStrategy\fP is the current casting strategy 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeOp\fP\&.
+.PP
+Definition at line 1241 of file typeop\&.cc\&.
+.SS "virtual void TypeOpIntSdiv::push (\fBPrintLanguage\fP * lng, const \fBPcodeOp\fP * op) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. Given a specific language and \fBPcodeOp\fP, emit the expression rooted at the operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP to emit 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Definition at line 496 of file typeop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

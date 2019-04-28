@@ -1,0 +1,409 @@
+\hypertarget{class_comment}{}\section{Comment Class Reference}
+\label{class_comment}\index{Comment@{Comment}}
+
+
+A comment attached to a specific function and code address.  
+
+
+
+
+{\ttfamily \#include $<$comment.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2}{comment\+\_\+type}} \{ \newline
+\mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2a597a18796f40173c4386df4bfa43c5f6}{user1}} = 1, 
+\mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2ab185eb126ed99dc5f4ef44cd10c7afe9}{user2}} = 2, 
+\mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2a16887a18cc49d182634a3b940f5a5b23}{user3}} = 4, 
+\mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2a4f427f6f23e685093fa39c7c639a8fd6}{header}} = 8, 
+\newline
+\mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2a2166c8f68c37806afa4c67052b04b51e}{warning}} = 16, 
+\mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2a22b7847860fc380835ca045cc01af9ee}{warningheader}} = 32
+ \}
+\begin{DoxyCompactList}\small\item\em Possible properties associated with a comment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_comment_a5024dcd72ff2e00ddbee25bfbad62cfc}{Comment}} (uint4 tp, const \mbox{\hyperlink{class_address}{Address}} \&fad, const \mbox{\hyperlink{class_address}{Address}} \&ad, int4 uq, const string \&txt)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_comment_a141c30069edb69bc4c886394f8deb6b7}{Comment}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_comment_ab9f9f0db0645eef88a8259c34f414102}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the properties associated with the comment. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_comment_a0eccc5786c949590857ff8ed9e1dadbf}{get\+Func\+Addr}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the address of the function containing the comment. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_comment_abdcb4c6ccdf8d7c9c5652c4d357c0ed6}{get\+Addr}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the address to which the instruction is attached. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_comment_aeff445ce0114bebb017213c4abfe0086}{get\+Uniq}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the sub-\/sorting index. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_comment_ad35a8f8b4ed02aaec090e6d912ffc47d}{get\+Text}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the body of the comment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_comment_af5f3045a6d056b6c00af6fc35c741b0a}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save the comment to an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_comment_a191cf541d9b91d88fba9c54c14f5c73d}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage)
+\begin{DoxyCompactList}\small\item\em Restore the comment from X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint4 \mbox{\hyperlink{class_comment_acc7b6ccc5f0d5645e1304952f3d08292}{encode\+Comment\+Type}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Convert name string to comment property. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_comment_af30bb24a512fb5f9ed352be71a26ff2d}{decode\+Comment\+Type}} (uint4 val)
+\begin{DoxyCompactList}\small\item\em Convert comment property to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_comment_a075d4f05616865ad828b69262fceb48a}{Comment\+Database\+Internal}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A comment attached to a specific function and code address. 
+
+Things contains the actual character data of the comment. It is fundamentally attached to a specific function and to the address of an instruction (within the function\textquotesingle{}s body). Comments can be categorized as a {\itshape header} (or not) depending on whether it should be displayed as part of the general description of the function or not. Other properties can be assigned to a comment, to allow the user to specify the subset of all comments they want to display. 
+
+Definition at line 37 of file comment.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_comment_a25e5457bf3deeb109bdef2f532317cf2}\label{class_comment_a25e5457bf3deeb109bdef2f532317cf2}} 
+\index{Comment@{Comment}!comment\_type@{comment\_type}}
+\index{comment\_type@{comment\_type}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{comment\_type}{comment\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_comment_a25e5457bf3deeb109bdef2f532317cf2}{Comment\+::comment\+\_\+type}}}
+
+
+
+Possible properties associated with a comment. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{user1@{user1}!Comment@{Comment}}\index{Comment@{Comment}!user1@{user1}}}\mbox{\Hypertarget{class_comment_a25e5457bf3deeb109bdef2f532317cf2a597a18796f40173c4386df4bfa43c5f6}\label{class_comment_a25e5457bf3deeb109bdef2f532317cf2a597a18796f40173c4386df4bfa43c5f6}} 
+user1&The first user defined property. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{user2@{user2}!Comment@{Comment}}\index{Comment@{Comment}!user2@{user2}}}\mbox{\Hypertarget{class_comment_a25e5457bf3deeb109bdef2f532317cf2ab185eb126ed99dc5f4ef44cd10c7afe9}\label{class_comment_a25e5457bf3deeb109bdef2f532317cf2ab185eb126ed99dc5f4ef44cd10c7afe9}} 
+user2&The second user defined property. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{user3@{user3}!Comment@{Comment}}\index{Comment@{Comment}!user3@{user3}}}\mbox{\Hypertarget{class_comment_a25e5457bf3deeb109bdef2f532317cf2a16887a18cc49d182634a3b940f5a5b23}\label{class_comment_a25e5457bf3deeb109bdef2f532317cf2a16887a18cc49d182634a3b940f5a5b23}} 
+user3&The third user defined property. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{header@{header}!Comment@{Comment}}\index{Comment@{Comment}!header@{header}}}\mbox{\Hypertarget{class_comment_a25e5457bf3deeb109bdef2f532317cf2a4f427f6f23e685093fa39c7c639a8fd6}\label{class_comment_a25e5457bf3deeb109bdef2f532317cf2a4f427f6f23e685093fa39c7c639a8fd6}} 
+header&The comment should be displayed in the function header. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{warning@{warning}!Comment@{Comment}}\index{Comment@{Comment}!warning@{warning}}}\mbox{\Hypertarget{class_comment_a25e5457bf3deeb109bdef2f532317cf2a2166c8f68c37806afa4c67052b04b51e}\label{class_comment_a25e5457bf3deeb109bdef2f532317cf2a2166c8f68c37806afa4c67052b04b51e}} 
+warning&The comment is auto-\/generated to alert the user. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{warningheader@{warningheader}!Comment@{Comment}}\index{Comment@{Comment}!warningheader@{warningheader}}}\mbox{\Hypertarget{class_comment_a25e5457bf3deeb109bdef2f532317cf2a22b7847860fc380835ca045cc01af9ee}\label{class_comment_a25e5457bf3deeb109bdef2f532317cf2a22b7847860fc380835ca045cc01af9ee}} 
+warningheader&The comment is auto-\/generated and should be in the header. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 46 of file comment.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_comment_a5024dcd72ff2e00ddbee25bfbad62cfc}\label{class_comment_a5024dcd72ff2e00ddbee25bfbad62cfc}} 
+\index{Comment@{Comment}!Comment@{Comment}}
+\index{Comment@{Comment}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{Comment()}{Comment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Comment\+::\+Comment (\begin{DoxyParamCaption}\item[{uint4}]{tp,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{fad,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad,  }\item[{int4}]{uq,  }\item[{const string \&}]{txt }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tp} & is the set of properties to associate with the comment (or 0 for no properties) \\
+\hline
+{\em fad} & is the \mbox{\hyperlink{class_address}{Address}} of the function containing the comment \\
+\hline
+{\em ad} & is the \mbox{\hyperlink{class_address}{Address}} of the instruction associated with the comment \\
+\hline
+{\em uq} & is used internally to sub-\/sort comments at the same address \\
+\hline
+{\em txt} & is the body of the comment \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file comment.\+cc.
+
+\mbox{\Hypertarget{class_comment_a141c30069edb69bc4c886394f8deb6b7}\label{class_comment_a141c30069edb69bc4c886394f8deb6b7}} 
+\index{Comment@{Comment}!Comment@{Comment}}
+\index{Comment@{Comment}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{Comment()}{Comment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Comment\+::\+Comment (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml. 
+
+
+
+Definition at line 56 of file comment.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_comment_af30bb24a512fb5f9ed352be71a26ff2d}\label{class_comment_af30bb24a512fb5f9ed352be71a26ff2d}} 
+\index{Comment@{Comment}!decodeCommentType@{decodeCommentType}}
+\index{decodeCommentType@{decodeCommentType}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{decodeCommentType()}{decodeCommentType()}}
+{\footnotesize\ttfamily string Comment\+::decode\+Comment\+Type (\begin{DoxyParamCaption}\item[{uint4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert comment property to string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & is a single comment property \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the string representation of the property 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file comment.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_af30bb24a512fb5f9ed352be71a26ff2d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_acc7b6ccc5f0d5645e1304952f3d08292}\label{class_comment_acc7b6ccc5f0d5645e1304952f3d08292}} 
+\index{Comment@{Comment}!encodeCommentType@{encodeCommentType}}
+\index{encodeCommentType@{encodeCommentType}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{encodeCommentType()}{encodeCommentType()}}
+{\footnotesize\ttfamily uint4 Comment\+::encode\+Comment\+Type (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert name string to comment property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & is a string representation of a single comment property \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the enumerated property type 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file comment.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_acc7b6ccc5f0d5645e1304952f3d08292_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_abdcb4c6ccdf8d7c9c5652c4d357c0ed6}\label{class_comment_abdcb4c6ccdf8d7c9c5652c4d357c0ed6}} 
+\index{Comment@{Comment}!getAddr@{getAddr}}
+\index{getAddr@{getAddr}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{getAddr()}{getAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Comment\+::get\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address to which the instruction is attached. 
+
+
+
+Definition at line 59 of file comment.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_abdcb4c6ccdf8d7c9c5652c4d357c0ed6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_a0eccc5786c949590857ff8ed9e1dadbf}\label{class_comment_a0eccc5786c949590857ff8ed9e1dadbf}} 
+\index{Comment@{Comment}!getFuncAddr@{getFuncAddr}}
+\index{getFuncAddr@{getFuncAddr}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{getFuncAddr()}{getFuncAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Comment\+::get\+Func\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address of the function containing the comment. 
+
+
+
+Definition at line 58 of file comment.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_a0eccc5786c949590857ff8ed9e1dadbf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_ad35a8f8b4ed02aaec090e6d912ffc47d}\label{class_comment_ad35a8f8b4ed02aaec090e6d912ffc47d}} 
+\index{Comment@{Comment}!getText@{getText}}
+\index{getText@{getText}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{getText()}{getText()}}
+{\footnotesize\ttfamily const string\& Comment\+::get\+Text (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the body of the comment. 
+
+
+
+Definition at line 61 of file comment.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_ad35a8f8b4ed02aaec090e6d912ffc47d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_ab9f9f0db0645eef88a8259c34f414102}\label{class_comment_ab9f9f0db0645eef88a8259c34f414102}} 
+\index{Comment@{Comment}!getType@{getType}}
+\index{getType@{getType}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily uint4 Comment\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the properties associated with the comment. 
+
+
+
+Definition at line 57 of file comment.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_ab9f9f0db0645eef88a8259c34f414102_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_aeff445ce0114bebb017213c4abfe0086}\label{class_comment_aeff445ce0114bebb017213c4abfe0086}} 
+\index{Comment@{Comment}!getUniq@{getUniq}}
+\index{getUniq@{getUniq}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{getUniq()}{getUniq()}}
+{\footnotesize\ttfamily int4 Comment\+::get\+Uniq (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the sub-\/sorting index. 
+
+
+
+Definition at line 60 of file comment.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_comment_aeff445ce0114bebb017213c4abfe0086_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_a191cf541d9b91d88fba9c54c14f5c73d}\label{class_comment_a191cf541d9b91d88fba9c54c14f5c73d}} 
+\index{Comment@{Comment}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Comment\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Restore the comment from X\+ML. 
+
+The comment is parsed from a $<$comment$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the $<$comment$>$ element \\
+\hline
+{\em manage} & is a manager for resolving address space references \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 55 of file comment.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_a191cf541d9b91d88fba9c54c14f5c73d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_a191cf541d9b91d88fba9c54c14f5c73d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_af5f3045a6d056b6c00af6fc35c741b0a}\label{class_comment_af5f3045a6d056b6c00af6fc35c741b0a}} 
+\index{Comment@{Comment}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Comment\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save the comment to an X\+ML stream. 
+
+The single comment is saved as a $<$comment$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 33 of file comment.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_af5f3045a6d056b6c00af6fc35c741b0a_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_comment_a075d4f05616865ad828b69262fceb48a}\label{class_comment_a075d4f05616865ad828b69262fceb48a}} 
+\index{Comment@{Comment}!CommentDatabaseInternal@{CommentDatabaseInternal}}
+\index{CommentDatabaseInternal@{CommentDatabaseInternal}!Comment@{Comment}}
+\subsubsection{\texorpdfstring{CommentDatabaseInternal}{CommentDatabaseInternal}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_comment_database_internal}{Comment\+Database\+Internal}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 38 of file comment.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{comment_8hh}{comment.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{comment_8cc}{comment.\+cc}}\end{DoxyCompactItemize}

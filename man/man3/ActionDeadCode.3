@@ -1,0 +1,98 @@
+.TH "ActionDeadCode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ActionDeadCode \- Dead code removal\&. Eliminate \fIdead\fP p-code ops\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coreaction\&.hh>\fP
+.PP
+Inherits \fBAction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionDeadCode\fP (const string &g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBAction\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBAction\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBapply\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Make a single attempt to apply \fBthis\fP \fBAction\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Dead code removal\&. Eliminate \fIdead\fP p-code ops\&. 
+
+This is a very fine grained algorithm, it detects usage of individual bits within the \fBVarnode\fP, not just use of the \fBVarnode\fP itself\&. Each \fBVarnode\fP has a \fIconsumed\fP word, which indicates if a bit in the \fBVarnode\fP is being used, and it has two flags layed out as follows:
+.IP "\(bu" 2
+\fBVarnode::lisconsume\fP = varnode is in the working list
+.IP "\(bu" 2
+\fBVarnode::vacconsume\fP = vacuously used bit there is a path from the varnode through assignment op outputs down to a varnode that is used
+.PP
+.PP
+The algorithm works by back propagating the \fIconsumed\fP value up from the output of the op to its inputs, starting with a set of seed Varnodes which are marked as completely used (function inputs, branch conditions, \&.\&.\&.) For each propagation the particular op being passed through can transform the 'bit usage' vector of the output to obtain the input\&. 
+.PP
+Definition at line 500 of file coreaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ActionDeadCode::ActionDeadCode (const string & g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 505 of file coreaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 ActionDeadCode::apply (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Make a single attempt to apply \fBthis\fP \fBAction\fP\&. This is the main entry point for applying changes to a function that are specific to \fBthis\fP \fBAction\fP\&. The method can inspect whatever it wants to decide if the \fBAction\fP does or does not apply\&. Changes are indicated by incrementing the \fBcount\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to inspect/modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 for a complete application, -1 for a partial completion (due to breakpoint) 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Definition at line 3059 of file coreaction\&.cc\&.
+.SS "virtual \fBAction\fP* ActionDeadCode::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBAction\fP\&. If \fBthis\fP \fBAction\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBAction\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBAction\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Definition at line 506 of file coreaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

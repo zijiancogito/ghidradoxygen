@@ -1,0 +1,149 @@
+\hypertarget{class_action_mark_indirect_only}{}\section{Action\+Mark\+Indirect\+Only Class Reference}
+\label{class_action_mark_indirect_only}\index{ActionMarkIndirectOnly@{ActionMarkIndirectOnly}}
+
+
+Mark illegal \mbox{\hyperlink{class_varnode}{Varnode}} inputs used only in C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+CT ops.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Mark\+Indirect\+Only\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_action_mark_indirect_only__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Mark\+Indirect\+Only\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_action_mark_indirect_only__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_mark_indirect_only_ab230cdfb530a3ef8f1c4ff4ad4c3fc9f}{Action\+Mark\+Indirect\+Only}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_mark_indirect_only_ac53f9107d3a9c5be4576867c9eb8ad01}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_mark_indirect_only_aebf60dbaf803f470c8954cab93acc241}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Mark illegal \mbox{\hyperlink{class_varnode}{Varnode}} inputs used only in C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+CT ops. 
+
+Definition at line 310 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_mark_indirect_only_ab230cdfb530a3ef8f1c4ff4ad4c3fc9f}\label{class_action_mark_indirect_only_ab230cdfb530a3ef8f1c4ff4ad4c3fc9f}} 
+\index{ActionMarkIndirectOnly@{ActionMarkIndirectOnly}!ActionMarkIndirectOnly@{ActionMarkIndirectOnly}}
+\index{ActionMarkIndirectOnly@{ActionMarkIndirectOnly}!ActionMarkIndirectOnly@{ActionMarkIndirectOnly}}
+\subsubsection{\texorpdfstring{ActionMarkIndirectOnly()}{ActionMarkIndirectOnly()}}
+{\footnotesize\ttfamily Action\+Mark\+Indirect\+Only\+::\+Action\+Mark\+Indirect\+Only (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 312 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_mark_indirect_only_ab230cdfb530a3ef8f1c4ff4ad4c3fc9f_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_mark_indirect_only_aebf60dbaf803f470c8954cab93acc241}\label{class_action_mark_indirect_only_aebf60dbaf803f470c8954cab93acc241}} 
+\index{ActionMarkIndirectOnly@{ActionMarkIndirectOnly}!apply@{apply}}
+\index{apply@{apply}!ActionMarkIndirectOnly@{ActionMarkIndirectOnly}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily virtual int4 Action\+Mark\+Indirect\+Only\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 317 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_mark_indirect_only_aebf60dbaf803f470c8954cab93acc241_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_mark_indirect_only_ac53f9107d3a9c5be4576867c9eb8ad01}\label{class_action_mark_indirect_only_ac53f9107d3a9c5be4576867c9eb8ad01}} 
+\index{ActionMarkIndirectOnly@{ActionMarkIndirectOnly}!clone@{clone}}
+\index{clone@{clone}!ActionMarkIndirectOnly@{ActionMarkIndirectOnly}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Mark\+Indirect\+Only\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 313 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_mark_indirect_only_ac53f9107d3a9c5be4576867c9eb8ad01_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\end{DoxyCompactItemize}

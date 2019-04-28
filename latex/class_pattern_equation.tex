@@ -1,0 +1,220 @@
+\hypertarget{class_pattern_equation}{}\section{Pattern\+Equation Class Reference}
+\label{class_pattern_equation}\index{PatternEquation@{PatternEquation}}
+
+
+{\ttfamily \#include $<$slghpatexpress.\+hh$>$}
+
+
+
+Inheritance diagram for Pattern\+Equation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pattern_equation__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pattern\+Equation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_pattern_equation__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pattern_equation_a54761134a1874653c6d86dd66bb16fe2}{Pattern\+Equation}} (void)
+\item 
+const \mbox{\hyperlink{class_token_pattern}{Token\+Pattern}} \& \mbox{\hyperlink{class_pattern_equation_a99e0416a51f10f4291087173a321dc55}{get\+Token\+Pattern}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_pattern_equation_a9838e5bfe5b6013c99567628a6364bfd}{gen\+Pattern}} (const vector$<$ \mbox{\hyperlink{class_token_pattern}{Token\+Pattern}} $>$ \&ops) const =0
+\item 
+virtual bool \mbox{\hyperlink{class_pattern_equation_a16e885a945df91e3daf2dea6394ae6f2}{resolve\+Operand\+Left}} (\mbox{\hyperlink{struct_operand_resolve}{Operand\+Resolve}} \&state) const =0
+\item 
+virtual void \mbox{\hyperlink{class_pattern_equation_a944d7114e5d5b6876352e555cc060829}{operand\+Order}} (\mbox{\hyperlink{class_constructor}{Constructor}} $\ast$ct, vector$<$ \mbox{\hyperlink{class_operand_symbol}{Operand\+Symbol}} $\ast$ $>$ \&order) const
+\item 
+void \mbox{\hyperlink{class_pattern_equation_a1c5807ba6c66f6c089d9fcc39140f187}{lay\+Claim}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_pattern_equation_ab810cb4b0638eb2d9413a3d17af56c11}{release}} (\mbox{\hyperlink{class_pattern_equation}{Pattern\+Equation}} $\ast$pateq)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_pattern_equation_a79801edb8a3dc404e183f2f9066944f5}{$\sim$\+Pattern\+Equation}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_token_pattern}{Token\+Pattern}} \mbox{\hyperlink{class_pattern_equation_a1ee30230dcc5e8a9afbb2021e4286986}{resultpattern}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 336 of file slghpatexpress.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pattern_equation_a79801edb8a3dc404e183f2f9066944f5}\label{class_pattern_equation_a79801edb8a3dc404e183f2f9066944f5}} 
+\index{PatternEquation@{PatternEquation}!````~PatternEquation@{$\sim$PatternEquation}}
+\index{````~PatternEquation@{$\sim$PatternEquation}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{$\sim$PatternEquation()}{~PatternEquation()}}
+{\footnotesize\ttfamily virtual Pattern\+Equation\+::$\sim$\+Pattern\+Equation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 340 of file slghpatexpress.\+hh.
+
+\mbox{\Hypertarget{class_pattern_equation_a54761134a1874653c6d86dd66bb16fe2}\label{class_pattern_equation_a54761134a1874653c6d86dd66bb16fe2}} 
+\index{PatternEquation@{PatternEquation}!PatternEquation@{PatternEquation}}
+\index{PatternEquation@{PatternEquation}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{PatternEquation()}{PatternEquation()}}
+{\footnotesize\ttfamily Pattern\+Equation\+::\+Pattern\+Equation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 342 of file slghpatexpress.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pattern_equation_a9838e5bfe5b6013c99567628a6364bfd}\label{class_pattern_equation_a9838e5bfe5b6013c99567628a6364bfd}} 
+\index{PatternEquation@{PatternEquation}!genPattern@{genPattern}}
+\index{genPattern@{genPattern}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{genPattern()}{genPattern()}}
+{\footnotesize\ttfamily virtual void Pattern\+Equation\+::gen\+Pattern (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_token_pattern}{Token\+Pattern}} $>$ \&}]{ops }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_equation_right_ellipsis_ae250ac9079b2f1d60f5b295095abe36f}{Equation\+Right\+Ellipsis}}, \mbox{\hyperlink{class_equation_left_ellipsis_a8d2e9982b85b000ff611204134a01061}{Equation\+Left\+Ellipsis}}, \mbox{\hyperlink{class_equation_cat_ad5322f8ad27062ff5c195c392334b299}{Equation\+Cat}}, \mbox{\hyperlink{class_equation_or_a6fe7cf006e7c2f0861ee6cce846f9feb}{Equation\+Or}}, \mbox{\hyperlink{class_equation_and_ae32ea2fa01f596d79ead8028ff34bee4}{Equation\+And}}, \mbox{\hyperlink{class_greater_equal_equation_ac3b38fb035abd2547debc594396bf5f6}{Greater\+Equal\+Equation}}, \mbox{\hyperlink{class_greater_equation_a4ebd4be45c692f46fdfd252d2c8c3628}{Greater\+Equation}}, \mbox{\hyperlink{class_less_equal_equation_ace9862ee9b24e31d3e07b76556f3e220}{Less\+Equal\+Equation}}, \mbox{\hyperlink{class_less_equation_a6bc8fcb6385a1804b80b0329b26ef4b0}{Less\+Equation}}, \mbox{\hyperlink{class_not_equal_equation_a9c356f48a2e47ea80c215b97d0b1fc65}{Not\+Equal\+Equation}}, \mbox{\hyperlink{class_equal_equation_a39dc966c60f2cf4fa28753e3057536a0}{Equal\+Equation}}, \mbox{\hyperlink{class_unconstrained_equation_a6b6c824615f9de7fba284e940cb11299}{Unconstrained\+Equation}}, and \mbox{\hyperlink{class_operand_equation_a058969ecd084d4b79a36f0d153a3e972}{Operand\+Equation}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pattern_equation_a9838e5bfe5b6013c99567628a6364bfd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pattern_equation_a99e0416a51f10f4291087173a321dc55}\label{class_pattern_equation_a99e0416a51f10f4291087173a321dc55}} 
+\index{PatternEquation@{PatternEquation}!getTokenPattern@{getTokenPattern}}
+\index{getTokenPattern@{getTokenPattern}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{getTokenPattern()}{getTokenPattern()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_token_pattern}{Token\+Pattern}}\& Pattern\+Equation\+::get\+Token\+Pattern (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 343 of file slghpatexpress.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pattern_equation_a99e0416a51f10f4291087173a321dc55_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pattern_equation_a1c5807ba6c66f6c089d9fcc39140f187}\label{class_pattern_equation_a1c5807ba6c66f6c089d9fcc39140f187}} 
+\index{PatternEquation@{PatternEquation}!layClaim@{layClaim}}
+\index{layClaim@{layClaim}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{layClaim()}{layClaim()}}
+{\footnotesize\ttfamily void Pattern\+Equation\+::lay\+Claim (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 347 of file slghpatexpress.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pattern_equation_a1c5807ba6c66f6c089d9fcc39140f187_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pattern_equation_a944d7114e5d5b6876352e555cc060829}\label{class_pattern_equation_a944d7114e5d5b6876352e555cc060829}} 
+\index{PatternEquation@{PatternEquation}!operandOrder@{operandOrder}}
+\index{operandOrder@{operandOrder}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{operandOrder()}{operandOrder()}}
+{\footnotesize\ttfamily virtual void Pattern\+Equation\+::operand\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_constructor}{Constructor}} $\ast$}]{ct,  }\item[{vector$<$ \mbox{\hyperlink{class_operand_symbol}{Operand\+Symbol}} $\ast$ $>$ \&}]{order }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_equation_right_ellipsis_a43707cb523898b0a1b7d7cc1c7dbb779}{Equation\+Right\+Ellipsis}}, \mbox{\hyperlink{class_equation_left_ellipsis_a661203e5beadef3033ac3112353e012b}{Equation\+Left\+Ellipsis}}, \mbox{\hyperlink{class_equation_cat_a3504199664351bffd3aeb8b6e8246fec}{Equation\+Cat}}, \mbox{\hyperlink{class_equation_or_a03a072384883e49f46825d1227872189}{Equation\+Or}}, \mbox{\hyperlink{class_equation_and_a6afd29fe0c292441a2fb1edf671ba5ef}{Equation\+And}}, and \mbox{\hyperlink{class_operand_equation_ae6c672be7a442660c2923112b7dd3a4d}{Operand\+Equation}}.
+
+
+
+Definition at line 346 of file slghpatexpress.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pattern_equation_a944d7114e5d5b6876352e555cc060829_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pattern_equation_ab810cb4b0638eb2d9413a3d17af56c11}\label{class_pattern_equation_ab810cb4b0638eb2d9413a3d17af56c11}} 
+\index{PatternEquation@{PatternEquation}!release@{release}}
+\index{release@{release}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{release()}{release()}}
+{\footnotesize\ttfamily void Pattern\+Equation\+::release (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pattern_equation}{Pattern\+Equation}} $\ast$}]{pateq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1157 of file slghpatexpress.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pattern_equation_ab810cb4b0638eb2d9413a3d17af56c11_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pattern_equation_a16e885a945df91e3daf2dea6394ae6f2}\label{class_pattern_equation_a16e885a945df91e3daf2dea6394ae6f2}} 
+\index{PatternEquation@{PatternEquation}!resolveOperandLeft@{resolveOperandLeft}}
+\index{resolveOperandLeft@{resolveOperandLeft}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{resolveOperandLeft()}{resolveOperandLeft()}}
+{\footnotesize\ttfamily virtual bool Pattern\+Equation\+::resolve\+Operand\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_operand_resolve}{Operand\+Resolve}} \&}]{state }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_equation_right_ellipsis_aa6d5d32c1f6da5d4ecffe983221d1497}{Equation\+Right\+Ellipsis}}, \mbox{\hyperlink{class_equation_left_ellipsis_a91c58188530288eff1690528aff67c72}{Equation\+Left\+Ellipsis}}, \mbox{\hyperlink{class_equation_cat_a1c2557c53605b96ab6888ea55d8f5964}{Equation\+Cat}}, \mbox{\hyperlink{class_equation_or_adcdf8650d37644bf0e43a9a0c38ddd7c}{Equation\+Or}}, \mbox{\hyperlink{class_equation_and_a794c3ebf0951a854cdd31b99cce09937}{Equation\+And}}, \mbox{\hyperlink{class_val_express_equation_ad13fa9a79e7ff80ed63b0c0e12f395ab}{Val\+Express\+Equation}}, \mbox{\hyperlink{class_unconstrained_equation_a9970189fd95bdb8ce0c30da626124510}{Unconstrained\+Equation}}, and \mbox{\hyperlink{class_operand_equation_a2a36915c92d63ee68c503a33daa79eda}{Operand\+Equation}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pattern_equation_a16e885a945df91e3daf2dea6394ae6f2_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pattern_equation_a1ee30230dcc5e8a9afbb2021e4286986}\label{class_pattern_equation_a1ee30230dcc5e8a9afbb2021e4286986}} 
+\index{PatternEquation@{PatternEquation}!resultpattern@{resultpattern}}
+\index{resultpattern@{resultpattern}!PatternEquation@{PatternEquation}}
+\subsubsection{\texorpdfstring{resultpattern}{resultpattern}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_token_pattern}{Token\+Pattern}} Pattern\+Equation\+::resultpattern\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 339 of file slghpatexpress.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghpatexpress_8hh}{slghpatexpress.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghpatexpress_8cc}{slghpatexpress.\+cc}}\end{DoxyCompactItemize}

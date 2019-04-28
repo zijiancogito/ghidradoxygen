@@ -1,0 +1,285 @@
+\hypertarget{class_jump_assisted}{}\section{Jump\+Assisted Class Reference}
+\label{class_jump_assisted}\index{JumpAssisted@{JumpAssisted}}
+
+
+{\ttfamily \#include $<$jumptable.\+hh$>$}
+
+
+
+Inheritance diagram for Jump\+Assisted\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{class_jump_assisted__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Jump\+Assisted\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_jump_assisted__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jump_assisted_aa8168c811826d1a3a55c505a7eefbc7d}{Jump\+Assisted}} (\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$jt)
+\item 
+virtual bool \mbox{\hyperlink{class_jump_assisted_a1169f3856b15ba64fb229deec899a49b}{is\+Override}} (void) const
+\item 
+virtual int4 \mbox{\hyperlink{class_jump_assisted_a4d6285c9afd737070fe335b86d7592fa}{get\+Table\+Size}} (void) const
+\item 
+virtual bool \mbox{\hyperlink{class_jump_assisted_a54a3d21e91b75d420340cd403a53fc63}{recover\+Model}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop, uint4 matchsize, uint4 maxtablesize)
+\item 
+virtual void \mbox{\hyperlink{class_jump_assisted_aff52f4a983f867d9bd105a6856e473a5}{build\+Addresses}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop, vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&addresstable, vector$<$ \mbox{\hyperlink{class_load_table}{Load\+Table}} $>$ $\ast$loadpoints) const
+\item 
+virtual void \mbox{\hyperlink{class_jump_assisted_a76bb3f116ab239f3b3f3fcf0410028d7}{find\+Unnormalized}} (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)
+\item 
+virtual void \mbox{\hyperlink{class_jump_assisted_aa8d0c353dd73697469c552b04146efe6}{build\+Labels}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&addresstable, vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&label, const \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$orig) const
+\item 
+virtual void \mbox{\hyperlink{class_jump_assisted_aa9732767f921501368f90bd0d1defa1a}{fold\+In\+Normalization}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop)
+\item 
+virtual bool \mbox{\hyperlink{class_jump_assisted_a9162ab4e23d4d31e7b16e46a42442a98}{fold\+In\+Guards}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$jump)
+\item 
+virtual bool \mbox{\hyperlink{class_jump_assisted_acda2c7e13c4b78b8c229e63fad03374b}{sanity\+Check}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop, vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&addresstable)
+\item 
+virtual \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$ \mbox{\hyperlink{class_jump_assisted_a82f857a54f5ab3768f8682854a1ea8e3}{clone}} (\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$jt) const
+\item 
+virtual void \mbox{\hyperlink{class_jump_assisted_ae3173b13c73cc9c6b8d9451203b3dba0}{clear}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 330 of file jumptable.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_jump_assisted_aa8168c811826d1a3a55c505a7eefbc7d}\label{class_jump_assisted_aa8168c811826d1a3a55c505a7eefbc7d}} 
+\index{JumpAssisted@{JumpAssisted}!JumpAssisted@{JumpAssisted}}
+\index{JumpAssisted@{JumpAssisted}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{JumpAssisted()}{JumpAssisted()}}
+{\footnotesize\ttfamily Jump\+Assisted\+::\+Jump\+Assisted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{jt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 336 of file jumptable.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_assisted_aa8168c811826d1a3a55c505a7eefbc7d_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_jump_assisted_aff52f4a983f867d9bd105a6856e473a5}\label{class_jump_assisted_aff52f4a983f867d9bd105a6856e473a5}} 
+\index{JumpAssisted@{JumpAssisted}!buildAddresses@{buildAddresses}}
+\index{buildAddresses@{buildAddresses}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{buildAddresses()}{buildAddresses()}}
+{\footnotesize\ttfamily void Jump\+Assisted\+::build\+Addresses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop,  }\item[{vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&}]{addresstable,  }\item[{vector$<$ \mbox{\hyperlink{class_load_table}{Load\+Table}} $>$ $\ast$}]{loadpoints }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a12659a93442cc2940a8fed8dc55be2e0}{Jump\+Model}}.
+
+
+
+Definition at line 1757 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_assisted_aff52f4a983f867d9bd105a6856e473a5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_assisted_aa8d0c353dd73697469c552b04146efe6}\label{class_jump_assisted_aa8d0c353dd73697469c552b04146efe6}} 
+\index{JumpAssisted@{JumpAssisted}!buildLabels@{buildLabels}}
+\index{buildLabels@{buildLabels}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{buildLabels()}{buildLabels()}}
+{\footnotesize\ttfamily void Jump\+Assisted\+::build\+Labels (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&}]{addresstable,  }\item[{vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&}]{label,  }\item[{const \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$}]{orig }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_af8e7b936b4b51d87b7690693f756ffd6}{Jump\+Model}}.
+
+
+
+Definition at line 1786 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_assisted_aa8d0c353dd73697469c552b04146efe6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_assisted_ae3173b13c73cc9c6b8d9451203b3dba0}\label{class_jump_assisted_ae3173b13c73cc9c6b8d9451203b3dba0}} 
+\index{JumpAssisted@{JumpAssisted}!clear@{clear}}
+\index{clear@{clear}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily virtual void Jump\+Assisted\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_jump_model_ab733e55fd77fcbafb94269b0dc0f8088}{Jump\+Model}}.
+
+
+
+Definition at line 348 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_assisted_a82f857a54f5ab3768f8682854a1ea8e3}\label{class_jump_assisted_a82f857a54f5ab3768f8682854a1ea8e3}} 
+\index{JumpAssisted@{JumpAssisted}!clone@{clone}}
+\index{clone@{clone}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$ Jump\+Assisted\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{jt }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_af4eef0f1c319eb049c518631a0321ddd}{Jump\+Model}}.
+
+
+
+Definition at line 1835 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_assisted_a82f857a54f5ab3768f8682854a1ea8e3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_assisted_a76bb3f116ab239f3b3f3fcf0410028d7}\label{class_jump_assisted_a76bb3f116ab239f3b3f3fcf0410028d7}} 
+\index{JumpAssisted@{JumpAssisted}!findUnnormalized@{findUnnormalized}}
+\index{findUnnormalized@{findUnnormalized}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{findUnnormalized()}{findUnnormalized()}}
+{\footnotesize\ttfamily virtual void Jump\+Assisted\+::find\+Unnormalized (\begin{DoxyParamCaption}\item[{uint4}]{maxaddsub,  }\item[{uint4}]{maxleftright,  }\item[{uint4}]{maxext }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_aac83f52fbf3ee566e760dfabe6e67ee6}{Jump\+Model}}.
+
+
+
+Definition at line 342 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_assisted_a9162ab4e23d4d31e7b16e46a42442a98}\label{class_jump_assisted_a9162ab4e23d4d31e7b16e46a42442a98}} 
+\index{JumpAssisted@{JumpAssisted}!foldInGuards@{foldInGuards}}
+\index{foldInGuards@{foldInGuards}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{foldInGuards()}{foldInGuards()}}
+{\footnotesize\ttfamily bool Jump\+Assisted\+::fold\+In\+Guards (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{jump }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a6f40ba77ddc8f4cf40f6071248103d9c}{Jump\+Model}}.
+
+
+
+Definition at line 1827 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_assisted_aa9732767f921501368f90bd0d1defa1a}\label{class_jump_assisted_aa9732767f921501368f90bd0d1defa1a}} 
+\index{JumpAssisted@{JumpAssisted}!foldInNormalization@{foldInNormalization}}
+\index{foldInNormalization@{foldInNormalization}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{foldInNormalization()}{foldInNormalization()}}
+{\footnotesize\ttfamily void Jump\+Assisted\+::fold\+In\+Normalization (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a8c346de087366515ed90ba1d27012451}{Jump\+Model}}.
+
+
+
+Definition at line 1813 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_assisted_aa9732767f921501368f90bd0d1defa1a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_assisted_a4d6285c9afd737070fe335b86d7592fa}\label{class_jump_assisted_a4d6285c9afd737070fe335b86d7592fa}} 
+\index{JumpAssisted@{JumpAssisted}!getTableSize@{getTableSize}}
+\index{getTableSize@{getTableSize}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{getTableSize()}{getTableSize()}}
+{\footnotesize\ttfamily virtual int4 Jump\+Assisted\+::get\+Table\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_acbc757d5fe05e9e8cb15697ddc73f367}{Jump\+Model}}.
+
+
+
+Definition at line 339 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_assisted_a1169f3856b15ba64fb229deec899a49b}\label{class_jump_assisted_a1169f3856b15ba64fb229deec899a49b}} 
+\index{JumpAssisted@{JumpAssisted}!isOverride@{isOverride}}
+\index{isOverride@{isOverride}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{isOverride()}{isOverride()}}
+{\footnotesize\ttfamily virtual bool Jump\+Assisted\+::is\+Override (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_af54c70c0bcedfcf45ed1ce6895d9e2db}{Jump\+Model}}.
+
+
+
+Definition at line 338 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_assisted_a54a3d21e91b75d420340cd403a53fc63}\label{class_jump_assisted_a54a3d21e91b75d420340cd403a53fc63}} 
+\index{JumpAssisted@{JumpAssisted}!recoverModel@{recoverModel}}
+\index{recoverModel@{recoverModel}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{recoverModel()}{recoverModel()}}
+{\footnotesize\ttfamily bool Jump\+Assisted\+::recover\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop,  }\item[{uint4}]{matchsize,  }\item[{uint4}]{maxtablesize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a9c2326278dd18c9d78dd5cd5795e802b}{Jump\+Model}}.
+
+
+
+Definition at line 1719 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_assisted_a54a3d21e91b75d420340cd403a53fc63_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_assisted_acda2c7e13c4b78b8c229e63fad03374b}\label{class_jump_assisted_acda2c7e13c4b78b8c229e63fad03374b}} 
+\index{JumpAssisted@{JumpAssisted}!sanityCheck@{sanityCheck}}
+\index{sanityCheck@{sanityCheck}!JumpAssisted@{JumpAssisted}}
+\subsubsection{\texorpdfstring{sanityCheck()}{sanityCheck()}}
+{\footnotesize\ttfamily virtual bool Jump\+Assisted\+::sanity\+Check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop,  }\item[{vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&}]{addresstable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a76a52bf3311e9d97a61d1117f6de1b0a}{Jump\+Model}}.
+
+
+
+Definition at line 346 of file jumptable.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{jumptable_8hh}{jumptable.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{jumptable_8cc}{jumptable.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,113 @@
+.TH "EmulateFunction" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EmulateFunction
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.PP
+Inherits \fBEmulatePcodeOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmulateFunction\fP (\fBFuncdata\fP *f)"
+.br
+.ti -1c
+.RI "void \fBsetLoadCollect\fP (bool val)"
+.br
+.ti -1c
+.RI "virtual void \fBsetExecuteAddress\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Set the address of the next instruction to emulate\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBgetVarnodeValue\fP (\fBVarnode\fP *vn) const"
+.br
+.RI "Given a specific \fBVarnode\fP, retrieve the current value for it from the machine state\&. "
+.ti -1c
+.RI "virtual void \fBsetVarnodeValue\fP (\fBVarnode\fP *vn, \fBuintb\fP val)"
+.br
+.RI "Given a specific \fBVarnode\fP, set the given value for it in the current machine state\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBemulatePath\fP (\fBuintb\fP val, const \fBPathMeld\fP &pathMeld, \fBPcodeOp\fP *startop, \fBVarnode\fP *startvn)"
+.br
+.ti -1c
+.RI "void \fBcollectLoadPoints\fP (vector< \fBLoadTable\fP > &res) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 77 of file jumptable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "EmulateFunction::EmulateFunction (\fBFuncdata\fP * f)"
+
+.PP
+Definition at line 117 of file jumptable\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void EmulateFunction::collectLoadPoints (vector< \fBLoadTable\fP > & res) const"
+
+.PP
+Definition at line 204 of file jumptable\&.cc\&.
+.SS "\fBuintb\fP EmulateFunction::emulatePath (\fBuintb\fP val, const \fBPathMeld\fP & pathMeld, \fBPcodeOp\fP * startop, \fBVarnode\fP * startvn)"
+
+.PP
+Definition at line 164 of file jumptable\&.cc\&.
+.SS "\fBuintb\fP EmulateFunction::getVarnodeValue (\fBVarnode\fP * vn) const\fC [virtual]\fP"
+
+.PP
+Given a specific \fBVarnode\fP, retrieve the current value for it from the machine state\&. This is the placeholder internal operation for obtaining a \fBVarnode\fP value during emulation\&. The value is \fIloaded\fP using the \fBVarnode\fP as the \fIaddress\fP and \fIstorage\fP \fIsize\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the specific \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding value from the machine state 
+.RE
+.PP
+
+.PP
+Implements \fBEmulatePcodeOp\fP\&.
+.PP
+Definition at line 136 of file jumptable\&.cc\&.
+.SS "void EmulateFunction::setExecuteAddress (const \fBAddress\fP & addr)\fC [virtual]\fP"
+
+.PP
+Set the address of the next instruction to emulate\&. 
+.PP
+Implements \fBEmulate\fP\&.
+.PP
+Definition at line 124 of file jumptable\&.cc\&.
+.SS "void EmulateFunction::setLoadCollect (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 91 of file jumptable\&.hh\&.
+.SS "void EmulateFunction::setVarnodeValue (\fBVarnode\fP * vn, \fBuintb\fP val)\fC [virtual]\fP"
+
+.PP
+Given a specific \fBVarnode\fP, set the given value for it in the current machine state\&. This is the placeholder internal operation for setting a \fBVarnode\fP value during emulation\&. The value is \fIstored\fP using the \fBVarnode\fP as the \fIaddress\fP and \fIstorage\fP \fIsize\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the specific \fBVarnode\fP 
+.br
+\fIval\fP is the constant value to store 
+.RE
+.PP
+
+.PP
+Implements \fBEmulatePcodeOp\fP\&.
+.PP
+Definition at line 151 of file jumptable\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,162 @@
+.TH "MemoryPageOverlay" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryPageOverlay \- Memory bank that overlays some other memory bank, using a 'copy on write' behavior\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memstate\&.hh>\fP
+.PP
+Inherits \fBMemoryBank\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryPageOverlay\fP (\fBAddrSpace\fP *spc, int4 ws, int4 ps, \fBMemoryBank\fP *ul)"
+.br
+.RI "\fBConstructor\fP for page overlay\&. "
+.ti -1c
+.RI "virtual \fB~MemoryPageOverlay\fP (void)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBinsert\fP (\fBuintb\fP addr, \fBuintb\fP val)"
+.br
+.RI "Overridden aligned word insert\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBfind\fP (\fBuintb\fP addr) const"
+.br
+.RI "Overridden aligned word find\&. "
+.ti -1c
+.RI "virtual void \fBgetPage\fP (\fBuintb\fP addr, uint1 *res, int4 skip, int4 size) const"
+.br
+.RI "Overridden getPage\&. "
+.ti -1c
+.RI "virtual void \fBsetPage\fP (\fBuintb\fP addr, const uint1 *val, int4 skip, int4 size)"
+.br
+.RI "Overridden setPage\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Memory bank that overlays some other memory bank, using a 'copy on write' behavior\&. 
+
+Pages are copied from the underlying object only when there is a write\&. The underlying access routines are overridden to make optimal use of this page implementation\&. The underlying memory bank can be a \fBnull\fP pointer in which case, this memory bank behaves as if it were initially filled with zeros\&. 
+.PP
+Definition at line 110 of file memstate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MemoryPageOverlay::MemoryPageOverlay (\fBAddrSpace\fP * spc, int4 ws, int4 ps, \fBMemoryBank\fP * ul)"
+
+.PP
+\fBConstructor\fP for page overlay\&. A page overlay memory bank needs all the parameters for a generic memory bank and it needs to know the underlying memory bank being overlayed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space associated with the memory bank 
+.br
+\fIws\fP is the number of bytes in the preferred wordsize (must be power of 2) 
+.br
+\fIps\fP is the number of bytes in a page (must be power of 2) 
+.br
+\fIul\fP is the underlying \fBMemoryBank\fP 
+.RE
+.PP
+
+.PP
+Definition at line 531 of file memstate\&.cc\&.
+.SS "MemoryPageOverlay::~MemoryPageOverlay (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 537 of file memstate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP MemoryPageOverlay::find (\fBuintb\fP addr) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridden aligned word find\&. This derived method first looks for the aligned word in the mapped pages\&. If the address is not mapped, the search is forwarded to the \fIunderlying\fP memory bank\&. If there is no underlying bank, zero is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the aligned offset of the word 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the retrieved value 
+.RE
+.PP
+
+.PP
+Implements \fBMemoryBank\fP\&.
+.PP
+Definition at line 448 of file memstate\&.cc\&.
+.SS "void MemoryPageOverlay::getPage (\fBuintb\fP addr, uint1 * res, int4 skip, int4 size) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridden getPage\&. The desired page is looked for in the page cache\&. If it doesn't exist, the request is forwarded to \fIunderlying\fP bank\&. If there is no underlying bank, the result buffer is filled with zeros\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the aligned offset of the page 
+.br
+\fIres\fP is the pointer to where retrieved bytes should be stored 
+.br
+\fIskip\fP is the offset \fIinto\fP \fIthe\fP \fIpage\fP from where bytes should be retrieved 
+.br
+\fIsize\fP is the number of bytes to retrieve 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBMemoryBank\fP\&.
+.PP
+Definition at line 474 of file memstate\&.cc\&.
+.SS "void MemoryPageOverlay::insert (\fBuintb\fP addr, \fBuintb\fP val)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridden aligned word insert\&. This derived method looks for a previously cached page of the underlying memory bank\&. If the cached page does not exist, it creates it and fills in its initial value by retrieving the page from the underlying bank\&. The new value is then written into cached page\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the aligned address of the word to be written 
+.br
+\fIval\fP is the value to be written at that word 
+.RE
+.PP
+
+.PP
+Implements \fBMemoryBank\fP\&.
+.PP
+Definition at line 417 of file memstate\&.cc\&.
+.SS "void MemoryPageOverlay::setPage (\fBuintb\fP addr, const uint1 * val, int4 skip, int4 size)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridden setPage\&. First, a cached version of the desired page is searched for via its address\&. If it doesn't exist, it is created, and its initial value is filled via the \fIunderlying\fP bank\&. The bytes to be written are then copied into the cached page\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the aligned offset of the page to write 
+.br
+\fIval\fP is a pointer to bytes to be written into the page 
+.br
+\fIskip\fP is the offset \fIinto\fP \fIthe\fP \fIpage\fP where bytes should be written 
+.br
+\fIsize\fP is the number of bytes to write 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBMemoryBank\fP\&.
+.PP
+Definition at line 500 of file memstate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

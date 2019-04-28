@@ -1,0 +1,196 @@
+.TH "PcodeEmit" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeEmit \- Abstract class for emitting pcode to an application\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.PP
+Inherited by \fBDisassemblyEngine\fP, \fBPcodeEmitCache\fP, \fBPcodeEmitFd\fP, and \fBPcodeRawOut\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBunimpl_tag\fP = 0x20, \fBinst_tag\fP = 0x21, \fBop_tag\fP = 0x22, \fBvoid_tag\fP = 0x23, \fBspaceid_tag\fP = 0x24, \fBaddrsz_tag\fP = 0x25, \fBend_tag\fP = 0x60 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~PcodeEmit\fP (void)"
+.br
+.RI "Virtual destructor\&. "
+.ti -1c
+.RI "virtual void \fBdump\fP (const \fBAddress\fP &addr, \fBOpCode\fP opc, \fBVarnodeData\fP *outvar, \fBVarnodeData\fP *vars, int4 isize)=0"
+.br
+.RI "The main pcode emit method\&. "
+.ti -1c
+.RI "void \fBrestoreXmlOp\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *trans)"
+.br
+.RI "Emit pcode directly from an XML tag\&. "
+.ti -1c
+.RI "const uint1 * \fBrestorePackedOp\fP (const \fBAddress\fP &addr, const uint1 *ptr, const \fBAddrSpaceManager\fP *trans)"
+.br
+.RI "Emit pcode directly from a packed byte stream\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static const uint1 * \fBunpackOffset\fP (const uint1 *ptr, \fBuintb\fP &off)"
+.br
+.RI "Helper function for unpacking an offset from a pcode byte stream\&. "
+.ti -1c
+.RI "static const uint1 * \fBunpackVarnodeData\fP (const uint1 *ptr, \fBVarnodeData\fP &v, const \fBAddrSpaceManager\fP *trans)"
+.br
+.RI "Helper function for unpacking a varnode from a pcode byte stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract class for emitting pcode to an application\&. 
+
+Translation engines pass back the generated pcode for an instruction to the application using this class\&. 
+.PP
+Definition at line 76 of file translate\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIunimpl_tag \fP\fP
+.TP
+\fB\fIinst_tag \fP\fP
+.TP
+\fB\fIop_tag \fP\fP
+.TP
+\fB\fIvoid_tag \fP\fP
+.TP
+\fB\fIspaceid_tag \fP\fP
+.TP
+\fB\fIaddrsz_tag \fP\fP
+.TP
+\fB\fIend_tag \fP\fP
+.PP
+Definition at line 97 of file translate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual PcodeEmit::~PcodeEmit (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Virtual destructor\&. 
+.PP
+Definition at line 78 of file translate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void PcodeEmit::dump (const \fBAddress\fP & addr, \fBOpCode\fP opc, \fBVarnodeData\fP * outvar, \fBVarnodeData\fP * vars, int4 isize)\fC [pure virtual]\fP"
+
+.PP
+The main pcode emit method\&. A single pcode instruction is returned to the application via this method\&. Particular applications override it to tailor how the operations are used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fBAddress\fP of the machine instruction 
+.br
+\fIopc\fP is the opcode of the particular pcode instruction 
+.br
+\fIoutvar\fP if not \fInull\fP is a pointer to data about the output varnode 
+.br
+\fIvars\fP is a pointer to an array of \fBVarnodeData\fP for each input varnode 
+.br
+\fIisize\fP is the number of input varnodes 
+.RE
+.PP
+
+.PP
+Implemented in \fBPcodeEmitCache\fP, \fBPcodeRawOut\fP, and \fBDisassemblyEngine\fP\&.
+.SS "const uint1 * PcodeEmit::restorePackedOp (const \fBAddress\fP & addr, const uint1 * ptr, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Emit pcode directly from a packed byte stream\&. A convenience method for passing around pcode operations via a special packed format\&. A single pcode operation is parsed from a byte stream and returned to the application via the \fBPcodeEmit::dump\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of the instruction that generated this pcode 
+.br
+\fIptr\fP is a pointer into a packed byte stream 
+.br
+\fImanage\fP is the \fBAddrSpace\fP manager object of the associated processor 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the next unconsumed byte of the stream 
+.RE
+.PP
+
+.PP
+Definition at line 794 of file translate\&.cc\&.
+.SS "void PcodeEmit::restoreXmlOp (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Emit pcode directly from an XML tag\&. A convenience method for passing around pcode operations via XML\&. A single pcode operation is parsed from an XML tag and returned to the application via the \fBPcodeEmit::dump\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the pcode operation XML tag 
+.br
+\fImanage\fP is the \fBAddrSpace\fP manager object of the associated processor 
+.RE
+.PP
+
+.PP
+Definition at line 704 of file translate\&.cc\&.
+.SS "const uint1 * PcodeEmit::unpackOffset (const uint1 * ptr, \fBuintb\fP & off)\fC [static]\fP"
+
+.PP
+Helper function for unpacking an offset from a pcode byte stream\&. A Helper function for \fBPcodeEmit::restorePackedOp\fP that reads an unsigned offset from a packed stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is a pointer into a packed byte stream 
+.br
+\fIoff\fP is where the offset read from the stream is stored 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the next unconsumed byte of the stream 
+.RE
+.PP
+
+.PP
+Definition at line 744 of file translate\&.cc\&.
+.SS "const uint1 * PcodeEmit::unpackVarnodeData (const uint1 * ptr, \fBVarnodeData\fP & v, const \fBAddrSpaceManager\fP * manage)\fC [static]\fP"
+
+.PP
+Helper function for unpacking a varnode from a pcode byte stream\&. A Helper function for \fBPcodeEmit::restorePackedOp\fP that reads a varnode from a packed stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is a pointer into a packed byte stream 
+.br
+\fIv\fP is the \fBVarnodeData\fP object being filled in by the stream 
+.br
+\fImanage\fP is the \fBAddrSpace\fP manager object of the associated processor 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the next unconsumed byte of the stream 
+.RE
+.PP
+
+.PP
+Definition at line 766 of file translate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

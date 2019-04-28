@@ -1,0 +1,138 @@
+\hypertarget{struct_load_image_section}{}\section{Load\+Image\+Section Struct Reference}
+\label{struct_load_image_section}\index{LoadImageSection@{LoadImageSection}}
+
+
+A record describing a section bytes in the executable.  
+
+
+
+
+{\ttfamily \#include $<$loadimage.\+hh$>$}
+
+
+
+Collaboration diagram for Load\+Image\+Section\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{struct_load_image_section__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94ad88952fb8fb1b3ce5bc9d2dc137bfc87}{unalloc}} = 1, 
+\mbox{\hyperlink{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94a481eddf373fcb9d8025d2c42f7291cdc}{noload}} = 2, 
+\mbox{\hyperlink{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94aabcfc59bec5bf4e47ac1371b650c2e83}{code}} = 4, 
+\mbox{\hyperlink{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94ac1a3811c9d1146cdc1c8af8ce7e1ee82}{data}} = 8, 
+\newline
+\mbox{\hyperlink{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94a7ae6028ce4e56ab6be685f9a1e61b4d1}{readonly}} = 16
+ \}
+\begin{DoxyCompactList}\small\item\em Boolean properties a section might have. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{struct_load_image_section_aacf49d79a9230343f798357f9731f613}{address}}
+\begin{DoxyCompactList}\small\item\em Starting address of section. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{struct_load_image_section_ad11c97bab282432299846b93f28c135b}{size}}
+\begin{DoxyCompactList}\small\item\em Number of bytes in section. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{struct_load_image_section_a3cbd878bd8ba2890c81ef5b236633374}{flags}}
+\begin{DoxyCompactList}\small\item\em Properties of the section. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A record describing a section bytes in the executable. 
+
+A lightweight object specifying the location and size of the section and basic properties 
+
+Definition at line 44 of file loadimage.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94}\label{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+
+
+Boolean properties a section might have. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{unalloc@{unalloc}!LoadImageSection@{LoadImageSection}}\index{LoadImageSection@{LoadImageSection}!unalloc@{unalloc}}}\mbox{\Hypertarget{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94ad88952fb8fb1b3ce5bc9d2dc137bfc87}\label{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94ad88952fb8fb1b3ce5bc9d2dc137bfc87}} 
+unalloc&Not allocated in memory (debug info) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{noload@{noload}!LoadImageSection@{LoadImageSection}}\index{LoadImageSection@{LoadImageSection}!noload@{noload}}}\mbox{\Hypertarget{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94a481eddf373fcb9d8025d2c42f7291cdc}\label{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94a481eddf373fcb9d8025d2c42f7291cdc}} 
+noload&uninitialized section \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{code@{code}!LoadImageSection@{LoadImageSection}}\index{LoadImageSection@{LoadImageSection}!code@{code}}}\mbox{\Hypertarget{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94aabcfc59bec5bf4e47ac1371b650c2e83}\label{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94aabcfc59bec5bf4e47ac1371b650c2e83}} 
+code&code only \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{data@{data}!LoadImageSection@{LoadImageSection}}\index{LoadImageSection@{LoadImageSection}!data@{data}}}\mbox{\Hypertarget{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94ac1a3811c9d1146cdc1c8af8ce7e1ee82}\label{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94ac1a3811c9d1146cdc1c8af8ce7e1ee82}} 
+data&data only \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{readonly@{readonly}!LoadImageSection@{LoadImageSection}}\index{LoadImageSection@{LoadImageSection}!readonly@{readonly}}}\mbox{\Hypertarget{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94a7ae6028ce4e56ab6be685f9a1e61b4d1}\label{struct_load_image_section_ac7b4a598883e0a2572f83fb3e9439d94a7ae6028ce4e56ab6be685f9a1e61b4d1}} 
+readonly&read only section \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 46 of file loadimage.\+hh.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_load_image_section_aacf49d79a9230343f798357f9731f613}\label{struct_load_image_section_aacf49d79a9230343f798357f9731f613}} 
+\index{LoadImageSection@{LoadImageSection}!address@{address}}
+\index{address@{address}!LoadImageSection@{LoadImageSection}}
+\subsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Load\+Image\+Section\+::address}
+
+
+
+Starting address of section. 
+
+
+
+Definition at line 53 of file loadimage.\+hh.
+
+\mbox{\Hypertarget{struct_load_image_section_a3cbd878bd8ba2890c81ef5b236633374}\label{struct_load_image_section_a3cbd878bd8ba2890c81ef5b236633374}} 
+\index{LoadImageSection@{LoadImageSection}!flags@{flags}}
+\index{flags@{flags}!LoadImageSection@{LoadImageSection}}
+\subsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily uint4 Load\+Image\+Section\+::flags}
+
+
+
+Properties of the section. 
+
+
+
+Definition at line 55 of file loadimage.\+hh.
+
+\mbox{\Hypertarget{struct_load_image_section_ad11c97bab282432299846b93f28c135b}\label{struct_load_image_section_ad11c97bab282432299846b93f28c135b}} 
+\index{LoadImageSection@{LoadImageSection}!size@{size}}
+\index{size@{size}!LoadImageSection@{LoadImageSection}}
+\subsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Load\+Image\+Section\+::size}
+
+
+
+Number of bytes in section. 
+
+
+
+Definition at line 54 of file loadimage.\+hh.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{loadimage_8hh}{loadimage.\+hh}}\end{DoxyCompactItemize}

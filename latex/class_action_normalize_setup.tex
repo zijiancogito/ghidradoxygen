@@ -1,0 +1,154 @@
+\hypertarget{class_action_normalize_setup}{}\section{Action\+Normalize\+Setup Class Reference}
+\label{class_action_normalize_setup}\index{ActionNormalizeSetup@{ActionNormalizeSetup}}
+
+
+Prepare function prototypes for \char`\"{}normalize\char`\"{} simplification.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Normalize\+Setup\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{class_action_normalize_setup__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Normalize\+Setup\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{class_action_normalize_setup__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_normalize_setup_a40f859f0483d8e1f4f22046a44067d52}{Action\+Normalize\+Setup}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_normalize_setup_a2c000f58b714f940cfab12142a0b294f}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_normalize_setup_a399c4047a0cb042e54daba9d02e86b15}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Prepare function prototypes for \char`\"{}normalize\char`\"{} simplification. 
+
+The \char`\"{}normalize\char`\"{} simplification style has the fundamental requirement that the input parameter types must not be locked, as locking can cause changes in the data-\/flow that \char`\"{}normalize\char`\"{} is trying to normalize, because\+: 1) The decompiler views locking as useful aliasing information 2) Locking forces varnodes to exist up-\/front, which can affect subflow analysis 3) ... probably other differences
+
+This action removes any input symbols on the function, locked or otherwise, Similarly there should be no lock on the output and no lock on the prototype model 
+
+Definition at line 550 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_normalize_setup_a40f859f0483d8e1f4f22046a44067d52}\label{class_action_normalize_setup_a40f859f0483d8e1f4f22046a44067d52}} 
+\index{ActionNormalizeSetup@{ActionNormalizeSetup}!ActionNormalizeSetup@{ActionNormalizeSetup}}
+\index{ActionNormalizeSetup@{ActionNormalizeSetup}!ActionNormalizeSetup@{ActionNormalizeSetup}}
+\subsubsection{\texorpdfstring{ActionNormalizeSetup()}{ActionNormalizeSetup()}}
+{\footnotesize\ttfamily Action\+Normalize\+Setup\+::\+Action\+Normalize\+Setup (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 552 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_action_normalize_setup_a40f859f0483d8e1f4f22046a44067d52_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_normalize_setup_a399c4047a0cb042e54daba9d02e86b15}\label{class_action_normalize_setup_a399c4047a0cb042e54daba9d02e86b15}} 
+\index{ActionNormalizeSetup@{ActionNormalizeSetup}!apply@{apply}}
+\index{apply@{apply}!ActionNormalizeSetup@{ActionNormalizeSetup}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Normalize\+Setup\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 3278 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_normalize_setup_a399c4047a0cb042e54daba9d02e86b15_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_normalize_setup_a2c000f58b714f940cfab12142a0b294f}\label{class_action_normalize_setup_a2c000f58b714f940cfab12142a0b294f}} 
+\index{ActionNormalizeSetup@{ActionNormalizeSetup}!clone@{clone}}
+\index{clone@{clone}!ActionNormalizeSetup@{ActionNormalizeSetup}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Normalize\+Setup\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 553 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_normalize_setup_a2c000f58b714f940cfab12142a0b294f_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

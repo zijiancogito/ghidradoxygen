@@ -1,0 +1,199 @@
+.TH "LanguageDescription" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LanguageDescription \- Contents of the <language> tag in a \&.ldefs file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sleigh_arch\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLanguageDescription\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Read the XML tag from stream\&. "
+.ti -1c
+.RI "const string & \fBgetProcessor\fP (void) const"
+.br
+.RI "Get the name of the processor\&. "
+.ti -1c
+.RI "bool \fBisBigEndian\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if the processor is big-endian\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the size of the address bus\&. "
+.ti -1c
+.RI "const string & \fBgetVariant\fP (void) const"
+.br
+.RI "Get the processor variant\&. "
+.ti -1c
+.RI "const string & \fBgetVersion\fP (void) const"
+.br
+.RI "Get the processor version\&. "
+.ti -1c
+.RI "const string & \fBgetSlaFile\fP (void) const"
+.br
+.RI "Get filename of the SLEIGH specification\&. "
+.ti -1c
+.RI "const string & \fBgetProcessorSpec\fP (void) const"
+.br
+.RI "Get the filename of the processor specification\&. "
+.ti -1c
+.RI "const string & \fBgetId\fP (void) const"
+.br
+.RI "Get the \fIlanguage\fP \fIid\fP string associated with this processor\&. "
+.ti -1c
+.RI "const string & \fBgetDescription\fP (void) const"
+.br
+.RI "Get a description of the processor\&. "
+.ti -1c
+.RI "bool \fBisDeprecated\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this specification is deprecated\&. "
+.ti -1c
+.RI "const \fBCompilerTag\fP & \fBgetCompiler\fP (const string &nm) const"
+.br
+.RI "Get compiler specification of the given name\&. "
+.ti -1c
+.RI "int4 \fBnumTruncations\fP (void) const"
+.br
+.RI "Get the number of truncation records\&. "
+.ti -1c
+.RI "const \fBTruncationTag\fP & \fBgetTruncation\fP (int4 i) const"
+.br
+.RI "Get the i-th truncation record\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contents of the <language> tag in a \&.ldefs file\&. 
+
+This class contains meta-data describing a single processor and the set of files used to analyze it\&. Ghidra requires a compiled SLEIGH specification file (\&.sla), a processor specification file (\&.pspec), and a compiler specification file (\&.cspec) in order to support disassembly/decompilation of a processor\&. This class supports a single processor, as described by a single SLEIGH file and processor spec\&. Multiple compiler specifications can be given for the single processor\&. 
+.PP
+Definition at line 49 of file sleigh_arch\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LanguageDescription::LanguageDescription (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 63 of file sleigh_arch\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBCompilerTag\fP & LanguageDescription::getCompiler (const string & nm) const"
+
+.PP
+Get compiler specification of the given name\&. Pick out the \fBCompilerTag\fP associated with the desired \fIcompiler\fP \fIid\fP string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the desired id string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to the matching \fBCompilerTag\fP 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file sleigh_arch\&.cc\&.
+.SS "const string& LanguageDescription::getDescription (void) const\fC [inline]\fP"
+
+.PP
+Get a description of the processor\&. 
+.PP
+Definition at line 73 of file sleigh_arch\&.hh\&.
+.SS "const string& LanguageDescription::getId (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIlanguage\fP \fIid\fP string associated with this processor\&. 
+.PP
+Definition at line 72 of file sleigh_arch\&.hh\&.
+.SS "const string& LanguageDescription::getProcessor (void) const\fC [inline]\fP"
+
+.PP
+Get the name of the processor\&. 
+.PP
+Definition at line 65 of file sleigh_arch\&.hh\&.
+.SS "const string& LanguageDescription::getProcessorSpec (void) const\fC [inline]\fP"
+
+.PP
+Get the filename of the processor specification\&. 
+.PP
+Definition at line 71 of file sleigh_arch\&.hh\&.
+.SS "int4 LanguageDescription::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the size of the address bus\&. 
+.PP
+Definition at line 67 of file sleigh_arch\&.hh\&.
+.SS "const string& LanguageDescription::getSlaFile (void) const\fC [inline]\fP"
+
+.PP
+Get filename of the SLEIGH specification\&. 
+.PP
+Definition at line 70 of file sleigh_arch\&.hh\&.
+.SS "const \fBTruncationTag\fP& LanguageDescription::getTruncation (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th truncation record\&. 
+.PP
+Definition at line 77 of file sleigh_arch\&.hh\&.
+.SS "const string& LanguageDescription::getVariant (void) const\fC [inline]\fP"
+
+.PP
+Get the processor variant\&. 
+.PP
+Definition at line 68 of file sleigh_arch\&.hh\&.
+.SS "const string& LanguageDescription::getVersion (void) const\fC [inline]\fP"
+
+.PP
+Get the processor version\&. 
+.PP
+Definition at line 69 of file sleigh_arch\&.hh\&.
+.SS "bool LanguageDescription::isBigEndian (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if the processor is big-endian\&. 
+.PP
+Definition at line 66 of file sleigh_arch\&.hh\&.
+.SS "bool LanguageDescription::isDeprecated (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this specification is deprecated\&. 
+.PP
+Definition at line 74 of file sleigh_arch\&.hh\&.
+.SS "int4 LanguageDescription::numTruncations (void) const\fC [inline]\fP"
+
+.PP
+Get the number of truncation records\&. 
+.PP
+Definition at line 76 of file sleigh_arch\&.hh\&.
+.SS "void LanguageDescription::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Read the XML tag from stream\&. Parse an ldefs <language> tag 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 37 of file sleigh_arch\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

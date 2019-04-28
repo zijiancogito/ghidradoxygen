@@ -1,0 +1,283 @@
+.TH "PcodeCompile" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeCompile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pcodecompile\&.hh>\fP
+.PP
+Inherited by \fBPcodeSnippet\fP, and \fBSleighPcode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPcodeCompile\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~PcodeCompile\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBreportError\fP (const string &msg)=0"
+.br
+.ti -1c
+.RI "void \fBresetLabelCount\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetDefaultSpace\fP (\fBAddrSpace\fP *spc)"
+.br
+.ti -1c
+.RI "void \fBsetConstantSpace\fP (\fBAddrSpace\fP *spc)"
+.br
+.ti -1c
+.RI "void \fBsetUniqueSpace\fP (\fBAddrSpace\fP *spc)"
+.br
+.ti -1c
+.RI "void \fBsetEnforceLocalKey\fP (bool val)"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetDefaultSpace\fP (void) const"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetConstantSpace\fP (void) const"
+.br
+.ti -1c
+.RI "\fBVarnodeTpl\fP * \fBbuildTemporary\fP (void)"
+.br
+.ti -1c
+.RI "\fBLabelSymbol\fP * \fBdefineLabel\fP (string *name)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBplaceLabel\fP (\fBLabelSymbol\fP *sym)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBnewOutput\fP (bool usesLocalKey, \fBExprTree\fP *rhs, string *varname, uint4 size=0)"
+.br
+.ti -1c
+.RI "void \fBnewLocalDefinition\fP (string *varname, uint4 size=0)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateOp\fP (\fBOpCode\fP opc, \fBExprTree\fP *vn)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateOp\fP (\fBOpCode\fP opc, \fBExprTree\fP *vn1, \fBExprTree\fP *vn2)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateOpOut\fP (\fBVarnodeTpl\fP *outvn, \fBOpCode\fP opc, \fBExprTree\fP *vn1, \fBExprTree\fP *vn2)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateOpOutUnary\fP (\fBVarnodeTpl\fP *outvn, \fBOpCode\fP opc, \fBExprTree\fP *vn)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBcreateOpNoOut\fP (\fBOpCode\fP opc, \fBExprTree\fP *vn)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBcreateOpNoOut\fP (\fBOpCode\fP opc, \fBExprTree\fP *vn1, \fBExprTree\fP *vn2)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBcreateOpConst\fP (\fBOpCode\fP opc, \fBuintb\fP val)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateLoad\fP (\fBStarQuality\fP *qual, \fBExprTree\fP *ptr)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBcreateStore\fP (\fBStarQuality\fP *qual, \fBExprTree\fP *ptr, \fBExprTree\fP *val)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateUserOp\fP (\fBUserOpSymbol\fP *sym, vector< \fBExprTree\fP * > *param)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBcreateUserOpNoOut\fP (\fBUserOpSymbol\fP *sym, vector< \fBExprTree\fP * > *param)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateVariadic\fP (\fBOpCode\fP opc, vector< \fBExprTree\fP * > *param)"
+.br
+.ti -1c
+.RI "void \fBappendOp\fP (\fBOpCode\fP opc, \fBExprTree\fP *res, \fBuintb\fP constval, int4 constsz)"
+.br
+.ti -1c
+.RI "\fBVarnodeTpl\fP * \fBbuildTruncatedVarnode\fP (\fBVarnodeTpl\fP *basevn, uint4 bitoffset, uint4 numbits)"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > * \fBassignBitRange\fP (\fBVarnodeTpl\fP *vn, uint4 bitoffset, uint4 numbits, \fBExprTree\fP *rhs)"
+.br
+.ti -1c
+.RI "\fBExprTree\fP * \fBcreateBitRange\fP (\fBSpecificSymbol\fP *sym, uint4 bitoffset, uint4 numbits)"
+.br
+.ti -1c
+.RI "\fBVarnodeTpl\fP * \fBaddressOf\fP (\fBVarnodeTpl\fP *var, uint4 size)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBforce_size\fP (\fBVarnodeTpl\fP *vt, const \fBConstTpl\fP &size, const vector< \fBOpTpl\fP * > &ops)"
+.br
+.ti -1c
+.RI "static void \fBmatchSize\fP (int4 j, \fBOpTpl\fP *op, bool inputonly, const vector< \fBOpTpl\fP * > &ops)"
+.br
+.ti -1c
+.RI "static void \fBfillinZero\fP (\fBOpTpl\fP *op, const vector< \fBOpTpl\fP * > &ops)"
+.br
+.ti -1c
+.RI "static bool \fBpropagateSize\fP (\fBConstructTpl\fP *ct)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 44 of file pcodecompile\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PcodeCompile::PcodeCompile (void)\fC [inline]\fP"
+
+.PP
+Definition at line 53 of file pcodecompile\&.hh\&.
+.SS "virtual PcodeCompile::~PcodeCompile (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 55 of file pcodecompile\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBVarnodeTpl\fP * PcodeCompile::addressOf (\fBVarnodeTpl\fP * var, uint4 size)"
+
+.PP
+Definition at line 754 of file pcodecompile\&.cc\&.
+.SS "void PcodeCompile::appendOp (\fBOpCode\fP opc, \fBExprTree\fP * res, \fBuintb\fP constval, int4 constsz)"
+
+.PP
+Definition at line 547 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::assignBitRange (\fBVarnodeTpl\fP * vn, uint4 bitoffset, uint4 numbits, \fBExprTree\fP * rhs)"
+
+.PP
+Definition at line 610 of file pcodecompile\&.cc\&.
+.SS "\fBVarnodeTpl\fP * PcodeCompile::buildTemporary (void)"
+
+.PP
+Definition at line 285 of file pcodecompile\&.cc\&.
+.SS "\fBVarnodeTpl\fP * PcodeCompile::buildTruncatedVarnode (\fBVarnodeTpl\fP * basevn, uint4 bitoffset, uint4 numbits)"
+
+.PP
+Definition at line 563 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createBitRange (\fBSpecificSymbol\fP * sym, uint4 bitoffset, uint4 numbits)"
+
+.PP
+Definition at line 673 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createLoad (\fBStarQuality\fP * qual, \fBExprTree\fP * ptr)"
+
+.PP
+Definition at line 462 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createOp (\fBOpCode\fP opc, \fBExprTree\fP * vn)"
+
+.PP
+Definition at line 355 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createOp (\fBOpCode\fP opc, \fBExprTree\fP * vn1, \fBExprTree\fP * vn2)"
+
+.PP
+Definition at line 369 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::createOpConst (\fBOpCode\fP opc, \fBuintb\fP val)"
+
+.PP
+Definition at line 449 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::createOpNoOut (\fBOpCode\fP opc, \fBExprTree\fP * vn)"
+
+.PP
+Definition at line 416 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::createOpNoOut (\fBOpCode\fP opc, \fBExprTree\fP * vn1, \fBExprTree\fP * vn2)"
+
+.PP
+Definition at line 430 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createOpOut (\fBVarnodeTpl\fP * outvn, \fBOpCode\fP opc, \fBExprTree\fP * vn1, \fBExprTree\fP * vn2)"
+
+.PP
+Definition at line 389 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createOpOutUnary (\fBVarnodeTpl\fP * outvn, \fBOpCode\fP opc, \fBExprTree\fP * vn)"
+
+.PP
+Definition at line 405 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::createStore (\fBStarQuality\fP * qual, \fBExprTree\fP * ptr, \fBExprTree\fP * val)"
+
+.PP
+Definition at line 485 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createUserOp (\fBUserOpSymbol\fP * sym, vector< \fBExprTree\fP * > * param)"
+
+.PP
+Definition at line 513 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::createUserOpNoOut (\fBUserOpSymbol\fP * sym, vector< \fBExprTree\fP * > * param)"
+
+.PP
+Definition at line 524 of file pcodecompile\&.cc\&.
+.SS "\fBExprTree\fP * PcodeCompile::createVariadic (\fBOpCode\fP opc, vector< \fBExprTree\fP * > * param)"
+
+.PP
+Definition at line 535 of file pcodecompile\&.cc\&.
+.SS "\fBLabelSymbol\fP * PcodeCompile::defineLabel (string * name)"
+
+.PP
+Definition at line 295 of file pcodecompile\&.cc\&.
+.SS "void PcodeCompile::fillinZero (\fBOpTpl\fP * op, const vector< \fBOpTpl\fP * > & ops)\fC [static]\fP"
+
+.PP
+Definition at line 160 of file pcodecompile\&.cc\&.
+.SS "void PcodeCompile::force_size (\fBVarnodeTpl\fP * vt, const \fBConstTpl\fP & size, const vector< \fBOpTpl\fP * > & ops)\fC [static]\fP"
+
+.PP
+Definition at line 98 of file pcodecompile\&.cc\&.
+.SS "\fBAddrSpace\fP* PcodeCompile::getConstantSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file pcodecompile\&.hh\&.
+.SS "\fBAddrSpace\fP* PcodeCompile::getDefaultSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 62 of file pcodecompile\&.hh\&.
+.SS "void PcodeCompile::matchSize (int4 j, \fBOpTpl\fP * op, bool inputonly, const vector< \fBOpTpl\fP * > & ops)\fC [static]\fP"
+
+.PP
+Definition at line 135 of file pcodecompile\&.cc\&.
+.SS "void PcodeCompile::newLocalDefinition (string * varname, uint4 size = \fC0\fP)"
+
+.PP
+Definition at line 343 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::newOutput (bool usesLocalKey, \fBExprTree\fP * rhs, string * varname, uint4 size = \fC0\fP)"
+
+.PP
+Definition at line 323 of file pcodecompile\&.cc\&.
+.SS "vector< \fBOpTpl\fP * > * PcodeCompile::placeLabel (\fBLabelSymbol\fP * sym)"
+
+.PP
+Definition at line 304 of file pcodecompile\&.cc\&.
+.SS "bool PcodeCompile::propagateSize (\fBConstructTpl\fP * ct)\fC [static]\fP"
+
+.PP
+Definition at line 255 of file pcodecompile\&.cc\&.
+.SS "virtual void PcodeCompile::reportError (const string & msg)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBPcodeSnippet\fP\&.
+.SS "void PcodeCompile::resetLabelCount (void)\fC [inline]\fP"
+
+.PP
+Definition at line 57 of file pcodecompile\&.hh\&.
+.SS "void PcodeCompile::setConstantSpace (\fBAddrSpace\fP * spc)\fC [inline]\fP"
+
+.PP
+Definition at line 59 of file pcodecompile\&.hh\&.
+.SS "void PcodeCompile::setDefaultSpace (\fBAddrSpace\fP * spc)\fC [inline]\fP"
+
+.PP
+Definition at line 58 of file pcodecompile\&.hh\&.
+.SS "void PcodeCompile::setEnforceLocalKey (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 61 of file pcodecompile\&.hh\&.
+.SS "void PcodeCompile::setUniqueSpace (\fBAddrSpace\fP * spc)\fC [inline]\fP"
+
+.PP
+Definition at line 60 of file pcodecompile\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

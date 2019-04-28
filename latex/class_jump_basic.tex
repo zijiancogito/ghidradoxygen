@@ -1,0 +1,792 @@
+\hypertarget{class_jump_basic}{}\section{Jump\+Basic Class Reference}
+\label{class_jump_basic}\index{JumpBasic@{JumpBasic}}
+
+
+{\ttfamily \#include $<$jumptable.\+hh$>$}
+
+
+
+Inheritance diagram for Jump\+Basic\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{class_jump_basic__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Jump\+Basic\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jump_basic_a9466142848f0ca24f2626f783a0012cb}{Jump\+Basic}} (\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$jt)
+\item 
+const \mbox{\hyperlink{class_path_meld}{Path\+Meld}} \& \mbox{\hyperlink{class_jump_basic_aa345cf2327b7e4214c1b7e81212b3ab1}{get\+Path\+Meld}} (void) const
+\item 
+const \mbox{\hyperlink{class_jump_values_range}{Jump\+Values\+Range}} $\ast$ \mbox{\hyperlink{class_jump_basic_afcd2c65a719d7d429f583793b25e781c}{get\+Value\+Range}} (void) const
+\item 
+virtual \mbox{\hyperlink{class_jump_basic_a898b7d5f24ef907f46bcc642fdfa4ffa}{$\sim$\+Jump\+Basic}} (void)
+\item 
+virtual bool \mbox{\hyperlink{class_jump_basic_a9f923a2aaeb571981a8ae758670d20f5}{is\+Override}} (void) const
+\item 
+virtual int4 \mbox{\hyperlink{class_jump_basic_abef7f04911739ec301f393f072a1c9c5}{get\+Table\+Size}} (void) const
+\item 
+virtual bool \mbox{\hyperlink{class_jump_basic_aebf055ad4baf1a138107d8dd3a40c809}{recover\+Model}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop, uint4 matchsize, uint4 maxtablesize)
+\item 
+virtual void \mbox{\hyperlink{class_jump_basic_a42533b11d12a5f819bb88abb21037d94}{build\+Addresses}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop, vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&addresstable, vector$<$ \mbox{\hyperlink{class_load_table}{Load\+Table}} $>$ $\ast$loadpoints) const
+\item 
+virtual void \mbox{\hyperlink{class_jump_basic_a2d542e5a6b74bd116d89ba4e5bb4da9b}{find\+Unnormalized}} (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)
+\item 
+virtual void \mbox{\hyperlink{class_jump_basic_ad3c8a1257f973c18e25935ee932076c4}{build\+Labels}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&addresstable, vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&label, const \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$orig) const
+\item 
+virtual void \mbox{\hyperlink{class_jump_basic_a4f3c7e75f6b89afd01e64950959e114d}{fold\+In\+Normalization}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop)
+\item 
+virtual bool \mbox{\hyperlink{class_jump_basic_ae70d6baeeecb4b16e79de8516868ffe4}{fold\+In\+Guards}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$jump)
+\item 
+virtual bool \mbox{\hyperlink{class_jump_basic_a1cba6b6c963e4a70efc439c27e53bd44}{sanity\+Check}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$indop, vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&addresstable)
+\item 
+virtual \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$ \mbox{\hyperlink{class_jump_basic_a3f79f34542045666ebfc491e83f2bc27}{clone}} (\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$jt) const
+\item 
+virtual void \mbox{\hyperlink{class_jump_basic_a51a677ac029723dbdee9879d865f7e3f}{clear}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_jump_basic_a4a9fc453c42caeb6857b80d4e216d544}{find\+Determining\+Varnodes}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, int4 slot)
+\item 
+void \mbox{\hyperlink{class_jump_basic_ae00e064a5ca6c4dcd06e245fbc997e5b}{analyze\+Guards}} (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$bl, int4 pathout)
+\item 
+void \mbox{\hyperlink{class_jump_basic_ad7d08e00d715fb0b2edce7d4d09a71f2}{calc\+Range}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn, \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&rng) const
+\item 
+void \mbox{\hyperlink{class_jump_basic_a32cfae8f5cf7b8573e09d415e2b1da52}{find\+Smallest\+Normal}} (uint4 matchsize)
+\item 
+void \mbox{\hyperlink{class_jump_basic_aefc7762595790f46334f6e09a88e4432}{find\+Normalized}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$rootbl, int4 pathout, uint4 matchsize, uint4 maxtablesize)
+\item 
+void \mbox{\hyperlink{class_jump_basic_a8a8537f11c7ee4431d0b7ccce30d3241}{mark\+Foldable\+Guards}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_jump_basic_a27ac3c21abdfc602f857802a7479c6d4}{fold\+In\+One\+Guard}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{class_guard_record}{Guard\+Record}} \&guard, \mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$jump)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_jump_basic_adfafb975d3e72f1ebe55f8dd6544fd44}{isprune}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn)
+\item 
+static bool \mbox{\hyperlink{class_jump_basic_a1a00a767da59463a1b552a9fc6760156}{ispoint}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn)
+\item 
+static void \mbox{\hyperlink{class_jump_basic_a3cc7f57027e323fef2d68388cf2c470c}{set\+Stride}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn, \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&rng)
+\item 
+static \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_jump_basic_a0b60980f79f56d8425f2cd5c231ddc25}{backup2\+Switch}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} output, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$outvn, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$invn)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jump_values_range}{Jump\+Values\+Range}} $\ast$ \mbox{\hyperlink{class_jump_basic_a5a132a1f60bd90b67c7b1e7d8627656d}{jrange}}
+\item 
+\mbox{\hyperlink{class_path_meld}{Path\+Meld}} \mbox{\hyperlink{class_jump_basic_aade10e6498d3f6146674b7b9ae1938e5}{path\+Meld}}
+\item 
+vector$<$ \mbox{\hyperlink{class_guard_record}{Guard\+Record}} $>$ \mbox{\hyperlink{class_jump_basic_a226ae48889e18ba9998b42105d991d35}{selectguards}}
+\item 
+int4 \mbox{\hyperlink{class_jump_basic_ae8f3090bdd209f55abad455b758438ac}{varnode\+Index}}
+\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_jump_basic_ab2aa4072b79d87215a6aeb27aa8d4464}{normalvn}}
+\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_jump_basic_a3eba94be92b13b5a0a0fbc85bdb26146}{switchvn}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 226 of file jumptable.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_jump_basic_a9466142848f0ca24f2626f783a0012cb}\label{class_jump_basic_a9466142848f0ca24f2626f783a0012cb}} 
+\index{JumpBasic@{JumpBasic}!JumpBasic@{JumpBasic}}
+\index{JumpBasic@{JumpBasic}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{JumpBasic()}{JumpBasic()}}
+{\footnotesize\ttfamily Jump\+Basic\+::\+Jump\+Basic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{jt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 246 of file jumptable.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{class_jump_basic_a9466142848f0ca24f2626f783a0012cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a898b7d5f24ef907f46bcc642fdfa4ffa}\label{class_jump_basic_a898b7d5f24ef907f46bcc642fdfa4ffa}} 
+\index{JumpBasic@{JumpBasic}!````~JumpBasic@{$\sim$JumpBasic}}
+\index{````~JumpBasic@{$\sim$JumpBasic}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{$\sim$JumpBasic()}{~JumpBasic()}}
+{\footnotesize\ttfamily Jump\+Basic\+::$\sim$\+Jump\+Basic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 1076 of file jumptable.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_jump_basic_ae00e064a5ca6c4dcd06e245fbc997e5b}\label{class_jump_basic_ae00e064a5ca6c4dcd06e245fbc997e5b}} 
+\index{JumpBasic@{JumpBasic}!analyzeGuards@{analyzeGuards}}
+\index{analyzeGuards@{analyzeGuards}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{analyzeGuards()}{analyzeGuards()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::analyze\+Guards (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$}]{bl,  }\item[{int4}]{pathout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 853 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_ae00e064a5ca6c4dcd06e245fbc997e5b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_ae00e064a5ca6c4dcd06e245fbc997e5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a0b60980f79f56d8425f2cd5c231ddc25}\label{class_jump_basic_a0b60980f79f56d8425f2cd5c231ddc25}} 
+\index{JumpBasic@{JumpBasic}!backup2Switch@{backup2Switch}}
+\index{backup2Switch@{backup2Switch}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{backup2Switch()}{backup2Switch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Jump\+Basic\+::backup2\+Switch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{output,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{outvn,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{invn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 420 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a0b60980f79f56d8425f2cd5c231ddc25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a0b60980f79f56d8425f2cd5c231ddc25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a42533b11d12a5f819bb88abb21037d94}\label{class_jump_basic_a42533b11d12a5f819bb88abb21037d94}} 
+\index{JumpBasic@{JumpBasic}!buildAddresses@{buildAddresses}}
+\index{buildAddresses@{buildAddresses}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{buildAddresses()}{buildAddresses()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::build\+Addresses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop,  }\item[{vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&}]{addresstable,  }\item[{vector$<$ \mbox{\hyperlink{class_load_table}{Load\+Table}} $>$ $\ast$}]{loadpoints }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a12659a93442cc2940a8fed8dc55be2e0}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_ad9a026df124c7e57722bdc1903033ebb}{Jump\+Basic\+Override}}.
+
+
+
+Definition at line 1099 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a42533b11d12a5f819bb88abb21037d94_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_ad3c8a1257f973c18e25935ee932076c4}\label{class_jump_basic_ad3c8a1257f973c18e25935ee932076c4}} 
+\index{JumpBasic@{JumpBasic}!buildLabels@{buildLabels}}
+\index{buildLabels@{buildLabels}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{buildLabels()}{buildLabels()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::build\+Labels (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&}]{addresstable,  }\item[{vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&}]{label,  }\item[{const \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$}]{orig }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_af8e7b936b4b51d87b7690693f756ffd6}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a1fff9a672edb2225dae051d7ed6b57b5}{Jump\+Basic\+Override}}.
+
+
+
+Definition at line 1166 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_ad3c8a1257f973c18e25935ee932076c4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_ad7d08e00d715fb0b2edce7d4d09a71f2}\label{class_jump_basic_ad7d08e00d715fb0b2edce7d4d09a71f2}} 
+\index{JumpBasic@{JumpBasic}!calcRange@{calcRange}}
+\index{calcRange@{calcRange}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{calcRange()}{calcRange()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::calc\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn,  }\item[{\mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&}]{rng }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 911 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_ad7d08e00d715fb0b2edce7d4d09a71f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_ad7d08e00d715fb0b2edce7d4d09a71f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a51a677ac029723dbdee9879d865f7e3f}\label{class_jump_basic_a51a677ac029723dbdee9879d865f7e3f}} 
+\index{JumpBasic@{JumpBasic}!clear@{clear}}
+\index{clear@{clear}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_jump_model_ab733e55fd77fcbafb94269b0dc0f8088}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a40c8f33ede7812c04d4f343ea1fc5f53}{Jump\+Basic\+Override}}, and \mbox{\hyperlink{class_jump_basic2_a5eb65ff4a67499c48f720462d65f8152}{Jump\+Basic2}}.
+
+
+
+Definition at line 1284 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{class_jump_basic_a51a677ac029723dbdee9879d865f7e3f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{class_jump_basic_a51a677ac029723dbdee9879d865f7e3f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a3f79f34542045666ebfc491e83f2bc27}\label{class_jump_basic_a3f79f34542045666ebfc491e83f2bc27}} 
+\index{JumpBasic@{JumpBasic}!clone@{clone}}
+\index{clone@{clone}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_jump_model}{Jump\+Model}} $\ast$ Jump\+Basic\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{jt }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_af4eef0f1c319eb049c518631a0321ddd}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a139a81aba7b857ef37cf1ffa52e799b3}{Jump\+Basic\+Override}}, and \mbox{\hyperlink{class_jump_basic2_a8d19ff3f441509f74402fdbefabb0801}{Jump\+Basic2}}.
+
+
+
+Definition at line 1276 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{class_jump_basic_a3f79f34542045666ebfc491e83f2bc27_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a4a9fc453c42caeb6857b80d4e216d544}\label{class_jump_basic_a4a9fc453c42caeb6857b80d4e216d544}} 
+\index{JumpBasic@{JumpBasic}!findDeterminingVarnodes@{findDeterminingVarnodes}}
+\index{findDeterminingVarnodes@{findDeterminingVarnodes}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{findDeterminingVarnodes()}{findDeterminingVarnodes()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::find\+Determining\+Varnodes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{int4}]{slot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 456 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a4a9fc453c42caeb6857b80d4e216d544_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a4a9fc453c42caeb6857b80d4e216d544_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_aefc7762595790f46334f6e09a88e4432}\label{class_jump_basic_aefc7762595790f46334f6e09a88e4432}} 
+\index{JumpBasic@{JumpBasic}!findNormalized@{findNormalized}}
+\index{findNormalized@{findNormalized}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{findNormalized()}{findNormalized()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::find\+Normalized (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$}]{rootbl,  }\item[{int4}]{pathout,  }\item[{uint4}]{matchsize,  }\item[{uint4}]{maxtablesize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 990 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_aefc7762595790f46334f6e09a88e4432_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_aefc7762595790f46334f6e09a88e4432_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a32cfae8f5cf7b8573e09d415e2b1da52}\label{class_jump_basic_a32cfae8f5cf7b8573e09d415e2b1da52}} 
+\index{JumpBasic@{JumpBasic}!findSmallestNormal@{findSmallestNormal}}
+\index{findSmallestNormal@{findSmallestNormal}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{findSmallestNormal()}{findSmallestNormal()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::find\+Smallest\+Normal (\begin{DoxyParamCaption}\item[{uint4}]{matchsize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 960 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a32cfae8f5cf7b8573e09d415e2b1da52_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a32cfae8f5cf7b8573e09d415e2b1da52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a2d542e5a6b74bd116d89ba4e5bb4da9b}\label{class_jump_basic_a2d542e5a6b74bd116d89ba4e5bb4da9b}} 
+\index{JumpBasic@{JumpBasic}!findUnnormalized@{findUnnormalized}}
+\index{findUnnormalized@{findUnnormalized}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{findUnnormalized()}{findUnnormalized()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::find\+Unnormalized (\begin{DoxyParamCaption}\item[{uint4}]{maxaddsub,  }\item[{uint4}]{maxleftright,  }\item[{uint4}]{maxext }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_aac83f52fbf3ee566e760dfabe6e67ee6}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic2_ab5d1cebab5d2f98d0caf6fc551b29980}{Jump\+Basic2}}.
+
+
+
+Definition at line 1122 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a2d542e5a6b74bd116d89ba4e5bb4da9b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a2d542e5a6b74bd116d89ba4e5bb4da9b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_ae70d6baeeecb4b16e79de8516868ffe4}\label{class_jump_basic_ae70d6baeeecb4b16e79de8516868ffe4}} 
+\index{JumpBasic@{JumpBasic}!foldInGuards@{foldInGuards}}
+\index{foldInGuards@{foldInGuards}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{foldInGuards()}{foldInGuards()}}
+{\footnotesize\ttfamily bool Jump\+Basic\+::fold\+In\+Guards (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{jump }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a6f40ba77ddc8f4cf40f6071248103d9c}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a65b9faa5ee96e07e8a90ce492bc8c179}{Jump\+Basic\+Override}}.
+
+
+
+Definition at line 1216 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_ae70d6baeeecb4b16e79de8516868ffe4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a4f3c7e75f6b89afd01e64950959e114d}\label{class_jump_basic_a4f3c7e75f6b89afd01e64950959e114d}} 
+\index{JumpBasic@{JumpBasic}!foldInNormalization@{foldInNormalization}}
+\index{foldInNormalization@{foldInNormalization}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{foldInNormalization()}{foldInNormalization()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::fold\+In\+Normalization (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a8c346de087366515ed90ba1d27012451}{Jump\+Model}}.
+
+
+
+Definition at line 1207 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a4f3c7e75f6b89afd01e64950959e114d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a27ac3c21abdfc602f857802a7479c6d4}\label{class_jump_basic_a27ac3c21abdfc602f857802a7479c6d4}} 
+\index{JumpBasic@{JumpBasic}!foldInOneGuard@{foldInOneGuard}}
+\index{foldInOneGuard@{foldInOneGuard}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{foldInOneGuard()}{foldInOneGuard()}}
+{\footnotesize\ttfamily bool Jump\+Basic\+::fold\+In\+One\+Guard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_guard_record}{Guard\+Record}} \&}]{guard,  }\item[{\mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{jump }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 1034 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a27ac3c21abdfc602f857802a7479c6d4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a27ac3c21abdfc602f857802a7479c6d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_aa345cf2327b7e4214c1b7e81212b3ab1}\label{class_jump_basic_aa345cf2327b7e4214c1b7e81212b3ab1}} 
+\index{JumpBasic@{JumpBasic}!getPathMeld@{getPathMeld}}
+\index{getPathMeld@{getPathMeld}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{getPathMeld()}{getPathMeld()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_path_meld}{Path\+Meld}}\& Jump\+Basic\+::get\+Path\+Meld (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 247 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_abef7f04911739ec301f393f072a1c9c5}\label{class_jump_basic_abef7f04911739ec301f393f072a1c9c5}} 
+\index{JumpBasic@{JumpBasic}!getTableSize@{getTableSize}}
+\index{getTableSize@{getTableSize}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{getTableSize()}{getTableSize()}}
+{\footnotesize\ttfamily virtual int4 Jump\+Basic\+::get\+Table\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_acbc757d5fe05e9e8cb15697ddc73f367}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a49b889abc5b5f57fe22b6cbc17e03f64}{Jump\+Basic\+Override}}.
+
+
+
+Definition at line 251 of file jumptable.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_abef7f04911739ec301f393f072a1c9c5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_afcd2c65a719d7d429f583793b25e781c}\label{class_jump_basic_afcd2c65a719d7d429f583793b25e781c}} 
+\index{JumpBasic@{JumpBasic}!getValueRange@{getValueRange}}
+\index{getValueRange@{getValueRange}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{getValueRange()}{getValueRange()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_jump_values_range}{Jump\+Values\+Range}}$\ast$ Jump\+Basic\+::get\+Value\+Range (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 248 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_a9f923a2aaeb571981a8ae758670d20f5}\label{class_jump_basic_a9f923a2aaeb571981a8ae758670d20f5}} 
+\index{JumpBasic@{JumpBasic}!isOverride@{isOverride}}
+\index{isOverride@{isOverride}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{isOverride()}{isOverride()}}
+{\footnotesize\ttfamily virtual bool Jump\+Basic\+::is\+Override (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_af54c70c0bcedfcf45ed1ce6895d9e2db}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a5ab5ce54ef01c3839fe62f97c967cbd2}{Jump\+Basic\+Override}}.
+
+
+
+Definition at line 250 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_a1a00a767da59463a1b552a9fc6760156}\label{class_jump_basic_a1a00a767da59463a1b552a9fc6760156}} 
+\index{JumpBasic@{JumpBasic}!ispoint@{ispoint}}
+\index{ispoint@{ispoint}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{ispoint()}{ispoint()}}
+{\footnotesize\ttfamily bool Jump\+Basic\+::ispoint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 397 of file jumptable.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a1a00a767da59463a1b552a9fc6760156_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_adfafb975d3e72f1ebe55f8dd6544fd44}\label{class_jump_basic_adfafb975d3e72f1ebe55f8dd6544fd44}} 
+\index{JumpBasic@{JumpBasic}!isprune@{isprune}}
+\index{isprune@{isprune}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{isprune()}{isprune()}}
+{\footnotesize\ttfamily bool Jump\+Basic\+::isprune (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 387 of file jumptable.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_adfafb975d3e72f1ebe55f8dd6544fd44_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a8a8537f11c7ee4431d0b7ccce30d3241}\label{class_jump_basic_a8a8537f11c7ee4431d0b7ccce30d3241}} 
+\index{JumpBasic@{JumpBasic}!markFoldableGuards@{markFoldableGuards}}
+\index{markFoldableGuards@{markFoldableGuards}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{markFoldableGuards()}{markFoldableGuards()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::mark\+Foldable\+Guards (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 1021 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a8a8537f11c7ee4431d0b7ccce30d3241_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a8a8537f11c7ee4431d0b7ccce30d3241_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_aebf055ad4baf1a138107d8dd3a40c809}\label{class_jump_basic_aebf055ad4baf1a138107d8dd3a40c809}} 
+\index{JumpBasic@{JumpBasic}!recoverModel@{recoverModel}}
+\index{recoverModel@{recoverModel}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{recoverModel()}{recoverModel()}}
+{\footnotesize\ttfamily bool Jump\+Basic\+::recover\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop,  }\item[{uint4}]{matchsize,  }\item[{uint4}]{maxtablesize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a9c2326278dd18c9d78dd5cd5795e802b}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a4fd706bf7ee1023bd1d93c78ba66852f}{Jump\+Basic\+Override}}, and \mbox{\hyperlink{class_jump_basic2_adc60ecb0d804d1a7754161b38ae3299f}{Jump\+Basic2}}.
+
+
+
+Definition at line 1083 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_aebf055ad4baf1a138107d8dd3a40c809_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a1cba6b6c963e4a70efc439c27e53bd44}\label{class_jump_basic_a1cba6b6c963e4a70efc439c27e53bd44}} 
+\index{JumpBasic@{JumpBasic}!sanityCheck@{sanityCheck}}
+\index{sanityCheck@{sanityCheck}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{sanityCheck()}{sanityCheck()}}
+{\footnotesize\ttfamily bool Jump\+Basic\+::sanity\+Check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{indop,  }\item[{vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&}]{addresstable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jump_model_a76a52bf3311e9d97a61d1117f6de1b0a}{Jump\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_jump_basic_override_a050d3faa295ff61d04f1406443ac83b1}{Jump\+Basic\+Override}}.
+
+
+
+Definition at line 1238 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a1cba6b6c963e4a70efc439c27e53bd44_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_basic_a3cc7f57027e323fef2d68388cf2c470c}\label{class_jump_basic_a3cc7f57027e323fef2d68388cf2c470c}} 
+\index{JumpBasic@{JumpBasic}!setStride@{setStride}}
+\index{setStride@{setStride}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{setStride()}{setStride()}}
+{\footnotesize\ttfamily void Jump\+Basic\+::set\+Stride (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn,  }\item[{\mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&}]{rng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 406 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_jump_basic_a3cc7f57027e323fef2d68388cf2c470c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_basic_a3cc7f57027e323fef2d68388cf2c470c_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_jump_basic_a5a132a1f60bd90b67c7b1e7d8627656d}\label{class_jump_basic_a5a132a1f60bd90b67c7b1e7d8627656d}} 
+\index{JumpBasic@{JumpBasic}!jrange@{jrange}}
+\index{jrange@{jrange}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{jrange}{jrange}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_jump_values_range}{Jump\+Values\+Range}}$\ast$ Jump\+Basic\+::jrange\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 228 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_ab2aa4072b79d87215a6aeb27aa8d4464}\label{class_jump_basic_ab2aa4072b79d87215a6aeb27aa8d4464}} 
+\index{JumpBasic@{JumpBasic}!normalvn@{normalvn}}
+\index{normalvn@{normalvn}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{normalvn}{normalvn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Jump\+Basic\+::normalvn\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 232 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_aade10e6498d3f6146674b7b9ae1938e5}\label{class_jump_basic_aade10e6498d3f6146674b7b9ae1938e5}} 
+\index{JumpBasic@{JumpBasic}!pathMeld@{pathMeld}}
+\index{pathMeld@{pathMeld}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{pathMeld}{pathMeld}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_path_meld}{Path\+Meld}} Jump\+Basic\+::path\+Meld\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 229 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_a226ae48889e18ba9998b42105d991d35}\label{class_jump_basic_a226ae48889e18ba9998b42105d991d35}} 
+\index{JumpBasic@{JumpBasic}!selectguards@{selectguards}}
+\index{selectguards@{selectguards}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{selectguards}{selectguards}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_guard_record}{Guard\+Record}}$>$ Jump\+Basic\+::selectguards\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 230 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_a3eba94be92b13b5a0a0fbc85bdb26146}\label{class_jump_basic_a3eba94be92b13b5a0a0fbc85bdb26146}} 
+\index{JumpBasic@{JumpBasic}!switchvn@{switchvn}}
+\index{switchvn@{switchvn}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{switchvn}{switchvn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Jump\+Basic\+::switchvn\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 233 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_basic_ae8f3090bdd209f55abad455b758438ac}\label{class_jump_basic_ae8f3090bdd209f55abad455b758438ac}} 
+\index{JumpBasic@{JumpBasic}!varnodeIndex@{varnodeIndex}}
+\index{varnodeIndex@{varnodeIndex}!JumpBasic@{JumpBasic}}
+\subsubsection{\texorpdfstring{varnodeIndex}{varnodeIndex}}
+{\footnotesize\ttfamily int4 Jump\+Basic\+::varnode\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 231 of file jumptable.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{jumptable_8hh}{jumptable.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{jumptable_8cc}{jumptable.\+cc}}\end{DoxyCompactItemize}

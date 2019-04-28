@@ -1,0 +1,92 @@
+.TH "ghidra.app.decompiler.PrettyPrinter" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.PrettyPrinter
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPrettyPrinter\fP (Function function, \fBClangTokenGroup\fP tokgroup)"
+.br
+.ti -1c
+.RI "Function \fBgetFunction\fP ()"
+.br
+.ti -1c
+.RI "ArrayList< \fBClangLine\fP > \fBgetLines\fP ()"
+.br
+.ti -1c
+.RI "\fBDecompiledFunction\fP \fBprint\fP (boolean removeInvalidChars)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static final String \fBINDENT_STRING\fP = ' '"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class is used to convert a C language token group into readable C code\&. 
+.PP
+Definition at line 29 of file PrettyPrinter\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.PrettyPrinter\&.PrettyPrinter (Function function, \fBClangTokenGroup\fP tokgroup)\fC [inline]\fP"
+Constructs a new pretty printer using the specified C language token group\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItokgroup\fP the C language token group 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file PrettyPrinter\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "Function ghidra\&.app\&.decompiler\&.PrettyPrinter\&.getFunction (void)\fC [inline]\fP"
+
+.PP
+Definition at line 61 of file PrettyPrinter\&.java\&.
+.SS "ArrayList<\fBClangLine\fP> ghidra\&.app\&.decompiler\&.PrettyPrinter\&.getLines ()\fC [inline]\fP"
+Returns an array list of the C language lines contained in the C language token group\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an array list of the C language lines 
+.RE
+.PP
+
+.PP
+Definition at line 70 of file PrettyPrinter\&.java\&.
+.SS "\fBDecompiledFunction\fP ghidra\&.app\&.decompiler\&.PrettyPrinter\&.print (boolean removeInvalidChars)\fC [inline]\fP"
+Prints the C language token group into a string of C code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIremoveInvalidChars\fP true if invalid character should be removed from functions and labels\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a string of readable C code 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file PrettyPrinter\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "final String ghidra\&.app\&.decompiler\&.PrettyPrinter\&.INDENT_STRING = ' '\fC [static]\fP"
+The indent string to use when printing\&. 
+.PP
+Definition at line 33 of file PrettyPrinter\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

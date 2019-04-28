@@ -1,0 +1,221 @@
+.TH "CommentDatabaseGhidra" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CommentDatabaseGhidra \- An implementation of \fBCommentDatabase\fP backed by a Ghidra client\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <comment_ghidra\&.hh>\fP
+.PP
+Inherits \fBCommentDatabase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommentDatabaseGhidra\fP (\fBArchitectureGhidra\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.RI "Clear all comments from this container\&. "
+.ti -1c
+.RI "virtual void \fBclearType\fP (const \fBAddress\fP &fad, uint4 tp)"
+.br
+.RI "Clear all comments matching (one of) the indicated types\&. "
+.ti -1c
+.RI "virtual void \fBaddComment\fP (uint4 tp, const \fBAddress\fP &fad, const \fBAddress\fP &ad, const string &txt)"
+.br
+.ti -1c
+.RI "virtual bool \fBaddCommentNoDuplicate\fP (uint4 tp, const \fBAddress\fP &fad, const \fBAddress\fP &ad, const string &txt)"
+.br
+.RI "Add a new comment to the container, making sure there is no duplicate\&. "
+.ti -1c
+.RI "virtual void \fBdeleteComment\fP (\fBComment\fP *com)"
+.br
+.RI "Remove the given \fBComment\fP object from the container\&. "
+.ti -1c
+.RI "virtual CommentSet::const_iterator \fBbeginComment\fP (const \fBAddress\fP &fad) const"
+.br
+.RI "Get an iterator to the beginning of comments for a single function\&. "
+.ti -1c
+.RI "virtual CommentSet::const_iterator \fBendComment\fP (const \fBAddress\fP &fad) const"
+.br
+.RI "Get an iterator to the ending of comments for a single function\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save all comments in the container to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *trans)"
+.br
+.RI "Restore all comments from XML\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An implementation of \fBCommentDatabase\fP backed by a Ghidra client\&. 
+
+\fBComment\fP information about particular functions is obtained by querying a Ghidra client\&. All comments for a single function are queried at once, and results are cached in this object\&. The cache needs to be cleared between functions using the \fBclear()\fP method\&. 
+.PP
+Definition at line 30 of file comment_ghidra\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CommentDatabaseGhidra::CommentDatabaseGhidra (\fBArchitectureGhidra\fP * g)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 18 of file comment_ghidra\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CommentDatabaseGhidra::addComment (uint4 tp, const \fBAddress\fP & fad, const \fBAddress\fP & ad, const string & txt)\fC [virtual]\fP"
+For the Ghidra implementation of \fBCommentDatabase\fP, \fBaddComment()\fP is currently only called by the warning routines which generates the \fIwarning\fP and \fIwarningheader\fP comment types\&. Neither of these types is intended to be a permanent comment in the database, so we only add the comment to the cache 
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 56 of file comment_ghidra\&.cc\&.
+.SS "bool CommentDatabaseGhidra::addCommentNoDuplicate (uint4 tp, const \fBAddress\fP & fad, const \fBAddress\fP & ad, const string & txt)\fC [virtual]\fP"
+
+.PP
+Add a new comment to the container, making sure there is no duplicate\&. If there is already a comment at the same address with the same body, no new comment is added\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is a set of properties to associate with the new comment (may be zero) 
+.br
+\fIfad\fP is the address of the function to which the comment belongs 
+.br
+\fIad\fP is the address to which the comment is attached 
+.br
+\fItxt\fP is the body of the comment 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a new \fBComment\fP was created, \fBfalse\fP if there was a duplicate 
+.RE
+.PP
+
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 64 of file comment_ghidra\&.cc\&.
+.SS "CommentSet::const_iterator CommentDatabaseGhidra::beginComment (const \fBAddress\fP & fad) const\fC [virtual]\fP"
+
+.PP
+Get an iterator to the beginning of comments for a single function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfad\fP is the address of the function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 70 of file comment_ghidra\&.cc\&.
+.SS "virtual void CommentDatabaseGhidra::clear (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clear all comments from this container\&. 
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 37 of file comment_ghidra\&.hh\&.
+.SS "virtual void CommentDatabaseGhidra::clearType (const \fBAddress\fP & fad, uint4 tp)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clear all comments matching (one of) the indicated types\&. Clearing is restricted to comments belonging to a specific function and matching at least one of the given properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfad\fP is the address of the owning function 
+.br
+\fItp\fP is a set of one or more properties 
+.RE
+.PP
+
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 38 of file comment_ghidra\&.hh\&.
+.SS "virtual void CommentDatabaseGhidra::deleteComment (\fBComment\fP * com)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Remove the given \fBComment\fP object from the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcom\fP is the given \fBComment\fP 
+.RE
+.PP
+
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 44 of file comment_ghidra\&.hh\&.
+.SS "CommentSet::const_iterator CommentDatabaseGhidra::endComment (const \fBAddress\fP & fad) const\fC [virtual]\fP"
+
+.PP
+Get an iterator to the ending of comments for a single function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfad\fP is the address of the function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 77 of file comment_ghidra\&.cc\&.
+.SS "virtual void CommentDatabaseGhidra::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Restore all comments from XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <commentdb> element 
+.br
+\fImanage\fP is a manager for resolving address space references 
+.RE
+.PP
+
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 50 of file comment_ghidra\&.hh\&.
+.SS "virtual void CommentDatabaseGhidra::saveXml (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Save all comments in the container to an XML stream\&. Writes a <commentdb> tag, with <comment> sub-tags for each \fBComment\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implements \fBCommentDatabase\fP\&.
+.PP
+Definition at line 48 of file comment_ghidra\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

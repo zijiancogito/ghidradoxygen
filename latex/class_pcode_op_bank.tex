@@ -1,0 +1,765 @@
+\hypertarget{class_pcode_op_bank}{}\section{Pcode\+Op\+Bank Class Reference}
+\label{class_pcode_op_bank}\index{PcodeOpBank@{PcodeOpBank}}
+
+
+Container class for Pcode\+Ops associated with a single function.  
+
+
+
+
+{\ttfamily \#include $<$op.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pcode_op_bank_a75aac7c9c8c0c73002fbd6352e41f67b}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear all Pcode\+Ops from {\bfseries{this}} container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op_bank_ab5d777cf16d8e0d730a189b22ef0817c}{Pcode\+Op\+Bank}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op_bank_af8613c0a59c2de072acc830f3b24b8e9}{$\sim$\+Pcode\+Op\+Bank}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_a598db9267369f9dbe7d044ac3dbb03e9}{set\+Uniq\+Id}} (uintm val)
+\begin{DoxyCompactList}\small\item\em Set the unique id counter. \end{DoxyCompactList}\item 
+uintm \mbox{\hyperlink{class_pcode_op_bank_a54e8b50b4b4c2fa1e4c4aa80d3cd6588}{get\+Uniq\+Id}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the next unique id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_pcode_op_bank_a99a5d552174bddb89036c1755708b9aa}{create}} (int4 inputs, const \mbox{\hyperlink{class_address}{Address}} \&pc)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} with at a given \mbox{\hyperlink{class_address}{Address}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_pcode_op_bank_a472c7fb8eea24665358e78977bc73245}{create}} (int4 inputs, const \mbox{\hyperlink{class_seq_num}{Seq\+Num}} \&sq)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} with a given sequence number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_a1d447e7dcaeab2fd89e0a3dd8454b77d}{destroy}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Destroy/retire the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_aafab3087c0f8176d83088c66bc56f6b0}{destroy\+Dead}} (void)
+\begin{DoxyCompactList}\small\item\em Destroy/retire all Pcode\+Ops in the {\itshape dead} list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_a66328024453859527245d5143755adc6}{change\+Opcode}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_type_op}{Type\+Op}} $\ast$newopc)
+\begin{DoxyCompactList}\small\item\em Change the op-\/code for the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_ae9b41955863d0ff9deaabb27e02429be}{mark\+Alive}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Mark the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as {\itshape alive}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_ad4e924e79e478b3f867a4da3ba6d6c56}{mark\+Dead}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Mark the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as {\itshape dead}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_aa1387fcf35d7e84e888f07c4cb167d65}{insert\+After\+Dead}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$prev)
+\begin{DoxyCompactList}\small\item\em Insert the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} after a point in the {\itshape dead} list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_op_bank_a64514bb8cab2719f46a03dfe9c7b7a59}{move\+Sequence\+Dead}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$firstop, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$lastop, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$prev)
+\begin{DoxyCompactList}\small\item\em Move a sequence of Pcode\+Ops to a point in the {\itshape dead} list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pcode_op_bank_aefe81f2a41de865f29c46270e8375236}{empty}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if there are no Pcode\+Ops in {\bfseries{this}} container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_pcode_op_bank_a12b06dc13326ce0291125b9dd11fadee}{target}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Find the first executing \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} for a target address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_pcode_op_bank_a6c9ca53e38a2c3c81dbfde410e33fd02}{find\+Op}} (const \mbox{\hyperlink{class_seq_num}{Seq\+Num}} \&num) const
+\begin{DoxyCompactList}\small\item\em Find a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} by sequence number. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_pcode_op_bank_a3635f3c0e2910ce4d0af3eae0b6da22c}{fallthru}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Find the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} considered a {\itshape fallthru} of the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+Pcode\+Op\+Tree\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_ad92b658064cce0c096d1d2d2e19547b1}{begin\+All}} (void) const
+\begin{DoxyCompactList}\small\item\em Start of all Pcode\+Ops in sequence number order. \end{DoxyCompactList}\item 
+Pcode\+Op\+Tree\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_aa651dcad6047a32b0e46423f96c80016}{end\+All}} (void) const
+\begin{DoxyCompactList}\small\item\em End of all Pcode\+Ops in sequence number order. \end{DoxyCompactList}\item 
+Pcode\+Op\+Tree\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_aa5c89c7f2fbad97596cef0e46b4f3a8e}{begin}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Start of all Pcode\+Ops at one \mbox{\hyperlink{class_address}{Address}}. \end{DoxyCompactList}\item 
+Pcode\+Op\+Tree\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_a5275bd8fcaaed9b6c3f00a3301a63d52}{end}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em End of all Pcode\+Ops at one \mbox{\hyperlink{class_address}{Address}}. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_a6c299f27d8d5aafd64fdd91324cddc24}{begin\+Alive}} (void) const
+\begin{DoxyCompactList}\small\item\em Start of all Pcode\+Ops marked as {\itshape alive}. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_a4aa1fc23069148cd4004c5217d9ffaff}{end\+Alive}} (void) const
+\begin{DoxyCompactList}\small\item\em End of all Pcode\+Ops marked as {\itshape alive}. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_a11c4847402571c3bc56dce8adb4df2ea}{begin\+Dead}} (void) const
+\begin{DoxyCompactList}\small\item\em Start of all Pcode\+Ops marked as {\itshape dead}. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_a4827b640a1414da1049f7ee59460f71c}{end\+Dead}} (void) const
+\begin{DoxyCompactList}\small\item\em End of all Pcode\+Ops marked as {\itshape dead}. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_aea81ae2f9b0e176090a6b9f54107bc54}{begin}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc) const
+\begin{DoxyCompactList}\small\item\em Start of all Pcode\+Ops sharing the given op-\/code. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_pcode_op_bank_a25064445ec0c3929d233a86515e7b058}{end}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc) const
+\begin{DoxyCompactList}\small\item\em End of all Pcode\+Ops sharing the given op-\/code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container class for Pcode\+Ops associated with a single function. 
+
+The \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} objects are maintained under multiple different sorting criteria to facilitate quick access in various situations. The main sort (Pcode\+Op\+Tree) is by sequence number (\mbox{\hyperlink{class_seq_num}{Seq\+Num}}). Pcode\+Ops are also grouped into {\itshape alive} and {\itshape dead} lists to distinguish between raw p-\/code ops and those that are fully linked into control-\/flow. Several lists group Pcode\+Ops with important op-\/codes (like S\+T\+O\+RE and R\+E\+T\+U\+RN). 
+
+Definition at line 238 of file op.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pcode_op_bank_ab5d777cf16d8e0d730a189b22ef0817c}\label{class_pcode_op_bank_ab5d777cf16d8e0d730a189b22ef0817c}} 
+\index{PcodeOpBank@{PcodeOpBank}!PcodeOpBank@{PcodeOpBank}}
+\index{PcodeOpBank@{PcodeOpBank}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{PcodeOpBank()}{PcodeOpBank()}}
+{\footnotesize\ttfamily Pcode\+Op\+Bank\+::\+Pcode\+Op\+Bank (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 252 of file op.\+hh.
+
+\mbox{\Hypertarget{class_pcode_op_bank_af8613c0a59c2de072acc830f3b24b8e9}\label{class_pcode_op_bank_af8613c0a59c2de072acc830f3b24b8e9}} 
+\index{PcodeOpBank@{PcodeOpBank}!````~PcodeOpBank@{$\sim$PcodeOpBank}}
+\index{````~PcodeOpBank@{$\sim$PcodeOpBank}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{$\sim$PcodeOpBank()}{~PcodeOpBank()}}
+{\footnotesize\ttfamily Pcode\+Op\+Bank\+::$\sim$\+Pcode\+Op\+Bank (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 253 of file op.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_af8613c0a59c2de072acc830f3b24b8e9_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pcode_op_bank_aa5c89c7f2fbad97596cef0e46b4f3a8e}\label{class_pcode_op_bank_aa5c89c7f2fbad97596cef0e46b4f3a8e}} 
+\index{PcodeOpBank@{PcodeOpBank}!begin@{begin}}
+\index{begin@{begin}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pcode\+Op\+Tree\+::const\+\_\+iterator Pcode\+Op\+Bank\+::begin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const}
+
+
+
+Start of all Pcode\+Ops at one \mbox{\hyperlink{class_address}{Address}}. 
+
+
+
+Definition at line 829 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_aa5c89c7f2fbad97596cef0e46b4f3a8e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_aea81ae2f9b0e176090a6b9f54107bc54}\label{class_pcode_op_bank_aea81ae2f9b0e176090a6b9f54107bc54}} 
+\index{PcodeOpBank@{PcodeOpBank}!begin@{begin}}
+\index{begin@{begin}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator Pcode\+Op\+Bank\+::begin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc }\end{DoxyParamCaption}) const}
+
+
+
+Start of all Pcode\+Ops sharing the given op-\/code. 
+
+
+
+Definition at line 841 of file op.\+cc.
+
+\mbox{\Hypertarget{class_pcode_op_bank_a6c299f27d8d5aafd64fdd91324cddc24}\label{class_pcode_op_bank_a6c299f27d8d5aafd64fdd91324cddc24}} 
+\index{PcodeOpBank@{PcodeOpBank}!beginAlive@{beginAlive}}
+\index{beginAlive@{beginAlive}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{beginAlive()}{beginAlive()}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$$>$\+::const\+\_\+iterator Pcode\+Op\+Bank\+::begin\+Alive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start of all Pcode\+Ops marked as {\itshape alive}. 
+
+
+
+Definition at line 283 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a6c299f27d8d5aafd64fdd91324cddc24_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_ad92b658064cce0c096d1d2d2e19547b1}\label{class_pcode_op_bank_ad92b658064cce0c096d1d2d2e19547b1}} 
+\index{PcodeOpBank@{PcodeOpBank}!beginAll@{beginAll}}
+\index{beginAll@{beginAll}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{beginAll()}{beginAll()}}
+{\footnotesize\ttfamily Pcode\+Op\+Tree\+::const\+\_\+iterator Pcode\+Op\+Bank\+::begin\+All (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start of all Pcode\+Ops in sequence number order. 
+
+
+
+Definition at line 271 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_ad92b658064cce0c096d1d2d2e19547b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a11c4847402571c3bc56dce8adb4df2ea}\label{class_pcode_op_bank_a11c4847402571c3bc56dce8adb4df2ea}} 
+\index{PcodeOpBank@{PcodeOpBank}!beginDead@{beginDead}}
+\index{beginDead@{beginDead}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{beginDead()}{beginDead()}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$$>$\+::const\+\_\+iterator Pcode\+Op\+Bank\+::begin\+Dead (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start of all Pcode\+Ops marked as {\itshape dead}. 
+
+
+
+Definition at line 289 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a11c4847402571c3bc56dce8adb4df2ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a66328024453859527245d5143755adc6}\label{class_pcode_op_bank_a66328024453859527245d5143755adc6}} 
+\index{PcodeOpBank@{PcodeOpBank}!changeOpcode@{changeOpcode}}
+\index{changeOpcode@{changeOpcode}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{changeOpcode()}{changeOpcode()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::change\+Opcode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_type_op}{Type\+Op}} $\ast$}]{newopc }\end{DoxyParamCaption})}
+
+
+
+Change the op-\/code for the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+The \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is assigned the new op-\/code, which may involve moving it between the internal op-\/code specific lists. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to change \\
+\hline
+{\em newopc} & is the new op-\/code object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 706 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_pcode_op_bank_a66328024453859527245d5143755adc6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a75aac7c9c8c0c73002fbd6352e41f67b}\label{class_pcode_op_bank_a75aac7c9c8c0c73002fbd6352e41f67b}} 
+\index{PcodeOpBank@{PcodeOpBank}!clear@{clear}}
+\index{clear@{clear}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear all Pcode\+Ops from {\bfseries{this}} container. 
+
+
+
+Definition at line 873 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a75aac7c9c8c0c73002fbd6352e41f67b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a99a5d552174bddb89036c1755708b9aa}\label{class_pcode_op_bank_a99a5d552174bddb89036c1755708b9aa}} 
+\index{PcodeOpBank@{PcodeOpBank}!create@{create}}
+\index{create@{create}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Pcode\+Op\+Bank\+::create (\begin{DoxyParamCaption}\item[{int4}]{inputs,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{pc }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} with at a given \mbox{\hyperlink{class_address}{Address}}. 
+
+A new \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is allocated with the indicated number of input slots, which start out empty. A sequence number is assigned, and the op is added to the end of the {\itshape dead} list. 
+\begin{DoxyParams}{Parameters}
+{\em inputs} & is the number of input slots \\
+\hline
+{\em pc} & is the \mbox{\hyperlink{class_address}{Address}} to associate with the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the newly allocated \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} 
+\end{DoxyReturn}
+
+
+Definition at line 642 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_pcode_op_bank_a99a5d552174bddb89036c1755708b9aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a472c7fb8eea24665358e78977bc73245}\label{class_pcode_op_bank_a472c7fb8eea24665358e78977bc73245}} 
+\index{PcodeOpBank@{PcodeOpBank}!create@{create}}
+\index{create@{create}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Pcode\+Op\+Bank\+::create (\begin{DoxyParamCaption}\item[{int4}]{inputs,  }\item[{const \mbox{\hyperlink{class_seq_num}{Seq\+Num}} \&}]{sq }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} with a given sequence number. 
+
+A new \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is allocated with the indicated number of input slots and the specific sequence number, suitable for cloning and restoring from X\+ML. The op is added to the end of the {\itshape dead} list. 
+\begin{DoxyParams}{Parameters}
+{\em inputs} & is the number of input slots \\
+\hline
+{\em sq} & is the specified sequence number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the newly allocated \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} 
+\end{DoxyReturn}
+
+
+Definition at line 658 of file op.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{class_pcode_op_bank_a472c7fb8eea24665358e78977bc73245_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a1d447e7dcaeab2fd89e0a3dd8454b77d}\label{class_pcode_op_bank_a1d447e7dcaeab2fd89e0a3dd8454b77d}} 
+\index{PcodeOpBank@{PcodeOpBank}!destroy@{destroy}}
+\index{destroy@{destroy}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})}
+
+
+
+Destroy/retire the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+The given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is removed from all internal lists and added to a final {\itshape deadandgone} list. The memory is not reclaimed until the whole container is destroyed, in case pointer references still exist. These will all still be marked as {\itshape dead}. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to destroy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 690 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a1d447e7dcaeab2fd89e0a3dd8454b77d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_aafab3087c0f8176d83088c66bc56f6b0}\label{class_pcode_op_bank_aafab3087c0f8176d83088c66bc56f6b0}} 
+\index{PcodeOpBank@{PcodeOpBank}!destroyDead@{destroyDead}}
+\index{destroyDead@{destroyDead}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{destroyDead()}{destroyDead()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::destroy\+Dead (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destroy/retire all Pcode\+Ops in the {\itshape dead} list. 
+
+
+
+Definition at line 672 of file op.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_aafab3087c0f8176d83088c66bc56f6b0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_aafab3087c0f8176d83088c66bc56f6b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_aefe81f2a41de865f29c46270e8375236}\label{class_pcode_op_bank_aefe81f2a41de865f29c46270e8375236}} 
+\index{PcodeOpBank@{PcodeOpBank}!empty@{empty}}
+\index{empty@{empty}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool Pcode\+Op\+Bank\+::empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if there are no Pcode\+Ops in {\bfseries{this}} container. 
+
+
+
+Definition at line 265 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_aefe81f2a41de865f29c46270e8375236_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a5275bd8fcaaed9b6c3f00a3301a63d52}\label{class_pcode_op_bank_a5275bd8fcaaed9b6c3f00a3301a63d52}} 
+\index{PcodeOpBank@{PcodeOpBank}!end@{end}}
+\index{end@{end}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pcode\+Op\+Tree\+::const\+\_\+iterator Pcode\+Op\+Bank\+::end (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const}
+
+
+
+End of all Pcode\+Ops at one \mbox{\hyperlink{class_address}{Address}}. 
+
+
+
+Definition at line 835 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a5275bd8fcaaed9b6c3f00a3301a63d52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a25064445ec0c3929d233a86515e7b058}\label{class_pcode_op_bank_a25064445ec0c3929d233a86515e7b058}} 
+\index{PcodeOpBank@{PcodeOpBank}!end@{end}}
+\index{end@{end}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator Pcode\+Op\+Bank\+::end (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc }\end{DoxyParamCaption}) const}
+
+
+
+End of all Pcode\+Ops sharing the given op-\/code. 
+
+
+
+Definition at line 857 of file op.\+cc.
+
+\mbox{\Hypertarget{class_pcode_op_bank_a4aa1fc23069148cd4004c5217d9ffaff}\label{class_pcode_op_bank_a4aa1fc23069148cd4004c5217d9ffaff}} 
+\index{PcodeOpBank@{PcodeOpBank}!endAlive@{endAlive}}
+\index{endAlive@{endAlive}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{endAlive()}{endAlive()}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$$>$\+::const\+\_\+iterator Pcode\+Op\+Bank\+::end\+Alive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+End of all Pcode\+Ops marked as {\itshape alive}. 
+
+
+
+Definition at line 286 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a4aa1fc23069148cd4004c5217d9ffaff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_aa651dcad6047a32b0e46423f96c80016}\label{class_pcode_op_bank_aa651dcad6047a32b0e46423f96c80016}} 
+\index{PcodeOpBank@{PcodeOpBank}!endAll@{endAll}}
+\index{endAll@{endAll}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{endAll()}{endAll()}}
+{\footnotesize\ttfamily Pcode\+Op\+Tree\+::const\+\_\+iterator Pcode\+Op\+Bank\+::end\+All (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+End of all Pcode\+Ops in sequence number order. 
+
+
+
+Definition at line 274 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_aa651dcad6047a32b0e46423f96c80016_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a4827b640a1414da1049f7ee59460f71c}\label{class_pcode_op_bank_a4827b640a1414da1049f7ee59460f71c}} 
+\index{PcodeOpBank@{PcodeOpBank}!endDead@{endDead}}
+\index{endDead@{endDead}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{endDead()}{endDead()}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$$>$\+::const\+\_\+iterator Pcode\+Op\+Bank\+::end\+Dead (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+End of all Pcode\+Ops marked as {\itshape dead}. 
+
+
+
+Definition at line 292 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a4827b640a1414da1049f7ee59460f71c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a3635f3c0e2910ce4d0af3eae0b6da22c}\label{class_pcode_op_bank_a3635f3c0e2910ce4d0af3eae0b6da22c}} 
+\index{PcodeOpBank@{PcodeOpBank}!fallthru@{fallthru}}
+\index{fallthru@{fallthru}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{fallthru()}{fallthru()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Pcode\+Op\+Bank\+::fallthru (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const}
+
+
+
+Find the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} considered a {\itshape fallthru} of the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+The term {\itshape fallthru} in this context refers to p-\/code {\itshape not} assembly instructions. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the fallthru \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} 
+\end{DoxyReturn}
+
+
+Definition at line 793 of file op.\+cc.
+
+\mbox{\Hypertarget{class_pcode_op_bank_a6c9ca53e38a2c3c81dbfde410e33fd02}\label{class_pcode_op_bank_a6c9ca53e38a2c3c81dbfde410e33fd02}} 
+\index{PcodeOpBank@{PcodeOpBank}!findOp@{findOp}}
+\index{findOp@{findOp}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{findOp()}{findOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Pcode\+Op\+Bank\+::find\+Op (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_seq_num}{Seq\+Num}} \&}]{num }\end{DoxyParamCaption}) const}
+
+
+
+Find a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} by sequence number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & is the given sequence number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} (or N\+U\+LL) 
+\end{DoxyReturn}
+
+
+Definition at line 782 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a6c9ca53e38a2c3c81dbfde410e33fd02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a54e8b50b4b4c2fa1e4c4aa80d3cd6588}\label{class_pcode_op_bank_a54e8b50b4b4c2fa1e4c4aa80d3cd6588}} 
+\index{PcodeOpBank@{PcodeOpBank}!getUniqId@{getUniqId}}
+\index{getUniqId@{getUniqId}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{getUniqId()}{getUniqId()}}
+{\footnotesize\ttfamily uintm Pcode\+Op\+Bank\+::get\+Uniq\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the next unique id. 
+
+
+
+Definition at line 255 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a54e8b50b4b4c2fa1e4c4aa80d3cd6588_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_aa1387fcf35d7e84e888f07c4cb167d65}\label{class_pcode_op_bank_aa1387fcf35d7e84e888f07c4cb167d65}} 
+\index{PcodeOpBank@{PcodeOpBank}!insertAfterDead@{insertAfterDead}}
+\index{insertAfterDead@{insertAfterDead}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{insertAfterDead()}{insertAfterDead()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::insert\+After\+Dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{prev }\end{DoxyParamCaption})}
+
+
+
+Insert the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} after a point in the {\itshape dead} list. 
+
+The op is moved to right after a specified op in the {\itshape dead} list. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to move \\
+\hline
+{\em prev} & is the specified op in the {\itshape dead} list \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 740 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_aa1387fcf35d7e84e888f07c4cb167d65_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_ae9b41955863d0ff9deaabb27e02429be}\label{class_pcode_op_bank_ae9b41955863d0ff9deaabb27e02429be}} 
+\index{PcodeOpBank@{PcodeOpBank}!markAlive@{markAlive}}
+\index{markAlive@{markAlive}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{markAlive()}{markAlive()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::mark\+Alive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})}
+
+
+
+Mark the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as {\itshape alive}. 
+
+The \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is moved out of the {\itshape dead} list into the {\itshape alive} list. The \mbox{\hyperlink{class_pcode_op_a6b24e6d10c6a0cde774cf52e816a636d}{Pcode\+Op\+::is\+Dead()}} method will now return {\bfseries{false}}. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to mark \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 718 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_pcode_op_bank_ae9b41955863d0ff9deaabb27e02429be_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_ad4e924e79e478b3f867a4da3ba6d6c56}\label{class_pcode_op_bank_ad4e924e79e478b3f867a4da3ba6d6c56}} 
+\index{PcodeOpBank@{PcodeOpBank}!markDead@{markDead}}
+\index{markDead@{markDead}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{markDead()}{markDead()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::mark\+Dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})}
+
+
+
+Mark the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as {\itshape dead}. 
+
+The \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is moved out of the {\itshape alive} list into the {\itshape dead} list. The \mbox{\hyperlink{class_pcode_op_a6b24e6d10c6a0cde774cf52e816a636d}{Pcode\+Op\+::is\+Dead()}} method will now return {\bfseries{true}}. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to mark \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 729 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_ad4e924e79e478b3f867a4da3ba6d6c56_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a64514bb8cab2719f46a03dfe9c7b7a59}\label{class_pcode_op_bank_a64514bb8cab2719f46a03dfe9c7b7a59}} 
+\index{PcodeOpBank@{PcodeOpBank}!moveSequenceDead@{moveSequenceDead}}
+\index{moveSequenceDead@{moveSequenceDead}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{moveSequenceDead()}{moveSequenceDead()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::move\+Sequence\+Dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{firstop,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{lastop,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{prev }\end{DoxyParamCaption})}
+
+
+
+Move a sequence of Pcode\+Ops to a point in the {\itshape dead} list. 
+
+The point is right after a provided op. All ops must be in the {\itshape dead} list. 
+\begin{DoxyParams}{Parameters}
+{\em firstop} & is the first \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} in the sequence to be moved \\
+\hline
+{\em lastop} & is the last \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} in the sequence to be moved \\
+\hline
+{\em prev} & is the provided point to move to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 757 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a64514bb8cab2719f46a03dfe9c7b7a59_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a598db9267369f9dbe7d044ac3dbb03e9}\label{class_pcode_op_bank_a598db9267369f9dbe7d044ac3dbb03e9}} 
+\index{PcodeOpBank@{PcodeOpBank}!setUniqId@{setUniqId}}
+\index{setUniqId@{setUniqId}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{setUniqId()}{setUniqId()}}
+{\footnotesize\ttfamily void Pcode\+Op\+Bank\+::set\+Uniq\+Id (\begin{DoxyParamCaption}\item[{uintm}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the unique id counter. 
+
+
+
+Definition at line 254 of file op.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a598db9267369f9dbe7d044ac3dbb03e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_op_bank_a12b06dc13326ce0291125b9dd11fadee}\label{class_pcode_op_bank_a12b06dc13326ce0291125b9dd11fadee}} 
+\index{PcodeOpBank@{PcodeOpBank}!target@{target}}
+\index{target@{target}!PcodeOpBank@{PcodeOpBank}}
+\subsubsection{\texorpdfstring{target()}{target()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Pcode\+Op\+Bank\+::target (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const}
+
+
+
+Find the first executing \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} for a target address. 
+
+Find the first \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} at or after the given \mbox{\hyperlink{class_address}{Address}} assuming they have not yet been broken up into basic blocks. Take into account delay slots. 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given \mbox{\hyperlink{class_address}{Address}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the targeted \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} (or N\+U\+LL) 
+\end{DoxyReturn}
+
+
+Definition at line 772 of file op.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_op_bank_a12b06dc13326ce0291125b9dd11fadee_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{op_8hh}{op.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{op_8cc}{op.\+cc}}\end{DoxyCompactItemize}

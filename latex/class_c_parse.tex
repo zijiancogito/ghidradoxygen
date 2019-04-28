@@ -1,0 +1,422 @@
+\hypertarget{class_c_parse}{}\section{C\+Parse Class Reference}
+\label{class_c_parse}\index{CParse@{CParse}}
+
+
+{\ttfamily \#include $<$grammar.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0bab4866e82cfe38425a03098e79a79c02a}{f\+\_\+typedef}} = 1, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba66f1214814cbd0b627d0131bf4c04b1f}{f\+\_\+extern}} = 2, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba3c719862722c51ec3fc0cf53a9a1283c}{f\+\_\+static}} = 4, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba54658592dbab42561f28775a18b35fad}{f\+\_\+auto}} = 8, 
+\newline
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba3b63f25b71b219c2f9c7a61fef5a84dd}{f\+\_\+register}} = 16, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba109acba4eeb3fe08f840ea8540cb33da}{f\+\_\+const}} = 32, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba8d62cd762514b8e2c2929dbb2c6d6b1f}{f\+\_\+restrict}} = 64, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba6a82e5d4a883e84b2cac790c9835a998}{f\+\_\+volatile}} = 128, 
+\newline
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba007ffe1c625bfb70385bb92a0abaaa25}{f\+\_\+inline}} = 256, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0baa50d6eb9d570fc1f6d52dceab5efb40c}{f\+\_\+struct}} = 512, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba6fd84c1ba4e6d4b47ca9f90a8cce5b45}{f\+\_\+union}} = 1024, 
+\mbox{\hyperlink{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0baf2cf5853f08a5f8e41c20c70f465cabf}{f\+\_\+enum}} = 2048
+ \}
+\item 
+enum \{ \mbox{\hyperlink{class_c_parse_a1947271b9b0eeb3dd3573744e763d593a30cbc6bd11350e9b87550a3a73c7e4d1}{doc\+\_\+declaration}}, 
+\mbox{\hyperlink{class_c_parse_a1947271b9b0eeb3dd3573744e763d593a30204737aae7b64eba795693763a6913}{doc\+\_\+parameter\+\_\+declaration}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_parse_ac70e0b56ec51d0e8dcd58b210524c6e3}{C\+Parse}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, int4 maxbuf)
+\item 
+\mbox{\hyperlink{class_c_parse_a432a5efb7cef89119725886d95a7e99a}{$\sim$\+C\+Parse}} (void)
+\item 
+void \mbox{\hyperlink{class_c_parse_a31d28fe36d46c4a203e5fc919f85bc89}{clear}} (void)
+\item 
+vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_c_parse_affe40bb9253984787da05af88523d256}{merge\+Spec\+Dec\+Vec}} (\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$spec)
+\item 
+vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_c_parse_afaf4be69d1d31f3e1f391aad486f2f3f}{merge\+Spec\+Dec\+Vec}} (\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$spec, vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$declist)
+\item 
+\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ \mbox{\hyperlink{class_c_parse_a98ccafc1e14edd4385106826cbbc9fe3}{merge\+Spec\+Dec}} (\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$spec)
+\item 
+\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ \mbox{\hyperlink{class_c_parse_a6191ca3b85862bdd8a74da0d9d02af38}{merge\+Spec\+Dec}} (\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$spec, \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$dec)
+\item 
+\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$ \mbox{\hyperlink{class_c_parse_a594d76f7b8af0948928585d112412e34}{add\+Specifier}} (\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$spec, string $\ast$str)
+\item 
+\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$ \mbox{\hyperlink{class_c_parse_ad76297f3360b0c10be30d77aa3883a9e}{add\+Type\+Specifier}} (\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$spec, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$tp)
+\item 
+\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$ \mbox{\hyperlink{class_c_parse_a41a5497a25d4911b58c1afdcbbaf73e9}{add\+Func\+Specifier}} (\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$spec, string $\ast$str)
+\item 
+\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ \mbox{\hyperlink{class_c_parse_a523baf902e71f296a214b79e644d7a35}{merge\+Pointer}} (vector$<$ uint4 $>$ $\ast$ptr, \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$dec)
+\item 
+\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ \mbox{\hyperlink{class_c_parse_a98a9a8a0c3c277a80ad6655be29bc386}{new\+Declarator}} (string $\ast$str)
+\item 
+\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ \mbox{\hyperlink{class_c_parse_a8e8397c0be82ebe4bb75b23df8c79c01}{new\+Declarator}} (void)
+\item 
+\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$ \mbox{\hyperlink{class_c_parse_aa5639dc6bf599f11fafe7f0046a0ea59}{new\+Specifier}} (void)
+\item 
+vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_c_parse_af6cf05cad0d6b3edfc9faf953f33608f}{new\+Vec\+Declarator}} (void)
+\item 
+vector$<$ uint4 $>$ $\ast$ \mbox{\hyperlink{class_c_parse_aac29953596c1ce1c3ea97fb4d4fc6cab}{new\+Pointer}} (void)
+\item 
+\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ \mbox{\hyperlink{class_c_parse_acbe50e6dd40d382cbc178c4c448d4027}{new\+Array}} (\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$dec, uint4 flags, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $\ast$num)
+\item 
+\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ \mbox{\hyperlink{class_c_parse_a9f32a2400060cd74285c5af4bcc4d490}{new\+Func}} (\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$dec, vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$declist)
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_c_parse_a035ba6fa550e4a125b30689fef795208}{new\+Struct}} (const string \&ident, vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$declist)
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_c_parse_a3f3a9630b4dcbc3549a437604493986e}{old\+Struct}} (const string \&ident)
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_c_parse_a617280e1818c23016f6d440aa9c9d9db}{new\+Union}} (const string \&ident, vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$declist)
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_c_parse_a499bd3b597a080a70422346c717161d5}{old\+Union}} (const string \&ident)
+\item 
+\mbox{\hyperlink{struct_enumerator}{Enumerator}} $\ast$ \mbox{\hyperlink{class_c_parse_a41b3e38981d834661c185d4c16787934}{new\+Enumerator}} (const string \&ident)
+\item 
+\mbox{\hyperlink{struct_enumerator}{Enumerator}} $\ast$ \mbox{\hyperlink{class_c_parse_a760db39f4211537b3471c7f6f614b8ac}{new\+Enumerator}} (const string \&ident, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val)
+\item 
+vector$<$ \mbox{\hyperlink{struct_enumerator}{Enumerator}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_c_parse_ad7c7c258d545f0caaf27cc8c0ac56807}{new\+Vec\+Enumerator}} (void)
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_c_parse_a6ee2dc779cf7d45596f96d143d908c87}{new\+Enum}} (const string \&ident, vector$<$ \mbox{\hyperlink{struct_enumerator}{Enumerator}} $\ast$ $>$ $\ast$vecenum)
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_c_parse_a1bc333d7eb8f7976f5f510e30f234c5f}{old\+Enum}} (const string \&ident)
+\item 
+uint4 \mbox{\hyperlink{class_c_parse_afeb074247c8851b2b06e912964e7cc30}{convert\+Flag}} (string $\ast$str)
+\item 
+void \mbox{\hyperlink{class_c_parse_a2b275d0adfbf23c3d6241f3cd52dc7a3}{clear\+Allocation}} (void)
+\item 
+int4 \mbox{\hyperlink{class_c_parse_a70098c876c6832ab7f05670eb1d99b37}{lex}} (void)
+\item 
+bool \mbox{\hyperlink{class_c_parse_ae38f99d869ad987da0d5bbf2725f8ad9}{parse\+File}} (const string \&filename, uint4 doctype)
+\item 
+bool \mbox{\hyperlink{class_c_parse_a98fdd0bf6732406e9ba9b7b52ff1315f}{parse\+Stream}} (istream \&s, uint4 doctype)
+\item 
+const string \& \mbox{\hyperlink{class_c_parse_a7541bb4f0e8b8eb2cf95b744f61fa219}{get\+Error}} (void) const
+\item 
+void \mbox{\hyperlink{class_c_parse_a0174a660f08394d7735f5699ce969cd5}{set\+Result\+Declarations}} (vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$val)
+\item 
+vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_c_parse_a6bfe0c19992dba09ecdd7aeda385ab38}{get\+Result\+Declarations}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 199 of file grammar.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0b}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_typedef@{f\_typedef}!CParse@{CParse}}\index{CParse@{CParse}!f\_typedef@{f\_typedef}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0bab4866e82cfe38425a03098e79a79c02a}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0bab4866e82cfe38425a03098e79a79c02a}} 
+f\+\_\+typedef&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_extern@{f\_extern}!CParse@{CParse}}\index{CParse@{CParse}!f\_extern@{f\_extern}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba66f1214814cbd0b627d0131bf4c04b1f}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba66f1214814cbd0b627d0131bf4c04b1f}} 
+f\+\_\+extern&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_static@{f\_static}!CParse@{CParse}}\index{CParse@{CParse}!f\_static@{f\_static}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba3c719862722c51ec3fc0cf53a9a1283c}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba3c719862722c51ec3fc0cf53a9a1283c}} 
+f\+\_\+static&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_auto@{f\_auto}!CParse@{CParse}}\index{CParse@{CParse}!f\_auto@{f\_auto}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba54658592dbab42561f28775a18b35fad}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba54658592dbab42561f28775a18b35fad}} 
+f\+\_\+auto&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_register@{f\_register}!CParse@{CParse}}\index{CParse@{CParse}!f\_register@{f\_register}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba3b63f25b71b219c2f9c7a61fef5a84dd}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba3b63f25b71b219c2f9c7a61fef5a84dd}} 
+f\+\_\+register&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_const@{f\_const}!CParse@{CParse}}\index{CParse@{CParse}!f\_const@{f\_const}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba109acba4eeb3fe08f840ea8540cb33da}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba109acba4eeb3fe08f840ea8540cb33da}} 
+f\+\_\+const&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_restrict@{f\_restrict}!CParse@{CParse}}\index{CParse@{CParse}!f\_restrict@{f\_restrict}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba8d62cd762514b8e2c2929dbb2c6d6b1f}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba8d62cd762514b8e2c2929dbb2c6d6b1f}} 
+f\+\_\+restrict&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_volatile@{f\_volatile}!CParse@{CParse}}\index{CParse@{CParse}!f\_volatile@{f\_volatile}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba6a82e5d4a883e84b2cac790c9835a998}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba6a82e5d4a883e84b2cac790c9835a998}} 
+f\+\_\+volatile&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_inline@{f\_inline}!CParse@{CParse}}\index{CParse@{CParse}!f\_inline@{f\_inline}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba007ffe1c625bfb70385bb92a0abaaa25}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba007ffe1c625bfb70385bb92a0abaaa25}} 
+f\+\_\+inline&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_struct@{f\_struct}!CParse@{CParse}}\index{CParse@{CParse}!f\_struct@{f\_struct}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0baa50d6eb9d570fc1f6d52dceab5efb40c}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0baa50d6eb9d570fc1f6d52dceab5efb40c}} 
+f\+\_\+struct&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_union@{f\_union}!CParse@{CParse}}\index{CParse@{CParse}!f\_union@{f\_union}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba6fd84c1ba4e6d4b47ca9f90a8cce5b45}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0ba6fd84c1ba4e6d4b47ca9f90a8cce5b45}} 
+f\+\_\+union&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{f\_enum@{f\_enum}!CParse@{CParse}}\index{CParse@{CParse}!f\_enum@{f\_enum}}}\mbox{\Hypertarget{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0baf2cf5853f08a5f8e41c20c70f465cabf}\label{class_c_parse_ae8e1e345251de33336c7fe9ccfbadc0baf2cf5853f08a5f8e41c20c70f465cabf}} 
+f\+\_\+enum&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 201 of file grammar.\+hh.
+
+\mbox{\Hypertarget{class_c_parse_a1947271b9b0eeb3dd3573744e763d593}\label{class_c_parse_a1947271b9b0eeb3dd3573744e763d593}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{doc\_declaration@{doc\_declaration}!CParse@{CParse}}\index{CParse@{CParse}!doc\_declaration@{doc\_declaration}}}\mbox{\Hypertarget{class_c_parse_a1947271b9b0eeb3dd3573744e763d593a30cbc6bd11350e9b87550a3a73c7e4d1}\label{class_c_parse_a1947271b9b0eeb3dd3573744e763d593a30cbc6bd11350e9b87550a3a73c7e4d1}} 
+doc\+\_\+declaration&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{doc\_parameter\_declaration@{doc\_parameter\_declaration}!CParse@{CParse}}\index{CParse@{CParse}!doc\_parameter\_declaration@{doc\_parameter\_declaration}}}\mbox{\Hypertarget{class_c_parse_a1947271b9b0eeb3dd3573744e763d593a30204737aae7b64eba795693763a6913}\label{class_c_parse_a1947271b9b0eeb3dd3573744e763d593a30204737aae7b64eba795693763a6913}} 
+doc\+\_\+parameter\+\_\+declaration&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 215 of file grammar.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_parse_ac70e0b56ec51d0e8dcd58b210524c6e3}\label{class_c_parse_ac70e0b56ec51d0e8dcd58b210524c6e3}} 
+\index{CParse@{CParse}!CParse@{CParse}}
+\index{CParse@{CParse}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{CParse()}{CParse()}}
+{\footnotesize\ttfamily C\+Parse\+::\+C\+Parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{int4}]{maxbuf }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a432a5efb7cef89119725886d95a7e99a}\label{class_c_parse_a432a5efb7cef89119725886d95a7e99a}} 
+\index{CParse@{CParse}!````~CParse@{$\sim$CParse}}
+\index{````~CParse@{$\sim$CParse}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{$\sim$CParse()}{~CParse()}}
+{\footnotesize\ttfamily C\+Parse\+::$\sim$\+C\+Parse (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_parse_a41a5497a25d4911b58c1afdcbbaf73e9}\label{class_c_parse_a41a5497a25d4911b58c1afdcbbaf73e9}} 
+\index{CParse@{CParse}!addFuncSpecifier@{addFuncSpecifier}}
+\index{addFuncSpecifier@{addFuncSpecifier}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{addFuncSpecifier()}{addFuncSpecifier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}}$\ast$ C\+Parse\+::add\+Func\+Specifier (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$}]{spec,  }\item[{string $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a594d76f7b8af0948928585d112412e34}\label{class_c_parse_a594d76f7b8af0948928585d112412e34}} 
+\index{CParse@{CParse}!addSpecifier@{addSpecifier}}
+\index{addSpecifier@{addSpecifier}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{addSpecifier()}{addSpecifier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}}$\ast$ C\+Parse\+::add\+Specifier (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$}]{spec,  }\item[{string $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_ad76297f3360b0c10be30d77aa3883a9e}\label{class_c_parse_ad76297f3360b0c10be30d77aa3883a9e}} 
+\index{CParse@{CParse}!addTypeSpecifier@{addTypeSpecifier}}
+\index{addTypeSpecifier@{addTypeSpecifier}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{addTypeSpecifier()}{addTypeSpecifier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}}$\ast$ C\+Parse\+::add\+Type\+Specifier (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$}]{spec,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{tp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a31d28fe36d46c4a203e5fc919f85bc89}\label{class_c_parse_a31d28fe36d46c4a203e5fc919f85bc89}} 
+\index{CParse@{CParse}!clear@{clear}}
+\index{clear@{clear}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void C\+Parse\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a2b275d0adfbf23c3d6241f3cd52dc7a3}\label{class_c_parse_a2b275d0adfbf23c3d6241f3cd52dc7a3}} 
+\index{CParse@{CParse}!clearAllocation@{clearAllocation}}
+\index{clearAllocation@{clearAllocation}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{clearAllocation()}{clearAllocation()}}
+{\footnotesize\ttfamily void C\+Parse\+::clear\+Allocation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_afeb074247c8851b2b06e912964e7cc30}\label{class_c_parse_afeb074247c8851b2b06e912964e7cc30}} 
+\index{CParse@{CParse}!convertFlag@{convertFlag}}
+\index{convertFlag@{convertFlag}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{convertFlag()}{convertFlag()}}
+{\footnotesize\ttfamily uint4 C\+Parse\+::convert\+Flag (\begin{DoxyParamCaption}\item[{string $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a7541bb4f0e8b8eb2cf95b744f61fa219}\label{class_c_parse_a7541bb4f0e8b8eb2cf95b744f61fa219}} 
+\index{CParse@{CParse}!getError@{getError}}
+\index{getError@{getError}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{getError()}{getError()}}
+{\footnotesize\ttfamily const string\& C\+Parse\+::get\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 275 of file grammar.\+hh.
+
+\mbox{\Hypertarget{class_c_parse_a6bfe0c19992dba09ecdd7aeda385ab38}\label{class_c_parse_a6bfe0c19992dba09ecdd7aeda385ab38}} 
+\index{CParse@{CParse}!getResultDeclarations@{getResultDeclarations}}
+\index{getResultDeclarations@{getResultDeclarations}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{getResultDeclarations()}{getResultDeclarations()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$$>$$\ast$ C\+Parse\+::get\+Result\+Declarations (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 277 of file grammar.\+hh.
+
+\mbox{\Hypertarget{class_c_parse_a70098c876c6832ab7f05670eb1d99b37}\label{class_c_parse_a70098c876c6832ab7f05670eb1d99b37}} 
+\index{CParse@{CParse}!lex@{lex}}
+\index{lex@{lex}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{lex()}{lex()}}
+{\footnotesize\ttfamily int4 C\+Parse\+::lex (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a523baf902e71f296a214b79e644d7a35}\label{class_c_parse_a523baf902e71f296a214b79e644d7a35}} 
+\index{CParse@{CParse}!mergePointer@{mergePointer}}
+\index{mergePointer@{mergePointer}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{mergePointer()}{mergePointer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}$\ast$ C\+Parse\+::merge\+Pointer (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ $\ast$}]{ptr,  }\item[{\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$}]{dec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a98ccafc1e14edd4385106826cbbc9fe3}\label{class_c_parse_a98ccafc1e14edd4385106826cbbc9fe3}} 
+\index{CParse@{CParse}!mergeSpecDec@{mergeSpecDec}}
+\index{mergeSpecDec@{mergeSpecDec}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{mergeSpecDec()}{mergeSpecDec()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}$\ast$ C\+Parse\+::merge\+Spec\+Dec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$}]{spec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a6191ca3b85862bdd8a74da0d9d02af38}\label{class_c_parse_a6191ca3b85862bdd8a74da0d9d02af38}} 
+\index{CParse@{CParse}!mergeSpecDec@{mergeSpecDec}}
+\index{mergeSpecDec@{mergeSpecDec}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{mergeSpecDec()}{mergeSpecDec()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}$\ast$ C\+Parse\+::merge\+Spec\+Dec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$}]{spec,  }\item[{\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$}]{dec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_affe40bb9253984787da05af88523d256}\label{class_c_parse_affe40bb9253984787da05af88523d256}} 
+\index{CParse@{CParse}!mergeSpecDecVec@{mergeSpecDecVec}}
+\index{mergeSpecDecVec@{mergeSpecDecVec}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{mergeSpecDecVec()}{mergeSpecDecVec()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$$>$$\ast$ C\+Parse\+::merge\+Spec\+Dec\+Vec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$}]{spec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_afaf4be69d1d31f3e1f391aad486f2f3f}\label{class_c_parse_afaf4be69d1d31f3e1f391aad486f2f3f}} 
+\index{CParse@{CParse}!mergeSpecDecVec@{mergeSpecDecVec}}
+\index{mergeSpecDecVec@{mergeSpecDecVec}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{mergeSpecDecVec()}{mergeSpecDecVec()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$$>$$\ast$ C\+Parse\+::merge\+Spec\+Dec\+Vec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}} $\ast$}]{spec,  }\item[{vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$}]{declist }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_acbe50e6dd40d382cbc178c4c448d4027}\label{class_c_parse_acbe50e6dd40d382cbc178c4c448d4027}} 
+\index{CParse@{CParse}!newArray@{newArray}}
+\index{newArray@{newArray}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newArray()}{newArray()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}$\ast$ C\+Parse\+::new\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$}]{dec,  }\item[{uint4}]{flags,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $\ast$}]{num }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a98a9a8a0c3c277a80ad6655be29bc386}\label{class_c_parse_a98a9a8a0c3c277a80ad6655be29bc386}} 
+\index{CParse@{CParse}!newDeclarator@{newDeclarator}}
+\index{newDeclarator@{newDeclarator}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newDeclarator()}{newDeclarator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}$\ast$ C\+Parse\+::new\+Declarator (\begin{DoxyParamCaption}\item[{string $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a8e8397c0be82ebe4bb75b23df8c79c01}\label{class_c_parse_a8e8397c0be82ebe4bb75b23df8c79c01}} 
+\index{CParse@{CParse}!newDeclarator@{newDeclarator}}
+\index{newDeclarator@{newDeclarator}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newDeclarator()}{newDeclarator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}$\ast$ C\+Parse\+::new\+Declarator (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a6ee2dc779cf7d45596f96d143d908c87}\label{class_c_parse_a6ee2dc779cf7d45596f96d143d908c87}} 
+\index{CParse@{CParse}!newEnum@{newEnum}}
+\index{newEnum@{newEnum}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newEnum()}{newEnum()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ C\+Parse\+::new\+Enum (\begin{DoxyParamCaption}\item[{const string \&}]{ident,  }\item[{vector$<$ \mbox{\hyperlink{struct_enumerator}{Enumerator}} $\ast$ $>$ $\ast$}]{vecenum }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a41b3e38981d834661c185d4c16787934}\label{class_c_parse_a41b3e38981d834661c185d4c16787934}} 
+\index{CParse@{CParse}!newEnumerator@{newEnumerator}}
+\index{newEnumerator@{newEnumerator}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newEnumerator()}{newEnumerator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enumerator}{Enumerator}}$\ast$ C\+Parse\+::new\+Enumerator (\begin{DoxyParamCaption}\item[{const string \&}]{ident }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a760db39f4211537b3471c7f6f614b8ac}\label{class_c_parse_a760db39f4211537b3471c7f6f614b8ac}} 
+\index{CParse@{CParse}!newEnumerator@{newEnumerator}}
+\index{newEnumerator@{newEnumerator}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newEnumerator()}{newEnumerator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_enumerator}{Enumerator}}$\ast$ C\+Parse\+::new\+Enumerator (\begin{DoxyParamCaption}\item[{const string \&}]{ident,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a9f32a2400060cd74285c5af4bcc4d490}\label{class_c_parse_a9f32a2400060cd74285c5af4bcc4d490}} 
+\index{CParse@{CParse}!newFunc@{newFunc}}
+\index{newFunc@{newFunc}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newFunc()}{newFunc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}$\ast$ C\+Parse\+::new\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$}]{dec,  }\item[{vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$}]{declist }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_aac29953596c1ce1c3ea97fb4d4fc6cab}\label{class_c_parse_aac29953596c1ce1c3ea97fb4d4fc6cab}} 
+\index{CParse@{CParse}!newPointer@{newPointer}}
+\index{newPointer@{newPointer}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newPointer()}{newPointer()}}
+{\footnotesize\ttfamily vector$<$uint4$>$$\ast$ C\+Parse\+::new\+Pointer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_aa5639dc6bf599f11fafe7f0046a0ea59}\label{class_c_parse_aa5639dc6bf599f11fafe7f0046a0ea59}} 
+\index{CParse@{CParse}!newSpecifier@{newSpecifier}}
+\index{newSpecifier@{newSpecifier}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newSpecifier()}{newSpecifier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}}$\ast$ C\+Parse\+::new\+Specifier (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a035ba6fa550e4a125b30689fef795208}\label{class_c_parse_a035ba6fa550e4a125b30689fef795208}} 
+\index{CParse@{CParse}!newStruct@{newStruct}}
+\index{newStruct@{newStruct}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newStruct()}{newStruct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ C\+Parse\+::new\+Struct (\begin{DoxyParamCaption}\item[{const string \&}]{ident,  }\item[{vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$}]{declist }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a617280e1818c23016f6d440aa9c9d9db}\label{class_c_parse_a617280e1818c23016f6d440aa9c9d9db}} 
+\index{CParse@{CParse}!newUnion@{newUnion}}
+\index{newUnion@{newUnion}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newUnion()}{newUnion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ C\+Parse\+::new\+Union (\begin{DoxyParamCaption}\item[{const string \&}]{ident,  }\item[{vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$}]{declist }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_af6cf05cad0d6b3edfc9faf953f33608f}\label{class_c_parse_af6cf05cad0d6b3edfc9faf953f33608f}} 
+\index{CParse@{CParse}!newVecDeclarator@{newVecDeclarator}}
+\index{newVecDeclarator@{newVecDeclarator}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newVecDeclarator()}{newVecDeclarator()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$$>$$\ast$ C\+Parse\+::new\+Vec\+Declarator (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_ad7c7c258d545f0caaf27cc8c0ac56807}\label{class_c_parse_ad7c7c258d545f0caaf27cc8c0ac56807}} 
+\index{CParse@{CParse}!newVecEnumerator@{newVecEnumerator}}
+\index{newVecEnumerator@{newVecEnumerator}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{newVecEnumerator()}{newVecEnumerator()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{struct_enumerator}{Enumerator}} $\ast$$>$$\ast$ C\+Parse\+::new\+Vec\+Enumerator (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a1bc333d7eb8f7976f5f510e30f234c5f}\label{class_c_parse_a1bc333d7eb8f7976f5f510e30f234c5f}} 
+\index{CParse@{CParse}!oldEnum@{oldEnum}}
+\index{oldEnum@{oldEnum}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{oldEnum()}{oldEnum()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ C\+Parse\+::old\+Enum (\begin{DoxyParamCaption}\item[{const string \&}]{ident }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a3f3a9630b4dcbc3549a437604493986e}\label{class_c_parse_a3f3a9630b4dcbc3549a437604493986e}} 
+\index{CParse@{CParse}!oldStruct@{oldStruct}}
+\index{oldStruct@{oldStruct}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{oldStruct()}{oldStruct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ C\+Parse\+::old\+Struct (\begin{DoxyParamCaption}\item[{const string \&}]{ident }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a499bd3b597a080a70422346c717161d5}\label{class_c_parse_a499bd3b597a080a70422346c717161d5}} 
+\index{CParse@{CParse}!oldUnion@{oldUnion}}
+\index{oldUnion@{oldUnion}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{oldUnion()}{oldUnion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ C\+Parse\+::old\+Union (\begin{DoxyParamCaption}\item[{const string \&}]{ident }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_ae38f99d869ad987da0d5bbf2725f8ad9}\label{class_c_parse_ae38f99d869ad987da0d5bbf2725f8ad9}} 
+\index{CParse@{CParse}!parseFile@{parseFile}}
+\index{parseFile@{parseFile}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{parseFile()}{parseFile()}}
+{\footnotesize\ttfamily bool C\+Parse\+::parse\+File (\begin{DoxyParamCaption}\item[{const string \&}]{filename,  }\item[{uint4}]{doctype }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a98fdd0bf6732406e9ba9b7b52ff1315f}\label{class_c_parse_a98fdd0bf6732406e9ba9b7b52ff1315f}} 
+\index{CParse@{CParse}!parseStream@{parseStream}}
+\index{parseStream@{parseStream}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{parseStream()}{parseStream()}}
+{\footnotesize\ttfamily bool C\+Parse\+::parse\+Stream (\begin{DoxyParamCaption}\item[{istream \&}]{s,  }\item[{uint4}]{doctype }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_parse_a0174a660f08394d7735f5699ce969cd5}\label{class_c_parse_a0174a660f08394d7735f5699ce969cd5}} 
+\index{CParse@{CParse}!setResultDeclarations@{setResultDeclarations}}
+\index{setResultDeclarations@{setResultDeclarations}!CParse@{CParse}}
+\subsubsection{\texorpdfstring{setResultDeclarations()}{setResultDeclarations()}}
+{\footnotesize\ttfamily void C\+Parse\+::set\+Result\+Declarations (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}} $\ast$ $>$ $\ast$}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 276 of file grammar.\+hh.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{grammar_8hh}{grammar.\+hh}}\end{DoxyCompactItemize}

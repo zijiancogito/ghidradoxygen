@@ -1,0 +1,84 @@
+.TH "ConditionalJoin" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConditionalJoin \- Discover and eliminate \fIsplit\fP conditions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <blockaction\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConditionalJoin\fP (\fBFuncdata\fP &fd)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "bool \fBmatch\fP (\fBBlockBasic\fP *b1, \fBBlockBasic\fP *b2)"
+.br
+.RI "Test blocks for the merge condition\&. "
+.ti -1c
+.RI "void \fBexecute\fP (void)"
+.br
+.RI "Execute the merge\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear for a new test\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Discover and eliminate \fIsplit\fP conditions\&. 
+
+A \fBsplit\fP condition is when a conditional expression, resulting in a CBRANCH, is duplicated across two blocks that would otherwise merge\&. Instead of a single conditional in a merged block, there are two copies of the conditional, two splitting blocks and no direct merge\&. 
+.PP
+Definition at line 232 of file blockaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConditionalJoin::ConditionalJoin (\fBFuncdata\fP & fd)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 259 of file blockaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ConditionalJoin::clear (void)"
+
+.PP
+Clear for a new test\&. 
+.PP
+Definition at line 2090 of file blockaction\&.cc\&.
+.SS "void ConditionalJoin::execute (void)"
+
+.PP
+Execute the merge\&. All the conditions have been met\&. Go ahead and do the join\&. 
+.PP
+Definition at line 2080 of file blockaction\&.cc\&.
+.SS "bool ConditionalJoin::match (\fBBlockBasic\fP * b1, \fBBlockBasic\fP * b2)"
+
+.PP
+Test blocks for the merge condition\&. Given a pair of conditional blocks, make sure that they match the \fIsplit\fP conditions necessary for merging and set up to do the merge\&. If the conditions are not met, this method cleans up so that additional calls can be made\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb1\fP is the \fBBlockBasic\fP exhibiting one side of the split 
+.br
+\fIb2\fP is the \fBBlockBasic\fP on the other side of the split 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the conditions for merging are met 
+.RE
+.PP
+
+.PP
+Definition at line 2043 of file blockaction\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

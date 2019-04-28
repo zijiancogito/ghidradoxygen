@@ -1,0 +1,134 @@
+\hypertarget{database_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/database.hh File Reference}
+\label{database_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.hh}}
+
+
+\mbox{\hyperlink{class_symbol}{Symbol}} and \mbox{\hyperlink{class_scope}{Scope}} objects for the decompiler.  
+
+
+{\ttfamily \#include \char`\"{}variable.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}partmap.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rangemap.\+hh\char`\"{}}\newline
+Include dependency graph for database.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{database_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{database_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}
+\begin{DoxyCompactList}\small\item\em A storage location for a particular \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_symbol_entry_1_1_entry_init_data}{Symbol\+Entry\+::\+Entry\+Init\+Data}}
+\begin{DoxyCompactList}\small\item\em Initialization data for a \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} to facilitate a rangemap. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_symbol_entry_1_1_entry_subsort}{Symbol\+Entry\+::\+Entry\+Subsort}}
+\begin{DoxyCompactList}\small\item\em Class for sub-\/sorting different \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} objects at the same address. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_symbol}{Symbol}}
+\begin{DoxyCompactList}\small\item\em The base class for a symbol in a symbol table or scope. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_function_symbol}{Function\+Symbol}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{class_symbol}{Symbol}} representing an executable function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_equate_symbol}{Equate\+Symbol}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{class_symbol}{Symbol}} that holds {\bfseries{equate}} information for a constant. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_lab_symbol}{Lab\+Symbol}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{class_symbol}{Symbol}} that labels code internal to a function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_extern_ref_symbol}{Extern\+Ref\+Symbol}}
+\begin{DoxyCompactList}\small\item\em A function \mbox{\hyperlink{class_symbol}{Symbol}} referring to an external location. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_symbol_compare_name}{Symbol\+Compare\+Name}}
+\begin{DoxyCompactList}\small\item\em Comparator for sorting \mbox{\hyperlink{class_symbol}{Symbol}} objects by name. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_map_iterator}{Map\+Iterator}}
+\begin{DoxyCompactList}\small\item\em An iterator over \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} objects in multiple address spaces. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_scope_key}{Scope\+Key}}
+\begin{DoxyCompactList}\small\item\em A key for looking up child symbol scopes within a parent, based on name. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_scope}{Scope}}
+\begin{DoxyCompactList}\small\item\em A collection of \mbox{\hyperlink{class_symbol}{Symbol}} objects within a single (namespace or functional) scope. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_scope_internal}{Scope\+Internal}}
+\begin{DoxyCompactList}\small\item\em An in-\/memory implementation of the \mbox{\hyperlink{class_scope}{Scope}} interface. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_scope_mapper}{Scope\+Mapper}}
+\begin{DoxyCompactList}\small\item\em An \mbox{\hyperlink{class_address}{Address}} range associated with the symbol \mbox{\hyperlink{class_scope}{Scope}} that owns it. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_database}{Database}}
+\begin{DoxyCompactList}\small\item\em A manager for symbol scopes for a whole executable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classrangemap}{rangemap}}$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$ \mbox{\hyperlink{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}{Entry\+Map}}
+\begin{DoxyCompactList}\small\item\em A rangemap of \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}. \end{DoxyCompactList}\item 
+typedef set$<$ \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$, \mbox{\hyperlink{class_symbol_compare_name}{Symbol\+Compare\+Name}} $>$ \mbox{\hyperlink{database_8hh_a6ed1db9b39a7f86a7a00b392bbe3f0d1}{Symbol\+Name\+Tree}}
+\begin{DoxyCompactList}\small\item\em A set of \mbox{\hyperlink{class_symbol}{Symbol}} objects sorted by name. \end{DoxyCompactList}\item 
+typedef map$<$ \mbox{\hyperlink{class_scope_key}{Scope\+Key}}, \mbox{\hyperlink{class_scope}{Scope}} $\ast$ $>$ \mbox{\hyperlink{database_8hh_a471f91376cdded8bf673b01d6e85f700}{Scope\+Map}}
+\begin{DoxyCompactList}\small\item\em A map from \mbox{\hyperlink{class_scope_key}{Scope\+Key}} to \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{classrangemap}{rangemap}}$<$ \mbox{\hyperlink{class_scope_mapper}{Scope\+Mapper}} $>$ \mbox{\hyperlink{database_8hh_ada192c66697381e90aa3ab34196f9ad7}{Scope\+Resolve}}
+\begin{DoxyCompactList}\small\item\em A map from address to the owning \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_symbol}{Symbol}} and \mbox{\hyperlink{class_scope}{Scope}} objects for the decompiler. 
+
+These implement the main symbol table, with support for symbols, local and global scopes, namespaces etc. Search can be by name or the address of the \mbox{\hyperlink{class_symbol}{Symbol}} storage location. 
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}\label{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}} 
+\index{database.hh@{database.hh}!EntryMap@{EntryMap}}
+\index{EntryMap@{EntryMap}!database.hh@{database.hh}}
+\subsubsection{\texorpdfstring{EntryMap}{EntryMap}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classrangemap}{rangemap}}$<$\mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}$>$ \mbox{\hyperlink{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}{Entry\+Map}}}
+
+
+
+A rangemap of \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}. 
+
+
+
+Definition at line 141 of file database.\+hh.
+
+\mbox{\Hypertarget{database_8hh_a471f91376cdded8bf673b01d6e85f700}\label{database_8hh_a471f91376cdded8bf673b01d6e85f700}} 
+\index{database.hh@{database.hh}!ScopeMap@{ScopeMap}}
+\index{ScopeMap@{ScopeMap}!database.hh@{database.hh}}
+\subsubsection{\texorpdfstring{ScopeMap}{ScopeMap}}
+{\footnotesize\ttfamily typedef map$<$\mbox{\hyperlink{class_scope_key}{Scope\+Key}},\mbox{\hyperlink{class_scope}{Scope}} $\ast$$>$ \mbox{\hyperlink{database_8hh_a471f91376cdded8bf673b01d6e85f700}{Scope\+Map}}}
+
+
+
+A map from \mbox{\hyperlink{class_scope_key}{Scope\+Key}} to \mbox{\hyperlink{class_scope}{Scope}}. 
+
+
+
+Definition at line 373 of file database.\+hh.
+
+\mbox{\Hypertarget{database_8hh_ada192c66697381e90aa3ab34196f9ad7}\label{database_8hh_ada192c66697381e90aa3ab34196f9ad7}} 
+\index{database.hh@{database.hh}!ScopeResolve@{ScopeResolve}}
+\index{ScopeResolve@{ScopeResolve}!database.hh@{database.hh}}
+\subsubsection{\texorpdfstring{ScopeResolve}{ScopeResolve}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classrangemap}{rangemap}}$<$\mbox{\hyperlink{class_scope_mapper}{Scope\+Mapper}}$>$ \mbox{\hyperlink{database_8hh_ada192c66697381e90aa3ab34196f9ad7}{Scope\+Resolve}}}
+
+
+
+A map from address to the owning \mbox{\hyperlink{class_scope}{Scope}}. 
+
+
+
+Definition at line 796 of file database.\+hh.
+
+\mbox{\Hypertarget{database_8hh_a6ed1db9b39a7f86a7a00b392bbe3f0d1}\label{database_8hh_a6ed1db9b39a7f86a7a00b392bbe3f0d1}} 
+\index{database.hh@{database.hh}!SymbolNameTree@{SymbolNameTree}}
+\index{SymbolNameTree@{SymbolNameTree}!database.hh@{database.hh}}
+\subsubsection{\texorpdfstring{SymbolNameTree}{SymbolNameTree}}
+{\footnotesize\ttfamily typedef set$<$\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$,\mbox{\hyperlink{class_symbol_compare_name}{Symbol\+Compare\+Name}}$>$ \mbox{\hyperlink{database_8hh_a6ed1db9b39a7f86a7a00b392bbe3f0d1}{Symbol\+Name\+Tree}}}
+
+
+
+A set of \mbox{\hyperlink{class_symbol}{Symbol}} objects sorted by name. 
+
+
+
+Definition at line 307 of file database.\+hh.
+

@@ -1,0 +1,1322 @@
+.TH "FuncProto" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FuncProto \- A \fBfunction\fP \fBprototype\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherited by \fBFuncCallSpecs\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFuncProto\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fB~FuncProto\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.RI "Get the \fBArchitecture\fP owning \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBcopy\fP (const \fBFuncProto\fP &op2)"
+.br
+.RI "Copy another function prototype\&. "
+.ti -1c
+.RI "void \fBcopyFlowEffects\fP (const \fBFuncProto\fP &op2)"
+.br
+.RI "Copy properties that affect data-flow\&. "
+.ti -1c
+.RI "void \fBgetPieces\fP (\fBPrototypePieces\fP &pieces) const"
+.br
+.RI "Get the raw pieces of the prototype\&. "
+.ti -1c
+.RI "void \fBsetPieces\fP (const \fBPrototypePieces\fP &pieces)"
+.br
+.RI "Set \fBthis\fP prototype based on raw pieces\&. "
+.ti -1c
+.RI "void \fBsetScope\fP (\fBScope\fP *s, const \fBAddress\fP &startpoint)"
+.br
+.RI "Set a backing symbol \fBScope\fP for \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBsetInternal\fP (\fBProtoModel\fP *m, \fBDatatype\fP *vt)"
+.br
+.RI "Set internal backing storage for \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBsetModel\fP (\fBProtoModel\fP *m)"
+.br
+.RI "Set the prototype model for \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBhasModel\fP (void) const"
+.br
+.RI "Does \fBthis\fP prototype have a model\&. "
+.ti -1c
+.RI "bool \fBhasMatchingModel\fP (const \fBFuncProto\fP *op2) const"
+.br
+.RI "Does \fBthis\fP have a matching model\&. "
+.ti -1c
+.RI "bool \fBhasMatchingModel\fP (const \fBProtoModel\fP *op2) const"
+.br
+.RI "Does \fBthis\fP use the given model\&. "
+.ti -1c
+.RI "const string & \fBgetModelName\fP (void) const"
+.br
+.RI "Get the prototype model name\&. "
+.ti -1c
+.RI "int4 \fBgetModelExtraPop\fP (void) const"
+.br
+.RI "Get the \fIextrapop\fP of the prototype model\&. "
+.ti -1c
+.RI "bool \fBisInputLocked\fP (void) const"
+.br
+.RI "Are input data-types locked\&. "
+.ti -1c
+.RI "bool \fBisOutputLocked\fP (void) const"
+.br
+.RI "Is the output data-type locked\&. "
+.ti -1c
+.RI "bool \fBisModelLocked\fP (void) const"
+.br
+.RI "Is the prototype model for \fBthis\fP locked\&. "
+.ti -1c
+.RI "bool \fBisUnknownModel\fP (void) const"
+.br
+.RI "Is prototype model officially 'unknown'\&. "
+.ti -1c
+.RI "bool \fBhasCustomStorage\fP (void) const"
+.br
+.RI "Is \fBthis\fP a 'custom' function prototype\&. "
+.ti -1c
+.RI "void \fBsetInputLock\fP (bool val)"
+.br
+.RI "Toggle the data-type lock on input parameters\&. "
+.ti -1c
+.RI "void \fBsetOutputLock\fP (bool val)"
+.br
+.RI "Toggle the data-type lock on the return value\&. "
+.ti -1c
+.RI "void \fBsetModelLock\fP (bool val)"
+.br
+.RI "Toggle the lock on the prototype model for \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBisInline\fP (void) const"
+.br
+.RI "Does this function get \fIin-lined\fP during decompilation\&. "
+.ti -1c
+.RI "void \fBsetInline\fP (bool val)"
+.br
+.RI "Toggle the \fIin-line\fP setting for functions with \fBthis\fP prototype\&. "
+.ti -1c
+.RI "int4 \fBgetInjectId\fP (void) const"
+.br
+.RI "Get the injection id associated with \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBisNoReturn\fP (void) const"
+.br
+.RI "Does a function with \fBthis\fP prototype never return\&. "
+.ti -1c
+.RI "void \fBsetNoReturn\fP (bool val)"
+.br
+.RI "Toggle the \fIno-return\fP setting for functions with \fBthis\fP prototype\&. "
+.ti -1c
+.RI "bool \fBhasThisPointer\fP (void) const"
+.br
+.RI "Is \fBthis\fP a prototype for a class method, taking a \fIthis\fP pointer\&. "
+.ti -1c
+.RI "void \fBsetThisPointer\fP (bool val)"
+.br
+.RI "Toggle the \fIthis-call\fP setting for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "bool \fBisConstructor\fP (void) const"
+.br
+.RI "Is \fBthis\fP prototype for a class constructor method\&. "
+.ti -1c
+.RI "void \fBsetConstructor\fP (bool val)"
+.br
+.RI "Toggle whether \fBthis\fP prototype is a \fIconstructor\fP method\&. "
+.ti -1c
+.RI "bool \fBisDestructor\fP (void) const"
+.br
+.RI "Is \fBthis\fP prototype for a class destructor method\&. "
+.ti -1c
+.RI "void \fBsetDestructor\fP (bool val)"
+.br
+.RI "Toggle whether \fBthis\fP prototype is a \fIdestructor\fP method\&. "
+.ti -1c
+.RI "bool \fBhasInputErrors\fP (void) const"
+.br
+.RI "Has \fBthis\fP prototype been marked as having an incorrect input parameter descriptions\&. "
+.ti -1c
+.RI "bool \fBhasOutputErrors\fP (void) const"
+.br
+.RI "Has \fBthis\fP prototype been marked as having an incorrect return value description\&. "
+.ti -1c
+.RI "void \fBsetInputErrors\fP (bool val)"
+.br
+.RI "Toggle the input error setting for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "void \fBsetOutputErrors\fP (bool val)"
+.br
+.RI "Toggle the output error setting for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "int4 \fBgetExtraPop\fP (void) const"
+.br
+.RI "Get the general \fIextrapop\fP setting for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "void \fBsetExtraPop\fP (int4 ep)"
+.br
+.RI "Set the general \fIextrapop\fP for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "int4 \fBgetInjectUponEntry\fP (void) const"
+.br
+.RI "Get any \fIupon-entry\fP injection id (or -1) "
+.ti -1c
+.RI "int4 \fBgetInjectUponReturn\fP (void) const"
+.br
+.RI "Get any \fIupon-return\fP injection id (or -1) "
+.ti -1c
+.RI "void \fBresolveExtraPop\fP (void)"
+.br
+.RI "Assuming \fBthis\fP prototype is locked, calculate the \fIextrapop\fP\&. "
+.ti -1c
+.RI "void \fBclearUnlockedInput\fP (void)"
+.br
+.RI "Clear input parameters that have not been locked\&. "
+.ti -1c
+.RI "void \fBclearUnlockedOutput\fP (void)"
+.br
+.RI "Clear the return value if it has not been locked\&. "
+.ti -1c
+.RI "void \fBclearInput\fP (void)"
+.br
+.RI "Clear all input parameters regardless of lock\&. "
+.ti -1c
+.RI "void \fBcancelInjectId\fP (void)"
+.br
+.RI "Turn-off any in-lining for this function\&. "
+.ti -1c
+.RI "void \fBresolveModel\fP (\fBParamActive\fP *active)"
+.br
+.RI "If \fBthis\fP has a \fImerged\fP model, pick the most likely model (from the merged set) "
+.ti -1c
+.RI "void \fBderiveInputMap\fP (\fBParamActive\fP *active) const"
+.br
+.RI "Given a list of input \fItrials\fP, derive the most likely inputs for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "void \fBderiveOutputMap\fP (\fBParamActive\fP *active) const"
+.br
+.RI "Given a list of output \fItrials\fP, derive the most likely return value for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "bool \fBcheckInputJoin\fP (const \fBAddress\fP &hiaddr, int4 hisz, const \fBAddress\fP &loaddr, int4 losz) const"
+.br
+.RI "Check if the given two input storage locations can represent a single logical parameter\&. "
+.ti -1c
+.RI "bool \fBcheckInputSplit\fP (const \fBAddress\fP &loc, int4 size, int4 splitpoint) const"
+.br
+.RI "Check if it makes sense to split a single storage location into two input parameters\&. "
+.ti -1c
+.RI "void \fBupdateInputTypes\fP (const vector< \fBVarnode\fP * > &triallist, \fBParamActive\fP *activeinput)"
+.br
+.RI "Update input parameters based on \fBVarnode\fP trials\&. "
+.ti -1c
+.RI "void \fBupdateInputNoTypes\fP (const vector< \fBVarnode\fP * > &triallist, \fBParamActive\fP *activeinput, \fBTypeFactory\fP *factory)"
+.br
+.RI "Update input parameters based on \fBVarnode\fP trials, but do not store the data-type\&. "
+.ti -1c
+.RI "void \fBupdateOutputTypes\fP (const vector< \fBVarnode\fP * > &triallist)"
+.br
+.RI "Update the return value based on \fBVarnode\fP trials\&. "
+.ti -1c
+.RI "void \fBupdateOutputNoTypes\fP (const vector< \fBVarnode\fP * > &triallist, \fBTypeFactory\fP *factory)"
+.br
+.RI "Update the return value based on \fBVarnode\fP trials, but don't store the data-type\&. "
+.ti -1c
+.RI "void \fBupdateAllTypes\fP (const vector< string > &namelist, const vector< \fBDatatype\fP * > &typelist, bool dtdtdt)"
+.br
+.RI "Set \fBthis\fP entire function prototype based on a list of names and data-types\&. "
+.ti -1c
+.RI "\fBProtoParameter\fP * \fBgetParam\fP (int4 i) const"
+.br
+.RI "Get the i-th input parameter\&. "
+.ti -1c
+.RI "void \fBremoveParam\fP (int4 i)"
+.br
+.RI "Remove the i-th input parameter\&. "
+.ti -1c
+.RI "int4 \fBnumParams\fP (void) const"
+.br
+.RI "Get the number of input parameters\&. "
+.ti -1c
+.RI "\fBProtoParameter\fP * \fBgetOutput\fP (void) const"
+.br
+.RI "Get the return value\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetOutputType\fP (void) const"
+.br
+.RI "Get the return value data-type\&. "
+.ti -1c
+.RI "const \fBRangeList\fP & \fBgetLocalRange\fP (void) const"
+.br
+.RI "Get the range of potential local stack variables\&. "
+.ti -1c
+.RI "const \fBRangeList\fP & \fBgetParamRange\fP (void) const"
+.br
+.RI "Get the range of potential stack parameters\&. "
+.ti -1c
+.RI "bool \fBisStackGrowsNegative\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if the stack grows toward smaller addresses\&. "
+.ti -1c
+.RI "bool \fBisDotdotdot\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP takes a variable number of arguments\&. "
+.ti -1c
+.RI "void \fBsetDotdotdot\fP (bool val)"
+.br
+.RI "Toggle whether \fBthis\fP takes variable arguments\&. "
+.ti -1c
+.RI "uint4 \fBhasEffect\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Calculate the effect \fBthis\fP has an a given storage location\&. "
+.ti -1c
+.RI "vector< \fBEffectRecord\fP >::const_iterator \fBeffectBegin\fP (void) const"
+.br
+.RI "Get iterator to front of \fBEffectRecord\fP list\&. "
+.ti -1c
+.RI "vector< \fBEffectRecord\fP >::const_iterator \fBeffectEnd\fP (void) const"
+.br
+.RI "Get iterator to end of \fBEffectRecord\fP list\&. "
+.ti -1c
+.RI "int4 \fBnumLikelyTrash\fP (void) const"
+.br
+.RI "Get the number of \fIlikely-trash\fP locations\&. "
+.ti -1c
+.RI "const \fBVarnodeData\fP & \fBgetLikelyTrash\fP (int4 i) const"
+.br
+.RI "Get the i-th \fIlikely-trash\fP location\&. "
+.ti -1c
+.RI "bool \fBpossibleInputParam\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Decide whether a given storage location could be an input parameter\&. "
+.ti -1c
+.RI "bool \fBpossibleOutputParam\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Decide whether a given storage location could be a return value\&. "
+.ti -1c
+.RI "int4 \fBgetMaxInputDelay\fP (void) const"
+.br
+.RI "Return the maximum heritage delay across all possible input parameters\&. "
+.ti -1c
+.RI "int4 \fBgetMaxOutputDelay\fP (void) const"
+.br
+.RI "Return the maximum heritage delay across all possible return values\&. "
+.ti -1c
+.RI "bool \fBunjustifiedInputParam\fP (const \fBAddress\fP &addr, int4 size, \fBVarnodeData\fP &res) const"
+.br
+.RI "Check if the given storage location looks like an \fIunjustified\fP input parameter\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBassumedInputExtension\fP (const \fBAddress\fP &addr, int4 size, \fBVarnodeData\fP &res) const"
+.br
+.RI "Get the type of extension and containing input parameter for the given storage\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBassumedOutputExtension\fP (const \fBAddress\fP &addr, int4 size, \fBVarnodeData\fP &res) const"
+.br
+.RI "Get the type of extension and containing return value location for the given storage\&. "
+.ti -1c
+.RI "bool \fBisCompatible\fP (const \fBFuncProto\fP &op2) const"
+.br
+.RI "Decide if \fBthis\fP can be safely restricted to match another prototype\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpacebase\fP (void) const"
+.br
+.RI "Get the \fIstack\fP address space\&. "
+.ti -1c
+.RI "void \fBprintRaw\fP (const string &funcname, ostream &s) const"
+.br
+.RI "Print \fBthis\fP prototype as a single line of text\&. "
+.ti -1c
+.RI "uint4 \fBgetComparableFlags\fP (void) const"
+.br
+.RI "Get the comparable properties of \fBthis\fP prototype\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save \fBthis\fP to an XML stream as a <prototype> tag\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.RI "Restore \fBthis\fP from an XML stream\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBparamShift\fP (int4 paramshift)"
+.br
+.RI "Add parameters to the front of the input parameter list\&. "
+.ti -1c
+.RI "bool \fBisParamshiftApplied\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetParamshiftApplied\fP (bool val)"
+.br
+.RI "Toggle whether a parameter shift has been applied\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBfunction\fP \fBprototype\fP\&. 
+
+A description of the parameters and return value for a specific function\&. Parameter descriptions include both source code features like \fIname\fP and \fIdata-type\fP but also give the storage location\&. Storage follows a specific parameter passing convention (\fBProtoModel\fP), although individual parameters may be customized\&. The prototype describes numerous properties related to calling the specific function:
+.IP "\(bu" 2
+Side-effects on non-parameter storage locations (like save registers)
+.IP "\(bu" 2
+P-code injection associated with the function (uponentry, uponreturn, callfixup)
+.IP "\(bu" 2
+Additional bytes (\fBextrapop\fP) popped from the stack by the function
+.IP "\(bu" 2
+Method flags (thiscall, is_constructor, is_destructor) 
+.PP
+
+.PP
+Definition at line 1055 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FuncProto::FuncProto (void)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 2784 of file fspec\&.cc\&.
+.SS "FuncProto::~FuncProto (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 2911 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBOpCode\fP FuncProto::assumedInputExtension (const \fBAddress\fP & addr, int4 size, \fBVarnodeData\fP & res) const\fC [inline]\fP"
+
+.PP
+Get the type of extension and containing input parameter for the given storage\&. If the given storage is properly contained within a normal parameter and the model typically extends a small value into the full container, pass back the full container and the type of extension\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the extension operator (INT_ZEXT INT_SEXT) or INT_COPY if there is no extension\&. INT_PIECE indicates the extension is determined by the specific prototype\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1279 of file fspec\&.hh\&.
+.SS "\fBOpCode\fP FuncProto::assumedOutputExtension (const \fBAddress\fP & addr, int4 size, \fBVarnodeData\fP & res) const\fC [inline]\fP"
+
+.PP
+Get the type of extension and containing return value location for the given storage\&. If the given storage is properly contained within a normal return value location and the model typically extends a small value into the full container, pass back the full container and the type of extension\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the extension operator (INT_ZEXT INT_SEXT) or INT_COPY if there is no extension\&. INT_PIECE indicates the extension is determined by the specific prototype\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1292 of file fspec\&.hh\&.
+.SS "void FuncProto::cancelInjectId (void)"
+
+.PP
+Turn-off any in-lining for this function\&. 
+.PP
+Definition at line 3018 of file fspec\&.cc\&.
+.SS "bool FuncProto::checkInputJoin (const \fBAddress\fP & hiaddr, int4 hisz, const \fBAddress\fP & loaddr, int4 losz) const\fC [inline]\fP"
+
+.PP
+Check if the given two input storage locations can represent a single logical parameter\&. For \fBthis\fP prototype, do the two (hi/lo) locations represent consecutive input parameter locations that can be replaced by a single logical parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhiaddr\fP is the address of the most significant part of the value 
+.br
+\fIhisz\fP is the size of the most significant part in bytes 
+.br
+\fIloaddr\fP is the address of the least significant part of the value 
+.br
+\fIlosz\fP is the size of the least significant part in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the two pieces can be joined 
+.RE
+.PP
+
+.PP
+Definition at line 1214 of file fspec\&.hh\&.
+.SS "bool FuncProto::checkInputSplit (const \fBAddress\fP & loc, int4 size, int4 splitpoint) const\fC [inline]\fP"
+
+.PP
+Check if it makes sense to split a single storage location into two input parameters\&. A storage location and split point is provided, implying two new storage locations\&. Does \fBthis\fP prototype allow these locations to be considered separate parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of provided storage location 
+.br
+\fIsize\fP is the size of the location in bytes 
+.br
+\fIsplitpoint\fP is the number of bytes to consider in the first (in address order) piece 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the storage location can be split 
+.RE
+.PP
+
+.PP
+Definition at line 1225 of file fspec\&.hh\&.
+.SS "void FuncProto::clearInput (void)"
+
+.PP
+Clear all input parameters regardless of lock\&. 
+.PP
+Definition at line 3011 of file fspec\&.cc\&.
+.SS "void FuncProto::clearUnlockedInput (void)"
+
+.PP
+Clear input parameters that have not been locked\&. 
+.PP
+Definition at line 2990 of file fspec\&.cc\&.
+.SS "void FuncProto::clearUnlockedOutput (void)"
+
+.PP
+Clear the return value if it has not been locked\&. 
+.PP
+Definition at line 2997 of file fspec\&.cc\&.
+.SS "void FuncProto::copy (const \fBFuncProto\fP & op2)"
+
+.PP
+Copy another function prototype\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other function prototype to copy into \fBthis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2794 of file fspec\&.cc\&.
+.SS "void FuncProto::copyFlowEffects (const \fBFuncProto\fP & op2)"
+
+.PP
+Copy properties that affect data-flow\&. 
+.PP
+Definition at line 2811 of file fspec\&.cc\&.
+.SS "void FuncProto::deriveInputMap (\fBParamActive\fP * active) const\fC [inline]\fP"
+
+.PP
+Given a list of input \fItrials\fP, derive the most likely inputs for \fBthis\fP prototype\&. Trials are sorted and marked as \fIused\fP or not\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the collection of \fBVarnode\fP input trials 
+.RE
+.PP
+
+.PP
+Definition at line 1195 of file fspec\&.hh\&.
+.SS "void FuncProto::deriveOutputMap (\fBParamActive\fP * active) const\fC [inline]\fP"
+
+.PP
+Given a list of output \fItrials\fP, derive the most likely return value for \fBthis\fP prototype\&. One trial (at most) is marked \fIused\fP and moved to the front of the list 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the collection of output trials 
+.RE
+.PP
+
+.PP
+Definition at line 1202 of file fspec\&.hh\&.
+.SS "vector< \fBEffectRecord\fP >::const_iterator FuncProto::effectBegin (void) const"
+
+.PP
+Get iterator to front of \fBEffectRecord\fP list\&. 
+.PP
+Definition at line 3207 of file fspec\&.cc\&.
+.SS "vector< \fBEffectRecord\fP >::const_iterator FuncProto::effectEnd (void) const"
+
+.PP
+Get iterator to end of \fBEffectRecord\fP list\&. 
+.PP
+Definition at line 3215 of file fspec\&.cc\&.
+.SS "\fBArchitecture\fP* FuncProto::getArch (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBArchitecture\fP owning \fBthis\fP\&. 
+.PP
+Definition at line 1086 of file fspec\&.hh\&.
+.SS "uint4 FuncProto::getComparableFlags (void) const\fC [inline]\fP"
+
+.PP
+Get the comparable properties of \fBthis\fP prototype\&. Get properties not including locking, error, and inlining flags\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the active set of flags for \fBthis\fP prototype 
+.RE
+.PP
+
+.PP
+Definition at line 1303 of file fspec\&.hh\&.
+.SS "int4 FuncProto::getExtraPop (void) const\fC [inline]\fP"
+
+.PP
+Get the general \fIextrapop\fP setting for \fBthis\fP prototype\&. 
+.PP
+Definition at line 1178 of file fspec\&.hh\&.
+.SS "int4 FuncProto::getInjectId (void) const\fC [inline]\fP"
+
+.PP
+Get the injection id associated with \fBthis\fP\&. A non-negative id indicates a \fIcall-fixup\fP is used to in-line function's with \fBthis\fP prototype\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the id value corresponding to the specific call-fixup or -1 if there is no call-fixup 
+.RE
+.PP
+
+.PP
+Definition at line 1128 of file fspec\&.hh\&.
+.SS "int4 FuncProto::getInjectUponEntry (void) const\fC [inline]\fP"
+
+.PP
+Get any \fIupon-entry\fP injection id (or -1) 
+.PP
+Definition at line 1180 of file fspec\&.hh\&.
+.SS "int4 FuncProto::getInjectUponReturn (void) const\fC [inline]\fP"
+
+.PP
+Get any \fIupon-return\fP injection id (or -1) 
+.PP
+Definition at line 1181 of file fspec\&.hh\&.
+.SS "const \fBVarnodeData\fP & FuncProto::getLikelyTrash (int4 i) const"
+
+.PP
+Get the i-th \fIlikely-trash\fP location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the storage location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the storage location which may hold a trash value 
+.RE
+.PP
+
+.PP
+Definition at line 3234 of file fspec\&.cc\&.
+.SS "const \fBRangeList\fP& FuncProto::getLocalRange (void) const\fC [inline]\fP"
+
+.PP
+Get the range of potential local stack variables\&. 
+.PP
+Definition at line 1238 of file fspec\&.hh\&.
+.SS "int4 FuncProto::getMaxInputDelay (void) const\fC [inline]\fP"
+
+.PP
+Return the maximum heritage delay across all possible input parameters\&. Depending on the address space, data-flow for a parameter may not be available until extra transform passes have completed\&. This method returns the number of passes that must occur before we can guarantee that all parameters have data-flow info\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the maximum number of passes across all input parameters in \fBthis\fP prototype 
+.RE
+.PP
+
+.PP
+Definition at line 1257 of file fspec\&.hh\&.
+.SS "int4 FuncProto::getMaxOutputDelay (void) const\fC [inline]\fP"
+
+.PP
+Return the maximum heritage delay across all possible return values\&. Depending on the address space, data-flow for a parameter may not be available until extra transform passes have completed\&. This method returns the number of passes that must occur before we can guarantee that any return value has data-flow info\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the maximum number of passes across all output parameters in \fBthis\fP prototype 
+.RE
+.PP
+
+.PP
+Definition at line 1265 of file fspec\&.hh\&.
+.SS "int4 FuncProto::getModelExtraPop (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIextrapop\fP of the prototype model\&. 
+.PP
+Definition at line 1099 of file fspec\&.hh\&.
+.SS "const string& FuncProto::getModelName (void) const\fC [inline]\fP"
+
+.PP
+Get the prototype model name\&. 
+.PP
+Definition at line 1098 of file fspec\&.hh\&.
+.SS "\fBProtoParameter\fP* FuncProto::getOutput (void) const\fC [inline]\fP"
+
+.PP
+Get the return value\&. 
+.PP
+Definition at line 1236 of file fspec\&.hh\&.
+.SS "\fBDatatype\fP* FuncProto::getOutputType (void) const\fC [inline]\fP"
+
+.PP
+Get the return value data-type\&. 
+.PP
+Definition at line 1237 of file fspec\&.hh\&.
+.SS "\fBProtoParameter\fP* FuncProto::getParam (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th input parameter\&. 
+.PP
+Definition at line 1233 of file fspec\&.hh\&.
+.SS "const \fBRangeList\fP& FuncProto::getParamRange (void) const\fC [inline]\fP"
+
+.PP
+Get the range of potential stack parameters\&. 
+.PP
+Definition at line 1239 of file fspec\&.hh\&.
+.SS "void FuncProto::getPieces (\fBPrototypePieces\fP & pieces) const"
+
+.PP
+Get the raw pieces of the prototype\&. Copy out the raw pieces of \fBthis\fP prototype as stand-alone objects, includings model, names, and data-types 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpieces\fP will hold the raw pieces 
+.RE
+.PP
+
+.PP
+Definition at line 2869 of file fspec\&.cc\&.
+.SS "\fBAddrSpace\fP* FuncProto::getSpacebase (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIstack\fP address space\&. 
+.PP
+Definition at line 1296 of file fspec\&.hh\&.
+.SS "bool FuncProto::hasCustomStorage (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a 'custom' function prototype\&. 
+.PP
+Definition at line 1105 of file fspec\&.hh\&.
+.SS "uint4 FuncProto::hasEffect (const \fBAddress\fP & addr, int4 size) const"
+
+.PP
+Calculate the effect \fBthis\fP has an a given storage location\&. For a storage location that is active before and after a call to a function with \fBthis\fP prototype, we determine the type of side-effect the function will have on the storage\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the type of side-effect: \fBEffectRecord::unaffected\fP, \fBEffectRecord::killedbycall\fP, etc\&. 
+.RE
+.PP
+
+.PP
+Definition at line 3198 of file fspec\&.cc\&.
+.SS "bool FuncProto::hasInputErrors (void) const\fC [inline]\fP"
+
+.PP
+Has \fBthis\fP prototype been marked as having an incorrect input parameter descriptions\&. 
+.PP
+Definition at line 1163 of file fspec\&.hh\&.
+.SS "bool FuncProto::hasMatchingModel (const \fBFuncProto\fP * op2) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP have a matching model\&. 
+.PP
+Definition at line 1096 of file fspec\&.hh\&.
+.SS "bool FuncProto::hasMatchingModel (const \fBProtoModel\fP * op2) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP use the given model\&. 
+.PP
+Definition at line 1097 of file fspec\&.hh\&.
+.SS "bool FuncProto::hasModel (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP prototype have a model\&. 
+.PP
+Definition at line 1094 of file fspec\&.hh\&.
+.SS "bool FuncProto::hasOutputErrors (void) const\fC [inline]\fP"
+
+.PP
+Has \fBthis\fP prototype been marked as having an incorrect return value description\&. 
+.PP
+Definition at line 1166 of file fspec\&.hh\&.
+.SS "bool FuncProto::hasThisPointer (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a prototype for a class method, taking a \fIthis\fP pointer\&. 
+.PP
+Definition at line 1139 of file fspec\&.hh\&.
+.SS "bool FuncProto::isCompatible (const \fBFuncProto\fP & op2) const"
+
+.PP
+Decide if \fBthis\fP can be safely restricted to match another prototype\&. Do \fBthis\fP and another given function prototype share enough of their model, that if we restrict \fBthis\fP to the other prototype, we know we won't miss data-flow\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other restricting prototype 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the two prototypes are compatible enough to restrict 
+.RE
+.PP
+
+.PP
+Definition at line 3346 of file fspec\&.cc\&.
+.SS "bool FuncProto::isConstructor (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP prototype for a class constructor method\&. 
+.PP
+Definition at line 1147 of file fspec\&.hh\&.
+.SS "bool FuncProto::isDestructor (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP prototype for a class destructor method\&. 
+.PP
+Definition at line 1155 of file fspec\&.hh\&.
+.SS "bool FuncProto::isDotdotdot (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP takes a variable number of arguments\&. 
+.PP
+Definition at line 1241 of file fspec\&.hh\&.
+.SS "bool FuncProto::isInline (void) const\fC [inline]\fP"
+
+.PP
+Does this function get \fIin-lined\fP during decompilation\&. 
+.PP
+Definition at line 1116 of file fspec\&.hh\&.
+.SS "bool FuncProto::isInputLocked (void) const"
+
+.PP
+Are input data-types locked\&. 
+.PP
+Definition at line 2918 of file fspec\&.cc\&.
+.SS "bool FuncProto::isModelLocked (void) const\fC [inline]\fP"
+
+.PP
+Is the prototype model for \fBthis\fP locked\&. 
+.PP
+Definition at line 1103 of file fspec\&.hh\&.
+.SS "bool FuncProto::isNoReturn (void) const\fC [inline]\fP"
+
+.PP
+Does a function with \fBthis\fP prototype never return\&. 
+.PP
+Definition at line 1131 of file fspec\&.hh\&.
+.SS "bool FuncProto::isOutputLocked (void) const\fC [inline]\fP"
+
+.PP
+Is the output data-type locked\&. 
+.PP
+Definition at line 1102 of file fspec\&.hh\&.
+.SS "bool FuncProto::isParamshiftApplied (void) const\fC [inline]\fP, \fC [protected]\fP"
+Has a parameter shift been applied 
+.PP
+Definition at line 1080 of file fspec\&.hh\&.
+.SS "bool FuncProto::isStackGrowsNegative (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if the stack grows toward smaller addresses\&. 
+.PP
+Definition at line 1240 of file fspec\&.hh\&.
+.SS "bool FuncProto::isUnknownModel (void) const\fC [inline]\fP"
+
+.PP
+Is prototype model officially 'unknown'\&. 
+.PP
+Definition at line 1104 of file fspec\&.hh\&.
+.SS "int4 FuncProto::numLikelyTrash (void) const"
+
+.PP
+Get the number of \fIlikely-trash\fP locations\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of individual storage locations 
+.RE
+.PP
+
+.PP
+Definition at line 3224 of file fspec\&.cc\&.
+.SS "int4 FuncProto::numParams (void) const\fC [inline]\fP"
+
+.PP
+Get the number of input parameters\&. 
+.PP
+Definition at line 1235 of file fspec\&.hh\&.
+.SS "void FuncProto::paramShift (int4 paramshift)\fC [protected]\fP"
+
+.PP
+Add parameters to the front of the input parameter list\&. Prepend the indicated number of input parameters to \fBthis\fP\&. The new parameters have a data-type of xunknown4\&. If they were originally locked, the existing parameters are preserved\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparamshift\fP is the number of parameters to add (must be >0) 
+.RE
+.PP
+
+.PP
+Definition at line 2711 of file fspec\&.cc\&.
+.SS "bool FuncProto::possibleInputParam (const \fBAddress\fP & addr, int4 size) const"
+
+.PP
+Decide whether a given storage location could be an input parameter\&. If the input is locked, check if the location matches one of the current parameters\&. Otherwise, check if the location \fIcould\fP be a parameter based on the prototype model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage location 
+.br
+\fIsize\fP is the number of bytes in the storage 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBfalse\fP if the location is definitely not an input parameter 
+.RE
+.PP
+
+.PP
+Definition at line 3250 of file fspec\&.cc\&.
+.SS "bool FuncProto::possibleOutputParam (const \fBAddress\fP & addr, int4 size) const"
+
+.PP
+Decide whether a given storage location could be a return value\&. If the output is locked, check if the location matches the current return value\&. Otherwise, check if the location \fIcould\fP be a return value based on the prototype model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage location 
+.br
+\fIsize\fP is the number of bytes in the storage 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBfalse\fP if the location is definitely not the return value 
+.RE
+.PP
+
+.PP
+Definition at line 3282 of file fspec\&.cc\&.
+.SS "void FuncProto::printRaw (const string & funcname, ostream & s) const"
+
+.PP
+Print \fBthis\fP prototype as a single line of text\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfuncname\fP is an identifier of the function using \fBthis\fP prototype 
+.br
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 3387 of file fspec\&.cc\&.
+.SS "void FuncProto::removeParam (int4 i)\fC [inline]\fP"
+
+.PP
+Remove the i-th input parameter\&. 
+.PP
+Definition at line 1234 of file fspec\&.hh\&.
+.SS "void FuncProto::resolveExtraPop (void)"
+
+.PP
+Assuming \fBthis\fP prototype is locked, calculate the \fIextrapop\fP\&. If \fIextrapop\fP is unknown and \fBthis\fP prototype is locked, try to directly calculate what the \fIextrapop\fP should be\&. This is really only designed to work with 32-bit x86 binaries\&. 
+.PP
+Definition at line 2967 of file fspec\&.cc\&.
+.SS "void FuncProto::resolveModel (\fBParamActive\fP * active)"
+
+.PP
+If \fBthis\fP has a \fImerged\fP model, pick the most likely model (from the merged set) The given parameter trials are used to pick from among the merged ProtoModels and \fBthis\fP prototype is changed (specialized) to the pick 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the set of parameter trials to evaluate with 
+.RE
+.PP
+
+.PP
+Definition at line 2773 of file fspec\&.cc\&.
+.SS "void FuncProto::restoreXml (const \fBElement\fP * el, \fBArchitecture\fP * glb)"
+
+.PP
+Restore \fBthis\fP from an XML stream\&. The backing store for the parameters must already be established using either setStore() or \fBsetInternal()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <prototype> XML element 
+.br
+\fIglb\fP is the \fBArchitecture\fP owning the prototype 
+.RE
+.PP
+
+.PP
+Definition at line 3517 of file fspec\&.cc\&.
+.SS "void FuncProto::saveXml (ostream & s) const"
+
+.PP
+Save \fBthis\fP to an XML stream as a <prototype> tag\&. Save everything under the control of this prototype, which may \fInot\fP include input parameters, as these are typically controlled by the function's symbol table scope\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 3416 of file fspec\&.cc\&.
+.SS "void FuncProto::setConstructor (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fBthis\fP prototype is a \fIconstructor\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if \fBthis\fP is a constructor, \fBfalse\fP otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 1152 of file fspec\&.hh\&.
+.SS "void FuncProto::setDestructor (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fBthis\fP prototype is a \fIdestructor\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if \fBthis\fP is a destructor 
+.RE
+.PP
+
+.PP
+Definition at line 1160 of file fspec\&.hh\&.
+.SS "void FuncProto::setDotdotdot (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fBthis\fP takes variable arguments\&. 
+.PP
+Definition at line 1242 of file fspec\&.hh\&.
+.SS "void FuncProto::setExtraPop (int4 ep)\fC [inline]\fP"
+
+.PP
+Set the general \fIextrapop\fP for \fBthis\fP prototype\&. 
+.PP
+Definition at line 1179 of file fspec\&.hh\&.
+.SS "void FuncProto::setInline (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the \fIin-line\fP setting for functions with \fBthis\fP prototype\&. In-lining can be based on a \fIcall-fixup\fP, or the full body of the function can be in-lined\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if in-lining should be performed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1122 of file fspec\&.hh\&.
+.SS "void FuncProto::setInputErrors (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the input error setting for \fBthis\fP prototype\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if input parameters should be marked as in error 
+.RE
+.PP
+
+.PP
+Definition at line 1171 of file fspec\&.hh\&.
+.SS "void FuncProto::setInputLock (bool val)"
+
+.PP
+Toggle the data-type lock on input parameters\&. The lock on the data-type of input parameters is set as specified\&. A \fBtrue\fP value indicates that future analysis will not change the number of input parameters or their data-type\&. Zero parameters or \fIvoid\fP can be locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to indicate a lock, \fBfalse\fP for unlocked 
+.RE
+.PP
+
+.PP
+Definition at line 2933 of file fspec\&.cc\&.
+.SS "void FuncProto::setInternal (\fBProtoModel\fP * m, \fBDatatype\fP * vt)"
+
+.PP
+Set internal backing storage for \fBthis\fP\&. A prototype model is set, and any parameters added to \fBthis\fP during analysis will be backed internally\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the prototype model to set 
+.br
+\fIvt\fP is the default \fIvoid\fP data-type to use if the return-value remains unassigned 
+.RE
+.PP
+
+.PP
+Definition at line 2903 of file fspec\&.cc\&.
+.SS "void FuncProto::setModel (\fBProtoModel\fP * m)"
+
+.PP
+Set the prototype model for \fBthis\fP\&. Establish a specific prototype model for \fBthis\fP function prototype\&. Some basic properties are inherited from the model, otherwise parameters are unchanged\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the new prototype model to set 
+.RE
+.PP
+
+.PP
+Definition at line 2823 of file fspec\&.cc\&.
+.SS "void FuncProto::setModelLock (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the lock on the prototype model for \fBthis\fP\&. The prototype model can be locked while still leaving parameters unlocked\&. Parameter recovery will follow the rules of the locked model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to indicate a lock, \fBfalse\fP for unlocked 
+.RE
+.PP
+
+.PP
+Definition at line 1114 of file fspec\&.hh\&.
+.SS "void FuncProto::setNoReturn (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the \fIno-return\fP setting for functions with \fBthis\fP prototype\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to treat the function as never returning 
+.RE
+.PP
+
+.PP
+Definition at line 1136 of file fspec\&.hh\&.
+.SS "void FuncProto::setOutputErrors (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the output error setting for \fBthis\fP prototype\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if return value should be marked as in error 
+.RE
+.PP
+
+.PP
+Definition at line 1176 of file fspec\&.hh\&.
+.SS "void FuncProto::setOutputLock (bool val)"
+
+.PP
+Toggle the data-type lock on the return value\&. The lock of the data-type of the return value is set as specified\&. A \fBtrue\fP value indicates that future analysis will not change the presence of or the data-type of the return value\&. A \fIvoid\fP return value can be locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to indicate a lock, \fBfalse\fP for unlocked 
+.RE
+.PP
+
+.PP
+Definition at line 2954 of file fspec\&.cc\&.
+.SS "void FuncProto::setParamshiftApplied (bool val)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Toggle whether a parameter shift has been applied\&. 
+.PP
+Definition at line 1082 of file fspec\&.hh\&.
+.SS "void FuncProto::setPieces (const \fBPrototypePieces\fP & pieces)"
+
+.PP
+Set \fBthis\fP prototype based on raw pieces\&. The full function prototype is (re)set from a model, names, and data-types The new input and output parameters are both assumed to be locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpieces\fP is the raw collection of names and data-types 
+.RE
+.PP
+
+.PP
+Definition at line 2847 of file fspec\&.cc\&.
+.SS "void FuncProto::setScope (\fBScope\fP * s, const \fBAddress\fP & startpoint)"
+
+.PP
+Set a backing symbol \fBScope\fP for \fBthis\fP\&. Input parameters are set based on an existing function \fBScope\fP and if there is no prototype model the default model is set\&. Parameters that are added to \fBthis\fP during analysis will automatically be reflected in the symbol table\&. This should only be called during initialization of \fBthis\fP prototype\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the \fBScope\fP to set 
+.br
+\fIstartpoint\fP is a usepoint to associate with the parameters 
+.RE
+.PP
+
+.PP
+Definition at line 2891 of file fspec\&.cc\&.
+.SS "void FuncProto::setThisPointer (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the \fIthis-call\fP setting for \fBthis\fP prototype\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if \fBthis\fP prototype uses a \fIthis\fP pointer 
+.RE
+.PP
+
+.PP
+Definition at line 1144 of file fspec\&.hh\&.
+.SS "bool FuncProto::unjustifiedInputParam (const \fBAddress\fP & addr, int4 size, \fBVarnodeData\fP & res) const"
+
+.PP
+Check if the given storage location looks like an \fIunjustified\fP input parameter\&. The storage for a value may be contained in a normal parameter location but be unjustified within that container, i\&.e\&. the least significant bytes are not being used\&. If this is the case, pass back the full parameter location and return \fBtrue\fP\&. If the input is locked, checking is againt the set parameters, otherwise the check is against the prototype model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the full parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the given storage is unjustified within its parameter container 
+.RE
+.PP
+
+.PP
+Definition at line 3310 of file fspec\&.cc\&.
+.SS "void FuncProto::updateAllTypes (const vector< string > & namelist, const vector< \fBDatatype\fP * > & typelist, bool dtdtdt)"
+
+.PP
+Set \fBthis\fP entire function prototype based on a list of names and data-types\&. Prototype information is provided as separate lists of names and data-types, where the first entry corresponds to the output parameter (return value) and the remaining entries correspond to input parameters\&. Storage locations and hidden return parameters are calculated, creating a complete function protototype\&. Existing locks are overridden\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInamelist\fP is the list of parameter names 
+.br
+\fItypelist\fP is the list of data-types 
+.br
+\fIdtdtdt\fP is \fBtrue\fP if the new prototype accepts variable argument lists 
+.RE
+.PP
+
+.PP
+Definition at line 3159 of file fspec\&.cc\&.
+.SS "void FuncProto::updateInputNoTypes (const vector< \fBVarnode\fP * > & triallist, \fBParamActive\fP * activeinput, \fBTypeFactory\fP * factory)"
+
+.PP
+Update input parameters based on \fBVarnode\fP trials, but do not store the data-type\&. This is accomplished in the same way as if there were data-types but instead of pulling a data-type from the \fBVarnode\fP, only the size is used\&. Undefined data-types are pulled from the given \fBTypeFactory\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriallist\fP is the list of Varnodes 
+.br
+\fIactiveinput\fP is the trial container 
+.br
+\fIfactory\fP is the given \fBTypeFactory\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3067 of file fspec\&.cc\&.
+.SS "void FuncProto::updateInputTypes (const vector< \fBVarnode\fP * > & triallist, \fBParamActive\fP * activeinput)"
+
+.PP
+Update input parameters based on \fBVarnode\fP trials\&. If the input parameters are locked, don't do anything\&. Otherwise, given a list of Varnodes and their associated trial information, create an input parameter for each trial in order, grabbing data-type information from the \fBVarnode\fP\&. Any old input parameters are cleared\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriallist\fP is the list of Varnodes 
+.br
+\fIactiveinput\fP is the trial container 
+.RE
+.PP
+
+.PP
+Definition at line 3033 of file fspec\&.cc\&.
+.SS "void FuncProto::updateOutputNoTypes (const vector< \fBVarnode\fP * > & triallist, \fBTypeFactory\fP * factory)"
+
+.PP
+Update the return value based on \fBVarnode\fP trials, but don't store the data-type\&. If the output parameter is locked, don't do anything\&. Otherwise, given a list of (at most 1) \fBVarnode\fP, create a return value, grabbing size information from the \fBVarnode\fP\&. An undefined data-type is created from the given \fBTypeFactory\fP\&. Any old return value is removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriallist\fP is the list of Varnodes 
+.br
+\fIfactory\fP is the given \fBTypeFactory\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3135 of file fspec\&.cc\&.
+.SS "void FuncProto::updateOutputTypes (const vector< \fBVarnode\fP * > & triallist)"
+
+.PP
+Update the return value based on \fBVarnode\fP trials\&. If the output parameter is locked, don't do anything\&. Otherwise, given a list of (at most 1) \fBVarnode\fP, create a return value, grabbing data-type information from the \fBVarnode\fP\&. Any old return value is removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriallist\fP is the list of Varnodes 
+.RE
+.PP
+
+.PP
+Definition at line 3099 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

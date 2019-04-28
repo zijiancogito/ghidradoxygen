@@ -1,0 +1,63 @@
+.TH "ExecutablePcodeGhidra" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ExecutablePcodeGhidra \- A \fIp-code\fP \fIscript\fP that uses a Ghidra client to generate the p-code ops\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <inject_ghidra\&.hh>\fP
+.PP
+Inherits \fBExecutablePcode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExecutablePcodeGhidra\fP (\fBArchitecture\fP *g, const string &src, const string &nm)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBinject\fP (\fBInjectContext\fP &context, \fBPcodeEmit\fP &emit) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.ti -1c
+.RI "virtual void \fBprintTemplate\fP (ostream &s) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fIp-code\fP \fIscript\fP that uses a Ghidra client to generate the p-code ops\&. 
+
+The <body> section of any p-code script encountered in \&.cspec or \&.pspec files is ignored\&. Instead the emulator is initialized by fetching compiled p-code from the Ghidra client\&. 
+.PP
+Definition at line 68 of file inject_ghidra\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ExecutablePcodeGhidra::ExecutablePcodeGhidra (\fBArchitecture\fP * g, const string & src, const string & nm)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 106 of file inject_ghidra\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ExecutablePcodeGhidra::inject (\fBInjectContext\fP & context, \fBPcodeEmit\fP & emit) const\fC [virtual]\fP"
+
+.PP
+Definition at line 111 of file inject_ghidra\&.cc\&.
+.SS "void ExecutablePcodeGhidra::printTemplate (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Definition at line 143 of file inject_ghidra\&.cc\&.
+.SS "void ExecutablePcodeGhidra::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Definition at line 136 of file inject_ghidra\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,59 @@
+.TH "FlushNative" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FlushNative \- Command to \fBflush\fP all symbols associated with a Program (executable)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBGhidraCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)"
+.br
+.RI "Perform the action of the command\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBres\fP"
+.br
+.RI "Success status returned to the client (0=success) "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Command to \fBflush\fP all symbols associated with a Program (executable) 
+
+Clear out any \fBSymbol\fP, \fBScope\fP, \fBDatatype\fP, and \fBFuncdata\fP objects that have accumulated in the symbol table\&. This lets the decompiler keep a light-weight sync between its view of symbols and the Ghidra client's\&. Subsequent decompilation will simply (re)fetch any symbols as needed\&. The command expects a single string parameter encoding the id of the program to flush\&. 
+.PP
+Definition at line 135 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void FlushNative::rawAction (void)\fC [virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implements \fBGhidraCommand\fP\&.
+.PP
+Definition at line 240 of file ghidra_process\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 FlushNative::res"
+
+.PP
+Success status returned to the client (0=success) 
+.PP
+Definition at line 138 of file ghidra_process\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

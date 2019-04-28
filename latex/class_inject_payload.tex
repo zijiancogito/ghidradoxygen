@@ -1,0 +1,460 @@
+\hypertarget{class_inject_payload}{}\section{Inject\+Payload Class Reference}
+\label{class_inject_payload}\index{InjectPayload@{InjectPayload}}
+
+
+An active container for a set of p-\/code operations that can be injected into data-\/flow.  
+
+
+
+
+{\ttfamily \#include $<$pcodeinject.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7ad5a56c387d306b588447302bfc5191bc}{C\+A\+L\+L\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE}} = 1, 
+\mbox{\hyperlink{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7af515674963cd64df082ce77405b16ab0}{C\+A\+L\+L\+O\+T\+H\+E\+R\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE}} = 2, 
+\mbox{\hyperlink{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7a2b4614762d55c0714e810f44edd13f3b}{C\+A\+L\+L\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+T\+Y\+PE}} = 3, 
+\mbox{\hyperlink{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7af8896eeef2d6363d716fe654995671b8}{E\+X\+E\+C\+U\+T\+A\+B\+L\+E\+P\+C\+O\+D\+E\+\_\+\+T\+Y\+PE}} = 4
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_inject_payload_a9156655ff65b12ea653d9ef954115022}{Inject\+Payload}} (const string \&nm, int4 tp)
+\begin{DoxyCompactList}\small\item\em Construct for use with restore\+Xml. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_inject_payload_ab4d3acac3d46171c7d51f40c835d65c3}{get\+Param\+Shift}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of parameters shifted. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_inject_payload_ab8b97f98305f0175df23f2b9733b0afa}{is\+Dynamic}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if p-\/code in the injection is generated dynamically. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_inject_payload_ab617ea269804abb9b752af9f659811e5}{size\+Input}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the number of input parameters. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_inject_payload_aca3efb5572ec0a76732554ee41600193}{size\+Output}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the number of output parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}} \& \mbox{\hyperlink{class_inject_payload_a1ad1b32858dcd08f0dd006ec000ace9d}{get\+Input}} (int4 i)
+\begin{DoxyCompactList}\small\item\em Get the i-\/th input parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}} \& \mbox{\hyperlink{class_inject_payload_a4d125937d17ce0d4016431b1b3dc5558}{get\+Output}} (int4 i)
+\begin{DoxyCompactList}\small\item\em Get the i-\/th output parameter. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_inject_payload_a01cbbcc5ac7cb4b1c4e08e9403337745}{$\sim$\+Inject\+Payload}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_inject_payload_aca9c322377f54e8e45c9a79e44ce0ff9}{inject}} (\mbox{\hyperlink{class_inject_context}{Inject\+Context}} \&context, \mbox{\hyperlink{class_pcode_emit}{Pcode\+Emit}} \&emit) const =0
+\item 
+virtual void \mbox{\hyperlink{class_inject_payload_a19811abba789abc6bc1d3b2322709255}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} payload from an X\+ML stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_inject_payload_ad62729e96e57402de0917f2ff07477c2}{print\+Template}} (ostream \&s) const =0
+\begin{DoxyCompactList}\small\item\em Print the p-\/code ops of the injection to a stream (for debugging) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_inject_payload_a79f43ab6aabb0ffc2800d500a975ff19}{get\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the name of the injection. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_inject_payload_af79c55beb971c8ce0a9f0740ca33503e}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the type of injection (C\+A\+L\+L\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, C\+A\+L\+L\+O\+T\+H\+E\+R\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, etc.) \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_inject_payload_aee01fa71c361b38625bdc15badaee7bc}{get\+Source}} (void) const =0
+\begin{DoxyCompactList}\small\item\em Return a string describing the {\itshape source} of the injection (.cspec, prototype model, etc.) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_inject_payload_ad9ff2141b50a358375dd5cd5df63c3f0}{order\+Parameters}} (void)
+\begin{DoxyCompactList}\small\item\em Assign an index to parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_inject_payload_a839a640c9f475f0ddc964e4038169b47}{read\+Parameter}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, string \&\mbox{\hyperlink{class_inject_payload_a709732dc6d429767b1ef8046cc0f5573}{name}}, uint4 \&size)
+\begin{DoxyCompactList}\small\item\em Read in an $<$input$>$ or $<$output$>$ X\+ML tag describing an injection parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_inject_payload_a709732dc6d429767b1ef8046cc0f5573}{name}}
+\begin{DoxyCompactList}\small\item\em Formal name of the payload. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_inject_payload_a70d3a35fd2195fe1fb671e6280780e5b}{type}}
+\begin{DoxyCompactList}\small\item\em Type of this payload\+: C\+A\+L\+L\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, C\+A\+L\+L\+O\+T\+H\+E\+R\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, etc. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_inject_payload_a17ef3ad9e289596c2ea756b44f03e043}{dynamic}}
+\begin{DoxyCompactList}\small\item\em True if the injection is generated dynamically. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_inject_payload_a0112de01e5a392fe5903bf3868d2e34b}{paramshift}}
+\begin{DoxyCompactList}\small\item\em Number of parameters shifted in the original call. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}} $>$ \mbox{\hyperlink{class_inject_payload_a60b9ce0c3f608f1a9be223342948fa07}{inputlist}}
+\begin{DoxyCompactList}\small\item\em List of input parameters to this payload. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}} $>$ \mbox{\hyperlink{class_inject_payload_adc1cb331a8229c5fd1dd8000cc6da97c}{output}}
+\begin{DoxyCompactList}\small\item\em List of output parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An active container for a set of p-\/code operations that can be injected into data-\/flow. 
+
+This is an abstract base class. Derived classes manage details of how the p-\/code is stored. The methods provide access to the input/output parameter information, and the main injection is performed with \mbox{\hyperlink{class_inject_payload_aca9c322377f54e8e45c9a79e44ce0ff9}{inject()}}. 
+
+Definition at line 78 of file pcodeinject.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7}\label{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CALLFIXUP\_TYPE@{CALLFIXUP\_TYPE}!InjectPayload@{InjectPayload}}\index{InjectPayload@{InjectPayload}!CALLFIXUP\_TYPE@{CALLFIXUP\_TYPE}}}\mbox{\Hypertarget{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7ad5a56c387d306b588447302bfc5191bc}\label{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7ad5a56c387d306b588447302bfc5191bc}} 
+C\+A\+L\+L\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE&Injection that replaces a C\+A\+LL. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CALLOTHERFIXUP\_TYPE@{CALLOTHERFIXUP\_TYPE}!InjectPayload@{InjectPayload}}\index{InjectPayload@{InjectPayload}!CALLOTHERFIXUP\_TYPE@{CALLOTHERFIXUP\_TYPE}}}\mbox{\Hypertarget{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7af515674963cd64df082ce77405b16ab0}\label{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7af515674963cd64df082ce77405b16ab0}} 
+C\+A\+L\+L\+O\+T\+H\+E\+R\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE&Injection that replaces a user-\/defined p-\/code op, C\+A\+L\+L\+O\+T\+H\+ER. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CALLMECHANISM\_TYPE@{CALLMECHANISM\_TYPE}!InjectPayload@{InjectPayload}}\index{InjectPayload@{InjectPayload}!CALLMECHANISM\_TYPE@{CALLMECHANISM\_TYPE}}}\mbox{\Hypertarget{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7a2b4614762d55c0714e810f44edd13f3b}\label{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7a2b4614762d55c0714e810f44edd13f3b}} 
+C\+A\+L\+L\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+T\+Y\+PE&Injection to patch up data-\/flow around the caller/callee boundary. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXECUTABLEPCODE\_TYPE@{EXECUTABLEPCODE\_TYPE}!InjectPayload@{InjectPayload}}\index{InjectPayload@{InjectPayload}!EXECUTABLEPCODE\_TYPE@{EXECUTABLEPCODE\_TYPE}}}\mbox{\Hypertarget{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7af8896eeef2d6363d716fe654995671b8}\label{class_inject_payload_aa532c3794a8b6038bbfa504ace6d4ad7af8896eeef2d6363d716fe654995671b8}} 
+E\+X\+E\+C\+U\+T\+A\+B\+L\+E\+P\+C\+O\+D\+E\+\_\+\+T\+Y\+PE&Injection running as a stand-\/alone p-\/code script. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 80 of file pcodeinject.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_inject_payload_a9156655ff65b12ea653d9ef954115022}\label{class_inject_payload_a9156655ff65b12ea653d9ef954115022}} 
+\index{InjectPayload@{InjectPayload}!InjectPayload@{InjectPayload}}
+\index{InjectPayload@{InjectPayload}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{InjectPayload()}{InjectPayload()}}
+{\footnotesize\ttfamily Inject\+Payload\+::\+Inject\+Payload (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{int4}]{tp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct for use with restore\+Xml. 
+
+
+
+Definition at line 96 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_a01cbbcc5ac7cb4b1c4e08e9403337745}\label{class_inject_payload_a01cbbcc5ac7cb4b1c4e08e9403337745}} 
+\index{InjectPayload@{InjectPayload}!````~InjectPayload@{$\sim$InjectPayload}}
+\index{````~InjectPayload@{$\sim$InjectPayload}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{$\sim$InjectPayload()}{~InjectPayload()}}
+{\footnotesize\ttfamily virtual Inject\+Payload\+::$\sim$\+Inject\+Payload (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 103 of file pcodeinject.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_inject_payload_a1ad1b32858dcd08f0dd006ec000ace9d}\label{class_inject_payload_a1ad1b32858dcd08f0dd006ec000ace9d}} 
+\index{InjectPayload@{InjectPayload}!getInput@{getInput}}
+\index{getInput@{getInput}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{getInput()}{getInput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}}\& Inject\+Payload\+::get\+Input (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th input parameter. 
+
+
+
+Definition at line 101 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_a79f43ab6aabb0ffc2800d500a975ff19}\label{class_inject_payload_a79f43ab6aabb0ffc2800d500a975ff19}} 
+\index{InjectPayload@{InjectPayload}!getName@{getName}}
+\index{getName@{getName}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Inject\+Payload\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the name of the injection. 
+
+
+
+Definition at line 118 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_a4d125937d17ce0d4016431b1b3dc5558}\label{class_inject_payload_a4d125937d17ce0d4016431b1b3dc5558}} 
+\index{InjectPayload@{InjectPayload}!getOutput@{getOutput}}
+\index{getOutput@{getOutput}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{getOutput()}{getOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}}\& Inject\+Payload\+::get\+Output (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th output parameter. 
+
+
+
+Definition at line 102 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_ab4d3acac3d46171c7d51f40c835d65c3}\label{class_inject_payload_ab4d3acac3d46171c7d51f40c835d65c3}} 
+\index{InjectPayload@{InjectPayload}!getParamShift@{getParamShift}}
+\index{getParamShift@{getParamShift}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{getParamShift()}{getParamShift()}}
+{\footnotesize\ttfamily int4 Inject\+Payload\+::get\+Param\+Shift (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of parameters shifted. 
+
+
+
+Definition at line 97 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_aee01fa71c361b38625bdc15badaee7bc}\label{class_inject_payload_aee01fa71c361b38625bdc15badaee7bc}} 
+\index{InjectPayload@{InjectPayload}!getSource@{getSource}}
+\index{getSource@{getSource}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{getSource()}{getSource()}}
+{\footnotesize\ttfamily virtual string Inject\+Payload\+::get\+Source (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Return a string describing the {\itshape source} of the injection (.cspec, prototype model, etc.) 
+
+\mbox{\Hypertarget{class_inject_payload_af79c55beb971c8ce0a9f0740ca33503e}\label{class_inject_payload_af79c55beb971c8ce0a9f0740ca33503e}} 
+\index{InjectPayload@{InjectPayload}!getType@{getType}}
+\index{getType@{getType}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily int4 Inject\+Payload\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the type of injection (C\+A\+L\+L\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, C\+A\+L\+L\+O\+T\+H\+E\+R\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, etc.) 
+
+
+
+Definition at line 119 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_aca9c322377f54e8e45c9a79e44ce0ff9}\label{class_inject_payload_aca9c322377f54e8e45c9a79e44ce0ff9}} 
+\index{InjectPayload@{InjectPayload}!inject@{inject}}
+\index{inject@{inject}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{inject()}{inject()}}
+{\footnotesize\ttfamily virtual void Inject\+Payload\+::inject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_inject_context}{Inject\+Context}} \&}]{context,  }\item[{\mbox{\hyperlink{class_pcode_emit}{Pcode\+Emit}} \&}]{emit }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Perform the injection of {\bfseries{this}} payload into data-\/flow.
+
+P-\/code operations representing {\bfseries{this}} payload are copied into the controlling analysis context. The provided \mbox{\hyperlink{class_pcode_emit}{Pcode\+Emit}} object dictates exactly where the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} and \mbox{\hyperlink{class_varnode}{Varnode}} objects are inserted and to what container. An \mbox{\hyperlink{class_inject_context}{Inject\+Context}} object specifies how placeholder elements become concrete Varnodes in the appropriate context. 
+\begin{DoxyParams}{Parameters}
+{\em context} & is the provided Inject\+Conject object \\
+\hline
+{\em emit} & is the provovided \mbox{\hyperlink{class_pcode_emit}{Pcode\+Emit}} object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_inject_payload_ab8b97f98305f0175df23f2b9733b0afa}\label{class_inject_payload_ab8b97f98305f0175df23f2b9733b0afa}} 
+\index{InjectPayload@{InjectPayload}!isDynamic@{isDynamic}}
+\index{isDynamic@{isDynamic}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{isDynamic()}{isDynamic()}}
+{\footnotesize\ttfamily bool Inject\+Payload\+::is\+Dynamic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if p-\/code in the injection is generated dynamically. 
+
+
+
+Definition at line 98 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_ad9ff2141b50a358375dd5cd5df63c3f0}\label{class_inject_payload_ad9ff2141b50a358375dd5cd5df63c3f0}} 
+\index{InjectPayload@{InjectPayload}!orderParameters@{orderParameters}}
+\index{orderParameters@{orderParameters}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{orderParameters()}{orderParameters()}}
+{\footnotesize\ttfamily void Inject\+Payload\+::order\+Parameters (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Assign an index to parameters. 
+
+Input and output parameters are assigned a unique index. 
+
+Definition at line 44 of file pcodeinject.\+cc.
+
+\mbox{\Hypertarget{class_inject_payload_ad62729e96e57402de0917f2ff07477c2}\label{class_inject_payload_ad62729e96e57402de0917f2ff07477c2}} 
+\index{InjectPayload@{InjectPayload}!printTemplate@{printTemplate}}
+\index{printTemplate@{printTemplate}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{printTemplate()}{printTemplate()}}
+{\footnotesize\ttfamily virtual void Inject\+Payload\+::print\+Template (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Print the p-\/code ops of the injection to a stream (for debugging) 
+
+\mbox{\Hypertarget{class_inject_payload_a839a640c9f475f0ddc964e4038169b47}\label{class_inject_payload_a839a640c9f475f0ddc964e4038169b47}} 
+\index{InjectPayload@{InjectPayload}!readParameter@{readParameter}}
+\index{readParameter@{readParameter}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{readParameter()}{readParameter()}}
+{\footnotesize\ttfamily void Inject\+Payload\+::read\+Parameter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{string \&}]{name,  }\item[{uint4 \&}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Read in an $<$input$>$ or $<$output$>$ X\+ML tag describing an injection parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+{\em name} & is used to pass back the parameter name \\
+\hline
+{\em size} & is used to pass back the parameter size \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file pcodeinject.\+cc.
+
+\mbox{\Hypertarget{class_inject_payload_a19811abba789abc6bc1d3b2322709255}\label{class_inject_payload_a19811abba789abc6bc1d3b2322709255}} 
+\index{InjectPayload@{InjectPayload}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Inject\+Payload\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore {\bfseries{this}} payload from an X\+ML stream. 
+
+The base class version of this method restores from a $<$pcode$>$ tag. Derived classes may restore from a parent tag and then invoke the base class method. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 62 of file pcodeinject.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{class_inject_payload_a19811abba789abc6bc1d3b2322709255_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_inject_payload_a19811abba789abc6bc1d3b2322709255_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_inject_payload_ab617ea269804abb9b752af9f659811e5}\label{class_inject_payload_ab617ea269804abb9b752af9f659811e5}} 
+\index{InjectPayload@{InjectPayload}!sizeInput@{sizeInput}}
+\index{sizeInput@{sizeInput}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{sizeInput()}{sizeInput()}}
+{\footnotesize\ttfamily int4 Inject\+Payload\+::size\+Input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of input parameters. 
+
+
+
+Definition at line 99 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_aca3efb5572ec0a76732554ee41600193}\label{class_inject_payload_aca3efb5572ec0a76732554ee41600193}} 
+\index{InjectPayload@{InjectPayload}!sizeOutput@{sizeOutput}}
+\index{sizeOutput@{sizeOutput}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{sizeOutput()}{sizeOutput()}}
+{\footnotesize\ttfamily int4 Inject\+Payload\+::size\+Output (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of output parameters. 
+
+
+
+Definition at line 100 of file pcodeinject.\+hh.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_inject_payload_a17ef3ad9e289596c2ea756b44f03e043}\label{class_inject_payload_a17ef3ad9e289596c2ea756b44f03e043}} 
+\index{InjectPayload@{InjectPayload}!dynamic@{dynamic}}
+\index{dynamic@{dynamic}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{dynamic}{dynamic}}
+{\footnotesize\ttfamily bool Inject\+Payload\+::dynamic\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+True if the injection is generated dynamically. 
+
+
+
+Definition at line 89 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_a60b9ce0c3f608f1a9be223342948fa07}\label{class_inject_payload_a60b9ce0c3f608f1a9be223342948fa07}} 
+\index{InjectPayload@{InjectPayload}!inputlist@{inputlist}}
+\index{inputlist@{inputlist}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{inputlist}{inputlist}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}}$>$ Inject\+Payload\+::inputlist\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+List of input parameters to this payload. 
+
+
+
+Definition at line 91 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_a709732dc6d429767b1ef8046cc0f5573}\label{class_inject_payload_a709732dc6d429767b1ef8046cc0f5573}} 
+\index{InjectPayload@{InjectPayload}!name@{name}}
+\index{name@{name}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Inject\+Payload\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Formal name of the payload. 
+
+
+
+Definition at line 87 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_adc1cb331a8229c5fd1dd8000cc6da97c}\label{class_inject_payload_adc1cb331a8229c5fd1dd8000cc6da97c}} 
+\index{InjectPayload@{InjectPayload}!output@{output}}
+\index{output@{output}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{output}{output}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_inject_parameter}{Inject\+Parameter}}$>$ Inject\+Payload\+::output\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+List of output parameters. 
+
+
+
+Definition at line 92 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_a0112de01e5a392fe5903bf3868d2e34b}\label{class_inject_payload_a0112de01e5a392fe5903bf3868d2e34b}} 
+\index{InjectPayload@{InjectPayload}!paramshift@{paramshift}}
+\index{paramshift@{paramshift}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{paramshift}{paramshift}}
+{\footnotesize\ttfamily int4 Inject\+Payload\+::paramshift\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Number of parameters shifted in the original call. 
+
+
+
+Definition at line 90 of file pcodeinject.\+hh.
+
+\mbox{\Hypertarget{class_inject_payload_a70d3a35fd2195fe1fb671e6280780e5b}\label{class_inject_payload_a70d3a35fd2195fe1fb671e6280780e5b}} 
+\index{InjectPayload@{InjectPayload}!type@{type}}
+\index{type@{type}!InjectPayload@{InjectPayload}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily int4 Inject\+Payload\+::type\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Type of this payload\+: C\+A\+L\+L\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, C\+A\+L\+L\+O\+T\+H\+E\+R\+F\+I\+X\+U\+P\+\_\+\+T\+Y\+PE, etc. 
+
+
+
+Definition at line 88 of file pcodeinject.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{pcodeinject_8hh}{pcodeinject.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{pcodeinject_8cc}{pcodeinject.\+cc}}\end{DoxyCompactItemize}

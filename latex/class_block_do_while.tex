@@ -1,0 +1,228 @@
+\hypertarget{class_block_do_while}{}\section{Block\+Do\+While Class Reference}
+\label{class_block_do_while}\index{BlockDoWhile@{BlockDoWhile}}
+
+
+A loop structure where the condition is checked at the bottom.  
+
+
+
+
+{\ttfamily \#include $<$block.\+hh$>$}
+
+
+
+Inheritance diagram for Block\+Do\+While\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{class_block_do_while__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Block\+Do\+While\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{class_block_do_while__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} \mbox{\hyperlink{class_block_do_while_a3700fcac8afffc121249a49af054269e}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_do_while_ab391ccd9276eec9200396ea6e8db7a96}{mark\+Label\+Bump\+Up}} (bool bump)
+\begin{DoxyCompactList}\small\item\em Let hierarchical blocks steal labels of their (first) components. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_do_while_a6a6254c0020641ccffd791f6206461cc}{scope\+Break}} (int4 curexit, int4 curloopexit)
+\begin{DoxyCompactList}\small\item\em Mark unstructured edges that should be {\itshape breaks}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_do_while_a95baa39da580d08f36b507fefe61823f}{print\+Header}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print a simple description of {\bfseries{this}} to stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_do_while_aa3ab4da82b72f8de35ad9de5f5dff9a2}{emit}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng) const
+\begin{DoxyCompactList}\small\item\em Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_do_while_a996ef387d4f6d645c38544d2aa4ba438}{next\+Flow\+After}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl) const
+\begin{DoxyCompactList}\small\item\em Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A loop structure where the condition is checked at the bottom. 
+
+This has exactly one component with two outgoing edges\+: one edge flows to itself, the other flows to the exit block. The \mbox{\hyperlink{class_block_do_while}{Block\+Do\+While}} instance has exactly one outgoing edge. 
+
+Definition at line 596 of file block.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_block_do_while_aa3ab4da82b72f8de35ad9de5f5dff9a2}\label{class_block_do_while_aa3ab4da82b72f8de35ad9de5f5dff9a2}} 
+\index{BlockDoWhile@{BlockDoWhile}!emit@{emit}}
+\index{emit@{emit}!BlockDoWhile@{BlockDoWhile}}
+\subsubsection{\texorpdfstring{emit()}{emit()}}
+{\footnotesize\ttfamily virtual void Block\+Do\+While\+::emit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. 
+
+This is the main entry point, at the control-\/flow level, for printing structured code. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} that provides details of the high-\/level language being printed \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f}{Block\+Graph}}.
+
+
+
+Definition at line 602 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{class_block_do_while_aa3ab4da82b72f8de35ad9de5f5dff9a2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_do_while_a3700fcac8afffc121249a49af054269e}\label{class_block_do_while_a3700fcac8afffc121249a49af054269e}} 
+\index{BlockDoWhile@{BlockDoWhile}!getType@{getType}}
+\index{getType@{getType}!BlockDoWhile@{BlockDoWhile}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} Block\+Do\+While\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a8e542e109e0acc977218ceaf3c248153}{Block\+Graph}}.
+
+
+
+Definition at line 598 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_do_while_ab391ccd9276eec9200396ea6e8db7a96}\label{class_block_do_while_ab391ccd9276eec9200396ea6e8db7a96}} 
+\index{BlockDoWhile@{BlockDoWhile}!markLabelBumpUp@{markLabelBumpUp}}
+\index{markLabelBumpUp@{markLabelBumpUp}!BlockDoWhile@{BlockDoWhile}}
+\subsubsection{\texorpdfstring{markLabelBumpUp()}{markLabelBumpUp()}}
+{\footnotesize\ttfamily void Block\+Do\+While\+::mark\+Label\+Bump\+Up (\begin{DoxyParamCaption}\item[{bool}]{bump }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Let hierarchical blocks steal labels of their (first) components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bump} & if {\bfseries{true}}, mark that labels for this block are printed by somebody higher in hierarchy \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a67e2a75a80e60655a9936045d40983f6}{Block\+Graph}}.
+
+
+
+Definition at line 2876 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_do_while_ab391ccd9276eec9200396ea6e8db7a96_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_do_while_a996ef387d4f6d645c38544d2aa4ba438}\label{class_block_do_while_a996ef387d4f6d645c38544d2aa4ba438}} 
+\index{BlockDoWhile@{BlockDoWhile}!nextFlowAfter@{nextFlowAfter}}
+\index{nextFlowAfter@{nextFlowAfter}!BlockDoWhile@{BlockDoWhile}}
+\subsubsection{\texorpdfstring{nextFlowAfter()}{nextFlowAfter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+Do\+While\+::next\+Flow\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Within the hierarchy of {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, assume the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} will fall-\/thru in its execution at some point. Return the first leaf block (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} or \mbox{\hyperlink{class_block_copy}{Block\+Copy}}) that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} completes, assuming this is a unique block. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the next \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to execute or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6}{Block\+Graph}}.
+
+
+
+Definition at line 2898 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_do_while_a95baa39da580d08f36b507fefe61823f}\label{class_block_do_while_a95baa39da580d08f36b507fefe61823f}} 
+\index{BlockDoWhile@{BlockDoWhile}!printHeader@{printHeader}}
+\index{printHeader@{printHeader}!BlockDoWhile@{BlockDoWhile}}
+\subsubsection{\texorpdfstring{printHeader()}{printHeader()}}
+{\footnotesize\ttfamily void Block\+Do\+While\+::print\+Header (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print a simple description of {\bfseries{this}} to stream. 
+
+Only print a header for {\bfseries{this}} single block 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a0d19c5b80186cf289dfbe0ce9e3ce37a}{Flow\+Block}}.
+
+
+
+Definition at line 2891 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_do_while_a95baa39da580d08f36b507fefe61823f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_do_while_a6a6254c0020641ccffd791f6206461cc}\label{class_block_do_while_a6a6254c0020641ccffd791f6206461cc}} 
+\index{BlockDoWhile@{BlockDoWhile}!scopeBreak@{scopeBreak}}
+\index{scopeBreak@{scopeBreak}!BlockDoWhile@{BlockDoWhile}}
+\subsubsection{\texorpdfstring{scopeBreak()}{scopeBreak()}}
+{\footnotesize\ttfamily void Block\+Do\+While\+::scope\+Break (\begin{DoxyParamCaption}\item[{int4}]{curexit,  }\item[{int4}]{curloopexit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mark unstructured edges that should be {\itshape breaks}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a55618dfd49266bd4185d119f08e8b630}{Block\+Graph}}.
+
+
+
+Definition at line 2884 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_do_while_a6a6254c0020641ccffd791f6206461cc_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8hh}{block.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8cc}{block.\+cc}}\end{DoxyCompactItemize}

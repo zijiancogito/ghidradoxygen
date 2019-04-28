@@ -1,0 +1,123 @@
+.TH "PropagationState" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PropagationState \- A class that holds a data-type traversal state during type propagation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coreaction\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPropagationState\fP (\fBVarnode\fP *v)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBstep\fP (void)"
+.br
+.RI "Advance to the next propagation edge\&. "
+.ti -1c
+.RI "bool \fBvalid\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if there are edges left to iterate\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVarnode\fP * \fBvn\fP"
+.br
+.RI "The root \fBVarnode\fP\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBiter\fP"
+.br
+.RI "Iterator to current descendant being enumerated\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBop\fP"
+.br
+.RI "The current descendant or the defining \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "int4 \fBinslot\fP"
+.br
+.RI "Slot holding \fBVarnode\fP for descendant \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "int4 \fBslot\fP"
+.br
+.RI "Current edge relative to current \fBPcodeOp\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class that holds a data-type traversal state during type propagation\&. 
+
+For a given \fBVarnode\fP, this class iterates all the possible edges its data-type might propagate through\&. 
+.PP
+Definition at line 971 of file coreaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PropagationState::PropagationState (\fBVarnode\fP * v)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP is the root \fBVarnode\fP to iterate over 
+.RE
+.PP
+
+.PP
+Definition at line 4134 of file coreaction\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void PropagationState::step (void)"
+
+.PP
+Advance to the next propagation edge\&. At the high level, this iterates through all the descendant PcodeOps of the root \fBVarnode\fP, then the defining \fBPcodeOp\fP\&. At the low level, this iterates from the output \fBVarnode\fP of the current \fBPcodeOp\fP then through all the input Varnodes 
+.PP
+Definition at line 4158 of file coreaction\&.cc\&.
+.SS "bool PropagationState::valid (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if there are edges left to iterate\&. 
+.PP
+Definition at line 980 of file coreaction\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 PropagationState::inslot"
+
+.PP
+Slot holding \fBVarnode\fP for descendant \fBPcodeOp\fP\&. 
+.PP
+Definition at line 976 of file coreaction\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator PropagationState::iter"
+
+.PP
+Iterator to current descendant being enumerated\&. 
+.PP
+Definition at line 974 of file coreaction\&.hh\&.
+.SS "\fBPcodeOp\fP* PropagationState::op"
+
+.PP
+The current descendant or the defining \fBPcodeOp\fP\&. 
+.PP
+Definition at line 975 of file coreaction\&.hh\&.
+.SS "int4 PropagationState::slot"
+
+.PP
+Current edge relative to current \fBPcodeOp\fP\&. 
+.PP
+Definition at line 977 of file coreaction\&.hh\&.
+.SS "\fBVarnode\fP* PropagationState::vn"
+
+.PP
+The root \fBVarnode\fP\&. 
+.PP
+Definition at line 973 of file coreaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

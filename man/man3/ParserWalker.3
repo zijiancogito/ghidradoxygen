@@ -1,0 +1,222 @@
+.TH "ParserWalker" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParserWalker
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <context\&.hh>\fP
+.PP
+Inherited by \fBParserWalkerChange\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParserWalker\fP (const \fBParserContext\fP *c)"
+.br
+.ti -1c
+.RI "\fBParserWalker\fP (const \fBParserContext\fP *c, const \fBParserContext\fP *cross)"
+.br
+.ti -1c
+.RI "const \fBParserContext\fP * \fBgetParserContext\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBbaseState\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetOutOfBandState\fP (\fBConstructor\fP *ct, int4 index, \fBConstructState\fP *tempstate, const \fBParserWalker\fP &otherwalker)"
+.br
+.ti -1c
+.RI "bool \fBisState\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBpushOperand\fP (int4 i)"
+.br
+.ti -1c
+.RI "void \fBpopOperand\fP (void)"
+.br
+.ti -1c
+.RI "uint4 \fBgetOffset\fP (int4 i) const"
+.br
+.ti -1c
+.RI "\fBConstructor\fP * \fBgetConstructor\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetOperand\fP (void) const"
+.br
+.ti -1c
+.RI "\fBFixedHandle\fP & \fBgetParentHandle\fP (void)"
+.br
+.ti -1c
+.RI "const \fBFixedHandle\fP & \fBgetFixedHandle\fP (int4 i) const"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetCurSpace\fP (void) const"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetConstSpace\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddr\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetNaddr\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetRefAddr\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetDestAddr\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetLength\fP (void) const"
+.br
+.ti -1c
+.RI "uintm \fBgetInstructionBytes\fP (int4 byteoff, int4 numbytes) const"
+.br
+.ti -1c
+.RI "uintm \fBgetContextBytes\fP (int4 byteoff, int4 numbytes) const"
+.br
+.ti -1c
+.RI "uintm \fBgetInstructionBits\fP (int4 startbit, int4 size) const"
+.br
+.ti -1c
+.RI "uintm \fBgetContextBits\fP (int4 startbit, int4 size) const"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBConstructState\fP * \fBpoint\fP"
+.br
+.ti -1c
+.RI "int4 \fBdepth\fP"
+.br
+.ti -1c
+.RI "int4 \fBbreadcrumb\fP [32]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 124 of file context\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParserWalker::ParserWalker (const \fBParserContext\fP * c)\fC [inline]\fP"
+
+.PP
+Definition at line 132 of file context\&.hh\&.
+.SS "ParserWalker::ParserWalker (const \fBParserContext\fP * c, const \fBParserContext\fP * cross)\fC [inline]\fP"
+
+.PP
+Definition at line 133 of file context\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ParserWalker::baseState (void)\fC [inline]\fP"
+
+.PP
+Definition at line 135 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserWalker::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 148 of file context\&.hh\&.
+.SS "\fBConstructor\fP* ParserWalker::getConstructor (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 142 of file context\&.hh\&.
+.SS "\fBAddrSpace\fP* ParserWalker::getConstSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 147 of file context\&.hh\&.
+.SS "uintm ParserWalker::getContextBits (int4 startbit, int4 size) const\fC [inline]\fP"
+
+.PP
+Definition at line 159 of file context\&.hh\&.
+.SS "uintm ParserWalker::getContextBytes (int4 byteoff, int4 numbytes) const\fC [inline]\fP"
+
+.PP
+Definition at line 155 of file context\&.hh\&.
+.SS "\fBAddrSpace\fP* ParserWalker::getCurSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 146 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserWalker::getDestAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 151 of file context\&.hh\&.
+.SS "const \fBFixedHandle\fP& ParserWalker::getFixedHandle (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 145 of file context\&.hh\&.
+.SS "uintm ParserWalker::getInstructionBits (int4 startbit, int4 size) const\fC [inline]\fP"
+
+.PP
+Definition at line 157 of file context\&.hh\&.
+.SS "uintm ParserWalker::getInstructionBytes (int4 byteoff, int4 numbytes) const\fC [inline]\fP"
+
+.PP
+Definition at line 153 of file context\&.hh\&.
+.SS "int4 ParserWalker::getLength (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 152 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserWalker::getNaddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 149 of file context\&.hh\&.
+.SS "uint4 ParserWalker::getOffset (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 140 of file context\&.hh\&.
+.SS "int4 ParserWalker::getOperand (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 143 of file context\&.hh\&.
+.SS "\fBFixedHandle\fP& ParserWalker::getParentHandle (void)\fC [inline]\fP"
+
+.PP
+Definition at line 144 of file context\&.hh\&.
+.SS "const \fBParserContext\fP* ParserWalker::getParserContext (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 134 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserWalker::getRefAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 150 of file context\&.hh\&.
+.SS "bool ParserWalker::isState (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 137 of file context\&.hh\&.
+.SS "void ParserWalker::popOperand (void)\fC [inline]\fP"
+
+.PP
+Definition at line 139 of file context\&.hh\&.
+.SS "void ParserWalker::pushOperand (int4 i)\fC [inline]\fP"
+
+.PP
+Definition at line 138 of file context\&.hh\&.
+.SS "void ParserWalker::setOutOfBandState (\fBConstructor\fP * ct, int4 index, \fBConstructState\fP * tempstate, const \fBParserWalker\fP & otherwalker)"
+
+.PP
+Definition at line 179 of file context\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 ParserWalker::breadcrumb[32]\fC [protected]\fP"
+
+.PP
+Definition at line 130 of file context\&.hh\&.
+.SS "int4 ParserWalker::depth\fC [protected]\fP"
+
+.PP
+Definition at line 129 of file context\&.hh\&.
+.SS "\fBConstructState\fP* ParserWalker::point\fC [protected]\fP"
+
+.PP
+Definition at line 128 of file context\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

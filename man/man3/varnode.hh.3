@@ -1,0 +1,126 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.hh \- The \fBVarnode\fP and \fBVarnodeBank\fP classes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'pcoderaw\&.hh'\fP
+.br
+\fC#include 'cover\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBVarnodeCompareLocDef\fP"
+.br
+.RI "Compare two \fBVarnode\fP pointers by location then definition\&. "
+.ti -1c
+.RI "struct \fBVarnodeCompareDefLoc\fP"
+.br
+.RI "Compare two \fBVarnode\fP pointers by definition then location\&. "
+.ti -1c
+.RI "class \fBVarnode\fP"
+.br
+.RI "A low-level variable or contiguous set of bytes described by an \fBAddress\fP and a size\&. "
+.ti -1c
+.RI "class \fBVarnodeBank\fP"
+.br
+.RI "A container for \fBVarnode\fP objects from a specific function\&. "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef set< \fBVarnode\fP *, \fBVarnodeCompareLocDef\fP > \fBVarnodeLocSet\fP"
+.br
+.RI "A set of Varnodes sorted by location (then by definition) "
+.ti -1c
+.RI "typedef set< \fBVarnode\fP *, \fBVarnodeCompareDefLoc\fP > \fBVarnodeDefSet\fP"
+.br
+.RI "A set of Varnodes sorted by definition (then location) "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBcontiguous_test\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2)"
+.br
+.RI "Test if Varnodes are pieces of a whole\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindContiguousWhole\fP (\fBFuncdata\fP &data, \fBVarnode\fP *vn1, \fBVarnode\fP *vn2)"
+.br
+.RI "Retrieve the whole \fBVarnode\fP given pieces\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBVarnode\fP and \fBVarnodeBank\fP classes\&. 
+
+
+.PP
+Definition in file \fBvarnode\&.hh\fP\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef set<\fBVarnode\fP *,\fBVarnodeCompareDefLoc\fP> \fBVarnodeDefSet\fP"
+
+.PP
+A set of Varnodes sorted by definition (then location) 
+.PP
+Definition at line 46 of file varnode\&.hh\&.
+.SS "typedef set<\fBVarnode\fP *,\fBVarnodeCompareLocDef\fP> \fBVarnodeLocSet\fP"
+
+.PP
+A set of Varnodes sorted by location (then by definition) 
+.PP
+Definition at line 43 of file varnode\&.hh\&.
+.SH "Function Documentation"
+.PP 
+.SS "bool contiguous_test (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2)"
+
+.PP
+Test if Varnodes are pieces of a whole\&. Return true if \fBvn1\fP contains the high part and \fBvn2\fP the low part of what was(is) a single value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn1\fP is the putative high \fBVarnode\fP 
+.br
+\fIvn2\fP is the putative low \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if they are pieces of a whole 
+.RE
+.PP
+
+.PP
+Definition at line 1524 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP* findContiguousWhole (\fBFuncdata\fP & data, \fBVarnode\fP * vn1, \fBVarnode\fP * vn2)"
+
+.PP
+Retrieve the whole \fBVarnode\fP given pieces\&. Assuming vn1,vn2 has passed the \fBcontiguous_test()\fP, return the \fBVarnode\fP containing the whole value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the underlying function 
+.br
+\fIvn1\fP is the high \fBVarnode\fP 
+.br
+\fIvn2\fP is the low \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the whole \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1555 of file varnode\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

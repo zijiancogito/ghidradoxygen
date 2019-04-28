@@ -1,0 +1,754 @@
+.TH "ArchitectureGhidra" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ArchitectureGhidra \- An implementation of the \fBArchitecture\fP interface and connection to a Ghidra client\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_arch\&.hh>\fP
+.PP
+Inherits \fBArchitecture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBArchitectureGhidra\fP (const string &pspec, const string &cspec, const string &tspec, const string &corespec, istream &i, ostream &o)"
+.br
+.RI "Construct given specification files and i/o streams\&. "
+.ti -1c
+.RI "const string & \fBgetWarnings\fP (void) const"
+.br
+.RI "Get warnings produced by the last decompilation\&. "
+.ti -1c
+.RI "void \fBclearWarnings\fP (void)"
+.br
+.RI "Clear warnings\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetRegister\fP (const string &regname)"
+.br
+.RI "Retrieve a register description given a name\&. "
+.ti -1c
+.RI "string \fBgetRegisterName\fP (const \fBVarnodeData\fP &vndata)"
+.br
+.RI "Retrieve a register name given its storage location\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetTrackedRegisters\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Retrieve \fItracked\fP register values at the given address\&. "
+.ti -1c
+.RI "string \fBgetUserOpName\fP (int4 index)"
+.br
+.RI "Get the name of a user-defined p-code op\&. "
+.ti -1c
+.RI "uint1 * \fBgetPcodePacked\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Get p-code for a single instruction\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetMappedSymbolsXML\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Get symbols associated with the given address\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetExternalRefXML\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Retrieve a description of an external function\&. "
+.ti -1c
+.RI "string \fBgetCodeLabel\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Retrieve a label at the given address\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetType\fP (const string &name, uint8 id)"
+.br
+.RI "Retrieve a data-type description for the given name and id\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetComments\fP (const \fBAddress\fP &fad, uint4 flags)"
+.br
+.RI "Retrieve comments for a particular function\&. "
+.ti -1c
+.RI "void \fBgetBytes\fP (uint1 *buf, int4 size, const \fBAddress\fP &inaddr)"
+.br
+.RI "Retrieve bytes in the \fBLoadImage\fP at the given address\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetPcodeInject\fP (const string &name, int4 type, const \fBInjectContext\fP &con)"
+.br
+.RI "Retrieve p-code to inject for a specific context\&. "
+.ti -1c
+.RI "\fBDocument\fP * \fBgetCPoolRef\fP (const vector< \fBuintb\fP > &refs)"
+.br
+.RI "Resolve a constant pool reference\&. "
+.ti -1c
+.RI "void \fBsetSendSyntaxTree\fP (bool val)"
+.br
+.RI "Toggle whether the data-flow and control-flow is emitted as part of the main decompile action\&. "
+.ti -1c
+.RI "bool \fBgetSendSyntaxTree\fP (void) const"
+.br
+.RI "Get the current setting for emitting data/control-flow\&. "
+.ti -1c
+.RI "void \fBsetSendCCode\fP (bool val)"
+.br
+.RI "Toggle whether the recovered source code is emitted as part of the main decompile action\&. "
+.ti -1c
+.RI "bool \fBgetSendCCode\fP (void) const"
+.br
+.RI "Get the current setting for emitting source code\&. "
+.ti -1c
+.RI "void \fBsetSendParamMeasures\fP (bool val)"
+.br
+.RI "Toggle whether recovered parameter information is emitted as part of the main decompile action\&. "
+.ti -1c
+.RI "bool \fBgetSendParamMeasures\fP (void) const"
+.br
+.RI "Get the current setting for emitting parameter info\&. "
+.ti -1c
+.RI "virtual void \fBprintMessage\fP (const string &message) const"
+.br
+.RI "Print an error message to console\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBsegvHandler\fP (int4 sig)"
+.br
+.RI "Handler for a segment violation (SIGSEGV) signal\&. "
+.ti -1c
+.RI "static int4 \fBreadToAnyBurst\fP (istream &s)"
+.br
+.RI "Read the next message protocol marker\&. "
+.ti -1c
+.RI "static void \fBreadStringStream\fP (istream &s, string &res)"
+.br
+.RI "Receive a string from the client\&. "
+.ti -1c
+.RI "static void \fBwriteStringStream\fP (ostream &s, const string &msg)"
+.br
+.RI "Send a string to the client\&. "
+.ti -1c
+.RI "static void \fBreadToResponse\fP (istream &s)"
+.br
+.RI "Read the query response protocol marker\&. "
+.ti -1c
+.RI "static void \fBreadResponseEnd\fP (istream &s)"
+.br
+.RI "Read the ending query response protocol marker\&. "
+.ti -1c
+.RI "static \fBDocument\fP * \fBreadXMLAll\fP (istream &s)"
+.br
+.RI "Read a whole response as an XML document\&. "
+.ti -1c
+.RI "static \fBDocument\fP * \fBreadXMLStream\fP (istream &s)"
+.br
+.RI "Receive an XML document from the client\&. "
+.ti -1c
+.RI "static uint1 * \fBreadPackedStream\fP (istream &s)"
+.br
+.RI "Read packed p-code op information\&. "
+.ti -1c
+.RI "static uint1 * \fBreadPackedAll\fP (istream &s)"
+.br
+.RI "Read a whole response as packed p-code op information\&. "
+.ti -1c
+.RI "static void \fBpassJavaException\fP (ostream &s, const string &tp, const string &msg)"
+.br
+.RI "Send an exception message to the Ghidra client\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An implementation of the \fBArchitecture\fP interface and connection to a Ghidra client\&. 
+
+In addition to managing the major pieces of the architecture (\fBLoadImage\fP, \fBTranslate\fP, \fBDatabase\fP, \fBTypeFactory\fP, ContextDatbase, \fBCommentDatabase\fP etc\&.), this class manages a communication channel between the decompiler and a Ghidra client for a single executable\&. The protocol supports a simple query/response format with exceptions\&. On top of the low level protocol, this class manages a higher level interface that performs specific queries, providing addresses, names, and other info as input, and returning an XML document or other structure as a result\&.
+.PP
+This class overrides the build* methods to produce \fBArchitecture\fP components that are also backed by the Ghidra client\&. These all use this same object to do their communication\&.
+.PP
+This class acts as a main control point for what information gets sent back to the Ghidra client when it requests the main decompilation action\&. Generally the decompiler sends back the recovered source representation of the function but optionally it can send back:
+.IP "\(bu" 2
+Recovered source code (with mark up)
+.IP "\(bu" 2
+Data-flow and control-flow structures
+.IP "\(bu" 2
+Local symbol and jump-table information
+.IP "\(bu" 2
+Parameter identification information 
+.PP
+
+.PP
+Definition at line 60 of file ghidra_arch\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ArchitectureGhidra::ArchitectureGhidra (const string & pspec, const string & cspec, const string & tspec, const string & corespec, istream & i, ostream & o)"
+
+.PP
+Construct given specification files and i/o streams\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpspec\fP is the processor specification presented as an XML string 
+.br
+\fIcspec\fP is the compiler specification presented as an XML string 
+.br
+\fItspec\fP is a stripped down form of the SLEIGH specification presented as an XML string 
+.br
+\fIcorespec\fP is a list of core data-types presented as a <coretypes> XML tag 
+.br
+\fIi\fP is the input stream from the Ghidra client 
+.br
+\fIo\fP is the output stream to the Ghidra client 
+.RE
+.PP
+
+.PP
+Definition at line 709 of file ghidra_arch\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ArchitectureGhidra::clearWarnings (void)\fC [inline]\fP"
+
+.PP
+Clear warnings\&. 
+.PP
+Definition at line 86 of file ghidra_arch\&.hh\&.
+.SS "void ArchitectureGhidra::getBytes (uint1 * buf, int4 size, const \fBAddress\fP & inaddr)"
+
+.PP
+Retrieve bytes in the \fBLoadImage\fP at the given address\&. The Ghidra client is queried for a range of bytes, which are returned in the given array\&. This method throws a \fBDataUnavailError\fP if the provided address doesn't make sense\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP is the preallocated array in which to store the bytes 
+.br
+\fIsize\fP is the number of bytes requested 
+.br
+\fIinaddr\fP is the address in the \fBLoadImage\fP from which to grab bytes 
+.RE
+.PP
+
+.PP
+Definition at line 582 of file ghidra_arch\&.cc\&.
+.SS "string ArchitectureGhidra::getCodeLabel (const \fBAddress\fP & addr)"
+
+.PP
+Retrieve a label at the given address\&. Get the name of the primary symbol at the given address\&. This is used to fetch within function \fIlabels\fP\&. Only a name is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the symbol name or '' 
+.RE
+.PP
+
+.PP
+Definition at line 514 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getComments (const \fBAddress\fP & fad, uint4 flags)"
+
+.PP
+Retrieve comments for a particular function\&. Ask Ghidra client for all comments associated with one function\&. The caller must provide the sub-set of properties (\fBComment::comment_type\fP) for the query to match\&. The client will return a <commentdb> tag with a <comment> tag child for each comment found\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfad\fP is the address of the function to query 
+.br
+\fIflags\fP specifies the properties the query will match (must be non-zero) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an XML document describing each comment 
+.RE
+.PP
+
+.PP
+Definition at line 559 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getCPoolRef (const vector< \fBuintb\fP > & refs)"
+
+.PP
+Resolve a constant pool reference\&. The Ghidra client is provided a sequence of 1 or more integer values extracted from a CPOOLREF op\&. It returns an XML document describing the constant pool record referenced by the integer(s) or will throw an exception if record isn't properly referenced\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrefs\fP is an array of 1 or more integer values referencing a constant pool record 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a description of the record as a <cpoolrec> XML document\&. 
+.RE
+.PP
+
+.PP
+Definition at line 660 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getExternalRefXML (const \fBAddress\fP & addr)"
+
+.PP
+Retrieve a description of an external function\&. This asks the Ghidra client to resolve an \fIexternal\fP \fIreference\fP\&. This is an address for which the client holds a reference to a function that is elsewhere in memory or not in memory at all\&. The client should unravel the reference from the given address and return either a <function> tag describing the referred to function symbol or a <hole> tag if the reference can't be resolved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a description of the referred to function 
+.RE
+.PP
+
+.PP
+Definition at line 496 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getMappedSymbolsXML (const \fBAddress\fP & addr)"
+
+.PP
+Get symbols associated with the given address\&. The Ghidra client will return a <symbol> tag, <function> tag, or some other related \fBSymbol\fP information\&. If there no symbol at the address the client should return a <hole> tag describing the size of the memory region that is free of symbols\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the symbol document 
+.RE
+.PP
+
+.PP
+Definition at line 474 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getPcodeInject (const string & name, int4 type, const \fBInjectContext\fP & con)"
+
+.PP
+Retrieve p-code to inject for a specific context\&. The particular injection is named and is of one of the types:
+.IP "\(bu" 2
+CALLFIXUP_TYPE
+.IP "\(bu" 2
+CALLOTHERFIXUP_TYPE
+.IP "\(bu" 2
+CALLMECHANISM_TYPE
+.IP "\(bu" 2
+EXECUTABLEPCODE_TYPE
+.PP
+.PP
+This and additional context is provided to the Ghidra client which returns an XML document describing the p-code\&. The document will be an <inst> tag containing individual <op> tags corresponding to individual p-code ops\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the injection 
+.br
+\fItype\fP is the type of injection 
+.br
+\fIcon\fP is the context object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an XML document describing the p-code ops to inject 
+.RE
+.PP
+
+.PP
+Definition at line 632 of file ghidra_arch\&.cc\&.
+.SS "uint1 * ArchitectureGhidra::getPcodePacked (const \fBAddress\fP & addr)"
+
+.PP
+Get p-code for a single instruction\&. Get a description of all the p-code ops for the instruction at the given address\&. The information is stored in a special compressed format\&. (See \fBPcodeEmit::restorePackedOp\fP) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of the instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an array of the packed data 
+.RE
+.PP
+
+.PP
+Definition at line 454 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getRegister (const string & regname)"
+
+.PP
+Retrieve a register description given a name\&. Ask the Ghidra client if it knows about a specific processor register\&. The client responds with a <addr> XML element describing the storage location of the register\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregname\fP is the name to query for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the storage address as XML or NULL if the register is unknown 
+.RE
+.PP
+
+.PP
+Definition at line 371 of file ghidra_arch\&.cc\&.
+.SS "string ArchitectureGhidra::getRegisterName (const \fBVarnodeData\fP & vndata)"
+
+.PP
+Retrieve a register name given its storage location\&. Given a storage location and size, ask the Ghidra client if it knows of a register that occupies those bytes\&. The register name is passed back\&. The name may not exactly match the given memory range, it may contain it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvndata\fP is the location and size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the register name or '' 
+.RE
+.PP
+
+.PP
+Definition at line 388 of file ghidra_arch\&.cc\&.
+.SS "bool ArchitectureGhidra::getSendCCode (void) const\fC [inline]\fP"
+
+.PP
+Get the current setting for emitting source code\&. 
+.PP
+Definition at line 116 of file ghidra_arch\&.hh\&.
+.SS "bool ArchitectureGhidra::getSendParamMeasures (void) const\fC [inline]\fP"
+
+.PP
+Get the current setting for emitting parameter info\&. 
+.PP
+Definition at line 125 of file ghidra_arch\&.hh\&.
+.SS "bool ArchitectureGhidra::getSendSyntaxTree (void) const\fC [inline]\fP"
+
+.PP
+Get the current setting for emitting data/control-flow\&. 
+.PP
+Definition at line 108 of file ghidra_arch\&.hh\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getTrackedRegisters (const \fBAddress\fP & addr)"
+
+.PP
+Retrieve \fItracked\fP register values at the given address\&. The Ghidra client will return a description of registers that have known values at the given address\&. The response is generally a <tracked_pointset> which contains <set> children which contains a storage location and value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the response \fBDocument\fP 
+.RE
+.PP
+
+.PP
+Definition at line 413 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::getType (const string & name, uint8 id)"
+
+.PP
+Retrieve a data-type description for the given name and id\&. The Ghidra client should respond with a <type> tag giving details about the data-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the data-type 
+.br
+\fIid\fP is a unique id associated with the data-type, pass 0 if unknown 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type XML element or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 537 of file ghidra_arch\&.cc\&.
+.SS "string ArchitectureGhidra::getUserOpName (int4 index)"
+
+.PP
+Get the name of a user-defined p-code op\&. The first operand to a CALLOTHER op indicates the specific user-defined op\&. This method queries the Ghidra client and passes back the name of the op\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP is the value of the CALLOTHER operand 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the recovered name or '' 
+.RE
+.PP
+
+.PP
+Definition at line 431 of file ghidra_arch\&.cc\&.
+.SS "const string& ArchitectureGhidra::getWarnings (void) const\fC [inline]\fP"
+
+.PP
+Get warnings produced by the last decompilation\&. 
+.PP
+Definition at line 85 of file ghidra_arch\&.hh\&.
+.SS "void ArchitectureGhidra::passJavaException (ostream & s, const string & tp, const string & msg)\fC [static]\fP"
+
+.PP
+Send an exception message to the Ghidra client\&. This generally called because of some sort of alignment issue in the message protocol and lets the client know to abort (and hopefully resync) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream to the client 
+.br
+\fItp\fP is the type of exception 
+.br
+\fImsg\fP is the exception message 
+.RE
+.PP
+
+.PP
+Definition at line 239 of file ghidra_arch\&.cc\&.
+.SS "void ArchitectureGhidra::printMessage (const string & message) const\fC [virtual]\fP"
+
+.PP
+Print an error message to console\&. Write the given message to whatever the registered error stream is 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP is the error message 
+.RE
+.PP
+
+.PP
+Implements \fBArchitecture\fP\&.
+.PP
+Definition at line 695 of file ghidra_arch\&.cc\&.
+.SS "uint1 * ArchitectureGhidra::readPackedAll (istream & s)\fC [static]\fP"
+
+.PP
+Read a whole response as packed p-code op information\&. Read up to the beginning of a query response, check for an exception record, otherwise read in packed p-code op data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the array of packed p-coded data 
+.RE
+.PP
+
+.PP
+Definition at line 222 of file ghidra_arch\&.cc\&.
+.SS "uint1 * ArchitectureGhidra::readPackedStream (istream & s)\fC [static]\fP"
+
+.PP
+Read packed p-code op information\&. The method expects to see protocol markers indicating a string from the client, otherwise it throws and exception\&. An array size is encoded in the first 4 characters of the string\&. An array of this size is allocated and filled with the rest of the string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the array of packed p-code data 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file ghidra_arch\&.cc\&.
+.SS "void ArchitectureGhidra::readResponseEnd (istream & s)\fC [static]\fP"
+
+.PP
+Read the ending query response protocol marker\&. Read the next protocol marker\&. If it does not indicate the end of a query response, throw an exception 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client 
+.RE
+.PP
+
+.PP
+Definition at line 196 of file ghidra_arch\&.cc\&.
+.SS "void ArchitectureGhidra::readStringStream (istream & s, string & res)\fC [static]\fP"
+
+.PP
+Receive a string from the client\&. Characters are read up to the next protocol marked and placed into a string\&. The protocol marker is consumed and must indicate the end of a string or an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client 
+.br
+\fIres\fP will hold the string 
+.RE
+.PP
+
+.PP
+Definition at line 88 of file ghidra_arch\&.cc\&.
+.SS "int4 ArchitectureGhidra::readToAnyBurst (istream & s)\fC [static]\fP"
+
+.PP
+Read the next message protocol marker\&. All communications between the Ghidra client and the decompiler are surrounded by alignment bursts\&. A burst is 1 or more zero bytes followed by an 0x01 byte, then followed by a code byte\&. Open alignment (as in open paren) is even\&. Close alignment is odd\&. Code bytes are as follows:
+.IP "\(bu" 2
+Command open=2 close=3
+.IP "\(bu" 2
+Query open=4 close=5
+.IP "\(bu" 2
+Command response open=6 close=7
+.IP "\(bu" 2
+Query response open=8 close=9
+.IP "\(bu" 2
+Exception open=a close=b
+.IP "\(bu" 2
+Byte stream open=c close=d
+.IP "\(bu" 2
+String stream open=e close=f
+.PP
+.PP
+The protocol is as follows:
+.IP "\(bu" 2
+ghidra sends a command
+.IP "  \(bu" 4
+[ decompiler sends a query
+.IP "  \(bu" 4
+ghidra sends a query response ] zero or more occurences
+.PP
+
+.IP "\(bu" 2
+decompiler sends a command response
+.PP
+.PP
+Commands, queries, and responses all consist of zero or more string streams or byte streams\&.
+.PP
+In place of any response an exception can be sent\&. The decompiler can interrupt a command response with a query or exception once the query is finished the response picks up where it left off an exception however permanently cancels the query\&. Ghidra cannot interrupt either of its responses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the command code 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file ghidra_arch\&.cc\&.
+.SS "void ArchitectureGhidra::readToResponse (istream & s)\fC [static]\fP"
+
+.PP
+Read the query response protocol marker\&. Consume the query response header\&. If it indicates an exception, read details of the exception and throw \fBJavaError\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client 
+.RE
+.PP
+
+.PP
+Definition at line 178 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::readXMLAll (istream & s)\fC [static]\fP"
+
+.PP
+Read a whole response as an XML document\&. Read up to the beginning of a query response, check for an exception record, otherwise read in a string as an XML document\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the XML document 
+.RE
+.PP
+
+.PP
+Definition at line 208 of file ghidra_arch\&.cc\&.
+.SS "\fBDocument\fP * ArchitectureGhidra::readXMLStream (istream & s)\fC [static]\fP"
+
+.PP
+Receive an XML document from the client\&. The method expects to see protocol markers indicating a string from the client, otherwise it throws and exception\&. The string is read in and then parsed as XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the input stream from the client\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the XML document 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file ghidra_arch\&.cc\&.
+.SS "void ArchitectureGhidra::segvHandler (int4 sig)\fC [static]\fP"
+
+.PP
+Handler for a segment violation (SIGSEGV) signal\&. Catch the signal so the OS doesn't pop up a dialog 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsig\fP is the OS signal (should always be SIGSEGV) 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file ghidra_arch\&.cc\&.
+.SS "void ArchitectureGhidra::setSendCCode (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether the recovered source code is emitted as part of the main decompile action\&. If the toggle is \fBon\fP, the decompiler will emit source code (marked up in an XML document) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to enable emitting 
+.RE
+.PP
+
+.PP
+Definition at line 114 of file ghidra_arch\&.hh\&.
+.SS "void ArchitectureGhidra::setSendParamMeasures (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether recovered parameter information is emitted as part of the main decompile action\&. If the toggle is \fBon\fP, the decompiler will emit a more detailed description of what it thinks the input parameters to the function are\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP enable emitting 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file ghidra_arch\&.hh\&.
+.SS "void ArchitectureGhidra::setSendSyntaxTree (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether the data-flow and control-flow is emitted as part of the main decompile action\&. If the toggle is \fBon\fP, the decompiler will emit complete descriptions of the graphs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP to enable emitting 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file ghidra_arch\&.hh\&.
+.SS "void ArchitectureGhidra::writeStringStream (ostream & s, const string & msg)\fC [static]\fP"
+
+.PP
+Send a string to the client\&. Write out a string with correct protocol markers 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream to the client 
+.br
+\fImsg\fP is the string to send 
+.RE
+.PP
+
+.PP
+Definition at line 167 of file ghidra_arch\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,63 @@
+.TH "AssemblyEmit" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AssemblyEmit \- Abstract class for emitting disassembly to an application\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.PP
+Inherited by \fBAssemblyRaw\fP, and \fBIfaceAssemblyEmit\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~AssemblyEmit\fP (void)"
+.br
+.RI "Virtual destructor\&. "
+.ti -1c
+.RI "virtual void \fBdump\fP (const \fBAddress\fP &addr, const string &mnem, const string &body)=0"
+.br
+.RI "The main disassembly emitting method\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract class for emitting disassembly to an application\&. 
+
+Translation engines pass back the disassembly character data for decoded machine instructions to an application using this class\&. 
+.PP
+Definition at line 118 of file translate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual AssemblyEmit::~AssemblyEmit (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Virtual destructor\&. 
+.PP
+Definition at line 120 of file translate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void AssemblyEmit::dump (const \fBAddress\fP & addr, const string & mnem, const string & body)\fC [pure virtual]\fP"
+
+.PP
+The main disassembly emitting method\&. The disassembly strings for a single machine instruction are passed back to an application through this method\&. Particular applications can tailor the use of the disassembly by overriding this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fBAddress\fP of the machine instruction 
+.br
+\fImnem\fP is the decoded instruction mnemonic 
+.br
+\fIbody\fP is the decode body (or operands) of the instruction 
+.RE
+.PP
+
+.PP
+Implemented in \fBAssemblyRaw\fP, and \fBIfaceAssemblyEmit\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

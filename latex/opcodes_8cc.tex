@@ -1,0 +1,92 @@
+\hypertarget{opcodes_8cc}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/opcodes.cc File Reference}
+\label{opcodes_8cc}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opcodes.cc}}
+{\ttfamily \#include \char`\"{}opcodes.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for opcodes.\+cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{opcodes_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{opcodes_8cc_af739d367233d5c761457f782e249ce7a}{get\+\_\+opname}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc)
+\begin{DoxyCompactList}\small\item\em Convert an Op\+Code to the name as a string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} \mbox{\hyperlink{opcodes_8cc_a2cd84b54da8ccadc300e0338206c6a9a}{get\+\_\+opcode}} (const string \&nm)
+\begin{DoxyCompactList}\small\item\em Convert a name string to the matching Op\+Code. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} \mbox{\hyperlink{opcodes_8cc_aef6d0ca050c58ba0cc5f3a52c9182fec}{get\+\_\+booleanflip}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, bool \&reorder)
+\begin{DoxyCompactList}\small\item\em Get the complementary Op\+Code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{opcodes_8cc_aef6d0ca050c58ba0cc5f3a52c9182fec}\label{opcodes_8cc_aef6d0ca050c58ba0cc5f3a52c9182fec}} 
+\index{opcodes.cc@{opcodes.cc}!get\_booleanflip@{get\_booleanflip}}
+\index{get\_booleanflip@{get\_booleanflip}!opcodes.cc@{opcodes.cc}}
+\subsubsection{\texorpdfstring{get\_booleanflip()}{get\_booleanflip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} get\+\_\+booleanflip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{bool \&}]{reorder }\end{DoxyParamCaption})}
+
+
+
+Get the complementary Op\+Code. 
+
+Every comparison operation has a complementary form that produces the opposite output on the same inputs. Set {\bfseries{reorder}} to true if the complimentary operation involves reordering the input parameters. 
+\begin{DoxyParams}{Parameters}
+{\em opc} & is the Op\+Code to complement \\
+\hline
+{\em reorder} & is set to {\bfseries{true}} if the inputs need to be reordered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the complementary Op\+Code or C\+P\+U\+I\+\_\+\+M\+AX if not given a comparison operation 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file opcodes.\+cc.
+
+\mbox{\Hypertarget{opcodes_8cc_a2cd84b54da8ccadc300e0338206c6a9a}\label{opcodes_8cc_a2cd84b54da8ccadc300e0338206c6a9a}} 
+\index{opcodes.cc@{opcodes.cc}!get\_opcode@{get\_opcode}}
+\index{get\_opcode@{get\_opcode}!opcodes.cc@{opcodes.cc}}
+\subsubsection{\texorpdfstring{get\_opcode()}{get\_opcode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} get\+\_\+opcode (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption})}
+
+
+
+Convert a name string to the matching Op\+Code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of an operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the corresponding Op\+Code value 
+\end{DoxyReturn}
+
+
+Definition at line 65 of file opcodes.\+cc.
+
+\mbox{\Hypertarget{opcodes_8cc_af739d367233d5c761457f782e249ce7a}\label{opcodes_8cc_af739d367233d5c761457f782e249ce7a}} 
+\index{opcodes.cc@{opcodes.cc}!get\_opname@{get\_opname}}
+\index{get\_opname@{get\_opname}!opcodes.cc@{opcodes.cc}}
+\subsubsection{\texorpdfstring{get\_opname()}{get\_opname()}}
+{\footnotesize\ttfamily const char$\ast$ get\+\_\+opname (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc }\end{DoxyParamCaption})}
+
+
+
+Convert an Op\+Code to the name as a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opc} & is an Op\+Code value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the name of the operation as a string 
+\end{DoxyReturn}
+
+
+Definition at line 57 of file opcodes.\+cc.
+

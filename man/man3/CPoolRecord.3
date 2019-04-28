@@ -1,0 +1,266 @@
+.TH "CPoolRecord" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CPoolRecord \- A description of a byte-code object referenced by a constant\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cpool\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBprimitive\fP =0, \fBstring_literal\fP =1, \fBclass_reference\fP =2, \fBpointer_method\fP =3, \fBpointer_field\fP =4, \fBarray_length\fP =5, \fBinstance_of\fP =6, \fBcheck_cast\fP =7 }"
+.br
+.RI "Generic constant pool tag types\&. "
+.ti -1c
+.RI "enum { \fBhas_thisptr\fP = 0x1, \fBis_constructor\fP = 0x2, \fBis_destructor\fP = 0x4 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCPoolRecord\fP (void)"
+.br
+.RI "Construct an empty record\&. "
+.ti -1c
+.RI "\fB~CPoolRecord\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "uint4 \fBgetTag\fP (void) const"
+.br
+.RI "Get the type of record\&. "
+.ti -1c
+.RI "const string & \fBgetToken\fP (void) const"
+.br
+.RI "Get name of method or data-type\&. "
+.ti -1c
+.RI "const uint1 * \fBgetByteData\fP (void) const"
+.br
+.RI "Get pointer to string literal data\&. "
+.ti -1c
+.RI "int4 \fBgetByteDataLength\fP (void) const"
+.br
+.RI "Number of bytes of string literal data\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetType\fP (void) const"
+.br
+.RI "Get the data-type associated with \fBthis\fP\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetValue\fP (void) const"
+.br
+.RI "Get the constant value associated with \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBhasThisPointer\fP (void) const"
+.br
+.RI "Is object a method with a \fBthis\fP pointer\&. "
+.ti -1c
+.RI "bool \fBisConstructor\fP (void) const"
+.br
+.RI "Is object a constructor method\&. "
+.ti -1c
+.RI "bool \fBisDestructor\fP (void) const"
+.br
+.RI "Is object a destructor method\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save object to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore object from XML stream\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBConstantPool\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A description of a byte-code object referenced by a constant\&. 
+
+Byte-code languages can make use of objects that the \fIsystem\fP knows about but which aren't fully embedded in the encoding of instructions that use them\&. Instead the instruction refers to the object via a special encoded reference\&. This class describes one object described by such a reference\&. In order to provide a concrete interpretation of the instruction (i\&.e\&. a p-code translation), these objects generally resolve to some sort of constant value (hence the term \fBconstant\fP \fBpool\fP)\&. The type of constant goes to the formal \fBCPoolRecord\fP \fBtag\fP field which can be a:
+.IP "\(bu" 2
+Primitive value (integer, floating-point)
+.IP "\(bu" 2
+String literal (pointer to)
+.IP "\(bu" 2
+Class method (pointer to)
+.IP "\(bu" 2
+Class field (offset of)
+.IP "\(bu" 2
+Array length
+.IP "\(bu" 2
+Data-type (pointer to a descriptor)
+.PP
+.PP
+For decompilation, knowing the actual \fIconstant\fP a byte-code interpreter would need is secondary to knowing what object is being referenced\&. So the \fBCPoolRecord\fP can hold a constant value, but generally it provides a data-type associated with the object and a symbol name or other string token naming the object\&. 
+.PP
+Definition at line 44 of file cpool\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+Generic constant pool tag types\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIprimitive \fP\fP
+Constant \fBvalue\fP of data-type \fBtype\fP, cpool operator can be eliminated\&. 
+.TP
+\fB\fIstring_literal \fP\fP
+Constant reference to string (passed back as \fBbyteData\fP) 
+.TP
+\fB\fIclass_reference \fP\fP
+Reference to (system level) class object, \fBtoken\fP holds class name\&. 
+.TP
+\fB\fIpointer_method \fP\fP
+Pointer to a method, name in \fBtoken\fP, signature in \fBtype\fP\&. 
+.TP
+\fB\fIpointer_field \fP\fP
+Pointer to a field, name in \fBtoken\fP, data-type in \fBtype\fP\&. 
+.TP
+\fB\fIarray_length \fP\fP
+Integer length, \fBtoken\fP is language specific indicator, \fBtype\fP is integral data-type\&. 
+.TP
+\fB\fIinstance_of \fP\fP
+Boolean value, \fBtoken\fP is language specific indicator, \fBtype\fP is boolean data-type\&. 
+.TP
+\fB\fIcheck_cast \fP\fP
+Pointer to object, new name in \fBtoken\fP, new data-type in \fBtype\fP\&. 
+.PP
+Definition at line 47 of file cpool\&.hh\&.
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIhas_thisptr \fP\fP
+Referenced method has a \fBthis\fP pointer\&. 
+.TP
+\fB\fIis_constructor \fP\fP
+Referenced method is a constructor\&. 
+.TP
+\fB\fIis_destructor \fP\fP
+Referenced method is a destructor\&. 
+.PP
+Definition at line 57 of file cpool\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CPoolRecord::CPoolRecord (void)\fC [inline]\fP"
+
+.PP
+Construct an empty record\&. 
+.PP
+Definition at line 72 of file cpool\&.hh\&.
+.SS "CPoolRecord::~CPoolRecord (void)\fC [inline]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 73 of file cpool\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const uint1* CPoolRecord::getByteData (void) const\fC [inline]\fP"
+
+.PP
+Get pointer to string literal data\&. 
+.PP
+Definition at line 76 of file cpool\&.hh\&.
+.SS "int4 CPoolRecord::getByteDataLength (void) const\fC [inline]\fP"
+
+.PP
+Number of bytes of string literal data\&. 
+.PP
+Definition at line 77 of file cpool\&.hh\&.
+.SS "uint4 CPoolRecord::getTag (void) const\fC [inline]\fP"
+
+.PP
+Get the type of record\&. 
+.PP
+Definition at line 74 of file cpool\&.hh\&.
+.SS "const string& CPoolRecord::getToken (void) const\fC [inline]\fP"
+
+.PP
+Get name of method or data-type\&. 
+.PP
+Definition at line 75 of file cpool\&.hh\&.
+.SS "\fBDatatype\fP* CPoolRecord::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the data-type associated with \fBthis\fP\&. 
+.PP
+Definition at line 78 of file cpool\&.hh\&.
+.SS "\fBuintb\fP CPoolRecord::getValue (void) const\fC [inline]\fP"
+
+.PP
+Get the constant value associated with \fBthis\fP\&. 
+.PP
+Definition at line 79 of file cpool\&.hh\&.
+.SS "bool CPoolRecord::hasThisPointer (void) const\fC [inline]\fP"
+
+.PP
+Is object a method with a \fBthis\fP pointer\&. 
+.PP
+Definition at line 80 of file cpool\&.hh\&.
+.SS "bool CPoolRecord::isConstructor (void) const\fC [inline]\fP"
+
+.PP
+Is object a constructor method\&. 
+.PP
+Definition at line 81 of file cpool\&.hh\&.
+.SS "bool CPoolRecord::isDestructor (void) const\fC [inline]\fP"
+
+.PP
+Is object a destructor method\&. 
+.PP
+Definition at line 82 of file cpool\&.hh\&.
+.SS "void CPoolRecord::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)"
+
+.PP
+Restore object from XML stream\&. Initialize \fBthis\fP \fBCPoolRecord\fP instance from a <cpoolrec> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <cpoolrec> element 
+.br
+\fItypegrp\fP is the \fBTypeFactory\fP used to resolve data-types 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file cpool\&.cc\&.
+.SS "void CPoolRecord::saveXml (ostream & s) const"
+
+.PP
+Save object to an XML stream\&. Save the constant pool object description as a <cpoolrec> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 20 of file cpool\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBConstantPool\fP\fC [friend]\fP"
+
+.PP
+Definition at line 63 of file cpool\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

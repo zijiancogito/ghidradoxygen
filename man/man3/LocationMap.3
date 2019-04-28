@@ -1,0 +1,164 @@
+.TH "LocationMap" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LocationMap \- Map object for keeping track of which address ranges have been heritaged\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <heritage\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef map< \fBAddress\fP, \fBSizePass\fP >::\fBiterator\fP \fBiterator\fP"
+.br
+.RI "Iterator into the main map\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBiterator\fP \fBadd\fP (\fBAddress\fP addr, int4 size, int4 pass, int4 &intersect)"
+.br
+.RI "Mark new address as \fBheritaged\fP\&. "
+.ti -1c
+.RI "\fBiterator\fP \fBfind\fP (\fBAddress\fP addr)"
+.br
+.RI "Look up if/how given address was heritaged\&. "
+.ti -1c
+.RI "int4 \fBfindPass\fP (\fBAddress\fP addr) const"
+.br
+.RI "Look up if/how given address was heritaged\&. "
+.ti -1c
+.RI "void \fBerase\fP (\fBiterator\fP iter)"
+.br
+.RI "Remove a particular entry from the map\&. "
+.ti -1c
+.RI "\fBiterator\fP \fBbegin\fP (void)"
+.br
+.RI "Get starting iterator over heritaged ranges\&. "
+.ti -1c
+.RI "\fBiterator\fP \fBend\fP (void)"
+.br
+.RI "Get ending iterator over heritaged ranges\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear the map of heritaged ranges\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Map object for keeping track of which address ranges have been heritaged\&. 
+
+We keep track of a fairly fine grained description of when each address range was entered in SSA form, refered to as \fBheritaged\fP or, for \fBVarnode\fP objects, no longer \fBfree\fP\&. An address range is added using the \fBadd()\fP method, which includes the particular pass when it was entered\&. The map can be queried using \fBfindPass()\fP that informs the caller whether the address has been heritaged and if so in which pass\&. 
+.PP
+Definition at line 42 of file heritage\&.hh\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef map<\fBAddress\fP,\fBSizePass\fP>::\fBiterator\fP \fBLocationMap::iterator\fP"
+
+.PP
+Iterator into the main map\&. 
+.PP
+Definition at line 45 of file heritage\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLocationMap::iterator\fP LocationMap::add (\fBAddress\fP addr, int4 size, int4 pass, int4 & intersect)"
+
+.PP
+Mark new address as \fBheritaged\fP\&. Update disjoint cover making sure (addr,size) is contained in a single element and return iterator to this element\&. Pass back \fBintersect\fP value:
+.IP "\(bu" 2
+0 if the only intersection is with range from the same pass
+.IP "\(bu" 2
+1 if there is a partial intersection with something old
+.IP "\(bu" 2
+2 if the range is contained in an old range 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the range to add 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIpass\fP is the pass number when the range was heritaged 
+.br
+\fIintersect\fP is a reference for passing back the intersect code 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the iterator to the map element containing the added range 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 30 of file heritage\&.cc\&.
+.SS "\fBiterator\fP LocationMap::begin (void)\fC [inline]\fP"
+
+.PP
+Get starting iterator over heritaged ranges\&. 
+.PP
+Definition at line 53 of file heritage\&.hh\&.
+.SS "void LocationMap::clear (void)\fC [inline]\fP"
+
+.PP
+Clear the map of heritaged ranges\&. 
+.PP
+Definition at line 55 of file heritage\&.hh\&.
+.SS "\fBiterator\fP LocationMap::end (void)\fC [inline]\fP"
+
+.PP
+Get ending iterator over heritaged ranges\&. 
+.PP
+Definition at line 54 of file heritage\&.hh\&.
+.SS "void LocationMap::erase (\fBiterator\fP iter)\fC [inline]\fP"
+
+.PP
+Remove a particular entry from the map\&. 
+.PP
+Definition at line 52 of file heritage\&.hh\&.
+.SS "\fBLocationMap::iterator\fP LocationMap::find (\fBAddress\fP addr)"
+
+.PP
+Look up if/how given address was heritaged\&. If the given address was heritaged, return (the iterator to) the SizeMap entry describing the associated range and when it was heritaged\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the iterator to the SizeMap entry or the end iterator is the address is unheritaged 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file heritage\&.cc\&.
+.SS "int4 LocationMap::findPass (\fBAddress\fP addr) const"
+
+.PP
+Look up if/how given address was heritaged\&. Return the pass number when the given address was heritaged, or -1 if it was not heritaged 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the pass number of -1 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file heritage\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

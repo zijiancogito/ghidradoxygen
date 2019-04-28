@@ -1,0 +1,149 @@
+\hypertarget{class_rule_propagate_copy}{}\section{Rule\+Propagate\+Copy Class Reference}
+\label{class_rule_propagate_copy}\index{RulePropagateCopy@{RulePropagateCopy}}
+
+
+Propagate the input of a C\+O\+PY to all the places that read the output.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Propagate\+Copy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_rule_propagate_copy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Propagate\+Copy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_rule_propagate_copy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_propagate_copy_aedaa3ad2a5231ea42abba1b554c37eff}{Rule\+Propagate\+Copy}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_propagate_copy_adcaeff563b266b1410a3a69038a8ba71}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_propagate_copy_a4204e280e01206f9de2f082afffdce81}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Propagate the input of a C\+O\+PY to all the places that read the output. 
+
+Definition at line 588 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_propagate_copy_aedaa3ad2a5231ea42abba1b554c37eff}\label{class_rule_propagate_copy_aedaa3ad2a5231ea42abba1b554c37eff}} 
+\index{RulePropagateCopy@{RulePropagateCopy}!RulePropagateCopy@{RulePropagateCopy}}
+\index{RulePropagateCopy@{RulePropagateCopy}!RulePropagateCopy@{RulePropagateCopy}}
+\subsubsection{\texorpdfstring{RulePropagateCopy()}{RulePropagateCopy()}}
+{\footnotesize\ttfamily Rule\+Propagate\+Copy\+::\+Rule\+Propagate\+Copy (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 590 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{class_rule_propagate_copy_aedaa3ad2a5231ea42abba1b554c37eff_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_propagate_copy_a4204e280e01206f9de2f082afffdce81}\label{class_rule_propagate_copy_a4204e280e01206f9de2f082afffdce81}} 
+\index{RulePropagateCopy@{RulePropagateCopy}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RulePropagateCopy@{RulePropagateCopy}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Propagate\+Copy\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 3318 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_propagate_copy_a4204e280e01206f9de2f082afffdce81_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_propagate_copy_adcaeff563b266b1410a3a69038a8ba71}\label{class_rule_propagate_copy_adcaeff563b266b1410a3a69038a8ba71}} 
+\index{RulePropagateCopy@{RulePropagateCopy}!clone@{clone}}
+\index{clone@{clone}!RulePropagateCopy@{RulePropagateCopy}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Propagate\+Copy\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 591 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_propagate_copy_adcaeff563b266b1410a3a69038a8ba71_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

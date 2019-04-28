@@ -1,0 +1,239 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/opbehavior.hh \- Classes for describing the behavior of individual p-code operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'error\&.hh'\fP
+.br
+\fC#include 'opcodes\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBEvaluationError\fP"
+.br
+.ti -1c
+.RI "class \fBOpBehavior\fP"
+.br
+.RI "Class encapsulating the action/behavior of specific pcode opcodes\&. "
+.ti -1c
+.RI "class \fBOpBehaviorCopy\fP"
+.br
+.RI "CPUI_COPY behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorEqual\fP"
+.br
+.RI "CPUI_INT_EQUAL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorNotEqual\fP"
+.br
+.RI "CPUI_INT_NOTEQUAL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSless\fP"
+.br
+.RI "CPUI_INT_SLESS behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSlessEqual\fP"
+.br
+.RI "CPUI_INT_SLESSEQUAL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntLess\fP"
+.br
+.RI "CPUI_INT_LESS behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntLessEqual\fP"
+.br
+.RI "CPUI_INT_LESSEQUAL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntZext\fP"
+.br
+.RI "CPUI_INT_ZEXT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSext\fP"
+.br
+.RI "CPUI_INT_SEXT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntAdd\fP"
+.br
+.RI "CPUI_INT_ADD behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSub\fP"
+.br
+.RI "CPUI_INT_SUB behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntCarry\fP"
+.br
+.RI "CPUI_INT_CARRY behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntScarry\fP"
+.br
+.RI "CPUI_INT_SCARRY behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSborrow\fP"
+.br
+.RI "CPUI_INT_SBORROW behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorInt2Comp\fP"
+.br
+.RI "CPUI_INT_2COMP behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntNegate\fP"
+.br
+.RI "CPUI_INT_NEGATE behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntXor\fP"
+.br
+.RI "CPUI_INT_XOR behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntAnd\fP"
+.br
+.RI "CPUI_INT_AND behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntOr\fP"
+.br
+.RI "CPUI_INT_OR behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntLeft\fP"
+.br
+.RI "CPUI_INT_LEFT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntRight\fP"
+.br
+.RI "CPUI_INT_RIGHT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSright\fP"
+.br
+.RI "CPUI_INT_SRIGHT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntMult\fP"
+.br
+.RI "CPUI_INT_MULT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntDiv\fP"
+.br
+.RI "CPUI_INT_DIV behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSdiv\fP"
+.br
+.RI "CPUI_INT_SDIV behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntRem\fP"
+.br
+.RI "CPUI_INT_REM behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorIntSrem\fP"
+.br
+.RI "CPUI_INT_SREM behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorBoolNegate\fP"
+.br
+.RI "CPUI_BOOL_NEGATE behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorBoolXor\fP"
+.br
+.RI "CPUI_BOOL_XOR behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorBoolAnd\fP"
+.br
+.RI "CPUI_BOOL_AND behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorBoolOr\fP"
+.br
+.RI "CPUI_BOOL_OR behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatEqual\fP"
+.br
+.RI "CPUI_FLOAT_EQUAL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatNotEqual\fP"
+.br
+.RI "CPUI_FLOAT_NOTEQUAL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatLess\fP"
+.br
+.RI "CPUI_FLOAT_LESS behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatLessEqual\fP"
+.br
+.RI "CPUI_FLOAT_LESSEQUAL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatNan\fP"
+.br
+.RI "CPUI_FLOAT_NAN behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatAdd\fP"
+.br
+.RI "CPUI_FLOAT_ADD behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatDiv\fP"
+.br
+.RI "CPUI_FLOAT_DIV behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatMult\fP"
+.br
+.RI "CPUI_FLOAT_MULT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatSub\fP"
+.br
+.RI "CPUI_FLOAT_SUB behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatNeg\fP"
+.br
+.RI "CPUI_FLOAT_NEG behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatAbs\fP"
+.br
+.RI "CPUI_FLOAT_ABS behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatSqrt\fP"
+.br
+.RI "CPUI_FLOAT_SQRT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatInt2Float\fP"
+.br
+.RI "CPUI_FLOAT_INT2FLOAT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatFloat2Float\fP"
+.br
+.RI "CPUI_FLOAT_FLOAT2FLOAT behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatTrunc\fP"
+.br
+.RI "CPUI_FLOAT_TRUNC behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatCeil\fP"
+.br
+.RI "CPUI_FLOAT_CEIL behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatFloor\fP"
+.br
+.RI "CPUI_FLOAT_FLOOR behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorFloatRound\fP"
+.br
+.RI "CPUI_FLOAT_ROUND behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorPiece\fP"
+.br
+.RI "CPUI_PIECE behavior\&. "
+.ti -1c
+.RI "class \fBOpBehaviorSubpiece\fP"
+.br
+.RI "CPUI_SUBPIECE behavior\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classes for describing the behavior of individual p-code operations\&. 
+
+
+.PP
+Definition in file \fBopbehavior\&.hh\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

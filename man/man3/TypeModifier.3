@@ -1,0 +1,81 @@
+.TH "TypeModifier" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeModifier
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <grammar\&.hh>\fP
+.PP
+Inherited by \fBArrayModifier\fP, \fBFunctionModifier\fP, and \fBPointerModifier\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBpointer_mod\fP, \fBarray_mod\fP, \fBfunction_mod\fP, \fBstruct_mod\fP, \fBenum_mod\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~TypeModifier\fP (void)"
+.br
+.ti -1c
+.RI "virtual uint4 \fBgetType\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBisValid\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBmodType\fP (\fBDatatype\fP *base, const \fBTypeDeclarator\fP *decl, \fBArchitecture\fP *glb) const =0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 116 of file grammar\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIpointer_mod \fP\fP
+.TP
+\fB\fIarray_mod \fP\fP
+.TP
+\fB\fIfunction_mod \fP\fP
+.TP
+\fB\fIstruct_mod \fP\fP
+.TP
+\fB\fIenum_mod \fP\fP
+.PP
+Definition at line 118 of file grammar\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual TypeModifier::~TypeModifier (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 125 of file grammar\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual uint4 TypeModifier::getType (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBFunctionModifier\fP, \fBArrayModifier\fP, and \fBPointerModifier\fP\&.
+.SS "virtual bool TypeModifier::isValid (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBFunctionModifier\fP, \fBArrayModifier\fP, and \fBPointerModifier\fP\&.
+.SS "virtual \fBDatatype\fP* TypeModifier::modType (\fBDatatype\fP * base, const \fBTypeDeclarator\fP * decl, \fBArchitecture\fP * glb) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBFunctionModifier\fP, \fBArrayModifier\fP, and \fBPointerModifier\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

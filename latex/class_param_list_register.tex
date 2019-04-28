@@ -1,0 +1,177 @@
+\hypertarget{class_param_list_register}{}\section{Param\+List\+Register Class Reference}
+\label{class_param_list_register}\index{ParamListRegister@{ParamListRegister}}
+
+
+An unstructured model for passing input parameters to a function.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+
+
+Inheritance diagram for Param\+List\+Register\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_param_list_register__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Param\+List\+Register\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{class_param_list_register__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_param_list_register_aca64ac19f3dc898fc7d12062c76acf59}{Param\+List\+Register}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}} for use with \mbox{\hyperlink{class_param_list_standard_a7dc8219ff6422f4e23d12643b68eb100}{restore\+Xml()}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_param_list_register_ab6c82537acb4d9e382dcbf438baebd0d}{Param\+List\+Register}} (const \mbox{\hyperlink{class_param_list_register}{Param\+List\+Register}} \&op2)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual uint4 \mbox{\hyperlink{class_param_list_register_af11af105230d3d6bf2824ae8b6a527a6}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the type of parameter list. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_param_list_register_a35bf1a7b1033500cb3657608c27d4786}{fillin\+Map}} (\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$active) const
+\begin{DoxyCompactList}\small\item\em Given an unordered list of storage locations, calculate a function prototype. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_param_list}{Param\+List}} $\ast$ \mbox{\hyperlink{class_param_list_register_a1c4f79c909f11b3859f93f293acb9a1d}{clone}} (void) const
+\begin{DoxyCompactList}\small\item\em Clone this parameter list model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An unstructured model for passing input parameters to a function. 
+
+This is the {\bfseries{register}} model, meaning a collection of registers, any of which can be used to pass a parameter. This is nearly identical to \mbox{\hyperlink{class_param_list_standard}{Param\+List\+Standard}}, but rules banning {\itshape holes} are not enforced, any subset of the resource list can be used. This makes sense for executables where parameters follow no conventions or only loose conventions. The \mbox{\hyperlink{class_param_list_standard_a4819bb8291e202e3d11737d586878525}{assign\+Map()}} method may make less sense in this scenario. 
+
+Definition at line 494 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_param_list_register_aca64ac19f3dc898fc7d12062c76acf59}\label{class_param_list_register_aca64ac19f3dc898fc7d12062c76acf59}} 
+\index{ParamListRegister@{ParamListRegister}!ParamListRegister@{ParamListRegister}}
+\index{ParamListRegister@{ParamListRegister}!ParamListRegister@{ParamListRegister}}
+\subsubsection{\texorpdfstring{ParamListRegister()}{ParamListRegister()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Param\+List\+Register\+::\+Param\+List\+Register (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}} for use with \mbox{\hyperlink{class_param_list_standard_a7dc8219ff6422f4e23d12643b68eb100}{restore\+Xml()}} 
+
+
+
+Definition at line 496 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_param_list_register_aca64ac19f3dc898fc7d12062c76acf59_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_list_register_ab6c82537acb4d9e382dcbf438baebd0d}\label{class_param_list_register_ab6c82537acb4d9e382dcbf438baebd0d}} 
+\index{ParamListRegister@{ParamListRegister}!ParamListRegister@{ParamListRegister}}
+\index{ParamListRegister@{ParamListRegister}!ParamListRegister@{ParamListRegister}}
+\subsubsection{\texorpdfstring{ParamListRegister()}{ParamListRegister()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Param\+List\+Register\+::\+Param\+List\+Register (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_param_list_register}{Param\+List\+Register}} \&}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. 
+
+
+
+Definition at line 497 of file fspec.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_param_list_register_a1c4f79c909f11b3859f93f293acb9a1d}\label{class_param_list_register_a1c4f79c909f11b3859f93f293acb9a1d}} 
+\index{ParamListRegister@{ParamListRegister}!clone@{clone}}
+\index{clone@{clone}!ParamListRegister@{ParamListRegister}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_param_list}{Param\+List}} $\ast$ Param\+List\+Register\+::clone (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clone this parameter list model. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_param_list_standard_a8257219823fdb31ac4aa59d2c0c640e5}{Param\+List\+Standard}}.
+
+
+
+Definition at line 1105 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_param_list_register_a1c4f79c909f11b3859f93f293acb9a1d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_list_register_a35bf1a7b1033500cb3657608c27d4786}\label{class_param_list_register_a35bf1a7b1033500cb3657608c27d4786}} 
+\index{ParamListRegister@{ParamListRegister}!fillinMap@{fillinMap}}
+\index{fillinMap@{fillinMap}!ParamListRegister@{ParamListRegister}}
+\subsubsection{\texorpdfstring{fillinMap()}{fillinMap()}}
+{\footnotesize\ttfamily void Param\+List\+Register\+::fillin\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$}]{active }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Given an unordered list of storage locations, calculate a function prototype. 
+
+A list of input (or output) trials is given, which may have holes, invalid inputs etc. Decide on the formal ordered parameter list. Trials within the \mbox{\hyperlink{class_param_active}{Param\+Active}} are added, removed, or reordered as needed. 
+\begin{DoxyParams}{Parameters}
+{\em active} & is the given list of trials \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_param_list_standard_a7fa7043f5c6bba995e2ea716ca16ccaf}{Param\+List\+Standard}}.
+
+
+
+Definition at line 1084 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_list_register_a35bf1a7b1033500cb3657608c27d4786_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_list_register_af11af105230d3d6bf2824ae8b6a527a6}\label{class_param_list_register_af11af105230d3d6bf2824ae8b6a527a6}} 
+\index{ParamListRegister@{ParamListRegister}!getType@{getType}}
+\index{getType@{getType}!ParamListRegister@{ParamListRegister}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual uint4 Param\+List\+Register\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the type of parameter list. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_param_list_standard_a37193293ffb24b1206944e35ef64973c}{Param\+List\+Standard}}.
+
+
+
+Definition at line 498 of file fspec.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

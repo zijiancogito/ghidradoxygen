@@ -1,0 +1,130 @@
+.TH "ContextBitRange" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextBitRange \- Description of a context variable within the disassembly context \fIblob\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <globalcontext\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBContextBitRange\fP (void)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml() "
+.ti -1c
+.RI "\fBContextBitRange\fP (int4 sbit, int4 ebit)"
+.br
+.RI "Construct a context value given an absolute bit range\&. "
+.ti -1c
+.RI "int4 \fBgetShift\fP (void) const"
+.br
+.RI "Return the shift-amount for \fBthis\fP value\&. "
+.ti -1c
+.RI "uintm \fBgetMask\fP (void) const"
+.br
+.RI "Return the mask for \fBthis\fP value\&. "
+.ti -1c
+.RI "int4 \fBgetWord\fP (void) const"
+.br
+.RI "Return the word index for \fBthis\fP value\&. "
+.ti -1c
+.RI "void \fBsetValue\fP (uintm *vec, uintm val) const"
+.br
+.RI "Set \fBthis\fP value within a given context blob\&. "
+.ti -1c
+.RI "uintm \fBgetValue\fP (const uintm *vec) const"
+.br
+.RI "Retrieve \fBthis\fP value from a given context blob\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Description of a context variable within the disassembly context \fIblob\fP\&. 
+
+Disassembly context is stored as individual (integer) values packed into a sequence of words\&. This class represents the info for encoding or decoding a single value within this sequence\&. A value is a contiguous range of bits within one context word\&. Size can range from 1 bit up to the size of a word\&. 
+.PP
+Definition at line 30 of file globalcontext\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ContextBitRange::ContextBitRange (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with restoreXml() 
+.PP
+Definition at line 37 of file globalcontext\&.hh\&.
+.SS "ContextBitRange::ContextBitRange (int4 sbit, int4 ebit)"
+
+.PP
+Construct a context value given an absolute bit range\&. Bits within the whole context blob are labeled starting with 0 as the most significant bit in the first word in the sequence\&. The new context value must be contained within a single word\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsbit\fP is the starting (most significant) bit of the new value 
+.br
+\fIebit\fP is the ending (least significant) bit of the new value 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file globalcontext\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "uintm ContextBitRange::getMask (void) const\fC [inline]\fP"
+
+.PP
+Return the mask for \fBthis\fP value\&. 
+.PP
+Definition at line 40 of file globalcontext\&.hh\&.
+.SS "int4 ContextBitRange::getShift (void) const\fC [inline]\fP"
+
+.PP
+Return the shift-amount for \fBthis\fP value\&. 
+.PP
+Definition at line 39 of file globalcontext\&.hh\&.
+.SS "uintm ContextBitRange::getValue (const uintm * vec) const\fC [inline]\fP"
+
+.PP
+Retrieve \fBthis\fP value from a given context blob\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the given context blob (as an array of uintm words) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the recovered integer value 
+.RE
+.PP
+
+.PP
+Definition at line 58 of file globalcontext\&.hh\&.
+.SS "int4 ContextBitRange::getWord (void) const\fC [inline]\fP"
+
+.PP
+Return the word index for \fBthis\fP value\&. 
+.PP
+Definition at line 41 of file globalcontext\&.hh\&.
+.SS "void ContextBitRange::setValue (uintm * vec, uintm val) const\fC [inline]\fP"
+
+.PP
+Set \fBthis\fP value within a given context blob\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the given context blob to alter (as an array of uintm words) 
+.br
+\fIval\fP is the integer value to set 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file globalcontext\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

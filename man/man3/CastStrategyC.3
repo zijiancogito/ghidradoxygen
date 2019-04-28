@@ -1,0 +1,297 @@
+.TH "CastStrategyC" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CastStrategyC \- Casting strategies that are specific to the C language\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cast\&.hh>\fP
+.PP
+Inherits \fBCastStrategy\fP\&.
+.PP
+Inherited by \fBCastStrategyJava\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual int4 \fBlocalExtensionType\fP (const \fBVarnode\fP *vn) const"
+.br
+.RI "Decide on integer promotion by examining just local properties of the given \fBVarnode\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBintPromotionType\fP (const \fBVarnode\fP *vn) const"
+.br
+.RI "Calculate the integer promotion code of a given \fBVarnode\fP\&. "
+.ti -1c
+.RI "virtual bool \fBcheckIntPromotionForCompare\fP (const \fBPcodeOp\fP *op, int4 slot) const"
+.br
+.RI "Check if integer promotion forces a cast for the given comparison op and slot\&. "
+.ti -1c
+.RI "virtual bool \fBcheckIntPromotionForExtension\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Check if integer promotion forces a cast for the input to the given extension\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBcastStandard\fP (\fBDatatype\fP *reqtype, \fBDatatype\fP *curtype, bool care_uint_int, bool care_ptr_uint) const"
+.br
+.RI "Does there need to be a visible cast between the given data-types\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBarithmeticOutputStandard\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "What is the output data-type produced by the given integer arithmetic operation\&. "
+.ti -1c
+.RI "virtual bool \fBisSubpieceCast\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype, uint4 offset) const"
+.br
+.RI "Is truncating an input data-type, producing an output data-type, considered a cast\&. "
+.ti -1c
+.RI "virtual bool \fBisSubpieceCastEndian\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype, uint4 offset, bool isbigend) const"
+.br
+.RI "Is the given data-type truncation considered a cast, given endianess concerns\&. "
+.ti -1c
+.RI "virtual bool \fBisSextCast\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype) const"
+.br
+.RI "Is sign-extending an input data-type, producing an output data-type, considered a cast\&. "
+.ti -1c
+.RI "virtual bool \fBisZextCast\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype) const"
+.br
+.RI "Is zero-extending an input data-type, producing an output data-type, considered a cast\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Casting strategies that are specific to the C language\&. 
+.PP
+Definition at line 148 of file cast\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDatatype\fP * CastStrategyC::arithmeticOutputStandard (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+What is the output data-type produced by the given integer arithmetic operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given operation 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output data-type 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 238 of file cast\&.cc\&.
+.SS "\fBDatatype\fP * CastStrategyC::castStandard (\fBDatatype\fP * reqtype, \fBDatatype\fP * curtype, bool care_uint_int, bool care_ptr_uint) const\fC [virtual]\fP"
+
+.PP
+Does there need to be a visible cast between the given data-types\&. The cast is from a \fIcurrent\fP data-type to an \fIexpected\fP data-type\&. NULL is returned if no cast is required, otherwise the data-type to cast to (usually the expected data-type) is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreqtype\fP is the \fIexpected\fP data-type 
+.br
+\fIcurtype\fP is the \fIcurrent\fP data-type 
+.br
+\fIcare_uint_int\fP is \fBtrue\fP if we care about a change in signedness 
+.br
+\fIcare_ptr_uint\fP is \fBtrue\fP if we care about conversions between pointers and unsigned values 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NULL to indicate no cast, or the data-type to cast to 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Reimplemented in \fBCastStrategyJava\fP\&.
+.PP
+Definition at line 169 of file cast\&.cc\&.
+.SS "bool CastStrategyC::checkIntPromotionForCompare (const \fBPcodeOp\fP * op, int4 slot) const\fC [virtual]\fP"
+
+.PP
+Check if integer promotion forces a cast for the given comparison op and slot\&. Compute to what level the given slot has seen integer promotion and if a cast is required before the comparison operator makes sense\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given comparison operator 
+.br
+\fIslot\fP is the input slot being tested 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a cast is required before comparing 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 28 of file cast\&.cc\&.
+.SS "bool CastStrategyC::checkIntPromotionForExtension (const \fBPcodeOp\fP * op) const\fC [virtual]\fP"
+
+.PP
+Check if integer promotion forces a cast for the input to the given extension\&. Compute to what level the given slot has seen integer promotion and if a cast is required before the extension operator makes sense\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given extension operator INT_ZEXT or INT_SEXT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a cast is required before extending 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 47 of file cast\&.cc\&.
+.SS "int4 CastStrategyC::intPromotionType (const \fBVarnode\fP * vn) const\fC [virtual]\fP"
+
+.PP
+Calculate the integer promotion code of a given \fBVarnode\fP\&. Recursively examine the expression defining the \fBVarnode\fP as necessary 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the IntPromotionCode 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 98 of file cast\&.cc\&.
+.SS "bool CastStrategyC::isSextCast (\fBDatatype\fP * outtype, \fBDatatype\fP * intype) const\fC [virtual]\fP"
+
+.PP
+Is sign-extending an input data-type, producing an output data-type, considered a cast\&. Data-types must be provided from the input and output of an INT_SEXT operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the INT_SEXT should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 286 of file cast\&.cc\&.
+.SS "bool CastStrategyC::isSubpieceCast (\fBDatatype\fP * outtype, \fBDatatype\fP * intype, uint4 offset) const\fC [virtual]\fP"
+
+.PP
+Is truncating an input data-type, producing an output data-type, considered a cast\&. Data-types must be provided from the input and output of a SUBPIECE operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.br
+\fIoffset\fP is number of bytes truncated by the SUBPIECE 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the SUBPIECE should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 255 of file cast\&.cc\&.
+.SS "bool CastStrategyC::isSubpieceCastEndian (\fBDatatype\fP * outtype, \fBDatatype\fP * intype, uint4 offset, bool isbigend) const\fC [virtual]\fP"
+
+.PP
+Is the given data-type truncation considered a cast, given endianess concerns\&. This is equivalent to \fBisSubpieceCast()\fP but where the truncation is accomplished by pulling bytes directly out of memory\&. We assume the input data-type is layed down in memory, and we pull the output value starting at a given byte offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.br
+\fIoffset\fP is the given byte offset (into the input memory) 
+.br
+\fIisbigend\fP is \fBtrue\fP if the address space holding the memory is big endian\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the truncation should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 277 of file cast\&.cc\&.
+.SS "bool CastStrategyC::isZextCast (\fBDatatype\fP * outtype, \fBDatatype\fP * intype) const\fC [virtual]\fP"
+
+.PP
+Is zero-extending an input data-type, producing an output data-type, considered a cast\&. Data-types must be provided from the input and output of an INT_ZEXT operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the INT_ZEXT should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Reimplemented in \fBCastStrategyJava\fP\&.
+.PP
+Definition at line 296 of file cast\&.cc\&.
+.SS "int4 CastStrategyC::localExtensionType (const \fBVarnode\fP * vn) const\fC [virtual]\fP"
+
+.PP
+Decide on integer promotion by examining just local properties of the given \fBVarnode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an IntPromotionCode (excluding NO_PROMOTION) 
+.RE
+.PP
+
+.PP
+Implements \fBCastStrategy\fP\&.
+.PP
+Definition at line 61 of file cast\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

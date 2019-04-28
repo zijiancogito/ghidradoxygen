@@ -1,0 +1,122 @@
+.TH "BlockEdge" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockEdge \- A control-flow edge between blocks (\fBFlowBlock\fP)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockEdge\fP (void)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml\&. "
+.ti -1c
+.RI "\fBBlockEdge\fP (\fBFlowBlock\fP *pt, uint4 lab, int4 rev)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save the edge to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, \fBBlockMap\fP &resolver)"
+.br
+.RI "Restore \fBthis\fP edge from an XML stream\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "uint4 \fBlabel\fP"
+.br
+.RI "Label of the edge\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBpoint\fP"
+.br
+.RI "Other end of the edge\&. "
+.ti -1c
+.RI "int4 \fBreverse_index\fP"
+.br
+.RI "Index for edge coming other way\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A control-flow edge between blocks (\fBFlowBlock\fP) 
+
+The edge is owned by the source block and can have \fBFlowBlock::edge_flags\fP labels applied to it\&. The \fBpoint\fP indicates the \fBFlowBlock\fP at the other end from the source block\&. NOTE: The control-flow direction of the edge can only be determined from context, whether the edge is in the incoming or outgoing edge list\&. 
+.PP
+Definition at line 44 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BlockEdge::BlockEdge (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with restoreXml\&. 
+.PP
+Definition at line 48 of file block\&.hh\&.
+.SS "BlockEdge::BlockEdge (\fBFlowBlock\fP * pt, uint4 lab, int4 rev)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 49 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void BlockEdge::restoreXml (const \fBElement\fP * el, \fBBlockMap\fP & resolver)"
+
+.PP
+Restore \fBthis\fP edge from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <edge> tag 
+.br
+\fIresolver\fP is used to cross-reference the edge's \fBFlowBlock\fP endpoints 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file block\&.cc\&.
+.SS "void BlockEdge::saveXml (ostream & s) const"
+
+.PP
+Save the edge to an XML stream\&. The edge is saved assuming we already know what block we are in 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file block\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 BlockEdge::label"
+
+.PP
+Label of the edge\&. 
+.PP
+Definition at line 45 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* BlockEdge::point"
+
+.PP
+Other end of the edge\&. 
+.PP
+Definition at line 46 of file block\&.hh\&.
+.SS "int4 BlockEdge::reverse_index"
+
+.PP
+Index for edge coming other way\&. 
+.PP
+Definition at line 47 of file block\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

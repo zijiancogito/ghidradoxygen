@@ -1,0 +1,86 @@
+.TH "VolatileReadOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VolatileReadOp \- An operation that reads from volatile memory\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.PP
+Inherits \fBVolatileOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVolatileReadOp\fP (\fBArchitecture\fP *g, const string &nm, int4 ind)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual string \fBgetOperatorName\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Get the symbol representing this operation in decompiled code\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore the detailed description from an XML stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An operation that reads from volatile memory\&. 
+
+This CALLOTHER p-code operation takes as its input parameter, after the constant id, a reference \fBVarnode\fP to the memory being read\&. The output returned by this operation is the actual value read from memory\&. 
+.PP
+Definition at line 112 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "VolatileReadOp::VolatileReadOp (\fBArchitecture\fP * g, const string & nm, int4 ind)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 114 of file userop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string VolatileReadOp::getOperatorName (const \fBPcodeOp\fP * op) const\fC [virtual]\fP"
+
+.PP
+Get the symbol representing this operation in decompiled code\&. This will return the symbol formally displayed in source code, which can be tailored more than the low-level name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the operation (in context) where a symbol is needed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the symbol as a string 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBUserPcodeOp\fP\&.
+.PP
+Definition at line 55 of file userop\&.cc\&.
+.SS "void VolatileReadOp::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore the detailed description from an XML stream\&. The details of how a user defined operation behaves can be dynamically configured from an XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element describing the op 
+.RE
+.PP
+
+.PP
+Implements \fBUserPcodeOp\fP\&.
+.PP
+Definition at line 62 of file userop\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

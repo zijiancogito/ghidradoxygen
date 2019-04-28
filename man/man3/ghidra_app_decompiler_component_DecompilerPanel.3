@@ -1,0 +1,300 @@
+.TH "ghidra.app.decompiler.component.DecompilerPanel" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.DecompilerPanel
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits JPanel, FieldMouseListener, FieldLocationListener, FieldSelectionListener, and \fBghidra\&.app\&.decompiler\&.component\&.ClangHighlightListener\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSearchHighlightFactory\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBList\fP< \fBClangLine\fP > \fBgetLines\fP ()"
+.br
+.ti -1c
+.RI "\fBList\fP< Field > \fBgetFields\fP ()"
+.br
+.ti -1c
+.RI "FieldPanel \fBgetFieldPanel\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetBackground\fP (Color bg)"
+.br
+.ti -1c
+.RI "LayoutModel \fBgetLayoutModel\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBcontainsLocation\fP (ProgramLocation location)"
+.br
+.ti -1c
+.RI "void \fBsetLocation\fP (ProgramLocation location, ViewerPosition viewerPosition)"
+.br
+.ti -1c
+.RI "void \fBsetDecompilerHoverProvider\fP (\fBDecompilerHoverProvider\fP provider)"
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.ti -1c
+.RI "void \fBbuttonPressed\fP (FieldLocation location, Field field, MouseEvent ev)"
+.br
+.ti -1c
+.RI "ProgramLocation \fBgetCurrentLocation\fP ()"
+.br
+.ti -1c
+.RI "void \fBfieldLocationChanged\fP (FieldLocation location, Field field, EventTrigger trigger)"
+.br
+.ti -1c
+.RI "void \fBselectionChanged\fP (FieldSelection selection, EventTrigger trigger)"
+.br
+.ti -1c
+.RI "SearchLocation \fBsearchText\fP (String text, FieldLocation startLocation, boolean forwardDirection)"
+.br
+.ti -1c
+.RI "SearchLocation \fBsearchTextRegex\fP (String text, FieldLocation startLocation, boolean forwardDirection)"
+.br
+.ti -1c
+.RI "void \fBsetSearchResults\fP (SearchLocation searchLocation)"
+.br
+.ti -1c
+.RI "Color \fBgetDefaultHighlightColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetDefaultSpecialColor\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetHighlightedText\fP ()"
+.br
+.ti -1c
+.RI "FieldLocation \fBgetCursorPosition\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetCursorPosition\fP (FieldLocation fieldLocation)"
+.br
+.ti -1c
+.RI "\fBClangToken\fP \fBgetSelectedToken\fP ()"
+.br
+.ti -1c
+.RI "\fBClangToken\fP \fBgetTokenAtCursor\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddHoverService\fP (\fBDecompilerHoverService\fP hoverService)"
+.br
+.ti -1c
+.RI "void \fBremoveHoverService\fP (\fBDecompilerHoverService\fP hoverService)"
+.br
+.ti -1c
+.RI "void \fBsetHoverMode\fP (boolean enabled)"
+.br
+.ti -1c
+.RI "boolean \fBisHoverShowing\fP ()"
+.br
+.ti -1c
+.RI "void \fBclearHighlights\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddVarnodeHighlights\fP (Set< \fBVarnode\fP > varnodes, Color highlightColor, \fBVarnode\fP specificvn, \fBPcodeOp\fP specificop, Color specialColor)"
+.br
+.ti -1c
+.RI "void \fBaddPcodeOpHighlights\fP (Set< \fBPcodeOp\fP > ops, Color highlightColor)"
+.br
+.ti -1c
+.RI "ViewerPosition \fBgetViewerPosition\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetViewerPosition\fP (ViewerPosition viewerPosition)"
+.br
+.ti -1c
+.RI "void \fBrequestFocus\fP ()"
+.br
+.ti -1c
+.RI "void \fBselectAll\fP ()"
+.br
+.ti -1c
+.RI "void \fBoptionsChanged\fP (\fBDecompileOptions\fP decompilerOptions)"
+.br
+.ti -1c
+.RI "void \fBsetHighlightController\fP (\fBClangHighlightController\fP highlightController)"
+.br
+.ti -1c
+.RI "void \fBtokenHighlightsChanged\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class to handle the display of a decompiled function\&. 
+.PP
+Definition at line 54 of file DecompilerPanel\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.addHoverService (\fBDecompilerHoverService\fP hoverService)\fC [inline]\fP"
+
+.PP
+Definition at line 646 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.addPcodeOpHighlights (Set< \fBPcodeOp\fP > ops, Color highlightColor)\fC [inline]\fP"
+
+.PP
+Definition at line 683 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.addVarnodeHighlights (Set< \fBVarnode\fP > varnodes, Color highlightColor, \fBVarnode\fP specificvn, \fBPcodeOp\fP specificop, Color specialColor)\fC [inline]\fP"
+
+.PP
+Definition at line 674 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.buttonPressed (FieldLocation location, Field field, MouseEvent ev)\fC [inline]\fP"
+
+.PP
+Definition at line 332 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.clearHighlights ()\fC [inline]\fP"
+
+.PP
+Definition at line 668 of file DecompilerPanel\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.containsLocation (ProgramLocation location)\fC [inline]\fP"
+
+.PP
+Definition at line 199 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.dispose ()\fC [inline]\fP"
+
+.PP
+Definition at line 309 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.fieldLocationChanged (FieldLocation location, Field field, EventTrigger trigger)\fC [inline]\fP"
+
+.PP
+Definition at line 499 of file DecompilerPanel\&.java\&.
+.SS "ProgramLocation ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getCurrentLocation ()\fC [inline]\fP"
+
+.PP
+Definition at line 489 of file DecompilerPanel\&.java\&.
+.SS "FieldLocation ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getCursorPosition ()\fC [inline]\fP"
+
+.PP
+Definition at line 607 of file DecompilerPanel\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getDefaultHighlightColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 592 of file DecompilerPanel\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getDefaultSpecialColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 596 of file DecompilerPanel\&.java\&.
+.SS "FieldPanel ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getFieldPanel ()\fC [inline]\fP"
+
+.PP
+Definition at line 126 of file DecompilerPanel\&.java\&.
+.SS "\fBList\fP<Field> ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getFields ()\fC [inline]\fP"
+
+.PP
+Definition at line 122 of file DecompilerPanel\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getHighlightedText ()\fC [inline]\fP"
+
+.PP
+Definition at line 600 of file DecompilerPanel\&.java\&.
+.SS "LayoutModel ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getLayoutModel ()\fC [inline]\fP"
+
+.PP
+Definition at line 195 of file DecompilerPanel\&.java\&.
+.SS "\fBList\fP<\fBClangLine\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getLines ()\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file DecompilerPanel\&.java\&.
+.SS "\fBClangToken\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getSelectedToken ()\fC [inline]\fP"
+Returns a single selected token; null if there is no selection or multiple tokens selected\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a single selected token; null if there is no selection or multiple tokens selected\&. 
+.RE
+.PP
+
+.PP
+Definition at line 621 of file DecompilerPanel\&.java\&.
+.SS "\fBClangToken\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getTokenAtCursor ()\fC [inline]\fP"
+
+.PP
+Definition at line 637 of file DecompilerPanel\&.java\&.
+.SS "ViewerPosition ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.getViewerPosition ()\fC [inline]\fP"
+
+.PP
+Definition at line 729 of file DecompilerPanel\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.isHoverShowing ()\fC [inline]\fP"
+
+.PP
+Definition at line 664 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.optionsChanged (\fBDecompileOptions\fP decompilerOptions)\fC [inline]\fP"
+
+.PP
+Definition at line 752 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.removeHoverService (\fBDecompilerHoverService\fP hoverService)\fC [inline]\fP"
+
+.PP
+Definition at line 650 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.requestFocus ()\fC [inline]\fP"
+
+.PP
+Definition at line 739 of file DecompilerPanel\&.java\&.
+.SS "SearchLocation ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.searchText (String text, FieldLocation startLocation, boolean forwardDirection)\fC [inline]\fP"
+
+.PP
+Definition at line 573 of file DecompilerPanel\&.java\&.
+.SS "SearchLocation ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.searchTextRegex (String text, FieldLocation startLocation, boolean forwardDirection)\fC [inline]\fP"
+
+.PP
+Definition at line 578 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.selectAll ()\fC [inline]\fP"
+
+.PP
+Definition at line 743 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.selectionChanged (FieldSelection selection, EventTrigger trigger)\fC [inline]\fP"
+
+.PP
+Definition at line 526 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setBackground (Color bg)\fC [inline]\fP"
+
+.PP
+Definition at line 131 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setCursorPosition (FieldLocation fieldLocation)\fC [inline]\fP"
+
+.PP
+Definition at line 611 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setDecompilerHoverProvider (\fBDecompilerHoverProvider\fP provider)\fC [inline]\fP"
+
+.PP
+Definition at line 294 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setHighlightController (\fBClangHighlightController\fP highlightController)\fC [inline]\fP"
+
+.PP
+Definition at line 762 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setHoverMode (boolean enabled)\fC [inline]\fP"
+
+.PP
+Definition at line 654 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setLocation (ProgramLocation location, ViewerPosition viewerPosition)\fC [inline]\fP"
+
+.PP
+Definition at line 203 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setSearchResults (SearchLocation searchLocation)\fC [inline]\fP"
+
+.PP
+Definition at line 583 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.setViewerPosition (ViewerPosition viewerPosition)\fC [inline]\fP"
+
+.PP
+Definition at line 733 of file DecompilerPanel\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerPanel\&.tokenHighlightsChanged ()\fC [inline]\fP"
+Method to invoke whenever the decompiler token highlights have changed\&. 
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.component\&.ClangHighlightListener\fP\&.
+.PP
+Definition at line 769 of file DecompilerPanel\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,72 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'varnode\&.hh'\fP
+.br
+\fC#include 'funcdata\&.hh'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBcontiguous_test\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2)"
+.br
+.RI "Test if Varnodes are pieces of a whole\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindContiguousWhole\fP (\fBFuncdata\fP &data, \fBVarnode\fP *vn1, \fBVarnode\fP *vn2)"
+.br
+.RI "Retrieve the whole \fBVarnode\fP given pieces\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool contiguous_test (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2)"
+
+.PP
+Test if Varnodes are pieces of a whole\&. Return true if \fBvn1\fP contains the high part and \fBvn2\fP the low part of what was(is) a single value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn1\fP is the putative high \fBVarnode\fP 
+.br
+\fIvn2\fP is the putative low \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if they are pieces of a whole 
+.RE
+.PP
+
+.PP
+Definition at line 1524 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP* findContiguousWhole (\fBFuncdata\fP & data, \fBVarnode\fP * vn1, \fBVarnode\fP * vn2)"
+
+.PP
+Retrieve the whole \fBVarnode\fP given pieces\&. Assuming vn1,vn2 has passed the \fBcontiguous_test()\fP, return the \fBVarnode\fP containing the whole value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the underlying function 
+.br
+\fIvn1\fP is the high \fBVarnode\fP 
+.br
+\fIvn2\fP is the low \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the whole \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1555 of file varnode\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

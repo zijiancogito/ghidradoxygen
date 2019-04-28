@@ -1,0 +1,86 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/type.cc
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'type\&.hh'\fP
+.br
+\fC#include 'funcdata\&.hh'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprint_data\fP (ostream &s, uint1 *buffer, int4 size, const \fBAddress\fP &baseaddr)"
+.br
+.RI "Print a hex dump of a data buffer to stream\&. "
+.ti -1c
+.RI "void \fBmetatype2string\fP (\fBtype_metatype\fP metatype, string &res)"
+.br
+.RI "Convert type \fBmeta-type\fP to name\&. "
+.ti -1c
+.RI "\fBtype_metatype\fP \fBstring2metatype\fP (const string &metastring)"
+.br
+.RI "Convert string to type \fBmeta-type\fP\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void metatype2string (\fBtype_metatype\fP metatype, string & res)"
+
+.PP
+Convert type \fBmeta-type\fP to name\&. Convert a type \fBmeta-type\fP into the string name of the meta-type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImetatype\fP is the encoded type meta-type 
+.br
+\fIres\fP will hold the resulting string 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file type\&.cc\&.
+.SS "void print_data (ostream & s, uint1 * buffer, int4 size, const \fBAddress\fP & baseaddr)"
+
+.PP
+Print a hex dump of a data buffer to stream\&. Display an array of bytes as a hex dump at a given address\&. Each line displays an address and 16 bytes in hexadecimal 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.br
+\fIbuffer\fP is a pointer to the bytes 
+.br
+\fIsize\fP is the number of bytes 
+.br
+\fIbaseaddr\fP is the address of the first byte in the buffer 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file type\&.cc\&.
+.SS "\fBtype_metatype\fP string2metatype (const string & metastring)"
+
+.PP
+Convert string to type \fBmeta-type\fP\&. Given a string description of a type \fBmeta-type\fP\&. Return the meta-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImetastring\fP is the description of the meta-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the encoded type meta-type 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file type\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,106 @@
+.TH "AddTreeState" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AddTreeState \- Structure for sorting out pointer expression trees\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ruleaction\&.hh>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVarnode\fP * \fBptr\fP"
+.br
+.RI "The pointer varnode\&. "
+.ti -1c
+.RI "int4 \fBsize\fP"
+.br
+.RI "Size of ptr type in question\&. "
+.ti -1c
+.RI "vector< \fBVarnode\fP * > \fBmultiple\fP"
+.br
+.RI "Varnodes which are multiples of size\&. "
+.ti -1c
+.RI "vector< \fBuintb\fP > \fBcoeff\fP"
+.br
+.RI "Associated constant multiple\&. "
+.ti -1c
+.RI "vector< \fBVarnode\fP * > \fBnonmult\fP"
+.br
+.RI "Varnodes which are not multiples\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBmultsum\fP"
+.br
+.RI "Sum of multiple constants\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBnonmultsum\fP"
+.br
+.RI "Sum of non-multiple constants\&. "
+.ti -1c
+.RI "bool \fBvalid\fP"
+.br
+.RI "Full tree search was performed\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Structure for sorting out pointer expression trees\&. 
+.PP
+Definition at line 31 of file ruleaction\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vector<\fBuintb\fP> AddTreeState::coeff"
+
+.PP
+Associated constant multiple\&. 
+.PP
+Definition at line 36 of file ruleaction\&.hh\&.
+.SS "vector<\fBVarnode\fP *> AddTreeState::multiple"
+
+.PP
+Varnodes which are multiples of size\&. 
+.PP
+Definition at line 35 of file ruleaction\&.hh\&.
+.SS "\fBuintb\fP AddTreeState::multsum"
+
+.PP
+Sum of multiple constants\&. 
+.PP
+Definition at line 38 of file ruleaction\&.hh\&.
+.SS "vector<\fBVarnode\fP *> AddTreeState::nonmult"
+
+.PP
+Varnodes which are not multiples\&. 
+.PP
+Definition at line 37 of file ruleaction\&.hh\&.
+.SS "\fBuintb\fP AddTreeState::nonmultsum"
+
+.PP
+Sum of non-multiple constants\&. 
+.PP
+Definition at line 39 of file ruleaction\&.hh\&.
+.SS "\fBVarnode\fP* AddTreeState::ptr"
+
+.PP
+The pointer varnode\&. 
+.PP
+Definition at line 33 of file ruleaction\&.hh\&.
+.SS "int4 AddTreeState::size"
+
+.PP
+Size of ptr type in question\&. 
+.PP
+Definition at line 34 of file ruleaction\&.hh\&.
+.SS "bool AddTreeState::valid"
+
+.PP
+Full tree search was performed\&. 
+.PP
+Definition at line 40 of file ruleaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

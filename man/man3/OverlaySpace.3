@@ -1,0 +1,107 @@
+.TH "OverlaySpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OverlaySpace \- An overlay space\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <space\&.hh>\fP
+.PP
+Inherits \fBAddrSpace\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOverlaySpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetBaseSpace\fP (void) const"
+.br
+.RI "Get the address space being overlayed\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write the details of this space as XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover the details of this space from XML\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An overlay space\&. 
+
+A different code and data layout that occupies the same memory as another address space\&. Some compilers use this concept to increase the logical size of a program without increasing its physical memory requirements\&. An overlay space allows the same physical location to contain different code and be labeled with different symbols, depending on context\&. From the point of view of reverse engineering, the different code and symbols are viewed as a logically distinct space\&. 
+.PP
+Definition at line 219 of file space\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "OverlaySpace::OverlaySpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the address space manager 
+.br
+\fIt\fP is the processor translator 
+.RE
+.PP
+
+.PP
+Definition at line 658 of file space\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBAddrSpace\fP * OverlaySpace::getBaseSpace (void) const"
+
+.PP
+Get the address space being overlayed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the base address space 
+.RE
+.PP
+
+.PP
+Definition at line 666 of file space\&.cc\&.
+.SS "void OverlaySpace::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Recover the details of this space from XML\&. Walk a parsed XML tag and recover all the properties defining this space\&. The processor translator, \fItrans\fP, and the \fItype\fP must already be filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML tag 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 682 of file space\&.cc\&.
+.SS "void OverlaySpace::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write the details of this space as XML\&. Write a tag fully describing the details of this space suitable for later recovery via restoreXml\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 672 of file space\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

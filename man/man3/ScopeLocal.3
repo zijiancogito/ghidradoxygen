@@ -1,0 +1,161 @@
+.TH "ScopeLocal" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScopeLocal
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <varmap\&.hh>\fP
+.PP
+Inherits \fBScopeInternal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScopeLocal\fP (\fBAddrSpace\fP *spc, \fBFuncdata\fP *\fBfd\fP, \fBArchitecture\fP *g)"
+.br
+.ti -1c
+.RI "virtual \fB~ScopeLocal\fP (void)"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpaceId\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisUnaffectedStorage\fP (\fBVarnode\fP *vn) const"
+.br
+.ti -1c
+.RI "void \fBmarkNotMapped\fP (\fBAddrSpace\fP *spc, \fBuintb\fP first, int4 sz, bool param)"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write out \fBthis\fP as a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual string \fBbuildVariableName\fP (const \fBAddress\fP &addr, const \fBAddress\fP &pc, \fBDatatype\fP *ct, int4 &index, uint4 flags) const"
+.br
+.RI "Given an address and data-type, build a suitable generic symbol name\&. "
+.ti -1c
+.RI "void \fBresetLocalWindow\fP (void)"
+.br
+.ti -1c
+.RI "void \fBrestructureVarnode\fP (bool aliasyes)"
+.br
+.ti -1c
+.RI "void \fBrestructureHigh\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBmakeNameRecommendation\fP (string &res, const \fBAddress\fP &addr, const \fBAddress\fP &usepoint) const"
+.br
+.ti -1c
+.RI "void \fBmakeNameRecommendationsForSymbols\fP (vector< string > &resname, vector< \fBSymbol\fP * > &ressym) const"
+.br
+.ti -1c
+.RI "void \fBaddRecommendName\fP (const \fBAddress\fP &addr, const \fBAddress\fP &usepoint, const string &nm, int4 sz)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 115 of file varmap\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ScopeLocal::ScopeLocal (\fBAddrSpace\fP * spc, \fBFuncdata\fP * fd, \fBArchitecture\fP * g)"
+
+.PP
+Definition at line 49 of file varmap\&.cc\&.
+.SS "virtual ScopeLocal::~ScopeLocal (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 133 of file varmap\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ScopeLocal::addRecommendName (const \fBAddress\fP & addr, const \fBAddress\fP & usepoint, const string & nm, int4 sz)"
+
+.PP
+Definition at line 1025 of file varmap\&.cc\&.
+.SS "string ScopeLocal::buildVariableName (const \fBAddress\fP & addr, const \fBAddress\fP & pc, \fBDatatype\fP * ct, int4 & index, uint4 flags) const\fC [virtual]\fP"
+
+.PP
+Given an address and data-type, build a suitable generic symbol name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIpc\fP is the address at which the name is getting used 
+.br
+\fIct\fP is a data-type used to inform the name 
+.br
+\fIindex\fP is a reference to an index used to make the name unique, which will be updated 
+.br
+\fIflags\fP are boolean properties of the variable we need the name for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new variable name 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBScopeInternal\fP\&.
+.PP
+Definition at line 178 of file varmap\&.cc\&.
+.SS "\fBAddrSpace\fP* ScopeLocal::getSpaceId (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 135 of file varmap\&.hh\&.
+.SS "bool ScopeLocal::isUnaffectedStorage (\fBVarnode\fP * vn) const\fC [inline]\fP"
+
+.PP
+Definition at line 136 of file varmap\&.hh\&.
+.SS "bool ScopeLocal::makeNameRecommendation (string & res, const \fBAddress\fP & addr, const \fBAddress\fP & usepoint) const"
+
+.PP
+Definition at line 975 of file varmap\&.cc\&.
+.SS "void ScopeLocal::makeNameRecommendationsForSymbols (vector< string > & resname, vector< \fBSymbol\fP * > & ressym) const"
+
+.PP
+Definition at line 987 of file varmap\&.cc\&.
+.SS "void ScopeLocal::markNotMapped (\fBAddrSpace\fP * spc, \fBuintb\fP first, int4 sz, bool param)"
+
+.PP
+Definition at line 136 of file varmap\&.cc\&.
+.SS "void ScopeLocal::resetLocalWindow (void)"
+
+.PP
+Definition at line 85 of file varmap\&.cc\&.
+.SS "void ScopeLocal::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. 
+.PP
+Reimplemented from \fBScopeInternal\fP\&.
+.PP
+Definition at line 124 of file varmap\&.cc\&.
+.SS "void ScopeLocal::restructureHigh (void)"
+
+.PP
+Definition at line 655 of file varmap\&.cc\&.
+.SS "void ScopeLocal::restructureVarnode (bool aliasyes)"
+
+.PP
+Definition at line 628 of file varmap\&.cc\&.
+.SS "void ScopeLocal::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write out \fBthis\fP as a <scope> XML tag\&. 
+.PP
+Reimplemented from \fBScopeInternal\fP\&.
+.PP
+Definition at line 113 of file varmap\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

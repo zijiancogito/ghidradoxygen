@@ -1,0 +1,247 @@
+\hypertarget{class_user_pcode_op}{}\section{User\+Pcode\+Op Class Reference}
+\label{class_user_pcode_op}\index{UserPcodeOp@{UserPcodeOp}}
+
+
+The base class for a detailed definition of a user-\/defined p-\/code operation.  
+
+
+
+
+{\ttfamily \#include $<$userop.\+hh$>$}
+
+
+
+Inheritance diagram for User\+Pcode\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_user_pcode_op__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for User\+Pcode\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_user_pcode_op__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_pcode_op_a291d0e1a6d9c824de639859ce19554c1}{User\+Pcode\+Op}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, const string \&nm, int4 ind)
+\begin{DoxyCompactList}\small\item\em Construct from name and index. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_user_pcode_op_a580a157f5fa5a71f323f5fd59627d5c9}{get\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the low-\/level name of the p-\/code op. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_user_pcode_op_afdeaf916b1559b26a65abb2b2d649870}{get\+Index}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the constant id of the op. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_user_pcode_op_a08600cf33539413bf36106e945d8a470}{$\sim$\+User\+Pcode\+Op}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_user_pcode_op_a7529472e93f9077d5bfdb9cc1142bfbb}{get\+Operator\+Name}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Get the symbol representing this operation in decompiled code. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_user_pcode_op_a2a7b7c637369bc4fba4604cd83a937af}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)=0
+\begin{DoxyCompactList}\small\item\em Restore the detailed description from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_user_pcode_op_acb610a4cec8ff71dc665819de35c420e}{name}}
+\begin{DoxyCompactList}\small\item\em Low-\/level name of p-\/code operator. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_user_pcode_op_a07ff8241ba9760ead296a62a8b51e8ad}{useropindex}}
+\begin{DoxyCompactList}\small\item\em Index passed in the C\+A\+L\+L\+O\+T\+H\+ER op. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_user_pcode_op_a38b36d24c48e4618c20ec3c56b90e6d7}{glb}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_architecture}{Architecture}} owning the user defined op. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The base class for a detailed definition of a user-\/defined p-\/code operation. 
+
+Within the raw p-\/code framework, the C\+A\+L\+L\+O\+T\+H\+ER opcode represents a user defined operation. At this level, the operation is just a placeholder for inputs and outputs to same black-\/box procedure. The first input parameter (index 0) must be a constant id associated with the particular procedure. Classes derived off of this base class provide a more specialized definition of an operation/procedure. The specialized classes are managed via \mbox{\hyperlink{class_user_op_manage}{User\+Op\+Manage}} and are associated with C\+A\+L\+L\+O\+T\+H\+ER ops via the constant id.
+
+The derived classes can in principle implement any functionality, tailored to the architecture or program. At this base level, the only commonality is a formal {\bfseries{name}} of the operator and its C\+A\+L\+L\+O\+T\+H\+ER index. A facility for reading in implementation details is provided via \mbox{\hyperlink{class_user_pcode_op_a2a7b7c637369bc4fba4604cd83a937af}{restore\+Xml()}}. 
+
+Definition at line 36 of file userop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_user_pcode_op_a291d0e1a6d9c824de639859ce19554c1}\label{class_user_pcode_op_a291d0e1a6d9c824de639859ce19554c1}} 
+\index{UserPcodeOp@{UserPcodeOp}!UserPcodeOp@{UserPcodeOp}}
+\index{UserPcodeOp@{UserPcodeOp}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{UserPcodeOp()}{UserPcodeOp()}}
+{\footnotesize\ttfamily User\+Pcode\+Op\+::\+User\+Pcode\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{const string \&}]{nm,  }\item[{int4}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct from name and index. 
+
+
+
+Definition at line 42 of file userop.\+hh.
+
+\mbox{\Hypertarget{class_user_pcode_op_a08600cf33539413bf36106e945d8a470}\label{class_user_pcode_op_a08600cf33539413bf36106e945d8a470}} 
+\index{UserPcodeOp@{UserPcodeOp}!````~UserPcodeOp@{$\sim$UserPcodeOp}}
+\index{````~UserPcodeOp@{$\sim$UserPcodeOp}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{$\sim$UserPcodeOp()}{~UserPcodeOp()}}
+{\footnotesize\ttfamily virtual User\+Pcode\+Op\+::$\sim$\+User\+Pcode\+Op (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 46 of file userop.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_user_pcode_op_afdeaf916b1559b26a65abb2b2d649870}\label{class_user_pcode_op_afdeaf916b1559b26a65abb2b2d649870}} 
+\index{UserPcodeOp@{UserPcodeOp}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily int4 User\+Pcode\+Op\+::get\+Index (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the constant id of the op. 
+
+
+
+Definition at line 45 of file userop.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_user_pcode_op_afdeaf916b1559b26a65abb2b2d649870_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_user_pcode_op_a580a157f5fa5a71f323f5fd59627d5c9}\label{class_user_pcode_op_a580a157f5fa5a71f323f5fd59627d5c9}} 
+\index{UserPcodeOp@{UserPcodeOp}!getName@{getName}}
+\index{getName@{getName}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const string\& User\+Pcode\+Op\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the low-\/level name of the p-\/code op. 
+
+
+
+Definition at line 44 of file userop.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_user_pcode_op_a580a157f5fa5a71f323f5fd59627d5c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_user_pcode_op_a7529472e93f9077d5bfdb9cc1142bfbb}\label{class_user_pcode_op_a7529472e93f9077d5bfdb9cc1142bfbb}} 
+\index{UserPcodeOp@{UserPcodeOp}!getOperatorName@{getOperatorName}}
+\index{getOperatorName@{getOperatorName}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{getOperatorName()}{getOperatorName()}}
+{\footnotesize\ttfamily virtual string User\+Pcode\+Op\+::get\+Operator\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the symbol representing this operation in decompiled code. 
+
+This will return the symbol formally displayed in source code, which can be tailored more than the low-\/level name 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the operation (in context) where a symbol is needed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the symbol as a string 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_volatile_write_op_aba63c56acfa184a248cfa78e1d346af5}{Volatile\+Write\+Op}}, and \mbox{\hyperlink{class_volatile_read_op_afb60313306e36c095f37000b325142a0}{Volatile\+Read\+Op}}.
+
+
+
+Definition at line 54 of file userop.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_user_pcode_op_a7529472e93f9077d5bfdb9cc1142bfbb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_user_pcode_op_a2a7b7c637369bc4fba4604cd83a937af}\label{class_user_pcode_op_a2a7b7c637369bc4fba4604cd83a937af}} 
+\index{UserPcodeOp@{UserPcodeOp}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily virtual void User\+Pcode\+Op\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Restore the detailed description from an X\+ML stream. 
+
+The details of how a user defined operation behaves can be dynamically configured from an X\+ML tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root X\+ML element describing the op \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_jump_assist_op_a2e246c75988410d0fbdae74e44eb09cc}{Jump\+Assist\+Op}}, \mbox{\hyperlink{class_segment_op_a6f311b351e8d30119469650d5e33f84b}{Segment\+Op}}, \mbox{\hyperlink{class_volatile_write_op_a7d0ae9b968d11ff809a46dec31e94d43}{Volatile\+Write\+Op}}, \mbox{\hyperlink{class_volatile_read_op_abdb0f4262d311abca0c8a3fe07ed758e}{Volatile\+Read\+Op}}, \mbox{\hyperlink{class_injected_user_op_ae0eb3ef1744912d47b0fd5f01c079515}{Injected\+User\+Op}}, and \mbox{\hyperlink{class_unspecialized_pcode_op_a3e3e33005e96d5daef2aa26234d02d51}{Unspecialized\+Pcode\+Op}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_user_pcode_op_a38b36d24c48e4618c20ec3c56b90e6d7}\label{class_user_pcode_op_a38b36d24c48e4618c20ec3c56b90e6d7}} 
+\index{UserPcodeOp@{UserPcodeOp}!glb@{glb}}
+\index{glb@{glb}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{glb}{glb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ User\+Pcode\+Op\+::glb\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\mbox{\hyperlink{class_architecture}{Architecture}} owning the user defined op. 
+
+
+
+Definition at line 40 of file userop.\+hh.
+
+\mbox{\Hypertarget{class_user_pcode_op_acb610a4cec8ff71dc665819de35c420e}\label{class_user_pcode_op_acb610a4cec8ff71dc665819de35c420e}} 
+\index{UserPcodeOp@{UserPcodeOp}!name@{name}}
+\index{name@{name}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string User\+Pcode\+Op\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Low-\/level name of p-\/code operator. 
+
+
+
+Definition at line 38 of file userop.\+hh.
+
+\mbox{\Hypertarget{class_user_pcode_op_a07ff8241ba9760ead296a62a8b51e8ad}\label{class_user_pcode_op_a07ff8241ba9760ead296a62a8b51e8ad}} 
+\index{UserPcodeOp@{UserPcodeOp}!useropindex@{useropindex}}
+\index{useropindex@{useropindex}!UserPcodeOp@{UserPcodeOp}}
+\subsubsection{\texorpdfstring{useropindex}{useropindex}}
+{\footnotesize\ttfamily int4 User\+Pcode\+Op\+::useropindex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index passed in the C\+A\+L\+L\+O\+T\+H\+ER op. 
+
+
+
+Definition at line 39 of file userop.\+hh.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8hh}{userop.\+hh}}\end{DoxyCompactItemize}

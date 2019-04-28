@@ -1,0 +1,129 @@
+\hypertarget{class_injected_user_op}{}\section{Injected\+User\+Op Class Reference}
+\label{class_injected_user_op}\index{InjectedUserOp@{InjectedUserOp}}
+
+
+A user defined operation that is injected with other p-\/code.  
+
+
+
+
+{\ttfamily \#include $<$userop.\+hh$>$}
+
+
+
+Inheritance diagram for Injected\+User\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_injected_user_op__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Injected\+User\+Op\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_injected_user_op__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_injected_user_op_ac13cad210c1ecb0f372ce4bb6fcdb47d}{Injected\+User\+Op}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, const string \&nm, int4 ind, int4 injid)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_injected_user_op_adbbdc913ccab5c4b3f1eca442dd5f93c}{get\+Inject\+Id}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the id of the injection object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_injected_user_op_ae0eb3ef1744912d47b0fd5f01c079515}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore the detailed description from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A user defined operation that is injected with other p-\/code. 
+
+The system can configure user defined p-\/code ops as a hook point within the control-\/flow where other p-\/code is injected during analysis. This class maps the raw C\+A\+L\+L\+O\+T\+H\+ER p-\/code op, via its constant id, to its injection object. The injection object is also referenced by an id and is managed by \mbox{\hyperlink{class_pcode_inject_library}{Pcode\+Inject\+Library}}. 
+
+Definition at line 83 of file userop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_injected_user_op_ac13cad210c1ecb0f372ce4bb6fcdb47d}\label{class_injected_user_op_ac13cad210c1ecb0f372ce4bb6fcdb47d}} 
+\index{InjectedUserOp@{InjectedUserOp}!InjectedUserOp@{InjectedUserOp}}
+\index{InjectedUserOp@{InjectedUserOp}!InjectedUserOp@{InjectedUserOp}}
+\subsubsection{\texorpdfstring{InjectedUserOp()}{InjectedUserOp()}}
+{\footnotesize\ttfamily Injected\+User\+Op\+::\+Injected\+User\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{const string \&}]{nm,  }\item[{int4}]{ind,  }\item[{int4}]{injid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 86 of file userop.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_injected_user_op_adbbdc913ccab5c4b3f1eca442dd5f93c}\label{class_injected_user_op_adbbdc913ccab5c4b3f1eca442dd5f93c}} 
+\index{InjectedUserOp@{InjectedUserOp}!getInjectId@{getInjectId}}
+\index{getInjectId@{getInjectId}!InjectedUserOp@{InjectedUserOp}}
+\subsubsection{\texorpdfstring{getInjectId()}{getInjectId()}}
+{\footnotesize\ttfamily uint4 Injected\+User\+Op\+::get\+Inject\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the id of the injection object. 
+
+
+
+Definition at line 88 of file userop.\+hh.
+
+\mbox{\Hypertarget{class_injected_user_op_ae0eb3ef1744912d47b0fd5f01c079515}\label{class_injected_user_op_ae0eb3ef1744912d47b0fd5f01c079515}} 
+\index{InjectedUserOp@{InjectedUserOp}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!InjectedUserOp@{InjectedUserOp}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Injected\+User\+Op\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore the detailed description from an X\+ML stream. 
+
+The details of how a user defined operation behaves can be dynamically configured from an X\+ML tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root X\+ML element describing the op \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_user_pcode_op_a2a7b7c637369bc4fba4604cd83a937af}{User\+Pcode\+Op}}.
+
+
+
+Definition at line 19 of file userop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_injected_user_op_ae0eb3ef1744912d47b0fd5f01c079515_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_injected_user_op_ae0eb3ef1744912d47b0fd5f01c079515_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8hh}{userop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8cc}{userop.\+cc}}\end{DoxyCompactItemize}

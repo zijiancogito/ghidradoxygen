@@ -1,0 +1,196 @@
+\hypertarget{class_rule_double_load}{}\section{Rule\+Double\+Load Class Reference}
+\label{class_rule_double_load}\index{RuleDoubleLoad@{RuleDoubleLoad}}
+
+
+{\ttfamily \#include $<$double.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Double\+Load\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{class_rule_double_load__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Double\+Load\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{class_rule_double_load__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_double_load_a7b3b8f43136b3421f76abc0c77325e6b}{Rule\+Double\+Load}} (const string \&g)
+\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_double_load_ac2d2342f59e7a6813b83457fe14ca386}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_double_load_a7869e2b5bec620dbd86cefd34829b4f1}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_double_load_afbb821bf5ea445001a47351ec57bbeb1}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_rule_double_load_abb24d24ca077b4bfe579cbe80b7680f6}{no\+Write\+Conflict}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op1, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op2, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 303 of file double.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_double_load_a7b3b8f43136b3421f76abc0c77325e6b}\label{class_rule_double_load_a7b3b8f43136b3421f76abc0c77325e6b}} 
+\index{RuleDoubleLoad@{RuleDoubleLoad}!RuleDoubleLoad@{RuleDoubleLoad}}
+\index{RuleDoubleLoad@{RuleDoubleLoad}!RuleDoubleLoad@{RuleDoubleLoad}}
+\subsubsection{\texorpdfstring{RuleDoubleLoad()}{RuleDoubleLoad()}}
+{\footnotesize\ttfamily Rule\+Double\+Load\+::\+Rule\+Double\+Load (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 305 of file double.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_double_load_a7b3b8f43136b3421f76abc0c77325e6b_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_double_load_afbb821bf5ea445001a47351ec57bbeb1}\label{class_rule_double_load_afbb821bf5ea445001a47351ec57bbeb1}} 
+\index{RuleDoubleLoad@{RuleDoubleLoad}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleDoubleLoad@{RuleDoubleLoad}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Double\+Load\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 2942 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_double_load_afbb821bf5ea445001a47351ec57bbeb1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_double_load_ac2d2342f59e7a6813b83457fe14ca386}\label{class_rule_double_load_ac2d2342f59e7a6813b83457fe14ca386}} 
+\index{RuleDoubleLoad@{RuleDoubleLoad}!clone@{clone}}
+\index{clone@{clone}!RuleDoubleLoad@{RuleDoubleLoad}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Double\+Load\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 306 of file double.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_double_load_ac2d2342f59e7a6813b83457fe14ca386_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_double_load_a7869e2b5bec620dbd86cefd34829b4f1}\label{class_rule_double_load_a7869e2b5bec620dbd86cefd34829b4f1}} 
+\index{RuleDoubleLoad@{RuleDoubleLoad}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleDoubleLoad@{RuleDoubleLoad}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Double\+Load\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 2936 of file double.\+cc.
+
+\mbox{\Hypertarget{class_rule_double_load_abb24d24ca077b4bfe579cbe80b7680f6}\label{class_rule_double_load_abb24d24ca077b4bfe579cbe80b7680f6}} 
+\index{RuleDoubleLoad@{RuleDoubleLoad}!noWriteConflict@{noWriteConflict}}
+\index{noWriteConflict@{noWriteConflict}!RuleDoubleLoad@{RuleDoubleLoad}}
+\subsubsection{\texorpdfstring{noWriteConflict()}{noWriteConflict()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Rule\+Double\+Load\+::no\+Write\+Conflict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op1,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op2,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 2890 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_double_load_abb24d24ca077b4bfe579cbe80b7680f6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_double_load_abb24d24ca077b4bfe579cbe80b7680f6_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{double_8hh}{double.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{double_8cc}{double.\+cc}}\end{DoxyCompactItemize}

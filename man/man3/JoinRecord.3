@@ -1,0 +1,91 @@
+.TH "JoinRecord" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JoinRecord \- A record describing how logical values are split\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBnumPieces\fP (void) const"
+.br
+.RI "Get number of pieces in this record\&. "
+.ti -1c
+.RI "bool \fBisFloatExtension\fP (void) const"
+.br
+.RI "Does this record extend a float varnode\&. "
+.ti -1c
+.RI "const \fBVarnodeData\fP & \fBgetPiece\fP (int4 i) const"
+.br
+.RI "Get the i-th piece\&. "
+.ti -1c
+.RI "const \fBVarnodeData\fP & \fBgetUnified\fP (void) const"
+.br
+.RI "Get the \fBVarnode\fP whole\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBJoinRecord\fP &op2) const"
+.br
+.RI "Compare records lexigraphically by pieces\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBAddrSpaceManager\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A record describing how logical values are split\&. 
+
+The decompiler can describe a logical value that is stored split across multiple physical memory locations\&. This record describes such a split\&. The pieces must be listed from \fImost\fP \fIsignificant\fP to \fIleast\fP \fIsignificant\fP\&. 
+.PP
+Definition at line 190 of file translate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBVarnodeData\fP& JoinRecord::getPiece (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th piece\&. 
+.PP
+Definition at line 197 of file translate\&.hh\&.
+.SS "const \fBVarnodeData\fP& JoinRecord::getUnified (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBVarnode\fP whole\&. 
+.PP
+Definition at line 198 of file translate\&.hh\&.
+.SS "bool JoinRecord::isFloatExtension (void) const\fC [inline]\fP"
+
+.PP
+Does this record extend a float varnode\&. 
+.PP
+Definition at line 196 of file translate\&.hh\&.
+.SS "int4 JoinRecord::numPieces (void) const\fC [inline]\fP"
+
+.PP
+Get number of pieces in this record\&. 
+.PP
+Definition at line 195 of file translate\&.hh\&.
+.SS "bool JoinRecord::operator< (const \fBJoinRecord\fP & op2) const"
+
+.PP
+Compare records lexigraphically by pieces\&. Allow sorting on JoinRecords so that a collection of pieces can be quickly mapped to its logical whole, specified with a join address 
+.PP
+Definition at line 123 of file translate\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBAddrSpaceManager\fP\fC [friend]\fP"
+
+.PP
+Definition at line 191 of file translate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

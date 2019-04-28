@@ -1,0 +1,602 @@
+.TH "ContextDatabase" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextDatabase \- An interface to a database of disassembly/decompiler \fBcontext\fP information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <globalcontext\&.hh>\fP
+.PP
+Inherited by \fBContextGhidra\fP, and \fBContextInternal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~ContextDatabase\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual int4 \fBgetContextSize\fP (void) const =0"
+.br
+.RI "Retrieve the number of words (uintm) in a context \fIblob\fP\&. "
+.ti -1c
+.RI "virtual void \fBregisterVariable\fP (const string &nm, int4 sbit, int4 ebit)=0"
+.br
+.RI "Register a new named context variable (as a bit range) with the database\&. "
+.ti -1c
+.RI "virtual const uintm * \fBgetContext\fP (const \fBAddress\fP &addr) const =0"
+.br
+.RI "Get the context blob of values associated with a given address\&. "
+.ti -1c
+.RI "virtual const uintm * \fBgetContext\fP (const \fBAddress\fP &addr, \fBuintb\fP &first, \fBuintb\fP &last) const =0"
+.br
+.RI "Get the context blob of values associated with a given address and its bounding offsets\&. "
+.ti -1c
+.RI "virtual \fBTrackedSet\fP & \fBgetTrackedDefault\fP (void)=0"
+.br
+.RI "Get the set of default values for all tracked registers\&. "
+.ti -1c
+.RI "virtual const \fBTrackedSet\fP & \fBgetTrackedSet\fP (const \fBAddress\fP &addr) const =0"
+.br
+.RI "Get the set of tracked register values associated with the given address\&. "
+.ti -1c
+.RI "virtual \fBTrackedSet\fP & \fBcreateSet\fP (const \fBAddress\fP &addr1, const \fBAddress\fP &addr2)=0"
+.br
+.RI "Create a tracked register set that is valid over the given range\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.RI "Serialize the entire database to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)=0"
+.br
+.RI "Restore the state of \fBthis\fP database object from a serialized XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreFromSpec\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)=0"
+.br
+.RI "Add initial context state from XML tags in compiler/processor specifications\&. "
+.ti -1c
+.RI "void \fBsetVariableDefault\fP (const string &nm, uintm val)"
+.br
+.RI "Provide a default value for a context variable\&. "
+.ti -1c
+.RI "uintm \fBgetDefaultValue\fP (const string &nm) const"
+.br
+.RI "Retrieve the default value for a context variable\&. "
+.ti -1c
+.RI "void \fBsetVariable\fP (const string &nm, const \fBAddress\fP &addr, uintm value)"
+.br
+.RI "Set a context value at the given address\&. "
+.ti -1c
+.RI "uintm \fBgetVariable\fP (const string &nm, const \fBAddress\fP &addr) const"
+.br
+.RI "Retrieve a context value at the given address\&. "
+.ti -1c
+.RI "void \fBsetContextChangePoint\fP (const \fBAddress\fP &addr, int4 num, uintm mask, uintm value)"
+.br
+.RI "Set a specific context value starting at the given address\&. "
+.ti -1c
+.RI "void \fBsetContextRegion\fP (const \fBAddress\fP &addr1, const \fBAddress\fP &addr2, int4 num, uintm mask, uintm value)"
+.br
+.RI "Set a context variable value over a given range of addresses\&. "
+.ti -1c
+.RI "void \fBsetVariableRegion\fP (const string &nm, const \fBAddress\fP &begad, const \fBAddress\fP &endad, uintm value)"
+.br
+.RI "Set a context variable by name over a given range of addresses\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetTrackedValue\fP (const \fBVarnodeData\fP &mem, const \fBAddress\fP &point) const"
+.br
+.RI "Get the value of a tracked register at a specific address\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBContextBitRange\fP & \fBgetVariable\fP (const string &nm)=0"
+.br
+.RI "Retrieve the context variable description object by name\&. "
+.ti -1c
+.RI "virtual const \fBContextBitRange\fP & \fBgetVariable\fP (const string &nm) const =0"
+.br
+.RI "Retrieve the context variable description object by name\&. "
+.ti -1c
+.RI "virtual void \fBgetRegionForSet\fP (vector< uintm * > &res, const \fBAddress\fP &addr1, const \fBAddress\fP &addr2, int4 num, uintm mask)=0"
+.br
+.RI "Grab the context blob(s) for the given address range, marking bits that will be set\&. "
+.ti -1c
+.RI "virtual void \fBgetRegionToChangePoint\fP (vector< uintm * > &res, const \fBAddress\fP &addr, int4 num, uintm mask)=0"
+.br
+.RI "Grab the context blob(s) starting at the given address up to the first point of change\&. "
+.ti -1c
+.RI "virtual uintm * \fBgetDefaultValue\fP (void)=0"
+.br
+.RI "Retrieve the memory region holding all default context values\&. "
+.ti -1c
+.RI "virtual const uintm * \fBgetDefaultValue\fP (void) const =0"
+.br
+.RI "Retrieve the memory region holding all default context values\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBsaveTracked\fP (ostream &s, const \fBAddress\fP &addr, const \fBTrackedSet\fP &vec)"
+.br
+.RI "Save all tracked register values for a specific address to an XML stream\&. "
+.ti -1c
+.RI "static void \fBrestoreTracked\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage, \fBTrackedSet\fP &vec)"
+.br
+.RI "Restore a sequence of tracked register values from an XML stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An interface to a database of disassembly/decompiler \fBcontext\fP information\&. 
+
+\fBContext\fP \fBinformation\fP is a set of named variables that hold concrete values at specific addresses in the target executable being analyzed\&. A variable can hold different values at different addresses, but a specific value at a specific address never changes\&. Analysis recovers these values over time, populating this database, and querying this database lets analysis provides concrete values for memory locations in context\&.
+.PP
+Context variables come in two flavors:
+.IP "\(bu" 2
+\fBLow-level\fP \fBcontext\fP \fBvariables:\fP These can affect instruction decoding\&. These can be as small as a single bit and need to be defined in the \fBSleigh\fP specification (so that \fBSleigh\fP knows how they effect disassembly)\&. These variables are not mapped to normal memory locations with an address space and offset (although they often have a corresponding embedding into a normal memory location)\&. The model to keep in mind is a control register with specialized bit-fields within it\&.
+.IP "\(bu" 2
+\fBHigh-level\fP \fBtracked\fP \fBvariables:\fP These are normal memory locations that are to be treated as constants across some range of code\&. These are normally registers that are being tracked by the compiler outside the domain of normal local and global variables\&. They have a specific value established by the compiler coming into a function but are not supposed to be interpreted as a high-level variable\&. Typical examples are the direction flag (for \fIstring\fP instructions) and segment registers\&. All tracked variables are interpreted as a constant value at the start of a function, although the memory location can be recycled for other calculations later in the function\&.
+.PP
+.PP
+Low-level context variables can be queried and set by name -- \fBgetVariable()\fP, \fBsetVariable()\fP, \fBsetVariableRegion()\fP -- but the disassembler accesses all the variables at an address as a group via \fBgetContext()\fP, \fBsetContextChangePoint()\fP, \fBsetContextRegion()\fP\&. In this setting, all the values are packed together in an array of words, a context \fIblob\fP (See \fBContextBitRange\fP)\&.
+.PP
+Tracked variables are also queried as a group via \fBgetTrackedSet()\fP and \fBcreateSet()\fP\&. These return a list of \fBTrackedContext\fP objects\&. 
+.PP
+Definition at line 108 of file globalcontext\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual ContextDatabase::~ContextDatabase ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 167 of file globalcontext\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBTrackedSet\fP& ContextDatabase::createSet (const \fBAddress\fP & addr1, const \fBAddress\fP & addr2)\fC [pure virtual]\fP"
+
+.PP
+Create a tracked register set that is valid over the given range\&. This really should be an internal routine\&. The created set is empty, old values are blown away\&. If old/default values are to be preserved, they must be copied back in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr1\fP is the starting address of the given range 
+.br
+\fIaddr2\fP is (1 past) the ending address of the given range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the empty set of tracked register values 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "virtual const uintm* ContextDatabase::getContext (const \fBAddress\fP & addr) const\fC [pure virtual]\fP"
+
+.PP
+Get the context blob of values associated with a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the memory region holding the context values for the address 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "virtual const uintm* ContextDatabase::getContext (const \fBAddress\fP & addr, \fBuintb\fP & first, \fBuintb\fP & last) const\fC [pure virtual]\fP"
+
+.PP
+Get the context blob of values associated with a given address and its bounding offsets\&. In addition to the memory region, the range of addresses for which the region is valid is passed back as offsets into the address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIfirst\fP will hold the starting offset of the valid range 
+.br
+\fIlast\fP will hold the ending offset of the valid range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the memory region holding the context values for the address 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "virtual int4 ContextDatabase::getContextSize (void) const\fC [pure virtual]\fP"
+
+.PP
+Retrieve the number of words (uintm) in a context \fIblob\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of words 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "virtual uintm* ContextDatabase::getDefaultValue (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Retrieve the memory region holding all default context values\&. This fetches the active memory holding the default context values on top of which all other context values are overlaid\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the memory region holding all the default context values 
+.RE
+.PP
+
+.SS "virtual const uintm* ContextDatabase::getDefaultValue (void) const\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Retrieve the memory region holding all default context values\&. This fetches the active memory holding the default context values on top of which all other context values are overlaid\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the memory region holding all the default context values 
+.RE
+.PP
+
+.SS "uintm ContextDatabase::getDefaultValue (const string & nm) const"
+
+.PP
+Retrieve the default value for a context variable\&. This will return the default value used for addresses that have not been overlaid with other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the context variable 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the variable's default value 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file globalcontext\&.cc\&.
+.SS "virtual void ContextDatabase::getRegionForSet (vector< uintm * > & res, const \fBAddress\fP & addr1, const \fBAddress\fP & addr2, int4 num, uintm mask)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Grab the context blob(s) for the given address range, marking bits that will be set\&. This is an internal routine for obtaining the actual memory regions holding context values for the address range\&. This also informs the system which bits are getting set\&. A split is forced at the first address, and at least one memory region is passed back\&. The second address can be invalid in which case the memory region passed back is valid from the first address to whatever the next split point is\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP will hold pointers to memory regions for the given range 
+.br
+\fIaddr1\fP is the starting address of the range 
+.br
+\fIaddr2\fP is (1 past) the last address of the range or is invalid 
+.br
+\fInum\fP is the word index for the context value that will be set 
+.br
+\fImask\fP is a mask of the value being set (within its word) 
+.RE
+.PP
+
+.SS "virtual void ContextDatabase::getRegionToChangePoint (vector< uintm * > & res, const \fBAddress\fP & addr, int4 num, uintm mask)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Grab the context blob(s) starting at the given address up to the first point of change\&. This is an internal routine for obtaining the actual memory regions holding context values starting at the given address\&. A specific context value is specified, and all memory regions are returned up to the first address where that particular context value changes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP will hold pointers to memory regions being passed back 
+.br
+\fIaddr\fP is the starting address of the regions to fetch 
+.br
+\fInum\fP is the word index for the specific context value being set 
+.br
+\fImask\fP is a mask of the context value being set (within its word) 
+.RE
+.PP
+
+.SS "virtual \fBTrackedSet\fP& ContextDatabase::getTrackedDefault (void)\fC [pure virtual]\fP"
+
+.PP
+Get the set of default values for all tracked registers\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the list of \fBTrackedContext\fP objects 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "virtual const \fBTrackedSet\fP& ContextDatabase::getTrackedSet (const \fBAddress\fP & addr) const\fC [pure virtual]\fP"
+
+.PP
+Get the set of tracked register values associated with the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the list of \fBTrackedContext\fP objects 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "\fBuintb\fP ContextDatabase::getTrackedValue (const \fBVarnodeData\fP & mem, const \fBAddress\fP & point) const"
+
+.PP
+Get the value of a tracked register at a specific address\&. A specific storage region and code address is given\&. If the region is tracked the value at the address is retrieved\&. If the specified storage region is contained in the tracked region, the retrieved value is trimmed to match the containment before returning it\&. If the region is not tracked, a value of 0 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImem\fP is the specified storage region 
+.br
+\fIpoint\fP is the code address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the tracked value or zero 
+.RE
+.PP
+
+.PP
+Definition at line 229 of file globalcontext\&.cc\&.
+.SS "virtual \fBContextBitRange\fP& ContextDatabase::getVariable (const string & nm)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Retrieve the context variable description object by name\&. If the variable doesn't exist an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the context value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBContextBitRange\fP object matching the name 
+.RE
+.PP
+
+.SS "virtual const \fBContextBitRange\fP& ContextDatabase::getVariable (const string & nm) const\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Retrieve the context variable description object by name\&. If the variable doesn't exist an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the context value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBContextBitRange\fP object matching the name 
+.RE
+.PP
+
+.SS "uintm ContextDatabase::getVariable (const string & nm, const \fBAddress\fP & addr) const"
+
+.PP
+Retrieve a context value at the given address\&. If a value has not been explicit set for an address range containing the given address, the default value for the variable is returned 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the context variable 
+.br
+\fIaddr\fP is the address for which the specific value is needed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the context variable value for the address 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file globalcontext\&.cc\&.
+.SS "virtual void ContextDatabase::registerVariable (const string & nm, int4 sbit, int4 ebit)\fC [pure virtual]\fP"
+
+.PP
+Register a new named context variable (as a bit range) with the database\&. A new variable is registered by providing a name and the range of bits the value will occupy within the context blob\&. The full blob size is automatically increased if necessary\&. The variable must be contained within a single word, and all variables must be registered before any values can be set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the new variable 
+.br
+\fIsbit\fP is the position of the variable's most significant bit within the blob 
+.br
+\fIebit\fP is the position of the variable's least significant bit within the blob 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "virtual void ContextDatabase::restoreFromSpec (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)\fC [pure virtual]\fP"
+
+.PP
+Add initial context state from XML tags in compiler/processor specifications\&. The database can be configured with a consistent initial state by providing <context_data> tags in either the compiler or processor specification file for the architecture 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is a <context_data> tag 
+.br
+\fImanage\fP is used to resolve address space references 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "void ContextDatabase::restoreTracked (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage, \fBTrackedSet\fP & vec)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Restore a sequence of tracked register values from an XML stream\&. Given a root <tracked_pointset> tag, decode each child in turn populating a list of \fBTrackedContext\fP objects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root tag 
+.br
+\fImanage\fP is used to resolve address space references 
+.br
+\fIvec\fP is the container that will hold the new \fBTrackedContext\fP objects 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file globalcontext\&.cc\&.
+.SS "virtual void ContextDatabase::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)\fC [pure virtual]\fP"
+
+.PP
+Restore the state of \fBthis\fP database object from a serialized XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root element of the XML describing the database state 
+.br
+\fImanage\fP is used to resolve address space references 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "void ContextDatabase::saveTracked (ostream & s, const \fBAddress\fP & addr, const \fBTrackedSet\fP & vec)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Save all tracked register values for a specific address to an XML stream\&. Encode all the tracked register values associated with a specific target address as a <tracked_pointset> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIaddr\fP is the specific address we have tracked values for 
+.br
+\fIvec\fP is the list of tracked values 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file globalcontext\&.cc\&.
+.SS "virtual void ContextDatabase::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Serialize the entire database to an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implemented in \fBContextInternal\fP, and \fBContextGhidra\fP\&.
+.SS "void ContextDatabase::setContextChangePoint (const \fBAddress\fP & addr, int4 num, uintm mask, uintm value)"
+
+.PP
+Set a specific context value starting at the given address\&. The new value is \fIpainted\fP across an address range starting, starting with the given address up to the point where another change for the variable was specified\&. No other context variable is changed, inside (or outside) the range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address 
+.br
+\fInum\fP is the index of the word (within the context blob) of the context variable 
+.br
+\fImask\fP is the mask delimiting the context variable (within its word) 
+.br
+\fIvalue\fP is the (already shifted) value being set 
+.RE
+.PP
+
+.PP
+Definition at line 167 of file globalcontext\&.cc\&.
+.SS "void ContextDatabase::setContextRegion (const \fBAddress\fP & addr1, const \fBAddress\fP & addr2, int4 num, uintm mask, uintm value)"
+
+.PP
+Set a context variable value over a given range of addresses\&. The new value is \fIpainted\fP over an explicit range of addresses\&. No other context variable is changed inside (or outside) the range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr1\fP is the starting address of the given range 
+.br
+\fIaddr2\fP is the ending address of the given range 
+.br
+\fInum\fP is the index of the word (within the context blob) of the context variable 
+.br
+\fImask\fP is the mask delimiting the context variable (within its word) 
+.br
+\fIvalue\fP is the (already shifted) value being set 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file globalcontext\&.cc\&.
+.SS "void ContextDatabase::setVariable (const string & nm, const \fBAddress\fP & addr, uintm value)"
+
+.PP
+Set a context value at the given address\&. The variable will be changed to the new value, starting at the given address up to the next point of change\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the context variable 
+.br
+\fIaddr\fP is the given address 
+.br
+\fIvalue\fP is the new value to set 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file globalcontext\&.cc\&.
+.SS "void ContextDatabase::setVariableDefault (const string & nm, uintm val)"
+
+.PP
+Provide a default value for a context variable\&. The default value is returned for addresses that have not been overlaid with other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the context variable 
+.br
+\fIval\fP is the default value to establish 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file globalcontext\&.cc\&.
+.SS "void ContextDatabase::setVariableRegion (const string & nm, const \fBAddress\fP & begad, const \fBAddress\fP & endad, uintm value)"
+
+.PP
+Set a context variable by name over a given range of addresses\&. The new value is \fIpainted\fP over an explicit range of addresses\&. No other context variable is changed inside (or outside) the range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the context variable to set 
+.br
+\fIbegad\fP is the starting address of the given range 
+.br
+\fIendad\fP is the ending address of the given range 
+.br
+\fIvalue\fP is the new value to set 
+.RE
+.PP
+
+.PP
+Definition at line 207 of file globalcontext\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

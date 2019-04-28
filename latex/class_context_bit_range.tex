@@ -1,0 +1,209 @@
+\hypertarget{class_context_bit_range}{}\section{Context\+Bit\+Range Class Reference}
+\label{class_context_bit_range}\index{ContextBitRange@{ContextBitRange}}
+
+
+Description of a context variable within the disassembly context {\itshape blob}.  
+
+
+
+
+{\ttfamily \#include $<$globalcontext.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_context_bit_range_a7b685d0de2d5349df441670a823dae73}{Context\+Bit\+Range}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml() \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_context_bit_range_ae4e8074485bbd3561ecbbb2e18787931}{Context\+Bit\+Range}} (int4 sbit, int4 ebit)
+\begin{DoxyCompactList}\small\item\em Construct a context value given an absolute bit range. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_context_bit_range_a8704ad410eb4093ef6b0c89479e1928a}{get\+Shift}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the shift-\/amount for {\bfseries{this}} value. \end{DoxyCompactList}\item 
+uintm \mbox{\hyperlink{class_context_bit_range_a69aa9a59ac5d327aa1d06b11b253e6a0}{get\+Mask}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the mask for {\bfseries{this}} value. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_context_bit_range_a95f4ce54e8e572278d51fce6e61a4cf1}{get\+Word}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the word index for {\bfseries{this}} value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_context_bit_range_a9aa57773da860d022bd8b1b2e59d1790}{set\+Value}} (uintm $\ast$vec, uintm val) const
+\begin{DoxyCompactList}\small\item\em Set {\bfseries{this}} value within a given context blob. \end{DoxyCompactList}\item 
+uintm \mbox{\hyperlink{class_context_bit_range_a1086e19201eadfc91d14a589d07edab9}{get\+Value}} (const uintm $\ast$vec) const
+\begin{DoxyCompactList}\small\item\em Retrieve {\bfseries{this}} value from a given context blob. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description of a context variable within the disassembly context {\itshape blob}. 
+
+Disassembly context is stored as individual (integer) values packed into a sequence of words. This class represents the info for encoding or decoding a single value within this sequence. A value is a contiguous range of bits within one context word. Size can range from 1 bit up to the size of a word. 
+
+Definition at line 30 of file globalcontext.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_context_bit_range_a7b685d0de2d5349df441670a823dae73}\label{class_context_bit_range_a7b685d0de2d5349df441670a823dae73}} 
+\index{ContextBitRange@{ContextBitRange}!ContextBitRange@{ContextBitRange}}
+\index{ContextBitRange@{ContextBitRange}!ContextBitRange@{ContextBitRange}}
+\subsubsection{\texorpdfstring{ContextBitRange()}{ContextBitRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Context\+Bit\+Range\+::\+Context\+Bit\+Range (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml() 
+
+
+
+Definition at line 37 of file globalcontext.\+hh.
+
+\mbox{\Hypertarget{class_context_bit_range_ae4e8074485bbd3561ecbbb2e18787931}\label{class_context_bit_range_ae4e8074485bbd3561ecbbb2e18787931}} 
+\index{ContextBitRange@{ContextBitRange}!ContextBitRange@{ContextBitRange}}
+\index{ContextBitRange@{ContextBitRange}!ContextBitRange@{ContextBitRange}}
+\subsubsection{\texorpdfstring{ContextBitRange()}{ContextBitRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Context\+Bit\+Range\+::\+Context\+Bit\+Range (\begin{DoxyParamCaption}\item[{int4}]{sbit,  }\item[{int4}]{ebit }\end{DoxyParamCaption})}
+
+
+
+Construct a context value given an absolute bit range. 
+
+Bits within the whole context blob are labeled starting with 0 as the most significant bit in the first word in the sequence. The new context value must be contained within a single word. 
+\begin{DoxyParams}{Parameters}
+{\em sbit} & is the starting (most significant) bit of the new value \\
+\hline
+{\em ebit} & is the ending (least significant) bit of the new value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file globalcontext.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_context_bit_range_a69aa9a59ac5d327aa1d06b11b253e6a0}\label{class_context_bit_range_a69aa9a59ac5d327aa1d06b11b253e6a0}} 
+\index{ContextBitRange@{ContextBitRange}!getMask@{getMask}}
+\index{getMask@{getMask}!ContextBitRange@{ContextBitRange}}
+\subsubsection{\texorpdfstring{getMask()}{getMask()}}
+{\footnotesize\ttfamily uintm Context\+Bit\+Range\+::get\+Mask (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the mask for {\bfseries{this}} value. 
+
+
+
+Definition at line 40 of file globalcontext.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_bit_range_a69aa9a59ac5d327aa1d06b11b253e6a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_bit_range_a8704ad410eb4093ef6b0c89479e1928a}\label{class_context_bit_range_a8704ad410eb4093ef6b0c89479e1928a}} 
+\index{ContextBitRange@{ContextBitRange}!getShift@{getShift}}
+\index{getShift@{getShift}!ContextBitRange@{ContextBitRange}}
+\subsubsection{\texorpdfstring{getShift()}{getShift()}}
+{\footnotesize\ttfamily int4 Context\+Bit\+Range\+::get\+Shift (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the shift-\/amount for {\bfseries{this}} value. 
+
+
+
+Definition at line 39 of file globalcontext.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_bit_range_a8704ad410eb4093ef6b0c89479e1928a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_bit_range_a1086e19201eadfc91d14a589d07edab9}\label{class_context_bit_range_a1086e19201eadfc91d14a589d07edab9}} 
+\index{ContextBitRange@{ContextBitRange}!getValue@{getValue}}
+\index{getValue@{getValue}!ContextBitRange@{ContextBitRange}}
+\subsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily uintm Context\+Bit\+Range\+::get\+Value (\begin{DoxyParamCaption}\item[{const uintm $\ast$}]{vec }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieve {\bfseries{this}} value from a given context blob. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & is the given context blob (as an array of uintm words) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the recovered integer value 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file globalcontext.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_bit_range_a1086e19201eadfc91d14a589d07edab9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_bit_range_a95f4ce54e8e572278d51fce6e61a4cf1}\label{class_context_bit_range_a95f4ce54e8e572278d51fce6e61a4cf1}} 
+\index{ContextBitRange@{ContextBitRange}!getWord@{getWord}}
+\index{getWord@{getWord}!ContextBitRange@{ContextBitRange}}
+\subsubsection{\texorpdfstring{getWord()}{getWord()}}
+{\footnotesize\ttfamily int4 Context\+Bit\+Range\+::get\+Word (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the word index for {\bfseries{this}} value. 
+
+
+
+Definition at line 41 of file globalcontext.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_bit_range_a95f4ce54e8e572278d51fce6e61a4cf1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_bit_range_a9aa57773da860d022bd8b1b2e59d1790}\label{class_context_bit_range_a9aa57773da860d022bd8b1b2e59d1790}} 
+\index{ContextBitRange@{ContextBitRange}!setValue@{setValue}}
+\index{setValue@{setValue}!ContextBitRange@{ContextBitRange}}
+\subsubsection{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily void Context\+Bit\+Range\+::set\+Value (\begin{DoxyParamCaption}\item[{uintm $\ast$}]{vec,  }\item[{uintm}]{val }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set {\bfseries{this}} value within a given context blob. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & is the given context blob to alter (as an array of uintm words) \\
+\hline
+{\em val} & is the integer value to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file globalcontext.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_bit_range_a9aa57773da860d022bd8b1b2e59d1790_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{globalcontext_8hh}{globalcontext.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{globalcontext_8cc}{globalcontext.\+cc}}\end{DoxyCompactItemize}

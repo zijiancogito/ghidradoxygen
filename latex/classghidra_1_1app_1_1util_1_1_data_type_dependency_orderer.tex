@@ -1,0 +1,177 @@
+\hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer}{}\section{ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer Class Reference}
+\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer}\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+
+
+Creates an acyclic dependency list of data types.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Entry}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_ac1f0b4ed6ad0e2ad67bc755e210cf77a}{add\+Type}} (Data\+Type data\+Type)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_aa655bed27103a787f66e486017a661c8}{add\+Type\+List}} (Array\+List$<$ Data\+Type $>$ dtlist)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a2bb52e75deb4e3b235cbe160374c5764}{remove\+Type}} (Data\+Type data\+Type)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a9059ee85fb81cb0aa66d60eee9759c1a}{clear}} ()
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a8a9f36b7968a8a518fd2225e9529c51d}{Data\+Type\+Dependency\+Orderer}} (Data\+Type\+Manager dt\+Manager)
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a65adfe63e1f711c5f3d13e6ed3ba3d40}{Data\+Type\+Dependency\+Orderer}} (Data\+Type\+Manager dt\+Manager, Array\+List$<$ Data\+Type $>$ dtlist)
+\item 
+Pair$<$ Array\+List$<$ Data\+Type $>$, Array\+List$<$ Data\+Type $>$ $>$ \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a2dbdd7d069cf6999b722cada66e45a34}{get\+Acyclic\+Dependency\+Lists}} ()
+\item 
+Array\+List$<$ Data\+Type $>$ \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a83bf4d498139bbcc653983e7d3fb6055}{get\+Struct\+List}} ()
+\item 
+Array\+List$<$ Data\+Type $>$ \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_abdf912e6b46418382ad23fb1d119dc62}{get\+Dependency\+List}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Creates an acyclic dependency list of data types. 
+
+Definition at line 26 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a8a9f36b7968a8a518fd2225e9529c51d}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a8a9f36b7968a8a518fd2225e9529c51d}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!DataTypeDependencyOrderer@{DataTypeDependencyOrderer}}
+\index{DataTypeDependencyOrderer@{DataTypeDependencyOrderer}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{DataTypeDependencyOrderer()}{DataTypeDependencyOrderer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+Data\+Type\+Dependency\+Orderer (\begin{DoxyParamCaption}\item[{Data\+Type\+Manager}]{dt\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This constructor starts with an empty Data\+Type list, which can be added to. 
+\begin{DoxyParams}{Parameters}
+{\em dt\+Manager} & the manager used to extract I\+Ds \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a65adfe63e1f711c5f3d13e6ed3ba3d40}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a65adfe63e1f711c5f3d13e6ed3ba3d40}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!DataTypeDependencyOrderer@{DataTypeDependencyOrderer}}
+\index{DataTypeDependencyOrderer@{DataTypeDependencyOrderer}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{DataTypeDependencyOrderer()}{DataTypeDependencyOrderer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+Data\+Type\+Dependency\+Orderer (\begin{DoxyParamCaption}\item[{Data\+Type\+Manager}]{dt\+Manager,  }\item[{Array\+List$<$ Data\+Type $>$}]{dtlist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This constructor takes an initial Data\+Type list. 
+\begin{DoxyParams}{Parameters}
+{\em dt\+Manager} & the manager used to extract I\+Ds \\
+\hline
+{\em dtlist} & Initial list of Data\+Types to order \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 138 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_ac1f0b4ed6ad0e2ad67bc755e210cf77a}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_ac1f0b4ed6ad0e2ad67bc755e210cf77a}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!addType@{addType}}
+\index{addType@{addType}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{addType()}{addType()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+add\+Type (\begin{DoxyParamCaption}\item[{Data\+Type}]{data\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method adds a single Data\+Types to the input Data\+Type list and marks the data as dirty (all must need recalculated). 
+\begin{DoxyParams}{Parameters}
+{\em data\+Type} & A single Data\+Type to add to the input Data\+Type list. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 80 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_aa655bed27103a787f66e486017a661c8}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_aa655bed27103a787f66e486017a661c8}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!addTypeList@{addTypeList}}
+\index{addTypeList@{addTypeList}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{addTypeList()}{addTypeList()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+add\+Type\+List (\begin{DoxyParamCaption}\item[{Array\+List$<$ Data\+Type $>$}]{dtlist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method adds a list of Data\+Types to the input Data\+Type list and marks the data as dirty (all must need recalculated). 
+\begin{DoxyParams}{Parameters}
+{\em dtlist} & List of Data\+Types to add to the input Data\+Type list. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 93 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a9059ee85fb81cb0aa66d60eee9759c1a}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a9059ee85fb81cb0aa66d60eee9759c1a}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!clear@{clear}}
+\index{clear@{clear}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method clears the input Data\+Type list and marks the data as dirty (all must need recalculated). 
+
+Definition at line 120 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a2dbdd7d069cf6999b722cada66e45a34}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a2dbdd7d069cf6999b722cada66e45a34}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!getAcyclicDependencyLists@{getAcyclicDependencyLists}}
+\index{getAcyclicDependencyLists@{getAcyclicDependencyLists}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{getAcyclicDependencyLists()}{getAcyclicDependencyLists()}}
+{\footnotesize\ttfamily Pair$<$Array\+List$<$Data\+Type$>$, Array\+List$<$Data\+Type$>$ $>$ ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+get\+Acyclic\+Dependency\+Lists (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method returns two lists\+: 1) is the set of structs and typedefs to structs. Intended for outputting zero-\/sized definitions. 2) is the acyclic dependency list (broken at structs and pointers to structs) This works (and the dependency graph is able to be broken of cycles) because structures can be given zero size to start with and then later updated with full size. \begin{DoxyReturn}{Returns}
+pair of array\+Lists--one of structs and one complete list of dependents 
+\end{DoxyReturn}
+
+
+Definition at line 151 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_abdf912e6b46418382ad23fb1d119dc62}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_abdf912e6b46418382ad23fb1d119dc62}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!getDependencyList@{getDependencyList}}
+\index{getDependencyList@{getDependencyList}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{getDependencyList()}{getDependencyList()}}
+{\footnotesize\ttfamily Array\+List$<$Data\+Type$>$ ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+get\+Dependency\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This returns the acyclic dependency list (broken at structs and pointers to structs) \begin{DoxyReturn}{Returns}
+An Array\+List of dependents. 
+\end{DoxyReturn}
+
+
+Definition at line 175 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a83bf4d498139bbcc653983e7d3fb6055}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a83bf4d498139bbcc653983e7d3fb6055}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!getStructList@{getStructList}}
+\index{getStructList@{getStructList}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{getStructList()}{getStructList()}}
+{\footnotesize\ttfamily Array\+List$<$Data\+Type$>$ ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+get\+Struct\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method returns the Array\+List of structs and typedefs to structs found in the input list, intended to be used initially as zero-\/sized structures. \begin{DoxyReturn}{Returns}
+An array\+List of structs and typedefs of structs 
+\end{DoxyReturn}
+
+
+Definition at line 164 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a2bb52e75deb4e3b235cbe160374c5764}\label{classghidra_1_1app_1_1util_1_1_data_type_dependency_orderer_a2bb52e75deb4e3b235cbe160374c5764}} 
+\index{ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}!removeType@{removeType}}
+\index{removeType@{removeType}!ghidra.app.util.DataTypeDependencyOrderer@{ghidra.app.util.DataTypeDependencyOrderer}}
+\subsubsection{\texorpdfstring{removeType()}{removeType()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+util.\+Data\+Type\+Dependency\+Orderer.\+remove\+Type (\begin{DoxyParamCaption}\item[{Data\+Type}]{data\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method removes a Data\+Type from the list and marks the data as dirty (all must need recalculated). 
+\begin{DoxyParams}{Parameters}
+{\em data\+Type} & The Data\+Type to remove from the input list \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 108 of file Data\+Type\+Dependency\+Orderer.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/util/\mbox{\hyperlink{_data_type_dependency_orderer_8java}{Data\+Type\+Dependency\+Orderer.\+java}}\end{DoxyCompactItemize}

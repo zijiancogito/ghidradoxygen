@@ -1,0 +1,229 @@
+\hypertarget{class_param_list_merged}{}\section{Param\+List\+Merged Class Reference}
+\label{class_param_list_merged}\index{ParamListMerged@{ParamListMerged}}
+
+
+A union of other input parameter passing models.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+
+
+Inheritance diagram for Param\+List\+Merged\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_param_list_merged__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Param\+List\+Merged\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{class_param_list_merged__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_param_list_merged_a5b9e6c47a1d11673ab94fedd7bce15ba}{Param\+List\+Merged}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_param_list_merged_aeaa59d5b53fdbcf3b3f669aef70de20f}{Param\+List\+Merged}} (const \mbox{\hyperlink{class_param_list_merged}{Param\+List\+Merged}} \&op2)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_list_merged_a2e1b347dc631d5efdc049ec29d73b30f}{fold\+In}} (const \mbox{\hyperlink{class_param_list_standard}{Param\+List\+Standard}} \&op2)
+\begin{DoxyCompactList}\small\item\em Add another model to the union. \end{DoxyCompactList}\item 
+virtual uint4 \mbox{\hyperlink{class_param_list_merged_a39f0621f7d34c4aa4d591fd51b2ab5fe}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the type of parameter list. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_param_list_merged_a54e5b3089383a5d80efbd23791992e4b}{assign\+Map}} (const vector$<$ \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ $>$ \&proto, bool isinput, \mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&typefactory, vector$<$ \mbox{\hyperlink{struct_parameter_pieces}{Parameter\+Pieces}} $>$ \&res) const
+\begin{DoxyCompactList}\small\item\em Given list of data-\/types, map the list positions to storage locations. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_param_list_merged_aa4252b6768505e059edfe83ebdbf2065}{fillin\+Map}} (\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$active) const
+\begin{DoxyCompactList}\small\item\em Given an unordered list of storage locations, calculate a function prototype. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_param_list}{Param\+List}} $\ast$ \mbox{\hyperlink{class_param_list_merged_a98c49178195f02a964dd87b9e8fcddfa}{clone}} (void) const
+\begin{DoxyCompactList}\small\item\em Clone this parameter list model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A union of other input parameter passing models. 
+
+This model is viewed as a union of a constituent set of resource lists. This allows initial data-\/flow analysis to proceed when the exact model isn\textquotesingle{}t known. The \mbox{\hyperlink{class_param_list_merged_a54e5b3089383a5d80efbd23791992e4b}{assign\+Map()}} and \mbox{\hyperlink{class_param_list_merged_aa4252b6768505e059edfe83ebdbf2065}{fillin\+Map()}} methods are disabled for instances of this class. The controlling prototype model (\mbox{\hyperlink{class_proto_model_merged}{Proto\+Model\+Merged}}) decides from among the constituent \mbox{\hyperlink{class_param_list}{Param\+List}} models before these routines need to be invoked. 
+
+Definition at line 511 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_param_list_merged_a5b9e6c47a1d11673ab94fedd7bce15ba}\label{class_param_list_merged_a5b9e6c47a1d11673ab94fedd7bce15ba}} 
+\index{ParamListMerged@{ParamListMerged}!ParamListMerged@{ParamListMerged}}
+\index{ParamListMerged@{ParamListMerged}!ParamListMerged@{ParamListMerged}}
+\subsubsection{\texorpdfstring{ParamListMerged()}{ParamListMerged()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Param\+List\+Merged\+::\+Param\+List\+Merged (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}} for use with restore\+Xml. 
+
+
+
+Definition at line 513 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_list_merged_a5b9e6c47a1d11673ab94fedd7bce15ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_list_merged_aeaa59d5b53fdbcf3b3f669aef70de20f}\label{class_param_list_merged_aeaa59d5b53fdbcf3b3f669aef70de20f}} 
+\index{ParamListMerged@{ParamListMerged}!ParamListMerged@{ParamListMerged}}
+\index{ParamListMerged@{ParamListMerged}!ParamListMerged@{ParamListMerged}}
+\subsubsection{\texorpdfstring{ParamListMerged()}{ParamListMerged()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Param\+List\+Merged\+::\+Param\+List\+Merged (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_param_list_merged}{Param\+List\+Merged}} \&}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. 
+
+
+
+Definition at line 514 of file fspec.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_param_list_merged_a54e5b3089383a5d80efbd23791992e4b}\label{class_param_list_merged_a54e5b3089383a5d80efbd23791992e4b}} 
+\index{ParamListMerged@{ParamListMerged}!assignMap@{assignMap}}
+\index{assignMap@{assignMap}!ParamListMerged@{ParamListMerged}}
+\subsubsection{\texorpdfstring{assignMap()}{assignMap()}}
+{\footnotesize\ttfamily virtual void Param\+List\+Merged\+::assign\+Map (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ $>$ \&}]{proto,  }\item[{bool}]{isinput,  }\item[{\mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&}]{typefactory,  }\item[{vector$<$ \mbox{\hyperlink{struct_parameter_pieces}{Parameter\+Pieces}} $>$ \&}]{res }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Given list of data-\/types, map the list positions to storage locations. 
+
+If we know the function prototype, recover how parameters are actually stored using the model. 
+\begin{DoxyParams}{Parameters}
+{\em proto} & is the ordered list of data-\/types \\
+\hline
+{\em isinput} & is {\bfseries{true}} for the input prototype, {\bfseries{false}} for output prototype \\
+\hline
+{\em typefactory} & is the \mbox{\hyperlink{class_type_factory}{Type\+Factory}} (for constructing pointers) \\
+\hline
+{\em res} & will contain the storage locations corresponding to the datatypes \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_param_list_standard_a4819bb8291e202e3d11737d586878525}{Param\+List\+Standard}}.
+
+
+
+Definition at line 517 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_list_merged_a98c49178195f02a964dd87b9e8fcddfa}\label{class_param_list_merged_a98c49178195f02a964dd87b9e8fcddfa}} 
+\index{ParamListMerged@{ParamListMerged}!clone@{clone}}
+\index{clone@{clone}!ParamListMerged@{ParamListMerged}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_param_list}{Param\+List}} $\ast$ Param\+List\+Merged\+::clone (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clone this parameter list model. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_param_list_standard_a8257219823fdb31ac4aa59d2c0c640e5}{Param\+List\+Standard}}.
+
+
+
+Definition at line 1156 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_list_merged_a98c49178195f02a964dd87b9e8fcddfa_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_list_merged_aa4252b6768505e059edfe83ebdbf2065}\label{class_param_list_merged_aa4252b6768505e059edfe83ebdbf2065}} 
+\index{ParamListMerged@{ParamListMerged}!fillinMap@{fillinMap}}
+\index{fillinMap@{fillinMap}!ParamListMerged@{ParamListMerged}}
+\subsubsection{\texorpdfstring{fillinMap()}{fillinMap()}}
+{\footnotesize\ttfamily virtual void Param\+List\+Merged\+::fillin\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$}]{active }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Given an unordered list of storage locations, calculate a function prototype. 
+
+A list of input (or output) trials is given, which may have holes, invalid inputs etc. Decide on the formal ordered parameter list. Trials within the \mbox{\hyperlink{class_param_active}{Param\+Active}} are added, removed, or reordered as needed. 
+\begin{DoxyParams}{Parameters}
+{\em active} & is the given list of trials \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_param_list_standard_a7fa7043f5c6bba995e2ea716ca16ccaf}{Param\+List\+Standard}}.
+
+
+
+Definition at line 520 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_list_merged_a2e1b347dc631d5efdc049ec29d73b30f}\label{class_param_list_merged_a2e1b347dc631d5efdc049ec29d73b30f}} 
+\index{ParamListMerged@{ParamListMerged}!foldIn@{foldIn}}
+\index{foldIn@{foldIn}!ParamListMerged@{ParamListMerged}}
+\subsubsection{\texorpdfstring{foldIn()}{foldIn()}}
+{\footnotesize\ttfamily void Param\+List\+Merged\+::fold\+In (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_param_list_standard}{Param\+List\+Standard}} \&}]{op2 }\end{DoxyParamCaption})}
+
+
+
+Add another model to the union. 
+
+The given set of parameter entries are folded into {\bfseries{this}} set. Duplicate entries are eliminated. Containing entries subsume what they contain. 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the list model to fold into {\bfseries{this}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1116 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_param_list_merged_a2e1b347dc631d5efdc049ec29d73b30f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_list_merged_a39f0621f7d34c4aa4d591fd51b2ab5fe}\label{class_param_list_merged_a39f0621f7d34c4aa4d591fd51b2ab5fe}} 
+\index{ParamListMerged@{ParamListMerged}!getType@{getType}}
+\index{getType@{getType}!ParamListMerged@{ParamListMerged}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual uint4 Param\+List\+Merged\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the type of parameter list. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_param_list_standard_a37193293ffb24b1206944e35ef64973c}{Param\+List\+Standard}}.
+
+
+
+Definition at line 516 of file fspec.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

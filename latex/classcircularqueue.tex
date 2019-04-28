@@ -1,0 +1,347 @@
+\hypertarget{classcircularqueue}{}\section{circularqueue$<$ \+\_\+type $>$ Class Template Reference}
+\label{classcircularqueue}\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+
+
+A circular buffer template.  
+
+
+
+
+{\ttfamily \#include $<$prettyprint.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcircularqueue_a42319b17b68d214cbf35f4d92d6bb32e}{circularqueue}} (int4 sz)
+\begin{DoxyCompactList}\small\item\em Construct queue of a given size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcircularqueue_aaeebb1a2be28d813c1c8794ae4500dde}{$\sim$circularqueue}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcircularqueue_ae6a9f2564ea93c5beec9212764bf25de}{set\+Max}} (int4 sz)
+\begin{DoxyCompactList}\small\item\em Establish a new maximum queue size. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{classcircularqueue_a61a4ec11faa1e93786f6a8ddf0fa147a}{get\+Max}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the maximum queue size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcircularqueue_aef399e8b70e1ba008d6f515d9f45b59f}{expand}} (int4 amount)
+\begin{DoxyCompactList}\small\item\em Expand the (maximum) size of the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcircularqueue_ac205d631400bc42fb797614c89e41c88}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear the queue. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcircularqueue_ac4c5196899d81b6ff072e06a4e0e7893}{empty}} (void) const
+\begin{DoxyCompactList}\small\item\em Is the queue empty. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{classcircularqueue_acbefeb006bb33e353f7bded3b19f80e4}{topref}} (void) const
+\begin{DoxyCompactList}\small\item\em Get a reference to the last object on the queue/stack. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{classcircularqueue_af5fe2fe7f63076e4864c2f576ee45739}{bottomref}} (void) const
+\begin{DoxyCompactList}\small\item\em Get a reference to the first object on the queue/stack. \end{DoxyCompactList}\item 
+\+\_\+type \& \mbox{\hyperlink{classcircularqueue_ab48a0be1435caaf85a8aa96fa7fe5a9c}{ref}} (int4 r)
+\begin{DoxyCompactList}\small\item\em Retrieve an object by its reference. \end{DoxyCompactList}\item 
+\+\_\+type \& \mbox{\hyperlink{classcircularqueue_a665042a45ccb86bcb465d8b7f1efa9c5}{top}} (void)
+\begin{DoxyCompactList}\small\item\em Get the last object on the queue/stack. \end{DoxyCompactList}\item 
+\+\_\+type \& \mbox{\hyperlink{classcircularqueue_ab91d6ae625706c6ad18f1b5a2e2e238c}{bottom}} (void)
+\begin{DoxyCompactList}\small\item\em Get the first object on the queue/stack. \end{DoxyCompactList}\item 
+\+\_\+type \& \mbox{\hyperlink{classcircularqueue_a06f099e37388f3eccd8962f4d7199e17}{push}} (void)
+\begin{DoxyCompactList}\small\item\em Push a new object onto the queue/stack. \end{DoxyCompactList}\item 
+\+\_\+type \& \mbox{\hyperlink{classcircularqueue_abfb862a73808c55214d026eb43738f0b}{pop}} (void)
+\begin{DoxyCompactList}\small\item\em Pop the (last) object on the stack. \end{DoxyCompactList}\item 
+\+\_\+type \& \mbox{\hyperlink{classcircularqueue_a5d1e7b79b064d02539960ea2a3e0d8cf}{popbottom}} (void)
+\begin{DoxyCompactList}\small\item\em Get the (next) object in the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename \+\_\+type$>$\newline
+class circularqueue$<$ \+\_\+type $>$}
+
+A circular buffer template. 
+
+A circular buffer implementation that can act as a stack\+: \mbox{\hyperlink{classcircularqueue_a06f099e37388f3eccd8962f4d7199e17}{push()}}, \mbox{\hyperlink{classcircularqueue_abfb862a73808c55214d026eb43738f0b}{pop()}}. Or it can act as a queue\+: \mbox{\hyperlink{classcircularqueue_a06f099e37388f3eccd8962f4d7199e17}{push()}}, \mbox{\hyperlink{classcircularqueue_a5d1e7b79b064d02539960ea2a3e0d8cf}{popbottom()}}. The size of the buffer can be expanded on the fly using \mbox{\hyperlink{classcircularqueue_aef399e8b70e1ba008d6f515d9f45b59f}{expand()}}. The object being buffered must support a void constructor and the assignment operator. Objects can also be looked up via an integer reference. 
+
+Definition at line 605 of file prettyprint.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcircularqueue_a42319b17b68d214cbf35f4d92d6bb32e}\label{classcircularqueue_a42319b17b68d214cbf35f4d92d6bb32e}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!circularqueue@{circularqueue}}
+\index{circularqueue@{circularqueue}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{circularqueue()}{circularqueue()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type $>$ \\
+\mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::\mbox{\hyperlink{classcircularqueue}{circularqueue}} (\begin{DoxyParamCaption}\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Construct queue of a given size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sz} & is the maximum number of objects the queue will hold \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 630 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_aaeebb1a2be28d813c1c8794ae4500dde}\label{classcircularqueue_aaeebb1a2be28d813c1c8794ae4500dde}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!````~circularqueue@{$\sim$circularqueue}}
+\index{````~circularqueue@{$\sim$circularqueue}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{$\sim$circularqueue()}{~circularqueue()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type $>$ \\
+\mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::$\sim$\mbox{\hyperlink{classcircularqueue}{circularqueue}} (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line 640 of file prettyprint.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcircularqueue_ab91d6ae625706c6ad18f1b5a2e2e238c}\label{classcircularqueue_ab91d6ae625706c6ad18f1b5a2e2e238c}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!bottom@{bottom}}
+\index{bottom@{bottom}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{bottom()}{bottom()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+\+\_\+type\& \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::bottom (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the first object on the queue/stack. 
+
+
+
+Definition at line 622 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_af5fe2fe7f63076e4864c2f576ee45739}\label{classcircularqueue_af5fe2fe7f63076e4864c2f576ee45739}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!bottomref@{bottomref}}
+\index{bottomref@{bottomref}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{bottomref()}{bottomref()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+int4 \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::bottomref (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a reference to the first object on the queue/stack. 
+
+
+
+Definition at line 619 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_ac205d631400bc42fb797614c89e41c88}\label{classcircularqueue_ac205d631400bc42fb797614c89e41c88}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!clear@{clear}}
+\index{clear@{clear}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+void \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clear the queue. 
+
+
+
+Definition at line 616 of file prettyprint.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcircularqueue_ac205d631400bc42fb797614c89e41c88_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcircularqueue_ac4c5196899d81b6ff072e06a4e0e7893}\label{classcircularqueue_ac4c5196899d81b6ff072e06a4e0e7893}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!empty@{empty}}
+\index{empty@{empty}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+bool \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is the queue empty. 
+
+
+
+Definition at line 617 of file prettyprint.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcircularqueue_ac4c5196899d81b6ff072e06a4e0e7893_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcircularqueue_aef399e8b70e1ba008d6f515d9f45b59f}\label{classcircularqueue_aef399e8b70e1ba008d6f515d9f45b59f}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!expand@{expand}}
+\index{expand@{expand}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{expand()}{expand()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type $>$ \\
+void \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::expand (\begin{DoxyParamCaption}\item[{int4}]{amount }\end{DoxyParamCaption})}
+
+
+
+Expand the (maximum) size of the queue. 
+
+Expand the maximum size of {\bfseries{this}} queue. Objects currently in the queue are preserved, which involves copying the objects. This routine invalidates references referring to objects currently in the queue, although the references can be systematically adjusted to be valid again. 
+\begin{DoxyParams}{Parameters}
+{\em amount} & is the number of additional objects the resized queue will support \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 665 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_a61a4ec11faa1e93786f6a8ddf0fa147a}\label{classcircularqueue_a61a4ec11faa1e93786f6a8ddf0fa147a}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!getMax@{getMax}}
+\index{getMax@{getMax}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{getMax()}{getMax()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+int4 \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::get\+Max (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the maximum queue size. 
+
+
+
+Definition at line 614 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_abfb862a73808c55214d026eb43738f0b}\label{classcircularqueue_abfb862a73808c55214d026eb43738f0b}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!pop@{pop}}
+\index{pop@{pop}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+\+\_\+type\& \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::pop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pop the (last) object on the stack. 
+
+
+
+Definition at line 624 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_a5d1e7b79b064d02539960ea2a3e0d8cf}\label{classcircularqueue_a5d1e7b79b064d02539960ea2a3e0d8cf}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!popbottom@{popbottom}}
+\index{popbottom@{popbottom}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{popbottom()}{popbottom()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+\+\_\+type\& \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::popbottom (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the (next) object in the queue. 
+
+
+
+Definition at line 625 of file prettyprint.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcircularqueue_a5d1e7b79b064d02539960ea2a3e0d8cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcircularqueue_a06f099e37388f3eccd8962f4d7199e17}\label{classcircularqueue_a06f099e37388f3eccd8962f4d7199e17}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!push@{push}}
+\index{push@{push}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+\+\_\+type\& \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::push (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Push a new object onto the queue/stack. 
+
+
+
+Definition at line 623 of file prettyprint.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classcircularqueue_a06f099e37388f3eccd8962f4d7199e17_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcircularqueue_ab48a0be1435caaf85a8aa96fa7fe5a9c}\label{classcircularqueue_ab48a0be1435caaf85a8aa96fa7fe5a9c}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!ref@{ref}}
+\index{ref@{ref}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{ref()}{ref()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+\+\_\+type\& \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::ref (\begin{DoxyParamCaption}\item[{int4}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieve an object by its reference. 
+
+
+
+Definition at line 620 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_ae6a9f2564ea93c5beec9212764bf25de}\label{classcircularqueue_ae6a9f2564ea93c5beec9212764bf25de}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!setMax@{setMax}}
+\index{setMax@{setMax}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{setMax()}{setMax()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type $>$ \\
+void \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::set\+Max (\begin{DoxyParamCaption}\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Establish a new maximum queue size. 
+
+This destroys the old queue and reallocates a new queue with the given maximum size 
+\begin{DoxyParams}{Parameters}
+{\em sz} & the maximum size of the new queue \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 649 of file prettyprint.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcircularqueue_ae6a9f2564ea93c5beec9212764bf25de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcircularqueue_a665042a45ccb86bcb465d8b7f1efa9c5}\label{classcircularqueue_a665042a45ccb86bcb465d8b7f1efa9c5}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!top@{top}}
+\index{top@{top}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{top()}{top()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+\+\_\+type\& \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::top (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the last object on the queue/stack. 
+
+
+
+Definition at line 621 of file prettyprint.\+hh.
+
+\mbox{\Hypertarget{classcircularqueue_acbefeb006bb33e353f7bded3b19f80e4}\label{classcircularqueue_acbefeb006bb33e353f7bded3b19f80e4}} 
+\index{circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}!topref@{topref}}
+\index{topref@{topref}!circularqueue$<$ \_type $>$@{circularqueue$<$ \_type $>$}}
+\subsubsection{\texorpdfstring{topref()}{topref()}}
+{\footnotesize\ttfamily template$<$typename \+\_\+type$>$ \\
+int4 \mbox{\hyperlink{classcircularqueue}{circularqueue}}$<$ \+\_\+type $>$\+::topref (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a reference to the last object on the queue/stack. 
+
+
+
+Definition at line 618 of file prettyprint.\+hh.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{prettyprint_8hh}{prettyprint.\+hh}}\end{DoxyCompactItemize}

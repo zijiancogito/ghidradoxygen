@@ -1,0 +1,163 @@
+\hypertarget{class_score_proto_model}{}\section{Score\+Proto\+Model Class Reference}
+\label{class_score_proto_model}\index{ScoreProtoModel@{ScoreProtoModel}}
+
+
+Class for calculating \char`\"{}goodness of fit\char`\"{} of parameter trials against a prototype model.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_score_proto_model_afb8e99caf8e9d51d6811b4fc482526e2}{Score\+Proto\+Model}} (bool isinput, const \mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$mod, int4 numparam)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_score_proto_model_aac1568db9b3ebba5747ad8eba5f6438f}{add\+Parameter}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 sz)
+\begin{DoxyCompactList}\small\item\em Register a trial to be scored. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_score_proto_model_aae328b10f50c1f6526f503e0064d4749}{do\+Score}} (void)
+\begin{DoxyCompactList}\small\item\em Compute the fitness score. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_score_proto_model_a3dec47bf8f824704151759848f50ddc7}{get\+Score}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the fitness score. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_score_proto_model_aeb55589e04d1f68f9bd2d2eebb4a5710}{get\+Num\+Mismatch}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of mismatched trials. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for calculating \char`\"{}goodness of fit\char`\"{} of parameter trials against a prototype model. 
+
+The class is instantiated with a prototype model (\mbox{\hyperlink{class_proto_model}{Proto\+Model}}). A set of \mbox{\hyperlink{class_varnode}{Varnode}} parameter trials are registered by calling \mbox{\hyperlink{class_score_proto_model_aac1568db9b3ebba5747ad8eba5f6438f}{add\+Parameter()}} for each trial. Then calling \mbox{\hyperlink{class_score_proto_model_aae328b10f50c1f6526f503e0064d4749}{do\+Score()}} computes a score that evaluates how well the set of registered trials fit the prototype model. A lower score indicates a better fit. 
+
+Definition at line 751 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_score_proto_model_afb8e99caf8e9d51d6811b4fc482526e2}\label{class_score_proto_model_afb8e99caf8e9d51d6811b4fc482526e2}} 
+\index{ScoreProtoModel@{ScoreProtoModel}!ScoreProtoModel@{ScoreProtoModel}}
+\index{ScoreProtoModel@{ScoreProtoModel}!ScoreProtoModel@{ScoreProtoModel}}
+\subsubsection{\texorpdfstring{ScoreProtoModel()}{ScoreProtoModel()}}
+{\footnotesize\ttfamily Score\+Proto\+Model\+::\+Score\+Proto\+Model (\begin{DoxyParamCaption}\item[{bool}]{isinput,  }\item[{const \mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$}]{mod,  }\item[{int4}]{numparam }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em isinput} & is set to {\bfseries{true}} to compute scores against the input part of the model \\
+\hline
+{\em mod} & is the prototype model to score against \\
+\hline
+{\em numparam} & is the presumed number of trials that will constitute the score \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1907 of file fspec.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_score_proto_model_aac1568db9b3ebba5747ad8eba5f6438f}\label{class_score_proto_model_aac1568db9b3ebba5747ad8eba5f6438f}} 
+\index{ScoreProtoModel@{ScoreProtoModel}!addParameter@{addParameter}}
+\index{addParameter@{addParameter}!ScoreProtoModel@{ScoreProtoModel}}
+\subsubsection{\texorpdfstring{addParameter()}{addParameter()}}
+{\footnotesize\ttfamily void Score\+Proto\+Model\+::add\+Parameter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Register a trial to be scored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the starting address of the trial \\
+\hline
+{\em sz} & is the number of bytes in the trial \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1919 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_score_proto_model_aac1568db9b3ebba5747ad8eba5f6438f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_score_proto_model_aac1568db9b3ebba5747ad8eba5f6438f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_score_proto_model_aae328b10f50c1f6526f503e0064d4749}\label{class_score_proto_model_aae328b10f50c1f6526f503e0064d4749}} 
+\index{ScoreProtoModel@{ScoreProtoModel}!doScore@{doScore}}
+\index{doScore@{doScore}!ScoreProtoModel@{ScoreProtoModel}}
+\subsubsection{\texorpdfstring{doScore()}{doScore()}}
+{\footnotesize\ttfamily void Score\+Proto\+Model\+::do\+Score (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Compute the fitness score. 
+
+
+
+Definition at line 1940 of file fspec.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_score_proto_model_aae328b10f50c1f6526f503e0064d4749_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_score_proto_model_aeb55589e04d1f68f9bd2d2eebb4a5710}\label{class_score_proto_model_aeb55589e04d1f68f9bd2d2eebb4a5710}} 
+\index{ScoreProtoModel@{ScoreProtoModel}!getNumMismatch@{getNumMismatch}}
+\index{getNumMismatch@{getNumMismatch}!ScoreProtoModel@{ScoreProtoModel}}
+\subsubsection{\texorpdfstring{getNumMismatch()}{getNumMismatch()}}
+{\footnotesize\ttfamily int4 Score\+Proto\+Model\+::get\+Num\+Mismatch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of mismatched trials. 
+
+
+
+Definition at line 774 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_score_proto_model_a3dec47bf8f824704151759848f50ddc7}\label{class_score_proto_model_a3dec47bf8f824704151759848f50ddc7}} 
+\index{ScoreProtoModel@{ScoreProtoModel}!getScore@{getScore}}
+\index{getScore@{getScore}!ScoreProtoModel@{ScoreProtoModel}}
+\subsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily int4 Score\+Proto\+Model\+::get\+Score (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the fitness score. 
+
+
+
+Definition at line 773 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_score_proto_model_a3dec47bf8f824704151759848f50ddc7_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

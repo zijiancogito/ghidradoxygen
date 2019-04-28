@@ -1,0 +1,109 @@
+.TH "RuleGeneric" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RuleGeneric
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rulecompile\&.hh>\fP
+.PP
+Inherits \fBRule\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRuleGeneric\fP (const string &g, const string &nm, const vector< \fBOpCode\fP > &sops, int4 opi, \fBConstraintGroup\fP *c)"
+.br
+.ti -1c
+.RI "virtual \fB~RuleGeneric\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBRule\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBgetOpList\fP (vector< uint4 > &oplist) const"
+.br
+.RI "List of op codes this rule operates on\&. "
+.ti -1c
+.RI "virtual int4 \fBapplyOp\fP (\fBPcodeOp\fP *op, \fBFuncdata\fP &data)"
+.br
+.RI "Attempt to apply \fBthis\fP \fBRule\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBRuleGeneric\fP * \fBbuild\fP (const string &nm, const string &gp, const string &content)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 143 of file rulecompile\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RuleGeneric::RuleGeneric (const string & g, const string & nm, const vector< \fBOpCode\fP > & sops, int4 opi, \fBConstraintGroup\fP * c)"
+
+.SS "virtual RuleGeneric::~RuleGeneric (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 150 of file rulecompile\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int4 RuleGeneric::applyOp (\fBPcodeOp\fP * op, \fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Attempt to apply \fBthis\fP \fBRule\fP\&. This method contains the main logic for applying the \fBRule\fP\&. It must use a given \fBPcodeOp\fP as the point at which the \fBRule\fP applies\&. If it does apply, changes are made directly to the function and 1 (non-zero) is returned, otherwise 0 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP where the \fBRule\fP may apply 
+.br
+\fIdata\fP is the function to which to apply 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.SS "static \fBRuleGeneric\fP* RuleGeneric::build (const string & nm, const string & gp, const string & content)\fC [static]\fP"
+
+.SS "virtual \fBRule\fP* RuleGeneric::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBRule\fP\&. If \fBthis\fP \fBRule\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBRule\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBRule\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBRule\fP\&.
+.PP
+Definition at line 151 of file rulecompile\&.hh\&.
+.SS "virtual void RuleGeneric::getOpList (vector< uint4 > & oplist) const\fC [virtual]\fP"
+
+.PP
+List of op codes this rule operates on\&. Populate the given array with all possible OpCodes this \fBRule\fP might apply to\&. By default, this method returns all possible OpCodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoplist\fP is the array to populate 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

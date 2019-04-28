@@ -1,0 +1,174 @@
+\hypertarget{class_rule_concat_zext}{}\section{Rule\+Concat\+Zext Class Reference}
+\label{class_rule_concat_zext}\index{RuleConcatZext@{RuleConcatZext}}
+
+
+Commute P\+I\+E\+CE with I\+N\+T\+\_\+\+Z\+E\+XT\+: {\ttfamily concat(zext(\+V),\+W) =$>$ zext(concat(\+V,\+W))}  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Concat\+Zext\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_rule_concat_zext__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Concat\+Zext\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_rule_concat_zext__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_concat_zext_a8fd5a5c05631f85a6d518f5cb25a2cd0}{Rule\+Concat\+Zext}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_concat_zext_a0226be4927a0d964699fb17ba49804af}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_concat_zext_afb47ec17657319ca0a325574c4552413}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_concat_zext_aa7e8b70ac971efc988253c8b42e080b7}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Commute P\+I\+E\+CE with I\+N\+T\+\_\+\+Z\+E\+XT\+: {\ttfamily concat(zext(\+V),\+W) =$>$ zext(concat(\+V,\+W))} 
+
+Definition at line 733 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_concat_zext_a8fd5a5c05631f85a6d518f5cb25a2cd0}\label{class_rule_concat_zext_a8fd5a5c05631f85a6d518f5cb25a2cd0}} 
+\index{RuleConcatZext@{RuleConcatZext}!RuleConcatZext@{RuleConcatZext}}
+\index{RuleConcatZext@{RuleConcatZext}!RuleConcatZext@{RuleConcatZext}}
+\subsubsection{\texorpdfstring{RuleConcatZext()}{RuleConcatZext()}}
+{\footnotesize\ttfamily Rule\+Concat\+Zext\+::\+Rule\+Concat\+Zext (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 735 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_concat_zext_a8fd5a5c05631f85a6d518f5cb25a2cd0_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_concat_zext_aa7e8b70ac971efc988253c8b42e080b7}\label{class_rule_concat_zext_aa7e8b70ac971efc988253c8b42e080b7}} 
+\index{RuleConcatZext@{RuleConcatZext}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleConcatZext@{RuleConcatZext}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Concat\+Zext\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 4120 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_concat_zext_aa7e8b70ac971efc988253c8b42e080b7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_concat_zext_a0226be4927a0d964699fb17ba49804af}\label{class_rule_concat_zext_a0226be4927a0d964699fb17ba49804af}} 
+\index{RuleConcatZext@{RuleConcatZext}!clone@{clone}}
+\index{clone@{clone}!RuleConcatZext@{RuleConcatZext}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Concat\+Zext\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 736 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_concat_zext_a0226be4927a0d964699fb17ba49804af_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_concat_zext_afb47ec17657319ca0a325574c4552413}\label{class_rule_concat_zext_afb47ec17657319ca0a325574c4552413}} 
+\index{RuleConcatZext@{RuleConcatZext}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleConcatZext@{RuleConcatZext}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Concat\+Zext\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 4114 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

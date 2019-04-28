@@ -1,0 +1,130 @@
+.TH "CallGraph" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CallGraph
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <callgraph\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCallGraph\fP (\fBArchitecture\fP *g)"
+.br
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.ti -1c
+.RI "\fBCallGraphNode\fP * \fBaddNode\fP (\fBFuncdata\fP *f)"
+.br
+.ti -1c
+.RI "\fBCallGraphNode\fP * \fBaddNode\fP (const \fBAddress\fP &addr, const string &nm)"
+.br
+.ti -1c
+.RI "\fBCallGraphNode\fP * \fBfindNode\fP (const \fBAddress\fP &addr)"
+.br
+.ti -1c
+.RI "void \fBaddEdge\fP (\fBCallGraphNode\fP *from, \fBCallGraphNode\fP *to, const \fBAddress\fP &addr)"
+.br
+.ti -1c
+.RI "void \fBdeleteInEdge\fP (\fBCallGraphNode\fP *node, int4 i)"
+.br
+.ti -1c
+.RI "\fBCallGraphNode\fP * \fBinitLeafWalk\fP (void)"
+.br
+.ti -1c
+.RI "\fBCallGraphNode\fP * \fBnextLeaf\fP (\fBCallGraphNode\fP *node)"
+.br
+.ti -1c
+.RI "map< \fBAddress\fP, \fBCallGraphNode\fP >::iterator \fBbegin\fP (void)"
+.br
+.ti -1c
+.RI "map< \fBAddress\fP, \fBCallGraphNode\fP >::iterator \fBend\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbuildAllNodes\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbuildEdges\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 91 of file callgraph\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CallGraph::CallGraph (\fBArchitecture\fP * g)\fC [inline]\fP"
+
+.PP
+Definition at line 106 of file callgraph\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CallGraph::addEdge (\fBCallGraphNode\fP * from, \fBCallGraphNode\fP * to, const \fBAddress\fP & addr)"
+
+.PP
+Definition at line 245 of file callgraph\&.cc\&.
+.SS "\fBCallGraphNode\fP * CallGraph::addNode (\fBFuncdata\fP * f)"
+
+.PP
+Definition at line 209 of file callgraph\&.cc\&.
+.SS "\fBCallGraphNode\fP * CallGraph::addNode (const \fBAddress\fP & addr, const string & nm)"
+
+.PP
+Definition at line 223 of file callgraph\&.cc\&.
+.SS "map<\fBAddress\fP,\fBCallGraphNode\fP>::iterator CallGraph::begin (void)\fC [inline]\fP"
+
+.PP
+Definition at line 115 of file callgraph\&.hh\&.
+.SS "void CallGraph::buildAllNodes (void)"
+
+.PP
+Definition at line 402 of file callgraph\&.cc\&.
+.SS "void CallGraph::buildEdges (\fBFuncdata\fP * fd)"
+
+.PP
+Definition at line 408 of file callgraph\&.cc\&.
+.SS "void CallGraph::deleteInEdge (\fBCallGraphNode\fP * node, int4 i)"
+
+.PP
+Definition at line 272 of file callgraph\&.cc\&.
+.SS "map<\fBAddress\fP,\fBCallGraphNode\fP>::iterator CallGraph::end (void)\fC [inline]\fP"
+
+.PP
+Definition at line 116 of file callgraph\&.hh\&.
+.SS "\fBCallGraphNode\fP * CallGraph::findNode (const \fBAddress\fP & addr)"
+
+.PP
+Definition at line 234 of file callgraph\&.cc\&.
+.SS "\fBArchitecture\fP* CallGraph::getArch (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 107 of file callgraph\&.hh\&.
+.SS "\fBCallGraphNode\fP * CallGraph::initLeafWalk (void)"
+
+.PP
+Definition at line 323 of file callgraph\&.cc\&.
+.SS "\fBCallGraphNode\fP * CallGraph::nextLeaf (\fBCallGraphNode\fP * node)"
+
+.PP
+Definition at line 338 of file callgraph\&.cc\&.
+.SS "void CallGraph::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Definition at line 455 of file callgraph\&.cc\&.
+.SS "void CallGraph::saveXml (ostream & s) const"
+
+.PP
+Definition at line 434 of file callgraph\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

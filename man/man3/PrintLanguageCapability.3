@@ -1,0 +1,148 @@
+.TH "PrintLanguageCapability" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintLanguageCapability \- Base class for high-level language capabilities\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printlanguage\&.hh>\fP
+.PP
+Inherits \fBCapabilityPoint\fP\&.
+.PP
+Inherited by \fBPrintCCapability\fP, and \fBPrintJavaCapability\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the high-level language name\&. "
+.ti -1c
+.RI "virtual void \fBinitialize\fP (void)"
+.br
+.RI "Complete initialization of an extension point\&. "
+.ti -1c
+.RI "virtual \fBPrintLanguage\fP * \fBbuildLanguage\fP (\fBArchitecture\fP *glb)=0"
+.br
+.RI "Build the main \fBPrintLanguage\fP object corresponding to \fBthis\fP capability\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPrintLanguageCapability\fP * \fBgetDefault\fP (void)"
+.br
+.RI "Retrieve the default language capability\&. "
+.ti -1c
+.RI "static \fBPrintLanguageCapability\fP * \fBfindCapability\fP (const string &\fBname\fP)"
+.br
+.RI "Find a language capability by name\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Unique identifier for language capability\&. "
+.ti -1c
+.RI "bool \fBisdefault\fP"
+.br
+.RI "Set to \fBtrue\fP to treat \fBthis\fP as the default language\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base class for high-level language capabilities\&. 
+
+This class is overridden to introduce a new high-level language back-end to the system\&. A static singleton is instantiated to automatically register the new capability with the system\&. A static array keeps track of all the registered capabilities\&.
+.PP
+The singleton is registered with a name, which the user can use to select the language, and it acts as a factory for the main language printing class for the capability, which must be derived from \fBPrintLanguage\fP\&. The factory method for the capability to override is \fBbuildLanguage()\fP\&. 
+.PP
+Definition at line 39 of file printlanguage\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBPrintLanguage\fP* PrintLanguageCapability::buildLanguage (\fBArchitecture\fP * glb)\fC [pure virtual]\fP"
+
+.PP
+Build the main \fBPrintLanguage\fP object corresponding to \fBthis\fP capability\&. An \fBArchitecture\fP will call this once\&. All decompiling from this \fBArchitecture\fP will use this same emitter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglb\fP is the \fBArchitecture\fP that will own the new emitter 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the instantiated \fBPrintLanguage\fP emittter 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintCCapability\fP, and \fBPrintJavaCapability\fP\&.
+.SS "\fBPrintLanguageCapability\fP * PrintLanguageCapability::findCapability (const string & name)\fC [static]\fP"
+
+.PP
+Find a language capability by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the language name to search for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching language capability or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file printlanguage\&.cc\&.
+.SS "\fBPrintLanguageCapability\fP * PrintLanguageCapability::getDefault (void)\fC [static]\fP"
+
+.PP
+Retrieve the default language capability\&. This retrieves the capability with its \fBisdefault\fP field set or the first capability registered\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the default language capability 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file printlanguage\&.cc\&.
+.SS "const string& PrintLanguageCapability::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the high-level language name\&. 
+.PP
+Definition at line 45 of file printlanguage\&.hh\&.
+.SS "void PrintLanguageCapability::initialize (void)\fC [virtual]\fP"
+
+.PP
+Complete initialization of an extension point\&. This method is implemented by each extension so it can do specialized integration 
+.PP
+Implements \fBCapabilityPoint\fP\&.
+.PP
+Definition at line 33 of file printlanguage\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool PrintLanguageCapability::isdefault\fC [protected]\fP"
+
+.PP
+Set to \fBtrue\fP to treat \fBthis\fP as the default language\&. 
+.PP
+Definition at line 43 of file printlanguage\&.hh\&.
+.SS "string PrintLanguageCapability::name\fC [protected]\fP"
+
+.PP
+Unique identifier for language capability\&. 
+.PP
+Definition at line 42 of file printlanguage\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

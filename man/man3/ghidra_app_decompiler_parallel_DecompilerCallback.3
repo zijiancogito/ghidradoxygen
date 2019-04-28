@@ -1,0 +1,97 @@
+.TH "ghidra.app.decompiler.parallel.DecompilerCallback< R >" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.parallel.DecompilerCallback< R >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QCallback< Function, R >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompilerCallback\fP (Program program, \fBDecompileConfigurer\fP configurer)"
+.br
+.ti -1c
+.RI "abstract R \fBprocess\fP (\fBDecompileResults\fP results, TaskMonitor monitor)  throws Exception"
+.br
+.ti -1c
+.RI "R \fBprocess\fP (Function f, TaskMonitor monitor)  throws Exception "
+.br
+.ti -1c
+.RI "void \fBsetTimeout\fP (int timeoutSecs)"
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An implementation of \fBQCallback\fP that performs the management of the \fBDecompInterface\fP instances using a Pool\&.
+.PP
+Clients will get a chance to configure each newly created decompiler via the passed-in \fBDecompileConfigurer\fP\&.
+.PP
+Clients must implement \fBprocess(DecompileResults, TaskMonitor)\fP, which will be called for each function that is decompiled\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fI<R>\fP the return type 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file DecompilerCallback\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBghidra\&.app\&.decompiler\&.parallel\&.DecompilerCallback\fP< R >\&.\fBDecompilerCallback\fP (Program program, \fBDecompileConfigurer\fP configurer)\fC [inline]\fP"
+
+.PP
+Definition at line 46 of file DecompilerCallback\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBghidra\&.app\&.decompiler\&.parallel\&.DecompilerCallback\fP< R >\&.dispose ()\fC [inline]\fP"
+Call this when all work is done so that the pooled decompilers can be disposed 
+.PP
+Definition at line 97 of file DecompilerCallback\&.java\&.
+.SS "abstract R \fBghidra\&.app\&.decompiler\&.parallel\&.DecompilerCallback\fP< R >\&.process (\fBDecompileResults\fP results, TaskMonitor monitor) throws Exception\fC [abstract]\fP"
+This is called when a function is decompiled\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresults\fP the decompiled results 
+.br
+\fImonitor\fP the task monitor 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the client result 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIException\fP if there is any issue processing the given results 
+.RE
+.PP
+
+.SS "R \fBghidra\&.app\&.decompiler\&.parallel\&.DecompilerCallback\fP< R >\&.process (Function f, TaskMonitor monitor) throws Exception\fC [inline]\fP"
+
+.PP
+Definition at line 61 of file DecompilerCallback\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.parallel\&.DecompilerCallback\fP< R >\&.setTimeout (int timeoutSecs)\fC [inline]\fP"
+Sets the timeout for each decompile
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeoutSecs\fP the timeout in seconds 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file DecompilerCallback\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

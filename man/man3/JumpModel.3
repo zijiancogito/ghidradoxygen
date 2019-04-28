@@ -1,0 +1,151 @@
+.TH "JumpModel" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpModel
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.PP
+Inherited by \fBJumpAssisted\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpModel\fP (\fBJumpTable\fP *jt)"
+.br
+.ti -1c
+.RI "virtual \fB~JumpModel\fP (void)"
+.br
+.ti -1c
+.RI "virtual bool \fBisOverride\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetTableSize\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBrecoverModel\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, uint4 matchsize, uint4 maxtablesize)=0"
+.br
+.ti -1c
+.RI "virtual void \fBbuildAddresses\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable, vector< \fBLoadTable\fP > *loadpoints) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBfindUnnormalized\fP (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)=0"
+.br
+.ti -1c
+.RI "virtual void \fBbuildLabels\fP (\fBFuncdata\fP *fd, vector< \fBAddress\fP > &addresstable, vector< \fBuintb\fP > &label, const \fBJumpModel\fP *orig) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBfoldInNormalization\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop)=0"
+.br
+.ti -1c
+.RI "virtual bool \fBfoldInGuards\fP (\fBFuncdata\fP *fd, \fBJumpTable\fP *jump)=0"
+.br
+.ti -1c
+.RI "virtual bool \fBsanityCheck\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable)=0"
+.br
+.ti -1c
+.RI "virtual \fBJumpModel\fP * \fBclone\fP (\fBJumpTable\fP *jt) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpTable\fP * \fBjumptable\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 183 of file jumptable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JumpModel::JumpModel (\fBJumpTable\fP * jt)\fC [inline]\fP"
+
+.PP
+Definition at line 187 of file jumptable\&.hh\&.
+.SS "virtual JumpModel::~JumpModel (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 188 of file jumptable\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void JumpModel::buildAddresses (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable, vector< \fBLoadTable\fP > * loadpoints) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual void JumpModel::buildLabels (\fBFuncdata\fP * fd, vector< \fBAddress\fP > & addresstable, vector< \fBuintb\fP > & label, const \fBJumpModel\fP * orig) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual void JumpModel::clear (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic2\fP, and \fBJumpBasic\fP\&.
+.PP
+Definition at line 199 of file jumptable\&.hh\&.
+.SS "virtual \fBJumpModel\fP* JumpModel::clone (\fBJumpTable\fP * jt) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic2\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual void JumpModel::findUnnormalized (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasic2\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual bool JumpModel::foldInGuards (\fBFuncdata\fP * fd, \fBJumpTable\fP * jump)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual void JumpModel::foldInNormalization (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual int4 JumpModel::getTableSize (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual bool JumpModel::isOverride (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual bool JumpModel::recoverModel (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, uint4 matchsize, uint4 maxtablesize)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic2\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual void JumpModel::restoreXml (const \fBElement\fP * el, \fBArchitecture\fP * glb)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 201 of file jumptable\&.hh\&.
+.SS "virtual bool JumpModel::sanityCheck (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBJumpAssisted\fP, \fBJumpBasicOverride\fP, \fBJumpBasic\fP, and \fBJumpModelTrivial\fP\&.
+.SS "virtual void JumpModel::saveXml (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 200 of file jumptable\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBJumpTable\fP* JumpModel::jumptable\fC [protected]\fP"
+
+.PP
+Definition at line 185 of file jumptable\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,94 @@
+.TH "MyLoadImage" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MyLoadImage
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBLoadImage\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMyLoadImage\fP (\fBuintb\fP ad, uint1 *ptr, int4 sz)"
+.br
+.ti -1c
+.RI "virtual void \fBloadFill\fP (uint1 *ptr, int4 size, const \fBAddress\fP &addr)"
+.br
+.RI "Get data from the \fBLoadImage\fP\&. "
+.ti -1c
+.RI "virtual string \fBgetArchType\fP (void) const"
+.br
+.RI "Get a string indicating the architecture type\&. "
+.ti -1c
+.RI "virtual void \fBadjustVma\fP (long adjust)"
+.br
+.RI "Adjust load addresses with a global offset\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 67 of file sleighexample\&.cc\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MyLoadImage::MyLoadImage (\fBuintb\fP ad, uint1 * ptr, int4 sz)\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file sleighexample\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void MyLoadImage::adjustVma (long adjust)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Adjust load addresses with a global offset\&. Most load image formats automatically encode information about the true loading address(es) for the data in the image\&. But if this is missing or incorrect, this routine can be used to make a global adjustment to the load address\&. Only one adjustment is made across \fIall\fP addresses in the image\&. The offset passed to this method is added to the stored or default value for any address queried in the image\&. This is most often used in a \fIraw\fP binary file format\&. In this case, the entire executable file is intended to be read straight into RAM, as one contiguous chunk, in order to be executed\&. In the absence of any other info, the first byte of the image file is loaded at offset 0\&. This method then would adjust the load address of the first byte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIadjust\fP is the offset amount to be added to default values 
+.RE
+.PP
+
+.PP
+Implements \fBLoadImage\fP\&.
+.PP
+Definition at line 75 of file sleighexample\&.cc\&.
+.SS "virtual string MyLoadImage::getArchType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get a string indicating the architecture type\&. The load image class is intended to be a generic front-end to the large variety of load formats in use\&. This method should return a string that identifies the particular architecture this particular image is intended to run on\&. It is currently the responsibility of any derived \fBLoadImage\fP class to establish a format for this string, but it should generally contain some indication of the operating system and the processor\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the identifier string 
+.RE
+.PP
+
+.PP
+Implements \fBLoadImage\fP\&.
+.PP
+Definition at line 74 of file sleighexample\&.cc\&.
+.SS "void MyLoadImage::loadFill (uint1 * ptr, int4 size, const \fBAddress\fP & addr)\fC [virtual]\fP"
+
+.PP
+Get data from the \fBLoadImage\fP\&. This is the \fIcore\fP routine of a \fBLoadImage\fP\&. Given a particular address range, this routine retrieves the exact byte values that are stored at that address when the executable is loaded into RAM\&. The caller must supply a pre-allocated array of bytes where the returned bytes should be stored\&. If the requested address range does not exist in the image, or otherwise can't be retrieved, this method throws an \fBDataUnavailError\fP exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP points to where the resulting bytes will be stored 
+.br
+\fIsize\fP is the number of bytes to retrieve from the image 
+.br
+\fIaddr\fP is the starting address of the bytes to retrieve 
+.RE
+.PP
+
+.PP
+Implements \fBLoadImage\fP\&.
+.PP
+Definition at line 80 of file sleighexample\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

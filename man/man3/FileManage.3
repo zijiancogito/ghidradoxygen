@@ -1,0 +1,104 @@
+.TH "FileManage" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FileManage
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <filemanage\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBaddDir2Path\fP (const string &path)"
+.br
+.ti -1c
+.RI "void \fBaddCurrentDir\fP (void)"
+.br
+.ti -1c
+.RI "void \fBfindFile\fP (string &res, const string &name) const"
+.br
+.ti -1c
+.RI "void \fBmatchList\fP (vector< string > &res, const string &match, bool isSuffix) const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBisDirectory\fP (const string &path)"
+.br
+.ti -1c
+.RI "static void \fBmatchListDir\fP (vector< string > &res, const string &match, bool isSuffix, const string &dir, bool allowdot)"
+.br
+.ti -1c
+.RI "static void \fBdirectoryList\fP (vector< string > &res, const string &dirname, bool allowdot=false)"
+.br
+.ti -1c
+.RI "static void \fBscanDirectoryRecursive\fP (vector< string > &res, const string &matchname, const string &rootpath, int maxdepth)"
+.br
+.ti -1c
+.RI "static void \fBsplitPath\fP (const string &full, string &path, string &base)"
+.br
+.ti -1c
+.RI "static bool \fBisAbsolutePath\fP (const string &full)"
+.br
+.ti -1c
+.RI "static string \fBdiscoverGhidraRoot\fP (const char *argv0)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 29 of file filemanage\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void FileManage::addCurrentDir (void)"
+
+.PP
+Definition at line 88 of file filemanage\&.cc\&.
+.SS "void FileManage::addDir2Path (const string & path)"
+
+.PP
+Definition at line 39 of file filemanage\&.cc\&.
+.SS "void FileManage::directoryList (vector< string > & res, const string & dirname, bool allowdot = \fCfalse\fP)\fC [static]\fP"
+
+.PP
+Definition at line 225 of file filemanage\&.cc\&.
+.SS "string FileManage::discoverGhidraRoot (const char * argv0)\fC [static]\fP"
+
+.PP
+Definition at line 340 of file filemanage\&.cc\&.
+.SS "void FileManage::findFile (string & res, const string & name) const"
+
+.PP
+Definition at line 49 of file filemanage\&.cc\&.
+.SS "static bool FileManage::isAbsolutePath (const string & full)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 45 of file filemanage\&.hh\&.
+.SS "bool FileManage::isDirectory (const string & path)\fC [static]\fP"
+
+.PP
+Definition at line 111 of file filemanage\&.cc\&.
+.SS "void FileManage::matchList (vector< string > & res, const string & match, bool isSuffix) const"
+
+.PP
+Definition at line 189 of file filemanage\&.cc\&.
+.SS "void FileManage::matchListDir (vector< string > & res, const string & match, bool isSuffix, const string & dir, bool allowdot)\fC [static]\fP"
+
+.PP
+Definition at line 157 of file filemanage\&.cc\&.
+.SS "void FileManage::scanDirectoryRecursive (vector< string > & res, const string & matchname, const string & rootpath, int maxdepth)\fC [static]\fP"
+
+.PP
+Definition at line 254 of file filemanage\&.cc\&.
+.SS "void FileManage::splitPath (const string & full, string & path, string & base)\fC [static]\fP"
+
+.PP
+Definition at line 275 of file filemanage\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

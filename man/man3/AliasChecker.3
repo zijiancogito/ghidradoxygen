@@ -1,0 +1,92 @@
+.TH "AliasChecker" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AliasChecker
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <varmap\&.hh>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBAddBase\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAliasChecker\fP ()"
+.br
+.ti -1c
+.RI "void \fBgather\fP (const \fBFuncdata\fP *f, \fBAddrSpace\fP *spc, bool defer)"
+.br
+.ti -1c
+.RI "bool \fBhasLocalAlias\fP (\fBVarnode\fP *vn) const"
+.br
+.ti -1c
+.RI "void \fBsortAlias\fP (void) const"
+.br
+.ti -1c
+.RI "const vector< \fBAddBase\fP > & \fBgetAddBase\fP (void) const"
+.br
+.ti -1c
+.RI "const vector< \fBuintb\fP > & \fBgetAlias\fP (void) const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBgatherAdditiveBase\fP (\fBVarnode\fP *startvn, vector< \fBAddBase\fP > &addbase)"
+.br
+.ti -1c
+.RI "static \fBuintb\fP \fBgatherOffset\fP (\fBVarnode\fP *vn)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 57 of file varmap\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AliasChecker::AliasChecker ()\fC [inline]\fP"
+
+.PP
+Definition at line 77 of file varmap\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void AliasChecker::gather (const \fBFuncdata\fP * f, \fBAddrSpace\fP * spc, bool defer)"
+
+.PP
+Definition at line 320 of file varmap\&.cc\&.
+.SS "void AliasChecker::gatherAdditiveBase (\fBVarnode\fP * startvn, vector< \fBAddBase\fP > & addbase)\fC [static]\fP"
+
+.PP
+Definition at line 362 of file varmap\&.cc\&.
+.SS "\fBuintb\fP AliasChecker::gatherOffset (\fBVarnode\fP * vn)\fC [static]\fP"
+
+.PP
+Definition at line 422 of file varmap\&.cc\&.
+.SS "const vector<\fBAddBase\fP>& AliasChecker::getAddBase (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 81 of file varmap\&.hh\&.
+.SS "const vector<\fBuintb\fP>& AliasChecker::getAlias (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 82 of file varmap\&.hh\&.
+.SS "bool AliasChecker::hasLocalAlias (\fBVarnode\fP * vn) const"
+
+.PP
+Definition at line 334 of file varmap\&.cc\&.
+.SS "void AliasChecker::sortAlias (void) const"
+
+.PP
+Definition at line 349 of file varmap\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,281 @@
+\hypertarget{class_ghidra_command}{}\section{Ghidra\+Command Class Reference}
+\label{class_ghidra_command}\index{GhidraCommand@{GhidraCommand}}
+
+
+Base class for a {\itshape command} to the decompiler as issued by a Ghidra client.  
+
+
+
+
+{\ttfamily \#include $<$ghidra\+\_\+process.\+hh$>$}
+
+
+
+Inheritance diagram for Ghidra\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{class_ghidra_command__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ghidra\+Command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_command__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ghidra_command_a41feaf5cd32bff29c0cac4eb30887ddc}{Ghidra\+Command}} (void)
+\begin{DoxyCompactList}\small\item\em Construct given i/o streams. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_ghidra_command_a7143317bf9787b98a77fd5b45316333c}{$\sim$\+Ghidra\+Command}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ghidra_command_a7d1a5cfedfd8f1d05161d27627302716}{raw\+Action}} (void)=0
+\begin{DoxyCompactList}\small\item\em Perform the action of the command. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_ghidra_command_a60d65958413c0e4669768332fa0f0476}{doit}} (void)
+\begin{DoxyCompactList}\small\item\em Configure and execute the command, then send back results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a}{load\+Parameters}} (void)
+\begin{DoxyCompactList}\small\item\em Read parameters directing command execution. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ghidra_command_a964ade9b1f768c55434d412834ba2eca}{send\+Result}} (void)
+\begin{DoxyCompactList}\small\item\em Send results of the command (if any) back to the Ghidra client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+istream \& \mbox{\hyperlink{class_ghidra_command_af8206fa1ff96a669871717739f25a337}{sin}}
+\begin{DoxyCompactList}\small\item\em The input stream from the Ghidra client. \end{DoxyCompactList}\item 
+ostream \& \mbox{\hyperlink{class_ghidra_command_ad69e547a2a9f0f86f9a56679db28d615}{sout}}
+\begin{DoxyCompactList}\small\item\em The output stream to the Ghidra client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_architecture_ghidra}{Architecture\+Ghidra}} $\ast$ \mbox{\hyperlink{class_ghidra_command_ad5647427395bb496d4647f79f04a05aa}{ghidra}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_architecture}{Architecture}} on which to perform the command. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_ghidra_command_a70cceb418d76ef01a922d3a01ccc76a6}{status}}
+\begin{DoxyCompactList}\small\item\em Meta-\/command to system (0=wait for next command, 1=terminate process) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for a {\itshape command} to the decompiler as issued by a Ghidra client. 
+
+A command object is provided i/o streams to the client, and the action of the command is performed by calling the \mbox{\hyperlink{class_ghidra_command_a60d65958413c0e4669768332fa0f0476}{doit()}} method. This wraps the main sequence of methods\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a}{load\+Parameters()}}
+\item \mbox{\hyperlink{class_ghidra_command_a7d1a5cfedfd8f1d05161d27627302716}{raw\+Action()}}
+\item \mbox{\hyperlink{class_ghidra_command_a964ade9b1f768c55434d412834ba2eca}{send\+Result()}}
+\end{DoxyItemize}
+
+At a minimum, \mbox{\hyperlink{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a}{load\+Parameters()}} will read an id to select the active \mbox{\hyperlink{class_architecture_ghidra}{Architecture\+Ghidra}} object, and \mbox{\hyperlink{class_ghidra_command_a964ade9b1f768c55434d412834ba2eca}{send\+Result()}} will send back any accumulated warning/error messages. 
+
+Definition at line 71 of file ghidra\+\_\+process.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ghidra_command_a41feaf5cd32bff29c0cac4eb30887ddc}\label{class_ghidra_command_a41feaf5cd32bff29c0cac4eb30887ddc}} 
+\index{GhidraCommand@{GhidraCommand}!GhidraCommand@{GhidraCommand}}
+\index{GhidraCommand@{GhidraCommand}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{GhidraCommand()}{GhidraCommand()}}
+{\footnotesize\ttfamily Ghidra\+Command\+::\+Ghidra\+Command (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct given i/o streams. 
+
+
+
+Definition at line 80 of file ghidra\+\_\+process.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_command_a7143317bf9787b98a77fd5b45316333c}\label{class_ghidra_command_a7143317bf9787b98a77fd5b45316333c}} 
+\index{GhidraCommand@{GhidraCommand}!````~GhidraCommand@{$\sim$GhidraCommand}}
+\index{````~GhidraCommand@{$\sim$GhidraCommand}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{$\sim$GhidraCommand()}{~GhidraCommand()}}
+{\footnotesize\ttfamily virtual Ghidra\+Command\+::$\sim$\+Ghidra\+Command (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 83 of file ghidra\+\_\+process.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ghidra_command_a60d65958413c0e4669768332fa0f0476}\label{class_ghidra_command_a60d65958413c0e4669768332fa0f0476}} 
+\index{GhidraCommand@{GhidraCommand}!doit@{doit}}
+\index{doit@{doit}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{doit()}{doit()}}
+{\footnotesize\ttfamily int4 Ghidra\+Command\+::doit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure and execute the command, then send back results. 
+
+This method calls the main overloaded methods\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a}{load\+Parameters()}}
+\item \mbox{\hyperlink{class_ghidra_command_a7d1a5cfedfd8f1d05161d27627302716}{raw\+Action()}}
+\item \mbox{\hyperlink{class_ghidra_command_a964ade9b1f768c55434d412834ba2eca}{send\+Result()}}
+\end{DoxyItemize}
+
+It wraps the sequence with appropriate error handling and message protocol. \begin{DoxyReturn}{Returns}
+the meta-\/command (0=continue, 1=terminate) as issued by the command. 
+\end{DoxyReturn}
+
+
+Definition at line 111 of file ghidra\+\_\+process.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_command_a60d65958413c0e4669768332fa0f0476_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a}\label{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a}} 
+\index{GhidraCommand@{GhidraCommand}!loadParameters@{loadParameters}}
+\index{loadParameters@{loadParameters}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{loadParameters()}{loadParameters()}}
+{\footnotesize\ttfamily void Ghidra\+Command\+::load\+Parameters (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Read parameters directing command execution. 
+
+This method reads an id selecting the \mbox{\hyperlink{class_architecture}{Architecture}} to act on, but it can be overloaded to read any set of data from the Ghidra client to configure how the command is executed. Individual parameters are read using the method protocol. 
+
+Definition at line 72 of file ghidra\+\_\+process.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_command_a3e92d63544a9e5a36f27f6c3b177b28a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_command_a7d1a5cfedfd8f1d05161d27627302716}\label{class_ghidra_command_a7d1a5cfedfd8f1d05161d27627302716}} 
+\index{GhidraCommand@{GhidraCommand}!rawAction@{rawAction}}
+\index{rawAction@{rawAction}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{rawAction()}{rawAction()}}
+{\footnotesize\ttfamily virtual void Ghidra\+Command\+::raw\+Action (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Perform the action of the command. 
+
+Configuration is assumed to have happened, and {\bfseries{this}} object can immediately begin examining and manipulating data under the active \mbox{\hyperlink{class_architecture}{Architecture}} object to perform the command. 
+
+Implemented in \mbox{\hyperlink{class_set_options_a1e73126b79340651e9fa9cfc47e80649}{Set\+Options}}, \mbox{\hyperlink{class_set_action_af53890c4472a36b4c78d0c97bb1f39d4}{Set\+Action}}, \mbox{\hyperlink{class_structure_graph_a498c9004314b3845ca36c46f77b43ed6}{Structure\+Graph}}, \mbox{\hyperlink{class_decompile_at_ae5dfee8a7e5fd8343f7cf59e53d4f78c}{Decompile\+At}}, \mbox{\hyperlink{class_flush_native_a92fb03dcd3fb080a2033442403cde93c}{Flush\+Native}}, \mbox{\hyperlink{class_deregister_program_a3086821f7a4e57a5f3cf585513d48b73}{Deregister\+Program}}, and \mbox{\hyperlink{class_register_program_ae79c022fba3244f9969aa007058f4b53}{Register\+Program}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_command_a7d1a5cfedfd8f1d05161d27627302716_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_command_a964ade9b1f768c55434d412834ba2eca}\label{class_ghidra_command_a964ade9b1f768c55434d412834ba2eca}} 
+\index{GhidraCommand@{GhidraCommand}!sendResult@{sendResult}}
+\index{sendResult@{sendResult}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{sendResult()}{sendResult()}}
+{\footnotesize\ttfamily void Ghidra\+Command\+::send\+Result (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Send results of the command (if any) back to the Ghidra client. 
+
+This method sends any warnings accumulated during execution back, but it can be overloaded to send back any kind of information. Individual records are sent using the message protocol. 
+
+Definition at line 94 of file ghidra\+\_\+process.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_command_a964ade9b1f768c55434d412834ba2eca_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_ghidra_command_ad5647427395bb496d4647f79f04a05aa}\label{class_ghidra_command_ad5647427395bb496d4647f79f04a05aa}} 
+\index{GhidraCommand@{GhidraCommand}!ghidra@{ghidra}}
+\index{ghidra@{ghidra}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{ghidra}{ghidra}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture_ghidra}{Architecture\+Ghidra}}$\ast$ Ghidra\+Command\+::ghidra\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The \mbox{\hyperlink{class_architecture}{Architecture}} on which to perform the command. 
+
+
+
+Definition at line 75 of file ghidra\+\_\+process.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_command_af8206fa1ff96a669871717739f25a337}\label{class_ghidra_command_af8206fa1ff96a669871717739f25a337}} 
+\index{GhidraCommand@{GhidraCommand}!sin@{sin}}
+\index{sin@{sin}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{sin}{sin}}
+{\footnotesize\ttfamily istream\& Ghidra\+Command\+::sin\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The input stream from the Ghidra client. 
+
+
+
+Definition at line 73 of file ghidra\+\_\+process.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_command_ad69e547a2a9f0f86f9a56679db28d615}\label{class_ghidra_command_ad69e547a2a9f0f86f9a56679db28d615}} 
+\index{GhidraCommand@{GhidraCommand}!sout@{sout}}
+\index{sout@{sout}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{sout}{sout}}
+{\footnotesize\ttfamily ostream\& Ghidra\+Command\+::sout\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The output stream to the Ghidra client. 
+
+
+
+Definition at line 74 of file ghidra\+\_\+process.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_command_a70cceb418d76ef01a922d3a01ccc76a6}\label{class_ghidra_command_a70cceb418d76ef01a922d3a01ccc76a6}} 
+\index{GhidraCommand@{GhidraCommand}!status@{status}}
+\index{status@{status}!GhidraCommand@{GhidraCommand}}
+\subsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily int4 Ghidra\+Command\+::status\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Meta-\/command to system (0=wait for next command, 1=terminate process) 
+
+
+
+Definition at line 76 of file ghidra\+\_\+process.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ghidra__process_8hh}{ghidra\+\_\+process.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ghidra__process_8cc}{ghidra\+\_\+process.\+cc}}\end{DoxyCompactItemize}

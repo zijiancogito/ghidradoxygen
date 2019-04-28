@@ -1,0 +1,92 @@
+.TH "SegmentedResolver" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SegmentedResolver \- A resolver for segmented architectures\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <architecture\&.hh>\fP
+.PP
+Inherits \fBAddressResolver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSegmentedResolver\fP (\fBArchitecture\fP *g, \fBAddrSpace\fP *sp, \fBSegmentOp\fP *sop)"
+.br
+.ti -1c
+.RI "virtual \fBAddress\fP \fBresolve\fP (\fBuintb\fP val, int4 sz, const \fBAddress\fP &point)"
+.br
+.RI "
+.PP
+.RS 4
+Virtual destructor
+.RE
+.PP
+"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A resolver for segmented architectures\&. 
+
+When the decompiler is attempting to resolve embedded constants as pointers, this class tries to recover segment info for near pointers by looking up tracked registers in context 
+.PP
+Definition at line 276 of file architecture\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SegmentedResolver::SegmentedResolver (\fBArchitecture\fP * g, \fBAddrSpace\fP * sp, \fBSegmentOp\fP * sop)\fC [inline]\fP"
+Construct a segmented resolver 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the owning \fBArchitecture\fP 
+.br
+\fIsp\fP is the segmented space 
+.br
+\fIsop\fP is the segment operator 
+.RE
+.PP
+
+.PP
+Definition at line 285 of file architecture\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBAddress\fP SegmentedResolver::resolve (\fBuintb\fP val, int4 sz, const \fBAddress\fP & point)\fC [virtual]\fP"
+
+.PP
+
+.PP
+.RS 4
+Virtual destructor
+.RE
+.PP
+The main resolver method\&.
+.PP
+Given a native constant in a specific context, resolve what address is being referred to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is constant to be resolved to an address 
+.br
+\fIsz\fP is the size of \fIval\fP in context\&. 
+.br
+\fIpoint\fP is the address at which this constant is being used 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the resolved \fBAddress\fP 
+.RE
+.PP
+
+.PP
+Implements \fBAddressResolver\fP\&.
+.PP
+Definition at line 1116 of file architecture\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

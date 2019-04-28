@@ -1,0 +1,74 @@
+.TH "PrintLanguage::NodePending" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintLanguage::NodePending \- A pending data-flow node; waiting to be placed on the reverse polish notation stack\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printlanguage\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNodePending\fP (const \fBVarnode\fP *v, const \fBPcodeOp\fP *o, uint4 m)"
+.br
+.RI "Construct a pending data-flow node\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const \fBVarnode\fP * \fBvn\fP"
+.br
+.RI "The implied \fBVarnode\fP\&. "
+.ti -1c
+.RI "const \fBPcodeOp\fP * \fBop\fP"
+.br
+.RI "The single operator consuming value from the implied \fBVarnode\fP\&. "
+.ti -1c
+.RI "uint4 \fBvnmod\fP"
+.br
+.RI "Printing modifications to enforce on the expression\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A pending data-flow node; waiting to be placed on the reverse polish notation stack\&. 
+
+This holds an \fIimplied\fP \fBVarnode\fP in the data-flow graph, which prints as the expression producing the value in the \fBVarnode\fP\&. 
+.PP
+Definition at line 179 of file printlanguage\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PrintLanguage::NodePending::NodePending (const \fBVarnode\fP * v, const \fBPcodeOp\fP * o, uint4 m)\fC [inline]\fP"
+
+.PP
+Construct a pending data-flow node\&. 
+.PP
+Definition at line 185 of file printlanguage\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const \fBPcodeOp\fP* PrintLanguage::NodePending::op"
+
+.PP
+The single operator consuming value from the implied \fBVarnode\fP\&. 
+.PP
+Definition at line 181 of file printlanguage\&.hh\&.
+.SS "const \fBVarnode\fP* PrintLanguage::NodePending::vn"
+
+.PP
+The implied \fBVarnode\fP\&. 
+.PP
+Definition at line 180 of file printlanguage\&.hh\&.
+.SS "uint4 PrintLanguage::NodePending::vnmod"
+
+.PP
+Printing modifications to enforce on the expression\&. 
+.PP
+Definition at line 182 of file printlanguage\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

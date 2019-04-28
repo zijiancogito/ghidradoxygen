@@ -1,0 +1,188 @@
+.TH "JumpValuesRange" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpValuesRange
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.PP
+Inherits \fBJumpValues\fP\&.
+.PP
+Inherited by \fBJumpValuesRangeDefault\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetRange\fP (const \fBCircleRange\fP &rng)"
+.br
+.ti -1c
+.RI "void \fBsetStartVn\fP (\fBVarnode\fP *vn)"
+.br
+.ti -1c
+.RI "void \fBsetStartOp\fP (\fBPcodeOp\fP *op)"
+.br
+.ti -1c
+.RI "virtual void \fBtruncate\fP (int4 nm)"
+.br
+.ti -1c
+.RI "virtual \fBuintb\fP \fBgetSize\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBcontains\fP (\fBuintb\fP val) const"
+.br
+.ti -1c
+.RI "virtual bool \fBinitializeForReading\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBnext\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBuintb\fP \fBgetValue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBVarnode\fP * \fBgetStartVarnode\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBPcodeOp\fP * \fBgetStartOp\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBisReversible\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBJumpValues\fP * \fBclone\fP (void) const"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCircleRange\fP \fBrange\fP"
+.br
+.ti -1c
+.RI "\fBVarnode\fP * \fBnormqvn\fP"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBstartop\fP"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBcurval\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 138 of file jumptable\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBJumpValues\fP * JumpValuesRange::clone (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 285 of file jumptable\&.cc\&.
+.SS "bool JumpValuesRange::contains (\fBuintb\fP val) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 247 of file jumptable\&.cc\&.
+.SS "\fBuintb\fP JumpValuesRange::getSize (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 241 of file jumptable\&.cc\&.
+.SS "\fBPcodeOp\fP * JumpValuesRange::getStartOp (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 279 of file jumptable\&.cc\&.
+.SS "\fBVarnode\fP * JumpValuesRange::getStartVarnode (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 273 of file jumptable\&.cc\&.
+.SS "\fBuintb\fP JumpValuesRange::getValue (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Definition at line 267 of file jumptable\&.cc\&.
+.SS "bool JumpValuesRange::initializeForReading (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 253 of file jumptable\&.cc\&.
+.SS "virtual bool JumpValuesRange::isReversible (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 156 of file jumptable\&.hh\&.
+.SS "bool JumpValuesRange::next (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Reimplemented in \fBJumpValuesRangeDefault\fP\&.
+.PP
+Definition at line 261 of file jumptable\&.cc\&.
+.SS "void JumpValuesRange::setRange (const \fBCircleRange\fP & rng)\fC [inline]\fP"
+
+.PP
+Definition at line 145 of file jumptable\&.hh\&.
+.SS "void JumpValuesRange::setStartOp (\fBPcodeOp\fP * op)\fC [inline]\fP"
+
+.PP
+Definition at line 147 of file jumptable\&.hh\&.
+.SS "void JumpValuesRange::setStartVn (\fBVarnode\fP * vn)\fC [inline]\fP"
+
+.PP
+Definition at line 146 of file jumptable\&.hh\&.
+.SS "void JumpValuesRange::truncate (int4 nm)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpValues\fP\&.
+.PP
+Definition at line 234 of file jumptable\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBuintb\fP JumpValuesRange::curval\fC [mutable]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 143 of file jumptable\&.hh\&.
+.SS "\fBVarnode\fP* JumpValuesRange::normqvn\fC [protected]\fP"
+
+.PP
+Definition at line 141 of file jumptable\&.hh\&.
+.SS "\fBCircleRange\fP JumpValuesRange::range\fC [protected]\fP"
+
+.PP
+Definition at line 140 of file jumptable\&.hh\&.
+.SS "\fBPcodeOp\fP* JumpValuesRange::startop\fC [protected]\fP"
+
+.PP
+Definition at line 142 of file jumptable\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

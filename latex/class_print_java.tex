@@ -1,0 +1,308 @@
+\hypertarget{class_print_java}{}\section{Print\+Java Class Reference}
+\label{class_print_java}\index{PrintJava@{PrintJava}}
+
+
+The java-\/language token emitter.  
+
+
+
+
+{\ttfamily \#include $<$printjava.\+hh$>$}
+
+
+
+Inheritance diagram for Print\+Java\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_print_java__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Print\+Java\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_java__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_print_java_adb73af82f5926d43f6f8ac928b807229}{Print\+Java}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, const string \&nm=\char`\"{}java-\/language\char`\"{})
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_print_java_af82e5ca143891ea052778b1ed234d3e0}{push\+Type\+Start}} (const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct, bool noident)
+\item 
+virtual void \mbox{\hyperlink{class_print_java_a64718e3b689e9e895f4c6124f8538075}{push\+Type\+End}} (const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct)
+\begin{DoxyCompactList}\small\item\em Push the tail ends of a data-\/type declaration onto the R\+PN stack. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_print_java_a4f4aba29ed21a74bafe52eb5cc3fe904}{do\+Emit\+Wide\+Char\+Prefix}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if this language requires a prefix when expressing {\itshape wide} characters. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_print_java_afcad564cec849b9f7d5ce1eaeb396c7d}{adjust\+Type\+Operators}} (void)
+\begin{DoxyCompactList}\small\item\em Set basic data-\/type information for p-\/code operators. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_print_java_afd7d6ab9dfeae02ed5a32eb0e0b9aec3}{op\+Load}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Emit a L\+O\+AD operator. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_print_java_a4aeabf0f6068948e07c03e46b92f7a56}{op\+Store}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Emit a S\+T\+O\+RE operator. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_print_java_af63d668b72d424d63128b8b6e25391b3}{op\+Callind}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Emit a C\+A\+L\+L\+I\+ND operator. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_print_java_a8e3d5480ebf8a4b59aa5729380544f15}{op\+Cpool\+Ref\+Op}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Emit a C\+P\+O\+O\+L\+R\+EF operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The java-\/language token emitter. 
+
+This builds heavily on the c-\/language \mbox{\hyperlink{class_print_c}{PrintC}} emitter. Most operator tokens, the format of function prototypes, and code structuring are shared. Specifics of the java constant pool are handled through the overloaded \mbox{\hyperlink{class_print_java_a8e3d5480ebf8a4b59aa5729380544f15}{op\+Cpool\+Ref\+Op()}}.
+
+Java data-\/types are mapped into the decompiler\textquotesingle{}s data-\/type system in a specific way. The primitives {\bfseries{int}}, {\bfseries{long}}, {\bfseries{short}}, {\bfseries{byte}}, {\bfseries{boolean}}, {\bfseries{float}}, and {\bfseries{double}} all map directly. The {\bfseries{char}} primitive is treated as a 2 byte unsigned integer. A \mbox{\hyperlink{class_type_struct}{Type\+Struct}} object holds the field layout for a java class, then java objects get mapped as follows\+:
+\begin{DoxyItemize}
+\item Class reference = pointer to T\+Y\+P\+E\+\_\+\+U\+I\+NT
+\item Array of {\bfseries{int}}, {\bfseries{long}}, {\bfseries{short}}, or {\bfseries{byte}} = pointer to T\+Y\+P\+E\+\_\+\+I\+NT
+\item Array of {\bfseries{float}} or {\bfseries{double}} = pointer to T\+Y\+P\+E\+\_\+\+F\+L\+O\+AT
+\item Array of {\bfseries{boolean}} = pointer to T\+Y\+P\+E\+\_\+\+B\+O\+OL
+\item Array of class objects = pointer to T\+Y\+P\+E\+\_\+\+P\+TR
+\end{DoxyItemize}
+
+There are some adjustments to the printing of data-\/types and L\+O\+A\+D/\+S\+T\+O\+RE expressions to account for this mapping. 
+
+Definition at line 55 of file printjava.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_print_java_adb73af82f5926d43f6f8ac928b807229}\label{class_print_java_adb73af82f5926d43f6f8ac928b807229}} 
+\index{PrintJava@{PrintJava}!PrintJava@{PrintJava}}
+\index{PrintJava@{PrintJava}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{PrintJava()}{PrintJava()}}
+{\footnotesize\ttfamily Print\+Java\+::\+Print\+Java (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{const string \&}]{nm = {\ttfamily \char`\"{}java-\/language\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 37 of file printjava.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_print_java_afcad564cec849b9f7d5ce1eaeb396c7d}\label{class_print_java_afcad564cec849b9f7d5ce1eaeb396c7d}} 
+\index{PrintJava@{PrintJava}!adjustTypeOperators@{adjustTypeOperators}}
+\index{adjustTypeOperators@{adjustTypeOperators}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{adjustTypeOperators()}{adjustTypeOperators()}}
+{\footnotesize\ttfamily void Print\+Java\+::adjust\+Type\+Operators (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set basic data-\/type information for p-\/code operators. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_abbafadf839747f44eca5cb9f30d2bd3c}{PrintC}}.
+
+
+
+Definition at line 99 of file printjava.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_java_afcad564cec849b9f7d5ce1eaeb396c7d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_java_a4f4aba29ed21a74bafe52eb5cc3fe904}\label{class_print_java_a4f4aba29ed21a74bafe52eb5cc3fe904}} 
+\index{PrintJava@{PrintJava}!doEmitWideCharPrefix@{doEmitWideCharPrefix}}
+\index{doEmitWideCharPrefix@{doEmitWideCharPrefix}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{doEmitWideCharPrefix()}{doEmitWideCharPrefix()}}
+{\footnotesize\ttfamily virtual bool Print\+Java\+::do\+Emit\+Wide\+Char\+Prefix (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return {\bfseries{true}} if this language requires a prefix when expressing {\itshape wide} characters. 
+
+The c-\/language standard requires that strings (and character constants) made up of {\itshape wide} character elements have an \textquotesingle{}L\textquotesingle{} prefix added before the quote characters. Other related languages may not do this. Having this as a virtual method lets derived languages to tailor their strings while still using the basic \mbox{\hyperlink{class_print_c}{PrintC}} functionality \begin{DoxyReturn}{Returns}
+{\bfseries{true}} if a prefix should be printed 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_a3ccbcccc1706e4d29930ac2fdeadc19a}{PrintC}}.
+
+
+
+Definition at line 64 of file printjava.\+hh.
+
+\mbox{\Hypertarget{class_print_java_af63d668b72d424d63128b8b6e25391b3}\label{class_print_java_af63d668b72d424d63128b8b6e25391b3}} 
+\index{PrintJava@{PrintJava}!opCallind@{opCallind}}
+\index{opCallind@{opCallind}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{opCallind()}{opCallind()}}
+{\footnotesize\ttfamily void Print\+Java\+::op\+Callind (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Emit a C\+A\+L\+L\+I\+ND operator. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_ad6fc72a7fd707785bd06ac9c6496153b}{PrintC}}.
+
+
+
+Definition at line 227 of file printjava.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_java_af63d668b72d424d63128b8b6e25391b3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_java_a8e3d5480ebf8a4b59aa5729380544f15}\label{class_print_java_a8e3d5480ebf8a4b59aa5729380544f15}} 
+\index{PrintJava@{PrintJava}!opCpoolRefOp@{opCpoolRefOp}}
+\index{opCpoolRefOp@{opCpoolRefOp}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{opCpoolRefOp()}{opCpoolRefOp()}}
+{\footnotesize\ttfamily void Print\+Java\+::op\+Cpool\+Ref\+Op (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Emit a C\+P\+O\+O\+L\+R\+EF operator. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_a2f6a00b628fe40bde90f5e82bf503979}{PrintC}}.
+
+
+
+Definition at line 251 of file printjava.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_java_a8e3d5480ebf8a4b59aa5729380544f15_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_java_afd7d6ab9dfeae02ed5a32eb0e0b9aec3}\label{class_print_java_afd7d6ab9dfeae02ed5a32eb0e0b9aec3}} 
+\index{PrintJava@{PrintJava}!opLoad@{opLoad}}
+\index{opLoad@{opLoad}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{opLoad()}{opLoad()}}
+{\footnotesize\ttfamily void Print\+Java\+::op\+Load (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Emit a L\+O\+AD operator. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_a263dc1f6686e7792bcdd29006aaaac4a}{PrintC}}.
+
+
+
+Definition at line 196 of file printjava.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_java_afd7d6ab9dfeae02ed5a32eb0e0b9aec3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_java_a4aeabf0f6068948e07c03e46b92f7a56}\label{class_print_java_a4aeabf0f6068948e07c03e46b92f7a56}} 
+\index{PrintJava@{PrintJava}!opStore@{opStore}}
+\index{opStore@{opStore}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{opStore()}{opStore()}}
+{\footnotesize\ttfamily void Print\+Java\+::op\+Store (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Emit a S\+T\+O\+RE operator. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_ab75e8802e935da6fc54a023e03c4e5e7}{PrintC}}.
+
+
+
+Definition at line 208 of file printjava.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_java_a4aeabf0f6068948e07c03e46b92f7a56_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_java_a64718e3b689e9e895f4c6124f8538075}\label{class_print_java_a64718e3b689e9e895f4c6124f8538075}} 
+\index{PrintJava@{PrintJava}!pushTypeEnd@{pushTypeEnd}}
+\index{pushTypeEnd@{pushTypeEnd}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{pushTypeEnd()}{pushTypeEnd()}}
+{\footnotesize\ttfamily void Print\+Java\+::push\+Type\+End (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Push the tail ends of a data-\/type declaration onto the R\+PN stack. 
+
+Because the front-\/ends were pushed on base-\/type -\/$>$ final-\/modifier, the tail-\/ends are pushed on final-\/modifier -\/$>$ base-\/type. The tail-\/ends amount to
+\begin{DoxyItemize}
+\item array subscripts . \mbox{[} \# \mbox{]} and
+\item function parameters . ( paramlist )
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ct} & is the data-\/type being pushed \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_a45d0e43f9f4e91353db9aeb4c053deaa}{PrintC}}.
+
+
+
+Definition at line 94 of file printjava.\+cc.
+
+\mbox{\Hypertarget{class_print_java_af82e5ca143891ea052778b1ed234d3e0}\label{class_print_java_af82e5ca143891ea052778b1ed234d3e0}} 
+\index{PrintJava@{PrintJava}!pushTypeStart@{pushTypeStart}}
+\index{pushTypeStart@{pushTypeStart}!PrintJava@{PrintJava}}
+\subsubsection{\texorpdfstring{pushTypeStart()}{pushTypeStart()}}
+{\footnotesize\ttfamily void Print\+Java\+::push\+Type\+Start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct,  }\item[{bool}]{noident }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print a data-\/type up to the identifier, store off array sizes for printing after the identifier. Find the root type (the one with an identifier) and the count number of wrapping arrays. 
+\begin{DoxyParams}{Parameters}
+{\em ct} & is the given data-\/type \\
+\hline
+{\em noident} & is {\bfseries{true}} if no identifier will be pushed with this declaration \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_print_c_a0b96904bf7b1ecfb6b254c51707ae21a}{PrintC}}.
+
+
+
+Definition at line 54 of file printjava.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_java_af82e5ca143891ea052778b1ed234d3e0_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{printjava_8hh}{printjava.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{printjava_8cc}{printjava.\+cc}}\end{DoxyCompactItemize}

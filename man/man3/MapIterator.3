@@ -1,0 +1,150 @@
+.TH "MapIterator" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MapIterator \- An iterator over \fBSymbolEntry\fP objects in multiple address spaces\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMapIterator\fP (void)"
+.br
+.RI "Construct an uninitialized iterator\&. "
+.ti -1c
+.RI "\fBMapIterator\fP (const vector< \fBEntryMap\fP * > *m, vector< \fBEntryMap\fP * >::const_iterator cm, list< \fBSymbolEntry\fP >::const_iterator ci)"
+.br
+.RI "Construct iterator at a specific position\&. "
+.ti -1c
+.RI "\fBMapIterator\fP (const \fBMapIterator\fP &op2)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "const \fBSymbolEntry\fP * \fBoperator *\fP (void) const"
+.br
+.RI "Return the \fBSymbolEntry\fP being pointed at\&. "
+.ti -1c
+.RI "\fBMapIterator\fP & \fBoperator++\fP (void)"
+.br
+.RI "Pre-increment the iterator\&. "
+.ti -1c
+.RI "\fBMapIterator\fP \fBoperator++\fP (int4 i)"
+.br
+.RI "Post-increment the iterator\&. "
+.ti -1c
+.RI "\fBMapIterator\fP & \fBoperator=\fP (const \fBMapIterator\fP &op2)"
+.br
+.RI "Assignment operator\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBMapIterator\fP &op2) const"
+.br
+.RI "Equality operator\&. "
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBMapIterator\fP &op2) const"
+.br
+.RI "Inequality operator\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An iterator over \fBSymbolEntry\fP objects in multiple address spaces\&. 
+
+Given an EntryMap (a rangemap of \fBSymbolEntry\fP objects in a single address space) for each address space, iterator over all the \fBSymbolEntry\fP objects 
+.PP
+Definition at line 313 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MapIterator::MapIterator (void)\fC [inline]\fP"
+
+.PP
+Construct an uninitialized iterator\&. 
+.PP
+Definition at line 318 of file database\&.hh\&.
+.SS "MapIterator::MapIterator (const vector< \fBEntryMap\fP * > * m, vector< \fBEntryMap\fP * >::const_iterator cm, list< \fBSymbolEntry\fP >::const_iterator ci)\fC [inline]\fP"
+
+.PP
+Construct iterator at a specific position\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the list of EntryMaps 
+.br
+\fIcm\fP is the position of the iterator within the EntryMap list 
+.br
+\fIci\fP is the position of the iterator within the specific EntryMap 
+.RE
+.PP
+
+.PP
+Definition at line 325 of file database\&.hh\&.
+.SS "MapIterator::MapIterator (const \fBMapIterator\fP & op2)\fC [inline]\fP"
+
+.PP
+Copy constructor\&. 
+.PP
+Definition at line 332 of file database\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBSymbolEntry\fP* MapIterator::operator * (void) const\fC [inline]\fP"
+
+.PP
+Return the \fBSymbolEntry\fP being pointed at\&. 
+.PP
+Definition at line 335 of file database\&.hh\&.
+.SS "bool MapIterator::operator!= (const \fBMapIterator\fP & op2) const\fC [inline]\fP"
+
+.PP
+Inequality operator\&. 
+.PP
+Definition at line 355 of file database\&.hh\&.
+.SS "\fBMapIterator\fP & MapIterator::operator++ (void)"
+
+.PP
+Pre-increment the iterator\&. The iterator is advanced by one 
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to the (advanced) iterator 
+.RE
+.PP
+
+.PP
+Definition at line 635 of file database\&.cc\&.
+.SS "\fBMapIterator\fP MapIterator::operator++ (int4 i)"
+
+.PP
+Post-increment the iterator\&. The iterator is advanced by one 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is a dummy variable 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a copy of the iterator before it was advanced 
+.RE
+.PP
+
+.PP
+Definition at line 650 of file database\&.cc\&.
+.SS "\fBMapIterator\fP& MapIterator::operator= (const \fBMapIterator\fP & op2)\fC [inline]\fP"
+
+.PP
+Assignment operator\&. 
+.PP
+Definition at line 340 of file database\&.hh\&.
+.SS "bool MapIterator::operator== (const \fBMapIterator\fP & op2) const\fC [inline]\fP"
+
+.PP
+Equality operator\&. 
+.PP
+Definition at line 348 of file database\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

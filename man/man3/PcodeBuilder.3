@@ -1,0 +1,112 @@
+.TH "PcodeBuilder" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeBuilder
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <semantics\&.hh>\fP
+.PP
+Inherited by \fBMacroBuilder\fP, and \fBSleighBuilder\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPcodeBuilder\fP (uint4 lbcnt)"
+.br
+.ti -1c
+.RI "virtual \fB~PcodeBuilder\fP (void)"
+.br
+.ti -1c
+.RI "uint4 \fBgetLabelBase\fP (void) const"
+.br
+.ti -1c
+.RI "\fBParserWalker\fP * \fBgetCurrentWalker\fP () const"
+.br
+.ti -1c
+.RI "void \fBbuild\fP (\fBConstructTpl\fP *construct, int4 secnum)"
+.br
+.ti -1c
+.RI "virtual void \fBappendBuild\fP (\fBOpTpl\fP *bld, int4 secnum)=0"
+.br
+.ti -1c
+.RI "virtual void \fBdelaySlot\fP (\fBOpTpl\fP *op)=0"
+.br
+.ti -1c
+.RI "virtual void \fBsetLabel\fP (\fBOpTpl\fP *op)=0"
+.br
+.ti -1c
+.RI "virtual void \fBappendCrossBuild\fP (\fBOpTpl\fP *bld, int4 secnum)=0"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdump\fP (\fBOpTpl\fP *op)=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBParserWalker\fP * \fBwalker\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 191 of file semantics\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PcodeBuilder::PcodeBuilder (uint4 lbcnt)\fC [inline]\fP"
+
+.PP
+Definition at line 198 of file semantics\&.hh\&.
+.SS "virtual PcodeBuilder::~PcodeBuilder (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 199 of file semantics\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void PcodeBuilder::appendBuild (\fBOpTpl\fP * bld, int4 secnum)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBMacroBuilder\fP, and \fBSleighBuilder\fP\&.
+.SS "virtual void PcodeBuilder::appendCrossBuild (\fBOpTpl\fP * bld, int4 secnum)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBMacroBuilder\fP, and \fBSleighBuilder\fP\&.
+.SS "void PcodeBuilder::build (\fBConstructTpl\fP * construct, int4 secnum)"
+
+.PP
+Definition at line 921 of file semantics\&.cc\&.
+.SS "virtual void PcodeBuilder::delaySlot (\fBOpTpl\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBMacroBuilder\fP, and \fBSleighBuilder\fP\&.
+.SS "virtual void PcodeBuilder::dump (\fBOpTpl\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.SS "\fBParserWalker\fP* PcodeBuilder::getCurrentWalker () const\fC [inline]\fP"
+
+.PP
+Definition at line 202 of file semantics\&.hh\&.
+.SS "uint4 PcodeBuilder::getLabelBase (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 201 of file semantics\&.hh\&.
+.SS "virtual void PcodeBuilder::setLabel (\fBOpTpl\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBMacroBuilder\fP, and \fBSleighBuilder\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBParserWalker\fP* PcodeBuilder::walker\fC [protected]\fP"
+
+.PP
+Definition at line 195 of file semantics\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

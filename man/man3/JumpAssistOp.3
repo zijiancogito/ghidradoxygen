@@ -1,0 +1,120 @@
+.TH "JumpAssistOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpAssistOp \- A user defined p-code op for assisting the recovery of jump tables\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.PP
+Inherits \fBUserPcodeOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpAssistOp\fP (\fBArchitecture\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "int4 \fBgetIndex2Case\fP (void) const"
+.br
+.RI "Get the injection id for \fBindex2case\fP\&. "
+.ti -1c
+.RI "int4 \fBgetIndex2Addr\fP (void) const"
+.br
+.RI "Get the injection id for \fBindex2addr\fP\&. "
+.ti -1c
+.RI "int4 \fBgetDefaultAddr\fP (void) const"
+.br
+.RI "Get the injection id for \fBdefaultaddr\fP\&. "
+.ti -1c
+.RI "int4 \fBgetCalcSize\fP (void) const"
+.br
+.RI "Get the injection id for \fBcalcsize\fP\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore the detailed description from an XML stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A user defined p-code op for assisting the recovery of jump tables\&. 
+
+An instance of this class refers to p-code script(s) that describe how to parse the jump table from the load image\&. Possible scripts include:
+.IP "\(bu" 2
+(if present) \fBindex2case\fP describes how to get case values from an index 0\&.\&.size-1
+.IP "\(bu" 2
+\fBindex2addr\fP describes how to get address values from the same index range
+.IP "\(bu" 2
+\fBdefaultaddr\fP describes how to calculate the switch's default address
+.IP "\(bu" 2
+(if present) \fBcalcsize\fP recovers the number of indices in the table
+.PP
+.PP
+This class stores injection ids\&. The scripts themselves are managed by \fBPcodeInjectLibrary\fP\&. 
+.PP
+Definition at line 234 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JumpAssistOp::JumpAssistOp (\fBArchitecture\fP * g)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the \fBArchitecture\fP owning this set of jump assist scripts 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file userop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 JumpAssistOp::getCalcSize (void) const\fC [inline]\fP"
+
+.PP
+Get the injection id for \fBcalcsize\fP\&. 
+.PP
+Definition at line 244 of file userop\&.hh\&.
+.SS "int4 JumpAssistOp::getDefaultAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the injection id for \fBdefaultaddr\fP\&. 
+.PP
+Definition at line 243 of file userop\&.hh\&.
+.SS "int4 JumpAssistOp::getIndex2Addr (void) const\fC [inline]\fP"
+
+.PP
+Get the injection id for \fBindex2addr\fP\&. 
+.PP
+Definition at line 242 of file userop\&.hh\&.
+.SS "int4 JumpAssistOp::getIndex2Case (void) const\fC [inline]\fP"
+
+.PP
+Get the injection id for \fBindex2case\fP\&. 
+.PP
+Definition at line 241 of file userop\&.hh\&.
+.SS "void JumpAssistOp::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore the detailed description from an XML stream\&. The details of how a user defined operation behaves can be dynamically configured from an XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element describing the op 
+.RE
+.PP
+
+.PP
+Implements \fBUserPcodeOp\fP\&.
+.PP
+Definition at line 278 of file userop\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

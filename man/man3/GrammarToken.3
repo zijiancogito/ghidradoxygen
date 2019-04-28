@@ -1,0 +1,133 @@
+.TH "GrammarToken" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GrammarToken
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <grammar\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBopenparen\fP = 0x28, \fBcloseparen\fP = 0x29, \fBstar\fP = 0x2a, \fBcomma\fP = 0x2c, \fBsemicolon\fP = 0x3b, \fBopenbracket\fP = 0x5b, \fBclosebracket\fP = 0x5d, \fBopenbrace\fP = 0x7b, \fBclosebrace\fP = 0x7d, \fBbadtoken\fP = 0x100, \fBendoffile\fP = 0x101, \fBdotdotdot\fP = 0x102, \fBinteger\fP = 0x103, \fBcharconstant\fP = 0x104, \fBidentifier\fP = 0x105, \fBstringval\fP = 0x106 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrammarToken\fP (void)"
+.br
+.ti -1c
+.RI "uint4 \fBgetType\fP (void) const"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBgetInteger\fP (void) const"
+.br
+.ti -1c
+.RI "string * \fBgetString\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetLineNo\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetColNo\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetFileNum\fP (void) const"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBGrammarLexer\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 21 of file grammar\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIopenparen \fP\fP
+.TP
+\fB\fIcloseparen \fP\fP
+.TP
+\fB\fIstar \fP\fP
+.TP
+\fB\fIcomma \fP\fP
+.TP
+\fB\fIsemicolon \fP\fP
+.TP
+\fB\fIopenbracket \fP\fP
+.TP
+\fB\fIclosebracket \fP\fP
+.TP
+\fB\fIopenbrace \fP\fP
+.TP
+\fB\fIclosebrace \fP\fP
+.TP
+\fB\fIbadtoken \fP\fP
+.TP
+\fB\fIendoffile \fP\fP
+.TP
+\fB\fIdotdotdot \fP\fP
+.TP
+\fB\fIinteger \fP\fP
+.TP
+\fB\fIcharconstant \fP\fP
+.TP
+\fB\fIidentifier \fP\fP
+.TP
+\fB\fIstringval \fP\fP
+.PP
+Definition at line 24 of file grammar\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GrammarToken::GrammarToken (void)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 GrammarToken::getColNo (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file grammar\&.hh\&.
+.SS "int4 GrammarToken::getFileNum (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 64 of file grammar\&.hh\&.
+.SS "\fBuintb\fP GrammarToken::getInteger (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 60 of file grammar\&.hh\&.
+.SS "int4 GrammarToken::getLineNo (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 62 of file grammar\&.hh\&.
+.SS "string* GrammarToken::getString (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 61 of file grammar\&.hh\&.
+.SS "uint4 GrammarToken::getType (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 59 of file grammar\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBGrammarLexer\fP\fC [friend]\fP"
+
+.PP
+Definition at line 22 of file grammar\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

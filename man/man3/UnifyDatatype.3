@@ -1,0 +1,165 @@
+.TH "UnifyDatatype" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UnifyDatatype
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <unify\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBop_type\fP, \fBvar_type\fP, \fBconst_type\fP, \fBblock_type\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUnifyDatatype\fP (void)"
+.br
+.ti -1c
+.RI "\fBUnifyDatatype\fP (uint4 tp)"
+.br
+.ti -1c
+.RI "\fBUnifyDatatype\fP (const \fBUnifyDatatype\fP &op2)"
+.br
+.ti -1c
+.RI "\fBUnifyDatatype\fP & \fBoperator=\fP (const \fBUnifyDatatype\fP &op2)"
+.br
+.ti -1c
+.RI "\fB~UnifyDatatype\fP (void)"
+.br
+.ti -1c
+.RI "uint4 \fBgetType\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetOp\fP (\fBPcodeOp\fP *o)"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBgetOp\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetVarnode\fP (\fBVarnode\fP *v)"
+.br
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetVarnode\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetBlock\fP (\fBBlockBasic\fP *b)"
+.br
+.ti -1c
+.RI "\fBBlockBasic\fP * \fBgetBlock\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetConstant\fP (\fBuintb\fP val)"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBgetConstant\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBprintVarDecl\fP (ostream &s, int4 id, const \fBUnifyCPrinter\fP &cprinter) const"
+.br
+.ti -1c
+.RI "string \fBgetBaseName\fP (void) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file unify\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIop_type \fP\fP
+.TP
+\fB\fIvar_type \fP\fP
+.TP
+\fB\fIconst_type \fP\fP
+.TP
+\fB\fIblock_type \fP\fP
+.PP
+Definition at line 26 of file unify\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "UnifyDatatype::UnifyDatatype (void)\fC [inline]\fP"
+
+.PP
+Definition at line 38 of file unify\&.hh\&.
+.SS "UnifyDatatype::UnifyDatatype (uint4 tp)"
+
+.SS "UnifyDatatype::UnifyDatatype (const \fBUnifyDatatype\fP & op2)"
+
+.SS "UnifyDatatype::~UnifyDatatype (void)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "string UnifyDatatype::getBaseName (void) const"
+
+.SS "\fBBlockBasic\fP* UnifyDatatype::getBlock (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 49 of file unify\&.hh\&.
+.SS "\fBuintb\fP UnifyDatatype::getConstant (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 51 of file unify\&.hh\&.
+.SS "\fBPcodeOp\fP* UnifyDatatype::getOp (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 45 of file unify\&.hh\&.
+.SS "uint4 UnifyDatatype::getType (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file unify\&.hh\&.
+.SS "\fBVarnode\fP* UnifyDatatype::getVarnode (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 47 of file unify\&.hh\&.
+.SS "\fBUnifyDatatype\fP& UnifyDatatype::operator= (const \fBUnifyDatatype\fP & op2)"
+
+.SS "void UnifyDatatype::printVarDecl (ostream & s, int4 id, const \fBUnifyCPrinter\fP & cprinter) const"
+
+.SS "void UnifyDatatype::setBlock (\fBBlockBasic\fP * b)\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file unify\&.hh\&.
+.SS "void UnifyDatatype::setConstant (\fBuintb\fP val)"
+
+.SS "void UnifyDatatype::setOp (\fBPcodeOp\fP * o)\fC [inline]\fP"
+
+.PP
+Definition at line 44 of file unify\&.hh\&.
+.SS "void UnifyDatatype::setVarnode (\fBVarnode\fP * v)\fC [inline]\fP"
+
+.PP
+Definition at line 46 of file unify\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBBlockBasic\fP* UnifyDatatype::bl"
+
+.PP
+Definition at line 35 of file unify\&.hh\&.
+.SS "\fBuintb\fP* UnifyDatatype::cn"
+
+.PP
+Definition at line 34 of file unify\&.hh\&.
+.SS "\fBPcodeOp\fP* UnifyDatatype::op"
+
+.PP
+Definition at line 32 of file unify\&.hh\&.
+.SS "\fBVarnode\fP* UnifyDatatype::vn"
+
+.PP
+Definition at line 33 of file unify\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

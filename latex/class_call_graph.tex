@@ -1,0 +1,328 @@
+\hypertarget{class_call_graph}{}\section{Call\+Graph Class Reference}
+\label{class_call_graph}\index{CallGraph@{CallGraph}}
+
+
+{\ttfamily \#include $<$callgraph.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_call_graph_a4e571ae9abe012afa6265dd7b95835cb}{Call\+Graph}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\item 
+\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_call_graph_a8c6cd0bdd5cfc3e3e5b34890820de311}{get\+Arch}} (void) const
+\item 
+\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ \mbox{\hyperlink{class_call_graph_ae04a791d05bc2b05942e33ab58f01f45}{add\+Node}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$f)
+\item 
+\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ \mbox{\hyperlink{class_call_graph_ae89cb838d6da0c1febdb1e52e38c1e35}{add\+Node}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const string \&nm)
+\item 
+\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ \mbox{\hyperlink{class_call_graph_afcb9ae755c10124ffae9e3808993a5bc}{find\+Node}} (const \mbox{\hyperlink{class_address}{Address}} \&addr)
+\item 
+void \mbox{\hyperlink{class_call_graph_ad7507630c86bb153d772f48d00210b48}{add\+Edge}} (\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$from, \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$to, const \mbox{\hyperlink{class_address}{Address}} \&addr)
+\item 
+void \mbox{\hyperlink{class_call_graph_a6433c96e380e121b3b4f200714996fe4}{delete\+In\+Edge}} (\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$node, int4 i)
+\item 
+\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ \mbox{\hyperlink{class_call_graph_a226293ff8bec627b62cf0759fa5a4352}{init\+Leaf\+Walk}} (void)
+\item 
+\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ \mbox{\hyperlink{class_call_graph_a466944999f6f0f2b68cbfc90043ecc6c}{next\+Leaf}} (\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$node)
+\item 
+map$<$ \mbox{\hyperlink{class_address}{Address}}, \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $>$\+::iterator \mbox{\hyperlink{class_call_graph_a0726755cab08bdb512eb183b088bc32b}{begin}} (void)
+\item 
+map$<$ \mbox{\hyperlink{class_address}{Address}}, \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $>$\+::iterator \mbox{\hyperlink{class_call_graph_ad363d6774131c216fcb865ad114aadd9}{end}} (void)
+\item 
+void \mbox{\hyperlink{class_call_graph_ad551fc740c138722552a84e314a37d84}{build\+All\+Nodes}} (void)
+\item 
+void \mbox{\hyperlink{class_call_graph_a3cc813013efc9165d2f0496c9de488e4}{build\+Edges}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{class_call_graph_a4b5c78fa8c1942020bac287c81f8f56d}{save\+Xml}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_call_graph_ac92fb04f41917974663c5e92d46e51a5}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 91 of file callgraph.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_call_graph_a4e571ae9abe012afa6265dd7b95835cb}\label{class_call_graph_a4e571ae9abe012afa6265dd7b95835cb}} 
+\index{CallGraph@{CallGraph}!CallGraph@{CallGraph}}
+\index{CallGraph@{CallGraph}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{CallGraph()}{CallGraph()}}
+{\footnotesize\ttfamily Call\+Graph\+::\+Call\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 106 of file callgraph.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_call_graph_ad7507630c86bb153d772f48d00210b48}\label{class_call_graph_ad7507630c86bb153d772f48d00210b48}} 
+\index{CallGraph@{CallGraph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Call\+Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$}]{from,  }\item[{\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$}]{to,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 245 of file callgraph.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_ad7507630c86bb153d772f48d00210b48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_ae04a791d05bc2b05942e33ab58f01f45}\label{class_call_graph_ae04a791d05bc2b05942e33ab58f01f45}} 
+\index{CallGraph@{CallGraph}!addNode@{addNode}}
+\index{addNode@{addNode}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ Call\+Graph\+::add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Definition at line 209 of file callgraph.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_ae04a791d05bc2b05942e33ab58f01f45_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_ae04a791d05bc2b05942e33ab58f01f45_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_ae89cb838d6da0c1febdb1e52e38c1e35}\label{class_call_graph_ae89cb838d6da0c1febdb1e52e38c1e35}} 
+\index{CallGraph@{CallGraph}!addNode@{addNode}}
+\index{addNode@{addNode}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ Call\+Graph\+::add\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const string \&}]{nm }\end{DoxyParamCaption})}
+
+
+
+Definition at line 223 of file callgraph.\+cc.
+
+\mbox{\Hypertarget{class_call_graph_a0726755cab08bdb512eb183b088bc32b}\label{class_call_graph_a0726755cab08bdb512eb183b088bc32b}} 
+\index{CallGraph@{CallGraph}!begin@{begin}}
+\index{begin@{begin}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily map$<$\mbox{\hyperlink{class_address}{Address}},\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}}$>$\+::iterator Call\+Graph\+::begin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 115 of file callgraph.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_call_graph_a0726755cab08bdb512eb183b088bc32b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_ad551fc740c138722552a84e314a37d84}\label{class_call_graph_ad551fc740c138722552a84e314a37d84}} 
+\index{CallGraph@{CallGraph}!buildAllNodes@{buildAllNodes}}
+\index{buildAllNodes@{buildAllNodes}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{buildAllNodes()}{buildAllNodes()}}
+{\footnotesize\ttfamily void Call\+Graph\+::build\+All\+Nodes (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 402 of file callgraph.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_ad551fc740c138722552a84e314a37d84_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_call_graph_ad551fc740c138722552a84e314a37d84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_a3cc813013efc9165d2f0496c9de488e4}\label{class_call_graph_a3cc813013efc9165d2f0496c9de488e4}} 
+\index{CallGraph@{CallGraph}!buildEdges@{buildEdges}}
+\index{buildEdges@{buildEdges}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{buildEdges()}{buildEdges()}}
+{\footnotesize\ttfamily void Call\+Graph\+::build\+Edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 408 of file callgraph.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_a3cc813013efc9165d2f0496c9de488e4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_a6433c96e380e121b3b4f200714996fe4}\label{class_call_graph_a6433c96e380e121b3b4f200714996fe4}} 
+\index{CallGraph@{CallGraph}!deleteInEdge@{deleteInEdge}}
+\index{deleteInEdge@{deleteInEdge}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{deleteInEdge()}{deleteInEdge()}}
+{\footnotesize\ttfamily void Call\+Graph\+::delete\+In\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$}]{node,  }\item[{int4}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line 272 of file callgraph.\+cc.
+
+\mbox{\Hypertarget{class_call_graph_ad363d6774131c216fcb865ad114aadd9}\label{class_call_graph_ad363d6774131c216fcb865ad114aadd9}} 
+\index{CallGraph@{CallGraph}!end@{end}}
+\index{end@{end}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily map$<$\mbox{\hyperlink{class_address}{Address}},\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}}$>$\+::iterator Call\+Graph\+::end (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 116 of file callgraph.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_call_graph_ad363d6774131c216fcb865ad114aadd9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_afcb9ae755c10124ffae9e3808993a5bc}\label{class_call_graph_afcb9ae755c10124ffae9e3808993a5bc}} 
+\index{CallGraph@{CallGraph}!findNode@{findNode}}
+\index{findNode@{findNode}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{findNode()}{findNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ Call\+Graph\+::find\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 234 of file callgraph.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_afcb9ae755c10124ffae9e3808993a5bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_a8c6cd0bdd5cfc3e3e5b34890820de311}\label{class_call_graph_a8c6cd0bdd5cfc3e3e5b34890820de311}} 
+\index{CallGraph@{CallGraph}!getArch@{getArch}}
+\index{getArch@{getArch}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{getArch()}{getArch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ Call\+Graph\+::get\+Arch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 107 of file callgraph.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_a8c6cd0bdd5cfc3e3e5b34890820de311_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_a226293ff8bec627b62cf0759fa5a4352}\label{class_call_graph_a226293ff8bec627b62cf0759fa5a4352}} 
+\index{CallGraph@{CallGraph}!initLeafWalk@{initLeafWalk}}
+\index{initLeafWalk@{initLeafWalk}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{initLeafWalk()}{initLeafWalk()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ Call\+Graph\+::init\+Leaf\+Walk (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 323 of file callgraph.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_a226293ff8bec627b62cf0759fa5a4352_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_a466944999f6f0f2b68cbfc90043ecc6c}\label{class_call_graph_a466944999f6f0f2b68cbfc90043ecc6c}} 
+\index{CallGraph@{CallGraph}!nextLeaf@{nextLeaf}}
+\index{nextLeaf@{nextLeaf}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{nextLeaf()}{nextLeaf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$ Call\+Graph\+::next\+Leaf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_call_graph_node}{Call\+Graph\+Node}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Definition at line 338 of file callgraph.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_a466944999f6f0f2b68cbfc90043ecc6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_ac92fb04f41917974663c5e92d46e51a5}\label{class_call_graph_ac92fb04f41917974663c5e92d46e51a5}} 
+\index{CallGraph@{CallGraph}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Call\+Graph\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Definition at line 455 of file callgraph.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_ac92fb04f41917974663c5e92d46e51a5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_ac92fb04f41917974663c5e92d46e51a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_call_graph_a4b5c78fa8c1942020bac287c81f8f56d}\label{class_call_graph_a4b5c78fa8c1942020bac287c81f8f56d}} 
+\index{CallGraph@{CallGraph}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!CallGraph@{CallGraph}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Call\+Graph\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 434 of file callgraph.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_call_graph_a4b5c78fa8c1942020bac287c81f8f56d_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{callgraph_8hh}{callgraph.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{callgraph_8cc}{callgraph.\+cc}}\end{DoxyCompactItemize}

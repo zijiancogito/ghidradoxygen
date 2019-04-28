@@ -1,0 +1,465 @@
+\hypertarget{class_iface_status}{}\section{Iface\+Status Class Reference}
+\label{class_iface_status}\index{IfaceStatus@{IfaceStatus}}
+
+
+{\ttfamily \#include $<$interface.\+hh$>$}
+
+
+
+Inheritance diagram for Iface\+Status\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{class_iface_status__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_iface_status_ae5606b034f19ee24b4569946817b29c6}{Iface\+Status}} (const string \&prmpt, istream \&is, ostream \&os, int4 mxhist=10)
+\item 
+virtual \mbox{\hyperlink{class_iface_status_a152d9671686caf590fd91af5eb6e5b9a}{$\sim$\+Iface\+Status}} (void)
+\item 
+void \mbox{\hyperlink{class_iface_status_a3a987afd43c6bdaaeea9114b5d53129b}{set\+Error\+Is\+Done}} (bool val)
+\item 
+void \mbox{\hyperlink{class_iface_status_a4be96e0e55138d3b6a74496b6ae61a88}{push\+Script}} (const string \&filename, const string \&newprompt)
+\item 
+void \mbox{\hyperlink{class_iface_status_a8091c5bf341cfb11997893f0a35ba516}{pop\+Script}} (void)
+\item 
+int4 \mbox{\hyperlink{class_iface_status_acbc5b718b829b1cee5e0d9873cd641de}{get\+Num\+Input\+Stream\+Size}} (void) const
+\item 
+void \mbox{\hyperlink{class_iface_status_ad21c7aa49a8a30bc333c8d9e9effd73e}{write\+Prompt}} (void)
+\item 
+void \mbox{\hyperlink{class_iface_status_ad4fec227b244e8242fef9d36020a76fa}{register\+Com}} (\mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$fptr, const char $\ast$nm1, const char $\ast$nm2=(const char $\ast$) 0, const char $\ast$nm3=(const char $\ast$) 0, const char $\ast$nm4=(const char $\ast$) 0, const char $\ast$nm5=(const char $\ast$) 0)
+\item 
+\mbox{\hyperlink{class_iface_data}{Iface\+Data}} $\ast$ \mbox{\hyperlink{class_iface_status_af88322ddf5aa11ccdc483193a0a64152}{get\+Data}} (const string \&nm) const
+\item 
+bool \mbox{\hyperlink{class_iface_status_a78057db3e8cbf3c50cd1a6e4312892e5}{run\+Command}} (void)
+\item 
+void \mbox{\hyperlink{class_iface_status_a2ee164e918fff2ea7901fffa1fb6ad9b}{get\+History}} (string \&line, int4 i) const
+\item 
+int4 \mbox{\hyperlink{class_iface_status_aaf46b06f2ddb74f7e59ab6c13c9ce3db}{get\+History\+Size}} (void) const
+\item 
+bool \mbox{\hyperlink{class_iface_status_a916d4d648e2ddacd874c568d01c42763}{is\+Stream\+Finished}} (void) const
+\item 
+bool \mbox{\hyperlink{class_iface_status_a44e42915eec1a7c39b3153d0fe695b90}{is\+In\+Error}} (void) const
+\item 
+void \mbox{\hyperlink{class_iface_status_a07467671ab32029fffb11bad9f7c634e}{evaluate\+Error}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_iface_status_aacefbcd5c2cf3fddd11051682b614854}{words\+To\+String}} (string \&res, const vector$<$ string $>$ \&list)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_iface_status_aa8a31d6b1164019ee725b33e52769254}{done}}
+\item 
+ostream $\ast$ \mbox{\hyperlink{class_iface_status_a10ef65be4b8810a0445aa3ddf113e5b4}{optr}}
+\item 
+ostream $\ast$ \mbox{\hyperlink{class_iface_status_ac17129c5b310027bbdf5cea44c0de3d6}{fileoptr}}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int4 \mbox{\hyperlink{class_iface_status_adb7a0b05e7487a3f75dcb3de2a447b45}{expand\+Com}} (vector$<$ string $>$ \&expand, istream \&s, vector$<$ \mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$ $>$\+::const\+\_\+iterator \&first, vector$<$ \mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$ $>$\+::const\+\_\+iterator \&last)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+istream $\ast$ \mbox{\hyperlink{class_iface_status_a0f9b2e74d61ba5b4658bc1ee994fbe62}{sptr}}
+\item 
+vector$<$ \mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$ $>$ \mbox{\hyperlink{class_iface_status_a6bbe06c5f2004969442bd49b5cad7b14}{comlist}}
+\item 
+map$<$ string, \mbox{\hyperlink{class_iface_data}{Iface\+Data}} $\ast$ $>$ \mbox{\hyperlink{class_iface_status_ac85d5fe1254b348a3f77a9d5ec6603b8}{datamap}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 108 of file interface.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_iface_status_ae5606b034f19ee24b4569946817b29c6}\label{class_iface_status_ae5606b034f19ee24b4569946817b29c6}} 
+\index{IfaceStatus@{IfaceStatus}!IfaceStatus@{IfaceStatus}}
+\index{IfaceStatus@{IfaceStatus}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{IfaceStatus()}{IfaceStatus()}}
+{\footnotesize\ttfamily Iface\+Status\+::\+Iface\+Status (\begin{DoxyParamCaption}\item[{const string \&}]{prmpt,  }\item[{istream \&}]{is,  }\item[{ostream \&}]{os,  }\item[{int4}]{mxhist = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file interface.\+cc.
+
+\mbox{\Hypertarget{class_iface_status_a152d9671686caf590fd91af5eb6e5b9a}\label{class_iface_status_a152d9671686caf590fd91af5eb6e5b9a}} 
+\index{IfaceStatus@{IfaceStatus}!````~IfaceStatus@{$\sim$IfaceStatus}}
+\index{````~IfaceStatus@{$\sim$IfaceStatus}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{$\sim$IfaceStatus()}{~IfaceStatus()}}
+{\footnotesize\ttfamily Iface\+Status\+::$\sim$\+Iface\+Status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 131 of file interface.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_a152d9671686caf590fd91af5eb6e5b9a_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_iface_status_a07467671ab32029fffb11bad9f7c634e}\label{class_iface_status_a07467671ab32029fffb11bad9f7c634e}} 
+\index{IfaceStatus@{IfaceStatus}!evaluateError@{evaluateError}}
+\index{evaluateError@{evaluateError}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{evaluateError()}{evaluateError()}}
+{\footnotesize\ttfamily void Iface\+Status\+::evaluate\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 101 of file interface.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_a07467671ab32029fffb11bad9f7c634e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{class_iface_status_a07467671ab32029fffb11bad9f7c634e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_adb7a0b05e7487a3f75dcb3de2a447b45}\label{class_iface_status_adb7a0b05e7487a3f75dcb3de2a447b45}} 
+\index{IfaceStatus@{IfaceStatus}!expandCom@{expandCom}}
+\index{expandCom@{expandCom}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{expandCom()}{expandCom()}}
+{\footnotesize\ttfamily int4 Iface\+Status\+::expand\+Com (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{expand,  }\item[{istream \&}]{s,  }\item[{vector$<$ \mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$ $>$\+::const\+\_\+iterator \&}]{first,  }\item[{vector$<$ \mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$ $>$\+::const\+\_\+iterator \&}]{last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 274 of file interface.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_adb7a0b05e7487a3f75dcb3de2a447b45_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_af88322ddf5aa11ccdc483193a0a64152}\label{class_iface_status_af88322ddf5aa11ccdc483193a0a64152}} 
+\index{IfaceStatus@{IfaceStatus}!getData@{getData}}
+\index{getData@{getData}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_iface_data}{Iface\+Data}} $\ast$ Iface\+Status\+::get\+Data (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 180 of file interface.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_iface_status_af88322ddf5aa11ccdc483193a0a64152_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_a2ee164e918fff2ea7901fffa1fb6ad9b}\label{class_iface_status_a2ee164e918fff2ea7901fffa1fb6ad9b}} 
+\index{IfaceStatus@{IfaceStatus}!getHistory@{getHistory}}
+\index{getHistory@{getHistory}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{getHistory()}{getHistory()}}
+{\footnotesize\ttfamily void Iface\+Status\+::get\+History (\begin{DoxyParamCaption}\item[{string \&}]{line,  }\item[{int4}]{i }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 90 of file interface.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_iface_status_a2ee164e918fff2ea7901fffa1fb6ad9b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_aaf46b06f2ddb74f7e59ab6c13c9ce3db}\label{class_iface_status_aaf46b06f2ddb74f7e59ab6c13c9ce3db}} 
+\index{IfaceStatus@{IfaceStatus}!getHistorySize@{getHistorySize}}
+\index{getHistorySize@{getHistorySize}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{getHistorySize()}{getHistorySize()}}
+{\footnotesize\ttfamily int4 Iface\+Status\+::get\+History\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 149 of file interface.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{class_iface_status_aaf46b06f2ddb74f7e59ab6c13c9ce3db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_acbc5b718b829b1cee5e0d9873cd641de}\label{class_iface_status_acbc5b718b829b1cee5e0d9873cd641de}} 
+\index{IfaceStatus@{IfaceStatus}!getNumInputStreamSize@{getNumInputStreamSize}}
+\index{getNumInputStreamSize@{getNumInputStreamSize}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{getNumInputStreamSize()}{getNumInputStreamSize()}}
+{\footnotesize\ttfamily int4 Iface\+Status\+::get\+Num\+Input\+Stream\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 139 of file interface.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_acbc5b718b829b1cee5e0d9873cd641de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_a44e42915eec1a7c39b3153d0fe695b90}\label{class_iface_status_a44e42915eec1a7c39b3153d0fe695b90}} 
+\index{IfaceStatus@{IfaceStatus}!isInError@{isInError}}
+\index{isInError@{isInError}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{isInError()}{isInError()}}
+{\footnotesize\ttfamily bool Iface\+Status\+::is\+In\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 151 of file interface.\+hh.
+
+\mbox{\Hypertarget{class_iface_status_a916d4d648e2ddacd874c568d01c42763}\label{class_iface_status_a916d4d648e2ddacd874c568d01c42763}} 
+\index{IfaceStatus@{IfaceStatus}!isStreamFinished@{isStreamFinished}}
+\index{isStreamFinished@{isStreamFinished}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{isStreamFinished()}{isStreamFinished()}}
+{\footnotesize\ttfamily bool Iface\+Status\+::is\+Stream\+Finished (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 150 of file interface.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_iface_status_a916d4d648e2ddacd874c568d01c42763_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_a8091c5bf341cfb11997893f0a35ba516}\label{class_iface_status_a8091c5bf341cfb11997893f0a35ba516}} 
+\index{IfaceStatus@{IfaceStatus}!popScript@{popScript}}
+\index{popScript@{popScript}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{popScript()}{popScript()}}
+{\footnotesize\ttfamily void Iface\+Status\+::pop\+Script (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 64 of file interface.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_a8091c5bf341cfb11997893f0a35ba516_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_a4be96e0e55138d3b6a74496b6ae61a88}\label{class_iface_status_a4be96e0e55138d3b6a74496b6ae61a88}} 
+\index{IfaceStatus@{IfaceStatus}!pushScript@{pushScript}}
+\index{pushScript@{pushScript}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{pushScript()}{pushScript()}}
+{\footnotesize\ttfamily void Iface\+Status\+::push\+Script (\begin{DoxyParamCaption}\item[{const string \&}]{filename,  }\item[{const string \&}]{newprompt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 48 of file interface.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_iface_status_a4be96e0e55138d3b6a74496b6ae61a88_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_ad4fec227b244e8242fef9d36020a76fa}\label{class_iface_status_ad4fec227b244e8242fef9d36020a76fa}} 
+\index{IfaceStatus@{IfaceStatus}!registerCom@{registerCom}}
+\index{registerCom@{registerCom}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{registerCom()}{registerCom()}}
+{\footnotesize\ttfamily void Iface\+Status\+::register\+Com (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$}]{fptr,  }\item[{const char $\ast$}]{nm1,  }\item[{const char $\ast$}]{nm2 = {\ttfamily (const~char~$\ast$)0},  }\item[{const char $\ast$}]{nm3 = {\ttfamily (const~char~$\ast$)0},  }\item[{const char $\ast$}]{nm4 = {\ttfamily (const~char~$\ast$)0},  }\item[{const char $\ast$}]{nm5 = {\ttfamily (const~char~$\ast$)0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 148 of file interface.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_ad4fec227b244e8242fef9d36020a76fa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_ad4fec227b244e8242fef9d36020a76fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_a78057db3e8cbf3c50cd1a6e4312892e5}\label{class_iface_status_a78057db3e8cbf3c50cd1a6e4312892e5}} 
+\index{IfaceStatus@{IfaceStatus}!runCommand@{runCommand}}
+\index{runCommand@{runCommand}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{runCommand()}{runCommand()}}
+{\footnotesize\ttfamily bool Iface\+Status\+::run\+Command (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 189 of file interface.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_a78057db3e8cbf3c50cd1a6e4312892e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_iface_status_a78057db3e8cbf3c50cd1a6e4312892e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_a3a987afd43c6bdaaeea9114b5d53129b}\label{class_iface_status_a3a987afd43c6bdaaeea9114b5d53129b}} 
+\index{IfaceStatus@{IfaceStatus}!setErrorIsDone@{setErrorIsDone}}
+\index{setErrorIsDone@{setErrorIsDone}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{setErrorIsDone()}{setErrorIsDone()}}
+{\footnotesize\ttfamily void Iface\+Status\+::set\+Error\+Is\+Done (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 136 of file interface.\+hh.
+
+\mbox{\Hypertarget{class_iface_status_aacefbcd5c2cf3fddd11051682b614854}\label{class_iface_status_aacefbcd5c2cf3fddd11051682b614854}} 
+\index{IfaceStatus@{IfaceStatus}!wordsToString@{wordsToString}}
+\index{wordsToString@{wordsToString}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{wordsToString()}{wordsToString()}}
+{\footnotesize\ttfamily void Iface\+Status\+::words\+To\+String (\begin{DoxyParamCaption}\item[{string \&}]{res,  }\item[{const vector$<$ string $>$ \&}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 118 of file interface.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_iface_status_aacefbcd5c2cf3fddd11051682b614854_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_iface_status_ad21c7aa49a8a30bc333c8d9e9effd73e}\label{class_iface_status_ad21c7aa49a8a30bc333c8d9e9effd73e}} 
+\index{IfaceStatus@{IfaceStatus}!writePrompt@{writePrompt}}
+\index{writePrompt@{writePrompt}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{writePrompt()}{writePrompt()}}
+{\footnotesize\ttfamily void Iface\+Status\+::write\+Prompt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 140 of file interface.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{class_iface_status_ad21c7aa49a8a30bc333c8d9e9effd73e_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_iface_status_a6bbe06c5f2004969442bd49b5cad7b14}\label{class_iface_status_a6bbe06c5f2004969442bd49b5cad7b14}} 
+\index{IfaceStatus@{IfaceStatus}!comlist@{comlist}}
+\index{comlist@{comlist}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{comlist}{comlist}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_iface_command}{Iface\+Command}} $\ast$$>$ Iface\+Status\+::comlist\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 124 of file interface.\+hh.
+
+\mbox{\Hypertarget{class_iface_status_ac85d5fe1254b348a3f77a9d5ec6603b8}\label{class_iface_status_ac85d5fe1254b348a3f77a9d5ec6603b8}} 
+\index{IfaceStatus@{IfaceStatus}!datamap@{datamap}}
+\index{datamap@{datamap}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{datamap}{datamap}}
+{\footnotesize\ttfamily map$<$string,\mbox{\hyperlink{class_iface_data}{Iface\+Data}} $\ast$$>$ Iface\+Status\+::datamap\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 125 of file interface.\+hh.
+
+\mbox{\Hypertarget{class_iface_status_aa8a31d6b1164019ee725b33e52769254}\label{class_iface_status_aa8a31d6b1164019ee725b33e52769254}} 
+\index{IfaceStatus@{IfaceStatus}!done@{done}}
+\index{done@{done}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{done}{done}}
+{\footnotesize\ttfamily bool Iface\+Status\+::done}
+
+
+
+Definition at line 130 of file interface.\+hh.
+
+\mbox{\Hypertarget{class_iface_status_ac17129c5b310027bbdf5cea44c0de3d6}\label{class_iface_status_ac17129c5b310027bbdf5cea44c0de3d6}} 
+\index{IfaceStatus@{IfaceStatus}!fileoptr@{fileoptr}}
+\index{fileoptr@{fileoptr}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{fileoptr}{fileoptr}}
+{\footnotesize\ttfamily ostream$\ast$ Iface\+Status\+::fileoptr}
+
+
+
+Definition at line 132 of file interface.\+hh.
+
+\mbox{\Hypertarget{class_iface_status_a10ef65be4b8810a0445aa3ddf113e5b4}\label{class_iface_status_a10ef65be4b8810a0445aa3ddf113e5b4}} 
+\index{IfaceStatus@{IfaceStatus}!optr@{optr}}
+\index{optr@{optr}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{optr}{optr}}
+{\footnotesize\ttfamily ostream$\ast$ Iface\+Status\+::optr}
+
+
+
+Definition at line 131 of file interface.\+hh.
+
+\mbox{\Hypertarget{class_iface_status_a0f9b2e74d61ba5b4658bc1ee994fbe62}\label{class_iface_status_a0f9b2e74d61ba5b4658bc1ee994fbe62}} 
+\index{IfaceStatus@{IfaceStatus}!sptr@{sptr}}
+\index{sptr@{sptr}!IfaceStatus@{IfaceStatus}}
+\subsubsection{\texorpdfstring{sptr}{sptr}}
+{\footnotesize\ttfamily istream$\ast$ Iface\+Status\+::sptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 123 of file interface.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{interface_8hh}{interface.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{interface_8cc}{interface.\+cc}}\end{DoxyCompactItemize}

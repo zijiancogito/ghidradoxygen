@@ -1,0 +1,726 @@
+\hypertarget{class_database}{}\section{Database Class Reference}
+\label{class_database}\index{Database@{Database}}
+
+
+A manager for symbol scopes for a whole executable.  
+
+
+
+
+{\ttfamily \#include $<$database.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_database_ab71b47881aadf1df2dc7655386449a85}{Database}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_database_a46b5202fd52c60dc229a35aa181697a6}{$\sim$\+Database}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_database_a40c66154335d11a4486067f92806bcac}{get\+Arch}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_architecture}{Architecture}} associate with {\bfseries{this}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a1bc096166a8cfde3d77229c9e38bfabf}{attach\+Scope}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$newscope, \mbox{\hyperlink{class_scope}{Scope}} $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Register a new \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_aa7b4011d64dc04148fbf342819f38da5}{delete\+Scope}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$scope)
+\begin{DoxyCompactList}\small\item\em Delete the given \mbox{\hyperlink{class_scope}{Scope}} and all its sub-\/scopes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a7fcfc328de0a3f2d4ec8abdd6428213a}{delete\+Sub\+Scopes}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$scope)
+\begin{DoxyCompactList}\small\item\em Delete all sub-\/scopes of the given \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_ab7749ce6cebbb4f7520baa7a6177ab33}{clear\+Unlocked}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$scope)
+\begin{DoxyCompactList}\small\item\em Clear unlocked Symbols owned by the given \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_ac4397e487146864510d89c9e3d12a2a7}{set\+Range}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$scope, const \mbox{\hyperlink{class_range_list}{Range\+List}} \&rlist)
+\begin{DoxyCompactList}\small\item\em Set the {\itshape ownership} range for a \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a3ad165aa6ec64f417376669625d31c69}{add\+Range}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$scope, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} first, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} last)
+\begin{DoxyCompactList}\small\item\em Add an address range to the {\itshape ownership} of a \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a4db50bb44cfc56d4102f102c0ddbf423}{remove\+Range}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$scope, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} first, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} last)
+\begin{DoxyCompactList}\small\item\em Remove an address range from {\itshape ownership} of a \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_scope}{Scope}} $\ast$ \mbox{\hyperlink{class_database_a89703e54c8073c6ab275a1776a7ccd4a}{get\+Global\+Scope}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the global \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_scope}{Scope}} $\ast$ \mbox{\hyperlink{class_database_a452ac8a13c82d53b20606b18202475ae}{resolve\+Scope}} (const vector$<$ string $>$ \&subnames) const
+\begin{DoxyCompactList}\small\item\em Look-\/up a \mbox{\hyperlink{class_scope}{Scope}} by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_scope}{Scope}} $\ast$ \mbox{\hyperlink{class_database_abb1a4058854788e2847653526a458414}{resolve\+Scope\+Symbol\+Name}} (const string \&fullname, const string \&delim, string \&basename, \mbox{\hyperlink{class_scope}{Scope}} $\ast$start) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_scope}{Scope}} (and base name) associated with a qualified \mbox{\hyperlink{class_symbol}{Symbol}} name. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_scope}{Scope}} $\ast$ \mbox{\hyperlink{class_database_ab3840564f424238dd3a498fdb1a02644}{map\+Scope}} (const \mbox{\hyperlink{class_scope}{Scope}} $\ast$qpoint, const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&usepoint) const
+\begin{DoxyCompactList}\small\item\em Determine the lowest-\/level \mbox{\hyperlink{class_scope}{Scope}} which might contain the given address as a \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_scope}{Scope}} $\ast$ \mbox{\hyperlink{class_database_a7e9120944fd4b8dbea1ae4b6a473e87f}{map\+Scope}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$qpoint, const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&usepoint)
+\begin{DoxyCompactList}\small\item\em A non-\/constant version of \mbox{\hyperlink{class_database_ab3840564f424238dd3a498fdb1a02644}{map\+Scope()}} \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_database_a1337718ffa932cf80a4d0d27e9998a06}{get\+Property}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Get boolean properties at the given address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_aca0311269bfa73f5673c998dec92bb95}{set\+Property\+Range}} (uint4 flags, const \mbox{\hyperlink{class_range}{Range}} \&range)
+\begin{DoxyCompactList}\small\item\em Set boolean properties over a given memory range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a24a13d8036c39ae06909cb698529695f}{set\+Properties}} (const \mbox{\hyperlink{classpartmap}{partmap}}$<$ \mbox{\hyperlink{class_address}{Address}}, uint4 $>$ \&newflags)
+\begin{DoxyCompactList}\small\item\em Replace the property map. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classpartmap}{partmap}}$<$ \mbox{\hyperlink{class_address}{Address}}, uint4 $>$ \& \mbox{\hyperlink{class_database_a56bb739490aaee87bb1cb2849bfdfb53}{get\+Properties}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the entire property map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_ae44b2d77910ea8fd574443e5d7da55e9}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save the whole \mbox{\hyperlink{class_database}{Database}} to an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_ad216578696aaa7c956be9cfe752edf57}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Recover the whole database from X\+ML. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a2ced34f8773df5ae0df973a6f84c1495}{restore\+Xml\+Scope}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, \mbox{\hyperlink{class_scope}{Scope}} $\ast$new\+\_\+scope)
+\begin{DoxyCompactList}\small\item\em Register and fill out a single \mbox{\hyperlink{class_scope}{Scope}} from X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A manager for symbol scopes for a whole executable. 
+
+This is the highest level container for anything related to \mbox{\hyperlink{class_scope}{Scope}} and \mbox{\hyperlink{class_symbol}{Symbol}} objects, it indirectly holds the \mbox{\hyperlink{class_funcdata}{Funcdata}} objects as well, through the \mbox{\hyperlink{class_function_symbol}{Function\+Symbol}}. It acts as the formal {\bfseries{symbol}} {\bfseries{table}} for the decompiler. The A\+PI is mostly concerned with the management of \mbox{\hyperlink{class_scope}{Scope}} objects.
+
+A \mbox{\hyperlink{class_scope}{Scope}} object is initially registered via \mbox{\hyperlink{class_database_a1bc096166a8cfde3d77229c9e38bfabf}{attach\+Scope()}}, then it can looked up by name. This class maintains the cross \mbox{\hyperlink{class_scope}{Scope}} search by address capability, implemented as a map from an \mbox{\hyperlink{class_address}{Address}} to the \mbox{\hyperlink{class_scope}{Scope}} that owns it. For efficiency, this map is really only applied to {\itshape namespace} Scopes, the global \mbox{\hyperlink{class_scope}{Scope}} and function Scopes are not entered in the map. This class also maintains a set of boolean properties that label memory ranges. This allows important properties like {\itshape read-\/only} and {\itshape volatile} to be put down even if the Symbols aren\textquotesingle{}t yet known. 
+
+Definition at line 812 of file database.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_database_ab71b47881aadf1df2dc7655386449a85}\label{class_database_ab71b47881aadf1df2dc7655386449a85}} 
+\index{Database@{Database}!Database@{Database}}
+\index{Database@{Database}!Database@{Database}}
+\subsubsection{\texorpdfstring{Database()}{Database()}}
+{\footnotesize\ttfamily Database\+::\+Database (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 822 of file database.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_database_ab71b47881aadf1df2dc7655386449a85_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a46b5202fd52c60dc229a35aa181697a6}\label{class_database_a46b5202fd52c60dc229a35aa181697a6}} 
+\index{Database@{Database}!````~Database@{$\sim$Database}}
+\index{````~Database@{$\sim$Database}!Database@{Database}}
+\subsubsection{\texorpdfstring{$\sim$Database()}{~Database()}}
+{\footnotesize\ttfamily Database\+::$\sim$\+Database (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line 2515 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_database_a46b5202fd52c60dc229a35aa181697a6_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_database_a3ad165aa6ec64f417376669625d31c69}\label{class_database_a3ad165aa6ec64f417376669625d31c69}} 
+\index{Database@{Database}!addRange@{addRange}}
+\index{addRange@{addRange}!Database@{Database}}
+\subsubsection{\texorpdfstring{addRange()}{addRange()}}
+{\footnotesize\ttfamily void Database\+::add\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{scope,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{first,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{last }\end{DoxyParamCaption})}
+
+
+
+Add an address range to the {\itshape ownership} of a \mbox{\hyperlink{class_scope}{Scope}}. 
+
+The new range will be merged with the existing {\itshape ownership}. The address to \mbox{\hyperlink{class_scope}{Scope}} map is updated 
+\begin{DoxyParams}{Parameters}
+{\em scope} & is the given \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+{\em spc} & is the address space of the memory range being added \\
+\hline
+{\em first} & is the offset of the first byte in the array \\
+\hline
+{\em last} & is the offset of the last byte \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2609 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a3ad165aa6ec64f417376669625d31c69_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a3ad165aa6ec64f417376669625d31c69_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a1bc096166a8cfde3d77229c9e38bfabf}\label{class_database_a1bc096166a8cfde3d77229c9e38bfabf}} 
+\index{Database@{Database}!attachScope@{attachScope}}
+\index{attachScope@{attachScope}!Database@{Database}}
+\subsubsection{\texorpdfstring{attachScope()}{attachScope()}}
+{\footnotesize\ttfamily void Database\+::attach\+Scope (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{newscope,  }\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{parent }\end{DoxyParamCaption})}
+
+
+
+Register a new \mbox{\hyperlink{class_scope}{Scope}}. 
+
+The new \mbox{\hyperlink{class_scope}{Scope}} must be initially empty and {\bfseries{this}} \mbox{\hyperlink{class_database}{Database}} takes over ownership. Practically, this is just setting up the new \mbox{\hyperlink{class_scope}{Scope}} as a sub-\/scope of its parent. The parent \mbox{\hyperlink{class_scope}{Scope}} should already be registered with {\bfseries{this}} \mbox{\hyperlink{class_database}{Database}}, or N\+U\+LL can be passed to register the global \mbox{\hyperlink{class_scope}{Scope}}. 
+\begin{DoxyParams}{Parameters}
+{\em newscope} & is the new \mbox{\hyperlink{class_scope}{Scope}} being registered \\
+\hline
+{\em parent} & is the parent \mbox{\hyperlink{class_scope}{Scope}} or N\+U\+LL \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2528 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a1bc096166a8cfde3d77229c9e38bfabf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_ab7749ce6cebbb4f7520baa7a6177ab33}\label{class_database_ab7749ce6cebbb4f7520baa7a6177ab33}} 
+\index{Database@{Database}!clearUnlocked@{clearUnlocked}}
+\index{clearUnlocked@{clearUnlocked}!Database@{Database}}
+\subsubsection{\texorpdfstring{clearUnlocked()}{clearUnlocked()}}
+{\footnotesize\ttfamily void Database\+::clear\+Unlocked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+
+
+Clear unlocked Symbols owned by the given \mbox{\hyperlink{class_scope}{Scope}}. 
+
+All unlocked symbols in {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}, and recursively into its sub-\/scopes, are removed. 
+\begin{DoxyParams}{Parameters}
+{\em scope} & is the given \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2579 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_ab7749ce6cebbb4f7520baa7a6177ab33_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_aa7b4011d64dc04148fbf342819f38da5}\label{class_database_aa7b4011d64dc04148fbf342819f38da5}} 
+\index{Database@{Database}!deleteScope@{deleteScope}}
+\index{deleteScope@{deleteScope}!Database@{Database}}
+\subsubsection{\texorpdfstring{deleteScope()}{deleteScope()}}
+{\footnotesize\ttfamily void Database\+::delete\+Scope (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+
+
+Delete the given \mbox{\hyperlink{class_scope}{Scope}} and all its sub-\/scopes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scope} & is the given \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2543 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_database_aa7b4011d64dc04148fbf342819f38da5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a7fcfc328de0a3f2d4ec8abdd6428213a}\label{class_database_a7fcfc328de0a3f2d4ec8abdd6428213a}} 
+\index{Database@{Database}!deleteSubScopes@{deleteSubScopes}}
+\index{deleteSubScopes@{deleteSubScopes}!Database@{Database}}
+\subsubsection{\texorpdfstring{deleteSubScopes()}{deleteSubScopes()}}
+{\footnotesize\ttfamily void Database\+::delete\+Sub\+Scopes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+
+
+Delete all sub-\/scopes of the given \mbox{\hyperlink{class_scope}{Scope}}. 
+
+The given \mbox{\hyperlink{class_scope}{Scope}} is not deleted, only its children. 
+\begin{DoxyParams}{Parameters}
+{\em scope} & is the given \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2562 of file database.\+cc.
+
+\mbox{\Hypertarget{class_database_a40c66154335d11a4486067f92806bcac}\label{class_database_a40c66154335d11a4486067f92806bcac}} 
+\index{Database@{Database}!getArch@{getArch}}
+\index{getArch@{getArch}!Database@{Database}}
+\subsubsection{\texorpdfstring{getArch()}{getArch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ Database\+::get\+Arch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_architecture}{Architecture}} associate with {\bfseries{this}}. 
+
+
+
+Definition at line 824 of file database.\+hh.
+
+\mbox{\Hypertarget{class_database_a89703e54c8073c6ab275a1776a7ccd4a}\label{class_database_a89703e54c8073c6ab275a1776a7ccd4a}} 
+\index{Database@{Database}!getGlobalScope@{getGlobalScope}}
+\index{getGlobalScope@{getGlobalScope}!Database@{Database}}
+\subsubsection{\texorpdfstring{getGlobalScope()}{getGlobalScope()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scope}{Scope}}$\ast$ Database\+::get\+Global\+Scope (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the global \mbox{\hyperlink{class_scope}{Scope}}. 
+
+
+
+Definition at line 832 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a89703e54c8073c6ab275a1776a7ccd4a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a56bb739490aaee87bb1cb2849bfdfb53}\label{class_database_a56bb739490aaee87bb1cb2849bfdfb53}} 
+\index{Database@{Database}!getProperties@{getProperties}}
+\index{getProperties@{getProperties}!Database@{Database}}
+\subsubsection{\texorpdfstring{getProperties()}{getProperties()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classpartmap}{partmap}}$<$\mbox{\hyperlink{class_address}{Address}},uint4$>$\& Database\+::get\+Properties (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the entire property map. 
+
+
+
+Definition at line 840 of file database.\+hh.
+
+\mbox{\Hypertarget{class_database_a1337718ffa932cf80a4d0d27e9998a06}\label{class_database_a1337718ffa932cf80a4d0d27e9998a06}} 
+\index{Database@{Database}!getProperty@{getProperty}}
+\index{getProperty@{getProperty}!Database@{Database}}
+\subsubsection{\texorpdfstring{getProperty()}{getProperty()}}
+{\footnotesize\ttfamily uint4 Database\+::get\+Property (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get boolean properties at the given address. 
+
+
+
+Definition at line 837 of file database.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{class_database_a1337718ffa932cf80a4d0d27e9998a06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a1337718ffa932cf80a4d0d27e9998a06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_ab3840564f424238dd3a498fdb1a02644}\label{class_database_ab3840564f424238dd3a498fdb1a02644}} 
+\index{Database@{Database}!mapScope@{mapScope}}
+\index{mapScope@{mapScope}!Database@{Database}}
+\subsubsection{\texorpdfstring{mapScope()}{mapScope()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_scope}{Scope}} $\ast$ Database\+::map\+Scope (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{qpoint,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption}) const}
+
+
+
+Determine the lowest-\/level \mbox{\hyperlink{class_scope}{Scope}} which might contain the given address as a \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+As currently implemented, this method can only find a {\itshape namespace} \mbox{\hyperlink{class_scope}{Scope}}. When searching for a \mbox{\hyperlink{class_symbol}{Symbol}} by \mbox{\hyperlink{class_address}{Address}}, the global \mbox{\hyperlink{class_scope}{Scope}} is always searched because it is the terminating \mbox{\hyperlink{class_scope}{Scope}} when recursively walking scopes through the {\itshape parent} relationship, so it isn\textquotesingle{}t entered in this map. A function level \mbox{\hyperlink{class_scope}{Scope}}, also not entered in the map, is only returned as the \mbox{\hyperlink{class_scope}{Scope}} passed in as a default, when no {\itshape namespace} \mbox{\hyperlink{class_scope}{Scope}} claims the address. 
+\begin{DoxyParams}{Parameters}
+{\em qpoint} & is the default \mbox{\hyperlink{class_scope}{Scope}} returned if no {\itshape owner} is found \\
+\hline
+{\em addr} & is the address whose owner should be searched for \\
+\hline
+{\em usepoint} & is a point in code where the address is being accessed (may be {\itshape invalid}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{class_scope}{Scope}} to act as a starting point for a hierarchical search 
+\end{DoxyReturn}
+
+
+Definition at line 2698 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{class_database_ab3840564f424238dd3a498fdb1a02644_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_ab3840564f424238dd3a498fdb1a02644_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a7e9120944fd4b8dbea1ae4b6a473e87f}\label{class_database_a7e9120944fd4b8dbea1ae4b6a473e87f}} 
+\index{Database@{Database}!mapScope@{mapScope}}
+\index{mapScope@{mapScope}!Database@{Database}}
+\subsubsection{\texorpdfstring{mapScope()}{mapScope()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scope}{Scope}} $\ast$ Database\+::map\+Scope (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{qpoint,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption})}
+
+
+
+A non-\/constant version of \mbox{\hyperlink{class_database_ab3840564f424238dd3a498fdb1a02644}{map\+Scope()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em qpoint} & is the default \mbox{\hyperlink{class_scope}{Scope}} returned if no {\itshape owner} is found \\
+\hline
+{\em addr} & is the address whose owner should be searched for \\
+\hline
+{\em usepoint} & is a point in code where the address is being accessed (may be {\itshape invalid}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{class_scope}{Scope}} to act as a starting point for a hierarchical search 
+\end{DoxyReturn}
+
+
+Definition at line 2715 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{class_database_a7e9120944fd4b8dbea1ae4b6a473e87f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a4db50bb44cfc56d4102f102c0ddbf423}\label{class_database_a4db50bb44cfc56d4102f102c0ddbf423}} 
+\index{Database@{Database}!removeRange@{removeRange}}
+\index{removeRange@{removeRange}!Database@{Database}}
+\subsubsection{\texorpdfstring{removeRange()}{removeRange()}}
+{\footnotesize\ttfamily void Database\+::remove\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{scope,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{first,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{last }\end{DoxyParamCaption})}
+
+
+
+Remove an address range from {\itshape ownership} of a \mbox{\hyperlink{class_scope}{Scope}}. 
+
+Addresses owned by the \mbox{\hyperlink{class_scope}{Scope}} that are disjoint from the given range are not affected. 
+\begin{DoxyParams}{Parameters}
+{\em scope} & is the given \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+{\em spc} & is the address space of the memory range being removed \\
+\hline
+{\em first} & is the offset of the first byte in the array \\
+\hline
+{\em last} & is the offset of the last byte \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2623 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a4db50bb44cfc56d4102f102c0ddbf423_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a4db50bb44cfc56d4102f102c0ddbf423_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a452ac8a13c82d53b20606b18202475ae}\label{class_database_a452ac8a13c82d53b20606b18202475ae}} 
+\index{Database@{Database}!resolveScope@{resolveScope}}
+\index{resolveScope@{resolveScope}!Database@{Database}}
+\subsubsection{\texorpdfstring{resolveScope()}{resolveScope()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scope}{Scope}} $\ast$ Database\+::resolve\+Scope (\begin{DoxyParamCaption}\item[{const vector$<$ string $>$ \&}]{subnames }\end{DoxyParamCaption}) const}
+
+
+
+Look-\/up a \mbox{\hyperlink{class_scope}{Scope}} by name. 
+
+An {\itshape absolute} {\itshape path} of \mbox{\hyperlink{class_scope}{Scope}} names must be provided, from the global \mbox{\hyperlink{class_scope}{Scope}} down to the desired \mbox{\hyperlink{class_scope}{Scope}}. If the first path name is blank (\char`\"{}\char`\"{}), it matches the global \mbox{\hyperlink{class_scope}{Scope}}. If the first path name is not blank, the global \mbox{\hyperlink{class_scope}{Scope}} is assumed, and the name is assumed to refer to a child. 
+\begin{DoxyParams}{Parameters}
+{\em subnames} & is the {\itshape path} of names \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the desired \mbox{\hyperlink{class_scope}{Scope}} or N\+U\+LL if a matching name isn\textquotesingle{}t found 
+\end{DoxyReturn}
+
+
+Definition at line 2637 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{class_database_a452ac8a13c82d53b20606b18202475ae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a452ac8a13c82d53b20606b18202475ae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_abb1a4058854788e2847653526a458414}\label{class_database_abb1a4058854788e2847653526a458414}} 
+\index{Database@{Database}!resolveScopeSymbolName@{resolveScopeSymbolName}}
+\index{resolveScopeSymbolName@{resolveScopeSymbolName}!Database@{Database}}
+\subsubsection{\texorpdfstring{resolveScopeSymbolName()}{resolveScopeSymbolName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scope}{Scope}} $\ast$ Database\+::resolve\+Scope\+Symbol\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{fullname,  }\item[{const string \&}]{delim,  }\item[{string \&}]{basename,  }\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{start }\end{DoxyParamCaption}) const}
+
+
+
+Get the \mbox{\hyperlink{class_scope}{Scope}} (and base name) associated with a qualified \mbox{\hyperlink{class_symbol}{Symbol}} name. 
+
+The name is parsed using a {\bfseries{delimiter}} that is passed in. The name can be only partially qualified by passing in a starting \mbox{\hyperlink{class_scope}{Scope}}, which the name is assumed to be relative to. Otherwise the name is assumed to be relative to the global \mbox{\hyperlink{class_scope}{Scope}}. The unqualified (base) name of the \mbox{\hyperlink{class_symbol}{Symbol}} is passed back to the caller. 
+\begin{DoxyParams}{Parameters}
+{\em fullname} & is the qualified \mbox{\hyperlink{class_symbol}{Symbol}} name \\
+\hline
+{\em delim} & is the delimiter separating names \\
+\hline
+{\em basename} & will hold the passed back base \mbox{\hyperlink{class_symbol}{Symbol}} name \\
+\hline
+{\em start} & is the \mbox{\hyperlink{class_scope}{Scope}} to start drilling down from, or N\+U\+LL for the global scope \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_scope}{Scope}} being referred to by the name 
+\end{DoxyReturn}
+
+
+Definition at line 2665 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_abb1a4058854788e2847653526a458414_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_abb1a4058854788e2847653526a458414_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_ad216578696aaa7c956be9cfe752edf57}\label{class_database_ad216578696aaa7c956be9cfe752edf57}} 
+\index{Database@{Database}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!Database@{Database}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Database\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Recover the whole database from X\+ML. 
+
+The children of a $<$db$>$ tag are examined to recover \mbox{\hyperlink{class_scope}{Scope}} and \mbox{\hyperlink{class_symbol}{Symbol}} objects. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the $<$db$>$ element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2812 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_ad216578696aaa7c956be9cfe752edf57_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_ad216578696aaa7c956be9cfe752edf57_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a2ced34f8773df5ae0df973a6f84c1495}\label{class_database_a2ced34f8773df5ae0df973a6f84c1495}} 
+\index{Database@{Database}!restoreXmlScope@{restoreXmlScope}}
+\index{restoreXmlScope@{restoreXmlScope}!Database@{Database}}
+\subsubsection{\texorpdfstring{restoreXmlScope()}{restoreXmlScope()}}
+{\footnotesize\ttfamily void Database\+::restore\+Xml\+Scope (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{new\+\_\+scope }\end{DoxyParamCaption})}
+
+
+
+Register and fill out a single \mbox{\hyperlink{class_scope}{Scope}} from X\+ML. 
+
+This allows incremental building of the \mbox{\hyperlink{class_database}{Database}} from multiple X\+ML sources. An empty \mbox{\hyperlink{class_scope}{Scope}} must already be allocated. It is registered with {\bfseries{this}} \mbox{\hyperlink{class_database}{Database}}, and then populated with \mbox{\hyperlink{class_symbol}{Symbol}} objects based as the content of a given $<$scope$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the given $<$scope$>$ element \\
+\hline
+{\em new\+\_\+scope} & is the empty \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2865 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a2ced34f8773df5ae0df973a6f84c1495_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_ae44b2d77910ea8fd574443e5d7da55e9}\label{class_database_ae44b2d77910ea8fd574443e5d7da55e9}} 
+\index{Database@{Database}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!Database@{Database}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Database\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save the whole \mbox{\hyperlink{class_database}{Database}} to an X\+ML stream. 
+
+This writes a single $<$db$>$ tag to the stream, which contains sub-\/tags for each \mbox{\hyperlink{class_scope}{Scope}} (which contain \mbox{\hyperlink{class_symbol}{Symbol}} sub-\/tags in turn). 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2757 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_ae44b2d77910ea8fd574443e5d7da55e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_ae44b2d77910ea8fd574443e5d7da55e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a24a13d8036c39ae06909cb698529695f}\label{class_database_a24a13d8036c39ae06909cb698529695f}} 
+\index{Database@{Database}!setProperties@{setProperties}}
+\index{setProperties@{setProperties}!Database@{Database}}
+\subsubsection{\texorpdfstring{setProperties()}{setProperties()}}
+{\footnotesize\ttfamily void Database\+::set\+Properties (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpartmap}{partmap}}$<$ \mbox{\hyperlink{class_address}{Address}}, uint4 $>$ \&}]{newflags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Replace the property map. 
+
+
+
+Definition at line 839 of file database.\+hh.
+
+\mbox{\Hypertarget{class_database_aca0311269bfa73f5673c998dec92bb95}\label{class_database_aca0311269bfa73f5673c998dec92bb95}} 
+\index{Database@{Database}!setPropertyRange@{setPropertyRange}}
+\index{setPropertyRange@{setPropertyRange}!Database@{Database}}
+\subsubsection{\texorpdfstring{setPropertyRange()}{setPropertyRange()}}
+{\footnotesize\ttfamily void Database\+::set\+Property\+Range (\begin{DoxyParamCaption}\item[{uint4}]{flags,  }\item[{const \mbox{\hyperlink{class_range}{Range}} \&}]{range }\end{DoxyParamCaption})}
+
+
+
+Set boolean properties over a given memory range. 
+
+This allows the standard boolean \mbox{\hyperlink{class_varnode}{Varnode}} properties like {\itshape read-\/only} and {\itshape volatile} to be put an a memory range, independent of whether a \mbox{\hyperlink{class_symbol}{Symbol}} is there or not. These get picked up by the \mbox{\hyperlink{class_scope_a1b8c2c2302eba2666e319a4c18a67d51}{Scope\+::query\+Properties()}} method in particular. 
+\begin{DoxyParams}{Parameters}
+{\em flags} & is the set of boolean properties \\
+\hline
+{\em range} & is the memory range to label \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2733 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_aca0311269bfa73f5673c998dec92bb95_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_aca0311269bfa73f5673c998dec92bb95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_ac4397e487146864510d89c9e3d12a2a7}\label{class_database_ac4397e487146864510d89c9e3d12a2a7}} 
+\index{Database@{Database}!setRange@{setRange}}
+\index{setRange@{setRange}!Database@{Database}}
+\subsubsection{\texorpdfstring{setRange()}{setRange()}}
+{\footnotesize\ttfamily void Database\+::set\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{scope,  }\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{rlist }\end{DoxyParamCaption})}
+
+
+
+Set the {\itshape ownership} range for a \mbox{\hyperlink{class_scope}{Scope}}. 
+
+Any existing {\itshape ownership} is completely replaced. The address to \mbox{\hyperlink{class_scope}{Scope}} map is updated. 
+\begin{DoxyParams}{Parameters}
+{\em scope} & is the given \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+{\em rlist} & is the set of addresses to mark as owned \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2595 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_ac4397e487146864510d89c9e3d12a2a7_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8hh}{database.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8cc}{database.\+cc}}\end{DoxyCompactItemize}

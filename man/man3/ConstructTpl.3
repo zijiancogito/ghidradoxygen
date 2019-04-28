@@ -1,0 +1,202 @@
+.TH "ConstructTpl" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConstructTpl
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <semantics\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConstructTpl\fP (void)"
+.br
+.ti -1c
+.RI "\fB~ConstructTpl\fP (void)"
+.br
+.ti -1c
+.RI "uint4 \fBdelaySlot\fP (void) const"
+.br
+.ti -1c
+.RI "uint4 \fBnumLabels\fP (void) const"
+.br
+.ti -1c
+.RI "const vector< \fBOpTpl\fP * > & \fBgetOpvec\fP (void) const"
+.br
+.ti -1c
+.RI "\fBHandleTpl\fP * \fBgetResult\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBaddOp\fP (\fBOpTpl\fP *ot)"
+.br
+.ti -1c
+.RI "bool \fBaddOpList\fP (const vector< \fBOpTpl\fP * > &oplist)"
+.br
+.ti -1c
+.RI "void \fBsetResult\fP (\fBHandleTpl\fP *t)"
+.br
+.ti -1c
+.RI "int4 \fBfillinBuild\fP (vector< int4 > &check, \fBAddrSpace\fP *const_space)"
+.br
+.ti -1c
+.RI "void \fBchangeHandleIndex\fP (const vector< int4 > &handmap)"
+.br
+.ti -1c
+.RI "void \fBsetInput\fP (\fBVarnodeTpl\fP *vn, int4 index, int4 slot)"
+.br
+.ti -1c
+.RI "void \fBsetOutput\fP (\fBVarnodeTpl\fP *vn, int4 index)"
+.br
+.ti -1c
+.RI "void \fBdeleteOps\fP (const vector< int4 > &indices)"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s, int4 sectionid) const"
+.br
+.ti -1c
+.RI "int4 \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetOpvec\fP (vector< \fBOpTpl\fP * > &opvec)"
+.br
+.ti -1c
+.RI "void \fBsetNumLabels\fP (uint4 val)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "uint4 \fBdelayslot\fP"
+.br
+.ti -1c
+.RI "uint4 \fBnumlabels\fP"
+.br
+.ti -1c
+.RI "vector< \fBOpTpl\fP * > \fBvec\fP"
+.br
+.ti -1c
+.RI "\fBHandleTpl\fP * \fBresult\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBSleighCompile\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 161 of file semantics\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConstructTpl::ConstructTpl (void)\fC [inline]\fP"
+
+.PP
+Definition at line 171 of file semantics\&.hh\&.
+.SS "ConstructTpl::~ConstructTpl (void)"
+
+.PP
+Definition at line 737 of file semantics\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool ConstructTpl::addOp (\fBOpTpl\fP * ot)"
+
+.PP
+Definition at line 747 of file semantics\&.cc\&.
+.SS "bool ConstructTpl::addOpList (const vector< \fBOpTpl\fP * > & oplist)"
+
+.PP
+Definition at line 761 of file semantics\&.cc\&.
+.SS "void ConstructTpl::changeHandleIndex (const vector< int4 > & handmap)"
+
+.PP
+Definition at line 800 of file semantics\&.cc\&.
+.SS "uint4 ConstructTpl::delaySlot (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 173 of file semantics\&.hh\&.
+.SS "void ConstructTpl::deleteOps (const vector< int4 > & indices)"
+
+.PP
+Definition at line 842 of file semantics\&.cc\&.
+.SS "int4 ConstructTpl::fillinBuild (vector< int4 > & check, \fBAddrSpace\fP * const_space)"
+
+.PP
+Definition at line 770 of file semantics\&.cc\&.
+.SS "const vector<\fBOpTpl\fP *>& ConstructTpl::getOpvec (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 175 of file semantics\&.hh\&.
+.SS "\fBHandleTpl\fP* ConstructTpl::getResult (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 176 of file semantics\&.hh\&.
+.SS "uint4 ConstructTpl::numLabels (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 174 of file semantics\&.hh\&.
+.SS "int4 ConstructTpl::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Definition at line 881 of file semantics\&.cc\&.
+.SS "void ConstructTpl::saveXml (ostream & s, int4 sectionid) const"
+
+.PP
+Definition at line 861 of file semantics\&.cc\&.
+.SS "void ConstructTpl::setInput (\fBVarnodeTpl\fP * vn, int4 index, int4 slot)"
+
+.PP
+Definition at line 820 of file semantics\&.cc\&.
+.SS "void ConstructTpl::setNumLabels (uint4 val)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 169 of file semantics\&.hh\&.
+.SS "void ConstructTpl::setOpvec (vector< \fBOpTpl\fP * > & opvec)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 168 of file semantics\&.hh\&.
+.SS "void ConstructTpl::setOutput (\fBVarnodeTpl\fP * vn, int4 index)"
+
+.PP
+Definition at line 831 of file semantics\&.cc\&.
+.SS "void ConstructTpl::setResult (\fBHandleTpl\fP * t)\fC [inline]\fP"
+
+.PP
+Definition at line 179 of file semantics\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBSleighCompile\fP\fC [friend]\fP"
+
+.PP
+Definition at line 162 of file semantics\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 ConstructTpl::delayslot\fC [protected]\fP"
+
+.PP
+Definition at line 164 of file semantics\&.hh\&.
+.SS "uint4 ConstructTpl::numlabels\fC [protected]\fP"
+
+.PP
+Definition at line 165 of file semantics\&.hh\&.
+.SS "\fBHandleTpl\fP* ConstructTpl::result\fC [protected]\fP"
+
+.PP
+Definition at line 167 of file semantics\&.hh\&.
+.SS "vector<\fBOpTpl\fP *> ConstructTpl::vec\fC [protected]\fP"
+
+.PP
+Definition at line 166 of file semantics\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

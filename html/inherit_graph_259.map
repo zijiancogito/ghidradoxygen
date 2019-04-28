@@ -1,0 +1,125 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_rule.html" title="Class for performing a single transformation on a PcodeOp or Varnode." alt="" coords="5,3071,53,3097"/>
+<area shape="rect" id="node2" href="$class_rule2_comp2_mult.html" title="Eliminate INT_2COMP: &#45;V =&gt; V * &#45;1" alt="" coords="123,5,245,32"/>
+<area shape="rect" id="node3" href="$class_rule2_comp2_sub.html" title="Cleanup: Convert INT_ADD back to INT_SUB: V + &#45;W ==&gt; V &#45; W" alt="" coords="125,56,243,83"/>
+<area shape="rect" id="node4" href="$class_rule_add_mult_collapse.html" title="Collapse constants in an additive or multiplicative expression." alt="" coords="111,107,257,133"/>
+<area shape="rect" id="node5" href="$class_rule_add_unsigned.html" title="Cleanup: Convert INT_ADD of constants to INT_SUB: V + 0xff... =&gt; V &#45; 0x00..." alt="" coords="121,157,247,184"/>
+<area shape="rect" id="node6" href="$class_rule_and_commute.html" title="Commute INT_AND with INT_LEFT and INT_RIGHT: (V &lt;&lt; W) &amp; d =&gt; (V &amp; (W &gt;&gt; c)) &lt;&lt; c" alt="" coords="121,208,247,235"/>
+<area shape="rect" id="node7" href="$class_rule_and_compare.html" title="Simplify INT_ZEXT and SUBPIECE in masked comparison: zext(V) &amp; c == 0 =&gt; V &amp; (c &amp; mask) == 0" alt="" coords="123,259,245,285"/>
+<area shape="rect" id="node8" href="$class_rule_and_distribute.html" title="Distribute INT_AND through INT_OR if result is simpler." alt="" coords="121,309,247,336"/>
+<area shape="rect" id="node9" href="$class_rule_and_mask.html" title="Collapse unnecessary INT_AND." alt="" coords="133,360,235,387"/>
+<area shape="rect" id="node10" href="$class_rule_and_or_lump.html" title="Collapse constants in logical expressions: (V &amp; c) &amp; d =&gt; V &amp; (c &amp; d)" alt="" coords="125,411,243,437"/>
+<area shape="rect" id="node11" href="$class_rule_and_piece.html" title="Convert PIECE to INT_ZEXT where appropriate: V &amp; concat(W,X) =&gt; zext(X)" alt="" coords="132,461,236,488"/>
+<area shape="rect" id="node12" href="$class_rule_bit_undistribute.html" title="Undo distributed operations through INT_AND, INT_OR, and INT_XOR." alt="" coords="117,512,251,539"/>
+<area shape="rect" id="node13" href="$class_rule_boolean_negate.html" title="Simplify comparisons with boolean values: V == false =&gt; !V, V == true =&gt; V" alt="" coords="116,563,252,589"/>
+<area shape="rect" id="node14" href="$class_rule_bool_negate.html" title="Apply a set of identities involving BOOL_NEGATE." alt="" coords="127,613,241,640"/>
+<area shape="rect" id="node15" href="$class_rule_bool_zext.html" title="Simplify boolean expressions of the form zext(V) * &#45;1." alt="" coords="135,664,233,691"/>
+<area shape="rect" id="node16" href="$class_rule_bxor2_not_equal.html" title="Eliminate BOOL_XOR: V ^^ W =&gt; V != W" alt="" coords="117,715,251,741"/>
+<area shape="rect" id="node17" href="$class_rule_carry_elim.html" title="Transform INT_CARRY using a constant: carry(V,c) =&gt; &#45;c &lt;= V" alt="" coords="131,765,237,792"/>
+<area shape="rect" id="node18" href="$class_rule_collapse_constants.html" title="Collapse constant expressions." alt="" coords="105,816,263,843"/>
+<area shape="rect" id="node19" href="$class_rule_collect_terms.html" title="Collect terms in a sum: V * c + V * d =&gt; V * (c + d)" alt="" coords="122,867,246,893"/>
+<area shape="rect" id="node20" href="$class_rule_concat_commute.html" title="Commute PIECE with INT_AND, INT_OR, and INT_XOR." alt="" coords="111,917,257,944"/>
+<area shape="rect" id="node21" href="$class_rule_concat_left_shift.html" title="Simplify concatenation of extended value: concat(V, zext(W) &lt;&lt; c) =&gt; concat( concat(V,..." alt="" coords="116,968,252,995"/>
+<area shape="rect" id="node22" href="$class_rule_concat_shift.html" title="Simplify INT_RIGHT canceling PIECE: concat(V,W) &gt;&gt; c =&gt; zext(V)" alt="" coords="127,1019,241,1045"/>
+<area shape="rect" id="node23" href="$class_rule_concat_zero.html" title="Simplify concatenation with zero: concat(V,0) =&gt; zext(V) &lt;&lt; c" alt="" coords="127,1069,241,1096"/>
+<area shape="rect" id="node24" href="$class_rule_concat_zext.html" title="Commute PIECE with INT_ZEXT: concat(zext(V),W) =&gt; zext(concat(V,W))" alt="" coords="127,1120,241,1147"/>
+<area shape="rect" id="node25" href="$class_rule_conditional_move.html" title="Simplify various conditional move situations." alt="" coords="113,1171,255,1197"/>
+<area shape="rect" id="node26" href="$class_rule_cond_negate.html" title="Flip conditions to match structuring cues." alt="" coords="125,1221,243,1248"/>
+<area shape="rect" id="node27" href="$class_rule_div_opt.html" title="Convert INT_MULT and shift forms into INT_DIV or INT_SDIV." alt="" coords="141,1272,227,1299"/>
+<area shape="rect" id="node28" href="$class_rule_div_term_add.html" title="Simplify expressions associated with optimized division expressions." alt="" coords="125,1323,243,1349"/>
+<area shape="rect" id="node29" href="$class_rule_div_term_add2.html" title="Simplify another expression associated with optimized division." alt="" coords="122,1373,246,1400"/>
+<area shape="rect" id="node30" href="$class_rule_double_in.html" title=" " alt="" coords="135,1424,233,1451"/>
+<area shape="rect" id="node31" href="$class_rule_double_load.html" title=" " alt="" coords="126,1475,242,1501"/>
+<area shape="rect" id="node32" href="$class_rule_double_shift.html" title="Simplify chained shifts INT_LEFT and INT_RIGHT." alt="" coords="127,1525,241,1552"/>
+<area shape="rect" id="node33" href="$class_rule_double_sub.html" title="Simplify chained SUBPIECE: sub( sub(V,c), d) =&gt; sub(V, c+d)" alt="" coords="129,1576,239,1603"/>
+<area shape="rect" id="node34" href="$class_rule_dumpty_hump.html" title="Simplify join and break apart: sub( concat(V,W), c) =&gt; sub(W,c)" alt="" coords="121,1627,247,1653"/>
+<area shape="rect" id="node35" href="$class_rule_early_removal.html" title="Get rid of unused PcodeOp objects where we can guarantee the output is unused." alt="" coords="121,1677,247,1704"/>
+<area shape="rect" id="node36" href="$class_rule_embed.html" title="Simplify PIECE intended as embedding: concat(V, sub(W,0)) =&gt; W &amp; 0xff | (zext(W) &lt;&lt; 8)" alt="" coords="139,1728,229,1755"/>
+<area shape="rect" id="node37" href="$class_rule_equal2_constant.html" title="Simplify INT_EQUAL applied to arithmetic expressions." alt="" coords="114,1779,254,1805"/>
+<area shape="rect" id="node38" href="$class_rule_equal2_zero.html" title="Simplify INT_EQUAL applied to 0: 0 == V + W * &#45;1 =&gt; V == W or 0 == V + c =&gt; V == &#45;c" alt="" coords="127,1829,241,1856"/>
+<area shape="rect" id="node39" href="$class_rule_equality.html" title="Collapse INT_EQUAL and INT_NOTEQUAL: f(V,W) == f(V,W) =&gt; true" alt="" coords="137,1880,231,1907"/>
+<area shape="rect" id="node40" href="$class_rule_float_cast.html" title="Replace (casttosmall)(casttobig)V with identity or with single cast." alt="" coords="132,1931,236,1957"/>
+<area shape="rect" id="node41" href="$class_rule_float_range.html" title="Merge range conditions of the form: V f&lt; c, c f&lt; V, V f== c etc." alt="" coords="127,1981,241,2008"/>
+<area shape="rect" id="node42" href="$class_rule_func_ptr_encoding.html" title="Eliminate ARM/THUMB style masking of the low order bits on function pointers." alt="" coords="110,2032,258,2059"/>
+<area shape="rect" id="node43" href="$class_rule_generic.html" title=" " alt="" coords="137,2083,231,2109"/>
+<area shape="rect" id="node44" href="$class_rule_high_order_and.html" title="Simplify INT_AND when applied to aligned INT_ADD: (V + c) &amp; 0xfff0 =&gt; V + (c &amp; 0xfff0)" alt="" coords="119,2133,249,2160"/>
+<area shape="rect" id="node45" href="$class_rule_humpty_dumpty.html" title="Simplify break and rejoin: concat( sub(V,c), sub(V,0) ) =&gt; V" alt="" coords="115,2184,253,2211"/>
+<area shape="rect" id="node46" href="$class_rule_humpty_or.html" title="Simplify masked pieces INT_ORed together: (V &amp; ff00) | (V &amp; 00ff) =&gt; V" alt="" coords="131,2235,237,2261"/>
+<area shape="rect" id="node47" href="$class_rule_identity_el.html" title="Collapse operations using identity element: V + 0 =&gt; V" alt="" coords="133,2285,235,2312"/>
+<area shape="rect" id="node48" href="$class_rule_ignore_nan.html" title="Treat FLOAT_NAN as always evaluating to false." alt="" coords="131,2336,237,2363"/>
+<area shape="rect" id="node49" href="$class_rule_indirect_collapse.html" title="Remove a CPUI_INDIRECT if its blocking PcodeOp is dead." alt="" coords="114,2387,254,2413"/>
+<area shape="rect" id="node50" href="$class_rule_int_less_equal.html" title="Convert LESSEQUAL to LESS: V &lt;= c =&gt; V &lt; (c+1)" alt="" coords="123,2437,245,2464"/>
+<area shape="rect" id="node51" href="$class_rule_left_right.html" title="Transform canceling INT_RIGHT or INT_SRIGHT of INT_LEFT." alt="" coords="135,2488,233,2515"/>
+<area shape="rect" id="node52" href="$class_rule_less2_zero.html" title="Simplify INT_LESS applied to extremal constants." alt="" coords="130,2539,238,2565"/>
+<area shape="rect" id="node53" href="$class_rule_less_equal.html" title="Simplify &#39;less than or equal&#39;: V &lt; W || V == W =&gt; V &lt;= W" alt="" coords="129,2589,239,2616"/>
+<area shape="rect" id="node54" href="$class_rule_less_equal2_zero.html" title="Simplify INT_LESSEQUAL applied to extremal constants." alt="" coords="113,2640,255,2667"/>
+<area shape="rect" id="node55" href="$class_rule_less_not_equal.html" title="Simplify INT_LESSEQUAL &amp;&amp; INT_NOTEQUAL: V &lt;= W &amp;&amp; V != W =&gt; V &lt; W" alt="" coords="119,2691,249,2717"/>
+<area shape="rect" id="node56" href="$class_rule_less_one.html" title="Transform INT_LESS of 0 or 1: V &lt; 1 =&gt; V == 0, V &lt;= 0 =&gt; V == 0" alt="" coords="134,2741,234,2768"/>
+<area shape="rect" id="node57" href="$class_rule_load_varnode.html" title="Convert LOAD operations using a constant offset to COPY." alt="" coords="122,2792,246,2819"/>
+<area shape="rect" id="node58" href="$class_rule_logic2_bool.html" title="Convert logical to boolean operations: V &amp; W =&gt; V &amp;&amp; W, V | W =&gt; V || W" alt="" coords="128,2843,240,2869"/>
+<area shape="rect" id="node59" href="$class_rule_mod_opt.html" title="Simplify expressions that optimize INT_REM and INT_SREM." alt="" coords="137,2893,231,2920"/>
+<area shape="rect" id="node60" href="$class_rule_multi_collapse.html" title="Collapse MULTIEQUAL whose inputs all trace to the same value." alt="" coords="121,2944,247,2971"/>
+<area shape="rect" id="node61" href="$class_rule_mult_neg_one.html" title="Cleanup: Convert INT_2COMP from INT_MULT: V * &#45;1 =&gt; &#45;V" alt="" coords="124,2995,244,3021"/>
+<area shape="rect" id="node62" href="$class_rule_negate_identity.html" title="Apply INT_NEGATE identities: V &amp; ~V =&gt; #0, V | ~V &#45;&gt; #&#45;1" alt="" coords="119,3045,249,3072"/>
+<area shape="rect" id="node63" href="$class_rule_negate_negate.html" title="Simplify INT_NEGATE chains: ~~V =&gt; V" alt="" coords="119,3096,249,3123"/>
+<area shape="rect" id="node64" href="$class_rule_not_distribute.html" title="Distribute BOOL_NEGATE: !(V &amp;&amp; W) =&gt; !V || !W" alt="" coords="123,3147,245,3173"/>
+<area shape="rect" id="node65" href="$class_rule_or_collapse.html" title="Collapse unnecessary INT_OR." alt="" coords="128,3197,240,3224"/>
+<area shape="rect" id="node66" href="$class_rule_or_mask.html" title="Simplify INT_OR with full mask: V = W | 0xffff =&gt; V = W" alt="" coords="137,3248,231,3275"/>
+<area shape="rect" id="node67" href="$class_rule_or_predicate.html" title="Simplify predication constructions involving the INT_OR operator." alt="" coords="125,3299,243,3325"/>
+<area shape="rect" id="node68" href="$class_rule_piece2_sext.html" title="Concatenation with sign bits becomes an extension: concat( V s&gt;&gt; #0x1f , V) =&gt; sext(V)" alt="" coords="127,3349,241,3376"/>
+<area shape="rect" id="node69" href="$class_rule_piece2_zext.html" title="Concatenation with 0 becomes an extension: V = concat(#0,W) =&gt; V = zext(W)" alt="" coords="127,3400,241,3427"/>
+<area shape="rect" id="node70" href="$class_rule_propagate_copy.html" title="Propagate the input of a COPY to all the places that read the output." alt="" coords="115,3451,253,3477"/>
+<area shape="rect" id="node71" href="$class_rule_ptradd_undo.html" title="Remove PTRADD operations with mismatched data&#45;type information." alt="" coords="126,3501,242,3528"/>
+<area shape="rect" id="node72" href="$class_rule_ptr_arith.html" title="Transform pointer arithmetic." alt="" coords="138,3552,230,3579"/>
+<area shape="rect" id="node73" href="$class_rule_ptr_flow.html" title="Mark Varnode and PcodeOp objects that are carrying or operating on pointers." alt="" coords="138,3603,230,3629"/>
+<area shape="rect" id="node74" href="$class_rule_ptrsub_char_constant.html" title="Cleanup: Set&#45;up to print string constants." alt="" coords="101,3653,267,3680"/>
+<area shape="rect" id="node75" href="$class_rule_ptrsub_undo.html" title="Remove PTRSUB operations with mismatched data&#45;type information." alt="" coords="126,3704,242,3731"/>
+<area shape="rect" id="node76" href="$class_rule_pullsub_indirect.html" title="Pull&#45;back SUBPIECE through INDIRECT." alt="" coords="117,3755,251,3781"/>
+<area shape="rect" id="node77" href="$class_rule_pullsub_multi.html" title="Pull SUBPIECE back through MULTIEQUAL." alt="" coords="125,3805,243,3832"/>
+<area shape="rect" id="node78" href="$class_rule_push_multi.html" title="Simplify MULTIEQUAL operations where the branches hold the same value." alt="" coords="131,3856,237,3883"/>
+<area shape="rect" id="node79" href="$class_rule_push_ptr.html" title="Push a Varnode with known pointer data&#45;type to the bottom of its additive expression." alt="" coords="137,3907,231,3933"/>
+<area shape="rect" id="node80" href="$class_rule_range_meld.html" title="Merge range conditions of the form: V s&lt; c, c s&lt; V, V == c, V != c" alt="" coords="127,3957,241,3984"/>
+<area shape="rect" id="node81" href="$class_rule_sborrow.html" title="Simplify signed comparisons using INT_SBORROW." alt="" coords="137,4008,231,4035"/>
+<area shape="rect" id="node82" href="$class_rule_segment.html" title="Propagate constants through a SEGMENTOP." alt="" coords="134,4059,234,4085"/>
+<area shape="rect" id="node83" href="$class_rule_select_cse.html" title="Look for common sub&#45;expressions (built out of a restricted set of ops)" alt="" coords="130,4109,238,4136"/>
+<area shape="rect" id="node84" href="$class_rule_shift2_mult.html" title="Convert INT_LEFT to INT_MULT: V &lt;&lt; 2 =&gt; V * 4" alt="" coords="131,4160,237,4187"/>
+<area shape="rect" id="node85" href="$class_rule_shift_and.html" title="Eliminate any INT_AND when the bits it zeroes out are discarded by a shift." alt="" coords="135,4211,233,4237"/>
+<area shape="rect" id="node86" href="$class_rule_shift_bitops.html" title="Shifting away all non&#45;zero bits of one&#45;side of a logical/arithmetic op." alt="" coords="129,4261,239,4288"/>
+<area shape="rect" id="node87" href="$class_rule_shift_compare.html" title="Transform shifts in comparisons: V &gt;&gt; c == d =&gt; V == (d &lt;&lt; c)" alt="" coords="121,4312,247,4339"/>
+<area shape="rect" id="node88" href="$class_rule_shift_piece.html" title="Convert &quot;shift and add&quot; to PIECE: (zext(V) &lt;&lt; 16) + zext(W) =&gt; concat(V,W)" alt="" coords="131,4363,237,4389"/>
+<area shape="rect" id="node89" href="$class_rule_shift_sub.html" title="Simplify SUBPIECE applied to INT_LEFT: sub( V &lt;&lt; 8*c, c) =&gt; sub(V,0)" alt="" coords="135,4413,233,4440"/>
+<area shape="rect" id="node90" href="$class_rule_sign_div2.html" title="Convert INT_SRIGHT form into INT_SDIV: (V + &#45;1*(V s&gt;&gt; 31)) s&gt;&gt; 1 =&gt; V s/ 2" alt="" coords="135,4464,233,4491"/>
+<area shape="rect" id="node91" href="$class_rule_sign_form.html" title="Normalize sign extraction: sub(sext(V),c) =&gt; V s&gt;&gt; 31" alt="" coords="132,4515,236,4541"/>
+<area shape="rect" id="node92" href="$class_rule_sign_near_mult.html" title="Simplify division form: (V + (V s&gt;&gt; 0x1f)&gt;&gt;(32&#45;n)) &amp; (&#45;1&lt;&lt;n) =&gt; (V s/ 2^n) * 2^n" alt="" coords="121,4565,247,4592"/>
+<area shape="rect" id="node93" href="$class_rule_s_less2_zero.html" title="Simplify INT_SLESS and INT_SLESSEQUAL applied to 0 or &#45;1." alt="" coords="125,4616,243,4643"/>
+<area shape="rect" id="node94" href="$class_rule_sless_to_less.html" title="Convert INT_SLESS to INT_LESS when comparing positive values." alt="" coords="123,4667,245,4693"/>
+<area shape="rect" id="node95" href="$class_rule_split_flow.html" title="Try to detect and split artificially joined Varnodes." alt="" coords="133,4717,235,4744"/>
+<area shape="rect" id="node96" href="$class_rule_store_varnode.html" title="Convert STORE operations using a constant offset to COPY." alt="" coords="121,4768,247,4795"/>
+<area shape="rect" id="node97" href="$class_rule_struct_offset0.html" title="Convert a LOAD or STORE to the first element of a structure to a PTRSUB." alt="" coords="122,4819,246,4845"/>
+<area shape="rect" id="node98" href="$class_rule_sub2_add.html" title="Eliminate INT_SUB: V &#45; W =&gt; V + W * &#45;1" alt="" coords="133,4869,235,4896"/>
+<area shape="rect" id="node99" href="$class_rule_sub_cancel.html" title="Simplify composition of SUBPIECE with INT_ZEXT or INT_SEXT." alt="" coords="129,4920,239,4947"/>
+<area shape="rect" id="node100" href="$class_rule_sub_commute.html" title="Commute SUBPIECE operations with earlier operations where possible." alt="" coords="121,4971,247,4997"/>
+<area shape="rect" id="node101" href="$class_rule_sub_ext_comm.html" title="Commute SUBPIECE and INT_ZEXT: sub(zext(V),c) =&gt; zext(sub(V,c))" alt="" coords="119,5021,249,5048"/>
+<area shape="rect" id="node102" href="$class_rule_subfloat_convert.html" title="Perform SubfloatFlow analysis triggered by FLOAT_FLOAT2FLOAT." alt="" coords="115,5072,253,5099"/>
+<area shape="rect" id="node103" href="$class_rule_sub_normal.html" title="Pull&#45;back SUBPIECE through INT_RIGHT and INT_SRIGHT." alt="" coords="128,5123,240,5149"/>
+<area shape="rect" id="node104" href="$class_rule_sub_right.html" title="Cleanup: Convert truncation to cast: sub(V,c) =&gt; sub(V&gt;&gt;c*8,0)" alt="" coords="133,5173,235,5200"/>
+<area shape="rect" id="node105" href="$class_rule_subvar_and.html" title="Perform SubVariableFlow analysis triggered by INT_AND." alt="" coords="129,5224,239,5251"/>
+<area shape="rect" id="node106" href="$class_rule_subvar_comp_zero.html" title="Perform SubvariableFlow analysis triggered by testing of a single bit." alt="" coords="111,5275,257,5301"/>
+<area shape="rect" id="node107" href="$class_rule_subvar_sext.html" title="Perform SubvariableFlow analysis triggered by INT_SEXT." alt="" coords="127,5325,241,5352"/>
+<area shape="rect" id="node108" href="$class_rule_subvar_shift.html" title="Perform SubvariableFlow analysis triggered by INT_RIGHT." alt="" coords="127,5376,241,5403"/>
+<area shape="rect" id="node109" href="$class_rule_subvar_subpiece.html" title="Perform SubVariableFlow analysis triggered by SUBPIECE." alt="" coords="113,5427,255,5453"/>
+<area shape="rect" id="node110" href="$class_rule_subvar_zext.html" title="Perform SubvariableFlow analysis triggered by INT_ZEXT." alt="" coords="128,5477,240,5504"/>
+<area shape="rect" id="node111" href="$class_rule_sub_zext.html" title="Simplify INT_ZEXT applied to SUBPIECE expressions." alt="" coords="136,5528,232,5555"/>
+<area shape="rect" id="node112" href="$class_rule_switch_single.html" title="Convert BRANCHIND with only one computed destination to a BRANCH." alt="" coords="123,5579,245,5605"/>
+<area shape="rect" id="node113" href="$class_rule_term_order.html" title="Order the inputs to commutative operations." alt="" coords="129,5629,239,5656"/>
+<area shape="rect" id="node114" href="$class_rule_three_way_compare.html" title="Simplify expressions involving three&#45;way comparisons." alt="" coords="105,5680,263,5707"/>
+<area shape="rect" id="node115" href="$class_rule_transform_cpool.html" title="Transform CPOOLREF operations by looking up the value in the constant pool." alt="" coords="115,5731,253,5757"/>
+<area shape="rect" id="node116" href="$class_rule_trivial_arith.html" title="Simplify trivial arithmetic expressions." alt="" coords="131,5781,237,5808"/>
+<area shape="rect" id="node117" href="$class_rule_trivial_bool.html" title="Simplify boolean expressions when one side is constant." alt="" coords="131,5832,237,5859"/>
+<area shape="rect" id="node118" href="$class_rule_trivial_shift.html" title="Simplify trivial shifts: V &lt;&lt; 0 =&gt; V, V &lt;&lt; #64 =&gt; 0" alt="" coords="131,5883,237,5909"/>
+<area shape="rect" id="node119" href="$class_rule_xor_collapse.html" title="Eliminate INT_XOR in comparisons: (V ^ W) == 0 =&gt; V == W" alt="" coords="126,5933,242,5960"/>
+<area shape="rect" id="node120" href="$class_rule_zext_commute.html" title="Commute INT_ZEXT with INT_RIGHT: zext(V) &gt;&gt; W =&gt; zext(V &gt;&gt; W)" alt="" coords="119,5984,249,6011"/>
+<area shape="rect" id="node121" href="$class_rule_zext_eliminate.html" title="Eliminate INT_ZEXT in comparisons: zext(V) == c =&gt; V == c" alt="" coords="121,6035,247,6061"/>
+<area shape="rect" id="node122" href="$class_rule_zext_shift_zext.html" title="Simplify multiple INT_ZEXT operations: zext( zext(V) &lt;&lt; c ) =&gt; zext(V) &lt;&lt; c" alt="" coords="122,6085,246,6112"/>
+<area shape="rect" id="node123" href="$class_rule_zext_sless.html" title="Transform INT_ZEXT and INT_SLESS: zext(V) s&lt; c =&gt; V &lt; c" alt="" coords="131,6136,237,6163"/>
+</map>

@@ -1,0 +1,148 @@
+.TH "ValueSymbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ValueSymbol
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghsymbol\&.hh>\fP
+.PP
+Inherits \fBFamilySymbol\fP\&.
+.PP
+Inherited by \fBContextSymbol\fP, \fBNameSymbol\fP, \fBValueMapSymbol\fP, and \fBVarnodeListSymbol\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBValueSymbol\fP (void)"
+.br
+.ti -1c
+.RI "\fBValueSymbol\fP (const string &nm, \fBPatternValue\fP *pv)"
+.br
+.ti -1c
+.RI "virtual \fB~ValueSymbol\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBPatternValue\fP * \fBgetPatternValue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBPatternExpression\fP * \fBgetPatternExpression\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBgetFixedHandle\fP (\fBFixedHandle\fP &hand, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual void \fBprint\fP (ostream &s, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual \fBsymbol_type\fP \fBgetType\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBSleighBase\fP *trans)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternValue\fP * \fBpatval\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 196 of file slghsymbol\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ValueSymbol::ValueSymbol (void)\fC [inline]\fP"
+
+.PP
+Definition at line 200 of file slghsymbol\&.hh\&.
+.SS "ValueSymbol::ValueSymbol (const string & nm, \fBPatternValue\fP * pv)"
+
+.PP
+Definition at line 474 of file slghsymbol\&.cc\&.
+.SS "ValueSymbol::~ValueSymbol (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 480 of file slghsymbol\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ValueSymbol::getFixedHandle (\fBFixedHandle\fP & hand, \fBParserWalker\fP & walker) const\fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Reimplemented in \fBVarnodeListSymbol\fP, and \fBValueMapSymbol\fP\&.
+.PP
+Definition at line 487 of file slghsymbol\&.cc\&.
+.SS "virtual \fBPatternExpression\fP* ValueSymbol::getPatternExpression (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Definition at line 204 of file slghsymbol\&.hh\&.
+.SS "virtual \fBPatternValue\fP* ValueSymbol::getPatternValue (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBFamilySymbol\fP\&.
+.PP
+Definition at line 203 of file slghsymbol\&.hh\&.
+.SS "virtual \fBsymbol_type\fP ValueSymbol::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Reimplemented in \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBNameSymbol\fP, and \fBValueMapSymbol\fP\&.
+.PP
+Definition at line 207 of file slghsymbol\&.hh\&.
+.SS "void ValueSymbol::print (ostream & s, \fBParserWalker\fP & walker) const\fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Reimplemented in \fBVarnodeListSymbol\fP, \fBNameSymbol\fP, and \fBValueMapSymbol\fP\&.
+.PP
+Definition at line 496 of file slghsymbol\&.cc\&.
+.SS "void ValueSymbol::restoreXml (const \fBElement\fP * el, \fBSleighBase\fP * trans)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Reimplemented in \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBNameSymbol\fP, and \fBValueMapSymbol\fP\&.
+.PP
+Definition at line 524 of file slghsymbol\&.cc\&.
+.SS "void ValueSymbol::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Reimplemented in \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBNameSymbol\fP, and \fBValueMapSymbol\fP\&.
+.PP
+Definition at line 506 of file slghsymbol\&.cc\&.
+.SS "void ValueSymbol::saveXmlHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Reimplemented in \fBVarnodeListSymbol\fP, \fBContextSymbol\fP, \fBNameSymbol\fP, and \fBValueMapSymbol\fP\&.
+.PP
+Definition at line 516 of file slghsymbol\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBPatternValue\fP* ValueSymbol::patval\fC [protected]\fP"
+
+.PP
+Definition at line 198 of file slghsymbol\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

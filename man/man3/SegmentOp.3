@@ -1,0 +1,213 @@
+.TH "SegmentOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SegmentOp \- The \fIsegmented\fP \fIaddress\fP operator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.PP
+Inherits \fBTermPatternOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSegmentOp\fP (\fBArchitecture\fP *g, const string &nm, int4 ind)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (void) const"
+.br
+.RI "Get the address space being pointed to\&. "
+.ti -1c
+.RI "bool \fBhasFarPointerSupport\fP (void) const"
+.br
+.RI "Return \fBtrue\fP, if \fBthis\fP op supports far pointers\&. "
+.ti -1c
+.RI "bool \fBisForced\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if exceptions are thrown for bad unification\&. "
+.ti -1c
+.RI "int4 \fBgetBaseSize\fP (void) const"
+.br
+.RI "Get size in bytes of the base/segment value\&. "
+.ti -1c
+.RI "int4 \fBgetInnerSize\fP (void) const"
+.br
+.RI "Get size in bytes of the near value\&. "
+.ti -1c
+.RI "const \fBVarnodeData\fP & \fBgetResolve\fP (void) const"
+.br
+.RI "Get the default register for resolving indirect segments\&. "
+.ti -1c
+.RI "virtual int4 \fBgetNumVariableTerms\fP (void) const"
+.br
+.RI "Get the number of input Varnodes expected\&. "
+.ti -1c
+.RI "virtual bool \fBunify\fP (\fBFuncdata\fP &data, \fBPcodeOp\fP *op, vector< \fBVarnode\fP * > &bindlist) const"
+.br
+.RI "Gather the formal input \fBVarnode\fP objects given the root \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBexecute\fP (const vector< \fBuintb\fP > &input) const"
+.br
+.RI "Compute the output value of \fBthis\fP operation, given constant inputs\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore the detailed description from an XML stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The \fIsegmented\fP \fIaddress\fP operator\&. 
+
+This op is a placeholder for address mappings involving \fBsegments\fP\&. The map goes between a \fBhigh-level\fP view of a pointer, consisting of multiple pieces, and a \fBlow-level\fP view, where there is only a single absolute pointer\&. The mapping could be
+.IP "\(bu" 2
+a virtual to physical mapping for instance or
+.IP "\(bu" 2
+a segment + near pointer to a full address
+.PP
+.PP
+The output of the operator is always a full low-level pointer\&. The operator takes two inputs:
+.IP "\(bu" 2
+the \fBbase\fP or \fBsegment\fP and
+.IP "\(bu" 2
+the high-level \fBnear\fP pointer
+.PP
+.PP
+High-level analysis can ignore the base/segment and any normalization on the near pointer\&. Emitted expressions involving \fBthis\fP segment op prints only the \fBnear\fP portion\&. Data-type information propagates only through this high-level side\&.
+.PP
+The decompiler looks for the term-tree defined in \fBSegmentOp\fP and replaces it with the SEGMENTOP operator in any p-code it analyzes\&. The core routine that looks for the term-tree is \fBunify()\fP\&. 
+.PP
+Definition at line 199 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SegmentOp::SegmentOp (\fBArchitecture\fP * g, const string & nm, int4 ind)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the owning \fBArchitecture\fP for this instance of the segment operation 
+.br
+\fInm\fP is the low-level name of the segment operation 
+.br
+\fIind\fP is the constant id identifying the specific CALLOTHER variant 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file userop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP SegmentOp::execute (const vector< \fBuintb\fP > & input) const\fC [virtual]\fP"
+
+.PP
+Compute the output value of \fBthis\fP operation, given constant inputs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP is the ordered list of constant inputs 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the resulting value as a constant 
+.RE
+.PP
+
+.PP
+Implements \fBTermPatternOp\fP\&.
+.PP
+Definition at line 181 of file userop\&.cc\&.
+.SS "int4 SegmentOp::getBaseSize (void) const\fC [inline]\fP"
+
+.PP
+Get size in bytes of the base/segment value\&. 
+.PP
+Definition at line 215 of file userop\&.hh\&.
+.SS "int4 SegmentOp::getInnerSize (void) const\fC [inline]\fP"
+
+.PP
+Get size in bytes of the near value\&. 
+.PP
+Definition at line 216 of file userop\&.hh\&.
+.SS "virtual int4 SegmentOp::getNumVariableTerms (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the number of input Varnodes expected\&. 
+.PP
+Implements \fBTermPatternOp\fP\&.
+.PP
+Definition at line 218 of file userop\&.hh\&.
+.SS "const \fBVarnodeData\fP& SegmentOp::getResolve (void) const\fC [inline]\fP"
+
+.PP
+Get the default register for resolving indirect segments\&. 
+.PP
+Definition at line 217 of file userop\&.hh\&.
+.SS "\fBAddrSpace\fP* SegmentOp::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the address space being pointed to\&. 
+.PP
+Definition at line 212 of file userop\&.hh\&.
+.SS "bool SegmentOp::hasFarPointerSupport (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP, if \fBthis\fP op supports far pointers\&. 
+.PP
+Definition at line 213 of file userop\&.hh\&.
+.SS "bool SegmentOp::isForced (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if exceptions are thrown for bad unification\&. 
+.PP
+Definition at line 214 of file userop\&.hh\&.
+.SS "void SegmentOp::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore the detailed description from an XML stream\&. The details of how a user defined operation behaves can be dynamically configured from an XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element describing the op 
+.RE
+.PP
+
+.PP
+Implements \fBUserPcodeOp\fP\&.
+.PP
+Definition at line 195 of file userop\&.cc\&.
+.SS "bool SegmentOp::unify (\fBFuncdata\fP & data, \fBPcodeOp\fP * op, vector< \fBVarnode\fP * > & bindlist) const\fC [virtual]\fP"
+
+.PP
+Gather the formal input \fBVarnode\fP objects given the root \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being analyzed 
+.br
+\fIop\fP is the root operation 
+.br
+\fIbindlist\fP will hold the ordered list of input Varnodes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the requisite inputs were found 
+.RE
+.PP
+
+.PP
+Implements \fBTermPatternOp\fP\&.
+.PP
+Definition at line 152 of file userop\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

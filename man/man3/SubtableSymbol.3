@@ -1,0 +1,186 @@
+.TH "SubtableSymbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SubtableSymbol
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghsymbol\&.hh>\fP
+.PP
+Inherits \fBTripleSymbol\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSubtableSymbol\fP (void)"
+.br
+.ti -1c
+.RI "\fBSubtableSymbol\fP (const string &nm)"
+.br
+.ti -1c
+.RI "virtual \fB~SubtableSymbol\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBisBeingBuilt\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisError\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBaddConstructor\fP (\fBConstructor\fP *ct)"
+.br
+.ti -1c
+.RI "void \fBbuildDecisionTree\fP (\fBDecisionProperties\fP &props)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP * \fBbuildPattern\fP (ostream &s)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP * \fBgetPattern\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetNumConstructors\fP (void) const"
+.br
+.ti -1c
+.RI "\fBConstructor\fP * \fBgetConstructor\fP (uintm id) const"
+.br
+.ti -1c
+.RI "virtual \fBConstructor\fP * \fBresolve\fP (\fBParserWalker\fP &walker)"
+.br
+.ti -1c
+.RI "virtual \fBPatternExpression\fP * \fBgetPatternExpression\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBgetFixedHandle\fP (\fBFixedHandle\fP &hand, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetSize\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBprint\fP (ostream &s, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual \fBsymbol_type\fP \fBgetType\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBSleighBase\fP *trans)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 557 of file slghsymbol\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SubtableSymbol::SubtableSymbol (void)\fC [inline]\fP"
+
+.PP
+Definition at line 563 of file slghsymbol\&.hh\&.
+.SS "SubtableSymbol::SubtableSymbol (const string & nm)"
+
+.PP
+Definition at line 1844 of file slghsymbol\&.cc\&.
+.SS "SubtableSymbol::~SubtableSymbol (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 1853 of file slghsymbol\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SubtableSymbol::addConstructor (\fBConstructor\fP * ct)\fC [inline]\fP"
+
+.PP
+Definition at line 568 of file slghsymbol\&.hh\&.
+.SS "void SubtableSymbol::buildDecisionTree (\fBDecisionProperties\fP & props)"
+
+.PP
+Definition at line 1916 of file slghsymbol\&.cc\&.
+.SS "\fBTokenPattern\fP * SubtableSymbol::buildPattern (ostream & s)"
+
+.PP
+Definition at line 1933 of file slghsymbol\&.cc\&.
+.SS "\fBConstructor\fP* SubtableSymbol::getConstructor (uintm id) const\fC [inline]\fP"
+
+.PP
+Definition at line 573 of file slghsymbol\&.hh\&.
+.SS "virtual void SubtableSymbol::getFixedHandle (\fBFixedHandle\fP & hand, \fBParserWalker\fP & walker) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Definition at line 576 of file slghsymbol\&.hh\&.
+.SS "int4 SubtableSymbol::getNumConstructors (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 572 of file slghsymbol\&.hh\&.
+.SS "\fBTokenPattern\fP* SubtableSymbol::getPattern (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 571 of file slghsymbol\&.hh\&.
+.SS "virtual \fBPatternExpression\fP* SubtableSymbol::getPatternExpression (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Definition at line 575 of file slghsymbol\&.hh\&.
+.SS "virtual int4 SubtableSymbol::getSize (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBTripleSymbol\fP\&.
+.PP
+Definition at line 578 of file slghsymbol\&.hh\&.
+.SS "virtual \fBsymbol_type\fP SubtableSymbol::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 581 of file slghsymbol\&.hh\&.
+.SS "bool SubtableSymbol::isBeingBuilt (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 566 of file slghsymbol\&.hh\&.
+.SS "bool SubtableSymbol::isError (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 567 of file slghsymbol\&.hh\&.
+.SS "virtual void SubtableSymbol::print (ostream & s, \fBParserWalker\fP & walker) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Definition at line 579 of file slghsymbol\&.hh\&.
+.SS "virtual \fBConstructor\fP* SubtableSymbol::resolve (\fBParserWalker\fP & walker)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBTripleSymbol\fP\&.
+.PP
+Definition at line 574 of file slghsymbol\&.hh\&.
+.SS "void SubtableSymbol::restoreXml (const \fBElement\fP * el, \fBSleighBase\fP * trans)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 1886 of file slghsymbol\&.cc\&.
+.SS "void SubtableSymbol::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 1865 of file slghsymbol\&.cc\&.
+.SS "void SubtableSymbol::saveXmlHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 1878 of file slghsymbol\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,130 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler}{}\section{ghidra.\+app.\+decompiler.\+parallel.\+Parallel\+Decompiler Class Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler}\index{ghidra.app.decompiler.parallel.ParallelDecompiler@{ghidra.app.decompiler.parallel.ParallelDecompiler}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static$<$ R $>$ \mbox{\hyperlink{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}{List}}$<$ R $>$ \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a7b17ca6d07341440ab1fca5e5c4d437d}{decompile\+Functions}} (Q\+Callback$<$ Function, R $>$ callback, Program program, Address\+Set\+View addresses, Task\+Monitor monitor)  throws Interrupted\+Exception, Exception 
+\item 
+static$<$ R $>$ \mbox{\hyperlink{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}{List}}$<$ R $>$ \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_ac860fec7f7fa5092f9e0851aef5f10dd}{decompile\+Functions}} (Q\+Callback$<$ Function, R $>$ callback, Program program, Collection$<$ Function $>$ functions, Task\+Monitor monitor)  throws Interrupted\+Exception, Exception 
+\item 
+static$<$ R $>$ \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_chunking_parallel_decompiler}{Chunking\+Parallel\+Decompiler}}$<$ R $>$ \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a558696e469ffcc084648f01c8db1dab5}{create\+Chunking\+Parallel\+Decopmiler}} (Q\+Callback$<$ Function, R $>$ callback, Task\+Monitor monitor)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 27 of file Parallel\+Decompiler.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a558696e469ffcc084648f01c8db1dab5}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a558696e469ffcc084648f01c8db1dab5}} 
+\index{ghidra.app.decompiler.parallel.ParallelDecompiler@{ghidra.app.decompiler.parallel.ParallelDecompiler}!createChunkingParallelDecopmiler@{createChunkingParallelDecopmiler}}
+\index{createChunkingParallelDecopmiler@{createChunkingParallelDecopmiler}!ghidra.app.decompiler.parallel.ParallelDecompiler@{ghidra.app.decompiler.parallel.ParallelDecompiler}}
+\subsubsection{\texorpdfstring{createChunkingParallelDecopmiler()}{createChunkingParallelDecopmiler()}}
+{\footnotesize\ttfamily static $<$R$>$ \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_chunking_parallel_decompiler}{Chunking\+Parallel\+Decompiler}}$<$R$>$ ghidra.\+app.\+decompiler.\+parallel.\+Parallel\+Decompiler.\+create\+Chunking\+Parallel\+Decopmiler (\begin{DoxyParamCaption}\item[{Q\+Callback$<$ Function, R $>$}]{callback,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Creates an object that can be used to perform decompilation of a limited number of functions at a time, as opposed to working over an entire range of functions at once. \mbox{\hyperlink{}{decompile\+Functions(\+Q\+Callback, Program, Address\+Set\+View, Task\+Monitor)}} will create and tear down concurrent data structures on each use, making repeated calls less efficient. You would use this method when you wish to perform periodic work as results are returned {\bfseries{and when using the callback mechanism is not sufficient}} such as when ordering of results is required.
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & the callback required to perform work. \\
+\hline
+{\em monitor} & the monitor used to report progress and to cancel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the parallel decompiler used for decompiling. 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file Parallel\+Decompiler.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a558696e469ffcc084648f01c8db1dab5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a7b17ca6d07341440ab1fca5e5c4d437d}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a7b17ca6d07341440ab1fca5e5c4d437d}} 
+\index{ghidra.app.decompiler.parallel.ParallelDecompiler@{ghidra.app.decompiler.parallel.ParallelDecompiler}!decompileFunctions@{decompileFunctions}}
+\index{decompileFunctions@{decompileFunctions}!ghidra.app.decompiler.parallel.ParallelDecompiler@{ghidra.app.decompiler.parallel.ParallelDecompiler}}
+\subsubsection{\texorpdfstring{decompileFunctions()}{decompileFunctions()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static $<$R$>$ \mbox{\hyperlink{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}{List}}$<$R$>$ ghidra.\+app.\+decompiler.\+parallel.\+Parallel\+Decompiler.\+decompile\+Functions (\begin{DoxyParamCaption}\item[{Q\+Callback$<$ Function, R $>$}]{callback,  }\item[{Program}]{program,  }\item[{Address\+Set\+View}]{addresses,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption}) throws Interrupted\+Exception, Exception\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Decompile the given functions using multiple decompilers
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & the callback to be called for each that is processed \\
+\hline
+{\em program} & the program \\
+\hline
+{\em addresses} & the addresses restricting which functions to decompile \\
+\hline
+{\em monitor} & the task monitor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the list of client results 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & if interrupted \\
+\hline
+{\em Exception} & if any other exception occurs \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 42 of file Parallel\+Decompiler.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_a7b17ca6d07341440ab1fca5e5c4d437d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_ac860fec7f7fa5092f9e0851aef5f10dd}\label{classghidra_1_1app_1_1decompiler_1_1parallel_1_1_parallel_decompiler_ac860fec7f7fa5092f9e0851aef5f10dd}} 
+\index{ghidra.app.decompiler.parallel.ParallelDecompiler@{ghidra.app.decompiler.parallel.ParallelDecompiler}!decompileFunctions@{decompileFunctions}}
+\index{decompileFunctions@{decompileFunctions}!ghidra.app.decompiler.parallel.ParallelDecompiler@{ghidra.app.decompiler.parallel.ParallelDecompiler}}
+\subsubsection{\texorpdfstring{decompileFunctions()}{decompileFunctions()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static $<$R$>$ \mbox{\hyperlink{xml_8hh_ab5ab62f46b3735557c125f91b40ac155}{List}}$<$R$>$ ghidra.\+app.\+decompiler.\+parallel.\+Parallel\+Decompiler.\+decompile\+Functions (\begin{DoxyParamCaption}\item[{Q\+Callback$<$ Function, R $>$}]{callback,  }\item[{Program}]{program,  }\item[{Collection$<$ Function $>$}]{functions,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption}) throws Interrupted\+Exception, Exception\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Decompile the given functions using multiple decompilers
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & the callback to be called for each that is processed \\
+\hline
+{\em program} & the program \\
+\hline
+{\em functions} & the functions to decompile \\
+\hline
+{\em monitor} & the task monitor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the list of client results 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & if interrupted \\
+\hline
+{\em Exception} & if any other exception occurs \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 64 of file Parallel\+Decompiler.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/parallel/\mbox{\hyperlink{_parallel_decompiler_8java}{Parallel\+Decompiler.\+java}}\end{DoxyCompactItemize}

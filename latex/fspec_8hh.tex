@@ -1,0 +1,80 @@
+\hypertarget{fspec_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/fspec.hh File Reference}
+\label{fspec_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/fspec.hh}}
+
+
+Definitions for specifying functions prototypes.  
+
+
+{\ttfamily \#include \char`\"{}op.\+hh\char`\"{}}\newline
+Include dependency graph for fspec.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fspec_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fspec_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_param_unassigned_error}{Param\+Unassigned\+Error}}
+\begin{DoxyCompactList}\small\item\em Exception thrown when a prototype can\textquotesingle{}t be modeled properly. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_param_entry}{Param\+Entry}}
+\begin{DoxyCompactList}\small\item\em A contiguous range of memory that can be used to pass parameters. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_param_trial}{Param\+Trial}}
+\begin{DoxyCompactList}\small\item\em A register or memory register that may be used to pass a parameter or return value. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_param_active}{Param\+Active}}
+\begin{DoxyCompactList}\small\item\em Container class for \mbox{\hyperlink{class_param_trial}{Param\+Trial}} objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_fspec_space}{Fspec\+Space}}
+\begin{DoxyCompactList}\small\item\em A special space for encoding \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_parameter_pieces}{Parameter\+Pieces}}
+\begin{DoxyCompactList}\small\item\em Basic elements of a parameter\+: address, data-\/type, properties. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_effect_record}{Effect\+Record}}
+\begin{DoxyCompactList}\small\item\em Description of the indirect effect a sub-\/function has on a memory range. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_param_list}{Param\+List}}
+\item 
+class \mbox{\hyperlink{class_param_list_standard}{Param\+List\+Standard}}
+\begin{DoxyCompactList}\small\item\em A standard model for parameters as an ordered list of storage resources. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_param_list_standard_out}{Param\+List\+Standard\+Out}}
+\begin{DoxyCompactList}\small\item\em A standard model for passing back return values from a function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_param_list_register}{Param\+List\+Register}}
+\begin{DoxyCompactList}\small\item\em An unstructured model for passing input parameters to a function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_param_list_merged}{Param\+List\+Merged}}
+\begin{DoxyCompactList}\small\item\em A union of other input parameter passing models. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_proto_model}{Proto\+Model}}
+\begin{DoxyCompactList}\small\item\em A {\bfseries{prototype}} {\bfseries{model\+:}} a model for passing parameters between functions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_score_proto_model}{Score\+Proto\+Model}}
+\begin{DoxyCompactList}\small\item\em Class for calculating \char`\"{}goodness of fit\char`\"{} of parameter trials against a prototype model. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_proto_model_merged}{Proto\+Model\+Merged}}
+\begin{DoxyCompactList}\small\item\em A prototype model made by merging together other models. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}}
+\begin{DoxyCompactList}\small\item\em A function parameter viewed as a name, data-\/type, and storage address. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_parameter_basic}{Parameter\+Basic}}
+\begin{DoxyCompactList}\small\item\em A stand-\/alone parameter with no backing symbol. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_proto_store}{Proto\+Store}}
+\begin{DoxyCompactList}\small\item\em A collection parameter descriptions making up a function prototype. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_parameter_symbol}{Parameter\+Symbol}}
+\begin{DoxyCompactList}\small\item\em A parameter with a formal backing \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_proto_store_symbol}{Proto\+Store\+Symbol}}
+\begin{DoxyCompactList}\small\item\em A collection of parameter descriptions backed by \mbox{\hyperlink{class_symbol}{Symbol}} information. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_proto_store_internal}{Proto\+Store\+Internal}}
+\begin{DoxyCompactList}\small\item\em A collection of parameter descriptions without backing symbols. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_prototype_pieces}{Prototype\+Pieces}}
+\begin{DoxyCompactList}\small\item\em Raw components of a function prototype (obtained from parsing source code) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_func_proto}{Func\+Proto}}
+\begin{DoxyCompactList}\small\item\em A {\bfseries{function}} {\bfseries{prototype}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}}
+\begin{DoxyCompactList}\small\item\em A class for analyzing parameters to a sub-\/function call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definitions for specifying functions prototypes. 
+

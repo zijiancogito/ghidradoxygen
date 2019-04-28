@@ -1,0 +1,90 @@
+.TH "TrackedContext" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TrackedContext \- A tracked register (\fBVarnode\fP) and the value it contains\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <globalcontext\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore \fBthis\fP from an XML stream\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save \fBthis\fP to an XML stream\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVarnodeData\fP \fBloc\fP"
+.br
+.RI "Storage details of the register being tracked\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBval\fP"
+.br
+.RI "The value of the register\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A tracked register (\fBVarnode\fP) and the value it contains\&. 
+
+This is the object returned when querying for tracked registers, via \fBContextDatabase::getTrackedSet()\fP\&. It holds the storage details of the register and the actual value it holds at the point of the query\&. 
+.PP
+Definition at line 68 of file globalcontext\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TrackedContext::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Restore \fBthis\fP from an XML stream\&. Read a <set> tag to fill in the storage and value details 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <set> tag 
+.br
+\fImanage\fP is the manager used to decode address references 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file globalcontext\&.cc\&.
+.SS "void TrackedContext::saveXml (ostream & s) const"
+
+.PP
+Save \fBthis\fP to an XML stream\&. The register storage and value are serialized as a <set> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file globalcontext\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVarnodeData\fP TrackedContext::loc"
+
+.PP
+Storage details of the register being tracked\&. 
+.PP
+Definition at line 69 of file globalcontext\&.hh\&.
+.SS "\fBuintb\fP TrackedContext::val"
+
+.PP
+The value of the register\&. 
+.PP
+Definition at line 70 of file globalcontext\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

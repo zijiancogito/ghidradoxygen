@@ -1,0 +1,184 @@
+\hypertarget{class_propagation_state}{}\section{Propagation\+State Class Reference}
+\label{class_propagation_state}\index{PropagationState@{PropagationState}}
+
+
+A class that holds a data-\/type traversal state during type propagation.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Collaboration diagram for Propagation\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_propagation_state__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_propagation_state_a0d46f7392b5cc38c418e92429cde1a83}{Propagation\+State}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_propagation_state_a49ccacb0e834ad22fc157dc701f14b46}{step}} (void)
+\begin{DoxyCompactList}\small\item\em Advance to the next propagation edge. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_propagation_state_af00ae2cafa9fe3527412168c94de6280}{valid}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if there are edges left to iterate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_propagation_state_ad1e2aa7ef7c3650b04b4bf6541b009f4}{vn}}
+\begin{DoxyCompactList}\small\item\em The root \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_propagation_state_a215ac3517dbd555b90e371b4e0303eb3}{iter}}
+\begin{DoxyCompactList}\small\item\em Iterator to current descendant being enumerated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_propagation_state_ae26bcb5e9e3ce711d1f973fd2d7c0e0c}{op}}
+\begin{DoxyCompactList}\small\item\em The current descendant or the defining \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_propagation_state_a35ab65aa35ba4bad632d618d3b25d171}{inslot}}
+\begin{DoxyCompactList}\small\item\em Slot holding \mbox{\hyperlink{class_varnode}{Varnode}} for descendant \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_propagation_state_a205db0b2b585fcb959667eb6745feec8}{slot}}
+\begin{DoxyCompactList}\small\item\em Current edge relative to current \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that holds a data-\/type traversal state during type propagation. 
+
+For a given \mbox{\hyperlink{class_varnode}{Varnode}}, this class iterates all the possible edges its data-\/type might propagate through. 
+
+Definition at line 971 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_propagation_state_a0d46f7392b5cc38c418e92429cde1a83}\label{class_propagation_state_a0d46f7392b5cc38c418e92429cde1a83}} 
+\index{PropagationState@{PropagationState}!PropagationState@{PropagationState}}
+\index{PropagationState@{PropagationState}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{PropagationState()}{PropagationState()}}
+{\footnotesize\ttfamily Propagation\+State\+::\+Propagation\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & is the root \mbox{\hyperlink{class_varnode}{Varnode}} to iterate over \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4134 of file coreaction.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_propagation_state_a49ccacb0e834ad22fc157dc701f14b46}\label{class_propagation_state_a49ccacb0e834ad22fc157dc701f14b46}} 
+\index{PropagationState@{PropagationState}!step@{step}}
+\index{step@{step}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily void Propagation\+State\+::step (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Advance to the next propagation edge. 
+
+At the high level, this iterates through all the descendant Pcode\+Ops of the root \mbox{\hyperlink{class_varnode}{Varnode}}, then the defining \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. At the low level, this iterates from the output \mbox{\hyperlink{class_varnode}{Varnode}} of the current \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} then through all the input Varnodes 
+
+Definition at line 4158 of file coreaction.\+cc.
+
+\mbox{\Hypertarget{class_propagation_state_af00ae2cafa9fe3527412168c94de6280}\label{class_propagation_state_af00ae2cafa9fe3527412168c94de6280}} 
+\index{PropagationState@{PropagationState}!valid@{valid}}
+\index{valid@{valid}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{valid()}{valid()}}
+{\footnotesize\ttfamily bool Propagation\+State\+::valid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if there are edges left to iterate. 
+
+
+
+Definition at line 980 of file coreaction.\+hh.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_propagation_state_a35ab65aa35ba4bad632d618d3b25d171}\label{class_propagation_state_a35ab65aa35ba4bad632d618d3b25d171}} 
+\index{PropagationState@{PropagationState}!inslot@{inslot}}
+\index{inslot@{inslot}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{inslot}{inslot}}
+{\footnotesize\ttfamily int4 Propagation\+State\+::inslot}
+
+
+
+Slot holding \mbox{\hyperlink{class_varnode}{Varnode}} for descendant \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+
+
+Definition at line 976 of file coreaction.\+hh.
+
+\mbox{\Hypertarget{class_propagation_state_a215ac3517dbd555b90e371b4e0303eb3}\label{class_propagation_state_a215ac3517dbd555b90e371b4e0303eb3}} 
+\index{PropagationState@{PropagationState}!iter@{iter}}
+\index{iter@{iter}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{iter}{iter}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$$>$\+::const\+\_\+iterator Propagation\+State\+::iter}
+
+
+
+Iterator to current descendant being enumerated. 
+
+
+
+Definition at line 974 of file coreaction.\+hh.
+
+\mbox{\Hypertarget{class_propagation_state_ae26bcb5e9e3ce711d1f973fd2d7c0e0c}\label{class_propagation_state_ae26bcb5e9e3ce711d1f973fd2d7c0e0c}} 
+\index{PropagationState@{PropagationState}!op@{op}}
+\index{op@{op}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{op}{op}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Propagation\+State\+::op}
+
+
+
+The current descendant or the defining \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+
+
+Definition at line 975 of file coreaction.\+hh.
+
+\mbox{\Hypertarget{class_propagation_state_a205db0b2b585fcb959667eb6745feec8}\label{class_propagation_state_a205db0b2b585fcb959667eb6745feec8}} 
+\index{PropagationState@{PropagationState}!slot@{slot}}
+\index{slot@{slot}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{slot}{slot}}
+{\footnotesize\ttfamily int4 Propagation\+State\+::slot}
+
+
+
+Current edge relative to current \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+
+
+Definition at line 977 of file coreaction.\+hh.
+
+\mbox{\Hypertarget{class_propagation_state_ad1e2aa7ef7c3650b04b4bf6541b009f4}\label{class_propagation_state_ad1e2aa7ef7c3650b04b4bf6541b009f4}} 
+\index{PropagationState@{PropagationState}!vn@{vn}}
+\index{vn@{vn}!PropagationState@{PropagationState}}
+\subsubsection{\texorpdfstring{vn}{vn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Propagation\+State\+::vn}
+
+
+
+The root \mbox{\hyperlink{class_varnode}{Varnode}}. 
+
+
+
+Definition at line 973 of file coreaction.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

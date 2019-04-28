@@ -1,0 +1,190 @@
+\hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{}\section{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ$<$ I, R $>$ Class Template Reference}
+\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a9e54e7889d280a864599fe641781565c}{Decompiler\+ConcurrentQ}} (Q\+Callback$<$ I, R $>$ callback, Task\+Monitor monitor)
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ac58082310c4a80a6b976ec8ba0265354}{Decompiler\+ConcurrentQ}} (Q\+Callback$<$ I, R $>$ callback, String thread\+Pool\+Name, Task\+Monitor monitor)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a4cbd1eb45068fd62baea390f86a56aee}{add\+All}} (Collection$<$ I $>$ collection)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ad6e5fbfe57c6eb842a9d3e4c8cda333d}{add\+All}} (Iterator$<$ I $>$ iterator)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a84e8c5e1b244aed19921a3fab510c31d}{add}} (I i)
+\item 
+Collection$<$ Q\+Result$<$ I, R $>$ $>$ \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_acf02756d2c1b9ab17c3871870601f76e}{wait\+For\+Results}} ()  throws Interrupted\+Exception 
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a747c39c68ede4a3560e4b2e18a15905a}{wait\+Until\+Done}} ()  throws Interrupted\+Exception, Exception 
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_accb27b719bd48ed28ed813d36b84e98e}{dispose}} ()
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ab09db6eaa044cf9126f06f7d0d36f35d}{dispose}} (long timeout\+Seconds)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class to perform some of the boilerplate setup of the \mbox{\hyperlink{}{ConcurrentQ}} that is shared amongst clients that perform decompilation in parallel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $<$\+I$>$} & The input data needed by the supplied \mbox{\hyperlink{}{Q\+Callback}} \\
+\hline
+{\em $<$\+R$>$} & The result data (can be the same as \mbox{\hyperlink{}{I}} if there is no result) returned by the \mbox{\hyperlink{}{Q\+Callback\#process(\+Object, Task\+Monitor)}} method. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file Decompiler\+Concurrent\+Q.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a9e54e7889d280a864599fe641781565c}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a9e54e7889d280a864599fe641781565c}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!DecompilerConcurrentQ@{DecompilerConcurrentQ}}
+\index{DecompilerConcurrentQ@{DecompilerConcurrentQ}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{DecompilerConcurrentQ()}{DecompilerConcurrentQ()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.\mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{Decompiler\+ConcurrentQ}} (\begin{DoxyParamCaption}\item[{Q\+Callback$<$ I, R $>$}]{callback,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 39 of file Decompiler\+Concurrent\+Q.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ac58082310c4a80a6b976ec8ba0265354}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ac58082310c4a80a6b976ec8ba0265354}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!DecompilerConcurrentQ@{DecompilerConcurrentQ}}
+\index{DecompilerConcurrentQ@{DecompilerConcurrentQ}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{DecompilerConcurrentQ()}{DecompilerConcurrentQ()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.\mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{Decompiler\+ConcurrentQ}} (\begin{DoxyParamCaption}\item[{Q\+Callback$<$ I, R $>$}]{callback,  }\item[{String}]{thread\+Pool\+Name,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 43 of file Decompiler\+Concurrent\+Q.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a84e8c5e1b244aed19921a3fab510c31d}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a84e8c5e1b244aed19921a3fab510c31d}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!add@{add}}
+\index{add@{add}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.add (\begin{DoxyParamCaption}\item[{I}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 66 of file Decompiler\+Concurrent\+Q.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a4cbd1eb45068fd62baea390f86a56aee}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a4cbd1eb45068fd62baea390f86a56aee}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!addAll@{addAll}}
+\index{addAll@{addAll}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{addAll()}{addAll()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.add\+All (\begin{DoxyParamCaption}\item[{Collection$<$ I $>$}]{collection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 58 of file Decompiler\+Concurrent\+Q.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a4cbd1eb45068fd62baea390f86a56aee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ad6e5fbfe57c6eb842a9d3e4c8cda333d}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ad6e5fbfe57c6eb842a9d3e4c8cda333d}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!addAll@{addAll}}
+\index{addAll@{addAll}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{addAll()}{addAll()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.add\+All (\begin{DoxyParamCaption}\item[{Iterator$<$ I $>$}]{iterator }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 62 of file Decompiler\+Concurrent\+Q.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_accb27b719bd48ed28ed813d36b84e98e}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_accb27b719bd48ed28ed813d36b84e98e}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!dispose@{dispose}}
+\index{dispose@{dispose}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{dispose()}{dispose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 101 of file Decompiler\+Concurrent\+Q.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_accb27b719bd48ed28ed813d36b84e98e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ab09db6eaa044cf9126f06f7d0d36f35d}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_ab09db6eaa044cf9126f06f7d0d36f35d}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!dispose@{dispose}}
+\index{dispose@{dispose}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{dispose()}{dispose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.dispose (\begin{DoxyParamCaption}\item[{long}]{timeout\+Seconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calls dispose on the queue being processed. Further, the call will block for up to {\ttfamily timeout\+Seconds} while waiting for the queue to finish processing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Seconds} & the number of seconds to wait for the disposed queue to finish processing \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 112 of file Decompiler\+Concurrent\+Q.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_acf02756d2c1b9ab17c3871870601f76e}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_acf02756d2c1b9ab17c3871870601f76e}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!waitForResults@{waitForResults}}
+\index{waitForResults@{waitForResults}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{waitForResults()}{waitForResults()}}
+{\footnotesize\ttfamily Collection$<$Q\+Result$<$I, R$>$ $>$ \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.wait\+For\+Results (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Interrupted\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Waits for all results to be delivered. The client is responsible for processing the results and handling any exceptions that may have occurred.
+
+\begin{DoxyReturn}{Returns}
+all results 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & if interrupted while waiting \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 77 of file Decompiler\+Concurrent\+Q.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_acf02756d2c1b9ab17c3871870601f76e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a747c39c68ede4a3560e4b2e18a15905a}\label{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_a747c39c68ede4a3560e4b2e18a15905a}} 
+\index{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}!waitUntilDone@{waitUntilDone}}
+\index{waitUntilDone@{waitUntilDone}!ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$@{ghidra.app.util.DecompilerConcurrentQ$<$ I, R $>$}}
+\subsubsection{\texorpdfstring{waitUntilDone()}{waitUntilDone()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q}{ghidra.\+app.\+util.\+Decompiler\+ConcurrentQ}}$<$ I, R $>$.wait\+Until\+Done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Interrupted\+Exception, Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Waits for all work to finish. Any exception encountered will trigger all processing to stop. If you wish for the work to continue despite exceptions, then use \mbox{\hyperlink{classghidra_1_1app_1_1util_1_1_decompiler_concurrent_q_acf02756d2c1b9ab17c3871870601f76e}{wait\+For\+Results()}}.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & if interrupted while waiting \\
+\hline
+{\em Exception} & any exception that is encountered while processing items. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 97 of file Decompiler\+Concurrent\+Q.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/util/\mbox{\hyperlink{_decompiler_concurrent_q_8java}{Decompiler\+Concurrent\+Q.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,174 @@
+\hypertarget{class_rule_subvar_subpiece}{}\section{Rule\+Subvar\+Subpiece Class Reference}
+\label{class_rule_subvar_subpiece}\index{RuleSubvarSubpiece@{RuleSubvarSubpiece}}
+
+
+Perform Sub\+Variable\+Flow analysis triggered by S\+U\+B\+P\+I\+E\+CE.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Subvar\+Subpiece\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{class_rule_subvar_subpiece__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Subvar\+Subpiece\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{class_rule_subvar_subpiece__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_subvar_subpiece_a5a2cc5ce7009e68b02f156cf68594138}{Rule\+Subvar\+Subpiece}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_subvar_subpiece_aa771738e5e43bb05d600b22b7a6e191b}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_subvar_subpiece_a47aab430f3689d7fa4292ba78f8a799d}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_subvar_subpiece_aa55e18a43a85344e1e29c985d707a393}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Perform Sub\+Variable\+Flow analysis triggered by S\+U\+B\+P\+I\+E\+CE. 
+
+Definition at line 1178 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_subvar_subpiece_a5a2cc5ce7009e68b02f156cf68594138}\label{class_rule_subvar_subpiece_a5a2cc5ce7009e68b02f156cf68594138}} 
+\index{RuleSubvarSubpiece@{RuleSubvarSubpiece}!RuleSubvarSubpiece@{RuleSubvarSubpiece}}
+\index{RuleSubvarSubpiece@{RuleSubvarSubpiece}!RuleSubvarSubpiece@{RuleSubvarSubpiece}}
+\subsubsection{\texorpdfstring{RuleSubvarSubpiece()}{RuleSubvarSubpiece()}}
+{\footnotesize\ttfamily Rule\+Subvar\+Subpiece\+::\+Rule\+Subvar\+Subpiece (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 1180 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{class_rule_subvar_subpiece_a5a2cc5ce7009e68b02f156cf68594138_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_subvar_subpiece_aa55e18a43a85344e1e29c985d707a393}\label{class_rule_subvar_subpiece_aa55e18a43a85344e1e29c985d707a393}} 
+\index{RuleSubvarSubpiece@{RuleSubvarSubpiece}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleSubvarSubpiece@{RuleSubvarSubpiece}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Subvar\+Subpiece\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 6804 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_subvar_subpiece_aa55e18a43a85344e1e29c985d707a393_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_subvar_subpiece_aa771738e5e43bb05d600b22b7a6e191b}\label{class_rule_subvar_subpiece_aa771738e5e43bb05d600b22b7a6e191b}} 
+\index{RuleSubvarSubpiece@{RuleSubvarSubpiece}!clone@{clone}}
+\index{clone@{clone}!RuleSubvarSubpiece@{RuleSubvarSubpiece}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Subvar\+Subpiece\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 1181 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_subvar_subpiece_aa771738e5e43bb05d600b22b7a6e191b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_subvar_subpiece_a47aab430f3689d7fa4292ba78f8a799d}\label{class_rule_subvar_subpiece_a47aab430f3689d7fa4292ba78f8a799d}} 
+\index{RuleSubvarSubpiece@{RuleSubvarSubpiece}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleSubvarSubpiece@{RuleSubvarSubpiece}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Subvar\+Subpiece\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 6798 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,183 @@
+.TH "RuleThreeWayCompare" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RuleThreeWayCompare \- Simplify expressions involving \fIthree-way\fP comparisons\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ruleaction\&.hh>\fP
+.PP
+Inherits \fBRule\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRuleThreeWayCompare\fP (const string &g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBRule\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBgetOpList\fP (vector< uint4 > &oplist) const"
+.br
+.RI "List of op codes this rule operates on\&. "
+.ti -1c
+.RI "virtual int4 \fBapplyOp\fP (\fBPcodeOp\fP *op, \fBFuncdata\fP &data)"
+.br
+.RI "Attempt to apply \fBthis\fP \fBRule\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPcodeOp\fP * \fBdetectThreeWay\fP (\fBPcodeOp\fP *op, bool &isPartial)"
+.br
+.RI "Detect a three-way calculation\&. "
+.ti -1c
+.RI "static int4 \fBtestCompareEquivalence\fP (\fBPcodeOp\fP *lessop, \fBPcodeOp\fP *lessequalop)"
+.br
+.RI "Make sure comparisons match properly for a three-way\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Simplify expressions involving \fIthree-way\fP comparisons\&. 
+
+A \fBthree-way\fP comparison is the expression
+.IP "\(bu" 2
+\fCX = zext( V < W ) + ZEXT( V <= W ) - 1\fP in some permutation
+.PP
+.PP
+This gives the result (-1, 0, or 1) depending on whether V is less-than, equal, or greater-than W\&. This \fBRule\fP looks for secondary comparisons of the three-way, such as
+.IP "\(bu" 2
+\fCX < 1\fP which simplifies to
+.IP "\(bu" 2
+\fCV <= W\fP 
+.PP
+
+.PP
+Definition at line 1346 of file ruleaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RuleThreeWayCompare::RuleThreeWayCompare (const string & g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 1348 of file ruleaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 RuleThreeWayCompare::applyOp (\fBPcodeOp\fP * op, \fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Attempt to apply \fBthis\fP \fBRule\fP\&. This method contains the main logic for applying the \fBRule\fP\&. It must use a given \fBPcodeOp\fP as the point at which the \fBRule\fP applies\&. If it does apply, changes are made directly to the function and 1 (non-zero) is returned, otherwise 0 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP where the \fBRule\fP may apply 
+.br
+\fIdata\fP is the function to which to apply 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 7891 of file ruleaction\&.cc\&.
+.SS "virtual \fBRule\fP* RuleThreeWayCompare::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBRule\fP\&. If \fBthis\fP \fBRule\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBRule\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBRule\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBRule\fP\&.
+.PP
+Definition at line 1349 of file ruleaction\&.hh\&.
+.SS "\fBPcodeOp\fP * RuleThreeWayCompare::detectThreeWay (\fBPcodeOp\fP * op, bool & isPartial)\fC [static]\fP"
+
+.PP
+Detect a three-way calculation\&. A \fBthree-way\fP expression looks like:
+.IP "\(bu" 2
+\fCzext( V < W ) + zext( V <= W ) - 1\fP in some permutation
+.PP
+.PP
+The comparisons can signed, unsigned, or floating-point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the putative root INT_ADD of the calculation 
+.br
+\fIisPartial\fP is set to \fBtrue\fP if a partial form is detected 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the less-than op or NULL if no three-way was detected 
+.RE
+.PP
+
+.PP
+Definition at line 7780 of file ruleaction\&.cc\&.
+.SS "void RuleThreeWayCompare::getOpList (vector< uint4 > & oplist) const\fC [virtual]\fP"
+
+.PP
+List of op codes this rule operates on\&. Populate the given array with all possible OpCodes this \fBRule\fP might apply to\&. By default, this method returns all possible OpCodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoplist\fP is the array to populate 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 7882 of file ruleaction\&.cc\&.
+.SS "int4 RuleThreeWayCompare::testCompareEquivalence (\fBPcodeOp\fP * lessop, \fBPcodeOp\fP * lessequalop)\fC [static]\fP"
+
+.PP
+Make sure comparisons match properly for a three-way\&. Given \fCzext(V < W) + zext(X <= Y)\fP, make sure comparisons match, i\&.e V matches X and W matches Y\&. Take into account that the LESSEQUAL may have been converted to a LESS\&. Return:
+.IP "\(bu" 2
+0 if configuration is correct
+.IP "\(bu" 2
+1 if correct but roles of \fBlessop\fP and \fBlessequalop\fP must be swapped
+.IP "\(bu" 2
+-1 if not the correct configuration 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlessop\fP is the putative LESS \fBPcodeOp\fP 
+.br
+\fIlessequalop\fP is the putative LESSEQUAL \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0, 1, or -1 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 7705 of file ruleaction\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

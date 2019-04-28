@@ -1,0 +1,111 @@
+.TH "IfaceCommand" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IfaceCommand
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <interface\&.hh>\fP
+.PP
+Inherited by \fBIfaceBaseCommand\fP, \fBIfaceCodeDataCommand\fP, \fBIfaceCommandDummy\fP, and \fBIfaceDecompCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IfaceCommand\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBsetData\fP (\fBIfaceStatus\fP *root, \fBIfaceData\fP *data)=0"
+.br
+.ti -1c
+.RI "virtual void \fBexecute\fP (istream &s)=0"
+.br
+.ti -1c
+.RI "virtual string \fBgetModule\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual \fBIfaceData\fP * \fBcreateData\fP (void)=0"
+.br
+.ti -1c
+.RI "void \fBaddWord\fP (const string &temp)"
+.br
+.ti -1c
+.RI "void \fBremoveWord\fP (void)"
+.br
+.ti -1c
+.RI "const string & \fBgetCommandWord\fP (int4 i) const"
+.br
+.ti -1c
+.RI "void \fBaddWords\fP (const vector< string > &wordlist)"
+.br
+.ti -1c
+.RI "int4 \fBnumWords\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBcommandString\fP (string &res) const"
+.br
+.ti -1c
+.RI "int4 \fBcompare\fP (const \fBIfaceCommand\fP &op2) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 67 of file interface\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual IfaceCommand::~IfaceCommand (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 70 of file interface\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void IfaceCommand::addWord (const string & temp)\fC [inline]\fP"
+
+.PP
+Definition at line 75 of file interface\&.hh\&.
+.SS "void IfaceCommand::addWords (const vector< string > & wordlist)"
+
+.PP
+Definition at line 321 of file interface\&.cc\&.
+.SS "void IfaceCommand::commandString (string & res) const"
+
+.PP
+Definition at line 351 of file interface\&.cc\&.
+.SS "int4 IfaceCommand::compare (const \fBIfaceCommand\fP & op2) const"
+
+.PP
+Definition at line 330 of file interface\&.cc\&.
+.SS "virtual \fBIfaceData\fP* IfaceCommand::createData (void)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBIfaceBaseCommand\fP, \fBIfaceCodeDataCommand\fP, \fBIfaceCommandDummy\fP, and \fBIfaceDecompCommand\fP\&.
+.SS "virtual void IfaceCommand::execute (istream & s)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBIfcExperimentalRules\fP, \fBIfcStructureBlocks\fP, \fBIfcPreferSplit\fP, \fBIfcVolatile\fP, \fBIfcResetActionstats\fP, \fBIfcPrintActionstats\fP, \fBIfcCountPcode\fP, \fBIfcCallOtherFixup\fP, \fBIfcCallFixup\fP, \fBIfcComment\fP, \fBIfcCallGraphList\fP, \fBIfcCallGraphLoad\fP, \fBIfcCallGraphBuild\fP, \fBIfcCallGraphDump\fP, \fBIfcDuplicateHash\fP, \fBIfcCommentInstr\fP, \fBIfcGraphDom\fP, \fBIfcGraphControlflow\fP, \fBIfcGraphDataflow\fP, \fBIfcPrintRaw\fP, \fBIfcContinue\fP, \fBIfcPrintMap\fP, \fBIfcPrintLocalrange\fP, \fBIfcUnlockPrototype\fP, \fBIfcLockPrototype\fP, \fBIfcPrintInputsAll\fP, \fBIfcPrintInputs\fP, \fBIfcGlobalRegisters\fP, \fBIfcGlobalify\fP, \fBIfcGlobalRemove\fP, \fBIfcGlobalAdd\fP, \fBIfcDeadcodedelay\fP, \fBIfcFlowOverride\fP, \fBIfcJumpOverride\fP, \fBIfcProtooverride\fP, \fBIfcForcegoto\fP, \fBIfcForceDec\fP, \fBIfcForceHex\fP, \fBIfcTypeVarnode\fP, \fBIfcNameVarnode\fP, \fBIfcVarnodeCover\fP, \fBIfcPrintExtrapop\fP, \fBIfcVarnodehighCover\fP, \fBIfcPrintCover\fP, \fBIfcPrintVarnode\fP, \fBIfcRemove\fP, \fBIfcRetype\fP, \fBIfcRename\fP, \fBIfcPrintParamMeasuresXml\fP, \fBIfcPrintParamMeasures\fP, \fBIfcParamIDAnalysis\fP, \fBIfcPrintHigh\fP, \fBIfcPrintSpaces\fP, \fBIfcPrintBlocktree\fP, \fBIfcPrintTree\fP, \fBIfcBreakjump\fP, \fBIfcBreakaction\fP, \fBIfcBreakstart\fP, \fBIfcSettrackedrange\fP, \fBIfcSetcontextrange\fP, \fBIfcListprototypes\fP, \fBIfcListOverride\fP, \fBIfcListaction\fP, \fBIfcProducePrototypes\fP, \fBIfcProduceC\fP, \fBIfcPrintCTypes\fP, \fBIfcPrintCGlobals\fP, \fBIfcPrintCStruct\fP, \fBIfcPrintCFlat\fP, \fBIfcCodeDataDumpTargetHits\fP, \fBIfcEcho\fP, \fBIfcPrintCXml\fP, \fBIfcCodeDataDumpUnlinked\fP, \fBIfcClosefile\fP, \fBIfcPrintLanguage\fP, \fBIfcCodeDataDumpStarts\fP, \fBIfcOpenfileAppend\fP, \fBIfcDecompile\fP, \fBIfcCodeDataDumpCrossRefs\fP, \fBIfcOpenfile\fP, \fBIfcDumpbinary\fP, \fBIfcCodeDataDumpModelHits\fP, \fBIfcHistory\fP, \fBIfcDump\fP, \fBIfcCodeDataRun\fP, \fBIfcQuit\fP, \fBIfcPrintdisasm\fP, \fBIfcCodeDataTarget\fP, \fBIfcMaplabel\fP, \fBIfcCodeDataInit\fP, \fBIfcMapexternalref\fP, \fBIfcMapfunction\fP, \fBIfcMaphash\fP, \fBIfcMapaddress\fP, \fBIfcReadSymbols\fP, \fBIfcCleararch\fP, \fBIfcAddrrangeLoad\fP, \fBIfcFuncload\fP, \fBIfcAdjustVma\fP, \fBIfcParseFile\fP, \fBIfcParseLine\fP, \fBIfcOption\fP, \fBIfcSource\fP, \fBIfaceCommandDummy\fP, \fBIfcRestore\fP, \fBIfcSave\fP, \fBIfcAddpath\fP, and \fBIfcLoadFile\fP\&.
+.SS "const string& IfaceCommand::getCommandWord (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 77 of file interface\&.hh\&.
+.SS "virtual string IfaceCommand::getModule (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBIfaceBaseCommand\fP, \fBIfaceCodeDataCommand\fP, \fBIfaceCommandDummy\fP, and \fBIfaceDecompCommand\fP\&.
+.SS "int4 IfaceCommand::numWords (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 79 of file interface\&.hh\&.
+.SS "void IfaceCommand::removeWord (void)\fC [inline]\fP"
+
+.PP
+Definition at line 76 of file interface\&.hh\&.
+.SS "virtual void IfaceCommand::setData (\fBIfaceStatus\fP * root, \fBIfaceData\fP * data)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBIfaceBaseCommand\fP, \fBIfaceCodeDataCommand\fP, \fBIfaceCommandDummy\fP, and \fBIfaceDecompCommand\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

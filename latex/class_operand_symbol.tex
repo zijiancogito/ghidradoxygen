@@ -1,0 +1,660 @@
+\hypertarget{class_operand_symbol}{}\section{Operand\+Symbol Class Reference}
+\label{class_operand_symbol}\index{OperandSymbol@{OperandSymbol}}
+
+
+{\ttfamily \#include $<$slghsymbol.\+hh$>$}
+
+
+
+Inheritance diagram for Operand\+Symbol\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_operand_symbol__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Operand\+Symbol\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_operand_symbol__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bac9c1d99873ff0223ecc667922724745c}{code\+\_\+address}} =1, 
+\mbox{\hyperlink{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bae126d8a9d48bb407197e83f6257fbd0e}{offset\+\_\+irrel}} =2, 
+\mbox{\hyperlink{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95ba319aeeb1a72beebba7bd615a197fbc6c}{variable\+\_\+len}} =4, 
+\mbox{\hyperlink{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bac3f86a35cf54ec2f50154e941ce1238f}{marked}} =8
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_operand_symbol_a95692da8b2a608191bb4711d42c9b09f}{Operand\+Symbol}} (void)
+\item 
+\mbox{\hyperlink{class_operand_symbol_a034b58e5d1eedcfeee9f85ea699ac56a}{Operand\+Symbol}} (const string \&nm, int4 index, \mbox{\hyperlink{class_constructor}{Constructor}} $\ast$ct)
+\item 
+uint4 \mbox{\hyperlink{class_operand_symbol_a172e311e45795d49ee679fac4a35faad}{get\+Relative\+Offset}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_operand_symbol_ae4852740136d240df30da3fb8154e1fa}{get\+Offset\+Base}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_operand_symbol_a449067986ae0236c97cbdec8de4c4723}{get\+Minimum\+Length}} (void) const
+\item 
+\mbox{\hyperlink{class_pattern_expression}{Pattern\+Expression}} $\ast$ \mbox{\hyperlink{class_operand_symbol_ac93d6e408054938945aa9fc8cd6fcc38}{get\+Defining\+Expression}} (void) const
+\item 
+\mbox{\hyperlink{class_triple_symbol}{Triple\+Symbol}} $\ast$ \mbox{\hyperlink{class_operand_symbol_ac13b93b87472c1980d6cad5be122997a}{get\+Defining\+Symbol}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_operand_symbol_ab4bccbaf51039ac104de608792dcc698}{get\+Index}} (void) const
+\item 
+void \mbox{\hyperlink{class_operand_symbol_a5f2bc99daa08301586d3c8dd00261033}{define\+Operand}} (\mbox{\hyperlink{class_pattern_expression}{Pattern\+Expression}} $\ast$pe)
+\item 
+void \mbox{\hyperlink{class_operand_symbol_af779510f6032b577ddfe3453fccfea2f}{define\+Operand}} (\mbox{\hyperlink{class_triple_symbol}{Triple\+Symbol}} $\ast$tri)
+\item 
+void \mbox{\hyperlink{class_operand_symbol_af7a8f9c15ef41de7385def495e073c0b}{set\+Code\+Address}} (void)
+\item 
+bool \mbox{\hyperlink{class_operand_symbol_afceafc766167e655252176850067b48b}{is\+Code\+Address}} (void) const
+\item 
+void \mbox{\hyperlink{class_operand_symbol_af922e31dad656d8611d23e1e816b9279}{set\+Offset\+Irrelevant}} (void)
+\item 
+bool \mbox{\hyperlink{class_operand_symbol_aaabb092dd61abe21c855a35443397809}{is\+Offset\+Irrelevant}} (void) const
+\item 
+void \mbox{\hyperlink{class_operand_symbol_a0b306a07c71c5d101a160c776cccb961}{set\+Mark}} (void)
+\item 
+void \mbox{\hyperlink{class_operand_symbol_ae0ccaa8ae25f40be2ac5420200fd899e}{clear\+Mark}} (void)
+\item 
+bool \mbox{\hyperlink{class_operand_symbol_a284c4038e0c1de1edee67f872b7debc9}{is\+Marked}} (void) const
+\item 
+virtual \mbox{\hyperlink{class_operand_symbol_a1949a4b5a8e32481e7b4e01a7ff226b1}{$\sim$\+Operand\+Symbol}} (void)
+\item 
+virtual \mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ \mbox{\hyperlink{class_operand_symbol_a62fb73d10c92f1dd39977abe47f557d2}{get\+Varnode}} (void) const
+\item 
+virtual \mbox{\hyperlink{class_pattern_expression}{Pattern\+Expression}} $\ast$ \mbox{\hyperlink{class_operand_symbol_aaebd25df34fa9100b22e3df9272d2910}{get\+Pattern\+Expression}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_operand_symbol_a292e9cb914a17155467e7e1f0572021c}{get\+Fixed\+Handle}} (\mbox{\hyperlink{struct_fixed_handle}{Fixed\+Handle}} \&hnd, \mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&walker) const
+\item 
+virtual int4 \mbox{\hyperlink{class_operand_symbol_a9082a923e1e8f929c9fc0409f14fac74}{get\+Size}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_operand_symbol_a6aae865579741ebe784ba0782c0192ec}{print}} (ostream \&s, \mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&walker) const
+\item 
+virtual \mbox{\hyperlink{class_sleigh_symbol_aba70f7f332fd63488c5ec4bd7807db41}{symbol\+\_\+type}} \mbox{\hyperlink{class_operand_symbol_aef01562ac38960c6b9fe99ecd574b6f6}{get\+Type}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_operand_symbol_a20b491e8a76d47973fe52df326d9ce38}{save\+Xml}} (ostream \&s) const
+\item 
+virtual void \mbox{\hyperlink{class_operand_symbol_a9cdbc0cf454ad7ed2b3683100a4a8de0}{save\+Xml\+Header}} (ostream \&s) const
+\item 
+virtual void \mbox{\hyperlink{class_operand_symbol_a89eb88d3d81b27fae7432adf31d2d27a}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, \mbox{\hyperlink{class_sleigh_base}{Sleigh\+Base}} $\ast$trans)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_operand_symbol_a519e920ccec7617186a838b3258ff7d2}{Constructor}}
+\item 
+class \mbox{\hyperlink{class_operand_symbol_a466eb718dfbfae6a840e546d48e95627}{Operand\+Equation}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 311 of file slghsymbol.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95b}\label{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{code\_address@{code\_address}!OperandSymbol@{OperandSymbol}}\index{OperandSymbol@{OperandSymbol}!code\_address@{code\_address}}}\mbox{\Hypertarget{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bac9c1d99873ff0223ecc667922724745c}\label{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bac9c1d99873ff0223ecc667922724745c}} 
+code\+\_\+address&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{offset\_irrel@{offset\_irrel}!OperandSymbol@{OperandSymbol}}\index{OperandSymbol@{OperandSymbol}!offset\_irrel@{offset\_irrel}}}\mbox{\Hypertarget{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bae126d8a9d48bb407197e83f6257fbd0e}\label{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bae126d8a9d48bb407197e83f6257fbd0e}} 
+offset\+\_\+irrel&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{variable\_len@{variable\_len}!OperandSymbol@{OperandSymbol}}\index{OperandSymbol@{OperandSymbol}!variable\_len@{variable\_len}}}\mbox{\Hypertarget{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95ba319aeeb1a72beebba7bd615a197fbc6c}\label{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95ba319aeeb1a72beebba7bd615a197fbc6c}} 
+variable\+\_\+len&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{marked@{marked}!OperandSymbol@{OperandSymbol}}\index{OperandSymbol@{OperandSymbol}!marked@{marked}}}\mbox{\Hypertarget{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bac3f86a35cf54ec2f50154e941ce1238f}\label{class_operand_symbol_a632b0e8d56cbf7fa6dfc31f03371b95bac3f86a35cf54ec2f50154e941ce1238f}} 
+marked&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 315 of file slghsymbol.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_operand_symbol_a95692da8b2a608191bb4711d42c9b09f}\label{class_operand_symbol_a95692da8b2a608191bb4711d42c9b09f}} 
+\index{OperandSymbol@{OperandSymbol}!OperandSymbol@{OperandSymbol}}
+\index{OperandSymbol@{OperandSymbol}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{OperandSymbol()}{OperandSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Operand\+Symbol\+::\+Operand\+Symbol (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 328 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_operand_symbol_a034b58e5d1eedcfeee9f85ea699ac56a}\label{class_operand_symbol_a034b58e5d1eedcfeee9f85ea699ac56a}} 
+\index{OperandSymbol@{OperandSymbol}!OperandSymbol@{OperandSymbol}}
+\index{OperandSymbol@{OperandSymbol}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{OperandSymbol()}{OperandSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Operand\+Symbol\+::\+Operand\+Symbol (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{int4}]{index,  }\item[{\mbox{\hyperlink{class_constructor}{Constructor}} $\ast$}]{ct }\end{DoxyParamCaption})}
+
+
+
+Definition at line 948 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a034b58e5d1eedcfeee9f85ea699ac56a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a1949a4b5a8e32481e7b4e01a7ff226b1}\label{class_operand_symbol_a1949a4b5a8e32481e7b4e01a7ff226b1}} 
+\index{OperandSymbol@{OperandSymbol}!````~OperandSymbol@{$\sim$OperandSymbol}}
+\index{````~OperandSymbol@{$\sim$OperandSymbol}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{$\sim$OperandSymbol()}{~OperandSymbol()}}
+{\footnotesize\ttfamily Operand\+Symbol\+::$\sim$\+Operand\+Symbol (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 976 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a1949a4b5a8e32481e7b4e01a7ff226b1_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_operand_symbol_ae0ccaa8ae25f40be2ac5420200fd899e}\label{class_operand_symbol_ae0ccaa8ae25f40be2ac5420200fd899e}} 
+\index{OperandSymbol@{OperandSymbol}!clearMark@{clearMark}}
+\index{clearMark@{clearMark}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{clearMark()}{clearMark()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::clear\+Mark (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 343 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_operand_symbol_a5f2bc99daa08301586d3c8dd00261033}\label{class_operand_symbol_a5f2bc99daa08301586d3c8dd00261033}} 
+\index{OperandSymbol@{OperandSymbol}!defineOperand@{defineOperand}}
+\index{defineOperand@{defineOperand}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{defineOperand()}{defineOperand()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::define\+Operand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pattern_expression}{Pattern\+Expression}} $\ast$}]{pe }\end{DoxyParamCaption})}
+
+
+
+Definition at line 959 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a5f2bc99daa08301586d3c8dd00261033_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a5f2bc99daa08301586d3c8dd00261033_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_af779510f6032b577ddfe3453fccfea2f}\label{class_operand_symbol_af779510f6032b577ddfe3453fccfea2f}} 
+\index{OperandSymbol@{OperandSymbol}!defineOperand@{defineOperand}}
+\index{defineOperand@{defineOperand}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{defineOperand()}{defineOperand()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::define\+Operand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_triple_symbol}{Triple\+Symbol}} $\ast$}]{tri }\end{DoxyParamCaption})}
+
+
+
+Definition at line 968 of file slghsymbol.\+cc.
+
+\mbox{\Hypertarget{class_operand_symbol_ac93d6e408054938945aa9fc8cd6fcc38}\label{class_operand_symbol_ac93d6e408054938945aa9fc8cd6fcc38}} 
+\index{OperandSymbol@{OperandSymbol}!getDefiningExpression@{getDefiningExpression}}
+\index{getDefiningExpression@{getDefiningExpression}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getDefiningExpression()}{getDefiningExpression()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pattern_expression}{Pattern\+Expression}}$\ast$ Operand\+Symbol\+::get\+Defining\+Expression (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 333 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_ac93d6e408054938945aa9fc8cd6fcc38_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_ac13b93b87472c1980d6cad5be122997a}\label{class_operand_symbol_ac13b93b87472c1980d6cad5be122997a}} 
+\index{OperandSymbol@{OperandSymbol}!getDefiningSymbol@{getDefiningSymbol}}
+\index{getDefiningSymbol@{getDefiningSymbol}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getDefiningSymbol()}{getDefiningSymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_triple_symbol}{Triple\+Symbol}}$\ast$ Operand\+Symbol\+::get\+Defining\+Symbol (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 334 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_ac13b93b87472c1980d6cad5be122997a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a292e9cb914a17155467e7e1f0572021c}\label{class_operand_symbol_a292e9cb914a17155467e7e1f0572021c}} 
+\index{OperandSymbol@{OperandSymbol}!getFixedHandle@{getFixedHandle}}
+\index{getFixedHandle@{getFixedHandle}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getFixedHandle()}{getFixedHandle()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::get\+Fixed\+Handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fixed_handle}{Fixed\+Handle}} \&}]{hnd,  }\item[{\mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&}]{walker }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_triple_symbol_aa71f48c79a2bee73e97fdfb8163b4e46}{Triple\+Symbol}}.
+
+
+
+Definition at line 1003 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a292e9cb914a17155467e7e1f0572021c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_ab4bccbaf51039ac104de608792dcc698}\label{class_operand_symbol_ab4bccbaf51039ac104de608792dcc698}} 
+\index{OperandSymbol@{OperandSymbol}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily int4 Operand\+Symbol\+::get\+Index (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 335 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_ab4bccbaf51039ac104de608792dcc698_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a449067986ae0236c97cbdec8de4c4723}\label{class_operand_symbol_a449067986ae0236c97cbdec8de4c4723}} 
+\index{OperandSymbol@{OperandSymbol}!getMinimumLength@{getMinimumLength}}
+\index{getMinimumLength@{getMinimumLength}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getMinimumLength()}{getMinimumLength()}}
+{\footnotesize\ttfamily int4 Operand\+Symbol\+::get\+Minimum\+Length (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 332 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a449067986ae0236c97cbdec8de4c4723_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_ae4852740136d240df30da3fb8154e1fa}\label{class_operand_symbol_ae4852740136d240df30da3fb8154e1fa}} 
+\index{OperandSymbol@{OperandSymbol}!getOffsetBase@{getOffsetBase}}
+\index{getOffsetBase@{getOffsetBase}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getOffsetBase()}{getOffsetBase()}}
+{\footnotesize\ttfamily int4 Operand\+Symbol\+::get\+Offset\+Base (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 331 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_ae4852740136d240df30da3fb8154e1fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_aaebd25df34fa9100b22e3df9272d2910}\label{class_operand_symbol_aaebd25df34fa9100b22e3df9272d2910}} 
+\index{OperandSymbol@{OperandSymbol}!getPatternExpression@{getPatternExpression}}
+\index{getPatternExpression@{getPatternExpression}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getPatternExpression()}{getPatternExpression()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_pattern_expression}{Pattern\+Expression}}$\ast$ Operand\+Symbol\+::get\+Pattern\+Expression (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_triple_symbol_a213895658c5fe547edf9ac54a1d2de2e}{Triple\+Symbol}}.
+
+
+
+Definition at line 347 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_operand_symbol_a172e311e45795d49ee679fac4a35faad}\label{class_operand_symbol_a172e311e45795d49ee679fac4a35faad}} 
+\index{OperandSymbol@{OperandSymbol}!getRelativeOffset@{getRelativeOffset}}
+\index{getRelativeOffset@{getRelativeOffset}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getRelativeOffset()}{getRelativeOffset()}}
+{\footnotesize\ttfamily uint4 Operand\+Symbol\+::get\+Relative\+Offset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 330 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a172e311e45795d49ee679fac4a35faad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a9082a923e1e8f929c9fc0409f14fac74}\label{class_operand_symbol_a9082a923e1e8f929c9fc0409f14fac74}} 
+\index{OperandSymbol@{OperandSymbol}!getSize@{getSize}}
+\index{getSize@{getSize}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Operand\+Symbol\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_triple_symbol_a7351de4a1db140381d0b7913a8c613fd}{Triple\+Symbol}}.
+
+
+
+Definition at line 1009 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a9082a923e1e8f929c9fc0409f14fac74_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_aef01562ac38960c6b9fe99ecd574b6f6}\label{class_operand_symbol_aef01562ac38960c6b9fe99ecd574b6f6}} 
+\index{OperandSymbol@{OperandSymbol}!getType@{getType}}
+\index{getType@{getType}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_sleigh_symbol_aba70f7f332fd63488c5ec4bd7807db41}{symbol\+\_\+type}} Operand\+Symbol\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_sleigh_symbol_a2f6e5903e461084c29f95ea024883950}{Sleigh\+Symbol}}.
+
+
+
+Definition at line 351 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_operand_symbol_a62fb73d10c92f1dd39977abe47f557d2}\label{class_operand_symbol_a62fb73d10c92f1dd39977abe47f557d2}} 
+\index{OperandSymbol@{OperandSymbol}!getVarnode@{getVarnode}}
+\index{getVarnode@{getVarnode}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{getVarnode()}{getVarnode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ Operand\+Symbol\+::get\+Varnode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_specific_symbol_abbde46a1f6af6c373420773d45e1e4e2}{Specific\+Symbol}}.
+
+
+
+Definition at line 984 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a62fb73d10c92f1dd39977abe47f557d2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_afceafc766167e655252176850067b48b}\label{class_operand_symbol_afceafc766167e655252176850067b48b}} 
+\index{OperandSymbol@{OperandSymbol}!isCodeAddress@{isCodeAddress}}
+\index{isCodeAddress@{isCodeAddress}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{isCodeAddress()}{isCodeAddress()}}
+{\footnotesize\ttfamily bool Operand\+Symbol\+::is\+Code\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 339 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_afceafc766167e655252176850067b48b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a284c4038e0c1de1edee67f872b7debc9}\label{class_operand_symbol_a284c4038e0c1de1edee67f872b7debc9}} 
+\index{OperandSymbol@{OperandSymbol}!isMarked@{isMarked}}
+\index{isMarked@{isMarked}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{isMarked()}{isMarked()}}
+{\footnotesize\ttfamily bool Operand\+Symbol\+::is\+Marked (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 344 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a284c4038e0c1de1edee67f872b7debc9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_aaabb092dd61abe21c855a35443397809}\label{class_operand_symbol_aaabb092dd61abe21c855a35443397809}} 
+\index{OperandSymbol@{OperandSymbol}!isOffsetIrrelevant@{isOffsetIrrelevant}}
+\index{isOffsetIrrelevant@{isOffsetIrrelevant}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{isOffsetIrrelevant()}{isOffsetIrrelevant()}}
+{\footnotesize\ttfamily bool Operand\+Symbol\+::is\+Offset\+Irrelevant (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 341 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_aaabb092dd61abe21c855a35443397809_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a6aae865579741ebe784ba0782c0192ec}\label{class_operand_symbol_a6aae865579741ebe784ba0782c0192ec}} 
+\index{OperandSymbol@{OperandSymbol}!print@{print}}
+\index{print@{print}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::print (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{\mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&}]{walker }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_triple_symbol_a205c4487d3ad54532097dd77eb4501fc}{Triple\+Symbol}}.
+
+
+
+Definition at line 1017 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a6aae865579741ebe784ba0782c0192ec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a89eb88d3d81b27fae7432adf31d2d27a}\label{class_operand_symbol_a89eb88d3d81b27fae7432adf31d2d27a}} 
+\index{OperandSymbol@{OperandSymbol}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{\mbox{\hyperlink{class_sleigh_base}{Sleigh\+Base}} $\ast$}]{trans }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_sleigh_symbol_accaec1696f99366fb0e089a7fceb56a3}{Sleigh\+Symbol}}.
+
+
+
+Definition at line 1064 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a89eb88d3d81b27fae7432adf31d2d27a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a20b491e8a76d47973fe52df326d9ce38}\label{class_operand_symbol_a20b491e8a76d47973fe52df326d9ce38}} 
+\index{OperandSymbol@{OperandSymbol}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_sleigh_symbol_a83c9a32d16419d2277c5b9d542e1cf13}{Sleigh\+Symbol}}.
+
+
+
+Definition at line 1037 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a20b491e8a76d47973fe52df326d9ce38_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a9cdbc0cf454ad7ed2b3683100a4a8de0}\label{class_operand_symbol_a9cdbc0cf454ad7ed2b3683100a4a8de0}} 
+\index{OperandSymbol@{OperandSymbol}!saveXmlHeader@{saveXmlHeader}}
+\index{saveXmlHeader@{saveXmlHeader}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{saveXmlHeader()}{saveXmlHeader()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::save\+Xml\+Header (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_sleigh_symbol_ac501be7c584bc0568c29fb95910962e9}{Sleigh\+Symbol}}.
+
+
+
+Definition at line 1056 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a9cdbc0cf454ad7ed2b3683100a4a8de0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_af7a8f9c15ef41de7385def495e073c0b}\label{class_operand_symbol_af7a8f9c15ef41de7385def495e073c0b}} 
+\index{OperandSymbol@{OperandSymbol}!setCodeAddress@{setCodeAddress}}
+\index{setCodeAddress@{setCodeAddress}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{setCodeAddress()}{setCodeAddress()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::set\+Code\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 338 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_af7a8f9c15ef41de7385def495e073c0b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_a0b306a07c71c5d101a160c776cccb961}\label{class_operand_symbol_a0b306a07c71c5d101a160c776cccb961}} 
+\index{OperandSymbol@{OperandSymbol}!setMark@{setMark}}
+\index{setMark@{setMark}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{setMark()}{setMark()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::set\+Mark (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 342 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_a0b306a07c71c5d101a160c776cccb961_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_operand_symbol_af922e31dad656d8611d23e1e816b9279}\label{class_operand_symbol_af922e31dad656d8611d23e1e816b9279}} 
+\index{OperandSymbol@{OperandSymbol}!setOffsetIrrelevant@{setOffsetIrrelevant}}
+\index{setOffsetIrrelevant@{setOffsetIrrelevant}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{setOffsetIrrelevant()}{setOffsetIrrelevant()}}
+{\footnotesize\ttfamily void Operand\+Symbol\+::set\+Offset\+Irrelevant (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 340 of file slghsymbol.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_operand_symbol_af922e31dad656d8611d23e1e816b9279_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_operand_symbol_a519e920ccec7617186a838b3258ff7d2}\label{class_operand_symbol_a519e920ccec7617186a838b3258ff7d2}} 
+\index{OperandSymbol@{OperandSymbol}!Constructor@{Constructor}}
+\index{Constructor@{Constructor}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{Constructor}{Constructor}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_constructor}{Constructor}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 312 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_operand_symbol_a466eb718dfbfae6a840e546d48e95627}\label{class_operand_symbol_a466eb718dfbfae6a840e546d48e95627}} 
+\index{OperandSymbol@{OperandSymbol}!OperandEquation@{OperandEquation}}
+\index{OperandEquation@{OperandEquation}!OperandSymbol@{OperandSymbol}}
+\subsubsection{\texorpdfstring{OperandEquation}{OperandEquation}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_operand_equation}{Operand\+Equation}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 313 of file slghsymbol.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghsymbol_8hh}{slghsymbol.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghsymbol_8cc}{slghsymbol.\+cc}}\end{DoxyCompactItemize}

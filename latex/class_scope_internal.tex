@@ -1,0 +1,1646 @@
+\hypertarget{class_scope_internal}{}\section{Scope\+Internal Class Reference}
+\label{class_scope_internal}\index{ScopeInternal@{ScopeInternal}}
+
+
+An in-\/memory implementation of the \mbox{\hyperlink{class_scope}{Scope}} interface.  
+
+
+
+
+{\ttfamily \#include $<$database.\+hh$>$}
+
+
+
+Inheritance diagram for Scope\+Internal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{class_scope_internal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scope\+Internal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scope_internal_af6d824ff10ab3f9afcdfc1ffb206227b}{Scope\+Internal}} (const string \&nm, \mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Construct the \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a3d5c9c8e68da7f36ae7e0e228b4734d2}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear all symbols from {\bfseries{this}} scope. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a7093bf1f5daeac84fc971fc6ab352224}{category\+Sanity}} (void)
+\begin{DoxyCompactList}\small\item\em Make sure \mbox{\hyperlink{class_symbol}{Symbol}} categories are sane. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a4139d0dd5d98849bd42291246cdb2f9a}{clear\+Category}} (int4 cat)
+\begin{DoxyCompactList}\small\item\em Clear all symbols of the given category from {\bfseries{this}} scope. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_ab95e3712f0b536e014bfb3c8d3d2287a}{clear\+Unlocked}} (void)
+\begin{DoxyCompactList}\small\item\em Clear all unlocked symbols from {\bfseries{this}} scope. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_ac73cc9a432d1e7a383c9758486ffe58d}{clear\+Unlocked\+Category}} (int4 cat)
+\begin{DoxyCompactList}\small\item\em Clear unlocked symbols of the given category from {\bfseries{this}} scope. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_scope_internal_a176aa80371fedd10ec46d43667a44420}{$\sim$\+Scope\+Internal}} (void)
+\item 
+virtual \mbox{\hyperlink{class_map_iterator}{Map\+Iterator}} \mbox{\hyperlink{class_scope_internal_ace6700a82166765cf943bb95f1efeb10}{begin}} (void) const
+\begin{DoxyCompactList}\small\item\em Beginning iterator to mapped Symbol\+Entrys. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_map_iterator}{Map\+Iterator}} \mbox{\hyperlink{class_scope_internal_a47df37673b1cea67ac1b4980037eafe0}{end}} (void) const
+\begin{DoxyCompactList}\small\item\em Ending iterator to mapped Symbol\+Entrys. \end{DoxyCompactList}\item 
+virtual list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_scope_internal_a3e1111265c90754ecafd2331f9c7a684}{begin\+Dynamic}} (void) const
+\begin{DoxyCompactList}\small\item\em Beginning iterator to dynamic Symbol\+Entrys. \end{DoxyCompactList}\item 
+virtual list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_scope_internal_ad1690a1aacfecff51b6d5832cccafd95}{end\+Dynamic}} (void) const
+\begin{DoxyCompactList}\small\item\em Ending iterator to dynamic Symbol\+Entrys. \end{DoxyCompactList}\item 
+virtual list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::iterator \mbox{\hyperlink{class_scope_internal_afc5849bd91bd3eb1aa65900888317f98}{begin\+Dynamic}} (void)
+\begin{DoxyCompactList}\small\item\em Beginning iterator to dynamic Symbol\+Entrys. \end{DoxyCompactList}\item 
+virtual list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::iterator \mbox{\hyperlink{class_scope_internal_a705f7003cbadcddbb621b951573c61e7}{end\+Dynamic}} (void)
+\begin{DoxyCompactList}\small\item\em Ending iterator to dynamic Symbol\+Entrys. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a77c1ceb048a903b047c1e52108890979}{remove\+Symbol}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$symbol)
+\begin{DoxyCompactList}\small\item\em Remove the given \mbox{\hyperlink{class_symbol}{Symbol}} from {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_ada63ff8f4efed6fd4605441a0150ae6f}{rename\+Symbol}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, const string \&newname)
+\begin{DoxyCompactList}\small\item\em Rename a \mbox{\hyperlink{class_symbol}{Symbol}} within {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a9711a8084e1ac5c4417a4452c96a36b7}{retype\+Symbol}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct)
+\begin{DoxyCompactList}\small\item\em Change the data-\/type of a \mbox{\hyperlink{class_symbol}{Symbol}} within {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a320fb817d3062994cb994e38a45fc0e1}{set\+Attribute}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, uint4 attr)
+\begin{DoxyCompactList}\small\item\em Set boolean \mbox{\hyperlink{class_varnode}{Varnode}} properties on a \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a8c42cfc4ea5d359bd11d1251ef8d21d7}{clear\+Attribute}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, uint4 attr)
+\begin{DoxyCompactList}\small\item\em Clear boolean \mbox{\hyperlink{class_varnode}{Varnode}} properties on a \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a4f5d61b1f41e067018e1cc4ecc044536}{set\+Display\+Format}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, uint4 attr)
+\begin{DoxyCompactList}\small\item\em Set the display format for a \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_ac256d087718065edb1c3a96fbfdf7a33}{find\+Addr}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&usepoint) const
+\begin{DoxyCompactList}\small\item\em Find a \mbox{\hyperlink{class_symbol}{Symbol}} at a given address and {\bfseries{usepoint}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_ae1eedf2f27fd8b0a7431568c4e4e2994}{find\+Container}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 size, const \mbox{\hyperlink{class_address}{Address}} \&usepoint) const
+\begin{DoxyCompactList}\small\item\em Find the smallest \mbox{\hyperlink{class_symbol}{Symbol}} containing the given memory range. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_a27135ecccccc6784b292a354d6801289}{find\+Closest\+Fit}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 size, const \mbox{\hyperlink{class_address}{Address}} \&usepoint) const
+\begin{DoxyCompactList}\small\item\em Find \mbox{\hyperlink{class_symbol}{Symbol}} which is the closest fit to the given memory range. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$ \mbox{\hyperlink{class_scope_internal_a03a52c629c51ad660eec8d10cf7f92aa}{find\+Function}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Find the function starting at the given address. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_extern_ref_symbol}{Extern\+Ref\+Symbol}} $\ast$ \mbox{\hyperlink{class_scope_internal_a7e440965cfb5642bcc751a622e5ec58d}{find\+External\+Ref}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Find an {\itshape external} {\itshape reference} at the given address. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_lab_symbol}{Lab\+Symbol}} $\ast$ \mbox{\hyperlink{class_scope_internal_a602029280a3bc0dac8aac016ec934d5b}{find\+Code\+Label}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Find a label \mbox{\hyperlink{class_symbol}{Symbol}} at the given address. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_a3c241113085be88a74f73d2431de72f3}{find\+Overlap}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 size) const
+\begin{DoxyCompactList}\small\item\em Find first \mbox{\hyperlink{class_symbol}{Symbol}} overlapping the given memory range. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_a28ae6dd136a8b285c667206417ec14a5}{find\+Before}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Find first \mbox{\hyperlink{class_symbol}{Symbol}} before (but not containing) a given address. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_a922323cc754778858646c2bb82b69e17}{find\+After}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\begin{DoxyCompactList}\small\item\em Find first \mbox{\hyperlink{class_symbol}{Symbol}} after (but not containing) a given address. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_a06599bc2d7c1ccfd18f0e91a5ee956ca}{find\+By\+Name}} (const string \&\mbox{\hyperlink{class_scope_abb4900f6409e8a82c1b1cea827e4e2c5}{name}}, vector$<$ \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ $>$ \&res) const
+\begin{DoxyCompactList}\small\item\em Find a \mbox{\hyperlink{class_symbol}{Symbol}} by name within {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$ \mbox{\hyperlink{class_scope_internal_acf54c42b2ce7edfa37f9bf1223bc2840}{resolve\+External\+Ref\+Function}} (\mbox{\hyperlink{class_extern_ref_symbol}{Extern\+Ref\+Symbol}} $\ast$sym) const
+\begin{DoxyCompactList}\small\item\em Convert an {\itshape external} {\itshape reference} to the referenced function. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_scope_internal_a6009aeaf0d3973344438fb412adccd00}{build\+Variable\+Name}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&pc, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct, int4 \&index, uint4 flags) const
+\begin{DoxyCompactList}\small\item\em Given an address and data-\/type, build a suitable generic symbol name. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_scope_internal_a17225ae39210e0dbf1efb1a3ee847d72}{build\+Undefined\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Build a formal {\bfseries{undefined}} name, used internally when a \mbox{\hyperlink{class_symbol}{Symbol}} is not given a name. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_scope_internal_a193e6fb792e7cad6e451c8ecf2f7e589}{make\+Name\+Unique}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Produce a version of the given symbol name that won\textquotesingle{}t collide with other names in {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_af73cb738b4a29cf9aa076ce382ff110f}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Write out {\bfseries{this}} as a $<$scope$>$ X\+ML tag. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_ad79bd78299b2bea6c0f4221682e81b07}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}} from a $<$scope$>$ X\+ML tag. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_aac820e63b0d1739b9f14e15898fc9a9e}{print\+Entries}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Dump a description of all \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} objects to a stream. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_scope_internal_a4ccbbc37afa4eee7c6cce98dbd3a5bff}{get\+Category\+Size}} (int4 cat) const
+\begin{DoxyCompactList}\small\item\em Get the number of Symbols in the given category. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ \mbox{\hyperlink{class_scope_internal_af0414fde624b56947bfa25863ea1a01e}{get\+Category\+Symbol}} (int4 cat, int4 ind) const
+\begin{DoxyCompactList}\small\item\em Retrieve a \mbox{\hyperlink{class_symbol}{Symbol}} by index within a specific {\itshape category}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_scope_internal_aee7ec7a7253a5cdcfa61b88f01e9918d}{set\+Category}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, int4 cat, int4 ind)
+\begin{DoxyCompactList}\small\item\em Set the {\itshape category} and index for the given \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_scope_internal_adf1804d94e0238692125668e0813ac94}{save\+Path\+Xml}} (ostream \&s, const vector$<$ string $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Save a path with $<$val$>$ tags. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_scope_internal_a45de50d5d7b6ab09d72cbf5861f50b3f}{restore\+Path\+Xml}} (vector$<$ string $>$ \&vec, const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore path from $<$val$>$ tags. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_scope_internal_af252bcb614abeea3af1750442087304a}{add\+Symbol\+Internal}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym)
+\begin{DoxyCompactList}\small\item\em Put a \mbox{\hyperlink{class_symbol}{Symbol}} into the name map. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_a3b6e20fcb0624056020f2fc20d0a06ee}{add\+Map\+Internal}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, uint4 exfl, const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 off, int4 sz, const \mbox{\hyperlink{class_range_list}{Range\+List}} \&uselim)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} for a \mbox{\hyperlink{class_symbol}{Symbol}} given a memory range. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ \mbox{\hyperlink{class_scope_internal_abd7bd6f565efa0e9eb5a7415fab0fca5}{add\+Dynamic\+Map\+Internal}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, uint4 exfl, uint8 hash, int4 off, int4 sz, const \mbox{\hyperlink{class_range_list}{Range\+List}} \&uselim)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} for a \mbox{\hyperlink{class_symbol}{Symbol}} given a dynamic hash. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{database_8hh_a6ed1db9b39a7f86a7a00b392bbe3f0d1}{Symbol\+Name\+Tree}} \mbox{\hyperlink{class_scope_internal_ad4084595095b578e1c8fd25301ffb02d}{nametree}}
+\begin{DoxyCompactList}\small\item\em The set of \mbox{\hyperlink{class_symbol}{Symbol}} objects, sorted by name. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}{Entry\+Map}} $\ast$ $>$ \mbox{\hyperlink{class_scope_internal_ab5658fe9f8073010df73298690099872}{maptable}}
+\begin{DoxyCompactList}\small\item\em Rangemaps of \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}, one map for each address space. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ $>$ $>$ \mbox{\hyperlink{class_scope_internal_a52896f135c4c695914fba0e28d198308}{category}}
+\begin{DoxyCompactList}\small\item\em References to \mbox{\hyperlink{class_symbol}{Symbol}} objects organized by category. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$ \mbox{\hyperlink{class_scope_internal_a74bb56d748daae518b88b73d8f687d75}{dynamicentry}}
+\begin{DoxyCompactList}\small\item\em Dynamic symbol entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An in-\/memory implementation of the \mbox{\hyperlink{class_scope}{Scope}} interface. 
+
+This can act as a stand-\/alone \mbox{\hyperlink{class_scope}{Scope}} object or serve as an in-\/memory cache for another implementation. This implements a {\bfseries{nametree}}, which is a a set of \mbox{\hyperlink{class_symbol}{Symbol}} objects (the set owns the \mbox{\hyperlink{class_symbol}{Symbol}} objects). It also implements a {\bfseries{maptable}}, which is a list of rangemaps that own the \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} objects. 
+
+Definition at line 701 of file database.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_scope_internal_af6d824ff10ab3f9afcdfc1ffb206227b}\label{class_scope_internal_af6d824ff10ab3f9afcdfc1ffb206227b}} 
+\index{ScopeInternal@{ScopeInternal}!ScopeInternal@{ScopeInternal}}
+\index{ScopeInternal@{ScopeInternal}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{ScopeInternal()}{ScopeInternal()}}
+{\footnotesize\ttfamily Scope\+Internal\+::\+Scope\+Internal (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Construct the \mbox{\hyperlink{class_scope}{Scope}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the \mbox{\hyperlink{class_scope}{Scope}} \\
+\hline
+{\em g} & is the \mbox{\hyperlink{class_architecture}{Architecture}} it belongs to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1590 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_af6d824ff10ab3f9afcdfc1ffb206227b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a176aa80371fedd10ec46d43667a44420}\label{class_scope_internal_a176aa80371fedd10ec46d43667a44420}} 
+\index{ScopeInternal@{ScopeInternal}!````~ScopeInternal@{$\sim$ScopeInternal}}
+\index{````~ScopeInternal@{$\sim$ScopeInternal}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{$\sim$ScopeInternal()}{~ScopeInternal()}}
+{\footnotesize\ttfamily Scope\+Internal\+::$\sim$\+Scope\+Internal (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 1598 of file database.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scope_internal_abd7bd6f565efa0e9eb5a7415fab0fca5}\label{class_scope_internal_abd7bd6f565efa0e9eb5a7415fab0fca5}} 
+\index{ScopeInternal@{ScopeInternal}!addDynamicMapInternal@{addDynamicMapInternal}}
+\index{addDynamicMapInternal@{addDynamicMapInternal}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{addDynamicMapInternal()}{addDynamicMapInternal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::add\+Dynamic\+Map\+Internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{uint4}]{exfl,  }\item[{uint8}]{hash,  }\item[{int4}]{off,  }\item[{int4}]{sz,  }\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{uselim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Create a new \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} for a \mbox{\hyperlink{class_symbol}{Symbol}} given a dynamic hash. 
+
+The \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} is specified in terms of a {\bfseries{hash}} and {\bfseries{usepoint}}, which describe how to find the temporary \mbox{\hyperlink{class_varnode}{Varnode}} holding the symbol value. 
+\begin{DoxyParams}{Parameters}
+{\em sym} & is the given \mbox{\hyperlink{class_symbol}{Symbol}} being mapped \\
+\hline
+{\em exfl} & are any boolean \mbox{\hyperlink{class_varnode}{Varnode}} properties \\
+\hline
+{\em hash} & is the given dynamic hash \\
+\hline
+{\em off} & is the byte offset of the new \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} (relative to the whole \mbox{\hyperlink{class_symbol}{Symbol}}) \\
+\hline
+{\em sz} & is the number of bytes occupied by the \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+{\em uselim} & is the given {\bfseries{usepoint}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the newly created \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a5d3b5f792b07b023d43309472cd6f4d9}{Scope}}.
+
+
+
+Definition at line 1522 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_a3b6e20fcb0624056020f2fc20d0a06ee}\label{class_scope_internal_a3b6e20fcb0624056020f2fc20d0a06ee}} 
+\index{ScopeInternal@{ScopeInternal}!addMapInternal@{addMapInternal}}
+\index{addMapInternal@{addMapInternal}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{addMapInternal()}{addMapInternal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::add\+Map\+Internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{uint4}]{exfl,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{off,  }\item[{int4}]{sz,  }\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{uselim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Create a new \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} for a \mbox{\hyperlink{class_symbol}{Symbol}} given a memory range. 
+
+The \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} is specified in terms of a memory range and {\bfseries{usepoint}} 
+\begin{DoxyParams}{Parameters}
+{\em sym} & is the given \mbox{\hyperlink{class_symbol}{Symbol}} being mapped \\
+\hline
+{\em exfl} & are any boolean \mbox{\hyperlink{class_varnode}{Varnode}} properties specific to the memory range \\
+\hline
+{\em addr} & is the starting address of the given memory range \\
+\hline
+{\em off} & is the byte offset of the new \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} (relative to the whole \mbox{\hyperlink{class_symbol}{Symbol}}) \\
+\hline
+{\em sz} & is the number of bytes in the range \\
+\hline
+{\em uselim} & is the given {\bfseries{usepoint}} (which may be {\itshape invalid}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the newly created \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_aec0451f131ea214a174e00a434be36e9}{Scope}}.
+
+
+
+Definition at line 1496 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a3b6e20fcb0624056020f2fc20d0a06ee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_af252bcb614abeea3af1750442087304a}\label{class_scope_internal_af252bcb614abeea3af1750442087304a}} 
+\index{ScopeInternal@{ScopeInternal}!addSymbolInternal@{addSymbolInternal}}
+\index{addSymbolInternal@{addSymbolInternal}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{addSymbolInternal()}{addSymbolInternal()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::add\+Symbol\+Internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Put a \mbox{\hyperlink{class_symbol}{Symbol}} into the name map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sym} & is the preconstructed \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_scope_a66d3198f4bd28cf9e8a2a6bc00d065d8}{Scope}}.
+
+
+
+Definition at line 1469 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_af252bcb614abeea3af1750442087304a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_ace6700a82166765cf943bb95f1efeb10}\label{class_scope_internal_ace6700a82166765cf943bb95f1efeb10}} 
+\index{ScopeInternal@{ScopeInternal}!begin@{begin}}
+\index{begin@{begin}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map_iterator}{Map\+Iterator}} Scope\+Internal\+::begin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Beginning iterator to mapped Symbol\+Entrys. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a054e7b7c470035be94e1e4229ff188d4}{Scope}}.
+
+
+
+Definition at line 1532 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_a3e1111265c90754ecafd2331f9c7a684}\label{class_scope_internal_a3e1111265c90754ecafd2331f9c7a684}} 
+\index{ScopeInternal@{ScopeInternal}!beginDynamic@{beginDynamic}}
+\index{beginDynamic@{beginDynamic}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{beginDynamic()}{beginDynamic()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::const\+\_\+iterator Scope\+Internal\+::begin\+Dynamic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Beginning iterator to dynamic Symbol\+Entrys. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_aab0f92c9d85a20b77b562e5a499b9e6d}{Scope}}.
+
+
+
+Definition at line 1564 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a3e1111265c90754ecafd2331f9c7a684_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_afc5849bd91bd3eb1aa65900888317f98}\label{class_scope_internal_afc5849bd91bd3eb1aa65900888317f98}} 
+\index{ScopeInternal@{ScopeInternal}!beginDynamic@{beginDynamic}}
+\index{beginDynamic@{beginDynamic}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{beginDynamic()}{beginDynamic()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::iterator Scope\+Internal\+::begin\+Dynamic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Beginning iterator to dynamic Symbol\+Entrys. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a883ad2607f2c7859b49b45100c2c0011}{Scope}}.
+
+
+
+Definition at line 1576 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_a17225ae39210e0dbf1efb1a3ee847d72}\label{class_scope_internal_a17225ae39210e0dbf1efb1a3ee847d72}} 
+\index{ScopeInternal@{ScopeInternal}!buildUndefinedName@{buildUndefinedName}}
+\index{buildUndefinedName@{buildUndefinedName}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{buildUndefinedName()}{buildUndefinedName()}}
+{\footnotesize\ttfamily string Scope\+Internal\+::build\+Undefined\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Build a formal {\bfseries{undefined}} name, used internally when a \mbox{\hyperlink{class_symbol}{Symbol}} is not given a name. 
+
+\begin{DoxyReturn}{Returns}
+a special internal name that won\textquotesingle{}t collide with other names in {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_ac47d5c1c949be84a27a138be0febacb2}{Scope}}.
+
+
+
+Definition at line 2134 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a17225ae39210e0dbf1efb1a3ee847d72_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a6009aeaf0d3973344438fb412adccd00}\label{class_scope_internal_a6009aeaf0d3973344438fb412adccd00}} 
+\index{ScopeInternal@{ScopeInternal}!buildVariableName@{buildVariableName}}
+\index{buildVariableName@{buildVariableName}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{buildVariableName()}{buildVariableName()}}
+{\footnotesize\ttfamily string Scope\+Internal\+::build\+Variable\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{pc,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct,  }\item[{int4 \&}]{index,  }\item[{uint4}]{flags }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Given an address and data-\/type, build a suitable generic symbol name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+{\em pc} & is the address at which the name is getting used \\
+\hline
+{\em ct} & is a data-\/type used to inform the name \\
+\hline
+{\em index} & is a reference to an index used to make the name unique, which will be updated \\
+\hline
+{\em flags} & are boolean properties of the variable we need the name for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new variable name 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a925baecb33b6f0d9212e42c1b48a64ba}{Scope}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_scope_local_a7c86528490f519a64d44ae6dc8438393}{Scope\+Local}}.
+
+
+
+Definition at line 2046 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a6009aeaf0d3973344438fb412adccd00_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a6009aeaf0d3973344438fb412adccd00_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a7093bf1f5daeac84fc971fc6ab352224}\label{class_scope_internal_a7093bf1f5daeac84fc971fc6ab352224}} 
+\index{ScopeInternal@{ScopeInternal}!categorySanity@{categorySanity}}
+\index{categorySanity@{categorySanity}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{categorySanity()}{categorySanity()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::category\+Sanity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make sure \mbox{\hyperlink{class_symbol}{Symbol}} categories are sane. 
+
+Look for N\+U\+LL entries in the category tables. If there are, clear out the entire category, marking all symbols as uncategorized 
+
+Definition at line 1627 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a7093bf1f5daeac84fc971fc6ab352224_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a7093bf1f5daeac84fc971fc6ab352224_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a3d5c9c8e68da7f36ae7e0e228b4734d2}\label{class_scope_internal_a3d5c9c8e68da7f36ae7e0e228b4734d2}} 
+\index{ScopeInternal@{ScopeInternal}!clear@{clear}}
+\index{clear@{clear}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear all symbols from {\bfseries{this}} scope. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a9bfa2b0a98ba3ceeafd5a1e7ad2e2c21}{Scope}}.
+
+
+
+Definition at line 1613 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a3d5c9c8e68da7f36ae7e0e228b4734d2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_scope_internal_a3d5c9c8e68da7f36ae7e0e228b4734d2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a8c42cfc4ea5d359bd11d1251ef8d21d7}\label{class_scope_internal_a8c42cfc4ea5d359bd11d1251ef8d21d7}} 
+\index{ScopeInternal@{ScopeInternal}!clearAttribute@{clearAttribute}}
+\index{clearAttribute@{clearAttribute}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{clearAttribute()}{clearAttribute()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::clear\+Attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{uint4}]{attr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear boolean \mbox{\hyperlink{class_varnode}{Varnode}} properties on a \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_afb57165fd0d3c182e18ea24e7231975d}{Scope}}.
+
+
+
+Definition at line 1813 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a8c42cfc4ea5d359bd11d1251ef8d21d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a4139d0dd5d98849bd42291246cdb2f9a}\label{class_scope_internal_a4139d0dd5d98849bd42291246cdb2f9a}} 
+\index{ScopeInternal@{ScopeInternal}!clearCategory@{clearCategory}}
+\index{clearCategory@{clearCategory}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{clearCategory()}{clearCategory()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::clear\+Category (\begin{DoxyParamCaption}\item[{int4}]{cat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear all symbols of the given category from {\bfseries{this}} scope. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_ab3c8275b6500a9cc620cc31f32ed267e}{Scope}}.
+
+
+
+Definition at line 1655 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a4139d0dd5d98849bd42291246cdb2f9a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_ab95e3712f0b536e014bfb3c8d3d2287a}\label{class_scope_internal_ab95e3712f0b536e014bfb3c8d3d2287a}} 
+\index{ScopeInternal@{ScopeInternal}!clearUnlocked@{clearUnlocked}}
+\index{clearUnlocked@{clearUnlocked}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{clearUnlocked()}{clearUnlocked()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::clear\+Unlocked (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear all unlocked symbols from {\bfseries{this}} scope. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_ac7d58385a87dca33d128300c666e5064}{Scope}}.
+
+
+
+Definition at line 1677 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ab95e3712f0b536e014bfb3c8d3d2287a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ab95e3712f0b536e014bfb3c8d3d2287a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_ac73cc9a432d1e7a383c9758486ffe58d}\label{class_scope_internal_ac73cc9a432d1e7a383c9758486ffe58d}} 
+\index{ScopeInternal@{ScopeInternal}!clearUnlockedCategory@{clearUnlockedCategory}}
+\index{clearUnlockedCategory@{clearUnlockedCategory}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{clearUnlockedCategory()}{clearUnlockedCategory()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::clear\+Unlocked\+Category (\begin{DoxyParamCaption}\item[{int4}]{cat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear unlocked symbols of the given category from {\bfseries{this}} scope. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a15fc66a463ca11a4c533991cea0639c8}{Scope}}.
+
+
+
+Definition at line 1699 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ac73cc9a432d1e7a383c9758486ffe58d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ac73cc9a432d1e7a383c9758486ffe58d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a47df37673b1cea67ac1b4980037eafe0}\label{class_scope_internal_a47df37673b1cea67ac1b4980037eafe0}} 
+\index{ScopeInternal@{ScopeInternal}!end@{end}}
+\index{end@{end}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map_iterator}{Map\+Iterator}} Scope\+Internal\+::end (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Ending iterator to mapped Symbol\+Entrys. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a186b8c11ebef0f2d3838bfe1e46b6db6}{Scope}}.
+
+
+
+Definition at line 1557 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a47df37673b1cea67ac1b4980037eafe0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_ad1690a1aacfecff51b6d5832cccafd95}\label{class_scope_internal_ad1690a1aacfecff51b6d5832cccafd95}} 
+\index{ScopeInternal@{ScopeInternal}!endDynamic@{endDynamic}}
+\index{endDynamic@{endDynamic}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{endDynamic()}{endDynamic()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::const\+\_\+iterator Scope\+Internal\+::end\+Dynamic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Ending iterator to dynamic Symbol\+Entrys. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_add98c4a0c13d3497f82d0a5c2353b578}{Scope}}.
+
+
+
+Definition at line 1570 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ad1690a1aacfecff51b6d5832cccafd95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a705f7003cbadcddbb621b951573c61e7}\label{class_scope_internal_a705f7003cbadcddbb621b951573c61e7}} 
+\index{ScopeInternal@{ScopeInternal}!endDynamic@{endDynamic}}
+\index{endDynamic@{endDynamic}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{endDynamic()}{endDynamic()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $>$\+::iterator Scope\+Internal\+::end\+Dynamic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Ending iterator to dynamic Symbol\+Entrys. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a37c892157b9de825a3b475581fbf4019}{Scope}}.
+
+
+
+Definition at line 1582 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_ac256d087718065edb1c3a96fbfdf7a33}\label{class_scope_internal_ac256d087718065edb1c3a96fbfdf7a33}} 
+\index{ScopeInternal@{ScopeInternal}!findAddr@{findAddr}}
+\index{findAddr@{findAddr}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findAddr()}{findAddr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::find\+Addr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find a \mbox{\hyperlink{class_symbol}{Symbol}} at a given address and {\bfseries{usepoint}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+{\em usepoint} & is the point at which the \mbox{\hyperlink{class_symbol}{Symbol}} is accessed (may be {\itshape invalid}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_aae4ea61f9a55ddfc9defd8548654c8e5}{Scope}}.
+
+
+
+Definition at line 1827 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ac256d087718065edb1c3a96fbfdf7a33_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ac256d087718065edb1c3a96fbfdf7a33_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a922323cc754778858646c2bb82b69e17}\label{class_scope_internal_a922323cc754778858646c2bb82b69e17}} 
+\index{ScopeInternal@{ScopeInternal}!findAfter@{findAfter}}
+\index{findAfter@{findAfter}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findAfter()}{findAfter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::find\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find first \mbox{\hyperlink{class_symbol}{Symbol}} after (but not containing) a given address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} occurring immediately after or N\+U\+LL if none exists 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a543041620f4398f00d2cc78edc1901b4}{Scope}}.
+
+
+
+Definition at line 2021 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a922323cc754778858646c2bb82b69e17_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a28ae6dd136a8b285c667206417ec14a5}\label{class_scope_internal_a28ae6dd136a8b285c667206417ec14a5}} 
+\index{ScopeInternal@{ScopeInternal}!findBefore@{findBefore}}
+\index{findBefore@{findBefore}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findBefore()}{findBefore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::find\+Before (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find first \mbox{\hyperlink{class_symbol}{Symbol}} before (but not containing) a given address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} occurring immediately before or N\+U\+LL if none exists 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a1c2e83ba66c61b449d85b492b1539625}{Scope}}.
+
+
+
+Definition at line 2008 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a28ae6dd136a8b285c667206417ec14a5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a06599bc2d7c1ccfd18f0e91a5ee956ca}\label{class_scope_internal_a06599bc2d7c1ccfd18f0e91a5ee956ca}} 
+\index{ScopeInternal@{ScopeInternal}!findByName@{findByName}}
+\index{findByName@{findByName}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findByName()}{findByName()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::find\+By\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{name,  }\item[{vector$<$ \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ $>$ \&}]{res }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find a \mbox{\hyperlink{class_symbol}{Symbol}} by name within {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. 
+
+If there are multiple Symbols with the same name, all are passed back. 
+\begin{DoxyParams}{Parameters}
+{\em name} & is the name to search for \\
+\hline
+{\em res} & will contain any matching Symbols \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_scope_a979222d28577e6e8d07e35f12d38bff7}{Scope}}.
+
+
+
+Definition at line 2034 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_a27135ecccccc6784b292a354d6801289}\label{class_scope_internal_a27135ecccccc6784b292a354d6801289}} 
+\index{ScopeInternal@{ScopeInternal}!findClosestFit@{findClosestFit}}
+\index{findClosestFit@{findClosestFit}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findClosestFit()}{findClosestFit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::find\+Closest\+Fit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{size,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find \mbox{\hyperlink{class_symbol}{Symbol}} which is the closest fit to the given memory range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the starting address of the given memory range \\
+\hline
+{\em size} & is the number of bytes in the range \\
+\hline
+{\em usepoint} & is the point at which the \mbox{\hyperlink{class_symbol}{Symbol}} is accessed (may be {\itshape invalid}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_ab679fe786be2fb949af78054cb2041a8}{Scope}}.
+
+
+
+Definition at line 1887 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a27135ecccccc6784b292a354d6801289_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a27135ecccccc6784b292a354d6801289_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a602029280a3bc0dac8aac016ec934d5b}\label{class_scope_internal_a602029280a3bc0dac8aac016ec934d5b}} 
+\index{ScopeInternal@{ScopeInternal}!findCodeLabel@{findCodeLabel}}
+\index{findCodeLabel@{findCodeLabel}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findCodeLabel()}{findCodeLabel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_lab_symbol}{Lab\+Symbol}} $\ast$ Scope\+Internal\+::find\+Code\+Label (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find a label \mbox{\hyperlink{class_symbol}{Symbol}} at the given address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_lab_symbol}{Lab\+Symbol}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_af4bac52b9d64974b87432c0379cc38c6}{Scope}}.
+
+
+
+Definition at line 1971 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a602029280a3bc0dac8aac016ec934d5b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a602029280a3bc0dac8aac016ec934d5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_ae1eedf2f27fd8b0a7431568c4e4e2994}\label{class_scope_internal_ae1eedf2f27fd8b0a7431568c4e4e2994}} 
+\index{ScopeInternal@{ScopeInternal}!findContainer@{findContainer}}
+\index{findContainer@{findContainer}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findContainer()}{findContainer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::find\+Container (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{size,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the smallest \mbox{\hyperlink{class_symbol}{Symbol}} containing the given memory range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the starting address of the given memory range \\
+\hline
+{\em size} & is the number of bytes in the range \\
+\hline
+{\em usepoint} & is the point at which the \mbox{\hyperlink{class_symbol}{Symbol}} is accessed (may be {\itshape invalid}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a609fc1ef47d047717da65827e025cfdd}{Scope}}.
+
+
+
+Definition at line 1853 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ae1eedf2f27fd8b0a7431568c4e4e2994_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ae1eedf2f27fd8b0a7431568c4e4e2994_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a7e440965cfb5642bcc751a622e5ec58d}\label{class_scope_internal_a7e440965cfb5642bcc751a622e5ec58d}} 
+\index{ScopeInternal@{ScopeInternal}!findExternalRef@{findExternalRef}}
+\index{findExternalRef@{findExternalRef}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findExternalRef()}{findExternalRef()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_extern_ref_symbol}{Extern\+Ref\+Symbol}} $\ast$ Scope\+Internal\+::find\+External\+Ref (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find an {\itshape external} {\itshape reference} at the given address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_extern_ref_symbol}{Extern\+Ref\+Symbol}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_af69e0f77b621a3ba6436f8a1c0010d1c}{Scope}}.
+
+
+
+Definition at line 1945 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a7e440965cfb5642bcc751a622e5ec58d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a7e440965cfb5642bcc751a622e5ec58d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a03a52c629c51ad660eec8d10cf7f92aa}\label{class_scope_internal_a03a52c629c51ad660eec8d10cf7f92aa}} 
+\index{ScopeInternal@{ScopeInternal}!findFunction@{findFunction}}
+\index{findFunction@{findFunction}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findFunction()}{findFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$ Scope\+Internal\+::find\+Function (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the function starting at the given address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given starting address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_funcdata}{Funcdata}} object or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a2c621196f6fdb4b8ce4ee1f3dc953107}{Scope}}.
+
+
+
+Definition at line 1924 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a03a52c629c51ad660eec8d10cf7f92aa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a03a52c629c51ad660eec8d10cf7f92aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a3c241113085be88a74f73d2431de72f3}\label{class_scope_internal_a3c241113085be88a74f73d2431de72f3}} 
+\index{ScopeInternal@{ScopeInternal}!findOverlap@{findOverlap}}
+\index{findOverlap@{findOverlap}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{findOverlap()}{findOverlap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} $\ast$ Scope\+Internal\+::find\+Overlap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{size }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find first \mbox{\hyperlink{class_symbol}{Symbol}} overlapping the given memory range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the starting address of the given range \\
+\hline
+{\em size} & is the number of bytes in the range \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an overlapping \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} or N\+U\+LL if none exists 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a3395b6194a59515caa1ede92fd6ac511}{Scope}}.
+
+
+
+Definition at line 1995 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a3c241113085be88a74f73d2431de72f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a3c241113085be88a74f73d2431de72f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a4ccbbc37afa4eee7c6cce98dbd3a5bff}\label{class_scope_internal_a4ccbbc37afa4eee7c6cce98dbd3a5bff}} 
+\index{ScopeInternal@{ScopeInternal}!getCategorySize@{getCategorySize}}
+\index{getCategorySize@{getCategorySize}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{getCategorySize()}{getCategorySize()}}
+{\footnotesize\ttfamily int4 Scope\+Internal\+::get\+Category\+Size (\begin{DoxyParamCaption}\item[{int4}]{cat }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the number of Symbols in the given category. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cat} & is the \mbox{\hyperlink{class_symbol}{Symbol}} {\itshape category} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number in that {\itshape category} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a909e15a7a96c9b402855b56b6bfdbd9f}{Scope}}.
+
+
+
+Definition at line 2423 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_af0414fde624b56947bfa25863ea1a01e}\label{class_scope_internal_af0414fde624b56947bfa25863ea1a01e}} 
+\index{ScopeInternal@{ScopeInternal}!getCategorySymbol@{getCategorySymbol}}
+\index{getCategorySymbol@{getCategorySymbol}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{getCategorySymbol()}{getCategorySymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ Scope\+Internal\+::get\+Category\+Symbol (\begin{DoxyParamCaption}\item[{int4}]{cat,  }\item[{int4}]{ind }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Retrieve a \mbox{\hyperlink{class_symbol}{Symbol}} by index within a specific {\itshape category}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cat} & is the \mbox{\hyperlink{class_symbol}{Symbol}} {\itshape category} \\
+\hline
+{\em ind} & is the index (within the category) of the \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the indicated \mbox{\hyperlink{class_symbol}{Symbol}} or N\+U\+LL if no \mbox{\hyperlink{class_symbol}{Symbol}} with that index exists 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a491a168d7ea71f00da419dd864901ccb}{Scope}}.
+
+
+
+Definition at line 2431 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_a193e6fb792e7cad6e451c8ecf2f7e589}\label{class_scope_internal_a193e6fb792e7cad6e451c8ecf2f7e589}} 
+\index{ScopeInternal@{ScopeInternal}!makeNameUnique@{makeNameUnique}}
+\index{makeNameUnique@{makeNameUnique}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{makeNameUnique()}{makeNameUnique()}}
+{\footnotesize\ttfamily string Scope\+Internal\+::make\+Name\+Unique (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Produce a version of the given symbol name that won\textquotesingle{}t collide with other names in {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the given name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a unique version of the name 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_a2e0d945c44f4874743496b2814fbb631}{Scope}}.
+
+
+
+Definition at line 2167 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a193e6fb792e7cad6e451c8ecf2f7e589_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_aac820e63b0d1739b9f14e15898fc9a9e}\label{class_scope_internal_aac820e63b0d1739b9f14e15898fc9a9e}} 
+\index{ScopeInternal@{ScopeInternal}!printEntries@{printEntries}}
+\index{printEntries@{printEntries}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{printEntries()}{printEntries()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::print\+Entries (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Dump a description of all \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} objects to a stream. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a7d67a1b9e60078023b508dd3cbe4447d}{Scope}}.
+
+
+
+Definition at line 2408 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_aac820e63b0d1739b9f14e15898fc9a9e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_aac820e63b0d1739b9f14e15898fc9a9e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a77c1ceb048a903b047c1e52108890979}\label{class_scope_internal_a77c1ceb048a903b047c1e52108890979}} 
+\index{ScopeInternal@{ScopeInternal}!removeSymbol@{removeSymbol}}
+\index{removeSymbol@{removeSymbol}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{removeSymbol()}{removeSymbol()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::remove\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Remove the given \mbox{\hyperlink{class_symbol}{Symbol}} from {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a0172591847f6a1b338ad324f28732f7f}{Scope}}.
+
+
+
+Definition at line 1739 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a77c1ceb048a903b047c1e52108890979_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a77c1ceb048a903b047c1e52108890979_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_ada63ff8f4efed6fd4605441a0150ae6f}\label{class_scope_internal_ada63ff8f4efed6fd4605441a0150ae6f}} 
+\index{ScopeInternal@{ScopeInternal}!renameSymbol@{renameSymbol}}
+\index{renameSymbol@{renameSymbol}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{renameSymbol()}{renameSymbol()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::rename\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{const string \&}]{newname }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Rename a \mbox{\hyperlink{class_symbol}{Symbol}} within {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_ab576de2e768be9507ee03faa163c1ddf}{Scope}}.
+
+
+
+Definition at line 1765 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ada63ff8f4efed6fd4605441a0150ae6f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_acf54c42b2ce7edfa37f9bf1223bc2840}\label{class_scope_internal_acf54c42b2ce7edfa37f9bf1223bc2840}} 
+\index{ScopeInternal@{ScopeInternal}!resolveExternalRefFunction@{resolveExternalRefFunction}}
+\index{resolveExternalRefFunction@{resolveExternalRefFunction}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{resolveExternalRefFunction()}{resolveExternalRefFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$ Scope\+Internal\+::resolve\+External\+Ref\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_extern_ref_symbol}{Extern\+Ref\+Symbol}} $\ast$}]{sym }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Convert an {\itshape external} {\itshape reference} to the referenced function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sym} & is the \mbox{\hyperlink{class_symbol}{Symbol}} marking the external reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the underlying \mbox{\hyperlink{class_funcdata}{Funcdata}} object or N\+U\+LL if none exists 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_scope_af4c45025894f1996ef0f3556752cd997}{Scope}}.
+
+
+
+Definition at line 1965 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_acf54c42b2ce7edfa37f9bf1223bc2840_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a45de50d5d7b6ab09d72cbf5861f50b3f}\label{class_scope_internal_a45de50d5d7b6ab09d72cbf5861f50b3f}} 
+\index{ScopeInternal@{ScopeInternal}!restorePathXml@{restorePathXml}}
+\index{restorePathXml@{restorePathXml}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{restorePathXml()}{restorePathXml()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::restore\+Path\+Xml (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{vec,  }\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Restore path from $<$val$>$ tags. 
+
+Given an element, parse all of its children (as $<$val$>$ tags) and put each of their content into a string array. 
+\begin{DoxyParams}{Parameters}
+{\em vec} & will hold the resulting string array \\
+\hline
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2247 of file database.\+cc.
+
+\mbox{\Hypertarget{class_scope_internal_ad79bd78299b2bea6c0f4221682e81b07}\label{class_scope_internal_ad79bd78299b2bea6c0f4221682e81b07}} 
+\index{ScopeInternal@{ScopeInternal}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}} from a $<$scope$>$ X\+ML tag. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_ad509027899b5f6af11f499f722d61f66}{Scope}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_scope_local_a5eeb1756bc706b8d5211fda106ad82ae}{Scope\+Local}}.
+
+
+
+Definition at line 2362 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ad79bd78299b2bea6c0f4221682e81b07_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_ad79bd78299b2bea6c0f4221682e81b07_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a9711a8084e1ac5c4417a4452c96a36b7}\label{class_scope_internal_a9711a8084e1ac5c4417a4452c96a36b7}} 
+\index{ScopeInternal@{ScopeInternal}!retypeSymbol@{retypeSymbol}}
+\index{retypeSymbol@{retypeSymbol}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{retypeSymbol()}{retypeSymbol()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::retype\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Change the data-\/type of a \mbox{\hyperlink{class_symbol}{Symbol}} within {\bfseries{this}} \mbox{\hyperlink{class_scope}{Scope}}. 
+
+If the size of the \mbox{\hyperlink{class_symbol}{Symbol}} changes, any mapping (\mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}) is adjusted 
+\begin{DoxyParams}{Parameters}
+{\em sym} & is the given \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+{\em ct} & is the new data-\/type \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_scope_afeef6a133b07fa176c08b67c44064e69}{Scope}}.
+
+
+
+Definition at line 1774 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a9711a8084e1ac5c4417a4452c96a36b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a9711a8084e1ac5c4417a4452c96a36b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_adf1804d94e0238692125668e0813ac94}\label{class_scope_internal_adf1804d94e0238692125668e0813ac94}} 
+\index{ScopeInternal@{ScopeInternal}!savePathXml@{savePathXml}}
+\index{savePathXml@{savePathXml}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{savePathXml()}{savePathXml()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::save\+Path\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{const vector$<$ string $>$ \&}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Save a path with $<$val$>$ tags. 
+
+Given a list of name strings, write out each one in an X\+ML $<$val$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+{\em vec} & is the list of names \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2233 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_scope_internal_adf1804d94e0238692125668e0813ac94_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_adf1804d94e0238692125668e0813ac94_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_af73cb738b4a29cf9aa076ce382ff110f}\label{class_scope_internal_af73cb738b4a29cf9aa076ce382ff110f}} 
+\index{ScopeInternal@{ScopeInternal}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Write out {\bfseries{this}} as a $<$scope$>$ X\+ML tag. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a2583da1be37d68197dfbb0445fa1f3e0}{Scope}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_scope_local_a5ce828992aceb086c5bcc62d8cf2f3ae}{Scope\+Local}}.
+
+
+
+Definition at line 2257 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_af73cb738b4a29cf9aa076ce382ff110f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_scope_internal_af73cb738b4a29cf9aa076ce382ff110f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a320fb817d3062994cb994e38a45fc0e1}\label{class_scope_internal_a320fb817d3062994cb994e38a45fc0e1}} 
+\index{ScopeInternal@{ScopeInternal}!setAttribute@{setAttribute}}
+\index{setAttribute@{setAttribute}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{setAttribute()}{setAttribute()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::set\+Attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{uint4}]{attr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set boolean \mbox{\hyperlink{class_varnode}{Varnode}} properties on a \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_a7a49f329dcfe47129bf11acac543233e}{Scope}}.
+
+
+
+Definition at line 1805 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a320fb817d3062994cb994e38a45fc0e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_aee7ec7a7253a5cdcfa61b88f01e9918d}\label{class_scope_internal_aee7ec7a7253a5cdcfa61b88f01e9918d}} 
+\index{ScopeInternal@{ScopeInternal}!setCategory@{setCategory}}
+\index{setCategory@{setCategory}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{setCategory()}{setCategory()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::set\+Category (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{int4}]{cat,  }\item[{int4}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the {\itshape category} and index for the given \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sym} & is the given \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+{\em cat} & is the {\itshape category} to set for the \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+{\em ind} & is the index position to set (within the category) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_scope_ac807e11df36854d2f7983bdd6779e83a}{Scope}}.
+
+
+
+Definition at line 2441 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_aee7ec7a7253a5cdcfa61b88f01e9918d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_scope_internal_a4f5d61b1f41e067018e1cc4ecc044536}\label{class_scope_internal_a4f5d61b1f41e067018e1cc4ecc044536}} 
+\index{ScopeInternal@{ScopeInternal}!setDisplayFormat@{setDisplayFormat}}
+\index{setDisplayFormat@{setDisplayFormat}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{setDisplayFormat()}{setDisplayFormat()}}
+{\footnotesize\ttfamily void Scope\+Internal\+::set\+Display\+Format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{uint4}]{attr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the display format for a \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+
+
+Implements \mbox{\hyperlink{class_scope_ae799cc3171536b9ee10497631aea8c5b}{Scope}}.
+
+
+
+Definition at line 1821 of file database.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_scope_internal_a4f5d61b1f41e067018e1cc4ecc044536_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_scope_internal_a52896f135c4c695914fba0e28d198308}\label{class_scope_internal_a52896f135c4c695914fba0e28d198308}} 
+\index{ScopeInternal@{ScopeInternal}!category@{category}}
+\index{category@{category}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{category}{category}}
+{\footnotesize\ttfamily vector$<$vector$<$\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$$>$ $>$ Scope\+Internal\+::category\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+References to \mbox{\hyperlink{class_symbol}{Symbol}} objects organized by category. 
+
+
+
+Definition at line 712 of file database.\+hh.
+
+\mbox{\Hypertarget{class_scope_internal_a74bb56d748daae518b88b73d8f687d75}\label{class_scope_internal_a74bb56d748daae518b88b73d8f687d75}} 
+\index{ScopeInternal@{ScopeInternal}!dynamicentry@{dynamicentry}}
+\index{dynamicentry@{dynamicentry}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{dynamicentry}{dynamicentry}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}$>$ Scope\+Internal\+::dynamicentry\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Dynamic symbol entries. 
+
+
+
+Definition at line 713 of file database.\+hh.
+
+\mbox{\Hypertarget{class_scope_internal_ab5658fe9f8073010df73298690099872}\label{class_scope_internal_ab5658fe9f8073010df73298690099872}} 
+\index{ScopeInternal@{ScopeInternal}!maptable@{maptable}}
+\index{maptable@{maptable}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{maptable}{maptable}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{database_8hh_a44a8ea0c0009b316b2651d374e5d4260}{Entry\+Map}} $\ast$$>$ Scope\+Internal\+::maptable\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Rangemaps of \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}, one map for each address space. 
+
+
+
+Definition at line 711 of file database.\+hh.
+
+\mbox{\Hypertarget{class_scope_internal_ad4084595095b578e1c8fd25301ffb02d}\label{class_scope_internal_ad4084595095b578e1c8fd25301ffb02d}} 
+\index{ScopeInternal@{ScopeInternal}!nametree@{nametree}}
+\index{nametree@{nametree}!ScopeInternal@{ScopeInternal}}
+\subsubsection{\texorpdfstring{nametree}{nametree}}
+{\footnotesize\ttfamily \mbox{\hyperlink{database_8hh_a6ed1db9b39a7f86a7a00b392bbe3f0d1}{Symbol\+Name\+Tree}} Scope\+Internal\+::nametree\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The set of \mbox{\hyperlink{class_symbol}{Symbol}} objects, sorted by name. 
+
+
+
+Definition at line 710 of file database.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8hh}{database.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8cc}{database.\+cc}}\end{DoxyCompactItemize}

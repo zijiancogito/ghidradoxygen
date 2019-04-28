@@ -1,0 +1,103 @@
+.TH "BlockVarnode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockVarnode \- Helper class associating a \fBVarnode\fP with the block where it is defined\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <merge\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBset\fP (\fBVarnode\fP *v)"
+.br
+.RI "Set \fBthis\fP as representing the given \fBVarnode\fP\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBBlockVarnode\fP &op2) const"
+.br
+.RI "Comparator\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetVarnode\fP (void) const"
+.br
+.RI "Get the \fBVarnode\fP represented by \fBthis\fP\&. "
+.ti -1c
+.RI "int4 \fBgetIndex\fP (void) const"
+.br
+.RI "Get the \fBVarnode\fP's defining block index\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int4 \fBfindFront\fP (int4 blocknum, const vector< \fBBlockVarnode\fP > &list)"
+.br
+.RI "Find the first \fBVarnode\fP defined in the \fBBlockBasic\fP of the given index\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class associating a \fBVarnode\fP with the block where it is defined\&. 
+
+This class explicitly stores a \fBVarnode\fP with the index of the \fBBlockBasic\fP that defines it\&. If a \fBVarnode\fP does not have a defining \fBPcodeOp\fP it is assigned an index of 0\&. This facilitates quicker sorting of Varnodes based on their defining block\&. 
+.PP
+Definition at line 44 of file merge\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 BlockVarnode::findFront (int4 blocknum, const vector< \fBBlockVarnode\fP > & list)\fC [static]\fP"
+
+.PP
+Find the first \fBVarnode\fP defined in the \fBBlockBasic\fP of the given index\&. A \fBBlockVarnode\fP is identified from a sorted \fBlist\fP\&. The position of the first \fBBlockVarnode\fP in this list that has the given \fBBlockBasic\fP \fIindex\fP is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIblocknum\fP is the index of the \fBBlockBasic\fP to search for 
+.br
+\fIlist\fP is the sorted list of BlockVarnodes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the index of the \fBBlockVarnode\fP within the list or -1 if no \fBVarnode\fP in the block is found 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file merge\&.cc\&.
+.SS "int4 BlockVarnode::getIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBVarnode\fP's defining block index\&. 
+.PP
+Definition at line 51 of file merge\&.hh\&.
+.SS "\fBVarnode\fP* BlockVarnode::getVarnode (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBVarnode\fP represented by \fBthis\fP\&. 
+.PP
+Definition at line 50 of file merge\&.hh\&.
+.SS "bool BlockVarnode::operator< (const \fBBlockVarnode\fP & op2) const\fC [inline]\fP"
+
+.PP
+Comparator\&. 
+.PP
+Definition at line 49 of file merge\&.hh\&.
+.SS "void BlockVarnode::set (\fBVarnode\fP * v)"
+
+.PP
+Set \fBthis\fP as representing the given \fBVarnode\fP\&. This instance assumes the identity of the given \fBVarnode\fP and the defining index is cached to facilitate quick sorting\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP is the given \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file merge\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

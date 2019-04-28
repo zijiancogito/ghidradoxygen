@@ -1,0 +1,284 @@
+\hypertarget{class_unify_constraint}{}\section{Unify\+Constraint Class Reference}
+\label{class_unify_constraint}\index{UnifyConstraint@{UnifyConstraint}}
+
+
+{\ttfamily \#include $<$unify.\+hh$>$}
+
+
+
+Inheritance diagram for Unify\+Constraint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_unify_constraint__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_unify_constraint_a733f8ac84d286fed6cc06a0484db7296}{$\sim$\+Unify\+Constraint}} (void)
+\item 
+int4 \mbox{\hyperlink{class_unify_constraint_a049013abc1805120f71abef80bc6435a}{get\+Id}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_unify_constraint_a93c5666cbe0707cfb6aa40d284dca457}{get\+Max\+Num}} (void)
+\item 
+virtual \mbox{\hyperlink{class_unify_constraint}{Unify\+Constraint}} $\ast$ \mbox{\hyperlink{class_unify_constraint_a4f068343932637d355644bb21559aa12}{clone}} (void) const =0
+\item 
+virtual void \mbox{\hyperlink{class_unify_constraint_ac812e2cf68c95e8a5c0e7e8ac02f2fc2}{initialize}} (\mbox{\hyperlink{class_unify_state}{Unify\+State}} \&state)
+\item 
+virtual bool \mbox{\hyperlink{class_unify_constraint_ad9ab4ad91037f96bf803735d414d212d}{step}} (\mbox{\hyperlink{class_unify_state}{Unify\+State}} \&state)=0
+\item 
+virtual void \mbox{\hyperlink{class_unify_constraint_a5e1db6cd9dc1c2c22f6a98d5c1556e41}{build\+Traverse\+State}} (\mbox{\hyperlink{class_unify_state}{Unify\+State}} \&state)
+\item 
+virtual void \mbox{\hyperlink{class_unify_constraint_ae839484226265859ee04807fd7bb7775}{set\+Id}} (int4 \&id)
+\item 
+virtual void \mbox{\hyperlink{class_unify_constraint_acb83b6bea3b21e13054e72ac9cfaba0f}{collect\+Types}} (vector$<$ \mbox{\hyperlink{class_unify_datatype}{Unify\+Datatype}} $>$ \&typelist) const
+\item 
+virtual int4 \mbox{\hyperlink{class_unify_constraint_a44f0164f38ac1fdc44fc73ebe7678de1}{get\+Base\+Index}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_unify_constraint_a774f6a611a96384766cb8e8d8f5ff41f}{print}} (ostream \&s, \mbox{\hyperlink{class_unify_c_printer}{Unify\+C\+Printer}} \&printstate) const =0
+\item 
+virtual bool \mbox{\hyperlink{class_unify_constraint_a260263ddd2fea5ac847302d12feeb031}{is\+Dummy}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_unify_constraint_ab2ca6cad0ed83f5c765bd0ee8682ca36}{remove\+Dummy}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_unify_constraint}{Unify\+Constraint}} $\ast$ \mbox{\hyperlink{class_unify_constraint_ad437d193c74ae8e03077da359df718c2}{copyid}} (const \mbox{\hyperlink{class_unify_constraint}{Unify\+Constraint}} $\ast$op)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int4 \mbox{\hyperlink{class_unify_constraint_a0cda7b149850ec9d85684f1d626751c0}{uniqid}}
+\item 
+int4 \mbox{\hyperlink{class_unify_constraint_a9123065d84784017ba4e08a1bcc03450}{maxnum}}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_unify_constraint_a2131c775acfc52d54dfc7a22b4f538db}{Constraint\+Group}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 200 of file unify.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_unify_constraint_a733f8ac84d286fed6cc06a0484db7296}\label{class_unify_constraint_a733f8ac84d286fed6cc06a0484db7296}} 
+\index{UnifyConstraint@{UnifyConstraint}!````~UnifyConstraint@{$\sim$UnifyConstraint}}
+\index{````~UnifyConstraint@{$\sim$UnifyConstraint}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{$\sim$UnifyConstraint()}{~UnifyConstraint()}}
+{\footnotesize\ttfamily virtual Unify\+Constraint\+::$\sim$\+Unify\+Constraint (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 207 of file unify.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_unify_constraint_a5e1db6cd9dc1c2c22f6a98d5c1556e41}\label{class_unify_constraint_a5e1db6cd9dc1c2c22f6a98d5c1556e41}} 
+\index{UnifyConstraint@{UnifyConstraint}!buildTraverseState@{buildTraverseState}}
+\index{buildTraverseState@{buildTraverseState}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{buildTraverseState()}{buildTraverseState()}}
+{\footnotesize\ttfamily virtual void Unify\+Constraint\+::build\+Traverse\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_unify_state}{Unify\+State}} \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_constraint_or_a009ca281642d6e7949ee4b997f82e3df}{Constraint\+Or}}, \mbox{\hyperlink{class_constraint_group_a2dd52e0b06da735d9ce96f053dfb6bf2}{Constraint\+Group}}, and \mbox{\hyperlink{class_constraint_descend_a33fc5eaf61c61ab08d27dffe051dd2e6}{Constraint\+Descend}}.
+
+\mbox{\Hypertarget{class_unify_constraint_a4f068343932637d355644bb21559aa12}\label{class_unify_constraint_a4f068343932637d355644bb21559aa12}} 
+\index{UnifyConstraint@{UnifyConstraint}!clone@{clone}}
+\index{clone@{clone}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_unify_constraint}{Unify\+Constraint}}$\ast$ Unify\+Constraint\+::clone (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_constraint_set_opcode_a619038e1115459c881218dce94f186d8}{Constraint\+Set\+Opcode}}, \mbox{\hyperlink{class_constraint_remove_input_a619d3e7e57bb78322bbd889d123a5994}{Constraint\+Remove\+Input}}, \mbox{\hyperlink{class_constraint_set_input_const_val_ae54d77177a810e4d67b9d5c528860645}{Constraint\+Set\+Input\+Const\+Val}}, \mbox{\hyperlink{class_constraint_set_input_a354bb6ff80135e817248e1da6c14731f}{Constraint\+Set\+Input}}, \mbox{\hyperlink{class_constraint_new_unique_out_a5c430b42eee12168f0e542f4be6e766b}{Constraint\+New\+Unique\+Out}}, \mbox{\hyperlink{class_constraint_new_op_a5a9a1b594f9843f8365dfaaaa836675e}{Constraint\+New\+Op}}, \mbox{\hyperlink{class_constraint_or_ab5e39153f8f49fe816667d0f63848dbf}{Constraint\+Or}}, \mbox{\hyperlink{class_constraint_group_a7121c0ef41bb59e28305e5ddb3c80f35}{Constraint\+Group}}, \mbox{\hyperlink{class_constraint_const_compare_a6129d61238d6361ca597764c82e17f5a}{Constraint\+Const\+Compare}}, \mbox{\hyperlink{class_constraint_other_input_ab28910fd3c39f0badcb49a91685a732e}{Constraint\+Other\+Input}}, \mbox{\hyperlink{class_constraint_lone_descend_a8dea8363968160213540242b07aaf972}{Constraint\+Lone\+Descend}}, \mbox{\hyperlink{class_constraint_descend_aca4b2033e9d1324fc4b01e76019698c8}{Constraint\+Descend}}, \mbox{\hyperlink{class_constraint_def_aae85758fdf38d79bdd086955afa57cde}{Constraint\+Def}}, \mbox{\hyperlink{class_constraint_var_compare_adc69772066381dd17190c552d5efe0d5}{Constraint\+Var\+Compare}}, \mbox{\hyperlink{class_constraint_varnode_copy_a8334114ed67c5c1e1d7655d9b69bb603}{Constraint\+Varnode\+Copy}}, \mbox{\hyperlink{class_constraint_param_const_abcdd802e7100afb44698c156aec6e3a5}{Constraint\+Param\+Const}}, \mbox{\hyperlink{class_constraint_param_const_val_a74c4f987687e1919f47c1b1d30b303da}{Constraint\+Param\+Const\+Val}}, \mbox{\hyperlink{class_constraint_op_output_a1545d669aef376aab9cd317c19e47fb7}{Constraint\+Op\+Output}}, \mbox{\hyperlink{class_constraint_op_input_any_acb465f5609db781a6d04aa6305964a7a}{Constraint\+Op\+Input\+Any}}, \mbox{\hyperlink{class_constraint_op_input_a59e0a95fa29163053aaf79e29697fd3c}{Constraint\+Op\+Input}}, \mbox{\hyperlink{class_constraint_op_compare_ae99b6c25cca1f8587d661847e474e062}{Constraint\+Op\+Compare}}, \mbox{\hyperlink{class_constraint_opcode_aaa3bc0e6cc446941be344459b962e2b6}{Constraint\+Opcode}}, \mbox{\hyperlink{class_constraint_op_copy_a849dd1a8ef637ec99dc9d067ccb1eca9}{Constraint\+Op\+Copy}}, \mbox{\hyperlink{class_constraint_named_expression_a5bcd0a8233fb0ed71d8ededd4235d74a}{Constraint\+Named\+Expression}}, \mbox{\hyperlink{class_constraint_var_const_a5cb644447fed3576d92e25d3349eb387}{Constraint\+Var\+Const}}, \mbox{\hyperlink{class_constraint_boolean_a3b258aaef6abed8c36455b562016cfbc}{Constraint\+Boolean}}, \mbox{\hyperlink{class_dummy_const_constraint_acf3f66f2d189379f19ee11c14278ab3d}{Dummy\+Const\+Constraint}}, \mbox{\hyperlink{class_dummy_varnode_constraint_a8a5c0d0f00ab7343a19985465e59dc4b}{Dummy\+Varnode\+Constraint}}, and \mbox{\hyperlink{class_dummy_op_constraint_a86d183fe63aec86dc883c626287f32ed}{Dummy\+Op\+Constraint}}.
+
+\mbox{\Hypertarget{class_unify_constraint_acb83b6bea3b21e13054e72ac9cfaba0f}\label{class_unify_constraint_acb83b6bea3b21e13054e72ac9cfaba0f}} 
+\index{UnifyConstraint@{UnifyConstraint}!collectTypes@{collectTypes}}
+\index{collectTypes@{collectTypes}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{collectTypes()}{collectTypes()}}
+{\footnotesize\ttfamily virtual void Unify\+Constraint\+::collect\+Types (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_unify_datatype}{Unify\+Datatype}} $>$ \&}]{typelist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_constraint_set_opcode_acfa6f851bec946e149a316c794768feb}{Constraint\+Set\+Opcode}}, \mbox{\hyperlink{class_constraint_remove_input_a435c6f9bb7103060adbcb850f09a03e8}{Constraint\+Remove\+Input}}, \mbox{\hyperlink{class_constraint_set_input_const_val_a0d99b21ceee2023bb4f3f12ed745b218}{Constraint\+Set\+Input\+Const\+Val}}, \mbox{\hyperlink{class_constraint_set_input_aa1a4f5a68db4e16baf4a84a76c6c4540}{Constraint\+Set\+Input}}, \mbox{\hyperlink{class_constraint_new_unique_out_aec54f3b89aea6c13fedc58815db4745f}{Constraint\+New\+Unique\+Out}}, \mbox{\hyperlink{class_constraint_new_op_a00605633396f06a8eef9493beb5d831e}{Constraint\+New\+Op}}, \mbox{\hyperlink{class_constraint_group_ac1b507b8c2e1f0f458fdaa474fc58bc1}{Constraint\+Group}}, \mbox{\hyperlink{class_constraint_const_compare_a081a87a9985fd65cad3fa41675e9c929}{Constraint\+Const\+Compare}}, \mbox{\hyperlink{class_constraint_other_input_a0f02821a01359841c79cfada303770f4}{Constraint\+Other\+Input}}, \mbox{\hyperlink{class_constraint_lone_descend_a4ef34bbfea218b6d879766a2d206a811}{Constraint\+Lone\+Descend}}, \mbox{\hyperlink{class_constraint_descend_a6c98fbd098e48ff4dc789522230612ce}{Constraint\+Descend}}, \mbox{\hyperlink{class_constraint_def_aa0899ad894f7c0676371ef9a25effc55}{Constraint\+Def}}, \mbox{\hyperlink{class_constraint_var_compare_a8ffefd1d6865a0d95ef078fc085fbedc}{Constraint\+Var\+Compare}}, \mbox{\hyperlink{class_constraint_varnode_copy_a0464a597c40914b39af05ed2099a52b6}{Constraint\+Varnode\+Copy}}, \mbox{\hyperlink{class_constraint_param_const_aaa63c83416d8aff7d7984c6ba4864763}{Constraint\+Param\+Const}}, \mbox{\hyperlink{class_constraint_param_const_val_a7e43f8b626eae12d4a2c3df1d9b63483}{Constraint\+Param\+Const\+Val}}, \mbox{\hyperlink{class_constraint_op_output_ac1f237a686a53fd03a9eafc95ca9ece0}{Constraint\+Op\+Output}}, \mbox{\hyperlink{class_constraint_op_input_any_a80046f2931dd2b9bfdc0e3e04a57c00c}{Constraint\+Op\+Input\+Any}}, \mbox{\hyperlink{class_constraint_op_input_a0f9b4168eddd0b1933a275bb1f67d7e1}{Constraint\+Op\+Input}}, \mbox{\hyperlink{class_constraint_op_compare_a7cbcbc4c56d6b125f96be567421b6b94}{Constraint\+Op\+Compare}}, \mbox{\hyperlink{class_constraint_opcode_a99d5a920f6260d33be99fd2b2ea40bc1}{Constraint\+Opcode}}, \mbox{\hyperlink{class_constraint_op_copy_a9419293afb9195630808c5b6120cd18c}{Constraint\+Op\+Copy}}, \mbox{\hyperlink{class_constraint_named_expression_a3624723eef17793ebfb9c3af103b09ec}{Constraint\+Named\+Expression}}, \mbox{\hyperlink{class_constraint_var_const_afd6f18a2472dfb5dd484b03505a4ebd6}{Constraint\+Var\+Const}}, \mbox{\hyperlink{class_dummy_const_constraint_a2ff9cf3267d687c2f741f3d483b3da58}{Dummy\+Const\+Constraint}}, \mbox{\hyperlink{class_dummy_varnode_constraint_a93602f80ea23d51b74250700aab3e991}{Dummy\+Varnode\+Constraint}}, and \mbox{\hyperlink{class_dummy_op_constraint_a577187689bb53d42fff84328d474c5db}{Dummy\+Op\+Constraint}}.
+
+
+
+Definition at line 215 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_ad437d193c74ae8e03077da359df718c2}\label{class_unify_constraint_ad437d193c74ae8e03077da359df718c2}} 
+\index{UnifyConstraint@{UnifyConstraint}!copyid@{copyid}}
+\index{copyid@{copyid}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{copyid()}{copyid()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_unify_constraint}{Unify\+Constraint}}$\ast$ Unify\+Constraint\+::copyid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_unify_constraint}{Unify\+Constraint}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 205 of file unify.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_unify_constraint_ad437d193c74ae8e03077da359df718c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unify_constraint_a44f0164f38ac1fdc44fc73ebe7678de1}\label{class_unify_constraint_a44f0164f38ac1fdc44fc73ebe7678de1}} 
+\index{UnifyConstraint@{UnifyConstraint}!getBaseIndex@{getBaseIndex}}
+\index{getBaseIndex@{getBaseIndex}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{getBaseIndex()}{getBaseIndex()}}
+{\footnotesize\ttfamily virtual int4 Unify\+Constraint\+::get\+Base\+Index (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_constraint_set_opcode_aa860868c8820d374ee09d0cc24083613}{Constraint\+Set\+Opcode}}, \mbox{\hyperlink{class_constraint_remove_input_a5e5b7c0b890bd9b8306d7d540cd800c4}{Constraint\+Remove\+Input}}, \mbox{\hyperlink{class_constraint_set_input_af83fc0a5dbaa89f9612245241c05d0c8}{Constraint\+Set\+Input}}, \mbox{\hyperlink{class_constraint_new_unique_out_abf3ec86b9b2f5317794ab6ba261a66d1}{Constraint\+New\+Unique\+Out}}, \mbox{\hyperlink{class_constraint_new_op_aa1984f7dcd80598f9c39a9ea6a28b29d}{Constraint\+New\+Op}}, \mbox{\hyperlink{class_constraint_or_a4ce164e19f57a285919eff135481dea9}{Constraint\+Or}}, \mbox{\hyperlink{class_constraint_group_a50158935682afb1c1838a2d284f18ed4}{Constraint\+Group}}, \mbox{\hyperlink{class_constraint_const_compare_a7a01c7972c3b10b811f22a8f6595f4b2}{Constraint\+Const\+Compare}}, \mbox{\hyperlink{class_constraint_other_input_a5422f90baba836b389b0ba491c163e06}{Constraint\+Other\+Input}}, \mbox{\hyperlink{class_constraint_lone_descend_a006603f95347698cc1d8719d642cdcc0}{Constraint\+Lone\+Descend}}, \mbox{\hyperlink{class_constraint_descend_ac1d8e7071688fed4a52ef6aace039344}{Constraint\+Descend}}, \mbox{\hyperlink{class_constraint_def_a2b5f27e4f0b872da4ffcfa56af4cbfaa}{Constraint\+Def}}, \mbox{\hyperlink{class_constraint_var_compare_acdf5a965736247512e0b96ca53c13aa8}{Constraint\+Var\+Compare}}, \mbox{\hyperlink{class_constraint_varnode_copy_a6f2879e4817ed326cf7c81090f615881}{Constraint\+Varnode\+Copy}}, \mbox{\hyperlink{class_constraint_param_const_a6e000a8f053ad75f91b94483cedbf814}{Constraint\+Param\+Const}}, \mbox{\hyperlink{class_constraint_op_output_a89fa1174c3aca274c05f8f623bd63367}{Constraint\+Op\+Output}}, \mbox{\hyperlink{class_constraint_op_input_any_a41c3e27075116062a4fde2c3da29013e}{Constraint\+Op\+Input\+Any}}, \mbox{\hyperlink{class_constraint_op_input_a78092a6de093b9f0843eab77043fe5be}{Constraint\+Op\+Input}}, \mbox{\hyperlink{class_constraint_op_compare_a24207ae4f857cc4e1d6bec892c13a04e}{Constraint\+Op\+Compare}}, \mbox{\hyperlink{class_constraint_opcode_a8216f50f387c229d3c7bbf50ce717aed}{Constraint\+Opcode}}, \mbox{\hyperlink{class_constraint_op_copy_a0b79f0fa69317b313528c537e71c2464}{Constraint\+Op\+Copy}}, \mbox{\hyperlink{class_constraint_named_expression_a76051a70f5e66c4182d97b7e5333763d}{Constraint\+Named\+Expression}}, \mbox{\hyperlink{class_constraint_var_const_a8441e950b8d30d061a00db75c03c5e35}{Constraint\+Var\+Const}}, \mbox{\hyperlink{class_dummy_const_constraint_acd0721d4535d7793e10b8ad60b3ab789}{Dummy\+Const\+Constraint}}, \mbox{\hyperlink{class_dummy_varnode_constraint_ae4492ac6a373dc86f3d92fc8ba314f70}{Dummy\+Varnode\+Constraint}}, and \mbox{\hyperlink{class_dummy_op_constraint_aed05c6e3babcb9306d10e8a5379b146b}{Dummy\+Op\+Constraint}}.
+
+
+
+Definition at line 216 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_a049013abc1805120f71abef80bc6435a}\label{class_unify_constraint_a049013abc1805120f71abef80bc6435a}} 
+\index{UnifyConstraint@{UnifyConstraint}!getId@{getId}}
+\index{getId@{getId}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int4 Unify\+Constraint\+::get\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 208 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_a93c5666cbe0707cfb6aa40d284dca457}\label{class_unify_constraint_a93c5666cbe0707cfb6aa40d284dca457}} 
+\index{UnifyConstraint@{UnifyConstraint}!getMaxNum@{getMaxNum}}
+\index{getMaxNum@{getMaxNum}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{getMaxNum()}{getMaxNum()}}
+{\footnotesize\ttfamily int4 Unify\+Constraint\+::get\+Max\+Num (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 209 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_ac812e2cf68c95e8a5c0e7e8ac02f2fc2}\label{class_unify_constraint_ac812e2cf68c95e8a5c0e7e8ac02f2fc2}} 
+\index{UnifyConstraint@{UnifyConstraint}!initialize@{initialize}}
+\index{initialize@{initialize}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void Unify\+Constraint\+::initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_unify_state}{Unify\+State}} \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_constraint_or_a34e54a45768c4fa9d30fb4624529d29b}{Constraint\+Or}}, \mbox{\hyperlink{class_constraint_group_a96670ed925bd7fa0146f091baf31e3b2}{Constraint\+Group}}, \mbox{\hyperlink{class_constraint_descend_aaf9c2b3a92648d9d13295791ade0afad}{Constraint\+Descend}}, and \mbox{\hyperlink{class_constraint_op_input_any_a819bcdb6da490558ba92e918090ea3e8}{Constraint\+Op\+Input\+Any}}.
+
+\mbox{\Hypertarget{class_unify_constraint_a260263ddd2fea5ac847302d12feeb031}\label{class_unify_constraint_a260263ddd2fea5ac847302d12feeb031}} 
+\index{UnifyConstraint@{UnifyConstraint}!isDummy@{isDummy}}
+\index{isDummy@{isDummy}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{isDummy()}{isDummy()}}
+{\footnotesize\ttfamily virtual bool Unify\+Constraint\+::is\+Dummy (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_dummy_const_constraint_a64003bb0a15a9fa35fb634c8c98f8d1e}{Dummy\+Const\+Constraint}}, \mbox{\hyperlink{class_dummy_varnode_constraint_adabb4d2a9cc6eaaed1c2d98e1eb054ad}{Dummy\+Varnode\+Constraint}}, and \mbox{\hyperlink{class_dummy_op_constraint_a2153d437eb36b8f726b63d25dc7c3a09}{Dummy\+Op\+Constraint}}.
+
+
+
+Definition at line 218 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_a774f6a611a96384766cb8e8d8f5ff41f}\label{class_unify_constraint_a774f6a611a96384766cb8e8d8f5ff41f}} 
+\index{UnifyConstraint@{UnifyConstraint}!print@{print}}
+\index{print@{print}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily virtual void Unify\+Constraint\+::print (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{\mbox{\hyperlink{class_unify_c_printer}{Unify\+C\+Printer}} \&}]{printstate }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_constraint_set_opcode_a460e6a003c470a7272fe89c72e6acfd3}{Constraint\+Set\+Opcode}}, \mbox{\hyperlink{class_constraint_remove_input_a4fe12c997302e5865584632c1823af00}{Constraint\+Remove\+Input}}, \mbox{\hyperlink{class_constraint_set_input_const_val_a0c6e05609e3f895938f504216d585c37}{Constraint\+Set\+Input\+Const\+Val}}, \mbox{\hyperlink{class_constraint_set_input_a7f3aa6e111956cbbb1f5c1e0c42c5068}{Constraint\+Set\+Input}}, \mbox{\hyperlink{class_constraint_new_unique_out_a256e1cdd4cfb6d3bcc2bba2699d9d44c}{Constraint\+New\+Unique\+Out}}, \mbox{\hyperlink{class_constraint_new_op_ad247112189d345a7d7ddf7c785514d56}{Constraint\+New\+Op}}, \mbox{\hyperlink{class_constraint_or_a31fc2e3e5eb05b8d279faa97532eb729}{Constraint\+Or}}, \mbox{\hyperlink{class_constraint_group_abd3b88e44acf00941042c9a29d4d32fb}{Constraint\+Group}}, \mbox{\hyperlink{class_constraint_const_compare_a7b46d6503d830e7abea5bbed14cde0d5}{Constraint\+Const\+Compare}}, \mbox{\hyperlink{class_constraint_other_input_abe192ddbd5969e1f9abadb6ab2a1a8bf}{Constraint\+Other\+Input}}, \mbox{\hyperlink{class_constraint_lone_descend_a22365ca256a752326c21a3f71c796203}{Constraint\+Lone\+Descend}}, \mbox{\hyperlink{class_constraint_descend_af1530c37872173f7dfd608964c793a01}{Constraint\+Descend}}, \mbox{\hyperlink{class_constraint_def_a3ff02cb8d29bdc23b916558eaf174639}{Constraint\+Def}}, \mbox{\hyperlink{class_constraint_var_compare_ac79fc149c90e867dc3138c186b979b68}{Constraint\+Var\+Compare}}, \mbox{\hyperlink{class_constraint_varnode_copy_a6341d22e7011e5bba4c1ed7aa4d0b657}{Constraint\+Varnode\+Copy}}, \mbox{\hyperlink{class_constraint_param_const_a64c35324d7bed202b854edb51a0abc08}{Constraint\+Param\+Const}}, \mbox{\hyperlink{class_constraint_param_const_val_a77b6c5d0d0182a1c6b31e823f954266c}{Constraint\+Param\+Const\+Val}}, \mbox{\hyperlink{class_constraint_op_output_ab4486f3c60de93d81556e3283c38989c}{Constraint\+Op\+Output}}, \mbox{\hyperlink{class_constraint_op_input_any_ac2bd9bf9659cc33f50c42c56e6f2eb6e}{Constraint\+Op\+Input\+Any}}, \mbox{\hyperlink{class_constraint_op_input_af29ea53a74e235c88e2aacea3e49b185}{Constraint\+Op\+Input}}, \mbox{\hyperlink{class_constraint_op_compare_af654630346b3640959fb4504573a6466}{Constraint\+Op\+Compare}}, \mbox{\hyperlink{class_constraint_opcode_a4ae4b3306f7bf7fa9fb55bd142a7cf47}{Constraint\+Opcode}}, \mbox{\hyperlink{class_constraint_op_copy_afc1b0335d3d29f5405914fb0b43b3418}{Constraint\+Op\+Copy}}, \mbox{\hyperlink{class_constraint_named_expression_ae977efc05b794d8c772c1f4c494a4d3b}{Constraint\+Named\+Expression}}, \mbox{\hyperlink{class_constraint_var_const_a4408cf7f3c133b79f24ba36285069c4a}{Constraint\+Var\+Const}}, \mbox{\hyperlink{class_constraint_boolean_a0cee08ca55cc80bd120ea52e8e52f290}{Constraint\+Boolean}}, \mbox{\hyperlink{class_dummy_const_constraint_abbe52ab2155b77250b01f52a0c3b3c25}{Dummy\+Const\+Constraint}}, \mbox{\hyperlink{class_dummy_varnode_constraint_ab652913e2a7a3dc1ac3fc44f10807d5f}{Dummy\+Varnode\+Constraint}}, and \mbox{\hyperlink{class_dummy_op_constraint_a39e037049025cf469bd939cc26b4e66c}{Dummy\+Op\+Constraint}}.
+
+\mbox{\Hypertarget{class_unify_constraint_ab2ca6cad0ed83f5c765bd0ee8682ca36}\label{class_unify_constraint_ab2ca6cad0ed83f5c765bd0ee8682ca36}} 
+\index{UnifyConstraint@{UnifyConstraint}!removeDummy@{removeDummy}}
+\index{removeDummy@{removeDummy}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{removeDummy()}{removeDummy()}}
+{\footnotesize\ttfamily virtual void Unify\+Constraint\+::remove\+Dummy (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_constraint_group_adf801a2e01c28608fcf7c19305cbb08b}{Constraint\+Group}}.
+
+
+
+Definition at line 219 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_ae839484226265859ee04807fd7bb7775}\label{class_unify_constraint_ae839484226265859ee04807fd7bb7775}} 
+\index{UnifyConstraint@{UnifyConstraint}!setId@{setId}}
+\index{setId@{setId}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily virtual void Unify\+Constraint\+::set\+Id (\begin{DoxyParamCaption}\item[{int4 \&}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_constraint_group_a89e8251b6b4ed3c291cf1503531fac20}{Constraint\+Group}}.
+
+
+
+Definition at line 214 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_ad9ab4ad91037f96bf803735d414d212d}\label{class_unify_constraint_ad9ab4ad91037f96bf803735d414d212d}} 
+\index{UnifyConstraint@{UnifyConstraint}!step@{step}}
+\index{step@{step}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily virtual bool Unify\+Constraint\+::step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_unify_state}{Unify\+State}} \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_constraint_set_opcode_a673db34a5b11dc6e004f481d0cccac9e}{Constraint\+Set\+Opcode}}, \mbox{\hyperlink{class_constraint_remove_input_a8ca6138d7f67a2eb97ad988aeb57d54a}{Constraint\+Remove\+Input}}, \mbox{\hyperlink{class_constraint_set_input_const_val_a998952417cd5325d8ba5b6a912dd1b05}{Constraint\+Set\+Input\+Const\+Val}}, \mbox{\hyperlink{class_constraint_set_input_afe2320ca9a36a19fec3bcfaa7130c0ca}{Constraint\+Set\+Input}}, \mbox{\hyperlink{class_constraint_new_unique_out_a164256b52634fe6d5a858a601845dfe5}{Constraint\+New\+Unique\+Out}}, \mbox{\hyperlink{class_constraint_new_op_a53678f806d79236bb280167323593063}{Constraint\+New\+Op}}, \mbox{\hyperlink{class_constraint_or_a04ec591e6f9106bfbdbf9bf76e773aea}{Constraint\+Or}}, \mbox{\hyperlink{class_constraint_group_aeb75604b690052150d7a94392677dd20}{Constraint\+Group}}, \mbox{\hyperlink{class_constraint_const_compare_abbb5ae34af8b206328c9dd9147fd6824}{Constraint\+Const\+Compare}}, \mbox{\hyperlink{class_constraint_other_input_af89c902f186ba083e4fd4b54efcc551a}{Constraint\+Other\+Input}}, \mbox{\hyperlink{class_constraint_lone_descend_a792c77fd74feb948f4fcf8f3ce57b4f3}{Constraint\+Lone\+Descend}}, \mbox{\hyperlink{class_constraint_descend_aa5b4c0fb09d4231c8ac20e95cfbaaae4}{Constraint\+Descend}}, \mbox{\hyperlink{class_constraint_def_acd26c5907c37a243b7edee01ce9b358d}{Constraint\+Def}}, \mbox{\hyperlink{class_constraint_var_compare_a730b6edfacbee486efdea1e91b6509cd}{Constraint\+Var\+Compare}}, \mbox{\hyperlink{class_constraint_varnode_copy_afa111c6ea8baf57393ba9d503612e036}{Constraint\+Varnode\+Copy}}, \mbox{\hyperlink{class_constraint_param_const_a938ee0ec5d67dd37947de4fb59a225bf}{Constraint\+Param\+Const}}, \mbox{\hyperlink{class_constraint_param_const_val_aab6146036d543edc207f16a75532f0b7}{Constraint\+Param\+Const\+Val}}, \mbox{\hyperlink{class_constraint_op_output_aec6f2bec6b741072d41d44edb4308aa3}{Constraint\+Op\+Output}}, \mbox{\hyperlink{class_constraint_op_input_any_a319f53489a8bea35df0359d26dc5f547}{Constraint\+Op\+Input\+Any}}, \mbox{\hyperlink{class_constraint_op_input_ad3db5bd9dd80ffb0492f0ffd11acd19c}{Constraint\+Op\+Input}}, \mbox{\hyperlink{class_constraint_op_compare_ad3e51a4ae74aa157e112f2aa85f23781}{Constraint\+Op\+Compare}}, \mbox{\hyperlink{class_constraint_opcode_adab0b976a316fe14cfd1f6169a2d6fe3}{Constraint\+Opcode}}, \mbox{\hyperlink{class_constraint_op_copy_aae93c891f29b393a21aad701e665f63b}{Constraint\+Op\+Copy}}, \mbox{\hyperlink{class_constraint_named_expression_a630676872d5064310afad5d63fa5aea8}{Constraint\+Named\+Expression}}, \mbox{\hyperlink{class_constraint_var_const_a2c4e5c53f16ad3a76ab6c54c850b3d5b}{Constraint\+Var\+Const}}, \mbox{\hyperlink{class_constraint_boolean_af67fc020025d19e97b82dd7c7483cf1a}{Constraint\+Boolean}}, \mbox{\hyperlink{class_dummy_const_constraint_a3c0468211fcda260305a430622872e72}{Dummy\+Const\+Constraint}}, \mbox{\hyperlink{class_dummy_varnode_constraint_a70d9094ae099aa7f9259e2374ca1a8ed}{Dummy\+Varnode\+Constraint}}, and \mbox{\hyperlink{class_dummy_op_constraint_a4f2cc27e6d3181b10bf078fb434102a9}{Dummy\+Op\+Constraint}}.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_unify_constraint_a2131c775acfc52d54dfc7a22b4f538db}\label{class_unify_constraint_a2131c775acfc52d54dfc7a22b4f538db}} 
+\index{UnifyConstraint@{UnifyConstraint}!ConstraintGroup@{ConstraintGroup}}
+\index{ConstraintGroup@{ConstraintGroup}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{ConstraintGroup}{ConstraintGroup}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_constraint_group}{Constraint\+Group}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 201 of file unify.\+hh.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_unify_constraint_a9123065d84784017ba4e08a1bcc03450}\label{class_unify_constraint_a9123065d84784017ba4e08a1bcc03450}} 
+\index{UnifyConstraint@{UnifyConstraint}!maxnum@{maxnum}}
+\index{maxnum@{maxnum}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{maxnum}{maxnum}}
+{\footnotesize\ttfamily int4 Unify\+Constraint\+::maxnum\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 204 of file unify.\+hh.
+
+\mbox{\Hypertarget{class_unify_constraint_a0cda7b149850ec9d85684f1d626751c0}\label{class_unify_constraint_a0cda7b149850ec9d85684f1d626751c0}} 
+\index{UnifyConstraint@{UnifyConstraint}!uniqid@{uniqid}}
+\index{uniqid@{uniqid}!UnifyConstraint@{UnifyConstraint}}
+\subsubsection{\texorpdfstring{uniqid}{uniqid}}
+{\footnotesize\ttfamily int4 Unify\+Constraint\+::uniqid\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 203 of file unify.\+hh.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{unify_8hh}{unify.\+hh}}\end{DoxyCompactItemize}

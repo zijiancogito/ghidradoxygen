@@ -1,0 +1,65 @@
+.TH "TruncationTag" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TruncationTag \- Object for describing how a space should be truncated\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP from XML\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get name of address space being truncated\&. "
+.ti -1c
+.RI "uint4 \fBgetSize\fP (void) const"
+.br
+.RI "Size (of pointers) for new truncated space\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Object for describing how a space should be truncated\&. 
+
+This can turn up in various XML configuration files and essentially acts as a command to override the size of an address space as defined by the architecture 
+.PP
+Definition at line 63 of file translate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const string& TruncationTag::getName (void) const\fC [inline]\fP"
+
+.PP
+Get name of address space being truncated\&. 
+.PP
+Definition at line 68 of file translate\&.hh\&.
+.SS "uint4 TruncationTag::getSize (void) const\fC [inline]\fP"
+
+.PP
+Size (of pointers) for new truncated space\&. 
+.PP
+Definition at line 69 of file translate\&.hh\&.
+.SS "void TruncationTag::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Restore \fBthis\fP from XML\&. Read a <truncate_space> XML tag to configure \fBthis\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 20 of file translate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

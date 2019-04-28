@@ -1,0 +1,287 @@
+\hypertarget{struct_print_language_1_1_atom}{}\section{Print\+Language\+::Atom Struct Reference}
+\label{struct_print_language_1_1_atom}\index{PrintLanguage::Atom@{PrintLanguage::Atom}}
+
+
+A single non-\/operator token emitted by the decompiler.  
+
+
+
+
+{\ttfamily \#include $<$printlanguage.\+hh$>$}
+
+
+
+Collaboration diagram for Print\+Language\+::Atom\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_print_language_1_1_atom__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_print_language_1_1_atom_a23a38bc6f97afc98090701ac762acd59}{Atom}} (const string \&nm, \mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} t, \mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} hl)
+\begin{DoxyCompactList}\small\item\em Construct a token with no associated data-\/flow annotations. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_print_language_1_1_atom_acc7729810a5204cedb14d7d528e2d16a}{Atom}} (const string \&nm, \mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} t, \mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} hl, const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Construct a token for a data-\/type name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_print_language_1_1_atom_aac8870447a41bff5f9129e27fc475258}{Atom}} (const string \&nm, \mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} t, \mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} hl, const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$c, int4 off)
+\begin{DoxyCompactList}\small\item\em Construct a token for a field name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_print_language_1_1_atom_a723f5f1e5dc9af9d9b5c8608cd9e8f79}{Atom}} (const string \&nm, \mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} t, \mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} hl, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Construct a token with an associated \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_print_language_1_1_atom_ad94a0897a54ad3f3c30d6ad84c39964a}{Atom}} (const string \&nm, \mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} t, \mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} hl, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$o, const \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Construct a token with an associated \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} and \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_print_language_1_1_atom_ac0e4eb3d9a0590545aa63ae5e223138f}{Atom}} (const string \&nm, \mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} t, \mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} hl, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$o, const \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Construct a token for a function name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \& \mbox{\hyperlink{struct_print_language_1_1_atom_a1956638b6944bf2c4ad7e4a0dc60a64c}{name}}
+\begin{DoxyCompactList}\small\item\em The actual printed characters of the token. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} \mbox{\hyperlink{struct_print_language_1_1_atom_a726e891470417405fc6259bfbb2f17b4}{type}}
+\begin{DoxyCompactList}\small\item\em The type of \mbox{\hyperlink{struct_print_language_1_1_atom}{Atom}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} \mbox{\hyperlink{struct_print_language_1_1_atom_a10935ca44f3a8ba38874d4d8fd052106}{highlight}}
+\begin{DoxyCompactList}\small\item\em The type of highlighting to use when emitting the token. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{struct_print_language_1_1_atom_a65bc578109e6142a7a88b992f409093a}{op}}
+\begin{DoxyCompactList}\small\item\em A p-\/code operation associated with the token. \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>const \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{struct_print_language_1_1_atom_a0dea44d33527d1af476eba9e398fb39e}{vn}}\\
+\>\>{\em A \mbox{\hyperlink{class_varnode}{Varnode}} associated with the token. }\\
+\>const \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$ \mbox{\hyperlink{struct_print_language_1_1_atom_ae49c0974aa418e7f84d9ce686ddf7198}{fd}}\\
+\>\>{\em A function associated with the token. }\\
+\>const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{struct_print_language_1_1_atom_ae9e9b65a722c2e164e68b9570db3a695}{ct}}\\
+\>\>{\em A type associated with the token. }\\
+\} \mbox{\hyperlink{struct_print_language_1_1_atom_a1b69a38395efd1a84cc657cd0eea5cba}{ptr\_second}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Other meta-\/data associated with the token. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{struct_print_language_1_1_atom_a28454691b4629928d3b57d3a2f80265d}{offset}}
+\begin{DoxyCompactList}\small\item\em The offset (within the parent structure) for a {\itshape field} token. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A single non-\/operator token emitted by the decompiler. 
+
+These play the role of variable tokens on the R\+PN stack with the operator tokens. The term {\itshape variable} has a broader meaning than just a \mbox{\hyperlink{class_varnode}{Varnode}}. An \mbox{\hyperlink{struct_print_language_1_1_atom}{Atom}} can also be a data-\/type name, a function name, or a structure field etc. 
+
+Definition at line 194 of file printlanguage.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a23a38bc6f97afc98090701ac762acd59}\label{struct_print_language_1_1_atom_a23a38bc6f97afc98090701ac762acd59}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!Atom@{Atom}}
+\index{Atom@{Atom}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{Atom()}{Atom()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily Print\+Language\+::\+Atom\+::\+Atom (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}}}]{t,  }\item[{\mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}}}]{hl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a token with no associated data-\/flow annotations. 
+
+
+
+Definition at line 207 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_acc7729810a5204cedb14d7d528e2d16a}\label{struct_print_language_1_1_atom_acc7729810a5204cedb14d7d528e2d16a}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!Atom@{Atom}}
+\index{Atom@{Atom}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{Atom()}{Atom()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily Print\+Language\+::\+Atom\+::\+Atom (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}}}]{t,  }\item[{\mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}}}]{hl,  }\item[{const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a token for a data-\/type name. 
+
+
+
+Definition at line 211 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_aac8870447a41bff5f9129e27fc475258}\label{struct_print_language_1_1_atom_aac8870447a41bff5f9129e27fc475258}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!Atom@{Atom}}
+\index{Atom@{Atom}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{Atom()}{Atom()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily Print\+Language\+::\+Atom\+::\+Atom (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}}}]{t,  }\item[{\mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}}}]{hl,  }\item[{const \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{c,  }\item[{int4}]{off }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a token for a field name. 
+
+
+
+Definition at line 215 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a723f5f1e5dc9af9d9b5c8608cd9e8f79}\label{struct_print_language_1_1_atom_a723f5f1e5dc9af9d9b5c8608cd9e8f79}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!Atom@{Atom}}
+\index{Atom@{Atom}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{Atom()}{Atom()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily Print\+Language\+::\+Atom\+::\+Atom (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}}}]{t,  }\item[{\mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}}}]{hl,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a token with an associated \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+
+
+Definition at line 219 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_ad94a0897a54ad3f3c30d6ad84c39964a}\label{struct_print_language_1_1_atom_ad94a0897a54ad3f3c30d6ad84c39964a}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!Atom@{Atom}}
+\index{Atom@{Atom}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{Atom()}{Atom()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily Print\+Language\+::\+Atom\+::\+Atom (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}}}]{t,  }\item[{\mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}}}]{hl,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{o,  }\item[{const \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a token with an associated \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} and \mbox{\hyperlink{class_varnode}{Varnode}}. 
+
+
+
+Definition at line 223 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_ac0e4eb3d9a0590545aa63ae5e223138f}\label{struct_print_language_1_1_atom_ac0e4eb3d9a0590545aa63ae5e223138f}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!Atom@{Atom}}
+\index{Atom@{Atom}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{Atom()}{Atom()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily Print\+Language\+::\+Atom\+::\+Atom (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}}}]{t,  }\item[{\mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}}}]{hl,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{o,  }\item[{const \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a token for a function name. 
+
+
+
+Definition at line 227 of file printlanguage.\+hh.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_print_language_1_1_atom_ae9e9b65a722c2e164e68b9570db3a695}\label{struct_print_language_1_1_atom_ae9e9b65a722c2e164e68b9570db3a695}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!ct@{ct}}
+\index{ct@{ct}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{ct}{ct}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ Print\+Language\+::\+Atom\+::ct}
+
+
+
+A type associated with the token. 
+
+
+
+Definition at line 202 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_ae49c0974aa418e7f84d9ce686ddf7198}\label{struct_print_language_1_1_atom_ae49c0974aa418e7f84d9ce686ddf7198}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!fd@{fd}}
+\index{fd@{fd}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{fd}{fd}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_funcdata}{Funcdata}}$\ast$ Print\+Language\+::\+Atom\+::fd}
+
+
+
+A function associated with the token. 
+
+
+
+Definition at line 201 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a10935ca44f3a8ba38874d4d8fd052106}\label{struct_print_language_1_1_atom_a10935ca44f3a8ba38874d4d8fd052106}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!highlight@{highlight}}
+\index{highlight@{highlight}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{highlight}{highlight}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_emit_xml_a7c3577436da429c3c75f4b82cac6864f}{Emit\+Xml\+::syntax\+\_\+highlight}} Print\+Language\+::\+Atom\+::highlight}
+
+
+
+The type of highlighting to use when emitting the token. 
+
+
+
+Definition at line 197 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a1956638b6944bf2c4ad7e4a0dc60a64c}\label{struct_print_language_1_1_atom_a1956638b6944bf2c4ad7e4a0dc60a64c}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!name@{name}}
+\index{name@{name}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily const string\& Print\+Language\+::\+Atom\+::name}
+
+
+
+The actual printed characters of the token. 
+
+
+
+Definition at line 195 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a28454691b4629928d3b57d3a2f80265d}\label{struct_print_language_1_1_atom_a28454691b4629928d3b57d3a2f80265d}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!offset@{offset}}
+\index{offset@{offset}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily int4 Print\+Language\+::\+Atom\+::offset}
+
+
+
+The offset (within the parent structure) for a {\itshape field} token. 
+
+
+
+Definition at line 204 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a65bc578109e6142a7a88b992f409093a}\label{struct_print_language_1_1_atom_a65bc578109e6142a7a88b992f409093a}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!op@{op}}
+\index{op@{op}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{op}{op}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Print\+Language\+::\+Atom\+::op}
+
+
+
+A p-\/code operation associated with the token. 
+
+
+
+Definition at line 198 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a1b69a38395efd1a84cc657cd0eea5cba}\label{struct_print_language_1_1_atom_a1b69a38395efd1a84cc657cd0eea5cba}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!ptr\_second@{ptr\_second}}
+\index{ptr\_second@{ptr\_second}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{ptr\_second}{ptr\_second}}
+{\footnotesize\ttfamily union \{ ... \}   Print\+Language\+::\+Atom\+::ptr\+\_\+second}
+
+
+
+Other meta-\/data associated with the token. 
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a726e891470417405fc6259bfbb2f17b4}\label{struct_print_language_1_1_atom_a726e891470417405fc6259bfbb2f17b4}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!type@{type}}
+\index{type@{type}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_print_language_a7102f70f47777d8b17af52c5157c473e}{tagtype}} Print\+Language\+::\+Atom\+::type}
+
+
+
+The type of \mbox{\hyperlink{struct_print_language_1_1_atom}{Atom}}. 
+
+
+
+Definition at line 196 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{struct_print_language_1_1_atom_a0dea44d33527d1af476eba9e398fb39e}\label{struct_print_language_1_1_atom_a0dea44d33527d1af476eba9e398fb39e}} 
+\index{PrintLanguage::Atom@{PrintLanguage::Atom}!vn@{vn}}
+\index{vn@{vn}!PrintLanguage::Atom@{PrintLanguage::Atom}}
+\subsubsection{\texorpdfstring{vn}{vn}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Print\+Language\+::\+Atom\+::vn}
+
+
+
+A \mbox{\hyperlink{class_varnode}{Varnode}} associated with the token. 
+
+
+
+Definition at line 200 of file printlanguage.\+hh.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{printlanguage_8hh}{printlanguage.\+hh}}\end{DoxyCompactItemize}

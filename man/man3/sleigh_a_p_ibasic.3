@@ -1,0 +1,188 @@
+.TH "sleigh_a_p_ibasic" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sleigh_a_p_ibasic \- The Basic SLEIGH Interface 
+To use SLEIGH as a library within an application, there are basically five classes that you need to be aware of\&.
+.PP
+.IP "\(bu" 2
+\fBTranslate (or Sleigh)\fP
+.IP "\(bu" 2
+\fBAssemblyEmit\fP
+.IP "\(bu" 2
+\fBPcodeEmit\fP
+.IP "\(bu" 2
+\fBLoadImage\fP
+.IP "\(bu" 2
+\fBContextDatabase\fP
+.PP
+.SH "Translate (or Sleigh)"
+.PP
+The core SLEIGH class is \fBSleigh\fP, which is derived from the interface, \fBTranslate\fP\&. In order to instantiate it in your code, you need a \fBLoadImage\fP object, and a \fBContextDatabase\fP object\&. The load image is responsible for retrieving instruction bytes, based on address, from a binary executable\&. The context database provides the library extra mode information that may be necessary to do the disassembly or translation\&. This can be used, for instance, to specify that an x86 binary is running in 32-bit mode, or to specify that an ARM processor is running in THUMB mode\&. Once these objects are built, the \fBSleigh\fP object can be immediately instantiated\&.
+.PP
+.PP
+.nf
+LoadImageBfd *loader;
+ContextDatabase *context;
+Translate *trans;
+
+// Set up the loadimage
+// Providing an executable name and architecture
+string loadimagename = "x86testcode";
+string bfdtarget= "default";
+
+loader = new LoadImageBfd(loadimagename,bfdtarget);
+loader->open();       // Load the executable from file
+
+context = new ContextInternal();   // Create a processor context
+
+trans = new Sleigh(loader,context);  // Instantiate the translator
+.fi
+.PP
+.PP
+Once the \fBSleigh\fP object is in hand, the only required initialization step left is to inform it of the '\&.sla' file\&. The file is in XML format and needs to be read in using SLEIGH's built-in XML parser\&. The following code accomplishes this\&.
+.PP
+.PP
+.nf
+string sleighfilename = "specfiles/x86\&.sla";
+DocumentStorage docstorage;
+Element *sleighroot = docstorage\&.openDocument(sleighfilename)->getRoot();
+docstorage\&.registerTag(sleighroot);
+trans->initialize(docstorage);  // Initialize the translator
+.fi
+.PP
+.SH "AssemblyEmit"
+.PP
+In order to do disassembly, you need to derive a class from \fBAssemblyEmit\fP, and implement the method \fIdump\fP\&. The library will call this method exactly once, for each instruction disassembled\&.
+.PP
+This routine simply needs to decide how (and where) to print the corresponding portion of the disassembly\&. For instance,
+.PP
+.PP
+.nf
+class AssemblyRaw : public AssemblyEmit {
+public:
+  virtual void dump(const Address &addr,const string &mnem,const string &body) {
+    addr\&.printRaw(cout);
+    cout << ": " << mnem << ' ' << body << endl;
+  }
+};
+.fi
+.PP
+.PP
+This is a minimal implementation that simply dumps the disassembly straight to standard out\&. Once this object is instantiated, the \fBSleigh\fP object can use it to write out assembly via the \fBTranslate::printAssembly()\fP method\&.
+.PP
+.PP
+.nf
+AssemblyEmit *assememit = new AssemblyRaw();
+
+Address addr(trans->getDefaultSpace(),0x80484c0);
+int4 length;                  // Length of instruction in bytes
+
+length = trans->printAssembly(*assememit,addr);
+addr = addr + length;        // Advance to next instruction
+length = trans->printAssembly(*assememit,addr);
+addr = addr + length;
+length = trans->printAssembly(*assememit,addr);
+.fi
+.PP
+.SH "PcodeEmit"
+.PP
+In order to generate a \fBpcode\fP translation of a machine instruction, you need to derive a class from \fBPcodeEmit\fP and implement the virtual method \fIdump\fP\&. This method will be invoked once for each \fBpcode\fP operation in the translation of a machine instruction\&. There will likely be multiple calls per instruction\&. Each call passes in a single \fBpcode\fP operation, complete with its possible varnode output, and all of its varnode inputs\&. Here is an example of a \fBPcodeEmit\fP object that simply prints out the \fBpcode\fP\&.
+.PP
+.PP
+.nf
+class PcodeRawOut : public PcodeEmit {
+public:
+  virtual void dump(const Address &addr,OpCode opc,VarnodeData *outvar,VarnodeData *vars,int4 isize);
+};
+
+static void print_vardata(ostream &s,VarnodeData &data)
+
+{
+  s << '(' << data\&.space->getName() << ',';
+  data\&.space->printOffset(s,data\&.offset);
+  s << ',' << dec << data\&.size << ')';
+}
+
+void PcodeRawOut::dump(const Address &addr,OpCode opc,VarnodeData *outvar,VarnodeData *vars,int4 isize)
+
+{
+  if (outvar != (VarnodeData *)0) {     // The output is optional
+    print_vardata(cout,*outvar);
+    cout << " = ";
+  }
+  cout << get_opname(opc);
+  // Possibly check for a code reference or a space reference
+  for(int4 i=0;i<isize;++i) {
+    cout << ' ';
+    print_vardata(cout,vars[i]);
+  }
+  cout << endl;
+}
+.fi
+.PP
+.PP
+Notice that the \fIdump\fP routine uses the built-in function \fIget_opname\fP to find a string version of the opcode\&. Each varnode is defined in terms of the \fBVarnodeData\fP object, which is defined simply:
+.PP
+.PP
+.nf
+struct VarnodeData {
+  AddrSpace *space;          // The address space
+  uintb offset;              // The offset within the space
+  uint4 size;                // The number of bytes at that location
+};
+.fi
+.PP
+.PP
+Once the \fBPcodeEmit\fP object is instantiated, the \fBSleigh\fP object can use it to generate pcode, one instruction at a time, using the Translate::oneInstruction() const method\&.
+.PP
+.PP
+.nf
+PcodeEmit *pcodeemit = new PcodeRawOut();
+
+Address addr(trans->getDefaultSpace(),0x80484c0);
+int4 length;                   // Length of instruction in bytes
+
+length = trans->oneInstruction(*pcodeemit,addr);
+addr = addr + length;         // Advance to next instruction
+length = trans->oneInstruction(*pcodeemit,addr);
+addr = addr + length;
+length = trans->oneInstruction(*pcodeemit,addr);
+.fi
+.PP
+.PP
+For an application to properly \fIfollow\fP \fIflow\fP, while translating machine instructions into pcode, the emitted pcode must be inspected for the various branch operations\&.
+.SH "LoadImage"
+.PP
+A \fBLoadImage\fP holds all the binary data from an executable file in the format similar to how it would exist when being executed by a real processor\&. The interface to this from SLEIGH is actually very simple, although it can hide a complicated structure\&. One method does most of the work, \fBLoadImage::loadFill()\fP\&. It takes a byte pointer, a size, and an \fBAddress\fP\&. The method is expected to fill in the \fIptr\fP array with \fIsize\fP bytes taken from the load image, corresponding to the address \fIaddr\fP\&. There are two more virtual methods that are required for a complete implementation of \fBLoadImage\fP, \fIgetArchType\fP and \fIadjustVma\fP, but these do not need to be implemented fully\&.
+.PP
+.PP
+.nf
+class MyLoadImage : public LoadImage {
+public:
+  MyLoadImage(const string &nm) : Loadimage(nm) {}
+  virtual void loadFill(uint1 *ptr,int4 size,const Address &addr);
+  virtual string getArchType(void) const { return "mytype"; }
+  virtual void adjustVma(long adjust) {}
+};
+.fi
+.PP
+.SH "ContextDatabase"
+.PP
+The \fBContextDatabase\fP needs to keep track of any possible context variable and its value, over different address ranges\&. In most cases, you probably don't need to override the class yourself, but can use the built-in class, \fBContextInternal\fP\&. This provides the basic functionality required and will work for different architectures\&. What you may need to do is set values for certain variables, depending on the processor and the environment it is running in\&. For instance, for the x86 platform, you need to set the \fIaddrsize\fP and \fIopsize\fP bits, to indicate the processor would be running in 32-bit mode\&. The context variables specific to a particular processor are established by the SLEIGH spec\&. So the variables can only be set \fIafter\fP the spec has been loaded\&.
+.PP
+.PP
+.nf
+\&.\&.\&.
+context = new ContextInternal();
+trans = new Sleigh(loader,context);
+DocumentStorage docstorage;
+Element *root = docstorage\&.openDocument("specfiles/x86\&.sla")->getRoot();
+docstorage\&.registerTag(root);
+trans->initialize(docstorage);
+
+context->setVariableDefault("addrsize",1);  // Address size is 32-bits
+context->setVariableDefault("opsize",1);    // Operand size is 32-bits
+.fi
+.PP
+ 

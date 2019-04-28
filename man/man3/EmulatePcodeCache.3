@@ -1,0 +1,222 @@
+.TH "EmulatePcodeCache" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EmulatePcodeCache \- A SLEIGH based implementation of the \fBEmulate\fP interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emulate\&.hh>\fP
+.PP
+Inherits \fBEmulateMemory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmulatePcodeCache\fP (\fBTranslate\fP *t, \fBMemoryState\fP *s, \fBBreakTable\fP *b)"
+.br
+.RI "Pcode cache emulator constructor\&. "
+.ti -1c
+.RI "\fB~EmulatePcodeCache\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBisInstructionStart\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if we are at an instruction start\&. "
+.ti -1c
+.RI "int4 \fBnumCurrentOps\fP (void) const"
+.br
+.RI "Return number of pcode ops in translation of current instruction\&. "
+.ti -1c
+.RI "int4 \fBgetCurrentOpIndex\fP (void) const"
+.br
+.RI "Get the index of current pcode op within current instruction\&. "
+.ti -1c
+.RI "\fBPcodeOpRaw\fP * \fBgetOpByIndex\fP (int4 i) const"
+.br
+.RI "Get pcode op in current instruction translation by index\&. "
+.ti -1c
+.RI "virtual void \fBsetExecuteAddress\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Set current execution address\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetExecuteAddress\fP (void) const"
+.br
+.RI "Get current execution address\&. "
+.ti -1c
+.RI "void \fBexecuteInstruction\fP (void)"
+.br
+.RI "Execute (the rest of) a single machine instruction\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBfallthruOp\fP (void)"
+.br
+.RI "Execute fallthru semantics for the pcode cache\&. "
+.ti -1c
+.RI "virtual void \fBexecuteBranch\fP (void)"
+.br
+.RI "Execute branch (including relative branches) "
+.ti -1c
+.RI "virtual void \fBexecuteCallother\fP (void)"
+.br
+.RI "Execute breakpoint for this user-defined op\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A SLEIGH based implementation of the \fBEmulate\fP interface\&. 
+
+This implementation uses a \fBTranslate\fP object to translate machine instructions into pcode and caches pcode ops for later use by the emulator\&. The pcode is cached as soon as the execution address is set, either explicitly, or via branches and fallthrus\&. There are additional methods for inspecting the pcode ops in the current instruction as a sequence\&. 
+.PP
+Definition at line 296 of file emulate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "EmulatePcodeCache::EmulatePcodeCache (\fBTranslate\fP * t, \fBMemoryState\fP * s, \fBBreakTable\fP * b)"
+
+.PP
+Pcode cache emulator constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP is the SLEIGH translator 
+.br
+\fIs\fP is the \fBMemoryState\fP the emulator should manipulate 
+.br
+\fIb\fP is the table of breakpoints the emulator should invoke 
+.RE
+.PP
+
+.PP
+Definition at line 329 of file emulate\&.cc\&.
+.SS "EmulatePcodeCache::~EmulatePcodeCache (void)"
+
+.PP
+Definition at line 350 of file emulate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void EmulatePcodeCache::executeBranch (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Execute branch (including relative branches) Since the full instruction is cached, we can do relative branches properly\&. 
+.PP
+Reimplemented from \fBEmulateMemory\fP\&.
+.PP
+Definition at line 402 of file emulate\&.cc\&.
+.SS "void EmulatePcodeCache::executeCallother (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Execute breakpoint for this user-defined op\&. Look for a breakpoint for the given user-defined op and invoke it\&. If it doesn't exist, or doesn't replace the action, throw an exception 
+.PP
+Reimplemented from \fBEmulateMemory\fP\&.
+.PP
+Definition at line 421 of file emulate\&.cc\&.
+.SS "void EmulatePcodeCache::executeInstruction (void)"
+
+.PP
+Execute (the rest of) a single machine instruction\&. This routine executes an entire machine instruction at once, as a conventional debugger step function would do\&. If execution is at the start of an instruction, the breakpoints are checked and invoked as needed for the current address\&. If this routine is invoked while execution is in the middle of a machine instruction, execution is continued until the current instruction completes\&. 
+.PP
+Definition at line 446 of file emulate\&.cc\&.
+.SS "void EmulatePcodeCache::fallthruOp (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Execute fallthru semantics for the pcode cache\&. Update the iterator into the current pcode cache, and if necessary, generate the pcode for the fallthru instruction and reset the iterator\&. 
+.PP
+Implements \fBEmulate\fP\&.
+.PP
+Definition at line 389 of file emulate\&.cc\&.
+.SS "int4 EmulatePcodeCache::getCurrentOpIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the index of current pcode op within current instruction\&. This routine can be used to determine where, within the sequence of ops in the translation of the entire machine instruction, the currently executing op is\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the index of the current (next) pcode op\&. 
+.RE
+.PP
+
+.PP
+Definition at line 347 of file emulate\&.hh\&.
+.SS "\fBAddress\fP EmulatePcodeCache::getExecuteAddress (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get current execution address\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the currently executing machine address 
+.RE
+.PP
+
+.PP
+Implements \fBEmulate\fP\&.
+.PP
+Definition at line 364 of file emulate\&.hh\&.
+.SS "\fBPcodeOpRaw\fP * EmulatePcodeCache::getOpByIndex (int4 i) const\fC [inline]\fP"
+
+.PP
+Get pcode op in current instruction translation by index\&. This routine can be used to examine ops other than the currently executing op in the machine instruction's translation sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the desired op index 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the pcode op at the indicated index 
+.RE
+.PP
+
+.PP
+Definition at line 357 of file emulate\&.hh\&.
+.SS "bool EmulatePcodeCache::isInstructionStart (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if we are at an instruction start\&. Since the emulator can single step through individual pcode operations, the machine state may be halted in the \fImiddle\fP of a single machine instruction, unlike conventional debuggers\&. This routine can be used to determine if execution is actually at the beginning of a machine instruction\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the next pcode operation is at the start of the instruction translation 
+.RE
+.PP
+
+.PP
+Definition at line 330 of file emulate\&.hh\&.
+.SS "int4 EmulatePcodeCache::numCurrentOps (void) const\fC [inline]\fP"
+
+.PP
+Return number of pcode ops in translation of current instruction\&. A typical machine instruction translates into a sequence of pcode ops\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of ops in the sequence 
+.RE
+.PP
+
+.PP
+Definition at line 338 of file emulate\&.hh\&.
+.SS "void EmulatePcodeCache::setExecuteAddress (const \fBAddress\fP & addr)\fC [virtual]\fP"
+
+.PP
+Set current execution address\&. Set the current execution address and cache the pcode translation of the machine instruction at that address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address where execution should continue 
+.RE
+.PP
+
+.PP
+Implements \fBEmulate\fP\&.
+.PP
+Definition at line 432 of file emulate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

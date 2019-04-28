@@ -1,0 +1,2913 @@
+.TH "PrintC" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintC \- The c-language token emitter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printc\&.hh>\fP
+.PP
+Inherits \fBPrintLanguage\fP\&.
+.PP
+Inherited by \fBPrintJava\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPrintC\fP (\fBArchitecture\fP *g, const string &nm='c\-language')"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBsetNULLPrinting\fP (bool val)"
+.br
+.RI "Toggle the printing of a 'NULL' token\&. "
+.ti -1c
+.RI "void \fBsetInplaceOps\fP (bool val)"
+.br
+.RI "Toggle the printing of \fIin-place\fP operators\&. "
+.ti -1c
+.RI "void \fBsetConvention\fP (bool val)"
+.br
+.RI "Toggle whether calling conventions are printed\&. "
+.ti -1c
+.RI "void \fBsetNoCastPrinting\fP (bool val)"
+.br
+.RI "Toggle whether casts should \fBnot\fP be printed\&. "
+.ti -1c
+.RI "void \fBsetCStyleComments\fP (void)"
+.br
+.RI "Set c-style '/* */' comment delimiters\&. "
+.ti -1c
+.RI "void \fBsetCPlusPlusStyleComments\fP (void)"
+.br
+.RI "Set c++-style '//' comment delimiters\&. "
+.ti -1c
+.RI "void \fBsetDisplayUnplaced\fP (bool val)"
+.br
+.RI "Toggle whether \fIunplaced\fP comments are displayed in the header\&. "
+.ti -1c
+.RI "virtual \fB~PrintC\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBadjustTypeOperators\fP (void)"
+.br
+.RI "Set basic data-type information for p-code operators\&. "
+.ti -1c
+.RI "virtual void \fBsetCommentStyle\fP (const string &nm)"
+.br
+.RI "Set the way comments are displayed in decompiler output\&. "
+.ti -1c
+.RI "virtual bool \fBisCharacterConstant\fP (const uint1 *buf, int4 size, int4 charsize) const"
+.br
+.RI "Decide is the given byte array looks like a character string\&. "
+.ti -1c
+.RI "virtual void \fBdocTypeDefinitions\fP (const \fBTypeFactory\fP *typegrp)"
+.br
+.RI "Emit definitions of data-types\&. "
+.ti -1c
+.RI "virtual void \fBdocAllGlobals\fP (void)"
+.br
+.RI "Emit declarations of global variables\&. "
+.ti -1c
+.RI "virtual void \fBdocSingleGlobal\fP (const \fBSymbol\fP *sym)"
+.br
+.RI "Emit the declaration for a single (global) \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBdocFunction\fP (const \fBFuncdata\fP *fd)"
+.br
+.RI "Emit the declaration (and body) of a function\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockBasic\fP (const \fBBlockBasic\fP *bb)"
+.br
+.RI "Emit statements in a basic block\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockGraph\fP (const \fBBlockGraph\fP *bl)"
+.br
+.RI "Emit (an unspecified) list of blocks\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockCopy\fP (const \fBBlockCopy\fP *bl)"
+.br
+.RI "Emit a basic block (with any labels) "
+.ti -1c
+.RI "virtual void \fBemitBlockGoto\fP (const \fBBlockGoto\fP *bl)"
+.br
+.RI "Emit a block ending with a goto statement\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockLs\fP (const \fBBlockList\fP *bl)"
+.br
+.RI "Emit a sequence of blocks\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockCondition\fP (const \fBBlockCondition\fP *bl)"
+.br
+.RI "Emit a conditional statement\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockIf\fP (const \fBBlockIf\fP *bl)"
+.br
+.RI "Emit an if/else style construct\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockWhileDo\fP (const \fBBlockWhileDo\fP *bl)"
+.br
+.RI "Emit a loop structure, check at top\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockDoWhile\fP (const \fBBlockDoWhile\fP *bl)"
+.br
+.RI "Emit a loop structure, check at bottom\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockInfLoop\fP (const \fBBlockInfLoop\fP *bl)"
+.br
+.RI "Emit an infinite loop structure\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockSwitch\fP (const \fBBlockSwitch\fP *bl)"
+.br
+.RI "Emit a switch structure\&. "
+.ti -1c
+.RI "virtual void \fBopCopy\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a COPY operator\&. "
+.ti -1c
+.RI "virtual void \fBopLoad\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a LOAD operator\&. "
+.ti -1c
+.RI "virtual void \fBopStore\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a STORE operator\&. "
+.ti -1c
+.RI "virtual void \fBopBranch\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a BRANCH operator\&. "
+.ti -1c
+.RI "virtual void \fBopCbranch\fP (const \fBPcodeOp\fP *op)"
+.br
+.ti -1c
+.RI "virtual void \fBopBranchind\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a BRANCHIND operator\&. "
+.ti -1c
+.RI "virtual void \fBopCall\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a CALL operator\&. "
+.ti -1c
+.RI "virtual void \fBopCallind\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a CALLIND operator\&. "
+.ti -1c
+.RI "virtual void \fBopCallother\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a CALLOTHER operator\&. "
+.ti -1c
+.RI "virtual void \fBopConstructor\fP (const \fBPcodeOp\fP *op, bool withNew)"
+.br
+.RI "Emit an operator constructing an object\&. "
+.ti -1c
+.RI "virtual void \fBopReturn\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a RETURN operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntEqual\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_EQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntNotEqual\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_NOTEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSless\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SLESS operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSlessEqual\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SLESSEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntLess\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_LESS operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntLessEqual\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_LESSEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntZext\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_ZEXT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSext\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SEXT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntAdd\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_ADD operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSub\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SUB operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntCarry\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_CARRY operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntScarry\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SCARRY operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSborrow\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SBORROW operator\&. "
+.ti -1c
+.RI "virtual void \fBopInt2Comp\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_2COMP operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntNegate\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_NEGATE operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntXor\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_XOR operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntAnd\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_AND operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntOr\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_OR operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntLeft\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_LEFT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntRight\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_RIGHT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSright\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SRIGHT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntMult\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_MULT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntDiv\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_DIV operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSdiv\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SDIV operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntRem\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_REM operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSrem\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INT_SREM operator\&. "
+.ti -1c
+.RI "virtual void \fBopBoolNegate\fP (const \fBPcodeOp\fP *op)"
+.br
+.ti -1c
+.RI "virtual void \fBopBoolXor\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a BOOL_XOR operator\&. "
+.ti -1c
+.RI "virtual void \fBopBoolAnd\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a BOOL_AND operator\&. "
+.ti -1c
+.RI "virtual void \fBopBoolOr\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a BOOL_OR operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatEqual\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_EQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatNotEqual\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_NOTEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatLess\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_LESS operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatLessEqual\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_LESSEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatNan\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_NAN operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatAdd\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_ADD operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatDiv\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_DIV operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatMult\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_MULT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatSub\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_SUB operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatNeg\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_NEG operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatAbs\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_ABS operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatSqrt\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_SQRT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatInt2Float\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_INT2FLOAT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatFloat2Float\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_FLOAT2FLOAT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatTrunc\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_TRUNC operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatCeil\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_CEIL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatFloor\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_FLOOR operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatRound\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a FLOAT_ROUND operator\&. "
+.ti -1c
+.RI "virtual void \fBopMultiequal\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a MULTIEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIndirect\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a INDIRECT operator\&. "
+.ti -1c
+.RI "virtual void \fBopPiece\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a PIECE operator\&. "
+.ti -1c
+.RI "virtual void \fBopSubpiece\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a SUBPIECE operator\&. "
+.ti -1c
+.RI "virtual void \fBopCast\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a CAST operator\&. "
+.ti -1c
+.RI "virtual void \fBopPtradd\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a PTRADD operator\&. "
+.ti -1c
+.RI "virtual void \fBopPtrsub\fP (const \fBPcodeOp\fP *op)"
+.br
+.ti -1c
+.RI "virtual void \fBopSegmentOp\fP (const \fBPcodeOp\fP *op)"
+.br
+.ti -1c
+.RI "virtual void \fBopCpoolRefOp\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a CPOOLREF operator\&. "
+.ti -1c
+.RI "virtual void \fBopNewOp\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a NEW operator\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBbuildTypeStack\fP (const \fBDatatype\fP *ct, vector< const \fBDatatype\fP * > &typestack)"
+.br
+.RI "Prepare to push components of a data-type declaration\&. "
+.ti -1c
+.RI "void \fBpushPrototypeInputs\fP (const \fBFuncProto\fP *proto)"
+.br
+.RI "Push input parameters\&. "
+.ti -1c
+.RI "virtual void \fBpushTypeStart\fP (const \fBDatatype\fP *ct, bool noident)"
+.br
+.RI "Push part of a data-type declaration onto the RPN stack, up to the identifier\&. "
+.ti -1c
+.RI "virtual void \fBpushTypeEnd\fP (const \fBDatatype\fP *ct)"
+.br
+.RI "Push the tail ends of a data-type declaration onto the RPN stack\&. "
+.ti -1c
+.RI "void \fBpushBoolConstant\fP (\fBuintb\fP val, const \fBTypeBase\fP *ct, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a \fBtrue\fP or \fBfalse\fP token to the RPN stack\&. "
+.ti -1c
+.RI "void \fBpushCharConstant\fP (\fBuintb\fP val, const \fBTypeChar\fP *ct, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a single character constant to the RPN stack\&. "
+.ti -1c
+.RI "void \fBpushEnumConstant\fP (\fBuintb\fP val, const \fBTypeEnum\fP *ct, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push an enumerated value to the RPN stack\&. "
+.ti -1c
+.RI "virtual bool \fBpushPtrCharConstant\fP (\fBuintb\fP val, const \fBTypePointer\fP *ct, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Attempt to push a quoted string representing a given constant pointer onto the RPN stack\&. "
+.ti -1c
+.RI "bool \fBpushPtrCodeConstant\fP (\fBuintb\fP val, const \fBTypePointer\fP *ct, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Attempt to push a function name representing a constant pointer onto the RPN stack\&. "
+.ti -1c
+.RI "virtual bool \fBdoEmitWideCharPrefix\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this language requires a prefix when expressing \fIwide\fP characters\&. "
+.ti -1c
+.RI "bool \fBcheckArrayDeref\fP (const \fBVarnode\fP *vn) const"
+.br
+.RI "Determine whether a LOAD/STORE expression requires pointer '*' syntax\&. "
+.ti -1c
+.RI "void \fBemitStructDefinition\fP (const \fBTypeStruct\fP *ct)"
+.br
+.RI "Emit the definition of a \fIstructure\fP data-type\&. "
+.ti -1c
+.RI "void \fBemitEnumDefinition\fP (const \fBTypeEnum\fP *ct)"
+.br
+.RI "Emit the definition of an \fIenumeration\fP data-type\&. "
+.ti -1c
+.RI "void \fBemitPrototypeOutput\fP (const \fBFuncProto\fP *proto, const \fBFuncdata\fP *fd)"
+.br
+.RI "Emit the output data-type of a function prototype\&. "
+.ti -1c
+.RI "void \fBemitPrototypeInputs\fP (const \fBFuncProto\fP *proto)"
+.br
+.RI "Emit the input data-types of a function prototype\&. "
+.ti -1c
+.RI "void \fBemitGlobalVarDeclsRecursive\fP (\fBScope\fP *\fBscope\fP)"
+.br
+.RI "Emit variable declarations for all global symbols under given scope\&. "
+.ti -1c
+.RI "void \fBemitLocalVarDecls\fP (const \fBFuncdata\fP *fd)"
+.br
+.RI "Emit variable declarations for a function\&. "
+.ti -1c
+.RI "void \fBemitStatement\fP (const \fBPcodeOp\fP *inst)"
+.br
+.RI "Emit a statement in the body of a function\&. "
+.ti -1c
+.RI "bool \fBemitInplaceOp\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Attempt to emit an expression rooted at an \fIin-place\fP operator\&. "
+.ti -1c
+.RI "void \fBemitGotoStatement\fP (const \fBFlowBlock\fP *bl, const \fBFlowBlock\fP *exp_bl, uint4 type)"
+.br
+.RI "Emit a statement representing an unstructured branch\&. "
+.ti -1c
+.RI "void \fBemitSwitchCase\fP (int4 casenum, const \fBBlockSwitch\fP *switchbl)"
+.br
+.RI "Emit labels for a \fIcase\fP block\&. "
+.ti -1c
+.RI "void \fBemitLabel\fP (const \fBFlowBlock\fP *bl)"
+.br
+.RI "Emit a formal label for a given control-flow block\&. "
+.ti -1c
+.RI "void \fBemitLabelStatement\fP (const \fBFlowBlock\fP *bl)"
+.br
+.RI "Emit any required label statement for a given basic block\&. "
+.ti -1c
+.RI "void \fBemitAnyLabelStatement\fP (const \fBFlowBlock\fP *bl)"
+.br
+.RI "Emit any required label statement for a given control-flow block\&. "
+.ti -1c
+.RI "void \fBemitCommentGroup\fP (const \fBPcodeOp\fP *inst)"
+.br
+.RI "Emit comments associated with a given statement\&. "
+.ti -1c
+.RI "void \fBemitCommentFuncHeader\fP (const \fBFuncdata\fP *fd)"
+.br
+.RI "Emit comments in the given function's header\&. "
+.ti -1c
+.RI "void \fBopFunc\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a \fIfunctional\fP expression based on the given p-code op to the RPN stack\&. "
+.ti -1c
+.RI "void \fBopTypeCast\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Pus the given p-code op using type-cast syntax to the RPN stack\&. "
+.ti -1c
+.RI "bool \fBprintCharacterConstant\fP (ostream &s, const \fBAddress\fP &addr, int4 charsize) const"
+.br
+.RI "Print a quoted (unicode) string at the given address\&. "
+.ti -1c
+.RI "virtual void \fBpushConstant\fP (\fBuintb\fP val, const \fBDatatype\fP *ct, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a constant onto the RPN stack\&. "
+.ti -1c
+.RI "virtual bool \fBpushEquate\fP (\fBuintb\fP val, int4 sz, const \fBEquateSymbol\fP *sym, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a constant marked up by and \fBEquateSymbol\fP onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushAnnotation\fP (const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push an address which is not in the normal data-flow\&. "
+.ti -1c
+.RI "virtual void \fBpushSymbol\fP (const \fBSymbol\fP *sym, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a specific \fBSymbol\fP onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushUnnamedLocation\fP (const \fBAddress\fP &addr, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push an address as a substitute for a \fBSymbol\fP onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushPartialSymbol\fP (const \fBSymbol\fP *sym, int4 off, int4 sz, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op, \fBDatatype\fP *outtype)"
+.br
+.RI "Push a variable that represents only part of a symbol onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushMismatchSymbol\fP (const \fBSymbol\fP *sym, int4 off, int4 sz, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push an identifier for a variable that mismatches with its \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBpush_integer\fP (\fBuintb\fP val, int4 sz, bool sign, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a constant with an integer data-type to the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpush_float\fP (\fBuintb\fP val, int4 sz, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a constant with a floating-point data-type to the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBprintUnicode\fP (ostream &s, int4 onechar) const"
+.br
+.RI "Print a single unicode character as a \fIcharacter\fP \fIconstant\fP for the high-level language\&. "
+.ti -1c
+.RI "virtual void \fBpushType\fP (const \fBDatatype\fP *ct)"
+.br
+.RI "Push a data-type name onto the RPN expression stack\&. "
+.ti -1c
+.RI "virtual string \fBgenericFunctionName\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Create a generic function name base on the entry point address\&. "
+.ti -1c
+.RI "virtual string \fBgenericTypeName\fP (const \fBDatatype\fP *ct)"
+.br
+.RI "Generate a generic name for an unnamed data-type\&. "
+.ti -1c
+.RI "virtual void \fBemitExpression\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a full expression\&. "
+.ti -1c
+.RI "virtual void \fBemitVarDecl\fP (const \fBSymbol\fP *sym)"
+.br
+.RI "Emit a variable declaration\&. "
+.ti -1c
+.RI "virtual void \fBemitVarDeclStatement\fP (const \fBSymbol\fP *sym)"
+.br
+.RI "Emit a variable declaration statement\&. "
+.ti -1c
+.RI "virtual bool \fBemitScopeVarDecls\fP (const \fBScope\fP *\fBscope\fP, int4 cat)"
+.br
+.RI "Emit all the variable declarations for a given scope\&. "
+.ti -1c
+.RI "virtual void \fBemitFunctionDeclaration\fP (const \fBFuncdata\fP *fd)"
+.br
+.RI "Emit a function declaration\&. "
+.ti -1c
+.RI "virtual void \fBemitTypeDefinition\fP (const \fBDatatype\fP *ct)"
+.br
+.RI "Emit the definition of the given data-type\&. "
+.ti -1c
+.RI "virtual bool \fBcheckPrintNegation\fP (const \fBVarnode\fP *vn)"
+.br
+.RI "Check whether a given boolean \fBVarnode\fP can be printed in negated form\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBhasCharTerminator\fP (uint1 *buffer, int4 size, int4 charsize)"
+.br
+.RI "Check if the byte buffer has a (unicode) string terminator\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoption_NULL\fP"
+.br
+.RI "Set to \fBtrue\fP if we should emit NULL keyword\&. "
+.ti -1c
+.RI "bool \fBoption_inplace_ops\fP"
+.br
+.RI "Set to \fBtrue\fP if we should use '+=' '&=' etc\&. "
+.ti -1c
+.RI "bool \fBoption_convention\fP"
+.br
+.RI "Set to \fBtrue\fP if we should print calling convention\&. "
+.ti -1c
+.RI "bool \fBoption_nocasts\fP"
+.br
+.RI "Don't print a cast if \fBtrue\fP\&. "
+.ti -1c
+.RI "bool \fBoption_unplaced\fP"
+.br
+.RI "Set to \fBtrue\fP if we should display unplaced comments\&. "
+.ti -1c
+.RI "string \fBnullToken\fP"
+.br
+.RI "\fBToken\fP to use for 'null'\&. "
+.ti -1c
+.RI "\fBCommentSorter\fP \fBcommsorter\fP"
+.br
+.RI "Container/organizer for comments in the current function\&. "
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBOpToken\fP \fBscope\fP = { '::', 2, 70, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The sub-scope/namespace operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBobject_member\fP = { '\&.', 2, 66, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fImember\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBpointer_member\fP = { '\->', 2, 66, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIpoints\fP \fIto\fP \fImember\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBsubscript\fP = { '[]', 2, 66, false, \fBOpToken::postsurround\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The array subscript operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBfunction_call\fP = { '()', 2, 66, false, \fBOpToken::postsurround\fP, 0, 10, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIfunction\fP \fIcall\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBbitwise_not\fP = { '~', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIbitwise\fP \fInegate\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBboolean_not\fP = { '!', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIboolean\fP \fInot\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBunary_minus\fP = { '\-', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIunary\fP \fIminus\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBunary_plus\fP = { '+', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIunary\fP \fIplus\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBaddressof\fP = { '&', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIaddress\fP \fIof\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBdereference\fP = { '*', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIpointer\fP \fIdereference\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBtypecast\fP = { '()', 2, 62, false, \fBOpToken::presurround\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fItype\fP \fIcast\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBmultiply\fP = { '*', 2, 54, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fImultiplication\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBdivide\fP = { '/', 2, 54, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIdivision\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBmodulo\fP = { '%', 2, 54, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fImodulo\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBbinary_plus\fP = { '+', 2, 50, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIbinary\fP \fIaddition\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBbinary_minus\fP = { '\-', 2, 50, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIbinary\fP \fIsubtraction\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBshift_left\fP = { '<<', 2, 46, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIleft\fP \fIshift\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBshift_right\fP = { '>>', 2, 46, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIright\fP \fIshift\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBless_than\fP = { '<', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIless\fP \fIthan\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBless_equal\fP = { '<=', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIless\fP \fIthan\fP \fIor\fP \fIequal\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBgreater_than\fP = { '>', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIgreater\fP \fIthan\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBgreater_equal\fP = { '>=', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIgreater\fP \fIthan\fP \fIor\fP \fIequal\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBequal\fP = { '==', 2, 38, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIequal\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBnot_equal\fP = { '!=', 2, 38, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fInot\fP \fIequal\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBbitwise_and\fP = { '&', 2, 34, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIlogical\fP \fIand\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBbitwise_xor\fP = { '^', 2, 30, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIlogical\fP \fIxor\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBbitwise_or\fP = { '|', 2, 26, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIlogical\fP \fIor\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBboolean_and\fP = { '&&', 2, 22, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIboolean\fP \fIand\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBboolean_or\fP = { '||', 2, 18, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIboolean\fP \fIor\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBboolean_xor\fP = { '^^', 2, 20, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIboolean\fP \fIxor\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBassignment\fP = { '=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIassignment\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBcomma\fP = { ',', 2, 2, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIcomma\fP operator (for parameter lists) "
+.ti -1c
+.RI "static \fBOpToken\fP \fBnew_op\fP = { '', 2, 62, false, \fBOpToken::space\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fInew\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBmultequal\fP = { '*=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fImultiplication\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBdivequal\fP = { '/=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIdivision\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBremequal\fP = { '%=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fImodulo\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBplusequal\fP = { '+=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIaddition\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBminusequal\fP = { '\-=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIsubtraction\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBleftequal\fP = { '<<=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIleft\fP \fIshift\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBrightequal\fP = { '>>=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIright\fP \fIshift\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBandequal\fP = { '&=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIlogical\fP \fIand\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBorequal\fP = { '|=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIlogical\fP \fIor\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBxorequal\fP = { '^=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIin-place\fP \fIlogical\fP \fIxor\fP operator\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBtype_expr_space\fP = { '', 2, 10, false, \fBOpToken::space\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "Type declaration involving a space (identifier or adornment) "
+.ti -1c
+.RI "static \fBOpToken\fP \fBtype_expr_nospace\fP = { '', 2, 10, false, \fBOpToken::space\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "Type declaration with no space\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBptr_expr\fP = { '*', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "Pointer adornment for a type declaration\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBarray_expr\fP = { '[]', 2, 66, false, \fBOpToken::postsurround\fP, 1, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "Array adornment for a type declaration\&. "
+.ti -1c
+.RI "static \fBOpToken\fP \fBenum_cat\fP = { '|', 2, 26, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }"
+.br
+.RI "The \fIconcatenation\fP operator for enumerated values\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The c-language token emitter\&. 
+
+The c-language specific rules for emitting:
+.IP "\(bu" 2
+expressions
+.IP "\(bu" 2
+statements
+.IP "\(bu" 2
+function prototypes
+.IP "\(bu" 2
+variable declarations
+.IP "\(bu" 2
+if/else structures
+.IP "\(bu" 2
+loop structures
+.IP "\(bu" 2
+etc\&. 
+.PP
+
+.PP
+Definition at line 63 of file printc\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PrintC::PrintC (\fBArchitecture\fP * g, const string & nm = \fC'c\-language'\fP)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the \fBArchitecture\fP owning this c-language emitter 
+.br
+\fInm\fP is the name assigned to this emitter 
+.RE
+.PP
+
+.PP
+Definition at line 93 of file printc\&.cc\&.
+.SS "virtual PrintC::~PrintC (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 198 of file printc\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void PrintC::adjustTypeOperators (void)\fC [virtual]\fP"
+
+.PP
+Set basic data-type information for p-code operators\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 1873 of file printc\&.cc\&.
+.SS "void PrintC::buildTypeStack (const \fBDatatype\fP * ct, vector< const \fBDatatype\fP * > & typestack)\fC [protected]\fP"
+
+.PP
+Prepare to push components of a data-type declaration\&. Push nested components of a data-type declaration onto a stack, so we can access it bottom up 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type being emitted 
+.br
+\fItypestack\fP will hold the sub-types involved in the displaying the declaration 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file printc\&.cc\&.
+.SS "bool PrintC::checkArrayDeref (const \fBVarnode\fP * vn) const\fC [protected]\fP"
+
+.PP
+Determine whether a LOAD/STORE expression requires pointer '*' syntax\&. An expression involving a LOAD or STORE can sometimes be emitted using \fIarray\fP syntax (or \fIfield\fP \fImember\fP syntax)\&. This method determines if this kind of syntax is appropriate or if a '*' operator is required\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the root of the pointer expression (feeding into LOAD or STORE) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBfalse\fP if '*' syntax is required, \fBtrue\fP if some other syntax is used 
+.RE
+.PP
+
+.PP
+Definition at line 266 of file printc\&.cc\&.
+.SS "bool PrintC::checkPrintNegation (const \fBVarnode\fP * vn)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Check whether a given boolean \fBVarnode\fP can be printed in negated form\&. In many situations a boolean value can be inverted by flipping the operator token producing it to a complementary token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given boolean \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the value can be easily inverted 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1936 of file printc\&.cc\&.
+.SS "void PrintC::docAllGlobals (void)\fC [virtual]\fP"
+
+.PP
+Emit declarations of global variables\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2159 of file printc\&.cc\&.
+.SS "void PrintC::docFunction (const \fBFuncdata\fP * fd)\fC [virtual]\fP"
+
+.PP
+Emit the declaration (and body) of a function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the function to emit 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2179 of file printc\&.cc\&.
+.SS "void PrintC::docSingleGlobal (const \fBSymbol\fP * sym)\fC [virtual]\fP"
+
+.PP
+Emit the declaration for a single (global) \fBSymbol\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to declare 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2169 of file printc\&.cc\&.
+.SS "void PrintC::docTypeDefinitions (const \fBTypeFactory\fP * typegrp)\fC [virtual]\fP"
+
+.PP
+Emit definitions of data-types\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypegrp\fP is the container for the data-types that should be defined 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1949 of file printc\&.cc\&.
+.SS "bool PrintC::doEmitWideCharPrefix (void) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Return \fBtrue\fP if this language requires a prefix when expressing \fIwide\fP characters\&. The c-language standard requires that strings (and character constants) made up of \fIwide\fP character elements have an 'L' prefix added before the quote characters\&. Other related languages may not do this\&. Having this as a virtual method lets derived languages to tailor their strings while still using the basic \fBPrintC\fP functionality 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a prefix should be printed 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 1173 of file printc\&.cc\&.
+.SS "void PrintC::emitAnyLabelStatement (const \fBFlowBlock\fP * bl)\fC [protected]\fP"
+
+.PP
+Emit any required label statement for a given control-flow block\&. The block does not have to be a basic block\&. This routine finds the entry basic block and prints any necessary labels for that\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given control-flow block 
+.RE
+.PP
+
+.PP
+Definition at line 2691 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockBasic (const \fBBlockBasic\fP * bb)\fC [virtual]\fP"
+
+.PP
+Emit statements in a basic block\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2220 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockCondition (const \fBBlockCondition\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit a conditional statement\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2378 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockCopy (const \fBBlockCopy\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit a basic block (with any labels) 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2301 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockDoWhile (const \fBBlockDoWhile\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit a loop structure, check at bottom\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2535 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockGoto (const \fBBlockGoto\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit a block ending with a goto statement\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2308 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockGraph (const \fBBlockGraph\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit (an unspecified) list of blocks\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2288 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockIf (const \fBBlockIf\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit an if/else style construct\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2414 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockInfLoop (const \fBBlockInfLoop\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit an infinite loop structure\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2568 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockLs (const \fBBlockList\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit a sequence of blocks\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2323 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockSwitch (const \fBBlockSwitch\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit a switch structure\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2756 of file printc\&.cc\&.
+.SS "void PrintC::emitBlockWhileDo (const \fBBlockWhileDo\fP * bl)\fC [virtual]\fP"
+
+.PP
+Emit a loop structure, check at top\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2471 of file printc\&.cc\&.
+.SS "void PrintC::emitCommentFuncHeader (const \fBFuncdata\fP * fd)\fC [protected]\fP"
+
+.PP
+Emit comments in the given function's header\&. Collect all comment lines marked as \fIheader\fP for the function and emit them with the appropriate delimiters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the given function 
+.RE
+.PP
+
+.PP
+Definition at line 2717 of file printc\&.cc\&.
+.SS "void PrintC::emitCommentGroup (const \fBPcodeOp\fP * inst)\fC [protected]\fP"
+
+.PP
+Emit comments associated with a given statement\&. Collect any comment lines the sorter has associated with a statement rooted at a given \fBPcodeOp\fP and emit them using appropriate delimiters 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinst\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2703 of file printc\&.cc\&.
+.SS "void PrintC::emitEnumDefinition (const \fBTypeEnum\fP * ct)\fC [protected]\fP"
+
+.PP
+Emit the definition of an \fIenumeration\fP data-type\&. Print all the named values making up the data-type, using the \fBenum\fP keyword 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the enumerated data-type 
+.RE
+.PP
+
+.PP
+Definition at line 1703 of file printc\&.cc\&.
+.SS "void PrintC::emitExpression (const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a full expression\&. This can be an assignment statement, if the given \fBPcodeOp\fP has an output \fBVarnode\fP, or it can be a statement with no left-hand side\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP performing the final operation of the expression 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2016 of file printc\&.cc\&.
+.SS "void PrintC::emitFunctionDeclaration (const \fBFuncdata\fP * fd)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a function declaration\&. This prints the formal defining prototype for a function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the \fBFuncdata\fP object representing the function to be emitted 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2115 of file printc\&.cc\&.
+.SS "void PrintC::emitGlobalVarDeclsRecursive (\fBScope\fP * scope)\fC [protected]\fP"
+
+.PP
+Emit variable declarations for all global symbols under given scope\&. For the given scope and all of its children that are not \fIfunction\fP scopes, emit a variable declaration for each symbol\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given scope 
+.RE
+.PP
+
+.PP
+Definition at line 2146 of file printc\&.cc\&.
+.SS "void PrintC::emitGotoStatement (const \fBFlowBlock\fP * bl, const \fBFlowBlock\fP * exp_bl, uint4 type)\fC [protected]\fP"
+
+.PP
+Emit a statement representing an unstructured branch\&. Given the type of unstructured branch, with source and destination blocks, construct a statement with the appropriate c-language keyword (\fBgoto\fP, \fBbreak\fP, \fBcontinue\fP) representing a control-flow branch between the blocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the source block 
+.br
+\fIexp_bl\fP is the destination block (which may provide a label) 
+.br
+\fItype\fP is the given type of the branch 
+.RE
+.PP
+
+.PP
+Definition at line 1851 of file printc\&.cc\&.
+.SS "bool PrintC::emitInplaceOp (const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Attempt to emit an expression rooted at an \fIin-place\fP operator\&. Check that the given p-code op has an \fIin-place\fP token form and if the first input and the output are references to the same variable\&. If so, emit the expression using the \fIin-place\fP token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the expression was emitted (as in-place), or \fBfalse\fP if not emitted at all 
+.RE
+.PP
+
+.PP
+Definition at line 1966 of file printc\&.cc\&.
+.SS "void PrintC::emitLabel (const \fBFlowBlock\fP * bl)\fC [protected]\fP"
+
+.PP
+Emit a formal label for a given control-flow block\&. Check for an explicit label that has been registered with the basic block\&. Otherwise, construct a generic label based on the entry address of the block\&. Emit the label as a single token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given block 
+.RE
+.PP
+
+.PP
+Definition at line 2636 of file printc\&.cc\&.
+.SS "void PrintC::emitLabelStatement (const \fBFlowBlock\fP * bl)\fC [protected]\fP"
+
+.PP
+Emit any required label statement for a given basic block\&. If the basic block is the destination of a \fBgoto\fP statement, emit a label for the block followed by the ':' terminator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given control-flow block 
+.RE
+.PP
+
+.PP
+Definition at line 2670 of file printc\&.cc\&.
+.SS "void PrintC::emitLocalVarDecls (const \fBFuncdata\fP * fd)\fC [protected]\fP"
+
+.PP
+Emit variable declarations for a function\&. A formal variable declaration is emitted for every symbol in the given function scope\&. I\&.e\&. all local variables are declared\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the function being emitted 
+.RE
+.PP
+
+.PP
+Definition at line 1808 of file printc\&.cc\&.
+.SS "void PrintC::emitPrototypeInputs (const \fBFuncProto\fP * proto)\fC [protected]\fP"
+
+.PP
+Emit the input data-types of a function prototype\&. This emits the individual type declarations of the input parameters to the function as a comma separated list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproto\fP is the given prototype of the function 
+.RE
+.PP
+
+.PP
+Definition at line 1774 of file printc\&.cc\&.
+.SS "void PrintC::emitPrototypeOutput (const \fBFuncProto\fP * proto, const \fBFuncdata\fP * fd)\fC [protected]\fP"
+
+.PP
+Emit the output data-type of a function prototype\&. In C, when printing a function prototype, the function's output data-type is displayed first as a type declaration, where the function name acts as the declaration's identifier\&. This method emits the declaration in preparation for this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproto\fP is the function prototype object 
+.br
+\fIfd\fP is the (optional) \fBFuncdata\fP object providing additional meta-data about the function 
+.RE
+.PP
+
+.PP
+Definition at line 1749 of file printc\&.cc\&.
+.SS "bool PrintC::emitScopeVarDecls (const \fBScope\fP * scope, int4 cat)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Emit all the variable declarations for a given scope\&. A subset of all variables can be declared by specifying a category, 0 for parameters, -1 for everything\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.br
+\fIcat\fP is the category of variable to declare 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2066 of file printc\&.cc\&.
+.SS "void PrintC::emitStatement (const \fBPcodeOp\fP * inst)\fC [protected]\fP"
+
+.PP
+Emit a statement in the body of a function\&. This emits an entire statement rooted at a given operation\&. All associated expressions on the right-hand and left-hand sides are recursively emitted\&. Depending on the current printing properties, the statement is usually terminated with ';' character\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinst\fP is the given root \fBPcodeOp\fP of the statement 
+.RE
+.PP
+
+.PP
+Definition at line 1833 of file printc\&.cc\&.
+.SS "void PrintC::emitStructDefinition (const \fBTypeStruct\fP * ct)\fC [protected]\fP"
+
+.PP
+Emit the definition of a \fIstructure\fP data-type\&. Print all the components making up the data-type, using the \fBstruct\fP keyword 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the structure data-type 
+.RE
+.PP
+
+.PP
+Definition at line 1666 of file printc\&.cc\&.
+.SS "void PrintC::emitSwitchCase (int4 casenum, const \fBBlockSwitch\fP * switchbl)\fC [protected]\fP"
+
+.PP
+Emit labels for a \fIcase\fP block\&. Given a \fIswitch\fP block and an index indicating a particular \fIcase\fP block, look up all the labels associated with that \fIcase\fP and emit them using formal labels with the \fBcase\fP keyword and a ':' terminator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcasenum\fP is the given index of the \fIcase\fP block 
+.br
+\fIswitchbl\fP is the root block of the switch 
+.RE
+.PP
+
+.PP
+Definition at line 2604 of file printc\&.cc\&.
+.SS "void PrintC::emitTypeDefinition (const \fBDatatype\fP * ct)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the definition of the given data-type\&. This is currently limited to a 'struct' or 'enum' definitions\&. The definition is emitted so that name associated with data-type object will be associated with the definition (in anything that parses it) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the given data-type 
+.RE
+.PP
+
+.PP
+Definition at line 1917 of file printc\&.cc\&.
+.SS "void PrintC::emitVarDecl (const \fBSymbol\fP * sym)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a variable declaration\&. This can be part of a full a statement, or just the declaration of a function parameter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to be declared 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2045 of file printc\&.cc\&.
+.SS "void PrintC::emitVarDeclStatement (const \fBSymbol\fP * sym)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a variable declaration statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to be declared 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 2058 of file printc\&.cc\&.
+.SS "string PrintC::genericFunctionName (const \fBAddress\fP & addr)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Create a generic function name base on the entry point address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the entry point address of the function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the generated name 
+.RE
+.PP
+
+.PP
+Definition at line 2803 of file printc\&.cc\&.
+.SS "string PrintC::genericTypeName (const \fBDatatype\fP * ct)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate a generic name for an unnamed data-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the given data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the generated name 
+.RE
+.PP
+
+.PP
+Definition at line 2817 of file printc\&.cc\&.
+.SS "bool PrintC::hasCharTerminator (uint1 * buffer, int4 size, int4 charsize)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Check if the byte buffer has a (unicode) string terminator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP is the byte buffer 
+.br
+\fIsize\fP is the number of bytes in the buffer 
+.br
+\fIcharsize\fP is the presumed size (in bytes) of character elements 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a string terminator is found 
+.RE
+.PP
+
+.PP
+Definition at line 1184 of file printc\&.cc\&.
+.SS "bool PrintC::isCharacterConstant (const uint1 * buf, int4 size, int4 charsize) const\fC [virtual]\fP"
+
+.PP
+Decide is the given byte array looks like a character string\&. This looks for encodings and/or a terminator that is appropriate for the high-level language 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP is a pointer to the byte array 
+.br
+\fIsize\fP is the number of bytes in the array 
+.br
+\fIcharsize\fP is the size in bytes of the encoding element (i\&.e\&. UTF8, UTF16, etc\&.) to assume 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1892 of file printc\&.cc\&.
+.SS "virtual void PrintC::opBoolAnd (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a BOOL_AND operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 258 of file printc\&.hh\&.
+.SS "void PrintC::opBoolNegate (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+Print the BOOL_NEGATE but check for opportunities to flip the next operator instead 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the BOOL_NEGATE \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 597 of file printc\&.cc\&.
+.SS "virtual void PrintC::opBoolOr (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a BOOL_OR operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 259 of file printc\&.hh\&.
+.SS "virtual void PrintC::opBoolXor (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a BOOL_XOR operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 257 of file printc\&.hh\&.
+.SS "void PrintC::opBranch (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a BRANCH operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 361 of file printc\&.cc\&.
+.SS "void PrintC::opBranchind (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a BRANCHIND operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 423 of file printc\&.cc\&.
+.SS "void PrintC::opCall (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a CALL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 434 of file printc\&.cc\&.
+.SS "void PrintC::opCallind (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a CALLIND operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 465 of file printc\&.cc\&.
+.SS "void PrintC::opCallother (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a CALLOTHER operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 490 of file printc\&.cc\&.
+.SS "virtual void PrintC::opCast (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a CAST operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 282 of file printc\&.hh\&.
+.SS "void PrintC::opCbranch (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+Print the branching condition:
+.IP "\(bu" 2
+If it is the first condition, print \fBif\fP 
+.IP "\(bu" 2
+If there is no block structure, print \fBgoto\fP 
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the CBRANCH \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 377 of file printc\&.cc\&.
+.SS "void PrintC::opConstructor (const \fBPcodeOp\fP * op, bool withNew)\fC [virtual]\fP"
+
+.PP
+Emit an operator constructing an object\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 508 of file printc\&.cc\&.
+.SS "void PrintC::opCopy (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a COPY operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 322 of file printc\&.cc\&.
+.SS "void PrintC::opCpoolRefOp (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a CPOOLREF operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 840 of file printc\&.cc\&.
+.SS "virtual void PrintC::opFloatAbs (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_ABS operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 270 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatAdd (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_ADD operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 265 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatCeil (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_CEIL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 275 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatDiv (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_DIV operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 266 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatEqual (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_EQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 260 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatFloat2Float (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_FLOAT2FLOAT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 273 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatFloor (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_FLOOR operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 276 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatInt2Float (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_INT2FLOAT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 272 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatLess (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_LESS operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 262 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatLessEqual (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_LESSEQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 263 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatMult (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_MULT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 267 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatNan (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_NAN operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 264 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatNeg (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_NEG operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 269 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatNotEqual (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_NOTEQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 261 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatRound (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_ROUND operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 277 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatSqrt (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_SQRT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 271 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatSub (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_SUB operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 268 of file printc\&.hh\&.
+.SS "virtual void PrintC::opFloatTrunc (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a FLOAT_TRUNC operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 274 of file printc\&.hh\&.
+.SS "void PrintC::opFunc (const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push a \fIfunctional\fP expression based on the given p-code op to the RPN stack\&. This is used for expression that require functional syntax, where the name of the function is the name of the operator\&. The inputs to the p-code op form the roots of the comma separated list of \fIparameters\fP within the syntax\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 288 of file printc\&.cc\&.
+.SS "virtual void PrintC::opIndirect (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INDIRECT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 279 of file printc\&.hh\&.
+.SS "virtual void PrintC::opInt2Comp (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_2COMP operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 243 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntAdd (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_ADD operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 238 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntAnd (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_AND operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 246 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntCarry (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_CARRY operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 240 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntDiv (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_DIV operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 252 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntEqual (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_EQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 230 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntLeft (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_LEFT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 248 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntLess (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_LESS operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 234 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntLessEqual (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_LESSEQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 235 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntMult (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_MULT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 251 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntNegate (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_NEGATE operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 244 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntNotEqual (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_NOTEQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 231 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntOr (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_OR operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 247 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntRem (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_REM operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 254 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntRight (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_RIGHT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 249 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntSborrow (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SBORROW operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 242 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntScarry (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SCARRY operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 241 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntSdiv (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SDIV operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 253 of file printc\&.hh\&.
+.SS "void PrintC::opIntSext (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a INT_SEXT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 586 of file printc\&.cc\&.
+.SS "virtual void PrintC::opIntSless (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SLESS operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 232 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntSlessEqual (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SLESSEQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 233 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntSrem (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SREM operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 255 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntSright (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SRIGHT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 250 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntSub (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_SUB operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 239 of file printc\&.hh\&.
+.SS "virtual void PrintC::opIntXor (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a INT_XOR operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 245 of file printc\&.hh\&.
+.SS "void PrintC::opIntZext (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a INT_ZEXT operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 577 of file printc\&.cc\&.
+.SS "void PrintC::opLoad (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a LOAD operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 328 of file printc\&.cc\&.
+.SS "virtual void PrintC::opMultiequal (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a MULTIEQUAL operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 278 of file printc\&.hh\&.
+.SS "void PrintC::opNewOp (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a NEW operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 914 of file printc\&.cc\&.
+.SS "virtual void PrintC::opPiece (const \fBPcodeOp\fP * op)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a PIECE operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 280 of file printc\&.hh\&.
+.SS "void PrintC::opPtradd (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a PTRADD operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 624 of file printc\&.cc\&.
+.SS "void PrintC::opPtrsub (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+We need to distinguish between the following cases:
+.IP "\(bu" 2
+ptr-> struct spacebase or array
+.IP "\(bu" 2
+valueoption on/off (from below)
+.IP "\(bu" 2
+valueflex yes/no (can we turn valueoption above?)
+.PP
+.PP
+Then the printing breaks up into the following table: 
+.PP
+.nf
+        val flex   |   val flex   |   val flex   |   val flex
+        off  yes       off   no        on  yes        on   no
+
+struct  &( )\&.name      &( )->name     ( )\&.name       ( )->name
+spcbase n/a            &name          n/a            name
+array   ( )            *( )           ( )[0]         *( )[0]
+
+.fi
+.PP
+ The '&' is dropped if the output type is an array 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the PTRSUB \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 666 of file printc\&.cc\&.
+.SS "void PrintC::opReturn (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a RETURN operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 545 of file printc\&.cc\&.
+.SS "void PrintC::opSegmentOp (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.IP "\(bu" 2
+slot 0 is the spaceid constant
+.IP "\(bu" 2
+slot 1 is the segment, we could conceivably try to annotate the segment here
+.IP "\(bu" 2
+slot 2 is the pointer we are really interested in printing
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the SEGMENTOP \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 834 of file printc\&.cc\&.
+.SS "void PrintC::opStore (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a STORE operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 341 of file printc\&.cc\&.
+.SS "void PrintC::opSubpiece (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a SUBPIECE operator\&. 
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 613 of file printc\&.cc\&.
+.SS "void PrintC::opTypeCast (const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Pus the given p-code op using type-cast syntax to the RPN stack\&. The syntax represents the given op using a standard c-language cast\&. The data-type being cast to is obtained from the output variable of the op\&. The input expression is also recursively pushed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 312 of file printc\&.cc\&.
+.SS "bool PrintC::printCharacterConstant (ostream & s, const \fBAddress\fP & addr, int4 charsize) const\fC [protected]\fP"
+
+.PP
+Print a quoted (unicode) string at the given address\&. Data for the string is obtained directly from the \fBLoadImage\fP\&. The bytes are checked for appropriate unicode encoding and the presence of a terminator\&. If all these checks pass, the string is emitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream to print to 
+.br
+\fIaddr\fP is the address of the string data within the \fBLoadImage\fP 
+.br
+\fIcharsize\fP is the number of bytes in an encoded element (i\&.e\&. UTF8, UTF16, or UTF32) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a proper string was found and printed to the stream 
+.RE
+.PP
+
+.PP
+Definition at line 1213 of file printc\&.cc\&.
+.SS "void PrintC::printUnicode (ostream & s, int4 onechar) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Print a single unicode character as a \fIcharacter\fP \fIconstant\fP for the high-level language\&. For most languages, this prints the character surrounded by single quotes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIonechar\fP is the unicode code point of the character to print 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1088 of file printc\&.cc\&.
+.SS "void PrintC::push_float (\fBuintb\fP val, int4 sz, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push a constant with a floating-point data-type to the RPN stack\&. The encoding is drawn from the underlying \fBTranslate\fP object, and the print properties are checked for formatting overrides\&. In any case, a format is decided upon, and the constant is pushed as a single token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given encoded floating-point value 
+.br
+\fIsz\fP is the size (in bytes) of the encoded value 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the value 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the value 
+.RE
+.PP
+
+.PP
+Definition at line 1052 of file printc\&.cc\&.
+.SS "void PrintC::push_integer (\fBuintb\fP val, int4 sz, bool sign, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push a constant with an integer data-type to the RPN stack\&. Various checks are made to see if the integer should be printed as an \fIequate\fP symbol or if there is other overriding information about what format it should be printed in\&. In any case, a final determination of the format is made and the integer is pushed as a single token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given integer value 
+.br
+\fIsz\fP is the size (in bytes) to associate with the integer 
+.br
+\fIsign\fP is set to \fBtrue\fP if the integer should be treated as a signed value 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the value 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the value 
+.RE
+.PP
+
+.PP
+Definition at line 959 of file printc\&.cc\&.
+.SS "void PrintC::pushAnnotation (const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push an address which is not in the normal data-flow\&. The given \fBVarnode\fP is treated as an address, which may or may not have a symbol name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the annotation \fBVarnode\fP 
+.br
+\fIop\fP is the \fBPcodeOp\fP which takes the annotation as input 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1468 of file printc\&.cc\&.
+.SS "void PrintC::pushBoolConstant (\fBuintb\fP val, const \fBTypeBase\fP * ct, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push a \fBtrue\fP or \fBfalse\fP token to the RPN stack\&. A single Atom representing the boolean value is emitted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the boolean value (non-zero for \fBtrue\fP) 
+.br
+\fIct\fP is the data-type associated with the value 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the value 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the value 
+.RE
+.PP
+
+.PP
+Definition at line 1156 of file printc\&.cc\&.
+.SS "void PrintC::pushCharConstant (\fBuintb\fP val, const \fBTypeChar\fP * ct, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push a single character constant to the RPN stack\&. For C, a character constant is usually emitted as the character in single quotes\&. Handle unicode, wide characters, etc\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the constant value 
+.br
+\fIct\fP is data-type attached to the value 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the value 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the value 
+.RE
+.PP
+
+.PP
+Definition at line 1258 of file printc\&.cc\&.
+.SS "void PrintC::pushConstant (\fBuintb\fP val, const \fBDatatype\fP * ct, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push a constant onto the RPN stack\&. The value is ultimately emitted based on its data-type and other associated mark-up 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value of the constant 
+.br
+\fIct\fP is the data-type of the constant 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the constant (optional) 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the constant (optional) 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1358 of file printc\&.cc\&.
+.SS "void PrintC::pushEnumConstant (\fBuintb\fP val, const \fBTypeEnum\fP * ct, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push an enumerated value to the RPN stack\&. Handle cases where the value is built out of multiple named elements of the enumeration or where the value cannot be expressed using named elements 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the enumerated value being pushed 
+.br
+\fIct\fP is the enumerated data-type attached to the value 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the value 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the value 
+.RE
+.PP
+
+.PP
+Definition at line 1283 of file printc\&.cc\&.
+.SS "bool PrintC::pushEquate (\fBuintb\fP val, int4 sz, const \fBEquateSymbol\fP * sym, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push a constant marked up by and \fBEquateSymbol\fP onto the RPN stack\&. The equate may substitute a name or force a conversion for the constant 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value of the constant 
+.br
+\fIsz\fP is the number of bytes to use for the encoding 
+.br
+\fIsym\fP is the \fBEquateSymbol\fP that marks up the constant 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the constant (optional) 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the constant (optional) 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1425 of file printc\&.cc\&.
+.SS "void PrintC::pushMismatchSymbol (const \fBSymbol\fP * sym, int4 off, int4 sz, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push an identifier for a variable that mismatches with its \fBSymbol\fP\&. This happens when a \fBVarnode\fP overlaps, but is not contained by a \fBSymbol\fP\&. This most commonly happens when the size of a \fBSymbol\fP is unknown 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the overlapped symbol 
+.br
+\fIoff\fP is the byte offset of the variable relative to the symbol 
+.br
+\fIsz\fP is the size of the variable in bytes 
+.br
+\fIvn\fP is the \fBVarnode\fP representing the variable 
+.br
+\fIop\fP is a \fBPcodeOp\fP associated with the \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1646 of file printc\&.cc\&.
+.SS "void PrintC::pushPartialSymbol (const \fBSymbol\fP * sym, int4 off, int4 sz, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op, \fBDatatype\fP * outtype)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push a variable that represents only part of a symbol onto the RPN stack\&. Generally \fImember\fP syntax specifying a field within a structure gets emitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the root \fBSymbol\fP 
+.br
+\fIoff\fP is the byte offset, within the \fBSymbol\fP, of the partial variable 
+.br
+\fIsz\fP is the number of bytes in the partial variable 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the partial value 
+.br
+\fIop\fP is a \fBPcodeOp\fP associate with the \fBVarnode\fP 
+.br
+\fIouttype\fP is the data-type expected by expression using the partial variable 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1557 of file printc\&.cc\&.
+.SS "void PrintC::pushPrototypeInputs (const \fBFuncProto\fP * proto)\fC [protected]\fP"
+
+.PP
+Push input parameters\&. Push the comma separated list of data-type declarations onto the RPN stack as part of emitting a given function prototype 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproto\fP is the given function prototype 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file printc\&.cc\&.
+.SS "bool PrintC::pushPtrCharConstant (\fBuintb\fP val, const \fBTypePointer\fP * ct, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Attempt to push a quoted string representing a given constant pointer onto the RPN stack\&. Check if the constant pointer refers to character data that can be emitted as a quoted string\&. If so push the string, if not return \fBfalse\fP to indicate a token was not pushed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value of the given constant pointer 
+.br
+\fIct\fP is the pointer data-type attached to the value 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the value 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a quoted string was pushed to the RPN stack 
+.RE
+.PP
+
+.PP
+Definition at line 1315 of file printc\&.cc\&.
+.SS "bool PrintC::pushPtrCodeConstant (\fBuintb\fP val, const \fBTypePointer\fP * ct, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Attempt to push a function name representing a constant pointer onto the RPN stack\&. Given the pointer value, try to look up the function at that address and push the function's name as a single Atom\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given constant pointer value 
+.br
+\fIct\fP is the pointer data-type attached to the value 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the value 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a name was pushed to the RPN stack, return \fBfalse\fP otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 1343 of file printc\&.cc\&.
+.SS "void PrintC::pushSymbol (const \fBSymbol\fP * sym, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push a specific \fBSymbol\fP onto the RPN stack\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the \fBSymbol\fP value 
+.br
+\fIop\fP is a \fBPcodeOp\fP associated with the \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1520 of file printc\&.cc\&.
+.SS "void PrintC::pushType (const \fBDatatype\fP * ct)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push a data-type name onto the RPN expression stack\&. The data-type is generally emitted as if for a cast\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type to push 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1141 of file printc\&.cc\&.
+.SS "void PrintC::pushTypeEnd (const \fBDatatype\fP * ct)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push the tail ends of a data-type declaration onto the RPN stack\&. Because the front-ends were pushed on base-type -> final-modifier, the tail-ends are pushed on final-modifier -> base-type\&. The tail-ends amount to
+.IP "\(bu" 2
+array subscripts \&. [ # ] and
+.IP "\(bu" 2
+function parameters \&. ( paramlist )
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type being pushed 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 226 of file printc\&.cc\&.
+.SS "void PrintC::pushTypeStart (const \fBDatatype\fP * ct, bool noident)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push part of a data-type declaration onto the RPN stack, up to the identifier\&. Store off array sizes for printing after the identifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type to push 
+.br
+\fInoident\fP is \fBtrue\fP if an identifier will not be pushed as part of the declaration 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBPrintJava\fP\&.
+.PP
+Definition at line 177 of file printc\&.cc\&.
+.SS "void PrintC::pushUnnamedLocation (const \fBAddress\fP & addr, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Push an address as a substitute for a \fBSymbol\fP onto the RPN stack\&. If there is no \fBSymbol\fP or other name source for an explicit variable, this method is used to print something to represent the variable based on its storage address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the storage address 
+.br
+\fIvn\fP is the \fBVarnode\fP representing the variable (if present) 
+.br
+\fIop\fP is a \fBPcodeOp\fP associated with the variable 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1548 of file printc\&.cc\&.
+.SS "void PrintC::setCommentStyle (const string & nm)\fC [virtual]\fP"
+
+.PP
+Set the way comments are displayed in decompiler output\&. This method can either be provided a formal name or a \fIsample\fP of the initial delimiter, then it will choose from among the schemes it knows 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the configuration description 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguage\fP\&.
+.PP
+Definition at line 1879 of file printc\&.cc\&.
+.SS "void PrintC::setConvention (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether calling conventions are printed\&. 
+.PP
+Definition at line 193 of file printc\&.hh\&.
+.SS "void PrintC::setCPlusPlusStyleComments (void)\fC [inline]\fP"
+
+.PP
+Set c++-style '//' comment delimiters\&. 
+.PP
+Definition at line 196 of file printc\&.hh\&.
+.SS "void PrintC::setCStyleComments (void)\fC [inline]\fP"
+
+.PP
+Set c-style '/* */' comment delimiters\&. 
+.PP
+Definition at line 195 of file printc\&.hh\&.
+.SS "void PrintC::setDisplayUnplaced (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fIunplaced\fP comments are displayed in the header\&. 
+.PP
+Definition at line 197 of file printc\&.hh\&.
+.SS "void PrintC::setInplaceOps (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the printing of \fIin-place\fP operators\&. 
+.PP
+Definition at line 192 of file printc\&.hh\&.
+.SS "void PrintC::setNoCastPrinting (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether casts should \fBnot\fP be printed\&. 
+.PP
+Definition at line 194 of file printc\&.hh\&.
+.SS "void PrintC::setNULLPrinting (bool val)\fC [inline]\fP"
+
+.PP
+Toggle the printing of a 'NULL' token\&. 
+.PP
+Definition at line 191 of file printc\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBOpToken\fP PrintC::addressof = { '&', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIaddress\fP \fIof\fP operator\&. 
+.PP
+Definition at line 74 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::andequal = { '&=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIlogical\fP \fIand\fP operator\&. 
+.PP
+Definition at line 106 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::array_expr = { '[]', 2, 66, false, \fBOpToken::postsurround\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Array adornment for a type declaration\&. 
+.PP
+Definition at line 112 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::assignment = { '=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIassignment\fP operator\&. 
+.PP
+Definition at line 96 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::binary_minus = { '\-', 2, 50, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIbinary\fP \fIsubtraction\fP operator\&. 
+.PP
+Definition at line 81 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::binary_plus = { '+', 2, 50, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIbinary\fP \fIaddition\fP operator\&. 
+.PP
+Definition at line 80 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::bitwise_and = { '&', 2, 34, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIlogical\fP \fIand\fP operator\&. 
+.PP
+Definition at line 90 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::bitwise_not = { '~', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIbitwise\fP \fInegate\fP operator\&. 
+.PP
+Definition at line 70 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::bitwise_or = { '|', 2, 26, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIlogical\fP \fIor\fP operator\&. 
+.PP
+Definition at line 92 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::bitwise_xor = { '^', 2, 30, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIlogical\fP \fIxor\fP operator\&. 
+.PP
+Definition at line 91 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::boolean_and = { '&&', 2, 22, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIboolean\fP \fIand\fP operator\&. 
+.PP
+Definition at line 93 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::boolean_not = { '!', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIboolean\fP \fInot\fP operator\&. 
+.PP
+Definition at line 71 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::boolean_or = { '||', 2, 18, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIboolean\fP \fIor\fP operator\&. 
+.PP
+Definition at line 94 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::boolean_xor = { '^^', 2, 20, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIboolean\fP \fIxor\fP operator\&. 
+.PP
+Definition at line 95 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::comma = { ',', 2, 2, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIcomma\fP operator (for parameter lists) 
+.PP
+Definition at line 97 of file printc\&.hh\&.
+.SS "\fBCommentSorter\fP PrintC::commsorter\fC [protected]\fP"
+
+.PP
+Container/organizer for comments in the current function\&. 
+.PP
+Definition at line 120 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::dereference = { '*', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIpointer\fP \fIdereference\fP operator\&. 
+.PP
+Definition at line 75 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::divequal = { '/=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIdivision\fP operator\&. 
+.PP
+Definition at line 100 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::divide = { '/', 2, 54, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIdivision\fP operator\&. 
+.PP
+Definition at line 78 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::enum_cat = { '|', 2, 26, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIconcatenation\fP operator for enumerated values\&. 
+.PP
+Definition at line 113 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::equal = { '==', 2, 38, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIequal\fP operator\&. 
+.PP
+Definition at line 88 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::function_call = { '()', 2, 66, false, \fBOpToken::postsurround\fP, 0, 10, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIfunction\fP \fIcall\fP operator\&. 
+.PP
+Definition at line 69 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::greater_equal = { '>=', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIgreater\fP \fIthan\fP \fIor\fP \fIequal\fP operator\&. 
+.PP
+Definition at line 87 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::greater_than = { '>', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIgreater\fP \fIthan\fP operator\&. 
+.PP
+Definition at line 86 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::leftequal = { '<<=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIleft\fP \fIshift\fP operator\&. 
+.PP
+Definition at line 104 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::less_equal = { '<=', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIless\fP \fIthan\fP \fIor\fP \fIequal\fP operator\&. 
+.PP
+Definition at line 85 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::less_than = { '<', 2, 42, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIless\fP \fIthan\fP operator\&. 
+.PP
+Definition at line 84 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::minusequal = { '\-=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIsubtraction\fP operator\&. 
+.PP
+Definition at line 103 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::modulo = { '%', 2, 54, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fImodulo\fP operator\&. 
+.PP
+Definition at line 79 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::multequal = { '*=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fImultiplication\fP operator\&. 
+.PP
+Definition at line 99 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::multiply = { '*', 2, 54, true, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fImultiplication\fP operator\&. 
+.PP
+Definition at line 77 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::new_op = { '', 2, 62, false, \fBOpToken::space\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fInew\fP operator\&. 
+.PP
+Definition at line 98 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::not_equal = { '!=', 2, 38, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fInot\fP \fIequal\fP operator\&. 
+.PP
+Definition at line 89 of file printc\&.hh\&.
+.SS "string PrintC::nullToken\fC [protected]\fP"
+
+.PP
+\fBToken\fP to use for 'null'\&. 
+.PP
+Definition at line 119 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::object_member = { '\&.', 2, 66, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fImember\fP operator\&. 
+.PP
+Definition at line 66 of file printc\&.hh\&.
+.SS "bool PrintC::option_convention\fC [protected]\fP"
+
+.PP
+Set to \fBtrue\fP if we should print calling convention\&. 
+.PP
+Definition at line 116 of file printc\&.hh\&.
+.SS "bool PrintC::option_inplace_ops\fC [protected]\fP"
+
+.PP
+Set to \fBtrue\fP if we should use '+=' '&=' etc\&. 
+.PP
+Definition at line 115 of file printc\&.hh\&.
+.SS "bool PrintC::option_nocasts\fC [protected]\fP"
+
+.PP
+Don't print a cast if \fBtrue\fP\&. 
+.PP
+Definition at line 117 of file printc\&.hh\&.
+.SS "bool PrintC::option_NULL\fC [protected]\fP"
+
+.PP
+Set to \fBtrue\fP if we should emit NULL keyword\&. 
+.PP
+Definition at line 114 of file printc\&.hh\&.
+.SS "bool PrintC::option_unplaced\fC [protected]\fP"
+
+.PP
+Set to \fBtrue\fP if we should display unplaced comments\&. 
+.PP
+Definition at line 118 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::orequal = { '|=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIlogical\fP \fIor\fP operator\&. 
+.PP
+Definition at line 107 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::plusequal = { '+=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIaddition\fP operator\&. 
+.PP
+Definition at line 102 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::pointer_member = { '\->', 2, 66, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIpoints\fP \fIto\fP \fImember\fP operator\&. 
+.PP
+Definition at line 67 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::ptr_expr = { '*', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Pointer adornment for a type declaration\&. 
+.PP
+Definition at line 111 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::remequal = { '%=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fImodulo\fP operator\&. 
+.PP
+Definition at line 101 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::rightequal = { '>>=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIright\fP \fIshift\fP operator\&. 
+.PP
+Definition at line 105 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::scope = { '::', 2, 70, true, \fBOpToken::binary\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The sub-scope/namespace operator\&. 
+.PP
+Definition at line 65 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::shift_left = { '<<', 2, 46, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIleft\fP \fIshift\fP operator\&. 
+.PP
+Definition at line 82 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::shift_right = { '>>', 2, 46, false, \fBOpToken::binary\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIright\fP \fIshift\fP operator\&. 
+.PP
+Definition at line 83 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::subscript = { '[]', 2, 66, false, \fBOpToken::postsurround\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The array subscript operator\&. 
+.PP
+Definition at line 68 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::type_expr_nospace = { '', 2, 10, false, \fBOpToken::space\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Type declaration with no space\&. 
+.PP
+Definition at line 110 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::type_expr_space = { '', 2, 10, false, \fBOpToken::space\fP, 1, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Type declaration involving a space (identifier or adornment) 
+.PP
+Definition at line 109 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::typecast = { '()', 2, 62, false, \fBOpToken::presurround\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fItype\fP \fIcast\fP operator\&. 
+.PP
+Definition at line 76 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::unary_minus = { '\-', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIunary\fP \fIminus\fP operator\&. 
+.PP
+Definition at line 72 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::unary_plus = { '+', 1, 62, false, \fBOpToken::unary_prefix\fP, 0, 0, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIunary\fP \fIplus\fP operator\&. 
+.PP
+Definition at line 73 of file printc\&.hh\&.
+.SS "\fBOpToken\fP PrintC::xorequal = { '^=', 2, 14, false, \fBOpToken::binary\fP, 1, 5, (\fBOpToken\fP *)0 }\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+The \fIin-place\fP \fIlogical\fP \fIxor\fP operator\&. 
+.PP
+Definition at line 108 of file printc\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

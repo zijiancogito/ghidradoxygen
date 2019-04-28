@@ -1,0 +1,142 @@
+\hypertarget{class_trace_d_a_g}{}\section{Trace\+D\+AG Class Reference}
+\label{class_trace_d_a_g}\index{TraceDAG@{TraceDAG}}
+
+
+Algorithm for selecting unstructured edges based an Directed Acyclic Graphs (D\+AG)  
+
+
+
+
+{\ttfamily \#include $<$blockaction.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_trace_d_a_g_adc523c94f57b57f19832a0080d478c7b}{Trace\+D\+AG}} (list$<$ \mbox{\hyperlink{class_floating_edge}{Floating\+Edge}} $>$ \&lg)
+\begin{DoxyCompactList}\small\item\em Clear the {\bfseries{visitcount}} field of any \mbox{\hyperlink{class_flow_block}{Flow\+Block}} we have modified. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_trace_d_a_g_a353ced99fd604015d988682b915296d9}{$\sim$\+Trace\+D\+AG}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trace_d_a_g_a1bfbd6888e04cc4688510f67464d8c89}{add\+Root}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Add a root \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to the trace. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trace_d_a_g_a6d28fcd17f9782ecb53d790bf2b4264c}{initialize}} (void)
+\begin{DoxyCompactList}\small\item\em Create the initial Branch\+Point and Block\+Trace objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trace_d_a_g_a31c7a68e8e3380ff8b0d4a7af00cf2e4}{push\+Branches}} (void)
+\begin{DoxyCompactList}\small\item\em Push the trace through, removing edges as necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trace_d_a_g_a013a57ad89329ea07f99781442067190}{set\+Finish\+Block}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Mark an exit point not to trace beyond. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Algorithm for selecting unstructured edges based an Directed Acyclic Graphs (D\+AG) 
+
+With the exception of the back edges in loops, structured code tends to form a D\+AG. Within the D\+AG, all building blocks of structured code have a single node entry point and (at most) one exit block. Given root points, this class traces edges with this kind of structure. Paths can recursively split at any point, starting a new {\itshape active} Branch\+Point, but the Branch\+Point can\textquotesingle{}t be {\itshape retired} until all paths emanating from its start either terminate or come back together at the same \mbox{\hyperlink{class_flow_block}{Flow\+Block}} node. Once a Branch\+Point is retired, all the edges traversed from the start \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to the end \mbox{\hyperlink{class_flow_block}{Flow\+Block}} are likely structurable. After pushing the traces as far as possible and retiring as much as possible, any {\itshape active} edge left is a candidate for an unstructured branch.
+
+Ultimately this produces a list of {\itshape likely} {\itshape gotos}, which is used whenever the structuring algorithm (\mbox{\hyperlink{class_action_block_structure}{Action\+Block\+Structure}}) gets stuck.
+
+The tracing can be restricted to a {\itshape loopbody} by setting the top \mbox{\hyperlink{class_flow_block}{Flow\+Block}} of the loop as the root, and the loop exit block as the finish block. Additionally, any edges that exit the loop should be marked using \mbox{\hyperlink{class_loop_body_a24f6fd993c0e4fe0684f9fa4446e9e9c}{Loop\+Body\+::set\+Exit\+Marks()}}. 
+
+Definition at line 94 of file blockaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_trace_d_a_g_adc523c94f57b57f19832a0080d478c7b}\label{class_trace_d_a_g_adc523c94f57b57f19832a0080d478c7b}} 
+\index{TraceDAG@{TraceDAG}!TraceDAG@{TraceDAG}}
+\index{TraceDAG@{TraceDAG}!TraceDAG@{TraceDAG}}
+\subsubsection{\texorpdfstring{TraceDAG()}{TraceDAG()}}
+{\footnotesize\ttfamily Trace\+D\+A\+G\+::\+Trace\+D\+AG (\begin{DoxyParamCaption}\item[{list$<$ \mbox{\hyperlink{class_floating_edge}{Floating\+Edge}} $>$ \&}]{lg }\end{DoxyParamCaption})}
+
+
+
+Clear the {\bfseries{visitcount}} field of any \mbox{\hyperlink{class_flow_block}{Flow\+Block}} we have modified. 
+
+Construct given the container for likely unstructured edges
+
+Prepare for a new trace using the provided storage for the likely unstructured edges that will be discovered. 
+\begin{DoxyParams}{Parameters}
+{\em lg} & is the container for likely unstructured edges \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 944 of file blockaction.\+cc.
+
+\mbox{\Hypertarget{class_trace_d_a_g_a353ced99fd604015d988682b915296d9}\label{class_trace_d_a_g_a353ced99fd604015d988682b915296d9}} 
+\index{TraceDAG@{TraceDAG}!````~TraceDAG@{$\sim$TraceDAG}}
+\index{````~TraceDAG@{$\sim$TraceDAG}!TraceDAG@{TraceDAG}}
+\subsubsection{\texorpdfstring{$\sim$TraceDAG()}{~TraceDAG()}}
+{\footnotesize\ttfamily Trace\+D\+A\+G\+::$\sim$\+Trace\+D\+AG (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line 951 of file blockaction.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_trace_d_a_g_a1bfbd6888e04cc4688510f67464d8c89}\label{class_trace_d_a_g_a1bfbd6888e04cc4688510f67464d8c89}} 
+\index{TraceDAG@{TraceDAG}!addRoot@{addRoot}}
+\index{addRoot@{addRoot}!TraceDAG@{TraceDAG}}
+\subsubsection{\texorpdfstring{addRoot()}{addRoot()}}
+{\footnotesize\ttfamily void Trace\+D\+A\+G\+::add\+Root (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{root }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a root \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to the trace. 
+
+
+
+Definition at line 175 of file blockaction.\+hh.
+
+\mbox{\Hypertarget{class_trace_d_a_g_a6d28fcd17f9782ecb53d790bf2b4264c}\label{class_trace_d_a_g_a6d28fcd17f9782ecb53d790bf2b4264c}} 
+\index{TraceDAG@{TraceDAG}!initialize@{initialize}}
+\index{initialize@{initialize}!TraceDAG@{TraceDAG}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Trace\+D\+A\+G\+::initialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create the initial Branch\+Point and Block\+Trace objects. 
+
+Given the registered root Flow\+Blocks, create the initial (virtual) Branch\+Point and an associated Block\+Trace for each root \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Definition at line 960 of file blockaction.\+cc.
+
+\mbox{\Hypertarget{class_trace_d_a_g_a31c7a68e8e3380ff8b0d4a7af00cf2e4}\label{class_trace_d_a_g_a31c7a68e8e3380ff8b0d4a7af00cf2e4}} 
+\index{TraceDAG@{TraceDAG}!pushBranches@{pushBranches}}
+\index{pushBranches@{pushBranches}!TraceDAG@{TraceDAG}}
+\subsubsection{\texorpdfstring{pushBranches()}{pushBranches()}}
+{\footnotesize\ttfamily void Trace\+D\+A\+G\+::push\+Branches (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Push the trace through, removing edges as necessary. 
+
+From the root Branch\+Point, recursively push the trace. At any point where pushing is no longer possible, select an appropriate edge to remove and add it to the list of likely unstructured edges. Then continue pushing the trace. 
+
+Definition at line 976 of file blockaction.\+cc.
+
+\mbox{\Hypertarget{class_trace_d_a_g_a013a57ad89329ea07f99781442067190}\label{class_trace_d_a_g_a013a57ad89329ea07f99781442067190}} 
+\index{TraceDAG@{TraceDAG}!setFinishBlock@{setFinishBlock}}
+\index{setFinishBlock@{setFinishBlock}!TraceDAG@{TraceDAG}}
+\subsubsection{\texorpdfstring{setFinishBlock()}{setFinishBlock()}}
+{\footnotesize\ttfamily void Trace\+D\+A\+G\+::set\+Finish\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark an exit point not to trace beyond. 
+
+
+
+Definition at line 178 of file blockaction.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8hh}{blockaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8cc}{blockaction.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,260 @@
+.TH "ghidra.app.decompiler.component.ClangHighlightController" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.ClangHighlightController
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBghidra\&.app\&.decompiler\&.component\&.LocationClangHighlightController\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClangHighlightController\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDefaultHighlightColor\fP (Color highlightColor)"
+.br
+.ti -1c
+.RI "void \fBsetDefaultSpecialColor\fP (Color specialColor)"
+.br
+.ti -1c
+.RI "void \fBsetDefaultParenColor\fP (Color parenColor)"
+.br
+.ti -1c
+.RI "Color \fBgetDefaultHighlightColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetDefaultSpecialColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetDefaultParenColor\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetHighlightedText\fP ()"
+.br
+.ti -1c
+.RI "\fBClangToken\fP \fBgetHighlightedToken\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddVarnodesToHighlight\fP (\fBClangNode\fP parentNode, Set< \fBVarnode\fP > varnodes, Color highlightColor, \fBVarnode\fP specificvn, \fBPcodeOp\fP specificop, Color specialColor)"
+.br
+.ti -1c
+.RI "void \fBaddPcodeOpsToHighlight\fP (\fBClangNode\fP parentNode, Set< \fBPcodeOp\fP > ops, Color highlightColor)"
+.br
+.ti -1c
+.RI "void \fBaddTokensToHighlights\fP (\fBList\fP< \fBClangToken\fP > tokenList, Color highlightColor)"
+.br
+.ti -1c
+.RI "void \fBclearHighlights\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddHighlight\fP (\fBClangToken\fP clangToken, Color highlightColor)"
+.br
+.ti -1c
+.RI "void \fBdoAddHighlight\fP (\fBClangToken\fP clangToken, Color highlightColor)"
+.br
+.ti -1c
+.RI "void \fBclearHighlight\fP (\fBClangToken\fP clangToken)"
+.br
+.ti -1c
+.RI "boolean \fBisHighlighted\fP (\fBClangToken\fP clangToken)"
+.br
+.ti -1c
+.RI "\fBList\fP< \fBClangToken\fP > \fBaddHighlightParen\fP (\fBClangSyntaxToken\fP tok, Color highlightColor)"
+.br
+.ti -1c
+.RI "void \fBaddHighlightBrace\fP (\fBClangSyntaxToken\fP token, Color highlightColor)"
+.br
+.ti -1c
+.RI "void \fBaddHighlightFill\fP ()"
+.br
+.ti -1c
+.RI "void \fBfieldLocationChanged\fP (FieldLocation location, Field field, EventTrigger trigger)"
+.br
+.ti -1c
+.RI "boolean \fBaddListener\fP (\fBClangHighlightListener\fP listener)"
+.br
+.ti -1c
+.RI "boolean \fBremoveListener\fP (\fBClangHighlightListener\fP listener)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Color \fBdefaultNonFunctionBackgroundColor\fP = new Color(220, 220, 220)"
+.br
+.ti -1c
+.RI "Color \fBdefaultHighlightColor\fP = new Color(255, 255, 0, 128)"
+.br
+.ti -1c
+.RI "Color \fBdefaultSpecialColor\fP = new Color(255, 100, 0, 128)"
+.br
+.ti -1c
+.RI "Color \fBdefaultParenColor\fP = new Color(255, 255, 0, 128)"
+.br
+.ti -1c
+.RI "HashSet< \fBClangToken\fP > \fBhighlightTokenSet\fP = new HashSet<\fBClangToken\fP>()"
+.br
+.ti -1c
+.RI "ArrayList< \fBClangHighlightListener\fP > \fBhighlightListenerList\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class to handle highlights for a decompiled function\&. 
+.PP
+Definition at line 33 of file ClangHighlightController\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.ClangHighlightController ()\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file ClangHighlightController\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addHighlight (\fBClangToken\fP clangToken, Color highlightColor)\fC [inline]\fP"
+
+.PP
+Definition at line 164 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addHighlightBrace (\fBClangSyntaxToken\fP token, Color highlightColor)\fC [inline]\fP"
+
+.PP
+Definition at line 226 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addHighlightFill ()\fC [inline]\fP"
+Add highlighting to tokens that are surrounded by highlighted tokens, but which have no address 
+.PP
+Definition at line 299 of file ClangHighlightController\&.java\&.
+.SS "\fBList\fP<\fBClangToken\fP> ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addHighlightParen (\fBClangSyntaxToken\fP tok, Color highlightColor)\fC [inline]\fP"
+If input token is a parenthesis, highlight all tokens between it and its match 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItok\fP = potential parenthesis token 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a list of all tokens that were highlighted\&. 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file ClangHighlightController\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addListener (\fBClangHighlightListener\fP listener)\fC [inline]\fP"
+
+.PP
+Definition at line 372 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addPcodeOpsToHighlight (\fBClangNode\fP parentNode, Set< \fBPcodeOp\fP > ops, Color highlightColor)\fC [inline]\fP"
+
+.PP
+Definition at line 129 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addTokensToHighlights (\fBList\fP< \fBClangToken\fP > tokenList, Color highlightColor)\fC [inline]\fP"
+
+.PP
+Definition at line 146 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.addVarnodesToHighlight (\fBClangNode\fP parentNode, Set< \fBVarnode\fP > varnodes, Color highlightColor, \fBVarnode\fP specificvn, \fBPcodeOp\fP specificop, Color specialColor)\fC [inline]\fP"
+
+.PP
+Definition at line 106 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.clearHighlight (\fBClangToken\fP clangToken)\fC [inline]\fP"
+
+.PP
+Definition at line 174 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.clearHighlights ()\fC [inline]\fP"
+
+.PP
+Definition at line 153 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.doAddHighlight (\fBClangToken\fP clangToken, Color highlightColor)\fC [inline]\fP"
+
+.PP
+Definition at line 169 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.fieldLocationChanged (FieldLocation location, Field field, EventTrigger trigger)\fC [inline]\fP"
+
+.PP
+Definition at line 347 of file ClangHighlightController\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.getDefaultHighlightColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 73 of file ClangHighlightController\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.getDefaultParenColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 81 of file ClangHighlightController\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.getDefaultSpecialColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 77 of file ClangHighlightController\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.getHighlightedText ()\fC [inline]\fP"
+
+.PP
+Definition at line 85 of file ClangHighlightController\&.java\&.
+.SS "\fBClangToken\fP ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.getHighlightedToken ()\fC [inline]\fP"
+Return the current highlighted token (if exists and unique) 
+.PP
+\fBReturns:\fP
+.RS 4
+token or null 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file ClangHighlightController\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.isHighlighted (\fBClangToken\fP clangToken)\fC [inline]\fP"
+
+.PP
+Definition at line 180 of file ClangHighlightController\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.removeListener (\fBClangHighlightListener\fP listener)\fC [inline]\fP"
+
+.PP
+Definition at line 376 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.setDefaultHighlightColor (Color highlightColor)\fC [inline]\fP"
+
+.PP
+Definition at line 58 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.setDefaultParenColor (Color parenColor)\fC [inline]\fP"
+
+.PP
+Definition at line 68 of file ClangHighlightController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.setDefaultSpecialColor (Color specialColor)\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file ClangHighlightController\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.defaultHighlightColor = new Color(255, 255, 0, 128)\fC [protected]\fP"
+
+.PP
+Definition at line 39 of file ClangHighlightController\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.defaultNonFunctionBackgroundColor = new Color(220, 220, 220)\fC [protected]\fP"
+
+.PP
+Definition at line 38 of file ClangHighlightController\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.defaultParenColor = new Color(255, 255, 0, 128)\fC [protected]\fP"
+
+.PP
+Definition at line 41 of file ClangHighlightController\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.defaultSpecialColor = new Color(255, 100, 0, 128)\fC [protected]\fP"
+
+.PP
+Definition at line 40 of file ClangHighlightController\&.java\&.
+.SS "ArrayList<\fBClangHighlightListener\fP> ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.highlightListenerList\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+        new ArrayList<ClangHighlightListener>()
+.fi
+.PP
+Definition at line 45 of file ClangHighlightController\&.java\&.
+.SS "HashSet<\fBClangToken\fP> ghidra\&.app\&.decompiler\&.component\&.ClangHighlightController\&.highlightTokenSet = new HashSet<\fBClangToken\fP>()\fC [protected]\fP"
+
+.PP
+Definition at line 43 of file ClangHighlightController\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

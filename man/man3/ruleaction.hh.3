@@ -1,0 +1,502 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ruleaction.hh \- This is the basic set of transformation \fBRule\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'action\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAddTreeState\fP"
+.br
+.RI "Structure for sorting out pointer expression trees\&. "
+.ti -1c
+.RI "class \fBRuleEarlyRemoval\fP"
+.br
+.RI "Get rid of unused \fBPcodeOp\fP objects where we can guarantee the output is unused\&. "
+.ti -1c
+.RI "class \fBRuleCollectTerms\fP"
+.br
+.RI "Collect terms in a sum: \fCV * c + V * d => V * (c + d)\fP "
+.ti -1c
+.RI "class \fBRuleSelectCse\fP"
+.br
+.RI "Look for common sub-expressions (built out of a restricted set of ops) "
+.ti -1c
+.RI "class \fBRulePiece2Zext\fP"
+.br
+.RI "Concatenation with 0 becomes an extension: \fCV = concat(#0,W) => V = zext(W)\fP "
+.ti -1c
+.RI "class \fBRulePiece2Sext\fP"
+.br
+.RI "Concatenation with sign bits becomes an extension: \fCconcat( V s>> #0x1f , V) => sext(V)\fP "
+.ti -1c
+.RI "class \fBRuleBxor2NotEqual\fP"
+.br
+.RI "Eliminate BOOL_XOR: \fCV ^^ W => V != W\fP "
+.ti -1c
+.RI "class \fBRuleOrMask\fP"
+.br
+.RI "Simplify INT_OR with full mask: \fCV = W | 0xffff => V = W\fP "
+.ti -1c
+.RI "class \fBRuleAndMask\fP"
+.br
+.RI "Collapse unnecessary INT_AND\&. "
+.ti -1c
+.RI "class \fBRuleOrCollapse\fP"
+.br
+.RI "Collapse unnecessary INT_OR\&. "
+.ti -1c
+.RI "class \fBRuleAndOrLump\fP"
+.br
+.RI "Collapse constants in logical expressions: \fC(V & c) & d => V & (c & d)\fP "
+.ti -1c
+.RI "class \fBRuleNegateIdentity\fP"
+.br
+.RI "Apply INT_NEGATE identities: \fCV & ~V => #0, V | ~V -> #-1\fP "
+.ti -1c
+.RI "class \fBRuleShiftBitops\fP"
+.br
+.RI "Shifting away all non-zero bits of one-side of a logical/arithmetic op\&. "
+.ti -1c
+.RI "class \fBRuleIntLessEqual\fP"
+.br
+.RI "Convert LESSEQUAL to LESS: \fCV <= c => V < (c+1)\fP "
+.ti -1c
+.RI "class \fBRuleEquality\fP"
+.br
+.RI "Collapse INT_EQUAL and INT_NOTEQUAL: \fCf(V,W) == f(V,W) => true\fP "
+.ti -1c
+.RI "class \fBRuleTermOrder\fP"
+.br
+.RI "Order the inputs to commutative operations\&. "
+.ti -1c
+.RI "class \fBRulePullsubMulti\fP"
+.br
+.RI "Pull SUBPIECE back through MULTIEQUAL\&. "
+.ti -1c
+.RI "class \fBRulePullsubIndirect\fP"
+.br
+.RI "Pull-back SUBPIECE through INDIRECT\&. "
+.ti -1c
+.RI "class \fBRulePushMulti\fP"
+.br
+.RI "Simplify MULTIEQUAL operations where the branches hold the same value\&. "
+.ti -1c
+.RI "class \fBRuleNotDistribute\fP"
+.br
+.RI "Distribute BOOL_NEGATE: \fC!(V && W) => !V || !W\fP "
+.ti -1c
+.RI "class \fBRuleHighOrderAnd\fP"
+.br
+.RI "Simplify INT_AND when applied to aligned INT_ADD: \fC(V + c) & 0xfff0 => V + (c & 0xfff0)\fP "
+.ti -1c
+.RI "class \fBRuleAndDistribute\fP"
+.br
+.RI "Distribute INT_AND through INT_OR if result is simpler\&. "
+.ti -1c
+.RI "class \fBRuleLessOne\fP"
+.br
+.RI "Transform INT_LESS of 0 or 1: \fCV < 1 => V == 0, V <= 0 => V == 0\fP "
+.ti -1c
+.RI "class \fBRuleRangeMeld\fP"
+.br
+.RI "\fBMerge\fP range conditions of the form: \fCV s< c, c s< V, V == c, V != c\fP "
+.ti -1c
+.RI "class \fBRuleFloatRange\fP"
+.br
+.RI "\fBMerge\fP range conditions of the form: \fCV f< c, c f< V, V f== c\fP etc\&. "
+.ti -1c
+.RI "class \fBRuleAndCommute\fP"
+.br
+.RI "Commute INT_AND with INT_LEFT and INT_RIGHT: \fC(V << W) & d => (V & (W >> c)) << c\fP "
+.ti -1c
+.RI "class \fBRuleAndPiece\fP"
+.br
+.RI "Convert PIECE to INT_ZEXT where appropriate: \fCV & concat(W,X) => zext(X)\fP "
+.ti -1c
+.RI "class \fBRuleAndCompare\fP"
+.br
+.RI "Simplify INT_ZEXT and SUBPIECE in masked comparison: \fCzext(V) & c == 0 => V & (c & mask) == 0\fP "
+.ti -1c
+.RI "class \fBRuleDoubleSub\fP"
+.br
+.RI "Simplify chained SUBPIECE: \fCsub( sub(V,c), d) => sub(V, c+d)\fP "
+.ti -1c
+.RI "class \fBRuleDoubleShift\fP"
+.br
+.RI "Simplify chained shifts INT_LEFT and INT_RIGHT\&. "
+.ti -1c
+.RI "class \fBRuleConcatShift\fP"
+.br
+.RI "Simplify INT_RIGHT canceling PIECE: \fCconcat(V,W) >> c => zext(V)\fP "
+.ti -1c
+.RI "class \fBRuleLeftRight\fP"
+.br
+.RI "Transform canceling INT_RIGHT or INT_SRIGHT of INT_LEFT\&. "
+.ti -1c
+.RI "class \fBRuleShiftCompare\fP"
+.br
+.RI "Transform shifts in comparisons: \fCV >> c == d => V == (d << c)\fP "
+.ti -1c
+.RI "class \fBRuleLessEqual\fP"
+.br
+.RI "Simplify 'less than or equal': \fCV < W || V == W => V <= W\fP "
+.ti -1c
+.RI "class \fBRuleLessNotEqual\fP"
+.br
+.RI "Simplify INT_LESSEQUAL && INT_NOTEQUAL: \fCV <= W && V != W => V < W\fP "
+.ti -1c
+.RI "class \fBRuleTrivialArith\fP"
+.br
+.RI "Simplify trivial arithmetic expressions\&. "
+.ti -1c
+.RI "class \fBRuleTrivialBool\fP"
+.br
+.RI "Simplify boolean expressions when one side is constant\&. "
+.ti -1c
+.RI "class \fBRuleZextEliminate\fP"
+.br
+.RI "Eliminate INT_ZEXT in comparisons: \fCzext(V) == c => V == c\fP "
+.ti -1c
+.RI "class \fBRuleSlessToLess\fP"
+.br
+.RI "Convert INT_SLESS to INT_LESS when comparing positive values\&. "
+.ti -1c
+.RI "class \fBRuleZextSless\fP"
+.br
+.RI "Transform INT_ZEXT and INT_SLESS: \fCzext(V) s< c => V < c\fP "
+.ti -1c
+.RI "class \fBRuleBitUndistribute\fP"
+.br
+.RI "Undo distributed operations through INT_AND, INT_OR, and INT_XOR\&. "
+.ti -1c
+.RI "class \fBRuleBooleanNegate\fP"
+.br
+.RI "Simplify comparisons with boolean values: \fCV == false => !V, V == true => V\fP "
+.ti -1c
+.RI "class \fBRuleBoolZext\fP"
+.br
+.RI "Simplify boolean expressions of the form zext(V) * -1\&. "
+.ti -1c
+.RI "class \fBRuleLogic2Bool\fP"
+.br
+.RI "Convert logical to boolean operations: \fCV & W => V && W, V | W => V || W\fP "
+.ti -1c
+.RI "class \fBRuleIndirectCollapse\fP"
+.br
+.RI "Remove a CPUI_INDIRECT if its blocking \fBPcodeOp\fP is dead\&. "
+.ti -1c
+.RI "class \fBRuleMultiCollapse\fP"
+.br
+.RI "Collapse MULTIEQUAL whose inputs all trace to the same value\&. "
+.ti -1c
+.RI "class \fBRuleSborrow\fP"
+.br
+.RI "Simplify signed comparisons using INT_SBORROW\&. "
+.ti -1c
+.RI "class \fBRuleTrivialShift\fP"
+.br
+.RI "Simplify trivial shifts: \fCV << 0 => V, V << #64 => 0\fP "
+.ti -1c
+.RI "class \fBRuleIdentityEl\fP"
+.br
+.RI "Collapse operations using identity element: \fCV + 0 => V\fP "
+.ti -1c
+.RI "class \fBRuleShift2Mult\fP"
+.br
+.RI "Convert INT_LEFT to INT_MULT: \fCV << 2 => V * 4\fP "
+.ti -1c
+.RI "class \fBRuleShiftPiece\fP"
+.br
+.RI "Convert 'shift and add' to PIECE: (zext(V) << 16) + zext(W) => concat(V,W) "
+.ti -1c
+.RI "class \fBRuleCollapseConstants\fP"
+.br
+.RI "Collapse constant expressions\&. "
+.ti -1c
+.RI "class \fBRuleTransformCpool\fP"
+.br
+.RI "Transform CPOOLREF operations by looking up the value in the constant pool\&. "
+.ti -1c
+.RI "class \fBRulePropagateCopy\fP"
+.br
+.RI "Propagate the input of a COPY to all the places that read the output\&. "
+.ti -1c
+.RI "class \fBRule2Comp2Mult\fP"
+.br
+.RI "Eliminate INT_2COMP: \fC-V => V * -1\fP "
+.ti -1c
+.RI "class \fBRuleCarryElim\fP"
+.br
+.RI "Transform INT_CARRY using a constant: \fCcarry(V,c) => -c <= V\fP "
+.ti -1c
+.RI "class \fBRuleSub2Add\fP"
+.br
+.RI "Eliminate INT_SUB: \fCV - W => V + W * -1\fP "
+.ti -1c
+.RI "class \fBRuleXorCollapse\fP"
+.br
+.RI "Eliminate INT_XOR in comparisons: \fC(V ^ W) == 0 => V == W\fP "
+.ti -1c
+.RI "class \fBRuleAddMultCollapse\fP"
+.br
+.RI "Collapse constants in an additive or multiplicative expression\&. "
+.ti -1c
+.RI "class \fBRuleLoadVarnode\fP"
+.br
+.RI "Convert LOAD operations using a constant offset to COPY\&. "
+.ti -1c
+.RI "class \fBRuleStoreVarnode\fP"
+.br
+.RI "Convert STORE operations using a constant offset to COPY\&. "
+.ti -1c
+.RI "class \fBRuleSubExtComm\fP"
+.br
+.RI "Commute SUBPIECE and INT_ZEXT: \fCsub(zext(V),c) => zext(sub(V,c))\fP "
+.ti -1c
+.RI "class \fBRuleSubCommute\fP"
+.br
+.RI "Commute SUBPIECE operations with earlier operations where possible\&. "
+.ti -1c
+.RI "class \fBRuleConcatCommute\fP"
+.br
+.RI "Commute PIECE with INT_AND, INT_OR, and INT_XOR\&. "
+.ti -1c
+.RI "class \fBRuleConcatZext\fP"
+.br
+.RI "Commute PIECE with INT_ZEXT: \fCconcat(zext(V),W) => zext(concat(V,W))\fP "
+.ti -1c
+.RI "class \fBRuleZextCommute\fP"
+.br
+.RI "Commute INT_ZEXT with INT_RIGHT: \fCzext(V) >> W => zext(V >> W)\fP "
+.ti -1c
+.RI "class \fBRuleZextShiftZext\fP"
+.br
+.RI "Simplify multiple INT_ZEXT operations: \fCzext( zext(V) << c ) => zext(V) << c\fP "
+.ti -1c
+.RI "class \fBRuleShiftAnd\fP"
+.br
+.RI "Eliminate any INT_AND when the bits it zeroes out are discarded by a shift\&. "
+.ti -1c
+.RI "class \fBRuleConcatZero\fP"
+.br
+.RI "Simplify concatenation with zero: \fCconcat(V,0) => zext(V) << c\fP "
+.ti -1c
+.RI "class \fBRuleConcatLeftShift\fP"
+.br
+.RI "Simplify concatenation of extended value: \fCconcat(V, zext(W) << c) => concat( concat(V,W), 0)\fP "
+.ti -1c
+.RI "class \fBRuleSubZext\fP"
+.br
+.RI "Simplify INT_ZEXT applied to SUBPIECE expressions\&. "
+.ti -1c
+.RI "class \fBRuleSubCancel\fP"
+.br
+.RI "Simplify composition of SUBPIECE with INT_ZEXT or INT_SEXT\&. "
+.ti -1c
+.RI "class \fBRuleShiftSub\fP"
+.br
+.RI "Simplify SUBPIECE applied to INT_LEFT: \fCsub( V << 8*c, c) => sub(V,0)\fP "
+.ti -1c
+.RI "class \fBRuleHumptyDumpty\fP"
+.br
+.RI "Simplify break and rejoin: \fCconcat( sub(V,c), sub(V,0) ) => V\fP "
+.ti -1c
+.RI "class \fBRuleDumptyHump\fP"
+.br
+.RI "Simplify join and break apart: \fCsub( concat(V,W), c) => sub(W,c)\fP "
+.ti -1c
+.RI "class \fBRuleHumptyOr\fP"
+.br
+.RI "Simplify masked pieces INT_ORed together: \fC(V & ff00) | (V & 00ff) => V\fP "
+.ti -1c
+.RI "class \fBRuleEmbed\fP"
+.br
+.RI "Simplify PIECE intended as embedding: \fCconcat(V, sub(W,0)) => W & 0xff | (zext(W) << 8)\fP "
+.ti -1c
+.RI "class \fBRuleSwitchSingle\fP"
+.br
+.RI "Convert BRANCHIND with only one computed destination to a BRANCH\&. "
+.ti -1c
+.RI "class \fBRuleCondNegate\fP"
+.br
+.RI "Flip conditions to match structuring cues\&. "
+.ti -1c
+.RI "class \fBRuleBoolNegate\fP"
+.br
+.RI "Apply a set of identities involving BOOL_NEGATE\&. "
+.ti -1c
+.RI "class \fBRuleLess2Zero\fP"
+.br
+.RI "Simplify INT_LESS applied to extremal constants\&. "
+.ti -1c
+.RI "class \fBRuleLessEqual2Zero\fP"
+.br
+.RI "Simplify INT_LESSEQUAL applied to extremal constants\&. "
+.ti -1c
+.RI "class \fBRuleSLess2Zero\fP"
+.br
+.RI "Simplify INT_SLESS and INT_SLESSEQUAL applied to 0 or -1\&. "
+.ti -1c
+.RI "class \fBRuleEqual2Zero\fP"
+.br
+.RI "Simplify INT_EQUAL applied to 0: \fC0 == V + W * -1 => V == W or 0 == V + c => V == -c\fP "
+.ti -1c
+.RI "class \fBRuleEqual2Constant\fP"
+.br
+.RI "Simplify INT_EQUAL applied to arithmetic expressions\&. "
+.ti -1c
+.RI "class \fBRulePtrArith\fP"
+.br
+.RI "Transform pointer arithmetic\&. "
+.ti -1c
+.RI "class \fBRuleStructOffset0\fP"
+.br
+.RI "Convert a LOAD or STORE to the first element of a structure to a PTRSUB\&. "
+.ti -1c
+.RI "class \fBRulePushPtr\fP"
+.br
+.RI "Push a \fBVarnode\fP with known pointer data-type to the bottom of its additive expression\&. "
+.ti -1c
+.RI "class \fBRulePtraddUndo\fP"
+.br
+.RI "Remove PTRADD operations with mismatched data-type information\&. "
+.ti -1c
+.RI "class \fBRulePtrsubUndo\fP"
+.br
+.RI "Remove PTRSUB operations with mismatched data-type information\&. "
+.ti -1c
+.RI "class \fBRuleMultNegOne\fP"
+.br
+.RI "Cleanup: Convert INT_2COMP from INT_MULT: \fCV * -1 => -V\fP "
+.ti -1c
+.RI "class \fBRuleAddUnsigned\fP"
+.br
+.RI "Cleanup: Convert INT_ADD of constants to INT_SUB: \fCV + 0xff\&.\&.\&. => V - 0x00\&.\&.\&.\fP "
+.ti -1c
+.RI "class \fBRule2Comp2Sub\fP"
+.br
+.RI "Cleanup: Convert INT_ADD back to INT_SUB: \fCV + -W ==> V - W\fP "
+.ti -1c
+.RI "class \fBRuleSubRight\fP"
+.br
+.RI "Cleanup: Convert truncation to cast: \fCsub(V,c) => sub(V>>c*8,0)\fP "
+.ti -1c
+.RI "class \fBRulePtrsubCharConstant\fP"
+.br
+.RI "Cleanup: Set-up to print string constants\&. "
+.ti -1c
+.RI "class \fBRuleSubNormal\fP"
+.br
+.RI "Pull-back SUBPIECE through INT_RIGHT and INT_SRIGHT\&. "
+.ti -1c
+.RI "class \fBRuleDivTermAdd\fP"
+.br
+.RI "Simplify expressions associated with optimized division expressions\&. "
+.ti -1c
+.RI "class \fBRuleDivTermAdd2\fP"
+.br
+.RI "Simplify another expression associated with optimized division\&. "
+.ti -1c
+.RI "class \fBRuleDivOpt\fP"
+.br
+.RI "Convert INT_MULT and shift forms into INT_DIV or INT_SDIV\&. "
+.ti -1c
+.RI "class \fBRuleSignDiv2\fP"
+.br
+.RI "Convert INT_SRIGHT form into INT_SDIV: \fC(V + -1*(V s>> 31)) s>> 1 => V s/ 2\fP "
+.ti -1c
+.RI "class \fBRuleSignForm\fP"
+.br
+.RI "Normalize sign extraction: \fCsub(sext(V),c) => V s>> 31\fP "
+.ti -1c
+.RI "class \fBRuleSignNearMult\fP"
+.br
+.RI "Simplify division form: \fC(V + (V s>> 0x1f)>>(32-n)) & (-1<<n) => (V s/ 2^n) * 2^n\fP "
+.ti -1c
+.RI "class \fBRuleModOpt\fP"
+.br
+.RI "Simplify expressions that optimize INT_REM and INT_SREM\&. "
+.ti -1c
+.RI "class \fBRuleSegment\fP"
+.br
+.RI "Propagate constants through a SEGMENTOP\&. "
+.ti -1c
+.RI "class \fBRuleSubvarAnd\fP"
+.br
+.RI "Perform SubVariableFlow analysis triggered by INT_AND\&. "
+.ti -1c
+.RI "class \fBRuleSubvarSubpiece\fP"
+.br
+.RI "Perform SubVariableFlow analysis triggered by SUBPIECE\&. "
+.ti -1c
+.RI "class \fBRuleSplitFlow\fP"
+.br
+.RI "Try to detect and split artificially joined Varnodes\&. "
+.ti -1c
+.RI "class \fBRulePtrFlow\fP"
+.br
+.RI "Mark \fBVarnode\fP and \fBPcodeOp\fP objects that are carrying or operating on pointers\&. "
+.ti -1c
+.RI "class \fBRuleSubvarCompZero\fP"
+.br
+.RI "Perform \fBSubvariableFlow\fP analysis triggered by testing of a single bit\&. "
+.ti -1c
+.RI "class \fBRuleSubvarShift\fP"
+.br
+.RI "Perform \fBSubvariableFlow\fP analysis triggered by INT_RIGHT\&. "
+.ti -1c
+.RI "class \fBRuleSubvarZext\fP"
+.br
+.RI "Perform \fBSubvariableFlow\fP analysis triggered by INT_ZEXT\&. "
+.ti -1c
+.RI "class \fBRuleSubvarSext\fP"
+.br
+.RI "Perform \fBSubvariableFlow\fP analysis triggered by INT_SEXT\&. "
+.ti -1c
+.RI "class \fBRuleSubfloatConvert\fP"
+.br
+.RI "Perform \fBSubfloatFlow\fP analysis triggered by FLOAT_FLOAT2FLOAT\&. "
+.ti -1c
+.RI "class \fBRuleNegateNegate\fP"
+.br
+.RI "Simplify INT_NEGATE chains: \fC~~V => V\fP "
+.ti -1c
+.RI "class \fBRuleConditionalMove\fP"
+.br
+.RI "Simplify various conditional move situations\&. "
+.ti -1c
+.RI "class \fBRuleFloatCast\fP"
+.br
+.RI "Replace (casttosmall)(casttobig)V with identity or with single cast\&. "
+.ti -1c
+.RI "class \fBRuleIgnoreNan\fP"
+.br
+.RI "Treat FLOAT_NAN as always evaluating to false\&. "
+.ti -1c
+.RI "class \fBRuleFuncPtrEncoding\fP"
+.br
+.RI "Eliminate ARM/THUMB style masking of the low order bits on function pointers\&. "
+.ti -1c
+.RI "class \fBRuleThreeWayCompare\fP"
+.br
+.RI "Simplify expressions involving \fIthree-way\fP comparisons\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is the basic set of transformation \fBRule\fP objects\&. 
+
+Each \fBRule\fP triggers on a specific localized data-flow configuration\&. They are generally applied simultaneously from a pool (see \fBActionPool\fP) and can interact with each other to produce an emergent transformation\&. The Rules are applied repeatedly until no \fBRule\fP can make any additional transformations\&. 
+.PP
+Definition in file \fBruleaction\&.hh\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

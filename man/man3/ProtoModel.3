@@ -1,0 +1,730 @@
+.TH "ProtoModel" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ProtoModel \- A \fBprototype\fP \fBmodel:\fP a model for passing parameters between functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherited by \fBProtoModelMerged\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBextrapop_unknown\fP = 0x8000 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProtoModel\fP (\fBArchitecture\fP *g)"
+.br
+.RI "\fBConstructor\fP for use with \fBrestoreXml()\fP "
+.ti -1c
+.RI "\fBProtoModel\fP (const string &nm, const \fBProtoModel\fP &op2)"
+.br
+.RI "Copy constructor changing the name\&. "
+.ti -1c
+.RI "virtual \fB~ProtoModel\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the name of the prototype model\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.RI "Get the owning \fBArchitecture\fP\&. "
+.ti -1c
+.RI "uint4 \fBhasEffect\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Determine side-effect of \fBthis\fP on the given memory range\&. "
+.ti -1c
+.RI "int4 \fBgetExtraPop\fP (void) const"
+.br
+.RI "Get the stack-pointer \fIextrapop\fP for \fBthis\fP model\&. "
+.ti -1c
+.RI "void \fBsetExtraPop\fP (int4 ep)"
+.br
+.RI "Set the stack-pointer \fIextrapop\fP\&. "
+.ti -1c
+.RI "int4 \fBgetInjectUponEntry\fP (void) const"
+.br
+.RI "Get the inject \fIuponentry\fP id\&. "
+.ti -1c
+.RI "int4 \fBgetInjectUponReturn\fP (void) const"
+.br
+.RI "Get the inject \fIuponreturn\fP id\&. "
+.ti -1c
+.RI "void \fBderiveInputMap\fP (\fBParamActive\fP *active) const"
+.br
+.RI "Given a list of input \fItrials\fP, derive the most likely input prototype\&. "
+.ti -1c
+.RI "void \fBderiveOutputMap\fP (\fBParamActive\fP *active) const"
+.br
+.RI "Given a list of output \fItrials\fP, derive the most likely output prototype\&. "
+.ti -1c
+.RI "void \fBassignParameterStorage\fP (const vector< \fBDatatype\fP * > &typelist, vector< \fBParameterPieces\fP > &res, bool ignoreOutputError)"
+.br
+.RI "Calculate input and output storage locations given a function prototype\&. "
+.ti -1c
+.RI "bool \fBcheckInputJoin\fP (const \fBAddress\fP &hiaddr, int4 hisize, const \fBAddress\fP &loaddr, int4 losize) const"
+.br
+.RI "Check if the given two input storage locations can represent a single logical parameter\&. "
+.ti -1c
+.RI "bool \fBcheckOutputJoin\fP (const \fBAddress\fP &hiaddr, int4 hisize, const \fBAddress\fP &loaddr, int4 losize) const"
+.br
+.RI "Check if the given two output storage locations can represent a single logical return value\&. "
+.ti -1c
+.RI "bool \fBcheckInputSplit\fP (const \fBAddress\fP &loc, int4 size, int4 splitpoint) const"
+.br
+.RI "Check if it makes sense to split a single storage location into two input parameters\&. "
+.ti -1c
+.RI "const \fBRangeList\fP & \fBgetLocalRange\fP (void) const"
+.br
+.RI "Get the range of (possible) local stack variables\&. "
+.ti -1c
+.RI "const \fBRangeList\fP & \fBgetParamRange\fP (void) const"
+.br
+.RI "Get the range of (possible) stack parameters\&. "
+.ti -1c
+.RI "vector< \fBEffectRecord\fP >::const_iterator \fBeffectBegin\fP (void) const"
+.br
+.RI "Get an iterator to the first \fBEffectRecord\fP\&. "
+.ti -1c
+.RI "vector< \fBEffectRecord\fP >::const_iterator \fBeffectEnd\fP (void) const"
+.br
+.RI "Get an iterator to the last \fBEffectRecord\fP\&. "
+.ti -1c
+.RI "int4 \fBnumLikelyTrash\fP (void) const"
+.br
+.RI "Get the number of \fIlikelytrash\fP locations\&. "
+.ti -1c
+.RI "const \fBVarnodeData\fP & \fBgetLikelyTrash\fP (int4 i) const"
+.br
+.RI "Get the i-th \fIlikelytrashh\fP location\&. "
+.ti -1c
+.RI "bool \fBpossibleInputParam\fP (const \fBAddress\fP &loc, int4 size) const"
+.br
+.RI "Does the given storage location make sense as an input parameter\&. "
+.ti -1c
+.RI "bool \fBpossibleOutputParam\fP (const \fBAddress\fP &loc, int4 size) const"
+.br
+.RI "Does the given storage location make sense as a return value\&. "
+.ti -1c
+.RI "bool \fBpossibleInputParamWithSlot\fP (const \fBAddress\fP &loc, int4 size, int4 &slot, int4 &slotsize) const"
+.br
+.RI "Pass-back the slot and slot size for the given storage location as an input parameter\&. "
+.ti -1c
+.RI "bool \fBpossibleOutputParamWithSlot\fP (const \fBAddress\fP &loc, int4 size, int4 &slot, int4 &slotsize) const"
+.br
+.RI "Pass-back the slot and slot size for the given storage location as a return value\&. "
+.ti -1c
+.RI "bool \fBunjustifiedInputParam\fP (const \fBAddress\fP &loc, int4 size, \fBVarnodeData\fP &res) const"
+.br
+.RI "Check if the given storage location looks like an \fIunjustified\fP input parameter\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBassumedInputExtension\fP (const \fBAddress\fP &addr, int4 size, \fBVarnodeData\fP &res) const"
+.br
+.RI "Get the type of extension and containing input parameter for the given storage\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBassumedOutputExtension\fP (const \fBAddress\fP &addr, int4 size, \fBVarnodeData\fP &res) const"
+.br
+.RI "Get the type of extension and containing return value location for the given storage\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpacebase\fP (void) const"
+.br
+.RI "Get the stack space associated with \fBthis\fP model\&. "
+.ti -1c
+.RI "bool \fBisStackGrowsNegative\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if the stack \fIgrows\fP toward smaller addresses\&. "
+.ti -1c
+.RI "bool \fBhasThisPointer\fP (void) const"
+.br
+.RI "Is \fBthis\fP a model for (non-static) class methods\&. "
+.ti -1c
+.RI "bool \fBisConstructor\fP (void) const"
+.br
+.RI "Is \fBthis\fP model for class constructors\&. "
+.ti -1c
+.RI "int4 \fBgetMaxInputDelay\fP (void) const"
+.br
+.RI "Return the maximum heritage delay across all possible input parameters\&. "
+.ti -1c
+.RI "int4 \fBgetMaxOutputDelay\fP (void) const"
+.br
+.RI "Return the maximum heritage delay across all possible return values\&. "
+.ti -1c
+.RI "virtual bool \fBisMerged\fP (void) const"
+.br
+.RI "Is \fBthis\fP a merged prototype model\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP model from an XML stream\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static uint4 \fBlookupEffect\fP (const vector< \fBEffectRecord\fP > &efflist, const \fBAddress\fP &addr, int4 size)"
+.br
+.RI "Look up an effect from the given \fBEffectRecord\fP list\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBProtoModelMerged\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBprototype\fP \fBmodel:\fP a model for passing parameters between functions\&. 
+
+This encompasses both input parameters and return values\&. It attempts to describe the ABI, Application Binary Interface, of the processor or compiler\&. Any number of function prototypes (\fBFuncProto\fP) can be implemented under a \fBprototype\fP \fBmodel\fP, which represents a static rule set the compiler uses to decide:
+.IP "\(bu" 2
+Storage locations for input parameters
+.IP "\(bu" 2
+Storage locations for return values
+.IP "\(bu" 2
+Expected side-effects of a function on other (non-parameter) registers and storage locations
+.IP "\(bu" 2
+Behavior of the stack and the stack pointer across function calls
+.PP
+.PP
+Major analysis concerns are:
+.IP "\(bu" 2
+Recovering function prototypes from data-flow information: \fBderiveInputMap()\fP and \fBderiveOutputMap()\fP
+.IP "\(bu" 2
+Calculating parameter storage locations given a function prototype: \fBassignParameterStorage()\fP
+.IP "\(bu" 2
+Behavior of data-flow around call sites
+.PP
+.PP
+A prototype model supports the concept of \fBextrapop\fP, which is defined as the change in value of the stack pointer (or the number of bytes popped from the stack) across a call\&. This value is calculated starting from the point of the p-code CALL or CALLIND op, when the stack parameters have already been pushed by the calling function\&. So \fIextrapop\fP only reflects changes made by the callee\&. 
+.PP
+Definition at line 547 of file fspec\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIextrapop_unknown \fP\fP
+Reserved extrapop value meaning the function's \fIextrapop\fP is unknown\&. 
+.PP
+Definition at line 567 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ProtoModel::ProtoModel (\fBArchitecture\fP * g)"
+
+.PP
+\fBConstructor\fP for use with \fBrestoreXml()\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the \fBArchitecture\fP that will own the new prototype model 
+.RE
+.PP
+
+.PP
+Definition at line 1612 of file fspec\&.cc\&.
+.SS "ProtoModel::ProtoModel (const string & nm, const \fBProtoModel\fP & op2)"
+
+.PP
+Copy constructor changing the name\&. Everything is copied from the given prototype model except the name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the new name for \fBthis\fP copy 
+.br
+\fIop2\fP is the prototype model to copy 
+.RE
+.PP
+
+.PP
+Definition at line 1631 of file fspec\&.cc\&.
+.SS "ProtoModel::~ProtoModel (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 1658 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ProtoModel::assignParameterStorage (const vector< \fBDatatype\fP * > & typelist, vector< \fBParameterPieces\fP > & res, bool ignoreOutputError)"
+
+.PP
+Calculate input and output storage locations given a function prototype\&. The data-types of the function prototype are passed in as an ordered list, with the first data-type corresponding to the \fIreturn\fP \fIvalue\fP and all remaining data-types corresponding to the input parameters\&. Based on \fBthis\fP model, a storage location is selected for each (input and output) parameter and passed back to the caller\&. The passed back storage locations are ordered similarly, with the output storage as the first entry\&. The model has the option of inserting a \fIhidden\fP return value pointer in the input storage locations\&.
+.PP
+A \fBvoid\fP return type is indicated by the formal TYPE_VOID in the (either) list\&. If the model can't map the specific output prototype, the caller has the option of whether an exception (\fBParamUnassignedError\fP) is thrown\&. If they choose not to throw, the unmapped return value is assumed to be \fIvoid\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypelist\fP is the list of data-types from the function prototype 
+.br
+\fIres\fP will hold the storage locations for each parameter 
+.br
+\fIignoreOutputError\fP is \fBtrue\fP if problems assigning the output parameter are ignored 
+.RE
+.PP
+
+.PP
+Definition at line 1684 of file fspec\&.cc\&.
+.SS "\fBOpCode\fP ProtoModel::assumedInputExtension (const \fBAddress\fP & addr, int4 size, \fBVarnodeData\fP & res) const\fC [inline]\fP"
+
+.PP
+Get the type of extension and containing input parameter for the given storage\&. If the given storage is properly contained within a normal parameter and the model typically extends a small value into the full container, pass back the full container and the type of extension\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the extension operator (INT_ZEXT INT_SEXT) or INT_COPY if there is no extension\&. INT_PIECE indicates the extension is determined by the specific prototype\&. 
+.RE
+.PP
+
+.PP
+Definition at line 703 of file fspec\&.hh\&.
+.SS "\fBOpCode\fP ProtoModel::assumedOutputExtension (const \fBAddress\fP & addr, int4 size, \fBVarnodeData\fP & res) const\fC [inline]\fP"
+
+.PP
+Get the type of extension and containing return value location for the given storage\&. If the given storage is properly contained within a normal return value location and the model typically extends a small value into the full container, pass back the full container and the type of extension\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the extension operator (INT_ZEXT INT_SEXT) or INT_COPY if there is no extension\&. INT_PIECE indicates the extension is determined by the specific prototype\&. 
+.RE
+.PP
+
+.PP
+Definition at line 716 of file fspec\&.hh\&.
+.SS "bool ProtoModel::checkInputJoin (const \fBAddress\fP & hiaddr, int4 hisize, const \fBAddress\fP & loaddr, int4 losize) const\fC [inline]\fP"
+
+.PP
+Check if the given two input storage locations can represent a single logical parameter\&. Within the conventions of this model, do the two (hi/lo) locations represent consecutive input parameter locations that can be replaced by a single logical parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhiaddr\fP is the address of the most significant part of the value 
+.br
+\fIhisize\fP is the size of the most significant part in bytes 
+.br
+\fIloaddr\fP is the address of the least significant part of the value 
+.br
+\fIlosize\fP is the size of the least significant part in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the two pieces can be joined 
+.RE
+.PP
+
+.PP
+Definition at line 606 of file fspec\&.hh\&.
+.SS "bool ProtoModel::checkInputSplit (const \fBAddress\fP & loc, int4 size, int4 splitpoint) const\fC [inline]\fP"
+
+.PP
+Check if it makes sense to split a single storage location into two input parameters\&. A storage location and split point is provided, implying two new storage locations\&. Does \fBthis\fP model allow these locations to be considered separate parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of provided storage location 
+.br
+\fIsize\fP is the size of the location in bytes 
+.br
+\fIsplitpoint\fP is the number of bytes to consider in the first (in address order) piece 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the storage location can be split 
+.RE
+.PP
+
+.PP
+Definition at line 629 of file fspec\&.hh\&.
+.SS "bool ProtoModel::checkOutputJoin (const \fBAddress\fP & hiaddr, int4 hisize, const \fBAddress\fP & loaddr, int4 losize) const\fC [inline]\fP"
+
+.PP
+Check if the given two output storage locations can represent a single logical return value\&. Within the conventions of this model, do the two (hi/lo) locations represent consecutive locations that can be replaced by a single logical return value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhiaddr\fP is the address of the most significant part of the value 
+.br
+\fIhisize\fP is the size of the most significant part in bytes 
+.br
+\fIloaddr\fP is the address of the least significant part of the value 
+.br
+\fIlosize\fP is the size of the least significant part in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the two pieces can be joined 
+.RE
+.PP
+
+.PP
+Definition at line 618 of file fspec\&.hh\&.
+.SS "void ProtoModel::deriveInputMap (\fBParamActive\fP * active) const\fC [inline]\fP"
+
+.PP
+Given a list of input \fItrials\fP, derive the most likely input prototype\&. Trials are sorted and marked as \fIused\fP or not\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the collection of \fBVarnode\fP input trials 
+.RE
+.PP
+
+.PP
+Definition at line 585 of file fspec\&.hh\&.
+.SS "void ProtoModel::deriveOutputMap (\fBParamActive\fP * active) const\fC [inline]\fP"
+
+.PP
+Given a list of output \fItrials\fP, derive the most likely output prototype\&. One trial (at most) is marked \fIused\fP and moved to the front of the list 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the collection of output trials 
+.RE
+.PP
+
+.PP
+Definition at line 592 of file fspec\&.hh\&.
+.SS "vector<\fBEffectRecord\fP>::const_iterator ProtoModel::effectBegin (void) const\fC [inline]\fP"
+
+.PP
+Get an iterator to the first \fBEffectRecord\fP\&. 
+.PP
+Definition at line 634 of file fspec\&.hh\&.
+.SS "vector<\fBEffectRecord\fP>::const_iterator ProtoModel::effectEnd (void) const\fC [inline]\fP"
+
+.PP
+Get an iterator to the last \fBEffectRecord\fP\&. 
+.PP
+Definition at line 635 of file fspec\&.hh\&.
+.SS "\fBArchitecture\fP* ProtoModel::getArch (void) const\fC [inline]\fP"
+
+.PP
+Get the owning \fBArchitecture\fP\&. 
+.PP
+Definition at line 574 of file fspec\&.hh\&.
+.SS "int4 ProtoModel::getExtraPop (void) const\fC [inline]\fP"
+
+.PP
+Get the stack-pointer \fIextrapop\fP for \fBthis\fP model\&. 
+.PP
+Definition at line 576 of file fspec\&.hh\&.
+.SS "int4 ProtoModel::getInjectUponEntry (void) const\fC [inline]\fP"
+
+.PP
+Get the inject \fIuponentry\fP id\&. 
+.PP
+Definition at line 578 of file fspec\&.hh\&.
+.SS "int4 ProtoModel::getInjectUponReturn (void) const\fC [inline]\fP"
+
+.PP
+Get the inject \fIuponreturn\fP id\&. 
+.PP
+Definition at line 579 of file fspec\&.hh\&.
+.SS "const \fBVarnodeData\fP& ProtoModel::getLikelyTrash (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th \fIlikelytrashh\fP location\&. 
+.PP
+Definition at line 637 of file fspec\&.hh\&.
+.SS "const \fBRangeList\fP& ProtoModel::getLocalRange (void) const\fC [inline]\fP"
+
+.PP
+Get the range of (possible) local stack variables\&. 
+.PP
+Definition at line 632 of file fspec\&.hh\&.
+.SS "int4 ProtoModel::getMaxInputDelay (void) const\fC [inline]\fP"
+
+.PP
+Return the maximum heritage delay across all possible input parameters\&. Depending on the address space, data-flow for a parameter may not be available until extra transform passes have completed\&. This method returns the number of passes that must occur before we can guarantee that all parameters have data-flow info\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the maximum number of passes across all input parameters in \fBthis\fP model 
+.RE
+.PP
+
+.PP
+Definition at line 730 of file fspec\&.hh\&.
+.SS "int4 ProtoModel::getMaxOutputDelay (void) const\fC [inline]\fP"
+
+.PP
+Return the maximum heritage delay across all possible return values\&. Depending on the address space, data-flow for a parameter may not be available until extra transform passes have completed\&. This method returns the number of passes that must occur before we can guarantee that any return value has data-flow info\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the maximum number of passes across all output parameters in \fBthis\fP model 
+.RE
+.PP
+
+.PP
+Definition at line 738 of file fspec\&.hh\&.
+.SS "const string& ProtoModel::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the name of the prototype model\&. 
+.PP
+Definition at line 573 of file fspec\&.hh\&.
+.SS "const \fBRangeList\fP& ProtoModel::getParamRange (void) const\fC [inline]\fP"
+
+.PP
+Get the range of (possible) stack parameters\&. 
+.PP
+Definition at line 633 of file fspec\&.hh\&.
+.SS "\fBAddrSpace\fP* ProtoModel::getSpacebase (void) const\fC [inline]\fP"
+
+.PP
+Get the stack space associated with \fBthis\fP model\&. 
+.PP
+Definition at line 719 of file fspec\&.hh\&.
+.SS "uint4 ProtoModel::hasEffect (const \fBAddress\fP & addr, int4 size) const"
+
+.PP
+Determine side-effect of \fBthis\fP on the given memory range\&. The model is searched for an \fBEffectRecord\fP matching the given range and the effect type is returned\&. If there is no \fBEffectRecord\fP or the effect generally isn't known, \fBEffectRecord::unknown_effect\fP is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the given range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBEffectRecord\fP type 
+.RE
+.PP
+
+.PP
+Definition at line 1744 of file fspec\&.cc\&.
+.SS "bool ProtoModel::hasThisPointer (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a model for (non-static) class methods\&. 
+.PP
+Definition at line 721 of file fspec\&.hh\&.
+.SS "bool ProtoModel::isConstructor (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP model for class constructors\&. 
+.PP
+Definition at line 722 of file fspec\&.hh\&.
+.SS "virtual bool ProtoModel::isMerged (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Is \fBthis\fP a merged prototype model\&. 
+.PP
+Reimplemented in \fBProtoModelMerged\fP\&.
+.PP
+Definition at line 740 of file fspec\&.hh\&.
+.SS "bool ProtoModel::isStackGrowsNegative (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if the stack \fIgrows\fP toward smaller addresses\&. 
+.PP
+Definition at line 720 of file fspec\&.hh\&.
+.SS "uint4 ProtoModel::lookupEffect (const vector< \fBEffectRecord\fP > & efflist, const \fBAddress\fP & addr, int4 size)\fC [static]\fP"
+
+.PP
+Look up an effect from the given \fBEffectRecord\fP list\&. If a given memory range matches an \fBEffectRecord\fP, return the effect type\&. Otherwise return \fBEffectRecord::unknown_effect\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIefflist\fP is the list of EffectRecords which must be sorted 
+.br
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the memory range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBEffectRecord\fP type 
+.RE
+.PP
+
+.PP
+Definition at line 1713 of file fspec\&.cc\&.
+.SS "int4 ProtoModel::numLikelyTrash (void) const\fC [inline]\fP"
+
+.PP
+Get the number of \fIlikelytrash\fP locations\&. 
+.PP
+Definition at line 636 of file fspec\&.hh\&.
+.SS "bool ProtoModel::possibleInputParam (const \fBAddress\fP & loc, int4 size) const\fC [inline]\fP"
+
+.PP
+Does the given storage location make sense as an input parameter\&. Within \fBthis\fP model, decide if the storage location can be considered an input parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the location can be a parameter 
+.RE
+.PP
+
+.PP
+Definition at line 645 of file fspec\&.hh\&.
+.SS "bool ProtoModel::possibleInputParamWithSlot (const \fBAddress\fP & loc, int4 size, int4 & slot, int4 & slotsize) const\fC [inline]\fP"
+
+.PP
+Pass-back the slot and slot size for the given storage location as an input parameter\&. This checks if the given storage location acts as an input parameter in \fBthis\fP model and passes back the number of slots that it occupies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage location 
+.br
+\fIslot\fP if the \fIslot\fP number to pass back 
+.br
+\fIslotsize\fP is the number of consumed slots to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the location can be a parameter 
+.RE
+.PP
+
+.PP
+Definition at line 666 of file fspec\&.hh\&.
+.SS "bool ProtoModel::possibleOutputParam (const \fBAddress\fP & loc, int4 size) const\fC [inline]\fP"
+
+.PP
+Does the given storage location make sense as a return value\&. Within \fBthis\fP model, decide if the storage location can be considered an output parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the location can be a parameter 
+.RE
+.PP
+
+.PP
+Definition at line 654 of file fspec\&.hh\&.
+.SS "bool ProtoModel::possibleOutputParamWithSlot (const \fBAddress\fP & loc, int4 size, int4 & slot, int4 & slotsize) const\fC [inline]\fP"
+
+.PP
+Pass-back the slot and slot size for the given storage location as a return value\&. This checks if the given storage location acts as an output parameter in \fBthis\fP model and passes back the number of slots that it occupies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage location 
+.br
+\fIslot\fP if the \fIslot\fP number to pass back 
+.br
+\fIslotsize\fP is the number of consumed slots to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the location can be a parameter 
+.RE
+.PP
+
+.PP
+Definition at line 678 of file fspec\&.hh\&.
+.SS "void ProtoModel::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore \fBthis\fP model from an XML stream\&. Read in details about \fBthis\fP model from a <prototype> tag 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <prototype> element 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBProtoModelMerged\fP\&.
+.PP
+Definition at line 1752 of file fspec\&.cc\&.
+.SS "void ProtoModel::setExtraPop (int4 ep)\fC [inline]\fP"
+
+.PP
+Set the stack-pointer \fIextrapop\fP\&. 
+.PP
+Definition at line 577 of file fspec\&.hh\&.
+.SS "bool ProtoModel::unjustifiedInputParam (const \fBAddress\fP & loc, int4 size, \fBVarnodeData\fP & res) const\fC [inline]\fP"
+
+.PP
+Check if the given storage location looks like an \fIunjustified\fP input parameter\&. The storage for a value may be contained in a normal parameter location but be unjustified within that container, i\&.e\&. the least significant bytes are not being used\&. If this is the case, pass back the full parameter location and return \fBtrue\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the given storage 
+.br
+\fIsize\fP is the number of bytes in the given storage 
+.br
+\fIres\fP is the full parameter storage to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the given storage is unjustified within its parameter container 
+.RE
+.PP
+
+.PP
+Definition at line 690 of file fspec\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBProtoModelMerged\fP\fC [friend]\fP"
+
+.PP
+Definition at line 548 of file fspec\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

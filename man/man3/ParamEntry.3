@@ -1,0 +1,436 @@
+.TH "ParamEntry" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParamEntry \- A contiguous range of memory that can be used to pass parameters\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBforce_left_justify\fP = 1, \fBreverse_stack\fP = 2, \fBsmallsize_zext\fP = 4, \fBsmallsize_sext\fP = 8, \fBsmallsize_inttype\fP = 32, \fBsmallsize_floatext\fP = 64, \fBextracheck_high\fP = 128, \fBextracheck_low\fP = 256 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParamEntry\fP (int4 grp)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml\&. "
+.ti -1c
+.RI "\fBParamEntry\fP (\fBtype_metatype\fP t, int4 grp, int4 grpsize, const \fBAddress\fP &loc, int4 sz, int4 mnsz, int4 align, bool normalstack)"
+.br
+.RI "Construct entry from components\&. "
+.ti -1c
+.RI "int4 \fBgetGroup\fP (void) const"
+.br
+.RI "Get the group id \fBthis\fP belongs to\&. "
+.ti -1c
+.RI "int4 \fBgetGroupSize\fP (void) const"
+.br
+.RI "Get the number of groups occupied by \fBthis\fP\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the size of the memory range in bytes\&. "
+.ti -1c
+.RI "int4 \fBgetMinSize\fP (void) const"
+.br
+.RI "Get the minimum size of a logical value contained in \fBthis\fP\&. "
+.ti -1c
+.RI "int4 \fBgetAlign\fP (void) const"
+.br
+.RI "Get the alignment of \fBthis\fP entry\&. "
+.ti -1c
+.RI "\fBtype_metatype\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the data-type class associated with \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBisExclusion\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this holds a single parameter exclusively\&. "
+.ti -1c
+.RI "bool \fBisReverseStack\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if parameters are allocated in reverse order\&. "
+.ti -1c
+.RI "bool \fBcontains\fP (const \fBParamEntry\fP &op2) const"
+.br
+.RI "Does \fBthis\fP contain the indicated entry\&. "
+.ti -1c
+.RI "int4 \fBjustifiedContain\fP (const \fBAddress\fP &addr, int4 sz) const"
+.br
+.RI "Calculate endian aware containment\&. "
+.ti -1c
+.RI "bool \fBgetContainer\fP (const \fBAddress\fP &addr, int4 sz, \fBVarnodeData\fP &res) const"
+.br
+.RI "Calculate the containing memory range\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBassumedExtension\fP (const \fBAddress\fP &addr, int4 sz, \fBVarnodeData\fP &res) const"
+.br
+.RI "Calculate the type of \fIextension\fP to expect for the given logical value\&. "
+.ti -1c
+.RI "int4 \fBgetSlot\fP (const \fBAddress\fP &addr, int4 skip) const"
+.br
+.RI "Calculate the \fIslot\fP occupied by a specific address\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (void) const"
+.br
+.RI "Get the address space containing \fBthis\fP entry\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetBase\fP (void) const"
+.br
+.RI "Get the starting offset of \fBthis\fP entry\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetAddrBySlot\fP (int4 &slot, int4 sz) const"
+.br
+.RI "Calculate the storage address assigned when allocating a parameter of a given size\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage, bool normalstack)"
+.br
+.RI "Restore the entry from an XML stream\&. "
+.ti -1c
+.RI "void \fBextraChecks\fP (vector< \fBParamEntry\fP > &entry)"
+.br
+.RI "Check if \fBthis\fP entry represents a \fIjoined\fP parameter and requires extra scrutiny\&. "
+.ti -1c
+.RI "bool \fBisParamCheckHigh\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if there is a high overlap\&. "
+.ti -1c
+.RI "bool \fBisParamCheckLow\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if there is a low overlap\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A contiguous range of memory that can be used to pass parameters\&. 
+
+This range can be used to pass a single parameter (\fBisExclusion()\fP == \fBtrue\fP)\&. This is intended to model a parameter passed in a register\&. The logical value does not have to fill the entire range\&. The size in bytes can range from a minimum, \fBgetMinSize()\fP, to the whole range, \fBgetSize()\fP\&. Justification and extension of the logical value within the range can be specified\&.
+.PP
+Alternately the range can be used as a resource for multiple parameters (\fBisExclusion()\fP == \fBfalse\fP)\&. In this case, the parameters are allocated sequentially (usually) starting from the front of the range\&. The amount of space consumed by each parameter is dictated by an \fIalignment\fP setting in bytes\&.
+.PP
+A \fBParamEntry\fP can be associated with a particular class of data-types\&. Usually:
+.IP "\(bu" 2
+TYPE_UNKNOWN for general purpose parameters
+.IP "\(bu" 2
+TYPE_FLOAT for dedicated floating-point registers 
+.PP
+
+.PP
+Definition at line 47 of file fspec\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIforce_left_justify \fP\fP
+Big endian values are left justified within their slot\&. 
+.TP
+\fB\fIreverse_stack \fP\fP
+Slots (for \fInon-exlusion\fP entries) are allocated in reverse order\&. 
+.TP
+\fB\fIsmallsize_zext \fP\fP
+Assume values that are below the max \fBsize\fP are zero extended into this container\&. 
+.TP
+\fB\fIsmallsize_sext \fP\fP
+Assume values that are below the max \fBsize\fP are sign extended into this container\&. 
+.TP
+\fB\fIsmallsize_inttype \fP\fP
+Assume values that are below the max \fBsize\fP are sign OR zero extended based on integer type\&. 
+.TP
+\fB\fIsmallsize_floatext \fP\fP
+Assume values smaller than max \fBsize\fP are floating-point extended to full size\&. 
+.TP
+\fB\fIextracheck_high \fP\fP
+Perform extra checks during parameter recovery on most sig portion of the double\&. 
+.TP
+\fB\fIextracheck_low \fP\fP
+Perform extra checks during parameter recovery on least sig portion of the double\&. 
+.PP
+Definition at line 49 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParamEntry::ParamEntry (int4 grp)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with restoreXml\&. 
+.PP
+Definition at line 77 of file fspec\&.hh\&.
+.SS "ParamEntry::ParamEntry (\fBtype_metatype\fP t, int4 grp, int4 grpsize, const \fBAddress\fP & loc, int4 sz, int4 mnsz, int4 align, bool normalstack)"
+
+.PP
+Construct entry from components\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP is the data-type class (TYPE_UNKNOWN or TYPE_FLOAT) 
+.br
+\fIgrp\fP is the group id 
+.br
+\fIgrpsize\fP is the number of consecutive groups occupied 
+.br
+\fIloc\fP is the starting address of the memory range 
+.br
+\fIsz\fP is the number of bytes in the range 
+.br
+\fImnsz\fP is the smallest size of a logical value 
+.br
+\fIalign\fP is the alignment (0 means the memory range will hold one parameter exclusively) 
+.br
+\fInormalstack\fP is \fBtrue\fP if parameters are allocated from the front of the range 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBOpCode\fP ParamEntry::assumedExtension (const \fBAddress\fP & addr, int4 sz, \fBVarnodeData\fP & res) const"
+
+.PP
+Calculate the type of \fIextension\fP to expect for the given logical value\&. Return:
+.IP "\(bu" 2
+CPUI_COPY if no extensions are assumed for small values in this container
+.IP "\(bu" 2
+CPUI_INT_SEXT indicates a sign extension
+.IP "\(bu" 2
+CPUI_INT_ZEXT indicates a zero extension
+.IP "\(bu" 2
+CPUI_PIECE indicates an integer extension based on type of parameter
+.PP
+.PP
+(A CPUI_FLOAT2FLOAT=float extension is handled by heritage and \fBJoinRecord\fP) If returning an extension operator, pass back the container being extended\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the logical value 
+.br
+\fIsz\fP is the size of the logical value in bytes 
+.br
+\fIres\fP will hold the passed back containing range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the type of extension 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file fspec\&.cc\&.
+.SS "bool ParamEntry::contains (const \fBParamEntry\fP & op2) const"
+
+.PP
+Does \fBthis\fP contain the indicated entry\&. This entry must properly contain the other memory range, and the entry properties must be compatible\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other entry to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the other entry is contained 
+.RE
+.PP
+
+.PP
+Definition at line 63 of file fspec\&.cc\&.
+.SS "void ParamEntry::extraChecks (vector< \fBParamEntry\fP > & entry)"
+
+.PP
+Check if \fBthis\fP entry represents a \fIjoined\fP parameter and requires extra scrutiny\&. Return value parameter lists allow overlapping entries if one of the overlapping entries is a \fIjoined\fP parameter\&. In this case the return value recovery logic needs to know what portion(s) of the joined parameter are overlapped\&. This method sets flags on \fBthis\fP to indicate the overlap\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP is the full parameter list to check for overlaps with \fBthis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 382 of file fspec\&.cc\&.
+.SS "\fBAddress\fP ParamEntry::getAddrBySlot (int4 & slotnum, int4 sz) const"
+
+.PP
+Calculate the storage address assigned when allocating a parameter of a given size\&. Assume \fBslotnum\fP slots have already been assigned and increment \fBslotnum\fP by the number of slots used\&. Return an invalid address if the size is too small or if there are not enough slots left\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslotnum\fP is a reference to used slots (which will be updated) 
+.br
+\fIsz\fP is the size of the parameter to allocated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the address of the new parameter (or an invalid address) 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file fspec\&.cc\&.
+.SS "int4 ParamEntry::getAlign (void) const\fC [inline]\fP"
+
+.PP
+Get the alignment of \fBthis\fP entry\&. 
+.PP
+Definition at line 83 of file fspec\&.hh\&.
+.SS "\fBuintb\fP ParamEntry::getBase (void) const\fC [inline]\fP"
+
+.PP
+Get the starting offset of \fBthis\fP entry\&. 
+.PP
+Definition at line 93 of file fspec\&.hh\&.
+.SS "bool ParamEntry::getContainer (const \fBAddress\fP & addr, int4 sz, \fBVarnodeData\fP & res) const"
+
+.PP
+Calculate the containing memory range\&. Pass back the \fBVarnodeData\fP (space,offset,size) of the parameter that would contain the given memory range\&. If \fBthis\fP contains the range and is \fIexclusive\fP, just pass back \fBthis\fP memory range\&. Otherwise the passed back range will depend on alignment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given range 
+.br
+\fIsz\fP is the size of the given range in bytes 
+.br
+\fIres\fP is the reference to \fBVarnodeData\fP that will be passed back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the given range is contained at all 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file fspec\&.cc\&.
+.SS "int4 ParamEntry::getGroup (void) const\fC [inline]\fP"
+
+.PP
+Get the group id \fBthis\fP belongs to\&. 
+.PP
+Definition at line 79 of file fspec\&.hh\&.
+.SS "int4 ParamEntry::getGroupSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of groups occupied by \fBthis\fP\&. 
+.PP
+Definition at line 80 of file fspec\&.hh\&.
+.SS "int4 ParamEntry::getMinSize (void) const\fC [inline]\fP"
+
+.PP
+Get the minimum size of a logical value contained in \fBthis\fP\&. 
+.PP
+Definition at line 82 of file fspec\&.hh\&.
+.SS "int4 ParamEntry::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the size of the memory range in bytes\&. 
+.PP
+Definition at line 81 of file fspec\&.hh\&.
+.SS "int4 ParamEntry::getSlot (const \fBAddress\fP & addr, int4 skip) const"
+
+.PP
+Calculate the \fIslot\fP occupied by a specific address\&. For \fInon-exclusive\fP entries, the memory range can be divided up into \fBslots\fP, which are chunks that take up a full alignment\&. I\&.e\&. for an entry with alignment 4, slot 0 is bytes 0-3 of the range, slot 1 is bytes 4-7, etc\&. Assuming the given address is contained in \fBthis\fP entry, and we \fBskip\fP ahead a number of bytes, return the \fIslot\fP associated with that byte\&. NOTE: its important that the given address has already been checked for containment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIskip\fP is the number of bytes to skip ahead 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the slot index 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file fspec\&.cc\&.
+.SS "\fBAddrSpace\fP* ParamEntry::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the address space containing \fBthis\fP entry\&. 
+.PP
+Definition at line 92 of file fspec\&.hh\&.
+.SS "\fBtype_metatype\fP ParamEntry::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the data-type class associated with \fBthis\fP\&. 
+.PP
+Definition at line 84 of file fspec\&.hh\&.
+.SS "bool ParamEntry::isExclusion (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this holds a single parameter exclusively\&. 
+.PP
+Definition at line 85 of file fspec\&.hh\&.
+.SS "bool ParamEntry::isParamCheckHigh (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if there is a high overlap\&. 
+.PP
+Definition at line 97 of file fspec\&.hh\&.
+.SS "bool ParamEntry::isParamCheckLow (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if there is a low overlap\&. 
+.PP
+Definition at line 98 of file fspec\&.hh\&.
+.SS "bool ParamEntry::isReverseStack (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if parameters are allocated in reverse order\&. 
+.PP
+Definition at line 86 of file fspec\&.hh\&.
+.SS "int4 ParamEntry::justifiedContain (const \fBAddress\fP & addr, int4 sz) const"
+
+.PP
+Calculate endian aware containment\&. Check if the given memory range is contained in \fBthis\fP\&. If it is contained, return the endian aware offset of the containment\&. I\&.e\&. if the least significant byte of the given range falls on the least significant byte of the \fBthis\fP, return 0\&. If it intersects the second least significant, return 1, etc\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsz\fP is the size of the given memory range in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the endian aware alignment or -1 if the given range isn't contained 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file fspec\&.cc\&.
+.SS "void ParamEntry::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage, bool normalstack)"
+
+.PP
+Restore the entry from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <pentry> element 
+.br
+\fImanage\fP is a manager to resolve address space references 
+.br
+\fInormalstack\fP is \fBtrue\fP if the parameters should be allocated from the front of the range 
+.RE
+.PP
+
+.PP
+Definition at line 285 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,172 @@
+.TH "UnifyConstraint" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UnifyConstraint
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <unify\&.hh>\fP
+.PP
+Inherited by \fBConstraintBoolean\fP, \fBConstraintConstCompare\fP, \fBConstraintDef\fP, \fBConstraintDescend\fP, \fBConstraintGroup\fP, \fBConstraintLoneDescend\fP, \fBConstraintNamedExpression\fP, \fBConstraintNewOp\fP, \fBConstraintNewUniqueOut\fP, \fBConstraintOpcode\fP, \fBConstraintOpCompare\fP, \fBConstraintOpCopy\fP, \fBConstraintOpInput\fP, \fBConstraintOpInputAny\fP, \fBConstraintOpOutput\fP, \fBConstraintOtherInput\fP, \fBConstraintParamConst\fP, \fBConstraintParamConstVal\fP, \fBConstraintRemoveInput\fP, \fBConstraintSetInput\fP, \fBConstraintSetInputConstVal\fP, \fBConstraintSetOpcode\fP, \fBConstraintVarCompare\fP, \fBConstraintVarConst\fP, \fBConstraintVarnodeCopy\fP, \fBDummyConstConstraint\fP, \fBDummyOpConstraint\fP, and \fBDummyVarnodeConstraint\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~UnifyConstraint\fP (void)"
+.br
+.ti -1c
+.RI "int4 \fBgetId\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetMaxNum\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBUnifyConstraint\fP * \fBclone\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBinitialize\fP (\fBUnifyState\fP &state)"
+.br
+.ti -1c
+.RI "virtual bool \fBstep\fP (\fBUnifyState\fP &state)=0"
+.br
+.ti -1c
+.RI "virtual void \fBbuildTraverseState\fP (\fBUnifyState\fP &state)"
+.br
+.ti -1c
+.RI "virtual void \fBsetId\fP (int4 &id)"
+.br
+.ti -1c
+.RI "virtual void \fBcollectTypes\fP (vector< \fBUnifyDatatype\fP > &typelist) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetBaseIndex\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBprint\fP (ostream &s, \fBUnifyCPrinter\fP &printstate) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBisDummy\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBremoveDummy\fP (void)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUnifyConstraint\fP * \fBcopyid\fP (const \fBUnifyConstraint\fP *op)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBuniqid\fP"
+.br
+.ti -1c
+.RI "int4 \fBmaxnum\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBConstraintGroup\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 200 of file unify\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual UnifyConstraint::~UnifyConstraint (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 207 of file unify\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void UnifyConstraint::buildTraverseState (\fBUnifyState\fP & state)\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBConstraintOr\fP, \fBConstraintGroup\fP, and \fBConstraintDescend\fP\&.
+.SS "virtual \fBUnifyConstraint\fP* UnifyConstraint::clone (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBConstraintSetOpcode\fP, \fBConstraintRemoveInput\fP, \fBConstraintSetInputConstVal\fP, \fBConstraintSetInput\fP, \fBConstraintNewUniqueOut\fP, \fBConstraintNewOp\fP, \fBConstraintOr\fP, \fBConstraintGroup\fP, \fBConstraintConstCompare\fP, \fBConstraintOtherInput\fP, \fBConstraintLoneDescend\fP, \fBConstraintDescend\fP, \fBConstraintDef\fP, \fBConstraintVarCompare\fP, \fBConstraintVarnodeCopy\fP, \fBConstraintParamConst\fP, \fBConstraintParamConstVal\fP, \fBConstraintOpOutput\fP, \fBConstraintOpInputAny\fP, \fBConstraintOpInput\fP, \fBConstraintOpCompare\fP, \fBConstraintOpcode\fP, \fBConstraintOpCopy\fP, \fBConstraintNamedExpression\fP, \fBConstraintVarConst\fP, \fBConstraintBoolean\fP, \fBDummyConstConstraint\fP, \fBDummyVarnodeConstraint\fP, and \fBDummyOpConstraint\fP\&.
+.SS "virtual void UnifyConstraint::collectTypes (vector< \fBUnifyDatatype\fP > & typelist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBConstraintSetOpcode\fP, \fBConstraintRemoveInput\fP, \fBConstraintSetInputConstVal\fP, \fBConstraintSetInput\fP, \fBConstraintNewUniqueOut\fP, \fBConstraintNewOp\fP, \fBConstraintGroup\fP, \fBConstraintConstCompare\fP, \fBConstraintOtherInput\fP, \fBConstraintLoneDescend\fP, \fBConstraintDescend\fP, \fBConstraintDef\fP, \fBConstraintVarCompare\fP, \fBConstraintVarnodeCopy\fP, \fBConstraintParamConst\fP, \fBConstraintParamConstVal\fP, \fBConstraintOpOutput\fP, \fBConstraintOpInputAny\fP, \fBConstraintOpInput\fP, \fBConstraintOpCompare\fP, \fBConstraintOpcode\fP, \fBConstraintOpCopy\fP, \fBConstraintNamedExpression\fP, \fBConstraintVarConst\fP, \fBDummyConstConstraint\fP, \fBDummyVarnodeConstraint\fP, and \fBDummyOpConstraint\fP\&.
+.PP
+Definition at line 215 of file unify\&.hh\&.
+.SS "\fBUnifyConstraint\fP* UnifyConstraint::copyid (const \fBUnifyConstraint\fP * op)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 205 of file unify\&.hh\&.
+.SS "virtual int4 UnifyConstraint::getBaseIndex (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBConstraintSetOpcode\fP, \fBConstraintRemoveInput\fP, \fBConstraintSetInput\fP, \fBConstraintNewUniqueOut\fP, \fBConstraintNewOp\fP, \fBConstraintOr\fP, \fBConstraintGroup\fP, \fBConstraintConstCompare\fP, \fBConstraintOtherInput\fP, \fBConstraintLoneDescend\fP, \fBConstraintDescend\fP, \fBConstraintDef\fP, \fBConstraintVarCompare\fP, \fBConstraintVarnodeCopy\fP, \fBConstraintParamConst\fP, \fBConstraintOpOutput\fP, \fBConstraintOpInputAny\fP, \fBConstraintOpInput\fP, \fBConstraintOpCompare\fP, \fBConstraintOpcode\fP, \fBConstraintOpCopy\fP, \fBConstraintNamedExpression\fP, \fBConstraintVarConst\fP, \fBDummyConstConstraint\fP, \fBDummyVarnodeConstraint\fP, and \fBDummyOpConstraint\fP\&.
+.PP
+Definition at line 216 of file unify\&.hh\&.
+.SS "int4 UnifyConstraint::getId (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 208 of file unify\&.hh\&.
+.SS "int4 UnifyConstraint::getMaxNum (void)\fC [inline]\fP"
+
+.PP
+Definition at line 209 of file unify\&.hh\&.
+.SS "virtual void UnifyConstraint::initialize (\fBUnifyState\fP & state)\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBConstraintOr\fP, \fBConstraintGroup\fP, \fBConstraintDescend\fP, and \fBConstraintOpInputAny\fP\&.
+.SS "virtual bool UnifyConstraint::isDummy (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBDummyConstConstraint\fP, \fBDummyVarnodeConstraint\fP, and \fBDummyOpConstraint\fP\&.
+.PP
+Definition at line 218 of file unify\&.hh\&.
+.SS "virtual void UnifyConstraint::print (ostream & s, \fBUnifyCPrinter\fP & printstate) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBConstraintSetOpcode\fP, \fBConstraintRemoveInput\fP, \fBConstraintSetInputConstVal\fP, \fBConstraintSetInput\fP, \fBConstraintNewUniqueOut\fP, \fBConstraintNewOp\fP, \fBConstraintOr\fP, \fBConstraintGroup\fP, \fBConstraintConstCompare\fP, \fBConstraintOtherInput\fP, \fBConstraintLoneDescend\fP, \fBConstraintDescend\fP, \fBConstraintDef\fP, \fBConstraintVarCompare\fP, \fBConstraintVarnodeCopy\fP, \fBConstraintParamConst\fP, \fBConstraintParamConstVal\fP, \fBConstraintOpOutput\fP, \fBConstraintOpInputAny\fP, \fBConstraintOpInput\fP, \fBConstraintOpCompare\fP, \fBConstraintOpcode\fP, \fBConstraintOpCopy\fP, \fBConstraintNamedExpression\fP, \fBConstraintVarConst\fP, \fBConstraintBoolean\fP, \fBDummyConstConstraint\fP, \fBDummyVarnodeConstraint\fP, and \fBDummyOpConstraint\fP\&.
+.SS "virtual void UnifyConstraint::removeDummy (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBConstraintGroup\fP\&.
+.PP
+Definition at line 219 of file unify\&.hh\&.
+.SS "virtual void UnifyConstraint::setId (int4 & id)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBConstraintGroup\fP\&.
+.PP
+Definition at line 214 of file unify\&.hh\&.
+.SS "virtual bool UnifyConstraint::step (\fBUnifyState\fP & state)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBConstraintSetOpcode\fP, \fBConstraintRemoveInput\fP, \fBConstraintSetInputConstVal\fP, \fBConstraintSetInput\fP, \fBConstraintNewUniqueOut\fP, \fBConstraintNewOp\fP, \fBConstraintOr\fP, \fBConstraintGroup\fP, \fBConstraintConstCompare\fP, \fBConstraintOtherInput\fP, \fBConstraintLoneDescend\fP, \fBConstraintDescend\fP, \fBConstraintDef\fP, \fBConstraintVarCompare\fP, \fBConstraintVarnodeCopy\fP, \fBConstraintParamConst\fP, \fBConstraintParamConstVal\fP, \fBConstraintOpOutput\fP, \fBConstraintOpInputAny\fP, \fBConstraintOpInput\fP, \fBConstraintOpCompare\fP, \fBConstraintOpcode\fP, \fBConstraintOpCopy\fP, \fBConstraintNamedExpression\fP, \fBConstraintVarConst\fP, \fBConstraintBoolean\fP, \fBDummyConstConstraint\fP, \fBDummyVarnodeConstraint\fP, and \fBDummyOpConstraint\fP\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBConstraintGroup\fP\fC [friend]\fP"
+
+.PP
+Definition at line 201 of file unify\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 UnifyConstraint::maxnum\fC [protected]\fP"
+
+.PP
+Definition at line 204 of file unify\&.hh\&.
+.SS "int4 UnifyConstraint::uniqid\fC [protected]\fP"
+
+.PP
+Definition at line 203 of file unify\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

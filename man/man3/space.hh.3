@@ -1,0 +1,88 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/space.hh \- Classes for describing address spaces\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'error\&.hh'\fP
+.br
+\fC#include 'xml\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAddrSpace\fP"
+.br
+.RI "A region where processor data is stored\&. "
+.ti -1c
+.RI "class \fBConstantSpace\fP"
+.br
+.RI "Special \fBAddrSpace\fP for representing constants during analysis\&. "
+.ti -1c
+.RI "class \fBUniqueSpace\fP"
+.br
+.RI "The pool of temporary storage registers\&. "
+.ti -1c
+.RI "class \fBJoinSpace\fP"
+.br
+.RI "The pool of logically joined variables\&. "
+.ti -1c
+.RI "class \fBOverlaySpace\fP"
+.br
+.RI "An overlay space\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBspacetype\fP { \fBIPTR_CONSTANT\fP = 0, \fBIPTR_PROCESSOR\fP = 1, \fBIPTR_SPACEBASE\fP = 2, \fBIPTR_INTERNAL\fP = 3, \fBIPTR_FSPEC\fP = 4, \fBIPTR_IOP\fP = 5, \fBIPTR_JOIN\fP = 6 }"
+.br
+.RI "Fundemental address space types\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classes for describing address spaces\&. 
+
+
+.PP
+Definition in file \fBspace\&.hh\fP\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBspacetype\fP"
+
+.PP
+Fundemental address space types\&. Every address space must be one of the following core types 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIIPTR_CONSTANT \fP\fP
+Special space to represent constants\&. 
+.TP
+\fB\fIIPTR_PROCESSOR \fP\fP
+Normal spaces modelled by processor\&. 
+.TP
+\fB\fIIPTR_SPACEBASE \fP\fP
+addresses = offsets off of base register 
+.TP
+\fB\fIIPTR_INTERNAL \fP\fP
+Internally managed temporary space\&. 
+.TP
+\fB\fIIPTR_FSPEC \fP\fP
+Special internal \fBFuncCallSpecs\fP reference\&. 
+.TP
+\fB\fIIPTR_IOP \fP\fP
+Special internal \fBPcodeOp\fP reference\&. 
+.TP
+\fB\fIIPTR_JOIN \fP\fP
+Special virtual space to represent split variables\&. 
+.PP
+Definition at line 28 of file space\&.hh\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

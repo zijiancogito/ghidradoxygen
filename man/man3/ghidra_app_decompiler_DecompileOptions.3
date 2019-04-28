@@ -1,0 +1,476 @@
+.TH "ghidra.app.decompiler.DecompileOptions" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.DecompileOptions
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCommentStyleEnum\fP"
+.br
+.ti -1c
+.RI "enum \fBIntegerFormatEnum\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompileOptions\fP ()"
+.br
+.ti -1c
+.RI "void \fBgrabFromToolAndProgram\fP (Plugin ownerPlugin, ToolOptions opt, Program program)"
+.br
+.ti -1c
+.RI "void \fBgrabFromProgram\fP (Program program)"
+.br
+.ti -1c
+.RI "String \fBgetProtoEvalModel\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetProtoEvalModel\fP (String protoEvalModel)"
+.br
+.ti -1c
+.RI "void \fBregisterOptions\fP (Plugin ownerPlugin, ToolOptions opt, Program program, HelpLocation help)"
+.br
+.ti -1c
+.RI "String \fBgetXML\fP (\fBDecompInterface\fP iface)"
+.br
+.ti -1c
+.RI "int \fBgetMaxWidth\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetKeywordColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetTypeColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetFunctionColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetCommentColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetConstantColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetVariableColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetParameterColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetGlobalColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetDefaultColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetCodeViewerBackgroundColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetCurrentVariableHighlightColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetMiddleMouseHighlightColor\fP ()"
+.br
+.ti -1c
+.RI "Color \fBgetSearchHighlightColor\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetMiddleMouseHighlightButton\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisPRECommentIncluded\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPRECommentIncluded\fP (boolean commentPREInclude)"
+.br
+.ti -1c
+.RI "boolean \fBisPLATECommentIncluded\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPLATECommentIncluded\fP (boolean commentPLATEInclude)"
+.br
+.ti -1c
+.RI "boolean \fBisPOSTCommentIncluded\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPOSTCommentIncluded\fP (boolean commentPOSTInclude)"
+.br
+.ti -1c
+.RI "boolean \fBisEOLCommentIncluded\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetEOLCommentIncluded\fP (boolean commentEOLInclude)"
+.br
+.ti -1c
+.RI "boolean \fBisWARNCommentIncluded\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetWARNCommentIncluded\fP (boolean commentWARNInclude)"
+.br
+.ti -1c
+.RI "boolean \fBisHeadCommentIncluded\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetHeadCommentIncluded\fP (boolean commentHeadInclude)"
+.br
+.ti -1c
+.RI "boolean \fBisEliminateUnreachable\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetEliminateUnreachable\fP (boolean eliminateUnreachable)"
+.br
+.ti -1c
+.RI "boolean \fBisSimplifyDoublePrecision\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetSimplifyDoublePrecision\fP (boolean simplifyDoublePrecision)"
+.br
+.ti -1c
+.RI "boolean \fBisDisplayLineNumbers\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisDisplayNamespaces\fP ()"
+.br
+.ti -1c
+.RI "DecompilerLanguage \fBgetDisplayLanguage\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisConventionPrint\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetConventionPrint\fP (boolean conventionPrint)"
+.br
+.ti -1c
+.RI "boolean \fBisNoCastPrint\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetNoCastPrint\fP (boolean noCastPrint)"
+.br
+.ti -1c
+.RI "void \fBsetDisplayLanguage\fP (DecompilerLanguage val)"
+.br
+.ti -1c
+.RI "Font \fBgetDefaultFont\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetDefaultTimeout\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDefaultTimeout\fP (int timeout)"
+.br
+.ti -1c
+.RI "int \fBgetMaxPayloadMBytes\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetMaxPayloadMBytes\fP (int mbytes)"
+.br
+.ti -1c
+.RI "\fBCommentStyleEnum\fP \fBgetCommentStyle\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetCommentStyle\fP (\fBCommentStyleEnum\fP commentStyle)"
+.br
+.ti -1c
+.RI "int \fBgetCacheSize\fP ()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static final int \fBSUGGESTED_DECOMPILE_TIMEOUT_SECS\fP = 30"
+.br
+.ti -1c
+.RI "static final int \fBSUGGESTED_MAX_PAYLOAD_BYTES\fP = 50"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Configuration options for the decompiler This stores the options and can create an XML string to be sent to the decompiler process 
+.PP
+Definition at line 42 of file DecompileOptions\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.DecompileOptions\&.DecompileOptions ()\fC [inline]\fP"
+
+.PP
+Definition at line 295 of file DecompileOptions\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int ghidra\&.app\&.decompiler\&.DecompileOptions\&.getCacheSize ()\fC [inline]\fP"
+
+.PP
+Definition at line 808 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getCodeViewerBackgroundColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 664 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getCommentColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 640 of file DecompileOptions\&.java\&.
+.SS "\fBCommentStyleEnum\fP ghidra\&.app\&.decompiler\&.DecompileOptions\&.getCommentStyle ()\fC [inline]\fP"
+
+.PP
+Definition at line 800 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getConstantColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 644 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getCurrentVariableHighlightColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 668 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getDefaultColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 660 of file DecompileOptions\&.java\&.
+.SS "Font ghidra\&.app\&.decompiler\&.DecompileOptions\&.getDefaultFont ()\fC [inline]\fP"
+
+.PP
+Definition at line 780 of file DecompileOptions\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.DecompileOptions\&.getDefaultTimeout ()\fC [inline]\fP"
+
+.PP
+Definition at line 784 of file DecompileOptions\&.java\&.
+.SS "DecompilerLanguage ghidra\&.app\&.decompiler\&.DecompileOptions\&.getDisplayLanguage ()\fC [inline]\fP"
+
+.PP
+Definition at line 756 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getFunctionColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 636 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getGlobalColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 656 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getKeywordColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 628 of file DecompileOptions\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.DecompileOptions\&.getMaxPayloadMBytes ()\fC [inline]\fP"
+
+.PP
+Definition at line 792 of file DecompileOptions\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.DecompileOptions\&.getMaxWidth ()\fC [inline]\fP"
+
+.PP
+Definition at line 624 of file DecompileOptions\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.DecompileOptions\&.getMiddleMouseHighlightButton ()\fC [inline]\fP"
+
+.PP
+Definition at line 680 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getMiddleMouseHighlightColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 672 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getParameterColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 652 of file DecompileOptions\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileOptions\&.getProtoEvalModel ()\fC [inline]\fP"
+
+.PP
+Definition at line 441 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getSearchHighlightColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 676 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getTypeColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 632 of file DecompileOptions\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.DecompileOptions\&.getVariableColor ()\fC [inline]\fP"
+
+.PP
+Definition at line 648 of file DecompileOptions\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileOptions\&.getXML (\fBDecompInterface\fP iface)\fC [inline]\fP"
+Produce XML document of configuration options to be sent to decompiler process\&. This object is global to all decompile processes so we can tailor to the specific process by passing in the interface 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiface\fP specific \fBDecompInterface\fP being sent options 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+XML document as a string 
+.RE
+.PP
+
+.PP
+Definition at line 579 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.grabFromProgram (Program program)\fC [inline]\fP"
+Grab all the decompiler options from the program specifically and cache them in this object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprogram\fP the program whose 'program options' are relevant to the decompiler 
+.RE
+.PP
+
+.PP
+Definition at line 422 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.grabFromToolAndProgram (Plugin ownerPlugin, ToolOptions opt, Program program)\fC [inline]\fP"
+Grab all the decompiler options from various sources within a specific tool and program and cache them in this object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIownerPlugin\fP the plugin that owns the 'tool options' for the decompiler 
+.br
+\fIopt\fP the Options object that contains the 'tool options' specific to the decompiler 
+.br
+\fIprogram\fP the program whose 'program options' are relevant to the decompiler 
+.RE
+.PP
+
+.PP
+Definition at line 344 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isConventionPrint ()\fC [inline]\fP"
+
+.PP
+Definition at line 760 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isDisplayLineNumbers ()\fC [inline]\fP"
+
+.PP
+Definition at line 748 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isDisplayNamespaces ()\fC [inline]\fP"
+
+.PP
+Definition at line 752 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isEliminateUnreachable ()\fC [inline]\fP"
+
+.PP
+Definition at line 732 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isEOLCommentIncluded ()\fC [inline]\fP"
+
+.PP
+Definition at line 708 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isHeadCommentIncluded ()\fC [inline]\fP"
+
+.PP
+Definition at line 724 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isNoCastPrint ()\fC [inline]\fP"
+
+.PP
+Definition at line 768 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isPLATECommentIncluded ()\fC [inline]\fP"
+
+.PP
+Definition at line 692 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isPOSTCommentIncluded ()\fC [inline]\fP"
+
+.PP
+Definition at line 700 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isPRECommentIncluded ()\fC [inline]\fP"
+
+.PP
+Definition at line 684 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isSimplifyDoublePrecision ()\fC [inline]\fP"
+
+.PP
+Definition at line 740 of file DecompileOptions\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompileOptions\&.isWARNCommentIncluded ()\fC [inline]\fP"
+
+.PP
+Definition at line 716 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.registerOptions (Plugin ownerPlugin, ToolOptions opt, Program program, HelpLocation help)\fC [inline]\fP"
+This registers all the decompiler tool options with ghidra, and has the side effect of pulling all the current values for the options if they exist 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIownerPlugin\fP the plugin to which the options should be registered 
+.br
+\fIopt\fP the options object to register with 
+.br
+\fIprogram\fP the program 
+.br
+\fIhlep\fP 
+.RE
+.PP
+
+.PP
+Definition at line 457 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setCommentStyle (\fBCommentStyleEnum\fP commentStyle)\fC [inline]\fP"
+
+.PP
+Definition at line 804 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setConventionPrint (boolean conventionPrint)\fC [inline]\fP"
+
+.PP
+Definition at line 764 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setDefaultTimeout (int timeout)\fC [inline]\fP"
+
+.PP
+Definition at line 788 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setDisplayLanguage (DecompilerLanguage val)\fC [inline]\fP"
+
+.PP
+Definition at line 776 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setEliminateUnreachable (boolean eliminateUnreachable)\fC [inline]\fP"
+
+.PP
+Definition at line 736 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setEOLCommentIncluded (boolean commentEOLInclude)\fC [inline]\fP"
+
+.PP
+Definition at line 712 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setHeadCommentIncluded (boolean commentHeadInclude)\fC [inline]\fP"
+
+.PP
+Definition at line 728 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setMaxPayloadMBytes (int mbytes)\fC [inline]\fP"
+
+.PP
+Definition at line 796 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setNoCastPrint (boolean noCastPrint)\fC [inline]\fP"
+
+.PP
+Definition at line 772 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setPLATECommentIncluded (boolean commentPLATEInclude)\fC [inline]\fP"
+
+.PP
+Definition at line 696 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setPOSTCommentIncluded (boolean commentPOSTInclude)\fC [inline]\fP"
+
+.PP
+Definition at line 704 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setPRECommentIncluded (boolean commentPREInclude)\fC [inline]\fP"
+
+.PP
+Definition at line 688 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setProtoEvalModel (String protoEvalModel)\fC [inline]\fP"
+
+.PP
+Definition at line 445 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setSimplifyDoublePrecision (boolean simplifyDoublePrecision)\fC [inline]\fP"
+
+.PP
+Definition at line 744 of file DecompileOptions\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileOptions\&.setWARNCommentIncluded (boolean commentWARNInclude)\fC [inline]\fP"
+
+.PP
+Definition at line 720 of file DecompileOptions\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "final int ghidra\&.app\&.decompiler\&.DecompileOptions\&.SUGGESTED_DECOMPILE_TIMEOUT_SECS = 30\fC [static]\fP"
+
+.PP
+Definition at line 139 of file DecompileOptions\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.DecompileOptions\&.SUGGESTED_MAX_PAYLOAD_BYTES = 50\fC [static]\fP"
+
+.PP
+Definition at line 140 of file DecompileOptions\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

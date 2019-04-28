@@ -1,0 +1,236 @@
+.TH "Range" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Range \- A contiguous range of bytes in some address space\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <address\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRange\fP (\fBAddrSpace\fP *s, \fBuintb\fP f, \fBuintb\fP l)"
+.br
+.RI "Construct a \fBRange\fP from offsets\&. "
+.ti -1c
+.RI "\fBRange\fP (void)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (void) const"
+.br
+.RI "Get the address space containing \fBthis\fP \fBRange\fP\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetFirst\fP (void) const"
+.br
+.RI "Get the offset of the first byte in \fBthis\fP \fBRange\fP\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetLast\fP (void) const"
+.br
+.RI "Get the offset of the last byte in \fBthis\fP \fBRange\fP\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetFirstAddr\fP (void) const"
+.br
+.RI "Get the address of the first byte\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetLastAddr\fP (void) const"
+.br
+.RI "Get the address of the last byte\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetLastAddrOpen\fP (const \fBAddrSpaceManager\fP *manage) const"
+.br
+.RI "Get address of first byte after \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBcontains\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Determine if the address is in \fBthis\fP \fBRange\fP\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBRange\fP &op2) const"
+.br
+.RI "Sorting operator for Ranges\&. "
+.ti -1c
+.RI "void \fBprintBounds\fP (ostream &s) const"
+.br
+.RI "Print \fBthis\fP \fBRange\fP to a stream\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save \fBthis\fP \fBRange\fP to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore \fBthis\fP from XML stream\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBRangeList\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A contiguous range of bytes in some address space\&. 
+.PP
+Definition at line 159 of file address\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Range::Range (\fBAddrSpace\fP * s, \fBuintb\fP f, \fBuintb\fP l)\fC [inline]\fP"
+
+.PP
+Construct a \fBRange\fP from offsets\&. Offsets must expressed in \fIbytes\fP as opposed to addressable \fIwords\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the address space containing the range 
+.br
+\fIf\fP is the offset of the first byte in the range 
+.br
+\fIl\fP is the offset of the last byte in the range 
+.RE
+.PP
+
+.PP
+Definition at line 171 of file address\&.hh\&.
+.SS "Range::Range (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with restoreXml\&. 
+.PP
+Definition at line 173 of file address\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Range::contains (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Determine if the address is in \fBthis\fP \fBRange\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fBAddress\fP to test for containment 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if addr is in \fBthis\fP \fBRange\fP 
+.RE
+.PP
+
+.PP
+Definition at line 456 of file address\&.hh\&.
+.SS "\fBuintb\fP Range::getFirst (void) const\fC [inline]\fP"
+
+.PP
+Get the offset of the first byte in \fBthis\fP \fBRange\fP\&. 
+.PP
+Definition at line 175 of file address\&.hh\&.
+.SS "\fBAddress\fP Range::getFirstAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the address of the first byte\&. 
+.PP
+Definition at line 177 of file address\&.hh\&.
+.SS "\fBuintb\fP Range::getLast (void) const\fC [inline]\fP"
+
+.PP
+Get the offset of the last byte in \fBthis\fP \fBRange\fP\&. 
+.PP
+Definition at line 176 of file address\&.hh\&.
+.SS "\fBAddress\fP Range::getLastAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the address of the last byte\&. 
+.PP
+Definition at line 178 of file address\&.hh\&.
+.SS "\fBAddress\fP Range::getLastAddrOpen (const \fBAddrSpaceManager\fP * manage) const"
+
+.PP
+Get address of first byte after \fBthis\fP\&. Get the last address +1, updating the space, or returning the extremal address if necessary 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImanage\fP is used to fetch the next address space 
+.RE
+.PP
+
+.PP
+Definition at line 213 of file address\&.cc\&.
+.SS "\fBAddrSpace\fP* Range::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the address space containing \fBthis\fP \fBRange\fP\&. 
+.PP
+Definition at line 174 of file address\&.hh\&.
+.SS "bool Range::operator< (const \fBRange\fP & op2) const\fC [inline]\fP"
+
+.PP
+Sorting operator for Ranges\&. Compare based on address space, then the starting offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the \fBRange\fP to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP comes before op2 
+.RE
+.PP
+
+.PP
+Definition at line 187 of file address\&.hh\&.
+.SS "void Range::printBounds (ostream & s) const"
+
+.PP
+Print \fBthis\fP \fBRange\fP to a stream\&. Output a description of this \fBRange\fP like: ram: 7f-9c 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 231 of file address\&.cc\&.
+.SS "void Range::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Restore \fBthis\fP from XML stream\&. Reconstruct this object from an XML <range> element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fImanage\fP is the space manage for recovering \fBAddrSpace\fP objects 
+.RE
+.PP
+
+.PP
+Definition at line 253 of file address\&.cc\&.
+.SS "void Range::saveXml (ostream & s) const"
+
+.PP
+Save \fBthis\fP \fBRange\fP to an XML stream\&. Write this object to a stream as a <range> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file address\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBRangeList\fP\fC [friend]\fP"
+
+.PP
+Definition at line 160 of file address\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

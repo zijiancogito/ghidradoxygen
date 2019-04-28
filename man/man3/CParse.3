@@ -1,0 +1,260 @@
+.TH "CParse" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CParse
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <grammar\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBf_typedef\fP = 1, \fBf_extern\fP = 2, \fBf_static\fP = 4, \fBf_auto\fP = 8, \fBf_register\fP = 16, \fBf_const\fP = 32, \fBf_restrict\fP = 64, \fBf_volatile\fP = 128, \fBf_inline\fP = 256, \fBf_struct\fP = 512, \fBf_union\fP = 1024, \fBf_enum\fP = 2048 }"
+.br
+.ti -1c
+.RI "enum { \fBdoc_declaration\fP, \fBdoc_parameter_declaration\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCParse\fP (\fBArchitecture\fP *g, int4 maxbuf)"
+.br
+.ti -1c
+.RI "\fB~CParse\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.ti -1c
+.RI "vector< \fBTypeDeclarator\fP * > * \fBmergeSpecDecVec\fP (\fBTypeSpecifiers\fP *spec)"
+.br
+.ti -1c
+.RI "vector< \fBTypeDeclarator\fP * > * \fBmergeSpecDecVec\fP (\fBTypeSpecifiers\fP *spec, vector< \fBTypeDeclarator\fP * > *declist)"
+.br
+.ti -1c
+.RI "\fBTypeDeclarator\fP * \fBmergeSpecDec\fP (\fBTypeSpecifiers\fP *spec)"
+.br
+.ti -1c
+.RI "\fBTypeDeclarator\fP * \fBmergeSpecDec\fP (\fBTypeSpecifiers\fP *spec, \fBTypeDeclarator\fP *dec)"
+.br
+.ti -1c
+.RI "\fBTypeSpecifiers\fP * \fBaddSpecifier\fP (\fBTypeSpecifiers\fP *spec, string *str)"
+.br
+.ti -1c
+.RI "\fBTypeSpecifiers\fP * \fBaddTypeSpecifier\fP (\fBTypeSpecifiers\fP *spec, \fBDatatype\fP *tp)"
+.br
+.ti -1c
+.RI "\fBTypeSpecifiers\fP * \fBaddFuncSpecifier\fP (\fBTypeSpecifiers\fP *spec, string *str)"
+.br
+.ti -1c
+.RI "\fBTypeDeclarator\fP * \fBmergePointer\fP (vector< uint4 > *ptr, \fBTypeDeclarator\fP *dec)"
+.br
+.ti -1c
+.RI "\fBTypeDeclarator\fP * \fBnewDeclarator\fP (string *str)"
+.br
+.ti -1c
+.RI "\fBTypeDeclarator\fP * \fBnewDeclarator\fP (void)"
+.br
+.ti -1c
+.RI "\fBTypeSpecifiers\fP * \fBnewSpecifier\fP (void)"
+.br
+.ti -1c
+.RI "vector< \fBTypeDeclarator\fP * > * \fBnewVecDeclarator\fP (void)"
+.br
+.ti -1c
+.RI "vector< uint4 > * \fBnewPointer\fP (void)"
+.br
+.ti -1c
+.RI "\fBTypeDeclarator\fP * \fBnewArray\fP (\fBTypeDeclarator\fP *dec, uint4 flags, \fBuintb\fP *num)"
+.br
+.ti -1c
+.RI "\fBTypeDeclarator\fP * \fBnewFunc\fP (\fBTypeDeclarator\fP *dec, vector< \fBTypeDeclarator\fP * > *declist)"
+.br
+.ti -1c
+.RI "\fBDatatype\fP * \fBnewStruct\fP (const string &ident, vector< \fBTypeDeclarator\fP * > *declist)"
+.br
+.ti -1c
+.RI "\fBDatatype\fP * \fBoldStruct\fP (const string &ident)"
+.br
+.ti -1c
+.RI "\fBDatatype\fP * \fBnewUnion\fP (const string &ident, vector< \fBTypeDeclarator\fP * > *declist)"
+.br
+.ti -1c
+.RI "\fBDatatype\fP * \fBoldUnion\fP (const string &ident)"
+.br
+.ti -1c
+.RI "\fBEnumerator\fP * \fBnewEnumerator\fP (const string &ident)"
+.br
+.ti -1c
+.RI "\fBEnumerator\fP * \fBnewEnumerator\fP (const string &ident, \fBuintb\fP val)"
+.br
+.ti -1c
+.RI "vector< \fBEnumerator\fP * > * \fBnewVecEnumerator\fP (void)"
+.br
+.ti -1c
+.RI "\fBDatatype\fP * \fBnewEnum\fP (const string &ident, vector< \fBEnumerator\fP * > *vecenum)"
+.br
+.ti -1c
+.RI "\fBDatatype\fP * \fBoldEnum\fP (const string &ident)"
+.br
+.ti -1c
+.RI "uint4 \fBconvertFlag\fP (string *str)"
+.br
+.ti -1c
+.RI "void \fBclearAllocation\fP (void)"
+.br
+.ti -1c
+.RI "int4 \fBlex\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBparseFile\fP (const string &filename, uint4 doctype)"
+.br
+.ti -1c
+.RI "bool \fBparseStream\fP (istream &s, uint4 doctype)"
+.br
+.ti -1c
+.RI "const string & \fBgetError\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetResultDeclarations\fP (vector< \fBTypeDeclarator\fP * > *val)"
+.br
+.ti -1c
+.RI "vector< \fBTypeDeclarator\fP * > * \fBgetResultDeclarations\fP (void)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 199 of file grammar\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIf_typedef \fP\fP
+.TP
+\fB\fIf_extern \fP\fP
+.TP
+\fB\fIf_static \fP\fP
+.TP
+\fB\fIf_auto \fP\fP
+.TP
+\fB\fIf_register \fP\fP
+.TP
+\fB\fIf_const \fP\fP
+.TP
+\fB\fIf_restrict \fP\fP
+.TP
+\fB\fIf_volatile \fP\fP
+.TP
+\fB\fIf_inline \fP\fP
+.TP
+\fB\fIf_struct \fP\fP
+.TP
+\fB\fIf_union \fP\fP
+.TP
+\fB\fIf_enum \fP\fP
+.PP
+Definition at line 201 of file grammar\&.hh\&.
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIdoc_declaration \fP\fP
+.TP
+\fB\fIdoc_parameter_declaration \fP\fP
+.PP
+Definition at line 215 of file grammar\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CParse::CParse (\fBArchitecture\fP * g, int4 maxbuf)"
+
+.SS "CParse::~CParse (void)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBTypeSpecifiers\fP* CParse::addFuncSpecifier (\fBTypeSpecifiers\fP * spec, string * str)"
+
+.SS "\fBTypeSpecifiers\fP* CParse::addSpecifier (\fBTypeSpecifiers\fP * spec, string * str)"
+
+.SS "\fBTypeSpecifiers\fP* CParse::addTypeSpecifier (\fBTypeSpecifiers\fP * spec, \fBDatatype\fP * tp)"
+
+.SS "void CParse::clear (void)"
+
+.SS "void CParse::clearAllocation (void)"
+
+.SS "uint4 CParse::convertFlag (string * str)"
+
+.SS "const string& CParse::getError (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 275 of file grammar\&.hh\&.
+.SS "vector<\fBTypeDeclarator\fP *>* CParse::getResultDeclarations (void)\fC [inline]\fP"
+
+.PP
+Definition at line 277 of file grammar\&.hh\&.
+.SS "int4 CParse::lex (void)"
+
+.SS "\fBTypeDeclarator\fP* CParse::mergePointer (vector< uint4 > * ptr, \fBTypeDeclarator\fP * dec)"
+
+.SS "\fBTypeDeclarator\fP* CParse::mergeSpecDec (\fBTypeSpecifiers\fP * spec)"
+
+.SS "\fBTypeDeclarator\fP* CParse::mergeSpecDec (\fBTypeSpecifiers\fP * spec, \fBTypeDeclarator\fP * dec)"
+
+.SS "vector<\fBTypeDeclarator\fP *>* CParse::mergeSpecDecVec (\fBTypeSpecifiers\fP * spec)"
+
+.SS "vector<\fBTypeDeclarator\fP *>* CParse::mergeSpecDecVec (\fBTypeSpecifiers\fP * spec, vector< \fBTypeDeclarator\fP * > * declist)"
+
+.SS "\fBTypeDeclarator\fP* CParse::newArray (\fBTypeDeclarator\fP * dec, uint4 flags, \fBuintb\fP * num)"
+
+.SS "\fBTypeDeclarator\fP* CParse::newDeclarator (string * str)"
+
+.SS "\fBTypeDeclarator\fP* CParse::newDeclarator (void)"
+
+.SS "\fBDatatype\fP* CParse::newEnum (const string & ident, vector< \fBEnumerator\fP * > * vecenum)"
+
+.SS "\fBEnumerator\fP* CParse::newEnumerator (const string & ident)"
+
+.SS "\fBEnumerator\fP* CParse::newEnumerator (const string & ident, \fBuintb\fP val)"
+
+.SS "\fBTypeDeclarator\fP* CParse::newFunc (\fBTypeDeclarator\fP * dec, vector< \fBTypeDeclarator\fP * > * declist)"
+
+.SS "vector<uint4>* CParse::newPointer (void)"
+
+.SS "\fBTypeSpecifiers\fP* CParse::newSpecifier (void)"
+
+.SS "\fBDatatype\fP* CParse::newStruct (const string & ident, vector< \fBTypeDeclarator\fP * > * declist)"
+
+.SS "\fBDatatype\fP* CParse::newUnion (const string & ident, vector< \fBTypeDeclarator\fP * > * declist)"
+
+.SS "vector<\fBTypeDeclarator\fP *>* CParse::newVecDeclarator (void)"
+
+.SS "vector<\fBEnumerator\fP *>* CParse::newVecEnumerator (void)"
+
+.SS "\fBDatatype\fP* CParse::oldEnum (const string & ident)"
+
+.SS "\fBDatatype\fP* CParse::oldStruct (const string & ident)"
+
+.SS "\fBDatatype\fP* CParse::oldUnion (const string & ident)"
+
+.SS "bool CParse::parseFile (const string & filename, uint4 doctype)"
+
+.SS "bool CParse::parseStream (istream & s, uint4 doctype)"
+
+.SS "void CParse::setResultDeclarations (vector< \fBTypeDeclarator\fP * > * val)\fC [inline]\fP"
+
+.PP
+Definition at line 276 of file grammar\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

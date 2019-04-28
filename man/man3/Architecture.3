@@ -1,0 +1,1392 @@
+.TH "Architecture" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Architecture \- Manager for all the major decompiler subsystems\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <architecture\&.hh>\fP
+.PP
+Inherits \fBAddrSpaceManager\fP\&.
+.PP
+Inherited by \fBArchitectureGhidra\fP, and \fBSleighArchitecture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBArchitecture\fP (void)"
+.br
+.RI "Construct an uninitialized \fBArchitecture\fP\&. "
+.ti -1c
+.RI "void \fBinit\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Load the image and configure architecture\&. "
+.ti -1c
+.RI "\fBProtoModel\fP * \fBgetModel\fP (const string &nm) const"
+.br
+.RI "Get a specific PrototypeModel\&. "
+.ti -1c
+.RI "bool \fBhasModel\fP (const string &nm) const"
+.br
+.RI "Does this \fBArchitecture\fP have a specific PrototypeModel\&. "
+.ti -1c
+.RI "bool \fBhighPtrPossible\fP (const \fBAddress\fP &loc, int4 size) const"
+.br
+.RI "Are pointers possible to the given location? "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpaceBySpacebase\fP (const \fBAddress\fP &loc, int4 size) const"
+.br
+.RI "Get space associated with a \fIspacebase\fP register\&. "
+.ti -1c
+.RI "void \fBsetDefaultModel\fP (const string &nm)"
+.br
+.RI "Set the default PrototypeModel\&. "
+.ti -1c
+.RI "void \fBclearAnalysis\fP (\fBFuncdata\fP *fd)"
+.br
+.RI "Clear analysis specific to a function\&. "
+.ti -1c
+.RI "void \fBreadLoaderSymbols\fP (void)"
+.br
+.RI "Read any symbols from loader into database\&. "
+.ti -1c
+.RI "void \fBcollectBehaviors\fP (vector< \fBOpBehavior\fP * > &behave) const"
+.br
+.RI "Provide a list of \fBOpBehavior\fP objects\&. "
+.ti -1c
+.RI "bool \fBhasNearPointers\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Does the given address space support \fInear\fP pointers\&. "
+.ti -1c
+.RI "void \fBsetPrototype\fP (const \fBPrototypePieces\fP &pieces)"
+.br
+.RI "Set the prototype for a particular function\&. "
+.ti -1c
+.RI "void \fBsetPrintLanguage\fP (const string &nm)"
+.br
+.RI "Establish a particular output language\&. "
+.ti -1c
+.RI "void \fBglobalify\fP (void)"
+.br
+.RI "Mark \fIall\fP spaces as global\&. "
+.ti -1c
+.RI "void \fBrestoreFlowOverride\fP (const \fBElement\fP *el)"
+.br
+.RI "Set flow overrides from XML\&. "
+.ti -1c
+.RI "virtual \fB~Architecture\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBprintMessage\fP (const string &message) const =0"
+.br
+.RI "Print an error message to console\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize this architecture to XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Restore the \fBArchitecture\fP state from an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBnameFunction\fP (const \fBAddress\fP &addr, string &name) const"
+.br
+.RI "Pick a default name for a function\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBarchid\fP"
+.br
+.RI "ID string uniquely describing this architecture\&. "
+.ti -1c
+.RI "string \fBdescription\fP"
+.br
+.RI "Description of architecture\&. "
+.ti -1c
+.RI "string \fBversion\fP"
+.br
+.RI "Configuration version\&. "
+.ti -1c
+.RI "int4 \fBtrim_recurse_max\fP"
+.br
+.RI "How many levels to let parameter trims recurse\&. "
+.ti -1c
+.RI "int4 \fBmax_implied_ref\fP"
+.br
+.RI "Maximum number of references to an implied var\&. "
+.ti -1c
+.RI "int4 \fBmax_term_duplication\fP"
+.br
+.RI "Max terms duplicated without a new variable\&. "
+.ti -1c
+.RI "int4 \fBmax_basetype_size\fP"
+.br
+.RI "Maximum size of an 'integer' type before creating an array type\&. "
+.ti -1c
+.RI "int4 \fBmin_funcsymbol_size\fP"
+.br
+.RI "Minimum size of a function symbol\&. "
+.ti -1c
+.RI "bool \fBaggressive_ext_trim\fP"
+.br
+.RI "Aggressively trim inputs that look like they are sign extended\&. "
+.ti -1c
+.RI "bool \fBreadonlypropagate\fP"
+.br
+.RI "true if readonly values should be treated as constants "
+.ti -1c
+.RI "bool \fBinfer_pointers\fP"
+.br
+.RI "True if we should infer pointers from constants that are likely addresses\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBpointer_lowerbound\fP"
+.br
+.RI "Zero or lowest value that can be inferred as an address\&. "
+.ti -1c
+.RI "int4 \fBfuncptr_align\fP"
+.br
+.RI "How many bits of alignment a function ptr has\&. "
+.ti -1c
+.RI "uint4 \fBflowoptions\fP"
+.br
+.RI "options passed to flow following engine "
+.ti -1c
+.RI "vector< \fBRule\fP * > \fBextra_pool_rules\fP"
+.br
+.RI "Extra rules that go in the main pool (cpu specific, experimental) "
+.ti -1c
+.RI "\fBDatabase\fP * \fBsymboltab\fP"
+.br
+.RI "Memory map of global variables and functions\&. "
+.ti -1c
+.RI "\fBContextDatabase\fP * \fBcontext\fP"
+.br
+.RI "Map from addresses to context settings\&. "
+.ti -1c
+.RI "map< string, \fBProtoModel\fP * > \fBprotoModels\fP"
+.br
+.RI "Parsed forms of possible prototypes\&. "
+.ti -1c
+.RI "\fBProtoModel\fP * \fBdefaultfp\fP"
+.br
+.RI "Parsed form of default prototype\&. "
+.ti -1c
+.RI "\fBVarnodeData\fP \fBdefaultReturnAddr\fP"
+.br
+.RI "Default storage location of return address (for current function) "
+.ti -1c
+.RI "\fBProtoModel\fP * \fBevalfp_current\fP"
+.br
+.RI "Function proto to use when evaluating current function\&. "
+.ti -1c
+.RI "\fBProtoModel\fP * \fBevalfp_called\fP"
+.br
+.RI "Function proto to use when evaluating called functions\&. "
+.ti -1c
+.RI "\fBTypeFactory\fP * \fBtypes\fP"
+.br
+.RI "List of types for this binary\&. "
+.ti -1c
+.RI "const \fBTranslate\fP * \fBtranslate\fP"
+.br
+.RI "Translation method for this binary\&. "
+.ti -1c
+.RI "\fBLoadImage\fP * \fBloader\fP"
+.br
+.RI "Method for loading portions of binary\&. "
+.ti -1c
+.RI "\fBPcodeInjectLibrary\fP * \fBpcodeinjectlib\fP"
+.br
+.RI "Pcode injection manager\&. "
+.ti -1c
+.RI "\fBRangeList\fP \fBnohighptr\fP"
+.br
+.RI "Ranges for which high-level pointers are not possible\&. "
+.ti -1c
+.RI "\fBCommentDatabase\fP * \fBcommentdb\fP"
+.br
+.RI "Comments for this architecture\&. "
+.ti -1c
+.RI "\fBConstantPool\fP * \fBcpool\fP"
+.br
+.RI "Deferred constant values\&. "
+.ti -1c
+.RI "\fBPrintLanguage\fP * \fBprint\fP"
+.br
+.RI "Current high-level language printer\&. "
+.ti -1c
+.RI "vector< \fBPrintLanguage\fP * > \fBprintlist\fP"
+.br
+.RI "List of high-level language printers supported\&. "
+.ti -1c
+.RI "\fBOptionDatabase\fP * \fBoptions\fP"
+.br
+.RI "Options that can be configured\&. "
+.ti -1c
+.RI "vector< \fBTypeOp\fP * > \fBinst\fP"
+.br
+.RI "Registered p-code instructions\&. "
+.ti -1c
+.RI "\fBUserOpManage\fP \fBuserops\fP"
+.br
+.RI "Specifically registered user-defined p-code ops\&. "
+.ti -1c
+.RI "vector< \fBPreferSplitRecord\fP > \fBsplitrecords\fP"
+.br
+.RI "registers that we would prefer to see split for this processor "
+.ti -1c
+.RI "\fBActionDatabase\fP \fBallacts\fP"
+.br
+.RI "Actions that can be applied in this architecture\&. "
+.ti -1c
+.RI "bool \fBloadersymbols_parsed\fP"
+.br
+.RI "True if loader symbols have been read\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBaddSpacebase\fP (\fBAddrSpace\fP *basespace, const string &nm, const \fBVarnodeData\fP &ptrdata, int4 truncSize, bool isreversejustified, bool stackGrowth)"
+.br
+.RI "Create a new space and associated pointer\&. "
+.ti -1c
+.RI "void \fBaddNoHighPtr\fP (const \fBRange\fP &rng)"
+.br
+.RI "Add a new region where pointers do not exist\&. "
+.ti -1c
+.RI "virtual \fBScope\fP * \fBbuildGlobalScope\fP (void)"
+.br
+.RI "Build the global scope for this executable\&. "
+.ti -1c
+.RI "virtual \fBTranslate\fP * \fBbuildTranslator\fP (\fBDocumentStorage\fP &store)=0"
+.br
+.RI "Build the Translator object\&. "
+.ti -1c
+.RI "virtual void \fBbuildLoader\fP (\fBDocumentStorage\fP &store)=0"
+.br
+.RI "Build the \fBLoadImage\fP object and load the executable image\&. "
+.ti -1c
+.RI "virtual \fBPcodeInjectLibrary\fP * \fBbuildPcodeInjectLibrary\fP (void)=0"
+.br
+.RI "Build the injection library\&. "
+.ti -1c
+.RI "virtual void \fBbuildTypegrp\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Build the data-type factory/container\&. "
+.ti -1c
+.RI "virtual void \fBbuildCommentDB\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Build the comment database\&. "
+.ti -1c
+.RI "virtual void \fBbuildConstantPool\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Build the constant pool\&. "
+.ti -1c
+.RI "virtual void \fBbuildInstructions\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Register the p-code operations\&. "
+.ti -1c
+.RI "virtual void \fBbuildAction\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Build the \fBAction\fP framework\&. "
+.ti -1c
+.RI "virtual void \fBbuildContext\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Build the Context database\&. "
+.ti -1c
+.RI "virtual void \fBbuildSpecFile\fP (\fBDocumentStorage\fP &store)=0"
+.br
+.RI "Load any relevant specification files\&. "
+.ti -1c
+.RI "virtual void \fBmodifySpaces\fP (\fBTranslate\fP *trans)=0"
+.br
+.RI "Modify address spaces as required by \fBthis\fP \fBArchitecture\fP\&. "
+.ti -1c
+.RI "virtual void \fBpostSpecFile\fP (void)"
+.br
+.RI "Let components initialize after \fBTranslate\fP is built\&. "
+.ti -1c
+.RI "virtual void \fBresolveArchitecture\fP (void)=0"
+.br
+.RI "Figure out the processor and compiler of the target executable\&. "
+.ti -1c
+.RI "void \fBrestoreFromSpec\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Fully initialize the \fBTranslate\fP object\&. "
+.ti -1c
+.RI "void \fBfillinReadOnlyFromLoader\fP (void)"
+.br
+.RI "Load info about read-only sections\&. "
+.ti -1c
+.RI "void \fBinitializeSegments\fP ()"
+.br
+.RI "Set up segment resolvers\&. "
+.ti -1c
+.RI "void \fBparseProcessorConfig\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Apply processor specific configuration\&. "
+.ti -1c
+.RI "void \fBparseCompilerConfig\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Apply compiler specific configuration\&. "
+.ti -1c
+.RI "void \fBparseExtraRules\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Apply any \fBRule\fP tags\&. "
+.ti -1c
+.RI "void \fBparseDynamicRule\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply details of a dynamic \fBRule\fP object\&. "
+.ti -1c
+.RI "\fBProtoModel\fP * \fBparseProto\fP (const \fBElement\fP *el)"
+.br
+.RI "Build a proto-type model from an XML tag\&. "
+.ti -1c
+.RI "void \fBparseProtoEval\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply prototype evaluation configuration\&. "
+.ti -1c
+.RI "void \fBparseDefaultProto\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply default prototype model configuration\&. "
+.ti -1c
+.RI "void \fBparseGlobal\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply global space configuration\&. "
+.ti -1c
+.RI "void \fBparseReadOnly\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply read-only region configuration\&. "
+.ti -1c
+.RI "void \fBparseVolatile\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply volatile region configuration\&. "
+.ti -1c
+.RI "void \fBparseReturnAddress\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply return address configuration\&. "
+.ti -1c
+.RI "void \fBparseIncidentalCopy\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply incidental copy configuration\&. "
+.ti -1c
+.RI "void \fBparseStackPointer\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply stack pointer configuration\&. "
+.ti -1c
+.RI "void \fBparseDeadcodeDelay\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply dead-code delay configuration\&. "
+.ti -1c
+.RI "void \fBparseFuncPtrAlign\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply function pointer alignment configuration\&. "
+.ti -1c
+.RI "void \fBparseSpacebase\fP (const \fBElement\fP *el)"
+.br
+.RI "Create an additional indexed space\&. "
+.ti -1c
+.RI "void \fBparseNoHighPtr\fP (const \fBElement\fP *el)"
+.br
+.RI "Apply memory alias configuration\&. "
+.ti -1c
+.RI "void \fBparsePreferSplit\fP (const \fBElement\fP *el)"
+.br
+.RI "Designate registers to be split\&. "
+.ti -1c
+.RI "void \fBparseAggressiveTrim\fP (const \fBElement\fP *el)"
+.br
+.RI "Designate how to trim extension p-code ops\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manager for all the major decompiler subsystems\&. 
+
+An instantiation is tailored to a specific \fBLoadImage\fP, processor, and compiler spec\&. This class is the \fIowner\fP of the \fBLoadImage\fP, \fBTranslate\fP, symbols (\fBDatabase\fP), \fBPrintLanguage\fP, etc\&. This class also holds numerous configuration parameters for the analysis process 
+.PP
+Definition at line 116 of file architecture\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Architecture::Architecture (void)"
+
+.PP
+Construct an uninitialized \fBArchitecture\fP\&. Set most sub-components to null pointers\&. Provide reasonable defaults for the configurable options 
+.PP
+Definition at line 85 of file architecture\&.cc\&.
+.SS "Architecture::~Architecture (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. Release resources for all sub-components\&. 
+.PP
+Definition at line 125 of file architecture\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Architecture::addNoHighPtr (const \fBRange\fP & rng)\fC [protected]\fP"
+
+.PP
+Add a new region where pointers do not exist\&. This routine is used by the initialization process to add address ranges to which there is never an (indirect) pointer Should only be called during initialization 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrng\fP is the new range with no aliases to be added 
+.RE
+.PP
+
+.PP
+Definition at line 462 of file architecture\&.cc\&.
+.SS "void Architecture::addSpacebase (\fBAddrSpace\fP * basespace, const string & nm, const \fBVarnodeData\fP & ptrdata, int4 truncSize, bool isreversejustified, bool stackGrowth)\fC [protected]\fP"
+
+.PP
+Create a new space and associated pointer\&. This process sets up a 'register relative' space for this architecture If the name is 'stack', this space takes on the role of an 'official' stack space Should only be called once during initialization 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbasespace\fP is the address space underlying the stack 
+.br
+\fInm\fP is the name of the new space 
+.br
+\fIptrdata\fP is the register location acting as a pointer into the new space 
+.br
+\fItruncSize\fP is the (possibly truncated) size of the register that fits the space 
+.br
+\fIisreversejustified\fP is \fBtrue\fP if small variables are justified opposite of endianness 
+.br
+\fIstackGrowth\fP is \fBtrue\fP if a stack implemented in this space grows in the negative direction 
+.RE
+.PP
+
+.PP
+Definition at line 445 of file architecture\&.cc\&.
+.SS "void Architecture::buildAction (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the \fBAction\fP framework\&. This builds the \fIuniversal\fP \fBAction\fP for function transformation and instantiates the 'decompile' root \fBAction\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+
+.PP
+Definition at line 471 of file architecture\&.cc\&.
+.SS "void Architecture::buildCommentDB (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the comment database\&. Build the container that holds comments for executable in this \fBArchitecture\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+
+.PP
+Definition at line 542 of file architecture\&.cc\&.
+.SS "void Architecture::buildConstantPool (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the constant pool\&. Some processor models (Java byte-code) need a database of constants\&. The database is always built, but may remain empty\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+
+.PP
+Definition at line 551 of file architecture\&.cc\&.
+.SS "void Architecture::buildContext (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the Context database\&. This builds the database which holds the status registers setings and other information that can affect disassembly depending on context\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file architecture\&.cc\&.
+.SS "\fBScope\fP * Architecture::buildGlobalScope (void)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the global scope for this executable\&. If it does not already exist create the glocal \fBScope\fP object 
+.PP
+\fBReturns:\fP
+.RS 4
+the global \fBScope\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 490 of file architecture\&.cc\&.
+.SS "void Architecture::buildInstructions (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Register the p-code operations\&. This registers the \fBOpBehavior\fP objects for all known p-code OpCodes\&. The \fBTranslate\fP and \fBTypeFactory\fP object should already be built\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+
+.PP
+Definition at line 560 of file architecture\&.cc\&.
+.SS "virtual void Architecture::buildLoader (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Build the \fBLoadImage\fP object and load the executable image\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+
+.SS "virtual \fBPcodeInjectLibrary\fP* Architecture::buildPcodeInjectLibrary (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Build the injection library\&. This creates the container for p-code injections\&. It is initially empty\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBPcodeInjectLibrary\fP object 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighArchitecture\fP\&.
+.SS "virtual void Architecture::buildSpecFile (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Load any relevant specification files\&. Processor/architecture specific configuration files are loaded into the XML store 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is the document store that will hold the configuration 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighArchitecture\fP\&.
+.SS "virtual \fBTranslate\fP* Architecture::buildTranslator (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Build the Translator object\&. This builds the main disassembly component for the \fBArchitecture\fP This does \fInot\fP initially the engine for a specific processor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP may hold configuration information 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTranslate\fP object 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighArchitecture\fP\&.
+.SS "void Architecture::buildTypegrp (\fBDocumentStorage\fP & store)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build the data-type factory/container\&. This builds the \fBTypeFactory\fP object specific to this architecture and prepopulates it with the \fIcore\fP types\&. Core types may be pulled from the configuration information, or default core types are used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP contains possible configuration information 
+.RE
+.PP
+
+.PP
+Definition at line 505 of file architecture\&.cc\&.
+.SS "void Architecture::clearAnalysis (\fBFuncdata\fP * fd)"
+
+.PP
+Clear analysis specific to a function\&. Throw out the syntax tree, (unlocked) symbols, comments, and other derived information about a single function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the function to clear 
+.RE
+.PP
+
+.PP
+Definition at line 234 of file architecture\&.cc\&.
+.SS "void Architecture::collectBehaviors (vector< \fBOpBehavior\fP * > & behave) const"
+
+.PP
+Provide a list of \fBOpBehavior\fP objects\&. For all registered p-code opcodes, return the corresponding \fBOpBehavior\fP object\&. The object pointers are provided in a list indexed by OpCode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbehave\fP is the list to be populated 
+.RE
+.PP
+
+.PP
+Definition at line 261 of file architecture\&.cc\&.
+.SS "void Architecture::fillinReadOnlyFromLoader (void)\fC [protected]\fP"
+
+.PP
+Load info about read-only sections\&. The \fBLoadImage\fP may have access information about the executables sections\&. Query for any read-only ranges and store this information in the property database 
+.PP
+Definition at line 1076 of file architecture\&.cc\&.
+.SS "\fBProtoModel\fP * Architecture::getModel (const string & nm) const"
+
+.PP
+Get a specific PrototypeModel\&. The \fBArchitecture\fP maintains the set of prototype models that can be applied for this particular executable\&. Retrieve one by name\&. The model must exist or an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching model 
+.RE
+.PP
+
+.PP
+Definition at line 172 of file architecture\&.cc\&.
+.SS "\fBAddrSpace\fP * Architecture::getSpaceBySpacebase (const \fBAddress\fP & loc, int4 size) const"
+
+.PP
+Get space associated with a \fIspacebase\fP register\&. Get the address space associated with the indicated \fIspacebase\fP register\&. I\&.e\&. if the location of the \fIstack\fP \fIpointer\fP is passed in, this routine would return a pointer to the \fBstack\fP space\&. An exception is thrown if no corresponding space is found\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the location of the \fIspacebase\fP register 
+.br
+\fIsize\fP is the size of the register in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the address space 
+.RE
+.PP
+
+.PP
+Definition at line 202 of file architecture\&.cc\&.
+.SS "void Architecture::globalify (void)"
+
+.PP
+Mark \fIall\fP spaces as global\&. Set all IPTR_PROCESSOR and IPTR_SPACEBASE spaces to be global\&. 
+.PP
+Definition at line 332 of file architecture\&.cc\&.
+.SS "bool Architecture::hasModel (const string & nm) const"
+
+.PP
+Does this \fBArchitecture\fP have a specific PrototypeModel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the model 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if this \fBArchitecture\fP supports a model with that name 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file architecture\&.cc\&.
+.SS "bool Architecture::hasNearPointers (\fBAddrSpace\fP * spc) const"
+
+.PP
+Does the given address space support \fInear\fP pointers\&. A \fBnear\fP pointer is some form of truncated pointer that needs \fIsegment\fP or other information to fully form an address\&. This method searches for a user-defined segment op registered for the space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space to check 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the space supports a segment operation 
+.RE
+.PP
+
+.PP
+Definition at line 278 of file architecture\&.cc\&.
+.SS "bool Architecture::highPtrPossible (const \fBAddress\fP & loc, int4 size) const\fC [inline]\fP"
+
+.PP
+Are pointers possible to the given location? The \fBTranslate\fP object keeps track of address ranges for which it is effectively impossible to have a pointer into\&. This is used for pointer aliasing calculations\&. This routine returns \fBtrue\fP if it is \fIpossible\fP to have pointers into the indicated range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the range 
+.br
+\fIsize\fP is the size of the range in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if pointers are possible 
+.RE
+.PP
+
+.PP
+Definition at line 297 of file architecture\&.hh\&.
+.SS "void Architecture::init (\fBDocumentStorage\fP & store)"
+
+.PP
+Load the image and configure architecture\&. Create the \fBLoadImage\fP and load the executable to be analyzed\&. Using this and possibly other initialization information, create all the sub-components necessary for a complete \fBArchitecture\fP The DocumentStore may hold previously gleaned configuration information and is used to read in other configuration files while initializing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is the XML document store 
+.RE
+.PP
+
+.PP
+Definition at line 1096 of file architecture\&.cc\&.
+.SS "void Architecture::initializeSegments (void)\fC [protected]\fP"
+
+.PP
+Set up segment resolvers\&. If any address space supports near pointers and segment operators, setup \fBSegmentedResolver\fP objects that can be used to recover full pointers in context\&. 
+.PP
+Definition at line 595 of file architecture\&.cc\&.
+.SS "virtual void Architecture::modifySpaces (\fBTranslate\fP * trans)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Modify address spaces as required by \fBthis\fP \fBArchitecture\fP\&. If spaces need to be truncated or otherwise changed from processor defaults, this routine performs the modification\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrans\fP is the processor disassembly object 
+.RE
+.PP
+
+.PP
+Implemented in \fBSleighArchitecture\fP\&.
+.SS "void Architecture::nameFunction (const \fBAddress\fP & addr, string & name) const\fC [virtual]\fP"
+
+.PP
+Pick a default name for a function\&. If no better name is available, this method can be used to generate a function name based on its address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of the function 
+.br
+\fIname\fP will hold the constructed name 
+.RE
+.PP
+
+.PP
+Definition at line 427 of file architecture\&.cc\&.
+.SS "void Architecture::parseAggressiveTrim (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Designate how to trim extension p-code ops\&. Configure based on the <aggressivetrim> tag, how aggressively the decompiler will remove extension operations\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 920 of file architecture\&.cc\&.
+.SS "void Architecture::parseCompilerConfig (\fBDocumentStorage\fP & store)\fC [protected]\fP"
+
+.PP
+Apply compiler specific configuration\&. This looks for the <compiler_spec> tag and sets configuration parameters based on it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is the document store holding the tag 
+.RE
+.PP
+
+.PP
+Definition at line 976 of file architecture\&.cc\&.
+.SS "void Architecture::parseDeadcodeDelay (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply dead-code delay configuration\&. Manually alter the dead-code delay for a specific address space, based on a <deadcodedelay> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 827 of file architecture\&.cc\&.
+.SS "void Architecture::parseDefaultProto (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply default prototype model configuration\&. There should be exactly one <default_proto> tag that specifies what the default prototype model is\&. This builds the \fBProtoModel\fP object and sets it as the default\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 688 of file architecture\&.cc\&.
+.SS "void Architecture::parseDynamicRule (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply details of a dynamic \fBRule\fP object\&. Recover information out of a <rule> tag and build the new \fBRule\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 609 of file architecture\&.cc\&.
+.SS "void Architecture::parseExtraRules (\fBDocumentStorage\fP & store)\fC [protected]\fP"
+
+.PP
+Apply any \fBRule\fP tags\&. Look for the <experimental_rules> tag and create any dynamic \fBRule\fP objects it specifies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is the document store containing the tag 
+.RE
+.PP
+
+.PP
+Definition at line 1060 of file architecture\&.cc\&.
+.SS "void Architecture::parseFuncPtrAlign (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply function pointer alignment configuration\&. Pull information from a <funcptr> tag\&. Turn on alignment analysis of function pointers, some architectures have aligned function pointers and encode extra information in the unused bits\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 847 of file architecture\&.cc\&.
+.SS "void Architecture::parseGlobal (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply global space configuration\&. This handles the <global> tag adding an address space (or part of the space) to the global scope\&. Varnodes in this region will be assumed to be global variables\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 704 of file architecture\&.cc\&.
+.SS "void Architecture::parseIncidentalCopy (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply incidental copy configuration\&. Apply information from an <incidentalcopy> tag, which marks a set of addresses as being copied to incidentally\&. This allows the decompiler to ignore certain side-effects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 780 of file architecture\&.cc\&.
+.SS "void Architecture::parseNoHighPtr (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply memory alias configuration\&. Configure memory based on a <nohighptr> tag\&. Mark specific address ranges to indicate the decompiler will not encounter pointers (aliases) into the range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 884 of file architecture\&.cc\&.
+.SS "void Architecture::parsePreferSplit (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Designate registers to be split\&. Configure registers based on a <prefersplit> tag\&. Mark specific varnodes that the decompiler should automatically split when it first sees them\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 900 of file architecture\&.cc\&.
+.SS "void Architecture::parseProcessorConfig (\fBDocumentStorage\fP & store)\fC [protected]\fP"
+
+.PP
+Apply processor specific configuration\&. This looks for the <processor_spec> tag and and sets configuration parameters based on it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is the document store holding the tag 
+.RE
+.PP
+
+.PP
+Definition at line 935 of file architecture\&.cc\&.
+.SS "\fBProtoModel\fP * Architecture::parseProto (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Build a proto-type model from an XML tag\&. This handles the <prototype> and <resolveprototype> tags\&. It builds the \fBProtoModel\fP object based on the tag and makes it available generally to the decompiler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML tag element 
+.RE
+.PP
+
+.PP
+Definition at line 639 of file architecture\&.cc\&.
+.SS "void Architecture::parseProtoEval (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply prototype evaluation configuration\&. This supports the <eval_called_prototype> and <eval_current_prototype> tag\&. This determines which prototype model to assume when recovering the prototype for a \fIcalled\fP function and the \fIcurrent\fP function respectively\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 665 of file architecture\&.cc\&.
+.SS "void Architecture::parseReadOnly (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply read-only region configuration\&. This applies info from a <readonly> tag marking a specific region of the executable as \fIread-only\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 731 of file architecture\&.cc\&.
+.SS "void Architecture::parseReturnAddress (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply return address configuration\&. This applies info from <returnaddress> tag and sets the default storage location for the \fIreturn\fP \fIaddress\fP of a function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 764 of file architecture\&.cc\&.
+.SS "void Architecture::parseSpacebase (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Create an additional indexed space\&. Designate a new index register and create a new address space associated with it, based on a <spacebase> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 870 of file architecture\&.cc\&.
+.SS "void Architecture::parseStackPointer (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply stack pointer configuration\&. Create a stack space and a stack-pointer register from this <stackpointer> element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 796 of file architecture\&.cc\&.
+.SS "void Architecture::parseVolatile (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Apply volatile region configuration\&. This applies info from a <volatile> tag marking specific regions of the executable as holding \fIvolatile\fP memory or registers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 747 of file architecture\&.cc\&.
+.SS "virtual void Architecture::postSpecFile (void)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Let components initialize after \fBTranslate\fP is built\&. 
+.PP
+Definition at line 240 of file architecture\&.hh\&.
+.SS "virtual void Architecture::printMessage (const string & message) const\fC [pure virtual]\fP"
+
+.PP
+Print an error message to console\&. Write the given message to whatever the registered error stream is 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP is the error message 
+.RE
+.PP
+
+.PP
+Implemented in \fBArchitectureGhidra\fP, and \fBSleighArchitecture\fP\&.
+.SS "void Architecture::readLoaderSymbols (void)"
+
+.PP
+Read any symbols from loader into database\&. Symbols do not necessarily need to be available for the decompiler\&. This routine loads all the \fIload\fP \fIimage\fP knows about into the symbol table 
+.PP
+Definition at line 244 of file architecture\&.cc\&.
+.SS "virtual void Architecture::resolveArchitecture (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Figure out the processor and compiler of the target executable\&. 
+.PP
+Implemented in \fBSleighArchitecture\fP\&.
+.SS "void Architecture::restoreFlowOverride (const \fBElement\fP * el)"
+
+.PP
+Set flow overrides from XML\&. Insert a series of out-of-band flow overrides based on a <flowoverridelist> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 347 of file architecture\&.cc\&.
+.SS "void Architecture::restoreFromSpec (\fBDocumentStorage\fP & store)\fC [protected]\fP"
+
+.PP
+Fully initialize the \fBTranslate\fP object\&. Once the processor is known, the \fBTranslate\fP object can be built and fully initialized\&. Processor and compiler specific configuration is performed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP will hold parsed configuration information 
+.RE
+.PP
+
+.PP
+Definition at line 569 of file architecture\&.cc\&.
+.SS "void Architecture::restoreXml (\fBDocumentStorage\fP & store)\fC [virtual]\fP"
+
+.PP
+Restore the \fBArchitecture\fP state from an XML stream\&. Read in all the sub-component state from a <save_state> XML tag When adding stuff to this BEWARE: The spec file has already initialized stuff 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is document store containing the parsed root tag 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBfdArchitecture\fP, \fBRawBinaryArchitecture\fP, and \fBXmlArchitecture\fP\&.
+.PP
+Definition at line 386 of file architecture\&.cc\&.
+.SS "void Architecture::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize this architecture to XML\&. Write the current state of all types, symbols, functions, etc\&. an XML stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBfdArchitecture\fP, \fBRawBinaryArchitecture\fP, and \fBXmlArchitecture\fP\&.
+.PP
+Definition at line 368 of file architecture\&.cc\&.
+.SS "void Architecture::setDefaultModel (const string & nm)"
+
+.PP
+Set the default PrototypeModel\&. The default model is used whenever an explicit model is not known or can't be determined\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the model to set 
+.RE
+.PP
+
+.PP
+Definition at line 225 of file architecture\&.cc\&.
+.SS "void Architecture::setPrintLanguage (const string & nm)"
+
+.PP
+Establish a particular output language\&. The decompiler supports one or more output languages (C, Java)\&. This method does the main work of selecting one of the supported languages\&. In addition to selecting the main \fBPrintLanguage\fP object, this triggers configuration of the cast strategy and p-code op behaviors\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the language 
+.RE
+.PP
+
+.PP
+Definition at line 306 of file architecture\&.cc\&.
+.SS "void Architecture::setPrototype (const \fBPrototypePieces\fP & pieces)"
+
+.PP
+Set the prototype for a particular function\&. Establish details of the prototype for a given function symbol 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpieces\fP holds the raw prototype information and the symbol name 
+.RE
+.PP
+
+.PP
+Definition at line 291 of file architecture\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool Architecture::aggressive_ext_trim"
+
+.PP
+Aggressively trim inputs that look like they are sign extended\&. 
+.PP
+Definition at line 128 of file architecture\&.hh\&.
+.SS "\fBActionDatabase\fP Architecture::allacts"
+
+.PP
+Actions that can be applied in this architecture\&. 
+.PP
+Definition at line 156 of file architecture\&.hh\&.
+.SS "string Architecture::archid"
+
+.PP
+ID string uniquely describing this architecture\&. 
+.PP
+Definition at line 118 of file architecture\&.hh\&.
+.SS "\fBCommentDatabase\fP* Architecture::commentdb"
+
+.PP
+Comments for this architecture\&. 
+.PP
+Definition at line 148 of file architecture\&.hh\&.
+.SS "\fBContextDatabase\fP* Architecture::context"
+
+.PP
+Map from addresses to context settings\&. 
+.PP
+Definition at line 137 of file architecture\&.hh\&.
+.SS "\fBConstantPool\fP* Architecture::cpool"
+
+.PP
+Deferred constant values\&. 
+.PP
+Definition at line 149 of file architecture\&.hh\&.
+.SS "\fBProtoModel\fP* Architecture::defaultfp"
+
+.PP
+Parsed form of default prototype\&. 
+.PP
+Definition at line 139 of file architecture\&.hh\&.
+.SS "\fBVarnodeData\fP Architecture::defaultReturnAddr"
+
+.PP
+Default storage location of return address (for current function) 
+.PP
+Definition at line 140 of file architecture\&.hh\&.
+.SS "string Architecture::description"
+
+.PP
+Description of architecture\&. 
+.PP
+Definition at line 119 of file architecture\&.hh\&.
+.SS "\fBProtoModel\fP* Architecture::evalfp_called"
+
+.PP
+Function proto to use when evaluating called functions\&. 
+.PP
+Definition at line 142 of file architecture\&.hh\&.
+.SS "\fBProtoModel\fP* Architecture::evalfp_current"
+
+.PP
+Function proto to use when evaluating current function\&. 
+.PP
+Definition at line 141 of file architecture\&.hh\&.
+.SS "vector<\fBRule\fP *> Architecture::extra_pool_rules"
+
+.PP
+Extra rules that go in the main pool (cpu specific, experimental) 
+.PP
+Definition at line 134 of file architecture\&.hh\&.
+.SS "uint4 Architecture::flowoptions"
+
+.PP
+options passed to flow following engine 
+.PP
+Definition at line 133 of file architecture\&.hh\&.
+.SS "int4 Architecture::funcptr_align"
+
+.PP
+How many bits of alignment a function ptr has\&. 
+.PP
+Definition at line 132 of file architecture\&.hh\&.
+.SS "bool Architecture::infer_pointers"
+
+.PP
+True if we should infer pointers from constants that are likely addresses\&. 
+.PP
+Definition at line 130 of file architecture\&.hh\&.
+.SS "vector<\fBTypeOp\fP *> Architecture::inst"
+
+.PP
+Registered p-code instructions\&. 
+.PP
+Definition at line 153 of file architecture\&.hh\&.
+.SS "\fBLoadImage\fP* Architecture::loader"
+
+.PP
+Method for loading portions of binary\&. 
+.PP
+Definition at line 145 of file architecture\&.hh\&.
+.SS "bool Architecture::loadersymbols_parsed"
+
+.PP
+True if loader symbols have been read\&. 
+.PP
+Definition at line 157 of file architecture\&.hh\&.
+.SS "int4 Architecture::max_basetype_size"
+
+.PP
+Maximum size of an 'integer' type before creating an array type\&. 
+.PP
+Definition at line 126 of file architecture\&.hh\&.
+.SS "int4 Architecture::max_implied_ref"
+
+.PP
+Maximum number of references to an implied var\&. 
+.PP
+Definition at line 124 of file architecture\&.hh\&.
+.SS "int4 Architecture::max_term_duplication"
+
+.PP
+Max terms duplicated without a new variable\&. 
+.PP
+Definition at line 125 of file architecture\&.hh\&.
+.SS "int4 Architecture::min_funcsymbol_size"
+
+.PP
+Minimum size of a function symbol\&. 
+.PP
+Definition at line 127 of file architecture\&.hh\&.
+.SS "\fBRangeList\fP Architecture::nohighptr"
+
+.PP
+Ranges for which high-level pointers are not possible\&. 
+.PP
+Definition at line 147 of file architecture\&.hh\&.
+.SS "\fBOptionDatabase\fP* Architecture::options"
+
+.PP
+Options that can be configured\&. 
+.PP
+Definition at line 152 of file architecture\&.hh\&.
+.SS "\fBPcodeInjectLibrary\fP* Architecture::pcodeinjectlib"
+
+.PP
+Pcode injection manager\&. 
+.PP
+Definition at line 146 of file architecture\&.hh\&.
+.SS "\fBuintb\fP Architecture::pointer_lowerbound"
+
+.PP
+Zero or lowest value that can be inferred as an address\&. 
+.PP
+Definition at line 131 of file architecture\&.hh\&.
+.SS "\fBPrintLanguage\fP* Architecture::print"
+
+.PP
+Current high-level language printer\&. 
+.PP
+Definition at line 150 of file architecture\&.hh\&.
+.SS "vector<\fBPrintLanguage\fP *> Architecture::printlist"
+
+.PP
+List of high-level language printers supported\&. 
+.PP
+Definition at line 151 of file architecture\&.hh\&.
+.SS "map<string,\fBProtoModel\fP *> Architecture::protoModels"
+
+.PP
+Parsed forms of possible prototypes\&. 
+.PP
+Definition at line 138 of file architecture\&.hh\&.
+.SS "bool Architecture::readonlypropagate"
+
+.PP
+true if readonly values should be treated as constants 
+.PP
+Definition at line 129 of file architecture\&.hh\&.
+.SS "vector<\fBPreferSplitRecord\fP> Architecture::splitrecords"
+
+.PP
+registers that we would prefer to see split for this processor 
+.PP
+Definition at line 155 of file architecture\&.hh\&.
+.SS "\fBDatabase\fP* Architecture::symboltab"
+
+.PP
+Memory map of global variables and functions\&. 
+.PP
+Definition at line 136 of file architecture\&.hh\&.
+.SS "const \fBTranslate\fP* Architecture::translate"
+
+.PP
+Translation method for this binary\&. 
+.PP
+Definition at line 144 of file architecture\&.hh\&.
+.SS "int4 Architecture::trim_recurse_max"
+
+.PP
+How many levels to let parameter trims recurse\&. 
+.PP
+Definition at line 123 of file architecture\&.hh\&.
+.SS "\fBTypeFactory\fP* Architecture::types"
+
+.PP
+List of types for this binary\&. 
+.PP
+Definition at line 143 of file architecture\&.hh\&.
+.SS "\fBUserOpManage\fP Architecture::userops"
+
+.PP
+Specifically registered user-defined p-code ops\&. 
+.PP
+Definition at line 154 of file architecture\&.hh\&.
+.SS "string Architecture::version"
+
+.PP
+Configuration version\&. 
+.PP
+Definition at line 120 of file architecture\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

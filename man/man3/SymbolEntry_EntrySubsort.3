@@ -1,0 +1,100 @@
+.TH "SymbolEntry::EntrySubsort" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SymbolEntry::EntrySubsort \- Class for sub-sorting different \fBSymbolEntry\fP objects at the same address\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEntrySubsort\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Construct given a sub-sorting address\&. "
+.ti -1c
+.RI "\fBEntrySubsort\fP (void)"
+.br
+.RI "Construct earliest possible sub-sort\&. "
+.ti -1c
+.RI "\fBEntrySubsort\fP (bool val)"
+.br
+.RI "Given a boolean value, construct the earliest/latest possible sub-sort\&. "
+.ti -1c
+.RI "\fBEntrySubsort\fP (const \fBEntrySubsort\fP &op2)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBEntrySubsort\fP &op2)"
+.br
+.RI "Compare \fBthis\fP with another sub-sort\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBSymbolEntry\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for sub-sorting different \fBSymbolEntry\fP objects at the same address\&. 
+
+This is built from the \fBSymbolEntry\fP \fBuselimit\fP object (see \fBSymbolEntry::getSubsort()\fP) Relevant portions of an \fBAddress\fP object or pulled out for smaller storage and quick comparisons\&. 
+.PP
+Definition at line 83 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SymbolEntry::EntrySubsort::EntrySubsort (const \fBAddress\fP & addr)\fC [inline]\fP"
+
+.PP
+Construct given a sub-sorting address\&. 
+.PP
+Definition at line 88 of file database\&.hh\&.
+.SS "SymbolEntry::EntrySubsort::EntrySubsort (void)\fC [inline]\fP"
+
+.PP
+Construct earliest possible sub-sort\&. 
+.PP
+Definition at line 90 of file database\&.hh\&.
+.SS "SymbolEntry::EntrySubsort::EntrySubsort (bool val)\fC [inline]\fP"
+
+.PP
+Given a boolean value, construct the earliest/latest possible sub-sort\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP for the latest and \fBfalse\fP for the earliest possible sub-sort 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file database\&.hh\&.
+.SS "SymbolEntry::EntrySubsort::EntrySubsort (const \fBEntrySubsort\fP & op2)\fC [inline]\fP"
+
+.PP
+Copy constructor\&. 
+.PP
+Definition at line 100 of file database\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool SymbolEntry::EntrySubsort::operator< (const \fBEntrySubsort\fP & op2)\fC [inline]\fP"
+
+.PP
+Compare \fBthis\fP with another sub-sort\&. 
+.PP
+Definition at line 105 of file database\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBSymbolEntry\fP\fC [friend]\fP"
+
+.PP
+Definition at line 84 of file database\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

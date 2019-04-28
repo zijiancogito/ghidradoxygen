@@ -1,0 +1,180 @@
+\hypertarget{class_rule_range_meld}{}\section{Rule\+Range\+Meld Class Reference}
+\label{class_rule_range_meld}\index{RuleRangeMeld@{RuleRangeMeld}}
+
+
+\mbox{\hyperlink{class_merge}{Merge}} range conditions of the form\+: {\ttfamily V s$<$ c, c s$<$ V, V == c, V != c}  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Range\+Meld\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_rule_range_meld__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Range\+Meld\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_rule_range_meld__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_range_meld_ac9e65abb14b028184a0c917db181314d}{Rule\+Range\+Meld}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_range_meld_a3d44e55b0b5ac831e649bb220ffa8342}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_range_meld_a2ab026b0fd6678141add434965eb1353}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_range_meld_af99e831a0fd88d12ef57c0cd9fe01c1d}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_merge}{Merge}} range conditions of the form\+: {\ttfamily V s$<$ c, c s$<$ V, V == c, V != c} 
+
+Look for combinations of these forms based on B\+O\+O\+L\+\_\+\+A\+ND and B\+O\+O\+L\+\_\+\+OR, such as
+
+$<$range1$>$\&\&$<$range2$>$ OR $<$range1$>$$\vert$$\vert$$<$range2$>$
+
+Try to union or intersect the ranges to produce a more concise expression. 
+
+Definition at line 278 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_range_meld_ac9e65abb14b028184a0c917db181314d}\label{class_rule_range_meld_ac9e65abb14b028184a0c917db181314d}} 
+\index{RuleRangeMeld@{RuleRangeMeld}!RuleRangeMeld@{RuleRangeMeld}}
+\index{RuleRangeMeld@{RuleRangeMeld}!RuleRangeMeld@{RuleRangeMeld}}
+\subsubsection{\texorpdfstring{RuleRangeMeld()}{RuleRangeMeld()}}
+{\footnotesize\ttfamily Rule\+Range\+Meld\+::\+Rule\+Range\+Meld (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 280 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_range_meld_ac9e65abb14b028184a0c917db181314d_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_range_meld_af99e831a0fd88d12ef57c0cd9fe01c1d}\label{class_rule_range_meld_af99e831a0fd88d12ef57c0cd9fe01c1d}} 
+\index{RuleRangeMeld@{RuleRangeMeld}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleRangeMeld@{RuleRangeMeld}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Range\+Meld\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 1310 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_range_meld_af99e831a0fd88d12ef57c0cd9fe01c1d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_range_meld_a3d44e55b0b5ac831e649bb220ffa8342}\label{class_rule_range_meld_a3d44e55b0b5ac831e649bb220ffa8342}} 
+\index{RuleRangeMeld@{RuleRangeMeld}!clone@{clone}}
+\index{clone@{clone}!RuleRangeMeld@{RuleRangeMeld}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Range\+Meld\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 281 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_range_meld_a3d44e55b0b5ac831e649bb220ffa8342_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_range_meld_a2ab026b0fd6678141add434965eb1353}\label{class_rule_range_meld_a2ab026b0fd6678141add434965eb1353}} 
+\index{RuleRangeMeld@{RuleRangeMeld}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleRangeMeld@{RuleRangeMeld}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Range\+Meld\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 1294 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

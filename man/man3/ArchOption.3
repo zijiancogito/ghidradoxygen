@@ -1,0 +1,119 @@
+.TH "ArchOption" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ArchOption \- Base class for options classes that affect the configuration of the \fBArchitecture\fP object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <options\&.hh>\fP
+.PP
+Inherited by \fBOptionAllowContextSet\fP, \fBOptionCommentHeader\fP, \fBOptionCommentIndent\fP, \fBOptionCommentInstruction\fP, \fBOptionCommentStyle\fP, \fBOptionConventionPrinting\fP, \fBOptionCurrentAction\fP, \fBOptionDefaultPrototype\fP, \fBOptionErrorReinterpreted\fP, \fBOptionErrorTooManyInstructions\fP, \fBOptionErrorUnimplemented\fP, \fBOptionExtraPop\fP, \fBOptionIgnoreUnimplemented\fP, \fBOptionIndentIncrement\fP, \fBOptionInferConstPtr\fP, \fBOptionInline\fP, \fBOptionInPlaceOps\fP, \fBOptionIntegerFormat\fP, \fBOptionJumpLoad\fP, \fBOptionMaxLineWidth\fP, \fBOptionNoCastPrinting\fP, \fBOptionNoReturn\fP, \fBOptionNullPrinting\fP, \fBOptionProtoEval\fP, \fBOptionReadOnly\fP, \fBOptionSetAction\fP, \fBOptionSetLanguage\fP, \fBOptionStructAlign\fP, \fBOptionToggleRule\fP, and \fBOptionWarning\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBgetName\fP (void) const"
+.br
+.RI "Return the name of the option\&. "
+.ti -1c
+.RI "virtual string \fBapply\fP (\fBArchitecture\fP *glb, const string &p1, const string &p2, const string &p3) const =0"
+.br
+.RI "Apply a particular configuration option to the \fBArchitecture\fP\&. "
+.ti -1c
+.RI "virtual \fB~ArchOption\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBonOrOff\fP (const string &p)"
+.br
+.RI "Parse an 'on' or 'off' string\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Name of the option\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for options classes that affect the configuration of the \fBArchitecture\fP object\&. 
+
+Each class instance affects configuration through its \fBapply()\fP method, which is handed the \fBArchitecture\fP object to be configured along with string based parameters\&. The \fBapply()\fP methods are run once during initialization of the \fBArchitecture\fP object\&. 
+.PP
+Definition at line 32 of file options\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual ArchOption::~ArchOption (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 50 of file options\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual string ArchOption::apply (\fBArchitecture\fP * glb, const string & p1, const string & p2, const string & p3) const\fC [pure virtual]\fP"
+
+.PP
+Apply a particular configuration option to the \fBArchitecture\fP\&. This method is overloaded by the different Option classes to provide possible configuration of different parts of the \fBArchitecture\fP\&. The user can provide up to three optional parameters to tailor a specific type of configuration\&. The method returns a confirmation/failure message as feedback\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglb\fP is the \fBArchitecture\fP being configured 
+.br
+\fIp1\fP is the first optional configuration string 
+.br
+\fIp2\fP is the second optional configuration string 
+.br
+\fIp3\fP is the third optional configuration string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a confirmation/failure message 
+.RE
+.PP
+
+.PP
+Implemented in \fBOptionToggleRule\fP, \fBOptionJumpLoad\fP, \fBOptionSetLanguage\fP, \fBOptionProtoEval\fP, \fBOptionErrorTooManyInstructions\fP, \fBOptionErrorReinterpreted\fP, \fBOptionErrorUnimplemented\fP, \fBOptionIgnoreUnimplemented\fP, \fBOptionAllowContextSet\fP, \fBOptionCurrentAction\fP, \fBOptionSetAction\fP, \fBOptionIntegerFormat\fP, \fBOptionCommentInstruction\fP, \fBOptionCommentHeader\fP, \fBOptionCommentStyle\fP, \fBOptionCommentIndent\fP, \fBOptionIndentIncrement\fP, \fBOptionMaxLineWidth\fP, \fBOptionNoCastPrinting\fP, \fBOptionConventionPrinting\fP, \fBOptionInPlaceOps\fP, \fBOptionNullPrinting\fP, \fBOptionWarning\fP, \fBOptionStructAlign\fP, \fBOptionNoReturn\fP, \fBOptionInline\fP, \fBOptionInferConstPtr\fP, \fBOptionDefaultPrototype\fP, \fBOptionReadOnly\fP, and \fBOptionExtraPop\fP\&.
+.SS "string ArchOption::getName (void) const\fC [inline]\fP"
+
+.PP
+Return the name of the option\&. 
+.PP
+Definition at line 36 of file options\&.hh\&.
+.SS "bool ArchOption::onOrOff (const string & p)\fC [static]\fP"
+
+.PP
+Parse an 'on' or 'off' string\&. If the parameter is 'on' return \fBtrue\fP, if 'off' return \fBfalse\fP\&. Any other value causes an exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP is the parameter 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the parsed boolean value 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file options\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "string ArchOption::name\fC [protected]\fP"
+
+.PP
+Name of the option\&. 
+.PP
+Definition at line 34 of file options\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

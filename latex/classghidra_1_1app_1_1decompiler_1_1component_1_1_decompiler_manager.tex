@@ -1,0 +1,103 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager}{}\section{ghidra.\+app.\+decompiler.\+component.\+Decompiler\+Manager Class Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager}\index{ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a86b780d49e09db710dfd6c1cbc8b024a}{Decompiler\+Manager}} (\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_controller}{Decompiler\+Controller}} decompiler\+Controller, \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_options}{Decompile\+Options}} options)
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a09fc0d005fa5d29e5a348cefbeb0e0ef}{is\+Busy}} ()
+\item 
+synchronized void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_af4c7e68ce6789484e439dd7501856896}{cancel\+All}} ()
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a8f2694c41dd71e004e75a5603274865f}{dispose}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manages the threading involved with dealing with the decompiler. It uses a simpler approach than previous versions. Currently, there is only one Runnable ever scheduled to the Run\+Manager. If a new Decompile request comes in while a decompile is in progress, the new request is first checked to see if it going to result in the same function being decompile. If so, then the location is updated and the current decompile is allowed to continue. If the new request is a new function or the \char`\"{}force\+Decompile\char`\"{} option is on, then the current decompile is stopped and a new one is scheduled. A Swing\+Update\+Manger is used to prevent lots of decompile requests from coming to quickly. 
+
+Definition at line 40 of file Decompiler\+Manager.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a86b780d49e09db710dfd6c1cbc8b024a}\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a86b780d49e09db710dfd6c1cbc8b024a}} 
+\index{ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}!DecompilerManager@{DecompilerManager}}
+\index{DecompilerManager@{DecompilerManager}!ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}}
+\subsubsection{\texorpdfstring{DecompilerManager()}{DecompilerManager()}}
+{\footnotesize\ttfamily ghidra.\+app.\+decompiler.\+component.\+Decompiler\+Manager.\+Decompiler\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_controller}{Decompiler\+Controller}}}]{decompiler\+Controller,  }\item[{\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_options}{Decompile\+Options}}}]{options }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 50 of file Decompiler\+Manager.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_af4c7e68ce6789484e439dd7501856896}\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_af4c7e68ce6789484e439dd7501856896}} 
+\index{ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}!cancelAll@{cancelAll}}
+\index{cancelAll@{cancelAll}!ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}}
+\subsubsection{\texorpdfstring{cancelAll()}{cancelAll()}}
+{\footnotesize\ttfamily synchronized void ghidra.\+app.\+decompiler.\+component.\+Decompiler\+Manager.\+cancel\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 126 of file Decompiler\+Manager.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_af4c7e68ce6789484e439dd7501856896_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a8f2694c41dd71e004e75a5603274865f}\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a8f2694c41dd71e004e75a5603274865f}} 
+\index{ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}!dispose@{dispose}}
+\index{dispose@{dispose}!ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}}
+\subsubsection{\texorpdfstring{dispose()}{dispose()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+component.\+Decompiler\+Manager.\+dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 139 of file Decompiler\+Manager.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a8f2694c41dd71e004e75a5603274865f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a8f2694c41dd71e004e75a5603274865f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a09fc0d005fa5d29e5a348cefbeb0e0ef}\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a09fc0d005fa5d29e5a348cefbeb0e0ef}} 
+\index{ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}!isBusy@{isBusy}}
+\index{isBusy@{isBusy}!ghidra.app.decompiler.component.DecompilerManager@{ghidra.app.decompiler.component.DecompilerManager}}
+\subsubsection{\texorpdfstring{isBusy()}{isBusy()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+component.\+Decompiler\+Manager.\+is\+Busy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 122 of file Decompiler\+Manager.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_decompiler_manager_a09fc0d005fa5d29e5a348cefbeb0e0ef_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/component/\mbox{\hyperlink{_decompiler_manager_8java}{Decompiler\+Manager.\+java}}\end{DoxyCompactItemize}

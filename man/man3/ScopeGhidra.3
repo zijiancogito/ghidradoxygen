@@ -1,0 +1,774 @@
+.TH "ScopeGhidra" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScopeGhidra \- An implementation of the \fBScope\fP interface by querying a Ghidra client for \fBSymbol\fP information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database_ghidra\&.hh>\fP
+.PP
+Inherits \fBScope\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScopeGhidra\fP (\fBArchitectureGhidra\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBlockDefaultProperties\fP (void)"
+.br
+.RI "Lock in the default state of the boolean property map\&. "
+.ti -1c
+.RI "virtual \fB~ScopeGhidra\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.RI "Clear all symbols from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBaddSymbol\fP (const string &\fBname\fP, \fBDatatype\fP *ct, const \fBAddress\fP &addr, const \fBAddress\fP &usepoint)"
+.br
+.RI "Add a new \fBSymbol\fP to \fBthis\fP \fBScope\fP, given a name, data-type, and a single mapping\&. "
+.ti -1c
+.RI "virtual string \fBbuildVariableName\fP (const \fBAddress\fP &addr, const \fBAddress\fP &pc, \fBDatatype\fP *ct, int4 &index, uint4 flags) const"
+.br
+.RI "Given an address and data-type, build a suitable generic symbol name\&. "
+.ti -1c
+.RI "virtual string \fBbuildUndefinedName\fP (void) const"
+.br
+.RI "Build a formal \fBundefined\fP name, used internally when a \fBSymbol\fP is not given a name\&. "
+.ti -1c
+.RI "virtual void \fBsetAttribute\fP (\fBSymbol\fP *sym, uint4 attr)"
+.br
+.RI "Set boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBclearAttribute\fP (\fBSymbol\fP *sym, uint4 attr)"
+.br
+.RI "Clear boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetDisplayFormat\fP (\fBSymbol\fP *sym, uint4 attr)"
+.br
+.RI "Set the display format for a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindAddr\fP (const \fBAddress\fP &addr, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Find a \fBSymbol\fP at a given address and \fBusepoint\fP\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindContainer\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Find the smallest \fBSymbol\fP containing the given memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindClosestFit\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Find \fBSymbol\fP which is the closest fit to the given memory range\&. "
+.ti -1c
+.RI "virtual \fBFuncdata\fP * \fBfindFunction\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find the function starting at the given address\&. "
+.ti -1c
+.RI "virtual \fBExternRefSymbol\fP * \fBfindExternalRef\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find an \fIexternal\fP \fIreference\fP at the given address\&. "
+.ti -1c
+.RI "virtual \fBLabSymbol\fP * \fBfindCodeLabel\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find a label \fBSymbol\fP at the given address\&. "
+.ti -1c
+.RI "virtual \fBFuncdata\fP * \fBresolveExternalRefFunction\fP (\fBExternRefSymbol\fP *sym) const"
+.br
+.RI "Convert an \fIexternal\fP \fIreference\fP to the referenced function\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindOverlap\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Find first \fBSymbol\fP overlapping the given memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindBefore\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find first \fBSymbol\fP before (but not containing) a given address\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindAfter\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find first \fBSymbol\fP after (but not containing) a given address\&. "
+.ti -1c
+.RI "virtual void \fBfindByName\fP (const string &\fBname\fP, vector< \fBSymbol\fP * > &res) const"
+.br
+.RI "Find a \fBSymbol\fP by name within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual \fBMapIterator\fP \fBbegin\fP (void) const"
+.br
+.RI "Beginning iterator to mapped SymbolEntrys\&. "
+.ti -1c
+.RI "virtual \fBMapIterator\fP \fBend\fP (void) const"
+.br
+.RI "Ending iterator to mapped SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::const_iterator \fBbeginDynamic\fP (void) const"
+.br
+.RI "Beginning iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::const_iterator \fBendDynamic\fP (void) const"
+.br
+.RI "Ending iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::iterator \fBbeginDynamic\fP (void)"
+.br
+.RI "Beginning iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::iterator \fBendDynamic\fP (void)"
+.br
+.RI "Ending iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual void \fBclearCategory\fP (int4 cat)"
+.br
+.RI "Clear all symbols of the given category from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBclearUnlockedCategory\fP (int4 cat)"
+.br
+.RI "Clear unlocked symbols of the given category from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBclearUnlocked\fP (void)"
+.br
+.RI "Clear all unlocked symbols from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBrestrictScope\fP (\fBFuncdata\fP *f)"
+.br
+.RI "Convert \fBthis\fP to a local \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBremoveSymbol\fP (\fBSymbol\fP *symbol)"
+.br
+.RI "Remove the given \fBSymbol\fP from \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBrenameSymbol\fP (\fBSymbol\fP *sym, const string &newname)"
+.br
+.RI "Rename a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBretypeSymbol\fP (\fBSymbol\fP *sym, \fBDatatype\fP *ct)"
+.br
+.RI "Change the data-type of a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual string \fBmakeNameUnique\fP (const string &nm) const"
+.br
+.RI "Produce a version of the given symbol name that won't collide with other names in \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write out \fBthis\fP as a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual void \fBprintEntries\fP (ostream &s) const"
+.br
+.RI "Dump a description of all \fBSymbolEntry\fP objects to a stream\&. "
+.ti -1c
+.RI "virtual int4 \fBgetCategorySize\fP (int4 cat) const"
+.br
+.RI "Get the number of Symbols in the given category\&. "
+.ti -1c
+.RI "virtual \fBSymbol\fP * \fBgetCategorySymbol\fP (int4 cat, int4 ind) const"
+.br
+.RI "Retrieve a \fBSymbol\fP by index within a specific \fIcategory\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetCategory\fP (\fBSymbol\fP *sym, int4 cat, int4 ind)"
+.br
+.RI "Set the \fIcategory\fP and index for the given \fBSymbol\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An implementation of the \fBScope\fP interface by querying a Ghidra client for \fBSymbol\fP information\&. 
+
+This object is generally instantiated once for an executable and acts as the \fIglobal\fP \fIscope\fP for the decompiler\&. Queries for symbol information are forwarded to the Ghidra client and the response is cached\&. This object fields queries for all scopes above functions\&. Responses may be for \fBSymbol\fP objects that are not global but belong to sub-scopes, like \fInamespace\fP and function Scopes\&. This object will build any new \fBScope\fP or \fBFuncdata\fP, object as necessary and stick the \fBSymbol\fP in, returning as if the new \fBScope\fP had caught the query in the first place\&. 
+.PP
+Definition at line 35 of file database_ghidra\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ScopeGhidra::ScopeGhidra (\fBArchitectureGhidra\fP * g)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the \fBArchitecture\fP and connection to the Ghidra client 
+.RE
+.PP
+
+.PP
+Definition at line 20 of file database_ghidra\&.cc\&.
+.SS "ScopeGhidra::~ScopeGhidra (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 28 of file database_ghidra\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSymbolEntry\fP * ScopeGhidra::addSymbol (const string & name, \fBDatatype\fP * ct, const \fBAddress\fP & addr, const \fBAddress\fP & usepoint)\fC [virtual]\fP"
+
+.PP
+Add a new \fBSymbol\fP to \fBthis\fP \fBScope\fP, given a name, data-type, and a single mapping\&. The \fBSymbol\fP object will be created with the given name and data-type\&. A single mapping (\fBSymbolEntry\fP) will be created for the \fBSymbol\fP based on a given storage address for the symbol and an address for code that accesses the \fBSymbol\fP at that storage location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the new name of the \fBSymbol\fP 
+.br
+\fIct\fP is the data-type of the new \fBSymbol\fP 
+.br
+\fIaddr\fP is the starting address of the \fBSymbol\fP storage 
+.br
+\fIusepoint\fP is the point accessing that storage (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBSymbolEntry\fP matching the new mapping 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBScope\fP\&.
+.PP
+Definition at line 388 of file database_ghidra\&.cc\&.
+.SS "virtual \fBMapIterator\fP ScopeGhidra::begin (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Beginning iterator to mapped SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 95 of file database_ghidra\&.hh\&.
+.SS "virtual list<\fBSymbolEntry\fP>::const_iterator ScopeGhidra::beginDynamic (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Beginning iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 97 of file database_ghidra\&.hh\&.
+.SS "virtual list<\fBSymbolEntry\fP>::iterator ScopeGhidra::beginDynamic (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Beginning iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 99 of file database_ghidra\&.hh\&.
+.SS "virtual string ScopeGhidra::buildUndefinedName (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Build a formal \fBundefined\fP name, used internally when a \fBSymbol\fP is not given a name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a special internal name that won't collide with other names in \fBthis\fP \fBScope\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 74 of file database_ghidra\&.hh\&.
+.SS "virtual string ScopeGhidra::buildVariableName (const \fBAddress\fP & addr, const \fBAddress\fP & pc, \fBDatatype\fP * ct, int4 & index, uint4 flags) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Given an address and data-type, build a suitable generic symbol name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIpc\fP is the address at which the name is getting used 
+.br
+\fIct\fP is a data-type used to inform the name 
+.br
+\fIindex\fP is a reference to an index used to make the name unique, which will be updated 
+.br
+\fIflags\fP are boolean properties of the variable we need the name for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new variable name 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 70 of file database_ghidra\&.hh\&.
+.SS "void ScopeGhidra::clear (void)\fC [virtual]\fP"
+
+.PP
+Clear all symbols from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 253 of file database_ghidra\&.cc\&.
+.SS "virtual void ScopeGhidra::clearAttribute (\fBSymbol\fP * sym, uint4 attr)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clear boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 76 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::clearCategory (int4 cat)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clear all symbols of the given category from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 101 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::clearUnlocked (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clear all unlocked symbols from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 103 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::clearUnlockedCategory (int4 cat)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clear unlocked symbols of the given category from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 102 of file database_ghidra\&.hh\&.
+.SS "virtual \fBMapIterator\fP ScopeGhidra::end (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Ending iterator to mapped SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 96 of file database_ghidra\&.hh\&.
+.SS "virtual list<\fBSymbolEntry\fP>::const_iterator ScopeGhidra::endDynamic (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Ending iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 98 of file database_ghidra\&.hh\&.
+.SS "virtual list<\fBSymbolEntry\fP>::iterator ScopeGhidra::endDynamic (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Ending iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 100 of file database_ghidra\&.hh\&.
+.SS "\fBSymbolEntry\fP * ScopeGhidra::findAddr (const \fBAddress\fP & addr, const \fBAddress\fP & usepoint) const\fC [virtual]\fP"
+
+.PP
+Find a \fBSymbol\fP at a given address and \fBusepoint\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 264 of file database_ghidra\&.cc\&.
+.SS "virtual \fBSymbolEntry\fP* ScopeGhidra::findAfter (const \fBAddress\fP & addr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP after (but not containing) a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBSymbolEntry\fP occurring immediately after or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 92 of file database_ghidra\&.hh\&.
+.SS "virtual \fBSymbolEntry\fP* ScopeGhidra::findBefore (const \fBAddress\fP & addr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP before (but not containing) a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBSymbolEntry\fP occurring immediately before or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 91 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::findByName (const string & name, vector< \fBSymbol\fP * > & res) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Find a \fBSymbol\fP by name within \fBthis\fP \fBScope\fP\&. If there are multiple Symbols with the same name, all are passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name to search for 
+.br
+\fIres\fP will contain any matching Symbols 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 93 of file database_ghidra\&.hh\&.
+.SS "virtual \fBSymbolEntry\fP* ScopeGhidra::findClosestFit (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Find \fBSymbol\fP which is the closest fit to the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 82 of file database_ghidra\&.hh\&.
+.SS "\fBLabSymbol\fP * ScopeGhidra::findCodeLabel (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find a label \fBSymbol\fP at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBLabSymbol\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 339 of file database_ghidra\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeGhidra::findContainer (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const\fC [virtual]\fP"
+
+.PP
+Find the smallest \fBSymbol\fP containing the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 284 of file database_ghidra\&.cc\&.
+.SS "\fBExternRefSymbol\fP * ScopeGhidra::findExternalRef (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find an \fIexternal\fP \fIreference\fP at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBExternRefSymbol\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 305 of file database_ghidra\&.cc\&.
+.SS "\fBFuncdata\fP * ScopeGhidra::findFunction (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find the function starting at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBFuncdata\fP object or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 321 of file database_ghidra\&.cc\&.
+.SS "virtual \fBSymbolEntry\fP* ScopeGhidra::findOverlap (const \fBAddress\fP & addr, int4 size) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP overlapping the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an overlapping \fBSymbolEntry\fP or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 90 of file database_ghidra\&.hh\&.
+.SS "virtual int4 ScopeGhidra::getCategorySize (int4 cat) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the number of Symbols in the given category\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcat\fP is the \fBSymbol\fP \fIcategory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number in that \fIcategory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 112 of file database_ghidra\&.hh\&.
+.SS "virtual \fBSymbol\fP* ScopeGhidra::getCategorySymbol (int4 cat, int4 ind) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Retrieve a \fBSymbol\fP by index within a specific \fIcategory\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcat\fP is the \fBSymbol\fP \fIcategory\fP 
+.br
+\fIind\fP is the index (within the category) of the \fBSymbol\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the indicated \fBSymbol\fP or NULL if no \fBSymbol\fP with that index exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 113 of file database_ghidra\&.hh\&.
+.SS "void ScopeGhidra::lockDefaultProperties (void)\fC [inline]\fP"
+
+.PP
+Lock in the default state of the boolean property map\&. When \fBthis\fP \fBScope\fP gets created, parsing of \&.pspec and \&.cspec files may lay down property information about memory before any the load-image is consulted\&. This method locks creates a copy of this state of memory, so the decompiler can reset to it before decompiling a new function\&. 
+.PP
+Definition at line 65 of file database_ghidra\&.hh\&.
+.SS "virtual string ScopeGhidra::makeNameUnique (const string & nm) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Produce a version of the given symbol name that won't collide with other names in \fBthis\fP \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the given name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return a unique version of the name 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 108 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::printEntries (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Dump a description of all \fBSymbolEntry\fP objects to a stream\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 111 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::removeSymbol (\fBSymbol\fP * symbol)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Remove the given \fBSymbol\fP from \fBthis\fP \fBScope\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 105 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::renameSymbol (\fBSymbol\fP * sym, const string & newname)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Rename a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 106 of file database_ghidra\&.hh\&.
+.SS "\fBFuncdata\fP * ScopeGhidra::resolveExternalRefFunction (\fBExternRefSymbol\fP * sym) const\fC [virtual]\fP"
+
+.PP
+Convert an \fIexternal\fP \fIreference\fP to the referenced function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP marking the external reference 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the underlying \fBFuncdata\fP object or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 358 of file database_ghidra\&.cc\&.
+.SS "virtual void ScopeGhidra::restoreXml (const \fBElement\fP * el)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 110 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::restrictScope (\fBFuncdata\fP * f)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Convert \fBthis\fP to a local \fBScope\fP\&. Attach \fBthis\fP to the given function, which makes \fBthis\fP the local scope for the function 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP is the given function to attach to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBScope\fP\&.
+.PP
+Definition at line 104 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::retypeSymbol (\fBSymbol\fP * sym, \fBDatatype\fP * ct)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Change the data-type of a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. If the size of the \fBSymbol\fP changes, any mapping (\fBSymbolEntry\fP) is adjusted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIct\fP is the new data-type 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 107 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::saveXml (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Write out \fBthis\fP as a <scope> XML tag\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 109 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::setAttribute (\fBSymbol\fP * sym, uint4 attr)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Set boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 75 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::setCategory (\fBSymbol\fP * sym, int4 cat, int4 ind)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Set the \fIcategory\fP and index for the given \fBSymbol\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIcat\fP is the \fIcategory\fP to set for the \fBSymbol\fP 
+.br
+\fIind\fP is the index position to set (within the category) 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 114 of file database_ghidra\&.hh\&.
+.SS "virtual void ScopeGhidra::setDisplayFormat (\fBSymbol\fP * sym, uint4 attr)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Set the display format for a \fBSymbol\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 77 of file database_ghidra\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,104 @@
+.TH "InjectPayloadSleigh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InjectPayloadSleigh
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <inject_sleigh\&.hh>\fP
+.PP
+Inherits InjectPayload\&.
+.PP
+Inherited by \fBInjectPayloadCallfixup\fP, and \fBInjectPayloadCallother\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInjectPayloadSleigh\fP (const string &src, const string &nm, int4 tp)"
+.br
+.ti -1c
+.RI "virtual \fB~InjectPayloadSleigh\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBinject\fP (\fBInjectContext\fP &context, \fBPcodeEmit\fP &emit) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.ti -1c
+.RI "virtual void \fBprintTemplate\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual string \fBgetSource\fP (void) const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBcheckParameterRestrictions\fP (\fBInjectContextSleigh\fP &con, const vector< \fBInjectParameter\fP > &inputlist, const vector< \fBInjectParameter\fP > &output, const string &source)"
+.br
+.ti -1c
+.RI "static void \fBsetupParameters\fP (\fBInjectContextSleigh\fP &con, \fBParserWalkerChange\fP &walker, const vector< \fBInjectParameter\fP > &inputlist, const vector< \fBInjectParameter\fP > &output, const string &source)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBPcodeInjectLibrarySleigh\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 31 of file inject_sleigh\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "InjectPayloadSleigh::InjectPayloadSleigh (const string & src, const string & nm, int4 tp)"
+
+.PP
+Definition at line 34 of file inject_sleigh\&.cc\&.
+.SS "InjectPayloadSleigh::~InjectPayloadSleigh (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 27 of file inject_sleigh\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void InjectPayloadSleigh::checkParameterRestrictions (\fBInjectContextSleigh\fP & con, const vector< \fBInjectParameter\fP > & inputlist, const vector< \fBInjectParameter\fP > & output, const string & source)\fC [static]\fP"
+
+.PP
+Definition at line 86 of file inject_sleigh\&.cc\&.
+.SS "virtual string InjectPayloadSleigh::getSource (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 42 of file inject_sleigh\&.hh\&.
+.SS "void InjectPayloadSleigh::inject (\fBInjectContext\fP & context, \fBPcodeEmit\fP & emit) const\fC [virtual]\fP"
+
+.PP
+Definition at line 42 of file inject_sleigh\&.cc\&.
+.SS "void InjectPayloadSleigh::printTemplate (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Definition at line 80 of file inject_sleigh\&.cc\&.
+.SS "void InjectPayloadSleigh::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBInjectPayloadCallother\fP, and \fBInjectPayloadCallfixup\fP\&.
+.PP
+Definition at line 64 of file inject_sleigh\&.cc\&.
+.SS "void InjectPayloadSleigh::setupParameters (\fBInjectContextSleigh\fP & con, \fBParserWalkerChange\fP & walker, const vector< \fBInjectParameter\fP > & inputlist, const vector< \fBInjectParameter\fP > & output, const string & source)\fC [static]\fP"
+
+.PP
+Definition at line 107 of file inject_sleigh\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBPcodeInjectLibrarySleigh\fP\fC [friend]\fP"
+
+.PP
+Definition at line 32 of file inject_sleigh\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

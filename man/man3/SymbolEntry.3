@@ -1,0 +1,456 @@
+.TH "SymbolEntry" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SymbolEntry \- A storage location for a particular \fBSymbol\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBEntryInitData\fP"
+.br
+.RI "Initialization data for a \fBSymbolEntry\fP to facilitate a rangemap\&. "
+.ti -1c
+.RI "class \fBEntrySubsort\fP"
+.br
+.RI "Class for sub-sorting different \fBSymbolEntry\fP objects at the same address\&. "
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBuintb\fP \fBlinetype\fP"
+.br
+.RI "The linear element for a rangemap of \fBSymbolEntry\fP\&. "
+.ti -1c
+.RI "typedef \fBEntrySubsort\fP \fBsubsorttype\fP"
+.br
+.RI "The sub-sort object for a rangemap\&. "
+.ti -1c
+.RI "typedef \fBEntryInitData\fP \fBinittype\fP"
+.br
+.RI "Initialization data for a \fBSymbolEntry\fP in a rangemap\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSymbolEntry\fP (\fBuintb\fP a, \fBuintb\fP b)"
+.br
+.RI "Construct given just the offset range\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP (\fBSymbol\fP *sym, uint4 exfl, uint8 h, int4 off, int4 sz, const \fBRangeList\fP &rnglist)"
+.br
+.RI "Construct a dynamic \fBSymbolEntry\fP\&. "
+.ti -1c
+.RI "bool \fBisPiece\fP (void) const"
+.br
+.RI "Is \fBthis\fP a high or low piece of the whole \fBSymbol\fP\&. "
+.ti -1c
+.RI "bool \fBisDynamic\fP (void) const"
+.br
+.RI "Is \fBstorage\fP \fIdynamic\fP\&. "
+.ti -1c
+.RI "bool \fBisInvalid\fP (void) const"
+.br
+.RI "Is \fBthis\fP storage \fIinvalid\fP\&. "
+.ti -1c
+.RI "uint4 \fBgetAllFlags\fP (void) const"
+.br
+.RI "Get all \fBVarnode\fP flags for \fBthis\fP storage\&. "
+.ti -1c
+.RI "int4 \fBgetOffset\fP (void) const"
+.br
+.RI "Get offset of \fBthis\fP within the \fBSymbol\fP\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetFirst\fP (void) const"
+.br
+.RI "Get the first offset of \fBthis\fP storage location\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetLast\fP (void) const"
+.br
+.RI "Get the last offset of \fBthis\fP storage location\&. "
+.ti -1c
+.RI "\fBsubsorttype\fP \fBgetSubsort\fP (void) const"
+.br
+.RI "Get the sub-sort object\&. "
+.ti -1c
+.RI "void \fBinitialize\fP (const \fBEntryInitData\fP &data)"
+.br
+.RI "Fully initialize \fBthis\fP\&. "
+.ti -1c
+.RI "\fBSymbol\fP * \fBgetSymbol\fP (void) const"
+.br
+.RI "Get the \fBSymbol\fP associated with \fBthis\fP\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddr\fP (void) const"
+.br
+.RI "Get the starting address of \fBthis\fP storage\&. "
+.ti -1c
+.RI "uint8 \fBgetHash\fP (void) const"
+.br
+.RI "Get the hash used to identify \fBthis\fP storage\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the number of bytes consumed by \fBthis\fP storage\&. "
+.ti -1c
+.RI "bool \fBinUse\fP (const \fBAddress\fP &usepoint) const"
+.br
+.RI "Is \fBthis\fP storage valid for the given code address\&. "
+.ti -1c
+.RI "const \fBRangeList\fP & \fBgetUseLimit\fP (void) const"
+.br
+.RI "Get the set of valid code addresses for \fBthis\fP storage\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetFirstUseAddress\fP (void) const"
+.br
+.RI "Get the first code address where \fBthis\fP storage is valid\&. "
+.ti -1c
+.RI "void \fBsetUseLimit\fP (const \fBRangeList\fP &uselim)"
+.br
+.RI "Set the range of code addresses where \fBthis\fP is valid\&. "
+.ti -1c
+.RI "bool \fBisAddrTied\fP (void) const"
+.br
+.RI "Is \fBthis\fP storage address tied\&. "
+.ti -1c
+.RI "bool \fBupdateType\fP (\fBVarnode\fP *vn) const"
+.br
+.RI "Update a \fBVarnode\fP data-type from \fBthis\fP\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetSizedType\fP (const \fBAddress\fP &addr, int4 sz) const"
+.br
+.RI "Get the data-type associated with (a piece of) \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBprintEntry\fP (ostream &s) const"
+.br
+.RI "Dump a description of \fBthis\fP to a stream\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save \fBthis\fP to an XML stream\&. "
+.ti -1c
+.RI "List::const_iterator \fBrestoreXml\fP (List::const_iterator iter, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore \fBthis\fP from an XML stream\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScope\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A storage location for a particular \fBSymbol\fP\&. 
+
+Where a \fBSymbol\fP is stored, as a byte address and a size, is of particular importance to the decompiler\&. This class encapsulates this storage meta-data\&. A single \fBSymbol\fP split across multiple storage locations is supported by the \fBoffset\fP and \fBsize\fP fields\&. The \fBhash\fP field supports \fIdynamic\fP storage, where a \fBSymbol\fP is represented by a constant or a temporary register\&. In this case, storage must be tied to the particular p-code operators using the value\&.
+.PP
+A particular memory address does \fBnot\fP have to represent the symbol across all code\&. Storage may get recycled for different Symbols at different points in the code\&. The \fBuselimit\fP object defines the range of instruction addresses over which a particular memory address does represent a \fBSymbol\fP, with the convention that an empty \fBuselimit\fP indicates the storage holds the \fBSymbol\fP across \fIall\fP code\&. 
+.PP
+Definition at line 51 of file database\&.hh\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef \fBEntryInitData\fP \fBSymbolEntry::inittype\fP"
+
+.PP
+Initialization data for a \fBSymbolEntry\fP in a rangemap\&. 
+.PP
+Definition at line 113 of file database\&.hh\&.
+.SS "typedef \fBuintb\fP \fBSymbolEntry::linetype\fP"
+
+.PP
+The linear element for a rangemap of \fBSymbolEntry\fP\&. 
+.PP
+Definition at line 111 of file database\&.hh\&.
+.SS "typedef \fBEntrySubsort\fP \fBSymbolEntry::subsorttype\fP"
+
+.PP
+The sub-sort object for a rangemap\&. 
+.PP
+Definition at line 112 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SymbolEntry::SymbolEntry (\fBuintb\fP a, \fBuintb\fP b)"
+
+.PP
+Construct given just the offset range\&. This constructor is for use with rangemap container\&. It must be followed by an \fBinitialize()\fP call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first offset covered by the new \fBSymbolEntry\fP 
+.br
+\fIb\fP is the last offset covered 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file database\&.cc\&.
+.SS "SymbolEntry::SymbolEntry (\fBSymbol\fP * sym, uint4 exfl, uint8 h, int4 off, int4 sz, const \fBRangeList\fP & rnglist)"
+
+.PP
+Construct a dynamic \fBSymbolEntry\fP\&. This is used specifically for \fIdynamic\fP \fBSymbol\fP objects, where the storage location is attached to a temporary register or a constant\&. The main address field (\fBaddr\fP) is set to \fIinvalid\fP, and the \fBhash\fP becomes the primary location information\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the underlying \fBSymbol\fP 
+.br
+\fIexfl\fP are the \fBVarnode\fP flags associated with the storage location 
+.br
+\fIh\fP is the the hash 
+.br
+\fIoff\fP if the offset into the \fBSymbol\fP for this (piece of) storage 
+.br
+\fIsz\fP is the size in bytes of this (piece of) storage 
+.br
+\fIrnglist\fP is the set of code addresses where \fBthis\fP \fBSymbolEntry\fP represents the \fBSymbol\fP 
+.RE
+.PP
+
+.PP
+Definition at line 52 of file database\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBAddress\fP& SymbolEntry::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the starting address of \fBthis\fP storage\&. 
+.PP
+Definition at line 127 of file database\&.hh\&.
+.SS "uint4 SymbolEntry::getAllFlags (void) const\fC [inline]\fP"
+
+.PP
+Get all \fBVarnode\fP flags for \fBthis\fP storage\&. Retrieve the (union of) \fBVarnode\fP flags specific to the \fBSymbol\fP and specific to \fBthis\fP storage\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+all \fBVarnode\fP flags that apply 
+.RE
+.PP
+
+.PP
+Definition at line 224 of file database\&.hh\&.
+.SS "\fBuintb\fP SymbolEntry::getFirst (void) const\fC [inline]\fP"
+
+.PP
+Get the first offset of \fBthis\fP storage location\&. 
+.PP
+Definition at line 122 of file database\&.hh\&.
+.SS "\fBAddress\fP SymbolEntry::getFirstUseAddress (void) const"
+
+.PP
+Get the first code address where \fBthis\fP storage is valid\&. 
+.PP
+Definition at line 104 of file database\&.cc\&.
+.SS "uint8 SymbolEntry::getHash (void) const\fC [inline]\fP"
+
+.PP
+Get the hash used to identify \fBthis\fP storage\&. 
+.PP
+Definition at line 128 of file database\&.hh\&.
+.SS "\fBuintb\fP SymbolEntry::getLast (void) const\fC [inline]\fP"
+
+.PP
+Get the last offset of \fBthis\fP storage location\&. 
+.PP
+Definition at line 123 of file database\&.hh\&.
+.SS "int4 SymbolEntry::getOffset (void) const\fC [inline]\fP"
+
+.PP
+Get offset of \fBthis\fP within the \fBSymbol\fP\&. 
+.PP
+Definition at line 121 of file database\&.hh\&.
+.SS "int4 SymbolEntry::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of bytes consumed by \fBthis\fP storage\&. 
+.PP
+Definition at line 129 of file database\&.hh\&.
+.SS "\fBDatatype\fP * SymbolEntry::getSizedType (const \fBAddress\fP & inaddr, int4 sz) const"
+
+.PP
+Get the data-type associated with (a piece of) \fBthis\fP\&. Return the data-type that matches the given size and address within \fBthis\fP storage\&. NULL is returned if there is no valid sub-type matching the size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinaddr\fP is the given address 
+.br
+\fIsz\fP is the given size (in bytes) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching data-type or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file database\&.cc\&.
+.SS "\fBSymbolEntry::subsorttype\fP SymbolEntry::getSubsort (void) const"
+
+.PP
+Get the sub-sort object\&. Get data used to sub-sort entries (in a rangemap) at the same address 
+.PP
+\fBReturns:\fP
+.RS 4
+the sub-sort object 
+.RE
+.PP
+
+.PP
+Definition at line 79 of file database\&.cc\&.
+.SS "\fBSymbol\fP* SymbolEntry::getSymbol (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBSymbol\fP associated with \fBthis\fP\&. 
+.PP
+Definition at line 126 of file database\&.hh\&.
+.SS "const \fBRangeList\fP& SymbolEntry::getUseLimit (void) const\fC [inline]\fP"
+
+.PP
+Get the set of valid code addresses for \fBthis\fP storage\&. 
+.PP
+Definition at line 131 of file database\&.hh\&.
+.SS "void SymbolEntry::initialize (const \fBEntryInitData\fP & data)"
+
+.PP
+Fully initialize \fBthis\fP\&. Assuming the boundary offsets have been specified with the constructor, fill in the rest of the data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP contains the raw initialization data 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file database\&.cc\&.
+.SS "bool SymbolEntry::inUse (const \fBAddress\fP & usepoint) const"
+
+.PP
+Is \fBthis\fP storage valid for the given code address\&. This storage location may only hold the \fBSymbol\fP value for a limited portion of the code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusepoint\fP is the given code address to test 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP storage is valid at the given address 
+.RE
+.PP
+
+.PP
+Definition at line 96 of file database\&.cc\&.
+.SS "bool SymbolEntry::isAddrTied (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP storage address tied\&. 
+.PP
+Definition at line 228 of file database\&.hh\&.
+.SS "bool SymbolEntry::isDynamic (void) const\fC [inline]\fP"
+
+.PP
+Is \fBstorage\fP \fIdynamic\fP\&. 
+.PP
+Definition at line 118 of file database\&.hh\&.
+.SS "bool SymbolEntry::isInvalid (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP storage \fIinvalid\fP\&. 
+.PP
+Definition at line 119 of file database\&.hh\&.
+.SS "bool SymbolEntry::isPiece (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a high or low piece of the whole \fBSymbol\fP\&. 
+.PP
+Definition at line 117 of file database\&.hh\&.
+.SS "void SymbolEntry::printEntry (ostream & s) const"
+
+.PP
+Dump a description of \fBthis\fP to a stream\&. Give a contained one-line description of \fBthis\fP storage, suitable for a debug console 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 161 of file database\&.cc\&.
+.SS "List::const_iterator SymbolEntry::restoreXml (List::const_iterator iter, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Restore \fBthis\fP from an XML stream\&. Given an iterator to children of a <mapsym> tag, restore the storage address (or the hash if the symbol is dynamic) and the \fBuselimit\fP describing the valid range of code addresses, then advance the iterator to the next tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiter\fP is the iterator pointing to the address or hash tag 
+.br
+\fImanage\fP is an address space manager for constructing \fBAddress\fP objects 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the advanced iterator 
+.RE
+.PP
+
+.PP
+Definition at line 201 of file database\&.cc\&.
+.SS "void SymbolEntry::saveXml (ostream & s) const"
+
+.PP
+Save \fBthis\fP to an XML stream\&. This writes tags internal to the <mapsym> tag associated with the \fBSymbol\fP\&. It outputs the address tag (or the <hash> tag for dynamic symbols) and a <rangelist> tag associated with the \fBuselimit\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 182 of file database\&.cc\&.
+.SS "void SymbolEntry::setUseLimit (const \fBRangeList\fP & uselim)\fC [inline]\fP"
+
+.PP
+Set the range of code addresses where \fBthis\fP is valid\&. 
+.PP
+Definition at line 133 of file database\&.hh\&.
+.SS "bool SymbolEntry::updateType (\fBVarnode\fP * vn) const"
+
+.PP
+Update a \fBVarnode\fP data-type from \fBthis\fP\&. If the \fBSymbol\fP associated with \fBthis\fP is type-locked, change the given \fBVarnode\fP's attached data-type to match the \fBSymbol\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the data-type was changed 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file database\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBScope\fP\fC [friend]\fP"
+
+.PP
+Definition at line 52 of file database\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

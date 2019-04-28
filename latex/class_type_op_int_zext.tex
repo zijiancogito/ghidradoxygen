@@ -1,0 +1,173 @@
+\hypertarget{class_type_op_int_zext}{}\section{Type\+Op\+Int\+Zext Class Reference}
+\label{class_type_op_int_zext}\index{TypeOpIntZext@{TypeOpIntZext}}
+
+
+Information about the I\+N\+T\+\_\+\+Z\+E\+XT op-\/code.  
+
+
+
+
+{\ttfamily \#include $<$typeop.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Op\+Int\+Zext\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_type_op_int_zext__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Op\+Int\+Zext\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_int_zext__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_op_int_zext_aa97bd1e66c8746724b05c68a4ac2d7b2}{Type\+Op\+Int\+Zext}} (\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_op_int_zext_a0b10f9f82e0b78957f8d83339c31626e}{push}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_type_op_int_zext_a4519823a40a0486592c35b2e4a4a3414}{get\+Operator\+Name}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Get the name of the op-\/code as it should be displayed in context. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_int_zext_a2839a324572064596d01ea878f515f73}{get\+Input\+Cast}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, int4 slot, const \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$cast\+Strategy) const
+\begin{DoxyCompactList}\small\item\em Find the data-\/type of the input to a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Information about the I\+N\+T\+\_\+\+Z\+E\+XT op-\/code. 
+
+Definition at line 349 of file typeop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_op_int_zext_aa97bd1e66c8746724b05c68a4ac2d7b2}\label{class_type_op_int_zext_aa97bd1e66c8746724b05c68a4ac2d7b2}} 
+\index{TypeOpIntZext@{TypeOpIntZext}!TypeOpIntZext@{TypeOpIntZext}}
+\index{TypeOpIntZext@{TypeOpIntZext}!TypeOpIntZext@{TypeOpIntZext}}
+\subsubsection{\texorpdfstring{TypeOpIntZext()}{TypeOpIntZext()}}
+{\footnotesize\ttfamily Type\+Op\+Int\+Zext\+::\+Type\+Op\+Int\+Zext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 901 of file typeop.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_op_int_zext_a2839a324572064596d01ea878f515f73}\label{class_type_op_int_zext_a2839a324572064596d01ea878f515f73}} 
+\index{TypeOpIntZext@{TypeOpIntZext}!getInputCast@{getInputCast}}
+\index{getInputCast@{getInputCast}!TypeOpIntZext@{TypeOpIntZext}}
+\subsubsection{\texorpdfstring{getInputCast()}{getInputCast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Int\+Zext\+::get\+Input\+Cast (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{int4}]{slot,  }\item[{const \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$}]{cast\+Strategy }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the data-\/type of the input to a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+Calculate the actual data-\/type of the input to the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. A {\bfseries{null}} result indicates the input data-\/type is the same as or otherwise doesn\textquotesingle{}t need a cast from the data-\/type of the actual input \mbox{\hyperlink{class_varnode}{Varnode}} 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em slot} & is the input to consider \\
+\hline
+{\em cast\+Strategy} & is the current casting strategy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a950c417e4af100d176a701af5816b5ab}{Type\+Op}}.
+
+
+
+Definition at line 917 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_int_zext_a2839a324572064596d01ea878f515f73_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_int_zext_a4519823a40a0486592c35b2e4a4a3414}\label{class_type_op_int_zext_a4519823a40a0486592c35b2e4a4a3414}} 
+\index{TypeOpIntZext@{TypeOpIntZext}!getOperatorName@{getOperatorName}}
+\index{getOperatorName@{getOperatorName}!TypeOpIntZext@{TypeOpIntZext}}
+\subsubsection{\texorpdfstring{getOperatorName()}{getOperatorName()}}
+{\footnotesize\ttfamily string Type\+Op\+Int\+Zext\+::get\+Operator\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the name of the op-\/code as it should be displayed in context. 
+
+Depending on the context, the same op-\/code may get displayed in different ways. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the display token 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a42a1ffa77f998df24efdb44405b33ac5}{Type\+Op}}.
+
+
+
+Definition at line 908 of file typeop.\+cc.
+
+\mbox{\Hypertarget{class_type_op_int_zext_a0b10f9f82e0b78957f8d83339c31626e}\label{class_type_op_int_zext_a0b10f9f82e0b78957f8d83339c31626e}} 
+\index{TypeOpIntZext@{TypeOpIntZext}!push@{push}}
+\index{push@{push}!TypeOpIntZext@{TypeOpIntZext}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily virtual void Type\+Op\+Int\+Zext\+::push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. 
+
+Given a specific language and \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}, emit the expression rooted at the operation. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} to emit \\
+\hline
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_type_op_ac9c9544203ed74dabe6ac662b653b2af}{Type\+Op}}.
+
+
+
+Definition at line 352 of file typeop.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_type_op_int_zext_a0b10f9f82e0b78957f8d83339c31626e_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8hh}{typeop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8cc}{typeop.\+cc}}\end{DoxyCompactItemize}

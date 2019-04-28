@@ -1,0 +1,175 @@
+\hypertarget{class_action_constant_ptr}{}\section{Action\+Constant\+Ptr Class Reference}
+\label{class_action_constant_ptr}\index{ActionConstantPtr@{ActionConstantPtr}}
+
+
+Check for constants, with pointer type, that correspond to global symbols.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Constant\+Ptr\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_action_constant_ptr__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Constant\+Ptr\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_action_constant_ptr__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_constant_ptr_a99f3b7ac26692122d7da9b5a7f61c255}{Action\+Constant\+Ptr}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_action_constant_ptr_a35b17f96c22959446ca3f94420a9f5a2}{reset}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_constant_ptr_a03964225abf6a06d0b8eb832a94ce16a}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_constant_ptr_a3667d599128a545967351ba54f4cce42}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Check for constants, with pointer type, that correspond to global symbols. 
+
+Definition at line 163 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_constant_ptr_a99f3b7ac26692122d7da9b5a7f61c255}\label{class_action_constant_ptr_a99f3b7ac26692122d7da9b5a7f61c255}} 
+\index{ActionConstantPtr@{ActionConstantPtr}!ActionConstantPtr@{ActionConstantPtr}}
+\index{ActionConstantPtr@{ActionConstantPtr}!ActionConstantPtr@{ActionConstantPtr}}
+\subsubsection{\texorpdfstring{ActionConstantPtr()}{ActionConstantPtr()}}
+{\footnotesize\ttfamily Action\+Constant\+Ptr\+::\+Action\+Constant\+Ptr (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 167 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{class_action_constant_ptr_a99f3b7ac26692122d7da9b5a7f61c255_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_constant_ptr_a3667d599128a545967351ba54f4cce42}\label{class_action_constant_ptr_a3667d599128a545967351ba54f4cce42}} 
+\index{ActionConstantPtr@{ActionConstantPtr}!apply@{apply}}
+\index{apply@{apply}!ActionConstantPtr@{ActionConstantPtr}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Constant\+Ptr\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 898 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_constant_ptr_a3667d599128a545967351ba54f4cce42_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_constant_ptr_a03964225abf6a06d0b8eb832a94ce16a}\label{class_action_constant_ptr_a03964225abf6a06d0b8eb832a94ce16a}} 
+\index{ActionConstantPtr@{ActionConstantPtr}!clone@{clone}}
+\index{clone@{clone}!ActionConstantPtr@{ActionConstantPtr}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Constant\+Ptr\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 169 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{class_action_constant_ptr_a03964225abf6a06d0b8eb832a94ce16a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_constant_ptr_a35b17f96c22959446ca3f94420a9f5a2}\label{class_action_constant_ptr_a35b17f96c22959446ca3f94420a9f5a2}} 
+\index{ActionConstantPtr@{ActionConstantPtr}!reset@{reset}}
+\index{reset@{reset}!ActionConstantPtr@{ActionConstantPtr}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual void Action\+Constant\+Ptr\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the new function {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} may affect \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_ac7c1cf16bb63e0741ba16be5179cf943}{Action}}.
+
+
+
+Definition at line 168 of file coreaction.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

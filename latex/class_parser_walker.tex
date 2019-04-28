@@ -1,0 +1,650 @@
+\hypertarget{class_parser_walker}{}\section{Parser\+Walker Class Reference}
+\label{class_parser_walker}\index{ParserWalker@{ParserWalker}}
+
+
+{\ttfamily \#include $<$context.\+hh$>$}
+
+
+
+Inheritance diagram for Parser\+Walker\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{class_parser_walker__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Parser\+Walker\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{class_parser_walker__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_parser_walker_a2409e0f0840b4361c256315b5e537344}{Parser\+Walker}} (const \mbox{\hyperlink{class_parser_context}{Parser\+Context}} $\ast$c)
+\item 
+\mbox{\hyperlink{class_parser_walker_a683f36ca664f0cbab7f6125084c00de8}{Parser\+Walker}} (const \mbox{\hyperlink{class_parser_context}{Parser\+Context}} $\ast$c, const \mbox{\hyperlink{class_parser_context}{Parser\+Context}} $\ast$cross)
+\item 
+const \mbox{\hyperlink{class_parser_context}{Parser\+Context}} $\ast$ \mbox{\hyperlink{class_parser_walker_a3468c4fffb0a6ab229883ac9769e46f2}{get\+Parser\+Context}} (void) const
+\item 
+void \mbox{\hyperlink{class_parser_walker_a63fb34fd3dee860df4b182351dd935b0}{base\+State}} (void)
+\item 
+void \mbox{\hyperlink{class_parser_walker_a917b2a69e5a2d62857666389d95bf757}{set\+Out\+Of\+Band\+State}} (\mbox{\hyperlink{class_constructor}{Constructor}} $\ast$ct, int4 index, \mbox{\hyperlink{struct_construct_state}{Construct\+State}} $\ast$tempstate, const \mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&otherwalker)
+\item 
+bool \mbox{\hyperlink{class_parser_walker_aea8bce30faf92826fd7e6ba1512fb66f}{is\+State}} (void) const
+\item 
+void \mbox{\hyperlink{class_parser_walker_a0935e6c14cfdcb9657a440cef7ee40ef}{push\+Operand}} (int4 i)
+\item 
+void \mbox{\hyperlink{class_parser_walker_a086ef7fa7018c8133d93df96a9dde6d9}{pop\+Operand}} (void)
+\item 
+uint4 \mbox{\hyperlink{class_parser_walker_add81e215f1dd3cdc87f6d9e78de818ad}{get\+Offset}} (int4 i) const
+\item 
+\mbox{\hyperlink{class_constructor}{Constructor}} $\ast$ \mbox{\hyperlink{class_parser_walker_a3d8f48e605938ba8faef8a92cb816b4f}{get\+Constructor}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_parser_walker_abf73ef90d42aeea7f3e9fb96eb9ad08e}{get\+Operand}} (void) const
+\item 
+\mbox{\hyperlink{struct_fixed_handle}{Fixed\+Handle}} \& \mbox{\hyperlink{class_parser_walker_a29772169263a35683724c03d90372734}{get\+Parent\+Handle}} (void)
+\item 
+const \mbox{\hyperlink{struct_fixed_handle}{Fixed\+Handle}} \& \mbox{\hyperlink{class_parser_walker_af3212cb092a2501f0a16bf4ef9618cdb}{get\+Fixed\+Handle}} (int4 i) const
+\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_parser_walker_a6af3a4ebd3a69f52ebcae2dd197ffd11}{get\+Cur\+Space}} (void) const
+\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_parser_walker_ab353bd7e91219577f2d9aff400e84c80}{get\+Const\+Space}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_walker_a3a5e36992af804c2ece1febb3d0e6691}{get\+Addr}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_walker_a32fdda0fe14a36c08a4740550e40c0ea}{get\+Naddr}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_walker_a0ddbb5961570e22d45fe72d33d86ffe6}{get\+Ref\+Addr}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_parser_walker_a8593ab995c8656e789b3b6aa933a4147}{get\+Dest\+Addr}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_parser_walker_a77de14662fd97ff54b79b510dcdd7f1d}{get\+Length}} (void) const
+\item 
+uintm \mbox{\hyperlink{class_parser_walker_ad986695377d62eeb98db856c34db6aa7}{get\+Instruction\+Bytes}} (int4 byteoff, int4 numbytes) const
+\item 
+uintm \mbox{\hyperlink{class_parser_walker_a630fe457e1473666fcad37cbba63b9a5}{get\+Context\+Bytes}} (int4 byteoff, int4 numbytes) const
+\item 
+uintm \mbox{\hyperlink{class_parser_walker_af78d60807ac439bf2af102516f257cc8}{get\+Instruction\+Bits}} (int4 startbit, int4 size) const
+\item 
+uintm \mbox{\hyperlink{class_parser_walker_ae38ea0339696eeeec219b3d36d35e5ac}{get\+Context\+Bits}} (int4 startbit, int4 size) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_construct_state}{Construct\+State}} $\ast$ \mbox{\hyperlink{class_parser_walker_a78afa504d43d46dfc72b5796222e518c}{point}}
+\item 
+int4 \mbox{\hyperlink{class_parser_walker_a13ed53797769d934b958c01005401847}{depth}}
+\item 
+int4 \mbox{\hyperlink{class_parser_walker_acbc73bc7057a259a7e605f2075291fdf}{breadcrumb}} \mbox{[}32\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 124 of file context.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_parser_walker_a2409e0f0840b4361c256315b5e537344}\label{class_parser_walker_a2409e0f0840b4361c256315b5e537344}} 
+\index{ParserWalker@{ParserWalker}!ParserWalker@{ParserWalker}}
+\index{ParserWalker@{ParserWalker}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{ParserWalker()}{ParserWalker()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Parser\+Walker\+::\+Parser\+Walker (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_parser_context}{Parser\+Context}} $\ast$}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 132 of file context.\+hh.
+
+\mbox{\Hypertarget{class_parser_walker_a683f36ca664f0cbab7f6125084c00de8}\label{class_parser_walker_a683f36ca664f0cbab7f6125084c00de8}} 
+\index{ParserWalker@{ParserWalker}!ParserWalker@{ParserWalker}}
+\index{ParserWalker@{ParserWalker}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{ParserWalker()}{ParserWalker()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Parser\+Walker\+::\+Parser\+Walker (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_parser_context}{Parser\+Context}} $\ast$}]{c,  }\item[{const \mbox{\hyperlink{class_parser_context}{Parser\+Context}} $\ast$}]{cross }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 133 of file context.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_parser_walker_a63fb34fd3dee860df4b182351dd935b0}\label{class_parser_walker_a63fb34fd3dee860df4b182351dd935b0}} 
+\index{ParserWalker@{ParserWalker}!baseState@{baseState}}
+\index{baseState@{baseState}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{baseState()}{baseState()}}
+{\footnotesize\ttfamily void Parser\+Walker\+::base\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 135 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a63fb34fd3dee860df4b182351dd935b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a3a5e36992af804c2ece1febb3d0e6691}\label{class_parser_walker_a3a5e36992af804c2ece1febb3d0e6691}} 
+\index{ParserWalker@{ParserWalker}!getAddr@{getAddr}}
+\index{getAddr@{getAddr}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getAddr()}{getAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Walker\+::get\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 148 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a3a5e36992af804c2ece1febb3d0e6691_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a3a5e36992af804c2ece1febb3d0e6691_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a3d8f48e605938ba8faef8a92cb816b4f}\label{class_parser_walker_a3d8f48e605938ba8faef8a92cb816b4f}} 
+\index{ParserWalker@{ParserWalker}!getConstructor@{getConstructor}}
+\index{getConstructor@{getConstructor}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getConstructor()}{getConstructor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_constructor}{Constructor}}$\ast$ Parser\+Walker\+::get\+Constructor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 142 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a3d8f48e605938ba8faef8a92cb816b4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_ab353bd7e91219577f2d9aff400e84c80}\label{class_parser_walker_ab353bd7e91219577f2d9aff400e84c80}} 
+\index{ParserWalker@{ParserWalker}!getConstSpace@{getConstSpace}}
+\index{getConstSpace@{getConstSpace}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getConstSpace()}{getConstSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Parser\+Walker\+::get\+Const\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 147 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_ab353bd7e91219577f2d9aff400e84c80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_ab353bd7e91219577f2d9aff400e84c80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_ae38ea0339696eeeec219b3d36d35e5ac}\label{class_parser_walker_ae38ea0339696eeeec219b3d36d35e5ac}} 
+\index{ParserWalker@{ParserWalker}!getContextBits@{getContextBits}}
+\index{getContextBits@{getContextBits}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getContextBits()}{getContextBits()}}
+{\footnotesize\ttfamily uintm Parser\+Walker\+::get\+Context\+Bits (\begin{DoxyParamCaption}\item[{int4}]{startbit,  }\item[{int4}]{size }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 159 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_ae38ea0339696eeeec219b3d36d35e5ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_ae38ea0339696eeeec219b3d36d35e5ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a630fe457e1473666fcad37cbba63b9a5}\label{class_parser_walker_a630fe457e1473666fcad37cbba63b9a5}} 
+\index{ParserWalker@{ParserWalker}!getContextBytes@{getContextBytes}}
+\index{getContextBytes@{getContextBytes}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getContextBytes()}{getContextBytes()}}
+{\footnotesize\ttfamily uintm Parser\+Walker\+::get\+Context\+Bytes (\begin{DoxyParamCaption}\item[{int4}]{byteoff,  }\item[{int4}]{numbytes }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 155 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a630fe457e1473666fcad37cbba63b9a5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a630fe457e1473666fcad37cbba63b9a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a6af3a4ebd3a69f52ebcae2dd197ffd11}\label{class_parser_walker_a6af3a4ebd3a69f52ebcae2dd197ffd11}} 
+\index{ParserWalker@{ParserWalker}!getCurSpace@{getCurSpace}}
+\index{getCurSpace@{getCurSpace}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getCurSpace()}{getCurSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Parser\+Walker\+::get\+Cur\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 146 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a6af3a4ebd3a69f52ebcae2dd197ffd11_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a6af3a4ebd3a69f52ebcae2dd197ffd11_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a8593ab995c8656e789b3b6aa933a4147}\label{class_parser_walker_a8593ab995c8656e789b3b6aa933a4147}} 
+\index{ParserWalker@{ParserWalker}!getDestAddr@{getDestAddr}}
+\index{getDestAddr@{getDestAddr}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getDestAddr()}{getDestAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Walker\+::get\+Dest\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 151 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a8593ab995c8656e789b3b6aa933a4147_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a8593ab995c8656e789b3b6aa933a4147_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_af3212cb092a2501f0a16bf4ef9618cdb}\label{class_parser_walker_af3212cb092a2501f0a16bf4ef9618cdb}} 
+\index{ParserWalker@{ParserWalker}!getFixedHandle@{getFixedHandle}}
+\index{getFixedHandle@{getFixedHandle}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getFixedHandle()}{getFixedHandle()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_fixed_handle}{Fixed\+Handle}}\& Parser\+Walker\+::get\+Fixed\+Handle (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 145 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_af3212cb092a2501f0a16bf4ef9618cdb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_af78d60807ac439bf2af102516f257cc8}\label{class_parser_walker_af78d60807ac439bf2af102516f257cc8}} 
+\index{ParserWalker@{ParserWalker}!getInstructionBits@{getInstructionBits}}
+\index{getInstructionBits@{getInstructionBits}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getInstructionBits()}{getInstructionBits()}}
+{\footnotesize\ttfamily uintm Parser\+Walker\+::get\+Instruction\+Bits (\begin{DoxyParamCaption}\item[{int4}]{startbit,  }\item[{int4}]{size }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 157 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_af78d60807ac439bf2af102516f257cc8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_af78d60807ac439bf2af102516f257cc8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_ad986695377d62eeb98db856c34db6aa7}\label{class_parser_walker_ad986695377d62eeb98db856c34db6aa7}} 
+\index{ParserWalker@{ParserWalker}!getInstructionBytes@{getInstructionBytes}}
+\index{getInstructionBytes@{getInstructionBytes}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getInstructionBytes()}{getInstructionBytes()}}
+{\footnotesize\ttfamily uintm Parser\+Walker\+::get\+Instruction\+Bytes (\begin{DoxyParamCaption}\item[{int4}]{byteoff,  }\item[{int4}]{numbytes }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 153 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_ad986695377d62eeb98db856c34db6aa7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_ad986695377d62eeb98db856c34db6aa7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a77de14662fd97ff54b79b510dcdd7f1d}\label{class_parser_walker_a77de14662fd97ff54b79b510dcdd7f1d}} 
+\index{ParserWalker@{ParserWalker}!getLength@{getLength}}
+\index{getLength@{getLength}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily int4 Parser\+Walker\+::get\+Length (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 152 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a77de14662fd97ff54b79b510dcdd7f1d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a77de14662fd97ff54b79b510dcdd7f1d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a32fdda0fe14a36c08a4740550e40c0ea}\label{class_parser_walker_a32fdda0fe14a36c08a4740550e40c0ea}} 
+\index{ParserWalker@{ParserWalker}!getNaddr@{getNaddr}}
+\index{getNaddr@{getNaddr}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getNaddr()}{getNaddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Walker\+::get\+Naddr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 149 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a32fdda0fe14a36c08a4740550e40c0ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a32fdda0fe14a36c08a4740550e40c0ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_add81e215f1dd3cdc87f6d9e78de818ad}\label{class_parser_walker_add81e215f1dd3cdc87f6d9e78de818ad}} 
+\index{ParserWalker@{ParserWalker}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getOffset()}{getOffset()}}
+{\footnotesize\ttfamily uint4 Parser\+Walker\+::get\+Offset (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 140 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_add81e215f1dd3cdc87f6d9e78de818ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_abf73ef90d42aeea7f3e9fb96eb9ad08e}\label{class_parser_walker_abf73ef90d42aeea7f3e9fb96eb9ad08e}} 
+\index{ParserWalker@{ParserWalker}!getOperand@{getOperand}}
+\index{getOperand@{getOperand}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getOperand()}{getOperand()}}
+{\footnotesize\ttfamily int4 Parser\+Walker\+::get\+Operand (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 143 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_abf73ef90d42aeea7f3e9fb96eb9ad08e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a29772169263a35683724c03d90372734}\label{class_parser_walker_a29772169263a35683724c03d90372734}} 
+\index{ParserWalker@{ParserWalker}!getParentHandle@{getParentHandle}}
+\index{getParentHandle@{getParentHandle}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getParentHandle()}{getParentHandle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_fixed_handle}{Fixed\+Handle}}\& Parser\+Walker\+::get\+Parent\+Handle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 144 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a29772169263a35683724c03d90372734_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a3468c4fffb0a6ab229883ac9769e46f2}\label{class_parser_walker_a3468c4fffb0a6ab229883ac9769e46f2}} 
+\index{ParserWalker@{ParserWalker}!getParserContext@{getParserContext}}
+\index{getParserContext@{getParserContext}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getParserContext()}{getParserContext()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_parser_context}{Parser\+Context}}$\ast$ Parser\+Walker\+::get\+Parser\+Context (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 134 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a3468c4fffb0a6ab229883ac9769e46f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a0ddbb5961570e22d45fe72d33d86ffe6}\label{class_parser_walker_a0ddbb5961570e22d45fe72d33d86ffe6}} 
+\index{ParserWalker@{ParserWalker}!getRefAddr@{getRefAddr}}
+\index{getRefAddr@{getRefAddr}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{getRefAddr()}{getRefAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Parser\+Walker\+::get\+Ref\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 150 of file context.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a0ddbb5961570e22d45fe72d33d86ffe6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a0ddbb5961570e22d45fe72d33d86ffe6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_aea8bce30faf92826fd7e6ba1512fb66f}\label{class_parser_walker_aea8bce30faf92826fd7e6ba1512fb66f}} 
+\index{ParserWalker@{ParserWalker}!isState@{isState}}
+\index{isState@{isState}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{isState()}{isState()}}
+{\footnotesize\ttfamily bool Parser\+Walker\+::is\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 137 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_aea8bce30faf92826fd7e6ba1512fb66f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a086ef7fa7018c8133d93df96a9dde6d9}\label{class_parser_walker_a086ef7fa7018c8133d93df96a9dde6d9}} 
+\index{ParserWalker@{ParserWalker}!popOperand@{popOperand}}
+\index{popOperand@{popOperand}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{popOperand()}{popOperand()}}
+{\footnotesize\ttfamily void Parser\+Walker\+::pop\+Operand (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 139 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a086ef7fa7018c8133d93df96a9dde6d9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a0935e6c14cfdcb9657a440cef7ee40ef}\label{class_parser_walker_a0935e6c14cfdcb9657a440cef7ee40ef}} 
+\index{ParserWalker@{ParserWalker}!pushOperand@{pushOperand}}
+\index{pushOperand@{pushOperand}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{pushOperand()}{pushOperand()}}
+{\footnotesize\ttfamily void Parser\+Walker\+::push\+Operand (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 138 of file context.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a0935e6c14cfdcb9657a440cef7ee40ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_walker_a917b2a69e5a2d62857666389d95bf757}\label{class_parser_walker_a917b2a69e5a2d62857666389d95bf757}} 
+\index{ParserWalker@{ParserWalker}!setOutOfBandState@{setOutOfBandState}}
+\index{setOutOfBandState@{setOutOfBandState}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{setOutOfBandState()}{setOutOfBandState()}}
+{\footnotesize\ttfamily void Parser\+Walker\+::set\+Out\+Of\+Band\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_constructor}{Constructor}} $\ast$}]{ct,  }\item[{int4}]{index,  }\item[{\mbox{\hyperlink{struct_construct_state}{Construct\+State}} $\ast$}]{tempstate,  }\item[{const \mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&}]{otherwalker }\end{DoxyParamCaption})}
+
+
+
+Definition at line 179 of file context.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a917b2a69e5a2d62857666389d95bf757_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_walker_a917b2a69e5a2d62857666389d95bf757_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_parser_walker_acbc73bc7057a259a7e605f2075291fdf}\label{class_parser_walker_acbc73bc7057a259a7e605f2075291fdf}} 
+\index{ParserWalker@{ParserWalker}!breadcrumb@{breadcrumb}}
+\index{breadcrumb@{breadcrumb}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{breadcrumb}{breadcrumb}}
+{\footnotesize\ttfamily int4 Parser\+Walker\+::breadcrumb\mbox{[}32\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 130 of file context.\+hh.
+
+\mbox{\Hypertarget{class_parser_walker_a13ed53797769d934b958c01005401847}\label{class_parser_walker_a13ed53797769d934b958c01005401847}} 
+\index{ParserWalker@{ParserWalker}!depth@{depth}}
+\index{depth@{depth}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{depth}{depth}}
+{\footnotesize\ttfamily int4 Parser\+Walker\+::depth\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 129 of file context.\+hh.
+
+\mbox{\Hypertarget{class_parser_walker_a78afa504d43d46dfc72b5796222e518c}\label{class_parser_walker_a78afa504d43d46dfc72b5796222e518c}} 
+\index{ParserWalker@{ParserWalker}!point@{point}}
+\index{point@{point}!ParserWalker@{ParserWalker}}
+\subsubsection{\texorpdfstring{point}{point}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_construct_state}{Construct\+State}}$\ast$ Parser\+Walker\+::point\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 128 of file context.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{context_8hh}{context.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{context_8cc}{context.\+cc}}\end{DoxyCompactItemize}

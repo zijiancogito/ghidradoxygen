@@ -1,0 +1,138 @@
+.TH "ParamListMerged" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParamListMerged \- A union of other input parameter passing models\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherits \fBParamListStandard\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParamListMerged\fP (void)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml\&. "
+.ti -1c
+.RI "\fBParamListMerged\fP (const \fBParamListMerged\fP &op2)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "void \fBfoldIn\fP (const \fBParamListStandard\fP &op2)"
+.br
+.RI "Add another model to the union\&. "
+.ti -1c
+.RI "virtual uint4 \fBgetType\fP (void) const"
+.br
+.RI "Get the type of parameter list\&. "
+.ti -1c
+.RI "virtual void \fBassignMap\fP (const vector< \fBDatatype\fP * > &proto, bool isinput, \fBTypeFactory\fP &typefactory, vector< \fBParameterPieces\fP > &res) const"
+.br
+.RI "Given list of data-types, map the list positions to storage locations\&. "
+.ti -1c
+.RI "virtual void \fBfillinMap\fP (\fBParamActive\fP *active) const"
+.br
+.RI "Given an unordered list of storage locations, calculate a function prototype\&. "
+.ti -1c
+.RI "virtual \fBParamList\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone this parameter list model\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A union of other input parameter passing models\&. 
+
+This model is viewed as a union of a constituent set of resource lists\&. This allows initial data-flow analysis to proceed when the exact model isn't known\&. The \fBassignMap()\fP and \fBfillinMap()\fP methods are disabled for instances of this class\&. The controlling prototype model (\fBProtoModelMerged\fP) decides from among the constituent \fBParamList\fP models before these routines need to be invoked\&. 
+.PP
+Definition at line 511 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParamListMerged::ParamListMerged (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with restoreXml\&. 
+.PP
+Definition at line 513 of file fspec\&.hh\&.
+.SS "ParamListMerged::ParamListMerged (const \fBParamListMerged\fP & op2)\fC [inline]\fP"
+
+.PP
+Copy constructor\&. 
+.PP
+Definition at line 514 of file fspec\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void ParamListMerged::assignMap (const vector< \fBDatatype\fP * > & proto, bool isinput, \fBTypeFactory\fP & typefactory, vector< \fBParameterPieces\fP > & res) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Given list of data-types, map the list positions to storage locations\&. If we know the function prototype, recover how parameters are actually stored using the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproto\fP is the ordered list of data-types 
+.br
+\fIisinput\fP is \fBtrue\fP for the input prototype, \fBfalse\fP for output prototype 
+.br
+\fItypefactory\fP is the \fBTypeFactory\fP (for constructing pointers) 
+.br
+\fIres\fP will contain the storage locations corresponding to the datatypes 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 517 of file fspec\&.hh\&.
+.SS "\fBParamList\fP * ParamListMerged::clone (void) const\fC [virtual]\fP"
+
+.PP
+Clone this parameter list model\&. 
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 1156 of file fspec\&.cc\&.
+.SS "virtual void ParamListMerged::fillinMap (\fBParamActive\fP * active) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Given an unordered list of storage locations, calculate a function prototype\&. A list of input (or output) trials is given, which may have holes, invalid inputs etc\&. Decide on the formal ordered parameter list\&. Trials within the \fBParamActive\fP are added, removed, or reordered as needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the given list of trials 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 520 of file fspec\&.hh\&.
+.SS "void ParamListMerged::foldIn (const \fBParamListStandard\fP & op2)"
+
+.PP
+Add another model to the union\&. The given set of parameter entries are folded into \fBthis\fP set\&. Duplicate entries are eliminated\&. Containing entries subsume what they contain\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the list model to fold into \fBthis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1116 of file fspec\&.cc\&.
+.SS "virtual uint4 ParamListMerged::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the type of parameter list\&. 
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 516 of file fspec\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

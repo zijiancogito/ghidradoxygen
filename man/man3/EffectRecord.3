@@ -1,0 +1,245 @@
+.TH "EffectRecord" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EffectRecord \- Description of the indirect effect a sub-function has on a memory range\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBunaffected\fP = 1, \fBkilledbycall\fP = 2, \fBreturn_address\fP = 3, \fBunknown_effect\fP = 4 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEffectRecord\fP (void)"
+.br
+.RI "\fBConstructor\fP for use with \fBrestoreXml()\fP "
+.ti -1c
+.RI "\fBEffectRecord\fP (const \fBEffectRecord\fP &op2)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "\fBEffectRecord\fP (const \fBAddress\fP &addr, int4 size)"
+.br
+.RI "Construct a memory range with an unknown effect\&. "
+.ti -1c
+.RI "\fBEffectRecord\fP (const \fBParamEntry\fP &entry, uint4 t)"
+.br
+.RI "Construct an effect on a parameter storage location\&. "
+.ti -1c
+.RI "\fBEffectRecord\fP (const \fBVarnodeData\fP &addr, uint4 t)"
+.br
+.RI "Construct an effect on a memory range\&. "
+.ti -1c
+.RI "uint4 \fBgetType\fP (void) const"
+.br
+.RI "Get the type of effect\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetAddress\fP (void) const"
+.br
+.RI "Get the starting address of the affected range\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the size of the affected range\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBEffectRecord\fP &op2) const"
+.br
+.RI "Comparator for EffectRecords\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBEffectRecord\fP &op2) const"
+.br
+.RI "Equality operator\&. "
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBEffectRecord\fP &op2) const"
+.br
+.RI "Inequality operator\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save the record to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (uint4 grouptype, const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore the record from an XML stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Description of the indirect effect a sub-function has on a memory range\&. 
+
+This object applies only to the specific memory range, which is seen from the point of view of the calling function as a particular sub-function gets called\&. The main enumeration below lists the possible effects\&. 
+.PP
+Definition at line 263 of file fspec\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIunaffected \fP\fP
+The sub-function does not change the value at all\&. 
+.TP
+\fB\fIkilledbycall \fP\fP
+The memory is changed and is completely unrelated to its original value\&. 
+.TP
+\fB\fIreturn_address \fP\fP
+The memory is being used to pass back a return value from the sub-function\&. 
+.TP
+\fB\fIunknown_effect \fP\fP
+An unknown effect (indicates the absence of an \fBEffectRecord\fP) 
+.PP
+Definition at line 265 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "EffectRecord::EffectRecord (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with \fBrestoreXml()\fP 
+.PP
+Definition at line 275 of file fspec\&.hh\&.
+.SS "EffectRecord::EffectRecord (const \fBEffectRecord\fP & op2)\fC [inline]\fP"
+
+.PP
+Copy constructor\&. 
+.PP
+Definition at line 276 of file fspec\&.hh\&.
+.SS "EffectRecord::EffectRecord (const \fBAddress\fP & addr, int4 size)"
+
+.PP
+Construct a memory range with an unknown effect\&. The type is set to \fIunknown_effect\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the start of the memory range 
+.br
+\fIsize\fP is the number of bytes in the memory range 
+.RE
+.PP
+
+.PP
+Definition at line 1484 of file fspec\&.cc\&.
+.SS "EffectRecord::EffectRecord (const \fBParamEntry\fP & entry, uint4 t)"
+
+.PP
+Construct an effect on a parameter storage location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP is a model of the parameter storage 
+.br
+\fIt\fP is the effect type 
+.RE
+.PP
+
+.PP
+Definition at line 1495 of file fspec\&.cc\&.
+.SS "EffectRecord::EffectRecord (const \fBVarnodeData\fP & data, uint4 t)"
+
+.PP
+Construct an effect on a memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the memory range affected 
+.br
+\fIt\fP is the effect type 
+.RE
+.PP
+
+.PP
+Definition at line 1506 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBAddress\fP EffectRecord::getAddress (void) const\fC [inline]\fP"
+
+.PP
+Get the starting address of the affected range\&. 
+.PP
+Definition at line 281 of file fspec\&.hh\&.
+.SS "int4 EffectRecord::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the size of the affected range\&. 
+.PP
+Definition at line 282 of file fspec\&.hh\&.
+.SS "uint4 EffectRecord::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the type of effect\&. 
+.PP
+Definition at line 280 of file fspec\&.hh\&.
+.SS "bool EffectRecord::operator!= (const \fBEffectRecord\fP & op2) const\fC [inline]\fP"
+
+.PP
+Inequality operator\&. 
+.PP
+Definition at line 1450 of file fspec\&.hh\&.
+.SS "bool EffectRecord::operator< (const \fBEffectRecord\fP & op2) const\fC [inline]\fP"
+
+.PP
+Comparator for EffectRecords\&. Sort on the memory range, then the effect type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other record to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP should be ordered before the other record 
+.RE
+.PP
+
+.PP
+Definition at line 1435 of file fspec\&.hh\&.
+.SS "bool EffectRecord::operator== (const \fBEffectRecord\fP & op2) const\fC [inline]\fP"
+
+.PP
+Equality operator\&. 
+.PP
+Definition at line 1443 of file fspec\&.hh\&.
+.SS "void EffectRecord::restoreXml (uint4 grouptype, const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Restore the record from an XML stream\&. Reads an <addr> tag to get the memory range\&. The effect type is inherited from the parent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouptype\fP is the effect inherited from the parent 
+.br
+\fIel\fP is address element 
+.br
+\fImanage\fP is a manager to resolve address space references 
+.RE
+.PP
+
+.PP
+Definition at line 1529 of file fspec\&.cc\&.
+.SS "void EffectRecord::saveXml (ostream & s) const"
+
+.PP
+Save the record to an XML stream\&. Writes just an <addr> tag\&. The effect type is indicated by the parent tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 1515 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

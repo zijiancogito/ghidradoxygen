@@ -1,0 +1,148 @@
+.TH "BlockList" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockList \- A series of blocks that execute in sequence\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBBlockGraph\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual const \fBFlowBlock\fP * \fBgetExitLeaf\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. "
+.ti -1c
+.RI "virtual \fBPcodeOp\fP * \fBlastOp\fP (void) const"
+.br
+.RI "Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual bool \fBnegateCondition\fP (bool toporbottom)"
+.br
+.RI "Flip the condition computed by \fBthis\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBgetSplitPoint\fP (void)"
+.br
+.RI "Get the leaf splitting block\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A series of blocks that execute in sequence\&. 
+
+When structuring control-flow, an instance of this class represents blocks that execute in sequence and fall-thru to each other\&. In general, the component blocks may not be basic blocks and can have their own sub-structures\&. 
+.PP
+Definition at line 492 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void BlockList::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 496 of file block\&.hh\&.
+.SS "const \fBFlowBlock\fP * BlockList::getExitLeaf (void) const\fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2640 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * BlockList::getSplitPoint (void)\fC [virtual]\fP"
+
+.PP
+Get the leaf splitting block\&. If \fBthis\fP block ends with a conditional branch, return the deepest component block that performs the split\&. This component needs to be able to perform \fBflipInPlaceTest()\fP and \fBflipInPlaceExecute()\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+the component \fBFlowBlock\fP or NULL if this doesn't end in a conditional branch 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2663 of file block\&.cc\&.
+.SS "virtual \fBblock_type\fP BlockList::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 494 of file block\&.hh\&.
+.SS "\fBPcodeOp\fP * BlockList::lastOp (void) const\fC [virtual]\fP"
+
+.PP
+Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2647 of file block\&.cc\&.
+.SS "bool BlockList::negateCondition (bool toporbottom)\fC [virtual]\fP"
+
+.PP
+Flip the condition computed by \fBthis\fP\&. Flip the order of outgoing edges (at least)\&. This should also affect the original op causing the condition\&. Note: we don't have to flip at all levels of the hierarchy only at the top and at the bottom 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoporbottom\fP is \fBtrue\fP if \fBthis\fP is the top outermost block of the hierarchy getting negated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made to data-flow 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2654 of file block\&.cc\&.
+.SS "void BlockList::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2670 of file block\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

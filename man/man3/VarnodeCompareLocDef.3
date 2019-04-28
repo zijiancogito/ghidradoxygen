@@ -1,0 +1,50 @@
+.TH "VarnodeCompareLocDef" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VarnodeCompareLocDef \- Compare two \fBVarnode\fP pointers by location then definition\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <varnode\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator()\fP (const \fBVarnode\fP *a, const \fBVarnode\fP *b) const"
+.br
+.RI "Functional comparison operator\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Compare two \fBVarnode\fP pointers by location then definition\&. 
+.PP
+Definition at line 33 of file varnode\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool VarnodeCompareLocDef::operator() (const \fBVarnode\fP * a, const \fBVarnode\fP * b) const\fC [inline]\fP"
+
+.PP
+Functional comparison operator\&. Compare by location then by definition\&. This is the same as the normal varnode compare, but we distinguish identical frees by their pointer address\&. Thus varsets defined with this comparison act like multisets for free varnodes and like unique sets for everything else (with respect to the standard varnode comparison) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBVarnode\fP to compare 
+.br
+\fIb\fP is the second \fBVarnode\fP to compare 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if \fBa\fP occurs earlier than \fBb\fP 
+.RE
+.PP
+
+.PP
+Definition at line 26 of file varnode\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

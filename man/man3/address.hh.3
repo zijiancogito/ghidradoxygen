@@ -1,0 +1,465 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/address.hh \- Classes for specifying addresses and other low-level constants\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'space\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAddress\fP"
+.br
+.RI "A low-level machine address for labelling bytes and data\&. "
+.ti -1c
+.RI "class \fBSeqNum\fP"
+.br
+.RI "A class for uniquely labelling and comparing PcodeOps\&. "
+.ti -1c
+.RI "class \fBRange\fP"
+.br
+.RI "A contiguous range of bytes in some address space\&. "
+.ti -1c
+.RI "class \fBRangeList\fP"
+.br
+.RI "A disjoint set of Ranges, possibly across multiple address spaces\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBuintb\fP \fBcalc_mask\fP (int4 size)"
+.br
+.RI "Calculate a mask for a given byte size\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBpcode_right\fP (\fBuintb\fP val, int4 sa)"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBpcode_left\fP (\fBuintb\fP val, int4 sa)"
+.br
+.ti -1c
+.RI "bool \fBsignbit_negative\fP (\fBuintb\fP val, int4 size)"
+.br
+.RI "Return true if the sign-big is set\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBuintb_negate\fP (\fBuintb\fP in, int4 size)"
+.br
+.RI "Negate the \fIsized\fP value\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBsign_extend\fP (\fBuintb\fP in, int4 sizein, int4 sizeout)"
+.br
+.RI "Sign-extend a value between two byte sizes\&. "
+.ti -1c
+.RI "void \fBsign_extend\fP (\fBintb\fP &val, int4 bit)"
+.br
+.RI "Sign extend above given bit\&. "
+.ti -1c
+.RI "void \fBzero_extend\fP (\fBintb\fP &val, int4 bit)"
+.br
+.RI "Clear all bits above given bit\&. "
+.ti -1c
+.RI "void \fBbyte_swap\fP (\fBintb\fP &val, int4 size)"
+.br
+.RI "Swap bytes in the given value\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBbyte_swap\fP (\fBuintb\fP val, int4 size)"
+.br
+.RI "Return the given value with bytes swapped\&. "
+.ti -1c
+.RI "int4 \fBleastsigbit_set\fP (\fBuintb\fP val)"
+.br
+.RI "Return index of least significant bit set in given value\&. "
+.ti -1c
+.RI "int4 \fBmostsigbit_set\fP (\fBuintb\fP val)"
+.br
+.RI "Return index of most significant bit set in given val\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBcoveringmask\fP (\fBuintb\fP val)"
+.br
+.RI "Return a mask that \fIcovers\fP the given value\&. "
+.ti -1c
+.RI "int4 \fBbit_transitions\fP (\fBuintb\fP val, int4 sz)"
+.br
+.RI "Calculate the number of bit transitions in the sized value\&. "
+.ti -1c
+.RI "void \fBmult64to128\fP (uint8 *res, uint8 x, uint8 y)"
+.br
+.RI "Multiply 2 unsigned 64-bit values, producing a 128-bit value\&. "
+.ti -1c
+.RI "void \fBunsignedSubtract128\fP (uint8 *a, uint8 *b)"
+.br
+.RI "Subtract (in-place) a 128-bit value from a base 128-value\&. "
+.ti -1c
+.RI "int4 \fBunsignedCompare128\fP (uint8 *a, uint8 *b)"
+.br
+.RI "Compare two unsigned 128-bit values\&. "
+.ti -1c
+.RI "int4 \fBpower2Divide\fP (int4 n, uint8 divisor, uint8 &q, uint8 &r)"
+.br
+.RI "Unsigned division of a power of 2 (upto 2^127) by a 64-bit divisor\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBuintb\fP \fBuintbmasks\fP []"
+.br
+.RI "Precalculated masks indexed by size\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classes for specifying addresses and other low-level constants\&. 
+
+All addresses are absolute and there are are no registers in CPUI\&. However, all addresses are prefixed with an 'immutable' pointer, which can specify a separate RAM space, a register space, an i/o space etc\&. Thus a translation from a real machine language will typically simulate registers by placing them in their own space, separate from RAM\&. Indirection (i\&.e\&. pointers) must be simulated through the LOAD and STORE ops\&. 
+.PP
+Definition in file \fBaddress\&.hh\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "int4 bit_transitions (\fBuintb\fP val, int4 sz)"
+
+.PP
+Calculate the number of bit transitions in the sized value\&. Treat \fBval\fP as a constant of size \fBsz\fP\&. Scanning across the bits of \fBval\fP return the number of transitions (from 0->1 or 1->0) If there are 2 or less transitions, this is an indication of a bit flag or a mask 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given value 
+.br
+\fIsz\fP is the size to treat the value as 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of transitions 
+.RE
+.PP
+
+.PP
+Definition at line 720 of file address\&.cc\&.
+.SS "void byte_swap (\fBintb\fP & val, int4 size)"
+
+.PP
+Swap bytes in the given value\&. Swap the least significant \fBsize\fP bytes in \fBval\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is a reference to the value to swap 
+.br
+\fIsize\fP is the number of bytes to swap 
+.RE
+.PP
+
+.PP
+Definition at line 627 of file address\&.cc\&.
+.SS "\fBuintb\fP byte_swap (\fBuintb\fP val, int4 size)"
+
+.PP
+Return the given value with bytes swapped\&. Swap the least significant \fBsize\fP bytes in \fBval\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value to swap 
+.br
+\fIsize\fP is the number of bytes to swap 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the swapped value 
+.RE
+.PP
+
+.PP
+Definition at line 644 of file address\&.cc\&.
+.SS "\fBuintb\fP calc_mask (int4 size)\fC [inline]\fP"
+
+.PP
+Calculate a mask for a given byte size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP is the desired size in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a value appropriate for masking off the first \fIsize\fP bytes 
+.RE
+.PP
+
+.PP
+Definition at line 465 of file address\&.hh\&.
+.SS "\fBuintb\fP coveringmask (\fBuintb\fP val)"
+
+.PP
+Return a mask that \fIcovers\fP the given value\&. Return smallest number of form 2^n-1, bigger or equal to the given value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the mask 
+.RE
+.PP
+
+.PP
+Definition at line 702 of file address\&.cc\&.
+.SS "int4 leastsigbit_set (\fBuintb\fP val)"
+
+.PP
+Return index of least significant bit set in given value\&. The least significant bit is index 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the index of the least significant set bit, or -1 if none are set 
+.RE
+.PP
+
+.PP
+Definition at line 660 of file address\&.cc\&.
+.SS "int4 mostsigbit_set (\fBuintb\fP val)"
+
+.PP
+Return index of most significant bit set in given val\&. The least significant bit is index 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the index of the most significant set bit, or -1 if none are set 
+.RE
+.PP
+
+.PP
+Definition at line 681 of file address\&.cc\&.
+.SS "void mult64to128 (uint8 * res, uint8 x, uint8 y)"
+
+.PP
+Multiply 2 unsigned 64-bit values, producing a 128-bit value\&. TODO: Remove once we import a full multiprecision library\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP points to the result array (2 uint8 pieces) 
+.br
+\fIx\fP is the first 64-bit value 
+.br
+\fIy\fP is the second 64-bit value 
+.RE
+.PP
+
+.PP
+Definition at line 744 of file address\&.cc\&.
+.SS "\fBuintb\fP pcode_left (\fBuintb\fP val, int4 sa)\fC [inline]\fP"
+Perform a CPUI_INT_LEFT on the given val 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value to shift 
+.br
+\fIsa\fP is the number of bits to shift 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the shifted value 
+.RE
+.PP
+
+.PP
+Definition at line 480 of file address\&.hh\&.
+.SS "\fBuintb\fP pcode_right (\fBuintb\fP val, int4 sa)\fC [inline]\fP"
+Perform a CPUI_INT_RIGHT on the given val 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value to shift 
+.br
+\fIsa\fP is the number of bits to shift 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the shifted value 
+.RE
+.PP
+
+.PP
+Definition at line 471 of file address\&.hh\&.
+.SS "int4 power2Divide (int4 n, uint8 divisor, uint8 & q, uint8 & r)"
+
+.PP
+Unsigned division of a power of 2 (upto 2^127) by a 64-bit divisor\&. The result must be less than 2^64\&. The remainder is calculated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP is the power of 2 for the numerand 
+.br
+\fIdivisor\fP is the 64-bit divisor 
+.br
+\fIq\fP is the passed back 64-bit quotient 
+.br
+\fIr\fP is the passed back 64-bit remainder 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 if successful, 1 if result is too big, 2 if divide by 0 
+.RE
+.PP
+
+.PP
+Definition at line 802 of file address\&.cc\&.
+.SS "\fBuintb\fP sign_extend (\fBuintb\fP in, int4 sizein, int4 sizeout)"
+
+.PP
+Sign-extend a value between two byte sizes\&. Take the first \fBsizein\fP bytes of the given \fBin\fP and sign-extend this to \fBsizeout\fP bytes, keeping any more significant bytes zero 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP is the given value 
+.br
+\fIsizein\fP is the size to treat that value as an input 
+.br
+\fIsizeout\fP is the size to sign-extend the value to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the sign-extended value 
+.RE
+.PP
+
+.PP
+Definition at line 580 of file address\&.cc\&.
+.SS "void sign_extend (\fBintb\fP & val, int4 bit)"
+
+.PP
+Sign extend above given bit\&. Sign extend \fBval\fP starting at \fBbit\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is a reference to the value to be sign-extended 
+.br
+\fIbit\fP is the index of the bit to extend from (0=least significant bit) 
+.RE
+.PP
+
+.PP
+Definition at line 601 of file address\&.cc\&.
+.SS "bool signbit_negative (\fBuintb\fP val, int4 size)"
+
+.PP
+Return true if the sign-big is set\&. Treat the given \fBval\fP as a constant of \fBsize\fP bytes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given value 
+.br
+\fIsize\fP is the size in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the constant (as sized) has its sign bit set 
+.RE
+.PP
+
+.PP
+Definition at line 555 of file address\&.cc\&.
+.SS "\fBuintb\fP uintb_negate (\fBuintb\fP in, int4 size)"
+
+.PP
+Negate the \fIsized\fP value\&. Treat the given \fBin\fP as a constant of \fBsize\fP bytes\&. Negate this constant keeping the upper bytes zero\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP is the given value 
+.br
+\fIsize\fP is the size in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the negation of the sized constant 
+.RE
+.PP
+
+.PP
+Definition at line 568 of file address\&.cc\&.
+.SS "int4 unsignedCompare128 (uint8 * a, uint8 * b)"
+
+.PP
+Compare two unsigned 128-bit values\&. TODO: Remove once we import a full multiprecision library\&. Given a first and second value, return -1, 0, or 1 depending on whether the first value is \fIless\fP, \fIequal\fP, or \fIgreater\fP than the second value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first 128-bit value (as an array of 2 uint8 elements) 
+.br
+\fIb\fP is the second 128-bit value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the comparison code 
+.RE
+.PP
+
+.PP
+Definition at line 784 of file address\&.cc\&.
+.SS "void unsignedSubtract128 (uint8 * a, uint8 * b)"
+
+.PP
+Subtract (in-place) a 128-bit value from a base 128-value\&. The base value is altered in place\&. TODO: Remove once we import a full multiprecision library\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the base 128-bit value being subtracted from in-place 
+.br
+\fIb\fP is the other 128-bit value being subtracted 
+.RE
+.PP
+
+.PP
+Definition at line 766 of file address\&.cc\&.
+.SS "void zero_extend (\fBintb\fP & val, int4 bit)"
+
+.PP
+Clear all bits above given bit\&. Zero extend \fBval\fP starting at \fBbit\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is a reference to the value to be zero extended 
+.br
+\fIbit\fP is the index of the bit to extend from (0=least significant bit) 
+.RE
+.PP
+
+.PP
+Definition at line 615 of file address\&.cc\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBuintb\fP uintbmasks[]"
+
+.PP
+Precalculated masks indexed by size\&. 
+.PP
+Definition at line 547 of file address\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

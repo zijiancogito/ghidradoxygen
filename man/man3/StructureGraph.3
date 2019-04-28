@@ -1,0 +1,45 @@
+.TH "StructureGraph" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+StructureGraph \- Command to \fBstructure\fP a control-flow graph\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBGhidraCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)"
+.br
+.RI "Perform the action of the command\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Command to \fBstructure\fP a control-flow graph\&. 
+
+An arbitrary control-flow is sent as a <block> tag, with nested <block>, <bhead>, and <edge> sub-tags\&. The decompiler structures the control-flow using standard \fIstructured\fP \fIcode\fP elements: if/else, loops, switches, etc\&. The resulting structure information is returned to the client as an XML document\&.
+.PP
+The command expects 2 string parameters\&. The first is the encoded integer id of a program in which we assume the control-flow graph lives\&. The second is the XML description of the control-flow\&. 
+.PP
+Definition at line 170 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void StructureGraph::rawAction (void)\fC [virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implements \fBGhidraCommand\fP\&.
+.PP
+Definition at line 337 of file ghidra_process\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

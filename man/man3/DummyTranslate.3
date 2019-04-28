@@ -1,0 +1,241 @@
+.TH "DummyTranslate" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DummyTranslate
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rulecompile\&.hh>\fP
+.PP
+Inherits \fBTranslate\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBinitialize\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Initialize the translator given XML configuration documents\&. "
+.ti -1c
+.RI "virtual void \fBaddRegister\fP (const string &nm, \fBAddrSpace\fP *base, \fBuintb\fP offset, int4 size)"
+.br
+.RI "Add a named register to the model for this processor\&. "
+.ti -1c
+.RI "virtual const \fBVarnodeData\fP & \fBgetRegister\fP (const string &nm) const"
+.br
+.RI "Get a register as \fBVarnodeData\fP given its name\&. "
+.ti -1c
+.RI "virtual string \fBgetRegisterName\fP (\fBAddrSpace\fP *base, \fBuintb\fP off, int4 size) const"
+.br
+.RI "Get the name of a register given its location\&. "
+.ti -1c
+.RI "virtual void \fBgetAllRegisters\fP (map< \fBVarnodeData\fP, string > &reglist) const"
+.br
+.RI "Get a list of all register names and the corresponding location\&. "
+.ti -1c
+.RI "virtual void \fBgetUserOpNames\fP (vector< string > &res) const"
+.br
+.RI "Get a list of all \fIuser-defined\fP pcode ops\&. "
+.ti -1c
+.RI "virtual int4 \fBinstructionLength\fP (const \fBAddress\fP &baseaddr) const"
+.br
+.RI "Get the length of a machine instruction\&. "
+.ti -1c
+.RI "virtual int4 \fBoneInstruction\fP (\fBPcodeEmit\fP &emit, const \fBAddress\fP &baseaddr) const"
+.br
+.RI "Transform a single machine instruction into pcode\&. "
+.ti -1c
+.RI "virtual int4 \fBprintAssembly\fP (\fBAssemblyEmit\fP &emit, const \fBAddress\fP &baseaddr) const"
+.br
+.RI "Disassemble a single machine instruction\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 61 of file rulecompile\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void DummyTranslate::addRegister (const string & nm, \fBAddrSpace\fP * base, \fBuintb\fP offset, int4 size)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Add a named register to the model for this processor\&. 
+.PP
+\fBDeprecated\fP
+.RS 4
+All registers used to be formally added to the processor model through this method\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the new register 
+.br
+\fIbase\fP is the address space containing the register 
+.br
+\fIoffset\fP is the offset of the register 
+.br
+\fIsize\fP is the number of bytes in the register 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 64 of file rulecompile\&.hh\&.
+.SS "virtual void DummyTranslate::getAllRegisters (map< \fBVarnodeData\fP, string > & reglist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get a list of all register names and the corresponding location\&. Most processors have a list of named registers and possibly other memory locations that are specific to it\&. This function populates a map from the location information to the name, for every named location known by the translator 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreglist\fP is the map which will be populated by the call 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 67 of file rulecompile\&.hh\&.
+.SS "virtual const \fBVarnodeData\fP& DummyTranslate::getRegister (const string & nm) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get a register as \fBVarnodeData\fP given its name\&. Retrieve the location and size of a register given its name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the register 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBVarnodeData\fP for the register 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 65 of file rulecompile\&.hh\&.
+.SS "virtual string DummyTranslate::getRegisterName (\fBAddrSpace\fP * base, \fBuintb\fP off, int4 size) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the name of a register given its location\&. Generic references to locations in a \fIregister\fP space can be translated into the associated register \fIname\fP\&. If the location doesn't match a register \fIexactly\fP, an empty string is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbase\fP is the address space containing the location 
+.br
+\fIoff\fP is the offset of the location 
+.br
+\fIsize\fP is the size of the location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the register, or an empty string 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 66 of file rulecompile\&.hh\&.
+.SS "virtual void DummyTranslate::getUserOpNames (vector< string > & res) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get a list of all \fIuser-defined\fP pcode ops\&. The pcode model allows processors to define new pcode instructions that are specific to that processor\&. These \fIuser-defined\fP instructions are all identified by a name and an index\&. This method returns a list of these ops in index order\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP is the resulting vector of user op names 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 68 of file rulecompile\&.hh\&.
+.SS "virtual void DummyTranslate::initialize (\fBDocumentStorage\fP & store)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Initialize the translator given XML configuration documents\&. A translator gets initialized once, possibly using XML documents to configure it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is a set of configuration documents 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 63 of file rulecompile\&.hh\&.
+.SS "virtual int4 DummyTranslate::instructionLength (const \fBAddress\fP & baseaddr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the length of a machine instruction\&. This method decodes an instruction at a specific address just enough to find the number of bytes it uses within the instruction stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaseaddr\fP is the \fBAddress\fP of the instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in the instruction 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 69 of file rulecompile\&.hh\&.
+.SS "virtual int4 DummyTranslate::oneInstruction (\fBPcodeEmit\fP & emit, const \fBAddress\fP & baseaddr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Transform a single machine instruction into pcode\&. This is the main interface to the pcode translation engine\&. The \fIdump\fP method in the \fIemit\fP object is invoked exactly once for each pcode operation in the translation for the machine instruction at the given address\&. This routine can throw either
+.IP "\(bu" 2
+\fBUnimplError\fP or
+.IP "\(bu" 2
+\fBBadDataError\fP
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemit\fP is the tailored pcode emitting object 
+.br
+\fIbaseaddr\fP is the \fBAddress\fP of the machine instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in the machine instruction 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 70 of file rulecompile\&.hh\&.
+.SS "virtual int4 DummyTranslate::printAssembly (\fBAssemblyEmit\fP & emit, const \fBAddress\fP & baseaddr) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Disassemble a single machine instruction\&. This is the main interface to the disassembler for the processor\&. It disassembles a single instruction and returns the result to the application via the \fIdump\fP method in the \fIemit\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemit\fP is the disassembly emitting object 
+.br
+\fIbaseaddr\fP is the address of the machine instruction to disassemble 
+.RE
+.PP
+
+.PP
+Implements \fBTranslate\fP\&.
+.PP
+Definition at line 71 of file rulecompile\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

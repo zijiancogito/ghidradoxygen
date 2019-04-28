@@ -1,0 +1,86 @@
+.TH "TypeOpIntCarry" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeOpIntCarry \- Information about the INT_CARRY op-code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typeop\&.hh>\fP
+.PP
+Inherits \fBTypeOpFunc\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeOpIntCarry\fP (\fBTypeFactory\fP *t)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBpush\fP (\fBPrintLanguage\fP *lng, const \fBPcodeOp\fP *op) const"
+.br
+.RI "Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. "
+.ti -1c
+.RI "virtual string \fBgetOperatorName\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Get the name of the op-code as it should be displayed in context\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Information about the INT_CARRY op-code\&. 
+.PP
+Definition at line 383 of file typeop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeOpIntCarry::TypeOpIntCarry (\fBTypeFactory\fP * t)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 981 of file typeop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string TypeOpIntCarry::getOperatorName (const \fBPcodeOp\fP * op) const\fC [virtual]\fP"
+
+.PP
+Get the name of the op-code as it should be displayed in context\&. Depending on the context, the same op-code may get displayed in different ways\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP context 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the display token 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeOp\fP\&.
+.PP
+Definition at line 988 of file typeop\&.cc\&.
+.SS "virtual void TypeOpIntCarry::push (\fBPrintLanguage\fP * lng, const \fBPcodeOp\fP * op) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. Given a specific language and \fBPcodeOp\fP, emit the expression rooted at the operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP to emit 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Definition at line 386 of file typeop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

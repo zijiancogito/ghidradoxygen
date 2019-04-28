@@ -1,0 +1,547 @@
+\hypertarget{class_range_list}{}\section{Range\+List Class Reference}
+\label{class_range_list}\index{RangeList@{RangeList}}
+
+
+A disjoint set of Ranges, possibly across multiple address spaces.  
+
+
+
+
+{\ttfamily \#include $<$address.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_range_list_ae8b5850c722bc4e7b612d87ca6a43fab}{Range\+List}} (const \mbox{\hyperlink{class_range_list}{Range\+List}} \&op2)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_range_list_a2138ead753fe147949be8b725f1ee89b}{Range\+List}} (void)
+\begin{DoxyCompactList}\small\item\em Construct an empty container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_list_afab3e451530bb1f7c8c1bd66a7df32a5}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear {\bfseries{this}} container to empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_range_list_ad78a4eba9787c374803f2503fdd38f3c}{empty}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if {\bfseries{this}} is empty. \end{DoxyCompactList}\item 
+set$<$ \mbox{\hyperlink{class_range}{Range}} $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_range_list_a890040e91f6bf573706b76a185ab6cbe}{begin}} (void) const
+\begin{DoxyCompactList}\small\item\em Get iterator to beginning \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+set$<$ \mbox{\hyperlink{class_range}{Range}} $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_range_list_aae742ac5298a0d263210366e7aa0bb0b}{end}} (void) const
+\begin{DoxyCompactList}\small\item\em Get iterator to ending \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_range_list_a05df36bbb7206ca0cfb8b5a74fb1fb3d}{num\+Ranges}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the number of \mbox{\hyperlink{class_range}{Range}} objects in container. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_range}{Range}} $\ast$ \mbox{\hyperlink{class_range_list_aab11ea47a228e2689d18061df238dc6f}{get\+First\+Range}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the first \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_range}{Range}} $\ast$ \mbox{\hyperlink{class_range_list_a335abcacfeb584ef9684d60adfce11b9}{get\+Last\+Range}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the last \mbox{\hyperlink{class_range}{Range}}. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_range}{Range}} $\ast$ \mbox{\hyperlink{class_range_list_af9a80345a7c9f95568c00f6f1dbe2673}{get\+Last\+Signed\+Range}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spaceid) const
+\begin{DoxyCompactList}\small\item\em Get the last \mbox{\hyperlink{class_range}{Range}} viewing offsets as signed. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_range}{Range}} $\ast$ \mbox{\hyperlink{class_range_list_aa085a8e737c45ede0bf239e964901802}{get\+Range}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spaceid, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} offset) const
+\begin{DoxyCompactList}\small\item\em Get \mbox{\hyperlink{class_range}{Range}} containing the given byte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_list_ab0ab4e29f9f3b6b096e985d99daac763}{insert\+Range}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} first, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} last)
+\begin{DoxyCompactList}\small\item\em Insert a range of addresses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_list_a25b0feea38aa56d2502426d117dccb31}{remove\+Range}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} first, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} last)
+\begin{DoxyCompactList}\small\item\em Remove a range of addresses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_list_abdacecedb9b17b6a1b67f3f3d1d192e2}{merge}} (const \mbox{\hyperlink{class_range_list}{Range\+List}} \&op2)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_merge}{Merge}} another \mbox{\hyperlink{class_range_list}{Range\+List}} into {\bfseries{this}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_range_list_a61b4034c6930b45dd8d365c382c73b86}{in\+Range}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 size) const
+\begin{DoxyCompactList}\small\item\em Check containment an address range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_range_list_a01e1b36438b8366c0750f69080193271}{longest\+Fit}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} maxsize) const
+\begin{DoxyCompactList}\small\item\em Find size of biggest \mbox{\hyperlink{class_range}{Range}} containing given address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_list_ae9ed76aecdefbd58a4173fafb082a26c}{print\+Bounds}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print a description of {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} to stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_list_a026dc31507600a1c8786b1d201f7a19e}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Write {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} to an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_range_list_a7a7c7b47cec0a38e75169896e08899d0}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A disjoint set of Ranges, possibly across multiple address spaces. 
+
+This is a container for addresses. It maintains a disjoint list of Ranges that cover all the addresses in the container. Ranges can be inserted and removed, but overlapping/adjacent ranges will get merged. 
+
+Definition at line 201 of file address.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_range_list_ae8b5850c722bc4e7b612d87ca6a43fab}\label{class_range_list_ae8b5850c722bc4e7b612d87ca6a43fab}} 
+\index{RangeList@{RangeList}!RangeList@{RangeList}}
+\index{RangeList@{RangeList}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{RangeList()}{RangeList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Range\+List\+::\+Range\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. 
+
+
+
+Definition at line 204 of file address.\+hh.
+
+\mbox{\Hypertarget{class_range_list_a2138ead753fe147949be8b725f1ee89b}\label{class_range_list_a2138ead753fe147949be8b725f1ee89b}} 
+\index{RangeList@{RangeList}!RangeList@{RangeList}}
+\index{RangeList@{RangeList}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{RangeList()}{RangeList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Range\+List\+::\+Range\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct an empty container. 
+
+
+
+Definition at line 205 of file address.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_range_list_a890040e91f6bf573706b76a185ab6cbe}\label{class_range_list_a890040e91f6bf573706b76a185ab6cbe}} 
+\index{RangeList@{RangeList}!begin@{begin}}
+\index{begin@{begin}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_range}{Range}}$>$\+::const\+\_\+iterator Range\+List\+::begin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get iterator to beginning \mbox{\hyperlink{class_range}{Range}}. 
+
+
+
+Definition at line 208 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a890040e91f6bf573706b76a185ab6cbe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_afab3e451530bb1f7c8c1bd66a7df32a5}\label{class_range_list_afab3e451530bb1f7c8c1bd66a7df32a5}} 
+\index{RangeList@{RangeList}!clear@{clear}}
+\index{clear@{clear}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Range\+List\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clear {\bfseries{this}} container to empty. 
+
+
+
+Definition at line 206 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_afab3e451530bb1f7c8c1bd66a7df32a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_ad78a4eba9787c374803f2503fdd38f3c}\label{class_range_list_ad78a4eba9787c374803f2503fdd38f3c}} 
+\index{RangeList@{RangeList}!empty@{empty}}
+\index{empty@{empty}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool Range\+List\+::empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if {\bfseries{this}} is empty. 
+
+
+
+Definition at line 207 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_ad78a4eba9787c374803f2503fdd38f3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_aae742ac5298a0d263210366e7aa0bb0b}\label{class_range_list_aae742ac5298a0d263210366e7aa0bb0b}} 
+\index{RangeList@{RangeList}!end@{end}}
+\index{end@{end}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_range}{Range}}$>$\+::const\+\_\+iterator Range\+List\+::end (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get iterator to ending \mbox{\hyperlink{class_range}{Range}}. 
+
+
+
+Definition at line 209 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_aae742ac5298a0d263210366e7aa0bb0b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_aab11ea47a228e2689d18061df238dc6f}\label{class_range_list_aab11ea47a228e2689d18061df238dc6f}} 
+\index{RangeList@{RangeList}!getFirstRange@{getFirstRange}}
+\index{getFirstRange@{getFirstRange}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{getFirstRange()}{getFirstRange()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_range}{Range}} $\ast$ Range\+List\+::get\+First\+Range (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the first \mbox{\hyperlink{class_range}{Range}}. 
+
+\begin{DoxyReturn}{Returns}
+the first contiguous range of addresses or N\+U\+LL if empty 
+\end{DoxyReturn}
+
+
+Definition at line 450 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_aab11ea47a228e2689d18061df238dc6f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_a335abcacfeb584ef9684d60adfce11b9}\label{class_range_list_a335abcacfeb584ef9684d60adfce11b9}} 
+\index{RangeList@{RangeList}!getLastRange@{getLastRange}}
+\index{getLastRange@{getLastRange}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{getLastRange()}{getLastRange()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_range}{Range}} $\ast$ Range\+List\+::get\+Last\+Range (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the last \mbox{\hyperlink{class_range}{Range}}. 
+
+\begin{DoxyReturn}{Returns}
+the last contiguous range of addresses or N\+U\+LL if empty 
+\end{DoxyReturn}
+
+
+Definition at line 458 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a335abcacfeb584ef9684d60adfce11b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_af9a80345a7c9f95568c00f6f1dbe2673}\label{class_range_list_af9a80345a7c9f95568c00f6f1dbe2673}} 
+\index{RangeList@{RangeList}!getLastSignedRange@{getLastSignedRange}}
+\index{getLastSignedRange@{getLastSignedRange}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{getLastSignedRange()}{getLastSignedRange()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_range}{Range}} $\ast$ Range\+List\+::get\+Last\+Signed\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spaceid }\end{DoxyParamCaption}) const}
+
+
+
+Get the last \mbox{\hyperlink{class_range}{Range}} viewing offsets as signed. 
+
+Treating offsets with their high-\/bits set as coming {\itshape before} offset where the high-\/bit is clear, return the last/latest contiguous \mbox{\hyperlink{class_range}{Range}} within the given address space 
+\begin{DoxyParams}{Parameters}
+{\em spaceid} & is the given address space \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+indicated \mbox{\hyperlink{class_range}{Range}} or N\+U\+LL if empty 
+\end{DoxyReturn}
+
+
+Definition at line 472 of file address.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_af9a80345a7c9f95568c00f6f1dbe2673_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_aa085a8e737c45ede0bf239e964901802}\label{class_range_list_aa085a8e737c45ede0bf239e964901802}} 
+\index{RangeList@{RangeList}!getRange@{getRange}}
+\index{getRange@{getRange}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{getRange()}{getRange()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_range}{Range}} $\ast$ Range\+List\+::get\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spaceid,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{offset }\end{DoxyParamCaption}) const}
+
+
+
+Get \mbox{\hyperlink{class_range}{Range}} containing the given byte. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} contains the specific address (spaceid,offset), return it \begin{DoxyReturn}{Returns}
+the containing \mbox{\hyperlink{class_range}{Range}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 401 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_aa085a8e737c45ede0bf239e964901802_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_a61b4034c6930b45dd8d365c382c73b86}\label{class_range_list_a61b4034c6930b45dd8d365c382c73b86}} 
+\index{RangeList@{RangeList}!inRange@{inRange}}
+\index{inRange@{inRange}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{inRange()}{inRange()}}
+{\footnotesize\ttfamily bool Range\+List\+::in\+Range (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{size }\end{DoxyParamCaption}) const}
+
+
+
+Check containment an address range. 
+
+Make sure indicated range of addresses is {\itshape contained} in {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the first \mbox{\hyperlink{class_address}{Address}} in the target range \\
+\hline
+{\em size} & is the number of bytes in the target range \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} is the range is fully contained by this \mbox{\hyperlink{class_range_list}{Range\+List}} 
+\end{DoxyReturn}
+
+
+Definition at line 378 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a61b4034c6930b45dd8d365c382c73b86_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_ab0ab4e29f9f3b6b096e985d99daac763}\label{class_range_list_ab0ab4e29f9f3b6b096e985d99daac763}} 
+\index{RangeList@{RangeList}!insertRange@{insertRange}}
+\index{insertRange@{insertRange}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{insertRange()}{insertRange()}}
+{\footnotesize\ttfamily void Range\+List\+::insert\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{first,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{last }\end{DoxyParamCaption})}
+
+
+
+Insert a range of addresses. 
+
+Insert a new \mbox{\hyperlink{class_range}{Range}} merging as appropriate to maintain the disjoint cover 
+\begin{DoxyParams}{Parameters}
+{\em spc} & is the address space containing the new range \\
+\hline
+{\em first} & is the offset of the first byte in the new range \\
+\hline
+{\em last} & is the offset of the last byte in the new range \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 293 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_ab0ab4e29f9f3b6b096e985d99daac763_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_a01e1b36438b8366c0750f69080193271}\label{class_range_list_a01e1b36438b8366c0750f69080193271}} 
+\index{RangeList@{RangeList}!longestFit@{longestFit}}
+\index{longestFit@{longestFit}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{longestFit()}{longestFit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Range\+List\+::longest\+Fit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{maxsize }\end{DoxyParamCaption}) const}
+
+
+
+Find size of biggest \mbox{\hyperlink{class_range}{Range}} containing given address. 
+
+Return the size of the biggest contiguous sequence of addresses in {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} which contain the given address 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given address \\
+\hline
+{\em maxsize} & is the large range to consider before giving up \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the size (in bytes) of the biggest range 
+\end{DoxyReturn}
+
+
+Definition at line 422 of file address.\+cc.
+
+\mbox{\Hypertarget{class_range_list_abdacecedb9b17b6a1b67f3f3d1d192e2}\label{class_range_list_abdacecedb9b17b6a1b67f3f3d1d192e2}} 
+\index{RangeList@{RangeList}!merge@{merge}}
+\index{merge@{merge}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily void Range\+List\+::merge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{op2 }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_merge}{Merge}} another \mbox{\hyperlink{class_range_list}{Range\+List}} into {\bfseries{this}}. 
+
+
+
+Definition at line 361 of file address.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_range_list_abdacecedb9b17b6a1b67f3f3d1d192e2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_a05df36bbb7206ca0cfb8b5a74fb1fb3d}\label{class_range_list_a05df36bbb7206ca0cfb8b5a74fb1fb3d}} 
+\index{RangeList@{RangeList}!numRanges@{numRanges}}
+\index{numRanges@{numRanges}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{numRanges()}{numRanges()}}
+{\footnotesize\ttfamily int4 Range\+List\+::num\+Ranges (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of \mbox{\hyperlink{class_range}{Range}} objects in container. 
+
+
+
+Definition at line 210 of file address.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a05df36bbb7206ca0cfb8b5a74fb1fb3d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_ae9ed76aecdefbd58a4173fafb082a26c}\label{class_range_list_ae9ed76aecdefbd58a4173fafb082a26c}} 
+\index{RangeList@{RangeList}!printBounds@{printBounds}}
+\index{printBounds@{printBounds}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{printBounds()}{printBounds()}}
+{\footnotesize\ttfamily void Range\+List\+::print\+Bounds (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Print a description of {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} to stream. 
+
+Print a one line description of each disjoint \mbox{\hyperlink{class_range}{Range}} making up {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 498 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_ae9ed76aecdefbd58a4173fafb082a26c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_a25b0feea38aa56d2502426d117dccb31}\label{class_range_list_a25b0feea38aa56d2502426d117dccb31}} 
+\index{RangeList@{RangeList}!removeRange@{removeRange}}
+\index{removeRange@{removeRange}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{removeRange()}{removeRange()}}
+{\footnotesize\ttfamily void Range\+List\+::remove\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{first,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{last }\end{DoxyParamCaption})}
+
+
+
+Remove a range of addresses. 
+
+Remove/narrow/split existing \mbox{\hyperlink{class_range}{Range}} objects to eliminate the indicated addresses while still maintaining a disjoint cover. 
+\begin{DoxyParams}{Parameters}
+{\em spc} & is the address space of the address range to remove \\
+\hline
+{\em first} & is the offset of the first byte of the range \\
+\hline
+{\em last} & is the offset of the last byte of the range \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 327 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a25b0feea38aa56d2502426d117dccb31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_a7a7c7b47cec0a38e75169896e08899d0}\label{class_range_list_a7a7c7b47cec0a38e75169896e08899d0}} 
+\index{RangeList@{RangeList}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Range\+List\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Restore {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} from an X\+ML stream. 
+
+Recover each individual disjoint \mbox{\hyperlink{class_range}{Range}} for {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} as encoded in a $<$rangelist$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+{\em manage} & is manager for retrieving address spaces \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 530 of file address.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a7a7c7b47cec0a38e75169896e08899d0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a7a7c7b47cec0a38e75169896e08899d0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_range_list_a026dc31507600a1c8786b1d201f7a19e}\label{class_range_list_a026dc31507600a1c8786b1d201f7a19e}} 
+\index{RangeList@{RangeList}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!RangeList@{RangeList}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Range\+List\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Write {\bfseries{this}} \mbox{\hyperlink{class_range_list}{Range\+List}} to an X\+ML stream. 
+
+Serialize this object to an X\+ML $<$rangelist$>$ tag 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 514 of file address.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_range_list_a026dc31507600a1c8786b1d201f7a19e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{address_8hh}{address.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{address_8cc}{address.\+cc}}\end{DoxyCompactItemize}

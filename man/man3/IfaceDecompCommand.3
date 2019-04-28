@@ -1,0 +1,115 @@
+.TH "IfaceDecompCommand" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IfaceDecompCommand
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ifacedecomp\&.hh>\fP
+.PP
+Inherits \fBIfaceCommand\fP\&.
+.PP
+Inherited by \fBIfcAddpath\fP, \fBIfcAddrrangeLoad\fP, \fBIfcAdjustVma\fP, \fBIfcBreakaction\fP, \fBIfcBreakjump\fP, \fBIfcBreakstart\fP, \fBIfcCallFixup\fP, \fBIfcCallGraphBuild\fP, \fBIfcCallGraphDump\fP, \fBIfcCallGraphList\fP, \fBIfcCallGraphLoad\fP, \fBIfcCallOtherFixup\fP, \fBIfcCleararch\fP, \fBIfcComment\fP, \fBIfcCommentInstr\fP, \fBIfcContinue\fP, \fBIfcCountPcode\fP, \fBIfcDeadcodedelay\fP, \fBIfcDecompile\fP, \fBIfcDump\fP, \fBIfcDumpbinary\fP, \fBIfcDuplicateHash\fP, \fBIfcExperimentalRules\fP, \fBIfcFlowOverride\fP, \fBIfcForceDec\fP, \fBIfcForcegoto\fP, \fBIfcForceHex\fP, \fBIfcFuncload\fP, \fBIfcGlobalAdd\fP, \fBIfcGlobalify\fP, \fBIfcGlobalRegisters\fP, \fBIfcGlobalRemove\fP, \fBIfcGraphControlflow\fP, \fBIfcGraphDataflow\fP, \fBIfcGraphDom\fP, \fBIfcJumpOverride\fP, \fBIfcListaction\fP, \fBIfcListOverride\fP, \fBIfcListprototypes\fP, \fBIfcLoadFile\fP, \fBIfcLockPrototype\fP, \fBIfcMapaddress\fP, \fBIfcMapexternalref\fP, \fBIfcMapfunction\fP, \fBIfcMaphash\fP, \fBIfcMaplabel\fP, \fBIfcNameVarnode\fP, \fBIfcOption\fP, \fBIfcParamIDAnalysis\fP, \fBIfcParseFile\fP, \fBIfcParseLine\fP, \fBIfcPreferSplit\fP, \fBIfcPrintActionstats\fP, \fBIfcPrintBlocktree\fP, \fBIfcPrintCFlat\fP, \fBIfcPrintCGlobals\fP, \fBIfcPrintCover\fP, \fBIfcPrintCStruct\fP, \fBIfcPrintCTypes\fP, \fBIfcPrintCXml\fP, \fBIfcPrintdisasm\fP, \fBIfcPrintExtrapop\fP, \fBIfcPrintHigh\fP, \fBIfcPrintInputs\fP, \fBIfcPrintInputsAll\fP, \fBIfcPrintLanguage\fP, \fBIfcPrintLocalrange\fP, \fBIfcPrintMap\fP, \fBIfcPrintParamMeasures\fP, \fBIfcPrintParamMeasuresXml\fP, \fBIfcPrintRaw\fP, \fBIfcPrintSpaces\fP, \fBIfcPrintTree\fP, \fBIfcPrintVarnode\fP, \fBIfcProduceC\fP, \fBIfcProducePrototypes\fP, \fBIfcProtooverride\fP, \fBIfcReadSymbols\fP, \fBIfcRemove\fP, \fBIfcRename\fP, \fBIfcResetActionstats\fP, \fBIfcRestore\fP, \fBIfcRetype\fP, \fBIfcSave\fP, \fBIfcSetcontextrange\fP, \fBIfcSettrackedrange\fP, \fBIfcSource\fP, \fBIfcStructureBlocks\fP, \fBIfcTypeVarnode\fP, \fBIfcUnlockPrototype\fP, \fBIfcVarnodeCover\fP, \fBIfcVarnodehighCover\fP, and \fBIfcVolatile\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBsetData\fP (\fBIfaceStatus\fP *root, \fBIfaceData\fP *data)"
+.br
+.ti -1c
+.RI "virtual string \fBgetModule\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBIfaceData\fP * \fBcreateData\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBiterationCallback\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "void \fBiterateFunctionsAddrOrder\fP (void)"
+.br
+.ti -1c
+.RI "void \fBiterateFunctionsLeafOrder\fP (void)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBiterateScopesRecursive\fP (\fBScope\fP *scope)"
+.br
+.ti -1c
+.RI "void \fBiterateFunctionsAddrOrder\fP (\fBScope\fP *scope)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBIfaceStatus\fP * \fBstatus\fP"
+.br
+.ti -1c
+.RI "\fBIfaceDecompData\fP * \fBdcp\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 77 of file ifacedecomp\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBIfaceData\fP* IfaceDecompCommand::createData (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBIfaceCommand\fP\&.
+.PP
+Definition at line 86 of file ifacedecomp\&.hh\&.
+.SS "virtual string IfaceDecompCommand::getModule (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBIfaceCommand\fP\&.
+.PP
+Definition at line 85 of file ifacedecomp\&.hh\&.
+.SS "void IfaceDecompCommand::iterateFunctionsAddrOrder (\fBScope\fP * scope)\fC [protected]\fP"
+
+.PP
+Definition at line 162 of file ifacedecomp\&.cc\&.
+.SS "void IfaceDecompCommand::iterateFunctionsAddrOrder (void)"
+
+.PP
+Definition at line 177 of file ifacedecomp\&.cc\&.
+.SS "void IfaceDecompCommand::iterateFunctionsLeafOrder (void)"
+
+.PP
+Definition at line 185 of file ifacedecomp\&.cc\&.
+.SS "void IfaceDecompCommand::iterateScopesRecursive (\fBScope\fP * scope)\fC [protected]\fP"
+
+.PP
+Definition at line 149 of file ifacedecomp\&.cc\&.
+.SS "virtual void IfaceDecompCommand::iterationCallback (\fBFuncdata\fP * fd)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBIfcCallGraphList\fP, \fBIfcCallGraphBuild\fP, \fBIfcDuplicateHash\fP, \fBIfcPrintInputsAll\fP, \fBIfcProducePrototypes\fP, and \fBIfcProduceC\fP\&.
+.PP
+Definition at line 87 of file ifacedecomp\&.hh\&.
+.SS "virtual void IfaceDecompCommand::setData (\fBIfaceStatus\fP * root, \fBIfaceData\fP * data)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBIfaceCommand\fP\&.
+.PP
+Definition at line 84 of file ifacedecomp\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBIfaceDecompData\fP* IfaceDecompCommand::dcp\fC [protected]\fP"
+
+.PP
+Definition at line 80 of file ifacedecomp\&.hh\&.
+.SS "\fBIfaceStatus\fP* IfaceDecompCommand::status\fC [protected]\fP"
+
+.PP
+Definition at line 79 of file ifacedecomp\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

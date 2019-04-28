@@ -1,0 +1,55 @@
+.TH "PrintCCapability" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintCCapability \- Factory and static initializer for the 'c-language' back-end to the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printc\&.hh>\fP
+.PP
+Inherits \fBPrintLanguageCapability\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBPrintLanguage\fP * \fBbuildLanguage\fP (\fBArchitecture\fP *glb)"
+.br
+.RI "Build the main \fBPrintLanguage\fP object corresponding to \fBthis\fP capability\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Factory and static initializer for the 'c-language' back-end to the decompiler\&. 
+
+The singleton adds itself to the list of possible back-end languages for the decompiler and it acts as a factory for producing the \fBPrintC\fP object for emitting c-language tokens\&. 
+.PP
+Definition at line 32 of file printc\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBPrintLanguage\fP * PrintCCapability::buildLanguage (\fBArchitecture\fP * glb)\fC [virtual]\fP"
+
+.PP
+Build the main \fBPrintLanguage\fP object corresponding to \fBthis\fP capability\&. An \fBArchitecture\fP will call this once\&. All decompiling from this \fBArchitecture\fP will use this same emitter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglb\fP is the \fBArchitecture\fP that will own the new emitter 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the instantiated \fBPrintLanguage\fP emittter 
+.RE
+.PP
+
+.PP
+Implements \fBPrintLanguageCapability\fP\&.
+.PP
+Definition at line 85 of file printc\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

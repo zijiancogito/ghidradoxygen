@@ -1,0 +1,134 @@
+.TH "ghidra.app.decompiler.flatapi.FlatDecompilerAPI" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.flatapi.FlatDecompilerAPI
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Disposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFlatDecompilerAPI\fP ()"
+.br
+.ti -1c
+.RI "\fBFlatDecompilerAPI\fP (FlatProgramAPI \fBflatProgramAPI\fP)"
+.br
+.ti -1c
+.RI "\fBDecompInterface\fP \fBgetDecompiler\fP ()"
+.br
+.ti -1c
+.RI "final String \fBdecompile\fP (Function function)  throws Exception "
+.br
+.ti -1c
+.RI "final String \fBdecompile\fP (Function function, int timeoutSecs)  throws Exception "
+.br
+.ti -1c
+.RI "final void \fBinitialize\fP ()  throws Exception "
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "FlatProgramAPI \fBflatProgramAPI\fP"
+.br
+.ti -1c
+.RI "\fBDecompInterface\fP \fBdecompiler\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file FlatDecompilerAPI\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.FlatDecompilerAPI ()\fC [inline]\fP"
+Initializes without a provided FlatProgramAPI instance\&.\&.\&.this must be set before using the FlatDecompilerAPI! 
+.PP
+Definition at line 32 of file FlatDecompilerAPI\&.java\&.
+.SS "ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.FlatDecompilerAPI (FlatProgramAPI flatProgramAPI)\fC [inline]\fP"
+Initializes with a provided FlatProgramAPI instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIflatProgramAPI\fP the FlatProgramAPI instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file FlatDecompilerAPI\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "final String ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.decompile (Function function) throws Exception\fC [inline]\fP"
+Decompiles the specified function and returns a string containing the decompilation\&. This call does not impose a timeout\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfunction\fP the function to decompile 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a string containing the decompilation 
+.RE
+.PP
+
+.PP
+Definition at line 59 of file FlatDecompilerAPI\&.java\&.
+.SS "final String ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.decompile (Function function, int timeoutSecs) throws Exception\fC [inline]\fP"
+Decompiles the specified function and returns a string containing the decompilation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfunction\fP the function to decompile 
+.br
+\fItimeoutSecs\fP maximum time allowed for decompile to complete\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a string containing the decompilation 
+.RE
+.PP
+
+.PP
+Definition at line 70 of file FlatDecompilerAPI\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.dispose ()\fC [inline]\fP"
+Disposes of the decompiler resources by calling currentDecompiler\&.dispose()\&. 
+.PP
+Definition at line 94 of file FlatDecompilerAPI\&.java\&.
+.SS "\fBDecompInterface\fP ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.getDecompiler ()\fC [inline]\fP"
+Gets the actual decompiler (may be null if not initialized)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the decompiler 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file FlatDecompilerAPI\&.java\&.
+.SS "final void ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.initialize (void) throws Exception\fC [inline]\fP"
+Initializes the decompiler instance\&. 
+.PP
+Definition at line 84 of file FlatDecompilerAPI\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBDecompInterface\fP ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.decompiler\fC [protected]\fP"
+
+.PP
+Definition at line 26 of file FlatDecompilerAPI\&.java\&.
+.SS "FlatProgramAPI ghidra\&.app\&.decompiler\&.flatapi\&.FlatDecompilerAPI\&.flatProgramAPI\fC [protected]\fP"
+
+.PP
+Definition at line 25 of file FlatDecompilerAPI\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,914 @@
+.TH "ScopeInternal" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScopeInternal \- An in-memory implementation of the \fBScope\fP interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.PP
+Inherits \fBScope\fP\&.
+.PP
+Inherited by \fBScopeGhidraNamespace\fP, and \fBScopeLocal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScopeInternal\fP (const string &nm, \fBArchitecture\fP *g)"
+.br
+.RI "Construct the \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.RI "Clear all symbols from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBcategorySanity\fP (void)"
+.br
+.RI "Make sure \fBSymbol\fP categories are sane\&. "
+.ti -1c
+.RI "virtual void \fBclearCategory\fP (int4 cat)"
+.br
+.RI "Clear all symbols of the given category from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBclearUnlocked\fP (void)"
+.br
+.RI "Clear all unlocked symbols from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBclearUnlockedCategory\fP (int4 cat)"
+.br
+.RI "Clear unlocked symbols of the given category from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual \fB~ScopeInternal\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBMapIterator\fP \fBbegin\fP (void) const"
+.br
+.RI "Beginning iterator to mapped SymbolEntrys\&. "
+.ti -1c
+.RI "virtual \fBMapIterator\fP \fBend\fP (void) const"
+.br
+.RI "Ending iterator to mapped SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::const_iterator \fBbeginDynamic\fP (void) const"
+.br
+.RI "Beginning iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::const_iterator \fBendDynamic\fP (void) const"
+.br
+.RI "Ending iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::iterator \fBbeginDynamic\fP (void)"
+.br
+.RI "Beginning iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::iterator \fBendDynamic\fP (void)"
+.br
+.RI "Ending iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual void \fBremoveSymbol\fP (\fBSymbol\fP *symbol)"
+.br
+.RI "Remove the given \fBSymbol\fP from \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBrenameSymbol\fP (\fBSymbol\fP *sym, const string &newname)"
+.br
+.RI "Rename a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBretypeSymbol\fP (\fBSymbol\fP *sym, \fBDatatype\fP *ct)"
+.br
+.RI "Change the data-type of a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetAttribute\fP (\fBSymbol\fP *sym, uint4 attr)"
+.br
+.RI "Set boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBclearAttribute\fP (\fBSymbol\fP *sym, uint4 attr)"
+.br
+.RI "Clear boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetDisplayFormat\fP (\fBSymbol\fP *sym, uint4 attr)"
+.br
+.RI "Set the display format for a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindAddr\fP (const \fBAddress\fP &addr, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Find a \fBSymbol\fP at a given address and \fBusepoint\fP\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindContainer\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Find the smallest \fBSymbol\fP containing the given memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindClosestFit\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Find \fBSymbol\fP which is the closest fit to the given memory range\&. "
+.ti -1c
+.RI "virtual \fBFuncdata\fP * \fBfindFunction\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find the function starting at the given address\&. "
+.ti -1c
+.RI "virtual \fBExternRefSymbol\fP * \fBfindExternalRef\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find an \fIexternal\fP \fIreference\fP at the given address\&. "
+.ti -1c
+.RI "virtual \fBLabSymbol\fP * \fBfindCodeLabel\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find a label \fBSymbol\fP at the given address\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindOverlap\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Find first \fBSymbol\fP overlapping the given memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindBefore\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find first \fBSymbol\fP before (but not containing) a given address\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindAfter\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Find first \fBSymbol\fP after (but not containing) a given address\&. "
+.ti -1c
+.RI "virtual void \fBfindByName\fP (const string &\fBname\fP, vector< \fBSymbol\fP * > &res) const"
+.br
+.RI "Find a \fBSymbol\fP by name within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual \fBFuncdata\fP * \fBresolveExternalRefFunction\fP (\fBExternRefSymbol\fP *sym) const"
+.br
+.RI "Convert an \fIexternal\fP \fIreference\fP to the referenced function\&. "
+.ti -1c
+.RI "virtual string \fBbuildVariableName\fP (const \fBAddress\fP &addr, const \fBAddress\fP &pc, \fBDatatype\fP *ct, int4 &index, uint4 flags) const"
+.br
+.RI "Given an address and data-type, build a suitable generic symbol name\&. "
+.ti -1c
+.RI "virtual string \fBbuildUndefinedName\fP (void) const"
+.br
+.RI "Build a formal \fBundefined\fP name, used internally when a \fBSymbol\fP is not given a name\&. "
+.ti -1c
+.RI "virtual string \fBmakeNameUnique\fP (const string &nm) const"
+.br
+.RI "Produce a version of the given symbol name that won't collide with other names in \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write out \fBthis\fP as a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual void \fBprintEntries\fP (ostream &s) const"
+.br
+.RI "Dump a description of all \fBSymbolEntry\fP objects to a stream\&. "
+.ti -1c
+.RI "virtual int4 \fBgetCategorySize\fP (int4 cat) const"
+.br
+.RI "Get the number of Symbols in the given category\&. "
+.ti -1c
+.RI "virtual \fBSymbol\fP * \fBgetCategorySymbol\fP (int4 cat, int4 ind) const"
+.br
+.RI "Retrieve a \fBSymbol\fP by index within a specific \fIcategory\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetCategory\fP (\fBSymbol\fP *sym, int4 cat, int4 ind)"
+.br
+.RI "Set the \fIcategory\fP and index for the given \fBSymbol\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBsavePathXml\fP (ostream &s, const vector< string > &vec)"
+.br
+.RI "Save a path with <val> tags\&. "
+.ti -1c
+.RI "static void \fBrestorePathXml\fP (vector< string > &vec, const \fBElement\fP *el)"
+.br
+.RI "Restore path from <val> tags\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBaddSymbolInternal\fP (\fBSymbol\fP *sym)"
+.br
+.RI "Put a \fBSymbol\fP into the name map\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBaddMapInternal\fP (\fBSymbol\fP *sym, uint4 exfl, const \fBAddress\fP &addr, int4 off, int4 sz, const \fBRangeList\fP &uselim)"
+.br
+.RI "Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBaddDynamicMapInternal\fP (\fBSymbol\fP *sym, uint4 exfl, uint8 hash, int4 off, int4 sz, const \fBRangeList\fP &uselim)"
+.br
+.RI "Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a dynamic hash\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSymbolNameTree\fP \fBnametree\fP"
+.br
+.RI "The set of \fBSymbol\fP objects, sorted by name\&. "
+.ti -1c
+.RI "vector< \fBEntryMap\fP * > \fBmaptable\fP"
+.br
+.RI "Rangemaps of \fBSymbolEntry\fP, one map for each address space\&. "
+.ti -1c
+.RI "vector< vector< \fBSymbol\fP * > > \fBcategory\fP"
+.br
+.RI "References to \fBSymbol\fP objects organized by category\&. "
+.ti -1c
+.RI "list< \fBSymbolEntry\fP > \fBdynamicentry\fP"
+.br
+.RI "Dynamic symbol entries\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An in-memory implementation of the \fBScope\fP interface\&. 
+
+This can act as a stand-alone \fBScope\fP object or serve as an in-memory cache for another implementation\&. This implements a \fBnametree\fP, which is a a set of \fBSymbol\fP objects (the set owns the \fBSymbol\fP objects)\&. It also implements a \fBmaptable\fP, which is a list of rangemaps that own the \fBSymbolEntry\fP objects\&. 
+.PP
+Definition at line 701 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ScopeInternal::ScopeInternal (const string & nm, \fBArchitecture\fP * g)"
+
+.PP
+Construct the \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the \fBScope\fP 
+.br
+\fIg\fP is the \fBArchitecture\fP it belongs to 
+.RE
+.PP
+
+.PP
+Definition at line 1590 of file database\&.cc\&.
+.SS "ScopeInternal::~ScopeInternal (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 1598 of file database\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSymbolEntry\fP * ScopeInternal::addDynamicMapInternal (\fBSymbol\fP * sym, uint4 exfl, uint8 hash, int4 off, int4 sz, const \fBRangeList\fP & uselim)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a dynamic hash\&. The \fBSymbolEntry\fP is specified in terms of a \fBhash\fP and \fBusepoint\fP, which describe how to find the temporary \fBVarnode\fP holding the symbol value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP being mapped 
+.br
+\fIexfl\fP are any boolean \fBVarnode\fP properties 
+.br
+\fIhash\fP is the given dynamic hash 
+.br
+\fIoff\fP is the byte offset of the new \fBSymbolEntry\fP (relative to the whole \fBSymbol\fP) 
+.br
+\fIsz\fP is the number of bytes occupied by the \fBVarnode\fP 
+.br
+\fIuselim\fP is the given \fBusepoint\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly created \fBSymbolEntry\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1522 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeInternal::addMapInternal (\fBSymbol\fP * sym, uint4 exfl, const \fBAddress\fP & addr, int4 off, int4 sz, const \fBRangeList\fP & uselim)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a memory range\&. The \fBSymbolEntry\fP is specified in terms of a memory range and \fBusepoint\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP being mapped 
+.br
+\fIexfl\fP are any boolean \fBVarnode\fP properties specific to the memory range 
+.br
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIoff\fP is the byte offset of the new \fBSymbolEntry\fP (relative to the whole \fBSymbol\fP) 
+.br
+\fIsz\fP is the number of bytes in the range 
+.br
+\fIuselim\fP is the given \fBusepoint\fP (which may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly created \fBSymbolEntry\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1496 of file database\&.cc\&.
+.SS "void ScopeInternal::addSymbolInternal (\fBSymbol\fP * sym)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Put a \fBSymbol\fP into the name map\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the preconstructed \fBSymbol\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1469 of file database\&.cc\&.
+.SS "\fBMapIterator\fP ScopeInternal::begin (void) const\fC [virtual]\fP"
+
+.PP
+Beginning iterator to mapped SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1532 of file database\&.cc\&.
+.SS "list< \fBSymbolEntry\fP >::const_iterator ScopeInternal::beginDynamic (void) const\fC [virtual]\fP"
+
+.PP
+Beginning iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1564 of file database\&.cc\&.
+.SS "list< \fBSymbolEntry\fP >::iterator ScopeInternal::beginDynamic (void)\fC [virtual]\fP"
+
+.PP
+Beginning iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1576 of file database\&.cc\&.
+.SS "string ScopeInternal::buildUndefinedName (void) const\fC [virtual]\fP"
+
+.PP
+Build a formal \fBundefined\fP name, used internally when a \fBSymbol\fP is not given a name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a special internal name that won't collide with other names in \fBthis\fP \fBScope\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2134 of file database\&.cc\&.
+.SS "string ScopeInternal::buildVariableName (const \fBAddress\fP & addr, const \fBAddress\fP & pc, \fBDatatype\fP * ct, int4 & index, uint4 flags) const\fC [virtual]\fP"
+
+.PP
+Given an address and data-type, build a suitable generic symbol name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIpc\fP is the address at which the name is getting used 
+.br
+\fIct\fP is a data-type used to inform the name 
+.br
+\fIindex\fP is a reference to an index used to make the name unique, which will be updated 
+.br
+\fIflags\fP are boolean properties of the variable we need the name for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new variable name 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Reimplemented in \fBScopeLocal\fP\&.
+.PP
+Definition at line 2046 of file database\&.cc\&.
+.SS "void ScopeInternal::categorySanity (void)\fC [virtual]\fP"
+
+.PP
+Make sure \fBSymbol\fP categories are sane\&. Look for NULL entries in the category tables\&. If there are, clear out the entire category, marking all symbols as uncategorized 
+.PP
+Definition at line 1627 of file database\&.cc\&.
+.SS "void ScopeInternal::clear (void)\fC [virtual]\fP"
+
+.PP
+Clear all symbols from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1613 of file database\&.cc\&.
+.SS "void ScopeInternal::clearAttribute (\fBSymbol\fP * sym, uint4 attr)\fC [virtual]\fP"
+
+.PP
+Clear boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1813 of file database\&.cc\&.
+.SS "void ScopeInternal::clearCategory (int4 cat)\fC [virtual]\fP"
+
+.PP
+Clear all symbols of the given category from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1655 of file database\&.cc\&.
+.SS "void ScopeInternal::clearUnlocked (void)\fC [virtual]\fP"
+
+.PP
+Clear all unlocked symbols from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1677 of file database\&.cc\&.
+.SS "void ScopeInternal::clearUnlockedCategory (int4 cat)\fC [virtual]\fP"
+
+.PP
+Clear unlocked symbols of the given category from \fBthis\fP scope\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1699 of file database\&.cc\&.
+.SS "\fBMapIterator\fP ScopeInternal::end (void) const\fC [virtual]\fP"
+
+.PP
+Ending iterator to mapped SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1557 of file database\&.cc\&.
+.SS "list< \fBSymbolEntry\fP >::const_iterator ScopeInternal::endDynamic (void) const\fC [virtual]\fP"
+
+.PP
+Ending iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1570 of file database\&.cc\&.
+.SS "list< \fBSymbolEntry\fP >::iterator ScopeInternal::endDynamic (void)\fC [virtual]\fP"
+
+.PP
+Ending iterator to dynamic SymbolEntrys\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1582 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeInternal::findAddr (const \fBAddress\fP & addr, const \fBAddress\fP & usepoint) const\fC [virtual]\fP"
+
+.PP
+Find a \fBSymbol\fP at a given address and \fBusepoint\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1827 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeInternal::findAfter (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP after (but not containing) a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBSymbolEntry\fP occurring immediately after or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2021 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeInternal::findBefore (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP before (but not containing) a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBSymbolEntry\fP occurring immediately before or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2008 of file database\&.cc\&.
+.SS "void ScopeInternal::findByName (const string & name, vector< \fBSymbol\fP * > & res) const\fC [virtual]\fP"
+
+.PP
+Find a \fBSymbol\fP by name within \fBthis\fP \fBScope\fP\&. If there are multiple Symbols with the same name, all are passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name to search for 
+.br
+\fIres\fP will contain any matching Symbols 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2034 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeInternal::findClosestFit (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const\fC [virtual]\fP"
+
+.PP
+Find \fBSymbol\fP which is the closest fit to the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1887 of file database\&.cc\&.
+.SS "\fBLabSymbol\fP * ScopeInternal::findCodeLabel (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find a label \fBSymbol\fP at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBLabSymbol\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1971 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeInternal::findContainer (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const\fC [virtual]\fP"
+
+.PP
+Find the smallest \fBSymbol\fP containing the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1853 of file database\&.cc\&.
+.SS "\fBExternRefSymbol\fP * ScopeInternal::findExternalRef (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find an \fIexternal\fP \fIreference\fP at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBExternRefSymbol\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1945 of file database\&.cc\&.
+.SS "\fBFuncdata\fP * ScopeInternal::findFunction (const \fBAddress\fP & addr) const\fC [virtual]\fP"
+
+.PP
+Find the function starting at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBFuncdata\fP object or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1924 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * ScopeInternal::findOverlap (const \fBAddress\fP & addr, int4 size) const\fC [virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP overlapping the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an overlapping \fBSymbolEntry\fP or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1995 of file database\&.cc\&.
+.SS "int4 ScopeInternal::getCategorySize (int4 cat) const\fC [virtual]\fP"
+
+.PP
+Get the number of Symbols in the given category\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcat\fP is the \fBSymbol\fP \fIcategory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number in that \fIcategory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2423 of file database\&.cc\&.
+.SS "\fBSymbol\fP * ScopeInternal::getCategorySymbol (int4 cat, int4 ind) const\fC [virtual]\fP"
+
+.PP
+Retrieve a \fBSymbol\fP by index within a specific \fIcategory\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcat\fP is the \fBSymbol\fP \fIcategory\fP 
+.br
+\fIind\fP is the index (within the category) of the \fBSymbol\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the indicated \fBSymbol\fP or NULL if no \fBSymbol\fP with that index exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2431 of file database\&.cc\&.
+.SS "string ScopeInternal::makeNameUnique (const string & nm) const\fC [virtual]\fP"
+
+.PP
+Produce a version of the given symbol name that won't collide with other names in \fBthis\fP \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the given name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return a unique version of the name 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2167 of file database\&.cc\&.
+.SS "void ScopeInternal::printEntries (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Dump a description of all \fBSymbolEntry\fP objects to a stream\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2408 of file database\&.cc\&.
+.SS "void ScopeInternal::removeSymbol (\fBSymbol\fP * symbol)\fC [virtual]\fP"
+
+.PP
+Remove the given \fBSymbol\fP from \fBthis\fP \fBScope\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1739 of file database\&.cc\&.
+.SS "void ScopeInternal::renameSymbol (\fBSymbol\fP * sym, const string & newname)\fC [virtual]\fP"
+
+.PP
+Rename a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1765 of file database\&.cc\&.
+.SS "\fBFuncdata\fP * ScopeInternal::resolveExternalRefFunction (\fBExternRefSymbol\fP * sym) const\fC [virtual]\fP"
+
+.PP
+Convert an \fIexternal\fP \fIreference\fP to the referenced function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP marking the external reference 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the underlying \fBFuncdata\fP object or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1965 of file database\&.cc\&.
+.SS "void ScopeInternal::restorePathXml (vector< string > & vec, const \fBElement\fP * el)\fC [static]\fP"
+
+.PP
+Restore path from <val> tags\&. Given an element, parse all of its children (as <val> tags) and put each of their content into a string array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP will hold the resulting string array 
+.br
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 2247 of file database\&.cc\&.
+.SS "void ScopeInternal::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Reimplemented in \fBScopeLocal\fP\&.
+.PP
+Definition at line 2362 of file database\&.cc\&.
+.SS "void ScopeInternal::retypeSymbol (\fBSymbol\fP * sym, \fBDatatype\fP * ct)\fC [virtual]\fP"
+
+.PP
+Change the data-type of a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. If the size of the \fBSymbol\fP changes, any mapping (\fBSymbolEntry\fP) is adjusted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIct\fP is the new data-type 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1774 of file database\&.cc\&.
+.SS "void ScopeInternal::savePathXml (ostream & s, const vector< string > & vec)\fC [static]\fP"
+
+.PP
+Save a path with <val> tags\&. Given a list of name strings, write out each one in an XML <val> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIvec\fP is the list of names 
+.RE
+.PP
+
+.PP
+Definition at line 2233 of file database\&.cc\&.
+.SS "void ScopeInternal::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write out \fBthis\fP as a <scope> XML tag\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Reimplemented in \fBScopeLocal\fP\&.
+.PP
+Definition at line 2257 of file database\&.cc\&.
+.SS "void ScopeInternal::setAttribute (\fBSymbol\fP * sym, uint4 attr)\fC [virtual]\fP"
+
+.PP
+Set boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1805 of file database\&.cc\&.
+.SS "void ScopeInternal::setCategory (\fBSymbol\fP * sym, int4 cat, int4 ind)\fC [virtual]\fP"
+
+.PP
+Set the \fIcategory\fP and index for the given \fBSymbol\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIcat\fP is the \fIcategory\fP to set for the \fBSymbol\fP 
+.br
+\fIind\fP is the index position to set (within the category) 
+.RE
+.PP
+
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 2441 of file database\&.cc\&.
+.SS "void ScopeInternal::setDisplayFormat (\fBSymbol\fP * sym, uint4 attr)\fC [virtual]\fP"
+
+.PP
+Set the display format for a \fBSymbol\fP\&. 
+.PP
+Implements \fBScope\fP\&.
+.PP
+Definition at line 1821 of file database\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vector<vector<\fBSymbol\fP *> > ScopeInternal::category\fC [protected]\fP"
+
+.PP
+References to \fBSymbol\fP objects organized by category\&. 
+.PP
+Definition at line 712 of file database\&.hh\&.
+.SS "list<\fBSymbolEntry\fP> ScopeInternal::dynamicentry\fC [protected]\fP"
+
+.PP
+Dynamic symbol entries\&. 
+.PP
+Definition at line 713 of file database\&.hh\&.
+.SS "vector<\fBEntryMap\fP *> ScopeInternal::maptable\fC [protected]\fP"
+
+.PP
+Rangemaps of \fBSymbolEntry\fP, one map for each address space\&. 
+.PP
+Definition at line 711 of file database\&.hh\&.
+.SS "\fBSymbolNameTree\fP ScopeInternal::nametree\fC [protected]\fP"
+
+.PP
+The set of \fBSymbol\fP objects, sorted by name\&. 
+.PP
+Definition at line 710 of file database\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

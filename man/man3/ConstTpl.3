@@ -1,0 +1,268 @@
+.TH "ConstTpl" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConstTpl
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <semantics\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBconst_type\fP { \fBreal\fP =0, \fBhandle\fP =1, \fBj_start\fP =2, \fBj_next\fP =3, \fBj_curspace\fP =4, \fBj_curspace_size\fP =5, \fBspaceid\fP =6, \fBj_relative\fP =7, \fBj_flowref\fP =8, \fBj_flowref_size\fP =9, \fBj_flowdest\fP =10, \fBj_flowdest_size\fP =11 }"
+.br
+.ti -1c
+.RI "enum \fBv_field\fP { \fBv_space\fP =0, \fBv_offset\fP =1, \fBv_size\fP =2, \fBv_offset_plus\fP =3 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConstTpl\fP (void)"
+.br
+.ti -1c
+.RI "\fBConstTpl\fP (const \fBConstTpl\fP &op2)"
+.br
+.ti -1c
+.RI "\fBConstTpl\fP (\fBconst_type\fP tp, \fBuintb\fP val)"
+.br
+.ti -1c
+.RI "\fBConstTpl\fP (\fBconst_type\fP tp)"
+.br
+.ti -1c
+.RI "\fBConstTpl\fP (\fBAddrSpace\fP *sid)"
+.br
+.ti -1c
+.RI "\fBConstTpl\fP (\fBconst_type\fP tp, int4 ht, \fBv_field\fP vf)"
+.br
+.ti -1c
+.RI "\fBConstTpl\fP (\fBconst_type\fP tp, int4 ht, \fBv_field\fP vf, \fBuintb\fP plus)"
+.br
+.ti -1c
+.RI "bool \fBisConstSpace\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisUniqueSpace\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBConstTpl\fP &op2) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBConstTpl\fP &op2) const"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBgetReal\fP (void) const"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetHandleIndex\fP (void) const"
+.br
+.ti -1c
+.RI "\fBconst_type\fP \fBgetType\fP (void) const"
+.br
+.ti -1c
+.RI "\fBv_field\fP \fBgetSelect\fP (void) const"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBfix\fP (const \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBfixSpace\fP (const \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "void \fBtransfer\fP (const vector< \fBHandleTpl\fP * > &params)"
+.br
+.ti -1c
+.RI "bool \fBisZero\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBchangeHandleIndex\fP (const vector< int4 > &handmap)"
+.br
+.ti -1c
+.RI "void \fBfillinSpace\fP (\fBFixedHandle\fP &hand, const \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "void \fBfillinOffset\fP (\fBFixedHandle\fP &hand, const \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 31 of file semantics\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBConstTpl::const_type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIreal \fP\fP
+.TP
+\fB\fIhandle \fP\fP
+.TP
+\fB\fIj_start \fP\fP
+.TP
+\fB\fIj_next \fP\fP
+.TP
+\fB\fIj_curspace \fP\fP
+.TP
+\fB\fIj_curspace_size \fP\fP
+.TP
+\fB\fIspaceid \fP\fP
+.TP
+\fB\fIj_relative \fP\fP
+.TP
+\fB\fIj_flowref \fP\fP
+.TP
+\fB\fIj_flowref_size \fP\fP
+.TP
+\fB\fIj_flowdest \fP\fP
+.TP
+\fB\fIj_flowdest_size \fP\fP
+.PP
+Definition at line 33 of file semantics\&.hh\&.
+.SS "enum \fBConstTpl::v_field\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIv_space \fP\fP
+.TP
+\fB\fIv_offset \fP\fP
+.TP
+\fB\fIv_size \fP\fP
+.TP
+\fB\fIv_offset_plus \fP\fP
+.PP
+Definition at line 36 of file semantics\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConstTpl::ConstTpl (void)\fC [inline]\fP"
+
+.PP
+Definition at line 49 of file semantics\&.hh\&.
+.SS "ConstTpl::ConstTpl (const \fBConstTpl\fP & op2)\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file semantics\&.hh\&.
+.SS "ConstTpl::ConstTpl (\fBconst_type\fP tp, \fBuintb\fP val)"
+
+.PP
+Definition at line 25 of file semantics\&.cc\&.
+.SS "ConstTpl::ConstTpl (\fBconst_type\fP tp)"
+
+.PP
+Definition at line 19 of file semantics\&.cc\&.
+.SS "ConstTpl::ConstTpl (\fBAddrSpace\fP * sid)"
+
+.PP
+Definition at line 51 of file semantics\&.cc\&.
+.SS "ConstTpl::ConstTpl (\fBconst_type\fP tp, int4 ht, \fBv_field\fP vf)"
+
+.PP
+Definition at line 34 of file semantics\&.cc\&.
+.SS "ConstTpl::ConstTpl (\fBconst_type\fP tp, int4 ht, \fBv_field\fP vf, \fBuintb\fP plus)"
+
+.PP
+Definition at line 42 of file semantics\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ConstTpl::changeHandleIndex (const vector< int4 > & handmap)"
+
+.PP
+Definition at line 321 of file semantics\&.cc\&.
+.SS "void ConstTpl::fillinOffset (\fBFixedHandle\fP & hand, const \fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 234 of file semantics\&.cc\&.
+.SS "void ConstTpl::fillinSpace (\fBFixedHandle\fP & hand, const \fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 206 of file semantics\&.cc\&.
+.SS "\fBuintb\fP ConstTpl::fix (const \fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 113 of file semantics\&.cc\&.
+.SS "\fBAddrSpace\fP * ConstTpl::fixSpace (const \fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 176 of file semantics\&.cc\&.
+.SS "int4 ConstTpl::getHandleIndex (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file semantics\&.hh\&.
+.SS "\fBuintb\fP ConstTpl::getReal (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 61 of file semantics\&.hh\&.
+.SS "\fBv_field\fP ConstTpl::getSelect (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 65 of file semantics\&.hh\&.
+.SS "\fBAddrSpace\fP* ConstTpl::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 62 of file semantics\&.hh\&.
+.SS "\fBconst_type\fP ConstTpl::getType (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 64 of file semantics\&.hh\&.
+.SS "bool ConstTpl::isConstSpace (void) const"
+
+.PP
+Definition at line 58 of file semantics\&.cc\&.
+.SS "bool ConstTpl::isUniqueSpace (void) const"
+
+.PP
+Definition at line 66 of file semantics\&.cc\&.
+.SS "bool ConstTpl::isZero (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 69 of file semantics\&.hh\&.
+.SS "bool ConstTpl::operator< (const \fBConstTpl\fP & op2) const"
+
+.PP
+Definition at line 93 of file semantics\&.cc\&.
+.SS "bool ConstTpl::operator== (const \fBConstTpl\fP & op2) const"
+
+.PP
+Definition at line 74 of file semantics\&.cc\&.
+.SS "void ConstTpl::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Definition at line 378 of file semantics\&.cc\&.
+.SS "void ConstTpl::saveXml (ostream & s) const"
+
+.PP
+Definition at line 328 of file semantics\&.cc\&.
+.SS "void ConstTpl::transfer (const vector< \fBHandleTpl\fP * > & params)"
+
+.PP
+Definition at line 254 of file semantics\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 ConstTpl::handle_index"
+
+.PP
+Definition at line 42 of file semantics\&.hh\&.
+.SS "\fBAddrSpace\fP* ConstTpl::spaceid"
+
+.PP
+Definition at line 41 of file semantics\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

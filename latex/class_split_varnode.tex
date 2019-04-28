@@ -1,0 +1,1195 @@
+\hypertarget{class_split_varnode}{}\section{Split\+Varnode Class Reference}
+\label{class_split_varnode}\index{SplitVarnode@{SplitVarnode}}
+
+
+{\ttfamily \#include $<$double.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_split_varnode_ae29b33d88c26f56baafd37cf1bad356c}{Split\+Varnode}} (void)
+\item 
+\mbox{\hyperlink{class_split_varnode_a1361d18e678130ec7e2c0fffc3e3fa49}{Split\+Varnode}} (int4 sz, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} v)
+\item 
+\mbox{\hyperlink{class_split_varnode_a9a0d2cdc707d94e0fca72a2066593916}{Split\+Varnode}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$l, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$h)
+\item 
+void \mbox{\hyperlink{class_split_varnode_a9acc5b01b242ad7d852ec86a1af62b51}{init\+All}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$w, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$l, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$h)
+\item 
+void \mbox{\hyperlink{class_split_varnode_a858758ae5cd0507de5f06fc966e10156}{init\+Partial}} (int4 sz, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} v)
+\item 
+void \mbox{\hyperlink{class_split_varnode_a72c28276a2cb5c479131f80367917f4c}{init\+Partial}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$l, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$h)
+\item 
+bool \mbox{\hyperlink{class_split_varnode_aeabc6a2a9163112cf04c79aa2dfe31f8}{in\+Hand\+Hi}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$h)
+\item 
+bool \mbox{\hyperlink{class_split_varnode_a7be3658bd83eb37b531a5df3c2e0eb2c}{in\+Hand\+Lo}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$l)
+\item 
+bool \mbox{\hyperlink{class_split_varnode_a45771bce187576ac97d128c80c364f39}{in\+Hand\+Lo\+No\+Hi}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$l)
+\item 
+bool \mbox{\hyperlink{class_split_varnode_a5f0c6ee63f23f5ac06c6b38e805289ae}{in\+Hand\+Hi\+Out}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$h)
+\item 
+bool \mbox{\hyperlink{class_split_varnode_a5c34881b35017222348dd0ba967e7019}{in\+Hand\+Lo\+Out}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$h)
+\item 
+bool \mbox{\hyperlink{class_split_varnode_aab8d8d52dc075984f318ae17dc6522dd}{is\+Constant}} (void) const
+\item 
+bool \mbox{\hyperlink{class_split_varnode_a6ac0b1ddf23347d284482e0bb02b00de}{has\+Both\+Pieces}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_split_varnode_ad3a64fdae20a35ec05c3332612bd45de}{get\+Size}} (void) const
+\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_split_varnode_abed66f1e261a68d2d138f811eb2d2ba0}{get\+Lo}} (void) const
+\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_split_varnode_ac42eae2b9f25ba620f3741661b91f5d6}{get\+Hi}} (void) const
+\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_split_varnode_af26a6359a12ff242114c755a29872246}{get\+Whole}} (void) const
+\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_split_varnode_a41170d0dab7ac87fd947d3585ed7e896}{get\+Def\+Point}} (void) const
+\item 
+\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$ \mbox{\hyperlink{class_split_varnode_ad8924f8b19d9c23932ffbee502edc8aa}{get\+Def\+Block}} (void) const
+\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_split_varnode_a6694bb94e5e2d4ad415b7377c3aa430f}{get\+Value}} (void) const
+\item 
+bool \mbox{\hyperlink{class_split_varnode_a6a47b2837232b23935419b5e62643991}{is\+Whole\+Feasible}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$existop)
+\item 
+bool \mbox{\hyperlink{class_split_varnode_a0f6bba38e4adb554ebb69658cf3e3ee7}{is\+Whole\+Phi\+Feasible}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\item 
+void \mbox{\hyperlink{class_split_varnode_a957febfb33e3d53592bb677c388384e9}{find\+Create\+Whole}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\item 
+void \mbox{\hyperlink{class_split_varnode_a6b3c7a86293983e897c0da90f46d1499}{find\+Create\+Output\+Whole}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\item 
+void \mbox{\hyperlink{class_split_varnode_ad1c85dd3deb4c5e9a18e0c815feec95a}{create\+Joined\+Whole}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\item 
+void \mbox{\hyperlink{class_split_varnode_ae9cef4fbd2931fb270988180eab642ad}{build\+Lo\+From\+Whole}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\item 
+void \mbox{\hyperlink{class_split_varnode_a09d3bd3c551ee55ef42da4f01bc44f49}{build\+Hi\+From\+Whole}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_split_varnode_a2368506098ff81b475bc1e32d428a16c}{find\+Earliest\+Split\+Point}} (void)
+\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_split_varnode_a19a8c2ae5257a563a5a0e7d3ccd7704e}{find\+Out\+Exist}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_split_varnode_a575ad9769e03bfa8abbaf398f5952af4}{adjacent\+Offsets}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn1, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn2, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} size1)
+\item 
+static bool \mbox{\hyperlink{class_split_varnode_a633feccdecafe2850128bbc8e530f24b}{test\+Contiguous\+Load}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$most, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$least, bool allowfree, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$\&first, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$\&second, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$\&spc, int4 \&sizeres)
+\item 
+static bool \mbox{\hyperlink{class_split_varnode_ac857d72933606a431013da7fb0883ddf}{is\+Addr\+Tied\+Contiguous}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$lo, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$hi, \mbox{\hyperlink{class_address}{Address}} \&res)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_a0d560dff52dab6123bc6b3d996ad2a29}{whole\+List}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$w, vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&splitvec)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_a565abf157db41c402ce92a365f51e600}{find\+Copies}} (const \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in, vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&splitvec)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_ad6de8bc5b9902d2870ef350aeea58c3e}{get\+True\+False}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$boolop, bool flip, \mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$\&trueout, \mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$\&falseout)
+\item 
+static bool \mbox{\hyperlink{class_split_varnode_a9f91b0588de935c3f07a1cb7e59949a5}{otherwise\+Empty}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$branchop)
+\item 
+static bool \mbox{\hyperlink{class_split_varnode_a7f475a7c1f0b3e3d2d11dba2f52d5572}{verify\+Mult\+Neg\+One}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\item 
+static \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_split_varnode_a38d72b3185eeb4255fb3d1c997780977}{prepare\+Binary\+Op}} (\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&out, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in1, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in2)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_a20df0a8fa4eba1c02fd24ae129272d71}{create\+Binary\+Op}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&out, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in1, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in2, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$existop, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc)
+\item 
+static \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_split_varnode_a5a10435148bcdd7f5e09cface0c1998f}{prepare\+Shift\+Op}} (\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&out, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_a106126352280623608ffbb571d25b387}{create\+Shift\+Op}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&out, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$sa, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$existop, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_afcb8b8c5221764a535eb066b15149f84}{replace\+Bool\+Op}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$boolop, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in1, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in2, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc)
+\item 
+static bool \mbox{\hyperlink{class_split_varnode_ab869c695dd00e22e544be6f0090178af}{prepare\+Bool\+Op}} (\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in1, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in2, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$testop)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_a7cc1768236a8f0edf17b3b8e31bb2eb4}{create\+Bool\+Op}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$cbranch, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in1, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in2, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc)
+\item 
+static \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_split_varnode_a1a67136592624e6bd5612cea36e891dd}{prepare\+Phi\+Op}} (\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&out, vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&inlist)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_afb3f6dcf9f8412ffb6120f652991cce6}{create\+Phi\+Op}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&out, vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&inlist, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$existop)
+\item 
+static bool \mbox{\hyperlink{class_split_varnode_a11bfb0c446ec6ea8d2fdd25c9481a801}{prepare\+Indirect\+Op}} (\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$affector)
+\item 
+static void \mbox{\hyperlink{class_split_varnode_abe58b89c66472db3c107fd338348e918}{replace\+Indirect\+Op}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&out, \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$affector)
+\item 
+static int4 \mbox{\hyperlink{class_split_varnode_a07d18e3a13c7be35cd42f1762214d3f8}{apply\+Rule\+In}} (\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&in, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 22 of file double.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_split_varnode_ae29b33d88c26f56baafd37cf1bad356c}\label{class_split_varnode_ae29b33d88c26f56baafd37cf1bad356c}} 
+\index{SplitVarnode@{SplitVarnode}!SplitVarnode@{SplitVarnode}}
+\index{SplitVarnode@{SplitVarnode}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{SplitVarnode()}{SplitVarnode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Split\+Varnode\+::\+Split\+Varnode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 34 of file double.\+hh.
+
+\mbox{\Hypertarget{class_split_varnode_a1361d18e678130ec7e2c0fffc3e3fa49}\label{class_split_varnode_a1361d18e678130ec7e2c0fffc3e3fa49}} 
+\index{SplitVarnode@{SplitVarnode}!SplitVarnode@{SplitVarnode}}
+\index{SplitVarnode@{SplitVarnode}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{SplitVarnode()}{SplitVarnode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Split\+Varnode\+::\+Split\+Varnode (\begin{DoxyParamCaption}\item[{int4}]{sz,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{v }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file double.\+cc.
+
+\mbox{\Hypertarget{class_split_varnode_a9a0d2cdc707d94e0fca72a2066593916}\label{class_split_varnode_a9a0d2cdc707d94e0fca72a2066593916}} 
+\index{SplitVarnode@{SplitVarnode}!SplitVarnode@{SplitVarnode}}
+\index{SplitVarnode@{SplitVarnode}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{SplitVarnode()}{SplitVarnode()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Split\+Varnode\+::\+Split\+Varnode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{l,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 36 of file double.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a9a0d2cdc707d94e0fca72a2066593916_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_split_varnode_a575ad9769e03bfa8abbaf398f5952af4}\label{class_split_varnode_a575ad9769e03bfa8abbaf398f5952af4}} 
+\index{SplitVarnode@{SplitVarnode}!adjacentOffsets@{adjacentOffsets}}
+\index{adjacentOffsets@{adjacentOffsets}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{adjacentOffsets()}{adjacentOffsets()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::adjacent\+Offsets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn2,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{size1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 603 of file double.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a575ad9769e03bfa8abbaf398f5952af4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a07d18e3a13c7be35cd42f1762214d3f8}\label{class_split_varnode_a07d18e3a13c7be35cd42f1762214d3f8}} 
+\index{SplitVarnode@{SplitVarnode}!applyRuleIn@{applyRuleIn}}
+\index{applyRuleIn@{applyRuleIn}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{applyRuleIn()}{applyRuleIn()}}
+{\footnotesize\ttfamily int4 Split\+Varnode\+::apply\+Rule\+In (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 878 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a07d18e3a13c7be35cd42f1762214d3f8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a07d18e3a13c7be35cd42f1762214d3f8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a09d3bd3c551ee55ef42da4f01bc44f49}\label{class_split_varnode_a09d3bd3c551ee55ef42da4f01bc44f49}} 
+\index{SplitVarnode@{SplitVarnode}!buildHiFromWhole@{buildHiFromWhole}}
+\index{buildHiFromWhole@{buildHiFromWhole}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{buildHiFromWhole()}{buildHiFromWhole()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::build\+Hi\+From\+Whole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 533 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a09d3bd3c551ee55ef42da4f01bc44f49_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a09d3bd3c551ee55ef42da4f01bc44f49_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_ae9cef4fbd2931fb270988180eab642ad}\label{class_split_varnode_ae9cef4fbd2931fb270988180eab642ad}} 
+\index{SplitVarnode@{SplitVarnode}!buildLoFromWhole@{buildLoFromWhole}}
+\index{buildLoFromWhole@{buildLoFromWhole}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{buildLoFromWhole()}{buildLoFromWhole()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::build\+Lo\+From\+Whole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 499 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ae9cef4fbd2931fb270988180eab642ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ae9cef4fbd2931fb270988180eab642ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a20df0a8fa4eba1c02fd24ae129272d71}\label{class_split_varnode_a20df0a8fa4eba1c02fd24ae129272d71}} 
+\index{SplitVarnode@{SplitVarnode}!createBinaryOp@{createBinaryOp}}
+\index{createBinaryOp@{createBinaryOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{createBinaryOp()}{createBinaryOp()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::create\+Binary\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{out,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in1,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in2,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{existop,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 819 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a20df0a8fa4eba1c02fd24ae129272d71_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a20df0a8fa4eba1c02fd24ae129272d71_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a7cc1768236a8f0edf17b3b8e31bb2eb4}\label{class_split_varnode_a7cc1768236a8f0edf17b3b8e31bb2eb4}} 
+\index{SplitVarnode@{SplitVarnode}!createBoolOp@{createBoolOp}}
+\index{createBoolOp@{createBoolOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{createBoolOp()}{createBoolOp()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::create\+Bool\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{cbranch,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in1,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in2,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1039 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a7cc1768236a8f0edf17b3b8e31bb2eb4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a7cc1768236a8f0edf17b3b8e31bb2eb4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_ad1c85dd3deb4c5e9a18e0c815feec95a}\label{class_split_varnode_ad1c85dd3deb4c5e9a18e0c815feec95a}} 
+\index{SplitVarnode@{SplitVarnode}!createJoinedWhole@{createJoinedWhole}}
+\index{createJoinedWhole@{createJoinedWhole}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{createJoinedWhole()}{createJoinedWhole()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::create\+Joined\+Whole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 483 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ad1c85dd3deb4c5e9a18e0c815feec95a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ad1c85dd3deb4c5e9a18e0c815feec95a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_afb3f6dcf9f8412ffb6120f652991cce6}\label{class_split_varnode_afb3f6dcf9f8412ffb6120f652991cce6}} 
+\index{SplitVarnode@{SplitVarnode}!createPhiOp@{createPhiOp}}
+\index{createPhiOp@{createPhiOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{createPhiOp()}{createPhiOp()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::create\+Phi\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{out,  }\item[{vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&}]{inlist,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{existop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1075 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_afb3f6dcf9f8412ffb6120f652991cce6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_afb3f6dcf9f8412ffb6120f652991cce6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a106126352280623608ffbb571d25b387}\label{class_split_varnode_a106126352280623608ffbb571d25b387}} 
+\index{SplitVarnode@{SplitVarnode}!createShiftOp@{createShiftOp}}
+\index{createShiftOp@{createShiftOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{createShiftOp()}{createShiftOp()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::create\+Shift\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{out,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{sa,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{existop,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 853 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a106126352280623608ffbb571d25b387_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a106126352280623608ffbb571d25b387_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a565abf157db41c402ce92a365f51e600}\label{class_split_varnode_a565abf157db41c402ce92a365f51e600}} 
+\index{SplitVarnode@{SplitVarnode}!findCopies@{findCopies}}
+\index{findCopies@{findCopies}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{findCopies()}{findCopies()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::find\+Copies (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in,  }\item[{vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&}]{splitvec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 726 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a565abf157db41c402ce92a365f51e600_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a565abf157db41c402ce92a365f51e600_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a6b3c7a86293983e897c0da90f46d1499}\label{class_split_varnode_a6b3c7a86293983e897c0da90f46d1499}} 
+\index{SplitVarnode@{SplitVarnode}!findCreateOutputWhole@{findCreateOutputWhole}}
+\index{findCreateOutputWhole@{findCreateOutputWhole}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{findCreateOutputWhole()}{findCreateOutputWhole()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::find\+Create\+Output\+Whole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 474 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a6b3c7a86293983e897c0da90f46d1499_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a6b3c7a86293983e897c0da90f46d1499_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a957febfb33e3d53592bb677c388384e9}\label{class_split_varnode_a957febfb33e3d53592bb677c388384e9}} 
+\index{SplitVarnode@{SplitVarnode}!findCreateWhole@{findCreateWhole}}
+\index{findCreateWhole@{findCreateWhole}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{findCreateWhole()}{findCreateWhole()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::find\+Create\+Whole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 431 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a957febfb33e3d53592bb677c388384e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a957febfb33e3d53592bb677c388384e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a2368506098ff81b475bc1e32d428a16c}\label{class_split_varnode_a2368506098ff81b475bc1e32d428a16c}} 
+\index{SplitVarnode@{SplitVarnode}!findEarliestSplitPoint@{findEarliestSplitPoint}}
+\index{findEarliestSplitPoint@{findEarliestSplitPoint}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{findEarliestSplitPoint()}{findEarliestSplitPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Split\+Varnode\+::find\+Earliest\+Split\+Point (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 327 of file double.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a2368506098ff81b475bc1e32d428a16c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a19a8c2ae5257a563a5a0e7d3ccd7704e}\label{class_split_varnode_a19a8c2ae5257a563a5a0e7d3ccd7704e}} 
+\index{SplitVarnode@{SplitVarnode}!findOutExist@{findOutExist}}
+\index{findOutExist@{findOutExist}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{findOutExist()}{findOutExist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Split\+Varnode\+::find\+Out\+Exist (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 594 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a19a8c2ae5257a563a5a0e7d3ccd7704e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a19a8c2ae5257a563a5a0e7d3ccd7704e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_ad8924f8b19d9c23932ffbee502edc8aa}\label{class_split_varnode_ad8924f8b19d9c23932ffbee502edc8aa}} 
+\index{SplitVarnode@{SplitVarnode}!getDefBlock@{getDefBlock}}
+\index{getDefBlock@{getDefBlock}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getDefBlock()}{getDefBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_block_basic}{Block\+Basic}}$\ast$ Split\+Varnode\+::get\+Def\+Block (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 52 of file double.\+hh.
+
+\mbox{\Hypertarget{class_split_varnode_a41170d0dab7ac87fd947d3585ed7e896}\label{class_split_varnode_a41170d0dab7ac87fd947d3585ed7e896}} 
+\index{SplitVarnode@{SplitVarnode}!getDefPoint@{getDefPoint}}
+\index{getDefPoint@{getDefPoint}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getDefPoint()}{getDefPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Split\+Varnode\+::get\+Def\+Point (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 51 of file double.\+hh.
+
+\mbox{\Hypertarget{class_split_varnode_ac42eae2b9f25ba620f3741661b91f5d6}\label{class_split_varnode_ac42eae2b9f25ba620f3741661b91f5d6}} 
+\index{SplitVarnode@{SplitVarnode}!getHi@{getHi}}
+\index{getHi@{getHi}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getHi()}{getHi()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Split\+Varnode\+::get\+Hi (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 49 of file double.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ac42eae2b9f25ba620f3741661b91f5d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_abed66f1e261a68d2d138f811eb2d2ba0}\label{class_split_varnode_abed66f1e261a68d2d138f811eb2d2ba0}} 
+\index{SplitVarnode@{SplitVarnode}!getLo@{getLo}}
+\index{getLo@{getLo}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getLo()}{getLo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Split\+Varnode\+::get\+Lo (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 48 of file double.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_abed66f1e261a68d2d138f811eb2d2ba0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_ad3a64fdae20a35ec05c3332612bd45de}\label{class_split_varnode_ad3a64fdae20a35ec05c3332612bd45de}} 
+\index{SplitVarnode@{SplitVarnode}!getSize@{getSize}}
+\index{getSize@{getSize}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Split\+Varnode\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 47 of file double.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ad3a64fdae20a35ec05c3332612bd45de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_ad6de8bc5b9902d2870ef350aeea58c3e}\label{class_split_varnode_ad6de8bc5b9902d2870ef350aeea58c3e}} 
+\index{SplitVarnode@{SplitVarnode}!getTrueFalse@{getTrueFalse}}
+\index{getTrueFalse@{getTrueFalse}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getTrueFalse()}{getTrueFalse()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::get\+True\+False (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{boolop,  }\item[{bool}]{flip,  }\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$\&}]{trueout,  }\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$\&}]{falseout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 761 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ad6de8bc5b9902d2870ef350aeea58c3e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ad6de8bc5b9902d2870ef350aeea58c3e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a6694bb94e5e2d4ad415b7377c3aa430f}\label{class_split_varnode_a6694bb94e5e2d4ad415b7377c3aa430f}} 
+\index{SplitVarnode@{SplitVarnode}!getValue@{getValue}}
+\index{getValue@{getValue}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Split\+Varnode\+::get\+Value (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 53 of file double.\+hh.
+
+\mbox{\Hypertarget{class_split_varnode_af26a6359a12ff242114c755a29872246}\label{class_split_varnode_af26a6359a12ff242114c755a29872246}} 
+\index{SplitVarnode@{SplitVarnode}!getWhole@{getWhole}}
+\index{getWhole@{getWhole}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{getWhole()}{getWhole()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Split\+Varnode\+::get\+Whole (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 50 of file double.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_af26a6359a12ff242114c755a29872246_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a6ac0b1ddf23347d284482e0bb02b00de}\label{class_split_varnode_a6ac0b1ddf23347d284482e0bb02b00de}} 
+\index{SplitVarnode@{SplitVarnode}!hasBothPieces@{hasBothPieces}}
+\index{hasBothPieces@{hasBothPieces}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{hasBothPieces()}{hasBothPieces()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::has\+Both\+Pieces (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 46 of file double.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a6ac0b1ddf23347d284482e0bb02b00de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_aeabc6a2a9163112cf04c79aa2dfe31f8}\label{class_split_varnode_aeabc6a2a9163112cf04c79aa2dfe31f8}} 
+\index{SplitVarnode@{SplitVarnode}!inHandHi@{inHandHi}}
+\index{inHandHi@{inHandHi}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{inHandHi()}{inHandHi()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::in\+Hand\+Hi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 81 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{class_split_varnode_aeabc6a2a9163112cf04c79aa2dfe31f8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_split_varnode_aeabc6a2a9163112cf04c79aa2dfe31f8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a5f0c6ee63f23f5ac06c6b38e805289ae}\label{class_split_varnode_a5f0c6ee63f23f5ac06c6b38e805289ae}} 
+\index{SplitVarnode@{SplitVarnode}!inHandHiOut@{inHandHiOut}}
+\index{inHandHiOut@{inHandHiOut}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{inHandHiOut()}{inHandHiOut()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::in\+Hand\+Hi\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 175 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a5f0c6ee63f23f5ac06c6b38e805289ae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a7be3658bd83eb37b531a5df3c2e0eb2c}\label{class_split_varnode_a7be3658bd83eb37b531a5df3c2e0eb2c}} 
+\index{SplitVarnode@{SplitVarnode}!inHandLo@{inHandLo}}
+\index{inHandLo@{inHandLo}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{inHandLo()}{inHandLo()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::in\+Hand\+Lo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Definition at line 113 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{class_split_varnode_a7be3658bd83eb37b531a5df3c2e0eb2c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_split_varnode_a7be3658bd83eb37b531a5df3c2e0eb2c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a45771bce187576ac97d128c80c364f39}\label{class_split_varnode_a45771bce187576ac97d128c80c364f39}} 
+\index{SplitVarnode@{SplitVarnode}!inHandLoNoHi@{inHandLoNoHi}}
+\index{inHandLoNoHi@{inHandLoNoHi}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{inHandLoNoHi()}{inHandLoNoHi()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::in\+Hand\+Lo\+No\+Hi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a45771bce187576ac97d128c80c364f39_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a5c34881b35017222348dd0ba967e7019}\label{class_split_varnode_a5c34881b35017222348dd0ba967e7019}} 
+\index{SplitVarnode@{SplitVarnode}!inHandLoOut@{inHandLoOut}}
+\index{inHandLoOut@{inHandLoOut}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{inHandLoOut()}{inHandLoOut()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::in\+Hand\+Lo\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 201 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a5c34881b35017222348dd0ba967e7019_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a9acc5b01b242ad7d852ec86a1af62b51}\label{class_split_varnode_a9acc5b01b242ad7d852ec86a1af62b51}} 
+\index{SplitVarnode@{SplitVarnode}!initAll@{initAll}}
+\index{initAll@{initAll}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{initAll()}{initAll()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::init\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{w,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{l,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 70 of file double.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a9acc5b01b242ad7d852ec86a1af62b51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a858758ae5cd0507de5f06fc966e10156}\label{class_split_varnode_a858758ae5cd0507de5f06fc966e10156}} 
+\index{SplitVarnode@{SplitVarnode}!initPartial@{initPartial}}
+\index{initPartial@{initPartial}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{initPartial()}{initPartial()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Split\+Varnode\+::init\+Partial (\begin{DoxyParamCaption}\item[{int4}]{sz,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{v }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file double.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a858758ae5cd0507de5f06fc966e10156_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a72c28276a2cb5c479131f80367917f4c}\label{class_split_varnode_a72c28276a2cb5c479131f80367917f4c}} 
+\index{SplitVarnode@{SplitVarnode}!initPartial@{initPartial}}
+\index{initPartial@{initPartial}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{initPartial()}{initPartial()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Split\+Varnode\+::init\+Partial (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{l,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file double.\+cc.
+
+\mbox{\Hypertarget{class_split_varnode_ac857d72933606a431013da7fb0883ddf}\label{class_split_varnode_ac857d72933606a431013da7fb0883ddf}} 
+\index{SplitVarnode@{SplitVarnode}!isAddrTiedContiguous@{isAddrTiedContiguous}}
+\index{isAddrTiedContiguous@{isAddrTiedContiguous}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{isAddrTiedContiguous()}{isAddrTiedContiguous()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::is\+Addr\+Tied\+Contiguous (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{lo,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{hi,  }\item[{\mbox{\hyperlink{class_address}{Address}} \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 662 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ac857d72933606a431013da7fb0883ddf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ac857d72933606a431013da7fb0883ddf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_aab8d8d52dc075984f318ae17dc6522dd}\label{class_split_varnode_aab8d8d52dc075984f318ae17dc6522dd}} 
+\index{SplitVarnode@{SplitVarnode}!isConstant@{isConstant}}
+\index{isConstant@{isConstant}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{isConstant()}{isConstant()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::is\+Constant (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 45 of file double.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_aab8d8d52dc075984f318ae17dc6522dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a6a47b2837232b23935419b5e62643991}\label{class_split_varnode_a6a47b2837232b23935419b5e62643991}} 
+\index{SplitVarnode@{SplitVarnode}!isWholeFeasible@{isWholeFeasible}}
+\index{isWholeFeasible@{isWholeFeasible}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{isWholeFeasible()}{isWholeFeasible()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::is\+Whole\+Feasible (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{existop }\end{DoxyParamCaption})}
+
+
+
+Definition at line 386 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a6a47b2837232b23935419b5e62643991_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a6a47b2837232b23935419b5e62643991_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a0f6bba38e4adb554ebb69658cf3e3ee7}\label{class_split_varnode_a0f6bba38e4adb554ebb69658cf3e3ee7}} 
+\index{SplitVarnode@{SplitVarnode}!isWholePhiFeasible@{isWholePhiFeasible}}
+\index{isWholePhiFeasible@{isWholePhiFeasible}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{isWholePhiFeasible()}{isWholePhiFeasible()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::is\+Whole\+Phi\+Feasible (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Definition at line 410 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a0f6bba38e4adb554ebb69658cf3e3ee7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a0f6bba38e4adb554ebb69658cf3e3ee7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a9f91b0588de935c3f07a1cb7e59949a5}\label{class_split_varnode_a9f91b0588de935c3f07a1cb7e59949a5}} 
+\index{SplitVarnode@{SplitVarnode}!otherwiseEmpty@{otherwiseEmpty}}
+\index{otherwiseEmpty@{otherwiseEmpty}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{otherwiseEmpty()}{otherwiseEmpty()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::otherwise\+Empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{branchop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 777 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a9f91b0588de935c3f07a1cb7e59949a5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a9f91b0588de935c3f07a1cb7e59949a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a38d72b3185eeb4255fb3d1c997780977}\label{class_split_varnode_a38d72b3185eeb4255fb3d1c997780977}} 
+\index{SplitVarnode@{SplitVarnode}!prepareBinaryOp@{prepareBinaryOp}}
+\index{prepareBinaryOp@{prepareBinaryOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{prepareBinaryOp()}{prepareBinaryOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Split\+Varnode\+::prepare\+Binary\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{out,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in1,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 809 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a38d72b3185eeb4255fb3d1c997780977_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a38d72b3185eeb4255fb3d1c997780977_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_ab869c695dd00e22e544be6f0090178af}\label{class_split_varnode_ab869c695dd00e22e544be6f0090178af}} 
+\index{SplitVarnode@{SplitVarnode}!prepareBoolOp@{prepareBoolOp}}
+\index{prepareBoolOp@{prepareBoolOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{prepareBoolOp()}{prepareBoolOp()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::prepare\+Bool\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in1,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in2,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{testop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1019 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ab869c695dd00e22e544be6f0090178af_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_ab869c695dd00e22e544be6f0090178af_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a11bfb0c446ec6ea8d2fdd25c9481a801}\label{class_split_varnode_a11bfb0c446ec6ea8d2fdd25c9481a801}} 
+\index{SplitVarnode@{SplitVarnode}!prepareIndirectOp@{prepareIndirectOp}}
+\index{prepareIndirectOp@{prepareIndirectOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{prepareIndirectOp()}{prepareIndirectOp()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::prepare\+Indirect\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{affector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1096 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a11bfb0c446ec6ea8d2fdd25c9481a801_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a11bfb0c446ec6ea8d2fdd25c9481a801_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a1a67136592624e6bd5612cea36e891dd}\label{class_split_varnode_a1a67136592624e6bd5612cea36e891dd}} 
+\index{SplitVarnode@{SplitVarnode}!preparePhiOp@{preparePhiOp}}
+\index{preparePhiOp@{preparePhiOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{preparePhiOp()}{preparePhiOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Split\+Varnode\+::prepare\+Phi\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{out,  }\item[{vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&}]{inlist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1059 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a1a67136592624e6bd5612cea36e891dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a1a67136592624e6bd5612cea36e891dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a5a10435148bcdd7f5e09cface0c1998f}\label{class_split_varnode_a5a10435148bcdd7f5e09cface0c1998f}} 
+\index{SplitVarnode@{SplitVarnode}!prepareShiftOp@{prepareShiftOp}}
+\index{prepareShiftOp@{prepareShiftOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{prepareShiftOp()}{prepareShiftOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Split\+Varnode\+::prepare\+Shift\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{out,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 844 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a5a10435148bcdd7f5e09cface0c1998f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a5a10435148bcdd7f5e09cface0c1998f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_afcb8b8c5221764a535eb066b15149f84}\label{class_split_varnode_afcb8b8c5221764a535eb066b15149f84}} 
+\index{SplitVarnode@{SplitVarnode}!replaceBoolOp@{replaceBoolOp}}
+\index{replaceBoolOp@{replaceBoolOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{replaceBoolOp()}{replaceBoolOp()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::replace\+Bool\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{boolop,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in1,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in2,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1027 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_afcb8b8c5221764a535eb066b15149f84_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_afcb8b8c5221764a535eb066b15149f84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_abe58b89c66472db3c107fd338348e918}\label{class_split_varnode_abe58b89c66472db3c107fd338348e918}} 
+\index{SplitVarnode@{SplitVarnode}!replaceIndirectOp@{replaceIndirectOp}}
+\index{replaceIndirectOp@{replaceIndirectOp}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{replaceIndirectOp()}{replaceIndirectOp()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::replace\+Indirect\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{out,  }\item[{\mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} \&}]{in,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{affector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1105 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_abe58b89c66472db3c107fd338348e918_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_abe58b89c66472db3c107fd338348e918_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a633feccdecafe2850128bbc8e530f24b}\label{class_split_varnode_a633feccdecafe2850128bbc8e530f24b}} 
+\index{SplitVarnode@{SplitVarnode}!testContiguousLoad@{testContiguousLoad}}
+\index{testContiguousLoad@{testContiguousLoad}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{testContiguousLoad()}{testContiguousLoad()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::test\+Contiguous\+Load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{most,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{least,  }\item[{bool}]{allowfree,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$\&}]{first,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$\&}]{second,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$\&}]{spc,  }\item[{int4 \&}]{sizeres }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 632 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a633feccdecafe2850128bbc8e530f24b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a633feccdecafe2850128bbc8e530f24b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a7f475a7c1f0b3e3d2d11dba2f52d5572}\label{class_split_varnode_a7f475a7c1f0b3e3d2d11dba2f52d5572}} 
+\index{SplitVarnode@{SplitVarnode}!verifyMultNegOne@{verifyMultNegOne}}
+\index{verifyMultNegOne@{verifyMultNegOne}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{verifyMultNegOne()}{verifyMultNegOne()}}
+{\footnotesize\ttfamily bool Split\+Varnode\+::verify\+Mult\+Neg\+One (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 799 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{class_split_varnode_a7f475a7c1f0b3e3d2d11dba2f52d5572_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a7f475a7c1f0b3e3d2d11dba2f52d5572_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_split_varnode_a0d560dff52dab6123bc6b3d996ad2a29}\label{class_split_varnode_a0d560dff52dab6123bc6b3d996ad2a29}} 
+\index{SplitVarnode@{SplitVarnode}!wholeList@{wholeList}}
+\index{wholeList@{wholeList}!SplitVarnode@{SplitVarnode}}
+\subsubsection{\texorpdfstring{wholeList()}{wholeList()}}
+{\footnotesize\ttfamily void Split\+Varnode\+::whole\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{w,  }\item[{vector$<$ \mbox{\hyperlink{class_split_varnode}{Split\+Varnode}} $>$ \&}]{splitvec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 690 of file double.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a0d560dff52dab6123bc6b3d996ad2a29_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_split_varnode_a0d560dff52dab6123bc6b3d996ad2a29_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{double_8hh}{double.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{double_8cc}{double.\+cc}}\end{DoxyCompactItemize}

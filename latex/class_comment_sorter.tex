@@ -1,0 +1,271 @@
+\hypertarget{class_comment_sorter}{}\section{Comment\+Sorter Class Reference}
+\label{class_comment_sorter}\index{CommentSorter@{CommentSorter}}
+
+
+A class for sorting comments into and within basic blocks.  
+
+
+
+
+{\ttfamily \#include $<$comment.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91a972094c6778abc30bfd1d6f02eec65db}{header\+\_\+basic}} = 0, 
+\mbox{\hyperlink{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91a7b207fc0588a61728f14c2e90ceb05d3}{header\+\_\+unplaced}} = 1
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_comment_sorter_a095e90b97c4d14311b48c485e968ddd1}{Comment\+Sorter}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_comment_sorter_a9a79bd6eaeaa2dc69a3cb8246097343a}{setup\+Function\+List}} (uint4 tp, const \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd, const \mbox{\hyperlink{class_comment_database}{Comment\+Database}} \&db, bool display\+Unplaced)
+\begin{DoxyCompactList}\small\item\em Collect and sort comments specific to the given function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_comment_sorter_ac16fb35aebd4c38915061a3d68313d9e}{setup\+Block\+List}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Prepare to walk comments from a single basic block. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_comment_sorter_a37347c22d077831fef08a87ce951c2a2}{setup\+Op\+List}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Establish a p-\/code landmark within the current set of comments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_comment_sorter_a524cd5b7f4b5a6abb3aa63582b6f09c6}{setup\+Header}} (uint4 header\+Type)
+\begin{DoxyCompactList}\small\item\em Prepare to walk comments in the header. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_comment_sorter_ab34833183c89acdcf7a132d13705dba9}{has\+Next}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if there are more comments to emit in the current set. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_comment}{Comment}} $\ast$ \mbox{\hyperlink{class_comment_sorter_ad9ce1258fc843f1ddf0db5383073401a}{get\+Next}} (void) const
+\begin{DoxyCompactList}\small\item\em Advance to the next comment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class for sorting comments into and within basic blocks. 
+
+The decompiler endeavors to display comments within the flow of the source code statements it generates. Comments should be placed at or near the statement that encompasses the address of the original instruction to which the comment is attached. This is complicated by the fact that instructions may get removed and transformed during decompilation and even whole basic blocks may get removed.
+
+This class sorts comments into the basic block that contains it. As statements are emitted, comments can get picked up, in the correct order, even if there is no longer a specific p-\/code operation at the comment\textquotesingle{}s address. The decompiler maintains information about basic blocks that have been entirely removed, in which case, the user can elect to not display the corresponding comments.
+
+This class also acts as state for walking comments within a specific basic block or within the header. 
+
+Definition at line 188 of file comment.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91}\label{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{header\_basic@{header\_basic}!CommentSorter@{CommentSorter}}\index{CommentSorter@{CommentSorter}!header\_basic@{header\_basic}}}\mbox{\Hypertarget{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91a972094c6778abc30bfd1d6f02eec65db}\label{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91a972094c6778abc30bfd1d6f02eec65db}} 
+header\+\_\+basic&Basic header comments. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{header\_unplaced@{header\_unplaced}!CommentSorter@{CommentSorter}}\index{CommentSorter@{CommentSorter}!header\_unplaced@{header\_unplaced}}}\mbox{\Hypertarget{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91a7b207fc0588a61728f14c2e90ceb05d3}\label{class_comment_sorter_a583f6f8791a910c7033cfe2f0c583d91a7b207fc0588a61728f14c2e90ceb05d3}} 
+header\+\_\+unplaced&\mbox{\hyperlink{class_comment}{Comment}} that can\textquotesingle{}t be placed in code flow. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 190 of file comment.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_comment_sorter_a095e90b97c4d14311b48c485e968ddd1}\label{class_comment_sorter_a095e90b97c4d14311b48c485e968ddd1}} 
+\index{CommentSorter@{CommentSorter}!CommentSorter@{CommentSorter}}
+\index{CommentSorter@{CommentSorter}!CommentSorter@{CommentSorter}}
+\subsubsection{\texorpdfstring{CommentSorter()}{CommentSorter()}}
+{\footnotesize\ttfamily Comment\+Sorter\+::\+Comment\+Sorter (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 238 of file comment.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_comment_sorter_ad9ce1258fc843f1ddf0db5383073401a}\label{class_comment_sorter_ad9ce1258fc843f1ddf0db5383073401a}} 
+\index{CommentSorter@{CommentSorter}!getNext@{getNext}}
+\index{getNext@{getNext}!CommentSorter@{CommentSorter}}
+\subsubsection{\texorpdfstring{getNext()}{getNext()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_comment}{Comment}}$\ast$ Comment\+Sorter\+::get\+Next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Advance to the next comment. 
+
+
+
+Definition at line 244 of file comment.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_ad9ce1258fc843f1ddf0db5383073401a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_sorter_ab34833183c89acdcf7a132d13705dba9}\label{class_comment_sorter_ab34833183c89acdcf7a132d13705dba9}} 
+\index{CommentSorter@{CommentSorter}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!CommentSorter@{CommentSorter}}
+\subsubsection{\texorpdfstring{hasNext()}{hasNext()}}
+{\footnotesize\ttfamily bool Comment\+Sorter\+::has\+Next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if there are more comments to emit in the current set. 
+
+
+
+Definition at line 243 of file comment.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_ab34833183c89acdcf7a132d13705dba9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_sorter_ac16fb35aebd4c38915061a3d68313d9e}\label{class_comment_sorter_ac16fb35aebd4c38915061a3d68313d9e}} 
+\index{CommentSorter@{CommentSorter}!setupBlockList@{setupBlockList}}
+\index{setupBlockList@{setupBlockList}!CommentSorter@{CommentSorter}}
+\subsubsection{\texorpdfstring{setupBlockList()}{setupBlockList()}}
+{\footnotesize\ttfamily void Comment\+Sorter\+::setup\+Block\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})}
+
+
+
+Prepare to walk comments from a single basic block. 
+
+Find iterators that bound everything in the basic block
+
+
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the basic block \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 372 of file comment.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_ac16fb35aebd4c38915061a3d68313d9e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_ac16fb35aebd4c38915061a3d68313d9e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_sorter_a9a79bd6eaeaa2dc69a3cb8246097343a}\label{class_comment_sorter_a9a79bd6eaeaa2dc69a3cb8246097343a}} 
+\index{CommentSorter@{CommentSorter}!setupFunctionList@{setupFunctionList}}
+\index{setupFunctionList@{setupFunctionList}!CommentSorter@{CommentSorter}}
+\subsubsection{\texorpdfstring{setupFunctionList()}{setupFunctionList()}}
+{\footnotesize\ttfamily void Comment\+Sorter\+::setup\+Function\+List (\begin{DoxyParamCaption}\item[{uint4}]{tp,  }\item[{const \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd,  }\item[{const \mbox{\hyperlink{class_comment_database}{Comment\+Database}} \&}]{db,  }\item[{bool}]{display\+Unplaced }\end{DoxyParamCaption})}
+
+
+
+Collect and sort comments specific to the given function. 
+
+Only keep comments matching one of a specific set of properties 
+\begin{DoxyParams}{Parameters}
+{\em tp} & is the set of properties (may be zero) \\
+\hline
+{\em fd} & is the given function \\
+\hline
+{\em db} & is the container of comments to collect from \\
+\hline
+{\em display\+Unplaced} & is {\bfseries{true}} if unplaced comments should be displayed in the header \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 328 of file comment.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_a9a79bd6eaeaa2dc69a3cb8246097343a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_a9a79bd6eaeaa2dc69a3cb8246097343a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_sorter_a524cd5b7f4b5a6abb3aa63582b6f09c6}\label{class_comment_sorter_a524cd5b7f4b5a6abb3aa63582b6f09c6}} 
+\index{CommentSorter@{CommentSorter}!setupHeader@{setupHeader}}
+\index{setupHeader@{setupHeader}!CommentSorter@{CommentSorter}}
+\subsubsection{\texorpdfstring{setupHeader()}{setupHeader()}}
+{\footnotesize\ttfamily void Comment\+Sorter\+::setup\+Header (\begin{DoxyParamCaption}\item[{uint4}]{header\+Type }\end{DoxyParamCaption})}
+
+
+
+Prepare to walk comments in the header. 
+
+Header comments are grouped together. Set up iterators. 
+\begin{DoxyParams}{Parameters}
+{\em header\+Type} & selects either {\bfseries{header\+\_\+basic}} or {\bfseries{header\+\_\+unplaced}} comments \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 387 of file comment.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_a524cd5b7f4b5a6abb3aa63582b6f09c6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comment_sorter_a37347c22d077831fef08a87ce951c2a2}\label{class_comment_sorter_a37347c22d077831fef08a87ce951c2a2}} 
+\index{CommentSorter@{CommentSorter}!setupOpList@{setupOpList}}
+\index{setupOpList@{setupOpList}!CommentSorter@{CommentSorter}}
+\subsubsection{\texorpdfstring{setupOpList()}{setupOpList()}}
+{\footnotesize\ttfamily void Comment\+Sorter\+::setup\+Op\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})}
+
+
+
+Establish a p-\/code landmark within the current set of comments. 
+
+This will generally get called with the root p-\/code op of a statement being emitted by the decompiler. This establishes a key value within the basic block, so it is known where to stop emitting comments within the block for emitting the statement. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the p-\/code representing the root of a statement \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 355 of file comment.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_comment_sorter_a37347c22d077831fef08a87ce951c2a2_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{comment_8hh}{comment.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{comment_8cc}{comment.\+cc}}\end{DoxyCompactItemize}

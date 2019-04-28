@@ -1,0 +1,257 @@
+\hypertarget{class_pcode_builder}{}\section{Pcode\+Builder Class Reference}
+\label{class_pcode_builder}\index{PcodeBuilder@{PcodeBuilder}}
+
+
+{\ttfamily \#include $<$semantics.\+hh$>$}
+
+
+
+Inheritance diagram for Pcode\+Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{class_pcode_builder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pcode\+Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{class_pcode_builder__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pcode_builder_af1c62eec00ca64be050b63f6da68a815}{Pcode\+Builder}} (uint4 lbcnt)
+\item 
+virtual \mbox{\hyperlink{class_pcode_builder_ae547ef047c8ef1fd280d10c4f39e1097}{$\sim$\+Pcode\+Builder}} (void)
+\item 
+uint4 \mbox{\hyperlink{class_pcode_builder_a3323d18944e86830774bfc49a0821dd0}{get\+Label\+Base}} (void) const
+\item 
+\mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} $\ast$ \mbox{\hyperlink{class_pcode_builder_a65861c5e4b12ae6704376d38e4b15fc0}{get\+Current\+Walker}} () const
+\item 
+void \mbox{\hyperlink{class_pcode_builder_a0d27ac650805e617aa50c28da6d49c07}{build}} (\mbox{\hyperlink{class_construct_tpl}{Construct\+Tpl}} $\ast$construct, int4 secnum)
+\item 
+virtual void \mbox{\hyperlink{class_pcode_builder_aa5c50ed5c414075e71fee8d31a976608}{append\+Build}} (\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$bld, int4 secnum)=0
+\item 
+virtual void \mbox{\hyperlink{class_pcode_builder_a229a55795ad8c72be40f1d2125751035}{delay\+Slot}} (\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$op)=0
+\item 
+virtual void \mbox{\hyperlink{class_pcode_builder_aadc0f772375e7c05ecd11ea145d61df2}{set\+Label}} (\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$op)=0
+\item 
+virtual void \mbox{\hyperlink{class_pcode_builder_ab8214b4b69aea45b459b1a37c1c2aa77}{append\+Cross\+Build}} (\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$bld, int4 secnum)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_pcode_builder_afda63f1d79357bca4e63e92bded60559}{dump}} (\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$op)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} $\ast$ \mbox{\hyperlink{class_pcode_builder_af47adb151a448ebd175f638f03d17a28}{walker}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 191 of file semantics.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pcode_builder_af1c62eec00ca64be050b63f6da68a815}\label{class_pcode_builder_af1c62eec00ca64be050b63f6da68a815}} 
+\index{PcodeBuilder@{PcodeBuilder}!PcodeBuilder@{PcodeBuilder}}
+\index{PcodeBuilder@{PcodeBuilder}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{PcodeBuilder()}{PcodeBuilder()}}
+{\footnotesize\ttfamily Pcode\+Builder\+::\+Pcode\+Builder (\begin{DoxyParamCaption}\item[{uint4}]{lbcnt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 198 of file semantics.\+hh.
+
+\mbox{\Hypertarget{class_pcode_builder_ae547ef047c8ef1fd280d10c4f39e1097}\label{class_pcode_builder_ae547ef047c8ef1fd280d10c4f39e1097}} 
+\index{PcodeBuilder@{PcodeBuilder}!````~PcodeBuilder@{$\sim$PcodeBuilder}}
+\index{````~PcodeBuilder@{$\sim$PcodeBuilder}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{$\sim$PcodeBuilder()}{~PcodeBuilder()}}
+{\footnotesize\ttfamily virtual Pcode\+Builder\+::$\sim$\+Pcode\+Builder (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 199 of file semantics.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pcode_builder_aa5c50ed5c414075e71fee8d31a976608}\label{class_pcode_builder_aa5c50ed5c414075e71fee8d31a976608}} 
+\index{PcodeBuilder@{PcodeBuilder}!appendBuild@{appendBuild}}
+\index{appendBuild@{appendBuild}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{appendBuild()}{appendBuild()}}
+{\footnotesize\ttfamily virtual void Pcode\+Builder\+::append\+Build (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{bld,  }\item[{int4}]{secnum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_macro_builder_a03bea914f6f63a779c6dd7c6d547c5d8}{Macro\+Builder}}, and \mbox{\hyperlink{class_sleigh_builder_a9e9d6b0de400f9aa14caf2732b7bfeef}{Sleigh\+Builder}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_aa5c50ed5c414075e71fee8d31a976608_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_builder_ab8214b4b69aea45b459b1a37c1c2aa77}\label{class_pcode_builder_ab8214b4b69aea45b459b1a37c1c2aa77}} 
+\index{PcodeBuilder@{PcodeBuilder}!appendCrossBuild@{appendCrossBuild}}
+\index{appendCrossBuild@{appendCrossBuild}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{appendCrossBuild()}{appendCrossBuild()}}
+{\footnotesize\ttfamily virtual void Pcode\+Builder\+::append\+Cross\+Build (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{bld,  }\item[{int4}]{secnum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_macro_builder_a82c903d7c450eb1f5a503e85c4f8218f}{Macro\+Builder}}, and \mbox{\hyperlink{class_sleigh_builder_a343885f1c2044a04ae3587d121a968dd}{Sleigh\+Builder}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_ab8214b4b69aea45b459b1a37c1c2aa77_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_builder_a0d27ac650805e617aa50c28da6d49c07}\label{class_pcode_builder_a0d27ac650805e617aa50c28da6d49c07}} 
+\index{PcodeBuilder@{PcodeBuilder}!build@{build}}
+\index{build@{build}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily void Pcode\+Builder\+::build (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_construct_tpl}{Construct\+Tpl}} $\ast$}]{construct,  }\item[{int4}]{secnum }\end{DoxyParamCaption})}
+
+
+
+Definition at line 921 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_a0d27ac650805e617aa50c28da6d49c07_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_a0d27ac650805e617aa50c28da6d49c07_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_builder_a229a55795ad8c72be40f1d2125751035}\label{class_pcode_builder_a229a55795ad8c72be40f1d2125751035}} 
+\index{PcodeBuilder@{PcodeBuilder}!delaySlot@{delaySlot}}
+\index{delaySlot@{delaySlot}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{delaySlot()}{delaySlot()}}
+{\footnotesize\ttfamily virtual void Pcode\+Builder\+::delay\+Slot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_macro_builder_afadaa2541aeb61997f74b606c5cadf06}{Macro\+Builder}}, and \mbox{\hyperlink{class_sleigh_builder_aa6cee1d2f18ab2d9e3ff24a41fe80770}{Sleigh\+Builder}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_a229a55795ad8c72be40f1d2125751035_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_builder_afda63f1d79357bca4e63e92bded60559}\label{class_pcode_builder_afda63f1d79357bca4e63e92bded60559}} 
+\index{PcodeBuilder@{PcodeBuilder}!dump@{dump}}
+\index{dump@{dump}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{dump()}{dump()}}
+{\footnotesize\ttfamily virtual void Pcode\+Builder\+::dump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_afda63f1d79357bca4e63e92bded60559_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_builder_a65861c5e4b12ae6704376d38e4b15fc0}\label{class_pcode_builder_a65861c5e4b12ae6704376d38e4b15fc0}} 
+\index{PcodeBuilder@{PcodeBuilder}!getCurrentWalker@{getCurrentWalker}}
+\index{getCurrentWalker@{getCurrentWalker}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{getCurrentWalker()}{getCurrentWalker()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_parser_walker}{Parser\+Walker}}$\ast$ Pcode\+Builder\+::get\+Current\+Walker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 202 of file semantics.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_a65861c5e4b12ae6704376d38e4b15fc0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_builder_a3323d18944e86830774bfc49a0821dd0}\label{class_pcode_builder_a3323d18944e86830774bfc49a0821dd0}} 
+\index{PcodeBuilder@{PcodeBuilder}!getLabelBase@{getLabelBase}}
+\index{getLabelBase@{getLabelBase}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{getLabelBase()}{getLabelBase()}}
+{\footnotesize\ttfamily uint4 Pcode\+Builder\+::get\+Label\+Base (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 201 of file semantics.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_a3323d18944e86830774bfc49a0821dd0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_builder_aadc0f772375e7c05ecd11ea145d61df2}\label{class_pcode_builder_aadc0f772375e7c05ecd11ea145d61df2}} 
+\index{PcodeBuilder@{PcodeBuilder}!setLabel@{setLabel}}
+\index{setLabel@{setLabel}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{setLabel()}{setLabel()}}
+{\footnotesize\ttfamily virtual void Pcode\+Builder\+::set\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_macro_builder_a5ea6a3fd6be762cc3d05851e59b22b79}{Macro\+Builder}}, and \mbox{\hyperlink{class_sleigh_builder_ad5b3ee580fec7e944389fb51ba798e3c}{Sleigh\+Builder}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_builder_aadc0f772375e7c05ecd11ea145d61df2_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pcode_builder_af47adb151a448ebd175f638f03d17a28}\label{class_pcode_builder_af47adb151a448ebd175f638f03d17a28}} 
+\index{PcodeBuilder@{PcodeBuilder}!walker@{walker}}
+\index{walker@{walker}!PcodeBuilder@{PcodeBuilder}}
+\subsubsection{\texorpdfstring{walker}{walker}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_parser_walker}{Parser\+Walker}}$\ast$ Pcode\+Builder\+::walker\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 195 of file semantics.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{semantics_8hh}{semantics.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{semantics_8cc}{semantics.\+cc}}\end{DoxyCompactItemize}

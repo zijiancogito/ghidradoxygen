@@ -1,0 +1,69 @@
+.TH "RegisterProgram" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RegisterProgram \- Command to \fBregister\fP a new Program (executable) with the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBGhidraCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)"
+.br
+.RI "Perform the action of the command\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBarchid\fP"
+.br
+.RI "Resulting id of the program to send back\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Command to \fBregister\fP a new Program (executable) with the decompiler\&. 
+
+An id is assigned to the program, and an \fBArchitecture\fP object for the program is created and initialized\&. This must be issued before any other command\&. The command expects four XML document parameters:
+.IP "\(bu" 2
+The processor specification
+.IP "\(bu" 2
+The compiler specification
+.IP "\(bu" 2
+The stripped down <sleigh> tag describing address spaces for the program
+.IP "\(bu" 2
+The <coretypes> tag describing the built-in datatypes for the program 
+.PP
+
+.PP
+Definition at line 102 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void RegisterProgram::rawAction (void)\fC [virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implements \fBGhidraCommand\fP\&.
+.PP
+Definition at line 162 of file ghidra_process\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 RegisterProgram::archid"
+
+.PP
+Resulting id of the program to send back\&. 
+.PP
+Definition at line 110 of file ghidra_process\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

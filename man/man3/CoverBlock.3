@@ -1,0 +1,256 @@
+.TH "CoverBlock" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CoverBlock \- The topological scope of a variable within a basic block\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cover\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCoverBlock\fP (void)"
+.br
+.RI "Construct empty/uncovered block\&. "
+.ti -1c
+.RI "const \fBPcodeOp\fP * \fBgetStart\fP (void) const"
+.br
+.RI "Get the start of the range\&. "
+.ti -1c
+.RI "const \fBPcodeOp\fP * \fBgetStop\fP (void) const"
+.br
+.RI "Get the end of the range\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear \fBthis\fP block to empty/uncovered\&. "
+.ti -1c
+.RI "void \fBsetAll\fP (void)"
+.br
+.RI "Mark whole block as covered\&. "
+.ti -1c
+.RI "void \fBsetBegin\fP (const \fBPcodeOp\fP *begin)"
+.br
+.RI "Reset start of range\&. "
+.ti -1c
+.RI "void \fBsetEnd\fP (const \fBPcodeOp\fP *end)"
+.br
+.RI "Reset end of range\&. "
+.ti -1c
+.RI "int4 \fBintersect\fP (const \fBCoverBlock\fP &op2) const"
+.br
+.RI "Compute intersection with another \fBCoverBlock\fP\&. "
+.ti -1c
+.RI "bool \fBempty\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is empty/uncovered\&. "
+.ti -1c
+.RI "bool \fBcontain\fP (const \fBPcodeOp\fP *point) const"
+.br
+.RI "Check containment of given point\&. "
+.ti -1c
+.RI "int4 \fBboundary\fP (const \fBPcodeOp\fP *point) const"
+.br
+.RI "Characterize given point as boundary\&. "
+.ti -1c
+.RI "void \fBmerge\fP (const \fBCoverBlock\fP &op2)"
+.br
+.RI "\fBMerge\fP another \fBCoverBlock\fP into \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBprint\fP (ostream &s) const"
+.br
+.RI "Dump a description to stream\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static uintm \fBgetUIndex\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Get the comparison index for a \fBPcodeOp\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The topological scope of a variable within a basic block\&. 
+
+Within a basic block, the topological scope of a variable can be considered a contiguous range of p-code operations\&. This range can be described with a \fIstart\fP and \fIstop\fP \fBPcodeOp\fP object, indicating all p-code operations between the two inclusive\&. The \fIstart\fP and \fIstop\fP may hold special encodings meaning:
+.IP "\(bu" 2
+From the beginning of the block
+.IP "\(bu" 2
+To the end of the block 
+.PP
+
+.PP
+Definition at line 35 of file cover\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CoverBlock::CoverBlock (void)\fC [inline]\fP"
+
+.PP
+Construct empty/uncovered block\&. 
+.PP
+Definition at line 39 of file cover\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 CoverBlock::boundary (const \fBPcodeOp\fP * point) const"
+
+.PP
+Characterize given point as boundary\&. Return:
+.IP "\(bu" 2
+0 if point not on boundary
+.IP "\(bu" 2
+1 if on tail
+.IP "\(bu" 2
+2 if on the defining point
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP is the given \fBPcodeOp\fP point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the characterization 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file cover\&.cc\&.
+.SS "void CoverBlock::clear (void)\fC [inline]\fP"
+
+.PP
+Clear \fBthis\fP block to empty/uncovered\&. 
+.PP
+Definition at line 43 of file cover\&.hh\&.
+.SS "bool CoverBlock::contain (const \fBPcodeOp\fP * point) const"
+
+.PP
+Check containment of given point\&. If the given \fBPcodeOp\fP or boundary point is contained in \fBthis\fP range, return true\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the point is contained 
+.RE
+.PP
+
+.PP
+Definition at line 103 of file cover\&.cc\&.
+.SS "bool CoverBlock::empty (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is empty/uncovered\&. 
+.PP
+Definition at line 50 of file cover\&.hh\&.
+.SS "const \fBPcodeOp\fP* CoverBlock::getStart (void) const\fC [inline]\fP"
+
+.PP
+Get the start of the range\&. 
+.PP
+Definition at line 41 of file cover\&.hh\&.
+.SS "const \fBPcodeOp\fP* CoverBlock::getStop (void) const\fC [inline]\fP"
+
+.PP
+Get the end of the range\&. 
+.PP
+Definition at line 42 of file cover\&.hh\&.
+.SS "uintm CoverBlock::getUIndex (const \fBPcodeOp\fP * op)\fC [static]\fP"
+
+.PP
+Get the comparison index for a \fBPcodeOp\fP\&. \fBPcodeOp\fP objects and a \fBCoverBlock\fP start/stop boundaries have a natural ordering that can be used to tell if a \fBPcodeOp\fP falls between boundary points and if \fBCoverBlock\fP objects intersect\&. Ordering is determined by comparing the values returned by this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP and/or boundary point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a value for comparison 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file cover\&.cc\&.
+.SS "int4 CoverBlock::intersect (const \fBCoverBlock\fP & op2) const"
+
+.PP
+Compute intersection with another \fBCoverBlock\fP\&. Characterize the intersection of \fBthis\fP range with another \fBCoverBlock\fP\&. Return:
+.IP "\(bu" 2
+0 if there is no intersection
+.IP "\(bu" 2
+1 if only the intersection is at boundary points
+.IP "\(bu" 2
+2 if a whole interval intersects
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other \fBCoverBlock\fP to compare 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the intersection characterization 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file cover\&.cc\&.
+.SS "void CoverBlock::merge (const \fBCoverBlock\fP & op2)"
+
+.PP
+\fBMerge\fP another \fBCoverBlock\fP into \fBthis\fP\&. Compute the union of \fBthis\fP with the other given \fBCoverBlock\fP, replacing \fBthis\fP in place\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the other given \fBCoverBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 143 of file cover\&.cc\&.
+.SS "void CoverBlock::print (ostream & s) const"
+
+.PP
+Dump a description to stream\&. Print a description of the covered range of ops in this block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file cover\&.cc\&.
+.SS "void CoverBlock::setAll (void)\fC [inline]\fP"
+
+.PP
+Mark whole block as covered\&. 
+.PP
+Definition at line 44 of file cover\&.hh\&.
+.SS "void CoverBlock::setBegin (const \fBPcodeOp\fP * begin)\fC [inline]\fP"
+
+.PP
+Reset start of range\&. 
+.PP
+Definition at line 46 of file cover\&.hh\&.
+.SS "void CoverBlock::setEnd (const \fBPcodeOp\fP * end)\fC [inline]\fP"
+
+.PP
+Reset end of range\&. 
+.PP
+Definition at line 48 of file cover\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

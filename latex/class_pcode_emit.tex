@@ -1,0 +1,317 @@
+\hypertarget{class_pcode_emit}{}\section{Pcode\+Emit Class Reference}
+\label{class_pcode_emit}\index{PcodeEmit@{PcodeEmit}}
+
+
+Abstract class for emitting pcode to an application.  
+
+
+
+
+{\ttfamily \#include $<$translate.\+hh$>$}
+
+
+
+Inheritance diagram for Pcode\+Emit\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a6d0dba96f7de07e739f1fe0ae5cdb1dd}{unimpl\+\_\+tag}} = 0x20, 
+\mbox{\hyperlink{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a61aec01488b532f94d397704e2dbb232}{inst\+\_\+tag}} = 0x21, 
+\mbox{\hyperlink{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482ac55070c979036389521fdc4df6006da6}{op\+\_\+tag}} = 0x22, 
+\mbox{\hyperlink{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a7553717ede697faf9fc8dca8aedf5637}{void\+\_\+tag}} = 0x23, 
+\newline
+\mbox{\hyperlink{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482aca932484edb2250c8e099aab22678480}{spaceid\+\_\+tag}} = 0x24, 
+\mbox{\hyperlink{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a7497bc60107d45cb836c9e954fb768bb}{addrsz\+\_\+tag}} = 0x25, 
+\mbox{\hyperlink{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a76198c2539b5966aa2b741a40de8dd58}{end\+\_\+tag}} = 0x60
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_pcode_emit_aea571c3fae3b7c2e50947e69352437d1}{$\sim$\+Pcode\+Emit}} (void)
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_pcode_emit_a00f25999bbdea677b82577b21bdfff8e}{dump}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$outvar, \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$vars, int4 isize)=0
+\begin{DoxyCompactList}\small\item\em The main pcode emit method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pcode_emit_a7e440d43aba89c358ffcab1f2d88b3db}{restore\+Xml\+Op}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$trans)
+\begin{DoxyCompactList}\small\item\em Emit pcode directly from an X\+ML tag. \end{DoxyCompactList}\item 
+const uint1 $\ast$ \mbox{\hyperlink{class_pcode_emit_a8136f8c678e250f77907ed57dc6956ac}{restore\+Packed\+Op}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const uint1 $\ast$ptr, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$trans)
+\begin{DoxyCompactList}\small\item\em Emit pcode directly from a packed byte stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const uint1 $\ast$ \mbox{\hyperlink{class_pcode_emit_a58dbf8967eef54f79f9e622b69df46a5}{unpack\+Offset}} (const uint1 $\ast$ptr, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&off)
+\begin{DoxyCompactList}\small\item\em Helper function for unpacking an offset from a pcode byte stream. \end{DoxyCompactList}\item 
+static const uint1 $\ast$ \mbox{\hyperlink{class_pcode_emit_aa5c98b5fd60bc78f36de44f6fa20dde7}{unpack\+Varnode\+Data}} (const uint1 $\ast$ptr, \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \&v, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$trans)
+\begin{DoxyCompactList}\small\item\em Helper function for unpacking a varnode from a pcode byte stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for emitting pcode to an application. 
+
+Translation engines pass back the generated pcode for an instruction to the application using this class. 
+
+Definition at line 76 of file translate.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{unimpl\_tag@{unimpl\_tag}!PcodeEmit@{PcodeEmit}}\index{PcodeEmit@{PcodeEmit}!unimpl\_tag@{unimpl\_tag}}}\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a6d0dba96f7de07e739f1fe0ae5cdb1dd}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a6d0dba96f7de07e739f1fe0ae5cdb1dd}} 
+unimpl\+\_\+tag&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{inst\_tag@{inst\_tag}!PcodeEmit@{PcodeEmit}}\index{PcodeEmit@{PcodeEmit}!inst\_tag@{inst\_tag}}}\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a61aec01488b532f94d397704e2dbb232}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a61aec01488b532f94d397704e2dbb232}} 
+inst\+\_\+tag&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{op\_tag@{op\_tag}!PcodeEmit@{PcodeEmit}}\index{PcodeEmit@{PcodeEmit}!op\_tag@{op\_tag}}}\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482ac55070c979036389521fdc4df6006da6}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482ac55070c979036389521fdc4df6006da6}} 
+op\+\_\+tag&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{void\_tag@{void\_tag}!PcodeEmit@{PcodeEmit}}\index{PcodeEmit@{PcodeEmit}!void\_tag@{void\_tag}}}\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a7553717ede697faf9fc8dca8aedf5637}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a7553717ede697faf9fc8dca8aedf5637}} 
+void\+\_\+tag&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{spaceid\_tag@{spaceid\_tag}!PcodeEmit@{PcodeEmit}}\index{PcodeEmit@{PcodeEmit}!spaceid\_tag@{spaceid\_tag}}}\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482aca932484edb2250c8e099aab22678480}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482aca932484edb2250c8e099aab22678480}} 
+spaceid\+\_\+tag&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{addrsz\_tag@{addrsz\_tag}!PcodeEmit@{PcodeEmit}}\index{PcodeEmit@{PcodeEmit}!addrsz\_tag@{addrsz\_tag}}}\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a7497bc60107d45cb836c9e954fb768bb}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a7497bc60107d45cb836c9e954fb768bb}} 
+addrsz\+\_\+tag&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{end\_tag@{end\_tag}!PcodeEmit@{PcodeEmit}}\index{PcodeEmit@{PcodeEmit}!end\_tag@{end\_tag}}}\mbox{\Hypertarget{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a76198c2539b5966aa2b741a40de8dd58}\label{class_pcode_emit_a95e8a4cd96ea2cd38102668ac2581482a76198c2539b5966aa2b741a40de8dd58}} 
+end\+\_\+tag&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 97 of file translate.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pcode_emit_aea571c3fae3b7c2e50947e69352437d1}\label{class_pcode_emit_aea571c3fae3b7c2e50947e69352437d1}} 
+\index{PcodeEmit@{PcodeEmit}!````~PcodeEmit@{$\sim$PcodeEmit}}
+\index{````~PcodeEmit@{$\sim$PcodeEmit}!PcodeEmit@{PcodeEmit}}
+\subsubsection{\texorpdfstring{$\sim$PcodeEmit()}{~PcodeEmit()}}
+{\footnotesize\ttfamily virtual Pcode\+Emit\+::$\sim$\+Pcode\+Emit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual destructor. 
+
+
+
+Definition at line 78 of file translate.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pcode_emit_a00f25999bbdea677b82577b21bdfff8e}\label{class_pcode_emit_a00f25999bbdea677b82577b21bdfff8e}} 
+\index{PcodeEmit@{PcodeEmit}!dump@{dump}}
+\index{dump@{dump}!PcodeEmit@{PcodeEmit}}
+\subsubsection{\texorpdfstring{dump()}{dump()}}
+{\footnotesize\ttfamily virtual void Pcode\+Emit\+::dump (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$}]{outvar,  }\item[{\mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} $\ast$}]{vars,  }\item[{int4}]{isize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The main pcode emit method. 
+
+A single pcode instruction is returned to the application via this method. Particular applications override it to tailor how the operations are used. 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the \mbox{\hyperlink{class_address}{Address}} of the machine instruction \\
+\hline
+{\em opc} & is the opcode of the particular pcode instruction \\
+\hline
+{\em outvar} & if not {\itshape null} is a pointer to data about the output varnode \\
+\hline
+{\em vars} & is a pointer to an array of \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} for each input varnode \\
+\hline
+{\em isize} & is the number of input varnodes \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_pcode_emit_cache_a493e849e384f3a63cbf1676c43d6bbe1}{Pcode\+Emit\+Cache}}, \mbox{\hyperlink{class_pcode_raw_out_a69df78fbc3cdae072cdd8938c88bb4b3}{Pcode\+Raw\+Out}}, and \mbox{\hyperlink{class_disassembly_engine_a33295e9d637ed2e437d3cbd6481eb20d}{Disassembly\+Engine}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_a00f25999bbdea677b82577b21bdfff8e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_emit_a8136f8c678e250f77907ed57dc6956ac}\label{class_pcode_emit_a8136f8c678e250f77907ed57dc6956ac}} 
+\index{PcodeEmit@{PcodeEmit}!restorePackedOp@{restorePackedOp}}
+\index{restorePackedOp@{restorePackedOp}!PcodeEmit@{PcodeEmit}}
+\subsubsection{\texorpdfstring{restorePackedOp()}{restorePackedOp()}}
+{\footnotesize\ttfamily const uint1 $\ast$ Pcode\+Emit\+::restore\+Packed\+Op (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const uint1 $\ast$}]{ptr,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Emit pcode directly from a packed byte stream. 
+
+A convenience method for passing around pcode operations via a special packed format. A single pcode operation is parsed from a byte stream and returned to the application via the \mbox{\hyperlink{class_pcode_emit_a00f25999bbdea677b82577b21bdfff8e}{Pcode\+Emit\+::dump}} method. 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the address of the instruction that generated this pcode \\
+\hline
+{\em ptr} & is a pointer into a packed byte stream \\
+\hline
+{\em manage} & is the \mbox{\hyperlink{class_addr_space}{Addr\+Space}} manager object of the associated processor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the next unconsumed byte of the stream 
+\end{DoxyReturn}
+
+
+Definition at line 794 of file translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_a8136f8c678e250f77907ed57dc6956ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_a8136f8c678e250f77907ed57dc6956ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_emit_a7e440d43aba89c358ffcab1f2d88b3db}\label{class_pcode_emit_a7e440d43aba89c358ffcab1f2d88b3db}} 
+\index{PcodeEmit@{PcodeEmit}!restoreXmlOp@{restoreXmlOp}}
+\index{restoreXmlOp@{restoreXmlOp}!PcodeEmit@{PcodeEmit}}
+\subsubsection{\texorpdfstring{restoreXmlOp()}{restoreXmlOp()}}
+{\footnotesize\ttfamily void Pcode\+Emit\+::restore\+Xml\+Op (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Emit pcode directly from an X\+ML tag. 
+
+A convenience method for passing around pcode operations via X\+ML. A single pcode operation is parsed from an X\+ML tag and returned to the application via the \mbox{\hyperlink{class_pcode_emit_a00f25999bbdea677b82577b21bdfff8e}{Pcode\+Emit\+::dump}} method. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the pcode operation X\+ML tag \\
+\hline
+{\em manage} & is the \mbox{\hyperlink{class_addr_space}{Addr\+Space}} manager object of the associated processor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 704 of file translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_a7e440d43aba89c358ffcab1f2d88b3db_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_a7e440d43aba89c358ffcab1f2d88b3db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_emit_a58dbf8967eef54f79f9e622b69df46a5}\label{class_pcode_emit_a58dbf8967eef54f79f9e622b69df46a5}} 
+\index{PcodeEmit@{PcodeEmit}!unpackOffset@{unpackOffset}}
+\index{unpackOffset@{unpackOffset}!PcodeEmit@{PcodeEmit}}
+\subsubsection{\texorpdfstring{unpackOffset()}{unpackOffset()}}
+{\footnotesize\ttfamily const uint1 $\ast$ Pcode\+Emit\+::unpack\+Offset (\begin{DoxyParamCaption}\item[{const uint1 $\ast$}]{ptr,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&}]{off }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Helper function for unpacking an offset from a pcode byte stream. 
+
+A Helper function for \mbox{\hyperlink{class_pcode_emit_a8136f8c678e250f77907ed57dc6956ac}{Pcode\+Emit\+::restore\+Packed\+Op}} that reads an unsigned offset from a packed stream 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & is a pointer into a packed byte stream \\
+\hline
+{\em off} & is where the offset read from the stream is stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the next unconsumed byte of the stream 
+\end{DoxyReturn}
+
+
+Definition at line 744 of file translate.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_a58dbf8967eef54f79f9e622b69df46a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_emit_aa5c98b5fd60bc78f36de44f6fa20dde7}\label{class_pcode_emit_aa5c98b5fd60bc78f36de44f6fa20dde7}} 
+\index{PcodeEmit@{PcodeEmit}!unpackVarnodeData@{unpackVarnodeData}}
+\index{unpackVarnodeData@{unpackVarnodeData}!PcodeEmit@{PcodeEmit}}
+\subsubsection{\texorpdfstring{unpackVarnodeData()}{unpackVarnodeData()}}
+{\footnotesize\ttfamily const uint1 $\ast$ Pcode\+Emit\+::unpack\+Varnode\+Data (\begin{DoxyParamCaption}\item[{const uint1 $\ast$}]{ptr,  }\item[{\mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \&}]{v,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Helper function for unpacking a varnode from a pcode byte stream. 
+
+A Helper function for \mbox{\hyperlink{class_pcode_emit_a8136f8c678e250f77907ed57dc6956ac}{Pcode\+Emit\+::restore\+Packed\+Op}} that reads a varnode from a packed stream 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & is a pointer into a packed byte stream \\
+\hline
+{\em v} & is the \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} object being filled in by the stream \\
+\hline
+{\em manage} & is the \mbox{\hyperlink{class_addr_space}{Addr\+Space}} manager object of the associated processor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the next unconsumed byte of the stream 
+\end{DoxyReturn}
+
+
+Definition at line 766 of file translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_aa5c98b5fd60bc78f36de44f6fa20dde7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_emit_aa5c98b5fd60bc78f36de44f6fa20dde7_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{translate_8hh}{translate.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{translate_8cc}{translate.\+cc}}\end{DoxyCompactItemize}

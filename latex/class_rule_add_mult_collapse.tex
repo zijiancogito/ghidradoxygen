@@ -1,0 +1,181 @@
+\hypertarget{class_rule_add_mult_collapse}{}\section{Rule\+Add\+Mult\+Collapse Class Reference}
+\label{class_rule_add_mult_collapse}\index{RuleAddMultCollapse@{RuleAddMultCollapse}}
+
+
+Collapse constants in an additive or multiplicative expression.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Add\+Mult\+Collapse\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_rule_add_mult_collapse__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Add\+Mult\+Collapse\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_rule_add_mult_collapse__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_add_mult_collapse_a93b4e7fcaa8b74044b67b93766a7888f}{Rule\+Add\+Mult\+Collapse}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_add_mult_collapse_a954a3e869a8c8946773f189d02482182}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_add_mult_collapse_a8398a59703c4741d98bf0e488c7fb4bb}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_add_mult_collapse_a6f9afdaabcba06d6a739e7ff9a148fc3}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Collapse constants in an additive or multiplicative expression. 
+
+Forms include\+:
+\begin{DoxyItemize}
+\item {\ttfamily ((V + c) + d) =$>$ V + (c+d)}
+\item {\ttfamily ((V $\ast$ c) $\ast$ d) =$>$ V $\ast$ (c$\ast$d)}
+\item {\ttfamily ((V + (W + c)) + d) =$>$ (W + (c+d)) + V} 
+\end{DoxyItemize}
+
+Definition at line 638 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_add_mult_collapse_a93b4e7fcaa8b74044b67b93766a7888f}\label{class_rule_add_mult_collapse_a93b4e7fcaa8b74044b67b93766a7888f}} 
+\index{RuleAddMultCollapse@{RuleAddMultCollapse}!RuleAddMultCollapse@{RuleAddMultCollapse}}
+\index{RuleAddMultCollapse@{RuleAddMultCollapse}!RuleAddMultCollapse@{RuleAddMultCollapse}}
+\subsubsection{\texorpdfstring{RuleAddMultCollapse()}{RuleAddMultCollapse()}}
+{\footnotesize\ttfamily Rule\+Add\+Mult\+Collapse\+::\+Rule\+Add\+Mult\+Collapse (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 640 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_rule_add_mult_collapse_a93b4e7fcaa8b74044b67b93766a7888f_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_add_mult_collapse_a6f9afdaabcba06d6a739e7ff9a148fc3}\label{class_rule_add_mult_collapse_a6f9afdaabcba06d6a739e7ff9a148fc3}} 
+\index{RuleAddMultCollapse@{RuleAddMultCollapse}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleAddMultCollapse@{RuleAddMultCollapse}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Add\+Mult\+Collapse\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 3487 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_add_mult_collapse_a6f9afdaabcba06d6a739e7ff9a148fc3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_add_mult_collapse_a954a3e869a8c8946773f189d02482182}\label{class_rule_add_mult_collapse_a954a3e869a8c8946773f189d02482182}} 
+\index{RuleAddMultCollapse@{RuleAddMultCollapse}!clone@{clone}}
+\index{clone@{clone}!RuleAddMultCollapse@{RuleAddMultCollapse}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Add\+Mult\+Collapse\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 641 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_add_mult_collapse_a954a3e869a8c8946773f189d02482182_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_add_mult_collapse_a8398a59703c4741d98bf0e488c7fb4bb}\label{class_rule_add_mult_collapse_a8398a59703c4741d98bf0e488c7fb4bb}} 
+\index{RuleAddMultCollapse@{RuleAddMultCollapse}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleAddMultCollapse@{RuleAddMultCollapse}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Add\+Mult\+Collapse\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 3480 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

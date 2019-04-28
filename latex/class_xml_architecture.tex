@@ -1,0 +1,153 @@
+\hypertarget{class_xml_architecture}{}\section{Xml\+Architecture Class Reference}
+\label{class_xml_architecture}\index{XmlArchitecture@{XmlArchitecture}}
+
+
+An \mbox{\hyperlink{class_architecture}{Architecture}} that loads executables using an X\+ML format.  
+
+
+
+
+{\ttfamily \#include $<$xml\+\_\+arch.\+hh$>$}
+
+
+
+Inheritance diagram for Xml\+Architecture\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_xml_architecture__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Xml\+Architecture\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_xml_architecture__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_xml_architecture_abf5dd16b5343f89d2b165cf2206c7bf6}{save\+Xml}} (ostream \&s) const
+\item 
+virtual void \mbox{\hyperlink{class_xml_architecture_aead4d5224e18ab98cd30ca89774b9faa}{restore\+Xml}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Restore the \mbox{\hyperlink{class_architecture}{Architecture}} state from an X\+ML stream. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_xml_architecture_a1a6185aa79d3d4e6be5e10d1fb9db8ba}{Xml\+Architecture}} (const string \&fname, const string \&targ, ostream $\ast$estream)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_xml_architecture_a2e9b7847037cb3739e84537b82a62d1e}{$\sim$\+Xml\+Architecture}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \mbox{\hyperlink{class_architecture}{Architecture}} that loads executables using an X\+ML format. 
+
+Definition at line 34 of file xml\+\_\+arch.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_xml_architecture_a1a6185aa79d3d4e6be5e10d1fb9db8ba}\label{class_xml_architecture_a1a6185aa79d3d4e6be5e10d1fb9db8ba}} 
+\index{XmlArchitecture@{XmlArchitecture}!XmlArchitecture@{XmlArchitecture}}
+\index{XmlArchitecture@{XmlArchitecture}!XmlArchitecture@{XmlArchitecture}}
+\subsubsection{\texorpdfstring{XmlArchitecture()}{XmlArchitecture()}}
+{\footnotesize\ttfamily Xml\+Architecture\+::\+Xml\+Architecture (\begin{DoxyParamCaption}\item[{const string \&}]{fname,  }\item[{const string \&}]{targ,  }\item[{ostream $\ast$}]{estream }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+This just wraps the base constructor 
+\begin{DoxyParams}{Parameters}
+{\em fname} & is the path to the executable file (containing X\+ML) \\
+\hline
+{\em targ} & is the (optional) language id \\
+\hline
+{\em estream} & is the stream to use for the error console \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 84 of file xml\+\_\+arch.\+cc.
+
+\mbox{\Hypertarget{class_xml_architecture_a2e9b7847037cb3739e84537b82a62d1e}\label{class_xml_architecture_a2e9b7847037cb3739e84537b82a62d1e}} 
+\index{XmlArchitecture@{XmlArchitecture}!````~XmlArchitecture@{$\sim$XmlArchitecture}}
+\index{````~XmlArchitecture@{$\sim$XmlArchitecture}!XmlArchitecture@{XmlArchitecture}}
+\subsubsection{\texorpdfstring{$\sim$XmlArchitecture()}{~XmlArchitecture()}}
+{\footnotesize\ttfamily virtual Xml\+Architecture\+::$\sim$\+Xml\+Architecture (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 43 of file xml\+\_\+arch.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_xml_architecture_aead4d5224e18ab98cd30ca89774b9faa}\label{class_xml_architecture_aead4d5224e18ab98cd30ca89774b9faa}} 
+\index{XmlArchitecture@{XmlArchitecture}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!XmlArchitecture@{XmlArchitecture}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Xml\+Architecture\+::restore\+Xml (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore the \mbox{\hyperlink{class_architecture}{Architecture}} state from an X\+ML stream. 
+
+Read in all the sub-\/component state from a $<$save\+\_\+state$>$ X\+ML tag When adding stuff to this B\+E\+W\+A\+RE\+: The spec file has already initialized stuff 
+\begin{DoxyParams}{Parameters}
+{\em store} & is document store containing the parsed root tag \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_architecture_ab15a398b9f84dd62ad36d1e83895783a}{Architecture}}.
+
+
+
+Definition at line 106 of file xml\+\_\+arch.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_xml_architecture_aead4d5224e18ab98cd30ca89774b9faa_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_xml_architecture_abf5dd16b5343f89d2b165cf2206c7bf6}\label{class_xml_architecture_abf5dd16b5343f89d2b165cf2206c7bf6}} 
+\index{XmlArchitecture@{XmlArchitecture}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!XmlArchitecture@{XmlArchitecture}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Xml\+Architecture\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Prepend extra stuff to specify binary file and spec 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the stream to write to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_architecture_af760a127622d4cdd4b6b436122478cb5}{Architecture}}.
+
+
+
+Definition at line 93 of file xml\+\_\+arch.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_xml_architecture_abf5dd16b5343f89d2b165cf2206c7bf6_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{xml__arch_8hh}{xml\+\_\+arch.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{xml__arch_8cc}{xml\+\_\+arch.\+cc}}\end{DoxyCompactItemize}

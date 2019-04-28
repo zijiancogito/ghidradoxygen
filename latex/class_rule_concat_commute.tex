@@ -1,0 +1,180 @@
+\hypertarget{class_rule_concat_commute}{}\section{Rule\+Concat\+Commute Class Reference}
+\label{class_rule_concat_commute}\index{RuleConcatCommute@{RuleConcatCommute}}
+
+
+Commute P\+I\+E\+CE with I\+N\+T\+\_\+\+A\+ND, I\+N\+T\+\_\+\+OR, and I\+N\+T\+\_\+\+X\+OR.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Concat\+Commute\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{class_rule_concat_commute__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Concat\+Commute\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{class_rule_concat_commute__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_concat_commute_a893eef10fd7ac5f9d49580159d2e67e3}{Rule\+Concat\+Commute}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_concat_commute_ac1f7bc3a2249397cd9a5d2a1cfb8b0db}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_concat_commute_a5c3b84b40f77aec4e51ee59b5911474f}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_concat_commute_a75dbdeccddc5baf27b6390449b331bcf}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Commute P\+I\+E\+CE with I\+N\+T\+\_\+\+A\+ND, I\+N\+T\+\_\+\+OR, and I\+N\+T\+\_\+\+X\+OR. 
+
+This supports forms\+:
+\begin{DoxyItemize}
+\item {\ttfamily concat( V \& c, W) =$>$ concat(\+V,\+W) \& (c$<$$<$16 $\vert$ 0xffff)}
+\item {\ttfamily concat( V, W $\vert$ c) =$>$ concat(\+V,\+W) $\vert$ c} 
+\end{DoxyItemize}
+
+Definition at line 713 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_concat_commute_a893eef10fd7ac5f9d49580159d2e67e3}\label{class_rule_concat_commute_a893eef10fd7ac5f9d49580159d2e67e3}} 
+\index{RuleConcatCommute@{RuleConcatCommute}!RuleConcatCommute@{RuleConcatCommute}}
+\index{RuleConcatCommute@{RuleConcatCommute}!RuleConcatCommute@{RuleConcatCommute}}
+\subsubsection{\texorpdfstring{RuleConcatCommute()}{RuleConcatCommute()}}
+{\footnotesize\ttfamily Rule\+Concat\+Commute\+::\+Rule\+Concat\+Commute (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 715 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{class_rule_concat_commute_a893eef10fd7ac5f9d49580159d2e67e3_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_concat_commute_a75dbdeccddc5baf27b6390449b331bcf}\label{class_rule_concat_commute_a75dbdeccddc5baf27b6390449b331bcf}} 
+\index{RuleConcatCommute@{RuleConcatCommute}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleConcatCommute@{RuleConcatCommute}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Concat\+Commute\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 3996 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_concat_commute_a75dbdeccddc5baf27b6390449b331bcf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_concat_commute_ac1f7bc3a2249397cd9a5d2a1cfb8b0db}\label{class_rule_concat_commute_ac1f7bc3a2249397cd9a5d2a1cfb8b0db}} 
+\index{RuleConcatCommute@{RuleConcatCommute}!clone@{clone}}
+\index{clone@{clone}!RuleConcatCommute@{RuleConcatCommute}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Concat\+Commute\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 716 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_concat_commute_ac1f7bc3a2249397cd9a5d2a1cfb8b0db_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_concat_commute_a5c3b84b40f77aec4e51ee59b5911474f}\label{class_rule_concat_commute_a5c3b84b40f77aec4e51ee59b5911474f}} 
+\index{RuleConcatCommute@{RuleConcatCommute}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleConcatCommute@{RuleConcatCommute}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Concat\+Commute\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 3990 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

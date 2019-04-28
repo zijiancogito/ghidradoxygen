@@ -1,0 +1,262 @@
+.TH "Heritage" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Heritage \- Manage the construction of Static Single Assignment (SSA) form\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <heritage\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHeritage\fP (\fBFuncdata\fP *data)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "int4 \fBheritagePass\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Get the pass number when the given address was heritaged\&. "
+.ti -1c
+.RI "int4 \fBnumHeritagePasses\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Get the number times heritage was performed for the given address space\&. "
+.ti -1c
+.RI "void \fBseenDeadCode\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Inform system of dead code removal in given space\&. "
+.ti -1c
+.RI "int4 \fBgetDeadCodeDelay\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Get pass delay for heritaging the given space\&. "
+.ti -1c
+.RI "void \fBsetDeadCodeDelay\fP (\fBAddrSpace\fP *spc, int4 delay)"
+.br
+.RI "Set delay for a specific space\&. "
+.ti -1c
+.RI "bool \fBdeadRemovalAllowed\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Return \fBtrue\fP if it is \fIsafe\fP to remove dead code\&. "
+.ti -1c
+.RI "bool \fBdeadRemovalAllowedSeen\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Check if dead code removal is safe and mark that removal has happened\&. "
+.ti -1c
+.RI "void \fBbuildInfoList\fP (void)"
+.br
+.RI "Initialize information for each space\&. "
+.ti -1c
+.RI "void \fBforceRestructure\fP (void)"
+.br
+.RI "Force regeneration of basic block structures\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Reset all analysis of heritage\&. "
+.ti -1c
+.RI "void \fBplaceMultiequals\fP (void)"
+.br
+.RI "Perform phi-node placement for the current set of address ranges\&. "
+.ti -1c
+.RI "void \fBrename\fP (void)"
+.br
+.RI "Perform the renaming algorithm for the current set of address ranges\&. "
+.ti -1c
+.RI "void \fBheritage\fP (void)"
+.br
+.RI "Perform one pass of heritage\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manage the construction of Static Single Assignment (SSA) form\&. 
+
+With a specific function (\fBFuncdata\fP), this class links the \fBVarnode\fP and \fBPcodeOp\fP objects into the formal data-flow graph structure, SSA form\&. The full structure can be built over multiple passes\&. In particular, this allows register data-flow to be analyzed first, and then stack locations can be discovered and promoted to first-class Varnodes in a second pass\&.
+.PP
+Varnodes for which it is not known whether they are written to by a \fBPcodeOp\fP are referred to as \fBfree\fP\&. The method \fBheritage()\fP performs a \fIsingle\fP \fIpass\fP of constructing SSA form, collecting any \fIeligible\fP free Varnodes for the pass and linking them in to the data-flow\&. A \fBVarnode\fP is considered eligible for a given pass generally based on its address space (see \fBHeritageInfo\fP), which is the main method for delaying linking for stack locations until they are all discovered\&. In principle a \fBVarnode\fP can be discovered very late and still get linked in on a subsequent pass\&. Linking causes Varnodes to gain new descendant PcodeOps, which has impact on dead code elimination (see \fBLocationMap\fP)\&.
+.PP
+The two big aspects of SSA construction are phi-node placement, performed by \fBplaceMultiequals()\fP, and the \fIrenaming\fP algorithm, performed by \fBrename()\fP\&. The various guard* methods are concerned with labeling analyzing data-flow across function calls, STORE, and LOAD operations\&.
+.PP
+The phi-node placement algorithm is from (preprint?) 'The Static Single Assignment Form and its Computation' by Gianfranco Bilardi and Keshav Pingali, July 22, 1999
+.PP
+The renaming algorithm taken from 'Efficiently computing static single assignment form and the
+ control dependence graph\&.' R\&. Cytron, J\&. Ferrante, B\&. K\&. Rosen, M\&. N\&. Wegman, and F\&. K\&. Zadeck ACM Transactions on Programming Languages and Systems, 13(4):451-490, October 1991 
+.PP
+Definition at line 130 of file heritage\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Heritage::Heritage (\fBFuncdata\fP * data)"
+
+.PP
+\fBConstructor\fP\&. Instantiate the heritage manager for a particular function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function 
+.RE
+.PP
+
+.PP
+Definition at line 135 of file heritage\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Heritage::buildInfoList (void)"
+
+.PP
+Initialize information for each space\&. This is called once to initialize \fBthis\fP class in preparation for doing the heritage passes\&. An information structure is allocated and mapped to each address space\&. 
+.PP
+Definition at line 1637 of file heritage\&.cc\&.
+.SS "void Heritage::clear (void)"
+
+.PP
+Reset all analysis of heritage\&. Reset all analysis as if no heritage passes have yet taken place for the function\&. This does not directly affect Varnodes and PcodeOps in the underlying \fBFuncdata\fP\&. 
+.PP
+Definition at line 1827 of file heritage\&.cc\&.
+.SS "bool Heritage::deadRemovalAllowed (\fBAddrSpace\fP * spc) const"
+
+.PP
+Return \fBtrue\fP if it is \fIsafe\fP to remove dead code\&. Check if the required number of passes have transpired to allow removal of dead Varnodes in the given address space\&. If allowed, presumably no new Varnodes will be generated for the space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if dead code removal is allowed 
+.RE
+.PP
+
+.PP
+Definition at line 1797 of file heritage\&.cc\&.
+.SS "bool Heritage::deadRemovalAllowedSeen (\fBAddrSpace\fP * spc)"
+
+.PP
+Check if dead code removal is safe and mark that removal has happened\&. A convenience function combining \fBdeadRemovalAllowed()\fP and \fBseenDeadCode()\fP\&. Return \fBtrue\fP if it is \fIsafe\fP to remove dead code, and, if so, also inform the system that dead code has happened for the given space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if dead code removal is allowed 
+.RE
+.PP
+
+.PP
+Definition at line 1813 of file heritage\&.cc\&.
+.SS "void Heritage::forceRestructure (void)\fC [inline]\fP"
+
+.PP
+Force regeneration of basic block structures\&. 
+.PP
+Definition at line 203 of file heritage\&.hh\&.
+.SS "int4 Heritage::getDeadCodeDelay (\fBAddrSpace\fP * spc) const"
+
+.PP
+Get pass delay for heritaging the given space\&. Linking in Varnodes can be delayed for specific address spaces (to make sure all Varnodes for the space have been generated\&. Return the number of \fIpasses\fP to delay for the given space\&. 0 means no delay\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of passes heritage is delayed 
+.RE
+.PP
+
+.PP
+Definition at line 1767 of file heritage\&.cc\&.
+.SS "void Heritage::heritage (void)"
+
+.PP
+Perform one pass of heritage\&. From any address space that is active for this pass, free Varnodes are collected and then fully integrated into SSA form\&. Reads are connected to writes, inputs are identified, and phi-nodes are placed\&. 
+.PP
+Definition at line 1652 of file heritage\&.cc\&.
+.SS "int4 Heritage::heritagePass (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Get the pass number when the given address was heritaged\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the pass number or -1 if the address has not been heritaged 
+.RE
+.PP
+
+.PP
+Definition at line 195 of file heritage\&.hh\&.
+.SS "int4 Heritage::numHeritagePasses (\fBAddrSpace\fP * spc) const"
+
+.PP
+Get the number times heritage was performed for the given address space\&. A negative number indicates the number of passes to be wait before the first heritage will occur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of heritage passes performed 
+.RE
+.PP
+
+.PP
+Definition at line 1741 of file heritage\&.cc\&.
+.SS "void Heritage::placeMultiequals (void)"
+
+.PP
+Perform phi-node placement for the current set of address ranges\&. Main entry point for performing the phi-node placement algorithm\&. Assume \fBdisjoint\fP is filled with all the free Varnodes to be heritaged 
+.PP
+Definition at line 1583 of file heritage\&.cc\&.
+.SS "void Heritage::rename (void)"
+
+.PP
+Perform the renaming algorithm for the current set of address ranges\&. Phi-node placement must already have happened\&. 
+.PP
+Definition at line 1571 of file heritage\&.cc\&.
+.SS "void Heritage::seenDeadCode (\fBAddrSpace\fP * spc)"
+
+.PP
+Inform system of dead code removal in given space\&. Record that Varnodes have been removed from the given space so that we can tell if there is any new heritage \fIafter\fP the dead code removal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.RE
+.PP
+
+.PP
+Definition at line 1753 of file heritage\&.cc\&.
+.SS "void Heritage::setDeadCodeDelay (\fBAddrSpace\fP * spc, int4 delay)"
+
+.PP
+Set delay for a specific space\&. Set the number of heritage passes that are skipped before allowing dead code removal for Varnodes in the given address space (to make sure all Varnodes have been linked in before deciding what is dead)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the given address space 
+.br
+\fIdelay\fP is the number of passes to delay 
+.RE
+.PP
+
+.PP
+Definition at line 1781 of file heritage\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

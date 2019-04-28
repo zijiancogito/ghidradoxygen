@@ -1,0 +1,1056 @@
+.TH "BlockGraph" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockGraph \- A control-flow block built out of sub-components\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBFlowBlock\fP\&.
+.PP
+Inherited by \fBBlockCondition\fP, \fBBlockDoWhile\fP, \fBBlockGoto\fP, \fBBlockIf\fP, \fBBlockInfLoop\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, \fBBlockSwitch\fP, and \fBBlockWhileDo\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear all component \fBFlowBlock\fP objects\&. "
+.ti -1c
+.RI "virtual \fB~BlockGraph\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "const vector< \fBFlowBlock\fP * > & \fBgetList\fP (void) const"
+.br
+.RI "Get the list of component \fBFlowBlock\fP objects\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the number of components\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetBlock\fP (int4 i) const"
+.br
+.RI "Get the i-th component\&. "
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBsubBlock\fP (int4 i) const"
+.br
+.RI "Get the i-th component block\&. "
+.ti -1c
+.RI "virtual void \fBmarkUnstructured\fP (void)"
+.br
+.RI "Mark target blocks of any unstructured edges\&. "
+.ti -1c
+.RI "virtual void \fBmarkLabelBumpUp\fP (bool bump)"
+.br
+.RI "Let hierarchical blocks steal labels of their (first) components\&. "
+.ti -1c
+.RI "virtual void \fBscopeBreak\fP (int4 curexit, int4 curloopexit)"
+.br
+.RI "Mark unstructured edges that should be \fIbreaks\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintTree\fP (ostream &s, int4 level) const"
+.br
+.RI "Print tree structure of any blocks owned by \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBnextFlowAfter\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBorderSwitchCases\fP (void) const"
+.br
+.RI "Order \fIcase\fP components of any contained \fBBlockSwitch\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlBody\fP (ostream &s) const"
+.br
+.RI "Save detail about components to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXmlBody\fP (List::const_iterator &iter, List::const_iterator enditer, \fBBlockMap\fP &resolver)"
+.br
+.RI "Restore details about \fBthis\fP \fBFlowBlock\fP from an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *m)"
+.br
+.RI "Restore \fBthis\fP \fBBlockGraph\fP from an XML stream\&. "
+.ti -1c
+.RI "void \fBaddEdge\fP (\fBFlowBlock\fP *begin, \fBFlowBlock\fP *end)"
+.br
+.RI "Add a directed edge between component FlowBlocks\&. "
+.ti -1c
+.RI "void \fBaddLoopEdge\fP (\fBFlowBlock\fP *begin, int4 outindex)"
+.br
+.RI "Mark a given edge as a \fIloop\fP edge\&. "
+.ti -1c
+.RI "void \fBremoveEdge\fP (\fBFlowBlock\fP *begin, \fBFlowBlock\fP *end)"
+.br
+.RI "Remove an edge between component FlowBlocks\&. "
+.ti -1c
+.RI "void \fBswitchEdge\fP (\fBFlowBlock\fP *in, \fBFlowBlock\fP *outbefore, \fBFlowBlock\fP *outafter)"
+.br
+.RI "Move an edge from one out \fBFlowBlock\fP to another\&. "
+.ti -1c
+.RI "void \fBmoveOutEdge\fP (\fBFlowBlock\fP *blold, int4 slot, \fBFlowBlock\fP *blnew)"
+.br
+.RI "Move indicated \fIout\fP edge to a new \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "void \fBremoveBlock\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Remove a \fBFlowBlock\fP from \fBthis\fP \fBBlockGraph\fP\&. "
+.ti -1c
+.RI "void \fBremoveFromFlow\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Remove given \fBFlowBlock\fP preserving flow in \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBremoveFromFlowSplit\fP (\fBFlowBlock\fP *bl, bool flipflow)"
+.br
+.RI "Remove \fBFlowBlock\fP splitting flow between input and output edges\&. "
+.ti -1c
+.RI "void \fBspliceBlock\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Splice given \fBFlowBlock\fP together with its output\&. "
+.ti -1c
+.RI "void \fBsetStartBlock\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Set the entry point \fBFlowBlock\fP for \fBthis\fP graph\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetStartBlock\fP (void) const"
+.br
+.RI "Get the entry point \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBnewBlock\fP (void)"
+.br
+.RI "Build a new plain \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBBlockBasic\fP * \fBnewBlockBasic\fP (\fBFuncdata\fP *fd)"
+.br
+.RI "Build a new \fBBlockBasic\fP\&. "
+.ti -1c
+.RI "\fBBlockCopy\fP * \fBnewBlockCopy\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Build a new \fBBlockCopy\fP\&. "
+.ti -1c
+.RI "\fBBlockGoto\fP * \fBnewBlockGoto\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Build a new \fBBlockGoto\fP\&. "
+.ti -1c
+.RI "\fBBlockMultiGoto\fP * \fBnewBlockMultiGoto\fP (\fBFlowBlock\fP *bl, int4 outedge)"
+.br
+.RI "Build a new \fBBlockMultiGoto\fP\&. "
+.ti -1c
+.RI "\fBBlockList\fP * \fBnewBlockList\fP (const vector< \fBFlowBlock\fP * > &nodes)"
+.br
+.RI "Build a new \fBBlockList\fP\&. "
+.ti -1c
+.RI "\fBBlockCondition\fP * \fBnewBlockCondition\fP (\fBFlowBlock\fP *b1, \fBFlowBlock\fP *b2)"
+.br
+.RI "Build a new \fBBlockCondition\fP\&. "
+.ti -1c
+.RI "\fBBlockIf\fP * \fBnewBlockIfGoto\fP (\fBFlowBlock\fP *cond)"
+.br
+.RI "Build a new BlockIfGoto\&. "
+.ti -1c
+.RI "\fBBlockIf\fP * \fBnewBlockIf\fP (\fBFlowBlock\fP *cond, \fBFlowBlock\fP *tc)"
+.br
+.RI "Build a new \fBBlockIf\fP\&. "
+.ti -1c
+.RI "\fBBlockIf\fP * \fBnewBlockIfElse\fP (\fBFlowBlock\fP *cond, \fBFlowBlock\fP *tc, \fBFlowBlock\fP *fc)"
+.br
+.RI "Build a new BlockIfElse\&. "
+.ti -1c
+.RI "\fBBlockWhileDo\fP * \fBnewBlockWhileDo\fP (\fBFlowBlock\fP *cond, \fBFlowBlock\fP *cl)"
+.br
+.RI "Build a new \fBBlockWhileDo\fP\&. "
+.ti -1c
+.RI "\fBBlockDoWhile\fP * \fBnewBlockDoWhile\fP (\fBFlowBlock\fP *condcl)"
+.br
+.RI "Build a new \fBBlockDoWhile\fP\&. "
+.ti -1c
+.RI "\fBBlockInfLoop\fP * \fBnewBlockInfLoop\fP (\fBFlowBlock\fP *body)"
+.br
+.RI "Build a new \fBBlockInfLoop\fP\&. "
+.ti -1c
+.RI "\fBBlockSwitch\fP * \fBnewBlockSwitch\fP (const vector< \fBFlowBlock\fP * > &cs)"
+.br
+.RI "Build a new \fBBlockSwitch\fP\&. "
+.ti -1c
+.RI "void \fBorderBlocks\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbuildCopy\fP (const \fBBlockGraph\fP &graph)"
+.br
+.RI "Build a copy of a \fBBlockGraph\fP\&. "
+.ti -1c
+.RI "void \fBclearVisitCount\fP (void)"
+.br
+.RI "Clear the visit count in all node FlowBlocks\&. "
+.ti -1c
+.RI "void \fBcalcForwardDominator\fP (const vector< \fBFlowBlock\fP * > &rootlist)"
+.br
+.RI "Calculate forward dominators\&. "
+.ti -1c
+.RI "void \fBbuildDomTree\fP (vector< vector< \fBFlowBlock\fP * > > &child) const"
+.br
+.RI "Build the dominator tree\&. "
+.ti -1c
+.RI "int4 \fBbuildDomDepth\fP (vector< int4 > &depth) const"
+.br
+.RI "Calculate dominator depths\&. "
+.ti -1c
+.RI "void \fBbuildDomSubTree\fP (vector< \fBFlowBlock\fP * > &res, \fBFlowBlock\fP *root) const"
+.br
+.RI "Collect nodes from a dominator sub-tree\&. "
+.ti -1c
+.RI "void \fBcalcLoop\fP (void)"
+.br
+.RI "Calculate loop edges\&. "
+.ti -1c
+.RI "void \fBcollectReachable\fP (vector< \fBFlowBlock\fP * > &res, \fBFlowBlock\fP *bl, bool un) const"
+.br
+.RI "Collect reachable/unreachable FlowBlocks from a given start \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "void \fBstructureLoops\fP (vector< \fBFlowBlock\fP * > &rootlist)"
+.br
+.RI "Label loop edges\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBswapBlocks\fP (int4 i, int4 j)"
+.br
+.RI "Swap the positions two component FlowBlocks\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBmarkCopyBlock\fP (\fBFlowBlock\fP *bl, uint4 fl)"
+.br
+.RI "Set properties on the first leaf \fBFlowBlock\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A control-flow block built out of sub-components\&. 
+
+This is the core class for building a hierarchy of control-flow blocks\&. A set of control-flow blocks can be grouped together and viewed as a single block, with its own input and output blocks\&. All the code structuring elements (\fBBlockList\fP, \fBBlockIf\fP, \fBBlockWhileDo\fP, etc\&.) derive from this\&. 
+.PP
+Definition at line 267 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual BlockGraph::~BlockGraph (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 283 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void BlockGraph::addEdge (\fBFlowBlock\fP * begin, \fBFlowBlock\fP * end)"
+
+.PP
+Add a directed edge between component FlowBlocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbegin\fP is the start \fBFlowBlock\fP 
+.br
+\fIend\fP is the stop \fBFlowBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1263 of file block\&.cc\&.
+.SS "void BlockGraph::addLoopEdge (\fBFlowBlock\fP * begin, int4 outindex)"
+
+.PP
+Mark a given edge as a \fIloop\fP edge\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbegin\fP is a given component \fBFlowBlock\fP 
+.br
+\fIoutindex\fP is the index of the \fIout\fP edge to mark as a loop 
+.RE
+.PP
+
+.PP
+Definition at line 1275 of file block\&.cc\&.
+.SS "void BlockGraph::buildCopy (const \fBBlockGraph\fP & graph)"
+
+.PP
+Build a copy of a \fBBlockGraph\fP\&. Construct a copy of the given \fBBlockGraph\fP in \fBthis\fP\&. The nodes of the copy will be official \fBBlockCopy\fP objects which will contain a reference to their corresponding \fBFlowBlock\fP in the given graph\&. All edges will be duplicated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgraph\fP is the given \fBBlockGraph\fP to copy 
+.RE
+.PP
+
+.PP
+Definition at line 1739 of file block\&.cc\&.
+.SS "int4 BlockGraph::buildDomDepth (vector< int4 > & depth) const"
+
+.PP
+Calculate dominator depths\&. Associate every \fBFlowBlock\fP node in \fBthis\fP graph with its depth in the dominator tree\&. The dominator root has depth 1, the nodes it immediately dominates have depth 2, etc\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdepth\fP is array that will be populated with depths 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the maximum depth across all nodes 
+.RE
+.PP
+
+.PP
+Definition at line 1870 of file block\&.cc\&.
+.SS "void BlockGraph::buildDomSubTree (vector< \fBFlowBlock\fP * > & res, \fBFlowBlock\fP * root) const"
+
+.PP
+Collect nodes from a dominator sub-tree\&. Collect all nodes in the dominator sub-tree starting at a given root \fBFlowBlock\fP\&. We assume blocks in are reverse post order\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP will hold the list of nodes in the sub-tree 
+.br
+\fIroot\fP is the given root \fBFlowBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1894 of file block\&.cc\&.
+.SS "void BlockGraph::buildDomTree (vector< vector< \fBFlowBlock\fP * > > & child) const"
+
+.PP
+Build the dominator tree\&. Associate dominator children with each node via a list (of lists) indexed by the \fBFlowBlock\fP index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchild\fP is the initially empty list of lists 
+.RE
+.PP
+
+.PP
+Definition at line 1850 of file block\&.cc\&.
+.SS "void BlockGraph::calcForwardDominator (const vector< \fBFlowBlock\fP * > & rootlist)"
+
+.PP
+Calculate forward dominators\&. Calculate the immediate dominator for each \fBFlowBlock\fP node in \fBthis\fP \fBBlockGraph\fP, for forward control-flow\&. The algorithm must be provided a list of entry points for the graph\&. We assume the blocks are in reverse post-order and this is reflected in the index field\&. Using an algorithm by Cooper, Harvey, and Kennedy\&. Softw\&. Pract\&. Exper\&. 2001; 4: 1-10 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrootlist\fP is the list of entry point FlowBlocks 
+.RE
+.PP
+
+.PP
+Definition at line 1768 of file block\&.cc\&.
+.SS "void BlockGraph::calcLoop (void)"
+
+.PP
+Calculate loop edges\&. This algorithm identifies a set of edges such that, if the edges are removed, the remaining graph has NO directed cycles The algorithm works as follows: Starting from the start block, do a depth first search through the 'out' edges of the block\&. If the outblock is already on the current path from root to node, we have found a cycle, we add the last edge to the list and continue pretending that edge didn't exist\&. If the outblock is not on the current path but has been visited before, we can truncate the search\&. This is now only applied as a failsafe if the graph has irreducible edges\&. 
+.PP
+Definition at line 1918 of file block\&.cc\&.
+.SS "void BlockGraph::clear (void)"
+
+.PP
+Clear all component \fBFlowBlock\fP objects\&. 
+.PP
+Definition at line 1089 of file block\&.cc\&.
+.SS "void BlockGraph::clearVisitCount (void)"
+
+.PP
+Clear the visit count in all node FlowBlocks\&. 
+.PP
+Definition at line 1754 of file block\&.cc\&.
+.SS "void BlockGraph::collectReachable (vector< \fBFlowBlock\fP * > & res, \fBFlowBlock\fP * bl, bool un) const"
+
+.PP
+Collect reachable/unreachable FlowBlocks from a given start \fBFlowBlock\fP\&. If the boolean \fBun\fP is \fBtrue\fP, collect unreachable blocks\&. Otherwise collect reachable blocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIres\fP will hold the reachable or unreachable FlowBlocks 
+.br
+\fIbl\fP is the starting \fBFlowBlock\fP 
+.br
+\fIun\fP toggles reachable,unreachable 
+.RE
+.PP
+
+.PP
+Definition at line 1968 of file block\&.cc\&.
+.SS "virtual void BlockGraph::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, and \fBBlockGoto\fP\&.
+.PP
+Definition at line 294 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* BlockGraph::getBlock (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th component\&. 
+.PP
+Definition at line 286 of file block\&.hh\&.
+.SS "const vector<\fBFlowBlock\fP *>& BlockGraph::getList (void) const\fC [inline]\fP"
+
+.PP
+Get the list of component \fBFlowBlock\fP objects\&. 
+.PP
+Definition at line 284 of file block\&.hh\&.
+.SS "int4 BlockGraph::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of components\&. 
+.PP
+Definition at line 285 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP * BlockGraph::getStartBlock (void) const"
+
+.PP
+Get the entry point \fBFlowBlock\fP\&. Throw an exception if no entry point is registered 
+.PP
+\fBReturns:\fP
+.RS 4
+the entry point \fBFlowBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1473 of file block\&.cc\&.
+.SS "virtual \fBblock_type\fP BlockGraph::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, and \fBBlockGoto\fP\&.
+.PP
+Definition at line 287 of file block\&.hh\&.
+.SS "void BlockGraph::markCopyBlock (\fBFlowBlock\fP * bl, uint4 fl)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Set properties on the first leaf \fBFlowBlock\fP\&. For the given \fBBlockGraph\fP find the first component leaf \fBFlowBlock\fP and set its properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBBlockGraph\fP 
+.br
+\fIfl\fP is the property to set 
+.RE
+.PP
+
+.PP
+Definition at line 1083 of file block\&.cc\&.
+.SS "void BlockGraph::markLabelBumpUp (bool bump)\fC [virtual]\fP"
+
+.PP
+Let hierarchical blocks steal labels of their (first) components\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbump\fP if \fBtrue\fP, mark that labels for this block are printed by somebody higher in hierarchy 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, and \fBBlockWhileDo\fP\&.
+.PP
+Definition at line 1108 of file block\&.cc\&.
+.SS "void BlockGraph::markUnstructured (void)\fC [virtual]\fP"
+
+.PP
+Mark target blocks of any unstructured edges\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockIf\fP, and \fBBlockGoto\fP\&.
+.PP
+Definition at line 1099 of file block\&.cc\&.
+.SS "void BlockGraph::moveOutEdge (\fBFlowBlock\fP * blold, int4 slot, \fBFlowBlock\fP * blnew)"
+
+.PP
+Move indicated \fIout\fP edge to a new \fBFlowBlock\fP\&. Given an edge specified by its input \fBFlowBlock\fP, replace that input with new \fBFlowBlock\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIblold\fP is the original input \fBFlowBlock\fP 
+.br
+\fIslot\fP is the index of the \fIout\fP edge of \fBblold\fP 
+.br
+\fIblnew\fP is the \fBFlowBlock\fP that will become the input to the edge 
+.RE
+.PP
+
+.PP
+Definition at line 1326 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * BlockGraph::newBlock (void)"
+
+.PP
+Build a new plain \fBFlowBlock\fP\&. Add the new \fBFlowBlock\fP to \fBthis\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBFlowBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1483 of file block\&.cc\&.
+.SS "\fBBlockBasic\fP * BlockGraph::newBlockBasic (\fBFuncdata\fP * fd)"
+
+.PP
+Build a new \fBBlockBasic\fP\&. Add the new \fBBlockBasic\fP to \fBthis\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the function underlying the basic block 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockBasic\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1494 of file block\&.cc\&.
+.SS "\fBBlockCondition\fP * BlockGraph::newBlockCondition (\fBFlowBlock\fP * b1, \fBFlowBlock\fP * b2)"
+
+.PP
+Build a new \fBBlockCondition\fP\&. Add the new \fBBlockCondition\fP to \fBthis\fP, collapsing its pieces into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb1\fP is the first \fBFlowBlock\fP piece 
+.br
+\fIb2\fP is the second \fBFlowBlock\fP piece 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockCondition\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1597 of file block\&.cc\&.
+.SS "\fBBlockCopy\fP * BlockGraph::newBlockCopy (\fBFlowBlock\fP * bl)"
+
+.PP
+Build a new \fBBlockCopy\fP\&. Add the new \fBBlockCopy\fP to \fBthis\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the \fBFlowBlock\fP underlying the copy 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockCopy\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1505 of file block\&.cc\&.
+.SS "\fBBlockDoWhile\fP * BlockGraph::newBlockDoWhile (\fBFlowBlock\fP * condcl)"
+
+.PP
+Build a new \fBBlockDoWhile\fP\&. Add the new \fBBlockDoWhile\fP to \fBthis\fP, collapsing the condition clause \fBFlowBlock\fP into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcondcl\fP is the condition clause \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockDoWhile\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1691 of file block\&.cc\&.
+.SS "\fBBlockGoto\fP * BlockGraph::newBlockGoto (\fBFlowBlock\fP * bl)"
+
+.PP
+Build a new \fBBlockGoto\fP\&. Add the new \fBBlockGoto\fP to \fBthis\fP, incorporating the given \fBFlowBlock\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP whose outgoing edge is to be marked as a \fIgoto\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockGoto\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1526 of file block\&.cc\&.
+.SS "\fBBlockIf\fP * BlockGraph::newBlockIf (\fBFlowBlock\fP * cond, \fBFlowBlock\fP * tc)"
+
+.PP
+Build a new \fBBlockIf\fP\&. Add the new \fBBlockIf\fP to \fBthis\fP, collapsing the condition and body FlowBlocks into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcond\fP is the condition \fBFlowBlock\fP 
+.br
+\fItc\fP is the body \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockIf\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1639 of file block\&.cc\&.
+.SS "\fBBlockIf\fP * BlockGraph::newBlockIfElse (\fBFlowBlock\fP * cond, \fBFlowBlock\fP * tc, \fBFlowBlock\fP * fc)"
+
+.PP
+Build a new BlockIfElse\&. Add the new BlockIfElse to \fBthis\fP, collapsing the condition, true clause, and false clause into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcond\fP is the condition \fBFlowBlock\fP 
+.br
+\fItc\fP is the true clause \fBFlowBlock\fP 
+.br
+\fIfc\fP is the false clause \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockIf\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1657 of file block\&.cc\&.
+.SS "\fBBlockIf\fP * BlockGraph::newBlockIfGoto (\fBFlowBlock\fP * cond)"
+
+.PP
+Build a new BlockIfGoto\&. Add the new BlockIfGoto to \fBthis\fP, collapsing the given condition \fBFlowBlock\fP into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcond\fP is the given condition \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new BlockIfGoto 
+.RE
+.PP
+
+.PP
+Definition at line 1616 of file block\&.cc\&.
+.SS "\fBBlockInfLoop\fP * BlockGraph::newBlockInfLoop (\fBFlowBlock\fP * body)"
+
+.PP
+Build a new \fBBlockInfLoop\fP\&. Add the new \fBBlockInfLoop\fP to \fBthis\fP, collapsing the body \fBFlowBlock\fP into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is the body \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockInfLoop\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1706 of file block\&.cc\&.
+.SS "\fBBlockList\fP * BlockGraph::newBlockList (const vector< \fBFlowBlock\fP * > & nodes)"
+
+.PP
+Build a new \fBBlockList\fP\&. Add the new \fBBlockList\fP to \fBthis\fP, collapsing the given \fBFlowBlock\fP components into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInodes\fP is the given set of FlowBlocks components 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockList\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1575 of file block\&.cc\&.
+.SS "\fBBlockMultiGoto\fP * BlockGraph::newBlockMultiGoto (\fBFlowBlock\fP * bl, int4 outedge)"
+
+.PP
+Build a new \fBBlockMultiGoto\fP\&. The given \fBFlowBlock\fP may already be a \fBBlockMultiGoto\fP, otherwise we add the new \fBBlockMultiGoto\fP to \fBthis\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP with the new \fIgoto\fP edge 
+.br
+\fIoutedge\fP is the index of the outgoing edge to make into a \fIgoto\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the (possibly new) \fBBlockMultiGoto\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1544 of file block\&.cc\&.
+.SS "\fBBlockSwitch\fP * BlockGraph::newBlockSwitch (const vector< \fBFlowBlock\fP * > & cs)"
+
+.PP
+Build a new \fBBlockSwitch\fP\&. Add the new \fBBlockSwitch\fP to \fBthis\fP, collapsing all the case FlowBlocks into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcs\fP is the list of case FlowBlocks 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockSwitch\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1720 of file block\&.cc\&.
+.SS "\fBBlockWhileDo\fP * BlockGraph::newBlockWhileDo (\fBFlowBlock\fP * cond, \fBFlowBlock\fP * cl)"
+
+.PP
+Build a new \fBBlockWhileDo\fP\&. Add the new \fBBlockWhileDo\fP to \fBthis\fP, collapsing the condition and clause into it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcond\fP is the condition \fBFlowBlock\fP 
+.br
+\fIcl\fP is the clause \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBBlockWhileDo\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1675 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * BlockGraph::nextFlowAfter (const \fBFlowBlock\fP * bl) const\fC [virtual]\fP"
+
+.PP
+Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. Within the hierarchy of \fBthis\fP \fBFlowBlock\fP, assume the given \fBFlowBlock\fP will fall-thru in its execution at some point\&. Return the first leaf block (\fBBlockBasic\fP or \fBBlockCopy\fP) that will execute after the given \fBFlowBlock\fP completes, assuming this is a unique block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next \fBFlowBlock\fP to execute or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockMultiGoto\fP, and \fBBlockGoto\fP\&.
+.PP
+Definition at line 1161 of file block\&.cc\&.
+.SS "void BlockGraph::orderBlocks (void)\fC [inline]\fP"
+< Sort blocks using the final ordering 
+.PP
+Definition at line 329 of file block\&.hh\&.
+.SS "void BlockGraph::orderSwitchCases (void) const\fC [virtual]\fP"
+
+.PP
+Order \fIcase\fP components of any contained \fBBlockSwitch\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockSwitch\fP\&.
+.PP
+Definition at line 1181 of file block\&.cc\&.
+.SS "void BlockGraph::printRaw (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockMultiGoto\fP, and \fBBlockGoto\fP\&.
+.PP
+Definition at line 1150 of file block\&.cc\&.
+.SS "void BlockGraph::printTree (ostream & s, int4 level) const\fC [virtual]\fP"
+
+.PP
+Print tree structure of any blocks owned by \fBthis\fP\&. Recursively print out the hierarchical structure of \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIlevel\fP is the current level of indentation 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 1140 of file block\&.cc\&.
+.SS "void BlockGraph::removeBlock (\fBFlowBlock\fP * bl)"
+
+.PP
+Remove a \fBFlowBlock\fP from \fBthis\fP \fBBlockGraph\fP\&. The indicated block is pulled out of the component list and deleted\&. Any edges between it and the rest of the \fBBlockGraph\fP are simply removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the indicated block 
+.RE
+.PP
+
+.PP
+Definition at line 1341 of file block\&.cc\&.
+.SS "void BlockGraph::removeEdge (\fBFlowBlock\fP * begin, \fBFlowBlock\fP * end)"
+
+.PP
+Remove an edge between component FlowBlocks\&. The edge must already exist 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbegin\fP is the incoming \fBFlowBlock\fP of the edge 
+.br
+\fIend\fP is the outgoing \fBFlowBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1293 of file block\&.cc\&.
+.SS "void BlockGraph::removeFromFlow (\fBFlowBlock\fP * bl)"
+
+.PP
+Remove given \fBFlowBlock\fP preserving flow in \fBthis\fP\&. This should be applied only if the given \fBFlowBlock\fP has 0 or 1 outputs\&. If there is an output \fBFlowBlock\fP, all incoming edges to the given \fBFlowBlock\fP are moved so they flow into the output \fBFlowBlock\fP, then all remaining edges into or out of the given \fBFlowBlock\fP are removed\&. The given \fBFlowBlock\fP is \fBnot\fP removed from \fBthis\fP\&. This routine doesn't preserve loopedge information 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP component 
+.RE
+.PP
+
+.PP
+Definition at line 1369 of file block\&.cc\&.
+.SS "void BlockGraph::removeFromFlowSplit (\fBFlowBlock\fP * bl, bool flipflow)"
+
+.PP
+Remove \fBFlowBlock\fP splitting flow between input and output edges\&. Remove the given \fBFlowBlock\fP from the flow of the graph\&. It must have 2 inputs, and 2 outputs\&. The edges will be remapped so that
+.IP "\(bu" 2
+In(0) -> Out(0) and
+.IP "\(bu" 2
+In(1) -> Out(1)
+.PP
+.PP
+Or if \fBflipflow\fP is true:
+.IP "\(bu" 2
+In(0) -> Out(1)
+.IP "\(bu" 2
+In(1) -> Out(0) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.br
+\fIflipflow\fP indicates how the edges are remapped 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 1399 of file block\&.cc\&.
+.SS "void BlockGraph::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * m)"
+
+.PP
+Restore \fBthis\fP \fBBlockGraph\fP from an XML stream\&. This is currently just a wrapper around the \fBFlowBlock::restoreXml()\fP that sets of the \fBBlockMap\fP resolver 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <block> tag 
+.br
+\fIm\fP is the address space manager 
+.RE
+.PP
+
+.PP
+Definition at line 1253 of file block\&.cc\&.
+.SS "void BlockGraph::restoreXmlBody (List::const_iterator & iter, List::const_iterator enditer, \fBBlockMap\fP & resolver)\fC [virtual]\fP"
+
+.PP
+Restore details about \fBthis\fP \fBFlowBlock\fP from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiter\fP is an iterator to XML elements containing component tags etc\&. 
+.br
+\fIenditer\fP marks the end of the XML tags 
+.br
+\fIresolver\fP is used to recover \fBFlowBlock\fP objects based on XML references 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 1217 of file block\&.cc\&.
+.SS "void BlockGraph::saveXmlBody (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save detail about components to an XML stream\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockIf\fP, \fBBlockMultiGoto\fP, and \fBBlockGoto\fP\&.
+.PP
+Definition at line 1189 of file block\&.cc\&.
+.SS "void BlockGraph::scopeBreak (int4 curexit, int4 curloopexit)\fC [virtual]\fP"
+
+.PP
+Mark unstructured edges that should be \fIbreaks\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockMultiGoto\fP, and \fBBlockGoto\fP\&.
+.PP
+Definition at line 1120 of file block\&.cc\&.
+.SS "void BlockGraph::setStartBlock (\fBFlowBlock\fP * bl)"
+
+.PP
+Set the entry point \fBFlowBlock\fP for \fBthis\fP graph\&. The component list is reordered to make the given \fBFlowBlock\fP first\&. The \fIf_entry_point\fP property is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP to make the entry point 
+.RE
+.PP
+
+.PP
+Definition at line 1449 of file block\&.cc\&.
+.SS "void BlockGraph::spliceBlock (\fBFlowBlock\fP * bl)"
+
+.PP
+Splice given \fBFlowBlock\fP together with its output\&. The given \fBFlowBlock\fP must have exactly one output\&. That output must have exactly one input\&. The output \fBFlowBlock\fP is removed and any outgoing edges it has become outgoing edge of the given \fBFlowBlock\fP\&. The output \fBFlowBlock\fP is permanently removed\&. It is viewed as being \fIspliced\fP together with the given \fBFlowBlock\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1421 of file block\&.cc\&.
+.SS "void BlockGraph::structureLoops (vector< \fBFlowBlock\fP * > & rootlist)"
+
+.PP
+Label loop edges\&. 
+.IP "\(bu" 2
+Find irreducible edges
+.IP "\(bu" 2
+Find a spanning tree
+.IP "\(bu" 2
+Set \fBFlowBlock\fP indices in reverse-post order
+.IP "\(bu" 2
+Label tree-edges, forward-edges, cross-edges, and back-edges 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrootlist\fP will contain the entry points for the graph 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 2008 of file block\&.cc\&.
+.SS "virtual \fBFlowBlock\fP* BlockGraph::subBlock (int4 i) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the i-th component block\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 288 of file block\&.hh\&.
+.SS "void BlockGraph::swapBlocks (int4 i, int4 j)\fC [protected]\fP"
+
+.PP
+Swap the positions two component FlowBlocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the position of the first \fBFlowBlock\fP to swap 
+.br
+\fIj\fP is the position of the second 
+.RE
+.PP
+
+.PP
+Definition at line 1071 of file block\&.cc\&.
+.SS "void BlockGraph::switchEdge (\fBFlowBlock\fP * in, \fBFlowBlock\fP * outbefore, \fBFlowBlock\fP * outafter)"
+
+.PP
+Move an edge from one out \fBFlowBlock\fP to another\&. The edge from \fBin\fP to \fBoutbefore\fP must already exist\&. It will get removed and replaced with an edge from \fBin\fP to \fBoutafter\fP\&. The new edge index will be the same as the removed edge, and all other edge ordering will be preserved\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP is the input \fBFlowBlock\fP 
+.br
+\fIoutbefore\fP is the initial output \fBFlowBlock\fP 
+.br
+\fIoutafter\fP is the new output \fBFlowBlock\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1313 of file block\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,80 @@
+.TH "CapabilityPoint" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CapabilityPoint \- Class for automatically registering extension points to the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <capability\&.hh>\fP
+.PP
+Inherited by \fBArchitectureCapability\fP, \fBGhidraCapability\fP, \fBIfaceCapability\fP, and \fBPrintLanguageCapability\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~CapabilityPoint\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBinitialize\fP (void)=0"
+.br
+.RI "Complete initialization of an extension point\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBinitializeAll\fP (void)"
+.br
+.RI "Finish initialization for all extension points\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCapabilityPoint\fP (void)"
+.br
+.RI "Construct extension capability exactly once\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for automatically registering extension points to the decompiler\&. 
+
+This uses the C++ static initializer feature to automatically \fIdiscover\fP and register extension point\&. Code for an extension should provide a class that derives from \fBCapabilityPoint\fP and overrides the \fBinitialize()\fP method\&. Additionally there should be a singleton static instantiation of this extension class\&. The extensions are accumulated in a list automatically, then the decompiler engine will ensure that the \fBinitialize()\fP method is called on each extension, allowing it to complete its integration\&. 
+.PP
+Definition at line 36 of file capability\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CapabilityPoint::CapabilityPoint (void)\fC [protected]\fP"
+
+.PP
+Construct extension capability exactly once\&. Constructing the object automatically registers it\&. For global instances, this happens during static initialization 
+.PP
+Definition at line 31 of file capability\&.cc\&.
+.SS "virtual CapabilityPoint::~CapabilityPoint (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 41 of file capability\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void CapabilityPoint::initialize (void)\fC [pure virtual]\fP"
+
+.PP
+Complete initialization of an extension point\&. This method is implemented by each extension so it can do specialized integration 
+.PP
+Implemented in \fBIfaceCapability\fP, \fBArchitectureCapability\fP, \fBGhidraDecompCapability\fP, and \fBPrintLanguageCapability\fP\&.
+.SS "void CapabilityPoint::initializeAll (void)\fC [static]\fP"
+
+.PP
+Finish initialization for all extension points\&. Give all registered capabilities a chance to initialize (\fIafter\fP all static initialization has happened) 
+.PP
+Definition at line 38 of file capability\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

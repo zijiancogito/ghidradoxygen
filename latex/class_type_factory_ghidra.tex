@@ -1,0 +1,125 @@
+\hypertarget{class_type_factory_ghidra}{}\section{Type\+Factory\+Ghidra Class Reference}
+\label{class_type_factory_ghidra}\index{TypeFactoryGhidra@{TypeFactoryGhidra}}
+
+
+An implementation of the \mbox{\hyperlink{class_type_factory}{Type\+Factory}} interface, query a Ghidra client for data-\/type information.  
+
+
+
+
+{\ttfamily \#include $<$typegrp\+\_\+ghidra.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Factory\+Ghidra\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_type_factory_ghidra__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Factory\+Ghidra\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_ghidra__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_factory_ghidra_a999a899582a918951fcf6607b8798fd3}{Type\+Factory\+Ghidra}} (\mbox{\hyperlink{class_architecture_ghidra}{Architecture\+Ghidra}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_type_factory_ghidra_a20bf48acd3a1f656c176312359fd3e8b}{$\sim$\+Type\+Factory\+Ghidra}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_ghidra_a494fd9c2fb18db1b1f9ee4d7078d590c}{find\+By\+Id}} (const string \&n, uint8 id)
+\begin{DoxyCompactList}\small\item\em Search by name and id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An implementation of the \mbox{\hyperlink{class_type_factory}{Type\+Factory}} interface, query a Ghidra client for data-\/type information. 
+
+Requests for a specific data-\/type name and id are marshaled to the Ghidra client, which sends back a description of the data-\/type. The description is parsed and converted into a \mbox{\hyperlink{class_datatype}{Datatype}} object and cached in this object. 
+
+Definition at line 30 of file typegrp\+\_\+ghidra.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_factory_ghidra_a999a899582a918951fcf6607b8798fd3}\label{class_type_factory_ghidra_a999a899582a918951fcf6607b8798fd3}} 
+\index{TypeFactoryGhidra@{TypeFactoryGhidra}!TypeFactoryGhidra@{TypeFactoryGhidra}}
+\index{TypeFactoryGhidra@{TypeFactoryGhidra}!TypeFactoryGhidra@{TypeFactoryGhidra}}
+\subsubsection{\texorpdfstring{TypeFactoryGhidra()}{TypeFactoryGhidra()}}
+{\footnotesize\ttfamily Type\+Factory\+Ghidra\+::\+Type\+Factory\+Ghidra (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture_ghidra}{Architecture\+Ghidra}} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 34 of file typegrp\+\_\+ghidra.\+hh.
+
+\mbox{\Hypertarget{class_type_factory_ghidra_a20bf48acd3a1f656c176312359fd3e8b}\label{class_type_factory_ghidra_a20bf48acd3a1f656c176312359fd3e8b}} 
+\index{TypeFactoryGhidra@{TypeFactoryGhidra}!````~TypeFactoryGhidra@{$\sim$TypeFactoryGhidra}}
+\index{````~TypeFactoryGhidra@{$\sim$TypeFactoryGhidra}!TypeFactoryGhidra@{TypeFactoryGhidra}}
+\subsubsection{\texorpdfstring{$\sim$TypeFactoryGhidra()}{~TypeFactoryGhidra()}}
+{\footnotesize\ttfamily virtual Type\+Factory\+Ghidra\+::$\sim$\+Type\+Factory\+Ghidra (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 35 of file typegrp\+\_\+ghidra.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_factory_ghidra_a494fd9c2fb18db1b1f9ee4d7078d590c}\label{class_type_factory_ghidra_a494fd9c2fb18db1b1f9ee4d7078d590c}} 
+\index{TypeFactoryGhidra@{TypeFactoryGhidra}!findById@{findById}}
+\index{findById@{findById}!TypeFactoryGhidra@{TypeFactoryGhidra}}
+\subsubsection{\texorpdfstring{findById()}{findById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+Ghidra\+::find\+By\+Id (\begin{DoxyParamCaption}\item[{const string \&}]{n,  }\item[{uint8}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Search by name and id. 
+
+Search for a \mbox{\hyperlink{class_datatype}{Datatype}} by {\bfseries{name}} and/or {\bfseries{id}}. Derived classes may search outside this container. 
+\begin{DoxyParams}{Parameters}
+{\em n} & is the name of the data-\/type \\
+\hline
+{\em id} & is the type id of the data-\/type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_factory_a79cd8d76884043080a3430f3aff8b010}{Type\+Factory}}.
+
+
+
+Definition at line 19 of file typegrp\+\_\+ghidra.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_ghidra_a494fd9c2fb18db1b1f9ee4d7078d590c_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typegrp__ghidra_8hh}{typegrp\+\_\+ghidra.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typegrp__ghidra_8cc}{typegrp\+\_\+ghidra.\+cc}}\end{DoxyCompactItemize}

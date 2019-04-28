@@ -1,0 +1,1577 @@
+.TH "FlowBlock" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FlowBlock \- Description of a control-flow block containing PcodeOps\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherited by \fBBlockBasic\fP, \fBBlockCopy\fP, and \fBBlockGraph\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBblock_type\fP { \fBt_plain\fP, \fBt_basic\fP, \fBt_graph\fP, \fBt_copy\fP, \fBt_goto\fP, \fBt_multigoto\fP, \fBt_ls\fP, \fBt_condition\fP, \fBt_if\fP, \fBt_whiledo\fP, \fBt_dowhile\fP, \fBt_switch\fP, \fBt_infloop\fP }"
+.br
+.RI "The possible block types\&. "
+.ti -1c
+.RI "enum \fBblock_flags\fP { \fBf_goto_goto\fP = 1, \fBf_break_goto\fP = 2, \fBf_continue_goto\fP = 4, \fBf_switch_out\fP = 0x10, \fBf_unstructured_targ\fP = 0x20, \fBf_mark\fP = 0x80, \fBf_mark2\fP = 0x100, \fBf_entry_point\fP = 0x200, \fBf_interior_gotoout\fP = 0x400, \fBf_interior_gotoin\fP = 0x800, \fBf_label_bumpup\fP = 0x1000, \fBf_donothing_loop\fP = 0x2000, \fBf_dead\fP = 0x4000, \fBf_whiledo_overflow\fP = 0x8000, \fBf_flip_path\fP = 0x10000, \fBf_joined_block\fP = 0x20000, \fBf_duplicate_block\fP = 0x40000 }"
+.br
+.RI "Boolean properties of blocks\&. "
+.ti -1c
+.RI "enum \fBedge_flags\fP { \fBf_goto_edge\fP = 1, \fBf_loop_edge\fP = 2, \fBf_defaultswitch_edge\fP = 4, \fBf_irreducible\fP = 8, \fBf_tree_edge\fP = 0x10, \fBf_forward_edge\fP = 0x20, \fBf_cross_edge\fP = 0x40, \fBf_back_edge\fP = 0x80, \fBf_loop_exit_edge\fP = 0x100 }"
+.br
+.RI "Boolean properties on edges\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFlowBlock\fP (void)"
+.br
+.RI "Construct a block with no edges\&. "
+.ti -1c
+.RI "virtual \fB~FlowBlock\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "int4 \fBgetIndex\fP (void) const"
+.br
+.RI "Get the index assigned to \fBthis\fP block\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetParent\fP (void)"
+.br
+.RI "Get the parent \fBFlowBlock\fP of \fBthis\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetImmedDom\fP (void) const"
+.br
+.RI "Get the immediate dominator \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetCopyMap\fP (void) const"
+.br
+.RI "Get the mapped \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "const \fBFlowBlock\fP * \fBgetParent\fP (void) const"
+.br
+.RI "Get the parent \fBFlowBlock\fP of \fBthis\fP\&. "
+.ti -1c
+.RI "uint4 \fBgetFlags\fP (void) const"
+.br
+.RI "Get the block_flags properties\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetStart\fP (void) const"
+.br
+.RI "Get the starting address of code in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetStop\fP (void) const"
+.br
+.RI "Get the ending address of code in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBsubBlock\fP (int4 i) const"
+.br
+.RI "Get the i-th component block\&. "
+.ti -1c
+.RI "virtual void \fBmarkUnstructured\fP (void)"
+.br
+.RI "Mark target blocks of any unstructured edges\&. "
+.ti -1c
+.RI "virtual void \fBmarkLabelBumpUp\fP (bool bump)"
+.br
+.RI "Let hierarchical blocks steal labels of their (first) components\&. "
+.ti -1c
+.RI "virtual void \fBscopeBreak\fP (int4 curexit, int4 curloopexit)"
+.br
+.RI "Mark unstructured edges that should be \fIbreaks\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBprintTree\fP (ostream &s, int4 level) const"
+.br
+.RI "Print tree structure of any blocks owned by \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual const \fBFlowBlock\fP * \fBgetExitLeaf\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. "
+.ti -1c
+.RI "virtual \fBPcodeOp\fP * \fBlastOp\fP (void) const"
+.br
+.RI "Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual bool \fBnegateCondition\fP (bool toporbottom)"
+.br
+.RI "Flip the condition computed by \fBthis\fP\&. "
+.ti -1c
+.RI "virtual bool \fBpreferComplement\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Rearrange \fBthis\fP hierarchy to simplify boolean expressions\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBgetSplitPoint\fP (void)"
+.br
+.RI "Get the leaf splitting block\&. "
+.ti -1c
+.RI "virtual int4 \fBflipInPlaceTest\fP (vector< \fBPcodeOp\fP * > &fliplist) const"
+.br
+.RI "Test normalizing the conditional branch in \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBflipInPlaceExecute\fP (void)"
+.br
+.RI "Perform the flip to normalize conditional branch executed by \fBthis\fP block\&. "
+.ti -1c
+.RI "virtual bool \fBisComplex\fP (void) const"
+.br
+.RI "Is \fBthis\fP too complex to be a condition (\fBBlockCondition\fP) "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBnextFlowAfter\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBorderSwitchCases\fP (void) const"
+.br
+.RI "Order \fIcase\fP components of any contained \fBBlockSwitch\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.RI "Save basic information as XML attributes\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXmlHeader\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore basic information for XML attributes\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlBody\fP (ostream &s) const"
+.br
+.RI "Save detail about components to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXmlBody\fP (List::const_iterator &iter, List::const_iterator enditer, \fBBlockMap\fP &resolver)"
+.br
+.RI "Restore details about \fBthis\fP \fBFlowBlock\fP from an XML stream\&. "
+.ti -1c
+.RI "void \fBsaveXmlEdges\fP (ostream &s) const"
+.br
+.RI "Save edge information to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXmlEdges\fP (List::const_iterator &iter, List::const_iterator enditer, \fBBlockMap\fP &resolver)"
+.br
+.RI "Restore edges from an XML stream\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write out \fBthis\fP to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, \fBBlockMap\fP &resolver)"
+.br
+.RI "Restore \fBthis\fP from an XML stream\&. "
+.ti -1c
+.RI "const \fBFlowBlock\fP * \fBnextInFlow\fP (void) const"
+.br
+.RI "Return next block to be executed in flow\&. "
+.ti -1c
+.RI "void \fBsetVisitCount\fP (int4 i)"
+.br
+.RI "Set the number of times this block has been visited\&. "
+.ti -1c
+.RI "int4 \fBgetVisitCount\fP (void) const"
+.br
+.RI "Get the count of visits\&. "
+.ti -1c
+.RI "void \fBsetGotoBranch\fP (int4 i)"
+.br
+.RI "Mark a \fIgoto\fP branch\&. "
+.ti -1c
+.RI "void \fBsetDefaultSwitch\fP (int4 i)"
+.br
+.RI "Mark an edge as the switch default\&. "
+.ti -1c
+.RI "bool \fBisMark\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP block has been marked\&. "
+.ti -1c
+.RI "void \fBsetMark\fP (void)"
+.br
+.RI "Mark \fBthis\fP block\&. "
+.ti -1c
+.RI "void \fBclearMark\fP (void)"
+.br
+.RI "Clear any mark on \fBthis\fP block\&. "
+.ti -1c
+.RI "void \fBsetDonothingLoop\fP (void)"
+.br
+.RI "Label \fBthis\fP as a \fIdo\fP \fInothing\fP loop\&. "
+.ti -1c
+.RI "void \fBsetDead\fP (void)"
+.br
+.RI "Label \fBthis\fP as dead\&. "
+.ti -1c
+.RI "bool \fBhasSpecialLabel\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP uses a different label\&. "
+.ti -1c
+.RI "bool \fBisJoined\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is a \fIjoined\fP basic block\&. "
+.ti -1c
+.RI "bool \fBisDuplicated\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is a \fIduplicated\fP block\&. "
+.ti -1c
+.RI "void \fBsetLoopExit\fP (int4 i)"
+.br
+.RI "Label the edge exiting \fBthis\fP as a loop\&. "
+.ti -1c
+.RI "void \fBclearLoopExit\fP (int4 i)"
+.br
+.RI "Clear the loop exit edge\&. "
+.ti -1c
+.RI "void \fBsetBackEdge\fP (int4 i)"
+.br
+.RI "Label the \fIback\fP edge of a loop\&. "
+.ti -1c
+.RI "bool \fBgetFlipPath\fP (void) const"
+.br
+.RI "Have out edges been flipped\&. "
+.ti -1c
+.RI "bool \fBisJumpTarget\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if non-fallthru jump flows into \fBthis\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetFalseOut\fP (void) const"
+.br
+.RI "Get the \fBfalse\fP output \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetTrueOut\fP (void) const"
+.br
+.RI "Get the \fBtrue\fP output \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetOut\fP (int4 i)"
+.br
+.RI "Get the i-th output \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "const \fBFlowBlock\fP * \fBgetOut\fP (int4 i) const"
+.br
+.RI "Get i-th output \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "int4 \fBgetOutRevIndex\fP (int4 i) const"
+.br
+.RI "Get the input index of the i-th output \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetIn\fP (int4 i)"
+.br
+.RI "Get the i-th input \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "const \fBFlowBlock\fP * \fBgetIn\fP (int4 i) const"
+.br
+.RI "Get the i-th input \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "int4 \fBgetInRevIndex\fP (int4 i) const"
+.br
+.RI "Get the output index of the i-th input \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "const \fBFlowBlock\fP * \fBgetFrontLeaf\fP (void) const"
+.br
+.RI "Get the first leaf \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetFrontLeaf\fP (void)"
+.br
+.RI "Get the first leaf \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "int4 \fBcalcDepth\fP (const \fBFlowBlock\fP *leaf) const"
+.br
+.RI "Get the depth of the given component \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "int4 \fBsizeOut\fP (void) const"
+.br
+.RI "Get the number of out edges\&. "
+.ti -1c
+.RI "int4 \fBsizeIn\fP (void) const"
+.br
+.RI "Get the number of in edges\&. "
+.ti -1c
+.RI "bool \fBhasLoopIn\fP (void) const"
+.br
+.RI "Is there a looping edge coming into \fBthis\fP block\&. "
+.ti -1c
+.RI "bool \fBhasLoopOut\fP (void) const"
+.br
+.RI "Is there a looping edge going out of \fBthis\fP block\&. "
+.ti -1c
+.RI "bool \fBisLoopIn\fP (int4 i) const"
+.br
+.RI "Is the i-th incoming edge a \fIloop\fP edge\&. "
+.ti -1c
+.RI "bool \fBisLoopOut\fP (int4 i) const"
+.br
+.RI "Is the i-th outgoing edge a \fIloop\fP edge\&. "
+.ti -1c
+.RI "int4 \fBgetInIndex\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the incoming edge index for the given \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "int4 \fBgetOutIndex\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the outgoing edge index for the given \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "bool \fBisDefaultBranch\fP (int4 i) const"
+.br
+.RI "Is the i-th out edge the switch default edge\&. "
+.ti -1c
+.RI "bool \fBisLabelBumpUp\fP (void) const"
+.br
+.RI "Are labels for \fBthis\fP printed by the parent\&. "
+.ti -1c
+.RI "bool \fBisUnstructuredTarget\fP (void) const"
+.br
+.RI "Is \fBthis\fP the target of an unstructured goto\&. "
+.ti -1c
+.RI "bool \fBisInteriorGotoTarget\fP (void) const"
+.br
+.RI "Is there an unstructured goto to \fBthis\fP block's interior\&. "
+.ti -1c
+.RI "bool \fBhasInteriorGoto\fP (void) const"
+.br
+.RI "Is there an unstructured goto out of \fBthis\fP block's interior\&. "
+.ti -1c
+.RI "bool \fBisEntryPoint\fP (void) const"
+.br
+.RI "Is the entry point of the function\&. "
+.ti -1c
+.RI "bool \fBisSwitchOut\fP (void) const"
+.br
+.RI "Is \fBthis\fP a switch block\&. "
+.ti -1c
+.RI "bool \fBisDonothingLoop\fP (void) const"
+.br
+.RI "Is \fBthis\fP a \fIdo\fP \fInothing\fP block\&. "
+.ti -1c
+.RI "bool \fBisDead\fP (void) const"
+.br
+.RI "Is \fBthis\fP block dead\&. "
+.ti -1c
+.RI "bool \fBisTreeEdgeIn\fP (int4 i) const"
+.br
+.RI "Is the i-th incoming edge part of the spanning tree\&. "
+.ti -1c
+.RI "bool \fBisBackEdgeIn\fP (int4 i) const"
+.br
+.RI "Is the i-th incoming edge a \fIback\fP edge\&. "
+.ti -1c
+.RI "bool \fBisBackEdgeOut\fP (int4 i) const"
+.br
+.RI "Is the i-th outgoing edge a \fIback\fP edge\&. "
+.ti -1c
+.RI "bool \fBisIrreducibleOut\fP (int4 i) const"
+.br
+.RI "Is the i-th outgoing edge an irreducible edge\&. "
+.ti -1c
+.RI "bool \fBisIrreducibleIn\fP (int4 i) const"
+.br
+.RI "Is the i-th incoming edge an irreducible edge\&. "
+.ti -1c
+.RI "bool \fBisDecisionOut\fP (int4 i) const"
+.br
+.RI "Can \fBthis\fP and the i-th output be merged into a \fBBlockIf\fP or \fBBlockList\fP\&. "
+.ti -1c
+.RI "bool \fBisDecisionIn\fP (int4 i) const"
+.br
+.RI "Can \fBthis\fP and the i-th input be merged into a \fBBlockIf\fP or \fBBlockList\fP\&. "
+.ti -1c
+.RI "bool \fBisLoopDAGOut\fP (int4 i) const"
+.br
+.RI "Is the i-th outgoing edge part of the DAG sub-graph\&. "
+.ti -1c
+.RI "bool \fBisLoopDAGIn\fP (int4 i) const"
+.br
+.RI "Is the i-th incoming edge part of the DAG sub-graph\&. "
+.ti -1c
+.RI "bool \fBisGotoIn\fP (int4 i) const"
+.br
+.RI "Is the i-th incoming edge unstructured\&. "
+.ti -1c
+.RI "bool \fBisGotoOut\fP (int4 i) const"
+.br
+.RI "Is the i-th outgoing edge unstructured\&. "
+.ti -1c
+.RI "\fBJumpTable\fP * \fBgetJumptable\fP (void) const"
+.br
+.RI "Get the \fBJumpTable\fP associated \fBthis\fP block\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBblock_type\fP \fBnameToType\fP (const string &name)"
+.br
+.RI "Get the block_type associated with a name string\&. "
+.ti -1c
+.RI "static string \fBtypeToName\fP (\fBblock_type\fP bt)"
+.br
+.RI "Get the name string associated with a block_type\&. "
+.ti -1c
+.RI "static bool \fBcompareBlockIndex\fP (const \fBFlowBlock\fP *bl1, const \fBFlowBlock\fP *bl2)"
+.br
+.RI "Compare \fBFlowBlock\fP by index\&. "
+.ti -1c
+.RI "static bool \fBcompareFinalOrder\fP (const \fBFlowBlock\fP *bl1, const \fBFlowBlock\fP *bl2)"
+.br
+.RI "Final \fBFlowBlock\fP comparison\&. "
+.ti -1c
+.RI "static \fBFlowBlock\fP * \fBfindCommonBlock\fP (\fBFlowBlock\fP *bl1, \fBFlowBlock\fP *bl2)"
+.br
+.RI "Find the common dominator of two FlowBlocks\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetFlag\fP (uint4 fl)"
+.br
+.RI "Set a boolean property\&. "
+.ti -1c
+.RI "void \fBclearFlag\fP (uint4 fl)"
+.br
+.RI "Clear a boolean property\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBBlockGraph\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Description of a control-flow block containing PcodeOps\&. 
+
+This is the base class for basic blocks (\fBBlockBasic\fP) and the hierarchical description of \fIstructured\fP code\&. At all levels, these can be viewed as a block of code (\fBPcodeOp\fP objects) with other blocks flowing into and out of it\&. 
+.PP
+Definition at line 60 of file block\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBFlowBlock::block_flags\fP"
+
+.PP
+Boolean properties of blocks\&. The first four flags describe attributes of the blocks primary exiting edges The f_interior_* flags do not necessarily apply to these edges\&. They are used with the block structure and hierarchy algorithms where unstructured jumps are removed from the list of primary edges\&. These flags keep track only of the existence of unstructured edges, even though they aren't listed 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIf_goto_goto \fP\fP
+(Block ends in) non-structured branch 
+.TP
+\fB\fIf_break_goto \fP\fP
+Block ends with a break;\&. 
+.TP
+\fB\fIf_continue_goto \fP\fP
+Block ends with a continue;\&. 
+.TP
+\fB\fIf_switch_out \fP\fP
+Output is decided by switch\&. 
+.TP
+\fB\fIf_unstructured_targ \fP\fP
+Block is destination of unstructured goto\&. 
+.TP
+\fB\fIf_mark \fP\fP
+Generic way to mark a block\&. 
+.TP
+\fB\fIf_mark2 \fP\fP
+A secondary mark\&. 
+.TP
+\fB\fIf_entry_point \fP\fP
+Official entry point of the function\&. 
+.TP
+\fB\fIf_interior_gotoout \fP\fP
+The block has an unstructured jump out of interior\&. 
+.TP
+\fB\fIf_interior_gotoin \fP\fP
+Block is target of unstructured jump to its interior\&. 
+.TP
+\fB\fIf_label_bumpup \fP\fP
+Any label printed higher up in hierarchy\&. 
+.TP
+\fB\fIf_donothing_loop \fP\fP
+Block does nothing in infinite loop (halt) 
+.TP
+\fB\fIf_dead \fP\fP
+Block is in process of being deleted\&. 
+.TP
+\fB\fIf_whiledo_overflow \fP\fP
+Set if the conditional block of a whiledo is too big to print as while(cond) { \&.\&.\&. 
+.TP
+\fB\fIf_flip_path \fP\fP
+If true, out edges have been flipped since last time path was traced\&. 
+.TP
+\fB\fIf_joined_block \fP\fP
+Block is a merged form of original basic blocks\&. 
+.TP
+\fB\fIf_duplicate_block \fP\fP
+Block is a duplicated version of an original basic block\&. 
+.PP
+Definition at line 75 of file block\&.hh\&.
+.SS "enum \fBFlowBlock::block_type\fP"
+
+.PP
+The possible block types\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIt_plain \fP\fP
+.TP
+\fB\fIt_basic \fP\fP
+.TP
+\fB\fIt_graph \fP\fP
+.TP
+\fB\fIt_copy \fP\fP
+.TP
+\fB\fIt_goto \fP\fP
+.TP
+\fB\fIt_multigoto \fP\fP
+.TP
+\fB\fIt_ls \fP\fP
+.TP
+\fB\fIt_condition \fP\fP
+.TP
+\fB\fIt_if \fP\fP
+.TP
+\fB\fIt_whiledo \fP\fP
+.TP
+\fB\fIt_dowhile \fP\fP
+.TP
+\fB\fIt_switch \fP\fP
+.TP
+\fB\fIt_infloop \fP\fP
+.PP
+Definition at line 64 of file block\&.hh\&.
+.SS "enum \fBFlowBlock::edge_flags\fP"
+
+.PP
+Boolean properties on edges\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIf_goto_edge \fP\fP
+Edge is unstructured\&. 
+.TP
+\fB\fIf_loop_edge \fP\fP
+Edge completes a loop, removing these edges gives you a DAG\&. 
+.TP
+\fB\fIf_defaultswitch_edge \fP\fP
+This is default edge from switchblock\&. 
+.TP
+\fB\fIf_irreducible \fP\fP
+Edge which must be removed to make graph reducible\&. 
+.TP
+\fB\fIf_tree_edge \fP\fP
+An edge in the spanning tree\&. 
+.TP
+\fB\fIf_forward_edge \fP\fP
+An edge that jumps forward in the spanning tree\&. 
+.TP
+\fB\fIf_cross_edge \fP\fP
+An edge that crosses subtrees in the spanning tree\&. 
+.TP
+\fB\fIf_back_edge \fP\fP
+Within (reducible) graph, a back edge defining a loop\&. 
+.TP
+\fB\fIf_loop_exit_edge \fP\fP
+Edge exits the body of a loop\&. 
+.PP
+Definition at line 95 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FlowBlock::FlowBlock (void)"
+
+.PP
+Construct a block with no edges\&. 
+.PP
+Definition at line 50 of file block\&.cc\&.
+.SS "virtual FlowBlock::~FlowBlock (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 146 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 FlowBlock::calcDepth (const \fBFlowBlock\fP * leaf) const"
+
+.PP
+Get the depth of the given component \fBFlowBlock\fP\&. How many \fBgetParent()\fP calls from the leaf to \fBthis\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleaf\fP is the component \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the depth count 
+.RE
+.PP
+
+.PP
+Definition at line 344 of file block\&.cc\&.
+.SS "void FlowBlock::clearFlag (uint4 fl)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Clear a boolean property\&. 
+.PP
+Definition at line 143 of file block\&.hh\&.
+.SS "void FlowBlock::clearLoopExit (int4 i)\fC [inline]\fP"
+
+.PP
+Clear the loop exit edge\&. 
+.PP
+Definition at line 202 of file block\&.hh\&.
+.SS "void FlowBlock::clearMark (void)\fC [inline]\fP"
+
+.PP
+Clear any mark on \fBthis\fP block\&. 
+.PP
+Definition at line 195 of file block\&.hh\&.
+.SS "bool FlowBlock::compareBlockIndex (const \fBFlowBlock\fP * bl1, const \fBFlowBlock\fP * bl2)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Compare \fBFlowBlock\fP by index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl1\fP is the first \fBFlowBlock\fP to compare 
+.br
+\fIbl2\fP is the second \fBFlowBlock\fP to compare 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the first comes before the second 
+.RE
+.PP
+
+.PP
+Definition at line 772 of file block\&.hh\&.
+.SS "bool FlowBlock::compareFinalOrder (const \fBFlowBlock\fP * bl1, const \fBFlowBlock\fP * bl2)\fC [static]\fP"
+
+.PP
+Final \fBFlowBlock\fP comparison\&. Comparator for ordering the final 0-exit blocks 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl1\fP is the first \fBFlowBlock\fP to compare 
+.br
+\fIbl2\fP is the second \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the first comes before the second 
+.RE
+.PP
+
+.PP
+Definition at line 625 of file block\&.cc\&.
+.SS "void FlowBlock::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, \fBBlockCopy\fP, \fBBlockBasic\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 704 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP * FlowBlock::findCommonBlock (\fBFlowBlock\fP * bl1, \fBFlowBlock\fP * bl2)\fC [static]\fP"
+
+.PP
+Find the common dominator of two FlowBlocks\&. Within the dominator tree, find the earliest common ancestor of two FlowBlocks 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl1\fP is the first \fBFlowBlock\fP 
+.br
+\fIbl2\fP is the second 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the common ancestor which dominates both 
+.RE
+.PP
+
+.PP
+Definition at line 652 of file block\&.cc\&.
+.SS "void FlowBlock::flipInPlaceExecute (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Perform the flip to normalize conditional branch executed by \fBthis\fP block\&. This reverses the outgoing edge order in the right basic blocks, but does not modify the instructions directly\&. 
+.PP
+Reimplemented in \fBBlockCondition\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 750 of file block\&.hh\&.
+.SS "int4 FlowBlock::flipInPlaceTest (vector< \fBPcodeOp\fP * > & fliplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Test normalizing the conditional branch in \fBthis\fP\&. Find the set of \fBPcodeOp\fP objects that need to be adjusted to flip the condition \fBthis\fP \fBFlowBlock\fP calculates\&.
+.PP
+Return:
+.IP "\(bu" 2
+0 if the flip would normalize the condition
+.IP "\(bu" 2
+1 if the flip doesn't affect normalization of the condition
+.IP "\(bu" 2
+2 if the flip produces an unnormalized condition 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfliplist\fP will contain the PcodeOps that need to be adjusted 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 if the condition will be normalized, 1 or 2 otherwise 
+.RE
+.PP
+
+.PP
+
+.PP
+Reimplemented in \fBBlockCondition\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 740 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* FlowBlock::getCopyMap (void) const\fC [inline]\fP"
+
+.PP
+Get the mapped \fBFlowBlock\fP\&. 
+.PP
+Definition at line 150 of file block\&.hh\&.
+.SS "virtual const \fBFlowBlock\fP* FlowBlock::getExitLeaf (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. 
+.PP
+Reimplemented in \fBBlockIf\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, \fBBlockCopy\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 164 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* FlowBlock::getFalseOut (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBfalse\fP output \fBFlowBlock\fP\&. 
+.PP
+Definition at line 206 of file block\&.hh\&.
+.SS "uint4 FlowBlock::getFlags (void) const\fC [inline]\fP"
+
+.PP
+Get the block_flags properties\&. 
+.PP
+Definition at line 152 of file block\&.hh\&.
+.SS "bool FlowBlock::getFlipPath (void) const\fC [inline]\fP"
+
+.PP
+Have out edges been flipped\&. 
+.PP
+Definition at line 204 of file block\&.hh\&.
+.SS "const \fBFlowBlock\fP * FlowBlock::getFrontLeaf (void) const"
+
+.PP
+Get the first leaf \fBFlowBlock\fP\&. Keep descending tree hierarchy, taking the front block, until we get to the bottom copy block 
+.PP
+\fBReturns:\fP
+.RS 4
+the first leaf \fBFlowBlock\fP to execute 
+.RE
+.PP
+
+.PP
+Definition at line 316 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * FlowBlock::getFrontLeaf (void)"
+
+.PP
+Get the first leaf \fBFlowBlock\fP\&. Keep descending tree hierarchy, taking the front block, until we get to the bottom copy block 
+.PP
+\fBReturns:\fP
+.RS 4
+the first leaf \fBFlowBlock\fP to execute 
+.RE
+.PP
+
+.PP
+Definition at line 330 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP* FlowBlock::getImmedDom (void) const\fC [inline]\fP"
+
+.PP
+Get the immediate dominator \fBFlowBlock\fP\&. 
+.PP
+Definition at line 149 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* FlowBlock::getIn (int4 i)\fC [inline]\fP"
+
+.PP
+Get the i-th input \fBFlowBlock\fP\&. 
+.PP
+Definition at line 211 of file block\&.hh\&.
+.SS "const \fBFlowBlock\fP* FlowBlock::getIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th input \fBFlowBlock\fP\&. 
+.PP
+Definition at line 212 of file block\&.hh\&.
+.SS "int4 FlowBlock::getIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the index assigned to \fBthis\fP block\&. 
+.PP
+Definition at line 147 of file block\&.hh\&.
+.SS "int4 FlowBlock::getInIndex (const \fBFlowBlock\fP * bl) const"
+
+.PP
+Get the incoming edge index for the given \fBFlowBlock\fP\&. Search through incoming blocks in edge order for the given block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching edge index or -1 if \fBbl\fP doesn't flow into \fBthis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 509 of file block\&.cc\&.
+.SS "int4 FlowBlock::getInRevIndex (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the output index of the i-th input \fBFlowBlock\fP\&. 
+.PP
+Definition at line 213 of file block\&.hh\&.
+.SS "\fBJumpTable\fP * FlowBlock::getJumptable (void) const"
+
+.PP
+Get the \fBJumpTable\fP associated \fBthis\fP block\&. If \fBthis\fP \fBFlowBlock\fP was ends with a computed jump, retrieve the associated \fBJumpTable\fP object 
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBJumpTable\fP object or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 557 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP* FlowBlock::getOut (int4 i)\fC [inline]\fP"
+
+.PP
+Get the i-th output \fBFlowBlock\fP\&. 
+.PP
+Definition at line 208 of file block\&.hh\&.
+.SS "const \fBFlowBlock\fP* FlowBlock::getOut (int4 i) const\fC [inline]\fP"
+
+.PP
+Get i-th output \fBFlowBlock\fP\&. 
+.PP
+Definition at line 209 of file block\&.hh\&.
+.SS "int4 FlowBlock::getOutIndex (const \fBFlowBlock\fP * bl) const"
+
+.PP
+Get the outgoing edge index for the given \fBFlowBlock\fP\&. Search through outgoing blocks in edge order for the given block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching edge index or -1 if \fBbl\fP doesn't flow out of \fBthis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 522 of file block\&.cc\&.
+.SS "int4 FlowBlock::getOutRevIndex (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the input index of the i-th output \fBFlowBlock\fP\&. 
+.PP
+Definition at line 210 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* FlowBlock::getParent (void)\fC [inline]\fP"
+
+.PP
+Get the parent \fBFlowBlock\fP of \fBthis\fP\&. 
+.PP
+Definition at line 148 of file block\&.hh\&.
+.SS "const \fBFlowBlock\fP* FlowBlock::getParent (void) const\fC [inline]\fP"
+
+.PP
+Get the parent \fBFlowBlock\fP of \fBthis\fP\&. 
+.PP
+Definition at line 151 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP * FlowBlock::getSplitPoint (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the leaf splitting block\&. If \fBthis\fP block ends with a conditional branch, return the deepest component block that performs the split\&. This component needs to be able to perform \fBflipInPlaceTest()\fP and \fBflipInPlaceExecute()\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+the component \fBFlowBlock\fP or NULL if this doesn't end in a conditional branch 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockCopy\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 723 of file block\&.hh\&.
+.SS "virtual \fBAddress\fP FlowBlock::getStart (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the starting address of code in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented in \fBBlockBasic\fP\&.
+.PP
+Definition at line 153 of file block\&.hh\&.
+.SS "virtual \fBAddress\fP FlowBlock::getStop (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the ending address of code in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented in \fBBlockBasic\fP\&.
+.PP
+Definition at line 154 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* FlowBlock::getTrueOut (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBtrue\fP output \fBFlowBlock\fP\&. 
+.PP
+Definition at line 207 of file block\&.hh\&.
+.SS "virtual \fBblock_type\fP FlowBlock::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, \fBBlockCopy\fP, \fBBlockBasic\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 155 of file block\&.hh\&.
+.SS "int4 FlowBlock::getVisitCount (void) const\fC [inline]\fP"
+
+.PP
+Get the count of visits\&. 
+.PP
+Definition at line 190 of file block\&.hh\&.
+.SS "bool FlowBlock::hasInteriorGoto (void) const\fC [inline]\fP"
+
+.PP
+Is there an unstructured goto out of \fBthis\fP block's interior\&. 
+.PP
+Definition at line 229 of file block\&.hh\&.
+.SS "bool FlowBlock::hasLoopIn (void) const"
+
+.PP
+Is there a looping edge coming into \fBthis\fP block\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP is the top of a loop 
+.RE
+.PP
+
+.PP
+Definition at line 358 of file block\&.cc\&.
+.SS "bool FlowBlock::hasLoopOut (void) const"
+
+.PP
+Is there a looping edge going out of \fBthis\fP block\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP is the bottom of a loop 
+.RE
+.PP
+
+.PP
+Definition at line 367 of file block\&.cc\&.
+.SS "bool FlowBlock::hasSpecialLabel (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP uses a different label\&. 
+.PP
+Definition at line 198 of file block\&.hh\&.
+.SS "bool FlowBlock::isBackEdgeIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th incoming edge a \fIback\fP edge\&. 
+.PP
+Definition at line 235 of file block\&.hh\&.
+.SS "bool FlowBlock::isBackEdgeOut (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th outgoing edge a \fIback\fP edge\&. 
+.PP
+Definition at line 236 of file block\&.hh\&.
+.SS "virtual bool FlowBlock::isComplex (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Is \fBthis\fP too complex to be a condition (\fBBlockCondition\fP) 
+.PP
+Reimplemented in \fBBlockCondition\fP, \fBBlockCopy\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 171 of file block\&.hh\&.
+.SS "bool FlowBlock::isDead (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP block dead\&. 
+.PP
+Definition at line 233 of file block\&.hh\&.
+.SS "bool FlowBlock::isDecisionIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Can \fBthis\fP and the i-th input be merged into a \fBBlockIf\fP or \fBBlockList\fP\&. 
+.PP
+Definition at line 244 of file block\&.hh\&.
+.SS "bool FlowBlock::isDecisionOut (int4 i) const\fC [inline]\fP"
+
+.PP
+Can \fBthis\fP and the i-th output be merged into a \fBBlockIf\fP or \fBBlockList\fP\&. 
+.PP
+Definition at line 241 of file block\&.hh\&.
+.SS "bool FlowBlock::isDefaultBranch (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th out edge the switch default edge\&. 
+.PP
+Definition at line 225 of file block\&.hh\&.
+.SS "bool FlowBlock::isDonothingLoop (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a \fIdo\fP \fInothing\fP block\&. 
+.PP
+Definition at line 232 of file block\&.hh\&.
+.SS "bool FlowBlock::isDuplicated (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is a \fIduplicated\fP block\&. 
+.PP
+Definition at line 200 of file block\&.hh\&.
+.SS "bool FlowBlock::isEntryPoint (void) const\fC [inline]\fP"
+
+.PP
+Is the entry point of the function\&. 
+.PP
+Definition at line 230 of file block\&.hh\&.
+.SS "bool FlowBlock::isGotoIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th incoming edge unstructured\&. 
+.PP
+Definition at line 251 of file block\&.hh\&.
+.SS "bool FlowBlock::isGotoOut (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th outgoing edge unstructured\&. 
+.PP
+Definition at line 252 of file block\&.hh\&.
+.SS "bool FlowBlock::isInteriorGotoTarget (void) const\fC [inline]\fP"
+
+.PP
+Is there an unstructured goto to \fBthis\fP block's interior\&. 
+.PP
+Definition at line 228 of file block\&.hh\&.
+.SS "bool FlowBlock::isIrreducibleIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th incoming edge an irreducible edge\&. 
+.PP
+Definition at line 238 of file block\&.hh\&.
+.SS "bool FlowBlock::isIrreducibleOut (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th outgoing edge an irreducible edge\&. 
+.PP
+Definition at line 237 of file block\&.hh\&.
+.SS "bool FlowBlock::isJoined (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is a \fIjoined\fP basic block\&. 
+.PP
+Definition at line 199 of file block\&.hh\&.
+.SS "bool FlowBlock::isJumpTarget (void) const"
+
+.PP
+Return \fBtrue\fP if non-fallthru jump flows into \fBthis\fP\&. \fBreturn\fP \fBtrue\fP if block is the target of a jump 
+.PP
+Definition at line 305 of file block\&.cc\&.
+.SS "bool FlowBlock::isLabelBumpUp (void) const\fC [inline]\fP"
+
+.PP
+Are labels for \fBthis\fP printed by the parent\&. 
+.PP
+Definition at line 226 of file block\&.hh\&.
+.SS "bool FlowBlock::isLoopDAGIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th incoming edge part of the DAG sub-graph\&. 
+.PP
+Definition at line 250 of file block\&.hh\&.
+.SS "bool FlowBlock::isLoopDAGOut (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th outgoing edge part of the DAG sub-graph\&. 
+.PP
+Definition at line 247 of file block\&.hh\&.
+.SS "bool FlowBlock::isLoopIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th incoming edge a \fIloop\fP edge\&. 
+.PP
+Definition at line 221 of file block\&.hh\&.
+.SS "bool FlowBlock::isLoopOut (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th outgoing edge a \fIloop\fP edge\&. 
+.PP
+Definition at line 222 of file block\&.hh\&.
+.SS "bool FlowBlock::isMark (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP block has been marked\&. 
+.PP
+Definition at line 193 of file block\&.hh\&.
+.SS "bool FlowBlock::isSwitchOut (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP a switch block\&. 
+.PP
+Definition at line 231 of file block\&.hh\&.
+.SS "bool FlowBlock::isTreeEdgeIn (int4 i) const\fC [inline]\fP"
+
+.PP
+Is the i-th incoming edge part of the spanning tree\&. 
+.PP
+Definition at line 234 of file block\&.hh\&.
+.SS "bool FlowBlock::isUnstructuredTarget (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP the target of an unstructured goto\&. 
+.PP
+Definition at line 227 of file block\&.hh\&.
+.SS "virtual \fBPcodeOp\fP* FlowBlock::lastOp (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented in \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, \fBBlockCopy\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 165 of file block\&.hh\&.
+.SS "void FlowBlock::markLabelBumpUp (bool bump)\fC [virtual]\fP"
+
+.PP
+Let hierarchical blocks steal labels of their (first) components\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbump\fP if \fBtrue\fP, mark that labels for this block are printed by somebody higher in hierarchy 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 247 of file block\&.cc\&.
+.SS "virtual void FlowBlock::markUnstructured (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Mark target blocks of any unstructured edges\&. 
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockIf\fP, \fBBlockGoto\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 157 of file block\&.hh\&.
+.SS "\fBFlowBlock::block_type\fP FlowBlock::nameToType (const string & nm)\fC [static]\fP"
+
+.PP
+Get the block_type associated with a name string\&. Given a string describing a \fBFlowBlock\fP type, return the block_type\&. This is currently only used by the \fBrestoreXml()\fP process\&. TODO: Fill in the remaining names and types 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding block_type 
+.RE
+.PP
+
+.PP
+Definition at line 573 of file block\&.cc\&.
+.SS "bool FlowBlock::negateCondition (bool toporbottom)\fC [virtual]\fP"
+
+.PP
+Flip the condition computed by \fBthis\fP\&. Flip the order of outgoing edges (at least)\&. This should also affect the original op causing the condition\&. Note: we don't have to flip at all levels of the hierarchy only at the top and at the bottom 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoporbottom\fP is \fBtrue\fP if \fBthis\fP is the top outermost block of the hierarchy getting negated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made to data-flow 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockCopy\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 282 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * FlowBlock::nextFlowAfter (const \fBFlowBlock\fP * bl) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. Within the hierarchy of \fBthis\fP \fBFlowBlock\fP, assume the given \fBFlowBlock\fP will fall-thru in its execution at some point\&. Return the first leaf block (\fBBlockBasic\fP or \fBBlockCopy\fP) that will execute after the given \fBFlowBlock\fP completes, assuming this is a unique block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next \fBFlowBlock\fP to execute or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 763 of file block\&.hh\&.
+.SS "const \fBFlowBlock\fP * FlowBlock::nextInFlow (void) const"
+
+.PP
+Return next block to be executed in flow\&. If there are two branches, pick the fall-thru branch 
+.PP
+\fBReturns:\fP
+.RS 4
+the next block in flow, or NULL otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 2328 of file block\&.cc\&.
+.SS "virtual void FlowBlock::orderSwitchCases (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Order \fIcase\fP components of any contained \fBBlockSwitch\fP\&. 
+.PP
+Reimplemented in \fBBlockSwitch\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 173 of file block\&.hh\&.
+.SS "bool FlowBlock::preferComplement (\fBFuncdata\fP & data)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Rearrange \fBthis\fP hierarchy to simplify boolean expressions\&. For the instructions in this block, decide if the control-flow structure can be rearranged so that boolean expressions come out more naturally\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to analyze 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockIf\fP\&.
+.PP
+Definition at line 713 of file block\&.hh\&.
+.SS "void FlowBlock::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockList\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, \fBBlockCopy\fP, and \fBBlockBasic\fP\&.
+.PP
+Definition at line 534 of file block\&.cc\&.
+.SS "virtual void FlowBlock::printRaw (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented in \fBBlockMultiGoto\fP, \fBBlockGoto\fP, \fBBlockCopy\fP, \fBBlockBasic\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 162 of file block\&.hh\&.
+.SS "void FlowBlock::printTree (ostream & s, int4 level) const\fC [virtual]\fP"
+
+.PP
+Print tree structure of any blocks owned by \fBthis\fP\&. Recursively print out the hierarchical structure of \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIlevel\fP is the current level of indentation 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockCopy\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 543 of file block\&.cc\&.
+.SS "void FlowBlock::restoreXml (const \fBElement\fP * el, \fBBlockMap\fP & resolver)"
+
+.PP
+Restore \fBthis\fP from an XML stream\&. Recover \fBthis\fP and all it sub-components from an XML <block> tag\&.
+.PP
+This will construct all the sub-components using \fBresolver\fP as a factory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element 
+.br
+\fIresolver\fP acts as a factory and resolves cross-references 
+.RE
+.PP
+
+.PP
+Definition at line 2314 of file block\&.cc\&.
+.SS "virtual void FlowBlock::restoreXmlBody (List::const_iterator & iter, List::const_iterator enditer, \fBBlockMap\fP & resolver)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Restore details about \fBthis\fP \fBFlowBlock\fP from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiter\fP is an iterator to XML elements containing component tags etc\&. 
+.br
+\fIenditer\fP marks the end of the XML tags 
+.br
+\fIresolver\fP is used to recover \fBFlowBlock\fP objects based on XML references 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockBasic\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 183 of file block\&.hh\&.
+.SS "void FlowBlock::restoreXmlEdges (List::const_iterator & iter, List::const_iterator enditer, \fBBlockMap\fP & resolver)"
+
+.PP
+Restore edges from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiter\fP is an iterator to the <edge> tags 
+.br
+\fIenditer\fP marks the end of the list of tags 
+.br
+\fIresolver\fP is used to recover \fBFlowBlock\fP cross-references 
+.RE
+.PP
+
+.PP
+Definition at line 2284 of file block\&.cc\&.
+.SS "void FlowBlock::restoreXmlHeader (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore basic information for XML attributes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element to pull attributes from 
+.RE
+.PP
+
+.PP
+Definition at line 2261 of file block\&.cc\&.
+.SS "void FlowBlock::saveXml (ostream & s) const"
+
+.PP
+Write out \fBthis\fP to an XML stream\&. Serialize \fBthis\fP and all its sub-components as an XML <block> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 2298 of file block\&.cc\&.
+.SS "virtual void FlowBlock::saveXmlBody (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Save detail about components to an XML stream\&. 
+.PP
+Reimplemented in \fBBlockIf\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, \fBBlockBasic\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 176 of file block\&.hh\&.
+.SS "void FlowBlock::saveXmlEdges (ostream & s) const"
+
+.PP
+Save edge information to an XML stream\&. Write <edge> tags to stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 2271 of file block\&.cc\&.
+.SS "void FlowBlock::saveXmlHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save basic information as XML attributes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBBlockCondition\fP, and \fBBlockCopy\fP\&.
+.PP
+Definition at line 2254 of file block\&.cc\&.
+.SS "virtual void FlowBlock::scopeBreak (int4 curexit, int4 curloopexit)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Mark unstructured edges that should be \fIbreaks\fP\&. 
+.PP
+Reimplemented in \fBBlockSwitch\fP, \fBBlockInfLoop\fP, \fBBlockDoWhile\fP, \fBBlockWhileDo\fP, \fBBlockIf\fP, \fBBlockCondition\fP, \fBBlockMultiGoto\fP, \fBBlockGoto\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 159 of file block\&.hh\&.
+.SS "void FlowBlock::setBackEdge (int4 i)\fC [inline]\fP"
+
+.PP
+Label the \fIback\fP edge of a loop\&. 
+.PP
+Definition at line 203 of file block\&.hh\&.
+.SS "void FlowBlock::setDead (void)\fC [inline]\fP"
+
+.PP
+Label \fBthis\fP as dead\&. 
+.PP
+Definition at line 197 of file block\&.hh\&.
+.SS "void FlowBlock::setDefaultSwitch (int4 i)\fC [inline]\fP"
+
+.PP
+Mark an edge as the switch default\&. 
+.PP
+Definition at line 192 of file block\&.hh\&.
+.SS "void FlowBlock::setDonothingLoop (void)\fC [inline]\fP"
+
+.PP
+Label \fBthis\fP as a \fIdo\fP \fInothing\fP loop\&. 
+.PP
+Definition at line 196 of file block\&.hh\&.
+.SS "void FlowBlock::setFlag (uint4 fl)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Set a boolean property\&. 
+.PP
+Definition at line 142 of file block\&.hh\&.
+.SS "void FlowBlock::setGotoBranch (int4 i)"
+
+.PP
+Mark a \fIgoto\fP branch\&. This is the main entry point for marking a branch from one block to another as unstructured\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the outgoing edge to mark 
+.RE
+.PP
+
+.PP
+Definition at line 293 of file block\&.cc\&.
+.SS "void FlowBlock::setLoopExit (int4 i)\fC [inline]\fP"
+
+.PP
+Label the edge exiting \fBthis\fP as a loop\&. 
+.PP
+Definition at line 201 of file block\&.hh\&.
+.SS "void FlowBlock::setMark (void)\fC [inline]\fP"
+
+.PP
+Mark \fBthis\fP block\&. 
+.PP
+Definition at line 194 of file block\&.hh\&.
+.SS "void FlowBlock::setVisitCount (int4 i)\fC [inline]\fP"
+
+.PP
+Set the number of times this block has been visited\&. 
+.PP
+Definition at line 189 of file block\&.hh\&.
+.SS "int4 FlowBlock::sizeIn (void) const\fC [inline]\fP"
+
+.PP
+Get the number of in edges\&. 
+.PP
+Definition at line 218 of file block\&.hh\&.
+.SS "int4 FlowBlock::sizeOut (void) const\fC [inline]\fP"
+
+.PP
+Get the number of out edges\&. 
+.PP
+Definition at line 217 of file block\&.hh\&.
+.SS "virtual \fBFlowBlock\fP* FlowBlock::subBlock (int4 i) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the i-th component block\&. 
+.PP
+Reimplemented in \fBBlockCopy\fP, \fBBlockBasic\fP, and \fBBlockGraph\fP\&.
+.PP
+Definition at line 156 of file block\&.hh\&.
+.SS "string FlowBlock::typeToName (\fBFlowBlock::block_type\fP bt)\fC [static]\fP"
+
+.PP
+Get the name string associated with a block_type\&. For use in serializng FlowBlocks to XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbt\fP is the block_type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the corresponding name string 
+.RE
+.PP
+
+.PP
+Definition at line 587 of file block\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBBlockGraph\fP\fC [friend]\fP"
+
+.PP
+Definition at line 61 of file block\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

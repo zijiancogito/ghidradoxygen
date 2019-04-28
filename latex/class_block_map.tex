@@ -1,0 +1,195 @@
+\hypertarget{class_block_map}{}\section{Block\+Map Class Reference}
+\label{class_block_map}\index{BlockMap@{BlockMap}}
+
+
+Helper class for resolving cross-\/references while deserializing \mbox{\hyperlink{class_block_graph}{Block\+Graph}} objects.  
+
+
+
+
+{\ttfamily \#include $<$block.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_block_map_accf96e219abfacdbbf70f95cf6d945a3}{Block\+Map}} (const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Construct given an address space manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_block_map_a4f9c51fe087f6ec59af2c970b2ac2198}{Block\+Map}} (const \mbox{\hyperlink{class_block_map}{Block\+Map}} \&op2)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$ \mbox{\hyperlink{class_block_map_ae320132fd4805cb28efb2c02f7d2e3a7}{get\+Address\+Manager}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the address space manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_map_af56f54d880b34ee2097765f1eb2cbf8e}{sort\+List}} (void)
+\begin{DoxyCompactList}\small\item\em Sort the list of \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_map_abc5d592bf94c4e29c6a0efbcd1890883}{find\+Level\+Block}} (int4 index) const
+\begin{DoxyCompactList}\small\item\em Find the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} matching the given index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_map_a9fd04bc95c56621511ecbcbdbbcfbcaa}{create\+Block}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_flow_block}{Flow\+Block}} of the named type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class for resolving cross-\/references while deserializing \mbox{\hyperlink{class_block_graph}{Block\+Graph}} objects. 
+
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects are serialized with their associated {\bfseries{index}} value and edges are serialized with the indices of the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} end-\/points. During deserialization, this class maintains a list of \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects sorted by index and then looks up the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} matching a given index as edges specify them. 
+
+Definition at line 683 of file block.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_block_map_accf96e219abfacdbbf70f95cf6d945a3}\label{class_block_map_accf96e219abfacdbbf70f95cf6d945a3}} 
+\index{BlockMap@{BlockMap}!BlockMap@{BlockMap}}
+\index{BlockMap@{BlockMap}!BlockMap@{BlockMap}}
+\subsubsection{\texorpdfstring{BlockMap()}{BlockMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Block\+Map\+::\+Block\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct given an address space manager. 
+
+
+
+Definition at line 689 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_map_a4f9c51fe087f6ec59af2c970b2ac2198}\label{class_block_map_a4f9c51fe087f6ec59af2c970b2ac2198}} 
+\index{BlockMap@{BlockMap}!BlockMap@{BlockMap}}
+\index{BlockMap@{BlockMap}!BlockMap@{BlockMap}}
+\subsubsection{\texorpdfstring{BlockMap()}{BlockMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Block\+Map\+::\+Block\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_block_map}{Block\+Map}} \&}]{op2 }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+
+Definition at line 3105 of file block.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_block_map_a9fd04bc95c56621511ecbcbdbbcfbcaa}\label{class_block_map_a9fd04bc95c56621511ecbcbdbbcfbcaa}} 
+\index{BlockMap@{BlockMap}!createBlock@{createBlock}}
+\index{createBlock@{createBlock}!BlockMap@{BlockMap}}
+\subsubsection{\texorpdfstring{createBlock()}{createBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+Map\+::create\+Block (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{class_flow_block}{Flow\+Block}} of the named type. 
+
+Given the name of a block (deserialized from a $<$bhead$>$ tag), build the corresponding type of block. 
+\begin{DoxyParams}{Parameters}
+{\em name} & is the name of the block type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a new instance of the named \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type 
+\end{DoxyReturn}
+
+
+Definition at line 3162 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_map_a9fd04bc95c56621511ecbcbdbbcfbcaa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_map_a9fd04bc95c56621511ecbcbdbbcfbcaa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_map_abc5d592bf94c4e29c6a0efbcd1890883}\label{class_block_map_abc5d592bf94c4e29c6a0efbcd1890883}} 
+\index{BlockMap@{BlockMap}!findLevelBlock@{findLevelBlock}}
+\index{findLevelBlock@{findLevelBlock}!BlockMap@{BlockMap}}
+\subsubsection{\texorpdfstring{findLevelBlock()}{findLevelBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Block\+Map\+::find\+Level\+Block (\begin{DoxyParamCaption}\item[{int4}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} matching the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & is the given index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} matching the index 
+\end{DoxyReturn}
+
+
+Definition at line 698 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_map_abc5d592bf94c4e29c6a0efbcd1890883_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_map_ae320132fd4805cb28efb2c02f7d2e3a7}\label{class_block_map_ae320132fd4805cb28efb2c02f7d2e3a7}} 
+\index{BlockMap@{BlockMap}!getAddressManager@{getAddressManager}}
+\index{getAddressManager@{getAddressManager}!BlockMap@{BlockMap}}
+\subsubsection{\texorpdfstring{getAddressManager()}{getAddressManager()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}}$\ast$ Block\+Map\+::get\+Address\+Manager (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address space manager. 
+
+
+
+Definition at line 691 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_map_ae320132fd4805cb28efb2c02f7d2e3a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_map_af56f54d880b34ee2097765f1eb2cbf8e}\label{class_block_map_af56f54d880b34ee2097765f1eb2cbf8e}} 
+\index{BlockMap@{BlockMap}!sortList@{sortList}}
+\index{sortList@{sortList}!BlockMap@{BlockMap}}
+\subsubsection{\texorpdfstring{sortList()}{sortList()}}
+{\footnotesize\ttfamily void Block\+Map\+::sort\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sort the list of \mbox{\hyperlink{class_flow_block}{Flow\+Block}} objects. 
+
+
+
+Definition at line 3152 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_map_af56f54d880b34ee2097765f1eb2cbf8e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_map_af56f54d880b34ee2097765f1eb2cbf8e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8hh}{block.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8cc}{block.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,151 @@
+.TH "SymbolTable" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SymbolTable
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghsymbol\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSymbolTable\fP (void)"
+.br
+.ti -1c
+.RI "\fB~SymbolTable\fP (void)"
+.br
+.ti -1c
+.RI "\fBSymbolScope\fP * \fBgetCurrentScope\fP (void)"
+.br
+.ti -1c
+.RI "\fBSymbolScope\fP * \fBgetGlobalScope\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetCurrentScope\fP (\fBSymbolScope\fP *scope)"
+.br
+.ti -1c
+.RI "void \fBaddScope\fP (void)"
+.br
+.ti -1c
+.RI "void \fBpopScope\fP (void)"
+.br
+.ti -1c
+.RI "void \fBaddGlobalSymbol\fP (\fBSleighSymbol\fP *a)"
+.br
+.ti -1c
+.RI "void \fBaddSymbol\fP (\fBSleighSymbol\fP *a)"
+.br
+.ti -1c
+.RI "\fBSleighSymbol\fP * \fBfindSymbol\fP (const string &nm) const"
+.br
+.ti -1c
+.RI "\fBSleighSymbol\fP * \fBfindSymbol\fP (const string &nm, int4 skip) const"
+.br
+.ti -1c
+.RI "\fBSleighSymbol\fP * \fBfindGlobalSymbol\fP (const string &nm) const"
+.br
+.ti -1c
+.RI "\fBSleighSymbol\fP * \fBfindSymbol\fP (uintm id) const"
+.br
+.ti -1c
+.RI "void \fBreplaceSymbol\fP (\fBSleighSymbol\fP *a, \fBSleighSymbol\fP *b)"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, \fBSleighBase\fP *trans)"
+.br
+.ti -1c
+.RI "void \fBrestoreSymbolHeader\fP (const \fBElement\fP *el)"
+.br
+.ti -1c
+.RI "void \fBpurge\fP (void)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 70 of file slghsymbol\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SymbolTable::SymbolTable (void)\fC [inline]\fP"
+
+.PP
+Definition at line 78 of file slghsymbol\&.hh\&.
+.SS "SymbolTable::~SymbolTable (void)"
+
+.PP
+Definition at line 43 of file slghsymbol\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SymbolTable::addGlobalSymbol (\fBSleighSymbol\fP * a)"
+
+.PP
+Definition at line 80 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::addScope (void)"
+
+.PP
+Definition at line 54 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::addSymbol (\fBSleighSymbol\fP * a)"
+
+.PP
+Definition at line 92 of file slghsymbol\&.cc\&.
+.SS "\fBSleighSymbol\fP* SymbolTable::findGlobalSymbol (const string & nm) const\fC [inline]\fP"
+
+.PP
+Definition at line 90 of file slghsymbol\&.hh\&.
+.SS "\fBSleighSymbol\fP* SymbolTable::findSymbol (const string & nm) const\fC [inline]\fP"
+
+.PP
+Definition at line 88 of file slghsymbol\&.hh\&.
+.SS "\fBSleighSymbol\fP* SymbolTable::findSymbol (const string & nm, int4 skip) const\fC [inline]\fP"
+
+.PP
+Definition at line 89 of file slghsymbol\&.hh\&.
+.SS "\fBSleighSymbol\fP* SymbolTable::findSymbol (uintm id) const\fC [inline]\fP"
+
+.PP
+Definition at line 91 of file slghsymbol\&.hh\&.
+.SS "\fBSymbolScope\fP* SymbolTable::getCurrentScope (void)\fC [inline]\fP"
+
+.PP
+Definition at line 80 of file slghsymbol\&.hh\&.
+.SS "\fBSymbolScope\fP* SymbolTable::getGlobalScope (void)\fC [inline]\fP"
+
+.PP
+Definition at line 81 of file slghsymbol\&.hh\&.
+.SS "void SymbolTable::popScope (void)"
+
+.PP
+Definition at line 61 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::purge (void)"
+
+.PP
+Definition at line 268 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::replaceSymbol (\fBSleighSymbol\fP * a, \fBSleighSymbol\fP * b)"
+
+.PP
+Definition at line 117 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::restoreSymbolHeader (const \fBElement\fP * el)"
+
+.PP
+Definition at line 228 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::restoreXml (const \fBElement\fP * el, \fBSleighBase\fP * trans)"
+
+.PP
+Definition at line 165 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::saveXml (ostream & s) const"
+
+.PP
+Definition at line 139 of file slghsymbol\&.cc\&.
+.SS "void SymbolTable::setCurrentScope (\fBSymbolScope\fP * scope)\fC [inline]\fP"
+
+.PP
+Definition at line 83 of file slghsymbol\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

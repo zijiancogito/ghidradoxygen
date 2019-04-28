@@ -1,0 +1,125 @@
+.TH "ghidra.app.util.DecompilerConcurrentQ< I, R >" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.util.DecompilerConcurrentQ< I, R >
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompilerConcurrentQ\fP (QCallback< I, R > callback, TaskMonitor monitor)"
+.br
+.ti -1c
+.RI "\fBDecompilerConcurrentQ\fP (QCallback< I, R > callback, String threadPoolName, TaskMonitor monitor)"
+.br
+.ti -1c
+.RI "void \fBaddAll\fP (Collection< I > collection)"
+.br
+.ti -1c
+.RI "void \fBaddAll\fP (Iterator< I > iterator)"
+.br
+.ti -1c
+.RI "void \fBadd\fP (I i)"
+.br
+.ti -1c
+.RI "Collection< QResult< I, R > > \fBwaitForResults\fP ()  throws InterruptedException "
+.br
+.ti -1c
+.RI "void \fBwaitUntilDone\fP ()  throws InterruptedException, Exception "
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.ti -1c
+.RI "void \fBdispose\fP (long timeoutSeconds)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class to perform some of the boilerplate setup of the \fBConcurrentQ\fP that is shared amongst clients that perform decompilation in parallel\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fI<I>\fP The input data needed by the supplied \fBQCallback\fP 
+.br
+\fI<R>\fP The result data (can be the same as \fBI\fP if there is no result) returned by the \fBQCallback#process(Object, TaskMonitor)\fP method\&. 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file DecompilerConcurrentQ\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.\fBDecompilerConcurrentQ\fP (QCallback< I, R > callback, TaskMonitor monitor)\fC [inline]\fP"
+
+.PP
+Definition at line 39 of file DecompilerConcurrentQ\&.java\&.
+.SS "\fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.\fBDecompilerConcurrentQ\fP (QCallback< I, R > callback, String threadPoolName, TaskMonitor monitor)\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file DecompilerConcurrentQ\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.add (I i)\fC [inline]\fP"
+
+.PP
+Definition at line 66 of file DecompilerConcurrentQ\&.java\&.
+.SS "void \fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.addAll (Collection< I > collection)\fC [inline]\fP"
+
+.PP
+Definition at line 58 of file DecompilerConcurrentQ\&.java\&.
+.SS "void \fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.addAll (Iterator< I > iterator)\fC [inline]\fP"
+
+.PP
+Definition at line 62 of file DecompilerConcurrentQ\&.java\&.
+.SS "void \fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.dispose ()\fC [inline]\fP"
+
+.PP
+Definition at line 101 of file DecompilerConcurrentQ\&.java\&.
+.SS "void \fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.dispose (long timeoutSeconds)\fC [inline]\fP"
+Calls dispose on the queue being processed\&. Further, the call will block for up to \fCtimeoutSeconds\fP while waiting for the queue to finish processing\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeoutSeconds\fP the number of seconds to wait for the disposed queue to finish processing 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file DecompilerConcurrentQ\&.java\&.
+.SS "Collection<QResult<I, R> > \fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.waitForResults () throws InterruptedException\fC [inline]\fP"
+Waits for all results to be delivered\&. The client is responsible for processing the results and handling any exceptions that may have occurred\&.
+.PP
+\fBReturns:\fP
+.RS 4
+all results 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInterruptedException\fP if interrupted while waiting 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file DecompilerConcurrentQ\&.java\&.
+.SS "void \fBghidra\&.app\&.util\&.DecompilerConcurrentQ\fP< I, R >\&.waitUntilDone () throws InterruptedException, Exception\fC [inline]\fP"
+Waits for all work to finish\&. Any exception encountered will trigger all processing to stop\&. If you wish for the work to continue despite exceptions, then use \fBwaitForResults()\fP\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInterruptedException\fP if interrupted while waiting 
+.br
+\fIException\fP any exception that is encountered while processing items\&. 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file DecompilerConcurrentQ\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

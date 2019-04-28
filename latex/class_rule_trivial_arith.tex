@@ -1,0 +1,187 @@
+\hypertarget{class_rule_trivial_arith}{}\section{Rule\+Trivial\+Arith Class Reference}
+\label{class_rule_trivial_arith}\index{RuleTrivialArith@{RuleTrivialArith}}
+
+
+Simplify trivial arithmetic expressions.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Trivial\+Arith\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_rule_trivial_arith__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Trivial\+Arith\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_rule_trivial_arith__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_trivial_arith_a4dbc9fead8af1a3f3960d11c3f9c06df}{Rule\+Trivial\+Arith}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_trivial_arith_a2c92af6c8447390481239efa67e5ece7}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_trivial_arith_a5ea9eaec045f952aac8c2af5198bdda0}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_trivial_arith_a692632ff3e5fa2bad3ba12b6ff2005be}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Simplify trivial arithmetic expressions. 
+
+All forms are binary operations where both inputs hold the same value.
+\begin{DoxyItemize}
+\item {\ttfamily V == V =$>$ true}
+\item {\ttfamily V != V =$>$ false}
+\item {\ttfamily V $<$ V =$>$ false}
+\item {\ttfamily V $<$= V =$>$ true}
+\item {\ttfamily V \& V =$>$ V}
+\item {\ttfamily V $\vert$ V =$>$ V}
+\item {\ttfamily V $^\wedge$ V =$>$ \#0}
+\end{DoxyItemize}
+
+Handles other signed, boolean, and floating-\/point variants. 
+
+Definition at line 408 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_trivial_arith_a4dbc9fead8af1a3f3960d11c3f9c06df}\label{class_rule_trivial_arith_a4dbc9fead8af1a3f3960d11c3f9c06df}} 
+\index{RuleTrivialArith@{RuleTrivialArith}!RuleTrivialArith@{RuleTrivialArith}}
+\index{RuleTrivialArith@{RuleTrivialArith}!RuleTrivialArith@{RuleTrivialArith}}
+\subsubsection{\texorpdfstring{RuleTrivialArith()}{RuleTrivialArith()}}
+{\footnotesize\ttfamily Rule\+Trivial\+Arith\+::\+Rule\+Trivial\+Arith (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 410 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_trivial_arith_a4dbc9fead8af1a3f3960d11c3f9c06df_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_trivial_arith_a692632ff3e5fa2bad3ba12b6ff2005be}\label{class_rule_trivial_arith_a692632ff3e5fa2bad3ba12b6ff2005be}} 
+\index{RuleTrivialArith@{RuleTrivialArith}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleTrivialArith@{RuleTrivialArith}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Trivial\+Arith\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 2237 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_trivial_arith_a692632ff3e5fa2bad3ba12b6ff2005be_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_trivial_arith_a2c92af6c8447390481239efa67e5ece7}\label{class_rule_trivial_arith_a2c92af6c8447390481239efa67e5ece7}} 
+\index{RuleTrivialArith@{RuleTrivialArith}!clone@{clone}}
+\index{clone@{clone}!RuleTrivialArith@{RuleTrivialArith}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Trivial\+Arith\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 411 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_trivial_arith_a2c92af6c8447390481239efa67e5ece7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_trivial_arith_a5ea9eaec045f952aac8c2af5198bdda0}\label{class_rule_trivial_arith_a5ea9eaec045f952aac8c2af5198bdda0}} 
+\index{RuleTrivialArith@{RuleTrivialArith}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleTrivialArith@{RuleTrivialArith}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Trivial\+Arith\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 2227 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

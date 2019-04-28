@@ -1,0 +1,117 @@
+\hypertarget{class_floating_edge}{}\section{Floating\+Edge Class Reference}
+\label{class_floating_edge}\index{FloatingEdge@{FloatingEdge}}
+
+
+Class for holding an edge while the underlying graph is being manipulated.  
+
+
+
+
+{\ttfamily \#include $<$blockaction.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_floating_edge_a72ad665c68c1308a110a1a84903b760e}{Floating\+Edge}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$t, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Construct given end points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_floating_edge_aca226310bf8b5e65a4a34434814412d0}{get\+Top}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the starting \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_floating_edge_ad9c70dbd864a8391b1ceb01d2d60ca68}{get\+Bottom}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the ending \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_floating_edge_afe06b54ef60e438326f48f0d466df0ff}{get\+Current\+Edge}} (int4 \&outedge, \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$graph)
+\begin{DoxyCompactList}\small\item\em Get the current form of the edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for holding an edge while the underlying graph is being manipulated. 
+
+The original \mbox{\hyperlink{class_flow_block}{Flow\+Block}} nodes that define the end-\/points of the edge may get collapsed, but the edge may still exist between higher level components. The edge can still be retrieved via the \mbox{\hyperlink{class_floating_edge_afe06b54ef60e438326f48f0d466df0ff}{get\+Current\+Edge()}} method. 
+
+Definition at line 29 of file blockaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_floating_edge_a72ad665c68c1308a110a1a84903b760e}\label{class_floating_edge_a72ad665c68c1308a110a1a84903b760e}} 
+\index{FloatingEdge@{FloatingEdge}!FloatingEdge@{FloatingEdge}}
+\index{FloatingEdge@{FloatingEdge}!FloatingEdge@{FloatingEdge}}
+\subsubsection{\texorpdfstring{FloatingEdge()}{FloatingEdge()}}
+{\footnotesize\ttfamily Floating\+Edge\+::\+Floating\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{t,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct given end points. 
+
+
+
+Definition at line 33 of file blockaction.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_floating_edge_ad9c70dbd864a8391b1ceb01d2d60ca68}\label{class_floating_edge_ad9c70dbd864a8391b1ceb01d2d60ca68}} 
+\index{FloatingEdge@{FloatingEdge}!getBottom@{getBottom}}
+\index{getBottom@{getBottom}!FloatingEdge@{FloatingEdge}}
+\subsubsection{\texorpdfstring{getBottom()}{getBottom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Floating\+Edge\+::get\+Bottom (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the ending \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+
+
+Definition at line 35 of file blockaction.\+hh.
+
+\mbox{\Hypertarget{class_floating_edge_afe06b54ef60e438326f48f0d466df0ff}\label{class_floating_edge_afe06b54ef60e438326f48f0d466df0ff}} 
+\index{FloatingEdge@{FloatingEdge}!getCurrentEdge@{getCurrentEdge}}
+\index{getCurrentEdge@{getCurrentEdge}!FloatingEdge@{FloatingEdge}}
+\subsubsection{\texorpdfstring{getCurrentEdge()}{getCurrentEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Floating\+Edge\+::get\+Current\+Edge (\begin{DoxyParamCaption}\item[{int4 \&}]{outedge,  }\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{graph }\end{DoxyParamCaption})}
+
+
+
+Get the current form of the edge. 
+
+Retrieve the current edge (as a {\itshape top} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} and the index of the outgoing edge). If the end-\/points have been collapsed together, this returns N\+U\+LL. The top and bottom nodes of the edge are updated to Flow\+Blocks in the current collapsed graph. 
+\begin{DoxyParams}{Parameters}
+{\em outedge} & will hold the index of the edge (outgoing relative to returned \mbox{\hyperlink{class_flow_block}{Flow\+Block}}) \\
+\hline
+{\em graph} & is the containing \mbox{\hyperlink{class_block_graph}{Block\+Graph}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the current {\itshape top} of the edge or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 25 of file blockaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_floating_edge_afe06b54ef60e438326f48f0d466df0ff_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_floating_edge_aca226310bf8b5e65a4a34434814412d0}\label{class_floating_edge_aca226310bf8b5e65a4a34434814412d0}} 
+\index{FloatingEdge@{FloatingEdge}!getTop@{getTop}}
+\index{getTop@{getTop}!FloatingEdge@{FloatingEdge}}
+\subsubsection{\texorpdfstring{getTop()}{getTop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Floating\+Edge\+::get\+Top (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the starting \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+
+
+Definition at line 34 of file blockaction.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8hh}{blockaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8cc}{blockaction.\+cc}}\end{DoxyCompactItemize}

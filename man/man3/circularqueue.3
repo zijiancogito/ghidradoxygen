@@ -1,0 +1,205 @@
+.TH "circularqueue< _type >" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+circularqueue< _type > \- A circular buffer template\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <prettyprint\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBcircularqueue\fP (int4 sz)"
+.br
+.RI "Construct queue of a given size\&. "
+.ti -1c
+.RI "\fB~circularqueue\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetMax\fP (int4 sz)"
+.br
+.RI "Establish a new maximum queue size\&. "
+.ti -1c
+.RI "int4 \fBgetMax\fP (void) const"
+.br
+.RI "Get the maximum queue size\&. "
+.ti -1c
+.RI "void \fBexpand\fP (int4 amount)"
+.br
+.RI "Expand the (maximum) size of the queue\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear the queue\&. "
+.ti -1c
+.RI "bool \fBempty\fP (void) const"
+.br
+.RI "Is the queue empty\&. "
+.ti -1c
+.RI "int4 \fBtopref\fP (void) const"
+.br
+.RI "Get a reference to the last object on the queue/stack\&. "
+.ti -1c
+.RI "int4 \fBbottomref\fP (void) const"
+.br
+.RI "Get a reference to the first object on the queue/stack\&. "
+.ti -1c
+.RI "_type & \fBref\fP (int4 r)"
+.br
+.RI "Retrieve an object by its reference\&. "
+.ti -1c
+.RI "_type & \fBtop\fP (void)"
+.br
+.RI "Get the last object on the queue/stack\&. "
+.ti -1c
+.RI "_type & \fBbottom\fP (void)"
+.br
+.RI "Get the first object on the queue/stack\&. "
+.ti -1c
+.RI "_type & \fBpush\fP (void)"
+.br
+.RI "Push a new object onto the queue/stack\&. "
+.ti -1c
+.RI "_type & \fBpop\fP (void)"
+.br
+.RI "Pop the (last) object on the stack\&. "
+.ti -1c
+.RI "_type & \fBpopbottom\fP (void)"
+.br
+.RI "Get the (next) object in the queue\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename _type>
+.br
+class circularqueue< _type >"
+A circular buffer template\&. 
+
+A circular buffer implementation that can act as a stack: \fBpush()\fP, \fBpop()\fP\&. Or it can act as a queue: \fBpush()\fP, \fBpopbottom()\fP\&. The size of the buffer can be expanded on the fly using \fBexpand()\fP\&. The object being buffered must support a void constructor and the assignment operator\&. Objects can also be looked up via an integer reference\&. 
+.PP
+Definition at line 605 of file prettyprint\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename _type > \fBcircularqueue\fP< _type >::\fBcircularqueue\fP (int4 sz)"
+
+.PP
+Construct queue of a given size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsz\fP is the maximum number of objects the queue will hold 
+.RE
+.PP
+
+.PP
+Definition at line 630 of file prettyprint\&.hh\&.
+.SS "template<typename _type > \fBcircularqueue\fP< _type >::~\fBcircularqueue\fP (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 640 of file prettyprint\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename _type> _type& \fBcircularqueue\fP< _type >::bottom (void)\fC [inline]\fP"
+
+.PP
+Get the first object on the queue/stack\&. 
+.PP
+Definition at line 622 of file prettyprint\&.hh\&.
+.SS "template<typename _type> int4 \fBcircularqueue\fP< _type >::bottomref (void) const\fC [inline]\fP"
+
+.PP
+Get a reference to the first object on the queue/stack\&. 
+.PP
+Definition at line 619 of file prettyprint\&.hh\&.
+.SS "template<typename _type> void \fBcircularqueue\fP< _type >::clear (void)\fC [inline]\fP"
+
+.PP
+Clear the queue\&. 
+.PP
+Definition at line 616 of file prettyprint\&.hh\&.
+.SS "template<typename _type> bool \fBcircularqueue\fP< _type >::empty (void) const\fC [inline]\fP"
+
+.PP
+Is the queue empty\&. 
+.PP
+Definition at line 617 of file prettyprint\&.hh\&.
+.SS "template<typename _type > void \fBcircularqueue\fP< _type >::expand (int4 amount)"
+
+.PP
+Expand the (maximum) size of the queue\&. Expand the maximum size of \fBthis\fP queue\&. Objects currently in the queue are preserved, which involves copying the objects\&. This routine invalidates references referring to objects currently in the queue, although the references can be systematically adjusted to be valid again\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP is the number of additional objects the resized queue will support 
+.RE
+.PP
+
+.PP
+Definition at line 665 of file prettyprint\&.hh\&.
+.SS "template<typename _type> int4 \fBcircularqueue\fP< _type >::getMax (void) const\fC [inline]\fP"
+
+.PP
+Get the maximum queue size\&. 
+.PP
+Definition at line 614 of file prettyprint\&.hh\&.
+.SS "template<typename _type> _type& \fBcircularqueue\fP< _type >::pop (void)\fC [inline]\fP"
+
+.PP
+Pop the (last) object on the stack\&. 
+.PP
+Definition at line 624 of file prettyprint\&.hh\&.
+.SS "template<typename _type> _type& \fBcircularqueue\fP< _type >::popbottom (void)\fC [inline]\fP"
+
+.PP
+Get the (next) object in the queue\&. 
+.PP
+Definition at line 625 of file prettyprint\&.hh\&.
+.SS "template<typename _type> _type& \fBcircularqueue\fP< _type >::push (void)\fC [inline]\fP"
+
+.PP
+Push a new object onto the queue/stack\&. 
+.PP
+Definition at line 623 of file prettyprint\&.hh\&.
+.SS "template<typename _type> _type& \fBcircularqueue\fP< _type >::ref (int4 r)\fC [inline]\fP"
+
+.PP
+Retrieve an object by its reference\&. 
+.PP
+Definition at line 620 of file prettyprint\&.hh\&.
+.SS "template<typename _type > void \fBcircularqueue\fP< _type >::setMax (int4 sz)"
+
+.PP
+Establish a new maximum queue size\&. This destroys the old queue and reallocates a new queue with the given maximum size 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsz\fP the maximum size of the new queue 
+.RE
+.PP
+
+.PP
+Definition at line 649 of file prettyprint\&.hh\&.
+.SS "template<typename _type> _type& \fBcircularqueue\fP< _type >::top (void)\fC [inline]\fP"
+
+.PP
+Get the last object on the queue/stack\&. 
+.PP
+Definition at line 621 of file prettyprint\&.hh\&.
+.SS "template<typename _type> int4 \fBcircularqueue\fP< _type >::topref (void) const\fC [inline]\fP"
+
+.PP
+Get a reference to the last object on the queue/stack\&. 
+.PP
+Definition at line 618 of file prettyprint\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

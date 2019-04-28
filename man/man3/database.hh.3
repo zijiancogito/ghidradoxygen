@@ -1,0 +1,136 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/database.hh \- \fBSymbol\fP and \fBScope\fP objects for the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'variable\&.hh'\fP
+.br
+\fC#include 'partmap\&.hh'\fP
+.br
+\fC#include 'rangemap\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSymbolEntry\fP"
+.br
+.RI "A storage location for a particular \fBSymbol\fP\&. "
+.ti -1c
+.RI "class \fBSymbolEntry::EntryInitData\fP"
+.br
+.RI "Initialization data for a \fBSymbolEntry\fP to facilitate a rangemap\&. "
+.ti -1c
+.RI "class \fBSymbolEntry::EntrySubsort\fP"
+.br
+.RI "Class for sub-sorting different \fBSymbolEntry\fP objects at the same address\&. "
+.ti -1c
+.RI "class \fBSymbol\fP"
+.br
+.RI "The base class for a symbol in a symbol table or scope\&. "
+.ti -1c
+.RI "class \fBFunctionSymbol\fP"
+.br
+.RI "A \fBSymbol\fP representing an executable function\&. "
+.ti -1c
+.RI "class \fBEquateSymbol\fP"
+.br
+.RI "A \fBSymbol\fP that holds \fBequate\fP information for a constant\&. "
+.ti -1c
+.RI "class \fBLabSymbol\fP"
+.br
+.RI "A \fBSymbol\fP that labels code internal to a function\&. "
+.ti -1c
+.RI "class \fBExternRefSymbol\fP"
+.br
+.RI "A function \fBSymbol\fP referring to an external location\&. "
+.ti -1c
+.RI "class \fBSymbolCompareName\fP"
+.br
+.RI "Comparator for sorting \fBSymbol\fP objects by name\&. "
+.ti -1c
+.RI "class \fBMapIterator\fP"
+.br
+.RI "An iterator over \fBSymbolEntry\fP objects in multiple address spaces\&. "
+.ti -1c
+.RI "class \fBScopeKey\fP"
+.br
+.RI "A key for looking up child symbol scopes within a parent, based on name\&. "
+.ti -1c
+.RI "class \fBScope\fP"
+.br
+.RI "A collection of \fBSymbol\fP objects within a single (namespace or functional) scope\&. "
+.ti -1c
+.RI "class \fBScopeInternal\fP"
+.br
+.RI "An in-memory implementation of the \fBScope\fP interface\&. "
+.ti -1c
+.RI "class \fBScopeMapper\fP"
+.br
+.RI "An \fBAddress\fP range associated with the symbol \fBScope\fP that owns it\&. "
+.ti -1c
+.RI "class \fBDatabase\fP"
+.br
+.RI "A manager for symbol scopes for a whole executable\&. "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBrangemap\fP< \fBSymbolEntry\fP > \fBEntryMap\fP"
+.br
+.RI "A rangemap of \fBSymbolEntry\fP\&. "
+.ti -1c
+.RI "typedef set< \fBSymbol\fP *, \fBSymbolCompareName\fP > \fBSymbolNameTree\fP"
+.br
+.RI "A set of \fBSymbol\fP objects sorted by name\&. "
+.ti -1c
+.RI "typedef map< \fBScopeKey\fP, \fBScope\fP * > \fBScopeMap\fP"
+.br
+.RI "A map from \fBScopeKey\fP to \fBScope\fP\&. "
+.ti -1c
+.RI "typedef \fBrangemap\fP< \fBScopeMapper\fP > \fBScopeResolve\fP"
+.br
+.RI "A map from address to the owning \fBScope\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBSymbol\fP and \fBScope\fP objects for the decompiler\&. 
+
+These implement the main symbol table, with support for symbols, local and global scopes, namespaces etc\&. Search can be by name or the address of the \fBSymbol\fP storage location\&. 
+.PP
+Definition in file \fBdatabase\&.hh\fP\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBrangemap\fP<\fBSymbolEntry\fP> \fBEntryMap\fP"
+
+.PP
+A rangemap of \fBSymbolEntry\fP\&. 
+.PP
+Definition at line 141 of file database\&.hh\&.
+.SS "typedef map<\fBScopeKey\fP,\fBScope\fP *> \fBScopeMap\fP"
+
+.PP
+A map from \fBScopeKey\fP to \fBScope\fP\&. 
+.PP
+Definition at line 373 of file database\&.hh\&.
+.SS "typedef \fBrangemap\fP<\fBScopeMapper\fP> \fBScopeResolve\fP"
+
+.PP
+A map from address to the owning \fBScope\fP\&. 
+.PP
+Definition at line 796 of file database\&.hh\&.
+.SS "typedef set<\fBSymbol\fP *,\fBSymbolCompareName\fP> \fBSymbolNameTree\fP"
+
+.PP
+A set of \fBSymbol\fP objects sorted by name\&. 
+.PP
+Definition at line 307 of file database\&.hh\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

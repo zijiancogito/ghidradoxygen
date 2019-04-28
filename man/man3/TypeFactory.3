@@ -1,0 +1,839 @@
+.TH "TypeFactory" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeFactory \- Container class for all \fBDatatype\fP objects in an \fBArchitecture\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherited by \fBTypeFactoryGhidra\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeFactory\fP (\fBArchitecture\fP *g)"
+.br
+.RI "Construct a factory\&. "
+.ti -1c
+.RI "void \fBsetupSizes\fP (void)"
+.br
+.RI "Derive some size information from \fBArchitecture\fP\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear out all types\&. "
+.ti -1c
+.RI "void \fBclearNoncore\fP (void)"
+.br
+.RI "Clear out non-core types\&. "
+.ti -1c
+.RI "virtual \fB~TypeFactory\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetStructAlign\fP (int4 al)"
+.br
+.RI "Set the default structure alignment\&. "
+.ti -1c
+.RI "int4 \fBgetStructAlign\fP (void) const"
+.br
+.RI "Get the default structure alignment\&. "
+.ti -1c
+.RI "int4 \fBgetSizeOfInt\fP (void) const"
+.br
+.RI "Get the size of the default 'int'\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.RI "Get the \fBArchitecture\fP object\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBfindByName\fP (const string &n)"
+.br
+.RI "Return type of given name\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBsetName\fP (\fBDatatype\fP *ct, const string &n)"
+.br
+.RI "Set the given types name\&. "
+.ti -1c
+.RI "bool \fBsetFields\fP (vector< \fBTypeField\fP > &fd, \fBTypeStruct\fP *ot, int4 fixedsize)"
+.br
+.RI "Set fields on a \fBTypeStruct\fP\&. "
+.ti -1c
+.RI "bool \fBsetEnumValues\fP (const vector< string > &namelist, const vector< \fBuintb\fP > &vallist, const vector< bool > &assignlist, \fBTypeEnum\fP *te)"
+.br
+.RI "Set named values for an enumeration\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBrestoreXmlType\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBDatatype\fP from XML\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBrestoreXmlTypeWithCodeFlags\fP (const \fBElement\fP *el, bool hasThisPtr, bool isConstructor, bool isDestructor)"
+.br
+.RI "Restore data-type from XML with extra 'code' flags\&. "
+.ti -1c
+.RI "\fBTypeVoid\fP * \fBgetTypeVoid\fP (void)"
+.br
+.RI "Get the 'void' data-type\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetBaseNoChar\fP (int4 s, \fBtype_metatype\fP m)"
+.br
+.RI "Get atomic type excluding 'char'\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetBase\fP (int4 s, \fBtype_metatype\fP m)"
+.br
+.RI "Get atomic type\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetBase\fP (int4 s, \fBtype_metatype\fP m, const string &n)"
+.br
+.RI "Get named atomic type\&. "
+.ti -1c
+.RI "\fBTypeCode\fP * \fBgetTypeCode\fP (void)"
+.br
+.RI "Get an 'anonymous' function data-type\&. "
+.ti -1c
+.RI "\fBTypePointer\fP * \fBgetTypePointer\fP (int4 s, \fBDatatype\fP *pt, uint4 ws)"
+.br
+.RI "Construct a pointer data-type\&. "
+.ti -1c
+.RI "\fBTypePointer\fP * \fBgetTypePointerAbsolute\fP (int4 s, \fBDatatype\fP *pt, uint4 ws)"
+.br
+.RI "Construct an absolute pointer data-type\&. "
+.ti -1c
+.RI "\fBTypePointer\fP * \fBgetTypePointerNoDepth\fP (int4 s, \fBDatatype\fP *pt, uint4 ws)"
+.br
+.RI "Construct a depth limited pointer data-type\&. "
+.ti -1c
+.RI "\fBTypeArray\fP * \fBgetTypeArray\fP (int4 as, \fBDatatype\fP *ao)"
+.br
+.RI "Construct an array data-type\&. "
+.ti -1c
+.RI "\fBTypeStruct\fP * \fBgetTypeStruct\fP (const string &n)"
+.br
+.RI "Create an (empty) structure\&. "
+.ti -1c
+.RI "\fBTypeEnum\fP * \fBgetTypeEnum\fP (const string &n)"
+.br
+.RI "Create an (empty) enumeration\&. "
+.ti -1c
+.RI "\fBTypeSpacebase\fP * \fBgetTypeSpacebase\fP (\fBAddrSpace\fP *id, const \fBAddress\fP &addr)"
+.br
+.RI "Create a 'spacebase' type\&. "
+.ti -1c
+.RI "\fBTypeCode\fP * \fBgetTypeCode\fP (\fBProtoModel\fP *model, \fBDatatype\fP *outtype, const vector< \fBDatatype\fP * > &intypes, bool dotdotdot)"
+.br
+.RI "Create a 'function' datatype\&. "
+.ti -1c
+.RI "void \fBdestroyType\fP (\fBDatatype\fP *ct)"
+.br
+.RI "Remove a data-type from \fBthis\fP\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBdownChain\fP (\fBDatatype\fP *ptrtype, \fBuintb\fP &off)"
+.br
+.RI "Find a sub-type matching a pointer and offset\&. "
+.ti -1c
+.RI "void \fBdependentOrder\fP (vector< \fBDatatype\fP * > &deporder) const"
+.br
+.RI "Place all data-types in dependency order\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save \fBthis\fP container to stream\&. "
+.ti -1c
+.RI "void \fBsaveXmlCoreTypes\fP (ostream &s) const"
+.br
+.RI "Save core types to stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP container from a stream\&. "
+.ti -1c
+.RI "void \fBrestoreXmlCoreTypes\fP (const \fBElement\fP *el)"
+.br
+.RI "Initialize basic type names\&. "
+.ti -1c
+.RI "void \fBparseDataOrganization\fP (const \fBElement\fP *el)"
+.br
+.RI "Parse the <data_organization> tag\&. "
+.ti -1c
+.RI "void \fBparseEnumConfig\fP (const \fBElement\fP *el)"
+.br
+.RI "Parse the <enum> tag\&. "
+.ti -1c
+.RI "void \fBsetCoreType\fP (const string &name, int4 size, \fBtype_metatype\fP meta, bool chartp)"
+.br
+.RI "Create a core data-type\&. "
+.ti -1c
+.RI "void \fBcacheCoreTypes\fP (void)"
+.br
+.RI "Cache common types\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDatatype\fP * \fBfindByIdLocal\fP (const string &nm, uint8 id) const"
+.br
+.RI "Search locally by name and id\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBfindById\fP (const string &n, uint8 id)"
+.br
+.RI "Search by name and id\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBArchitecture\fP * \fBglb\fP"
+.br
+.RI "The \fBArchitecture\fP object that owns this \fBTypeFactory\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Container class for all \fBDatatype\fP objects in an \fBArchitecture\fP\&. 
+.PP
+Definition at line 379 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeFactory::TypeFactory (\fBArchitecture\fP * g)"
+
+.PP
+Construct a factory\&. Initialize an empty container 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the owning \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1196 of file type\&.cc\&.
+.SS "TypeFactory::~TypeFactory (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 1349 of file type\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TypeFactory::cacheCoreTypes (void)"
+
+.PP
+Cache common types\&. Run through the list of 'core' data-types and cache the most commonly accessed ones for quick access (avoiding the tree lookup)\&. The 'core' data-types must have been previously initialized\&. 
+.PP
+Definition at line 1270 of file type\&.cc\&.
+.SS "void TypeFactory::clear (void)"
+
+.PP
+Clear out all types\&. Remove all \fBDatatype\fP objects owned by this \fBTypeFactory\fP\&. 
+.PP
+Definition at line 1317 of file type\&.cc\&.
+.SS "void TypeFactory::clearNoncore (void)"
+
+.PP
+Clear out non-core types\&. Delete anything that isn't a core type\&. 
+.PP
+Definition at line 1330 of file type\&.cc\&.
+.SS "void TypeFactory::dependentOrder (vector< \fBDatatype\fP * > & deporder) const"
+
+.PP
+Place all data-types in dependency order\&. Place data-types in an order such that if the definition of data-type 'a' depends on the definition of data-type 'b', then 'b' occurs earlier in the order 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdeporder\fP will hold the generated dependency list of data-types 
+.RE
+.PP
+
+.PP
+Definition at line 1603 of file type\&.cc\&.
+.SS "void TypeFactory::destroyType (\fBDatatype\fP * ct)"
+
+.PP
+Remove a data-type from \fBthis\fP\&. The indicated \fBDatatype\fP object is removed from this container\&. Indirect references (via \fBTypeArray\fP \fBTypeStruct\fP etc\&.) are not affected 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type to destroy 
+.RE
+.PP
+
+.PP
+Definition at line 1860 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::downChain (\fBDatatype\fP * ptrtype, \fBuintb\fP & off)"
+
+.PP
+Find a sub-type matching a pointer and offset\&. Add a constant offset to a pointer with known data-type\&. If there is a valid component at that offset, return a pointer to the data-type of the component or NULL otherwise\&. This routine only goes down one level at most\&. Pass back the renormalized offset relative to the new data-type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptrtype\fP is the pointer data-type being added to 
+.br
+\fIoff\fP is a reference to the offset to add 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer datatype for the component or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1878 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::findById (const string & n, uint8 id)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Search by name and id\&. Search for a \fBDatatype\fP by \fBname\fP and/or \fBid\fP\&. Derived classes may search outside this container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP is the name of the data-type 
+.br
+\fIid\fP is the type id of the data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeFactoryGhidra\fP\&.
+.PP
+Definition at line 1383 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::findByIdLocal (const string & n, uint8 id) const\fC [protected]\fP"
+
+.PP
+Search locally by name and id\&. Looking just within this container, find a \fBDatatype\fP by \fBname\fP and/or \fBid\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP is the name of the data-type 
+.br
+\fIid\fP is the type id of the data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1359 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::findByName (const string & n)"
+
+.PP
+Return type of given name\&. Find type with given name\&. If there are more than, return first\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP is the name to search for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBDatatype\fP object with the name or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1392 of file type\&.cc\&.
+.SS "\fBArchitecture\fP* TypeFactory::getArch (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBArchitecture\fP object\&. 
+.PP
+Definition at line 411 of file type\&.hh\&.
+.SS "\fBDatatype\fP * TypeFactory::getBase (int4 s, \fBtype_metatype\fP m)"
+
+.PP
+Get atomic type\&. Get one of the 'base' datatypes\&. This routine is called a lot, so we go through a cache first\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the desired size 
+.br
+\fIm\fP is the desired meta-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1671 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::getBase (int4 s, \fBtype_metatype\fP m, const string & n)"
+
+.PP
+Get named atomic type\&. Get or create a 'base' type with a specified name and properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the desired size 
+.br
+\fIm\fP is the desired meta-type 
+.br
+\fIn\fP is the desired name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBDatabase\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1707 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::getBaseNoChar (int4 s, \fBtype_metatype\fP m)"
+
+.PP
+Get atomic type excluding 'char'\&. Get a 'base' data-type, given its size and \fBmetatype\fP\&. If a 1-byte integer is requested, do NOT return a \fBTypeChar\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the data-type 
+.br
+\fIm\fP is the meta-type of the data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1659 of file type\&.cc\&.
+.SS "int4 TypeFactory::getSizeOfInt (void) const\fC [inline]\fP"
+
+.PP
+Get the size of the default 'int'\&. 
+.PP
+Definition at line 410 of file type\&.hh\&.
+.SS "int4 TypeFactory::getStructAlign (void) const\fC [inline]\fP"
+
+.PP
+Get the default structure alignment\&. 
+.PP
+Definition at line 409 of file type\&.hh\&.
+.SS "\fBTypeArray\fP * TypeFactory::getTypeArray (int4 as, \fBDatatype\fP * ao)"
+
+.PP
+Construct an array data-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIas\fP is the number of elements in the desired array 
+.br
+\fIao\fP is the data-type of the array element 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypeArray\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1799 of file type\&.cc\&.
+.SS "\fBTypeCode\fP * TypeFactory::getTypeCode (void)"
+
+.PP
+Get an 'anonymous' function data-type\&. Retrieve or create the core 'code' \fBDatatype\fP object This has no prototype attached to it and is appropriate for anonymous function pointers\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypeCode\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1718 of file type\&.cc\&.
+.SS "\fBTypeCode\fP * TypeFactory::getTypeCode (\fBProtoModel\fP * model, \fBDatatype\fP * outtype, const vector< \fBDatatype\fP * > & intypes, bool dotdotdot)"
+
+.PP
+Create a 'function' datatype\&. Creates a \fBTypeCode\fP object and associates a specific function prototype with it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImodel\fP is the prototype model associated with the function 
+.br
+\fIouttype\fP is the return type of the function 
+.br
+\fIintypes\fP is the array of input parameters of the function 
+.br
+\fIdotdotdot\fP is true if the function takes variable arguments 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypeCode\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1848 of file type\&.cc\&.
+.SS "\fBTypeEnum\fP * TypeFactory::getTypeEnum (const string & n)"
+
+.PP
+Create an (empty) enumeration\&. The created enumeration will have no named values and a default configuration Named values must be added later\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP is the name of the enumeration 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypeEnum\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1823 of file type\&.cc\&.
+.SS "\fBTypePointer\fP * TypeFactory::getTypePointer (int4 s, \fBDatatype\fP * pt, uint4 ws)"
+
+.PP
+Construct a pointer data-type\&. This creates a pointer to a given data-type\&. It doesn't allow a 'pointer to array' to be created however and will drill-down to the first non-array data-type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the pointer 
+.br
+\fIpt\fP is the pointed-to data-type 
+.br
+\fIws\fP is the wordsize associated with the pointer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypePointer\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1748 of file type\&.cc\&.
+.SS "\fBTypePointer\fP * TypeFactory::getTypePointerAbsolute (int4 s, \fBDatatype\fP * pt, uint4 ws)"
+
+.PP
+Construct an absolute pointer data-type\&. Allows 'pointer to array' to be constructed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the pointer 
+.br
+\fIpt\fP is the pointed-to data-type 
+.br
+\fIws\fP is the wordsize associated with the pointer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypePointer\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1766 of file type\&.cc\&.
+.SS "\fBTypePointer\fP * TypeFactory::getTypePointerNoDepth (int4 s, \fBDatatype\fP * pt, uint4 ws)"
+
+.PP
+Construct a depth limited pointer data-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the pointer 
+.br
+\fIpt\fP is the pointed-to data-type 
+.br
+\fIws\fP is the wordsize associated with the pointer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypePointer\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1778 of file type\&.cc\&.
+.SS "\fBTypeSpacebase\fP * TypeFactory::getTypeSpacebase (\fBAddrSpace\fP * id, const \fBAddress\fP & addr)"
+
+.PP
+Create a 'spacebase' type\&. Creates the special \fBTypeSpacebase\fP with an associated address space and scope 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the address space 
+.br
+\fIaddr\fP specifies the function scope, or isInvalid() for global scope 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypeSpacebase\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1835 of file type\&.cc\&.
+.SS "\fBTypeStruct\fP * TypeFactory::getTypeStruct (const string & n)"
+
+.PP
+Create an (empty) structure\&. The created structure will have no fields\&. They must be added later\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP is the name of the structure 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBTypeStruct\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1809 of file type\&.cc\&.
+.SS "\fBTypeVoid\fP * TypeFactory::getTypeVoid (void)"
+
+.PP
+Get the 'void' data-type\&. There should be exactly one instance of the 'void' \fBDatatype\fP object, which this fetches 
+.PP
+\fBReturns:\fP
+.RS 4
+the 'void' data-type 
+.RE
+.PP
+
+.PP
+Definition at line 1615 of file type\&.cc\&.
+.SS "void TypeFactory::parseDataOrganization (const \fBElement\fP * el)"
+
+.PP
+Parse the <data_organization> tag\&. Recover various sizes relevant to \fBthis\fP container, such as the default size of 'int' and structure alignment, by parsing the <data_organization> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 2193 of file type\&.cc\&.
+.SS "void TypeFactory::parseEnumConfig (const \fBElement\fP * el)"
+
+.PP
+Parse the <enum> tag\&. Recover default enumeration properties (size and meta-type) from an <enum> XML tag\&. Should probably consider this deprecated\&. These values are only used by the internal C parser\&. param el is the XML element 
+.PP
+Definition at line 2227 of file type\&.cc\&.
+.SS "void TypeFactory::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Restore \fBthis\fP container from a stream\&. Read data-types into this container from an XML stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element 
+.RE
+.PP
+
+.PP
+Definition at line 2148 of file type\&.cc\&.
+.SS "void TypeFactory::restoreXmlCoreTypes (const \fBElement\fP * el)"
+
+.PP
+Initialize basic type names\&. Restore data-types from an XML stream into this container This stream is presumed to contain 'core' datatypes and the cached matrix will be populated from this set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML element 
+.RE
+.PP
+
+.PP
+Definition at line 2176 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::restoreXmlType (const \fBElement\fP * el)"
+
+.PP
+Restore \fBDatatype\fP from XML\&. Restore a \fBDatatype\fP object from an XML tag description: either <type>, <typeref>, or <void> 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element describing the data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the restored \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1894 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::restoreXmlTypeWithCodeFlags (const \fBElement\fP * el, bool hasThisPtr, bool isConstructor, bool isDestructor)"
+
+.PP
+Restore data-type from XML with extra 'code' flags\&. Kludge to get flags into code pointer types, when they can't come through XML 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element describing the \fBDatatype\fP 
+.br
+\fIhasThisPtr\fP toggles 'this' pointer property on 'function' datatypes 
+.br
+\fIisConstructor\fP toggles 'constructor' property on 'function' datatypes 
+.br
+\fIisDestructor\fP toggles 'destructor' property on 'function' datatypes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the restored \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1927 of file type\&.cc\&.
+.SS "void TypeFactory::saveXml (ostream & s) const"
+
+.PP
+Save \fBthis\fP container to stream\&. All data-types, in dependency order, are written out to an XML stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 1955 of file type\&.cc\&.
+.SS "void TypeFactory::saveXmlCoreTypes (ostream & s) const"
+
+.PP
+Save core types to stream\&. Any data-type within this container marked as 'core' will be written to an XML <coretypes> stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 1986 of file type\&.cc\&.
+.SS "void TypeFactory::setCoreType (const string & name, int4 size, \fBtype_metatype\fP meta, bool chartp)"
+
+.PP
+Create a core data-type\&. Manually create a 'base' core type\&. This currently must be called before any pointers or arrays are defined off of the type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the data-type name 
+.br
+\fIsize\fP is the size of the data-type 
+.br
+\fImeta\fP is the meta-type of the data-type 
+.br
+\fIchartp\fP is true if a character type should be created 
+.RE
+.PP
+
+.PP
+Definition at line 1248 of file type\&.cc\&.
+.SS "bool TypeFactory::setEnumValues (const vector< string > & namelist, const vector< \fBuintb\fP > & vallist, const vector< bool > & assignlist, \fBTypeEnum\fP * te)"
+
+.PP
+Set named values for an enumeration\&. Set the list of enumeration values and identifiers for a \fBTypeEnum\fP Fill in any values for any names that weren't explicitly assigned and check for duplicates\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInamelist\fP is the list of names in the enumeration 
+.br
+\fIvallist\fP is the corresponding list of values assigned to names in namelist 
+.br
+\fIassignlist\fP is true if the corresponding name in namelist has an assigned value 
+.br
+\fIte\fP is the enumeration object to modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the modification is successful (no duplicate names) 
+.RE
+.PP
+
+.PP
+Definition at line 1542 of file type\&.cc\&.
+.SS "bool TypeFactory::setFields (vector< \fBTypeField\fP > & fd, \fBTypeStruct\fP * ot, int4 fixedsize)"
+
+.PP
+Set fields on a \fBTypeStruct\fP\&. Make sure all the offsets are fully established then set fields of the structure If -fixedsize- is greater than 0, force the final structure to have that size 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the list of fields to set 
+.br
+\fIot\fP is the \fBTypeStruct\fP object to modify 
+.br
+\fIfixedsize\fP is 0 or the forced size of the structure 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if modification was successful 
+.RE
+.PP
+
+.PP
+Definition at line 1479 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeFactory::setName (\fBDatatype\fP * ct, const string & n)"
+
+.PP
+Set the given types name\&. This routine renames a \fBDatatype\fP object and fixes up cross-referencing 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type to rename 
+.br
+\fIn\fP is the new name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the renamed \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1458 of file type\&.cc\&.
+.SS "void TypeFactory::setStructAlign (int4 al)\fC [inline]\fP"
+
+.PP
+Set the default structure alignment\&. 
+.PP
+Definition at line 408 of file type\&.hh\&.
+.SS "void TypeFactory::setupSizes (void)"
+
+.PP
+Derive some size information from \fBArchitecture\fP\&. Set up default values for size of 'int', structure alignment, and enums\&. 
+.PP
+Definition at line 1221 of file type\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBArchitecture\fP* TypeFactory::glb\fC [protected]\fP"
+
+.PP
+The \fBArchitecture\fP object that owns this \fBTypeFactory\fP\&. 
+.PP
+Definition at line 399 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

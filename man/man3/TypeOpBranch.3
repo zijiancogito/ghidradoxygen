@@ -1,0 +1,83 @@
+.TH "TypeOpBranch" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeOpBranch \- Information about the BRANCH op-code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typeop\&.hh>\fP
+.PP
+Inherits \fBTypeOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeOpBranch\fP (\fBTypeFactory\fP *t)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBpush\fP (\fBPrintLanguage\fP *lng, const \fBPcodeOp\fP *op) const"
+.br
+.RI "Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, const \fBPcodeOp\fP *op)"
+.br
+.RI "Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Information about the BRANCH op-code\&. 
+.PP
+Definition at line 236 of file typeop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeOpBranch::TypeOpBranch (\fBTypeFactory\fP * t)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 454 of file typeop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TypeOpBranch::printRaw (ostream & s, const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP to print 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Definition at line 461 of file typeop\&.cc\&.
+.SS "virtual void TypeOpBranch::push (\fBPrintLanguage\fP * lng, const \fBPcodeOp\fP * op) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. Given a specific language and \fBPcodeOp\fP, emit the expression rooted at the operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP to emit 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Definition at line 239 of file typeop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

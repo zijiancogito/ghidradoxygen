@@ -1,0 +1,321 @@
+.TH "TypeStruct" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeStruct \- A composite \fBDatatype\fP object: A 'structure' with component 'fields'\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBDatatype\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeStruct\fP (const \fBTypeStruct\fP &op)"
+.br
+.RI "Construct from another \fBTypeStruct\fP\&. "
+.ti -1c
+.RI "\fBTypeStruct\fP (const string &n)"
+.br
+.RI "Construct empty \fBTypeStruct\fP from a name\&. "
+.ti -1c
+.RI "vector< \fBTypeField\fP >::const_iterator \fBbeginField\fP (void) const"
+.br
+.RI "Beginning of fields\&. "
+.ti -1c
+.RI "vector< \fBTypeField\fP >::const_iterator \fBendField\fP (void) const"
+.br
+.RI "End of fields\&. "
+.ti -1c
+.RI "const \fBTypeField\fP * \fBgetField\fP (int4 off, int4 sz, int4 *newoff) const"
+.br
+.RI "Get field based on offset\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetSubType\fP (\fBuintb\fP off, \fBuintb\fP *newoff) const"
+.br
+.RI "Recover component data-type one-level down\&. "
+.ti -1c
+.RI "virtual int4 \fBnumDepend\fP (void) const"
+.br
+.RI "Return number of component sub-types\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetDepend\fP (int4 index) const"
+.br
+.RI "Return the i-th component sub-type\&. "
+.ti -1c
+.RI "virtual int4 \fBcompare\fP (const \fBDatatype\fP &op, int4 level) const"
+.br
+.RI "Compare for functional equivalence\&. "
+.ti -1c
+.RI "virtual int4 \fBcompareDependency\fP (const \fBDatatype\fP &op) const"
+.br
+.RI "Compare for storage in tree structure\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetFields\fP (const vector< \fBTypeField\fP > &fd)"
+.br
+.RI "Establish fields for \fBthis\fP\&. "
+.ti -1c
+.RI "int4 \fBgetFieldIter\fP (int4 off) const"
+.br
+.RI "Get index into field list\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore data-type from XML\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "vector< \fBTypeField\fP > \fBfield\fP"
+.br
+.RI "The list of fields\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A composite \fBDatatype\fP object: A 'structure' with component 'fields'\&. 
+.PP
+Definition at line 300 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeStruct::TypeStruct (const \fBTypeStruct\fP & op)"
+
+.PP
+Construct from another \fBTypeStruct\fP\&. 
+.PP
+Definition at line 712 of file type\&.cc\&.
+.SS "TypeStruct::TypeStruct (const string & n)\fC [inline]\fP"
+
+.PP
+Construct empty \fBTypeStruct\fP from a name\&. 
+.PP
+Definition at line 309 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "vector<\fBTypeField\fP>::const_iterator TypeStruct::beginField (void) const\fC [inline]\fP"
+
+.PP
+Beginning of fields\&. 
+.PP
+Definition at line 310 of file type\&.hh\&.
+.SS "virtual \fBDatatype\fP* TypeStruct::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Implements \fBDatatype\fP\&.
+.PP
+Definition at line 318 of file type\&.hh\&.
+.SS "int4 TypeStruct::compare (const \fBDatatype\fP & op, int4 level) const\fC [virtual]\fP"
+
+.PP
+Compare for functional equivalence\&. Compare \fBthis\fP with another data-type\&. 0 (equality) means the data-types are functionally equivalent (even if names differ) Smaller types come earlier\&. More specific types come earlier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.br
+\fIlevel\fP is maximum level to descend when recursively comparing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 795 of file type\&.cc\&.
+.SS "int4 TypeStruct::compareDependency (const \fBDatatype\fP & op) const\fC [virtual]\fP"
+
+.PP
+Compare for storage in tree structure\&. Ordering of data-types for the main \fBTypeFactory\fP container\&. Comparison only goes down one-level in the component structure, before just comparing pointers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 836 of file type\&.cc\&.
+.SS "vector<\fBTypeField\fP>::const_iterator TypeStruct::endField (void) const\fC [inline]\fP"
+
+.PP
+End of fields\&. 
+.PP
+Definition at line 311 of file type\&.hh\&.
+.SS "virtual \fBDatatype\fP* TypeStruct::getDepend (int4 index) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return the i-th component sub-type\&. 
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 315 of file type\&.hh\&.
+.SS "const \fBTypeField\fP * TypeStruct::getField (int4 off, int4 sz, int4 * newoff) const"
+
+.PP
+Get field based on offset\&. Given a byte range within \fBthis\fP data-type, determine the field it is contained in and pass back the renormalized offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the byte offset into \fBthis\fP 
+.br
+\fIsz\fP is the size of the byte range 
+.br
+\fInewoff\fP points to the renormalized offset to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the containing field or NULL if the range is not contained 
+.RE
+.PP
+
+.PP
+Definition at line 767 of file type\&.cc\&.
+.SS "int4 TypeStruct::getFieldIter (int4 off) const\fC [protected]\fP"
+
+.PP
+Get index into field list\&. Find the proper subfield given an offset\&. Return the index of that field or -1 if the offset is not inside a field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset into the structure 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the index into the field list or -1 
+.RE
+.PP
+
+.PP
+Definition at line 741 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeStruct::getSubType (\fBuintb\fP off, \fBuintb\fP * newoff) const\fC [virtual]\fP"
+
+.PP
+Recover component data-type one-level down\&. Given an offset into \fBthis\fP data-type, return the component data-type at that offset\&. Also, pass back a 'renormalized' offset suitable for recursize \fBgetSubType()\fP calls: i\&.e\&. if the original offset hits the exact start of the sub-type, 0 is passed back\&. If there is no valid component data-type at the offset, return NULL and pass back the original offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset into \fBthis\fP data-type 
+.br
+\fInewoff\fP is a pointer to the passed-back offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the component data-type or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 783 of file type\&.cc\&.
+.SS "virtual int4 TypeStruct::numDepend (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return number of component sub-types\&. 
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 314 of file type\&.hh\&.
+.SS "void TypeStruct::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Restore data-type from XML\&. Restore a \fBDatatype\fP object from an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the underlying \fBTypeFactory\fP that will hold the new object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 882 of file type\&.cc\&.
+.SS "void TypeStruct::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 864 of file type\&.cc\&.
+.SS "void TypeStruct::setFields (const vector< \fBTypeField\fP > & fd)\fC [protected]\fP"
+
+.PP
+Establish fields for \fBthis\fP\&. Copy a list of fields into this structure, establishing its size\&. Should only be called once when constructing the type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the list of fields to copy in 
+.RE
+.PP
+
+.PP
+Definition at line 722 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 302 of file type\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vector<\fBTypeField\fP> TypeStruct::field\fC [protected]\fP"
+
+.PP
+The list of fields\&. 
+.PP
+Definition at line 303 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

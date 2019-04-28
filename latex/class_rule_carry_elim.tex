@@ -1,0 +1,179 @@
+\hypertarget{class_rule_carry_elim}{}\section{Rule\+Carry\+Elim Class Reference}
+\label{class_rule_carry_elim}\index{RuleCarryElim@{RuleCarryElim}}
+
+
+Transform I\+N\+T\+\_\+\+C\+A\+R\+RY using a constant\+: {\ttfamily carry(\+V,c) =$>$ -\/c $<$= V}  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Carry\+Elim\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_rule_carry_elim__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Carry\+Elim\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_rule_carry_elim__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_carry_elim_ad0e7acbbcdcb6448efa67b6b8ff804e1}{Rule\+Carry\+Elim}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_carry_elim_a31e871206ad24e926b0ae9d19825ef6b}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_carry_elim_ac3ef2d10c9add58bf9df5a26e99c80f6}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_carry_elim_ab7a660e29b328d6348a1cacace3d9844}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Transform I\+N\+T\+\_\+\+C\+A\+R\+RY using a constant\+: {\ttfamily carry(\+V,c) =$>$ -\/c $<$= V} 
+
+There is a special case when the constant is zero\+:
+\begin{DoxyItemize}
+\item {\ttfamily carry(\+V,0) =$>$ false} 
+\end{DoxyItemize}
+
+Definition at line 608 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_carry_elim_ad0e7acbbcdcb6448efa67b6b8ff804e1}\label{class_rule_carry_elim_ad0e7acbbcdcb6448efa67b6b8ff804e1}} 
+\index{RuleCarryElim@{RuleCarryElim}!RuleCarryElim@{RuleCarryElim}}
+\index{RuleCarryElim@{RuleCarryElim}!RuleCarryElim@{RuleCarryElim}}
+\subsubsection{\texorpdfstring{RuleCarryElim()}{RuleCarryElim()}}
+{\footnotesize\ttfamily Rule\+Carry\+Elim\+::\+Rule\+Carry\+Elim (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 610 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_carry_elim_ad0e7acbbcdcb6448efa67b6b8ff804e1_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_carry_elim_ab7a660e29b328d6348a1cacace3d9844}\label{class_rule_carry_elim_ab7a660e29b328d6348a1cacace3d9844}} 
+\index{RuleCarryElim@{RuleCarryElim}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleCarryElim@{RuleCarryElim}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Carry\+Elim\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 3384 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_carry_elim_ab7a660e29b328d6348a1cacace3d9844_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_carry_elim_a31e871206ad24e926b0ae9d19825ef6b}\label{class_rule_carry_elim_a31e871206ad24e926b0ae9d19825ef6b}} 
+\index{RuleCarryElim@{RuleCarryElim}!clone@{clone}}
+\index{clone@{clone}!RuleCarryElim@{RuleCarryElim}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Carry\+Elim\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 611 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_carry_elim_a31e871206ad24e926b0ae9d19825ef6b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_carry_elim_ac3ef2d10c9add58bf9df5a26e99c80f6}\label{class_rule_carry_elim_ac3ef2d10c9add58bf9df5a26e99c80f6}} 
+\index{RuleCarryElim@{RuleCarryElim}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleCarryElim@{RuleCarryElim}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Carry\+Elim\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 3378 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

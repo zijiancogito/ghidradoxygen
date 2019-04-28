@@ -1,0 +1,1441 @@
+\hypertarget{class_type_factory}{}\section{Type\+Factory Class Reference}
+\label{class_type_factory}\index{TypeFactory@{TypeFactory}}
+
+
+Container class for all \mbox{\hyperlink{class_datatype}{Datatype}} objects in an \mbox{\hyperlink{class_architecture}{Architecture}}.  
+
+
+
+
+{\ttfamily \#include $<$type.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_type_factory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_factory_a68a14752ee51f674664cce90522fe559}{Type\+Factory}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Construct a factory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_afae3189d62867e5358bcbb98e7723b75}{setup\+Sizes}} (void)
+\begin{DoxyCompactList}\small\item\em Derive some size information from \mbox{\hyperlink{class_architecture}{Architecture}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_a8497930bbd88dd89d91536de06a79f3f}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear out all types. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_afa4b55a83c2f6dbb6f4f13b5ca930ae4}{clear\+Noncore}} (void)
+\begin{DoxyCompactList}\small\item\em Clear out non-\/core types. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_type_factory_a2d006876061f78e680f8697a335399d5}{$\sim$\+Type\+Factory}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_aa0ffda99be9ec6acf0bc8a963021e050}{set\+Struct\+Align}} (int4 al)
+\begin{DoxyCompactList}\small\item\em Set the default structure alignment. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_type_factory_a12e578b99d47a8d6f46edeb1a3f79db4}{get\+Struct\+Align}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the default structure alignment. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_type_factory_a8a7d719707e81a56b9871272296e0893}{get\+Size\+Of\+Int}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the size of the default \char`\"{}int\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_type_factory_a216789e9300282a12e6bf22a4354ba6e}{get\+Arch}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_architecture}{Architecture}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_a5e139f5b338e423fd2b1beb7d941d30f}{find\+By\+Name}} (const string \&n)
+\begin{DoxyCompactList}\small\item\em Return type of given name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_a6a2c74462f5a832e6233421bb6cb1beb}{set\+Name}} (\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct, const string \&n)
+\begin{DoxyCompactList}\small\item\em Set the given types name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_type_factory_a17480d8c1040602a1becb483e6c59652}{set\+Fields}} (vector$<$ \mbox{\hyperlink{struct_type_field}{Type\+Field}} $>$ \&fd, \mbox{\hyperlink{class_type_struct}{Type\+Struct}} $\ast$ot, int4 fixedsize)
+\begin{DoxyCompactList}\small\item\em Set fields on a \mbox{\hyperlink{class_type_struct}{Type\+Struct}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_type_factory_a17cf58ac6b927a91b4f794a3347b2822}{set\+Enum\+Values}} (const vector$<$ string $>$ \&namelist, const vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&vallist, const vector$<$ bool $>$ \&assignlist, \mbox{\hyperlink{class_type_enum}{Type\+Enum}} $\ast$te)
+\begin{DoxyCompactList}\small\item\em Set named values for an enumeration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_aea5f4036abb11e63ca5f79a9eacfc93c}{restore\+Xml\+Type}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore \mbox{\hyperlink{class_datatype}{Datatype}} from X\+ML. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_a1b1dcb82c1c7493b55aae9b339e909c7}{restore\+Xml\+Type\+With\+Code\+Flags}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, bool has\+This\+Ptr, bool is\+Constructor, bool is\+Destructor)
+\begin{DoxyCompactList}\small\item\em Restore data-\/type from X\+ML with extra \char`\"{}code\char`\"{} flags. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_void}{Type\+Void}} $\ast$ \mbox{\hyperlink{class_type_factory_ab7277908ef32101f172633ec00fbecb1}{get\+Type\+Void}} (void)
+\begin{DoxyCompactList}\small\item\em Get the \char`\"{}void\char`\"{} data-\/type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_adca2937f24e37c5ac19ba442cd1df0d8}{get\+Base\+No\+Char}} (int4 s, \mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} m)
+\begin{DoxyCompactList}\small\item\em Get atomic type excluding \char`\"{}char\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_a5fe1ae26c0b76b18d59d5cd27a9b8ff1}{get\+Base}} (int4 s, \mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} m)
+\begin{DoxyCompactList}\small\item\em Get atomic type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_a2848b5923834b755de0749d9f96880e1}{get\+Base}} (int4 s, \mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} m, const string \&n)
+\begin{DoxyCompactList}\small\item\em Get named atomic type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_code}{Type\+Code}} $\ast$ \mbox{\hyperlink{class_type_factory_a47c3d70d9598d2b4ce3770593f6ce97e}{get\+Type\+Code}} (void)
+\begin{DoxyCompactList}\small\item\em Get an \char`\"{}anonymous\char`\"{} function data-\/type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} $\ast$ \mbox{\hyperlink{class_type_factory_a2ff26aa7e6197ffb865907313f752d43}{get\+Type\+Pointer}} (int4 s, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$pt, uint4 ws)
+\begin{DoxyCompactList}\small\item\em Construct a pointer data-\/type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} $\ast$ \mbox{\hyperlink{class_type_factory_a2295006d8d970d51dc205f5242846d54}{get\+Type\+Pointer\+Absolute}} (int4 s, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$pt, uint4 ws)
+\begin{DoxyCompactList}\small\item\em Construct an absolute pointer data-\/type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} $\ast$ \mbox{\hyperlink{class_type_factory_a77988d5cf50fc10fe92dec8e265a720f}{get\+Type\+Pointer\+No\+Depth}} (int4 s, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$pt, uint4 ws)
+\begin{DoxyCompactList}\small\item\em Construct a depth limited pointer data-\/type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_array}{Type\+Array}} $\ast$ \mbox{\hyperlink{class_type_factory_ad1efe412493c66b6072ae0def3b53004}{get\+Type\+Array}} (int4 as, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ao)
+\begin{DoxyCompactList}\small\item\em Construct an array data-\/type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_struct}{Type\+Struct}} $\ast$ \mbox{\hyperlink{class_type_factory_aaa4a75179b840571eeb97e24642c55ee}{get\+Type\+Struct}} (const string \&n)
+\begin{DoxyCompactList}\small\item\em Create an (empty) structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_enum}{Type\+Enum}} $\ast$ \mbox{\hyperlink{class_type_factory_a3bb1aba15e198a7ba2b67741c571de3a}{get\+Type\+Enum}} (const string \&n)
+\begin{DoxyCompactList}\small\item\em Create an (empty) enumeration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}} $\ast$ \mbox{\hyperlink{class_type_factory_a85de9d19ce1dc44476a414f5ce69b97e}{get\+Type\+Spacebase}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$id, const \mbox{\hyperlink{class_address}{Address}} \&addr)
+\begin{DoxyCompactList}\small\item\em Create a \char`\"{}spacebase\char`\"{} type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_code}{Type\+Code}} $\ast$ \mbox{\hyperlink{class_type_factory_a99362bf53b0ead2d57a2221bc2fd03cc}{get\+Type\+Code}} (\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$model, \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$outtype, const vector$<$ \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ $>$ \&intypes, bool dotdotdot)
+\begin{DoxyCompactList}\small\item\em Create a \char`\"{}function\char`\"{} datatype. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_ab4edd4fa31629380ec4124c840022f5a}{destroy\+Type}} (\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ct)
+\begin{DoxyCompactList}\small\item\em Remove a data-\/type from {\bfseries{this}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_a979852b4d0b186f833d16d4638fe6f08}{down\+Chain}} (\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ptrtype, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&off)
+\begin{DoxyCompactList}\small\item\em Find a sub-\/type matching a pointer and offset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_ab143d57ae08682ff4fbc28a6ace5a54e}{dependent\+Order}} (vector$<$ \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ $>$ \&deporder) const
+\begin{DoxyCompactList}\small\item\em Place all data-\/types in dependency order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_adf9b9838cfe8166a236de6562f6dfcc3}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save {\bfseries{this}} container to stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_a1caebbe3620eee3ba78427608b1126dd}{save\+Xml\+Core\+Types}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save core types to stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_af9a16d80bfd84732a8dca11ed4a23fab}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} container from a stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_a24c7308dab804e4f89fd567500b97d63}{restore\+Xml\+Core\+Types}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Initialize basic type names. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_a6e13c732148b6c5f78797d60e1a115f5}{parse\+Data\+Organization}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Parse the $<$data\+\_\+organization$>$ tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_a8d10b37cae4c213ca3a613f454ada676}{parse\+Enum\+Config}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Parse the $<$enum$>$ tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_a7f142a54450d41bc12ca18fe06c6e1e0}{set\+Core\+Type}} (const string \&name, int4 size, \mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}} meta, bool chartp)
+\begin{DoxyCompactList}\small\item\em Create a core data-\/type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_type_factory_a16ccfeecd29c1d5d40ada6b1d4032212}{cache\+Core\+Types}} (void)
+\begin{DoxyCompactList}\small\item\em Cache common types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_ab86f43d69c0f879d315ce2aacc1f7326}{find\+By\+Id\+Local}} (const string \&nm, uint8 id) const
+\begin{DoxyCompactList}\small\item\em Search locally by name and id. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_factory_a79cd8d76884043080a3430f3aff8b010}{find\+By\+Id}} (const string \&n, uint8 id)
+\begin{DoxyCompactList}\small\item\em Search by name and id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_type_factory_a0652ec9d4b9d9d0943d1fbffe9b9c740}{glb}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_architecture}{Architecture}} object that owns this \mbox{\hyperlink{class_type_factory}{Type\+Factory}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container class for all \mbox{\hyperlink{class_datatype}{Datatype}} objects in an \mbox{\hyperlink{class_architecture}{Architecture}}. 
+
+Definition at line 379 of file type.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_factory_a68a14752ee51f674664cce90522fe559}\label{class_type_factory_a68a14752ee51f674664cce90522fe559}} 
+\index{TypeFactory@{TypeFactory}!TypeFactory@{TypeFactory}}
+\index{TypeFactory@{TypeFactory}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{TypeFactory()}{TypeFactory()}}
+{\footnotesize\ttfamily Type\+Factory\+::\+Type\+Factory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Construct a factory. 
+
+Initialize an empty container 
+\begin{DoxyParams}{Parameters}
+{\em g} & is the owning \mbox{\hyperlink{class_architecture}{Architecture}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1196 of file type.\+cc.
+
+\mbox{\Hypertarget{class_type_factory_a2d006876061f78e680f8697a335399d5}\label{class_type_factory_a2d006876061f78e680f8697a335399d5}} 
+\index{TypeFactory@{TypeFactory}!````~TypeFactory@{$\sim$TypeFactory}}
+\index{````~TypeFactory@{$\sim$TypeFactory}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{$\sim$TypeFactory()}{~TypeFactory()}}
+{\footnotesize\ttfamily Type\+Factory\+::$\sim$\+Type\+Factory (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 1349 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a2d006876061f78e680f8697a335399d5_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_factory_a16ccfeecd29c1d5d40ada6b1d4032212}\label{class_type_factory_a16ccfeecd29c1d5d40ada6b1d4032212}} 
+\index{TypeFactory@{TypeFactory}!cacheCoreTypes@{cacheCoreTypes}}
+\index{cacheCoreTypes@{cacheCoreTypes}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{cacheCoreTypes()}{cacheCoreTypes()}}
+{\footnotesize\ttfamily void Type\+Factory\+::cache\+Core\+Types (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Cache common types. 
+
+Run through the list of \char`\"{}core\char`\"{} data-\/types and cache the most commonly accessed ones for quick access (avoiding the tree lookup). The \char`\"{}core\char`\"{} data-\/types must have been previously initialized. 
+
+Definition at line 1270 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a16ccfeecd29c1d5d40ada6b1d4032212_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a16ccfeecd29c1d5d40ada6b1d4032212_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a8497930bbd88dd89d91536de06a79f3f}\label{class_type_factory_a8497930bbd88dd89d91536de06a79f3f}} 
+\index{TypeFactory@{TypeFactory}!clear@{clear}}
+\index{clear@{clear}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Type\+Factory\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear out all types. 
+
+Remove all \mbox{\hyperlink{class_datatype}{Datatype}} objects owned by this \mbox{\hyperlink{class_type_factory}{Type\+Factory}}. 
+
+Definition at line 1317 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a8497930bbd88dd89d91536de06a79f3f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_afa4b55a83c2f6dbb6f4f13b5ca930ae4}\label{class_type_factory_afa4b55a83c2f6dbb6f4f13b5ca930ae4}} 
+\index{TypeFactory@{TypeFactory}!clearNoncore@{clearNoncore}}
+\index{clearNoncore@{clearNoncore}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{clearNoncore()}{clearNoncore()}}
+{\footnotesize\ttfamily void Type\+Factory\+::clear\+Noncore (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear out non-\/core types. 
+
+Delete anything that isn\textquotesingle{}t a core type. 
+
+Definition at line 1330 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_afa4b55a83c2f6dbb6f4f13b5ca930ae4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_ab143d57ae08682ff4fbc28a6ace5a54e}\label{class_type_factory_ab143d57ae08682ff4fbc28a6ace5a54e}} 
+\index{TypeFactory@{TypeFactory}!dependentOrder@{dependentOrder}}
+\index{dependentOrder@{dependentOrder}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{dependentOrder()}{dependentOrder()}}
+{\footnotesize\ttfamily void Type\+Factory\+::dependent\+Order (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ $>$ \&}]{deporder }\end{DoxyParamCaption}) const}
+
+
+
+Place all data-\/types in dependency order. 
+
+Place data-\/types in an order such that if the definition of data-\/type \char`\"{}a\char`\"{} depends on the definition of data-\/type \char`\"{}b\char`\"{}, then \char`\"{}b\char`\"{} occurs earlier in the order 
+\begin{DoxyParams}{Parameters}
+{\em deporder} & will hold the generated dependency list of data-\/types \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1603 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_ab143d57ae08682ff4fbc28a6ace5a54e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_ab4edd4fa31629380ec4124c840022f5a}\label{class_type_factory_ab4edd4fa31629380ec4124c840022f5a}} 
+\index{TypeFactory@{TypeFactory}!destroyType@{destroyType}}
+\index{destroyType@{destroyType}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{destroyType()}{destroyType()}}
+{\footnotesize\ttfamily void Type\+Factory\+::destroy\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct }\end{DoxyParamCaption})}
+
+
+
+Remove a data-\/type from {\bfseries{this}}. 
+
+The indicated \mbox{\hyperlink{class_datatype}{Datatype}} object is removed from this container. Indirect references (via \mbox{\hyperlink{class_type_array}{Type\+Array}} \mbox{\hyperlink{class_type_struct}{Type\+Struct}} etc.) are not affected 
+\begin{DoxyParams}{Parameters}
+{\em ct} & is the data-\/type to destroy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1860 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_ab4edd4fa31629380ec4124c840022f5a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a979852b4d0b186f833d16d4638fe6f08}\label{class_type_factory_a979852b4d0b186f833d16d4638fe6f08}} 
+\index{TypeFactory@{TypeFactory}!downChain@{downChain}}
+\index{downChain@{downChain}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{downChain()}{downChain()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::down\+Chain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ptrtype,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&}]{off }\end{DoxyParamCaption})}
+
+
+
+Find a sub-\/type matching a pointer and offset. 
+
+Add a constant offset to a pointer with known data-\/type. If there is a valid component at that offset, return a pointer to the data-\/type of the component or N\+U\+LL otherwise. This routine only goes down one level at most. Pass back the renormalized offset relative to the new data-\/type 
+\begin{DoxyParams}{Parameters}
+{\em ptrtype} & is the pointer data-\/type being added to \\
+\hline
+{\em off} & is a reference to the offset to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer datatype for the component or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 1878 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a979852b4d0b186f833d16d4638fe6f08_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a979852b4d0b186f833d16d4638fe6f08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a79cd8d76884043080a3430f3aff8b010}\label{class_type_factory_a79cd8d76884043080a3430f3aff8b010}} 
+\index{TypeFactory@{TypeFactory}!findById@{findById}}
+\index{findById@{findById}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{findById()}{findById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::find\+By\+Id (\begin{DoxyParamCaption}\item[{const string \&}]{n,  }\item[{uint8}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Search by name and id. 
+
+Search for a \mbox{\hyperlink{class_datatype}{Datatype}} by {\bfseries{name}} and/or {\bfseries{id}}. Derived classes may search outside this container. 
+\begin{DoxyParams}{Parameters}
+{\em n} & is the name of the data-\/type \\
+\hline
+{\em id} & is the type id of the data-\/type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_type_factory_ghidra_a494fd9c2fb18db1b1f9ee4d7078d590c}{Type\+Factory\+Ghidra}}.
+
+
+
+Definition at line 1383 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a79cd8d76884043080a3430f3aff8b010_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a79cd8d76884043080a3430f3aff8b010_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_ab86f43d69c0f879d315ce2aacc1f7326}\label{class_type_factory_ab86f43d69c0f879d315ce2aacc1f7326}} 
+\index{TypeFactory@{TypeFactory}!findByIdLocal@{findByIdLocal}}
+\index{findByIdLocal@{findByIdLocal}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{findByIdLocal()}{findByIdLocal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::find\+By\+Id\+Local (\begin{DoxyParamCaption}\item[{const string \&}]{n,  }\item[{uint8}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Search locally by name and id. 
+
+Looking just within this container, find a \mbox{\hyperlink{class_datatype}{Datatype}} by {\bfseries{name}} and/or {\bfseries{id}}. 
+\begin{DoxyParams}{Parameters}
+{\em n} & is the name of the data-\/type \\
+\hline
+{\em id} & is the type id of the data-\/type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1359 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_ab86f43d69c0f879d315ce2aacc1f7326_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a5e139f5b338e423fd2b1beb7d941d30f}\label{class_type_factory_a5e139f5b338e423fd2b1beb7d941d30f}} 
+\index{TypeFactory@{TypeFactory}!findByName@{findByName}}
+\index{findByName@{findByName}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{findByName()}{findByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::find\+By\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{n }\end{DoxyParamCaption})}
+
+
+
+Return type of given name. 
+
+Find type with given name. If there are more than, return first. 
+\begin{DoxyParams}{Parameters}
+{\em n} & is the name to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{class_datatype}{Datatype}} object with the name or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 1392 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a5e139f5b338e423fd2b1beb7d941d30f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a216789e9300282a12e6bf22a4354ba6e}\label{class_type_factory_a216789e9300282a12e6bf22a4354ba6e}} 
+\index{TypeFactory@{TypeFactory}!getArch@{getArch}}
+\index{getArch@{getArch}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getArch()}{getArch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ Type\+Factory\+::get\+Arch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_architecture}{Architecture}} object. 
+
+
+
+Definition at line 411 of file type.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a216789e9300282a12e6bf22a4354ba6e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a5fe1ae26c0b76b18d59d5cd27a9b8ff1}\label{class_type_factory_a5fe1ae26c0b76b18d59d5cd27a9b8ff1}} 
+\index{TypeFactory@{TypeFactory}!getBase@{getBase}}
+\index{getBase@{getBase}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getBase()}{getBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::get\+Base (\begin{DoxyParamCaption}\item[{int4}]{s,  }\item[{\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}}}]{m }\end{DoxyParamCaption})}
+
+
+
+Get atomic type. 
+
+Get one of the \char`\"{}base\char`\"{} datatypes. This routine is called a lot, so we go through a cache first. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the desired size \\
+\hline
+{\em m} & is the desired meta-\/type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1671 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a5fe1ae26c0b76b18d59d5cd27a9b8ff1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_type_factory_a5fe1ae26c0b76b18d59d5cd27a9b8ff1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a2848b5923834b755de0749d9f96880e1}\label{class_type_factory_a2848b5923834b755de0749d9f96880e1}} 
+\index{TypeFactory@{TypeFactory}!getBase@{getBase}}
+\index{getBase@{getBase}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getBase()}{getBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::get\+Base (\begin{DoxyParamCaption}\item[{int4}]{s,  }\item[{\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}}}]{m,  }\item[{const string \&}]{n }\end{DoxyParamCaption})}
+
+
+
+Get named atomic type. 
+
+Get or create a \char`\"{}base\char`\"{} type with a specified name and properties 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the desired size \\
+\hline
+{\em m} & is the desired meta-\/type \\
+\hline
+{\em n} & is the desired name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_database}{Database}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1707 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{class_type_factory_a2848b5923834b755de0749d9f96880e1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_adca2937f24e37c5ac19ba442cd1df0d8}\label{class_type_factory_adca2937f24e37c5ac19ba442cd1df0d8}} 
+\index{TypeFactory@{TypeFactory}!getBaseNoChar@{getBaseNoChar}}
+\index{getBaseNoChar@{getBaseNoChar}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getBaseNoChar()}{getBaseNoChar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::get\+Base\+No\+Char (\begin{DoxyParamCaption}\item[{int4}]{s,  }\item[{\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}}}]{m }\end{DoxyParamCaption})}
+
+
+
+Get atomic type excluding \char`\"{}char\char`\"{}. 
+
+Get a \char`\"{}base\char`\"{} data-\/type, given its size and {\bfseries{metatype}}. If a 1-\/byte integer is requested, do N\+OT return a \mbox{\hyperlink{class_type_char}{Type\+Char}} 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the size of the data-\/type \\
+\hline
+{\em m} & is the meta-\/type of the data-\/type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1659 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_adca2937f24e37c5ac19ba442cd1df0d8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_adca2937f24e37c5ac19ba442cd1df0d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a8a7d719707e81a56b9871272296e0893}\label{class_type_factory_a8a7d719707e81a56b9871272296e0893}} 
+\index{TypeFactory@{TypeFactory}!getSizeOfInt@{getSizeOfInt}}
+\index{getSizeOfInt@{getSizeOfInt}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getSizeOfInt()}{getSizeOfInt()}}
+{\footnotesize\ttfamily int4 Type\+Factory\+::get\+Size\+Of\+Int (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the size of the default \char`\"{}int\char`\"{}. 
+
+
+
+Definition at line 410 of file type.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a8a7d719707e81a56b9871272296e0893_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a12e578b99d47a8d6f46edeb1a3f79db4}\label{class_type_factory_a12e578b99d47a8d6f46edeb1a3f79db4}} 
+\index{TypeFactory@{TypeFactory}!getStructAlign@{getStructAlign}}
+\index{getStructAlign@{getStructAlign}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getStructAlign()}{getStructAlign()}}
+{\footnotesize\ttfamily int4 Type\+Factory\+::get\+Struct\+Align (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the default structure alignment. 
+
+
+
+Definition at line 409 of file type.\+hh.
+
+\mbox{\Hypertarget{class_type_factory_ad1efe412493c66b6072ae0def3b53004}\label{class_type_factory_ad1efe412493c66b6072ae0def3b53004}} 
+\index{TypeFactory@{TypeFactory}!getTypeArray@{getTypeArray}}
+\index{getTypeArray@{getTypeArray}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypeArray()}{getTypeArray()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_array}{Type\+Array}} $\ast$ Type\+Factory\+::get\+Type\+Array (\begin{DoxyParamCaption}\item[{int4}]{as,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ao }\end{DoxyParamCaption})}
+
+
+
+Construct an array data-\/type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em as} & is the number of elements in the desired array \\
+\hline
+{\em ao} & is the data-\/type of the array element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_array}{Type\+Array}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1799 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_type_factory_ad1efe412493c66b6072ae0def3b53004_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a47c3d70d9598d2b4ce3770593f6ce97e}\label{class_type_factory_a47c3d70d9598d2b4ce3770593f6ce97e}} 
+\index{TypeFactory@{TypeFactory}!getTypeCode@{getTypeCode}}
+\index{getTypeCode@{getTypeCode}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypeCode()}{getTypeCode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_code}{Type\+Code}} $\ast$ Type\+Factory\+::get\+Type\+Code (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get an \char`\"{}anonymous\char`\"{} function data-\/type. 
+
+Retrieve or create the core \char`\"{}code\char`\"{} \mbox{\hyperlink{class_datatype}{Datatype}} object This has no prototype attached to it and is appropriate for anonymous function pointers. \begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_code}{Type\+Code}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1718 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a47c3d70d9598d2b4ce3770593f6ce97e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a99362bf53b0ead2d57a2221bc2fd03cc}\label{class_type_factory_a99362bf53b0ead2d57a2221bc2fd03cc}} 
+\index{TypeFactory@{TypeFactory}!getTypeCode@{getTypeCode}}
+\index{getTypeCode@{getTypeCode}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypeCode()}{getTypeCode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_code}{Type\+Code}} $\ast$ Type\+Factory\+::get\+Type\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$}]{model,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{outtype,  }\item[{const vector$<$ \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ $>$ \&}]{intypes,  }\item[{bool}]{dotdotdot }\end{DoxyParamCaption})}
+
+
+
+Create a \char`\"{}function\char`\"{} datatype. 
+
+Creates a \mbox{\hyperlink{class_type_code}{Type\+Code}} object and associates a specific function prototype with it. 
+\begin{DoxyParams}{Parameters}
+{\em model} & is the prototype model associated with the function \\
+\hline
+{\em outtype} & is the return type of the function \\
+\hline
+{\em intypes} & is the array of input parameters of the function \\
+\hline
+{\em dotdotdot} & is true if the function takes variable arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_code}{Type\+Code}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1848 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a99362bf53b0ead2d57a2221bc2fd03cc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a3bb1aba15e198a7ba2b67741c571de3a}\label{class_type_factory_a3bb1aba15e198a7ba2b67741c571de3a}} 
+\index{TypeFactory@{TypeFactory}!getTypeEnum@{getTypeEnum}}
+\index{getTypeEnum@{getTypeEnum}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypeEnum()}{getTypeEnum()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_enum}{Type\+Enum}} $\ast$ Type\+Factory\+::get\+Type\+Enum (\begin{DoxyParamCaption}\item[{const string \&}]{n }\end{DoxyParamCaption})}
+
+
+
+Create an (empty) enumeration. 
+
+The created enumeration will have no named values and a default configuration Named values must be added later. 
+\begin{DoxyParams}{Parameters}
+{\em n} & is the name of the enumeration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_enum}{Type\+Enum}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1823 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a3bb1aba15e198a7ba2b67741c571de3a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a2ff26aa7e6197ffb865907313f752d43}\label{class_type_factory_a2ff26aa7e6197ffb865907313f752d43}} 
+\index{TypeFactory@{TypeFactory}!getTypePointer@{getTypePointer}}
+\index{getTypePointer@{getTypePointer}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypePointer()}{getTypePointer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} $\ast$ Type\+Factory\+::get\+Type\+Pointer (\begin{DoxyParamCaption}\item[{int4}]{s,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{pt,  }\item[{uint4}]{ws }\end{DoxyParamCaption})}
+
+
+
+Construct a pointer data-\/type. 
+
+This creates a pointer to a given data-\/type. It doesn\textquotesingle{}t allow a \char`\"{}pointer to array\char`\"{} to be created however and will drill-\/down to the first non-\/array data-\/type 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the size of the pointer \\
+\hline
+{\em pt} & is the pointed-\/to data-\/type \\
+\hline
+{\em ws} & is the wordsize associated with the pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1748 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a2ff26aa7e6197ffb865907313f752d43_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a2ff26aa7e6197ffb865907313f752d43_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a2295006d8d970d51dc205f5242846d54}\label{class_type_factory_a2295006d8d970d51dc205f5242846d54}} 
+\index{TypeFactory@{TypeFactory}!getTypePointerAbsolute@{getTypePointerAbsolute}}
+\index{getTypePointerAbsolute@{getTypePointerAbsolute}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypePointerAbsolute()}{getTypePointerAbsolute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} $\ast$ Type\+Factory\+::get\+Type\+Pointer\+Absolute (\begin{DoxyParamCaption}\item[{int4}]{s,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{pt,  }\item[{uint4}]{ws }\end{DoxyParamCaption})}
+
+
+
+Construct an absolute pointer data-\/type. 
+
+Allows \char`\"{}pointer to array\char`\"{} to be constructed 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the size of the pointer \\
+\hline
+{\em pt} & is the pointed-\/to data-\/type \\
+\hline
+{\em ws} & is the wordsize associated with the pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1766 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a2295006d8d970d51dc205f5242846d54_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a77988d5cf50fc10fe92dec8e265a720f}\label{class_type_factory_a77988d5cf50fc10fe92dec8e265a720f}} 
+\index{TypeFactory@{TypeFactory}!getTypePointerNoDepth@{getTypePointerNoDepth}}
+\index{getTypePointerNoDepth@{getTypePointerNoDepth}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypePointerNoDepth()}{getTypePointerNoDepth()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} $\ast$ Type\+Factory\+::get\+Type\+Pointer\+No\+Depth (\begin{DoxyParamCaption}\item[{int4}]{s,  }\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{pt,  }\item[{uint4}]{ws }\end{DoxyParamCaption})}
+
+
+
+Construct a depth limited pointer data-\/type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the size of the pointer \\
+\hline
+{\em pt} & is the pointed-\/to data-\/type \\
+\hline
+{\em ws} & is the wordsize associated with the pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_pointer}{Type\+Pointer}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1778 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a77988d5cf50fc10fe92dec8e265a720f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a85de9d19ce1dc44476a414f5ce69b97e}\label{class_type_factory_a85de9d19ce1dc44476a414f5ce69b97e}} 
+\index{TypeFactory@{TypeFactory}!getTypeSpacebase@{getTypeSpacebase}}
+\index{getTypeSpacebase@{getTypeSpacebase}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypeSpacebase()}{getTypeSpacebase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}} $\ast$ Type\+Factory\+::get\+Type\+Spacebase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{id,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption})}
+
+
+
+Create a \char`\"{}spacebase\char`\"{} type. 
+
+Creates the special \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}} with an associated address space and scope 
+\begin{DoxyParams}{Parameters}
+{\em id} & is the address space \\
+\hline
+{\em addr} & specifies the function scope, or is\+Invalid() for global scope \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1835 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a85de9d19ce1dc44476a414f5ce69b97e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_aaa4a75179b840571eeb97e24642c55ee}\label{class_type_factory_aaa4a75179b840571eeb97e24642c55ee}} 
+\index{TypeFactory@{TypeFactory}!getTypeStruct@{getTypeStruct}}
+\index{getTypeStruct@{getTypeStruct}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypeStruct()}{getTypeStruct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_struct}{Type\+Struct}} $\ast$ Type\+Factory\+::get\+Type\+Struct (\begin{DoxyParamCaption}\item[{const string \&}]{n }\end{DoxyParamCaption})}
+
+
+
+Create an (empty) structure. 
+
+The created structure will have no fields. They must be added later. 
+\begin{DoxyParams}{Parameters}
+{\em n} & is the name of the structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_type_struct}{Type\+Struct}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1809 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_aaa4a75179b840571eeb97e24642c55ee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_ab7277908ef32101f172633ec00fbecb1}\label{class_type_factory_ab7277908ef32101f172633ec00fbecb1}} 
+\index{TypeFactory@{TypeFactory}!getTypeVoid@{getTypeVoid}}
+\index{getTypeVoid@{getTypeVoid}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{getTypeVoid()}{getTypeVoid()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_void}{Type\+Void}} $\ast$ Type\+Factory\+::get\+Type\+Void (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the \char`\"{}void\char`\"{} data-\/type. 
+
+There should be exactly one instance of the \char`\"{}void\char`\"{} \mbox{\hyperlink{class_datatype}{Datatype}} object, which this fetches \begin{DoxyReturn}{Returns}
+the \char`\"{}void\char`\"{} data-\/type 
+\end{DoxyReturn}
+
+
+Definition at line 1615 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_ab7277908ef32101f172633ec00fbecb1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_ab7277908ef32101f172633ec00fbecb1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a6e13c732148b6c5f78797d60e1a115f5}\label{class_type_factory_a6e13c732148b6c5f78797d60e1a115f5}} 
+\index{TypeFactory@{TypeFactory}!parseDataOrganization@{parseDataOrganization}}
+\index{parseDataOrganization@{parseDataOrganization}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{parseDataOrganization()}{parseDataOrganization()}}
+{\footnotesize\ttfamily void Type\+Factory\+::parse\+Data\+Organization (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Parse the $<$data\+\_\+organization$>$ tag. 
+
+Recover various sizes relevant to {\bfseries{this}} container, such as the default size of \char`\"{}int\char`\"{} and structure alignment, by parsing the $<$data\+\_\+organization$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2193 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a6e13c732148b6c5f78797d60e1a115f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a8d10b37cae4c213ca3a613f454ada676}\label{class_type_factory_a8d10b37cae4c213ca3a613f454ada676}} 
+\index{TypeFactory@{TypeFactory}!parseEnumConfig@{parseEnumConfig}}
+\index{parseEnumConfig@{parseEnumConfig}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{parseEnumConfig()}{parseEnumConfig()}}
+{\footnotesize\ttfamily void Type\+Factory\+::parse\+Enum\+Config (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Parse the $<$enum$>$ tag. 
+
+Recover default enumeration properties (size and meta-\/type) from an $<$enum$>$ X\+ML tag. Should probably consider this deprecated. These values are only used by the internal C parser. param el is the X\+ML element 
+
+Definition at line 2227 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{class_type_factory_a8d10b37cae4c213ca3a613f454ada676_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a8d10b37cae4c213ca3a613f454ada676_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_af9a16d80bfd84732a8dca11ed4a23fab}\label{class_type_factory_af9a16d80bfd84732a8dca11ed4a23fab}} 
+\index{TypeFactory@{TypeFactory}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Type\+Factory\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Restore {\bfseries{this}} container from a stream. 
+
+Read data-\/types into this container from an X\+ML stream 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2148 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{class_type_factory_af9a16d80bfd84732a8dca11ed4a23fab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_af9a16d80bfd84732a8dca11ed4a23fab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a24c7308dab804e4f89fd567500b97d63}\label{class_type_factory_a24c7308dab804e4f89fd567500b97d63}} 
+\index{TypeFactory@{TypeFactory}!restoreXmlCoreTypes@{restoreXmlCoreTypes}}
+\index{restoreXmlCoreTypes@{restoreXmlCoreTypes}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{restoreXmlCoreTypes()}{restoreXmlCoreTypes()}}
+{\footnotesize\ttfamily void Type\+Factory\+::restore\+Xml\+Core\+Types (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Initialize basic type names. 
+
+Restore data-\/types from an X\+ML stream into this container This stream is presumed to contain \char`\"{}core\char`\"{} datatypes and the cached matrix will be populated from this set. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2176 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a24c7308dab804e4f89fd567500b97d63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a24c7308dab804e4f89fd567500b97d63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_aea5f4036abb11e63ca5f79a9eacfc93c}\label{class_type_factory_aea5f4036abb11e63ca5f79a9eacfc93c}} 
+\index{TypeFactory@{TypeFactory}!restoreXmlType@{restoreXmlType}}
+\index{restoreXmlType@{restoreXmlType}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{restoreXmlType()}{restoreXmlType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::restore\+Xml\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Restore \mbox{\hyperlink{class_datatype}{Datatype}} from X\+ML. 
+
+Restore a \mbox{\hyperlink{class_datatype}{Datatype}} object from an X\+ML tag description\+: either $<$type$>$, $<$typeref$>$, or $<$void$>$ 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element describing the data-\/type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the restored \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1894 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_aea5f4036abb11e63ca5f79a9eacfc93c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_aea5f4036abb11e63ca5f79a9eacfc93c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a1b1dcb82c1c7493b55aae9b339e909c7}\label{class_type_factory_a1b1dcb82c1c7493b55aae9b339e909c7}} 
+\index{TypeFactory@{TypeFactory}!restoreXmlTypeWithCodeFlags@{restoreXmlTypeWithCodeFlags}}
+\index{restoreXmlTypeWithCodeFlags@{restoreXmlTypeWithCodeFlags}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{restoreXmlTypeWithCodeFlags()}{restoreXmlTypeWithCodeFlags()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::restore\+Xml\+Type\+With\+Code\+Flags (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{bool}]{has\+This\+Ptr,  }\item[{bool}]{is\+Constructor,  }\item[{bool}]{is\+Destructor }\end{DoxyParamCaption})}
+
+
+
+Restore data-\/type from X\+ML with extra \char`\"{}code\char`\"{} flags. 
+
+Kludge to get flags into code pointer types, when they can\textquotesingle{}t come through X\+ML 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element describing the \mbox{\hyperlink{class_datatype}{Datatype}} \\
+\hline
+{\em has\+This\+Ptr} & toggles \char`\"{}this\char`\"{} pointer property on \char`\"{}function\char`\"{} datatypes \\
+\hline
+{\em is\+Constructor} & toggles \char`\"{}constructor\char`\"{} property on \char`\"{}function\char`\"{} datatypes \\
+\hline
+{\em is\+Destructor} & toggles \char`\"{}destructor\char`\"{} property on \char`\"{}function\char`\"{} datatypes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the restored \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1927 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a1b1dcb82c1c7493b55aae9b339e909c7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a1b1dcb82c1c7493b55aae9b339e909c7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_adf9b9838cfe8166a236de6562f6dfcc3}\label{class_type_factory_adf9b9838cfe8166a236de6562f6dfcc3}} 
+\index{TypeFactory@{TypeFactory}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Type\+Factory\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save {\bfseries{this}} container to stream. 
+
+All data-\/types, in dependency order, are written out to an X\+ML stream 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1955 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_adf9b9838cfe8166a236de6562f6dfcc3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_adf9b9838cfe8166a236de6562f6dfcc3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a1caebbe3620eee3ba78427608b1126dd}\label{class_type_factory_a1caebbe3620eee3ba78427608b1126dd}} 
+\index{TypeFactory@{TypeFactory}!saveXmlCoreTypes@{saveXmlCoreTypes}}
+\index{saveXmlCoreTypes@{saveXmlCoreTypes}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{saveXmlCoreTypes()}{saveXmlCoreTypes()}}
+{\footnotesize\ttfamily void Type\+Factory\+::save\+Xml\+Core\+Types (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save core types to stream. 
+
+Any data-\/type within this container marked as \char`\"{}core\char`\"{} will be written to an X\+ML $<$coretypes$>$ stream. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1986 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a1caebbe3620eee3ba78427608b1126dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a1caebbe3620eee3ba78427608b1126dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a7f142a54450d41bc12ca18fe06c6e1e0}\label{class_type_factory_a7f142a54450d41bc12ca18fe06c6e1e0}} 
+\index{TypeFactory@{TypeFactory}!setCoreType@{setCoreType}}
+\index{setCoreType@{setCoreType}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{setCoreType()}{setCoreType()}}
+{\footnotesize\ttfamily void Type\+Factory\+::set\+Core\+Type (\begin{DoxyParamCaption}\item[{const string \&}]{name,  }\item[{int4}]{size,  }\item[{\mbox{\hyperlink{type_8hh_aef6429f2523cdf4d415ba04a0209e61f}{type\+\_\+metatype}}}]{meta,  }\item[{bool}]{chartp }\end{DoxyParamCaption})}
+
+
+
+Create a core data-\/type. 
+
+Manually create a \char`\"{}base\char`\"{} core type. This currently must be called before any pointers or arrays are defined off of the type. 
+\begin{DoxyParams}{Parameters}
+{\em name} & is the data-\/type name \\
+\hline
+{\em size} & is the size of the data-\/type \\
+\hline
+{\em meta} & is the meta-\/type of the data-\/type \\
+\hline
+{\em chartp} & is true if a character type should be created \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1248 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a7f142a54450d41bc12ca18fe06c6e1e0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a7f142a54450d41bc12ca18fe06c6e1e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a17cf58ac6b927a91b4f794a3347b2822}\label{class_type_factory_a17cf58ac6b927a91b4f794a3347b2822}} 
+\index{TypeFactory@{TypeFactory}!setEnumValues@{setEnumValues}}
+\index{setEnumValues@{setEnumValues}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{setEnumValues()}{setEnumValues()}}
+{\footnotesize\ttfamily bool Type\+Factory\+::set\+Enum\+Values (\begin{DoxyParamCaption}\item[{const vector$<$ string $>$ \&}]{namelist,  }\item[{const vector$<$ \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $>$ \&}]{vallist,  }\item[{const vector$<$ bool $>$ \&}]{assignlist,  }\item[{\mbox{\hyperlink{class_type_enum}{Type\+Enum}} $\ast$}]{te }\end{DoxyParamCaption})}
+
+
+
+Set named values for an enumeration. 
+
+Set the list of enumeration values and identifiers for a \mbox{\hyperlink{class_type_enum}{Type\+Enum}} Fill in any values for any names that weren\textquotesingle{}t explicitly assigned and check for duplicates. 
+\begin{DoxyParams}{Parameters}
+{\em namelist} & is the list of names in the enumeration \\
+\hline
+{\em vallist} & is the corresponding list of values assigned to names in namelist \\
+\hline
+{\em assignlist} & is true if the corresponding name in namelist has an assigned value \\
+\hline
+{\em te} & is the enumeration object to modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the modification is successful (no duplicate names) 
+\end{DoxyReturn}
+
+
+Definition at line 1542 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_a17cf58ac6b927a91b4f794a3347b2822_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a17480d8c1040602a1becb483e6c59652}\label{class_type_factory_a17480d8c1040602a1becb483e6c59652}} 
+\index{TypeFactory@{TypeFactory}!setFields@{setFields}}
+\index{setFields@{setFields}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{setFields()}{setFields()}}
+{\footnotesize\ttfamily bool Type\+Factory\+::set\+Fields (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{struct_type_field}{Type\+Field}} $>$ \&}]{fd,  }\item[{\mbox{\hyperlink{class_type_struct}{Type\+Struct}} $\ast$}]{ot,  }\item[{int4}]{fixedsize }\end{DoxyParamCaption})}
+
+
+
+Set fields on a \mbox{\hyperlink{class_type_struct}{Type\+Struct}}. 
+
+Make sure all the offsets are fully established then set fields of the structure If -\/fixedsize-\/ is greater than 0, force the final structure to have that size 
+\begin{DoxyParams}{Parameters}
+{\em fd} & is the list of fields to set \\
+\hline
+{\em ot} & is the \mbox{\hyperlink{class_type_struct}{Type\+Struct}} object to modify \\
+\hline
+{\em fixedsize} & is 0 or the forced size of the structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if modification was successful 
+\end{DoxyReturn}
+
+
+Definition at line 1479 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_type_factory_a17480d8c1040602a1becb483e6c59652_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_a6a2c74462f5a832e6233421bb6cb1beb}\label{class_type_factory_a6a2c74462f5a832e6233421bb6cb1beb}} 
+\index{TypeFactory@{TypeFactory}!setName@{setName}}
+\index{setName@{setName}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Factory\+::set\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$}]{ct,  }\item[{const string \&}]{n }\end{DoxyParamCaption})}
+
+
+
+Set the given types name. 
+
+This routine renames a \mbox{\hyperlink{class_datatype}{Datatype}} object and fixes up cross-\/referencing 
+\begin{DoxyParams}{Parameters}
+{\em ct} & is the data-\/type to rename \\
+\hline
+{\em n} & is the new name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the renamed \mbox{\hyperlink{class_datatype}{Datatype}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1458 of file type.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_type_factory_a6a2c74462f5a832e6233421bb6cb1beb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_aa0ffda99be9ec6acf0bc8a963021e050}\label{class_type_factory_aa0ffda99be9ec6acf0bc8a963021e050}} 
+\index{TypeFactory@{TypeFactory}!setStructAlign@{setStructAlign}}
+\index{setStructAlign@{setStructAlign}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{setStructAlign()}{setStructAlign()}}
+{\footnotesize\ttfamily void Type\+Factory\+::set\+Struct\+Align (\begin{DoxyParamCaption}\item[{int4}]{al }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the default structure alignment. 
+
+
+
+Definition at line 408 of file type.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_aa0ffda99be9ec6acf0bc8a963021e050_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_factory_afae3189d62867e5358bcbb98e7723b75}\label{class_type_factory_afae3189d62867e5358bcbb98e7723b75}} 
+\index{TypeFactory@{TypeFactory}!setupSizes@{setupSizes}}
+\index{setupSizes@{setupSizes}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{setupSizes()}{setupSizes()}}
+{\footnotesize\ttfamily void Type\+Factory\+::setup\+Sizes (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Derive some size information from \mbox{\hyperlink{class_architecture}{Architecture}}. 
+
+Set up default values for size of \char`\"{}int\char`\"{}, structure alignment, and enums. 
+
+Definition at line 1221 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_factory_afae3189d62867e5358bcbb98e7723b75_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_type_factory_a0652ec9d4b9d9d0943d1fbffe9b9c740}\label{class_type_factory_a0652ec9d4b9d9d0943d1fbffe9b9c740}} 
+\index{TypeFactory@{TypeFactory}!glb@{glb}}
+\index{glb@{glb}!TypeFactory@{TypeFactory}}
+\subsubsection{\texorpdfstring{glb}{glb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ Type\+Factory\+::glb\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The \mbox{\hyperlink{class_architecture}{Architecture}} object that owns this \mbox{\hyperlink{class_type_factory}{Type\+Factory}}. 
+
+
+
+Definition at line 399 of file type.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{type_8hh}{type.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{type_8cc}{type.\+cc}}\end{DoxyCompactItemize}

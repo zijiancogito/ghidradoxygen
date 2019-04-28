@@ -1,0 +1,318 @@
+\hypertarget{class_type_spacebase}{}\section{Type\+Spacebase Class Reference}
+\label{class_type_spacebase}\index{TypeSpacebase@{TypeSpacebase}}
+
+
+Special \mbox{\hyperlink{class_datatype}{Datatype}} object used to describe pointers that index into the symbol table.  
+
+
+
+
+{\ttfamily \#include $<$type.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Spacebase\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_type_spacebase__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Spacebase\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_type_spacebase__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_spacebase_a6ed0488bb11f4727eeb8dfff2641a095}{Type\+Spacebase}} (const \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}} \&op)
+\begin{DoxyCompactList}\small\item\em Construct from another \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_spacebase_ac02a63941816db70d4ded48f26623afa}{Type\+Spacebase}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$\mbox{\hyperlink{class_datatype_ac2bb702c6067fae98d7c0257e928d5a1}{id}}, const \mbox{\hyperlink{class_address}{Address}} \&frame, \mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Construct given an address space, scope, and architecture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_scope}{Scope}} $\ast$ \mbox{\hyperlink{class_type_spacebase_acd0c089f2ffe851a5f10e1c63caba40c}{get\+Map}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the symbol table indexed by {\bfseries{this}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_type_spacebase_a06a6a2b993228d5619dd00ed65ebac16}{get\+Address}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} off, int4 sz, const \mbox{\hyperlink{class_address}{Address}} \&point) const
+\begin{DoxyCompactList}\small\item\em Construct an \mbox{\hyperlink{class_address}{Address}} given an offset. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_spacebase_a0dc2b2f9eadee2b8c79e2403a9c908fe}{get\+Sub\+Type}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} off, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $\ast$newoff) const
+\begin{DoxyCompactList}\small\item\em Recover component data-\/type one-\/level down. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_type_spacebase_a1ec8296bec1fe983feba0dff1cd78b41}{compare}} (const \mbox{\hyperlink{class_datatype}{Datatype}} \&op, int4 level) const
+\begin{DoxyCompactList}\small\item\em Compare for functional equivalence. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_type_spacebase_ae0bea6eed65dda9a50999bf664c70c3d}{compare\+Dependency}} (const \mbox{\hyperlink{class_datatype}{Datatype}} \&op) const
+\begin{DoxyCompactList}\small\item\em Compare for storage in tree structure. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_spacebase_aefc6e8e08e15b87be40e987a916e85ec}{clone}} (void) const
+\begin{DoxyCompactList}\small\item\em Clone the data-\/type. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_spacebase_a6540d83aa3ef2daf7bddeba9a0552c8f}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Serialize the data-\/type to X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_type_spacebase_ac8c1945d0a63785e78b3e09a13226ed6}{Type\+Factory}}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Special \mbox{\hyperlink{class_datatype}{Datatype}} object used to describe pointers that index into the symbol table. 
+
+A \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}} treats a specific \mbox{\hyperlink{class_addr_space}{Addr\+Space}} as \char`\"{}structure\char`\"{} that will get indexed in to. This facilitates type propagation from local symbols into the stack space and from global symbols into the R\+AM space. 
+
+Definition at line 355 of file type.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_spacebase_a6ed0488bb11f4727eeb8dfff2641a095}\label{class_type_spacebase_a6ed0488bb11f4727eeb8dfff2641a095}} 
+\index{TypeSpacebase@{TypeSpacebase}!TypeSpacebase@{TypeSpacebase}}
+\index{TypeSpacebase@{TypeSpacebase}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{TypeSpacebase()}{TypeSpacebase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Type\+Spacebase\+::\+Type\+Spacebase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}} \&}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct from another \mbox{\hyperlink{class_type_spacebase}{Type\+Spacebase}}. 
+
+
+
+Definition at line 363 of file type.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_spacebase_a6ed0488bb11f4727eeb8dfff2641a095_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_spacebase_ac02a63941816db70d4ded48f26623afa}\label{class_type_spacebase_ac02a63941816db70d4ded48f26623afa}} 
+\index{TypeSpacebase@{TypeSpacebase}!TypeSpacebase@{TypeSpacebase}}
+\index{TypeSpacebase@{TypeSpacebase}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{TypeSpacebase()}{TypeSpacebase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Type\+Spacebase\+::\+Type\+Spacebase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{id,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{frame,  }\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct given an address space, scope, and architecture. 
+
+
+
+Definition at line 367 of file type.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_spacebase_aefc6e8e08e15b87be40e987a916e85ec}\label{class_type_spacebase_aefc6e8e08e15b87be40e987a916e85ec}} 
+\index{TypeSpacebase@{TypeSpacebase}!clone@{clone}}
+\index{clone@{clone}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ Type\+Spacebase\+::clone (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the data-\/type. 
+
+
+
+Implements \mbox{\hyperlink{class_datatype_a6bd032d91f40efe36841adc85b3ff0ec}{Datatype}}.
+
+
+
+Definition at line 374 of file type.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_spacebase_aefc6e8e08e15b87be40e987a916e85ec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_spacebase_a1ec8296bec1fe983feba0dff1cd78b41}\label{class_type_spacebase_a1ec8296bec1fe983feba0dff1cd78b41}} 
+\index{TypeSpacebase@{TypeSpacebase}!compare@{compare}}
+\index{compare@{compare}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{compare()}{compare()}}
+{\footnotesize\ttfamily int4 Type\+Spacebase\+::compare (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_datatype}{Datatype}} \&}]{op,  }\item[{int4}]{level }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compare for functional equivalence. 
+
+Compare {\bfseries{this}} with another data-\/type. 0 (equality) means the data-\/types are functionally equivalent (even if names differ) Smaller types come earlier. More specific types come earlier. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the data-\/type to compare with {\bfseries{this}} \\
+\hline
+{\em level} & is maximum level to descend when recursively comparing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+negative, 0, positive depending on ordering of types 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_datatype_a4d5a102b2d909180c3080fdb55d7b305}{Datatype}}.
+
+
+
+Definition at line 1143 of file type.\+cc.
+
+\mbox{\Hypertarget{class_type_spacebase_ae0bea6eed65dda9a50999bf664c70c3d}\label{class_type_spacebase_ae0bea6eed65dda9a50999bf664c70c3d}} 
+\index{TypeSpacebase@{TypeSpacebase}!compareDependency@{compareDependency}}
+\index{compareDependency@{compareDependency}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{compareDependency()}{compareDependency()}}
+{\footnotesize\ttfamily int4 Type\+Spacebase\+::compare\+Dependency (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_datatype}{Datatype}} \&}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compare for storage in tree structure. 
+
+Ordering of data-\/types for the main \mbox{\hyperlink{class_type_factory}{Type\+Factory}} container. Comparison only goes down one-\/level in the component structure, before just comparing pointers. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the data-\/type to compare with {\bfseries{this}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+negative, 0, positive depending on ordering of types 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_datatype_ab26e4ca2c3091d3c5a34b4fbd7be76ae}{Datatype}}.
+
+
+
+Definition at line 1149 of file type.\+cc.
+
+\mbox{\Hypertarget{class_type_spacebase_a06a6a2b993228d5619dd00ed65ebac16}\label{class_type_spacebase_a06a6a2b993228d5619dd00ed65ebac16}} 
+\index{TypeSpacebase@{TypeSpacebase}!getAddress@{getAddress}}
+\index{getAddress@{getAddress}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{getAddress()}{getAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Type\+Spacebase\+::get\+Address (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{off,  }\item[{int4}]{sz,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{point }\end{DoxyParamCaption}) const}
+
+
+
+Construct an \mbox{\hyperlink{class_address}{Address}} given an offset. 
+
+Return the \mbox{\hyperlink{class_address}{Address}} being referred to by a specific offset relative to a pointer with {\bfseries{this}} \mbox{\hyperlink{class_datatype}{Datatype}} 
+\begin{DoxyParams}{Parameters}
+{\em off} & is the offset relative to the pointer \\
+\hline
+{\em sz} & is the size of offset (as a pointer) \\
+\hline
+{\em point} & is a \char`\"{}context\char`\"{} reference for the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the referred to \mbox{\hyperlink{class_address}{Address}} 
+\end{DoxyReturn}
+
+
+Definition at line 1167 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_spacebase_a06a6a2b993228d5619dd00ed65ebac16_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_spacebase_acd0c089f2ffe851a5f10e1c63caba40c}\label{class_type_spacebase_acd0c089f2ffe851a5f10e1c63caba40c}} 
+\index{TypeSpacebase@{TypeSpacebase}!getMap@{getMap}}
+\index{getMap@{getMap}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{getMap()}{getMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scope}{Scope}} $\ast$ Type\+Spacebase\+::get\+Map (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the symbol table indexed by {\bfseries{this}}. 
+
+This data-\/type can index either a local or the global scope \begin{DoxyReturn}{Returns}
+the symbol table \mbox{\hyperlink{class_scope}{Scope}} 
+\end{DoxyReturn}
+
+
+Definition at line 1111 of file type.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_spacebase_acd0c089f2ffe851a5f10e1c63caba40c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_spacebase_a0dc2b2f9eadee2b8c79e2403a9c908fe}\label{class_type_spacebase_a0dc2b2f9eadee2b8c79e2403a9c908fe}} 
+\index{TypeSpacebase@{TypeSpacebase}!getSubType@{getSubType}}
+\index{getSubType@{getSubType}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{getSubType()}{getSubType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Spacebase\+::get\+Sub\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{off,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} $\ast$}]{newoff }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Recover component data-\/type one-\/level down. 
+
+Given an offset into {\bfseries{this}} data-\/type, return the component data-\/type at that offset. Also, pass back a \char`\"{}renormalized\char`\"{} offset suitable for recursize \mbox{\hyperlink{class_type_spacebase_a0dc2b2f9eadee2b8c79e2403a9c908fe}{get\+Sub\+Type()}} calls\+: i.\+e. if the original offset hits the exact start of the sub-\/type, 0 is passed back. If there is no valid component data-\/type at the offset, return N\+U\+LL and pass back the original offset 
+\begin{DoxyParams}{Parameters}
+{\em off} & is the offset into {\bfseries{this}} data-\/type \\
+\hline
+{\em newoff} & is a pointer to the passed-\/back offset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the component data-\/type or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_datatype_ac310ccfdc47d145f10699fa1e14e73b4}{Datatype}}.
+
+
+
+Definition at line 1123 of file type.\+cc.
+
+\mbox{\Hypertarget{class_type_spacebase_a6540d83aa3ef2daf7bddeba9a0552c8f}\label{class_type_spacebase_a6540d83aa3ef2daf7bddeba9a0552c8f}} 
+\index{TypeSpacebase@{TypeSpacebase}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Type\+Spacebase\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Serialize the data-\/type to X\+ML. 
+
+Write out a formal description of the data-\/type as an X\+ML $<$type$>$ tag. For composite data-\/types, the description goes down one level, describing the component types only by reference. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the stream to write to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_datatype_a33339824f1c50d4354952296070c3902}{Datatype}}.
+
+
+
+Definition at line 1173 of file type.\+cc.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_type_spacebase_ac8c1945d0a63785e78b3e09a13226ed6}\label{class_type_spacebase_ac8c1945d0a63785e78b3e09a13226ed6}} 
+\index{TypeSpacebase@{TypeSpacebase}!TypeFactory@{TypeFactory}}
+\index{TypeFactory@{TypeFactory}!TypeSpacebase@{TypeSpacebase}}
+\subsubsection{\texorpdfstring{TypeFactory}{TypeFactory}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_type_factory}{Type\+Factory}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 356 of file type.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{type_8hh}{type.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{type_8cc}{type.\+cc}}\end{DoxyCompactItemize}

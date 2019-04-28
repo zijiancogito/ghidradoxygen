@@ -1,0 +1,180 @@
+\hypertarget{class_rule_equal2_constant}{}\section{Rule\+Equal2\+Constant Class Reference}
+\label{class_rule_equal2_constant}\index{RuleEqual2Constant@{RuleEqual2Constant}}
+
+
+Simplify I\+N\+T\+\_\+\+E\+Q\+U\+AL applied to arithmetic expressions.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Equal2\+Constant\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_rule_equal2_constant__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Equal2\+Constant\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_rule_equal2_constant__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_equal2_constant_a72c73531b7c0243dde3a1ae23eeea678}{Rule\+Equal2\+Constant}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_equal2_constant_a69a9a14451113af78875906090e19929}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_equal2_constant_afe6e48806c7403838f841ee463e15e7b}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_equal2_constant_a99da234ae056794a853e6eb2466096e7}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Simplify I\+N\+T\+\_\+\+E\+Q\+U\+AL applied to arithmetic expressions. 
+
+Forms include\+:
+\begin{DoxyItemize}
+\item {\ttfamily V $\ast$ -\/1 == c =$>$ V == -\/c}
+\item {\ttfamily V + c == d =$>$ V == (d-\/c)} 
+\end{DoxyItemize}
+
+Definition at line 934 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_equal2_constant_a72c73531b7c0243dde3a1ae23eeea678}\label{class_rule_equal2_constant_a72c73531b7c0243dde3a1ae23eeea678}} 
+\index{RuleEqual2Constant@{RuleEqual2Constant}!RuleEqual2Constant@{RuleEqual2Constant}}
+\index{RuleEqual2Constant@{RuleEqual2Constant}!RuleEqual2Constant@{RuleEqual2Constant}}
+\subsubsection{\texorpdfstring{RuleEqual2Constant()}{RuleEqual2Constant()}}
+{\footnotesize\ttfamily Rule\+Equal2\+Constant\+::\+Rule\+Equal2\+Constant (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 936 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_rule_equal2_constant_a72c73531b7c0243dde3a1ae23eeea678_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_equal2_constant_a99da234ae056794a853e6eb2466096e7}\label{class_rule_equal2_constant_a99da234ae056794a853e6eb2466096e7}} 
+\index{RuleEqual2Constant@{RuleEqual2Constant}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleEqual2Constant@{RuleEqual2Constant}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Equal2\+Constant\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 5251 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_equal2_constant_a99da234ae056794a853e6eb2466096e7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_equal2_constant_a69a9a14451113af78875906090e19929}\label{class_rule_equal2_constant_a69a9a14451113af78875906090e19929}} 
+\index{RuleEqual2Constant@{RuleEqual2Constant}!clone@{clone}}
+\index{clone@{clone}!RuleEqual2Constant@{RuleEqual2Constant}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Equal2\+Constant\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 937 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_equal2_constant_a69a9a14451113af78875906090e19929_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_equal2_constant_afe6e48806c7403838f841ee463e15e7b}\label{class_rule_equal2_constant_afe6e48806c7403838f841ee463e15e7b}} 
+\index{RuleEqual2Constant@{RuleEqual2Constant}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleEqual2Constant@{RuleEqual2Constant}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Equal2\+Constant\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 5244 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

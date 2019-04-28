@@ -1,0 +1,185 @@
+.TH "PrintLanguage::Atom" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintLanguage::Atom \- A single non-operator token emitted by the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printlanguage\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAtom\fP (const string &nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl)"
+.br
+.RI "Construct a token with no associated data-flow annotations\&. "
+.ti -1c
+.RI "\fBAtom\fP (const string &nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBDatatype\fP *c)"
+.br
+.RI "Construct a token for a data-type name\&. "
+.ti -1c
+.RI "\fBAtom\fP (const string &nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBDatatype\fP *c, int4 off)"
+.br
+.RI "Construct a token for a field name\&. "
+.ti -1c
+.RI "\fBAtom\fP (const string &nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBPcodeOp\fP *o)"
+.br
+.RI "Construct a token with an associated \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "\fBAtom\fP (const string &nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBPcodeOp\fP *o, const \fBVarnode\fP *v)"
+.br
+.RI "Construct a token with an associated \fBPcodeOp\fP and \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBAtom\fP (const string &nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBPcodeOp\fP *o, const \fBFuncdata\fP *f)"
+.br
+.RI "Construct a token for a function name\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string & \fBname\fP"
+.br
+.RI "The actual printed characters of the token\&. "
+.ti -1c
+.RI "\fBtagtype\fP \fBtype\fP"
+.br
+.RI "The type of \fBAtom\fP\&. "
+.ti -1c
+.RI "\fBEmitXml::syntax_highlight\fP \fBhighlight\fP"
+.br
+.RI "The type of highlighting to use when emitting the token\&. "
+.ti -1c
+.RI "const \fBPcodeOp\fP * \fBop\fP"
+.br
+.RI "A p-code operation associated with the token\&. "
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   const \fBVarnode\fP * \fBvn\fP"
+.br
+.RI "A \fBVarnode\fP associated with the token\&. "
+.ti -1c
+.RI "   const \fBFuncdata\fP * \fBfd\fP"
+.br
+.RI "A function associated with the token\&. "
+.ti -1c
+.RI "   const \fBDatatype\fP * \fBct\fP"
+.br
+.RI "A type associated with the token\&. "
+.ti -1c
+.RI "} \fBptr_second\fP"
+.br
+.RI "Other meta-data associated with the token\&. "
+.ti -1c
+.RI "int4 \fBoffset\fP"
+.br
+.RI "The offset (within the parent structure) for a \fIfield\fP token\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A single non-operator token emitted by the decompiler\&. 
+
+These play the role of variable tokens on the RPN stack with the operator tokens\&. The term \fIvariable\fP has a broader meaning than just a \fBVarnode\fP\&. An \fBAtom\fP can also be a data-type name, a function name, or a structure field etc\&. 
+.PP
+Definition at line 194 of file printlanguage\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PrintLanguage::Atom::Atom (const string & nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl)\fC [inline]\fP"
+
+.PP
+Construct a token with no associated data-flow annotations\&. 
+.PP
+Definition at line 207 of file printlanguage\&.hh\&.
+.SS "PrintLanguage::Atom::Atom (const string & nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBDatatype\fP * c)\fC [inline]\fP"
+
+.PP
+Construct a token for a data-type name\&. 
+.PP
+Definition at line 211 of file printlanguage\&.hh\&.
+.SS "PrintLanguage::Atom::Atom (const string & nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBDatatype\fP * c, int4 off)\fC [inline]\fP"
+
+.PP
+Construct a token for a field name\&. 
+.PP
+Definition at line 215 of file printlanguage\&.hh\&.
+.SS "PrintLanguage::Atom::Atom (const string & nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBPcodeOp\fP * o)\fC [inline]\fP"
+
+.PP
+Construct a token with an associated \fBPcodeOp\fP\&. 
+.PP
+Definition at line 219 of file printlanguage\&.hh\&.
+.SS "PrintLanguage::Atom::Atom (const string & nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBPcodeOp\fP * o, const \fBVarnode\fP * v)\fC [inline]\fP"
+
+.PP
+Construct a token with an associated \fBPcodeOp\fP and \fBVarnode\fP\&. 
+.PP
+Definition at line 223 of file printlanguage\&.hh\&.
+.SS "PrintLanguage::Atom::Atom (const string & nm, \fBtagtype\fP t, \fBEmitXml::syntax_highlight\fP hl, const \fBPcodeOp\fP * o, const \fBFuncdata\fP * f)\fC [inline]\fP"
+
+.PP
+Construct a token for a function name\&. 
+.PP
+Definition at line 227 of file printlanguage\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const \fBDatatype\fP* PrintLanguage::Atom::ct"
+
+.PP
+A type associated with the token\&. 
+.PP
+Definition at line 202 of file printlanguage\&.hh\&.
+.SS "const \fBFuncdata\fP* PrintLanguage::Atom::fd"
+
+.PP
+A function associated with the token\&. 
+.PP
+Definition at line 201 of file printlanguage\&.hh\&.
+.SS "\fBEmitXml::syntax_highlight\fP PrintLanguage::Atom::highlight"
+
+.PP
+The type of highlighting to use when emitting the token\&. 
+.PP
+Definition at line 197 of file printlanguage\&.hh\&.
+.SS "const string& PrintLanguage::Atom::name"
+
+.PP
+The actual printed characters of the token\&. 
+.PP
+Definition at line 195 of file printlanguage\&.hh\&.
+.SS "int4 PrintLanguage::Atom::offset"
+
+.PP
+The offset (within the parent structure) for a \fIfield\fP token\&. 
+.PP
+Definition at line 204 of file printlanguage\&.hh\&.
+.SS "const \fBPcodeOp\fP* PrintLanguage::Atom::op"
+
+.PP
+A p-code operation associated with the token\&. 
+.PP
+Definition at line 198 of file printlanguage\&.hh\&.
+.SS "union { \&.\&.\&. }   PrintLanguage::Atom::ptr_second"
+
+.PP
+Other meta-data associated with the token\&. 
+.SS "\fBtagtype\fP PrintLanguage::Atom::type"
+
+.PP
+The type of \fBAtom\fP\&. 
+.PP
+Definition at line 196 of file printlanguage\&.hh\&.
+.SS "const \fBVarnode\fP* PrintLanguage::Atom::vn"
+
+.PP
+A \fBVarnode\fP associated with the token\&. 
+.PP
+Definition at line 200 of file printlanguage\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

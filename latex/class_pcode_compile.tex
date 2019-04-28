@@ -1,0 +1,793 @@
+\hypertarget{class_pcode_compile}{}\section{Pcode\+Compile Class Reference}
+\label{class_pcode_compile}\index{PcodeCompile@{PcodeCompile}}
+
+
+{\ttfamily \#include $<$pcodecompile.\+hh$>$}
+
+
+
+Inheritance diagram for Pcode\+Compile\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{class_pcode_compile__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pcode_compile_ace772524dfca64b26fec82e7edd752b0}{Pcode\+Compile}} (void)
+\item 
+virtual \mbox{\hyperlink{class_pcode_compile_a26e89dcca4144f9bd91fcdd7af756177}{$\sim$\+Pcode\+Compile}} (void)
+\item 
+virtual void \mbox{\hyperlink{class_pcode_compile_af18d2709e08b84b7cb21fbf1411a9f82}{report\+Error}} (const string \&msg)=0
+\item 
+void \mbox{\hyperlink{class_pcode_compile_ae395a68b9a0223d0ecbcc02c33c209b6}{reset\+Label\+Count}} (void)
+\item 
+void \mbox{\hyperlink{class_pcode_compile_af7985f4e76ed0efc5c9aa9dbe6d0a218}{set\+Default\+Space}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc)
+\item 
+void \mbox{\hyperlink{class_pcode_compile_af7e8818253a38675b526406dde5a4e6e}{set\+Constant\+Space}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc)
+\item 
+void \mbox{\hyperlink{class_pcode_compile_a18b718ada4ad4122a2fe7da86490df92}{set\+Unique\+Space}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc)
+\item 
+void \mbox{\hyperlink{class_pcode_compile_adfc1e533f15be38cb5169f00bc4d0f2f}{set\+Enforce\+Local\+Key}} (bool val)
+\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_pcode_compile_ac881af99317cc5deeea0a581c3915248}{get\+Default\+Space}} (void) const
+\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a94818a38c3750f1e25e83936a734b953}{get\+Constant\+Space}} (void) const
+\item 
+\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a376e7dc6da993a0a5ebc0ea372add1af}{build\+Temporary}} (void)
+\item 
+\mbox{\hyperlink{class_label_symbol}{Label\+Symbol}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a2398d38e48c70e73eab926baf160f2d0}{define\+Label}} (string $\ast$name)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_a838d3e556360e1fd8f365453165a0cda}{place\+Label}} (\mbox{\hyperlink{class_label_symbol}{Label\+Symbol}} $\ast$sym)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_ac43f27f167fc5fdc1bb3531346dc6797}{new\+Output}} (bool uses\+Local\+Key, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$rhs, string $\ast$varname, uint4 size=0)
+\item 
+void \mbox{\hyperlink{class_pcode_compile_a6c0c8bb263b71750d0772e6c599ed59b}{new\+Local\+Definition}} (string $\ast$varname, uint4 size=0)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_ac653b660ec1b9cf01d6f8e84f916db99}{create\+Op}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a7631ae95d4326f458cfea9825bd2f1af}{create\+Op}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn1, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn2)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_ae446c23b3e9630fe67512e572dcfbb73}{create\+Op\+Out}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$outvn, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn1, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn2)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a65b6f2be619a063a46c3727a2de1215d}{create\+Op\+Out\+Unary}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$outvn, \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_a0d195a0f919ee62221a5c01bbfbe713c}{create\+Op\+No\+Out}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_aa8af8519a707c8922ad4eda925a6500e}{create\+Op\+No\+Out}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn1, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$vn2)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_a7579aea93806ec664ec710caa1c7538b}{create\+Op\+Const}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a1731825ce7ddacbdfacb59416a3876c1}{create\+Load}} (\mbox{\hyperlink{struct_star_quality}{Star\+Quality}} $\ast$qual, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ptr)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_a4a695c299bec6d0142fa28c988dadb5f}{create\+Store}} (\mbox{\hyperlink{struct_star_quality}{Star\+Quality}} $\ast$qual, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ptr, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$val)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a7eff95e3fafefc24d8b6891dc272751a}{create\+User\+Op}} (\mbox{\hyperlink{class_user_op_symbol}{User\+Op\+Symbol}} $\ast$sym, vector$<$ \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ $>$ $\ast$param)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_ac76e5f48d5549b256163fa382b979462}{create\+User\+Op\+No\+Out}} (\mbox{\hyperlink{class_user_op_symbol}{User\+Op\+Symbol}} $\ast$sym, vector$<$ \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ $>$ $\ast$param)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_aef3dea1541f9dc0c120ac7f232c0e078}{create\+Variadic}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, vector$<$ \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ $>$ $\ast$param)
+\item 
+void \mbox{\hyperlink{class_pcode_compile_a2f916c4254dca29203c7cb530d35cae8}{append\+Op}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} opc, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$res, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} constval, int4 constsz)
+\item 
+\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ \mbox{\hyperlink{class_pcode_compile_ab334954dd18986dfe6623b905f540c13}{build\+Truncated\+Varnode}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$basevn, uint4 bitoffset, uint4 numbits)
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_pcode_compile_a2ba1215fdd8b357164b6271282f1f808}{assign\+Bit\+Range}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$vn, uint4 bitoffset, uint4 numbits, \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$rhs)
+\item 
+\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a0f46346dc8f300f3ae8fe0b0f7b65e79}{create\+Bit\+Range}} (\mbox{\hyperlink{class_specific_symbol}{Specific\+Symbol}} $\ast$sym, uint4 bitoffset, uint4 numbits)
+\item 
+\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ \mbox{\hyperlink{class_pcode_compile_a31003fa38370385ed889845d9616ba15}{address\+Of}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$var, uint4 size)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_pcode_compile_a620eb9c557b3c38ff57f958211065938}{force\+\_\+size}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$vt, const \mbox{\hyperlink{class_const_tpl}{Const\+Tpl}} \&size, const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&ops)
+\item 
+static void \mbox{\hyperlink{class_pcode_compile_afe5eba410aa5edfb8ba083cc3f31da2b}{match\+Size}} (int4 j, \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$op, bool inputonly, const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&ops)
+\item 
+static void \mbox{\hyperlink{class_pcode_compile_a7844bb12a59ed9998354ed9328e18f90}{fillin\+Zero}} (\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$op, const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&ops)
+\item 
+static bool \mbox{\hyperlink{class_pcode_compile_a107dd115ba53b9158a0c76b6a2368c52}{propagate\+Size}} (\mbox{\hyperlink{class_construct_tpl}{Construct\+Tpl}} $\ast$ct)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 44 of file pcodecompile.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pcode_compile_ace772524dfca64b26fec82e7edd752b0}\label{class_pcode_compile_ace772524dfca64b26fec82e7edd752b0}} 
+\index{PcodeCompile@{PcodeCompile}!PcodeCompile@{PcodeCompile}}
+\index{PcodeCompile@{PcodeCompile}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{PcodeCompile()}{PcodeCompile()}}
+{\footnotesize\ttfamily Pcode\+Compile\+::\+Pcode\+Compile (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 53 of file pcodecompile.\+hh.
+
+\mbox{\Hypertarget{class_pcode_compile_a26e89dcca4144f9bd91fcdd7af756177}\label{class_pcode_compile_a26e89dcca4144f9bd91fcdd7af756177}} 
+\index{PcodeCompile@{PcodeCompile}!````~PcodeCompile@{$\sim$PcodeCompile}}
+\index{````~PcodeCompile@{$\sim$PcodeCompile}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{$\sim$PcodeCompile()}{~PcodeCompile()}}
+{\footnotesize\ttfamily virtual Pcode\+Compile\+::$\sim$\+Pcode\+Compile (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 55 of file pcodecompile.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pcode_compile_a31003fa38370385ed889845d9616ba15}\label{class_pcode_compile_a31003fa38370385ed889845d9616ba15}} 
+\index{PcodeCompile@{PcodeCompile}!addressOf@{addressOf}}
+\index{addressOf@{addressOf}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{addressOf()}{addressOf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ Pcode\+Compile\+::address\+Of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{var,  }\item[{uint4}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 754 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a31003fa38370385ed889845d9616ba15_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a2f916c4254dca29203c7cb530d35cae8}\label{class_pcode_compile_a2f916c4254dca29203c7cb530d35cae8}} 
+\index{PcodeCompile@{PcodeCompile}!appendOp@{appendOp}}
+\index{appendOp@{appendOp}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{appendOp()}{appendOp()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::append\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{res,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{constval,  }\item[{int4}]{constsz }\end{DoxyParamCaption})}
+
+
+
+Definition at line 547 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a2f916c4254dca29203c7cb530d35cae8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a2f916c4254dca29203c7cb530d35cae8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a2ba1215fdd8b357164b6271282f1f808}\label{class_pcode_compile_a2ba1215fdd8b357164b6271282f1f808}} 
+\index{PcodeCompile@{PcodeCompile}!assignBitRange@{assignBitRange}}
+\index{assignBitRange@{assignBitRange}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{assignBitRange()}{assignBitRange()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::assign\+Bit\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{vn,  }\item[{uint4}]{bitoffset,  }\item[{uint4}]{numbits,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 610 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a2ba1215fdd8b357164b6271282f1f808_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a376e7dc6da993a0a5ebc0ea372add1af}\label{class_pcode_compile_a376e7dc6da993a0a5ebc0ea372add1af}} 
+\index{PcodeCompile@{PcodeCompile}!buildTemporary@{buildTemporary}}
+\index{buildTemporary@{buildTemporary}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{buildTemporary()}{buildTemporary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ Pcode\+Compile\+::build\+Temporary (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 285 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a376e7dc6da993a0a5ebc0ea372add1af_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a376e7dc6da993a0a5ebc0ea372add1af_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_ab334954dd18986dfe6623b905f540c13}\label{class_pcode_compile_ab334954dd18986dfe6623b905f540c13}} 
+\index{PcodeCompile@{PcodeCompile}!buildTruncatedVarnode@{buildTruncatedVarnode}}
+\index{buildTruncatedVarnode@{buildTruncatedVarnode}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{buildTruncatedVarnode()}{buildTruncatedVarnode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$ Pcode\+Compile\+::build\+Truncated\+Varnode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{basevn,  }\item[{uint4}]{bitoffset,  }\item[{uint4}]{numbits }\end{DoxyParamCaption})}
+
+
+
+Definition at line 563 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ab334954dd18986dfe6623b905f540c13_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ab334954dd18986dfe6623b905f540c13_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a0f46346dc8f300f3ae8fe0b0f7b65e79}\label{class_pcode_compile_a0f46346dc8f300f3ae8fe0b0f7b65e79}} 
+\index{PcodeCompile@{PcodeCompile}!createBitRange@{createBitRange}}
+\index{createBitRange@{createBitRange}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createBitRange()}{createBitRange()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+Bit\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_specific_symbol}{Specific\+Symbol}} $\ast$}]{sym,  }\item[{uint4}]{bitoffset,  }\item[{uint4}]{numbits }\end{DoxyParamCaption})}
+
+
+
+Definition at line 673 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a0f46346dc8f300f3ae8fe0b0f7b65e79_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a1731825ce7ddacbdfacb59416a3876c1}\label{class_pcode_compile_a1731825ce7ddacbdfacb59416a3876c1}} 
+\index{PcodeCompile@{PcodeCompile}!createLoad@{createLoad}}
+\index{createLoad@{createLoad}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createLoad()}{createLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+Load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_star_quality}{Star\+Quality}} $\ast$}]{qual,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 462 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a1731825ce7ddacbdfacb59416a3876c1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_ac653b660ec1b9cf01d6f8e84f916db99}\label{class_pcode_compile_ac653b660ec1b9cf01d6f8e84f916db99}} 
+\index{PcodeCompile@{PcodeCompile}!createOp@{createOp}}
+\index{createOp@{createOp}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createOp()}{createOp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn }\end{DoxyParamCaption})}
+
+
+
+Definition at line 355 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ac653b660ec1b9cf01d6f8e84f916db99_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ac653b660ec1b9cf01d6f8e84f916db99_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a7631ae95d4326f458cfea9825bd2f1af}\label{class_pcode_compile_a7631ae95d4326f458cfea9825bd2f1af}} 
+\index{PcodeCompile@{PcodeCompile}!createOp@{createOp}}
+\index{createOp@{createOp}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createOp()}{createOp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 369 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a7631ae95d4326f458cfea9825bd2f1af_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a7579aea93806ec664ec710caa1c7538b}\label{class_pcode_compile_a7579aea93806ec664ec710caa1c7538b}} 
+\index{PcodeCompile@{PcodeCompile}!createOpConst@{createOpConst}}
+\index{createOpConst@{createOpConst}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createOpConst()}{createOpConst()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::create\+Op\+Const (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 449 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a7579aea93806ec664ec710caa1c7538b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a0d195a0f919ee62221a5c01bbfbe713c}\label{class_pcode_compile_a0d195a0f919ee62221a5c01bbfbe713c}} 
+\index{PcodeCompile@{PcodeCompile}!createOpNoOut@{createOpNoOut}}
+\index{createOpNoOut@{createOpNoOut}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createOpNoOut()}{createOpNoOut()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::create\+Op\+No\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn }\end{DoxyParamCaption})}
+
+
+
+Definition at line 416 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a0d195a0f919ee62221a5c01bbfbe713c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_aa8af8519a707c8922ad4eda925a6500e}\label{class_pcode_compile_aa8af8519a707c8922ad4eda925a6500e}} 
+\index{PcodeCompile@{PcodeCompile}!createOpNoOut@{createOpNoOut}}
+\index{createOpNoOut@{createOpNoOut}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createOpNoOut()}{createOpNoOut()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::create\+Op\+No\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 430 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_aa8af8519a707c8922ad4eda925a6500e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_ae446c23b3e9630fe67512e572dcfbb73}\label{class_pcode_compile_ae446c23b3e9630fe67512e572dcfbb73}} 
+\index{PcodeCompile@{PcodeCompile}!createOpOut@{createOpOut}}
+\index{createOpOut@{createOpOut}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createOpOut()}{createOpOut()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+Op\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{outvn,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 389 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_pcode_compile_ae446c23b3e9630fe67512e572dcfbb73_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ae446c23b3e9630fe67512e572dcfbb73_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a65b6f2be619a063a46c3727a2de1215d}\label{class_pcode_compile_a65b6f2be619a063a46c3727a2de1215d}} 
+\index{PcodeCompile@{PcodeCompile}!createOpOutUnary@{createOpOutUnary}}
+\index{createOpOutUnary@{createOpOutUnary}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createOpOutUnary()}{createOpOutUnary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+Op\+Out\+Unary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{outvn,  }\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{vn }\end{DoxyParamCaption})}
+
+
+
+Definition at line 405 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_pcode_compile_a65b6f2be619a063a46c3727a2de1215d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a65b6f2be619a063a46c3727a2de1215d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a4a695c299bec6d0142fa28c988dadb5f}\label{class_pcode_compile_a4a695c299bec6d0142fa28c988dadb5f}} 
+\index{PcodeCompile@{PcodeCompile}!createStore@{createStore}}
+\index{createStore@{createStore}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createStore()}{createStore()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::create\+Store (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_star_quality}{Star\+Quality}} $\ast$}]{qual,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{ptr,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 485 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a4a695c299bec6d0142fa28c988dadb5f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a7eff95e3fafefc24d8b6891dc272751a}\label{class_pcode_compile_a7eff95e3fafefc24d8b6891dc272751a}} 
+\index{PcodeCompile@{PcodeCompile}!createUserOp@{createUserOp}}
+\index{createUserOp@{createUserOp}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createUserOp()}{createUserOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+User\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_user_op_symbol}{User\+Op\+Symbol}} $\ast$}]{sym,  }\item[{vector$<$ \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ $>$ $\ast$}]{param }\end{DoxyParamCaption})}
+
+
+
+Definition at line 513 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a7eff95e3fafefc24d8b6891dc272751a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_ac76e5f48d5549b256163fa382b979462}\label{class_pcode_compile_ac76e5f48d5549b256163fa382b979462}} 
+\index{PcodeCompile@{PcodeCompile}!createUserOpNoOut@{createUserOpNoOut}}
+\index{createUserOpNoOut@{createUserOpNoOut}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createUserOpNoOut()}{createUserOpNoOut()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::create\+User\+Op\+No\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_user_op_symbol}{User\+Op\+Symbol}} $\ast$}]{sym,  }\item[{vector$<$ \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ $>$ $\ast$}]{param }\end{DoxyParamCaption})}
+
+
+
+Definition at line 524 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ac76e5f48d5549b256163fa382b979462_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ac76e5f48d5549b256163fa382b979462_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_aef3dea1541f9dc0c120ac7f232c0e078}\label{class_pcode_compile_aef3dea1541f9dc0c120ac7f232c0e078}} 
+\index{PcodeCompile@{PcodeCompile}!createVariadic@{createVariadic}}
+\index{createVariadic@{createVariadic}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{createVariadic()}{createVariadic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ Pcode\+Compile\+::create\+Variadic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}}}]{opc,  }\item[{vector$<$ \mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$ $>$ $\ast$}]{param }\end{DoxyParamCaption})}
+
+
+
+Definition at line 535 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_aef3dea1541f9dc0c120ac7f232c0e078_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a2398d38e48c70e73eab926baf160f2d0}\label{class_pcode_compile_a2398d38e48c70e73eab926baf160f2d0}} 
+\index{PcodeCompile@{PcodeCompile}!defineLabel@{defineLabel}}
+\index{defineLabel@{defineLabel}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{defineLabel()}{defineLabel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_label_symbol}{Label\+Symbol}} $\ast$ Pcode\+Compile\+::define\+Label (\begin{DoxyParamCaption}\item[{string $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 295 of file pcodecompile.\+cc.
+
+\mbox{\Hypertarget{class_pcode_compile_a7844bb12a59ed9998354ed9328e18f90}\label{class_pcode_compile_a7844bb12a59ed9998354ed9328e18f90}} 
+\index{PcodeCompile@{PcodeCompile}!fillinZero@{fillinZero}}
+\index{fillinZero@{fillinZero}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{fillinZero()}{fillinZero()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::fillin\+Zero (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{op,  }\item[{const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&}]{ops }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 160 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a7844bb12a59ed9998354ed9328e18f90_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a7844bb12a59ed9998354ed9328e18f90_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a620eb9c557b3c38ff57f958211065938}\label{class_pcode_compile_a620eb9c557b3c38ff57f958211065938}} 
+\index{PcodeCompile@{PcodeCompile}!force\_size@{force\_size}}
+\index{force\_size@{force\_size}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{force\_size()}{force\_size()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::force\+\_\+size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{vt,  }\item[{const \mbox{\hyperlink{class_const_tpl}{Const\+Tpl}} \&}]{size,  }\item[{const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&}]{ops }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 98 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a620eb9c557b3c38ff57f958211065938_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a620eb9c557b3c38ff57f958211065938_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a94818a38c3750f1e25e83936a734b953}\label{class_pcode_compile_a94818a38c3750f1e25e83936a734b953}} 
+\index{PcodeCompile@{PcodeCompile}!getConstantSpace@{getConstantSpace}}
+\index{getConstantSpace@{getConstantSpace}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{getConstantSpace()}{getConstantSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Pcode\+Compile\+::get\+Constant\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 63 of file pcodecompile.\+hh.
+
+\mbox{\Hypertarget{class_pcode_compile_ac881af99317cc5deeea0a581c3915248}\label{class_pcode_compile_ac881af99317cc5deeea0a581c3915248}} 
+\index{PcodeCompile@{PcodeCompile}!getDefaultSpace@{getDefaultSpace}}
+\index{getDefaultSpace@{getDefaultSpace}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{getDefaultSpace()}{getDefaultSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}}$\ast$ Pcode\+Compile\+::get\+Default\+Space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 62 of file pcodecompile.\+hh.
+
+\mbox{\Hypertarget{class_pcode_compile_afe5eba410aa5edfb8ba083cc3f31da2b}\label{class_pcode_compile_afe5eba410aa5edfb8ba083cc3f31da2b}} 
+\index{PcodeCompile@{PcodeCompile}!matchSize@{matchSize}}
+\index{matchSize@{matchSize}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{matchSize()}{matchSize()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::match\+Size (\begin{DoxyParamCaption}\item[{int4}]{j,  }\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{op,  }\item[{bool}]{inputonly,  }\item[{const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&}]{ops }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 135 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_afe5eba410aa5edfb8ba083cc3f31da2b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_afe5eba410aa5edfb8ba083cc3f31da2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a6c0c8bb263b71750d0772e6c599ed59b}\label{class_pcode_compile_a6c0c8bb263b71750d0772e6c599ed59b}} 
+\index{PcodeCompile@{PcodeCompile}!newLocalDefinition@{newLocalDefinition}}
+\index{newLocalDefinition@{newLocalDefinition}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{newLocalDefinition()}{newLocalDefinition()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::new\+Local\+Definition (\begin{DoxyParamCaption}\item[{string $\ast$}]{varname,  }\item[{uint4}]{size = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 343 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a6c0c8bb263b71750d0772e6c599ed59b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_ac43f27f167fc5fdc1bb3531346dc6797}\label{class_pcode_compile_ac43f27f167fc5fdc1bb3531346dc6797}} 
+\index{PcodeCompile@{PcodeCompile}!newOutput@{newOutput}}
+\index{newOutput@{newOutput}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{newOutput()}{newOutput()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::new\+Output (\begin{DoxyParamCaption}\item[{bool}]{uses\+Local\+Key,  }\item[{\mbox{\hyperlink{class_expr_tree}{Expr\+Tree}} $\ast$}]{rhs,  }\item[{string $\ast$}]{varname,  }\item[{uint4}]{size = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 323 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ac43f27f167fc5fdc1bb3531346dc6797_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a838d3e556360e1fd8f365453165a0cda}\label{class_pcode_compile_a838d3e556360e1fd8f365453165a0cda}} 
+\index{PcodeCompile@{PcodeCompile}!placeLabel@{placeLabel}}
+\index{placeLabel@{placeLabel}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{placeLabel()}{placeLabel()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ $\ast$ Pcode\+Compile\+::place\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_label_symbol}{Label\+Symbol}} $\ast$}]{sym }\end{DoxyParamCaption})}
+
+
+
+Definition at line 304 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a838d3e556360e1fd8f365453165a0cda_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a107dd115ba53b9158a0c76b6a2368c52}\label{class_pcode_compile_a107dd115ba53b9158a0c76b6a2368c52}} 
+\index{PcodeCompile@{PcodeCompile}!propagateSize@{propagateSize}}
+\index{propagateSize@{propagateSize}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{propagateSize()}{propagateSize()}}
+{\footnotesize\ttfamily bool Pcode\+Compile\+::propagate\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_construct_tpl}{Construct\+Tpl}} $\ast$}]{ct }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 255 of file pcodecompile.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a107dd115ba53b9158a0c76b6a2368c52_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_a107dd115ba53b9158a0c76b6a2368c52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_af18d2709e08b84b7cb21fbf1411a9f82}\label{class_pcode_compile_af18d2709e08b84b7cb21fbf1411a9f82}} 
+\index{PcodeCompile@{PcodeCompile}!reportError@{reportError}}
+\index{reportError@{reportError}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{reportError()}{reportError()}}
+{\footnotesize\ttfamily virtual void Pcode\+Compile\+::report\+Error (\begin{DoxyParamCaption}\item[{const string \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pcode_snippet_ad9512a3125317bde59fc0de0b6f7d7ad}{Pcode\+Snippet}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_af18d2709e08b84b7cb21fbf1411a9f82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_ae395a68b9a0223d0ecbcc02c33c209b6}\label{class_pcode_compile_ae395a68b9a0223d0ecbcc02c33c209b6}} 
+\index{PcodeCompile@{PcodeCompile}!resetLabelCount@{resetLabelCount}}
+\index{resetLabelCount@{resetLabelCount}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{resetLabelCount()}{resetLabelCount()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::reset\+Label\+Count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 57 of file pcodecompile.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_ae395a68b9a0223d0ecbcc02c33c209b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_af7e8818253a38675b526406dde5a4e6e}\label{class_pcode_compile_af7e8818253a38675b526406dde5a4e6e}} 
+\index{PcodeCompile@{PcodeCompile}!setConstantSpace@{setConstantSpace}}
+\index{setConstantSpace@{setConstantSpace}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{setConstantSpace()}{setConstantSpace()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::set\+Constant\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 59 of file pcodecompile.\+hh.
+
+\mbox{\Hypertarget{class_pcode_compile_af7985f4e76ed0efc5c9aa9dbe6d0a218}\label{class_pcode_compile_af7985f4e76ed0efc5c9aa9dbe6d0a218}} 
+\index{PcodeCompile@{PcodeCompile}!setDefaultSpace@{setDefaultSpace}}
+\index{setDefaultSpace@{setDefaultSpace}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{setDefaultSpace()}{setDefaultSpace()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::set\+Default\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 58 of file pcodecompile.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_af7985f4e76ed0efc5c9aa9dbe6d0a218_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_adfc1e533f15be38cb5169f00bc4d0f2f}\label{class_pcode_compile_adfc1e533f15be38cb5169f00bc4d0f2f}} 
+\index{PcodeCompile@{PcodeCompile}!setEnforceLocalKey@{setEnforceLocalKey}}
+\index{setEnforceLocalKey@{setEnforceLocalKey}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{setEnforceLocalKey()}{setEnforceLocalKey()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::set\+Enforce\+Local\+Key (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 61 of file pcodecompile.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pcode_compile_adfc1e533f15be38cb5169f00bc4d0f2f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pcode_compile_a18b718ada4ad4122a2fe7da86490df92}\label{class_pcode_compile_a18b718ada4ad4122a2fe7da86490df92}} 
+\index{PcodeCompile@{PcodeCompile}!setUniqueSpace@{setUniqueSpace}}
+\index{setUniqueSpace@{setUniqueSpace}!PcodeCompile@{PcodeCompile}}
+\subsubsection{\texorpdfstring{setUniqueSpace()}{setUniqueSpace()}}
+{\footnotesize\ttfamily void Pcode\+Compile\+::set\+Unique\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 60 of file pcodecompile.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{pcodecompile_8hh}{pcodecompile.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{pcodecompile_8cc}{pcodecompile.\+cc}}\end{DoxyCompactItemize}

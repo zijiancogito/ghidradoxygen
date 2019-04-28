@@ -1,0 +1,108 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/op.cc
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'op\&.hh'\fP
+.br
+\fC#include 'funcdata\&.hh'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBfunctionalEqualityLevel\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2, \fBVarnode\fP **res1, \fBVarnode\fP **res2)"
+.br
+.RI "Try to determine if \fBvn1\fP and \fBvn2\fP contain the same value\&. "
+.ti -1c
+.RI "bool \fBfunctionalEquality\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2)"
+.br
+.RI "Determine if two Varnodes hold the same value\&. "
+.ti -1c
+.RI "bool \fBfunctionalDifference\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2, int4 depth)"
+.br
+.RI "Return true if vn1 and vn2 are verifiably different values\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool functionalDifference (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2, int4 depth)"
+
+.PP
+Return true if vn1 and vn2 are verifiably different values\&. This is actually a rather speculative test 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn1\fP is the first \fBVarnode\fP to compare 
+.br
+\fIvn2\fP is the second \fBVarnode\fP 
+.br
+\fIdepth\fP is the maximum level to recurse while testing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if they are different 
+.RE
+.PP
+
+.PP
+Definition at line 1022 of file op\&.cc\&.
+.SS "bool functionalEquality (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2)"
+
+.PP
+Determine if two Varnodes hold the same value\&. Only return \fBtrue\fP if it can be immediately determined they are equivalent 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn1\fP is the first \fBVarnode\fP 
+.br
+\fIvn2\fP is the second \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if they are provably equal 
+.RE
+.PP
+
+.PP
+Definition at line 1007 of file op\&.cc\&.
+.SS "int4 functionalEqualityLevel (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2, \fBVarnode\fP ** res1, \fBVarnode\fP ** res2)"
+
+.PP
+Try to determine if \fBvn1\fP and \fBvn2\fP contain the same value\&. Return:
+.IP "\(bu" 2
+-1, if they do \fBnot\fP, or if it can't be immediately verified
+.IP "\(bu" 2
+0, if they \fBdo\fP hold the same value
+.IP "\(bu" 2
+>0, if the result is contingent on additional varnode pairs having the same value In the last case, the varnode pairs are returned as (res1[i],res2[i]), where the return value is the number of pairs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn1\fP is the first \fBVarnode\fP to compare 
+.br
+\fIvn2\fP is the second \fBVarnode\fP 
+.br
+\fIres1\fP is a reference to the first returned \fBVarnode\fP 
+.br
+\fIres2\fP is a reference to the second returned \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the result of the comparison 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 923 of file op\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,155 @@
+.TH "JumpBasicOverride" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpBasicOverride
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.PP
+Inherits \fBJumpBasic\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpBasicOverride\fP (\fBJumpTable\fP *jt)"
+.br
+.ti -1c
+.RI "void \fBsetAddresses\fP (const vector< \fBAddress\fP > &adtable)"
+.br
+.ti -1c
+.RI "void \fBsetNorm\fP (const \fBAddress\fP &addr, \fBuintb\fP h)"
+.br
+.ti -1c
+.RI "void \fBsetStartingValue\fP (\fBuintb\fP val)"
+.br
+.ti -1c
+.RI "virtual bool \fBisOverride\fP (void) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetTableSize\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBrecoverModel\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, uint4 matchsize, uint4 maxtablesize)"
+.br
+.ti -1c
+.RI "virtual void \fBbuildAddresses\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable, vector< \fBLoadTable\fP > *loadpoints) const"
+.br
+.ti -1c
+.RI "virtual void \fBbuildLabels\fP (\fBFuncdata\fP *fd, vector< \fBAddress\fP > &addresstable, vector< \fBuintb\fP > &label, const \fBJumpModel\fP *orig) const"
+.br
+.ti -1c
+.RI "virtual bool \fBfoldInGuards\fP (\fBFuncdata\fP *fd, \fBJumpTable\fP *jump)"
+.br
+.ti -1c
+.RI "virtual bool \fBsanityCheck\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable)"
+.br
+.ti -1c
+.RI "virtual \fBJumpModel\fP * \fBclone\fP (\fBJumpTable\fP *jt) const"
+.br
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 286 of file jumptable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JumpBasicOverride::JumpBasicOverride (\fBJumpTable\fP * jt)"
+
+.PP
+Definition at line 1428 of file jumptable\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void JumpBasicOverride::buildAddresses (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable, vector< \fBLoadTable\fP > * loadpoints) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 1614 of file jumptable\&.cc\&.
+.SS "void JumpBasicOverride::buildLabels (\fBFuncdata\fP * fd, vector< \fBAddress\fP > & addresstable, vector< \fBuintb\fP > & label, const \fBJumpModel\fP * orig) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 1620 of file jumptable\&.cc\&.
+.SS "void JumpBasicOverride::clear (void)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 1654 of file jumptable\&.cc\&.
+.SS "\fBJumpModel\fP * JumpBasicOverride::clone (\fBJumpTable\fP * jt) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 1641 of file jumptable\&.cc\&.
+.SS "virtual bool JumpBasicOverride::foldInGuards (\fBFuncdata\fP * fd, \fBJumpTable\fP * jump)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 311 of file jumptable\&.hh\&.
+.SS "virtual int4 JumpBasicOverride::getTableSize (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 305 of file jumptable\&.hh\&.
+.SS "virtual bool JumpBasicOverride::isOverride (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 304 of file jumptable\&.hh\&.
+.SS "bool JumpBasicOverride::recoverModel (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, uint4 matchsize, uint4 maxtablesize)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 1586 of file jumptable\&.cc\&.
+.SS "void JumpBasicOverride::restoreXml (const \fBElement\fP * el, \fBArchitecture\fP * glb)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpModel\fP\&.
+.PP
+Definition at line 1691 of file jumptable\&.cc\&.
+.SS "virtual bool JumpBasicOverride::sanityCheck (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpBasic\fP\&.
+.PP
+Definition at line 312 of file jumptable\&.hh\&.
+.SS "void JumpBasicOverride::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpModel\fP\&.
+.PP
+Definition at line 1666 of file jumptable\&.cc\&.
+.SS "void JumpBasicOverride::setAddresses (const vector< \fBAddress\fP > & adtable)"
+
+.PP
+Definition at line 1436 of file jumptable\&.cc\&.
+.SS "void JumpBasicOverride::setNorm (const \fBAddress\fP & addr, \fBuintb\fP h)\fC [inline]\fP"
+
+.PP
+Definition at line 302 of file jumptable\&.hh\&.
+.SS "void JumpBasicOverride::setStartingValue (\fBuintb\fP val)\fC [inline]\fP"
+
+.PP
+Definition at line 303 of file jumptable\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

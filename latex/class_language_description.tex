@@ -1,0 +1,368 @@
+\hypertarget{class_language_description}{}\section{Language\+Description Class Reference}
+\label{class_language_description}\index{LanguageDescription@{LanguageDescription}}
+
+
+Contents of the $<$language$>$ tag in a .ldefs file.  
+
+
+
+
+{\ttfamily \#include $<$sleigh\+\_\+arch.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_language_description_aa2b83b431a0270ee0381f9bde5b8fb30}{Language\+Description}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_language_description_a4bbedcd8baa147052ac4e9a01952e96e}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Read the X\+ML tag from stream. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_language_description_ac503b8d360dc19de6e27bf3d887404a7}{get\+Processor}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the name of the processor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_language_description_a80a70fcdeb1c63c3d3a55a65a3fa97ca}{is\+Big\+Endian}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if the processor is big-\/endian. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_language_description_ac90031c474494dae6c1cdd8803ac265c}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the size of the address bus. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_language_description_aeeb814dd5212cea3f7636de4ac22acea}{get\+Variant}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the processor variant. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_language_description_aa3a1f6a0d66bd5f9a6d8659a1c3cb87d}{get\+Version}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the processor version. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_language_description_a5db9068afb97964df97afab3c10af9ad}{get\+Sla\+File}} (void) const
+\begin{DoxyCompactList}\small\item\em Get filename of the S\+L\+E\+I\+GH specification. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_language_description_aef9acf96d6dda8c01984cbfc6ab4f413}{get\+Processor\+Spec}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the filename of the processor specification. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_language_description_a5e965680dedba272edd47113834f9f48}{get\+Id}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the {\itshape language} {\itshape id} string associated with this processor. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_language_description_a45e5d45bbe225b5cafed3bfadd5de1e9}{get\+Description}} (void) const
+\begin{DoxyCompactList}\small\item\em Get a description of the processor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_language_description_ae9ac918cc9aa1e1327c0996d83179142}{is\+Deprecated}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if this specification is deprecated. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_compiler_tag}{Compiler\+Tag}} \& \mbox{\hyperlink{class_language_description_affb841959c4e35e73211e78048a5e156}{get\+Compiler}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Get compiler specification of the given name. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_language_description_ae8ebd52ceb6c7b018ba49aa6bc536a8b}{num\+Truncations}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of truncation records. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_truncation_tag}{Truncation\+Tag}} \& \mbox{\hyperlink{class_language_description_abbf47b3b7347ba1bbe9a8fae01b2d4b9}{get\+Truncation}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th truncation record. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contents of the $<$language$>$ tag in a .ldefs file. 
+
+This class contains meta-\/data describing a single processor and the set of files used to analyze it. Ghidra requires a compiled S\+L\+E\+I\+GH specification file (.sla), a processor specification file (.pspec), and a compiler specification file (.cspec) in order to support disassembly/decompilation of a processor. This class supports a single processor, as described by a single S\+L\+E\+I\+GH file and processor spec. Multiple compiler specifications can be given for the single processor. 
+
+Definition at line 49 of file sleigh\+\_\+arch.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_language_description_aa2b83b431a0270ee0381f9bde5b8fb30}\label{class_language_description_aa2b83b431a0270ee0381f9bde5b8fb30}} 
+\index{LanguageDescription@{LanguageDescription}!LanguageDescription@{LanguageDescription}}
+\index{LanguageDescription@{LanguageDescription}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{LanguageDescription()}{LanguageDescription()}}
+{\footnotesize\ttfamily Language\+Description\+::\+Language\+Description (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 63 of file sleigh\+\_\+arch.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_language_description_affb841959c4e35e73211e78048a5e156}\label{class_language_description_affb841959c4e35e73211e78048a5e156}} 
+\index{LanguageDescription@{LanguageDescription}!getCompiler@{getCompiler}}
+\index{getCompiler@{getCompiler}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getCompiler()}{getCompiler()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_compiler_tag}{Compiler\+Tag}} \& Language\+Description\+::get\+Compiler (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const}
+
+
+
+Get compiler specification of the given name. 
+
+Pick out the \mbox{\hyperlink{class_compiler_tag}{Compiler\+Tag}} associated with the desired {\itshape compiler} {\itshape id} string 
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the desired id string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to the matching \mbox{\hyperlink{class_compiler_tag}{Compiler\+Tag}} 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file sleigh\+\_\+arch.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_language_description_affb841959c4e35e73211e78048a5e156_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_language_description_affb841959c4e35e73211e78048a5e156_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_a45e5d45bbe225b5cafed3bfadd5de1e9}\label{class_language_description_a45e5d45bbe225b5cafed3bfadd5de1e9}} 
+\index{LanguageDescription@{LanguageDescription}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getDescription()}{getDescription()}}
+{\footnotesize\ttfamily const string\& Language\+Description\+::get\+Description (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a description of the processor. 
+
+
+
+Definition at line 73 of file sleigh\+\_\+arch.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_language_description_a45e5d45bbe225b5cafed3bfadd5de1e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_a5e965680dedba272edd47113834f9f48}\label{class_language_description_a5e965680dedba272edd47113834f9f48}} 
+\index{LanguageDescription@{LanguageDescription}!getId@{getId}}
+\index{getId@{getId}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily const string\& Language\+Description\+::get\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the {\itshape language} {\itshape id} string associated with this processor. 
+
+
+
+Definition at line 72 of file sleigh\+\_\+arch.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_language_description_a5e965680dedba272edd47113834f9f48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_ac503b8d360dc19de6e27bf3d887404a7}\label{class_language_description_ac503b8d360dc19de6e27bf3d887404a7}} 
+\index{LanguageDescription@{LanguageDescription}!getProcessor@{getProcessor}}
+\index{getProcessor@{getProcessor}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getProcessor()}{getProcessor()}}
+{\footnotesize\ttfamily const string\& Language\+Description\+::get\+Processor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the name of the processor. 
+
+
+
+Definition at line 65 of file sleigh\+\_\+arch.\+hh.
+
+\mbox{\Hypertarget{class_language_description_aef9acf96d6dda8c01984cbfc6ab4f413}\label{class_language_description_aef9acf96d6dda8c01984cbfc6ab4f413}} 
+\index{LanguageDescription@{LanguageDescription}!getProcessorSpec@{getProcessorSpec}}
+\index{getProcessorSpec@{getProcessorSpec}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getProcessorSpec()}{getProcessorSpec()}}
+{\footnotesize\ttfamily const string\& Language\+Description\+::get\+Processor\+Spec (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the filename of the processor specification. 
+
+
+
+Definition at line 71 of file sleigh\+\_\+arch.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_language_description_aef9acf96d6dda8c01984cbfc6ab4f413_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_ac90031c474494dae6c1cdd8803ac265c}\label{class_language_description_ac90031c474494dae6c1cdd8803ac265c}} 
+\index{LanguageDescription@{LanguageDescription}!getSize@{getSize}}
+\index{getSize@{getSize}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Language\+Description\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the size of the address bus. 
+
+
+
+Definition at line 67 of file sleigh\+\_\+arch.\+hh.
+
+\mbox{\Hypertarget{class_language_description_a5db9068afb97964df97afab3c10af9ad}\label{class_language_description_a5db9068afb97964df97afab3c10af9ad}} 
+\index{LanguageDescription@{LanguageDescription}!getSlaFile@{getSlaFile}}
+\index{getSlaFile@{getSlaFile}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getSlaFile()}{getSlaFile()}}
+{\footnotesize\ttfamily const string\& Language\+Description\+::get\+Sla\+File (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get filename of the S\+L\+E\+I\+GH specification. 
+
+
+
+Definition at line 70 of file sleigh\+\_\+arch.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_language_description_a5db9068afb97964df97afab3c10af9ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_abbf47b3b7347ba1bbe9a8fae01b2d4b9}\label{class_language_description_abbf47b3b7347ba1bbe9a8fae01b2d4b9}} 
+\index{LanguageDescription@{LanguageDescription}!getTruncation@{getTruncation}}
+\index{getTruncation@{getTruncation}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getTruncation()}{getTruncation()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_truncation_tag}{Truncation\+Tag}}\& Language\+Description\+::get\+Truncation (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th truncation record. 
+
+
+
+Definition at line 77 of file sleigh\+\_\+arch.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_language_description_abbf47b3b7347ba1bbe9a8fae01b2d4b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_aeeb814dd5212cea3f7636de4ac22acea}\label{class_language_description_aeeb814dd5212cea3f7636de4ac22acea}} 
+\index{LanguageDescription@{LanguageDescription}!getVariant@{getVariant}}
+\index{getVariant@{getVariant}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getVariant()}{getVariant()}}
+{\footnotesize\ttfamily const string\& Language\+Description\+::get\+Variant (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the processor variant. 
+
+
+
+Definition at line 68 of file sleigh\+\_\+arch.\+hh.
+
+\mbox{\Hypertarget{class_language_description_aa3a1f6a0d66bd5f9a6d8659a1c3cb87d}\label{class_language_description_aa3a1f6a0d66bd5f9a6d8659a1c3cb87d}} 
+\index{LanguageDescription@{LanguageDescription}!getVersion@{getVersion}}
+\index{getVersion@{getVersion}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{getVersion()}{getVersion()}}
+{\footnotesize\ttfamily const string\& Language\+Description\+::get\+Version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the processor version. 
+
+
+
+Definition at line 69 of file sleigh\+\_\+arch.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_language_description_aa3a1f6a0d66bd5f9a6d8659a1c3cb87d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_a80a70fcdeb1c63c3d3a55a65a3fa97ca}\label{class_language_description_a80a70fcdeb1c63c3d3a55a65a3fa97ca}} 
+\index{LanguageDescription@{LanguageDescription}!isBigEndian@{isBigEndian}}
+\index{isBigEndian@{isBigEndian}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{isBigEndian()}{isBigEndian()}}
+{\footnotesize\ttfamily bool Language\+Description\+::is\+Big\+Endian (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if the processor is big-\/endian. 
+
+
+
+Definition at line 66 of file sleigh\+\_\+arch.\+hh.
+
+\mbox{\Hypertarget{class_language_description_ae9ac918cc9aa1e1327c0996d83179142}\label{class_language_description_ae9ac918cc9aa1e1327c0996d83179142}} 
+\index{LanguageDescription@{LanguageDescription}!isDeprecated@{isDeprecated}}
+\index{isDeprecated@{isDeprecated}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{isDeprecated()}{isDeprecated()}}
+{\footnotesize\ttfamily bool Language\+Description\+::is\+Deprecated (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if this specification is deprecated. 
+
+
+
+Definition at line 74 of file sleigh\+\_\+arch.\+hh.
+
+\mbox{\Hypertarget{class_language_description_ae8ebd52ceb6c7b018ba49aa6bc536a8b}\label{class_language_description_ae8ebd52ceb6c7b018ba49aa6bc536a8b}} 
+\index{LanguageDescription@{LanguageDescription}!numTruncations@{numTruncations}}
+\index{numTruncations@{numTruncations}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{numTruncations()}{numTruncations()}}
+{\footnotesize\ttfamily int4 Language\+Description\+::num\+Truncations (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of truncation records. 
+
+
+
+Definition at line 76 of file sleigh\+\_\+arch.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_language_description_ae8ebd52ceb6c7b018ba49aa6bc536a8b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_language_description_a4bbedcd8baa147052ac4e9a01952e96e}\label{class_language_description_a4bbedcd8baa147052ac4e9a01952e96e}} 
+\index{LanguageDescription@{LanguageDescription}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!LanguageDescription@{LanguageDescription}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Language\+Description\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Read the X\+ML tag from stream. 
+
+Parse an ldefs $<$language$>$ tag 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 37 of file sleigh\+\_\+arch.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{class_language_description_a4bbedcd8baa147052ac4e9a01952e96e_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{sleigh__arch_8hh}{sleigh\+\_\+arch.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{sleigh__arch_8cc}{sleigh\+\_\+arch.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,411 @@
+.TH "Database" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Database \- A manager for symbol scopes for a whole executable\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDatabase\fP (\fBArchitecture\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fB~Database\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.RI "Get the \fBArchitecture\fP associate with \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBattachScope\fP (\fBScope\fP *newscope, \fBScope\fP *parent)"
+.br
+.RI "Register a new \fBScope\fP\&. "
+.ti -1c
+.RI "void \fBdeleteScope\fP (\fBScope\fP *scope)"
+.br
+.RI "Delete the given \fBScope\fP and all its sub-scopes\&. "
+.ti -1c
+.RI "void \fBdeleteSubScopes\fP (\fBScope\fP *scope)"
+.br
+.RI "Delete all sub-scopes of the given \fBScope\fP\&. "
+.ti -1c
+.RI "void \fBclearUnlocked\fP (\fBScope\fP *scope)"
+.br
+.RI "Clear unlocked Symbols owned by the given \fBScope\fP\&. "
+.ti -1c
+.RI "void \fBsetRange\fP (\fBScope\fP *scope, const \fBRangeList\fP &rlist)"
+.br
+.RI "Set the \fIownership\fP range for a \fBScope\fP\&. "
+.ti -1c
+.RI "void \fBaddRange\fP (\fBScope\fP *scope, \fBAddrSpace\fP *spc, \fBuintb\fP first, \fBuintb\fP last)"
+.br
+.RI "Add an address range to the \fIownership\fP of a \fBScope\fP\&. "
+.ti -1c
+.RI "void \fBremoveRange\fP (\fBScope\fP *scope, \fBAddrSpace\fP *spc, \fBuintb\fP first, \fBuintb\fP last)"
+.br
+.RI "Remove an address range from \fIownership\fP of a \fBScope\fP\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBgetGlobalScope\fP (void) const"
+.br
+.RI "Get the global \fBScope\fP\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBresolveScope\fP (const vector< string > &subnames) const"
+.br
+.RI "Look-up a \fBScope\fP by name\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBresolveScopeSymbolName\fP (const string &fullname, const string &delim, string &basename, \fBScope\fP *start) const"
+.br
+.RI "Get the \fBScope\fP (and base name) associated with a qualified \fBSymbol\fP name\&. "
+.ti -1c
+.RI "const \fBScope\fP * \fBmapScope\fP (const \fBScope\fP *qpoint, const \fBAddress\fP &addr, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Determine the lowest-level \fBScope\fP which might contain the given address as a \fBSymbol\fP\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBmapScope\fP (\fBScope\fP *qpoint, const \fBAddress\fP &addr, const \fBAddress\fP &usepoint)"
+.br
+.RI "A non-constant version of \fBmapScope()\fP "
+.ti -1c
+.RI "uint4 \fBgetProperty\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Get boolean properties at the given address\&. "
+.ti -1c
+.RI "void \fBsetPropertyRange\fP (uint4 flags, const \fBRange\fP &range)"
+.br
+.RI "Set boolean properties over a given memory range\&. "
+.ti -1c
+.RI "void \fBsetProperties\fP (const \fBpartmap\fP< \fBAddress\fP, uint4 > &newflags)"
+.br
+.RI "Replace the property map\&. "
+.ti -1c
+.RI "const \fBpartmap\fP< \fBAddress\fP, uint4 > & \fBgetProperties\fP (void) const"
+.br
+.RI "Get the entire property map\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save the whole \fBDatabase\fP to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover the whole database from XML\&. "
+.ti -1c
+.RI "void \fBrestoreXmlScope\fP (const \fBElement\fP *el, \fBScope\fP *new_scope)"
+.br
+.RI "Register and fill out a single \fBScope\fP from XML\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A manager for symbol scopes for a whole executable\&. 
+
+This is the highest level container for anything related to \fBScope\fP and \fBSymbol\fP objects, it indirectly holds the \fBFuncdata\fP objects as well, through the \fBFunctionSymbol\fP\&. It acts as the formal \fBsymbol\fP \fBtable\fP for the decompiler\&. The API is mostly concerned with the management of \fBScope\fP objects\&.
+.PP
+A \fBScope\fP object is initially registered via \fBattachScope()\fP, then it can looked up by name\&. This class maintains the cross \fBScope\fP search by address capability, implemented as a map from an \fBAddress\fP to the \fBScope\fP that owns it\&. For efficiency, this map is really only applied to \fInamespace\fP Scopes, the global \fBScope\fP and function Scopes are not entered in the map\&. This class also maintains a set of boolean properties that label memory ranges\&. This allows important properties like \fIread-only\fP and \fIvolatile\fP to be put down even if the Symbols aren't yet known\&. 
+.PP
+Definition at line 812 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Database::Database (\fBArchitecture\fP * g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 822 of file database\&.hh\&.
+.SS "Database::~Database (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 2515 of file database\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Database::addRange (\fBScope\fP * scope, \fBAddrSpace\fP * spc, \fBuintb\fP first, \fBuintb\fP last)"
+
+.PP
+Add an address range to the \fIownership\fP of a \fBScope\fP\&. The new range will be merged with the existing \fIownership\fP\&. The address to \fBScope\fP map is updated 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.br
+\fIspc\fP is the address space of the memory range being added 
+.br
+\fIfirst\fP is the offset of the first byte in the array 
+.br
+\fIlast\fP is the offset of the last byte 
+.RE
+.PP
+
+.PP
+Definition at line 2609 of file database\&.cc\&.
+.SS "void Database::attachScope (\fBScope\fP * newscope, \fBScope\fP * parent)"
+
+.PP
+Register a new \fBScope\fP\&. The new \fBScope\fP must be initially empty and \fBthis\fP \fBDatabase\fP takes over ownership\&. Practically, this is just setting up the new \fBScope\fP as a sub-scope of its parent\&. The parent \fBScope\fP should already be registered with \fBthis\fP \fBDatabase\fP, or NULL can be passed to register the global \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewscope\fP is the new \fBScope\fP being registered 
+.br
+\fIparent\fP is the parent \fBScope\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 2528 of file database\&.cc\&.
+.SS "void Database::clearUnlocked (\fBScope\fP * scope)"
+
+.PP
+Clear unlocked Symbols owned by the given \fBScope\fP\&. All unlocked symbols in \fBthis\fP \fBScope\fP, and recursively into its sub-scopes, are removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2579 of file database\&.cc\&.
+.SS "void Database::deleteScope (\fBScope\fP * scope)"
+
+.PP
+Delete the given \fBScope\fP and all its sub-scopes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2543 of file database\&.cc\&.
+.SS "void Database::deleteSubScopes (\fBScope\fP * scope)"
+
+.PP
+Delete all sub-scopes of the given \fBScope\fP\&. The given \fBScope\fP is not deleted, only its children\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2562 of file database\&.cc\&.
+.SS "\fBArchitecture\fP* Database::getArch (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBArchitecture\fP associate with \fBthis\fP\&. 
+.PP
+Definition at line 824 of file database\&.hh\&.
+.SS "\fBScope\fP* Database::getGlobalScope (void) const\fC [inline]\fP"
+
+.PP
+Get the global \fBScope\fP\&. 
+.PP
+Definition at line 832 of file database\&.hh\&.
+.SS "const \fBpartmap\fP<\fBAddress\fP,uint4>& Database::getProperties (void) const\fC [inline]\fP"
+
+.PP
+Get the entire property map\&. 
+.PP
+Definition at line 840 of file database\&.hh\&.
+.SS "uint4 Database::getProperty (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Get boolean properties at the given address\&. 
+.PP
+Definition at line 837 of file database\&.hh\&.
+.SS "const \fBScope\fP * Database::mapScope (const \fBScope\fP * qpoint, const \fBAddress\fP & addr, const \fBAddress\fP & usepoint) const"
+
+.PP
+Determine the lowest-level \fBScope\fP which might contain the given address as a \fBSymbol\fP\&. As currently implemented, this method can only find a \fInamespace\fP \fBScope\fP\&. When searching for a \fBSymbol\fP by \fBAddress\fP, the global \fBScope\fP is always searched because it is the terminating \fBScope\fP when recursively walking scopes through the \fIparent\fP relationship, so it isn't entered in this map\&. A function level \fBScope\fP, also not entered in the map, is only returned as the \fBScope\fP passed in as a default, when no \fInamespace\fP \fBScope\fP claims the address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqpoint\fP is the default \fBScope\fP returned if no \fIowner\fP is found 
+.br
+\fIaddr\fP is the address whose owner should be searched for 
+.br
+\fIusepoint\fP is a point in code where the address is being accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBScope\fP to act as a starting point for a hierarchical search 
+.RE
+.PP
+
+.PP
+Definition at line 2698 of file database\&.cc\&.
+.SS "\fBScope\fP * Database::mapScope (\fBScope\fP * qpoint, const \fBAddress\fP & addr, const \fBAddress\fP & usepoint)"
+
+.PP
+A non-constant version of \fBmapScope()\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqpoint\fP is the default \fBScope\fP returned if no \fIowner\fP is found 
+.br
+\fIaddr\fP is the address whose owner should be searched for 
+.br
+\fIusepoint\fP is a point in code where the address is being accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBScope\fP to act as a starting point for a hierarchical search 
+.RE
+.PP
+
+.PP
+Definition at line 2715 of file database\&.cc\&.
+.SS "void Database::removeRange (\fBScope\fP * scope, \fBAddrSpace\fP * spc, \fBuintb\fP first, \fBuintb\fP last)"
+
+.PP
+Remove an address range from \fIownership\fP of a \fBScope\fP\&. Addresses owned by the \fBScope\fP that are disjoint from the given range are not affected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.br
+\fIspc\fP is the address space of the memory range being removed 
+.br
+\fIfirst\fP is the offset of the first byte in the array 
+.br
+\fIlast\fP is the offset of the last byte 
+.RE
+.PP
+
+.PP
+Definition at line 2623 of file database\&.cc\&.
+.SS "\fBScope\fP * Database::resolveScope (const vector< string > & subnames) const"
+
+.PP
+Look-up a \fBScope\fP by name\&. An \fIabsolute\fP \fIpath\fP of \fBScope\fP names must be provided, from the global \fBScope\fP down to the desired \fBScope\fP\&. If the first path name is blank (''), it matches the global \fBScope\fP\&. If the first path name is not blank, the global \fBScope\fP is assumed, and the name is assumed to refer to a child\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsubnames\fP is the \fIpath\fP of names 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the desired \fBScope\fP or NULL if a matching name isn't found 
+.RE
+.PP
+
+.PP
+Definition at line 2637 of file database\&.cc\&.
+.SS "\fBScope\fP * Database::resolveScopeSymbolName (const string & fullname, const string & delim, string & basename, \fBScope\fP * start) const"
+
+.PP
+Get the \fBScope\fP (and base name) associated with a qualified \fBSymbol\fP name\&. The name is parsed using a \fBdelimiter\fP that is passed in\&. The name can be only partially qualified by passing in a starting \fBScope\fP, which the name is assumed to be relative to\&. Otherwise the name is assumed to be relative to the global \fBScope\fP\&. The unqualified (base) name of the \fBSymbol\fP is passed back to the caller\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfullname\fP is the qualified \fBSymbol\fP name 
+.br
+\fIdelim\fP is the delimiter separating names 
+.br
+\fIbasename\fP will hold the passed back base \fBSymbol\fP name 
+.br
+\fIstart\fP is the \fBScope\fP to start drilling down from, or NULL for the global scope 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBScope\fP being referred to by the name 
+.RE
+.PP
+
+.PP
+Definition at line 2665 of file database\&.cc\&.
+.SS "void Database::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Recover the whole database from XML\&. The children of a <db> tag are examined to recover \fBScope\fP and \fBSymbol\fP objects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <db> element 
+.RE
+.PP
+
+.PP
+Definition at line 2812 of file database\&.cc\&.
+.SS "void Database::restoreXmlScope (const \fBElement\fP * el, \fBScope\fP * new_scope)"
+
+.PP
+Register and fill out a single \fBScope\fP from XML\&. This allows incremental building of the \fBDatabase\fP from multiple XML sources\&. An empty \fBScope\fP must already be allocated\&. It is registered with \fBthis\fP \fBDatabase\fP, and then populated with \fBSymbol\fP objects based as the content of a given <scope> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the given <scope> element 
+.br
+\fInew_scope\fP is the empty \fBScope\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2865 of file database\&.cc\&.
+.SS "void Database::saveXml (ostream & s) const"
+
+.PP
+Save the whole \fBDatabase\fP to an XML stream\&. This writes a single <db> tag to the stream, which contains sub-tags for each \fBScope\fP (which contain \fBSymbol\fP sub-tags in turn)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 2757 of file database\&.cc\&.
+.SS "void Database::setProperties (const \fBpartmap\fP< \fBAddress\fP, uint4 > & newflags)\fC [inline]\fP"
+
+.PP
+Replace the property map\&. 
+.PP
+Definition at line 839 of file database\&.hh\&.
+.SS "void Database::setPropertyRange (uint4 flags, const \fBRange\fP & range)"
+
+.PP
+Set boolean properties over a given memory range\&. This allows the standard boolean \fBVarnode\fP properties like \fIread-only\fP and \fIvolatile\fP to be put an a memory range, independent of whether a \fBSymbol\fP is there or not\&. These get picked up by the \fBScope::queryProperties()\fP method in particular\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIflags\fP is the set of boolean properties 
+.br
+\fIrange\fP is the memory range to label 
+.RE
+.PP
+
+.PP
+Definition at line 2733 of file database\&.cc\&.
+.SS "void Database::setRange (\fBScope\fP * scope, const \fBRangeList\fP & rlist)"
+
+.PP
+Set the \fIownership\fP range for a \fBScope\fP\&. Any existing \fIownership\fP is completely replaced\&. The address to \fBScope\fP map is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.br
+\fIrlist\fP is the set of addresses to mark as owned 
+.RE
+.PP
+
+.PP
+Definition at line 2595 of file database\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

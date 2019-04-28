@@ -1,0 +1,172 @@
+.TH "TokenPattern" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TokenPattern
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpatexpress\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTokenPattern\fP (void)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP (bool tf)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP (\fBToken\fP *tok)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP (\fBToken\fP *tok, \fBintb\fP value, int4 bitstart, int4 bitend)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP (\fBintb\fP value, int4 startbit, int4 endbit)"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP (const \fBTokenPattern\fP &tokpat)"
+.br
+.ti -1c
+.RI "\fB~TokenPattern\fP (void)"
+.br
+.ti -1c
+.RI "const \fBTokenPattern\fP & \fBoperator=\fP (const \fBTokenPattern\fP &tokpat)"
+.br
+.ti -1c
+.RI "void \fBsetLeftEllipsis\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBsetRightEllipsis\fP (bool val)"
+.br
+.ti -1c
+.RI "bool \fBgetLeftEllipsis\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBgetRightEllipsis\fP (void) const"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP \fBdoAnd\fP (const \fBTokenPattern\fP &tokpat) const"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP \fBdoOr\fP (const \fBTokenPattern\fP &tokpat) const"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP \fBdoCat\fP (const \fBTokenPattern\fP &tokpat) const"
+.br
+.ti -1c
+.RI "\fBTokenPattern\fP \fBcommonSubPattern\fP (const \fBTokenPattern\fP &tokpat) const"
+.br
+.ti -1c
+.RI "\fBPattern\fP * \fBgetPattern\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetMinimumLength\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBalwaysTrue\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBalwaysFalse\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBalwaysInstructionTrue\fP (void) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 21 of file slghpatexpress\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TokenPattern::TokenPattern (void)"
+
+.PP
+Definition at line 223 of file slghpatexpress\&.cc\&.
+.SS "TokenPattern::TokenPattern (bool tf)"
+
+.PP
+Definition at line 231 of file slghpatexpress\&.cc\&.
+.SS "TokenPattern::TokenPattern (\fBToken\fP * tok)"
+
+.PP
+Definition at line 239 of file slghpatexpress\&.cc\&.
+.SS "TokenPattern::TokenPattern (\fBToken\fP * tok, \fBintb\fP value, int4 bitstart, int4 bitend)"
+
+.PP
+Definition at line 248 of file slghpatexpress\&.cc\&.
+.SS "TokenPattern::TokenPattern (\fBintb\fP value, int4 startbit, int4 endbit)"
+
+.PP
+Definition at line 264 of file slghpatexpress\&.cc\&.
+.SS "TokenPattern::TokenPattern (const \fBTokenPattern\fP & tokpat)"
+
+.PP
+Definition at line 276 of file slghpatexpress\&.cc\&.
+.SS "TokenPattern::~TokenPattern (void)\fC [inline]\fP"
+
+.PP
+Definition at line 38 of file slghpatexpress\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool TokenPattern::alwaysFalse (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 51 of file slghpatexpress\&.hh\&.
+.SS "bool TokenPattern::alwaysInstructionTrue (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 52 of file slghpatexpress\&.hh\&.
+.SS "bool TokenPattern::alwaysTrue (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file slghpatexpress\&.hh\&.
+.SS "\fBTokenPattern\fP TokenPattern::commonSubPattern (const \fBTokenPattern\fP & tokpat) const"
+
+.PP
+Definition at line 357 of file slghpatexpress\&.cc\&.
+.SS "\fBTokenPattern\fP TokenPattern::doAnd (const \fBTokenPattern\fP & tokpat) const"
+
+.PP
+Definition at line 297 of file slghpatexpress\&.cc\&.
+.SS "\fBTokenPattern\fP TokenPattern::doCat (const \fBTokenPattern\fP & tokpat) const"
+
+.PP
+Definition at line 317 of file slghpatexpress\&.cc\&.
+.SS "\fBTokenPattern\fP TokenPattern::doOr (const \fBTokenPattern\fP & tokpat) const"
+
+.PP
+Definition at line 307 of file slghpatexpress\&.cc\&.
+.SS "bool TokenPattern::getLeftEllipsis (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 42 of file slghpatexpress\&.hh\&.
+.SS "int4 TokenPattern::getMinimumLength (void) const"
+
+.PP
+Definition at line 408 of file slghpatexpress\&.cc\&.
+.SS "\fBPattern\fP* TokenPattern::getPattern (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file slghpatexpress\&.hh\&.
+.SS "bool TokenPattern::getRightEllipsis (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file slghpatexpress\&.hh\&.
+.SS "const \fBTokenPattern\fP & TokenPattern::operator= (const \fBTokenPattern\fP & tokpat)"
+
+.PP
+Definition at line 285 of file slghpatexpress\&.cc\&.
+.SS "void TokenPattern::setLeftEllipsis (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 40 of file slghpatexpress\&.hh\&.
+.SS "void TokenPattern::setRightEllipsis (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 41 of file slghpatexpress\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

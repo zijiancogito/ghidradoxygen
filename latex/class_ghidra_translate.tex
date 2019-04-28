@@ -1,0 +1,385 @@
+\hypertarget{class_ghidra_translate}{}\section{Ghidra\+Translate Class Reference}
+\label{class_ghidra_translate}\index{GhidraTranslate@{GhidraTranslate}}
+
+
+An implementation of \mbox{\hyperlink{class_translate}{Translate}} that queries a Ghidra client for p-\/code information.  
+
+
+
+
+{\ttfamily \#include $<$ghidra\+\_\+translate.\+hh$>$}
+
+
+
+Inheritance diagram for Ghidra\+Translate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_ghidra_translate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ghidra\+Translate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_ghidra_translate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ghidra_translate_a2f61a23911f8dc1d08527b6ccf199a12}{Ghidra\+Translate}} (\mbox{\hyperlink{class_architecture_ghidra}{Architecture\+Ghidra}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ghidra_translate_a9a2e9180ab58ec05380f62009a7822c6}{initialize}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Initialize the translator given X\+ML configuration documents. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ghidra_translate_aa55013b7e45386ecf012cae6378950fa}{add\+Register}} (const string \&nm, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$base, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} offset, int4 size)
+\begin{DoxyCompactList}\small\item\em Add a named register to the model for this processor. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \& \mbox{\hyperlink{class_ghidra_translate_a81e1af3292005903279e80a61a6ccfac}{get\+Register}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Get a register as \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} given its name. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_ghidra_translate_a62652735dff5298e4c8bae0872d7e7cb}{get\+Register\+Name}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$base, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} off, int4 size) const
+\begin{DoxyCompactList}\small\item\em Get the name of a register given its location. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ghidra_translate_af27964c522d8004ace3d7b6b661e2f60}{get\+All\+Registers}} (map$<$ \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}}, string $>$ \&reglist) const
+\begin{DoxyCompactList}\small\item\em Get a list of all register names and the corresponding location. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ghidra_translate_ac9f3a84c329f1432ebcc38be53b32495}{get\+User\+Op\+Names}} (vector$<$ string $>$ \&res) const
+\begin{DoxyCompactList}\small\item\em Get a list of all {\itshape user-\/defined} pcode ops. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_ghidra_translate_aa78b3ea805b2fb69c7e4dc9e7d8f32ee}{one\+Instruction}} (\mbox{\hyperlink{class_pcode_emit}{Pcode\+Emit}} \&emit, const \mbox{\hyperlink{class_address}{Address}} \&baseaddr) const
+\begin{DoxyCompactList}\small\item\em Transform a single machine instruction into pcode. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_ghidra_translate_a5935212f2ea8435a9df1b8e39020d04f}{instruction\+Length}} (const \mbox{\hyperlink{class_address}{Address}} \&baseaddr) const
+\begin{DoxyCompactList}\small\item\em Get the length of a machine instruction. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_ghidra_translate_a363639d53835ddef0fcdbc22641ba685}{print\+Assembly}} (\mbox{\hyperlink{class_assembly_emit}{Assembly\+Emit}} \&emit, const \mbox{\hyperlink{class_address}{Address}} \&baseaddr) const
+\begin{DoxyCompactList}\small\item\em Disassemble a single machine instruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An implementation of \mbox{\hyperlink{class_translate}{Translate}} that queries a Ghidra client for p-\/code information. 
+
+This class provides\+:
+\begin{DoxyItemize}
+\item P-\/code for instructions and
+\item Register names
+\end{DoxyItemize}
+
+by sending a request to a Ghidra client and decoding the response. Messages are generally based on an X\+ML format, but p-\/code responses in particular have a tight internal encoding. 
+
+Definition at line 34 of file ghidra\+\_\+translate.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ghidra_translate_a2f61a23911f8dc1d08527b6ccf199a12}\label{class_ghidra_translate_a2f61a23911f8dc1d08527b6ccf199a12}} 
+\index{GhidraTranslate@{GhidraTranslate}!GhidraTranslate@{GhidraTranslate}}
+\index{GhidraTranslate@{GhidraTranslate}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{GhidraTranslate()}{GhidraTranslate()}}
+{\footnotesize\ttfamily Ghidra\+Translate\+::\+Ghidra\+Translate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture_ghidra}{Architecture\+Ghidra}} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 41 of file ghidra\+\_\+translate.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ghidra_translate_aa55013b7e45386ecf012cae6378950fa}\label{class_ghidra_translate_aa55013b7e45386ecf012cae6378950fa}} 
+\index{GhidraTranslate@{GhidraTranslate}!addRegister@{addRegister}}
+\index{addRegister@{addRegister}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{addRegister()}{addRegister()}}
+{\footnotesize\ttfamily virtual void Ghidra\+Translate\+::add\+Register (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{base,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{offset,  }\item[{int4}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add a named register to the model for this processor. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000002}{Deprecated}}]All registers used to be formally added to the processor model through this method. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the new register \\
+\hline
+{\em base} & is the address space containing the register \\
+\hline
+{\em offset} & is the offset of the register \\
+\hline
+{\em size} & is the number of bytes in the register \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_a2614aefa5c03a9f1ed0b2dba794cad2c}{Translate}}.
+
+
+
+Definition at line 44 of file ghidra\+\_\+translate.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_translate_af27964c522d8004ace3d7b6b661e2f60}\label{class_ghidra_translate_af27964c522d8004ace3d7b6b661e2f60}} 
+\index{GhidraTranslate@{GhidraTranslate}!getAllRegisters@{getAllRegisters}}
+\index{getAllRegisters@{getAllRegisters}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{getAllRegisters()}{getAllRegisters()}}
+{\footnotesize\ttfamily virtual void Ghidra\+Translate\+::get\+All\+Registers (\begin{DoxyParamCaption}\item[{map$<$ \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}}, string $>$ \&}]{reglist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get a list of all register names and the corresponding location. 
+
+Most processors have a list of named registers and possibly other memory locations that are specific to it. This function populates a map from the location information to the name, for every named location known by the translator 
+\begin{DoxyParams}{Parameters}
+{\em reglist} & is the map which will be populated by the call \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_a4de12a5d1ad5f080604451e2ed3c163e}{Translate}}.
+
+
+
+Definition at line 48 of file ghidra\+\_\+translate.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_translate_a81e1af3292005903279e80a61a6ccfac}\label{class_ghidra_translate_a81e1af3292005903279e80a61a6ccfac}} 
+\index{GhidraTranslate@{GhidraTranslate}!getRegister@{getRegister}}
+\index{getRegister@{getRegister}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{getRegister()}{getRegister()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \& Ghidra\+Translate\+::get\+Register (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a register as \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} given its name. 
+
+Retrieve the location and size of a register given its name 
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} for the register 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_translate_a3a62c460db4eccc285fa3dd29dd4a29b}{Translate}}.
+
+
+
+Definition at line 42 of file ghidra\+\_\+translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_translate_a81e1af3292005903279e80a61a6ccfac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_translate_a81e1af3292005903279e80a61a6ccfac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_translate_a62652735dff5298e4c8bae0872d7e7cb}\label{class_ghidra_translate_a62652735dff5298e4c8bae0872d7e7cb}} 
+\index{GhidraTranslate@{GhidraTranslate}!getRegisterName@{getRegisterName}}
+\index{getRegisterName@{getRegisterName}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{getRegisterName()}{getRegisterName()}}
+{\footnotesize\ttfamily string Ghidra\+Translate\+::get\+Register\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{base,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{off,  }\item[{int4}]{size }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the name of a register given its location. 
+
+Generic references to locations in a {\itshape register} space can be translated into the associated register {\itshape name}. If the location doesn\textquotesingle{}t match a register {\itshape exactly}, an empty string is returned. 
+\begin{DoxyParams}{Parameters}
+{\em base} & is the address space containing the location \\
+\hline
+{\em off} & is the offset of the location \\
+\hline
+{\em size} & is the size of the location \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the name of the register, or an empty string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_translate_a1da0ef001f801641313d9168fb359f02}{Translate}}.
+
+
+
+Definition at line 71 of file ghidra\+\_\+translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_translate_a62652735dff5298e4c8bae0872d7e7cb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_translate_ac9f3a84c329f1432ebcc38be53b32495}\label{class_ghidra_translate_ac9f3a84c329f1432ebcc38be53b32495}} 
+\index{GhidraTranslate@{GhidraTranslate}!getUserOpNames@{getUserOpNames}}
+\index{getUserOpNames@{getUserOpNames}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{getUserOpNames()}{getUserOpNames()}}
+{\footnotesize\ttfamily void Ghidra\+Translate\+::get\+User\+Op\+Names (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{res }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a list of all {\itshape user-\/defined} pcode ops. 
+
+The pcode model allows processors to define new pcode instructions that are specific to that processor. These {\itshape user-\/defined} instructions are all identified by a name and an index. This method returns a list of these ops in index order. 
+\begin{DoxyParams}{Parameters}
+{\em res} & is the resulting vector of user op names \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_a2475ba8a71e0d514903b3b5458e6cf45}{Translate}}.
+
+
+
+Definition at line 88 of file ghidra\+\_\+translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_translate_ac9f3a84c329f1432ebcc38be53b32495_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_translate_a9a2e9180ab58ec05380f62009a7822c6}\label{class_ghidra_translate_a9a2e9180ab58ec05380f62009a7822c6}} 
+\index{GhidraTranslate@{GhidraTranslate}!initialize@{initialize}}
+\index{initialize@{initialize}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Ghidra\+Translate\+::initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialize the translator given X\+ML configuration documents. 
+
+A translator gets initialized once, possibly using X\+ML documents to configure it. 
+\begin{DoxyParams}{Parameters}
+{\em store} & is a set of configuration documents \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_af8e71e9a9477e9a91be400ecca565df5}{Translate}}.
+
+
+
+Definition at line 33 of file ghidra\+\_\+translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_translate_a9a2e9180ab58ec05380f62009a7822c6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_translate_a5935212f2ea8435a9df1b8e39020d04f}\label{class_ghidra_translate_a5935212f2ea8435a9df1b8e39020d04f}} 
+\index{GhidraTranslate@{GhidraTranslate}!instructionLength@{instructionLength}}
+\index{instructionLength@{instructionLength}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{instructionLength()}{instructionLength()}}
+{\footnotesize\ttfamily virtual int4 Ghidra\+Translate\+::instruction\+Length (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{baseaddr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the length of a machine instruction. 
+
+This method decodes an instruction at a specific address just enough to find the number of bytes it uses within the instruction stream. 
+\begin{DoxyParams}{Parameters}
+{\em baseaddr} & is the \mbox{\hyperlink{class_address}{Address}} of the instruction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes in the instruction 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_translate_aa7139376886fccfdcda529fc74f7b382}{Translate}}.
+
+
+
+Definition at line 52 of file ghidra\+\_\+translate.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_translate_aa78b3ea805b2fb69c7e4dc9e7d8f32ee}\label{class_ghidra_translate_aa78b3ea805b2fb69c7e4dc9e7d8f32ee}} 
+\index{GhidraTranslate@{GhidraTranslate}!oneInstruction@{oneInstruction}}
+\index{oneInstruction@{oneInstruction}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{oneInstruction()}{oneInstruction()}}
+{\footnotesize\ttfamily int4 Ghidra\+Translate\+::one\+Instruction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_emit}{Pcode\+Emit}} \&}]{emit,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{baseaddr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Transform a single machine instruction into pcode. 
+
+This is the main interface to the pcode translation engine. The {\itshape dump} method in the {\itshape emit} object is invoked exactly once for each pcode operation in the translation for the machine instruction at the given address. This routine can throw either
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{struct_unimpl_error}{Unimpl\+Error}} or
+\item \mbox{\hyperlink{struct_bad_data_error}{Bad\+Data\+Error}}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em emit} & is the tailored pcode emitting object \\
+\hline
+{\em baseaddr} & is the \mbox{\hyperlink{class_address}{Address}} of the machine instruction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes in the machine instruction 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_translate_a1737782c38ee43de62ae2e7572321fc9}{Translate}}.
+
+
+
+Definition at line 100 of file ghidra\+\_\+translate.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_translate_aa78b3ea805b2fb69c7e4dc9e7d8f32ee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_translate_a363639d53835ddef0fcdbc22641ba685}\label{class_ghidra_translate_a363639d53835ddef0fcdbc22641ba685}} 
+\index{GhidraTranslate@{GhidraTranslate}!printAssembly@{printAssembly}}
+\index{printAssembly@{printAssembly}!GhidraTranslate@{GhidraTranslate}}
+\subsubsection{\texorpdfstring{printAssembly()}{printAssembly()}}
+{\footnotesize\ttfamily virtual int4 Ghidra\+Translate\+::print\+Assembly (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_assembly_emit}{Assembly\+Emit}} \&}]{emit,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{baseaddr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Disassemble a single machine instruction. 
+
+This is the main interface to the disassembler for the processor. It disassembles a single instruction and returns the result to the application via the {\itshape dump} method in the {\itshape emit} object. 
+\begin{DoxyParams}{Parameters}
+{\em emit} & is the disassembly emitting object \\
+\hline
+{\em baseaddr} & is the address of the machine instruction to disassemble \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_ac97443bb89e0c6bfb68caf9f48a8c85d}{Translate}}.
+
+
+
+Definition at line 54 of file ghidra\+\_\+translate.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ghidra__translate_8hh}{ghidra\+\_\+translate.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ghidra__translate_8cc}{ghidra\+\_\+translate.\+cc}}\end{DoxyCompactItemize}

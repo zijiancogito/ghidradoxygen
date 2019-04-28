@@ -1,0 +1,130 @@
+.TH "ConstantPoolGhidra" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConstantPoolGhidra \- An implementation of \fBConstantPool\fP using a Ghidra client as the backing storage\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cpool_ghidra\&.hh>\fP
+.PP
+Inherits \fBConstantPool\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConstantPoolGhidra\fP (\fBArchitectureGhidra\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual const \fBCPoolRecord\fP * \fBgetRecord\fP (const vector< \fBuintb\fP > &refs) const"
+.br
+.RI "Retrieve a constant pool record (\fBCPoolRecord\fP) given a \fIreference\fP to it\&. "
+.ti -1c
+.RI "virtual bool \fBempty\fP (void) const"
+.br
+.RI "Is the container empty of records\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.RI "Release any (local) resources\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save all records in this container to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore constant pool records from an XML stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An implementation of \fBConstantPool\fP using a Ghidra client as the backing storage\&. 
+
+The actual \fBCPoolRecord\fP objects are cached locally, but new queries are placed with the Ghidra client hosting the program currently being decompiled\&. The queries and response records are sent via XML\&. The \fBsaveXml()\fP and \fBrestoreXml()\fP methods are disabled\&. The \fBclear()\fP method only releases the local cache, no records on the Ghidra client are affected\&. 
+.PP
+Definition at line 31 of file cpool_ghidra\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConstantPoolGhidra::ConstantPoolGhidra (\fBArchitectureGhidra\fP * g)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 18 of file cpool_ghidra\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void ConstantPoolGhidra::clear (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Release any (local) resources\&. 
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 39 of file cpool_ghidra\&.hh\&.
+.SS "virtual bool ConstantPoolGhidra::empty (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Is the container empty of records\&. 
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 38 of file cpool_ghidra\&.hh\&.
+.SS "const \fBCPoolRecord\fP * ConstantPoolGhidra::getRecord (const vector< \fBuintb\fP > & refs) const\fC [virtual]\fP"
+
+.PP
+Retrieve a constant pool record (\fBCPoolRecord\fP) given a \fIreference\fP to it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrefs\fP is the \fIreference\fP (made up of 1 or more identifying integers) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBCPoolRecord\fP or NULL if none matches the reference 
+.RE
+.PP
+
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 30 of file cpool_ghidra\&.cc\&.
+.SS "void ConstantPoolGhidra::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [virtual]\fP"
+
+.PP
+Restore constant pool records from an XML stream\&. (If supported) The container is populated with CPooLRecords initialized from a <constantpool> XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the \fBTypeFactory\fP used to resolve data-type references in the XML 
+.RE
+.PP
+
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 62 of file cpool_ghidra\&.cc\&.
+.SS "void ConstantPoolGhidra::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save all records in this container to an XML stream\&. (If supported) An <constantpool> element is written containing <cpoolrec> child elements for each \fBCPoolRecord\fP in the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 56 of file cpool_ghidra\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

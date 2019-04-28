@@ -1,0 +1,446 @@
+\hypertarget{class_block_if}{}\section{Block\+If Class Reference}
+\label{class_block_if}\index{BlockIf@{BlockIf}}
+
+
+A basic \char`\"{}if\char`\"{} block.  
+
+
+
+
+{\ttfamily \#include $<$block.\+hh$>$}
+
+
+
+Inheritance diagram for Block\+If\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{class_block_if__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Block\+If\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{class_block_if__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_block_if_a6699014493d18a7da68acba2ecb37f3d}{Block\+If}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_if_a1ae37af7491c4b9d397e6d488d5ce02b}{set\+Goto\+Target}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Mark the target of the unstructured edge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_if_a8fe6faa01ae8217df40b2e8a684339d7}{get\+Goto\+Target}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the target of the unstructured edge. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_block_if_ad40f9c4fe01ab64decea6915bf674442}{get\+Goto\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the type of unstructured edge. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} \mbox{\hyperlink{class_block_if_a6fb92878f6e42112610ac0dee44c63a9}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_if_a7e394df8ba02a9ba48bd9ec239e84d52}{mark\+Unstructured}} (void)
+\begin{DoxyCompactList}\small\item\em Mark target blocks of any unstructured edges. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_if_afeafc0ad59b47dde90d4b477a2ef7637}{scope\+Break}} (int4 curexit, int4 curloopexit)
+\begin{DoxyCompactList}\small\item\em Mark unstructured edges that should be {\itshape breaks}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_if_a6c45f688f991ec5f1412c51e56bf5fd3}{print\+Header}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print a simple description of {\bfseries{this}} to stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_if_a81d526be9d8cca137f9008ac7a12d410}{emit}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng) const
+\begin{DoxyCompactList}\small\item\em Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_block_if_a41fef7fb5278f859257b6e560c0a08dd}{prefer\+Complement}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Rearrange {\bfseries{this}} hierarchy to simplify boolean expressions. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_if_a9adb3bd7302e374459669718f1265826}{get\+Exit\+Leaf}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to which {\bfseries{this}} block exits. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_block_if_a94053e78df44aef0ee7a225dc4f3a5a5}{last\+Op}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the last \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} executed by {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_if_adbc4cd5fb6cad60aa333c12532b55e1f}{next\+Flow\+After}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl) const
+\begin{DoxyCompactList}\small\item\em Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_if_ae2abef245decb84faf212ce156389d9e}{save\+Xml\+Body}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save detail about components to an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A basic \char`\"{}if\char`\"{} block. 
+
+This represents a formal \char`\"{}if\char`\"{} structure in code, with a expression for the condition, and one or two bodies of the conditionally executed code. An instance has one, two, or three components. One component is always the {\itshape conditional} block. If there is a second component, it is the block of code executed when the condition is true. If there is a third component, it is the \char`\"{}else\char`\"{} block, executed when the condition is false.
+
+If there is only one component, this represents the case where the conditionally executed branch is unstructured. This is generally emitted where the conditionally executed body is the single {\itshape goto} statement.
+
+A \mbox{\hyperlink{class_block_if}{Block\+If}} will always have at most one (structured) exit edge. With one component, one of the edges of the conditional component is unstructured. With two components, one of the conditional block edges flows to the body block, and the body\textquotesingle{}s out edge and the remaining conditional block out edge flow to the same exit block. With three components, the one conditional edge flows to the {\itshape true} body block, the other conditional edge flows to the {\itshape false} body block, and outgoing edges from the body blocks, if they exist, flow to the same exit block. 
+
+Definition at line 550 of file block.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_block_if_a6699014493d18a7da68acba2ecb37f3d}\label{class_block_if_a6699014493d18a7da68acba2ecb37f3d}} 
+\index{BlockIf@{BlockIf}!BlockIf@{BlockIf}}
+\index{BlockIf@{BlockIf}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{BlockIf()}{BlockIf()}}
+{\footnotesize\ttfamily Block\+If\+::\+Block\+If (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 554 of file block.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_block_if_a81d526be9d8cca137f9008ac7a12d410}\label{class_block_if_a81d526be9d8cca137f9008ac7a12d410}} 
+\index{BlockIf@{BlockIf}!emit@{emit}}
+\index{emit@{emit}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{emit()}{emit()}}
+{\footnotesize\ttfamily virtual void Block\+If\+::emit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. 
+
+This is the main entry point, at the control-\/flow level, for printing structured code. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} that provides details of the high-\/level language being printed \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f}{Block\+Graph}}.
+
+
+
+Definition at line 562 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{class_block_if_a81d526be9d8cca137f9008ac7a12d410_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_a9adb3bd7302e374459669718f1265826}\label{class_block_if_a9adb3bd7302e374459669718f1265826}} 
+\index{BlockIf@{BlockIf}!getExitLeaf@{getExitLeaf}}
+\index{getExitLeaf@{getExitLeaf}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{getExitLeaf()}{getExitLeaf()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+If\+::get\+Exit\+Leaf (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to which {\bfseries{this}} block exits. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a611bb926194635a0f5cfc0eb16cabe6a}{Flow\+Block}}.
+
+
+
+Definition at line 2798 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_block_if_a9adb3bd7302e374459669718f1265826_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_a8fe6faa01ae8217df40b2e8a684339d7}\label{class_block_if_a8fe6faa01ae8217df40b2e8a684339d7}} 
+\index{BlockIf@{BlockIf}!getGotoTarget@{getGotoTarget}}
+\index{getGotoTarget@{getGotoTarget}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{getGotoTarget()}{getGotoTarget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Block\+If\+::get\+Goto\+Target (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the target of the unstructured edge. 
+
+
+
+Definition at line 556 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_block_if_a8fe6faa01ae8217df40b2e8a684339d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_ad40f9c4fe01ab64decea6915bf674442}\label{class_block_if_ad40f9c4fe01ab64decea6915bf674442}} 
+\index{BlockIf@{BlockIf}!getGotoType@{getGotoType}}
+\index{getGotoType@{getGotoType}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{getGotoType()}{getGotoType()}}
+{\footnotesize\ttfamily uint4 Block\+If\+::get\+Goto\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the type of unstructured edge. 
+
+
+
+Definition at line 557 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{class_block_if_ad40f9c4fe01ab64decea6915bf674442_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_a6fb92878f6e42112610ac0dee44c63a9}\label{class_block_if_a6fb92878f6e42112610ac0dee44c63a9}} 
+\index{BlockIf@{BlockIf}!getType@{getType}}
+\index{getType@{getType}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} Block\+If\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a8e542e109e0acc977218ceaf3c248153}{Block\+Graph}}.
+
+
+
+Definition at line 558 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_if_a94053e78df44aef0ee7a225dc4f3a5a5}\label{class_block_if_a94053e78df44aef0ee7a225dc4f3a5a5}} 
+\index{BlockIf@{BlockIf}!lastOp@{lastOp}}
+\index{lastOp@{lastOp}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{lastOp()}{lastOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ Block\+If\+::last\+Op (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the last \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} executed by {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a5db2a7d4baa2070ebf3151b13fd16d09}{Flow\+Block}}.
+
+
+
+Definition at line 2806 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{class_block_if_a94053e78df44aef0ee7a225dc4f3a5a5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_a7e394df8ba02a9ba48bd9ec239e84d52}\label{class_block_if_a7e394df8ba02a9ba48bd9ec239e84d52}} 
+\index{BlockIf@{BlockIf}!markUnstructured@{markUnstructured}}
+\index{markUnstructured@{markUnstructured}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{markUnstructured()}{markUnstructured()}}
+{\footnotesize\ttfamily void Block\+If\+::mark\+Unstructured (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mark target blocks of any unstructured edges. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a6047a66449b05bf62b33a2bef8642033}{Block\+Graph}}.
+
+
+
+Definition at line 2754 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_if_a7e394df8ba02a9ba48bd9ec239e84d52_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_adbc4cd5fb6cad60aa333c12532b55e1f}\label{class_block_if_adbc4cd5fb6cad60aa333c12532b55e1f}} 
+\index{BlockIf@{BlockIf}!nextFlowAfter@{nextFlowAfter}}
+\index{nextFlowAfter@{nextFlowAfter}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{nextFlowAfter()}{nextFlowAfter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+If\+::next\+Flow\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Within the hierarchy of {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, assume the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} will fall-\/thru in its execution at some point. Return the first leaf block (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} or \mbox{\hyperlink{class_block_copy}{Block\+Copy}}) that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} completes, assuming this is a unique block. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the next \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to execute or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6}{Block\+Graph}}.
+
+
+
+Definition at line 2814 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_if_adbc4cd5fb6cad60aa333c12532b55e1f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_a41fef7fb5278f859257b6e560c0a08dd}\label{class_block_if_a41fef7fb5278f859257b6e560c0a08dd}} 
+\index{BlockIf@{BlockIf}!preferComplement@{preferComplement}}
+\index{preferComplement@{preferComplement}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{preferComplement()}{preferComplement()}}
+{\footnotesize\ttfamily bool Block\+If\+::prefer\+Complement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Rearrange {\bfseries{this}} hierarchy to simplify boolean expressions. 
+
+For the instructions in this block, decide if the control-\/flow structure can be rearranged so that boolean expressions come out more naturally. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to analyze \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if a change was made 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a6ab46f9a87bc94b30bd3bee0923b3f51}{Flow\+Block}}.
+
+
+
+Definition at line 2780 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_if_a41fef7fb5278f859257b6e560c0a08dd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_a6c45f688f991ec5f1412c51e56bf5fd3}\label{class_block_if_a6c45f688f991ec5f1412c51e56bf5fd3}} 
+\index{BlockIf@{BlockIf}!printHeader@{printHeader}}
+\index{printHeader@{printHeader}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{printHeader()}{printHeader()}}
+{\footnotesize\ttfamily void Block\+If\+::print\+Header (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print a simple description of {\bfseries{this}} to stream. 
+
+Only print a header for {\bfseries{this}} single block 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a0d19c5b80186cf289dfbe0ce9e3ce37a}{Flow\+Block}}.
+
+
+
+Definition at line 2773 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_if_a6c45f688f991ec5f1412c51e56bf5fd3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_ae2abef245decb84faf212ce156389d9e}\label{class_block_if_ae2abef245decb84faf212ce156389d9e}} 
+\index{BlockIf@{BlockIf}!saveXmlBody@{saveXmlBody}}
+\index{saveXmlBody@{saveXmlBody}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{saveXmlBody()}{saveXmlBody()}}
+{\footnotesize\ttfamily void Block\+If\+::save\+Xml\+Body (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Save detail about components to an X\+ML stream. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a881076195239ce5c2e5c865f22714d03}{Block\+Graph}}.
+
+
+
+Definition at line 2824 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_if_ae2abef245decb84faf212ce156389d9e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_afeafc0ad59b47dde90d4b477a2ef7637}\label{class_block_if_afeafc0ad59b47dde90d4b477a2ef7637}} 
+\index{BlockIf@{BlockIf}!scopeBreak@{scopeBreak}}
+\index{scopeBreak@{scopeBreak}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{scopeBreak()}{scopeBreak()}}
+{\footnotesize\ttfamily void Block\+If\+::scope\+Break (\begin{DoxyParamCaption}\item[{int4}]{curexit,  }\item[{int4}]{curloopexit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mark unstructured edges that should be {\itshape breaks}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a55618dfd49266bd4185d119f08e8b630}{Block\+Graph}}.
+
+
+
+Definition at line 2762 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_block_if_afeafc0ad59b47dde90d4b477a2ef7637_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_if_a1ae37af7491c4b9d397e6d488d5ce02b}\label{class_block_if_a1ae37af7491c4b9d397e6d488d5ce02b}} 
+\index{BlockIf@{BlockIf}!setGotoTarget@{setGotoTarget}}
+\index{setGotoTarget@{setGotoTarget}!BlockIf@{BlockIf}}
+\subsubsection{\texorpdfstring{setGotoTarget()}{setGotoTarget()}}
+{\footnotesize\ttfamily void Block\+If\+::set\+Goto\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark the target of the unstructured edge. 
+
+
+
+Definition at line 555 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_if_a1ae37af7491c4b9d397e6d488d5ce02b_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8hh}{block.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8cc}{block.\+cc}}\end{DoxyCompactItemize}

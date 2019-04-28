@@ -1,0 +1,179 @@
+\hypertarget{class_ghidra_capability}{}\section{Ghidra\+Capability Class Reference}
+\label{class_ghidra_capability}\index{GhidraCapability@{GhidraCapability}}
+
+
+Registration point and dispatcher for commands sent to the decompiler.  
+
+
+
+
+{\ttfamily \#include $<$ghidra\+\_\+process.\+hh$>$}
+
+
+
+Inheritance diagram for Ghidra\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{class_ghidra_capability__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ghidra\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_ghidra_capability__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const string \& \mbox{\hyperlink{class_ghidra_capability_a5928ab9d0dd3212f9f7a732c62a3e390}{get\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the capability name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int4 \mbox{\hyperlink{class_ghidra_capability_a778472d4da43daeda23553684f87ad80}{read\+Command}} (istream \&sin, ostream \&out)
+\begin{DoxyCompactList}\small\item\em Dispatch a Ghidra command. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_ghidra_capability_a3fd0105536597651f42c98ed1dbc2b7e}{shut\+Down}} (void)
+\begin{DoxyCompactList}\small\item\em Release all \mbox{\hyperlink{class_ghidra_command}{Ghidra\+Command}} resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_ghidra_capability_acb74036589d576cd7241c92337ca0eb4}{name}}
+\begin{DoxyCompactList}\small\item\em Identifier for capability and associated commands. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static map$<$ string, \mbox{\hyperlink{class_ghidra_command}{Ghidra\+Command}} $\ast$ $>$ \mbox{\hyperlink{class_ghidra_capability_a01f9c0ce45ccac28d5fa79d75c752587}{commandmap}}
+\begin{DoxyCompactList}\small\item\em The central map from {\itshape name} to Ghidra command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Registration point and dispatcher for commands sent to the decompiler. 
+
+This is the base class for {\bfseries{command}} {\bfseries{capabilities}} (sets of commands). All sets register their commands with a static {\bfseries{commandmap}}. This class provides the method \mbox{\hyperlink{class_ghidra_capability_a778472d4da43daeda23553684f87ad80}{read\+Command()}}, which does the work of parsing a command from the stream and dispatching to the correct \mbox{\hyperlink{class_ghidra_command}{Ghidra\+Command}} object. 
+
+Definition at line 38 of file ghidra\+\_\+process.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ghidra_capability_a5928ab9d0dd3212f9f7a732c62a3e390}\label{class_ghidra_capability_a5928ab9d0dd3212f9f7a732c62a3e390}} 
+\index{GhidraCapability@{GhidraCapability}!getName@{getName}}
+\index{getName@{getName}!GhidraCapability@{GhidraCapability}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const string\& Ghidra\+Capability\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the capability name. 
+
+
+
+Definition at line 43 of file ghidra\+\_\+process.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_capability_a778472d4da43daeda23553684f87ad80}\label{class_ghidra_capability_a778472d4da43daeda23553684f87ad80}} 
+\index{GhidraCapability@{GhidraCapability}!readCommand@{readCommand}}
+\index{readCommand@{readCommand}!GhidraCapability@{GhidraCapability}}
+\subsubsection{\texorpdfstring{readCommand()}{readCommand()}}
+{\footnotesize\ttfamily int4 Ghidra\+Capability\+::read\+Command (\begin{DoxyParamCaption}\item[{istream \&}]{sin,  }\item[{ostream \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Dispatch a Ghidra command. 
+
+A command is read from the Ghidra client. The matching \mbox{\hyperlink{class_ghidra_command}{Ghidra\+Command}} object is looked up in the {\bfseries{commandmap}}, and control is handed over to the command, with the i/o streams. The command must be issued following the proper message protocol (see \mbox{\hyperlink{class_architecture_ghidra_a3132c5fe1bb675952197aa4eafcf298e}{Architecture\+Ghidra\+::read\+To\+Any\+Burst}}) or an exception is thrown. 
+\begin{DoxyParams}{Parameters}
+{\em sin} & is the input stream from the client \\
+\hline
+{\em out} & is the output stream to the client \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the result code of the command 
+\end{DoxyReturn}
+
+
+Definition at line 458 of file ghidra\+\_\+process.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ghidra_capability_a778472d4da43daeda23553684f87ad80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{class_ghidra_capability_a778472d4da43daeda23553684f87ad80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_ghidra_capability_a3fd0105536597651f42c98ed1dbc2b7e}\label{class_ghidra_capability_a3fd0105536597651f42c98ed1dbc2b7e}} 
+\index{GhidraCapability@{GhidraCapability}!shutDown@{shutDown}}
+\index{shutDown@{shutDown}!GhidraCapability@{GhidraCapability}}
+\subsubsection{\texorpdfstring{shutDown()}{shutDown()}}
+{\footnotesize\ttfamily void Ghidra\+Capability\+::shut\+Down (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Release all \mbox{\hyperlink{class_ghidra_command}{Ghidra\+Command}} resources. 
+
+
+
+Definition at line 482 of file ghidra\+\_\+process.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{class_ghidra_capability_a3fd0105536597651f42c98ed1dbc2b7e_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_ghidra_capability_a01f9c0ce45ccac28d5fa79d75c752587}\label{class_ghidra_capability_a01f9c0ce45ccac28d5fa79d75c752587}} 
+\index{GhidraCapability@{GhidraCapability}!commandmap@{commandmap}}
+\index{commandmap@{commandmap}!GhidraCapability@{GhidraCapability}}
+\subsubsection{\texorpdfstring{commandmap}{commandmap}}
+{\footnotesize\ttfamily map$<$ string, \mbox{\hyperlink{class_ghidra_command}{Ghidra\+Command}} $\ast$ $>$ Ghidra\+Capability\+::commandmap\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+The central map from {\itshape name} to Ghidra command. 
+
+
+
+Definition at line 40 of file ghidra\+\_\+process.\+hh.
+
+\mbox{\Hypertarget{class_ghidra_capability_acb74036589d576cd7241c92337ca0eb4}\label{class_ghidra_capability_acb74036589d576cd7241c92337ca0eb4}} 
+\index{GhidraCapability@{GhidraCapability}!name@{name}}
+\index{name@{name}!GhidraCapability@{GhidraCapability}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Ghidra\+Capability\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Identifier for capability and associated commands. 
+
+
+
+Definition at line 41 of file ghidra\+\_\+process.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ghidra__process_8hh}{ghidra\+\_\+process.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ghidra__process_8cc}{ghidra\+\_\+process.\+cc}}\end{DoxyCompactItemize}

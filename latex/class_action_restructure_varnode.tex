@@ -1,0 +1,177 @@
+\hypertarget{class_action_restructure_varnode}{}\section{Action\+Restructure\+Varnode Class Reference}
+\label{class_action_restructure_varnode}\index{ActionRestructureVarnode@{ActionRestructureVarnode}}
+
+
+Create symbols that map out the local stack-\/frame for the function.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Restructure\+Varnode\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_action_restructure_varnode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Restructure\+Varnode\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_action_restructure_varnode__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_restructure_varnode_a3a01a62b2d1e74cc2b55c5fb89d2609a}{Action\+Restructure\+Varnode}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_action_restructure_varnode_a3dbf44512743482b15794628d8dc40af}{reset}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_restructure_varnode_ad29015bf18989dac6349662f96aa469f}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_restructure_varnode_ae2fc4e8dada82bfc532f072aebeb1a73}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Create symbols that map out the local stack-\/frame for the function. 
+
+This produces on intermediate view of symbols on the stack. 
+
+Definition at line 770 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_restructure_varnode_a3a01a62b2d1e74cc2b55c5fb89d2609a}\label{class_action_restructure_varnode_a3a01a62b2d1e74cc2b55c5fb89d2609a}} 
+\index{ActionRestructureVarnode@{ActionRestructureVarnode}!ActionRestructureVarnode@{ActionRestructureVarnode}}
+\index{ActionRestructureVarnode@{ActionRestructureVarnode}!ActionRestructureVarnode@{ActionRestructureVarnode}}
+\subsubsection{\texorpdfstring{ActionRestructureVarnode()}{ActionRestructureVarnode()}}
+{\footnotesize\ttfamily Action\+Restructure\+Varnode\+::\+Action\+Restructure\+Varnode (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 773 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_restructure_varnode_a3a01a62b2d1e74cc2b55c5fb89d2609a_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_restructure_varnode_ae2fc4e8dada82bfc532f072aebeb1a73}\label{class_action_restructure_varnode_ae2fc4e8dada82bfc532f072aebeb1a73}} 
+\index{ActionRestructureVarnode@{ActionRestructureVarnode}!apply@{apply}}
+\index{apply@{apply}!ActionRestructureVarnode@{ActionRestructureVarnode}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Restructure\+Varnode\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 1855 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_restructure_varnode_ae2fc4e8dada82bfc532f072aebeb1a73_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_restructure_varnode_ad29015bf18989dac6349662f96aa469f}\label{class_action_restructure_varnode_ad29015bf18989dac6349662f96aa469f}} 
+\index{ActionRestructureVarnode@{ActionRestructureVarnode}!clone@{clone}}
+\index{clone@{clone}!ActionRestructureVarnode@{ActionRestructureVarnode}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Restructure\+Varnode\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 775 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_restructure_varnode_ad29015bf18989dac6349662f96aa469f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_restructure_varnode_a3dbf44512743482b15794628d8dc40af}\label{class_action_restructure_varnode_a3dbf44512743482b15794628d8dc40af}} 
+\index{ActionRestructureVarnode@{ActionRestructureVarnode}!reset@{reset}}
+\index{reset@{reset}!ActionRestructureVarnode@{ActionRestructureVarnode}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual void Action\+Restructure\+Varnode\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the new function {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} may affect \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_ac7c1cf16bb63e0741ba16be5179cf943}{Action}}.
+
+
+
+Definition at line 774 of file coreaction.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

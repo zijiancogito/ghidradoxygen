@@ -1,0 +1,738 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{}\section{ghidra.\+app.\+decompiler.\+Decomp\+Interface Class Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+
+
+Collaboration diagram for ghidra.\+app.\+decompiler.\+Decomp\+Interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a8718a4830e01b22a87062178f37cba19}{Decomp\+Interface}} ()
+\item 
+synchronized void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a255a0680986c6d2c7bd0c674f56f9124}{enable\+Debug}} (File debugfile)
+\item 
+boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a634a9d0bbfd1fe75112f662aada77210}{debug\+Enabled}} ()
+\item 
+String \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a48e34641720039c672e1ea1ad3284e67}{get\+Simplification\+Style}} ()
+\item 
+Program \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a63b31332733fec7ab8cb2b87669203bc}{get\+Program}} ()
+\item 
+Language \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a7ed2bb195a7664d9be736016d0daa19d}{get\+Language}} ()
+\item 
+Pcode\+Data\+Type\+Manager \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab3fcaca7d6965b145c3d4b6041df2d05}{get\+Data\+Type\+Manager}} ()
+\item 
+String \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ac555389aec521f55bc520206d9a735be}{get\+Last\+Message}} ()
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a94b9fdc33332c1a8f1af70a2957408a6}{open\+Program}} (Program prog)
+\item 
+synchronized void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a3211ce7c55abceb8d2a9beba104ebbe6}{close\+Program}} ()
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6f21c198b5a43c80122198470b0310a8}{set\+Simplification\+Style}} (String actionstring)
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae7b7293b0cbec7e9c71cbbe6f3c8104e}{toggle\+Syntax\+Tree}} (boolean val)
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad43588ca711cada0fbc8421ebff714f5}{toggle\+C\+Code}} (boolean val)
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abb67168acc7272f70feac50007c29223}{toggle\+Param\+Measures}} (boolean val)
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae85bc75b791bef3138569cad3de61164}{toggle\+Jump\+Loads}} (boolean val)
+\item 
+synchronized boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a1c6be053337ad093e441a722c1b157b9}{set\+Options}} (\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_options}{Decompile\+Options}} xmloptions)
+\item 
+synchronized \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_options}{Decompile\+Options}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4a49d6b06c33e71fb1d336703d6b49cb}{get\+Options}} ()
+\item 
+synchronized int \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abc7f4380b716927ca1199f41af1307c9}{flush\+Cache}} ()
+\item 
+synchronized \mbox{\hyperlink{class_block_graph}{Block\+Graph}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a5cd68852b39b8dc136790b8741ee029d}{structure\+Graph}} (\mbox{\hyperlink{class_block_graph}{Block\+Graph}} ingraph, Address\+Factory factory, int timeout\+Secs, Task\+Monitor monitor)
+\item 
+synchronized \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results}{Decompile\+Results}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_afcd859e79e0529d90edaf9ec0731adb6}{decompile\+Function}} (Function func, int timeout\+Secs, Task\+Monitor monitor)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a9c46f9ab1edab88fecfb1ff9faa2d1df}{stop\+Process}} ()
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a627a3e6485e083dfbb41ffa25b131ad4}{dispose}} ()
+\item 
+Compiler\+Spec \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab7b5650e01b82f6c1c6f3cf23d3e758a}{get\+Compiler\+Spec}} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6bd1adef30f49c5f74d95619330c2325}{initialize\+Process}} ()  throws I\+O\+Exception, Decompile\+Exception 
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4c703f5ca2f5e769e5de90d28f2924c8}{verify\+Process}} ()  throws I\+O\+Exception, Decompile\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Program \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_aad6ea388303b2933617b5c3c2e8d825c}{program}}
+\item 
+String \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a05d30200ccba3276bd75a96ae2c8c3e7}{decompile\+Message}}
+\item 
+Basic\+Compiler\+Spec \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad62da6d33351c1ffbe94eb85b979e1b6}{compiler\+Spec}}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_process}{Decompile\+Process}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a2d91ad57faa15980a1e73bf14d38e761}{decomp\+Process}}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_callback}{Decompile\+Callback}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a047cb664b03573ad23bbf818b224f1a7}{decomp\+Callback}}
+\item 
+Cancelled\+Listener \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab1bc030ce7be45ff1ffd5e8cae5c02bf}{monitor\+Listener}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a self-\/contained interface to a single decompile process, suitable for an open-\/ended number of function decompilations for a single program. The interface is persistent. It caches all the initialization data passed to it, and if the underlying decompiler process crashes, it automatically respawns the process and reinitializes it the next time it is needed. The basic usage pattern is as follows
+
+// Instantiate the interface \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}} ifc = new \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a8718a4830e01b22a87062178f37cba19}{Decomp\+Interface()}};
+
+// Setup any options or other initialization ifc.\+set\+Options(xml\+Options); // Inform interface of global options // ifc.\+toggle\+Syntax\+Tree(false); // Don\textquotesingle{}t produce syntax trees // ifc.\+toggle\+C\+Code(false); // Don\textquotesingle{}t produce C code // ifc.\+set\+Simplification\+Style(\char`\"{}normalize\char`\"{}); // Alternate analysis style
+
+// Setup up the actual decompiler process for a // particular program, using all the above initialization ifc.\+open\+Program(program,language);
+
+// Make calls to the decompiler\+: \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results}{Decompile\+Results}} res = ifc.\+decompile\+Function(func,0,taskmonitor);
+
+// Check for error conditions if (!res.decompile\+Completed()) \{ system.\+out.\+println(res.\+get\+Error\+Message()); return; \}
+
+// Make use of results // Get C code \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_clang_token_group}{Clang\+Token\+Group}} tokgroup = res.\+get\+C\+Code\+Markup(); ...
+
+// Get the function object/syntax tree High\+Function hfunc = res.\+get\+High\+Function(); ... 
+
+Definition at line 81 of file Decomp\+Interface.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a8718a4830e01b22a87062178f37cba19}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a8718a4830e01b22a87062178f37cba19}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!DecompInterface@{DecompInterface}}
+\index{DecompInterface@{DecompInterface}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{DecompInterface()}{DecompInterface()}}
+{\footnotesize\ttfamily ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+Decomp\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 108 of file Decomp\+Interface.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a3211ce7c55abceb8d2a9beba104ebbe6}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a3211ce7c55abceb8d2a9beba104ebbe6}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!closeProgram@{closeProgram}}
+\index{closeProgram@{closeProgram}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{closeProgram()}{closeProgram()}}
+{\footnotesize\ttfamily synchronized void ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+close\+Program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Shutdown any existing decompiler process and free resources. The interface cannot be used again to perform decompilations until an open\+Program call is made again. 
+
+Definition at line 342 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a3211ce7c55abceb8d2a9beba104ebbe6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a634a9d0bbfd1fe75112f662aada77210}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a634a9d0bbfd1fe75112f662aada77210}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!debugEnabled@{debugEnabled}}
+\index{debugEnabled@{debugEnabled}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{debugEnabled()}{debugEnabled()}}
+{\footnotesize\ttfamily boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+debug\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns true if debug has been enabled for the current/next decompilation. 
+
+Definition at line 136 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_afcd859e79e0529d90edaf9ec0731adb6}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_afcd859e79e0529d90edaf9ec0731adb6}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!decompileFunction@{decompileFunction}}
+\index{decompileFunction@{decompileFunction}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{decompileFunction()}{decompileFunction()}}
+{\footnotesize\ttfamily synchronized \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results}{Decompile\+Results}} ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+decompile\+Function (\begin{DoxyParamCaption}\item[{Function}]{func,  }\item[{int}]{timeout\+Secs,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Decompile function 
+\begin{DoxyParams}{Parameters}
+{\em func} & function to be decompiled \\
+\hline
+{\em timeout\+Secs} & if decompile does not complete in this time a null value will be returned and a timeout error set. \\
+\hline
+{\em monitor} & optional task monitor which may be used to cancel decompile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+decompiled function text 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Cancelled\+Exception} & operation was cancelled via monitor \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 673 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_afcd859e79e0529d90edaf9ec0731adb6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_afcd859e79e0529d90edaf9ec0731adb6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a627a3e6485e083dfbb41ffa25b131ad4}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a627a3e6485e083dfbb41ffa25b131ad4}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!dispose@{dispose}}
+\index{dispose@{dispose}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{dispose()}{dispose()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 749 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a627a3e6485e083dfbb41ffa25b131ad4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a255a0680986c6d2c7bd0c674f56f9124}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a255a0680986c6d2c7bd0c674f56f9124}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!enableDebug@{enableDebug}}
+\index{enableDebug@{enableDebug}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{enableDebug()}{enableDebug()}}
+{\footnotesize\ttfamily synchronized void ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+enable\+Debug (\begin{DoxyParamCaption}\item[{File}]{debugfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Turn on debugging dump for the next decompiled function 
+\begin{DoxyParams}{Parameters}
+{\em filename} & in which to save dump \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abc7f4380b716927ca1199f41af1307c9}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abc7f4380b716927ca1199f41af1307c9}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!flushCache@{flushCache}}
+\index{flushCache@{flushCache}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{flushCache()}{flushCache()}}
+{\footnotesize\ttfamily synchronized int ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+flush\+Cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Tell the decompiler to clear any function and symbol information it gathered from the database. Its a good idea to call this after any decompile\+Function call, as the decompile process caches and reuses this kind of data, and there is no explicit method for keeping the cache in sync with the data base. Currently the return value has no meaning. \begin{DoxyReturn}{Returns}
+-\/1 
+\end{DoxyReturn}
+
+
+Definition at line 615 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abc7f4380b716927ca1199f41af1307c9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab7b5650e01b82f6c1c6f3cf23d3e758a}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab7b5650e01b82f6c1c6f3cf23d3e758a}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!getCompilerSpec@{getCompilerSpec}}
+\index{getCompilerSpec@{getCompilerSpec}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{getCompilerSpec()}{getCompilerSpec()}}
+{\footnotesize\ttfamily Compiler\+Spec ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+get\+Compiler\+Spec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 765 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab3fcaca7d6965b145c3d4b6041df2d05}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab3fcaca7d6965b145c3d4b6041df2d05}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!getDataTypeManager@{getDataTypeManager}}
+\index{getDataTypeManager@{getDataTypeManager}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{getDataTypeManager()}{getDataTypeManager()}}
+{\footnotesize\ttfamily Pcode\+Data\+Type\+Manager ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+get\+Data\+Type\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 156 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a7ed2bb195a7664d9be736016d0daa19d}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a7ed2bb195a7664d9be736016d0daa19d}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!getLanguage@{getLanguage}}
+\index{getLanguage@{getLanguage}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{getLanguage()}{getLanguage()}}
+{\footnotesize\ttfamily Language ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+get\+Language (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 152 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ac555389aec521f55bc520206d9a735be}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ac555389aec521f55bc520206d9a735be}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!getLastMessage@{getLastMessage}}
+\index{getLastMessage@{getLastMessage}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{getLastMessage()}{getLastMessage()}}
+{\footnotesize\ttfamily String ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+get\+Last\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the last message produced by the decompiler process. If the message is non-\/null, it is probably an error message, but not always. It is better to use the get\+Error\+Message method off of \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results}{Decompile\+Results}}. \begin{DoxyReturn}{Returns}
+the message string or null 
+\end{DoxyReturn}
+
+
+Definition at line 167 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4a49d6b06c33e71fb1d336703d6b49cb}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4a49d6b06c33e71fb1d336703d6b49cb}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!getOptions@{getOptions}}
+\index{getOptions@{getOptions}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{getOptions()}{getOptions()}}
+{\footnotesize\ttfamily synchronized \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_options}{Decompile\+Options}} ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+get\+Options (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the options currently in effect for the decompiler
+
+\begin{DoxyReturn}{Returns}
+options that will be passed to the decompiler 
+\end{DoxyReturn}
+
+
+Definition at line 601 of file Decomp\+Interface.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4a49d6b06c33e71fb1d336703d6b49cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a63b31332733fec7ab8cb2b87669203bc}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a63b31332733fec7ab8cb2b87669203bc}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!getProgram@{getProgram}}
+\index{getProgram@{getProgram}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{getProgram()}{getProgram()}}
+{\footnotesize\ttfamily Program ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+get\+Program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 148 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a48e34641720039c672e1ea1ad3284e67}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a48e34641720039c672e1ea1ad3284e67}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!getSimplificationStyle@{getSimplificationStyle}}
+\index{getSimplificationStyle@{getSimplificationStyle}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{getSimplificationStyle()}{getSimplificationStyle()}}
+{\footnotesize\ttfamily String ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+get\+Simplification\+Style (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the identifier for the current simplification style \begin{DoxyReturn}{Returns}
+the identifier as a String 
+\end{DoxyReturn}
+
+
+Definition at line 144 of file Decomp\+Interface.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a48e34641720039c672e1ea1ad3284e67_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6bd1adef30f49c5f74d95619330c2325}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6bd1adef30f49c5f74d95619330c2325}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!initializeProcess@{initializeProcess}}
+\index{initializeProcess@{initializeProcess}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{initializeProcess()}{initializeProcess()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+initialize\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws I\+O\+Exception, \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_exception}{Decompile\+Exception}}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+This is the main routine for making sure that a decompiler process is active and that it is initialized properly 
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+{\em \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_exception}{Decompile\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 205 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6bd1adef30f49c5f74d95619330c2325_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a94b9fdc33332c1a8f1af70a2957408a6}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a94b9fdc33332c1a8f1af70a2957408a6}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!openProgram@{openProgram}}
+\index{openProgram@{openProgram}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{openProgram()}{openProgram()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+open\+Program (\begin{DoxyParamCaption}\item[{Program}]{prog }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This call initializes a new decompiler process to do decompilations for a new program. This method only needs to be called once per program. Even if the underlying decompiler process crashes, the interface will automatically restart and reinitialize a new process when it needs it, and the open\+Program call does not need to be made again. The call can be made multiple times, in which case, each call terminates the process initialized the last time and starts a new process 
+\begin{DoxyParams}{Parameters}
+{\em prog} & = the program on which to perform decompilations \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decompiler process is successfully initialized 
+\end{DoxyReturn}
+
+
+Definition at line 293 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a94b9fdc33332c1a8f1af70a2957408a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a94b9fdc33332c1a8f1af70a2957408a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a1c6be053337ad093e441a722c1b157b9}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a1c6be053337ad093e441a722c1b157b9}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!setOptions@{setOptions}}
+\index{setOptions@{setOptions}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{setOptions()}{setOptions()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+set\+Options (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_options}{Decompile\+Options}}}]{xmloptions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the object controlling the list of global options used by the decompiler. Ideally this is called once, before the open\+Program call is made. But it can be used at any time, if the options change in the middle of a sequence of decompiles. If there is no change to the options, this method does N\+OT need to be called repeatedly. Even after recovering from decompiler process crash, the interface keeps the options object around and automatically sends it to the new decompiler process. 
+\begin{DoxyParams}{Parameters}
+{\em xmloptions} & the new (or changed) option object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decompiler process accepted the new options 
+\end{DoxyReturn}
+
+
+Definition at line 572 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a1c6be053337ad093e441a722c1b157b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a1c6be053337ad093e441a722c1b157b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6f21c198b5a43c80122198470b0310a8}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6f21c198b5a43c80122198470b0310a8}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!setSimplificationStyle@{setSimplificationStyle}}
+\index{setSimplificationStyle@{setSimplificationStyle}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{setSimplificationStyle()}{setSimplificationStyle()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+set\+Simplification\+Style (\begin{DoxyParamCaption}\item[{String}]{actionstring }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This allows the application to the type of analysis performed by the decompiler, by giving the name of an analysis class. Right now, there are a few predefined classes. But there soon may be support for applications to define their own class and tailoring the decompiler\textquotesingle{}s behaviour for that class. 
+
+The current predefined analysis class are\+: 
+\begin{DoxyItemize}
+\item \char`\"{}decompile\char`\"{} -\/ this is the default, and performs all analysis steps suitable for producing C code. 
+\item \char`\"{}normalize\char`\"{} -\/ omits type recovery from the analysis and some of the final clean-\/up steps involved in making valid C code. It is suitable for creating normalized pcode syntax trees of the dataflow. 
+\item \char`\"{}firstpass\char`\"{} -\/ does no analysis, but produces an unmodified syntax tree of the dataflow from the 
+\item \char`\"{}register\char`\"{} -\/ does ???. 
+\item \char`\"{}paramid\char`\"{} -\/ does required amount of decompilation followed by analysis steps that send parameter measure information for parameter id analysis. raw pcode. 
+\end{DoxyItemize}
+
+This property should ideally be set once before the open\+Program call is made, but it can be used repeatedly if the application needs to change analysis style in the middle of a sequence of decompiles. Unless the style changes, the method does N\+OT need to be called repeatedly. Even after a crash, the new decompiler process will automatically configured with the cached style value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em actionstring} & \char`\"{}decompile\char`\"{}$\vert$\char`\"{}normalize\char`\"{}$\vert$\char`\"{}register\char`\"{}$\vert$\char`\"{}firstpass\char`\"{}$\vert$\char`\"{}paramid\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/ if the decompiler process was successfully configured 
+\end{DoxyReturn}
+
+
+Definition at line 400 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6f21c198b5a43c80122198470b0310a8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a6f21c198b5a43c80122198470b0310a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a9c46f9ab1edab88fecfb1ff9faa2d1df}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a9c46f9ab1edab88fecfb1ff9faa2d1df}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!stopProcess@{stopProcess}}
+\index{stopProcess@{stopProcess}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{stopProcess()}{stopProcess()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+stop\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Stop the decompile process.
+
+N\+O\+TE\+: Subsequent calls made from another
+
+thread to this \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}} object may fail since the decompiler process is being yanked away. 
+
+Definition at line 743 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a9c46f9ab1edab88fecfb1ff9faa2d1df_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a5cd68852b39b8dc136790b8741ee029d}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a5cd68852b39b8dc136790b8741ee029d}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!structureGraph@{structureGraph}}
+\index{structureGraph@{structureGraph}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{structureGraph()}{structureGraph()}}
+{\footnotesize\ttfamily synchronized \mbox{\hyperlink{class_block_graph}{Block\+Graph}} ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+structure\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_block_graph}{Block\+Graph}}}]{ingraph,  }\item[{Address\+Factory}]{factory,  }\item[{int}]{timeout\+Secs,  }\item[{Task\+Monitor}]{monitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 633 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a5cd68852b39b8dc136790b8741ee029d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad43588ca711cada0fbc8421ebff714f5}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad43588ca711cada0fbc8421ebff714f5}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!toggleCCode@{toggleCCode}}
+\index{toggleCCode@{toggleCCode}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{toggleCCode()}{toggleCCode()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+toggle\+C\+Code (\begin{DoxyParamCaption}\item[{boolean}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Toggle whether or not calls to the decompiler process (via the decompile\+Function method) produce C code. The default is to always compute C code, but some applications may only need the syntax tree or other function information. Ideally this method should be called once before the open\+Program call, but it can be used at any time, if the application wants to change before in the middle of a sequence of decompiles. Unless the desired value changes, the method does N\+OT need to be called repeatedly. Even after a decompiler process crash, the old value is cached and automatically sent to the new process 
+\begin{DoxyParams}{Parameters}
+{\em val} & = true, to produce C code, false otherwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decompiler process accepted the new state 
+\end{DoxyReturn}
+
+
+Definition at line 472 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad43588ca711cada0fbc8421ebff714f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad43588ca711cada0fbc8421ebff714f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae85bc75b791bef3138569cad3de61164}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae85bc75b791bef3138569cad3de61164}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!toggleJumpLoads@{toggleJumpLoads}}
+\index{toggleJumpLoads@{toggleJumpLoads}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{toggleJumpLoads()}{toggleJumpLoads()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+toggle\+Jump\+Loads (\begin{DoxyParamCaption}\item[{boolean}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Toggle whether or not the decompiler process should return information about tables used to recover switch statements. Most compilers implement switch statements using a so called \char`\"{}jumptable\char`\"{} of addresses or offsets. The decompiler can frequently recover this and can return a description of the table 
+\begin{DoxyParams}{Parameters}
+{\em val} & = true, to have the decompiler return table info, false otherwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decompiler process accepted the new state 
+\end{DoxyReturn}
+
+
+Definition at line 537 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae85bc75b791bef3138569cad3de61164_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abb67168acc7272f70feac50007c29223}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abb67168acc7272f70feac50007c29223}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!toggleParamMeasures@{toggleParamMeasures}}
+\index{toggleParamMeasures@{toggleParamMeasures}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{toggleParamMeasures()}{toggleParamMeasures()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+toggle\+Param\+Measures (\begin{DoxyParamCaption}\item[{boolean}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Toggle whether or not calls to the decompiler process (via the decompile\+Function method) produce Parameter Measures. The default is to not compute Parameter Measures. Ideally this method should be called once before the open\+Program call, but it can be used at any time, if the application wants to change before in the middle of a sequence of decompiles. Unless the desired value changes, the method does N\+OT need to be called repeatedly. Even after a decompiler process crash, the old value is cached and automatically sent to the new process 
+\begin{DoxyParams}{Parameters}
+{\em val} & = true, to produce C code, false otherwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decompiler process accepted the new state 
+\end{DoxyReturn}
+
+
+Definition at line 508 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_abb67168acc7272f70feac50007c29223_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae7b7293b0cbec7e9c71cbbe6f3c8104e}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae7b7293b0cbec7e9c71cbbe6f3c8104e}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!toggleSyntaxTree@{toggleSyntaxTree}}
+\index{toggleSyntaxTree@{toggleSyntaxTree}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{toggleSyntaxTree()}{toggleSyntaxTree()}}
+{\footnotesize\ttfamily synchronized boolean ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+toggle\+Syntax\+Tree (\begin{DoxyParamCaption}\item[{boolean}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method toggles whether or not the decompiler produces a syntax tree (via calls to decompile\+Function). The default is to always produce a syntax tree, but some applications may only need C code. Ideally this method should be called once before the open\+Program call, but it can be used at any time, if the application wants to change before in the middle of a sequence of decompiles. Unless the desired value changes, the method does N\+OT need to be called repeatedly. Even after a decompiler process crash, the old value is cached and automatically sent to the new process 
+\begin{DoxyParams}{Parameters}
+{\em val} & = true, to produce a syntax tree, false otherwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decompiler process, accepted the change of state 
+\end{DoxyReturn}
+
+
+Definition at line 435 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae7b7293b0cbec7e9c71cbbe6f3c8104e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ae7b7293b0cbec7e9c71cbbe6f3c8104e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4c703f5ca2f5e769e5de90d28f2924c8}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4c703f5ca2f5e769e5de90d28f2924c8}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!verifyProcess@{verifyProcess}}
+\index{verifyProcess@{verifyProcess}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{verifyProcess()}{verifyProcess()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+verify\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws I\+O\+Exception, \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_exception}{Decompile\+Exception}}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 270 of file Decomp\+Interface.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a4c703f5ca2f5e769e5de90d28f2924c8_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad62da6d33351c1ffbe94eb85b979e1b6}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ad62da6d33351c1ffbe94eb85b979e1b6}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!compilerSpec@{compilerSpec}}
+\index{compilerSpec@{compilerSpec}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{compilerSpec}{compilerSpec}}
+{\footnotesize\ttfamily Basic\+Compiler\+Spec ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+compiler\+Spec\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 89 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a047cb664b03573ad23bbf818b224f1a7}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a047cb664b03573ad23bbf818b224f1a7}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!decompCallback@{decompCallback}}
+\index{decompCallback@{decompCallback}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{decompCallback}{decompCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_callback}{Decompile\+Callback}} ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+decomp\+Callback\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 91 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a05d30200ccba3276bd75a96ae2c8c3e7}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a05d30200ccba3276bd75a96ae2c8c3e7}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!decompileMessage@{decompileMessage}}
+\index{decompileMessage@{decompileMessage}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{decompileMessage}{decompileMessage}}
+{\footnotesize\ttfamily String ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+decompile\+Message\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 88 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a2d91ad57faa15980a1e73bf14d38e761}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a2d91ad57faa15980a1e73bf14d38e761}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!decompProcess@{decompProcess}}
+\index{decompProcess@{decompProcess}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{decompProcess}{decompProcess}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_process}{Decompile\+Process}} ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+decomp\+Process\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 90 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab1bc030ce7be45ff1ffd5e8cae5c02bf}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_ab1bc030ce7be45ff1ffd5e8cae5c02bf}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!monitorListener@{monitorListener}}
+\index{monitorListener@{monitorListener}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{monitorListener}{monitorListener}}
+{\footnotesize\ttfamily Cancelled\+Listener ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+monitor\+Listener\hspace{0.3cm}{\ttfamily [protected]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new} CancelledListener() \{}
+\DoxyCodeLine{        @\mbox{\hyperlink{class_override}{Override}}}
+\DoxyCodeLine{        \textcolor{keyword}{public} \textcolor{keywordtype}{void} cancelled() \{}
+\DoxyCodeLine{            \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_a9c46f9ab1edab88fecfb1ff9faa2d1df}{stopProcess}}();}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Definition at line 93 of file Decomp\+Interface.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_aad6ea388303b2933617b5c3c2e8d825c}\label{classghidra_1_1app_1_1decompiler_1_1_decomp_interface_aad6ea388303b2933617b5c3c2e8d825c}} 
+\index{ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}!program@{program}}
+\index{program@{program}!ghidra.app.decompiler.DecompInterface@{ghidra.app.decompiler.DecompInterface}}
+\subsubsection{\texorpdfstring{program}{program}}
+{\footnotesize\ttfamily Program ghidra.\+app.\+decompiler.\+Decomp\+Interface.\+program\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 83 of file Decomp\+Interface.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/\mbox{\hyperlink{_decomp_interface_8java}{Decomp\+Interface.\+java}}\end{DoxyCompactItemize}

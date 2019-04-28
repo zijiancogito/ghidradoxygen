@@ -1,0 +1,501 @@
+.TH "BlockBasic" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockBasic \- A basic block for p-code operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBFlowBlock\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockBasic\fP (\fBFuncdata\fP *fd)"
+.br
+.RI "Construct given the underlying function\&. "
+.ti -1c
+.RI "\fBFuncdata\fP * \fBgetFuncdata\fP (void)"
+.br
+.RI "Return the underlying \fBFuncdata\fP object\&. "
+.ti -1c
+.RI "const \fBFuncdata\fP * \fBgetFuncdata\fP (void) const"
+.br
+.RI "Return the underlying \fBFuncdata\fP object\&. "
+.ti -1c
+.RI "bool \fBcontains\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Determine if the given address is contained in the original range\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetEntryAddr\fP (void) const"
+.br
+.RI "Get the address of the (original) first operation to execute\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetStart\fP (void) const"
+.br
+.RI "Get the starting address of code in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetStop\fP (void) const"
+.br
+.RI "Get the ending address of code in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBsubBlock\fP (int4 i) const"
+.br
+.RI "Get the i-th component block\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlBody\fP (ostream &s) const"
+.br
+.RI "Save detail about components to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXmlBody\fP (List::const_iterator &iter, List::const_iterator enditer, \fBBlockMap\fP &resolver)"
+.br
+.RI "Restore details about \fBthis\fP \fBFlowBlock\fP from an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual const \fBFlowBlock\fP * \fBgetExitLeaf\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. "
+.ti -1c
+.RI "virtual \fBPcodeOp\fP * \fBlastOp\fP (void) const"
+.br
+.RI "Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual bool \fBnegateCondition\fP (bool toporbottom)"
+.br
+.RI "Flip the condition computed by \fBthis\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBgetSplitPoint\fP (void)"
+.br
+.RI "Get the leaf splitting block\&. "
+.ti -1c
+.RI "virtual int4 \fBflipInPlaceTest\fP (vector< \fBPcodeOp\fP * > &fliplist) const"
+.br
+.RI "Test normalizing the conditional branch in \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBflipInPlaceExecute\fP (void)"
+.br
+.RI "Perform the flip to normalize conditional branch executed by \fBthis\fP block\&. "
+.ti -1c
+.RI "virtual bool \fBisComplex\fP (void) const"
+.br
+.RI "Is \fBthis\fP too complex to be a condition (\fBBlockCondition\fP) "
+.ti -1c
+.RI "bool \fBunblockedMulti\fP (int4 outslot) const"
+.br
+.RI "Check if \fBthis\fP block can be removed without introducing inconsistencies\&. "
+.ti -1c
+.RI "bool \fBhasOnlyMarkers\fP (void) const"
+.br
+.RI "Does \fBthis\fP block contain only MULTIEQUAL and INDIRECT ops\&. "
+.ti -1c
+.RI "bool \fBisDoNothing\fP (void) const"
+.br
+.RI "Should \fBthis\fP block should be removed\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::iterator \fBbeginOp\fP (void)"
+.br
+.RI "Return an iterator to the beginning of the PcodeOps\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::iterator \fBendOp\fP (void)"
+.br
+.RI "Return an iterator to the end of the PcodeOps\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBbeginOp\fP (void) const"
+.br
+.RI "Return an iterator to the beginning of the PcodeOps\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::const_iterator \fBendOp\fP (void) const"
+.br
+.RI "Return an iterator to the end of the PcodeOps\&. "
+.ti -1c
+.RI "bool \fBemptyOp\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBblock\fP contains no operations\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBnoInterveningStatement\fP (\fBPcodeOp\fP *first, int4 path, \fBPcodeOp\fP *last)"
+.br
+.RI "Check if there is meaningful activity between two branch instructions\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBFuncdata\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A basic block for p-code operations\&. 
+
+A \fBbasic\fP \fBblock\fP is a maximal sequence of p-code operations (\fBPcodeOp\fP) that, within the context of a function, always execute starting with the first operation in sequence through in order to the last operation\&. Any decision points in the control flow of a function manifest as branching operations (BRANCH, CBRANCH, BRANCHIND) that necessarily occur as the last operation in a basic block\&.
+.PP
+Every \fBFuncdata\fP object implements the control-flow graph of the underlying function using \fBBlockBasic\fP objects as the underlying nodes of the graph\&. The decompiler structures code by making a copy of this graph and then overlaying a hierarchy of structured nodes on top of it\&.
+.PP
+The block also keeps track of the original range of addresses of instructions constituting the block\&. As decompiler transformations progress, the set of addresses associated with the current set of PcodeOps my migrate away from this original range\&. 
+.PP
+Definition at line 360 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BlockBasic::BlockBasic (\fBFuncdata\fP * fd)\fC [inline]\fP"
+
+.PP
+Construct given the underlying function\&. 
+.PP
+Definition at line 372 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "list<\fBPcodeOp\fP *>::iterator BlockBasic::beginOp (void)\fC [inline]\fP"
+
+.PP
+Return an iterator to the beginning of the PcodeOps\&. 
+.PP
+Definition at line 396 of file block\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator BlockBasic::beginOp (void) const\fC [inline]\fP"
+
+.PP
+Return an iterator to the beginning of the PcodeOps\&. 
+.PP
+Definition at line 398 of file block\&.hh\&.
+.SS "bool BlockBasic::contains (const \fBAddress\fP & addr) const\fC [inline]\fP"
+
+.PP
+Determine if the given address is contained in the original range\&. 
+.PP
+Definition at line 375 of file block\&.hh\&.
+.SS "virtual void BlockBasic::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 385 of file block\&.hh\&.
+.SS "bool BlockBasic::emptyOp (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBblock\fP contains no operations\&. 
+.PP
+Definition at line 400 of file block\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::iterator BlockBasic::endOp (void)\fC [inline]\fP"
+
+.PP
+Return an iterator to the end of the PcodeOps\&. 
+.PP
+Definition at line 397 of file block\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::const_iterator BlockBasic::endOp (void) const\fC [inline]\fP"
+
+.PP
+Return an iterator to the end of the PcodeOps\&. 
+.PP
+Definition at line 399 of file block\&.hh\&.
+.SS "void BlockBasic::flipInPlaceExecute (void)\fC [virtual]\fP"
+
+.PP
+Perform the flip to normalize conditional branch executed by \fBthis\fP block\&. This reverses the outgoing edge order in the right basic blocks, but does not modify the instructions directly\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2185 of file block\&.cc\&.
+.SS "int4 BlockBasic::flipInPlaceTest (vector< \fBPcodeOp\fP * > & fliplist) const\fC [virtual]\fP"
+
+.PP
+Test normalizing the conditional branch in \fBthis\fP\&. Find the set of \fBPcodeOp\fP objects that need to be adjusted to flip the condition \fBthis\fP \fBFlowBlock\fP calculates\&.
+.PP
+Return:
+.IP "\(bu" 2
+0 if the flip would normalize the condition
+.IP "\(bu" 2
+1 if the flip doesn't affect normalization of the condition
+.IP "\(bu" 2
+2 if the flip produces an unnormalized condition 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfliplist\fP will contain the PcodeOps that need to be adjusted 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 if the condition will be normalized, 1 or 2 otherwise 
+.RE
+.PP
+
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2175 of file block\&.cc\&.
+.SS "\fBAddress\fP BlockBasic::getEntryAddr (void) const"
+
+.PP
+Get the address of the (original) first operation to execute\&. This relies slightly on \fInormal\fP semantics: when instructions \fIfall-thru\fP during execution, the associated address increases\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the address of the original entry point instruction for \fBthis\fP block 
+.RE
+.PP
+
+.PP
+Definition at line 2116 of file block\&.cc\&.
+.SS "virtual const \fBFlowBlock\fP* BlockBasic::getExitLeaf (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 386 of file block\&.hh\&.
+.SS "\fBFuncdata\fP* BlockBasic::getFuncdata (void)\fC [inline]\fP"
+
+.PP
+Return the underlying \fBFuncdata\fP object\&. 
+.PP
+Definition at line 373 of file block\&.hh\&.
+.SS "const \fBFuncdata\fP* BlockBasic::getFuncdata (void) const\fC [inline]\fP"
+
+.PP
+Return the underlying \fBFuncdata\fP object\&. 
+.PP
+Definition at line 374 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP * BlockBasic::getSplitPoint (void)\fC [virtual]\fP"
+
+.PP
+Get the leaf splitting block\&. If \fBthis\fP block ends with a conditional branch, return the deepest component block that performs the split\&. This component needs to be able to perform \fBflipInPlaceTest()\fP and \fBflipInPlaceExecute()\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+the component \fBFlowBlock\fP or NULL if this doesn't end in a conditional branch 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2168 of file block\&.cc\&.
+.SS "\fBAddress\fP BlockBasic::getStart (void) const\fC [virtual]\fP"
+
+.PP
+Get the starting address of code in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2133 of file block\&.cc\&.
+.SS "\fBAddress\fP BlockBasic::getStop (void) const\fC [virtual]\fP"
+
+.PP
+Get the ending address of code in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2142 of file block\&.cc\&.
+.SS "virtual \fBblock_type\fP BlockBasic::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 379 of file block\&.hh\&.
+.SS "bool BlockBasic::hasOnlyMarkers (void) const"
+
+.PP
+Does \fBthis\fP block contain only MULTIEQUAL and INDIRECT ops\&. This is a crucial test for whether \fBthis\fP block is doing anything substantial or is a candidate for removal\&. Even blocks that 'do nothing' have some kind of branch and placeholder operations (MULTIEQUAL and INDIRECT) for data flowing through the block\&. This tests if there is any other operation going on\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if there only MULTIEQUAL, INDIRECT, and branch operations in \fBthis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2392 of file block\&.cc\&.
+.SS "bool BlockBasic::isComplex (void) const\fC [virtual]\fP"
+
+.PP
+Is \fBthis\fP too complex to be a condition (\fBBlockCondition\fP) 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2195 of file block\&.cc\&.
+.SS "bool BlockBasic::isDoNothing (void) const"
+
+.PP
+Should \fBthis\fP block should be removed\&. Check if \fBthis\fP block is doing anything useful\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the block does nothing and should be removed 
+.RE
+.PP
+
+.PP
+Definition at line 2410 of file block\&.cc\&.
+.SS "\fBPcodeOp\fP * BlockBasic::lastOp (void) const\fC [virtual]\fP"
+
+.PP
+Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2151 of file block\&.cc\&.
+.SS "bool BlockBasic::negateCondition (bool toporbottom)\fC [virtual]\fP"
+
+.PP
+Flip the condition computed by \fBthis\fP\&. Flip the order of outgoing edges (at least)\&. This should also affect the original op causing the condition\&. Note: we don't have to flip at all levels of the hierarchy only at the top and at the bottom 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoporbottom\fP is \fBtrue\fP if \fBthis\fP is the top outermost block of the hierarchy getting negated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made to data-flow 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2158 of file block\&.cc\&.
+.SS "bool BlockBasic::noInterveningStatement (\fBPcodeOp\fP * first, int4 path, \fBPcodeOp\fP * last)\fC [static]\fP"
+
+.PP
+Check if there is meaningful activity between two branch instructions\&. The first branch is assumed to be a CBRANCH one edge of which flows into the other branch\&. The flow can be through 1 or 2 blocks\&. If either block performs an operation other than MULTIEQUAL, INDIRECT (or the branch), then return \fBfalse\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP is the CBRANCH operation 
+.br
+\fIpath\fP is the index of the edge to follow to the other branch 
+.br
+\fIlast\fP is the other branch operation 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if there is no meaningful activity 
+.RE
+.PP
+
+.PP
+Definition at line 2506 of file block\&.cc\&.
+.SS "void BlockBasic::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2473 of file block\&.cc\&.
+.SS "void BlockBasic::printRaw (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2480 of file block\&.cc\&.
+.SS "void BlockBasic::restoreXmlBody (List::const_iterator & iter, List::const_iterator enditer, \fBBlockMap\fP & resolver)\fC [virtual]\fP"
+
+.PP
+Restore details about \fBthis\fP \fBFlowBlock\fP from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiter\fP is an iterator to XML elements containing component tags etc\&. 
+.br
+\fIenditer\fP marks the end of the XML tags 
+.br
+\fIresolver\fP is used to recover \fBFlowBlock\fP objects based on XML references 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2466 of file block\&.cc\&.
+.SS "void BlockBasic::saveXmlBody (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save detail about components to an XML stream\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2460 of file block\&.cc\&.
+.SS "virtual \fBFlowBlock\fP* BlockBasic::subBlock (int4 i) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the i-th component block\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 380 of file block\&.hh\&.
+.SS "bool BlockBasic::unblockedMulti (int4 outslot) const"
+
+.PP
+Check if \fBthis\fP block can be removed without introducing inconsistencies\&. Does removing this block leads to redundant MULTIEQUAL entries which are inconsistent\&. A MULTIEQUAL can hide an implied copy, in which case \fBthis\fP block is actually doing something and shouldn't be removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoutslot\fP is the index of the outblock that \fBthis\fP is getting collapsed to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if there is no implied COPY 
+.RE
+.PP
+
+.PP
+Definition at line 2348 of file block\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBFuncdata\fP\fC [friend]\fP"
+
+.PP
+Definition at line 361 of file block\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

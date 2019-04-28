@@ -1,0 +1,803 @@
+\hypertarget{class_symbol_entry}{}\section{Symbol\+Entry Class Reference}
+\label{class_symbol_entry}\index{SymbolEntry@{SymbolEntry}}
+
+
+A storage location for a particular \mbox{\hyperlink{class_symbol}{Symbol}}.  
+
+
+
+
+{\ttfamily \#include $<$database.\+hh$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_symbol_entry_1_1_entry_init_data}{Entry\+Init\+Data}}
+\begin{DoxyCompactList}\small\item\em Initialization data for a \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} to facilitate a rangemap. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_symbol_entry_1_1_entry_subsort}{Entry\+Subsort}}
+\begin{DoxyCompactList}\small\item\em Class for sub-\/sorting different \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} objects at the same address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_symbol_entry_a314b03465bd3849ffe266057d69a7e37}{linetype}}
+\begin{DoxyCompactList}\small\item\em The linear element for a rangemap of \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{class_symbol_entry_1_1_entry_subsort}{Entry\+Subsort}} \mbox{\hyperlink{class_symbol_entry_a3163188293595446b1f1dafccab7df15}{subsorttype}}
+\begin{DoxyCompactList}\small\item\em The sub-\/sort object for a rangemap. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{class_symbol_entry_1_1_entry_init_data}{Entry\+Init\+Data}} \mbox{\hyperlink{class_symbol_entry_adca9545cc0e46b574a9cf9fbb44cfca8}{inittype}}
+\begin{DoxyCompactList}\small\item\em Initialization data for a \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} in a rangemap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_symbol_entry_a50c0100d619041b6e485e7ec533fc2b8}{Symbol\+Entry}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b)
+\begin{DoxyCompactList}\small\item\em Construct given just the offset range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_symbol_entry_a1233239187212ed427a718aae75e524c}{Symbol\+Entry}} (\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$sym, uint4 exfl, uint8 h, int4 off, int4 sz, const \mbox{\hyperlink{class_range_list}{Range\+List}} \&rnglist)
+\begin{DoxyCompactList}\small\item\em Construct a dynamic \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_symbol_entry_a13c0e084b4c66443250ecf145f43d2e2}{is\+Piece}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} a high or low piece of the whole \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_symbol_entry_a30c4c7a954f6d5d4bc0e50d78b16077e}{is\+Dynamic}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{storage}} {\itshape dynamic}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_symbol_entry_ab519054ccea76aae98ec280ab051a6ea}{is\+Invalid}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} storage {\itshape invalid}. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_symbol_entry_a2a9a19cc7c6bfa573fd244bcc061a4a4}{get\+All\+Flags}} (void) const
+\begin{DoxyCompactList}\small\item\em Get all \mbox{\hyperlink{class_varnode}{Varnode}} flags for {\bfseries{this}} storage. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_symbol_entry_a79274b1741dc33bbc57d5667b4df4eae}{get\+Offset}} (void) const
+\begin{DoxyCompactList}\small\item\em Get offset of {\bfseries{this}} within the \mbox{\hyperlink{class_symbol}{Symbol}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_symbol_entry_af4927191c7a854bde58782700c5a5f63}{get\+First}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the first offset of {\bfseries{this}} storage location. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_symbol_entry_acda4239e668f63bfb99c89a347d6b024}{get\+Last}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the last offset of {\bfseries{this}} storage location. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_symbol_entry_a3163188293595446b1f1dafccab7df15}{subsorttype}} \mbox{\hyperlink{class_symbol_entry_afb88a4dae96af6bb42c0bd0434d7e756}{get\+Subsort}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the sub-\/sort object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_symbol_entry_a46693677a8ea05b33472f8a1714efbb7}{initialize}} (const \mbox{\hyperlink{class_symbol_entry_1_1_entry_init_data}{Entry\+Init\+Data}} \&data)
+\begin{DoxyCompactList}\small\item\em Fully initialize {\bfseries{this}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$ \mbox{\hyperlink{class_symbol_entry_a4279c38e7f124423d5f6cbb353a33f49}{get\+Symbol}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_symbol}{Symbol}} associated with {\bfseries{this}}. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_symbol_entry_ae4bfe9ecfa78228978b247479554db80}{get\+Addr}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the starting address of {\bfseries{this}} storage. \end{DoxyCompactList}\item 
+uint8 \mbox{\hyperlink{class_symbol_entry_a1ed6804fa8944007d6e0685432dced73}{get\+Hash}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the hash used to identify {\bfseries{this}} storage. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_symbol_entry_aced6757088dfc0497320dd6750aedf04}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of bytes consumed by {\bfseries{this}} storage. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_symbol_entry_a389ffcfb36cee3c49b63fdac6be92bee}{in\+Use}} (const \mbox{\hyperlink{class_address}{Address}} \&usepoint) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} storage valid for the given code address. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_range_list}{Range\+List}} \& \mbox{\hyperlink{class_symbol_entry_acb15ad9276468db4b74b86556dfb1028}{get\+Use\+Limit}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the set of valid code addresses for {\bfseries{this}} storage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_symbol_entry_a856e7005f430c40b54c97ee886476e8a}{get\+First\+Use\+Address}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the first code address where {\bfseries{this}} storage is valid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_symbol_entry_a3ca8de2b7de4adcabc35899d23f9b2e1}{set\+Use\+Limit}} (const \mbox{\hyperlink{class_range_list}{Range\+List}} \&uselim)
+\begin{DoxyCompactList}\small\item\em Set the range of code addresses where {\bfseries{this}} is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_symbol_entry_a8e2a7fd30276da3672340e5424aadad9}{is\+Addr\+Tied}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} storage address tied. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_symbol_entry_a9a4d4c566e91765896e49a4d565e077e}{update\+Type}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn) const
+\begin{DoxyCompactList}\small\item\em Update a \mbox{\hyperlink{class_varnode}{Varnode}} data-\/type from {\bfseries{this}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_symbol_entry_a84cb58373a0e587c0698396a65f3a9b9}{get\+Sized\+Type}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 sz) const
+\begin{DoxyCompactList}\small\item\em Get the data-\/type associated with (a piece of) {\bfseries{this}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_symbol_entry_a0d46ff3d3aef03da78bd7dfd595bd852}{print\+Entry}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Dump a description of {\bfseries{this}} to a stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_symbol_entry_a4d81d9bb16fee6c63a169680073dd28b}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save {\bfseries{this}} to an X\+ML stream. \end{DoxyCompactList}\item 
+List\+::const\+\_\+iterator \mbox{\hyperlink{class_symbol_entry_a6117b39bc8d1a12e3cba724dab6dff3f}{restore\+Xml}} (List\+::const\+\_\+iterator iter, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_symbol_entry_a921193447f6e42f596ac0a7694b02830}{Scope}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A storage location for a particular \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+Where a \mbox{\hyperlink{class_symbol}{Symbol}} is stored, as a byte address and a size, is of particular importance to the decompiler. This class encapsulates this storage meta-\/data. A single \mbox{\hyperlink{class_symbol}{Symbol}} split across multiple storage locations is supported by the {\bfseries{offset}} and {\bfseries{size}} fields. The {\bfseries{hash}} field supports {\itshape dynamic} storage, where a \mbox{\hyperlink{class_symbol}{Symbol}} is represented by a constant or a temporary register. In this case, storage must be tied to the particular p-\/code operators using the value.
+
+A particular memory address does {\bfseries{not}} have to represent the symbol across all code. Storage may get recycled for different Symbols at different points in the code. The {\bfseries{uselimit}} object defines the range of instruction addresses over which a particular memory address does represent a \mbox{\hyperlink{class_symbol}{Symbol}}, with the convention that an empty {\bfseries{uselimit}} indicates the storage holds the \mbox{\hyperlink{class_symbol}{Symbol}} across {\itshape all} code. 
+
+Definition at line 51 of file database.\+hh.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_symbol_entry_adca9545cc0e46b574a9cf9fbb44cfca8}\label{class_symbol_entry_adca9545cc0e46b574a9cf9fbb44cfca8}} 
+\index{SymbolEntry@{SymbolEntry}!inittype@{inittype}}
+\index{inittype@{inittype}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{inittype}{inittype}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_symbol_entry_1_1_entry_init_data}{Entry\+Init\+Data}} \mbox{\hyperlink{class_symbol_entry_adca9545cc0e46b574a9cf9fbb44cfca8}{Symbol\+Entry\+::inittype}}}
+
+
+
+Initialization data for a \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} in a rangemap. 
+
+
+
+Definition at line 113 of file database.\+hh.
+
+\mbox{\Hypertarget{class_symbol_entry_a314b03465bd3849ffe266057d69a7e37}\label{class_symbol_entry_a314b03465bd3849ffe266057d69a7e37}} 
+\index{SymbolEntry@{SymbolEntry}!linetype@{linetype}}
+\index{linetype@{linetype}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{linetype}{linetype}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_symbol_entry_a314b03465bd3849ffe266057d69a7e37}{Symbol\+Entry\+::linetype}}}
+
+
+
+The linear element for a rangemap of \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}. 
+
+
+
+Definition at line 111 of file database.\+hh.
+
+\mbox{\Hypertarget{class_symbol_entry_a3163188293595446b1f1dafccab7df15}\label{class_symbol_entry_a3163188293595446b1f1dafccab7df15}} 
+\index{SymbolEntry@{SymbolEntry}!subsorttype@{subsorttype}}
+\index{subsorttype@{subsorttype}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{subsorttype}{subsorttype}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_symbol_entry_1_1_entry_subsort}{Entry\+Subsort}} \mbox{\hyperlink{class_symbol_entry_a3163188293595446b1f1dafccab7df15}{Symbol\+Entry\+::subsorttype}}}
+
+
+
+The sub-\/sort object for a rangemap. 
+
+
+
+Definition at line 112 of file database.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_symbol_entry_a50c0100d619041b6e485e7ec533fc2b8}\label{class_symbol_entry_a50c0100d619041b6e485e7ec533fc2b8}} 
+\index{SymbolEntry@{SymbolEntry}!SymbolEntry@{SymbolEntry}}
+\index{SymbolEntry@{SymbolEntry}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{SymbolEntry()}{SymbolEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Symbol\+Entry\+::\+Symbol\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Construct given just the offset range. 
+
+This constructor is for use with rangemap container. It must be followed by an \mbox{\hyperlink{class_symbol_entry_a46693677a8ea05b33472f8a1714efbb7}{initialize()}} call. 
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first offset covered by the new \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} \\
+\hline
+{\em b} & is the last offset covered \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file database.\+cc.
+
+\mbox{\Hypertarget{class_symbol_entry_a1233239187212ed427a718aae75e524c}\label{class_symbol_entry_a1233239187212ed427a718aae75e524c}} 
+\index{SymbolEntry@{SymbolEntry}!SymbolEntry@{SymbolEntry}}
+\index{SymbolEntry@{SymbolEntry}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{SymbolEntry()}{SymbolEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Symbol\+Entry\+::\+Symbol\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol}{Symbol}} $\ast$}]{sym,  }\item[{uint4}]{exfl,  }\item[{uint8}]{h,  }\item[{int4}]{off,  }\item[{int4}]{sz,  }\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{rnglist }\end{DoxyParamCaption})}
+
+
+
+Construct a dynamic \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}}. 
+
+This is used specifically for {\itshape dynamic} \mbox{\hyperlink{class_symbol}{Symbol}} objects, where the storage location is attached to a temporary register or a constant. The main address field ({\bfseries{addr}}) is set to {\itshape invalid}, and the {\bfseries{hash}} becomes the primary location information. 
+\begin{DoxyParams}{Parameters}
+{\em sym} & is the underlying \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+{\em exfl} & are the \mbox{\hyperlink{class_varnode}{Varnode}} flags associated with the storage location \\
+\hline
+{\em h} & is the the hash \\
+\hline
+{\em off} & if the offset into the \mbox{\hyperlink{class_symbol}{Symbol}} for this (piece of) storage \\
+\hline
+{\em sz} & is the size in bytes of this (piece of) storage \\
+\hline
+{\em rnglist} & is the set of code addresses where {\bfseries{this}} \mbox{\hyperlink{class_symbol_entry}{Symbol\+Entry}} represents the \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file database.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_symbol_entry_ae4bfe9ecfa78228978b247479554db80}\label{class_symbol_entry_ae4bfe9ecfa78228978b247479554db80}} 
+\index{SymbolEntry@{SymbolEntry}!getAddr@{getAddr}}
+\index{getAddr@{getAddr}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getAddr()}{getAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Symbol\+Entry\+::get\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the starting address of {\bfseries{this}} storage. 
+
+
+
+Definition at line 127 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_ae4bfe9ecfa78228978b247479554db80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a2a9a19cc7c6bfa573fd244bcc061a4a4}\label{class_symbol_entry_a2a9a19cc7c6bfa573fd244bcc061a4a4}} 
+\index{SymbolEntry@{SymbolEntry}!getAllFlags@{getAllFlags}}
+\index{getAllFlags@{getAllFlags}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getAllFlags()}{getAllFlags()}}
+{\footnotesize\ttfamily uint4 Symbol\+Entry\+::get\+All\+Flags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get all \mbox{\hyperlink{class_varnode}{Varnode}} flags for {\bfseries{this}} storage. 
+
+Retrieve the (union of) \mbox{\hyperlink{class_varnode}{Varnode}} flags specific to the \mbox{\hyperlink{class_symbol}{Symbol}} and specific to {\bfseries{this}} storage. \begin{DoxyReturn}{Returns}
+all \mbox{\hyperlink{class_varnode}{Varnode}} flags that apply 
+\end{DoxyReturn}
+
+
+Definition at line 224 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a2a9a19cc7c6bfa573fd244bcc061a4a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_af4927191c7a854bde58782700c5a5f63}\label{class_symbol_entry_af4927191c7a854bde58782700c5a5f63}} 
+\index{SymbolEntry@{SymbolEntry}!getFirst@{getFirst}}
+\index{getFirst@{getFirst}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getFirst()}{getFirst()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Symbol\+Entry\+::get\+First (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the first offset of {\bfseries{this}} storage location. 
+
+
+
+Definition at line 122 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_af4927191c7a854bde58782700c5a5f63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a856e7005f430c40b54c97ee886476e8a}\label{class_symbol_entry_a856e7005f430c40b54c97ee886476e8a}} 
+\index{SymbolEntry@{SymbolEntry}!getFirstUseAddress@{getFirstUseAddress}}
+\index{getFirstUseAddress@{getFirstUseAddress}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getFirstUseAddress()}{getFirstUseAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Symbol\+Entry\+::get\+First\+Use\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the first code address where {\bfseries{this}} storage is valid. 
+
+
+
+Definition at line 104 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a856e7005f430c40b54c97ee886476e8a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a856e7005f430c40b54c97ee886476e8a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a1ed6804fa8944007d6e0685432dced73}\label{class_symbol_entry_a1ed6804fa8944007d6e0685432dced73}} 
+\index{SymbolEntry@{SymbolEntry}!getHash@{getHash}}
+\index{getHash@{getHash}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getHash()}{getHash()}}
+{\footnotesize\ttfamily uint8 Symbol\+Entry\+::get\+Hash (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the hash used to identify {\bfseries{this}} storage. 
+
+
+
+Definition at line 128 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a1ed6804fa8944007d6e0685432dced73_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_acda4239e668f63bfb99c89a347d6b024}\label{class_symbol_entry_acda4239e668f63bfb99c89a347d6b024}} 
+\index{SymbolEntry@{SymbolEntry}!getLast@{getLast}}
+\index{getLast@{getLast}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getLast()}{getLast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Symbol\+Entry\+::get\+Last (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the last offset of {\bfseries{this}} storage location. 
+
+
+
+Definition at line 123 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_acda4239e668f63bfb99c89a347d6b024_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a79274b1741dc33bbc57d5667b4df4eae}\label{class_symbol_entry_a79274b1741dc33bbc57d5667b4df4eae}} 
+\index{SymbolEntry@{SymbolEntry}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getOffset()}{getOffset()}}
+{\footnotesize\ttfamily int4 Symbol\+Entry\+::get\+Offset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get offset of {\bfseries{this}} within the \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+
+
+Definition at line 121 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a79274b1741dc33bbc57d5667b4df4eae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_aced6757088dfc0497320dd6750aedf04}\label{class_symbol_entry_aced6757088dfc0497320dd6750aedf04}} 
+\index{SymbolEntry@{SymbolEntry}!getSize@{getSize}}
+\index{getSize@{getSize}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Symbol\+Entry\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of bytes consumed by {\bfseries{this}} storage. 
+
+
+
+Definition at line 129 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_aced6757088dfc0497320dd6750aedf04_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a84cb58373a0e587c0698396a65f3a9b9}\label{class_symbol_entry_a84cb58373a0e587c0698396a65f3a9b9}} 
+\index{SymbolEntry@{SymbolEntry}!getSizedType@{getSizedType}}
+\index{getSizedType@{getSizedType}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getSizedType()}{getSizedType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Symbol\+Entry\+::get\+Sized\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{inaddr,  }\item[{int4}]{sz }\end{DoxyParamCaption}) const}
+
+
+
+Get the data-\/type associated with (a piece of) {\bfseries{this}}. 
+
+Return the data-\/type that matches the given size and address within {\bfseries{this}} storage. N\+U\+LL is returned if there is no valid sub-\/type matching the size. 
+\begin{DoxyParams}{Parameters}
+{\em inaddr} & is the given address \\
+\hline
+{\em sz} & is the given size (in bytes) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching data-\/type or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 133 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a84cb58373a0e587c0698396a65f3a9b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a84cb58373a0e587c0698396a65f3a9b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_afb88a4dae96af6bb42c0bd0434d7e756}\label{class_symbol_entry_afb88a4dae96af6bb42c0bd0434d7e756}} 
+\index{SymbolEntry@{SymbolEntry}!getSubsort@{getSubsort}}
+\index{getSubsort@{getSubsort}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getSubsort()}{getSubsort()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_entry_a3163188293595446b1f1dafccab7df15}{Symbol\+Entry\+::subsorttype}} Symbol\+Entry\+::get\+Subsort (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the sub-\/sort object. 
+
+Get data used to sub-\/sort entries (in a rangemap) at the same address \begin{DoxyReturn}{Returns}
+the sub-\/sort object 
+\end{DoxyReturn}
+
+
+Definition at line 79 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_afb88a4dae96af6bb42c0bd0434d7e756_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a4279c38e7f124423d5f6cbb353a33f49}\label{class_symbol_entry_a4279c38e7f124423d5f6cbb353a33f49}} 
+\index{SymbolEntry@{SymbolEntry}!getSymbol@{getSymbol}}
+\index{getSymbol@{getSymbol}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getSymbol()}{getSymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol}{Symbol}}$\ast$ Symbol\+Entry\+::get\+Symbol (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_symbol}{Symbol}} associated with {\bfseries{this}}. 
+
+
+
+Definition at line 126 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_symbol_entry_a4279c38e7f124423d5f6cbb353a33f49_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_acb15ad9276468db4b74b86556dfb1028}\label{class_symbol_entry_acb15ad9276468db4b74b86556dfb1028}} 
+\index{SymbolEntry@{SymbolEntry}!getUseLimit@{getUseLimit}}
+\index{getUseLimit@{getUseLimit}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{getUseLimit()}{getUseLimit()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_range_list}{Range\+List}}\& Symbol\+Entry\+::get\+Use\+Limit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the set of valid code addresses for {\bfseries{this}} storage. 
+
+
+
+Definition at line 131 of file database.\+hh.
+
+\mbox{\Hypertarget{class_symbol_entry_a46693677a8ea05b33472f8a1714efbb7}\label{class_symbol_entry_a46693677a8ea05b33472f8a1714efbb7}} 
+\index{SymbolEntry@{SymbolEntry}!initialize@{initialize}}
+\index{initialize@{initialize}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Symbol\+Entry\+::initialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_symbol_entry_1_1_entry_init_data}{Entry\+Init\+Data}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Fully initialize {\bfseries{this}}. 
+
+Assuming the boundary offsets have been specified with the constructor, fill in the rest of the data. 
+\begin{DoxyParams}{Parameters}
+{\em data} & contains the raw initialization data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 67 of file database.\+cc.
+
+\mbox{\Hypertarget{class_symbol_entry_a389ffcfb36cee3c49b63fdac6be92bee}\label{class_symbol_entry_a389ffcfb36cee3c49b63fdac6be92bee}} 
+\index{SymbolEntry@{SymbolEntry}!inUse@{inUse}}
+\index{inUse@{inUse}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{inUse()}{inUse()}}
+{\footnotesize\ttfamily bool Symbol\+Entry\+::in\+Use (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption}) const}
+
+
+
+Is {\bfseries{this}} storage valid for the given code address. 
+
+This storage location may only hold the \mbox{\hyperlink{class_symbol}{Symbol}} value for a limited portion of the code. 
+\begin{DoxyParams}{Parameters}
+{\em usepoint} & is the given code address to test \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} storage is valid at the given address 
+\end{DoxyReturn}
+
+
+Definition at line 96 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_symbol_entry_a389ffcfb36cee3c49b63fdac6be92bee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a389ffcfb36cee3c49b63fdac6be92bee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a8e2a7fd30276da3672340e5424aadad9}\label{class_symbol_entry_a8e2a7fd30276da3672340e5424aadad9}} 
+\index{SymbolEntry@{SymbolEntry}!isAddrTied@{isAddrTied}}
+\index{isAddrTied@{isAddrTied}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{isAddrTied()}{isAddrTied()}}
+{\footnotesize\ttfamily bool Symbol\+Entry\+::is\+Addr\+Tied (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} storage address tied. 
+
+
+
+Definition at line 228 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a8e2a7fd30276da3672340e5424aadad9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a30c4c7a954f6d5d4bc0e50d78b16077e}\label{class_symbol_entry_a30c4c7a954f6d5d4bc0e50d78b16077e}} 
+\index{SymbolEntry@{SymbolEntry}!isDynamic@{isDynamic}}
+\index{isDynamic@{isDynamic}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{isDynamic()}{isDynamic()}}
+{\footnotesize\ttfamily bool Symbol\+Entry\+::is\+Dynamic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{storage}} {\itshape dynamic}. 
+
+
+
+Definition at line 118 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a30c4c7a954f6d5d4bc0e50d78b16077e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_ab519054ccea76aae98ec280ab051a6ea}\label{class_symbol_entry_ab519054ccea76aae98ec280ab051a6ea}} 
+\index{SymbolEntry@{SymbolEntry}!isInvalid@{isInvalid}}
+\index{isInvalid@{isInvalid}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{isInvalid()}{isInvalid()}}
+{\footnotesize\ttfamily bool Symbol\+Entry\+::is\+Invalid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} storage {\itshape invalid}. 
+
+
+
+Definition at line 119 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_ab519054ccea76aae98ec280ab051a6ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a13c0e084b4c66443250ecf145f43d2e2}\label{class_symbol_entry_a13c0e084b4c66443250ecf145f43d2e2}} 
+\index{SymbolEntry@{SymbolEntry}!isPiece@{isPiece}}
+\index{isPiece@{isPiece}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{isPiece()}{isPiece()}}
+{\footnotesize\ttfamily bool Symbol\+Entry\+::is\+Piece (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} a high or low piece of the whole \mbox{\hyperlink{class_symbol}{Symbol}}. 
+
+
+
+Definition at line 117 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a13c0e084b4c66443250ecf145f43d2e2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a0d46ff3d3aef03da78bd7dfd595bd852}\label{class_symbol_entry_a0d46ff3d3aef03da78bd7dfd595bd852}} 
+\index{SymbolEntry@{SymbolEntry}!printEntry@{printEntry}}
+\index{printEntry@{printEntry}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{printEntry()}{printEntry()}}
+{\footnotesize\ttfamily void Symbol\+Entry\+::print\+Entry (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Dump a description of {\bfseries{this}} to a stream. 
+
+Give a contained one-\/line description of {\bfseries{this}} storage, suitable for a debug console 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 161 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a0d46ff3d3aef03da78bd7dfd595bd852_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a6117b39bc8d1a12e3cba724dab6dff3f}\label{class_symbol_entry_a6117b39bc8d1a12e3cba724dab6dff3f}} 
+\index{SymbolEntry@{SymbolEntry}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily List\+::const\+\_\+iterator Symbol\+Entry\+::restore\+Xml (\begin{DoxyParamCaption}\item[{List\+::const\+\_\+iterator}]{iter,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Restore {\bfseries{this}} from an X\+ML stream. 
+
+Given an iterator to children of a $<$mapsym$>$ tag, restore the storage address (or the hash if the symbol is dynamic) and the {\bfseries{uselimit}} describing the valid range of code addresses, then advance the iterator to the next tag. 
+\begin{DoxyParams}{Parameters}
+{\em iter} & is the iterator pointing to the address or hash tag \\
+\hline
+{\em manage} & is an address space manager for constructing \mbox{\hyperlink{class_address}{Address}} objects \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the advanced iterator 
+\end{DoxyReturn}
+
+
+Definition at line 201 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a6117b39bc8d1a12e3cba724dab6dff3f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a6117b39bc8d1a12e3cba724dab6dff3f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a4d81d9bb16fee6c63a169680073dd28b}\label{class_symbol_entry_a4d81d9bb16fee6c63a169680073dd28b}} 
+\index{SymbolEntry@{SymbolEntry}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Symbol\+Entry\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save {\bfseries{this}} to an X\+ML stream. 
+
+This writes tags internal to the $<$mapsym$>$ tag associated with the \mbox{\hyperlink{class_symbol}{Symbol}}. It outputs the address tag (or the $<$hash$>$ tag for dynamic symbols) and a $<$rangelist$>$ tag associated with the {\bfseries{uselimit}}. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 182 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{class_symbol_entry_a4d81d9bb16fee6c63a169680073dd28b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a4d81d9bb16fee6c63a169680073dd28b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_entry_a3ca8de2b7de4adcabc35899d23f9b2e1}\label{class_symbol_entry_a3ca8de2b7de4adcabc35899d23f9b2e1}} 
+\index{SymbolEntry@{SymbolEntry}!setUseLimit@{setUseLimit}}
+\index{setUseLimit@{setUseLimit}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{setUseLimit()}{setUseLimit()}}
+{\footnotesize\ttfamily void Symbol\+Entry\+::set\+Use\+Limit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{uselim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the range of code addresses where {\bfseries{this}} is valid. 
+
+
+
+Definition at line 133 of file database.\+hh.
+
+\mbox{\Hypertarget{class_symbol_entry_a9a4d4c566e91765896e49a4d565e077e}\label{class_symbol_entry_a9a4d4c566e91765896e49a4d565e077e}} 
+\index{SymbolEntry@{SymbolEntry}!updateType@{updateType}}
+\index{updateType@{updateType}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{updateType()}{updateType()}}
+{\footnotesize\ttfamily bool Symbol\+Entry\+::update\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn }\end{DoxyParamCaption}) const}
+
+
+
+Update a \mbox{\hyperlink{class_varnode}{Varnode}} data-\/type from {\bfseries{this}}. 
+
+If the \mbox{\hyperlink{class_symbol}{Symbol}} associated with {\bfseries{this}} is type-\/locked, change the given \mbox{\hyperlink{class_varnode}{Varnode}}\textquotesingle{}s attached data-\/type to match the \mbox{\hyperlink{class_symbol}{Symbol}} 
+\begin{DoxyParams}{Parameters}
+{\em vn} & is the \mbox{\hyperlink{class_varnode}{Varnode}} to modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data-\/type was changed 
+\end{DoxyReturn}
+
+
+Definition at line 117 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a9a4d4c566e91765896e49a4d565e077e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_entry_a9a4d4c566e91765896e49a4d565e077e_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_symbol_entry_a921193447f6e42f596ac0a7694b02830}\label{class_symbol_entry_a921193447f6e42f596ac0a7694b02830}} 
+\index{SymbolEntry@{SymbolEntry}!Scope@{Scope}}
+\index{Scope@{Scope}!SymbolEntry@{SymbolEntry}}
+\subsubsection{\texorpdfstring{Scope}{Scope}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_scope}{Scope}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 52 of file database.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8hh}{database.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8cc}{database.\+cc}}\end{DoxyCompactItemize}

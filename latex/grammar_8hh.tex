@@ -1,0 +1,144 @@
+\hypertarget{grammar_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/grammar.hh File Reference}
+\label{grammar_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/grammar.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/grammar.hh}}
+{\ttfamily \#include \char`\"{}funcdata.\+hh\char`\"{}}\newline
+Include dependency graph for grammar.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{grammar_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{grammar_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_grammar_token}{Grammar\+Token}}
+\item 
+class \mbox{\hyperlink{class_grammar_lexer}{Grammar\+Lexer}}
+\item 
+class \mbox{\hyperlink{class_type_modifier}{Type\+Modifier}}
+\item 
+class \mbox{\hyperlink{class_pointer_modifier}{Pointer\+Modifier}}
+\item 
+class \mbox{\hyperlink{class_array_modifier}{Array\+Modifier}}
+\item 
+class \mbox{\hyperlink{class_function_modifier}{Function\+Modifier}}
+\item 
+class \mbox{\hyperlink{class_type_declarator}{Type\+Declarator}}
+\item 
+struct \mbox{\hyperlink{struct_type_specifiers}{Type\+Specifiers}}
+\item 
+struct \mbox{\hyperlink{struct_enumerator}{Enumerator}}
+\item 
+class \mbox{\hyperlink{class_c_parse}{C\+Parse}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{grammar_8hh_aa7c562a7402251d5c2145074da280ae1}{parse\+\_\+type}} (istream \&s, string \&name, \mbox{\hyperlink{class_architecture}{Architecture}} $\ast$glb)
+\item 
+void \mbox{\hyperlink{grammar_8hh_a0b78f8e3b11c096eee3367e9f7a783c1}{parse\+\_\+protopieces}} (\mbox{\hyperlink{struct_prototype_pieces}{Prototype\+Pieces}} \&pieces, istream \&s, \mbox{\hyperlink{class_architecture}{Architecture}} $\ast$glb)
+\item 
+void \mbox{\hyperlink{grammar_8hh_a63f1cc59afe6bb193a8e271075524d7f}{parse\+\_\+C}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$glb, istream \&s)
+\item 
+void \mbox{\hyperlink{grammar_8hh_a555c48bf02e16474c1cf15e761ea7562}{parse\+\_\+toseparator}} (istream \&s, string \&name)
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{grammar_8hh_a302ab5f0360041b5ca095c6da01fc5ea}{parse\+\_\+machaddr}} (istream \&s, int4 \&defaultsize, const \mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&typegrp, bool ignorecolon=false)
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{grammar_8hh_a058251f048324838196c4589a82738ee}{parse\+\_\+varnode}} (istream \&s, int4 \&size, \mbox{\hyperlink{class_address}{Address}} \&pc, uintm \&uq, const \mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&typegrp)
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{grammar_8hh_aeb19e7a1e824350698ccfd193cfb515a}{parse\+\_\+op}} (istream \&s, uintm \&uq, const \mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&typegrp)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{grammar_8hh_a63f1cc59afe6bb193a8e271075524d7f}\label{grammar_8hh_a63f1cc59afe6bb193a8e271075524d7f}} 
+\index{grammar.hh@{grammar.hh}!parse\_C@{parse\_C}}
+\index{parse\_C@{parse\_C}!grammar.hh@{grammar.hh}}
+\subsubsection{\texorpdfstring{parse\_C()}{parse\_C()}}
+{\footnotesize\ttfamily void parse\+\_\+C (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{glb,  }\item[{istream \&}]{s }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{grammar_8hh_a63f1cc59afe6bb193a8e271075524d7f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{grammar_8hh_a302ab5f0360041b5ca095c6da01fc5ea}\label{grammar_8hh_a302ab5f0360041b5ca095c6da01fc5ea}} 
+\index{grammar.hh@{grammar.hh}!parse\_machaddr@{parse\_machaddr}}
+\index{parse\_machaddr@{parse\_machaddr}!grammar.hh@{grammar.hh}}
+\subsubsection{\texorpdfstring{parse\_machaddr()}{parse\_machaddr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} parse\+\_\+machaddr (\begin{DoxyParamCaption}\item[{istream \&}]{s,  }\item[{int4 \&}]{defaultsize,  }\item[{const \mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&}]{typegrp,  }\item[{bool}]{ignorecolon = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{grammar_8hh_a302ab5f0360041b5ca095c6da01fc5ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{grammar_8hh_aeb19e7a1e824350698ccfd193cfb515a}\label{grammar_8hh_aeb19e7a1e824350698ccfd193cfb515a}} 
+\index{grammar.hh@{grammar.hh}!parse\_op@{parse\_op}}
+\index{parse\_op@{parse\_op}!grammar.hh@{grammar.hh}}
+\subsubsection{\texorpdfstring{parse\_op()}{parse\_op()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} parse\+\_\+op (\begin{DoxyParamCaption}\item[{istream \&}]{s,  }\item[{uintm \&}]{uq,  }\item[{const \mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&}]{typegrp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grammar_8hh_a0b78f8e3b11c096eee3367e9f7a783c1}\label{grammar_8hh_a0b78f8e3b11c096eee3367e9f7a783c1}} 
+\index{grammar.hh@{grammar.hh}!parse\_protopieces@{parse\_protopieces}}
+\index{parse\_protopieces@{parse\_protopieces}!grammar.hh@{grammar.hh}}
+\subsubsection{\texorpdfstring{parse\_protopieces()}{parse\_protopieces()}}
+{\footnotesize\ttfamily void parse\+\_\+protopieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_prototype_pieces}{Prototype\+Pieces}} \&}]{pieces,  }\item[{istream \&}]{s,  }\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{glb }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{grammar_8hh_a0b78f8e3b11c096eee3367e9f7a783c1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{grammar_8hh_a555c48bf02e16474c1cf15e761ea7562}\label{grammar_8hh_a555c48bf02e16474c1cf15e761ea7562}} 
+\index{grammar.hh@{grammar.hh}!parse\_toseparator@{parse\_toseparator}}
+\index{parse\_toseparator@{parse\_toseparator}!grammar.hh@{grammar.hh}}
+\subsubsection{\texorpdfstring{parse\_toseparator()}{parse\_toseparator()}}
+{\footnotesize\ttfamily void parse\+\_\+toseparator (\begin{DoxyParamCaption}\item[{istream \&}]{s,  }\item[{string \&}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grammar_8hh_aa7c562a7402251d5c2145074da280ae1}\label{grammar_8hh_aa7c562a7402251d5c2145074da280ae1}} 
+\index{grammar.hh@{grammar.hh}!parse\_type@{parse\_type}}
+\index{parse\_type@{parse\_type}!grammar.hh@{grammar.hh}}
+\subsubsection{\texorpdfstring{parse\_type()}{parse\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}}$\ast$ parse\+\_\+type (\begin{DoxyParamCaption}\item[{istream \&}]{s,  }\item[{string \&}]{name,  }\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{glb }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{grammar_8hh_aa7c562a7402251d5c2145074da280ae1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{grammar_8hh_a058251f048324838196c4589a82738ee}\label{grammar_8hh_a058251f048324838196c4589a82738ee}} 
+\index{grammar.hh@{grammar.hh}!parse\_varnode@{parse\_varnode}}
+\index{parse\_varnode@{parse\_varnode}!grammar.hh@{grammar.hh}}
+\subsubsection{\texorpdfstring{parse\_varnode()}{parse\_varnode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} parse\+\_\+varnode (\begin{DoxyParamCaption}\item[{istream \&}]{s,  }\item[{int4 \&}]{size,  }\item[{\mbox{\hyperlink{class_address}{Address}} \&}]{pc,  }\item[{uintm \&}]{uq,  }\item[{const \mbox{\hyperlink{class_type_factory}{Type\+Factory}} \&}]{typegrp }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{grammar_8hh_a058251f048324838196c4589a82738ee_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,78 @@
+.TH "PartialSymbolEntry" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PartialSymbolEntry \- A structure for pushing nested fields to the RPN stack\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printc\&.hh>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const \fBOpToken\fP * \fBtoken\fP"
+.br
+.RI "Operator used to drill-down to the field\&. "
+.ti -1c
+.RI "const \fBTypeField\fP * \fBfield\fP"
+.br
+.RI "The component object describing the field\&. "
+.ti -1c
+.RI "const \fBDatatype\fP * \fBparent\fP"
+.br
+.RI "The parent data-type owning the field\&. "
+.ti -1c
+.RI "string \fBfieldname\fP"
+.br
+.RI "The name of the field\&. "
+.ti -1c
+.RI "\fBEmitXml::syntax_highlight\fP \fBhilite\fP"
+.br
+.RI "Highlight information for the field token\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A structure for pushing nested fields to the RPN stack\&. 
+
+A helper class for unraveling a nested reference to a field\&. It links the data-type, field name, field object, and token together 
+.PP
+Definition at line 45 of file printc\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const \fBTypeField\fP* PartialSymbolEntry::field"
+
+.PP
+The component object describing the field\&. 
+.PP
+Definition at line 47 of file printc\&.hh\&.
+.SS "string PartialSymbolEntry::fieldname"
+
+.PP
+The name of the field\&. 
+.PP
+Definition at line 49 of file printc\&.hh\&.
+.SS "\fBEmitXml::syntax_highlight\fP PartialSymbolEntry::hilite"
+
+.PP
+Highlight information for the field token\&. 
+.PP
+Definition at line 50 of file printc\&.hh\&.
+.SS "const \fBDatatype\fP* PartialSymbolEntry::parent"
+
+.PP
+The parent data-type owning the field\&. 
+.PP
+Definition at line 48 of file printc\&.hh\&.
+.SS "const \fBOpToken\fP* PartialSymbolEntry::token"
+
+.PP
+Operator used to drill-down to the field\&. 
+.PP
+Definition at line 46 of file printc\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

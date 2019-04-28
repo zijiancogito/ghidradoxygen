@@ -1,0 +1,572 @@
+.TH "Datatype" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Datatype \- The base datatype class for the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherited by \fBTypeArray\fP, \fBTypeBase\fP, \fBTypeCode\fP, \fBTypePointer\fP, \fBTypeSpacebase\fP, \fBTypeStruct\fP, and \fBTypeVoid\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDatatype\fP (const \fBDatatype\fP &op)"
+.br
+.RI "Construct the base data-type copying low-level properties of another\&. "
+.ti -1c
+.RI "\fBDatatype\fP (int4 s, \fBtype_metatype\fP m)"
+.br
+.RI "Construct the base data-type providing size and meta-type\&. "
+.ti -1c
+.RI "\fBDatatype\fP (int4 s, \fBtype_metatype\fP m, const string &n)"
+.br
+.RI "Construct the base data-type providing size, meta-type, and name\&. "
+.ti -1c
+.RI "virtual \fB~Datatype\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "bool \fBisCoreType\fP (void) const"
+.br
+.RI "Is this a core data-type\&. "
+.ti -1c
+.RI "bool \fBisCharPrint\fP (void) const"
+.br
+.RI "Does this print as a 'char'\&. "
+.ti -1c
+.RI "bool \fBisEnumType\fP (void) const"
+.br
+.RI "Is this an enumerated type\&. "
+.ti -1c
+.RI "bool \fBisPowerOfTwo\fP (void) const"
+.br
+.RI "Is this a flag-based enumeration\&. "
+.ti -1c
+.RI "bool \fBisASCII\fP (void) const"
+.br
+.RI "Does this print as an ASCII 'char'\&. "
+.ti -1c
+.RI "bool \fBisUTF16\fP (void) const"
+.br
+.RI "Does this print as UTF16 'wchar'\&. "
+.ti -1c
+.RI "bool \fBisUTF32\fP (void) const"
+.br
+.RI "Does this print as UTF32 'wchar'\&. "
+.ti -1c
+.RI "uint4 \fBgetInheritable\fP (void) const"
+.br
+.RI "Get properties pointers inherit\&. "
+.ti -1c
+.RI "\fBtype_metatype\fP \fBgetMetatype\fP (void) const"
+.br
+.RI "Get the type \fBmeta-type\fP\&. "
+.ti -1c
+.RI "uint8 \fBgetId\fP (void) const"
+.br
+.RI "Get the type id\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the type size\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the type name\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print a description of the type to stream\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetSubType\fP (\fBuintb\fP off, \fBuintb\fP *newoff) const"
+.br
+.RI "Recover component data-type one-level down\&. "
+.ti -1c
+.RI "virtual int4 \fBnumDepend\fP (void) const"
+.br
+.RI "Return number of component sub-types\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetDepend\fP (int4 index) const"
+.br
+.RI "Return the i-th component sub-type\&. "
+.ti -1c
+.RI "virtual void \fBprintNameBase\fP (ostream &s) const"
+.br
+.RI "Print name as short prefix\&. "
+.ti -1c
+.RI "virtual int4 \fBcompare\fP (const \fBDatatype\fP &op, int4 level) const"
+.br
+.RI "Compare for functional equivalence\&. "
+.ti -1c
+.RI "virtual int4 \fBcompareDependency\fP (const \fBDatatype\fP &op) const"
+.br
+.RI "Compare for storage in tree structure\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const =0"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.ti -1c
+.RI "int4 \fBtypeOrder\fP (const \fBDatatype\fP &op) const"
+.br
+.RI "Order this with -op- datatype\&. "
+.ti -1c
+.RI "void \fBsaveXmlBasic\fP (ostream &s) const"
+.br
+.RI "Save basic data-type properties\&. "
+.ti -1c
+.RI "void \fBsaveXmlRef\fP (ostream &s) const"
+.br
+.RI "Write an XML reference of \fBthis\fP to stream\&. "
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBcoretype\fP = 1, \fBchartype\fP = 2, \fBenumtype\fP = 4, \fBpoweroftwo\fP = 8, \fButf16\fP = 16, \fButf32\fP = 32 }"
+.br
+.RI "Boolean properties of datatypes\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBrestoreXmlBasic\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover basic data-type properties\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore data-type from XML\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static uint8 \fBhashName\fP (const string &nm)"
+.br
+.RI "Produce a data-type id by hashing the type name\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBsize\fP"
+.br
+.RI "Size (of variable holding a value of this type) "
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Name of type\&. "
+.ti -1c
+.RI "\fBtype_metatype\fP \fBmetatype\fP"
+.br
+.RI "Meta-type - type disregarding size\&. "
+.ti -1c
+.RI "uint4 \fBflags\fP"
+.br
+.RI "Boolean properties of the type\&. "
+.ti -1c
+.RI "uint8 \fBid\fP"
+.br
+.RI "A unique id for the type (or 0 if an id is not assigned) "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.ti -1c
+.RI "struct \fBDatatypeCompare\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base datatype class for the decompiler\&. 
+
+Used for symbols, function prototypes, type propagation etc\&. 
+.PP
+Definition at line 62 of file type\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum\fC [protected]\fP"
+
+.PP
+Boolean properties of datatypes\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIcoretype \fP\fP
+This is a basic type which will never be redefined\&. 
+.TP
+\fB\fIchartype \fP\fP
+ASCII character data\&. 
+.TP
+\fB\fIenumtype \fP\fP
+An enumeration type (as well as an integer) 
+.TP
+\fB\fIpoweroftwo \fP\fP
+An enumeration type where all values are of 2^^n form\&. 
+.TP
+\fB\fIutf16 \fP\fP
+16-bit wide chars in unicode UTF16 
+.TP
+\fB\fIutf32 \fP\fP
+32-bit wide chars in unicode UTF32 
+.PP
+Definition at line 65 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Datatype::Datatype (const \fBDatatype\fP & op)\fC [inline]\fP"
+
+.PP
+Construct the base data-type copying low-level properties of another\&. 
+.PP
+Definition at line 90 of file type\&.hh\&.
+.SS "Datatype::Datatype (int4 s, \fBtype_metatype\fP m)\fC [inline]\fP"
+
+.PP
+Construct the base data-type providing size and meta-type\&. 
+.PP
+Definition at line 92 of file type\&.hh\&.
+.SS "Datatype::Datatype (int4 s, \fBtype_metatype\fP m, const string & n)\fC [inline]\fP"
+
+.PP
+Construct the base data-type providing size, meta-type, and name\&. 
+.PP
+Definition at line 94 of file type\&.hh\&.
+.SS "virtual Datatype::~Datatype (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 95 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* Datatype::clone (void) const\fC [pure virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Implemented in \fBTypeSpacebase\fP, \fBTypeCode\fP, \fBTypeStruct\fP, \fBTypeEnum\fP, \fBTypeArray\fP, \fBTypePointer\fP, \fBTypeVoid\fP, \fBTypeUnicode\fP, \fBTypeChar\fP, and \fBTypeBase\fP\&.
+.SS "int4 Datatype::compare (const \fBDatatype\fP & op, int4 level) const\fC [virtual]\fP"
+
+.PP
+Compare for functional equivalence\&. Compare \fBthis\fP with another data-type\&. 0 (equality) means the data-types are functionally equivalent (even if names differ) Smaller types come earlier\&. More specific types come earlier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.br
+\fIlevel\fP is maximum level to descend when recursively comparing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeSpacebase\fP, \fBTypeCode\fP, \fBTypeStruct\fP, \fBTypeEnum\fP, \fBTypeArray\fP, and \fBTypePointer\fP\&.
+.PP
+Definition at line 99 of file type\&.cc\&.
+.SS "int4 Datatype::compareDependency (const \fBDatatype\fP & op) const\fC [virtual]\fP"
+
+.PP
+Compare for storage in tree structure\&. Ordering of data-types for the main \fBTypeFactory\fP container\&. Comparison only goes down one-level in the component structure, before just comparing pointers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeSpacebase\fP, \fBTypeCode\fP, \fBTypeStruct\fP, \fBTypeEnum\fP, \fBTypeArray\fP, and \fBTypePointer\fP\&.
+.PP
+Definition at line 110 of file type\&.cc\&.
+.SS "virtual \fBDatatype\fP* Datatype::getDepend (int4 index) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return the i-th component sub-type\&. 
+.PP
+Reimplemented in \fBTypeStruct\fP, \fBTypeArray\fP, and \fBTypePointer\fP\&.
+.PP
+Definition at line 111 of file type\&.hh\&.
+.SS "uint8 Datatype::getId (void) const\fC [inline]\fP"
+
+.PP
+Get the type id\&. 
+.PP
+Definition at line 105 of file type\&.hh\&.
+.SS "uint4 Datatype::getInheritable (void) const\fC [inline]\fP"
+
+.PP
+Get properties pointers inherit\&. 
+.PP
+Definition at line 103 of file type\&.hh\&.
+.SS "\fBtype_metatype\fP Datatype::getMetatype (void) const\fC [inline]\fP"
+
+.PP
+Get the type \fBmeta-type\fP\&. 
+.PP
+Definition at line 104 of file type\&.hh\&.
+.SS "const string& Datatype::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the type name\&. 
+.PP
+Definition at line 107 of file type\&.hh\&.
+.SS "int4 Datatype::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the type size\&. 
+.PP
+Definition at line 106 of file type\&.hh\&.
+.SS "\fBDatatype\fP * Datatype::getSubType (\fBuintb\fP off, \fBuintb\fP * newoff) const\fC [virtual]\fP"
+
+.PP
+Recover component data-type one-level down\&. Given an offset into \fBthis\fP data-type, return the component data-type at that offset\&. Also, pass back a 'renormalized' offset suitable for recursize \fBgetSubType()\fP calls: i\&.e\&. if the original offset hits the exact start of the sub-type, 0 is passed back\&. If there is no valid component data-type at the offset, return NULL and pass back the original offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset into \fBthis\fP data-type 
+.br
+\fInewoff\fP is a pointer to the passed-back offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the component data-type or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeSpacebase\fP, \fBTypeStruct\fP, and \fBTypeArray\fP\&.
+.PP
+Definition at line 86 of file type\&.cc\&.
+.SS "uint8 Datatype::hashName (const string & nm)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Produce a data-type id by hashing the type name\&. If a type id is explicitly provided for a data-type, this routine is used to produce an id based on a hash of the name\&. IDs produced this way will have their sign-bit set to distinguish it from other IDs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the type name to be hashed 
+.RE
+.PP
+
+.PP
+Definition at line 313 of file type\&.cc\&.
+.SS "bool Datatype::isASCII (void) const\fC [inline]\fP"
+
+.PP
+Does this print as an ASCII 'char'\&. 
+.PP
+Definition at line 100 of file type\&.hh\&.
+.SS "bool Datatype::isCharPrint (void) const\fC [inline]\fP"
+
+.PP
+Does this print as a 'char'\&. 
+.PP
+Definition at line 97 of file type\&.hh\&.
+.SS "bool Datatype::isCoreType (void) const\fC [inline]\fP"
+
+.PP
+Is this a core data-type\&. 
+.PP
+Definition at line 96 of file type\&.hh\&.
+.SS "bool Datatype::isEnumType (void) const\fC [inline]\fP"
+
+.PP
+Is this an enumerated type\&. 
+.PP
+Definition at line 98 of file type\&.hh\&.
+.SS "bool Datatype::isPowerOfTwo (void) const\fC [inline]\fP"
+
+.PP
+Is this a flag-based enumeration\&. 
+.PP
+Definition at line 99 of file type\&.hh\&.
+.SS "bool Datatype::isUTF16 (void) const\fC [inline]\fP"
+
+.PP
+Does this print as UTF16 'wchar'\&. 
+.PP
+Definition at line 101 of file type\&.hh\&.
+.SS "bool Datatype::isUTF32 (void) const\fC [inline]\fP"
+
+.PP
+Does this print as UTF32 'wchar'\&. 
+.PP
+Definition at line 102 of file type\&.hh\&.
+.SS "virtual int4 Datatype::numDepend (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return number of component sub-types\&. 
+.PP
+Reimplemented in \fBTypeStruct\fP, \fBTypeArray\fP, and \fBTypePointer\fP\&.
+.PP
+Definition at line 110 of file type\&.hh\&.
+.SS "virtual void Datatype::printNameBase (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Print name as short prefix\&. 
+.PP
+Reimplemented in \fBTypeArray\fP, and \fBTypePointer\fP\&.
+.PP
+Definition at line 112 of file type\&.hh\&.
+.SS "void Datatype::printRaw (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a description of the type to stream\&. Print a raw description of the type to stream\&. Intended for debugging\&. Not intended to produce parsable C\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeCode\fP, \fBTypeArray\fP, and \fBTypePointer\fP\&.
+.PP
+Definition at line 69 of file type\&.cc\&.
+.SS "void Datatype::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Restore data-type from XML\&. Restore a \fBDatatype\fP object from an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the underlying \fBTypeFactory\fP that will hold the new object 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeCode\fP, \fBTypeStruct\fP, \fBTypeEnum\fP, \fBTypeArray\fP, \fBTypePointer\fP, and \fBTypeUnicode\fP\&.
+.PP
+Definition at line 303 of file type\&.cc\&.
+.SS "void Datatype::restoreXmlBasic (const \fBElement\fP * el)\fC [protected]\fP"
+
+.PP
+Recover basic data-type properties\&. Restore the basic properties (name,size,id) of a data-type from an XML element Properties are read from the attributes of the element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.RE
+.PP
+
+.PP
+Definition at line 273 of file type\&.cc\&.
+.SS "void Datatype::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeSpacebase\fP, \fBTypeCode\fP, \fBTypeStruct\fP, \fBTypeEnum\fP, \fBTypeArray\fP, \fBTypePointer\fP, \fBTypeVoid\fP, \fBTypeUnicode\fP, and \fBTypeChar\fP\&.
+.PP
+Definition at line 228 of file type\&.cc\&.
+.SS "void Datatype::saveXmlBasic (ostream & s) const"
+
+.PP
+Save basic data-type properties\&. Write out basic data-type properties (name,size,id) as XML attributes\&. This routine presumes the initial tag is already written to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Definition at line 239 of file type\&.cc\&.
+.SS "void Datatype::saveXmlRef (ostream & s) const"
+
+.PP
+Write an XML reference of \fBthis\fP to stream\&. Write a simple reference to \fBthis\fP data-type as an XML <typeref> tag, which only encodes the name and id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Definition at line 257 of file type\&.cc\&.
+.SS "int4 Datatype::typeOrder (const \fBDatatype\fP & op) const\fC [inline]\fP"
+
+.PP
+Order this with -op- datatype\&. 
+.PP
+Definition at line 117 of file type\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend struct \fBDatatypeCompare\fP\fC [friend]\fP"
+
+.PP
+Definition at line 79 of file type\&.hh\&.
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 78 of file type\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 Datatype::flags\fC [protected]\fP"
+
+.PP
+Boolean properties of the type\&. 
+.PP
+Definition at line 83 of file type\&.hh\&.
+.SS "uint8 Datatype::id\fC [protected]\fP"
+
+.PP
+A unique id for the type (or 0 if an id is not assigned) 
+.PP
+Definition at line 84 of file type\&.hh\&.
+.SS "\fBtype_metatype\fP Datatype::metatype\fC [protected]\fP"
+
+.PP
+Meta-type - type disregarding size\&. 
+.PP
+Definition at line 82 of file type\&.hh\&.
+.SS "string Datatype::name\fC [protected]\fP"
+
+.PP
+Name of type\&. 
+.PP
+Definition at line 81 of file type\&.hh\&.
+.SS "int4 Datatype::size\fC [protected]\fP"
+
+.PP
+Size (of variable holding a value of this type) 
+.PP
+Definition at line 80 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,56 @@
+\hypertarget{struct_varnode_compare_loc_def}{}\section{Varnode\+Compare\+Loc\+Def Struct Reference}
+\label{struct_varnode_compare_loc_def}\index{VarnodeCompareLocDef@{VarnodeCompareLocDef}}
+
+
+Compare two \mbox{\hyperlink{class_varnode}{Varnode}} pointers by location then definition.  
+
+
+
+
+{\ttfamily \#include $<$varnode.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_varnode_compare_loc_def_a8874edc42984b5bf108b5ff6dc0d054f}{operator()}} (const \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$a, const \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$b) const
+\begin{DoxyCompactList}\small\item\em Functional comparison operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Compare two \mbox{\hyperlink{class_varnode}{Varnode}} pointers by location then definition. 
+
+Definition at line 33 of file varnode.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_varnode_compare_loc_def_a8874edc42984b5bf108b5ff6dc0d054f}\label{struct_varnode_compare_loc_def_a8874edc42984b5bf108b5ff6dc0d054f}} 
+\index{VarnodeCompareLocDef@{VarnodeCompareLocDef}!operator()@{operator()}}
+\index{operator()@{operator()}!VarnodeCompareLocDef@{VarnodeCompareLocDef}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily bool Varnode\+Compare\+Loc\+Def\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{a,  }\item[{const \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Functional comparison operator. 
+
+Compare by location then by definition. This is the same as the normal varnode compare, but we distinguish identical frees by their pointer address. Thus varsets defined with this comparison act like multisets for free varnodes and like unique sets for everything else (with respect to the standard varnode comparison) 
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first \mbox{\hyperlink{class_varnode}{Varnode}} to compare \\
+\hline
+{\em b} & is the second \mbox{\hyperlink{class_varnode}{Varnode}} to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if {\bfseries{a}} occurs earlier than {\bfseries{b}} 
+\end{DoxyReturn}
+
+
+Definition at line 26 of file varnode.\+cc.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{varnode_8hh}{varnode.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{varnode_8cc}{varnode.\+cc}}\end{DoxyCompactItemize}

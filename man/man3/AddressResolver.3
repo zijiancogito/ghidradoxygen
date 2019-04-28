@@ -1,0 +1,79 @@
+.TH "AddressResolver" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AddressResolver \- Abstract class for converting native constants to addresses\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.PP
+Inherited by \fBSegmentedResolver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~AddressResolver\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBAddress\fP \fBresolve\fP (\fBuintb\fP val, int4 sz, const \fBAddress\fP &point)=0"
+.br
+.RI "
+.PP
+.RS 4
+Virtual destructor
+.RE
+.PP
+"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract class for converting native constants to addresses\&. 
+
+This class is used if there is a special calculation to get from a constant embedded in the code being analyzed to the actual \fBAddress\fP being referred to\&. This is used especially in the case of a segmented architecture, where 'near' pointers must be extended to a full address with implied segment information\&. 
+.PP
+Definition at line 140 of file translate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual AddressResolver::~AddressResolver (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 142 of file translate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBAddress\fP AddressResolver::resolve (\fBuintb\fP val, int4 sz, const \fBAddress\fP & point)\fC [pure virtual]\fP"
+
+.PP
+
+.PP
+.RS 4
+Virtual destructor
+.RE
+.PP
+The main resolver method\&.
+.PP
+Given a native constant in a specific context, resolve what address is being referred to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is constant to be resolved to an address 
+.br
+\fIsz\fP is the size of \fIval\fP in context\&. 
+.br
+\fIpoint\fP is the address at which this constant is being used 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the resolved \fBAddress\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBSegmentedResolver\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

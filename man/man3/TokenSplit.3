@@ -1,0 +1,921 @@
+.TH "TokenSplit" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TokenSplit \- A token/command object in the pretty printing stream\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <prettyprint\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBprintclass\fP { \fBbegin\fP, \fBend\fP, \fBtokenstring\fP, \fBtokenbreak\fP, \fBbegin_indent\fP, \fBend_indent\fP, \fBbegin_comment\fP, \fBend_comment\fP, \fBignore\fP }"
+.br
+.RI "An enumeration denoting the general class of a token\&. "
+.ti -1c
+.RI "enum \fBtag_type\fP { \fBdocu_b\fP, \fBdocu_e\fP, \fBfunc_b\fP, \fBfunc_e\fP, \fBbloc_b\fP, \fBbloc_e\fP, \fBrtyp_b\fP, \fBrtyp_e\fP, \fBvard_b\fP, \fBvard_e\fP, \fBstat_b\fP, \fBstat_e\fP, \fBprot_b\fP, \fBprot_e\fP, \fBvari_t\fP, \fBop_t\fP, \fBfnam_t\fP, \fBtype_t\fP, \fBfield_t\fP, \fBcomm_t\fP, \fBlabel_t\fP, \fBsynt_t\fP, \fBopar_t\fP, \fBcpar_t\fP, \fBoinv_t\fP, \fBcinv_t\fP, \fBspac_t\fP, \fBbump_t\fP, \fBline_t\fP }"
+.br
+.RI "The exhaustive list of possible token types\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTokenSplit\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "int4 \fBbeginDocument\fP (void)"
+.br
+.RI "Create a 'begin document' command\&. "
+.ti -1c
+.RI "void \fBendDocument\fP (int4 id)"
+.br
+.RI "Create an 'end document' command\&. "
+.ti -1c
+.RI "int4 \fBbeginFunction\fP (const \fBFuncdata\fP *f)"
+.br
+.RI "Create a 'begin function body' command\&. "
+.ti -1c
+.RI "void \fBendFunction\fP (int4 id)"
+.br
+.RI "Create an 'end function body' command\&. "
+.ti -1c
+.RI "int4 \fBbeginBlock\fP (const \fBFlowBlock\fP *b)"
+.br
+.RI "Create a 'begin control-flow element' command\&. "
+.ti -1c
+.RI "void \fBendBlock\fP (int4 id)"
+.br
+.RI "Create an 'end control-flow element' command\&. "
+.ti -1c
+.RI "int4 \fBbeginReturnType\fP (const \fBVarnode\fP *v)"
+.br
+.RI "Create a 'begin return type declaration' command\&. "
+.ti -1c
+.RI "void \fBendReturnType\fP (int4 id)"
+.br
+.RI "Create an 'end return type declaration' command\&. "
+.ti -1c
+.RI "int4 \fBbeginVarDecl\fP (const \fBSymbol\fP *sym)"
+.br
+.RI "Create a 'begin variable declaration' command\&. "
+.ti -1c
+.RI "void \fBendVarDecl\fP (int4 id)"
+.br
+.RI "Create an 'end variable declaration' command\&. "
+.ti -1c
+.RI "int4 \fBbeginStatement\fP (const \fBPcodeOp\fP *o)"
+.br
+.RI "Create a 'begin source code statement' command\&. "
+.ti -1c
+.RI "void \fBendStatement\fP (int4 id)"
+.br
+.RI "Create an 'end source code statement' command\&. "
+.ti -1c
+.RI "int4 \fBbeginFuncProto\fP (void)"
+.br
+.RI "Create a 'begin function prototype declaration' command\&. "
+.ti -1c
+.RI "void \fBendFuncProto\fP (int4 id)"
+.br
+.RI "Create an 'end function prototype declaration' command\&. "
+.ti -1c
+.RI "void \fBtagVariable\fP (const char *ptr, \fBEmitXml::syntax_highlight\fP h, const \fBVarnode\fP *v, const \fBPcodeOp\fP *o)"
+.br
+.RI "Create a variable identifier token\&. "
+.ti -1c
+.RI "void \fBtagOp\fP (const char *ptr, \fBEmitXml::syntax_highlight\fP h, const \fBPcodeOp\fP *o)"
+.br
+.RI "Create an operator token\&. "
+.ti -1c
+.RI "void \fBtagFuncName\fP (const char *ptr, \fBEmitXml::syntax_highlight\fP h, const \fBFuncdata\fP *f, const \fBPcodeOp\fP *o)"
+.br
+.RI "Create a function identifier token\&. "
+.ti -1c
+.RI "void \fBtagType\fP (const char *ptr, \fBEmitXml::syntax_highlight\fP h, const \fBDatatype\fP *\fBct\fP)"
+.br
+.RI "Create a data-type identifier token\&. "
+.ti -1c
+.RI "void \fBtagField\fP (const char *ptr, \fBEmitXml::syntax_highlight\fP h, const \fBDatatype\fP *\fBct\fP, int4 o)"
+.br
+.RI "Create an identifier for a field within a structured data-type\&. "
+.ti -1c
+.RI "void \fBtagComment\fP (const char *ptr, \fBEmitXml::syntax_highlight\fP h, const \fBAddrSpace\fP *s, \fBuintb\fP o)"
+.br
+.RI "Create a comment string in the generated source code\&. "
+.ti -1c
+.RI "void \fBtagLabel\fP (const char *ptr, \fBEmitXml::syntax_highlight\fP h, const \fBAddrSpace\fP *s, \fBuintb\fP o)"
+.br
+.RI "Create a code label identifier token\&. "
+.ti -1c
+.RI "void \fBprint\fP (const char *str, \fBEmitXml::syntax_highlight\fP h)"
+.br
+.RI "Create a token for other (more unusual) syntax in source code\&. "
+.ti -1c
+.RI "void \fBopenParen\fP (char o, int4 id)"
+.br
+.RI "Create an open parenthesis\&. "
+.ti -1c
+.RI "void \fBcloseParen\fP (char c, int4 id)"
+.br
+.RI "Create a close parenthesis\&. "
+.ti -1c
+.RI "int4 \fBopenGroup\fP (void)"
+.br
+.RI "Create a 'start a printing group' command\&. "
+.ti -1c
+.RI "void \fBcloseGroup\fP (int4 id)"
+.br
+.RI "Create an 'end a printing group' command\&. "
+.ti -1c
+.RI "int4 \fBstartIndent\fP (int4 bump)"
+.br
+.RI "Create a 'start a new indent level' command\&. "
+.ti -1c
+.RI "void \fBstopIndent\fP (int4 id)"
+.br
+.RI "Create an 'end an indent level' command\&. "
+.ti -1c
+.RI "int4 \fBstartComment\fP (void)"
+.br
+.RI "Create a 'start a comment block' command\&. "
+.ti -1c
+.RI "void \fBstopComment\fP (int4 id)"
+.br
+.RI "Create an 'end a comment block' command\&. "
+.ti -1c
+.RI "void \fBspaces\fP (int4 num, int4 bump)"
+.br
+.RI "Create a whitespace token\&. "
+.ti -1c
+.RI "void \fBtagLine\fP (void)"
+.br
+.RI "Create a line break token\&. "
+.ti -1c
+.RI "void \fBtagLine\fP (int4 indent)"
+.br
+.RI "Create a line break token with special indentation\&. "
+.ti -1c
+.RI "void \fBprint\fP (\fBEmitXml\fP *emit) const"
+.br
+.RI "Send \fBthis\fP token to emitter\&. "
+.ti -1c
+.RI "int4 \fBgetIndentBump\fP (void) const"
+.br
+.RI "Get the extra indent after a line break\&. "
+.ti -1c
+.RI "int4 \fBgetNumSpaces\fP (void) const"
+.br
+.RI "Get the number of characters of whitespace\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the number of content characters\&. "
+.ti -1c
+.RI "void \fBsetSize\fP (int4 sz)"
+.br
+.RI "Set the number of content characters\&. "
+.ti -1c
+.RI "\fBprintclass\fP \fBgetClass\fP (void) const"
+.br
+.RI "Get the print class of \fBthis\fP\&. "
+.ti -1c
+.RI "\fBtag_type\fP \fBgetTag\fP (void) const"
+.br
+.RI "Get \fBthis\fP tag type\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A token/command object in the pretty printing stream\&. 
+
+The pretty printing algorithm (see \fBEmitPrettyPrint\fP) works on the stream of tokens, constituting the content actually being output, plus additional embedded commands made up begin/end or open/close pairs that delimit the (hierarchy of) groups of tokens that should be printed as a unit\&. Instances of this class represent all the possible elements of this stream\&.
+.PP
+All instances exhibit a broad \fIprintclass\fP that generally reflects whether the token is one of the begin/end delimiters or is actual content\&. Instances also have a \fItag_type\fP that indicate the specific function of the token within the stream, which mirror the begin/end/open/close/tag methods on the emitter classes (\fBEmitXml\fP)\&. 
+.PP
+Definition at line 278 of file prettyprint\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBTokenSplit::printclass\fP"
+
+.PP
+An enumeration denoting the general class of a token\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIbegin \fP\fP
+A token that starts a printing group\&. 
+.TP
+\fB\fIend \fP\fP
+A token that ends a printing group\&. 
+.TP
+\fB\fItokenstring \fP\fP
+A token representing actual content\&. 
+.TP
+\fB\fItokenbreak \fP\fP
+White space (where line breaks can be inserted) 
+.TP
+\fB\fIbegin_indent \fP\fP
+Start of a new nesting level\&. 
+.TP
+\fB\fIend_indent \fP\fP
+End of a nesting level\&. 
+.TP
+\fB\fIbegin_comment \fP\fP
+Start of a comment block\&. 
+.TP
+\fB\fIend_comment \fP\fP
+End of a comment block\&. 
+.TP
+\fB\fIignore \fP\fP
+Mark-up that doesn't affect pretty printing\&. 
+.PP
+Definition at line 281 of file prettyprint\&.hh\&.
+.SS "enum \fBTokenSplit::tag_type\fP"
+
+.PP
+The exhaustive list of possible token types\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIdocu_b \fP\fP
+Start of a document\&. 
+.TP
+\fB\fIdocu_e \fP\fP
+End of a document\&. 
+.TP
+\fB\fIfunc_b \fP\fP
+Start of a function body\&. 
+.TP
+\fB\fIfunc_e \fP\fP
+End of a function body\&. 
+.TP
+\fB\fIbloc_b \fP\fP
+Start of a control-flow section\&. 
+.TP
+\fB\fIbloc_e \fP\fP
+End of a control-flow section\&. 
+.TP
+\fB\fIrtyp_b \fP\fP
+Start of a return type declaration\&. 
+.TP
+\fB\fIrtyp_e \fP\fP
+End of a return type declaration\&. 
+.TP
+\fB\fIvard_b \fP\fP
+Start of a variable declaration\&. 
+.TP
+\fB\fIvard_e \fP\fP
+End of a variable declaration\&. 
+.TP
+\fB\fIstat_b \fP\fP
+Start of a statement\&. 
+.TP
+\fB\fIstat_e \fP\fP
+End of a statement\&. 
+.TP
+\fB\fIprot_b \fP\fP
+Start of a function prototype\&. 
+.TP
+\fB\fIprot_e \fP\fP
+End of a function prototype\&. 
+.TP
+\fB\fIvari_t \fP\fP
+A variable identifier\&. 
+.TP
+\fB\fIop_t \fP\fP
+An operator\&. 
+.TP
+\fB\fIfnam_t \fP\fP
+A function identifier\&. 
+.TP
+\fB\fItype_t \fP\fP
+A data-type identifier\&. 
+.TP
+\fB\fIfield_t \fP\fP
+A field name for a structured data-type\&. 
+.TP
+\fB\fIcomm_t \fP\fP
+Part of a comment block\&. 
+.TP
+\fB\fIlabel_t \fP\fP
+A code label\&. 
+.TP
+\fB\fIsynt_t \fP\fP
+Other unspecified syntax\&. 
+.TP
+\fB\fIopar_t \fP\fP
+Open parenthesis\&. 
+.TP
+\fB\fIcpar_t \fP\fP
+Close parenthesis\&. 
+.TP
+\fB\fIoinv_t \fP\fP
+Start of an arbitrary (invisible) grouping\&. 
+.TP
+\fB\fIcinv_t \fP\fP
+End of an arbitrary (invisible) grouping\&. 
+.TP
+\fB\fIspac_t \fP\fP
+White space\&. 
+.TP
+\fB\fIbump_t \fP\fP
+Required line break\&. 
+.TP
+\fB\fIline_t \fP\fP
+Required line break with one-time indent level\&. 
+.PP
+Definition at line 294 of file prettyprint\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TokenSplit::TokenSplit (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 347 of file prettyprint\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 TokenSplit::beginBlock (const \fBFlowBlock\fP * b)\fC [inline]\fP"
+
+.PP
+Create a 'begin control-flow element' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP is the block structure object associated with the section 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the section 
+.RE
+.PP
+
+.PP
+Definition at line 377 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::beginDocument (void)\fC [inline]\fP"
+
+.PP
+Create a 'begin document' command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the document 
+.RE
+.PP
+
+.PP
+Definition at line 352 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::beginFuncProto (void)\fC [inline]\fP"
+
+.PP
+Create a 'begin function prototype declaration' command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the prototype 
+.RE
+.PP
+
+.PP
+Definition at line 428 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::beginFunction (const \fBFuncdata\fP * f)\fC [inline]\fP"
+
+.PP
+Create a 'begin function body' command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the function body 
+.RE
+.PP
+
+.PP
+Definition at line 364 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::beginReturnType (const \fBVarnode\fP * v)\fC [inline]\fP"
+
+.PP
+Create a 'begin return type declaration' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP (if non-null) is the storage location for the return value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the return type 
+.RE
+.PP
+
+.PP
+Definition at line 390 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::beginStatement (const \fBPcodeOp\fP * o)\fC [inline]\fP"
+
+.PP
+Create a 'begin source code statement' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP is the root p-code operation of the statement 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the statement 
+.RE
+.PP
+
+.PP
+Definition at line 416 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::beginVarDecl (const \fBSymbol\fP * sym)\fC [inline]\fP"
+
+.PP
+Create a 'begin variable declaration' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the symbol being declared 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the declaration 
+.RE
+.PP
+
+.PP
+Definition at line 403 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::closeGroup (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end a printing group' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the group (as returned by openGroup) 
+.RE
+.PP
+
+.PP
+Definition at line 541 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::closeParen (char c, int4 id)\fC [inline]\fP"
+
+.PP
+Create a close parenthesis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP is the close parenthesis character to emit 
+.br
+\fIid\fP is the id associated with the matching open parenthesis (as returned by openParen) 
+.RE
+.PP
+
+.PP
+Definition at line 528 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::endBlock (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end control-flow element' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the section (as returned by beginBlock) 
+.RE
+.PP
+
+.PP
+Definition at line 383 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::endDocument (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end document' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the document (as returned by beginDocument) 
+.RE
+.PP
+
+.PP
+Definition at line 358 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::endFuncProto (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end function prototype declaration' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the prototype (as returned by beginFuncProto) 
+.RE
+.PP
+
+.PP
+Definition at line 434 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::endFunction (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end function body' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the function body (as returned by beginFunction) 
+.RE
+.PP
+
+.PP
+Definition at line 370 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::endReturnType (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end return type declaration' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the return type (as returned by beginReturnType) 
+.RE
+.PP
+
+.PP
+Definition at line 396 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::endStatement (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end source code statement' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the statement (as returned by beginStatement) 
+.RE
+.PP
+
+.PP
+Definition at line 422 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::endVarDecl (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end variable declaration' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the declaration (as returned by beginVarDecl) 
+.RE
+.PP
+
+.PP
+Definition at line 409 of file prettyprint\&.hh\&.
+.SS "\fBprintclass\fP TokenSplit::getClass (void) const\fC [inline]\fP"
+
+.PP
+Get the print class of \fBthis\fP\&. 
+.PP
+Definition at line 590 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::getIndentBump (void) const\fC [inline]\fP"
+
+.PP
+Get the extra indent after a line break\&. 
+.PP
+Definition at line 586 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::getNumSpaces (void) const\fC [inline]\fP"
+
+.PP
+Get the number of characters of whitespace\&. 
+.PP
+Definition at line 587 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of content characters\&. 
+.PP
+Definition at line 588 of file prettyprint\&.hh\&.
+.SS "\fBtag_type\fP TokenSplit::getTag (void) const\fC [inline]\fP"
+
+.PP
+Get \fBthis\fP tag type\&. 
+.PP
+Definition at line 591 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::openGroup (void)\fC [inline]\fP"
+
+.PP
+Create a 'start a printing group' command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the group 
+.RE
+.PP
+
+.PP
+Definition at line 535 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::openParen (char o, int4 id)\fC [inline]\fP"
+
+.PP
+Create an open parenthesis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP is the open parenthesis character to emit 
+.br
+\fIid\fP is an id to associate with the parenthesis 
+.RE
+.PP
+
+.PP
+Definition at line 520 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::print (const char * str, \fBEmitXml::syntax_highlight\fP h)\fC [inline]\fP"
+
+.PP
+Create a token for other (more unusual) syntax in source code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP is the character data of the syntax being emitted 
+.br
+\fIh\fP indicates how the syntax should be highlighted 
+.RE
+.PP
+
+.PP
+Definition at line 512 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::print (\fBEmitXml\fP * emit) const"
+
+.PP
+Send \fBthis\fP token to emitter\&. Emit markup or content corresponding to \fBthis\fP token on a low-level emitter\&. The API method matching the token type is called, feeding it content contained in the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIemit\fP is the low-level emitter to output to 
+.RE
+.PP
+
+.PP
+Definition at line 353 of file prettyprint\&.cc\&.
+.SS "void TokenSplit::setSize (int4 sz)\fC [inline]\fP"
+
+.PP
+Set the number of content characters\&. 
+.PP
+Definition at line 589 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::spaces (int4 num, int4 bump)\fC [inline]\fP"
+
+.PP
+Create a whitespace token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum\fP is the number of space characters to emit 
+.br
+\fIbump\fP is the number of characters to indent if the spaces force a line break 
+.RE
+.PP
+
+.PP
+Definition at line 574 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::startComment (void)\fC [inline]\fP"
+
+.PP
+Create a 'start a comment block' command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the comment block 
+.RE
+.PP
+
+.PP
+Definition at line 561 of file prettyprint\&.hh\&.
+.SS "int4 TokenSplit::startIndent (int4 bump)\fC [inline]\fP"
+
+.PP
+Create a 'start a new indent level' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbump\fP the number of additional characters to indent 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an id associated with the nesting 
+.RE
+.PP
+
+.PP
+Definition at line 548 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::stopComment (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end a comment block' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the block (as returned by startComment) 
+.RE
+.PP
+
+.PP
+Definition at line 567 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::stopIndent (int4 id)\fC [inline]\fP"
+
+.PP
+Create an 'end an indent level' command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the id associated with the nesting (as returned by startIndent) 
+.RE
+.PP
+
+.PP
+Definition at line 555 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagComment (const char * ptr, \fBEmitXml::syntax_highlight\fP h, const \fBAddrSpace\fP * s, \fBuintb\fP o)\fC [inline]\fP"
+
+.PP
+Create a comment string in the generated source code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the comment 
+.br
+\fIh\fP indicates how the comment should be highlighted 
+.br
+\fIs\fP is the address space of the address where the comment is attached 
+.br
+\fIo\fP is the offset of the address where the comment is attached 
+.RE
+.PP
+
+.PP
+Definition at line 492 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagField (const char * ptr, \fBEmitXml::syntax_highlight\fP h, const \fBDatatype\fP * ct, int4 o)\fC [inline]\fP"
+
+.PP
+Create an identifier for a field within a structured data-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIh\fP indicates how the identifier should be highlighted 
+.br
+\fIct\fP is the data-type associated with the field 
+.br
+\fIo\fP is the (byte) offset of the field within its structured data-type 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagFuncName (const char * ptr, \fBEmitXml::syntax_highlight\fP h, const \fBFuncdata\fP * f, const \fBPcodeOp\fP * o)\fC [inline]\fP"
+
+.PP
+Create a function identifier token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIh\fP indicates how the identifier should be highlighted 
+.br
+\fIf\fP is the function 
+.br
+\fIo\fP is the CALL operation associated within the syntax tree or null for a declaration 
+.RE
+.PP
+
+.PP
+Definition at line 463 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagLabel (const char * ptr, \fBEmitXml::syntax_highlight\fP h, const \fBAddrSpace\fP * s, \fBuintb\fP o)\fC [inline]\fP"
+
+.PP
+Create a code label identifier token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data of the label 
+.br
+\fIh\fP indicates how the label should be highlighted 
+.br
+\fIs\fP is the address space of the code address being labeled 
+.br
+\fIo\fP is the offset of the code address being labeled 
+.RE
+.PP
+
+.PP
+Definition at line 503 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagLine (void)\fC [inline]\fP"
+
+.PP
+Create a line break token\&. 
+.PP
+Definition at line 578 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagLine (int4 indent)\fC [inline]\fP"
+
+.PP
+Create a line break token with special indentation\&. 
+.PP
+Definition at line 582 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagOp (const char * ptr, \fBEmitXml::syntax_highlight\fP h, const \fBPcodeOp\fP * o)\fC [inline]\fP"
+
+.PP
+Create an operator token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the emitted representation 
+.br
+\fIh\fP indicates how the token should be highlighted 
+.br
+\fIo\fP is the \fBPcodeOp\fP object associated with the operation with the syntax tree 
+.RE
+.PP
+
+.PP
+Definition at line 453 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagType (const char * ptr, \fBEmitXml::syntax_highlight\fP h, const \fBDatatype\fP * ct)\fC [inline]\fP"
+
+.PP
+Create a data-type identifier token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIh\fP indicates how the identifier should be highlighted 
+.br
+\fIct\fP is the data-type description object 
+.RE
+.PP
+
+.PP
+Definition at line 472 of file prettyprint\&.hh\&.
+.SS "void TokenSplit::tagVariable (const char * ptr, \fBEmitXml::syntax_highlight\fP h, const \fBVarnode\fP * v, const \fBPcodeOp\fP * o)\fC [inline]\fP"
+
+.PP
+Create a variable identifier token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP is the character data for the identifier 
+.br
+\fIh\fP indicates how the identifier should be highlighted 
+.br
+\fIv\fP is the \fBVarnode\fP representing the variable within the syntax tree 
+.br
+\fIo\fP is a p-code operation related to the use of the variable (may be null) 
+.RE
+.PP
+
+.PP
+Definition at line 443 of file prettyprint\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const \fBFlowBlock\fP* TokenSplit::bl"
+
+.PP
+Associated Control-flow\&. 
+.PP
+Definition at line 334 of file prettyprint\&.hh\&.
+.SS "const \fBDatatype\fP* TokenSplit::ct"
+
+.PP
+Associated Data-type\&. 
+.PP
+Definition at line 336 of file prettyprint\&.hh\&.
+.SS "const \fBFuncdata\fP* TokenSplit::fd"
+
+.PP
+Associated Function\&. 
+.PP
+Definition at line 335 of file prettyprint\&.hh\&.
+.SS "const \fBAddrSpace\fP* TokenSplit::spc"
+
+.PP
+Associated \fBAddress\fP\&. 
+.PP
+Definition at line 337 of file prettyprint\&.hh\&.
+.SS "const \fBSymbol\fP* TokenSplit::symbol"
+
+.PP
+Associated \fBSymbol\fP being displayed\&. 
+.PP
+Definition at line 338 of file prettyprint\&.hh\&.
+.SS "const \fBVarnode\fP* TokenSplit::vn"
+
+.PP
+Associated \fBVarnode\fP\&. 
+.PP
+Definition at line 333 of file prettyprint\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

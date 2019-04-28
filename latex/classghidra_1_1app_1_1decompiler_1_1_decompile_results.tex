@@ -1,0 +1,238 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results}{}\section{ghidra.\+app.\+decompiler.\+Decompile\+Results Class Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results}\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4e5409416abab86fe80ced741f490367}{Decompile\+Results}} (Function f, Language language, Compiler\+Spec compiler\+Spec, Pcode\+Data\+Type\+Manager d, String e, Input\+Stream raw, Decompile\+Process.\+Dispose\+State process\+State, boolean show\+Namespace)
+\item 
+boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2b822a34cffee3be06469c05330321bb}{decompile\+Completed}} ()
+\item 
+Function \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_ae0f744db17c1404de98c893d27d30095}{get\+Function}} ()
+\item 
+boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a09090a559208bc50b2490ca3f14898b0}{is\+Timed\+Out}} ()
+\item 
+boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4777184173e22095d06f713a354e5f1e}{is\+Cancelled}} ()
+\item 
+boolean \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4b0eb77c8b21c1eba93df8539102b9f0}{failed\+To\+Start}} ()
+\item 
+String \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a239fb0781f15435446ab8b3b11abc079}{get\+Error\+Message}} ()
+\item 
+High\+Function \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a47a5e5504a7d915f1edecbca48977e2e}{get\+High\+Function}} ()
+\item 
+High\+Param\+ID \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a272e9f87e48dde339d3648090af78ab0}{get\+High\+Param\+ID}} ()
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_clang_token_group}{Clang\+Token\+Group}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a1ca085b179f273b38e002f2b2f24cb5d}{get\+C\+Code\+Markup}} ()
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiled_function}{Decompiled\+Function}} \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2cc778a7c03ea4f665d380fd91891e1f}{get\+Decompiled\+Function}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for getting at the various structures returned by the decompiler. Depending on how the \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}} was called, you can get C code (with markup), the function\textquotesingle{} syntax tree, the prototype, etc.
+
+To check if the decompile\+Function call completed normally use the decompile\+Completed method. If this returns false, the get\+Error\+Message method may contain a useful error message. Its also possible that get\+Error\+Message will return warning messages, even if decompile\+Function did complete.
+
+To get the resulting C code, marked up with X\+ML in terms of the lines and tokens, use the get\+C\+Code\+Markup method.
+
+To get the resulting C code just as a straight String, use the get\+Decompiled\+Function method which returns a \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiled_function}{Decompiled\+Function}}. Off of this, you can use the getC method to get the raw C code as a String or use the get\+Signature method to get the functions prototype as a String.
+
+To get the syntax tree use the get\+High\+Function method. 
+
+Definition at line 55 of file Decompile\+Results.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4e5409416abab86fe80ced741f490367}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4e5409416abab86fe80ced741f490367}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!DecompileResults@{DecompileResults}}
+\index{DecompileResults@{DecompileResults}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{DecompileResults()}{DecompileResults()}}
+{\footnotesize\ttfamily ghidra.\+app.\+decompiler.\+Decompile\+Results.\+Decompile\+Results (\begin{DoxyParamCaption}\item[{Function}]{f,  }\item[{Language}]{language,  }\item[{Compiler\+Spec}]{compiler\+Spec,  }\item[{Pcode\+Data\+Type\+Manager}]{d,  }\item[{String}]{e,  }\item[{Input\+Stream}]{raw,  }\item[{Decompile\+Process.\+Dispose\+State}]{process\+State,  }\item[{boolean}]{show\+Namespace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 67 of file Decompile\+Results.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2b822a34cffee3be06469c05330321bb}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2b822a34cffee3be06469c05330321bb}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!decompileCompleted@{decompileCompleted}}
+\index{decompileCompleted@{decompileCompleted}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{decompileCompleted()}{decompileCompleted()}}
+{\footnotesize\ttfamily boolean ghidra.\+app.\+decompiler.\+Decompile\+Results.\+decompile\+Completed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns true if the decompilation producing these results completed without aborting. If it was aborted, there will be no real results in this object, and an error message should be available via get\+Error\+Message. \begin{DoxyReturn}{Returns}
+true if the decompilation completed. 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file Decompile\+Results.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4b0eb77c8b21c1eba93df8539102b9f0}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4b0eb77c8b21c1eba93df8539102b9f0}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!failedToStart@{failedToStart}}
+\index{failedToStart@{failedToStart}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{failedToStart()}{failedToStart()}}
+{\footnotesize\ttfamily boolean ghidra.\+app.\+decompiler.\+Decompile\+Results.\+failed\+To\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+If the action producing this set of decompiler results didn\textquotesingle{}t complete, this method can be used to determine if the decompiler executable was not found or failed to start properly. \begin{DoxyReturn}{Returns}
+true if the decompiler executable was not found. 
+\end{DoxyReturn}
+
+
+Definition at line 147 of file Decompile\+Results.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a1ca085b179f273b38e002f2b2f24cb5d}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a1ca085b179f273b38e002f2b2f24cb5d}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!getCCodeMarkup@{getCCodeMarkup}}
+\index{getCCodeMarkup@{getCCodeMarkup}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{getCCodeMarkup()}{getCCodeMarkup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_clang_token_group}{Clang\+Token\+Group}} ghidra.\+app.\+decompiler.\+Decompile\+Results.\+get\+C\+Code\+Markup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the marked up C code associated with these decompilation results. If there was an error, or code generation was turned off, retur null \begin{DoxyReturn}{Returns}
+the resulting root of C markup 
+\end{DoxyReturn}
+
+
+Definition at line 190 of file Decompile\+Results.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a1ca085b179f273b38e002f2b2f24cb5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2cc778a7c03ea4f665d380fd91891e1f}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2cc778a7c03ea4f665d380fd91891e1f}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!getDecompiledFunction@{getDecompiledFunction}}
+\index{getDecompiledFunction@{getDecompiledFunction}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{getDecompiledFunction()}{getDecompiledFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiled_function}{Decompiled\+Function}} ghidra.\+app.\+decompiler.\+Decompile\+Results.\+get\+Decompiled\+Function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the C code results into an unadorned string. The returned object contains both the whole function and just the prototype as separate strings containing raw C code \begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiled_function}{Decompiled\+Function}} object 
+\end{DoxyReturn}
+
+
+Definition at line 201 of file Decompile\+Results.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2cc778a7c03ea4f665d380fd91891e1f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a2cc778a7c03ea4f665d380fd91891e1f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a239fb0781f15435446ab8b3b11abc079}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a239fb0781f15435446ab8b3b11abc079}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!getErrorMessage@{getErrorMessage}}
+\index{getErrorMessage@{getErrorMessage}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{getErrorMessage()}{getErrorMessage()}}
+{\footnotesize\ttfamily String ghidra.\+app.\+decompiler.\+Decompile\+Results.\+get\+Error\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return any error message associated with the decompilation producing these results. Generally, there will only be an error if the decompilation was aborted for some reason, but there could conceivably be warnings obtainable via this method, even if the decompilation did complete. \begin{DoxyReturn}{Returns}
+any error message associated with these results 
+\end{DoxyReturn}
+
+
+Definition at line 160 of file Decompile\+Results.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a239fb0781f15435446ab8b3b11abc079_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_ae0f744db17c1404de98c893d27d30095}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_ae0f744db17c1404de98c893d27d30095}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!getFunction@{getFunction}}
+\index{getFunction@{getFunction}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{getFunction()}{getFunction()}}
+{\footnotesize\ttfamily Function ghidra.\+app.\+decompiler.\+Decompile\+Results.\+get\+Function (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 114 of file Decompile\+Results.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decompile_results_ae0f744db17c1404de98c893d27d30095_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a47a5e5504a7d915f1edecbca48977e2e}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a47a5e5504a7d915f1edecbca48977e2e}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!getHighFunction@{getHighFunction}}
+\index{getHighFunction@{getHighFunction}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{getHighFunction()}{getHighFunction()}}
+{\footnotesize\ttfamily High\+Function ghidra.\+app.\+decompiler.\+Decompile\+Results.\+get\+High\+Function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the high-\/level function structure associated with these decompilation results, or null if there was an error during decompilation \begin{DoxyReturn}{Returns}
+the resulting High\+Function object 
+\end{DoxyReturn}
+
+
+Definition at line 170 of file Decompile\+Results.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a47a5e5504a7d915f1edecbca48977e2e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a272e9f87e48dde339d3648090af78ab0}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a272e9f87e48dde339d3648090af78ab0}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!getHighParamID@{getHighParamID}}
+\index{getHighParamID@{getHighParamID}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{getHighParamID()}{getHighParamID()}}
+{\footnotesize\ttfamily High\+Param\+ID ghidra.\+app.\+decompiler.\+Decompile\+Results.\+get\+High\+Param\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the high-\/level function structure associated with these decompilation results, or null if there was an error during decompilation \begin{DoxyReturn}{Returns}
+the resulting High\+Param\+ID object 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file Decompile\+Results.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4777184173e22095d06f713a354e5f1e}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a4777184173e22095d06f713a354e5f1e}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!isCancelled@{isCancelled}}
+\index{isCancelled@{isCancelled}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{isCancelled()}{isCancelled()}}
+{\footnotesize\ttfamily boolean ghidra.\+app.\+decompiler.\+Decompile\+Results.\+is\+Cancelled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+If the action producing this set of decompiler results didn\textquotesingle{}t complete, this method can be used to determine if the action was explicitly cancelled (as opposed to an error, a timeout, or a crash). \begin{DoxyReturn}{Returns}
+true if these results were explicitly cancelled 
+\end{DoxyReturn}
+
+
+Definition at line 137 of file Decompile\+Results.\+java.
+
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a09090a559208bc50b2490ca3f14898b0}\label{classghidra_1_1app_1_1decompiler_1_1_decompile_results_a09090a559208bc50b2490ca3f14898b0}} 
+\index{ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}!isTimedOut@{isTimedOut}}
+\index{isTimedOut@{isTimedOut}!ghidra.app.decompiler.DecompileResults@{ghidra.app.decompiler.DecompileResults}}
+\subsubsection{\texorpdfstring{isTimedOut()}{isTimedOut()}}
+{\footnotesize\ttfamily boolean ghidra.\+app.\+decompiler.\+Decompile\+Results.\+is\+Timed\+Out (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+If the action producing this set of decompiler results didn\textquotesingle{}t complete, this method can be used to determine if the action was halted because its timer expired (as opposed to an error, a crash, or being explicitly cancelled). \begin{DoxyReturn}{Returns}
+true if the timer cancelled these results 
+\end{DoxyReturn}
+
+
+Definition at line 126 of file Decompile\+Results.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/\mbox{\hyperlink{_decompile_results_8java}{Decompile\+Results.\+java}}\end{DoxyCompactItemize}

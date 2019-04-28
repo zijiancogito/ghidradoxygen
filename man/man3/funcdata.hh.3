@@ -1,0 +1,194 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/funcdata.hh \- Utilities for processing data structures associated with a single function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'architecture\&.hh'\fP
+.br
+\fC#include 'override\&.hh'\fP
+.br
+\fC#include 'heritage\&.hh'\fP
+.br
+\fC#include 'merge\&.hh'\fP
+.br
+\fC#include 'dynamic\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBFuncdata\fP"
+.br
+.RI "Container for data structures associated with a single function\&. "
+.ti -1c
+.RI "class \fBPcodeEmitFd\fP"
+.br
+.RI "A p-code emitter for building \fBPcodeOp\fP objects\&. "
+.ti -1c
+.RI "class \fBAncestorRealistic\fP"
+.br
+.RI "Helper class for determining if Varnodes can trace their value from a legitimate source\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBopFlipInPlaceTest\fP (\fBPcodeOp\fP *op, vector< \fBPcodeOp\fP * > &fliplist)"
+.br
+.RI "Trace a boolean value to a set of PcodeOps that can be changed to flip the boolean value\&. "
+.ti -1c
+.RI "void \fBopFlipInPlaceExecute\fP (\fBFuncdata\fP &data, vector< \fBPcodeOp\fP * > &fliplist)"
+.br
+.RI "Perform op-code flips (in-place) to change a boolean value\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBearliestUseInBlock\fP (\fBVarnode\fP *vn, \fBBlockBasic\fP *bl)"
+.br
+.RI "Get the earliest use/read of a \fBVarnode\fP in a specified basic block\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBcseFindInBlock\fP (\fBPcodeOp\fP *op, \fBVarnode\fP *vn, \fBBlockBasic\fP *bl, \fBPcodeOp\fP *earliest)"
+.br
+.RI "Find a duplicate calculation of a given \fBPcodeOp\fP reading a specific \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBcseElimination\fP (\fBFuncdata\fP &data, \fBPcodeOp\fP *op1, \fBPcodeOp\fP *op2)"
+.br
+.RI "Perform a Common Subexpression Elimination step\&. "
+.ti -1c
+.RI "void \fBcseEliminateList\fP (\fBFuncdata\fP &data, vector< pair< uintm, \fBPcodeOp\fP * > > &list, vector< \fBVarnode\fP * > &outlist)"
+.br
+.RI "Perform Common Subexpression Elimination on a list of \fBVarnode\fP descendants\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utilities for processing data structures associated with a single function\&. 
+
+
+.PP
+Definition in file \fBfuncdata\&.hh\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "void cseEliminateList (\fBFuncdata\fP & data, vector< pair< uintm, \fBPcodeOp\fP * > > & list, vector< \fBVarnode\fP * > & outlist)"
+
+.PP
+Perform Common Subexpression Elimination on a list of \fBVarnode\fP descendants\&. The list consists of \fBPcodeOp\fP descendants of a single \fBVarnode\fP paired with a hash value\&. The hash serves as a primary test for duplicate calculations; if it doesn't match the PcodeOps aren't common subexpressions\&. This method searches for hash matches then does secondary testing and eliminates any redundancy it finds\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being modified 
+.br
+\fIlist\fP is the list of (hash, \fBPcodeOp\fP) pairs 
+.br
+\fIoutlist\fP will hold Varnodes produced by duplicate calculations 
+.RE
+.PP
+
+.PP
+Definition at line 1248 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP* cseElimination (\fBFuncdata\fP & data, \fBPcodeOp\fP * op1, \fBPcodeOp\fP * op2)"
+
+.PP
+Perform a Common Subexpression Elimination step\&. Assuming the two given PcodeOps perform the identical operation on identical operands (depth 1 functional equivalence) eliminate the redundancy\&. Return the remaining (dominating) \fBPcodeOp\fP\&. If neither op dominates the other, both are eliminated, and a new \fBPcodeOp\fP is built at a commonly accessible point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being modified 
+.br
+\fIop1\fP is the first of the given PcodeOps 
+.br
+\fIop2\fP is the second given \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the dominating \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1185 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP* cseFindInBlock (\fBPcodeOp\fP * op, \fBVarnode\fP * vn, \fBBlockBasic\fP * bl, \fBPcodeOp\fP * earliest)"
+
+.PP
+Find a duplicate calculation of a given \fBPcodeOp\fP reading a specific \fBVarnode\fP\&. We only match 1 level of calculation\&. Additionally the duplicate must occur in the indicated basic block, earlier than a specified op\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIvn\fP is the specific \fBVarnode\fP that must be involved in the calculation 
+.br
+\fIbl\fP is the indicated basic block 
+.br
+\fIearliest\fP is the specified op to be earlier than 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the discovered duplicate \fBPcodeOp\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1152 of file funcdata_op\&.cc\&.
+.SS "\fBPcodeOp\fP* earliestUseInBlock (\fBVarnode\fP * vn, \fBBlockBasic\fP * bl)"
+
+.PP
+Get the earliest use/read of a \fBVarnode\fP in a specified basic block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to search for 
+.br
+\fIbl\fP is the specified basic block in which to search 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the earliest \fBPcodeOp\fP reading the \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1124 of file funcdata_op\&.cc\&.
+.SS "void opFlipInPlaceExecute (\fBFuncdata\fP & data, vector< \fBPcodeOp\fP * > & fliplist)"
+
+.PP
+Perform op-code flips (in-place) to change a boolean value\&. The precomputed list of PcodeOps have their op-codes modified to facilitate the flip\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being modified 
+.br
+\fIfliplist\fP is the list of PcodeOps to modify 
+.RE
+.PP
+
+.PP
+Definition at line 1084 of file funcdata_op\&.cc\&.
+.SS "int4 opFlipInPlaceTest (\fBPcodeOp\fP * op, vector< \fBPcodeOp\fP * > & fliplist)"
+
+.PP
+Trace a boolean value to a set of PcodeOps that can be changed to flip the boolean value\&. The boolean \fBVarnode\fP is either the output of the given \fBPcodeOp\fP or the first input if the \fBPcodeOp\fP is a CBRANCH\&. The list of ops that need flipping is returned in an array 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIfliplist\fP is the array that will hold the ops to flip 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 if the change normalizes, 1 if the change is ambivalent, 2 if the change does not normalize 
+.RE
+.PP
+
+.PP
+Definition at line 1024 of file funcdata_op\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

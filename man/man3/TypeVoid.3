@@ -1,0 +1,97 @@
+.TH "TypeVoid" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeVoid \- Formal 'void' data-type object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBDatatype\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeVoid\fP (const \fBTypeVoid\fP &op)"
+.br
+.RI "Construct from another \fBTypeVoid\fP\&. "
+.ti -1c
+.RI "\fBTypeVoid\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Formal 'void' data-type object\&. 
+
+A placeholder for 'no data-type'\&. This should be the only object with meta-type set to TYPE_VOID 
+.PP
+Definition at line 205 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeVoid::TypeVoid (const \fBTypeVoid\fP & op)\fC [inline]\fP"
+
+.PP
+Construct from another \fBTypeVoid\fP\&. 
+.PP
+Definition at line 210 of file type\&.hh\&.
+.SS "TypeVoid::TypeVoid (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 212 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* TypeVoid::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Implements \fBDatatype\fP\&.
+.PP
+Definition at line 213 of file type\&.hh\&.
+.SS "void TypeVoid::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 374 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 207 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

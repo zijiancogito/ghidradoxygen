@@ -1,0 +1,60 @@
+\hypertarget{heritage_8hh}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/heritage.hh File Reference}
+\label{heritage_8hh}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.hh@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.hh}}
+
+
+Utilities for building Static Single Assignment (S\+SA) form.  
+
+
+{\ttfamily \#include \char`\"{}block.\+hh\char`\"{}}\newline
+Include dependency graph for heritage.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{heritage_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{heritage_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_size_pass}{Size\+Pass}}
+\begin{DoxyCompactList}\small\item\em Label for describing extent of address range that has been heritaged. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_location_map}{Location\+Map}}
+\begin{DoxyCompactList}\small\item\em Map object for keeping track of which address ranges have been heritaged. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_priority_queue}{Priority\+Queue}}
+\begin{DoxyCompactList}\small\item\em Priority queue for the phi-\/node (M\+U\+L\+T\+I\+E\+Q\+U\+AL) placement algorithm. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_heritage_info}{Heritage\+Info}}
+\begin{DoxyCompactList}\small\item\em Information about heritage passes performed for a specific address space. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_heritage}{Heritage}}
+\begin{DoxyCompactList}\small\item\em Manage the construction of Static Single Assignment (S\+SA) form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef map$<$ \mbox{\hyperlink{class_address}{Address}}, vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ $>$ \mbox{\hyperlink{heritage_8hh_a06c866be068de18f657eeea50b3790ba}{Variable\+Stack}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utilities for building Static Single Assignment (S\+SA) form. 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{heritage_8hh_a06c866be068de18f657eeea50b3790ba}\label{heritage_8hh_a06c866be068de18f657eeea50b3790ba}} 
+\index{heritage.hh@{heritage.hh}!VariableStack@{VariableStack}}
+\index{VariableStack@{VariableStack}!heritage.hh@{heritage.hh}}
+\subsubsection{\texorpdfstring{VariableStack}{VariableStack}}
+{\footnotesize\ttfamily typedef map$<$\mbox{\hyperlink{class_address}{Address}},vector$<$\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$$>$ $>$ \mbox{\hyperlink{heritage_8hh_a06c866be068de18f657eeea50b3790ba}{Variable\+Stack}}}
+
+Container holding the stack system for the renaming algorithm. Every disjoint address range (indexed by its initial address) maps to its own \mbox{\hyperlink{class_varnode}{Varnode}} stack. 
+
+Definition at line 27 of file heritage.\+hh.
+

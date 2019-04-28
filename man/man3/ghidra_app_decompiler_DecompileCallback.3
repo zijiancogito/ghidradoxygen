@@ -1,0 +1,253 @@
+.TH "ghidra.app.decompiler.DecompileCallback" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.DecompileCallback
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompileCallback\fP (Program prog, Language language, CompilerSpec compilerSpec, PcodeDataTypeManager dt)"
+.br
+.ti -1c
+.RI "void \fBsetFunction\fP (Function func, \fBAddress\fP entry, \fBDecompileDebug\fP dbg)"
+.br
+.ti -1c
+.RI "String \fBgetNativeMessage\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetNativeMessage\fP (String msg)"
+.br
+.ti -1c
+.RI "void \fBsetShowNamespace\fP (boolean showNamespace)"
+.br
+.ti -1c
+.RI "synchronized int \fBreadXMLSize\fP (String addrxml)"
+.br
+.ti -1c
+.RI "synchronized ArrayList< String > \fBreadXMLNameList\fP (String xml)  throws PcodeXMLException "
+.br
+.ti -1c
+.RI "byte [] \fBgetBytes\fP (String addrxml)"
+.br
+.ti -1c
+.RI "String \fBgetComments\fP (String addrstring, String types)"
+.br
+.ti -1c
+.RI "PackedBytes \fBgetPcodePacked\fP (String addrstring)"
+.br
+.ti -1c
+.RI "String \fBgetPcodeInject\fP (String nm, String context, int type)"
+.br
+.ti -1c
+.RI "String \fBgetCPoolRef\fP (long[] refs)  throws IOException "
+.br
+.ti -1c
+.RI "String \fBgetSymbol\fP (String addrstring)"
+.br
+.ti -1c
+.RI "String \fBgetMappedSymbolsXML\fP (String addrstring)"
+.br
+.ti -1c
+.RI "String \fBgetExternalRefXML\fP (String addrstring)"
+.br
+.ti -1c
+.RI "String \fBgetType\fP (String name, String idstr)"
+.br
+.ti -1c
+.RI "String \fBgetRegister\fP (String name)"
+.br
+.ti -1c
+.RI "String \fBgetRegisterName\fP (String addrstring)"
+.br
+.ti -1c
+.RI "String \fBgetTrackedRegisters\fP (String addrstring)"
+.br
+.ti -1c
+.RI "String \fBgetUserOpName\fP (String indexStr)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static String \fBbuildInstruction\fP (\fBPcodeOp\fP[] ops, int fallthruoffset, int paramshift, AddressFactory addrFactory)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Routines that the decompiler invokes to gather info during decompilation of a function\&. 
+.PP
+Definition at line 53 of file DecompileCallback\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.DecompileCallback\&.DecompileCallback (Program prog, Language language, CompilerSpec compilerSpec, PcodeDataTypeManager dt)\fC [inline]\fP"
+
+.PP
+Definition at line 74 of file DecompileCallback\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static String ghidra\&.app\&.decompiler\&.DecompileCallback\&.buildInstruction (\fBPcodeOp\fP [] ops, int fallthruoffset, int paramshift, AddressFactory addrFactory)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIops\fP pcode ops 
+.br
+\fIfallthruoffset\fP number of bytes after instruction start that pcode flow falls into
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+XML document string representing all the pcodeBuild an XML representation of all the pcode op's a given Instruction is defined to perform\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIops\fP pcode ops 
+.br
+\fIfallthruoffset\fP number of bytes after instruction start that pcode flow falls into 
+.br
+\fIparamshift\fP special instructions for injection use 
+.br
+\fIaddrFactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+XML document as string 
+.RE
+.PP
+
+.PP
+Definition at line 314 of file DecompileCallback\&.java\&.
+.SS "byte [] ghidra\&.app\&.decompiler\&.DecompileCallback\&.getBytes (String addrxml)\fC [inline]\fP"
+
+.PP
+Definition at line 174 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getComments (String addrstring, String types)\fC [inline]\fP"
+Collect any/all comments for the function starting at the indicated address
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddrstring\fP = string rep of function address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+XML document describing comments 
+.RE
+.PP
+
+.PP
+Definition at line 212 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getCPoolRef (long [] refs) throws IOException\fC [inline]\fP"
+
+.PP
+Definition at line 404 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getExternalRefXML (String addrstring)\fC [inline]\fP"
+
+.PP
+Definition at line 652 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getMappedSymbolsXML (String addrstring)\fC [inline]\fP"
+Called by the native decompiler to query the GHIDRA database about any symbols at the given address\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddrstring\fP XML encoded address to query 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+XML encoded result\&. Either function, reference, datatype, or hole 
+.RE
+.PP
+
+.PP
+Definition at line 610 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getNativeMessage ()\fC [inline]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+the last message from the decompiler 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getPcodeInject (String nm, String context, int type)\fC [inline]\fP"
+
+.PP
+Definition at line 336 of file DecompileCallback\&.java\&.
+.SS "PackedBytes ghidra\&.app\&.decompiler\&.DecompileCallback\&.getPcodePacked (String addrstring)\fC [inline]\fP"
+
+.PP
+Definition at line 253 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getRegister (String name)\fC [inline]\fP"
+
+.PP
+Definition at line 721 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getRegisterName (String addrstring)\fC [inline]\fP"
+
+.PP
+Definition at line 731 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getSymbol (String addrstring)\fC [inline]\fP"
+
+.PP
+Definition at line 477 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getTrackedRegisters (String addrstring)\fC [inline]\fP"
+
+.PP
+Definition at line 749 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getType (String name, String idstr)\fC [inline]\fP"
+
+.PP
+Definition at line 706 of file DecompileCallback\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompileCallback\&.getUserOpName (String indexStr)\fC [inline]\fP"
+
+.PP
+Definition at line 785 of file DecompileCallback\&.java\&.
+.SS "synchronized ArrayList<String> ghidra\&.app\&.decompiler\&.DecompileCallback\&.readXMLNameList (String xml) throws PcodeXMLException\fC [inline]\fP"
+
+.PP
+Definition at line 160 of file DecompileCallback\&.java\&.
+.SS "synchronized int ghidra\&.app\&.decompiler\&.DecompileCallback\&.readXMLSize (String addrxml)\fC [inline]\fP"
+
+.PP
+Definition at line 147 of file DecompileCallback\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileCallback\&.setFunction (Function func, \fBAddress\fP entry, \fBDecompileDebug\fP dbg)\fC [inline]\fP"
+Establish function and debug context for next decompilation
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfunc\fP is the function to be decompiled 
+.br
+\fIdbg\fP is the debugging context (or null) 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file DecompileCallback\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileCallback\&.setNativeMessage (String msg)\fC [inline]\fP"
+Used by the decompiler to return a message
+.PP
+\fBParameters:\fP
+.RS 4
+\fImsg\fP 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file DecompileCallback\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileCallback\&.setShowNamespace (boolean showNamespace)\fC [inline]\fP"
+
+.PP
+Definition at line 143 of file DecompileCallback\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

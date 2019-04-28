@@ -1,0 +1,364 @@
+.TH "LoopBody" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoopBody \- A description of the body of a loop\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <blockaction\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLoopBody\fP (\fBFlowBlock\fP *h)"
+.br
+.RI "Construct with a loop head\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetHead\fP (void) const"
+.br
+.RI "Return the head \fBFlowBlock\fP of the loop\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetCurrentBounds\fP (\fBFlowBlock\fP **top, \fBFlowBlock\fP *graph)"
+.br
+.RI "Return current loop bounds (\fBhead\fP and \fBbottom\fP)\&. "
+.ti -1c
+.RI "void \fBaddTail\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Add a \fItail\fP to the loop\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetExitBlock\fP (void) const"
+.br
+.RI "Get the exit \fBFlowBlock\fP or NULL\&. "
+.ti -1c
+.RI "void \fBfindBase\fP (vector< \fBFlowBlock\fP * > &body)"
+.br
+.RI "Mark the body FlowBlocks of \fBthis\fP loop\&. "
+.ti -1c
+.RI "void \fBextend\fP (vector< \fBFlowBlock\fP * > &body) const"
+.br
+.RI "Extend body (to blocks that never exit) "
+.ti -1c
+.RI "void \fBfindExit\fP (const vector< \fBFlowBlock\fP * > &body)"
+.br
+.RI "Choose the exit block for \fBthis\fP loop\&. "
+.ti -1c
+.RI "void \fBorderTails\fP (void)"
+.br
+.RI "Find preferred \fBtail\fP\&. "
+.ti -1c
+.RI "void \fBlabelExitEdges\fP (const vector< \fBFlowBlock\fP * > &body)"
+.br
+.RI "Label edges that exit the loop\&. "
+.ti -1c
+.RI "void \fBlabelContainments\fP (const vector< \fBFlowBlock\fP * > &body, const vector< \fBLoopBody\fP * > &looporder)"
+.br
+.RI "Record any loops that \fBbody\fP contains\&. "
+.ti -1c
+.RI "void \fBemitLikelyEdges\fP (list< \fBFloatingEdge\fP > &likely, \fBFlowBlock\fP *graph)"
+.br
+.RI "Collect likely \fIunstructured\fP edges\&. "
+.ti -1c
+.RI "void \fBsetExitMarks\fP (\fBFlowBlock\fP *graph)"
+.br
+.RI "Mark all the exits to this loop\&. "
+.ti -1c
+.RI "void \fBclearExitMarks\fP (\fBFlowBlock\fP *graph)"
+.br
+.RI "Clear the mark on all the exits to this loop\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBLoopBody\fP &op2) const"
+.br
+.RI "Order loop bodies by depth\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBmergeIdenticalHeads\fP (vector< \fBLoopBody\fP * > &looporder)"
+.br
+.RI "\fBMerge\fP loop bodies that share the same \fIhead\fP\&. "
+.ti -1c
+.RI "static bool \fBcompare_ends\fP (\fBLoopBody\fP *a, \fBLoopBody\fP *b)"
+.br
+.RI "Compare the \fBhead\fP then \fBtail\fP\&. "
+.ti -1c
+.RI "static int4 \fBcompare_head\fP (\fBLoopBody\fP *a, \fBFlowBlock\fP *looptop)"
+.br
+.RI "Compare just the \fBhead\fP\&. "
+.ti -1c
+.RI "static \fBLoopBody\fP * \fBfind\fP (\fBFlowBlock\fP *looptop, const vector< \fBLoopBody\fP * > &looporder)"
+.br
+.RI "Find a \fBLoopBody\fP\&. "
+.ti -1c
+.RI "static void \fBclearMarks\fP (vector< \fBFlowBlock\fP * > &body)"
+.br
+.RI "Clear the body marks\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A description of the body of a loop\&. 
+
+Following Tarjan, assuming there are no \fIirreducible\fP edges, a loop body is defined by the \fIhead\fP (or entry-point) and 1 or more tails, which each have a \fIback\fP \fIedge\fP into the head\&. 
+.PP
+Definition at line 44 of file blockaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LoopBody::LoopBody (\fBFlowBlock\fP * h)\fC [inline]\fP"
+
+.PP
+Construct with a loop head\&. 
+.PP
+Definition at line 54 of file blockaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void LoopBody::addTail (\fBFlowBlock\fP * bl)\fC [inline]\fP"
+
+.PP
+Add a \fItail\fP to the loop\&. 
+.PP
+Definition at line 57 of file blockaction\&.hh\&.
+.SS "void LoopBody::clearExitMarks (\fBFlowBlock\fP * graph)"
+
+.PP
+Clear the mark on all the exits to this loop\&. This clears the f_loop_exit_edge on any edge exiting \fBthis\fP loop\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgraph\fP is the containing control-flow structure 
+.RE
+.PP
+
+.PP
+Definition at line 423 of file blockaction\&.cc\&.
+.SS "void LoopBody::clearMarks (vector< \fBFlowBlock\fP * > & body)\fC [static]\fP"
+
+.PP
+Clear the body marks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is the list of \fBFlowBlock\fP nodes that have been marked 
+.RE
+.PP
+
+.PP
+Definition at line 1032 of file blockaction\&.cc\&.
+.SS "bool LoopBody::compare_ends (\fBLoopBody\fP * a, \fBLoopBody\fP * b)\fC [static]\fP"
+
+.PP
+Compare the \fBhead\fP then \fBtail\fP\&. Compare two loops based on the indices of the \fBhead\fP and then the \fItail\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBLoopBody\fP to compare 
+.br
+\fIb\fP is the second \fBLoopBody\fP to compare 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the first \fBLoopBody\fP comes before the second 
+.RE
+.PP
+
+.PP
+Definition at line 466 of file blockaction\&.cc\&.
+.SS "int4 LoopBody::compare_head (\fBLoopBody\fP * a, \fBFlowBlock\fP * looptop)\fC [static]\fP"
+
+.PP
+Compare just the \fBhead\fP\&. Compare two loops based on the indices of the \fBhead\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBLoopBody\fP to compare 
+.br
+\fIlooptop\fP is the second 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+-1,0, or 1 if the first is ordered before, the same, or after the second 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file blockaction\&.cc\&.
+.SS "void LoopBody::emitLikelyEdges (list< \fBFloatingEdge\fP > & likely, \fBFlowBlock\fP * graph)"
+
+.PP
+Collect likely \fIunstructured\fP edges\&. Add edges that exit from \fBthis\fP loop body to the list of likely \fIgotos\fP, giving them the proper priority\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlikely\fP will hold the exit edges in (reverse) priority order 
+.br
+\fIgraph\fP is the containing control-flow graph 
+.RE
+.PP
+
+.PP
+Definition at line 357 of file blockaction\&.cc\&.
+.SS "void LoopBody::extend (vector< \fBFlowBlock\fP * > & body) const"
+
+.PP
+Extend body (to blocks that never exit) Extend the \fBbody\fP of this loop to every \fBFlowBlock\fP that can be reached \fBonly\fP from \fBhead\fP without hitting the \fBexitblock\fP\&. Assume \fBbody\fP has been filled out by \fBfindBase()\fP and that all these blocks have their mark set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP contains the current loop body and will be extended 
+.RE
+.PP
+
+.PP
+Definition at line 143 of file blockaction\&.cc\&.
+.SS "\fBLoopBody\fP * LoopBody::find (\fBFlowBlock\fP * looptop, const vector< \fBLoopBody\fP * > & looporder)\fC [static]\fP"
+
+.PP
+Find a \fBLoopBody\fP\&. Given the top \fBFlowBlock\fP of a loop, find corresponding \fBLoopBody\fP record from an ordered list\&. This assumes \fBmergeIdenticalHeads()\fP has been run so that the head is uniquely identifying\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlooptop\fP is the top of the loop 
+.br
+\fIlooporder\fP is the ordered list of \fBLoopBody\fP records 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBLoopBody\fP or NULL if none found 
+.RE
+.PP
+
+.PP
+Definition at line 1014 of file blockaction\&.cc\&.
+.SS "void LoopBody::findBase (vector< \fBFlowBlock\fP * > & body)"
+
+.PP
+Mark the body FlowBlocks of \fBthis\fP loop\&. Collect all \fBFlowBlock\fP nodes that reach a \fBtail\fP of the loop without going through \fBhead\fP\&. Put them in a list and mark them\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP will contain the body nodes 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file blockaction\&.cc\&.
+.SS "void LoopBody::findExit (const vector< \fBFlowBlock\fP * > & body)"
+
+.PP
+Choose the exit block for \fBthis\fP loop\&. A structured loop is allowed at most one exit block: pick this block\&. First build a set of trial exits, preferring from a \fBtail\fP, then from \fBhead\fP, then from the middle\&. If there is no containing loop, just return the first such exit we find\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is the list \fBFlowBlock\fP objects in the loop body, which we assume are marked\&. 
+.RE
+.PP
+
+.PP
+Definition at line 175 of file blockaction\&.cc\&.
+.SS "\fBFlowBlock\fP * LoopBody::getCurrentBounds (\fBFlowBlock\fP ** top, \fBFlowBlock\fP * graph)"
+
+.PP
+Return current loop bounds (\fBhead\fP and \fBbottom\fP)\&. This updates the \fBhead\fP and \fBtail\fP nodes to \fBFlowBlock\fP in the current collapsed graph\&. This returns the first \fBtail\fP and passes back the head\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItop\fP is where \fBhead\fP is passed back 
+.br
+\fIgraph\fP is the containing control-flow structure 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the current loop \fBhead\fP 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file blockaction\&.cc\&.
+.SS "\fBFlowBlock\fP* LoopBody::getExitBlock (void) const\fC [inline]\fP"
+
+.PP
+Get the exit \fBFlowBlock\fP or NULL\&. 
+.PP
+Definition at line 58 of file blockaction\&.hh\&.
+.SS "\fBFlowBlock\fP* LoopBody::getHead (void) const\fC [inline]\fP"
+
+.PP
+Return the head \fBFlowBlock\fP of the loop\&. 
+.PP
+Definition at line 55 of file blockaction\&.hh\&.
+.SS "void LoopBody::labelContainments (const vector< \fBFlowBlock\fP * > & body, const vector< \fBLoopBody\fP * > & looporder)"
+
+.PP
+Record any loops that \fBbody\fP contains\&. Search for any loop contained by \fBthis\fP and update is \fBdepth\fP and \fBimmed_container\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is the set of \fBFlowBlock\fP nodes making up this loop 
+.br
+\fIlooporder\fP is the list of known loops 
+.RE
+.PP
+
+.PP
+Definition at line 320 of file blockaction\&.cc\&.
+.SS "void LoopBody::labelExitEdges (const vector< \fBFlowBlock\fP * > & body)"
+
+.PP
+Label edges that exit the loop\&. Label any edge that leaves the set of nodes in \fBbody\fP\&. Put the edges in priority for removal, middle exit at front, \fIhead\fP exit, then \fItail\fP exit\&. We assume all the \fBFlowBlock\fP nodes in \fBbody\fP have been marked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is list of nodes in \fBthis\fP loop body 
+.RE
+.PP
+
+.PP
+Definition at line 263 of file blockaction\&.cc\&.
+.SS "void LoopBody::mergeIdenticalHeads (vector< \fBLoopBody\fP * > & looporder)\fC [static]\fP"
+
+.PP
+\fBMerge\fP loop bodies that share the same \fIhead\fP\&. Look for \fBLoopBody\fP records that share a \fBhead\fP\&. \fBMerge\fP each \fBtail\fP from one into the other\&. Set the merged \fBLoopBody\fP \fBhead\fP to NULL, for later clean up\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlooporder\fP is the list of \fBLoopBody\fP records 
+.RE
+.PP
+
+.PP
+Definition at line 439 of file blockaction\&.cc\&.
+.SS "bool LoopBody::operator< (const \fBLoopBody\fP & op2) const\fC [inline]\fP"
+
+.PP
+Order loop bodies by depth\&. 
+.PP
+Definition at line 68 of file blockaction\&.hh\&.
+.SS "void LoopBody::orderTails (void)"
+
+.PP
+Find preferred \fBtail\fP\&. The idea is if there is more than one \fBtail\fP for a loop, some tails are more 'preferred' than others and should have their exit edges preserved longer and be the target of the DAG path\&. Currently we look for a single \fBtail\fP that has an outgoing edge to the \fBexitblock\fP and make sure it is the first tail\&. 
+.PP
+Definition at line 238 of file blockaction\&.cc\&.
+.SS "void LoopBody::setExitMarks (\fBFlowBlock\fP * graph)"
+
+.PP
+Mark all the exits to this loop\&. Exit edges have their f_loop_exit_edge property set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgraph\fP is the containing control-flow structure 
+.RE
+.PP
+
+.PP
+Definition at line 409 of file blockaction\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

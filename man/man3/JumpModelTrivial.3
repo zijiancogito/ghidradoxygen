@@ -1,0 +1,125 @@
+.TH "JumpModelTrivial" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpModelTrivial
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.PP
+Inherits \fBJumpModel\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpModelTrivial\fP (\fBJumpTable\fP *jt)"
+.br
+.ti -1c
+.RI "virtual bool \fBisOverride\fP (void) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetTableSize\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBrecoverModel\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, uint4 matchsize, uint4 maxtablesize)"
+.br
+.ti -1c
+.RI "virtual void \fBbuildAddresses\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable, vector< \fBLoadTable\fP > *loadpoints) const"
+.br
+.ti -1c
+.RI "virtual void \fBfindUnnormalized\fP (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)"
+.br
+.ti -1c
+.RI "virtual void \fBbuildLabels\fP (\fBFuncdata\fP *fd, vector< \fBAddress\fP > &addresstable, vector< \fBuintb\fP > &label, const \fBJumpModel\fP *orig) const"
+.br
+.ti -1c
+.RI "virtual void \fBfoldInNormalization\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop)"
+.br
+.ti -1c
+.RI "virtual bool \fBfoldInGuards\fP (\fBFuncdata\fP *fd, \fBJumpTable\fP *jump)"
+.br
+.ti -1c
+.RI "virtual bool \fBsanityCheck\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable)"
+.br
+.ti -1c
+.RI "virtual \fBJumpModel\fP * \fBclone\fP (\fBJumpTable\fP *jt) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 206 of file jumptable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JumpModelTrivial::JumpModelTrivial (\fBJumpTable\fP * jt)\fC [inline]\fP"
+
+.PP
+Definition at line 209 of file jumptable\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void JumpModelTrivial::buildAddresses (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable, vector< \fBLoadTable\fP > * loadpoints) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 361 of file jumptable\&.cc\&.
+.SS "void JumpModelTrivial::buildLabels (\fBFuncdata\fP * fd, vector< \fBAddress\fP > & addresstable, vector< \fBuintb\fP > & label, const \fBJumpModel\fP * orig) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 372 of file jumptable\&.cc\&.
+.SS "\fBJumpModel\fP * JumpModelTrivial::clone (\fBJumpTable\fP * jt) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 379 of file jumptable\&.cc\&.
+.SS "virtual void JumpModelTrivial::findUnnormalized (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 214 of file jumptable\&.hh\&.
+.SS "virtual bool JumpModelTrivial::foldInGuards (\fBFuncdata\fP * fd, \fBJumpTable\fP * jump)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 217 of file jumptable\&.hh\&.
+.SS "virtual void JumpModelTrivial::foldInNormalization (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 216 of file jumptable\&.hh\&.
+.SS "virtual int4 JumpModelTrivial::getTableSize (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 211 of file jumptable\&.hh\&.
+.SS "virtual bool JumpModelTrivial::isOverride (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 210 of file jumptable\&.hh\&.
+.SS "bool JumpModelTrivial::recoverModel (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, uint4 matchsize, uint4 maxtablesize)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 354 of file jumptable\&.cc\&.
+.SS "virtual bool JumpModelTrivial::sanityCheck (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 218 of file jumptable\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

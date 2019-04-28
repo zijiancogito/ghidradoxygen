@@ -1,0 +1,268 @@
+.TH "JumpTable" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpTable
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpTable\fP (\fBArchitecture\fP *g, \fBAddress\fP ad=\fBAddress\fP())"
+.br
+.ti -1c
+.RI "\fBJumpTable\fP (const \fBJumpTable\fP *op2)"
+.br
+.ti -1c
+.RI "\fB~JumpTable\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBisSwitchedOver\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisRecovered\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisLabelled\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisOverride\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisPossibleMultistage\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetStage\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBnumEntries\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetMostCommon\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetOpAddress\fP (void) const"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBgetIndirectOp\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetIndirectOp\fP (\fBPcodeOp\fP *ind)"
+.br
+.ti -1c
+.RI "void \fBsetMaxTableSize\fP (uint4 val)"
+.br
+.ti -1c
+.RI "void \fBsetNormMax\fP (uint4 maddsub, uint4 mleftright, uint4 mext)"
+.br
+.ti -1c
+.RI "void \fBsetOverride\fP (const vector< \fBAddress\fP > &addrtable, const \fBAddress\fP &naddr, \fBuintb\fP h, \fBuintb\fP sv)"
+.br
+.ti -1c
+.RI "int4 \fBnumIndicesByBlock\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.ti -1c
+.RI "int4 \fBgetIndexByBlock\fP (const \fBFlowBlock\fP *bl, int4 i) const"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBgetAddressByIndex\fP (int4 index) const"
+.br
+.ti -1c
+.RI "void \fBsetMostCommonIndex\fP (uint4 tableind)"
+.br
+.ti -1c
+.RI "void \fBsetMostCommonBlock\fP (uint4 bl)"
+.br
+.ti -1c
+.RI "void \fBsetLoadCollect\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBaddBlockToSwitch\fP (\fBBlockBasic\fP *bl, \fBuintb\fP lab)"
+.br
+.ti -1c
+.RI "void \fBswitchOver\fP (const \fBFlowInfo\fP &flow)"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBgetLabelByIndex\fP (int4 index) const"
+.br
+.ti -1c
+.RI "void \fBfoldInNormalization\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "bool \fBfoldInGuards\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "void \fBrecoverAddresses\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "void \fBrecoverMultistage\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "bool \fBrecoverLabels\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "bool \fBcheckForMultistage\fP (\fBFuncdata\fP *fd)"
+.br
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 351 of file jumptable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JumpTable::JumpTable (\fBArchitecture\fP * g, \fBAddress\fP ad = \fC\fBAddress\fP()\fP)"
+
+.SS "JumpTable::JumpTable (const \fBJumpTable\fP * op2)"
+
+.PP
+Definition at line 1969 of file jumptable\&.cc\&.
+.SS "JumpTable::~JumpTable (void)"
+
+.PP
+Definition at line 1991 of file jumptable\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void JumpTable::addBlockToSwitch (\fBBlockBasic\fP * bl, \fBuintb\fP lab)"
+
+.PP
+Definition at line 2058 of file jumptable\&.cc\&.
+.SS "bool JumpTable::checkForMultistage (\fBFuncdata\fP * fd)"
+
+.PP
+Definition at line 2329 of file jumptable\&.cc\&.
+.SS "void JumpTable::clear (void)"
+
+.PP
+Definition at line 2230 of file jumptable\&.cc\&.
+.SS "bool JumpTable::foldInGuards (\fBFuncdata\fP * fd)\fC [inline]\fP"
+
+.PP
+Definition at line 401 of file jumptable\&.hh\&.
+.SS "void JumpTable::foldInNormalization (\fBFuncdata\fP * fd)\fC [inline]\fP"
+
+.PP
+Definition at line 400 of file jumptable\&.hh\&.
+.SS "\fBAddress\fP JumpTable::getAddressByIndex (int4 index) const\fC [inline]\fP"
+
+.PP
+Definition at line 393 of file jumptable\&.hh\&.
+.SS "int4 JumpTable::getIndexByBlock (const \fBFlowBlock\fP * bl, int4 i) const"
+
+.PP
+Definition at line 2035 of file jumptable\&.cc\&.
+.SS "\fBPcodeOp\fP* JumpTable::getIndirectOp (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 385 of file jumptable\&.hh\&.
+.SS "\fBuintb\fP JumpTable::getLabelByIndex (int4 index) const\fC [inline]\fP"
+
+.PP
+Definition at line 399 of file jumptable\&.hh\&.
+.SS "int4 JumpTable::getMostCommon (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 383 of file jumptable\&.hh\&.
+.SS "const \fBAddress\fP& JumpTable::getOpAddress (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 384 of file jumptable\&.hh\&.
+.SS "int4 JumpTable::getStage (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 381 of file jumptable\&.hh\&.
+.SS "bool JumpTable::isLabelled (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 378 of file jumptable\&.hh\&.
+.SS "bool JumpTable::isOverride (void) const"
+
+.PP
+Definition at line 2014 of file jumptable\&.cc\&.
+.SS "bool JumpTable::isPossibleMultistage (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 380 of file jumptable\&.hh\&.
+.SS "bool JumpTable::isRecovered (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 377 of file jumptable\&.hh\&.
+.SS "bool JumpTable::isSwitchedOver (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 376 of file jumptable\&.hh\&.
+.SS "int4 JumpTable::numEntries (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 382 of file jumptable\&.hh\&.
+.SS "int4 JumpTable::numIndicesByBlock (const \fBFlowBlock\fP * bl) const"
+
+.PP
+Definition at line 2000 of file jumptable\&.cc\&.
+.SS "void JumpTable::recoverAddresses (\fBFuncdata\fP * fd)"
+
+.PP
+Definition at line 2120 of file jumptable\&.cc\&.
+.SS "bool JumpTable::recoverLabels (\fBFuncdata\fP * fd)"
+
+.PP
+Definition at line 2181 of file jumptable\&.cc\&.
+.SS "void JumpTable::recoverMultistage (\fBFuncdata\fP * fd)"
+
+.PP
+Definition at line 2144 of file jumptable\&.cc\&.
+.SS "void JumpTable::restoreXml (const \fBElement\fP * el)"
+
+.PP
+Definition at line 2281 of file jumptable\&.cc\&.
+.SS "void JumpTable::saveXml (ostream & s) const"
+
+.PP
+Definition at line 2251 of file jumptable\&.cc\&.
+.SS "void JumpTable::setIndirectOp (\fBPcodeOp\fP * ind)\fC [inline]\fP"
+
+.PP
+Definition at line 386 of file jumptable\&.hh\&.
+.SS "void JumpTable::setLoadCollect (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 396 of file jumptable\&.hh\&.
+.SS "void JumpTable::setMaxTableSize (uint4 val)\fC [inline]\fP"
+
+.PP
+Definition at line 387 of file jumptable\&.hh\&.
+.SS "void JumpTable::setMostCommonBlock (uint4 bl)\fC [inline]\fP"
+
+.PP
+Definition at line 395 of file jumptable\&.hh\&.
+.SS "void JumpTable::setMostCommonIndex (uint4 tableind)"
+
+.PP
+Definition at line 2052 of file jumptable\&.cc\&.
+.SS "void JumpTable::setNormMax (uint4 maddsub, uint4 mleftright, uint4 mext)\fC [inline]\fP"
+
+.PP
+Definition at line 388 of file jumptable\&.hh\&.
+.SS "void JumpTable::setOverride (const vector< \fBAddress\fP > & addrtable, const \fBAddress\fP & naddr, \fBuintb\fP h, \fBuintb\fP sv)"
+
+.PP
+Definition at line 2022 of file jumptable\&.cc\&.
+.SS "void JumpTable::switchOver (const \fBFlowInfo\fP & flow)"
+
+.PP
+Definition at line 2067 of file jumptable\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

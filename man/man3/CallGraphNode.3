@@ -1,0 +1,171 @@
+.TH "CallGraphNode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CallGraphNode
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <callgraph\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBmark\fP = 1, \fBonlycyclein\fP = 2, \fBcurrentcycle\fP = 4, \fBentrynode\fP = 8 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCallGraphNode\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclearMark\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisMark\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP \fBgetAddr\fP (void) const"
+.br
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.ti -1c
+.RI "\fBFuncdata\fP * \fBgetFuncdata\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBnumInEdge\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBCallGraphEdge\fP & \fBgetInEdge\fP (int4 i) const"
+.br
+.ti -1c
+.RI "\fBCallGraphNode\fP * \fBgetInNode\fP (int4 i) const"
+.br
+.ti -1c
+.RI "int4 \fBnumOutEdge\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBCallGraphEdge\fP & \fBgetOutEdge\fP (int4 i) const"
+.br
+.ti -1c
+.RI "\fBCallGraphNode\fP * \fBgetOutNode\fP (int4 i) const"
+.br
+.ti -1c
+.RI "void \fBsetFuncdata\fP (\fBFuncdata\fP *f)"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBrestoreXml\fP (const \fBElement\fP *el, \fBCallGraph\fP *graph)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBCallGraph\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 49 of file callgraph\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fImark \fP\fP
+.TP
+\fB\fIonlycyclein \fP\fP
+.TP
+\fB\fIcurrentcycle \fP\fP
+.TP
+\fB\fIentrynode \fP\fP
+.PP
+Definition at line 51 of file callgraph\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CallGraphNode::CallGraphNode (void)\fC [inline]\fP"
+
+.PP
+Definition at line 67 of file callgraph\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CallGraphNode::clearMark (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 68 of file callgraph\&.hh\&.
+.SS "const \fBAddress\fP CallGraphNode::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 70 of file callgraph\&.hh\&.
+.SS "\fBFuncdata\fP* CallGraphNode::getFuncdata (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file callgraph\&.hh\&.
+.SS "const \fBCallGraphEdge\fP& CallGraphNode::getInEdge (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 74 of file callgraph\&.hh\&.
+.SS "\fBCallGraphNode\fP* CallGraphNode::getInNode (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 75 of file callgraph\&.hh\&.
+.SS "const string& CallGraphNode::getName (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 71 of file callgraph\&.hh\&.
+.SS "const \fBCallGraphEdge\fP& CallGraphNode::getOutEdge (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 77 of file callgraph\&.hh\&.
+.SS "\fBCallGraphNode\fP* CallGraphNode::getOutNode (int4 i) const\fC [inline]\fP"
+
+.PP
+Definition at line 78 of file callgraph\&.hh\&.
+.SS "bool CallGraphNode::isMark (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 69 of file callgraph\&.hh\&.
+.SS "int4 CallGraphNode::numInEdge (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 73 of file callgraph\&.hh\&.
+.SS "int4 CallGraphNode::numOutEdge (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 76 of file callgraph\&.hh\&.
+.SS "void CallGraphNode::restoreXml (const \fBElement\fP * el, \fBCallGraph\fP * graph)\fC [static]\fP"
+
+.PP
+Definition at line 80 of file callgraph\&.cc\&.
+.SS "void CallGraphNode::saveXml (ostream & s) const"
+
+.PP
+Definition at line 69 of file callgraph\&.cc\&.
+.SS "void CallGraphNode::setFuncdata (\fBFuncdata\fP * f)"
+
+.PP
+Definition at line 58 of file callgraph\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBCallGraph\fP\fC [friend]\fP"
+
+.PP
+Definition at line 58 of file callgraph\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

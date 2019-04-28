@@ -1,0 +1,235 @@
+.TH "BlockIf" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockIf \- A basic 'if' block\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBBlockGraph\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockIf\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBsetGotoTarget\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Mark the target of the unstructured edge\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetGotoTarget\fP (void) const"
+.br
+.RI "Get the target of the unstructured edge\&. "
+.ti -1c
+.RI "uint4 \fBgetGotoType\fP (void) const"
+.br
+.RI "Get the type of unstructured edge\&. "
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBmarkUnstructured\fP (void)"
+.br
+.RI "Mark target blocks of any unstructured edges\&. "
+.ti -1c
+.RI "virtual void \fBscopeBreak\fP (int4 curexit, int4 curloopexit)"
+.br
+.RI "Mark unstructured edges that should be \fIbreaks\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual bool \fBpreferComplement\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Rearrange \fBthis\fP hierarchy to simplify boolean expressions\&. "
+.ti -1c
+.RI "virtual const \fBFlowBlock\fP * \fBgetExitLeaf\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. "
+.ti -1c
+.RI "virtual \fBPcodeOp\fP * \fBlastOp\fP (void) const"
+.br
+.RI "Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBnextFlowAfter\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlBody\fP (ostream &s) const"
+.br
+.RI "Save detail about components to an XML stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A basic 'if' block\&. 
+
+This represents a formal 'if' structure in code, with a expression for the condition, and one or two bodies of the conditionally executed code\&. An instance has one, two, or three components\&. One component is always the \fIconditional\fP block\&. If there is a second component, it is the block of code executed when the condition is true\&. If there is a third component, it is the 'else' block, executed when the condition is false\&.
+.PP
+If there is only one component, this represents the case where the conditionally executed branch is unstructured\&. This is generally emitted where the conditionally executed body is the single \fIgoto\fP statement\&.
+.PP
+A \fBBlockIf\fP will always have at most one (structured) exit edge\&. With one component, one of the edges of the conditional component is unstructured\&. With two components, one of the conditional block edges flows to the body block, and the body's out edge and the remaining conditional block out edge flow to the same exit block\&. With three components, the one conditional edge flows to the \fItrue\fP body block, the other conditional edge flows to the \fIfalse\fP body block, and outgoing edges from the body blocks, if they exist, flow to the same exit block\&. 
+.PP
+Definition at line 550 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BlockIf::BlockIf (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 554 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void BlockIf::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 562 of file block\&.hh\&.
+.SS "const \fBFlowBlock\fP * BlockIf::getExitLeaf (void) const\fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2798 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP* BlockIf::getGotoTarget (void) const\fC [inline]\fP"
+
+.PP
+Get the target of the unstructured edge\&. 
+.PP
+Definition at line 556 of file block\&.hh\&.
+.SS "uint4 BlockIf::getGotoType (void) const\fC [inline]\fP"
+
+.PP
+Get the type of unstructured edge\&. 
+.PP
+Definition at line 557 of file block\&.hh\&.
+.SS "virtual \fBblock_type\fP BlockIf::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 558 of file block\&.hh\&.
+.SS "\fBPcodeOp\fP * BlockIf::lastOp (void) const\fC [virtual]\fP"
+
+.PP
+Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2806 of file block\&.cc\&.
+.SS "void BlockIf::markUnstructured (void)\fC [virtual]\fP"
+
+.PP
+Mark target blocks of any unstructured edges\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2754 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * BlockIf::nextFlowAfter (const \fBFlowBlock\fP * bl) const\fC [virtual]\fP"
+
+.PP
+Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. Within the hierarchy of \fBthis\fP \fBFlowBlock\fP, assume the given \fBFlowBlock\fP will fall-thru in its execution at some point\&. Return the first leaf block (\fBBlockBasic\fP or \fBBlockCopy\fP) that will execute after the given \fBFlowBlock\fP completes, assuming this is a unique block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next \fBFlowBlock\fP to execute or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2814 of file block\&.cc\&.
+.SS "bool BlockIf::preferComplement (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Rearrange \fBthis\fP hierarchy to simplify boolean expressions\&. For the instructions in this block, decide if the control-flow structure can be rearranged so that boolean expressions come out more naturally\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to analyze 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2780 of file block\&.cc\&.
+.SS "void BlockIf::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2773 of file block\&.cc\&.
+.SS "void BlockIf::saveXmlBody (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save detail about components to an XML stream\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2824 of file block\&.cc\&.
+.SS "void BlockIf::scopeBreak (int4 curexit, int4 curloopexit)\fC [virtual]\fP"
+
+.PP
+Mark unstructured edges that should be \fIbreaks\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2762 of file block\&.cc\&.
+.SS "void BlockIf::setGotoTarget (\fBFlowBlock\fP * bl)\fC [inline]\fP"
+
+.PP
+Mark the target of the unstructured edge\&. 
+.PP
+Definition at line 555 of file block\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

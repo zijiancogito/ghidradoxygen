@@ -1,0 +1,57 @@
+.TH "ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBghidra\&.app\&.decompiler\&.component\&.DualDecompilerFieldPanelCoordinator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBasicDecompilerFieldPanelCoordinator\fP (\fBBasicDecompilerCodeComparisonPanel\fP dualDecompilerPanel, boolean syncLineLocation)"
+.br
+.ti -1c
+.RI "void \fBleftLocationChanged\fP (ProgramLocation leftProgramLocation)"
+.br
+.ti -1c
+.RI "void \fBrightLocationChanged\fP (ProgramLocation rightProgramLocation)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A basic coordinator that locks two decompiler panels together at the first line so that scrolling one side also scrolls the other\&. It also allows the cursor locations to track together based on the line number or to move independent of each other\&. 
+.PP
+Definition at line 26 of file BasicDecompilerFieldPanelCoordinator\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.component\&.BasicDecompilerFieldPanelCoordinator\&.BasicDecompilerFieldPanelCoordinator (\fBBasicDecompilerCodeComparisonPanel\fP dualDecompilerPanel, boolean syncLineLocation)\fC [inline]\fP"
+Constructs a dual decompiler coordinator that scrolls the two panels together so that they are locked together at the first line\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdualDecompilerPanel\fP the dual decompiler panel being controlled by this coordinator 
+.br
+\fIsyncLineLocation\fP true means synchronize the cursors in the two decompiler panels to the same line number and offset if possible\&. false means the the cursors move independently of each other\&. 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file BasicDecompilerFieldPanelCoordinator\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ghidra\&.app\&.decompiler\&.component\&.BasicDecompilerFieldPanelCoordinator\&.leftLocationChanged (ProgramLocation leftProgramLocation)\fC [inline]\fP"
+
+.PP
+Definition at line 47 of file BasicDecompilerFieldPanelCoordinator\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.BasicDecompilerFieldPanelCoordinator\&.rightLocationChanged (ProgramLocation rightProgramLocation)\fC [inline]\fP"
+
+.PP
+Definition at line 67 of file BasicDecompilerFieldPanelCoordinator\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

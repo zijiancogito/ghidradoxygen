@@ -1,0 +1,146 @@
+\hypertarget{class_to_op_edge}{}\section{To\+Op\+Edge Class Reference}
+\label{class_to_op_edge}\index{ToOpEdge@{ToOpEdge}}
+
+
+An edge between a \mbox{\hyperlink{class_varnode}{Varnode}} and a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}.  
+
+
+
+
+{\ttfamily \#include $<$dynamic.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_to_op_edge_a21ac9abba2a0057fedddf9d50b4bb747}{To\+Op\+Edge}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$o, int4 s)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_to_op_edge_aa3a15c158a60145471dcd8072c3f9683}{get\+Op}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} defining the edge. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_to_op_edge_a4b09f46810c4a09f45fea92bc23d6841}{get\+Slot}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the slot of the starting \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_to_op_edge_ac11e6b4cd5c581a6297957e84f38cf2c}{operator$<$}} (const \mbox{\hyperlink{class_to_op_edge}{To\+Op\+Edge}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Compare two edges based on \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_to_op_edge_a1a18d58e3a6b8686df271cf7911e35a2}{hash}} (uint4 reg) const
+\begin{DoxyCompactList}\small\item\em Hash {\bfseries{this}} edge into an accumulator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An edge between a \mbox{\hyperlink{class_varnode}{Varnode}} and a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+A \mbox{\hyperlink{class_dynamic_hash}{Dynamic\+Hash}} is defined on a sub-\/graph of the data-\/flow, and this defines an edge in the sub-\/graph. The edge can either be from an input \mbox{\hyperlink{class_varnode}{Varnode}} to the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} that reads it, or from a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the \mbox{\hyperlink{class_varnode}{Varnode}} it defines. 
+
+Definition at line 30 of file dynamic.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_to_op_edge_a21ac9abba2a0057fedddf9d50b4bb747}\label{class_to_op_edge_a21ac9abba2a0057fedddf9d50b4bb747}} 
+\index{ToOpEdge@{ToOpEdge}!ToOpEdge@{ToOpEdge}}
+\index{ToOpEdge@{ToOpEdge}!ToOpEdge@{ToOpEdge}}
+\subsubsection{\texorpdfstring{ToOpEdge()}{ToOpEdge()}}
+{\footnotesize\ttfamily To\+Op\+Edge\+::\+To\+Op\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{o,  }\item[{int4}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 34 of file dynamic.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_to_op_edge_aa3a15c158a60145471dcd8072c3f9683}\label{class_to_op_edge_aa3a15c158a60145471dcd8072c3f9683}} 
+\index{ToOpEdge@{ToOpEdge}!getOp@{getOp}}
+\index{getOp@{getOp}!ToOpEdge@{ToOpEdge}}
+\subsubsection{\texorpdfstring{getOp()}{getOp()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ To\+Op\+Edge\+::get\+Op (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} defining the edge. 
+
+
+
+Definition at line 35 of file dynamic.\+hh.
+
+\mbox{\Hypertarget{class_to_op_edge_a4b09f46810c4a09f45fea92bc23d6841}\label{class_to_op_edge_a4b09f46810c4a09f45fea92bc23d6841}} 
+\index{ToOpEdge@{ToOpEdge}!getSlot@{getSlot}}
+\index{getSlot@{getSlot}!ToOpEdge@{ToOpEdge}}
+\subsubsection{\texorpdfstring{getSlot()}{getSlot()}}
+{\footnotesize\ttfamily int4 To\+Op\+Edge\+::get\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the slot of the starting \mbox{\hyperlink{class_varnode}{Varnode}}. 
+
+
+
+Definition at line 36 of file dynamic.\+hh.
+
+\mbox{\Hypertarget{class_to_op_edge_a1a18d58e3a6b8686df271cf7911e35a2}\label{class_to_op_edge_a1a18d58e3a6b8686df271cf7911e35a2}} 
+\index{ToOpEdge@{ToOpEdge}!hash@{hash}}
+\index{hash@{hash}!ToOpEdge@{ToOpEdge}}
+\subsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily uint4 To\+Op\+Edge\+::hash (\begin{DoxyParamCaption}\item[{uint4}]{reg }\end{DoxyParamCaption}) const}
+
+
+
+Hash {\bfseries{this}} edge into an accumulator. 
+
+The hash accumulates\+:
+\begin{DoxyItemize}
+\item the \mbox{\hyperlink{class_varnode}{Varnode}} slot
+\item the address of the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}
+\item the op-\/code of the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}
+\end{DoxyItemize}
+
+The op-\/codes are translated so that the hash is invariant under common variants. 
+\begin{DoxyParams}{Parameters}
+{\em reg} & is the incoming hash accumulator value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the accumulator value with {\bfseries{this}} edge folded in 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file dynamic.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{class_to_op_edge_a1a18d58e3a6b8686df271cf7911e35a2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_to_op_edge_ac11e6b4cd5c581a6297957e84f38cf2c}\label{class_to_op_edge_ac11e6b4cd5c581a6297957e84f38cf2c}} 
+\index{ToOpEdge@{ToOpEdge}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!ToOpEdge@{ToOpEdge}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool To\+Op\+Edge\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_to_op_edge}{To\+Op\+Edge}} \&}]{op2 }\end{DoxyParamCaption}) const}
+
+
+
+Compare two edges based on \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+These edges are sorted to provide consistency to the hash The sort is based on the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} sequence number first, then the \mbox{\hyperlink{class_varnode}{Varnode}} slot 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the edge to compare {\bfseries{this}} to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} should be ordered before the other edge 
+\end{DoxyReturn}
+
+
+Definition at line 66 of file dynamic.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{dynamic_8hh}{dynamic.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{dynamic_8cc}{dynamic.\+cc}}\end{DoxyCompactItemize}

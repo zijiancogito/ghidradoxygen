@@ -1,0 +1,236 @@
+.TH "Merge" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Merge \- Class for merging low-level Varnodes into high-level HighVariables\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <merge\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMerge\fP (\fBFuncdata\fP &fd)"
+.br
+.RI "Construct given a specific function\&. "
+.ti -1c
+.RI "bool \fBintersection\fP (\fBHighVariable\fP *a, \fBHighVariable\fP *b)"
+.br
+.RI "Test the intersection of two HighVariables and cache the result\&. "
+.ti -1c
+.RI "bool \fBinflateTest\fP (\fBVarnode\fP *a, \fBHighVariable\fP *high)"
+.br
+.RI "Test if we can inflate the \fBCover\fP of the given \fBVarnode\fP without incurring intersections\&. "
+.ti -1c
+.RI "void \fBinflate\fP (\fBVarnode\fP *a, \fBHighVariable\fP *high)"
+.br
+.RI "Inflate the \fBCover\fP of a given \fBVarnode\fP with a \fBHighVariable\fP\&. "
+.ti -1c
+.RI "bool \fBmergeTest\fP (\fBHighVariable\fP *high, vector< \fBHighVariable\fP * > &tmplist)"
+.br
+.RI "Test for intersections between a given \fBHighVariable\fP and a list of other HighVariables\&. "
+.ti -1c
+.RI "void \fBmergeOpcode\fP (\fBOpCode\fP opc)"
+.br
+.RI "Try to force merges of input to output for all p-code ops of a given type\&. "
+.ti -1c
+.RI "void \fBmergeByDatatype\fP (VarnodeLocSet::const_iterator startiter, VarnodeLocSet::const_iterator enditer)"
+.br
+.RI "Try to merge all HighVariables in the given range that have the same data-type\&. "
+.ti -1c
+.RI "void \fBmergeAddrTied\fP (void)"
+.br
+.RI "Force the merge of \fIaddress\fP \fItried\fP Varnodes\&. "
+.ti -1c
+.RI "void \fBmergeMarker\fP (void)"
+.br
+.RI "Force the merge of input and output Varnodes to MULTIEQUAL and INDIRECT ops\&. "
+.ti -1c
+.RI "void \fBmergeAdjacent\fP (void)"
+.br
+.RI "Speculatively merge Varnodes that are input/output to the same p-code op\&. "
+.ti -1c
+.RI "bool \fBhideShadows\fP (\fBHighVariable\fP *high)"
+.br
+.RI "Hide \fIshadow\fP Varnodes related to the given \fBHighVariable\fP by consolidating COPY chains\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for merging low-level Varnodes into high-level HighVariables\&. 
+
+As a node in Single Static Assignment (SSA) form, a \fBVarnode\fP has at most one defining operation\&. To get a suitable notion of a single high-level variable (\fBHighVariable\fP) that may be reassigned at multiple places in a single function, individual \fBVarnode\fP objects can be \fImerged\fP into a \fBHighVariable\fP object\&. \fBVarnode\fP objects may be merged in this way if there is no pairwise intersection between each \fBVarnode\fP's \fBCover\fP, the ranges of code where the \fBVarnode\fP holds its value\&.
+.PP
+For a given function, this class attempts to merge Varnodes using various strategies and keeps track of \fBCover\fP intersections to facilitate the process\&. \fBMerge\fP strategies break up into two general categories: \fBforced\fP merges, and \fBspeculative\fP merges\&. Forced merges \fImust\fP happen, and extra Varnodes may be added to split up problematic covers to enforce it\&. Forced merges include:
+.IP "\(bu" 2
+Merging inputs and outputs of MULTIEQUAL and INDIRECT operations
+.IP "\(bu" 2
+Merging Varnodes at global (persistent) storage locations
+.IP "\(bu" 2
+Merging Varnodes at mapped stack locations
+.PP
+.PP
+Speculative merges are attempted to reduce the overall number of variables defined by a function, but any given merge attempt is abandoned if there are \fBCover\fP intersections\&. No modification is made to the data-flow to force the merge\&. Speculative merges include:
+.IP "\(bu" 2
+Merging an input and output \fBVarnode\fP of a single p-code op
+.IP "\(bu" 2
+Merging Varnodes that hold the same data-type 
+.PP
+
+.PP
+Definition at line 80 of file merge\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Merge::Merge (\fBFuncdata\fP & fd)\fC [inline]\fP"
+
+.PP
+Construct given a specific function\&. 
+.PP
+Definition at line 107 of file merge\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Merge::hideShadows (\fBHighVariable\fP * high)"
+
+.PP
+Hide \fIshadow\fP Varnodes related to the given \fBHighVariable\fP by consolidating COPY chains\&. If two Varnodes are copied from the same common ancestor then they will always contain the same value and can be considered \fBshadows\fP of the same variable\&. If the paths from the ancestor to the two Varnodes aren't properly nested, the two Varnodes will still look like distinct variables\&. This routine searches for this situation, relative to a single \fBHighVariable\fP, and alters data-flow so that copying from ancestor to first \fBVarnode\fP to second \fBVarnode\fP becomes a single path\&. Both Varnodes then ultimately become instances of the same \fBHighVariable\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhigh\fP is the given \fBHighVariable\fP to search near 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made to data-flow 
+.RE
+.PP
+
+.PP
+Definition at line 871 of file merge\&.cc\&.
+.SS "void Merge::inflate (\fBVarnode\fP * a, \fBHighVariable\fP * high)"
+
+.PP
+Inflate the \fBCover\fP of a given \fBVarnode\fP with a \fBHighVariable\fP\&. An expression involving a \fBHighVariable\fP can be propagated to all the read sites of the output \fBVarnode\fP of the expression if the \fBVarnode\fP \fBCover\fP can be \fBinflated\fP to include the \fBCover\fP of the \fBHighVariable\fP, even though the \fBVarnode\fP is not part of the \fBHighVariable\fP\&. This routine performs the inflation, assuming an intersection test is already performed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the given \fBVarnode\fP to inflate 
+.br
+\fIhigh\fP is the \fBHighVariable\fP to inflate with 
+.RE
+.PP
+
+.PP
+Definition at line 1082 of file merge\&.cc\&.
+.SS "bool Merge::inflateTest (\fBVarnode\fP * a, \fBHighVariable\fP * high)"
+
+.PP
+Test if we can inflate the \fBCover\fP of the given \fBVarnode\fP without incurring intersections\&. This routine tests whether an expression involving a \fBHighVariable\fP can be propagated to all the read sites of the output \fBVarnode\fP of the expression\&. This is possible only if the \fBVarnode\fP \fBCover\fP can be \fBinflated\fP to include the \fBCover\fP of the \fBHighVariable\fP, even though the \fBVarnode\fP is not part of the \fBHighVariable\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the given \fBVarnode\fP to inflate 
+.br
+\fIhigh\fP is the \fBHighVariable\fP being propagated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBVarnode\fP can be inflated without intersection 
+.RE
+.PP
+
+.PP
+Definition at line 1103 of file merge\&.cc\&.
+.SS "bool Merge::intersection (\fBHighVariable\fP * a, \fBHighVariable\fP * b)"
+
+.PP
+Test the intersection of two HighVariables and cache the result\&. If the Covers of the two variables intersect, this routine returns \fBtrue\fP\&. To avoid expensive computation on the \fBCover\fP objects themselves, the test result associated with the pair of HighVariables is cached\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBHighVariable\fP 
+.br
+\fIb\fP is the second \fBHighVariable\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the variables intersect 
+.RE
+.PP
+
+.PP
+Definition at line 1017 of file merge\&.cc\&.
+.SS "void Merge::mergeAddrTied (void)"
+
+.PP
+Force the merge of \fIaddress\fP \fItried\fP Varnodes\&. For each set of address tied Varnodes with the same size and storage address, merge them into a single \fBHighVariable\fP\&. The merges are \fIforced\fP, so any \fBCover\fP intersections must be resolved by altering data-flow, which involves inserting additional COPY ops and \fIunique\fP Varnodes\&. 
+.PP
+Definition at line 494 of file merge\&.cc\&.
+.SS "void Merge::mergeAdjacent (void)"
+
+.PP
+Speculatively merge Varnodes that are input/output to the same p-code op\&. If a single p-code op has an input and output \fBHighVariable\fP that share the same data-type, attempt to merge them\&. Each merge is speculative and is skipped if it would introduce \fBCover\fP intersections\&. 
+.PP
+Definition at line 805 of file merge\&.cc\&.
+.SS "void Merge::mergeByDatatype (VarnodeLocSet::const_iterator startiter, VarnodeLocSet::const_iterator enditer)"
+
+.PP
+Try to merge all HighVariables in the given range that have the same data-type\&. HighVariables that have an instance within the given \fBVarnode\fP range are sorted into groups based on their data-type\&. Then an attempt is made to merge all the HighVariables within a group\&. If a particular merge causes \fBCover\fP intersection, it is skipped\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstartiter\fP is the start of the given range of Varnodes 
+.br
+\fIenditer\fP is the end of the given range 
+.RE
+.PP
+
+.PP
+Definition at line 284 of file merge\&.cc\&.
+.SS "void Merge::mergeMarker (void)"
+
+.PP
+Force the merge of input and output Varnodes to MULTIEQUAL and INDIRECT ops\&. Run through all MULTIEQUAL and INDIRECT ops in the function\&. Force the merge of each input \fBVarnode\fP with the output \fBVarnode\fP, doing data-flow modification if necessary to resolve \fBCover\fP intersections\&. 
+.PP
+Definition at line 785 of file merge\&.cc\&.
+.SS "void Merge::mergeOpcode (\fBOpCode\fP opc)"
+
+.PP
+Try to force merges of input to output for all p-code ops of a given type\&. For a given opcode, run through all ops in the function in block/address order and try to merge each input \fBHighVariable\fP with the output \fBHighVariable\fP\&. If this would introduce \fBCover\fP intersections, the merge is skipped\&. This is generally used to try to merge the input and output of COPY ops if possible\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP is the op-code type to merge 
+.RE
+.PP
+
+.PP
+Definition at line 251 of file merge\&.cc\&.
+.SS "bool Merge::mergeTest (\fBHighVariable\fP * high, vector< \fBHighVariable\fP * > & tmplist)"
+
+.PP
+Test for intersections between a given \fBHighVariable\fP and a list of other HighVariables\&. If there is any \fBCover\fP intersection between the given \fBHighVariable\fP and one in the list, this routine returns \fBfalse\fP\&. Otherwise, the given \fBHighVariable\fP is added to the end of the list and \fBtrue\fP is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhigh\fP is the given \fBHighVariable\fP 
+.br
+\fItmplist\fP is the list of HighVariables to test against 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if there are no pairwise intersections\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1130 of file merge\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,154 @@
+\hypertarget{class_join_record}{}\section{Join\+Record Class Reference}
+\label{class_join_record}\index{JoinRecord@{JoinRecord}}
+
+
+A record describing how logical values are split.  
+
+
+
+
+{\ttfamily \#include $<$translate.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int4 \mbox{\hyperlink{class_join_record_a18d9eb13c87a49511865fab244aa69f5}{num\+Pieces}} (void) const
+\begin{DoxyCompactList}\small\item\em Get number of pieces in this record. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_join_record_a0a9314d1dd21efb75d8851aa05c387c4}{is\+Float\+Extension}} (void) const
+\begin{DoxyCompactList}\small\item\em Does this record extend a float varnode. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \& \mbox{\hyperlink{class_join_record_a5d3feebaadef123349cda1564717b9d7}{get\+Piece}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th piece. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \& \mbox{\hyperlink{class_join_record_a71e39715b107db55fa5c737457877b3a}{get\+Unified}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_varnode}{Varnode}} whole. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_join_record_a2e6ea7f4592e991ee9c7e72b9c99307d}{operator$<$}} (const \mbox{\hyperlink{class_join_record}{Join\+Record}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Compare records lexigraphically by pieces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_join_record_a0e578f3e90e10ec045899c0e9cb65d46}{Addr\+Space\+Manager}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A record describing how logical values are split. 
+
+The decompiler can describe a logical value that is stored split across multiple physical memory locations. This record describes such a split. The pieces must be listed from {\itshape most} {\itshape significant} to {\itshape least} {\itshape significant}. 
+
+Definition at line 190 of file translate.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_join_record_a5d3feebaadef123349cda1564717b9d7}\label{class_join_record_a5d3feebaadef123349cda1564717b9d7}} 
+\index{JoinRecord@{JoinRecord}!getPiece@{getPiece}}
+\index{getPiece@{getPiece}!JoinRecord@{JoinRecord}}
+\subsubsection{\texorpdfstring{getPiece()}{getPiece()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}}\& Join\+Record\+::get\+Piece (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th piece. 
+
+
+
+Definition at line 197 of file translate.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_join_record_a5d3feebaadef123349cda1564717b9d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_join_record_a71e39715b107db55fa5c737457877b3a}\label{class_join_record_a71e39715b107db55fa5c737457877b3a}} 
+\index{JoinRecord@{JoinRecord}!getUnified@{getUnified}}
+\index{getUnified@{getUnified}!JoinRecord@{JoinRecord}}
+\subsubsection{\texorpdfstring{getUnified()}{getUnified()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}}\& Join\+Record\+::get\+Unified (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_varnode}{Varnode}} whole. 
+
+
+
+Definition at line 198 of file translate.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_join_record_a71e39715b107db55fa5c737457877b3a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_join_record_a0a9314d1dd21efb75d8851aa05c387c4}\label{class_join_record_a0a9314d1dd21efb75d8851aa05c387c4}} 
+\index{JoinRecord@{JoinRecord}!isFloatExtension@{isFloatExtension}}
+\index{isFloatExtension@{isFloatExtension}!JoinRecord@{JoinRecord}}
+\subsubsection{\texorpdfstring{isFloatExtension()}{isFloatExtension()}}
+{\footnotesize\ttfamily bool Join\+Record\+::is\+Float\+Extension (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Does this record extend a float varnode. 
+
+
+
+Definition at line 196 of file translate.\+hh.
+
+\mbox{\Hypertarget{class_join_record_a18d9eb13c87a49511865fab244aa69f5}\label{class_join_record_a18d9eb13c87a49511865fab244aa69f5}} 
+\index{JoinRecord@{JoinRecord}!numPieces@{numPieces}}
+\index{numPieces@{numPieces}!JoinRecord@{JoinRecord}}
+\subsubsection{\texorpdfstring{numPieces()}{numPieces()}}
+{\footnotesize\ttfamily int4 Join\+Record\+::num\+Pieces (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get number of pieces in this record. 
+
+
+
+Definition at line 195 of file translate.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_join_record_a18d9eb13c87a49511865fab244aa69f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_join_record_a2e6ea7f4592e991ee9c7e72b9c99307d}\label{class_join_record_a2e6ea7f4592e991ee9c7e72b9c99307d}} 
+\index{JoinRecord@{JoinRecord}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!JoinRecord@{JoinRecord}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Join\+Record\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_join_record}{Join\+Record}} \&}]{op2 }\end{DoxyParamCaption}) const}
+
+
+
+Compare records lexigraphically by pieces. 
+
+Allow sorting on Join\+Records so that a collection of pieces can be quickly mapped to its logical whole, specified with a join address 
+
+Definition at line 123 of file translate.\+cc.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_join_record_a0e578f3e90e10ec045899c0e9cb65d46}\label{class_join_record_a0e578f3e90e10ec045899c0e9cb65d46}} 
+\index{JoinRecord@{JoinRecord}!AddrSpaceManager@{AddrSpaceManager}}
+\index{AddrSpaceManager@{AddrSpaceManager}!JoinRecord@{JoinRecord}}
+\subsubsection{\texorpdfstring{AddrSpaceManager}{AddrSpaceManager}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 191 of file translate.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{translate_8hh}{translate.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{translate_8cc}{translate.\+cc}}\end{DoxyCompactItemize}

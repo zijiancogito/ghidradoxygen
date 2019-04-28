@@ -1,0 +1,72 @@
+\hypertarget{varnode_8cc}{}\section{F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/varnode.cc File Reference}
+\label{varnode_8cc}\index{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc@{F:/re/ghidra\_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/varnode.cc}}
+{\ttfamily \#include \char`\"{}varnode.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}funcdata.\+hh\char`\"{}}\newline
+Include dependency graph for varnode.\+cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{varnode_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{varnode_8cc_a4fd41aa3b524032766add2e4bdd5cd5c}{contiguous\+\_\+test}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn1, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn2)
+\begin{DoxyCompactList}\small\item\em Test if Varnodes are pieces of a whole. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{varnode_8cc_a242908161787e2bdd0d8fbfb2069f8d9}{find\+Contiguous\+Whole}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn1, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn2)
+\begin{DoxyCompactList}\small\item\em Retrieve the whole \mbox{\hyperlink{class_varnode}{Varnode}} given pieces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{varnode_8cc_a4fd41aa3b524032766add2e4bdd5cd5c}\label{varnode_8cc_a4fd41aa3b524032766add2e4bdd5cd5c}} 
+\index{varnode.cc@{varnode.cc}!contiguous\_test@{contiguous\_test}}
+\index{contiguous\_test@{contiguous\_test}!varnode.cc@{varnode.cc}}
+\subsubsection{\texorpdfstring{contiguous\_test()}{contiguous\_test()}}
+{\footnotesize\ttfamily bool contiguous\+\_\+test (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn2 }\end{DoxyParamCaption})}
+
+
+
+Test if Varnodes are pieces of a whole. 
+
+Return true if {\bfseries{vn1}} contains the high part and {\bfseries{vn2}} the low part of what was(is) a single value. 
+\begin{DoxyParams}{Parameters}
+{\em vn1} & is the putative high \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+{\em vn2} & is the putative low \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if they are pieces of a whole 
+\end{DoxyReturn}
+
+
+Definition at line 1524 of file varnode.\+cc.
+
+\mbox{\Hypertarget{varnode_8cc_a242908161787e2bdd0d8fbfb2069f8d9}\label{varnode_8cc_a242908161787e2bdd0d8fbfb2069f8d9}} 
+\index{varnode.cc@{varnode.cc}!findContiguousWhole@{findContiguousWhole}}
+\index{findContiguousWhole@{findContiguousWhole}!varnode.cc@{varnode.cc}}
+\subsubsection{\texorpdfstring{findContiguousWhole()}{findContiguousWhole()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ find\+Contiguous\+Whole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn2 }\end{DoxyParamCaption})}
+
+
+
+Retrieve the whole \mbox{\hyperlink{class_varnode}{Varnode}} given pieces. 
+
+Assuming vn1,vn2 has passed the \mbox{\hyperlink{varnode_8cc_a4fd41aa3b524032766add2e4bdd5cd5c}{contiguous\+\_\+test()}}, return the \mbox{\hyperlink{class_varnode}{Varnode}} containing the whole value. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the underlying function \\
+\hline
+{\em vn1} & is the high \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+{\em vn2} & is the low \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the whole \mbox{\hyperlink{class_varnode}{Varnode}} 
+\end{DoxyReturn}
+
+
+Definition at line 1555 of file varnode.\+cc.
+

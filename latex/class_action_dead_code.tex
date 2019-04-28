@@ -1,0 +1,158 @@
+\hypertarget{class_action_dead_code}{}\section{Action\+Dead\+Code Class Reference}
+\label{class_action_dead_code}\index{ActionDeadCode@{ActionDeadCode}}
+
+
+Dead code removal. Eliminate {\itshape dead} p-\/code ops.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Dead\+Code\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_action_dead_code__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Dead\+Code\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_action_dead_code__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_dead_code_a82b4ed28ec16668d34478c4859cd3845}{Action\+Dead\+Code}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_dead_code_a2c1a4dac2eab0a2a6979c073def75fc3}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_dead_code_a8fc0f3220ac7b0fef4613ba3666d9af9}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Dead code removal. Eliminate {\itshape dead} p-\/code ops. 
+
+This is a very fine grained algorithm, it detects usage of individual bits within the \mbox{\hyperlink{class_varnode}{Varnode}}, not just use of the \mbox{\hyperlink{class_varnode}{Varnode}} itself. Each \mbox{\hyperlink{class_varnode}{Varnode}} has a {\itshape consumed} word, which indicates if a bit in the \mbox{\hyperlink{class_varnode}{Varnode}} is being used, and it has two flags layed out as follows\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_varnode_a54e5d14b3fc1c7916863ba2a2d7ee900a623c7c3682639480ce5868861b9f8be8}{Varnode\+::lisconsume}} = varnode is in the working list
+\item \mbox{\hyperlink{class_varnode_a54e5d14b3fc1c7916863ba2a2d7ee900aaaa10f65253aaec3d24b78d7bc342d64}{Varnode\+::vacconsume}} = vacuously used bit there is a path from the varnode through assignment op outputs down to a varnode that is used
+\end{DoxyItemize}
+
+The algorithm works by back propagating the {\itshape consumed} value up from the output of the op to its inputs, starting with a set of seed Varnodes which are marked as completely used (function inputs, branch conditions, ...) For each propagation the particular op being passed through can transform the \char`\"{}bit usage\char`\"{} vector of the output to obtain the input. 
+
+Definition at line 500 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_dead_code_a82b4ed28ec16668d34478c4859cd3845}\label{class_action_dead_code_a82b4ed28ec16668d34478c4859cd3845}} 
+\index{ActionDeadCode@{ActionDeadCode}!ActionDeadCode@{ActionDeadCode}}
+\index{ActionDeadCode@{ActionDeadCode}!ActionDeadCode@{ActionDeadCode}}
+\subsubsection{\texorpdfstring{ActionDeadCode()}{ActionDeadCode()}}
+{\footnotesize\ttfamily Action\+Dead\+Code\+::\+Action\+Dead\+Code (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 505 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_dead_code_a82b4ed28ec16668d34478c4859cd3845_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_dead_code_a8fc0f3220ac7b0fef4613ba3666d9af9}\label{class_action_dead_code_a8fc0f3220ac7b0fef4613ba3666d9af9}} 
+\index{ActionDeadCode@{ActionDeadCode}!apply@{apply}}
+\index{apply@{apply}!ActionDeadCode@{ActionDeadCode}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Dead\+Code\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 3059 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_dead_code_a8fc0f3220ac7b0fef4613ba3666d9af9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_dead_code_a2c1a4dac2eab0a2a6979c073def75fc3}\label{class_action_dead_code_a2c1a4dac2eab0a2a6979c073def75fc3}} 
+\index{ActionDeadCode@{ActionDeadCode}!clone@{clone}}
+\index{clone@{clone}!ActionDeadCode@{ActionDeadCode}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Dead\+Code\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 506 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_dead_code_a2c1a4dac2eab0a2a6979c073def75fc3_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

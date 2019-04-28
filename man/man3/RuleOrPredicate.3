@@ -1,0 +1,147 @@
+.TH "RuleOrPredicate" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RuleOrPredicate \- Simplify predication constructions involving the INT_OR operator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <condexe\&.hh>\fP
+.PP
+Inherits \fBRule\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRuleOrPredicate\fP (const string &g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBRule\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBgetOpList\fP (vector< uint4 > &oplist) const"
+.br
+.RI "List of op codes this rule operates on\&. "
+.ti -1c
+.RI "virtual int4 \fBapplyOp\fP (\fBPcodeOp\fP *op, \fBFuncdata\fP &data)"
+.br
+.RI "Attempt to apply \fBthis\fP \fBRule\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Simplify predication constructions involving the INT_OR operator\&. 
+
+In this form of predication, two variables are set based on a condition and then ORed together\&. Both variables may be set to zero, or to some other value, based on the condition and the zero values are such that at least one of the variables is zero\&. 
+.PP
+.nf
+tmp1 = cond ? val1 : 0;
+tmp2 = cond ?  0 : val2;
+result = tmp1 | tmp2;
+
+.fi
+.PP
+ The \fBRuleOrPredicate\fP simplifies this to 
+.PP
+.nf
+if (cond) result = val1; else result = val2;
+
+.fi
+.PP
+ or to be precise 
+.PP
+.nf
+newtmp = val1 ? val2;           // Using a new MULTIEQUAL
+result = newtmp;
+
+.fi
+.PP
+ In an alternate form we have 
+.PP
+.nf
+tmp1 = (val2 == 0) ? val1 : 0
+result = tmp1 | val2;
+
+.fi
+.PP
+ again, one of val1 or val2 must be zero, so this gets replaced with 
+.PP
+.nf
+tmp1 = val1 ? val2
+result = tmp1
+
+.fi
+.PP
+ 
+.PP
+Definition at line 211 of file condexe\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RuleOrPredicate::RuleOrPredicate (const string & g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 228 of file condexe\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 RuleOrPredicate::applyOp (\fBPcodeOp\fP * op, \fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Attempt to apply \fBthis\fP \fBRule\fP\&. This method contains the main logic for applying the \fBRule\fP\&. It must use a given \fBPcodeOp\fP as the point at which the \fBRule\fP applies\&. If it does apply, changes are made directly to the function and 1 (non-zero) is returned, otherwise 0 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP where the \fBRule\fP may apply 
+.br
+\fIdata\fP is the function to which to apply 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 1031 of file condexe\&.cc\&.
+.SS "virtual \fBRule\fP* RuleOrPredicate::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBRule\fP\&. If \fBthis\fP \fBRule\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBRule\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBRule\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBRule\fP\&.
+.PP
+Definition at line 229 of file condexe\&.hh\&.
+.SS "void RuleOrPredicate::getOpList (vector< uint4 > & oplist) const\fC [virtual]\fP"
+
+.PP
+List of op codes this rule operates on\&. Populate the given array with all possible OpCodes this \fBRule\fP might apply to\&. By default, this method returns all possible OpCodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoplist\fP is the array to populate 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRule\fP\&.
+.PP
+Definition at line 994 of file condexe\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

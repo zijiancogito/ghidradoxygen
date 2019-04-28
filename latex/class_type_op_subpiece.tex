@@ -1,0 +1,171 @@
+\hypertarget{class_type_op_subpiece}{}\section{Type\+Op\+Subpiece Class Reference}
+\label{class_type_op_subpiece}\index{TypeOpSubpiece@{TypeOpSubpiece}}
+
+
+Information about the S\+U\+B\+P\+I\+E\+CE op-\/code.  
+
+
+
+
+{\ttfamily \#include $<$typeop.\+hh$>$}
+
+
+
+Inheritance diagram for Type\+Op\+Subpiece\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{class_type_op_subpiece__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Type\+Op\+Subpiece\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_subpiece__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_type_op_subpiece_aa36156a60c460b7eea78618d1436bc9c}{Type\+Op\+Subpiece}} (\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ \mbox{\hyperlink{class_type_op_subpiece_ac93ca300b551f16888008869eca39150}{get\+Output\+Token}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$cast\+Strategy) const
+\begin{DoxyCompactList}\small\item\em Find the data-\/type of the output that would be assigned by a compiler. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_type_op_subpiece_a8c36b59c2012927cc27fb9fde2ad31ba}{get\+Operator\+Name}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Get the name of the op-\/code as it should be displayed in context. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_type_op_subpiece_a0ef689e39ee81e6c30f6d92a2024c4dd}{push}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng, const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op) const
+\begin{DoxyCompactList}\small\item\em Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Information about the S\+U\+B\+P\+I\+E\+CE op-\/code. 
+
+Definition at line 697 of file typeop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_type_op_subpiece_aa36156a60c460b7eea78618d1436bc9c}\label{class_type_op_subpiece_aa36156a60c460b7eea78618d1436bc9c}} 
+\index{TypeOpSubpiece@{TypeOpSubpiece}!TypeOpSubpiece@{TypeOpSubpiece}}
+\index{TypeOpSubpiece@{TypeOpSubpiece}!TypeOpSubpiece@{TypeOpSubpiece}}
+\subsubsection{\texorpdfstring{TypeOpSubpiece()}{TypeOpSubpiece()}}
+{\footnotesize\ttfamily Type\+Op\+Subpiece\+::\+Type\+Op\+Subpiece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 1528 of file typeop.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_type_op_subpiece_a8c36b59c2012927cc27fb9fde2ad31ba}\label{class_type_op_subpiece_a8c36b59c2012927cc27fb9fde2ad31ba}} 
+\index{TypeOpSubpiece@{TypeOpSubpiece}!getOperatorName@{getOperatorName}}
+\index{getOperatorName@{getOperatorName}!TypeOpSubpiece@{TypeOpSubpiece}}
+\subsubsection{\texorpdfstring{getOperatorName()}{getOperatorName()}}
+{\footnotesize\ttfamily string Type\+Op\+Subpiece\+::get\+Operator\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the name of the op-\/code as it should be displayed in context. 
+
+Depending on the context, the same op-\/code may get displayed in different ways. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the display token 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a42a1ffa77f998df24efdb44405b33ac5}{Type\+Op}}.
+
+
+
+Definition at line 1535 of file typeop.\+cc.
+
+\mbox{\Hypertarget{class_type_op_subpiece_ac93ca300b551f16888008869eca39150}\label{class_type_op_subpiece_ac93ca300b551f16888008869eca39150}} 
+\index{TypeOpSubpiece@{TypeOpSubpiece}!getOutputToken@{getOutputToken}}
+\index{getOutputToken@{getOutputToken}!TypeOpSubpiece@{TypeOpSubpiece}}
+\subsubsection{\texorpdfstring{getOutputToken()}{getOutputToken()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_datatype}{Datatype}} $\ast$ Type\+Op\+Subpiece\+::get\+Output\+Token (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_cast_strategy}{Cast\+Strategy}} $\ast$}]{cast\+Strategy }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the data-\/type of the output that would be assigned by a compiler. 
+
+Calculate the actual data-\/type of the output for a specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as would be assigned by a C compiler parsing a grammar containing this op. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em cast\+Strategy} & is the current casting strategy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the data-\/type 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_type_op_a7150ac93bb03a993735c829deb5237e7}{Type\+Op}}.
+
+
+
+Definition at line 1544 of file typeop.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_subpiece_ac93ca300b551f16888008869eca39150_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_type_op_subpiece_a0ef689e39ee81e6c30f6d92a2024c4dd}\label{class_type_op_subpiece_a0ef689e39ee81e6c30f6d92a2024c4dd}} 
+\index{TypeOpSubpiece@{TypeOpSubpiece}!push@{push}}
+\index{push@{push}!TypeOpSubpiece@{TypeOpSubpiece}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily virtual void Type\+Op\+Subpiece\+::push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng,  }\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Push the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to the emitter\textquotesingle{}s R\+PN stack. 
+
+Given a specific language and \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}, emit the expression rooted at the operation. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} to emit \\
+\hline
+{\em op} & is the specific \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_type_op_ac9c9544203ed74dabe6ac662b653b2af}{Type\+Op}}.
+
+
+
+Definition at line 704 of file typeop.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_type_op_subpiece_a0ef689e39ee81e6c30f6d92a2024c4dd_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8hh}{typeop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{typeop_8cc}{typeop.\+cc}}\end{DoxyCompactItemize}

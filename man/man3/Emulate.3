@@ -1,0 +1,310 @@
+.TH "Emulate" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Emulate \- A pcode-based emulator interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emulate\&.hh>\fP
+.PP
+Inherited by \fBEmulateMemory\fP, \fBEmulatePcodeOp\fP, and \fBEmulateSnippet\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmulate\fP (void)"
+.br
+.RI "generic emulator constructor "
+.ti -1c
+.RI "virtual \fB~Emulate\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetHalt\fP (bool val)"
+.br
+.RI "Set the \fIhalt\fP state of the emulator\&. "
+.ti -1c
+.RI "bool \fBgetHalt\fP (void) const"
+.br
+.RI "Get the \fIhalt\fP state of the emulator\&. "
+.ti -1c
+.RI "virtual void \fBsetExecuteAddress\fP (const \fBAddress\fP &addr)=0"
+.br
+.RI "Set the address of the next instruction to emulate\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetExecuteAddress\fP (void) const =0"
+.br
+.RI "Get the address of the current instruction being executed\&. "
+.ti -1c
+.RI "void \fBexecuteCurrentOp\fP (void)"
+.br
+.RI "Do a single pcode op step\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBexecuteUnary\fP (void)=0"
+.br
+.RI "Execute a unary arithmetic/logical operation\&. "
+.ti -1c
+.RI "virtual void \fBexecuteBinary\fP (void)=0"
+.br
+.RI "Execute a binary arithmetic/logical operation\&. "
+.ti -1c
+.RI "virtual void \fBexecuteLoad\fP (void)=0"
+.br
+.RI "Standard behavior for a p-code LOAD\&. "
+.ti -1c
+.RI "virtual void \fBexecuteStore\fP (void)=0"
+.br
+.RI "Standard behavior for a p-code STORE\&. "
+.ti -1c
+.RI "virtual void \fBexecuteBranch\fP (void)=0"
+.br
+.RI "Standard behavior for a BRANCH\&. "
+.ti -1c
+.RI "virtual bool \fBexecuteCbranch\fP (void)=0"
+.br
+.RI "Check if the conditional of a CBRANCH is \fBtrue\fP\&. "
+.ti -1c
+.RI "virtual void \fBexecuteBranchind\fP (void)=0"
+.br
+.RI "Standard behavior for a BRANCHIND\&. "
+.ti -1c
+.RI "virtual void \fBexecuteCall\fP (void)=0"
+.br
+.RI "Standard behavior for a p-code CALL\&. "
+.ti -1c
+.RI "virtual void \fBexecuteCallind\fP (void)=0"
+.br
+.RI "Standard behavior for a CALLIND\&. "
+.ti -1c
+.RI "virtual void \fBexecuteCallother\fP (void)=0"
+.br
+.RI "Standard behavior for a user-defined p-code op\&. "
+.ti -1c
+.RI "virtual void \fBexecuteMultiequal\fP (void)=0"
+.br
+.RI "Standard behavior for a MULTIEQUAL (phi-node) "
+.ti -1c
+.RI "virtual void \fBexecuteIndirect\fP (void)=0"
+.br
+.RI "Standard behavior for an INDIRECT op\&. "
+.ti -1c
+.RI "virtual void \fBexecuteSegmentOp\fP (void)=0"
+.br
+.RI "Behavior for a SEGMENTOP\&. "
+.ti -1c
+.RI "virtual void \fBexecuteCpoolRef\fP (void)=0"
+.br
+.RI "Standard behavior for a CPOOLREF (constant pool reference) op\&. "
+.ti -1c
+.RI "virtual void \fBexecuteNew\fP (void)=0"
+.br
+.RI "Standard behavior for (low-level) NEW op\&. "
+.ti -1c
+.RI "virtual void \fBfallthruOp\fP (void)=0"
+.br
+.RI "Standard p-code fall-thru semantics\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBemu_halted\fP"
+.br
+.RI "Set to \fBtrue\fP if the emulator is halted\&. "
+.ti -1c
+.RI "\fBOpBehavior\fP * \fBcurrentBehave\fP"
+.br
+.RI "Behavior of the next op to execute\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A pcode-based emulator interface\&. 
+
+The interface expects that the underlying emulation engine operates on individual pcode operations as its atomic operation\&. The interface allows execution stepping through individual pcode operations\&. The interface allows querying of the \fIcurrent\fP pcode op, the current machine address, and the rest of the machine state\&. 
+.PP
+Definition at line 168 of file emulate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Emulate::Emulate (void)\fC [inline]\fP"
+
+.PP
+generic emulator constructor 
+.PP
+Definition at line 201 of file emulate\&.hh\&.
+.SS "virtual Emulate::~Emulate (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 202 of file emulate\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void Emulate::executeBinary (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Execute a binary arithmetic/logical operation\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeBranch (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a BRANCH\&. This routine performs a standard p-code BRANCH operation on the memory state\&. This same routine is used for CBRANCH operations if the condition has evaluated to \fBtrue\fP\&. 
+.PP
+Implemented in \fBEmulatePcodeCache\fP, and \fBEmulateMemory\fP\&.
+.SS "virtual void Emulate::executeBranchind (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a BRANCHIND\&. 
+.PP
+Implemented in \fBEmulateMemory\fP\&.
+.SS "virtual void Emulate::executeCall (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a p-code CALL\&. 
+.PP
+Implemented in \fBEmulateMemory\fP\&.
+.SS "virtual void Emulate::executeCallind (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a CALLIND\&. 
+.PP
+Implemented in \fBEmulateMemory\fP\&.
+.SS "virtual void Emulate::executeCallother (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a user-defined p-code op\&. 
+.PP
+Implemented in \fBEmulatePcodeCache\fP, and \fBEmulateMemory\fP\&.
+.SS "virtual bool Emulate::executeCbranch (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Check if the conditional of a CBRANCH is \fBtrue\fP\&. This routine only checks if the condition for a p-code CBRANCH is true\&. It does \fInot\fP perform the actual branch\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the boolean state indicated by the condition 
+.RE
+.PP
+
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeCpoolRef (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a CPOOLREF (constant pool reference) op\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "void Emulate::executeCurrentOp (void)"
+
+.PP
+Do a single pcode op step\&. This method executes a single pcode operation, the current one (returned by getCurrentOp())\&. The \fBMemoryState\fP of the emulator is queried and changed as needed to accomplish this\&. 
+.PP
+Definition at line 141 of file emulate\&.cc\&.
+.SS "virtual void Emulate::executeIndirect (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for an INDIRECT op\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeLoad (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a p-code LOAD\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeMultiequal (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a MULTIEQUAL (phi-node) 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeNew (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for (low-level) NEW op\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeSegmentOp (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Behavior for a SEGMENTOP\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeStore (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard behavior for a p-code STORE\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::executeUnary (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Execute a unary arithmetic/logical operation\&. 
+.PP
+Implemented in \fBEmulateMemory\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "virtual void Emulate::fallthruOp (void)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Standard p-code fall-thru semantics\&. 
+.PP
+Implemented in \fBEmulatePcodeCache\fP\&.
+.SS "virtual \fBAddress\fP Emulate::getExecuteAddress (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the address of the current instruction being executed\&. 
+.PP
+Implemented in \fBEmulatePcodeCache\fP, \fBEmulateSnippet\fP, and \fBEmulatePcodeOp\fP\&.
+.SS "bool Emulate::getHalt (void) const\fC [inline]\fP"
+
+.PP
+Get the \fIhalt\fP state of the emulator\&. Applications and breakpoints can use this method and its companion \fBsetHalt()\fP to terminate and restart the main emulator loop as needed\&. The emulator itself makes no use of this routine or the associated state variable \fBemu_halted\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the emulator is in a 'halted' state\&. 
+.RE
+.PP
+
+.PP
+Definition at line 224 of file emulate\&.hh\&.
+.SS "virtual void Emulate::setExecuteAddress (const \fBAddress\fP & addr)\fC [pure virtual]\fP"
+
+.PP
+Set the address of the next instruction to emulate\&. 
+.PP
+Implemented in \fBEmulatePcodeCache\fP, \fBEmulateSnippet\fP, and \fBEmulateFunction\fP\&.
+.SS "void Emulate::setHalt (bool val)\fC [inline]\fP"
+
+.PP
+Set the \fIhalt\fP state of the emulator\&. Applications and breakpoints can use this method and its companion \fBgetHalt()\fP to terminate and restart the main emulator loop as needed\&. The emulator itself makes no use of this routine or the associated state variable \fBemu_halted\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is what the halt state of the emulator should be set to 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file emulate\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBOpBehavior\fP* Emulate::currentBehave\fC [protected]\fP"
+
+.PP
+Behavior of the next op to execute\&. 
+.PP
+Definition at line 171 of file emulate\&.hh\&.
+.SS "bool Emulate::emu_halted\fC [protected]\fP"
+
+.PP
+Set to \fBtrue\fP if the emulator is halted\&. 
+.PP
+Definition at line 170 of file emulate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

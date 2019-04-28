@@ -1,0 +1,149 @@
+\hypertarget{class_conditional_join}{}\section{Conditional\+Join Class Reference}
+\label{class_conditional_join}\index{ConditionalJoin@{ConditionalJoin}}
+
+
+Discover and eliminate {\itshape split} conditions.  
+
+
+
+
+{\ttfamily \#include $<$blockaction.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_conditional_join_a92106a1507dac5ae066ab3acec324eb2}{Conditional\+Join}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&fd)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_conditional_join_ab4f86556c6387f177e341329ed346e99}{match}} (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$b1, \mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$b2)
+\begin{DoxyCompactList}\small\item\em Test blocks for the merge condition. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_conditional_join_a7ddeb5ef416cda6bec2ca424b22e00a7}{execute}} (void)
+\begin{DoxyCompactList}\small\item\em Execute the merge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_conditional_join_a9e69ebb78367803c598edfdc5ef04f5a}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear for a new test. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Discover and eliminate {\itshape split} conditions. 
+
+A {\bfseries{split}} condition is when a conditional expression, resulting in a C\+B\+R\+A\+N\+CH, is duplicated across two blocks that would otherwise merge. Instead of a single conditional in a merged block, there are two copies of the conditional, two splitting blocks and no direct merge. 
+
+Definition at line 232 of file blockaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_conditional_join_a92106a1507dac5ae066ab3acec324eb2}\label{class_conditional_join_a92106a1507dac5ae066ab3acec324eb2}} 
+\index{ConditionalJoin@{ConditionalJoin}!ConditionalJoin@{ConditionalJoin}}
+\index{ConditionalJoin@{ConditionalJoin}!ConditionalJoin@{ConditionalJoin}}
+\subsubsection{\texorpdfstring{ConditionalJoin()}{ConditionalJoin()}}
+{\footnotesize\ttfamily Conditional\+Join\+::\+Conditional\+Join (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 259 of file blockaction.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_conditional_join_a9e69ebb78367803c598edfdc5ef04f5a}\label{class_conditional_join_a9e69ebb78367803c598edfdc5ef04f5a}} 
+\index{ConditionalJoin@{ConditionalJoin}!clear@{clear}}
+\index{clear@{clear}!ConditionalJoin@{ConditionalJoin}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Conditional\+Join\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear for a new test. 
+
+
+
+Definition at line 2090 of file blockaction.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_conditional_join_a9e69ebb78367803c598edfdc5ef04f5a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_conditional_join_a7ddeb5ef416cda6bec2ca424b22e00a7}\label{class_conditional_join_a7ddeb5ef416cda6bec2ca424b22e00a7}} 
+\index{ConditionalJoin@{ConditionalJoin}!execute@{execute}}
+\index{execute@{execute}!ConditionalJoin@{ConditionalJoin}}
+\subsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Conditional\+Join\+::execute (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Execute the merge. 
+
+All the conditions have been met. Go ahead and do the join. 
+
+Definition at line 2080 of file blockaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_conditional_join_a7ddeb5ef416cda6bec2ca424b22e00a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_conditional_join_a7ddeb5ef416cda6bec2ca424b22e00a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_conditional_join_ab4f86556c6387f177e341329ed346e99}\label{class_conditional_join_ab4f86556c6387f177e341329ed346e99}} 
+\index{ConditionalJoin@{ConditionalJoin}!match@{match}}
+\index{match@{match}!ConditionalJoin@{ConditionalJoin}}
+\subsubsection{\texorpdfstring{match()}{match()}}
+{\footnotesize\ttfamily bool Conditional\+Join\+::match (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$}]{b1,  }\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$}]{b2 }\end{DoxyParamCaption})}
+
+
+
+Test blocks for the merge condition. 
+
+Given a pair of conditional blocks, make sure that they match the {\itshape split} conditions necessary for merging and set up to do the merge. If the conditions are not met, this method cleans up so that additional calls can be made. 
+\begin{DoxyParams}{Parameters}
+{\em b1} & is the \mbox{\hyperlink{class_block_basic}{Block\+Basic}} exhibiting one side of the split \\
+\hline
+{\em b2} & is the \mbox{\hyperlink{class_block_basic}{Block\+Basic}} on the other side of the split \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the conditions for merging are met 
+\end{DoxyReturn}
+
+
+Definition at line 2043 of file blockaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_conditional_join_ab4f86556c6387f177e341329ed346e99_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_conditional_join_ab4f86556c6387f177e341329ed346e99_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8hh}{blockaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8cc}{blockaction.\+cc}}\end{DoxyCompactItemize}

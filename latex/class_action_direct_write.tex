@@ -1,0 +1,152 @@
+\hypertarget{class_action_direct_write}{}\section{Action\+Direct\+Write Class Reference}
+\label{class_action_direct_write}\index{ActionDirectWrite@{ActionDirectWrite}}
+
+
+Mark Varnodes built out of {\itshape legal} parameters.  
+
+
+
+
+{\ttfamily \#include $<$coreaction.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Direct\+Write\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_action_direct_write__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Direct\+Write\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_action_direct_write__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_direct_write_a241c61e946f8c1c31b961fd53bda0657}{Action\+Direct\+Write}} (const string \&g, bool prop)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_direct_write_adbb35f944b5ae30faf45797be1c6965d}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_direct_write_a02ef8c3c9a53549db52478cd566e320f}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Mark Varnodes built out of {\itshape legal} parameters. 
+
+Label a varnode with the {\bfseries{directwrite}} attribute if\+: that varnode can trace at least part of its data-\/flow ancestry to legal inputs, where {\bfseries{legal}} inputs include\+: globals, spacebase registers, and normal function parameters. The directwrite attribute is set on these inputs initially and then propagated to other varnodes through all other ops except C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+CT. The attribute propagates through C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+CT depending on the setting of -\/propagate\+Indirect-\/. For normal decompilation, propagation through C\+P\+U\+I\+\_\+\+I\+N\+D\+I\+R\+E\+C\+Ts is important for stack and other high-\/level addrtied variables that need to hold their value over ranges where they are not accessed directly. But propagation adds unnecessary clutter for normalization style analysis. 
+
+Definition at line 209 of file coreaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_direct_write_a241c61e946f8c1c31b961fd53bda0657}\label{class_action_direct_write_a241c61e946f8c1c31b961fd53bda0657}} 
+\index{ActionDirectWrite@{ActionDirectWrite}!ActionDirectWrite@{ActionDirectWrite}}
+\index{ActionDirectWrite@{ActionDirectWrite}!ActionDirectWrite@{ActionDirectWrite}}
+\subsubsection{\texorpdfstring{ActionDirectWrite()}{ActionDirectWrite()}}
+{\footnotesize\ttfamily Action\+Direct\+Write\+::\+Action\+Direct\+Write (\begin{DoxyParamCaption}\item[{const string \&}]{g,  }\item[{bool}]{prop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 212 of file coreaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{class_action_direct_write_a241c61e946f8c1c31b961fd53bda0657_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_direct_write_a02ef8c3c9a53549db52478cd566e320f}\label{class_action_direct_write_a02ef8c3c9a53549db52478cd566e320f}} 
+\index{ActionDirectWrite@{ActionDirectWrite}!apply@{apply}}
+\index{apply@{apply}!ActionDirectWrite@{ActionDirectWrite}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Direct\+Write\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_aac1c3999d6c685b15f5d9765a4d04173}{Action}}.
+
+
+
+Definition at line 1070 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_direct_write_a02ef8c3c9a53549db52478cd566e320f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_direct_write_adbb35f944b5ae30faf45797be1c6965d}\label{class_action_direct_write_adbb35f944b5ae30faf45797be1c6965d}} 
+\index{ActionDirectWrite@{ActionDirectWrite}!clone@{clone}}
+\index{clone@{clone}!ActionDirectWrite@{ActionDirectWrite}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_action}{Action}}$\ast$ Action\+Direct\+Write\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_action_af8242e41d09e5df52f97df9e65cc626f}{Action}}.
+
+
+
+Definition at line 213 of file coreaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_action_direct_write_adbb35f944b5ae30faf45797be1c6965d_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8hh}{coreaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

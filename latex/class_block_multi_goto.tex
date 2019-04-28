@@ -1,0 +1,438 @@
+\hypertarget{class_block_multi_goto}{}\section{Block\+Multi\+Goto Class Reference}
+\label{class_block_multi_goto}\index{BlockMultiGoto@{BlockMultiGoto}}
+
+
+A block with multiple edges out, at least one of which is an unstructured (goto) branch.  
+
+
+
+
+{\ttfamily \#include $<$block.\+hh$>$}
+
+
+
+Inheritance diagram for Block\+Multi\+Goto\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_block_multi_goto__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Block\+Multi\+Goto\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_block_multi_goto__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_block_multi_goto_a16e2f39f527394fbdf5379813b8beb6f}{Block\+Multi\+Goto}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Construct given the underlying multi-\/exit block. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_multi_goto_adda142d9e4fa3d02adfbf887cc4c17f6}{set\+Default\+Goto}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that this block holds an unstructured switch default. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_block_multi_goto_a4b82d9a526047c2af81c24884bf2db24}{has\+Default\+Goto}} (void) const
+\begin{DoxyCompactList}\small\item\em Does this block hold an unstructured switch default edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_block_multi_goto_ae44f2a0b73e918aa46dbae92d4eb67de}{add\+Edge}} (\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl)
+\begin{DoxyCompactList}\small\item\em Mark the edge from {\bfseries{this}} to the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as unstructured. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_block_multi_goto_a8a98ae30b486ab27e453e78c37a194c9}{num\+Gotos}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of unstructured edges. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_multi_goto_ae4bd0a4f2da98b84b96b1a9ec97b46e3}{get\+Goto}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the target \mbox{\hyperlink{class_flow_block}{Flow\+Block}} along the i-\/th unstructured edge. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} \mbox{\hyperlink{class_block_multi_goto_a9fd5bfdaa3202a1cd604213c2be88bf2}{get\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_multi_goto_a1957286b0a3a4a2d280caae3c1f19cc7}{scope\+Break}} (int4 curexit, int4 curloopexit)
+\begin{DoxyCompactList}\small\item\em Mark unstructured edges that should be {\itshape breaks}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_multi_goto_a0886201717ed839e30e4e8e2b39d33d7}{print\+Header}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print a simple description of {\bfseries{this}} to stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_multi_goto_a56b9c331488b4bf0c0f01cc583192630}{print\+Raw}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Print raw instructions contained in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_multi_goto_a8eee38e26a13873ceaff6d37b46eaafd}{emit}} (\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$lng) const
+\begin{DoxyCompactList}\small\item\em Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_multi_goto_a54ba810882911521ff2ca84b6458228a}{get\+Exit\+Leaf}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to which {\bfseries{this}} block exits. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_block_multi_goto_a70cc69b1b4835ae574cebbbf13b868bd}{last\+Op}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the last \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} executed by {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ \mbox{\hyperlink{class_block_multi_goto_a44d0021262e569ac4ecf6ecddbdf1d41}{next\+Flow\+After}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl) const
+\begin{DoxyCompactList}\small\item\em Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_block_multi_goto_ac537bd161b597061aeca88bcc01e260c}{save\+Xml\+Body}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save detail about components to an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A block with multiple edges out, at least one of which is an unstructured (goto) branch. 
+
+An instance of this class is used to mirror a basic block with multiple out edges at the point where one of the edges can\textquotesingle{}t be structured. The instance keeps track of this edge but otherwise presents a view to the structuring algorithm as if the edge didn\textquotesingle{}t exist. If at a later point, more edges can\textquotesingle{}t be structured, the one instance can hold this information as well. 
+
+Definition at line 465 of file block.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_block_multi_goto_a16e2f39f527394fbdf5379813b8beb6f}\label{class_block_multi_goto_a16e2f39f527394fbdf5379813b8beb6f}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!BlockMultiGoto@{BlockMultiGoto}}
+\index{BlockMultiGoto@{BlockMultiGoto}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{BlockMultiGoto()}{BlockMultiGoto()}}
+{\footnotesize\ttfamily Block\+Multi\+Goto\+::\+Block\+Multi\+Goto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct given the underlying multi-\/exit block. 
+
+
+
+Definition at line 469 of file block.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_block_multi_goto_ae44f2a0b73e918aa46dbae92d4eb67de}\label{class_block_multi_goto_ae44f2a0b73e918aa46dbae92d4eb67de}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Block\+Multi\+Goto\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark the edge from {\bfseries{this}} to the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as unstructured. 
+
+
+
+Definition at line 472 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_ae44f2a0b73e918aa46dbae92d4eb67de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_a8eee38e26a13873ceaff6d37b46eaafd}\label{class_block_multi_goto_a8eee38e26a13873ceaff6d37b46eaafd}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!emit@{emit}}
+\index{emit@{emit}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{emit()}{emit()}}
+{\footnotesize\ttfamily virtual void Block\+Multi\+Goto\+::emit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$}]{lng }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Emit the instructions in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}} as structured code. 
+
+This is the main entry point, at the control-\/flow level, for printing structured code. 
+\begin{DoxyParams}{Parameters}
+{\em lng} & is the \mbox{\hyperlink{class_print_language}{Print\+Language}} that provides details of the high-\/level language being printed \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a535d3c7cb13e5e45b6e121b024fa339f}{Block\+Graph}}.
+
+
+
+Definition at line 480 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_block_multi_goto_a8eee38e26a13873ceaff6d37b46eaafd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_a54ba810882911521ff2ca84b6458228a}\label{class_block_multi_goto_a54ba810882911521ff2ca84b6458228a}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!getExitLeaf@{getExitLeaf}}
+\index{getExitLeaf@{getExitLeaf}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{getExitLeaf()}{getExitLeaf()}}
+{\footnotesize\ttfamily virtual const \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Block\+Multi\+Goto\+::get\+Exit\+Leaf (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to which {\bfseries{this}} block exits. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a611bb926194635a0f5cfc0eb16cabe6a}{Flow\+Block}}.
+
+
+
+Definition at line 481 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_a54ba810882911521ff2ca84b6458228a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_ae4bd0a4f2da98b84b96b1a9ec97b46e3}\label{class_block_multi_goto_ae4bd0a4f2da98b84b96b1a9ec97b46e3}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!getGoto@{getGoto}}
+\index{getGoto@{getGoto}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{getGoto()}{getGoto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}}$\ast$ Block\+Multi\+Goto\+::get\+Goto (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the target \mbox{\hyperlink{class_flow_block}{Flow\+Block}} along the i-\/th unstructured edge. 
+
+
+
+Definition at line 474 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_ae4bd0a4f2da98b84b96b1a9ec97b46e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_a9fd5bfdaa3202a1cd604213c2be88bf2}\label{class_block_multi_goto_a9fd5bfdaa3202a1cd604213c2be88bf2}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!getType@{getType}}
+\index{getType@{getType}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_flow_block_a70df78390870fcdd51e31426ba6a193e}{block\+\_\+type}} Block\+Multi\+Goto\+::get\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} type of {\bfseries{this}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a8e542e109e0acc977218ceaf3c248153}{Block\+Graph}}.
+
+
+
+Definition at line 476 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_multi_goto_a4b82d9a526047c2af81c24884bf2db24}\label{class_block_multi_goto_a4b82d9a526047c2af81c24884bf2db24}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!hasDefaultGoto@{hasDefaultGoto}}
+\index{hasDefaultGoto@{hasDefaultGoto}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{hasDefaultGoto()}{hasDefaultGoto()}}
+{\footnotesize\ttfamily bool Block\+Multi\+Goto\+::has\+Default\+Goto (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Does this block hold an unstructured switch default edge. 
+
+
+
+Definition at line 471 of file block.\+hh.
+
+\mbox{\Hypertarget{class_block_multi_goto_a70cc69b1b4835ae574cebbbf13b868bd}\label{class_block_multi_goto_a70cc69b1b4835ae574cebbbf13b868bd}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!lastOp@{lastOp}}
+\index{lastOp@{lastOp}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{lastOp()}{lastOp()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Block\+Multi\+Goto\+::last\+Op (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the last \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} executed by {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a5db2a7d4baa2070ebf3151b13fd16d09}{Flow\+Block}}.
+
+
+
+Definition at line 482 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{class_block_multi_goto_a70cc69b1b4835ae574cebbbf13b868bd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_a44d0021262e569ac4ecf6ecddbdf1d41}\label{class_block_multi_goto_a44d0021262e569ac4ecf6ecddbdf1d41}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!nextFlowAfter@{nextFlowAfter}}
+\index{nextFlowAfter@{nextFlowAfter}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{nextFlowAfter()}{nextFlowAfter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$ Block\+Multi\+Goto\+::next\+Flow\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the leaf \mbox{\hyperlink{class_flow_block}{Flow\+Block}} that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+Within the hierarchy of {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}, assume the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} will fall-\/thru in its execution at some point. Return the first leaf block (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} or \mbox{\hyperlink{class_block_copy}{Block\+Copy}}) that will execute after the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} completes, assuming this is a unique block. 
+\begin{DoxyParams}{Parameters}
+{\em bl} & is the given \mbox{\hyperlink{class_flow_block}{Flow\+Block}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the next \mbox{\hyperlink{class_flow_block}{Flow\+Block}} to execute or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_aba0d42cf572bdcf2bca44d22fad971f6}{Block\+Graph}}.
+
+
+
+Definition at line 2618 of file block.\+cc.
+
+\mbox{\Hypertarget{class_block_multi_goto_a8a98ae30b486ab27e453e78c37a194c9}\label{class_block_multi_goto_a8a98ae30b486ab27e453e78c37a194c9}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!numGotos@{numGotos}}
+\index{numGotos@{numGotos}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{numGotos()}{numGotos()}}
+{\footnotesize\ttfamily int4 Block\+Multi\+Goto\+::num\+Gotos (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of unstructured edges. 
+
+
+
+Definition at line 473 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_a8a98ae30b486ab27e453e78c37a194c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_a0886201717ed839e30e4e8e2b39d33d7}\label{class_block_multi_goto_a0886201717ed839e30e4e8e2b39d33d7}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!printHeader@{printHeader}}
+\index{printHeader@{printHeader}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{printHeader()}{printHeader()}}
+{\footnotesize\ttfamily void Block\+Multi\+Goto\+::print\+Header (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print a simple description of {\bfseries{this}} to stream. 
+
+Only print a header for {\bfseries{this}} single block 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_flow_block_a0d19c5b80186cf289dfbe0ce9e3ce37a}{Flow\+Block}}.
+
+
+
+Definition at line 2611 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_a0886201717ed839e30e4e8e2b39d33d7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_a56b9c331488b4bf0c0f01cc583192630}\label{class_block_multi_goto_a56b9c331488b4bf0c0f01cc583192630}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!printRaw@{printRaw}}
+\index{printRaw@{printRaw}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{printRaw()}{printRaw()}}
+{\footnotesize\ttfamily virtual void Block\+Multi\+Goto\+::print\+Raw (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Print raw instructions contained in {\bfseries{this}} \mbox{\hyperlink{class_flow_block}{Flow\+Block}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_abcae771fc675bcc52c78b2f1dc0ab98a}{Block\+Graph}}.
+
+
+
+Definition at line 479 of file block.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_a56b9c331488b4bf0c0f01cc583192630_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_ac537bd161b597061aeca88bcc01e260c}\label{class_block_multi_goto_ac537bd161b597061aeca88bcc01e260c}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!saveXmlBody@{saveXmlBody}}
+\index{saveXmlBody@{saveXmlBody}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{saveXmlBody()}{saveXmlBody()}}
+{\footnotesize\ttfamily void Block\+Multi\+Goto\+::save\+Xml\+Body (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Save detail about components to an X\+ML stream. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a881076195239ce5c2e5c865f22714d03}{Block\+Graph}}.
+
+
+
+Definition at line 2625 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_ac537bd161b597061aeca88bcc01e260c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_a1957286b0a3a4a2d280caae3c1f19cc7}\label{class_block_multi_goto_a1957286b0a3a4a2d280caae3c1f19cc7}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!scopeBreak@{scopeBreak}}
+\index{scopeBreak@{scopeBreak}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{scopeBreak()}{scopeBreak()}}
+{\footnotesize\ttfamily void Block\+Multi\+Goto\+::scope\+Break (\begin{DoxyParamCaption}\item[{int4}]{curexit,  }\item[{int4}]{curloopexit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mark unstructured edges that should be {\itshape breaks}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_block_graph_a55618dfd49266bd4185d119f08e8b630}{Block\+Graph}}.
+
+
+
+Definition at line 2605 of file block.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_a1957286b0a3a4a2d280caae3c1f19cc7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_multi_goto_adda142d9e4fa3d02adfbf887cc4c17f6}\label{class_block_multi_goto_adda142d9e4fa3d02adfbf887cc4c17f6}} 
+\index{BlockMultiGoto@{BlockMultiGoto}!setDefaultGoto@{setDefaultGoto}}
+\index{setDefaultGoto@{setDefaultGoto}!BlockMultiGoto@{BlockMultiGoto}}
+\subsubsection{\texorpdfstring{setDefaultGoto()}{setDefaultGoto()}}
+{\footnotesize\ttfamily void Block\+Multi\+Goto\+::set\+Default\+Goto (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that this block holds an unstructured switch default. 
+
+
+
+Definition at line 470 of file block.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_multi_goto_adda142d9e4fa3d02adfbf887cc4c17f6_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8hh}{block.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{block_8cc}{block.\+cc}}\end{DoxyCompactItemize}

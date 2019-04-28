@@ -1,0 +1,136 @@
+.TH "BlockInfLoop" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockInfLoop \- An infinite loop structure\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBBlockGraph\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBmarkLabelBumpUp\fP (bool bump)"
+.br
+.RI "Let hierarchical blocks steal labels of their (first) components\&. "
+.ti -1c
+.RI "virtual void \fBscopeBreak\fP (int4 curexit, int4 curloopexit)"
+.br
+.RI "Mark unstructured edges that should be \fIbreaks\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBnextFlowAfter\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An infinite loop structure\&. 
+
+This has exactly one component with one outgoing edge that flows into itself\&. The \fBBlockInfLoop\fP instance has zero outgoing edges\&. 
+.PP
+Definition at line 610 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void BlockInfLoop::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 616 of file block\&.hh\&.
+.SS "virtual \fBblock_type\fP BlockInfLoop::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 612 of file block\&.hh\&.
+.SS "void BlockInfLoop::markLabelBumpUp (bool bump)\fC [virtual]\fP"
+
+.PP
+Let hierarchical blocks steal labels of their (first) components\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbump\fP if \fBtrue\fP, mark that labels for this block are printed by somebody higher in hierarchy 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2904 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * BlockInfLoop::nextFlowAfter (const \fBFlowBlock\fP * bl) const\fC [virtual]\fP"
+
+.PP
+Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. Within the hierarchy of \fBthis\fP \fBFlowBlock\fP, assume the given \fBFlowBlock\fP will fall-thru in its execution at some point\&. Return the first leaf block (\fBBlockBasic\fP or \fBBlockCopy\fP) that will execute after the given \fBFlowBlock\fP completes, assuming this is a unique block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next \fBFlowBlock\fP to execute or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2926 of file block\&.cc\&.
+.SS "void BlockInfLoop::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2919 of file block\&.cc\&.
+.SS "void BlockInfLoop::scopeBreak (int4 curexit, int4 curloopexit)\fC [virtual]\fP"
+
+.PP
+Mark unstructured edges that should be \fIbreaks\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2912 of file block\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

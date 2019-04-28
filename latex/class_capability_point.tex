@@ -1,0 +1,139 @@
+\hypertarget{class_capability_point}{}\section{Capability\+Point Class Reference}
+\label{class_capability_point}\index{CapabilityPoint@{CapabilityPoint}}
+
+
+Class for automatically registering extension points to the decompiler.  
+
+
+
+
+{\ttfamily \#include $<$capability.\+hh$>$}
+
+
+
+Inheritance diagram for Capability\+Point\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_capability_point__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_capability_point_aebccad5c6382839cdfc9113b8eff3f33}{$\sim$\+Capability\+Point}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab}{initialize}} (void)=0
+\begin{DoxyCompactList}\small\item\em Complete initialization of an extension point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_capability_point_a4ea216194d3e4cb1f0994dfcbd653a45}{initialize\+All}} (void)
+\begin{DoxyCompactList}\small\item\em Finish initialization for all extension points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_capability_point_aeab7831942fb111df63c8ddacafa0c11}{Capability\+Point}} (void)
+\begin{DoxyCompactList}\small\item\em Construct extension capability exactly once. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for automatically registering extension points to the decompiler. 
+
+This uses the C++ static initializer feature to automatically {\itshape discover} and register extension point. Code for an extension should provide a class that derives from \mbox{\hyperlink{class_capability_point}{Capability\+Point}} and overrides the \mbox{\hyperlink{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab}{initialize()}} method. Additionally there should be a singleton static instantiation of this extension class. The extensions are accumulated in a list automatically, then the decompiler engine will ensure that the \mbox{\hyperlink{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab}{initialize()}} method is called on each extension, allowing it to complete its integration. 
+
+Definition at line 36 of file capability.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_capability_point_aeab7831942fb111df63c8ddacafa0c11}\label{class_capability_point_aeab7831942fb111df63c8ddacafa0c11}} 
+\index{CapabilityPoint@{CapabilityPoint}!CapabilityPoint@{CapabilityPoint}}
+\index{CapabilityPoint@{CapabilityPoint}!CapabilityPoint@{CapabilityPoint}}
+\subsubsection{\texorpdfstring{CapabilityPoint()}{CapabilityPoint()}}
+{\footnotesize\ttfamily Capability\+Point\+::\+Capability\+Point (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Construct extension capability exactly once. 
+
+Constructing the object automatically registers it. For global instances, this happens during static initialization 
+
+Definition at line 31 of file capability.\+cc.
+
+\mbox{\Hypertarget{class_capability_point_aebccad5c6382839cdfc9113b8eff3f33}\label{class_capability_point_aebccad5c6382839cdfc9113b8eff3f33}} 
+\index{CapabilityPoint@{CapabilityPoint}!````~CapabilityPoint@{$\sim$CapabilityPoint}}
+\index{````~CapabilityPoint@{$\sim$CapabilityPoint}!CapabilityPoint@{CapabilityPoint}}
+\subsubsection{\texorpdfstring{$\sim$CapabilityPoint()}{~CapabilityPoint()}}
+{\footnotesize\ttfamily virtual Capability\+Point\+::$\sim$\+Capability\+Point (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 41 of file capability.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab}\label{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab}} 
+\index{CapabilityPoint@{CapabilityPoint}!initialize@{initialize}}
+\index{initialize@{initialize}!CapabilityPoint@{CapabilityPoint}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void Capability\+Point\+::initialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Complete initialization of an extension point. 
+
+This method is implemented by each extension so it can do specialized integration 
+
+Implemented in \mbox{\hyperlink{class_iface_capability_a65449e5d8ca98ab3febfa3dd23f451a4}{Iface\+Capability}}, \mbox{\hyperlink{class_architecture_capability_af414aa921939711c0199d02e2ff35e26}{Architecture\+Capability}}, \mbox{\hyperlink{class_ghidra_decomp_capability_a37a40ab02f284b0030fc6c07e0a8da58}{Ghidra\+Decomp\+Capability}}, and \mbox{\hyperlink{class_print_language_capability_ac0c50c753c0e5b11a97ce789f18d33c7}{Print\+Language\+Capability}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_capability_point_a4ea216194d3e4cb1f0994dfcbd653a45}\label{class_capability_point_a4ea216194d3e4cb1f0994dfcbd653a45}} 
+\index{CapabilityPoint@{CapabilityPoint}!initializeAll@{initializeAll}}
+\index{initializeAll@{initializeAll}!CapabilityPoint@{CapabilityPoint}}
+\subsubsection{\texorpdfstring{initializeAll()}{initializeAll()}}
+{\footnotesize\ttfamily void Capability\+Point\+::initialize\+All (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Finish initialization for all extension points. 
+
+Give all registered capabilities a chance to initialize ({\itshape after} all static initialization has happened) 
+
+Definition at line 38 of file capability.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_capability_point_a4ea216194d3e4cb1f0994dfcbd653a45_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_capability_point_a4ea216194d3e4cb1f0994dfcbd653a45_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{capability_8hh}{capability.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{capability_8cc}{capability.\+cc}}\end{DoxyCompactItemize}

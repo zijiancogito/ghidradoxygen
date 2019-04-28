@@ -1,0 +1,482 @@
+.TH "FlowInfo" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FlowInfo \- A class for generating the control-flow structure for a single function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <flow\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBignore_outofbounds\fP = 1, \fBignore_unimplemented\fP = 2, \fBerror_outofbounds\fP = 4, \fBerror_unimplemented\fP = 8, \fBerror_reinterpreted\fP = 0x10, \fBerror_toomanyinstructions\fP = 0x20, \fBunimplemented_present\fP = 0x40, \fBbaddata_present\fP = 0x80, \fBoutofbounds_present\fP = 0x100, \fBreinterpreted_present\fP = 0x200, \fBtoomanyinstructions_present\fP = 0x400, \fBpossible_unreachable\fP = 0x1000, \fBflow_forinline\fP = 0x2000, \fBrecord_jumploads\fP = 0x4000 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFlowInfo\fP (\fBFuncdata\fP &d, \fBPcodeOpBank\fP &o, \fBBlockGraph\fP &b, vector< \fBFuncCallSpecs\fP * > &q)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fBFlowInfo\fP (\fBFuncdata\fP &d, \fBPcodeOpBank\fP &o, \fBBlockGraph\fP &b, vector< \fBFuncCallSpecs\fP * > &q, const \fBFlowInfo\fP *op2)"
+.br
+.RI "Cloning constructor\&. "
+.ti -1c
+.RI "void \fBsetRange\fP (const \fBAddress\fP &b, const \fBAddress\fP &e)"
+.br
+.RI "Establish the flow bounds\&. "
+.ti -1c
+.RI "void \fBsetMaximumInstructions\fP (uint4 max)"
+.br
+.RI "Set the maximum number of instructions\&. "
+.ti -1c
+.RI "void \fBsetFlags\fP (uint4 val)"
+.br
+.RI "Enable a specific option\&. "
+.ti -1c
+.RI "void \fBclearFlags\fP (uint4 val)"
+.br
+.RI "Disable a specific option\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBtarget\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Return first p-code op for instruction at given address\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBbranchTarget\fP (\fBPcodeOp\fP *op) const"
+.br
+.RI "Find the target referred to by a given BRANCH or CBRANCH\&. "
+.ti -1c
+.RI "void \fBgenerateOps\fP (void)"
+.br
+.RI "Generate raw control-flow from the function's base address\&. "
+.ti -1c
+.RI "void \fBgenerateBlocks\fP (void)"
+.br
+.RI "Generate basic blocks from the raw control-flow\&. "
+.ti -1c
+.RI "bool \fBtestHardInlineRestrictions\fP (\fBFuncdata\fP *inlinefd, \fBPcodeOp\fP *op, \fBAddress\fP &retaddr)"
+.br
+.RI "For in-lining using the \fIhard\fP model, make sure some restrictions are met\&. "
+.ti -1c
+.RI "bool \fBcheckEZModel\fP (void) const"
+.br
+.RI "Check if \fBthis\fP flow matches the EX in-lining model\&. "
+.ti -1c
+.RI "void \fBinjectPcode\fP (void)"
+.br
+.RI "Perform substitution on any op that requires \fIinjection\fP\&. "
+.ti -1c
+.RI "void \fBforwardRecursion\fP (const \fBFlowInfo\fP &op2)"
+.br
+.RI "Pull in-lining recursion information from another flow\&. "
+.ti -1c
+.RI "void \fBinlineClone\fP (const \fBFlowInfo\fP &inlineflow, const \fBAddress\fP &retaddr)"
+.br
+.RI "Clone the given in-line flow into \fBthis\fP flow using the \fIhard\fP model\&. "
+.ti -1c
+.RI "void \fBinlineEZClone\fP (const \fBFlowInfo\fP &inlineflow, const \fBAddress\fP &calladdr)"
+.br
+.RI "Clone the given in-line flow into \fBthis\fP flow using the EZ model\&. "
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.RI "Get the number of bytes covered by the flow\&. "
+.ti -1c
+.RI "bool \fBhasInject\fP (void) const"
+.br
+.RI "Does \fBthis\fP flow have injections\&. "
+.ti -1c
+.RI "bool \fBhasUnimplemented\fP (void) const"
+.br
+.RI "Does \fBthis\fP flow have unimiplemented instructions\&. "
+.ti -1c
+.RI "bool \fBhasBadData\fP (void) const"
+.br
+.RI "Does \fBthis\fP flow reach inaccessible data\&. "
+.ti -1c
+.RI "bool \fBhasOutOfBounds\fP (void) const"
+.br
+.RI "Does \fBthis\fP flow out of bound\&. "
+.ti -1c
+.RI "bool \fBhasReinterpreted\fP (void) const"
+.br
+.RI "Does \fBthis\fP flow reinterpret bytes\&. "
+.ti -1c
+.RI "bool \fBhasTooManyInstructions\fP (void) const"
+.br
+.RI "Does \fBthis\fP flow have too many instructions\&. "
+.ti -1c
+.RI "bool \fBisFlowForInline\fP (void) const"
+.br
+.RI "Is \fBthis\fP flow to be in-lined\&. "
+.ti -1c
+.RI "bool \fBdoesJumpRecord\fP (void) const"
+.br
+.RI "Should jump table structure be recorded\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class for generating the control-flow structure for a single function\&. 
+
+Control-flow for the function is generated in two phases: the method \fBgenerateOps()\fP produces all the raw p-code ops for the function, and the method \fBgenerateBlocks()\fP organizes the p-code ops into basic blocks (PcodeBlockBasic)\&. In \fBgenerateOps()\fP, p-code is generated for every machine instruction that is reachable starting with the entry point address of the function\&. All possible flow is followed, trimming flow at instructions that end with the formal RETURN p-code operation\&. CALL and CALLIND are treated as fall-through operations, and flow is not followed into the sub-function\&.
+.PP
+The class supports various options for handling corner cases during the flow following process, including how to handle:
+.IP "\(bu" 2
+Flow out of range (specified by \fBsetRange()\fP)
+.IP "\(bu" 2
+Flow into unimplemened instructions
+.IP "\(bu" 2
+Flow into unaccessible data
+.IP "\(bu" 2
+Flow into previously traversed data at an \fIoff\fP cut (\fBreinterpreted\fP data)
+.IP "\(bu" 2
+Flow that (seemingly) doesn't end, exceeding a threshold on the number of instructions
+.PP
+.PP
+In \fBgenerateBlocks()\fP, all previously generated \fBPcodeOp\fP instructions are assigned to a PcodeBlockBasic\&. These objects define the formal basic block structure of the function\&. Directed control-flow edges between the blocks are created at this time based on the flow of p-code\&.
+.PP
+A \fBFuncdata\fP object provided to the constructor holds:
+.IP "\(bu" 2
+The generated \fBPcodeOp\fP objects (within its \fBPcodeOpBank\fP)\&.
+.IP "\(bu" 2
+The control-flow graph (within its \fBBlockGraph\fP)
+.IP "\(bu" 2
+The list of discovered sub-function calls (as FuncCallSpec objects)
+.PP
+.PP
+The \fBTranslate\fP object (provided by the \fBArchitecture\fP owning the function) generates the raw p-code ops for a single instruction\&. This \fBFlowInfo\fP class also handles p-code \fIinjection\fP triggers encountered during flow following, primarily using the architecture's \fBPcodeInjectLibrary\fP to resolve them\&. 
+.PP
+Definition at line 56 of file flow\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIignore_outofbounds \fP\fP
+Ignore/truncate flow into addresses out of the specified range\&. 
+.TP
+\fB\fIignore_unimplemented \fP\fP
+Treat unimplemented instructions as a NOP (no operation) 
+.TP
+\fB\fIerror_outofbounds \fP\fP
+Throw an exception for flow into addresses out of the specified range\&. 
+.TP
+\fB\fIerror_unimplemented \fP\fP
+Throw an exception for flow into unimplemented instructions\&. 
+.TP
+\fB\fIerror_reinterpreted \fP\fP
+Throw an exception for flow into previously encountered data at a difference \fIcut\fP\&. 
+.TP
+\fB\fIerror_toomanyinstructions \fP\fP
+Throw an exception if too many instructions are encountered\&. 
+.TP
+\fB\fIunimplemented_present \fP\fP
+Indicate we have encountered unimplemented instructions\&. 
+.TP
+\fB\fIbaddata_present \fP\fP
+Indicate we have encountered flow into unaccessible data\&. 
+.TP
+\fB\fIoutofbounds_present \fP\fP
+Indicate we have encountered flow out of the specified range\&. 
+.TP
+\fB\fIreinterpreted_present \fP\fP
+Indicate we have encountered reinterpreted data\&. 
+.TP
+\fB\fItoomanyinstructions_present \fP\fP
+Indicate the maximum instruction threshold was reached\&. 
+.TP
+\fB\fIpossible_unreachable \fP\fP
+Indicate a CALL was converted to a BRANCH and some code may be unreachable\&. 
+.TP
+\fB\fIflow_forinline \fP\fP
+Indicate flow is being generated to in-line (a function) 
+.TP
+\fB\fIrecord_jumploads \fP\fP
+Indicate that any jump table recovery should record the table structure\&. 
+.PP
+Definition at line 58 of file flow\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FlowInfo::FlowInfo (\fBFuncdata\fP & d, \fBPcodeOpBank\fP & o, \fBBlockGraph\fP & b, vector< \fBFuncCallSpecs\fP * > & q)"
+
+.PP
+\fBConstructor\fP\&. Prepare for tracing flow for a new function\&. The \fBFuncdata\fP object and references to its internal containers must be explicitly given\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP is the new function to trace 
+.br
+\fIo\fP is the internal p-code container for the function 
+.br
+\fIb\fP is the internal basic block container 
+.br
+\fIq\fP is the internal container of call sites 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file flow\&.cc\&.
+.SS "FlowInfo::FlowInfo (\fBFuncdata\fP & d, \fBPcodeOpBank\fP & o, \fBBlockGraph\fP & b, vector< \fBFuncCallSpecs\fP * > & q, const \fBFlowInfo\fP * op2)"
+
+.PP
+Cloning constructor\&. Prepare a new flow cloned from an existing flow\&. Configuration from the existing flow is copied, but the actual PcodeOps must already be cloned within the new function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP is the new function that has been cloned 
+.br
+\fIo\fP is the internal p-code container for the function 
+.br
+\fIb\fP is the internal basic block container 
+.br
+\fIq\fP is the internal container of call sites 
+.br
+\fIop2\fP is the existing flow 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file flow\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBPcodeOp\fP * FlowInfo::branchTarget (\fBPcodeOp\fP * op) const"
+
+.PP
+Find the target referred to by a given BRANCH or CBRANCH\&. The \fIcode\fP \fIreference\fP passed as the first parameter to the branch is examined, and the p-code op it refers to is returned\&. The reference may be a normal direct address or a relative offset\&. If no target p-code can be found, an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given branch op 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the targetted p-code op 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file flow\&.cc\&.
+.SS "bool FlowInfo::checkEZModel (void) const"
+
+.PP
+Check if \fBthis\fP flow matches the EX in-lining model\&. A function is in the EZ model if it is a straight-line leaf function\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if this flow contains no CALL or BRANCH ops 
+.RE
+.PP
+
+.PP
+Definition at line 1137 of file flow\&.cc\&.
+.SS "void FlowInfo::clearFlags (uint4 val)\fC [inline]\fP"
+
+.PP
+Disable a specific option\&. 
+.PP
+Definition at line 145 of file flow\&.hh\&.
+.SS "bool FlowInfo::doesJumpRecord (void) const\fC [inline]\fP"
+
+.PP
+Should jump table structure be recorded\&. 
+.PP
+Definition at line 164 of file flow\&.hh\&.
+.SS "void FlowInfo::forwardRecursion (const \fBFlowInfo\fP & op2)"
+
+.PP
+Pull in-lining recursion information from another flow\&. When preparing p-code for an in-lined function, the generation process needs to be informed of in-lining that has already been performed\&. This method copies the in-lining information from the parent flow, prior to p-code generation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the parent flow 
+.RE
+.PP
+
+.PP
+Definition at line 1015 of file flow\&.cc\&.
+.SS "void FlowInfo::generateBlocks (void)"
+
+.PP
+Generate basic blocks from the raw control-flow\&. 
+.PP
+Definition at line 797 of file flow\&.cc\&.
+.SS "void FlowInfo::generateOps (void)"
+
+.PP
+Generate raw control-flow from the function's base address\&. 
+.PP
+Definition at line 749 of file flow\&.cc\&.
+.SS "int4 FlowInfo::getSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of bytes covered by the flow\&. 
+.PP
+Definition at line 156 of file flow\&.hh\&.
+.SS "bool FlowInfo::hasBadData (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP flow reach inaccessible data\&. 
+.PP
+Definition at line 159 of file flow\&.hh\&.
+.SS "bool FlowInfo::hasInject (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP flow have injections\&. 
+.PP
+Definition at line 157 of file flow\&.hh\&.
+.SS "bool FlowInfo::hasOutOfBounds (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP flow out of bound\&. 
+.PP
+Definition at line 160 of file flow\&.hh\&.
+.SS "bool FlowInfo::hasReinterpreted (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP flow reinterpret bytes\&. 
+.PP
+Definition at line 161 of file flow\&.hh\&.
+.SS "bool FlowInfo::hasTooManyInstructions (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP flow have too many instructions\&. 
+.PP
+Definition at line 162 of file flow\&.hh\&.
+.SS "bool FlowInfo::hasUnimplemented (void) const\fC [inline]\fP"
+
+.PP
+Does \fBthis\fP flow have unimiplemented instructions\&. 
+.PP
+Definition at line 158 of file flow\&.hh\&.
+.SS "void FlowInfo::injectPcode (void)"
+
+.PP
+Perform substitution on any op that requires \fIinjection\fP\&. Types of substitution include:
+.IP "\(bu" 2
+Sub-function in-lining
+.IP "\(bu" 2
+Sub-function injection
+.IP "\(bu" 2
+User defined op injection
+.PP
+.PP
+Make sure to truncate recursion, and otherwise don't allow a sub-function to be in-lined more than once\&. 
+.PP
+Definition at line 1287 of file flow\&.cc\&.
+.SS "void FlowInfo::inlineClone (const \fBFlowInfo\fP & inlineflow, const \fBAddress\fP & retaddr)"
+
+.PP
+Clone the given in-line flow into \fBthis\fP flow using the \fIhard\fP model\&. Individual PcodeOps from the \fBFuncdata\fP being in-lined are cloned into the \fBFuncdata\fP for \fBthis\fP flow, preserving their original address\&. Any RETURN op is replaced with jump to first address following the call site\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinlineflow\fP is the given in-line flow to clone 
+.br
+\fIretaddr\fP is the first address after the call site in \fBthis\fP flow 
+.RE
+.PP
+
+.PP
+Definition at line 1046 of file flow\&.cc\&.
+.SS "void FlowInfo::inlineEZClone (const \fBFlowInfo\fP & inlineflow, const \fBAddress\fP & calladdr)"
+
+.PP
+Clone the given in-line flow into \fBthis\fP flow using the EZ model\&. Individual PcodeOps from the \fBFuncdata\fP being in-lined are cloned into the \fBFuncdata\fP for \fBthis\fP flow but are reassigned a new fixed address, and the RETURN op is eliminated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinlineflow\fP is the given in-line flow to clone 
+.br
+\fIcalladdr\fP is the fixed address assigned to the cloned PcodeOps 
+.RE
+.PP
+
+.PP
+Definition at line 1080 of file flow\&.cc\&.
+.SS "bool FlowInfo::isFlowForInline (void) const\fC [inline]\fP"
+
+.PP
+Is \fBthis\fP flow to be in-lined\&. 
+.PP
+Definition at line 163 of file flow\&.hh\&.
+.SS "void FlowInfo::setFlags (uint4 val)\fC [inline]\fP"
+
+.PP
+Enable a specific option\&. 
+.PP
+Definition at line 144 of file flow\&.hh\&.
+.SS "void FlowInfo::setMaximumInstructions (uint4 max)\fC [inline]\fP"
+
+.PP
+Set the maximum number of instructions\&. 
+.PP
+Definition at line 143 of file flow\&.hh\&.
+.SS "void FlowInfo::setRange (const \fBAddress\fP & b, const \fBAddress\fP & e)\fC [inline]\fP"
+
+.PP
+Establish the flow bounds\&. 
+.PP
+Definition at line 142 of file flow\&.hh\&.
+.SS "\fBPcodeOp\fP * FlowInfo::target (const \fBAddress\fP & addr) const"
+
+.PP
+Return first p-code op for instruction at given address\&. The first p-code op associated with the machine instruction at the given address is returned\&. If the instruction generated no p-code, an attempt is made to fall-thru to the next instruction\&. If no p-code op is ultimately found, an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address of the instruction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the targetted p-code op 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file flow\&.cc\&.
+.SS "bool FlowInfo::testHardInlineRestrictions (\fBFuncdata\fP * inlinefd, \fBPcodeOp\fP * op, \fBAddress\fP & retaddr)"
+
+.PP
+For in-lining using the \fIhard\fP model, make sure some restrictions are met\&. 
+.IP "\(bu" 2
+Can only in-line the function once\&.
+.IP "\(bu" 2
+There must be a p-code op to return to\&.
+.IP "\(bu" 2
+There must be a distinct return address, so that the RETURN can be replaced with a BRANCH\&.
+.PP
+.PP
+Pass back the distinct return address, unless the in-lined function doesn't return\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinlinefd\fP is the function being in-lined into \fBthis\fP flow 
+.br
+\fIop\fP is CALL instruction at the site of the in-line 
+.br
+\fIretaddr\fP holds the passed back return address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if all the \fIhard\fP model restrictions are met 
+.RE
+.PP
+
+.PP
+Definition at line 1105 of file flow\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

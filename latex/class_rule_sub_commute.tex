@@ -1,0 +1,227 @@
+\hypertarget{class_rule_sub_commute}{}\section{Rule\+Sub\+Commute Class Reference}
+\label{class_rule_sub_commute}\index{RuleSubCommute@{RuleSubCommute}}
+
+
+Commute S\+U\+B\+P\+I\+E\+CE operations with earlier operations where possible.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Sub\+Commute\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_rule_sub_commute__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Sub\+Commute\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_rule_sub_commute__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_sub_commute_a228696365bae90785d4c2bb901cf5611}{Rule\+Sub\+Commute}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_sub_commute_a8f55fe42f0e9fe86ecf6ee4c152f5f7f}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_sub_commute_a4e7bf3fd94f49fcebed32fe2bac6b739}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_sub_commute_a346f3bfeee9d7233be7a17387ebc553f}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_rule_sub_commute_a98082ac7f5395dbc0fd603a876417250}{cancel\+Extensions}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$longform, \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$sub\+Op, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ext0\+In, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ext1\+In, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Eliminate input extensions on given binary \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Commute S\+U\+B\+P\+I\+E\+CE operations with earlier operations where possible. 
+
+A S\+U\+B\+P\+I\+E\+CE conmmutes with long and short forms of many operations. We try to push S\+U\+B\+P\+I\+E\+CE earlier in the expression trees (preferring short versions of ops over long) in the hopes that the S\+U\+B\+P\+I\+E\+CE will run into a constant, a I\+N\+T\+\_\+\+S\+E\+XT, or a I\+N\+T\+\_\+\+Z\+E\+XT, canceling out 
+
+Definition at line 702 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_sub_commute_a228696365bae90785d4c2bb901cf5611}\label{class_rule_sub_commute_a228696365bae90785d4c2bb901cf5611}} 
+\index{RuleSubCommute@{RuleSubCommute}!RuleSubCommute@{RuleSubCommute}}
+\index{RuleSubCommute@{RuleSubCommute}!RuleSubCommute@{RuleSubCommute}}
+\subsubsection{\texorpdfstring{RuleSubCommute()}{RuleSubCommute()}}
+{\footnotesize\ttfamily Rule\+Sub\+Commute\+::\+Rule\+Sub\+Commute (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 704 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_sub_commute_a228696365bae90785d4c2bb901cf5611_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_sub_commute_a346f3bfeee9d7233be7a17387ebc553f}\label{class_rule_sub_commute_a346f3bfeee9d7233be7a17387ebc553f}} 
+\index{RuleSubCommute@{RuleSubCommute}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleSubCommute@{RuleSubCommute}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Sub\+Commute\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 3847 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_sub_commute_a346f3bfeee9d7233be7a17387ebc553f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_sub_commute_a98082ac7f5395dbc0fd603a876417250}\label{class_rule_sub_commute_a98082ac7f5395dbc0fd603a876417250}} 
+\index{RuleSubCommute@{RuleSubCommute}!cancelExtensions@{cancelExtensions}}
+\index{cancelExtensions@{cancelExtensions}!RuleSubCommute@{RuleSubCommute}}
+\subsubsection{\texorpdfstring{cancelExtensions()}{cancelExtensions()}}
+{\footnotesize\ttfamily bool Rule\+Sub\+Commute\+::cancel\+Extensions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{longform,  }\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{sub\+Op,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{ext0\+In,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{ext1\+In,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Eliminate input extensions on given binary \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+Make some basic checks. Replace the input and output Varnodes with smaller sizes. 
+\begin{DoxyParams}{Parameters}
+{\em longform} & is the given binary \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} to modify \\
+\hline
+{\em sub\+Op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} truncating the output of {\bfseries{longform}} \\
+\hline
+{\em ext0\+In} & is the first input \mbox{\hyperlink{class_varnode}{Varnode}} before the extension \\
+\hline
+{\em ext1\+In} & is the second input \mbox{\hyperlink{class_varnode}{Varnode}} before the extension \\
+\hline
+{\em data} & is the function being analyzed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} is successfully modified 
+\end{DoxyReturn}
+
+
+Definition at line 3831 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_sub_commute_a98082ac7f5395dbc0fd603a876417250_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_sub_commute_a98082ac7f5395dbc0fd603a876417250_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_sub_commute_a8f55fe42f0e9fe86ecf6ee4c152f5f7f}\label{class_rule_sub_commute_a8f55fe42f0e9fe86ecf6ee4c152f5f7f}} 
+\index{RuleSubCommute@{RuleSubCommute}!clone@{clone}}
+\index{clone@{clone}!RuleSubCommute@{RuleSubCommute}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Sub\+Commute\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 705 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_sub_commute_a8f55fe42f0e9fe86ecf6ee4c152f5f7f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_sub_commute_a4e7bf3fd94f49fcebed32fe2bac6b739}\label{class_rule_sub_commute_a4e7bf3fd94f49fcebed32fe2bac6b739}} 
+\index{RuleSubCommute@{RuleSubCommute}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleSubCommute@{RuleSubCommute}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Sub\+Commute\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 3816 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

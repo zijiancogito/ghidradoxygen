@@ -1,0 +1,226 @@
+.TH "BlockGoto" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BlockGoto \- A block that terminates with an unstructured (goto) branch to another block\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.hh>\fP
+.PP
+Inherits \fBBlockGraph\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockGoto\fP (\fBFlowBlock\fP *bl)"
+.br
+.RI "Construct given target block\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetGotoTarget\fP (void) const"
+.br
+.RI "Get the target block of the goto\&. "
+.ti -1c
+.RI "uint4 \fBgetGotoType\fP (void) const"
+.br
+.RI "Get the type of unstructured branch\&. "
+.ti -1c
+.RI "bool \fBgotoPrints\fP (void) const"
+.br
+.RI "Should a formal goto statement be emitted\&. "
+.ti -1c
+.RI "virtual \fBblock_type\fP \fBgetType\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP type of \fBthis\fP\&. "
+.ti -1c
+.RI "virtual void \fBmarkUnstructured\fP (void)"
+.br
+.RI "Mark target blocks of any unstructured edges\&. "
+.ti -1c
+.RI "virtual void \fBscopeBreak\fP (int4 curexit, int4 curloopexit)"
+.br
+.RI "Mark unstructured edges that should be \fIbreaks\fP\&. "
+.ti -1c
+.RI "virtual void \fBprintHeader\fP (ostream &s) const"
+.br
+.RI "Print a simple description of \fBthis\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBemit\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. "
+.ti -1c
+.RI "virtual const \fBFlowBlock\fP * \fBgetExitLeaf\fP (void) const"
+.br
+.RI "Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. "
+.ti -1c
+.RI "virtual \fBPcodeOp\fP * \fBlastOp\fP (void) const"
+.br
+.RI "Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual \fBFlowBlock\fP * \fBnextFlowAfter\fP (const \fBFlowBlock\fP *bl) const"
+.br
+.RI "Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXmlBody\fP (ostream &s) const"
+.br
+.RI "Save detail about components to an XML stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A block that terminates with an unstructured (goto) branch to another block\&. 
+
+The \fIgoto\fP must be an unconditional branch\&. The instance keeps track of the target block and will emit the branch as some form of formal branch statement (goto, break, continue)\&. From the point of view of control-flow structuring, this block has \fIno\fP output edges\&. The algorithm handles edges it can't structure by encapsulating it in the \fBBlockGoto\fP class and otherwise removing the edge from the structured view of the graph\&. 
+.PP
+Definition at line 439 of file block\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BlockGoto::BlockGoto (\fBFlowBlock\fP * bl)\fC [inline]\fP"
+
+.PP
+Construct given target block\&. 
+.PP
+Definition at line 443 of file block\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void BlockGoto::emit (\fBPrintLanguage\fP * lng) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Emit the instructions in \fBthis\fP \fBFlowBlock\fP as structured code\&. This is the main entry point, at the control-flow level, for printing structured code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP that provides details of the high-level language being printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 452 of file block\&.hh\&.
+.SS "virtual const \fBFlowBlock\fP* BlockGoto::getExitLeaf (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP to which \fBthis\fP block exits\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 453 of file block\&.hh\&.
+.SS "\fBFlowBlock\fP* BlockGoto::getGotoTarget (void) const\fC [inline]\fP"
+
+.PP
+Get the target block of the goto\&. 
+.PP
+Definition at line 444 of file block\&.hh\&.
+.SS "uint4 BlockGoto::getGotoType (void) const\fC [inline]\fP"
+
+.PP
+Get the type of unstructured branch\&. 
+.PP
+Definition at line 445 of file block\&.hh\&.
+.SS "virtual \fBblock_type\fP BlockGoto::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \fBFlowBlock\fP type of \fBthis\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 447 of file block\&.hh\&.
+.SS "bool BlockGoto::gotoPrints (void) const"
+
+.PP
+Should a formal goto statement be emitted\&. Under rare circumstances, the emitter can place the target block of the goto immediately after this goto block\&. In this case, because the control-flow is essentially a fall-thru, there should not be a formal goto statement emitted\&. Check if the goto is to the next block in flow in which case the goto should not be printed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the goto should be printed formally 
+.RE
+.PP
+
+.PP
+Definition at line 2568 of file block\&.cc\&.
+.SS "virtual \fBPcodeOp\fP* BlockGoto::lastOp (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the last \fBPcodeOp\fP executed by \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 454 of file block\&.hh\&.
+.SS "void BlockGoto::markUnstructured (void)\fC [virtual]\fP"
+
+.PP
+Mark target blocks of any unstructured edges\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2543 of file block\&.cc\&.
+.SS "\fBFlowBlock\fP * BlockGoto::nextFlowAfter (const \fBFlowBlock\fP * bl) const\fC [virtual]\fP"
+
+.PP
+Get the leaf \fBFlowBlock\fP that will execute after the given \fBFlowBlock\fP\&. Within the hierarchy of \fBthis\fP \fBFlowBlock\fP, assume the given \fBFlowBlock\fP will fall-thru in its execution at some point\&. Return the first leaf block (\fBBlockBasic\fP or \fBBlockCopy\fP) that will execute after the given \fBFlowBlock\fP completes, assuming this is a unique block\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the given \fBFlowBlock\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next \fBFlowBlock\fP to execute or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2586 of file block\&.cc\&.
+.SS "void BlockGoto::printHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a simple description of \fBthis\fP to stream\&. Only print a header for \fBthis\fP single block 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBFlowBlock\fP\&.
+.PP
+Definition at line 2579 of file block\&.cc\&.
+.SS "virtual void BlockGoto::printRaw (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Print raw instructions contained in \fBthis\fP \fBFlowBlock\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 451 of file block\&.hh\&.
+.SS "void BlockGoto::saveXmlBody (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save detail about components to an XML stream\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2592 of file block\&.cc\&.
+.SS "void BlockGoto::scopeBreak (int4 curexit, int4 curloopexit)\fC [virtual]\fP"
+
+.PP
+Mark unstructured edges that should be \fIbreaks\fP\&. 
+.PP
+Reimplemented from \fBBlockGraph\fP\&.
+.PP
+Definition at line 2553 of file block\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,232 @@
+.TH "PcodeOpRaw" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeOpRaw \- A low-level representation of a single pcode operation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pcoderaw\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetBehavior\fP (\fBOpBehavior\fP *be)"
+.br
+.RI "Set the opcode for this op\&. "
+.ti -1c
+.RI "\fBOpBehavior\fP * \fBgetBehavior\fP (void) const"
+.br
+.RI "Retrieve the behavior for this op\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBgetOpcode\fP (void) const"
+.br
+.RI "Get the opcode for this op\&. "
+.ti -1c
+.RI "void \fBsetSeqNum\fP (const \fBAddress\fP &a, uintm b)"
+.br
+.RI "Set the sequence number\&. "
+.ti -1c
+.RI "const \fBSeqNum\fP & \fBgetSeqNum\fP (void) const"
+.br
+.RI "Retrieve the sequence number\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddr\fP (void) const"
+.br
+.RI "Get address of this operation\&. "
+.ti -1c
+.RI "void \fBsetOutput\fP (\fBVarnodeData\fP *o)"
+.br
+.RI "Set the output varnode for this op\&. "
+.ti -1c
+.RI "\fBVarnodeData\fP * \fBgetOutput\fP (void) const"
+.br
+.RI "Retrieve the output varnode for this op\&. "
+.ti -1c
+.RI "void \fBaddInput\fP (\fBVarnodeData\fP *i)"
+.br
+.RI "Add an additional input varnode to this op\&. "
+.ti -1c
+.RI "void \fBclearInputs\fP (void)"
+.br
+.RI "Remove all input varnodes to this op\&. "
+.ti -1c
+.RI "int4 \fBnumInput\fP (void) const"
+.br
+.RI "Get the number of input varnodes to this op\&. "
+.ti -1c
+.RI "\fBVarnodeData\fP * \fBgetInput\fP (int4 i) const"
+.br
+.RI "Get the i-th input varnode for this op\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A low-level representation of a single pcode operation\&. 
+
+This is just the minimum amount of data to represent a pcode operation An opcode, sequence number, optional output varnode and input varnodes 
+.PP
+Definition at line 91 of file pcoderaw\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void PcodeOpRaw::addInput (\fBVarnodeData\fP * i)\fC [inline]\fP"
+
+.PP
+Add an additional input varnode to this op\&. A \fBPcodeOpRaw\fP is initially created with no input varnodes\&. Inputs are added with this method\&. Varnodes are added in order, so the first addInput call creates input 0, for example\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the varnode to be added as input 
+.RE
+.PP
+
+.PP
+Definition at line 188 of file pcoderaw\&.hh\&.
+.SS "void PcodeOpRaw::clearInputs (void)\fC [inline]\fP"
+
+.PP
+Remove all input varnodes to this op\&. If the inputs to a pcode operation need to be changed, this routine clears the existing inputs so new ones can be added\&. 
+.PP
+Definition at line 196 of file pcoderaw\&.hh\&.
+.SS "const \fBAddress\fP & PcodeOpRaw::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Get address of this operation\&. This is a convenience function to get the address of the machine instruction (of which this pcode op is a translation) 
+.PP
+\fBReturns:\fP
+.RS 4
+the machine instruction address 
+.RE
+.PP
+
+.PP
+Definition at line 163 of file pcoderaw\&.hh\&.
+.SS "\fBOpBehavior\fP * PcodeOpRaw::getBehavior (void) const\fC [inline]\fP"
+
+.PP
+Retrieve the behavior for this op\&. Get the underlying behavior object for this pcode operation\&. From this object you can determine how the object evaluates inputs to get the output 
+.PP
+\fBReturns:\fP
+.RS 4
+the behavior object 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file pcoderaw\&.hh\&.
+.SS "\fBVarnodeData\fP * PcodeOpRaw::getInput (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th input varnode for this op\&. Input varnodes are indexed starting at 0\&. This retrieves the input varnode by index\&. The index \fImust\fP be in range, or unpredicatable behavior will result\&. Use the numInput method to get the number of inputs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the desired input 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the desired input varnode 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file pcoderaw\&.hh\&.
+.SS "\fBOpCode\fP PcodeOpRaw::getOpcode (void) const\fC [inline]\fP"
+
+.PP
+Get the opcode for this op\&. The possible types of pcode operations are enumerated by OpCode This routine retrieves the enumeration value for this particular op 
+.PP
+\fBReturns:\fP
+.RS 4
+the opcode value 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file pcoderaw\&.hh\&.
+.SS "\fBVarnodeData\fP * PcodeOpRaw::getOutput (void) const\fC [inline]\fP"
+
+.PP
+Retrieve the output varnode for this op\&. Most pcode operations have an output varnode\&. This routine retrieves that varnode\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the output varnode or \fBnull\fP if there is no output 
+.RE
+.PP
+
+.PP
+Definition at line 179 of file pcoderaw\&.hh\&.
+.SS "const \fBSeqNum\fP & PcodeOpRaw::getSeqNum (void) const\fC [inline]\fP"
+
+.PP
+Retrieve the sequence number\&. Every pcode operation has a \fBsequence\fP \fBnumber\fP which associates the operation with the address of the machine instruction being translated and an index number for this operation within the translation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to the sequence number 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file pcoderaw\&.hh\&.
+.SS "int4 PcodeOpRaw::numInput (void) const\fC [inline]\fP"
+
+.PP
+Get the number of input varnodes to this op\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of inputs 
+.RE
+.PP
+
+.PP
+Definition at line 203 of file pcoderaw\&.hh\&.
+.SS "void PcodeOpRaw::setBehavior (\fBOpBehavior\fP * be)\fC [inline]\fP"
+
+.PP
+Set the opcode for this op\&. The core behavior for this operation is controlled by an \fBOpBehavior\fP object which knows how output is determined given inputs\&. This routine sets that object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbe\fP is the behavior object 
+.RE
+.PP
+
+.PP
+Definition at line 114 of file pcoderaw\&.hh\&.
+.SS "void PcodeOpRaw::setOutput (\fBVarnodeData\fP * o)\fC [inline]\fP"
+
+.PP
+Set the output varnode for this op\&. Most pcode operations output to a varnode\&. This routine sets what that varnode is\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP is the varnode to set as output 
+.RE
+.PP
+
+.PP
+Definition at line 171 of file pcoderaw\&.hh\&.
+.SS "void PcodeOpRaw::setSeqNum (const \fBAddress\fP & a, uintm b)\fC [inline]\fP"
+
+.PP
+Set the sequence number\&. Every pcode operation has a \fBsequence\fP \fBnumber\fP which associates the operation with the address of the machine instruction being translated and an order number which provides an index for this particular operation within the entire translation of the machine instruction 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the instruction address 
+.br
+\fIb\fP is the order number 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file pcoderaw\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

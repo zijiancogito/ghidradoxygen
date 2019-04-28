@@ -1,0 +1,445 @@
+.TH "ghidra.app.decompiler.DecompInterface" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.DecompInterface
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompInterface\fP ()"
+.br
+.ti -1c
+.RI "synchronized void \fBenableDebug\fP (File debugfile)"
+.br
+.ti -1c
+.RI "boolean \fBdebugEnabled\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetSimplificationStyle\fP ()"
+.br
+.ti -1c
+.RI "Program \fBgetProgram\fP ()"
+.br
+.ti -1c
+.RI "Language \fBgetLanguage\fP ()"
+.br
+.ti -1c
+.RI "PcodeDataTypeManager \fBgetDataTypeManager\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetLastMessage\fP ()"
+.br
+.ti -1c
+.RI "synchronized boolean \fBopenProgram\fP (Program prog)"
+.br
+.ti -1c
+.RI "synchronized void \fBcloseProgram\fP ()"
+.br
+.ti -1c
+.RI "synchronized boolean \fBsetSimplificationStyle\fP (String actionstring)"
+.br
+.ti -1c
+.RI "synchronized boolean \fBtoggleSyntaxTree\fP (boolean val)"
+.br
+.ti -1c
+.RI "synchronized boolean \fBtoggleCCode\fP (boolean val)"
+.br
+.ti -1c
+.RI "synchronized boolean \fBtoggleParamMeasures\fP (boolean val)"
+.br
+.ti -1c
+.RI "synchronized boolean \fBtoggleJumpLoads\fP (boolean val)"
+.br
+.ti -1c
+.RI "synchronized boolean \fBsetOptions\fP (\fBDecompileOptions\fP xmloptions)"
+.br
+.ti -1c
+.RI "synchronized \fBDecompileOptions\fP \fBgetOptions\fP ()"
+.br
+.ti -1c
+.RI "synchronized int \fBflushCache\fP ()"
+.br
+.ti -1c
+.RI "synchronized \fBBlockGraph\fP \fBstructureGraph\fP (\fBBlockGraph\fP ingraph, AddressFactory factory, int timeoutSecs, TaskMonitor monitor)"
+.br
+.ti -1c
+.RI "synchronized \fBDecompileResults\fP \fBdecompileFunction\fP (Function func, int timeoutSecs, TaskMonitor monitor)"
+.br
+.ti -1c
+.RI "void \fBstopProcess\fP ()"
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.ti -1c
+.RI "CompilerSpec \fBgetCompilerSpec\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitializeProcess\fP ()  throws IOException, DecompileException "
+.br
+.ti -1c
+.RI "void \fBverifyProcess\fP ()  throws IOException, DecompileException "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Program \fBprogram\fP"
+.br
+.ti -1c
+.RI "String \fBdecompileMessage\fP"
+.br
+.ti -1c
+.RI "BasicCompilerSpec \fBcompilerSpec\fP"
+.br
+.ti -1c
+.RI "\fBDecompileProcess\fP \fBdecompProcess\fP"
+.br
+.ti -1c
+.RI "\fBDecompileCallback\fP \fBdecompCallback\fP"
+.br
+.ti -1c
+.RI "CancelledListener \fBmonitorListener\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is a self-contained interface to a single decompile process, suitable for an open-ended number of function decompilations for a single program\&. The interface is persistent\&. It caches all the initialization data passed to it, and if the underlying decompiler process crashes, it automatically respawns the process and reinitializes it the next time it is needed\&. The basic usage pattern is as follows
+.PP
+// Instantiate the interface \fBDecompInterface\fP ifc = new \fBDecompInterface()\fP;
+.PP
+// Setup any options or other initialization ifc\&.setOptions(xmlOptions); // Inform interface of global options // ifc\&.toggleSyntaxTree(false); // Don't produce syntax trees // ifc\&.toggleCCode(false); // Don't produce C code // ifc\&.setSimplificationStyle('normalize'); // Alternate analysis style
+.PP
+// Setup up the actual decompiler process for a // particular program, using all the above initialization ifc\&.openProgram(program,language);
+.PP
+// Make calls to the decompiler: \fBDecompileResults\fP res = ifc\&.decompileFunction(func,0,taskmonitor);
+.PP
+// Check for error conditions if (!res\&.decompileCompleted()) { system\&.out\&.println(res\&.getErrorMessage()); return; }
+.PP
+// Make use of results // Get C code \fBClangTokenGroup\fP tokgroup = res\&.getCCodeMarkup(); \&.\&.\&.
+.PP
+// Get the function object/syntax tree HighFunction hfunc = res\&.getHighFunction(); \&.\&.\&. 
+.PP
+Definition at line 81 of file DecompInterface\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.DecompInterface\&.DecompInterface ()\fC [inline]\fP"
+
+.PP
+Definition at line 108 of file DecompInterface\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "synchronized void ghidra\&.app\&.decompiler\&.DecompInterface\&.closeProgram ()\fC [inline]\fP"
+Shutdown any existing decompiler process and free resources\&. The interface cannot be used again to perform decompilations until an openProgram call is made again\&. 
+.PP
+Definition at line 342 of file DecompInterface\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.debugEnabled ()\fC [inline]\fP"
+Returns true if debug has been enabled for the current/next decompilation\&. 
+.PP
+Definition at line 136 of file DecompInterface\&.java\&.
+.SS "synchronized \fBDecompileResults\fP ghidra\&.app\&.decompiler\&.DecompInterface\&.decompileFunction (Function func, int timeoutSecs, TaskMonitor monitor)\fC [inline]\fP"
+Decompile function 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfunc\fP function to be decompiled 
+.br
+\fItimeoutSecs\fP if decompile does not complete in this time a null value will be returned and a timeout error set\&. 
+.br
+\fImonitor\fP optional task monitor which may be used to cancel decompile 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+decompiled function text 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fICancelledException\fP operation was cancelled via monitor 
+.RE
+.PP
+
+.PP
+Definition at line 673 of file DecompInterface\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompInterface\&.dispose ()\fC [inline]\fP"
+
+.PP
+Definition at line 749 of file DecompInterface\&.java\&.
+.SS "synchronized void ghidra\&.app\&.decompiler\&.DecompInterface\&.enableDebug (File debugfile)\fC [inline]\fP"
+Turn on debugging dump for the next decompiled function 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP in which to save dump 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file DecompInterface\&.java\&.
+.SS "synchronized int ghidra\&.app\&.decompiler\&.DecompInterface\&.flushCache ()\fC [inline]\fP"
+Tell the decompiler to clear any function and symbol information it gathered from the database\&. Its a good idea to call this after any decompileFunction call, as the decompile process caches and reuses this kind of data, and there is no explicit method for keeping the cache in sync with the data base\&. Currently the return value has no meaning\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+-1 
+.RE
+.PP
+
+.PP
+Definition at line 615 of file DecompInterface\&.java\&.
+.SS "CompilerSpec ghidra\&.app\&.decompiler\&.DecompInterface\&.getCompilerSpec ()\fC [inline]\fP"
+
+.PP
+Definition at line 765 of file DecompInterface\&.java\&.
+.SS "PcodeDataTypeManager ghidra\&.app\&.decompiler\&.DecompInterface\&.getDataTypeManager ()\fC [inline]\fP"
+
+.PP
+Definition at line 156 of file DecompInterface\&.java\&.
+.SS "Language ghidra\&.app\&.decompiler\&.DecompInterface\&.getLanguage ()\fC [inline]\fP"
+
+.PP
+Definition at line 152 of file DecompInterface\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompInterface\&.getLastMessage ()\fC [inline]\fP"
+Get the last message produced by the decompiler process\&. If the message is non-null, it is probably an error message, but not always\&. It is better to use the getErrorMessage method off of \fBDecompileResults\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the message string or null 
+.RE
+.PP
+
+.PP
+Definition at line 167 of file DecompInterface\&.java\&.
+.SS "synchronized \fBDecompileOptions\fP ghidra\&.app\&.decompiler\&.DecompInterface\&.getOptions ()\fC [inline]\fP"
+Get the options currently in effect for the decompiler
+.PP
+\fBReturns:\fP
+.RS 4
+options that will be passed to the decompiler 
+.RE
+.PP
+
+.PP
+Definition at line 601 of file DecompInterface\&.java\&.
+.SS "Program ghidra\&.app\&.decompiler\&.DecompInterface\&.getProgram ()\fC [inline]\fP"
+
+.PP
+Definition at line 148 of file DecompInterface\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompInterface\&.getSimplificationStyle ()\fC [inline]\fP"
+Return the identifier for the current simplification style 
+.PP
+\fBReturns:\fP
+.RS 4
+the identifier as a String 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file DecompInterface\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompInterface\&.initializeProcess () throws IOException, \fBDecompileException\fP\fC [inline]\fP, \fC [protected]\fP"
+This is the main routine for making sure that a decompiler process is active and that it is initialized properly 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.br
+\fI\fBDecompileException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file DecompInterface\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.openProgram (Program prog)\fC [inline]\fP"
+This call initializes a new decompiler process to do decompilations for a new program\&. This method only needs to be called once per program\&. Even if the underlying decompiler process crashes, the interface will automatically restart and reinitialize a new process when it needs it, and the openProgram call does not need to be made again\&. The call can be made multiple times, in which case, each call terminates the process initialized the last time and starts a new process 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprog\fP = the program on which to perform decompilations 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompiler process is successfully initialized 
+.RE
+.PP
+
+.PP
+Definition at line 293 of file DecompInterface\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.setOptions (\fBDecompileOptions\fP xmloptions)\fC [inline]\fP"
+Set the object controlling the list of global options used by the decompiler\&. Ideally this is called once, before the openProgram call is made\&. But it can be used at any time, if the options change in the middle of a sequence of decompiles\&. If there is no change to the options, this method does NOT need to be called repeatedly\&. Even after recovering from decompiler process crash, the interface keeps the options object around and automatically sends it to the new decompiler process\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxmloptions\fP the new (or changed) option object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompiler process accepted the new options 
+.RE
+.PP
+
+.PP
+Definition at line 572 of file DecompInterface\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.setSimplificationStyle (String actionstring)\fC [inline]\fP"
+This allows the application to the type of analysis performed by the decompiler, by giving the name of an analysis class\&. Right now, there are a few predefined classes\&. But there soon may be support for applications to define their own class and tailoring the decompiler's behaviour for that class\&. 
+.PP
+The current predefined analysis class are: 
+.PD 0
+
+.IP "\(bu" 2
+'decompile' - this is the default, and performs all analysis steps suitable for producing C code\&. 
+.IP "\(bu" 2
+'normalize' - omits type recovery from the analysis and some of the final clean-up steps involved in making valid C code\&. It is suitable for creating normalized pcode syntax trees of the dataflow\&. 
+.IP "\(bu" 2
+'firstpass' - does no analysis, but produces an unmodified syntax tree of the dataflow from the 
+.IP "\(bu" 2
+'register' - does ???\&. 
+.IP "\(bu" 2
+'paramid' - does required amount of decompilation followed by analysis steps that send parameter measure information for parameter id analysis\&. raw pcode\&. 
+.PP
+.PP
+This property should ideally be set once before the openProgram call is made, but it can be used repeatedly if the application needs to change analysis style in the middle of a sequence of decompiles\&. Unless the style changes, the method does NOT need to be called repeatedly\&. Even after a crash, the new decompiler process will automatically configured with the cached style value\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactionstring\fP 'decompile'|'normalize'|'register'|'firstpass'|'paramid' 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true - if the decompiler process was successfully configured 
+.RE
+.PP
+
+.PP
+Definition at line 400 of file DecompInterface\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompInterface\&.stopProcess ()\fC [inline]\fP"
+Stop the decompile process\&.
+.PP
+NOTE: Subsequent calls made from another
+.PP
+thread to this \fBDecompInterface\fP object may fail since the decompiler process is being yanked away\&. 
+.PP
+Definition at line 743 of file DecompInterface\&.java\&.
+.SS "synchronized \fBBlockGraph\fP ghidra\&.app\&.decompiler\&.DecompInterface\&.structureGraph (\fBBlockGraph\fP ingraph, AddressFactory factory, int timeoutSecs, TaskMonitor monitor)\fC [inline]\fP"
+
+.PP
+Definition at line 633 of file DecompInterface\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.toggleCCode (boolean val)\fC [inline]\fP"
+Toggle whether or not calls to the decompiler process (via the decompileFunction method) produce C code\&. The default is to always compute C code, but some applications may only need the syntax tree or other function information\&. Ideally this method should be called once before the openProgram call, but it can be used at any time, if the application wants to change before in the middle of a sequence of decompiles\&. Unless the desired value changes, the method does NOT need to be called repeatedly\&. Even after a decompiler process crash, the old value is cached and automatically sent to the new process 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP = true, to produce C code, false otherwise 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompiler process accepted the new state 
+.RE
+.PP
+
+.PP
+Definition at line 472 of file DecompInterface\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.toggleJumpLoads (boolean val)\fC [inline]\fP"
+Toggle whether or not the decompiler process should return information about tables used to recover switch statements\&. Most compilers implement switch statements using a so called 'jumptable' of addresses or offsets\&. The decompiler can frequently recover this and can return a description of the table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP = true, to have the decompiler return table info, false otherwise 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompiler process accepted the new state 
+.RE
+.PP
+
+.PP
+Definition at line 537 of file DecompInterface\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.toggleParamMeasures (boolean val)\fC [inline]\fP"
+Toggle whether or not calls to the decompiler process (via the decompileFunction method) produce Parameter Measures\&. The default is to not compute Parameter Measures\&. Ideally this method should be called once before the openProgram call, but it can be used at any time, if the application wants to change before in the middle of a sequence of decompiles\&. Unless the desired value changes, the method does NOT need to be called repeatedly\&. Even after a decompiler process crash, the old value is cached and automatically sent to the new process 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP = true, to produce C code, false otherwise 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompiler process accepted the new state 
+.RE
+.PP
+
+.PP
+Definition at line 508 of file DecompInterface\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompInterface\&.toggleSyntaxTree (boolean val)\fC [inline]\fP"
+This method toggles whether or not the decompiler produces a syntax tree (via calls to decompileFunction)\&. The default is to always produce a syntax tree, but some applications may only need C code\&. Ideally this method should be called once before the openProgram call, but it can be used at any time, if the application wants to change before in the middle of a sequence of decompiles\&. Unless the desired value changes, the method does NOT need to be called repeatedly\&. Even after a decompiler process crash, the old value is cached and automatically sent to the new process 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP = true, to produce a syntax tree, false otherwise 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the decompiler process, accepted the change of state 
+.RE
+.PP
+
+.PP
+Definition at line 435 of file DecompInterface\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompInterface\&.verifyProcess () throws IOException, \fBDecompileException\fP\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 270 of file DecompInterface\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "BasicCompilerSpec ghidra\&.app\&.decompiler\&.DecompInterface\&.compilerSpec\fC [protected]\fP"
+
+.PP
+Definition at line 89 of file DecompInterface\&.java\&.
+.SS "\fBDecompileCallback\fP ghidra\&.app\&.decompiler\&.DecompInterface\&.decompCallback\fC [protected]\fP"
+
+.PP
+Definition at line 91 of file DecompInterface\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.DecompInterface\&.decompileMessage\fC [protected]\fP"
+
+.PP
+Definition at line 88 of file DecompInterface\&.java\&.
+.SS "\fBDecompileProcess\fP ghidra\&.app\&.decompiler\&.DecompInterface\&.decompProcess\fC [protected]\fP"
+
+.PP
+Definition at line 90 of file DecompInterface\&.java\&.
+.SS "CancelledListener ghidra\&.app\&.decompiler\&.DecompInterface\&.monitorListener\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= new CancelledListener() {
+        @Override
+        public void cancelled() {
+            stopProcess();
+        }
+    }
+.fi
+.PP
+Definition at line 93 of file DecompInterface\&.java\&.
+.SS "Program ghidra\&.app\&.decompiler\&.DecompInterface\&.program\fC [protected]\fP"
+
+.PP
+Definition at line 83 of file DecompInterface\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,1049 @@
+.TH "PcodeOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeOp \- Lowest level operation of the \fBp-code\fP language\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <op\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBstartbasic\fP = 1, \fBbranch\fP = 2, \fBcall\fP = 4, \fBreturns\fP = 0x8, \fBnocollapse\fP = 0x10, \fBdead\fP = 0x20, \fBmarker\fP = 0x40, \fBbooloutput\fP = 0x80, \fBboolean_flip\fP = 0x100, \fBfallthru_true\fP = 0x200, \fBindirect_source\fP = 0x400, \fBcoderef\fP = 0x800, \fBstartmark\fP = 0x1000, \fBmark\fP = 0x2000, \fBcommutative\fP = 0x4000, \fBunary\fP = 0x8000, \fBbinary\fP = 0x10000, \fBspecial\fP = 0x20000, \fBfloatingpoint\fP = 0x40000, \fBsplittingbranch\fP = 0x80000, \fBnonprinting\fP = 0x100000, \fBhalt\fP = 0x200000, \fBbadinstruction\fP = 0x400000, \fBunimplemented\fP = 0x800000, \fBnoreturn\fP = 0x1000000, \fBmissing\fP = 0x2000000, \fBwarning\fP = 0x4000000, \fBindirect_creation\fP = 0x8000000, \fBcalculated_bool\fP = 0x10000000, \fBis_cpool_transformed\fP = 0x20000000, \fBptrflow\fP = 0x40000000, \fBspecial_print\fP = 0x80000000 }"
+.br
+.ti -1c
+.RI "enum { \fBhas_thisptr\fP = 0x1, \fBis_constructor\fP = 0x2, \fBis_destructor\fP = 0x4, \fBspecial_prop\fP = 0x8, \fBmodified\fP = 0x10 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPcodeOp\fP (int4 s, const \fBSeqNum\fP &sq)"
+.br
+.RI "Construct an unattached \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "\fB~PcodeOp\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "int4 \fBnumInput\fP (void) const"
+.br
+.RI "Get the number of inputs to this op\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetOut\fP (void)"
+.br
+.RI "Get the output \fBVarnode\fP of this op or \fInull\fP\&. "
+.ti -1c
+.RI "const \fBVarnode\fP * \fBgetOut\fP (void) const"
+.br
+.RI "Get the output \fBVarnode\fP of this op or \fInull\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetIn\fP (int4 slot)"
+.br
+.RI "Get a specific input \fBVarnode\fP to this op\&. "
+.ti -1c
+.RI "const \fBVarnode\fP * \fBgetIn\fP (int4 slot) const"
+.br
+.RI "Get a specific input \fBVarnode\fP to this op\&. "
+.ti -1c
+.RI "const \fBBlockBasic\fP * \fBgetParent\fP (void) const"
+.br
+.RI "Get the parent basic block\&. "
+.ti -1c
+.RI "\fBBlockBasic\fP * \fBgetParent\fP (void)"
+.br
+.RI "Get the parent basic block\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddr\fP (void) const"
+.br
+.RI "Get the instruction address associated with this op\&. "
+.ti -1c
+.RI "uintm \fBgetTime\fP (void) const"
+.br
+.RI "Get the time index indicating when this op was created\&. "
+.ti -1c
+.RI "const \fBSeqNum\fP & \fBgetSeqNum\fP (void) const"
+.br
+.RI "Get the sequence number associated with this op\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::iterator \fBgetInsertIter\fP (void) const"
+.br
+.RI "Get position within alive/dead list\&. "
+.ti -1c
+.RI "list< \fBPcodeOp\fP * >::iterator \fBgetBasicIter\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetSlot\fP (const \fBVarnode\fP *vn) const"
+.br
+.RI "Get the slot number of the indicated input varnode\&. "
+.ti -1c
+.RI "uint4 \fBgetEvalType\fP (void) const"
+.br
+.RI "Get the evaluation type of this op\&. "
+.ti -1c
+.RI "uint4 \fBgetHaltType\fP (void) const"
+.br
+.RI "Get type which indicates unusual halt in control-flow\&. "
+.ti -1c
+.RI "bool \fBisDead\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op is dead\&. "
+.ti -1c
+.RI "bool \fBisAssignment\fP (void) const"
+.br
+.RI "Return \fBtrue\fP is this op has an output\&. "
+.ti -1c
+.RI "bool \fBisCall\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op indicates call semantics\&. "
+.ti -1c
+.RI "bool \fBisMarker\fP (void) const"
+.br
+.RI "Return \fBtrue\fP is a special SSA form op\&. "
+.ti -1c
+.RI "bool \fBisIndirectCreation\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBnotPrinted\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op is not directly represented in C output\&. "
+.ti -1c
+.RI "bool \fBisBoolOutput\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op produces a boolean output\&. "
+.ti -1c
+.RI "bool \fBisBranch\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisCallOrBranch\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op is a call or branch\&. "
+.ti -1c
+.RI "bool \fBisFlowBreak\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op breaks fall-thru flow\&. "
+.ti -1c
+.RI "bool \fBisBooleanFlip\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op flips the true/false meaning of its control-flow branching\&. "
+.ti -1c
+.RI "bool \fBisFallthruTrue\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if the fall-thru branch is taken when the boolean input is true\&. "
+.ti -1c
+.RI "bool \fBisCodeRef\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if the first input is a code reference\&. "
+.ti -1c
+.RI "bool \fBisInstructionStart\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this starts an instruction\&. "
+.ti -1c
+.RI "bool \fBisBlockStart\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this starts a basic block\&. "
+.ti -1c
+.RI "bool \fBisModified\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this is modified by the current action\&. "
+.ti -1c
+.RI "bool \fBisMark\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op has been marked\&. "
+.ti -1c
+.RI "void \fBsetMark\fP (void) const"
+.br
+.RI "Set the mark on this op\&. "
+.ti -1c
+.RI "bool \fBisWarning\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if a warning has been generated for this op\&. "
+.ti -1c
+.RI "void \fBclearMark\fP (void) const"
+.br
+.RI "Clear any mark on this op\&. "
+.ti -1c
+.RI "bool \fBisIndirectSource\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this causes an INDIRECT\&. "
+.ti -1c
+.RI "void \fBsetIndirectSource\fP (void)"
+.br
+.RI "Mark this op as source of INDIRECT\&. "
+.ti -1c
+.RI "void \fBclearIndirectSource\fP (void)"
+.br
+.RI "Clear INDIRECT source flag\&. "
+.ti -1c
+.RI "bool \fBisPtrFlow\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this produces/consumes ptrs\&. "
+.ti -1c
+.RI "void \fBsetPtrFlow\fP (void)"
+.br
+.RI "Mark this op as consuming/producing ptrs\&. "
+.ti -1c
+.RI "bool \fBisSplitting\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this branch splits\&. "
+.ti -1c
+.RI "bool \fBdoesSpecialPropagation\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this does datatype propagation\&. "
+.ti -1c
+.RI "bool \fBdoesSpecialPrinting\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this needs to special printing\&. "
+.ti -1c
+.RI "bool \fBhasThisPointer\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this is a call taking 'this' parameter\&. "
+.ti -1c
+.RI "bool \fBisConstructor\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this is call to a constructor\&. "
+.ti -1c
+.RI "bool \fBisDestructor\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisCalculatedBool\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if output is 1-bit boolean\&. "
+.ti -1c
+.RI "bool \fBisCpoolTransformed\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if we have already examined this cpool\&. "
+.ti -1c
+.RI "bool \fBisCollapsible\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this can be collapsed to a COPY of a constant\&. "
+.ti -1c
+.RI "uintm \fBgetCseHash\fP (void) const"
+.br
+.RI "Return hash indicating possibility of common subexpression elimination\&. "
+.ti -1c
+.RI "bool \fBisCseMatch\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Return \fBtrue\fP if this and \fIop\fP represent common subexpressions\&. "
+.ti -1c
+.RI "void \fBsetOpcode\fP (\fBTypeOp\fP *t_op)"
+.br
+.RI "Set the opcode for this \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "\fBTypeOp\fP * \fBgetOpcode\fP (void) const"
+.br
+.RI "Get the opcode for this op\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBcode\fP (void) const"
+.br
+.RI "Get the opcode id (enum) for this op\&. "
+.ti -1c
+.RI "bool \fBisCommutative\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if inputs commute\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBcollapse\fP (bool &markedInput) const"
+.br
+.RI "Calculate the constant output produced by this op\&. "
+.ti -1c
+.RI "void \fBcollapseConstantSymbol\fP (\fBVarnode\fP *newConst) const"
+.br
+.RI "Propagate constant symbol from inputs to given output\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBnextOp\fP (void) const"
+.br
+.RI "Return the next op in the control-flow from this or \fInull\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBpreviousOp\fP (void) const"
+.br
+.RI "Return the previous op within this op's basic block or \fInull\fP\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBtarget\fP (void) const"
+.br
+.RI "Return starting op for instruction associated with this op\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetNZMaskLocal\fP (bool cliploop) const"
+.br
+.RI "Calculate known zero bits for output to this op\&. "
+.ti -1c
+.RI "int4 \fBcompareOrder\fP (const \fBPcodeOp\fP *bop) const"
+.br
+.RI "Compare the control-flow order of this and \fIbop\fP\&. "
+.ti -1c
+.RI "void \fBpush\fP (\fBPrintLanguage\fP *lng) const"
+.br
+.RI "Push this op as a display token\&. "
+.ti -1c
+.RI "void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print raw info about this op to stream\&. "
+.ti -1c
+.RI "const string & \fBgetOpName\fP (void) const"
+.br
+.RI "Return the name of this op\&. "
+.ti -1c
+.RI "void \fBprintDebug\fP (ostream &s) const"
+.br
+.RI "Print debug description of this op to stream\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "\fBDatatype\fP * \fBoutputTypeLocal\fP (void) const"
+.br
+.RI "Calculate the local output type\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBinputTypeLocal\fP (int4 slot) const"
+.br
+.RI "Calculate the local input type\&. "
+.ti -1c
+.RI "bool \fBmarkExplicitUnsigned\fP (int4 slot)"
+.br
+.RI "Decide on unsignedness printing\&. "
+.ti -1c
+.RI "bool \fBinheritsSign\fP (void) const"
+.br
+.RI "Does this token inherit its sign from operands\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPcodeOp\fP * \fBgetOpFromConst\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Retrieve the \fBPcodeOp\fP encoded as the address \fIaddr\fP\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBBlockBasic\fP"
+.br
+.ti -1c
+.RI "class \fBFuncdata\fP"
+.br
+.ti -1c
+.RI "class \fBPcodeOpBank\fP"
+.br
+.ti -1c
+.RI "class \fBVarnodeBank\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Lowest level operation of the \fBp-code\fP language\&. 
+
+The philosophy here is to have only one version of any type of operation, and to be completely explicit about all effects\&. All operations except the control flow operations have exactly one explicit output\&. Any given operation can have multiple inputs, but all are listed explicitly\&.
+.PP
+Input and output size for an operation are specified explicitly\&. All inputs must be of the same size\&. Except for the above restrictions, input and output can be any size in bytes\&.
+.PP
+P-code can be either big or little endian, this is determined by the language being translated from 
+.PP
+Definition at line 58 of file op\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+Boolean attributes (flags) that can be placed on a \fBPcodeOp\fP\&. Even though this enum is public, these are all set and read internally, although many are read publically via \fIget\fP or \fIis\fP methods\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIstartbasic \fP\fP
+This instruction starts a basic block\&. 
+.TP
+\fB\fIbranch \fP\fP
+This instruction is a branch\&. 
+.TP
+\fB\fIcall \fP\fP
+This instruction calls a subroutine\&. 
+.TP
+\fB\fIreturns \fP\fP
+This instruction returns to caller\&. 
+.TP
+\fB\fInocollapse \fP\fP
+This op cannot be collapsed further\&. 
+.TP
+\fB\fIdead \fP\fP
+This operation is dead\&. 
+.TP
+\fB\fImarker \fP\fP
+special placeholder op (multiequal or indirect) or CPUI_COPY between different copies of same variable 
+.TP
+\fB\fIbooloutput \fP\fP
+Boolean operation\&. 
+.TP
+\fB\fIboolean_flip \fP\fP
+Set if condition must be false to take branch\&. 
+.TP
+\fB\fIfallthru_true \fP\fP
+Set if fallthru happens on true condition\&. 
+.TP
+\fB\fIindirect_source \fP\fP
+Op is source of (one or more) CPUI_INDIRECTs\&. 
+.TP
+\fB\fIcoderef \fP\fP
+The first parameter to this op is a coderef\&. 
+.TP
+\fB\fIstartmark \fP\fP
+This op is the first in its instruction\&. 
+.TP
+\fB\fImark \fP\fP
+Used by many algorithms that need to detect loops or avoid repeats\&. 
+.TP
+\fB\fIcommutative \fP\fP
+Order of input parameters does not matter\&. 
+.TP
+\fB\fIunary \fP\fP
+Evaluate as unary expression\&. 
+.TP
+\fB\fIbinary \fP\fP
+Evaluate as binary expression\&. 
+.TP
+\fB\fIspecial \fP\fP
+Cannot be evaluated (without special processing) 
+.TP
+\fB\fIfloatingpoint \fP\fP
+A floating point operation\&. 
+.TP
+\fB\fIsplittingbranch \fP\fP
+Dead edge cannot be removed as it splits\&. 
+.TP
+\fB\fInonprinting \fP\fP
+Op should not be directly printed as source\&. 
+.TP
+\fB\fIhalt \fP\fP
+instruction causes processor or process to halt 
+.TP
+\fB\fIbadinstruction \fP\fP
+placeholder for bad instruction data 
+.TP
+\fB\fIunimplemented \fP\fP
+placeholder for unimplemented instruction 
+.TP
+\fB\fInoreturn \fP\fP
+placeholder for previous call that doesn't exit 
+.TP
+\fB\fImissing \fP\fP
+ops at this address were not generated 
+.TP
+\fB\fIwarning \fP\fP
+Warning has been generated for this op\&. 
+.TP
+\fB\fIindirect_creation \fP\fP
+Output varnode is created by indirect effect\&. 
+.TP
+\fB\fIcalculated_bool \fP\fP
+Output has been determined to be a 1-bit boolean value\&. 
+.TP
+\fB\fIis_cpool_transformed \fP\fP
+Have we checked for cpool transforms\&. 
+.TP
+\fB\fIptrflow \fP\fP
+Op consumes or produces a ptr\&. 
+.TP
+\fB\fIspecial_print \fP\fP
+Op is marked for special printing\&. 
+.PP
+Definition at line 66 of file op\&.hh\&.
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIhas_thisptr \fP\fP
+First parameter ( getIn(1) ) is a this pointer\&. 
+.TP
+\fB\fIis_constructor \fP\fP
+Op is call to a constructor\&. 
+.TP
+\fB\fIis_destructor \fP\fP
+Op is call to a destructor\&. 
+.TP
+\fB\fIspecial_prop \fP\fP
+Does some special form of datatype propagation\&. 
+.TP
+\fB\fImodified \fP\fP
+This op has been modified by the current action\&. 
+.PP
+Definition at line 102 of file op\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PcodeOp::PcodeOp (int4 s, const \fBSeqNum\fP & sq)"
+
+.PP
+Construct an unattached \fBPcodeOp\fP\&. Construct a completely unattached \fBPcodeOp\fP\&. Space is reserved for input and output Varnodes but all are set initially to null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP indicates the number of input slots reserved 
+.br
+\fIsq\fP is the sequence number to associate with the new \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file op\&.cc\&.
+.SS "PcodeOp::~PcodeOp (void)\fC [inline]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 139 of file op\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void PcodeOp::clearIndirectSource (void)\fC [inline]\fP"
+
+.PP
+Clear INDIRECT source flag\&. 
+.PP
+Definition at line 187 of file op\&.hh\&.
+.SS "void PcodeOp::clearMark (void) const\fC [inline]\fP"
+
+.PP
+Clear any mark on this op\&. 
+.PP
+Definition at line 184 of file op\&.hh\&.
+.SS "\fBOpCode\fP PcodeOp::code (void) const\fC [inline]\fP"
+
+.PP
+Get the opcode id (enum) for this op\&. 
+.PP
+Definition at line 205 of file op\&.hh\&.
+.SS "\fBuintb\fP PcodeOp::collapse (bool & markedInput) const"
+
+.PP
+Calculate the constant output produced by this op\&. Assuming all the inputs to this op are constants, compute the constant result of evaluating this op on this inputs\&. If one if the inputs has attached symbol information, pass-back 'the fact of' as we may want to propagate the info to the new constant\&. Throw an exception if a constant result cannot be produced\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImarkedInput\fP will pass-back whether or not one of the inputs is a marked constant 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the constant result 
+.RE
+.PP
+
+.PP
+Definition at line 308 of file op\&.cc\&.
+.SS "void PcodeOp::collapseConstantSymbol (\fBVarnode\fP * newConst) const"
+
+.PP
+Propagate constant symbol from inputs to given output\&. Knowing that \fBthis\fP \fBPcodeOp\fP has collapsed its constant inputs, one of which has symbol content, figure out if the symbol should propagate to the new given output constant\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewConst\fP is the given output constant 
+.RE
+.PP
+
+.PP
+Definition at line 335 of file op\&.cc\&.
+.SS "int4 PcodeOp::compareOrder (const \fBPcodeOp\fP * bop) const"
+
+.PP
+Compare the control-flow order of this and \fIbop\fP\&. Compare the execution order of -this- and -bop-, if -this- executes earlier (dominates) return -1; if -bop- executes earlier return 1, otherwise return 0\&. Note that 0 is returned if there is no absolute execution order\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbop\fP is the \fBPcodeOp\fP to compare this to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+-1, 0, or 1, depending on the comparison 
+.RE
+.PP
+
+.PP
+Definition at line 572 of file op\&.cc\&.
+.SS "bool PcodeOp::doesSpecialPrinting (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this needs to special printing\&. 
+.PP
+Definition at line 192 of file op\&.hh\&.
+.SS "bool PcodeOp::doesSpecialPropagation (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this does datatype propagation\&. 
+.PP
+Definition at line 191 of file op\&.hh\&.
+.SS "const \fBAddress\fP& PcodeOp::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the instruction address associated with this op\&. 
+.PP
+Definition at line 147 of file op\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::iterator PcodeOp::getBasicIter (void) const\fC [inline]\fP"
+Get position within basic block 
+.PP
+Definition at line 151 of file op\&.hh\&.
+.SS "uintm PcodeOp::getCseHash (void) const"
+
+.PP
+Return hash indicating possibility of common subexpression elimination\&. Produce a hash of the following attributes: output size, the opcode, and the identity of each input varnode\&. This is suitable for determining if two PcodeOps calculate identical values 
+.PP
+\fBReturns:\fP
+.RS 4
+the calculated hash or 0 if the op is not cse hashable 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file op\&.cc\&.
+.SS "uint4 PcodeOp::getEvalType (void) const\fC [inline]\fP"
+
+.PP
+Get the evaluation type of this op\&. 
+.PP
+Definition at line 155 of file op\&.hh\&.
+.SS "uint4 PcodeOp::getHaltType (void) const\fC [inline]\fP"
+
+.PP
+Get type which indicates unusual halt in control-flow\&. 
+.PP
+Definition at line 157 of file op\&.hh\&.
+.SS "\fBVarnode\fP* PcodeOp::getIn (int4 slot)\fC [inline]\fP"
+
+.PP
+Get a specific input \fBVarnode\fP to this op\&. 
+.PP
+Definition at line 143 of file op\&.hh\&.
+.SS "const \fBVarnode\fP* PcodeOp::getIn (int4 slot) const\fC [inline]\fP"
+
+.PP
+Get a specific input \fBVarnode\fP to this op\&. 
+.PP
+Definition at line 144 of file op\&.hh\&.
+.SS "list<\fBPcodeOp\fP *>::iterator PcodeOp::getInsertIter (void) const\fC [inline]\fP"
+
+.PP
+Get position within alive/dead list\&. 
+.PP
+Definition at line 150 of file op\&.hh\&.
+.SS "\fBuintb\fP PcodeOp::getNZMaskLocal (bool cliploop) const"
+
+.PP
+Calculate known zero bits for output to this op\&. Compute nonzeromask assuming inputs to op have their masks properly defined\&. Assume the op has an output\&. For any inputs to this op, that have zero bits where their nzmasks have zero bits, then the output produced by this op is guaranteed to have zero bits at every location in the nzmask calculated by this function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcliploop\fP indicates the calculation shouldn't include inputs from known looping edges 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the calculated non-zero mask 
+.RE
+.PP
+
+.PP
+Definition at line 379 of file op\&.cc\&.
+.SS "\fBTypeOp\fP* PcodeOp::getOpcode (void) const\fC [inline]\fP"
+
+.PP
+Get the opcode for this op\&. 
+.PP
+Definition at line 204 of file op\&.hh\&.
+.SS "static \fBPcodeOp\fP* PcodeOp::getOpFromConst (const \fBAddress\fP & addr)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Retrieve the \fBPcodeOp\fP encoded as the address \fIaddr\fP\&. 
+.PP
+Definition at line 220 of file op\&.hh\&.
+.SS "const string& PcodeOp::getOpName (void) const\fC [inline]\fP"
+
+.PP
+Return the name of this op\&. 
+.PP
+Definition at line 216 of file op\&.hh\&.
+.SS "\fBVarnode\fP* PcodeOp::getOut (void)\fC [inline]\fP"
+
+.PP
+Get the output \fBVarnode\fP of this op or \fInull\fP\&. 
+.PP
+Definition at line 141 of file op\&.hh\&.
+.SS "const \fBVarnode\fP* PcodeOp::getOut (void) const\fC [inline]\fP"
+
+.PP
+Get the output \fBVarnode\fP of this op or \fInull\fP\&. 
+.PP
+Definition at line 142 of file op\&.hh\&.
+.SS "const \fBBlockBasic\fP* PcodeOp::getParent (void) const\fC [inline]\fP"
+
+.PP
+Get the parent basic block\&. 
+.PP
+Definition at line 145 of file op\&.hh\&.
+.SS "\fBBlockBasic\fP* PcodeOp::getParent (void)\fC [inline]\fP"
+
+.PP
+Get the parent basic block\&. 
+.PP
+Definition at line 146 of file op\&.hh\&.
+.SS "const \fBSeqNum\fP& PcodeOp::getSeqNum (void) const\fC [inline]\fP"
+
+.PP
+Get the sequence number associated with this op\&. 
+.PP
+Definition at line 149 of file op\&.hh\&.
+.SS "int4 PcodeOp::getSlot (const \fBVarnode\fP * vn) const\fC [inline]\fP"
+
+.PP
+Get the slot number of the indicated input varnode\&. 
+.PP
+Definition at line 153 of file op\&.hh\&.
+.SS "uintm PcodeOp::getTime (void) const\fC [inline]\fP"
+
+.PP
+Get the time index indicating when this op was created\&. 
+.PP
+Definition at line 148 of file op\&.hh\&.
+.SS "bool PcodeOp::hasThisPointer (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this is a call taking 'this' parameter\&. 
+.PP
+Definition at line 193 of file op\&.hh\&.
+.SS "bool PcodeOp::inheritsSign (void) const\fC [inline]\fP"
+
+.PP
+Does this token inherit its sign from operands\&. 
+.PP
+Definition at line 225 of file op\&.hh\&.
+.SS "\fBDatatype\fP* PcodeOp::inputTypeLocal (int4 slot) const\fC [inline]\fP"
+
+.PP
+Calculate the local input type\&. 
+.PP
+Definition at line 223 of file op\&.hh\&.
+.SS "bool PcodeOp::isAssignment (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP is this op has an output\&. 
+.PP
+Definition at line 160 of file op\&.hh\&.
+.SS "bool PcodeOp::isBlockStart (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this starts a basic block\&. 
+.PP
+Definition at line 179 of file op\&.hh\&.
+.SS "bool PcodeOp::isBooleanFlip (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op flips the true/false meaning of its control-flow branching\&. 
+.PP
+Definition at line 174 of file op\&.hh\&.
+.SS "bool PcodeOp::isBoolOutput (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op produces a boolean output\&. 
+.PP
+Definition at line 167 of file op\&.hh\&.
+.SS "bool PcodeOp::isBranch (void) const\fC [inline]\fP"
+Return \fBtrue\fP if this op is a branch 
+.PP
+Definition at line 168 of file op\&.hh\&.
+.SS "bool PcodeOp::isCalculatedBool (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if output is 1-bit boolean\&. 
+.PP
+Definition at line 197 of file op\&.hh\&.
+.SS "bool PcodeOp::isCall (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op indicates call semantics\&. 
+.PP
+Definition at line 161 of file op\&.hh\&.
+.SS "bool PcodeOp::isCallOrBranch (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op is a call or branch\&. 
+.PP
+Definition at line 170 of file op\&.hh\&.
+.SS "bool PcodeOp::isCodeRef (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if the first input is a code reference\&. 
+.PP
+Definition at line 177 of file op\&.hh\&.
+.SS "bool PcodeOp::isCollapsible (void) const"
+
+.PP
+Return \fBtrue\fP if this can be collapsed to a COPY of a constant\&. Can this be collapsed to a copy op, i\&.e\&. are all inputs constants 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if this op can be callapsed 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file op\&.cc\&.
+.SS "bool PcodeOp::isCommutative (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if inputs commute\&. 
+.PP
+Definition at line 206 of file op\&.hh\&.
+.SS "bool PcodeOp::isConstructor (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this is call to a constructor\&. 
+.PP
+Definition at line 194 of file op\&.hh\&.
+.SS "bool PcodeOp::isCpoolTransformed (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if we have already examined this cpool\&. 
+.PP
+Definition at line 199 of file op\&.hh\&.
+.SS "bool PcodeOp::isCseMatch (const \fBPcodeOp\fP * op) const"
+
+.PP
+Return \fBtrue\fP if this and \fIop\fP represent common subexpressions\&. Do these two ops represent a common subexpression? This is the full test of matching indicated by getCseHash 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP to compare with this 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the two ops are a common subexpression match 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file op\&.cc\&.
+.SS "bool PcodeOp::isDead (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op is dead\&. 
+.PP
+Definition at line 159 of file op\&.hh\&.
+.SS "bool PcodeOp::isDestructor (void) const\fC [inline]\fP"
+Return \fBtrue\fP if this is call to a destructor 
+.PP
+Definition at line 195 of file op\&.hh\&.
+.SS "bool PcodeOp::isFallthruTrue (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if the fall-thru branch is taken when the boolean input is true\&. 
+.PP
+Definition at line 176 of file op\&.hh\&.
+.SS "bool PcodeOp::isFlowBreak (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op breaks fall-thru flow\&. 
+.PP
+Definition at line 172 of file op\&.hh\&.
+.SS "bool PcodeOp::isIndirectCreation (void) const\fC [inline]\fP"
+Return \fBtrue\fP if op creates a varnode indirectly 
+.PP
+Definition at line 163 of file op\&.hh\&.
+.SS "bool PcodeOp::isIndirectSource (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this causes an INDIRECT\&. 
+.PP
+Definition at line 185 of file op\&.hh\&.
+.SS "bool PcodeOp::isInstructionStart (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this starts an instruction\&. 
+.PP
+Definition at line 178 of file op\&.hh\&.
+.SS "bool PcodeOp::isMark (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op has been marked\&. 
+.PP
+Definition at line 181 of file op\&.hh\&.
+.SS "bool PcodeOp::isMarker (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP is a special SSA form op\&. 
+.PP
+Definition at line 162 of file op\&.hh\&.
+.SS "bool PcodeOp::isModified (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this is modified by the current action\&. 
+.PP
+Definition at line 180 of file op\&.hh\&.
+.SS "bool PcodeOp::isPtrFlow (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this produces/consumes ptrs\&. 
+.PP
+Definition at line 188 of file op\&.hh\&.
+.SS "bool PcodeOp::isSplitting (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this branch splits\&. 
+.PP
+Definition at line 190 of file op\&.hh\&.
+.SS "bool PcodeOp::isWarning (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if a warning has been generated for this op\&. 
+.PP
+Definition at line 183 of file op\&.hh\&.
+.SS "bool PcodeOp::markExplicitUnsigned (int4 slot)\fC [inline]\fP"
+
+.PP
+Decide on unsignedness printing\&. 
+.PP
+Definition at line 224 of file op\&.hh\&.
+.SS "\fBPcodeOp\fP * PcodeOp::nextOp (void) const"
+
+.PP
+Return the next op in the control-flow from this or \fInull\fP\&. 
+.PP
+Definition at line 194 of file op\&.cc\&.
+.SS "bool PcodeOp::notPrinted (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if this op is not directly represented in C output\&. 
+.PP
+Definition at line 165 of file op\&.hh\&.
+.SS "int4 PcodeOp::numInput (void) const\fC [inline]\fP"
+
+.PP
+Get the number of inputs to this op\&. 
+.PP
+Definition at line 140 of file op\&.hh\&.
+.SS "\fBDatatype\fP* PcodeOp::outputTypeLocal (void) const\fC [inline]\fP"
+
+.PP
+Calculate the local output type\&. 
+.PP
+Definition at line 222 of file op\&.hh\&.
+.SS "\fBPcodeOp\fP * PcodeOp::previousOp (void) const"
+
+.PP
+Return the previous op within this op's basic block or \fInull\fP\&. Find the previous op that flowed uniquely into this op, if it exists\&. This routine will not search farther than the basic block containing this\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the previous \fBPcodeOp\fP or \fInull\fP 
+.RE
+.PP
+
+.PP
+Definition at line 215 of file op\&.cc\&.
+.SS "void PcodeOp::printDebug (ostream & s) const"
+
+.PP
+Print debug description of this op to stream\&. Print an address and a raw representation of this op to the stream, suitable for console debugging apps 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to print to 
+.RE
+.PP
+
+.PP
+Definition at line 247 of file op\&.cc\&.
+.SS "void PcodeOp::printRaw (ostream & s) const\fC [inline]\fP"
+
+.PP
+Print raw info about this op to stream\&. 
+.PP
+Definition at line 215 of file op\&.hh\&.
+.SS "void PcodeOp::push (\fBPrintLanguage\fP * lng) const\fC [inline]\fP"
+
+.PP
+Push this op as a display token\&. 
+.PP
+Definition at line 214 of file op\&.hh\&.
+.SS "void PcodeOp::saveXml (ostream & s) const"
+Write an XML description of this op to stream
+.PP
+Write a description including: the opcode name, the sequence number, and separate xml tags providing a reference number for each input and output \fBVarnode\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Definition at line 260 of file op\&.cc\&.
+.SS "void PcodeOp::setIndirectSource (void)\fC [inline]\fP"
+
+.PP
+Mark this op as source of INDIRECT\&. 
+.PP
+Definition at line 186 of file op\&.hh\&.
+.SS "void PcodeOp::setMark (void) const\fC [inline]\fP"
+
+.PP
+Set the mark on this op\&. 
+.PP
+Definition at line 182 of file op\&.hh\&.
+.SS "void PcodeOp::setOpcode (\fBTypeOp\fP * t_op)"
+
+.PP
+Set the opcode for this \fBPcodeOp\fP\&. Set the behavioral class (opcode) of this operation\&. For most applications this should only be called by the \fBPcodeOpBank\fP\&. This is fairly low-level but does cache various boolean flags associated with the opcode 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt_op\fP is the behavioural class to set 
+.RE
+.PP
+
+.PP
+Definition at line 148 of file op\&.cc\&.
+.SS "void PcodeOp::setPtrFlow (void)\fC [inline]\fP"
+
+.PP
+Mark this op as consuming/producing ptrs\&. 
+.PP
+Definition at line 189 of file op\&.hh\&.
+.SS "\fBPcodeOp\fP * PcodeOp::target (void) const"
+
+.PP
+Return starting op for instruction associated with this op\&. Scan backward within the basic block containing this op and find the first op marked as the start of an instruction\&. This also works if basic blocks haven't been calculated yet, and all the ops are still in the dead list\&. The starting op may be from a different instruction if this op was from an instruction in a delay slot 
+.PP
+\fBReturns:\fP
+.RS 4
+the starting \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 231 of file op\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBBlockBasic\fP\fC [friend]\fP"
+
+.PP
+Definition at line 59 of file op\&.hh\&.
+.SS "friend class \fBFuncdata\fP\fC [friend]\fP"
+
+.PP
+Definition at line 60 of file op\&.hh\&.
+.SS "friend class \fBPcodeOpBank\fP\fC [friend]\fP"
+
+.PP
+Definition at line 61 of file op\&.hh\&.
+.SS "friend class \fBVarnodeBank\fP\fC [friend]\fP"
+
+.PP
+Definition at line 62 of file op\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

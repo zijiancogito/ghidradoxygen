@@ -1,0 +1,297 @@
+.TH "ActionGroup" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ActionGroup \- A group of actions (generally) applied in sequence\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <action\&.hh>\fP
+.PP
+Inherits \fBAction\fP\&.
+.PP
+Inherited by \fBActionRestartGroup\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionGroup\fP (uint4 f, const string &nm)"
+.br
+.RI "Construct given properties and a name\&. "
+.ti -1c
+.RI "virtual \fB~ActionGroup\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBaddAction\fP (\fBAction\fP *ac)"
+.br
+.RI "Add an \fBAction\fP to the group\&. "
+.ti -1c
+.RI "virtual \fBAction\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBAction\fP\&. "
+.ti -1c
+.RI "virtual void \fBreset\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Reset the \fBAction\fP for a new function\&. "
+.ti -1c
+.RI "virtual void \fBresetStats\fP (void)"
+.br
+.RI "Reset all the counts to zero\&. "
+.ti -1c
+.RI "virtual int4 \fBapply\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Make a single attempt to apply \fBthis\fP \fBAction\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBprint\fP (ostream &s, int4 num, int4 depth) const"
+.br
+.RI "Print a description of this \fBAction\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBprintState\fP (ostream &s) const"
+.br
+.RI "Print status to stream\&. "
+.ti -1c
+.RI "virtual \fBAction\fP * \fBgetSubAction\fP (const string &specify)"
+.br
+.RI "Retrieve a specific sub-action by name\&. "
+.ti -1c
+.RI "virtual \fBRule\fP * \fBgetSubRule\fP (const string &specify)"
+.br
+.RI "Retrieve a specific sub-rule by name\&. "
+.ti -1c
+.RI "virtual void \fBprintStatistics\fP (ostream &s) const"
+.br
+.RI "Dump statistics to stream\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "vector< \fBAction\fP * > \fBlist\fP"
+.br
+.RI "List of actions to perform in the group\&. "
+.ti -1c
+.RI "vector< \fBAction\fP * >::iterator \fBstate\fP"
+.br
+.RI "Current action being applied\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A group of actions (generally) applied in sequence\&. 
+
+This is a a list of \fBAction\fP objects, which are usually applied in sequence\&. But the behavior properties of each individual \fBAction\fP may affect this\&. Properties (like rule_repeatapply) may be put directly to this group that also affect how the Actions are applied\&. 
+.PP
+Definition at line 142 of file action\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ActionGroup::ActionGroup (uint4 f, const string & nm)\fC [inline]\fP"
+
+.PP
+Construct given properties and a name\&. 
+.PP
+Definition at line 147 of file action\&.hh\&.
+.SS "ActionGroup::~ActionGroup (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 356 of file action\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ActionGroup::addAction (\fBAction\fP * ac)"
+
+.PP
+Add an \fBAction\fP to the group\&. To be used only during the construction of \fBthis\fP \fBActionGroup\fP\&. This routine adds an \fBAction\fP to the end of this group's list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIac\fP is the \fBAction\fP to add 
+.RE
+.PP
+
+.PP
+Definition at line 368 of file action\&.cc\&.
+.SS "int4 ActionGroup::apply (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Make a single attempt to apply \fBthis\fP \fBAction\fP\&. This is the main entry point for applying changes to a function that are specific to \fBthis\fP \fBAction\fP\&. The method can inspect whatever it wants to decide if the \fBAction\fP does or does not apply\&. Changes are indicated by incrementing the \fBcount\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to inspect/modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 for a complete application, -1 for a partial completion (due to breakpoint) 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Reimplemented in \fBActionRestartGroup\fP\&.
+.PP
+Definition at line 489 of file action\&.cc\&.
+.SS "\fBAction\fP * ActionGroup::clone (const \fBActionGroupList\fP & grouplist) const\fC [virtual]\fP"
+
+.PP
+Clone the \fBAction\fP\&. If \fBthis\fP \fBAction\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBAction\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBAction\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Reimplemented in \fBActionRestartGroup\fP\&.
+.PP
+Definition at line 374 of file action\&.cc\&.
+.SS "\fBAction\fP * ActionGroup::getSubAction (const string & specify)\fC [virtual]\fP"
+
+.PP
+Retrieve a specific sub-action by name\&. If this \fBAction\fP matches the given name, it is returned\&. If the name matches a sub-action, this is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecify\fP is the action name to match 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBAction\fP or sub-action 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Definition at line 439 of file action\&.cc\&.
+.SS "\fBRule\fP * ActionGroup::getSubRule (const string & specify)\fC [virtual]\fP"
+
+.PP
+Retrieve a specific sub-rule by name\&. Find a \fBRule\fP, as a component of \fBthis\fP \fBAction\fP, with the given name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecify\fP is the name of the rule 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching sub-rule 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Definition at line 464 of file action\&.cc\&.
+.SS "int4 ActionGroup::print (ostream & s, int4 num, int4 depth) const\fC [virtual]\fP"
+
+.PP
+Print a description of this \fBAction\fP to stream\&. The description is suitable for a console mode listing of actions 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fInum\fP is a starting index to associate with the action (and its sub-actions) 
+.br
+\fIdepth\fP is amount of indent necessary before printing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next available index 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Definition at line 411 of file action\&.cc\&.
+.SS "void ActionGroup::printState (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print status to stream\&. This will the \fBAction\fP name and the next step to execute 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Definition at line 427 of file action\&.cc\&.
+.SS "void ActionGroup::printStatistics (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Dump statistics to stream\&. Print out the collected statistics for the \fBAction\fP to stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Definition at line 593 of file action\&.cc\&.
+.SS "void ActionGroup::reset (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Reset the \fBAction\fP for a new function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the new function \fBthis\fP \fBAction\fP may affect 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Reimplemented in \fBActionRestartGroup\fP\&.
+.PP
+Definition at line 391 of file action\&.cc\&.
+.SS "void ActionGroup::resetStats (void)\fC [virtual]\fP"
+
+.PP
+Reset all the counts to zero\&. Reset the statistics 
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Definition at line 401 of file action\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vector<\fBAction\fP *> ActionGroup::list\fC [protected]\fP"
+
+.PP
+List of actions to perform in the group\&. 
+.PP
+Definition at line 144 of file action\&.hh\&.
+.SS "vector<\fBAction\fP *>::iterator ActionGroup::state\fC [protected]\fP"
+
+.PP
+Current action being applied\&. 
+.PP
+Definition at line 145 of file action\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

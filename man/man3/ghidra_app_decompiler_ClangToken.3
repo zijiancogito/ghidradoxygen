@@ -1,0 +1,328 @@
+.TH "ghidra.app.decompiler.ClangToken" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.ClangToken
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Inherited by \fBghidra\&.app\&.decompiler\&.ClangBreak\fP, \fBghidra\&.app\&.decompiler\&.ClangCommentToken\fP, \fBghidra\&.app\&.decompiler\&.ClangFieldToken\fP, \fBghidra\&.app\&.decompiler\&.ClangFuncNameToken\fP, \fBghidra\&.app\&.decompiler\&.ClangLabelToken\fP, \fBghidra\&.app\&.decompiler\&.ClangOpToken\fP, \fBghidra\&.app\&.decompiler\&.ClangSyntaxToken\fP, \fBghidra\&.app\&.decompiler\&.ClangTypeToken\fP, and \fBghidra\&.app\&.decompiler\&.ClangVariableToken\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClangToken\fP (\fBClangNode\fP par)"
+.br
+.ti -1c
+.RI "\fBClangToken\fP (\fBClangNode\fP par, String txt)"
+.br
+.ti -1c
+.RI "\fBClangToken\fP (\fBClangNode\fP par, String txt, String col)"
+.br
+.ti -1c
+.RI "\fBClangNode\fP \fBParent\fP ()"
+.br
+.ti -1c
+.RI "\fBClangLine\fP \fBgetLineParent\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetLineParent\fP (\fBClangLine\fP line)"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBgetMinAddress\fP ()"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBgetMaxAddress\fP ()"
+.br
+.ti -1c
+.RI "int \fBnumChildren\fP ()"
+.br
+.ti -1c
+.RI "\fBClangNode\fP \fBChild\fP (int i)"
+.br
+.ti -1c
+.RI "\fBClangFunction\fP \fBgetClangFunction\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetHighlight\fP (Color val)"
+.br
+.ti -1c
+.RI "Color \fBgetHighlight\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetMatchingToken\fP (boolean matchingToken)"
+.br
+.ti -1c
+.RI "boolean \fBisMatchingToken\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisVariableRef\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetSyntaxType\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetText\fP ()"
+.br
+.ti -1c
+.RI "void \fBrestoreFromXML\fP (XmlElement el, XmlElement end, PcodeFactory pfactory)"
+.br
+.ti -1c
+.RI "void \fBflatten\fP (\fBList\fP< \fBClangNode\fP > list)"
+.br
+.ti -1c
+.RI "String \fBtoString\fP ()"
+.br
+.ti -1c
+.RI "\fBHighVariable\fP \fBgetHighVariable\fP ()"
+.br
+.ti -1c
+.RI "\fBVarnode\fP \fBgetVarnode\fP ()"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP \fBgetPcodeOp\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBClangToken\fP \fBbuildToken\fP (\fBClangNode\fP par, XmlPullParser parser, PcodeFactory pfactory)"
+.br
+.ti -1c
+.RI "static int \fBgetColor\fP (String col)"
+.br
+.ti -1c
+.RI "static \fBClangToken\fP \fBbuildSpacer\fP (\fBClangNode\fP par, int indent, String indentStr)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static final int \fBKEYWORD_COLOR\fP = 0"
+.br
+.ti -1c
+.RI "static final int \fBTYPE_COLOR\fP = 1"
+.br
+.ti -1c
+.RI "static final int \fBFUNCTION_COLOR\fP = 2"
+.br
+.ti -1c
+.RI "static final int \fBCOMMENT_COLOR\fP = 3"
+.br
+.ti -1c
+.RI "static final int \fBVARIABLE_COLOR\fP = 4"
+.br
+.ti -1c
+.RI "static final int \fBCONST_COLOR\fP = 5"
+.br
+.ti -1c
+.RI "static final int \fBPARAMETER_COLOR\fP = 6"
+.br
+.ti -1c
+.RI "static final int \fBGLOBAL_COLOR\fP = 7"
+.br
+.ti -1c
+.RI "static final int \fBDEFAULT_COLOR\fP = 8"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class representing a C code language token May contain links back to pcode object 
+.PP
+Definition at line 39 of file ClangToken\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.ClangToken\&.ClangToken (\fBClangNode\fP par)\fC [inline]\fP"
+
+.PP
+Definition at line 57 of file ClangToken\&.java\&.
+.SS "ghidra\&.app\&.decompiler\&.ClangToken\&.ClangToken (\fBClangNode\fP par, String txt)\fC [inline]\fP"
+
+.PP
+Definition at line 65 of file ClangToken\&.java\&.
+.SS "ghidra\&.app\&.decompiler\&.ClangToken\&.ClangToken (\fBClangNode\fP par, String txt, String col)\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file ClangToken\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBClangToken\fP ghidra\&.app\&.decompiler\&.ClangToken\&.buildSpacer (\fBClangNode\fP par, int indent, String indentStr)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 238 of file ClangToken\&.java\&.
+.SS "static \fBClangToken\fP ghidra\&.app\&.decompiler\&.ClangToken\&.buildToken (\fBClangNode\fP par, XmlPullParser parser, PcodeFactory pfactory)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 168 of file ClangToken\&.java\&.
+.SS "\fBClangNode\fP ghidra\&.app\&.decompiler\&.ClangToken\&.Child (int i)\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 108 of file ClangToken\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.ClangToken\&.flatten (\fBList\fP< \fBClangNode\fP > list)\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 164 of file ClangToken\&.java\&.
+.SS "\fBClangFunction\fP ghidra\&.app\&.decompiler\&.ClangToken\&.getClangFunction ()\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 113 of file ClangToken\&.java\&.
+.SS "static int ghidra\&.app\&.decompiler\&.ClangToken\&.getColor (String col)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 208 of file ClangToken\&.java\&.
+.SS "Color ghidra\&.app\&.decompiler\&.ClangToken\&.getHighlight ()\fC [inline]\fP"
+
+.PP
+Definition at line 125 of file ClangToken\&.java\&.
+.SS "\fBHighVariable\fP ghidra\&.app\&.decompiler\&.ClangToken\&.getHighVariable ()\fC [inline]\fP"
+Get the high-level variable associate with this token or null otherwise 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBHighVariable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 256 of file ClangToken\&.java\&.
+.SS "\fBClangLine\fP ghidra\&.app\&.decompiler\&.ClangToken\&.getLineParent ()\fC [inline]\fP"
+
+.PP
+Definition at line 84 of file ClangToken\&.java\&.
+.SS "\fBAddress\fP ghidra\&.app\&.decompiler\&.ClangToken\&.getMaxAddress ()\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 98 of file ClangToken\&.java\&.
+.SS "\fBAddress\fP ghidra\&.app\&.decompiler\&.ClangToken\&.getMinAddress ()\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 93 of file ClangToken\&.java\&.
+.SS "\fBPcodeOp\fP ghidra\&.app\&.decompiler\&.ClangToken\&.getPcodeOp ()\fC [inline]\fP"
+Many tokens directly represent a pcode operator in the data-flow 
+.PP
+\fBReturns:\fP
+.RS 4
+the operation (\fBPcodeOp\fP) associated with this token or null 
+.RE
+.PP
+
+.PP
+Definition at line 275 of file ClangToken\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.ClangToken\&.getSyntaxType ()\fC [inline]\fP"
+
+.PP
+Definition at line 141 of file ClangToken\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.ClangToken\&.getText (void)\fC [inline]\fP"
+
+.PP
+Definition at line 149 of file ClangToken\&.java\&.
+.SS "\fBVarnode\fP ghidra\&.app\&.decompiler\&.ClangToken\&.getVarnode (void)\fC [inline]\fP"
+Many tokens directly represent a variable in the data-flow 
+.PP
+\fBReturns:\fP
+.RS 4
+the variable (\fBVarnode\fP) associated with this token or null 
+.RE
+.PP
+
+.PP
+Definition at line 267 of file ClangToken\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.ClangToken\&.isMatchingToken ()\fC [inline]\fP"
+
+.PP
+Definition at line 133 of file ClangToken\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.ClangToken\&.isVariableRef ()\fC [inline]\fP"
+
+.PP
+Definition at line 137 of file ClangToken\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.ClangToken\&.numChildren ()\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 103 of file ClangToken\&.java\&.
+.SS "\fBClangNode\fP ghidra\&.app\&.decompiler\&.ClangToken\&.Parent ()\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 80 of file ClangToken\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.ClangToken\&.restoreFromXML (XmlElement el, XmlElement end, PcodeFactory pfactory)\fC [inline]\fP"
+
+.PP
+Definition at line 157 of file ClangToken\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.ClangToken\&.setHighlight (Color val)\fC [inline]\fP"
+
+.PP
+Implements \fBghidra\&.app\&.decompiler\&.ClangNode\fP\&.
+.PP
+Definition at line 121 of file ClangToken\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.ClangToken\&.setLineParent (\fBClangLine\fP line)\fC [inline]\fP"
+
+.PP
+Definition at line 88 of file ClangToken\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.ClangToken\&.setMatchingToken (boolean matchingToken)\fC [inline]\fP"
+
+.PP
+Definition at line 129 of file ClangToken\&.java\&.
+.SS "String ghidra\&.app\&.decompiler\&.ClangToken\&.toString ()\fC [inline]\fP"
+
+.PP
+Definition at line 247 of file ClangToken\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.COMMENT_COLOR = 3\fC [static]\fP"
+
+.PP
+Definition at line 43 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.CONST_COLOR = 5\fC [static]\fP"
+
+.PP
+Definition at line 45 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.DEFAULT_COLOR = 8\fC [static]\fP"
+
+.PP
+Definition at line 48 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.FUNCTION_COLOR = 2\fC [static]\fP"
+
+.PP
+Definition at line 42 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.GLOBAL_COLOR = 7\fC [static]\fP"
+
+.PP
+Definition at line 47 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.KEYWORD_COLOR = 0\fC [static]\fP"
+
+.PP
+Definition at line 40 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.PARAMETER_COLOR = 6\fC [static]\fP"
+
+.PP
+Definition at line 46 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.TYPE_COLOR = 1\fC [static]\fP"
+
+.PP
+Definition at line 41 of file ClangToken\&.java\&.
+.SS "final int ghidra\&.app\&.decompiler\&.ClangToken\&.VARIABLE_COLOR = 4\fC [static]\fP"
+
+.PP
+Definition at line 44 of file ClangToken\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

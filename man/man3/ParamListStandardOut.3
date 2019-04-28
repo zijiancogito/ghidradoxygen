@@ -1,0 +1,172 @@
+.TH "ParamListStandardOut" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParamListStandardOut \- A standard model for passing back return values from a function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherits \fBParamListStandard\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParamListStandardOut\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fBParamListStandardOut\fP (const \fBParamListStandardOut\fP &op2)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "virtual uint4 \fBgetType\fP (void) const"
+.br
+.RI "Get the type of parameter list\&. "
+.ti -1c
+.RI "virtual void \fBassignMap\fP (const vector< \fBDatatype\fP * > &proto, bool isinput, \fBTypeFactory\fP &typefactory, vector< \fBParameterPieces\fP > &res) const"
+.br
+.RI "Given list of data-types, map the list positions to storage locations\&. "
+.ti -1c
+.RI "virtual void \fBfillinMap\fP (\fBParamActive\fP *active) const"
+.br
+.RI "Given an unordered list of storage locations, calculate a function prototype\&. "
+.ti -1c
+.RI "virtual bool \fBpossibleParam\fP (const \fBAddress\fP &loc, int4 size) const"
+.br
+.RI "Does the given storage location make sense as a parameter\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage, vector< \fBEffectRecord\fP > &effectlist, bool normalstack)"
+.br
+.RI "Restore the model from an XML stream\&. "
+.ti -1c
+.RI "virtual \fBParamList\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone this parameter list model\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A standard model for passing back return values from a function\&. 
+
+This models a resource list of potential storage locations for a return value, at most 1 of which will be chosen for a given function\&. Order only matters in that the first \fBParamEntry\fP that fits is used\&. If no entry fits, the return value is converted to a pointer data-type, storage allocation is attempted again, and the return value is marked as a \fIhidden\fP return parameter to inform the input model\&. 
+.PP
+Definition at line 474 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParamListStandardOut::ParamListStandardOut (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 476 of file fspec\&.hh\&.
+.SS "ParamListStandardOut::ParamListStandardOut (const \fBParamListStandardOut\fP & op2)\fC [inline]\fP"
+
+.PP
+Copy constructor\&. 
+.PP
+Definition at line 477 of file fspec\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ParamListStandardOut::assignMap (const vector< \fBDatatype\fP * > & proto, bool isinput, \fBTypeFactory\fP & typefactory, vector< \fBParameterPieces\fP > & res) const\fC [virtual]\fP"
+
+.PP
+Given list of data-types, map the list positions to storage locations\&. If we know the function prototype, recover how parameters are actually stored using the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproto\fP is the ordered list of data-types 
+.br
+\fIisinput\fP is \fBtrue\fP for the input prototype, \fBfalse\fP for output prototype 
+.br
+\fItypefactory\fP is the \fBTypeFactory\fP (for constructing pointers) 
+.br
+\fIres\fP will contain the storage locations corresponding to the datatypes 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 944 of file fspec\&.cc\&.
+.SS "\fBParamList\fP * ParamListStandardOut::clone (void) const\fC [virtual]\fP"
+
+.PP
+Clone this parameter list model\&. 
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 1077 of file fspec\&.cc\&.
+.SS "void ParamListStandardOut::fillinMap (\fBParamActive\fP * active) const\fC [virtual]\fP"
+
+.PP
+Given an unordered list of storage locations, calculate a function prototype\&. A list of input (or output) trials is given, which may have holes, invalid inputs etc\&. Decide on the formal ordered parameter list\&. Trials within the \fBParamActive\fP are added, removed, or reordered as needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the given list of trials 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 977 of file fspec\&.cc\&.
+.SS "virtual uint4 ParamListStandardOut::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the type of parameter list\&. 
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 478 of file fspec\&.hh\&.
+.SS "bool ParamListStandardOut::possibleParam (const \fBAddress\fP & loc, int4 size) const\fC [virtual]\fP"
+
+.PP
+Does the given storage location make sense as a parameter\&. Within \fBthis\fP model, decide if the storage location can be considered a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage location 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the location can be a parameter 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 1058 of file fspec\&.cc\&.
+.SS "void ParamListStandardOut::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage, vector< \fBEffectRecord\fP > & effectlist, bool normalstack)\fC [virtual]\fP"
+
+.PP
+Restore the model from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <input> or <output> element 
+.br
+\fImanage\fP is used to resolve references to address spaces 
+.br
+\fIeffectlist\fP is a container collecting EffectRecords across all parameters 
+.br
+\fInormalstack\fP is \fBtrue\fP if parameters are pushed on the stack in the normal order 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBParamListStandard\fP\&.
+.PP
+Definition at line 1068 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

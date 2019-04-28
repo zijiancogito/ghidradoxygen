@@ -1,0 +1,176 @@
+\hypertarget{class_rule_cond_negate}{}\section{Rule\+Cond\+Negate Class Reference}
+\label{class_rule_cond_negate}\index{RuleCondNegate@{RuleCondNegate}}
+
+
+Flip conditions to match structuring cues.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Cond\+Negate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_rule_cond_negate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Cond\+Negate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_rule_cond_negate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_cond_negate_a1c84b28ea18d19694633f99915dba439}{Rule\+Cond\+Negate}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_cond_negate_aebb1cb7788a492ef797489ea261a81a4}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_cond_negate_ac5ff9f8937c4667aebd7178f8231a64c}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_cond_negate_a085f7cbc001d8d211be810d8578f4b7a}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Flip conditions to match structuring cues. 
+
+Structuring control-\/flow introduces a preferred meaning to individual branch directions as {\bfseries{true}} or {\bfseries{false}}, but this may conflict with the natural meaning of the boolean calculation feeding into a C\+B\+R\+A\+N\+CH. This \mbox{\hyperlink{class_rule}{Rule}} introduces a B\+O\+O\+L\+\_\+\+N\+E\+G\+A\+TE op as necessary to get the meanings to align. 
+
+Definition at line 873 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_cond_negate_a1c84b28ea18d19694633f99915dba439}\label{class_rule_cond_negate_a1c84b28ea18d19694633f99915dba439}} 
+\index{RuleCondNegate@{RuleCondNegate}!RuleCondNegate@{RuleCondNegate}}
+\index{RuleCondNegate@{RuleCondNegate}!RuleCondNegate@{RuleCondNegate}}
+\subsubsection{\texorpdfstring{RuleCondNegate()}{RuleCondNegate()}}
+{\footnotesize\ttfamily Rule\+Cond\+Negate\+::\+Rule\+Cond\+Negate (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 875 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_cond_negate_a1c84b28ea18d19694633f99915dba439_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_cond_negate_a085f7cbc001d8d211be810d8578f4b7a}\label{class_rule_cond_negate_a085f7cbc001d8d211be810d8578f4b7a}} 
+\index{RuleCondNegate@{RuleCondNegate}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleCondNegate@{RuleCondNegate}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Cond\+Negate\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 4864 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_cond_negate_a085f7cbc001d8d211be810d8578f4b7a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_cond_negate_aebb1cb7788a492ef797489ea261a81a4}\label{class_rule_cond_negate_aebb1cb7788a492ef797489ea261a81a4}} 
+\index{RuleCondNegate@{RuleCondNegate}!clone@{clone}}
+\index{clone@{clone}!RuleCondNegate@{RuleCondNegate}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Cond\+Negate\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 876 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_cond_negate_aebb1cb7788a492ef797489ea261a81a4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_cond_negate_ac5ff9f8937c4667aebd7178f8231a64c}\label{class_rule_cond_negate_ac5ff9f8937c4667aebd7178f8231a64c}} 
+\index{RuleCondNegate@{RuleCondNegate}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleCondNegate@{RuleCondNegate}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Cond\+Negate\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 4858 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

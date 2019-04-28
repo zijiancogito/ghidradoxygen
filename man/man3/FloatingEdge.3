@@ -1,0 +1,84 @@
+.TH "FloatingEdge" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FloatingEdge \- Class for holding an edge while the underlying graph is being manipulated\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <blockaction\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFloatingEdge\fP (\fBFlowBlock\fP *t, \fBFlowBlock\fP *b)"
+.br
+.RI "Construct given end points\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetTop\fP (void) const"
+.br
+.RI "Get the starting \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetBottom\fP (void) const"
+.br
+.RI "Get the ending \fBFlowBlock\fP\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBgetCurrentEdge\fP (int4 &outedge, \fBFlowBlock\fP *graph)"
+.br
+.RI "Get the current form of the edge\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for holding an edge while the underlying graph is being manipulated\&. 
+
+The original \fBFlowBlock\fP nodes that define the end-points of the edge may get collapsed, but the edge may still exist between higher level components\&. The edge can still be retrieved via the \fBgetCurrentEdge()\fP method\&. 
+.PP
+Definition at line 29 of file blockaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FloatingEdge::FloatingEdge (\fBFlowBlock\fP * t, \fBFlowBlock\fP * b)\fC [inline]\fP"
+
+.PP
+Construct given end points\&. 
+.PP
+Definition at line 33 of file blockaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFlowBlock\fP* FloatingEdge::getBottom (void) const\fC [inline]\fP"
+
+.PP
+Get the ending \fBFlowBlock\fP\&. 
+.PP
+Definition at line 35 of file blockaction\&.hh\&.
+.SS "\fBFlowBlock\fP * FloatingEdge::getCurrentEdge (int4 & outedge, \fBFlowBlock\fP * graph)"
+
+.PP
+Get the current form of the edge\&. Retrieve the current edge (as a \fItop\fP \fBFlowBlock\fP and the index of the outgoing edge)\&. If the end-points have been collapsed together, this returns NULL\&. The top and bottom nodes of the edge are updated to FlowBlocks in the current collapsed graph\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoutedge\fP will hold the index of the edge (outgoing relative to returned \fBFlowBlock\fP) 
+.br
+\fIgraph\fP is the containing \fBBlockGraph\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the current \fItop\fP of the edge or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file blockaction\&.cc\&.
+.SS "\fBFlowBlock\fP* FloatingEdge::getTop (void) const\fC [inline]\fP"
+
+.PP
+Get the starting \fBFlowBlock\fP\&. 
+.PP
+Definition at line 34 of file blockaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

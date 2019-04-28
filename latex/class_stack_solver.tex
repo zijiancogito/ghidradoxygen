@@ -1,0 +1,138 @@
+\hypertarget{class_stack_solver}{}\section{Stack\+Solver Class Reference}
+\label{class_stack_solver}\index{StackSolver@{StackSolver}}
+
+
+A class that solves for stack-\/pointer changes across unknown sub-\/functions.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_stack_solver_a441d8ed5d337ba9087093745d7e889c9}{solve}} (void)
+\begin{DoxyCompactList}\small\item\em Solve the system of equations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_stack_solver_a136feaaa59c88d2a2b003621a78b0511}{build}} (const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$id, int4 spcbase)
+\begin{DoxyCompactList}\small\item\em Build the system of equations. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_stack_solver_ad89900d198c2372dafd1b7d5c6f17787}{get\+Num\+Variables}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of variables in the system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_stack_solver_afde2924e2df5c143fd7749d812ec1909}{get\+Variable}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th \mbox{\hyperlink{class_varnode}{Varnode}} variable. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_stack_solver_a0afca12bc9607e6846fd722e20265150}{get\+Companion}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th variable\textquotesingle{}s companion index. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_stack_solver_a7e8e971724f289130344b0e52bed302e}{get\+Solution}} (int4 i) const
+\begin{DoxyCompactList}\small\item\em Get the i-\/th variable\textquotesingle{}s solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that solves for stack-\/pointer changes across unknown sub-\/functions. 
+
+Definition at line 29 of file coreaction.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_stack_solver_a136feaaa59c88d2a2b003621a78b0511}\label{class_stack_solver_a136feaaa59c88d2a2b003621a78b0511}} 
+\index{StackSolver@{StackSolver}!build@{build}}
+\index{build@{build}!StackSolver@{StackSolver}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily void Stack\+Solver\+::build (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{id,  }\item[{int4}]{spcbase }\end{DoxyParamCaption})}
+
+
+
+Build the system of equations. 
+
+Collect references to the stack-\/pointer as variables, and examine their defining Pcode\+Ops to determine equations and coefficient. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function being analyzed \\
+\hline
+{\em id} & is the {\itshape stack} address space \\
+\hline
+{\em spcbase} & is the index, relative to the stack space, of the stack pointer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 143 of file coreaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_stack_solver_a136feaaa59c88d2a2b003621a78b0511_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_stack_solver_a0afca12bc9607e6846fd722e20265150}\label{class_stack_solver_a0afca12bc9607e6846fd722e20265150}} 
+\index{StackSolver@{StackSolver}!getCompanion@{getCompanion}}
+\index{getCompanion@{getCompanion}!StackSolver@{StackSolver}}
+\subsubsection{\texorpdfstring{getCompanion()}{getCompanion()}}
+{\footnotesize\ttfamily int4 Stack\+Solver\+::get\+Companion (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th variable\textquotesingle{}s companion index. 
+
+
+
+Definition at line 44 of file coreaction.\+cc.
+
+\mbox{\Hypertarget{class_stack_solver_ad89900d198c2372dafd1b7d5c6f17787}\label{class_stack_solver_ad89900d198c2372dafd1b7d5c6f17787}} 
+\index{StackSolver@{StackSolver}!getNumVariables@{getNumVariables}}
+\index{getNumVariables@{getNumVariables}!StackSolver@{StackSolver}}
+\subsubsection{\texorpdfstring{getNumVariables()}{getNumVariables()}}
+{\footnotesize\ttfamily int4 Stack\+Solver\+::get\+Num\+Variables (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of variables in the system. 
+
+
+
+Definition at line 42 of file coreaction.\+cc.
+
+\mbox{\Hypertarget{class_stack_solver_a7e8e971724f289130344b0e52bed302e}\label{class_stack_solver_a7e8e971724f289130344b0e52bed302e}} 
+\index{StackSolver@{StackSolver}!getSolution@{getSolution}}
+\index{getSolution@{getSolution}!StackSolver@{StackSolver}}
+\subsubsection{\texorpdfstring{getSolution()}{getSolution()}}
+{\footnotesize\ttfamily int4 Stack\+Solver\+::get\+Solution (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th variable\textquotesingle{}s solution. 
+
+
+
+Definition at line 45 of file coreaction.\+cc.
+
+\mbox{\Hypertarget{class_stack_solver_afde2924e2df5c143fd7749d812ec1909}\label{class_stack_solver_afde2924e2df5c143fd7749d812ec1909}} 
+\index{StackSolver@{StackSolver}!getVariable@{getVariable}}
+\index{getVariable@{getVariable}!StackSolver@{StackSolver}}
+\subsubsection{\texorpdfstring{getVariable()}{getVariable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Stack\+Solver\+::get\+Variable (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the i-\/th \mbox{\hyperlink{class_varnode}{Varnode}} variable. 
+
+
+
+Definition at line 43 of file coreaction.\+cc.
+
+\mbox{\Hypertarget{class_stack_solver_a441d8ed5d337ba9087093745d7e889c9}\label{class_stack_solver_a441d8ed5d337ba9087093745d7e889c9}} 
+\index{StackSolver@{StackSolver}!solve@{solve}}
+\index{solve@{solve}!StackSolver@{StackSolver}}
+\subsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily void Stack\+Solver\+::solve (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Solve the system of equations. 
+
+
+
+Definition at line 108 of file coreaction.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{coreaction_8cc}{coreaction.\+cc}}\end{DoxyCompactItemize}

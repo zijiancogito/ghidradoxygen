@@ -1,0 +1,59 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/heritage.hh \- Utilities for building Static Single Assignment (SSA) form\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'block\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBSizePass\fP"
+.br
+.RI "Label for describing extent of address range that has been heritaged\&. "
+.ti -1c
+.RI "class \fBLocationMap\fP"
+.br
+.RI "Map object for keeping track of which address ranges have been heritaged\&. "
+.ti -1c
+.RI "class \fBPriorityQueue\fP"
+.br
+.RI "Priority queue for the phi-node (MULTIEQUAL) placement algorithm\&. "
+.ti -1c
+.RI "class \fBHeritageInfo\fP"
+.br
+.RI "Information about heritage passes performed for a specific address space\&. "
+.ti -1c
+.RI "class \fBHeritage\fP"
+.br
+.RI "Manage the construction of Static Single Assignment (SSA) form\&. "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef map< \fBAddress\fP, vector< \fBVarnode\fP * > > \fBVariableStack\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utilities for building Static Single Assignment (SSA) form\&. 
+
+
+.PP
+Definition in file \fBheritage\&.hh\fP\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef map<\fBAddress\fP,vector<\fBVarnode\fP *> > \fBVariableStack\fP"
+Container holding the stack system for the renaming algorithm\&. Every disjoint address range (indexed by its initial address) maps to its own \fBVarnode\fP stack\&. 
+.PP
+Definition at line 27 of file heritage\&.hh\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

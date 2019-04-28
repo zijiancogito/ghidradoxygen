@@ -1,0 +1,657 @@
+.TH "AddrSpaceManager" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AddrSpaceManager \- A manager for different address spaces\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <translate\&.hh>\fP
+.PP
+Inherited by \fBArchitecture\fP, and \fBTranslate\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAddrSpaceManager\fP (void)"
+.br
+.RI "Construct an empty address space manager\&. "
+.ti -1c
+.RI "virtual \fB~AddrSpaceManager\fP (void)"
+.br
+.RI "Destroy the manager\&. "
+.ti -1c
+.RI "char \fBassignShortcut\fP (\fBspacetype\fP tp) const"
+.br
+.RI "Select a shortcut character for a new space\&. "
+.ti -1c
+.RI "int4 \fBgetDefaultSize\fP (void) const"
+.br
+.RI "Get size of addresses for the default space\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpaceByName\fP (const string &nm) const"
+.br
+.RI "Get address space by name\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpaceByShortcut\fP (char sc) const"
+.br
+.RI "Get address space from its shortcut\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetIopSpace\fP (void) const"
+.br
+.RI "Get the internal pcode op space\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetFspecSpace\fP (void) const"
+.br
+.RI "Get the internal callspec space\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetJoinSpace\fP (void) const"
+.br
+.RI "Get the joining space\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetStackSpace\fP (void) const"
+.br
+.RI "Get the stack space for this processor\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetUniqueSpace\fP (void) const"
+.br
+.RI "Get the temporary register space for this processor\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetDefaultSpace\fP (void) const"
+.br
+.RI "Get the default address space of this processor\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetConstantSpace\fP (void) const"
+.br
+.RI "Get the constant space\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBgetConstant\fP (\fBuintb\fP val) const"
+.br
+.RI "Get a constant encoded as an \fBAddress\fP\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBcreateConstFromSpace\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Create a constant address encoding an address space\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBresolveConstant\fP (\fBAddrSpace\fP *spc, \fBuintb\fP val, int4 sz, const \fBAddress\fP &point) const"
+.br
+.RI "Resolve native constant to address\&. "
+.ti -1c
+.RI "int4 \fBnumSpaces\fP (void) const"
+.br
+.RI "Get the number of address spaces for this processor\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (int4 i) const"
+.br
+.RI "Get an address space via its index\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetNextSpaceInOrder\fP (\fBAddrSpace\fP *spc) const"
+.br
+.RI "Get the next \fIcontiguous\fP address space\&. "
+.ti -1c
+.RI "\fBJoinRecord\fP * \fBfindAddJoin\fP (const vector< \fBVarnodeData\fP > &pieces, uint4 logicalsize)"
+.br
+.RI "Get (or create) \fBJoinRecord\fP for \fIpieces\fP\&. "
+.ti -1c
+.RI "\fBJoinRecord\fP * \fBfindJoin\fP (\fBuintb\fP offset) const"
+.br
+.RI "Find \fBJoinRecord\fP for \fIoffset\fP in the join space\&. "
+.ti -1c
+.RI "void \fBsetDeadcodeDelay\fP (int4 spcnum, int4 delaydelta)"
+.br
+.RI "Set the deadcodedelay for a specific space\&. "
+.ti -1c
+.RI "void \fBtruncateSpace\fP (const \fBTruncationTag\fP &tag)"
+.br
+.RI "Mark a space as truncated from its original size\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBconstructFloatExtensionAddress\fP (const \fBAddress\fP &realaddr, int4 realsize, int4 logicalsize)"
+.br
+.RI "Build a logically lower precision storage location for a bigger floating point register\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBconstructJoinAddress\fP (const \fBTranslate\fP *translate, const \fBAddress\fP &hiaddr, int4 hisz, const \fBAddress\fP &loaddr, int4 losz)"
+.br
+.RI "Build a logical whole from register pairs\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBrestoreXmlSpace\fP (const \fBElement\fP *el, const \fBTranslate\fP *trans)"
+.br
+.RI "Add a space to the model based an on XML tag\&. "
+.ti -1c
+.RI "void \fBrestoreXmlSpaces\fP (const \fBElement\fP *el, const \fBTranslate\fP *trans)"
+.br
+.RI "Restore address spaces in the model from an XML tag\&. "
+.ti -1c
+.RI "void \fBsetDefaultSpace\fP (int4 index)"
+.br
+.RI "Set the default address space\&. "
+.ti -1c
+.RI "void \fBsetReverseJustified\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Set reverse justified property on this space\&. "
+.ti -1c
+.RI "void \fBinsertSpace\fP (\fBAddrSpace\fP *spc)"
+.br
+.RI "Add a new address space to the model\&. "
+.ti -1c
+.RI "void \fBcopySpaces\fP (const \fBAddrSpaceManager\fP *op2)"
+.br
+.RI "Copy spaces from another manager\&. "
+.ti -1c
+.RI "void \fBaddSpacebasePointer\fP (\fBSpacebaseSpace\fP *basespace, const \fBVarnodeData\fP &ptrdata, int4 truncSize, bool stackGrowth)"
+.br
+.RI "Set the base register of a spacebase space\&. "
+.ti -1c
+.RI "void \fBinsertResolver\fP (\fBAddrSpace\fP *spc, \fBAddressResolver\fP *rsolv)"
+.br
+.RI "\fBOverride\fP the base resolver for a space\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A manager for different address spaces\&. 
+
+Allow creation, lookup by name, lookup by shortcut, lookup by name, and iteration over address spaces 
+.PP
+Definition at line 212 of file translate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AddrSpaceManager::AddrSpaceManager (void)"
+
+.PP
+Construct an empty address space manager\&. Initialize manager containing no address spaces\&. All the cached space slots are set to null\&. 
+.PP
+Definition at line 143 of file translate\&.cc\&.
+.SS "AddrSpaceManager::~AddrSpaceManager (void)\fC [virtual]\fP"
+
+.PP
+Destroy the manager\&. Base destructor class, cleans up \fBAddrSpace\fP pointers which must be explicited created via \fInew\fP 
+.PP
+Definition at line 351 of file translate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void AddrSpaceManager::addSpacebasePointer (\fBSpacebaseSpace\fP * basespace, const \fBVarnodeData\fP & ptrdata, int4 truncSize, bool stackGrowth)\fC [protected]\fP"
+
+.PP
+Set the base register of a spacebase space\&. Perform the \fIprivileged\fP act of associating a base register with an existing \fIvirtual\fP space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbasespace\fP is the virtual space 
+.br
+\fIptrdata\fP is the location data for the base register 
+.br
+\fItruncSize\fP is the size of the space covered by the base register 
+.br
+\fIstackGrowth\fP is true if the stack grows 'normally' towards address 0 
+.RE
+.PP
+
+.PP
+Definition at line 329 of file translate\&.cc\&.
+.SS "char AddrSpaceManager::assignShortcut (\fBspacetype\fP tp) const"
+
+.PP
+Select a shortcut character for a new space\&. Assign a \fIshortcut\fP character to an address space This routine makes use of the desired type of the new space and info about shortcuts for spaces that already exist to pick a unique and consistent character\&. This is currently invoked by the \fBAddrSpace\fP initialization process\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is the type of the new space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the shortcut character 
+.RE
+.PP
+
+.PP
+Definition at line 377 of file translate\&.cc\&.
+.SS "\fBAddress\fP AddrSpaceManager::constructFloatExtensionAddress (const \fBAddress\fP & realaddr, int4 realsize, int4 logicalsize)"
+
+.PP
+Build a logically lower precision storage location for a bigger floating point register\&. This handles the situation where we need to find a logical address to hold the lower precision floating-point value that is stored in a bigger register If the logicalsize (precision) requested matches the -realsize- of the register just return the real address\&. Otherwise construct a join address to hold the logical value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrealaddr\fP is the address of the real floating-point register 
+.br
+\fIrealsize\fP is the size of the real floating-point register 
+.br
+\fIlogicalsize\fP is the size (lower precision) size of the logical value 
+.RE
+.PP
+
+.PP
+Definition at line 587 of file translate\&.cc\&.
+.SS "\fBAddress\fP AddrSpaceManager::constructJoinAddress (const \fBTranslate\fP * translate, const \fBAddress\fP & hiaddr, int4 hisz, const \fBAddress\fP & loaddr, int4 losz)"
+
+.PP
+Build a logical whole from register pairs\&. This handles the common case, of trying to find a join address given a high location and a low location\&. This may not return an address in the \fIjoin\fP address space\&. It checks for the case where the two pieces are contiguous locations in a mappable space, in which case it just returns the containing address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItranslate\fP is the \fBTranslate\fP object used to find registers 
+.br
+\fIhiaddr\fP is the address of the most significant piece to be joined 
+.br
+\fIhisz\fP is the size of the most significant piece 
+.br
+\fIloaddr\fP is the address of the least significant piece 
+.br
+\fIlosz\fP is the size of the least significant piece 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an address representing the start of the joined range 
+.RE
+.PP
+
+.PP
+Definition at line 612 of file translate\&.cc\&.
+.SS "void AddrSpaceManager::copySpaces (const \fBAddrSpaceManager\fP * op2)\fC [protected]\fP"
+
+.PP
+Copy spaces from another manager\&. Different managers may need to share the same spaces\&. I\&.e\&. if different programs being analyzed share the same processor\&. This routine pulls in a reference of every space in -op2- in order to manage it from within -this- 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is a pointer to space manager being copied 
+.RE
+.PP
+
+.PP
+Definition at line 316 of file translate\&.cc\&.
+.SS "\fBAddress\fP AddrSpaceManager::createConstFromSpace (\fBAddrSpace\fP * spc) const\fC [inline]\fP"
+
+.PP
+Create a constant address encoding an address space\&. This routine is used to encode a pointer to an address space as a \fIconstant\fP \fBAddress\fP, for use in \fBLOAD\fP and \fBSTORE\fP operations\&. This is used internally and is slightly more efficient than storing the formal index of the space param spc is the space pointer to be encoded 
+.PP
+\fBReturns:\fP
+.RS 4
+the encoded \fBAddress\fP 
+.RE
+.PP
+
+.PP
+Definition at line 502 of file translate\&.hh\&.
+.SS "\fBJoinRecord\fP * AddrSpaceManager::findAddJoin (const vector< \fBVarnodeData\fP > & pieces, uint4 logicalsize)"
+
+.PP
+Get (or create) \fBJoinRecord\fP for \fIpieces\fP\&. Given a list of memory locations, the \fIpieces\fP, either find a pre-existing \fBJoinRecord\fP or create a \fBJoinRecord\fP that represents the logical joining of the pieces\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpieces\fP if the list memory locations to be joined 
+.br
+\fIlogicalsize\fP of a \fIsingle\fP \fIpiece\fP join, or zero 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBJoinRecord\fP 
+.RE
+.PP
+
+.PP
+Definition at line 490 of file translate\&.cc\&.
+.SS "\fBJoinRecord\fP * AddrSpaceManager::findJoin (\fBuintb\fP offset) const"
+
+.PP
+Find \fBJoinRecord\fP for \fIoffset\fP in the join space\&. Given a specific \fIoffset\fP into the \fIjoin\fP address space, recover the \fBJoinRecord\fP that lists the pieces corresponding to that offset\&. The offset must originally have come from a \fBJoinRecord\fP returned by \fBfindAddJoin\fP, otherwise this method throws an exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is an offset into the join space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBJoinRecord\fP for that offset 
+.RE
+.PP
+
+.PP
+Definition at line 541 of file translate\&.cc\&.
+.SS "\fBAddress\fP AddrSpaceManager::getConstant (\fBuintb\fP val) const\fC [inline]\fP"
+
+.PP
+Get a constant encoded as an \fBAddress\fP\&. This routine encodes a specific value as a \fIconstant\fP address\&. I\&.e\&. the address space of the resulting \fBAddress\fP will be the \fBconstant\fP space, and the offset will be the value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the constant value to encode 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fIconstant\fP address 
+.RE
+.PP
+
+.PP
+Definition at line 492 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getConstantSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the constant space\&. Pcode represents constant values within an operation as offsets within a special \fIconstant\fP address space\&. (See \fBConstantSpace\fP) 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBconstant\fP space 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file translate\&.hh\&.
+.SS "int4 AddrSpaceManager::getDefaultSize (void) const\fC [inline]\fP"
+
+.PP
+Get size of addresses for the default space\&. Return the size of addresses for the processor's official default space\&. This space is usually the main RAM databus\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the size of an address in bytes 
+.RE
+.PP
+
+.PP
+Definition at line 417 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getDefaultSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the default address space of this processor\&. Most processors have a main address bus, on which the bulk of the processor's RAM is mapped\&. Everything referenced with this address bus should be modeled in pcode with a single address space, referred to as the \fIdefault\fP space\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fIdefault\fP space 
+.RE
+.PP
+
+.PP
+Definition at line 474 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getFspecSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the internal callspec space\&. There is a special address space reserved for encoding pointers to the \fBFuncCallSpecs\fP object as addresses\&. This allows direct pointers to be \fIhidden\fP within an operation, when manipulating pcode internally\&. (See \fBFspecSpace\fP) 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the address space 
+.RE
+.PP
+
+.PP
+Definition at line 435 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getIopSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the internal pcode op space\&. There is a special address space reserved for encoding pointers to pcode operations as addresses\&. This allows a direct pointer to be \fIhidden\fP within an operation, when manipulating pcode internally\&. (See \fBIopSpace\fP) 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the address space 
+.RE
+.PP
+
+.PP
+Definition at line 426 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getJoinSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the joining space\&. There is a special address space reserved for providing a logical contiguous memory location for variables that are really split between two physical locations\&. This allows the the decompiler to work with the logical value\&. (See \fBJoinSpace\fP) 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the address space 
+.RE
+.PP
+
+.PP
+Definition at line 444 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getNextSpaceInOrder (\fBAddrSpace\fP * spc) const"
+
+.PP
+Get the next \fIcontiguous\fP address space\&. Get the next space in the absolute order of addresses\&. This ordering is determined by the \fBAddrSpace\fP index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the pointer to the space being queried 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the pointer to the next space in absolute order 
+.RE
+.PP
+
+.PP
+Definition at line 470 of file translate\&.cc\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getSpace (int4 i) const\fC [inline]\fP"
+
+.PP
+Get an address space via its index\&. This retrieves a specific address space via its formal index\&. All spaces have an index, and in conjunction with the numSpaces method, this method can be used to iterate over all spaces\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index of the address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the desired space 
+.RE
+.PP
+
+.PP
+Definition at line 519 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getSpaceByName (const string & nm) const"
+
+.PP
+Get address space by name\&. All address spaces have a unique name associated with them\&. This routine retrieves the \fBAddrSpace\fP object based on the desired name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBAddrSpace\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 429 of file translate\&.cc\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getSpaceByShortcut (char sc) const"
+
+.PP
+Get address space from its shortcut\&. All address spaces have a unique shortcut (ASCII) character assigned to them\&. This routine retrieves an \fBAddrSpace\fP object given a specific shortcut\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsc\fP is the shortcut character 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to an \fBAddrSpace\fP 
+.RE
+.PP
+
+.PP
+Definition at line 443 of file translate\&.cc\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getStackSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the stack space for this processor\&. Most processors have registers and instructions that are reserved for implementing a stack\&. In the pcode translation, these are translated into locations and operations on a dedicated \fBstack\fP address space\&. (See \fBSpacebaseSpace\fP) 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBstack\fP space 
+.RE
+.PP
+
+.PP
+Definition at line 453 of file translate\&.hh\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::getUniqueSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the temporary register space for this processor\&. Both the pcode translation process and the simplification process need access to a pool of temporary registers that can be used for moving data around without affecting the address spaces used to formally model the processor's RAM and registers\&. These temporary locations are all allocated from a dedicated address space, referred to as the \fBunique\fP space\&. (See \fBUniqueSpace\fP) 
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the \fBunique\fP space 
+.RE
+.PP
+
+.PP
+Definition at line 465 of file translate\&.hh\&.
+.SS "void AddrSpaceManager::insertResolver (\fBAddrSpace\fP * spc, \fBAddressResolver\fP * rsolv)\fC [protected]\fP"
+
+.PP
+\fBOverride\fP the base resolver for a space\&. Provide a new specialized resolver for a specific \fBAddrSpace\fP\&. The manager takes ownership of resolver\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the space to which the resolver is associated 
+.br
+\fIrsolv\fP is the new resolver object 
+.RE
+.PP
+
+.PP
+Definition at line 338 of file translate\&.cc\&.
+.SS "void AddrSpaceManager::insertSpace (\fBAddrSpace\fP * spc)\fC [protected]\fP"
+
+.PP
+Add a new address space to the model\&. This adds a previously instantiated address space (\fBAddrSpace\fP) to the model for this processor\&. It checks a set of indexing and naming conventions for the space and throws an exception if the conventions are violated\&. Should only be called during initialization\&. 
+.PP
+\fBTodo\fP
+.RS 4
+This really shouldn't be public\&. Need to move the allocation of \fBiop\fP, \fBfspec\fP, and \fBjoin\fP out of \fBArchitecture\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP the address space to insert 
+.RE
+.PP
+
+.PP
+Definition at line 244 of file translate\&.cc\&.
+.SS "int4 AddrSpaceManager::numSpaces (void) const\fC [inline]\fP"
+
+.PP
+Get the number of address spaces for this processor\&. This returns the total number of address spaces used by the processor, including all special spaces, like the \fBconstant\fP space and the \fBiop\fP space\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of spaces 
+.RE
+.PP
+
+.PP
+Definition at line 510 of file translate\&.hh\&.
+.SS "\fBAddress\fP AddrSpaceManager::resolveConstant (\fBAddrSpace\fP * spc, \fBuintb\fP val, int4 sz, const \fBAddress\fP & point) const"
+
+.PP
+Resolve native constant to address\&. 
+.PP
+Definition at line 452 of file translate\&.cc\&.
+.SS "\fBAddrSpace\fP * AddrSpaceManager::restoreXmlSpace (const \fBElement\fP * el, const \fBTranslate\fP * trans)\fC [protected]\fP"
+
+.PP
+Add a space to the model based an on XML tag\&. The initialization of address spaces is the same across all variants of the \fBTranslate\fP object\&. This routine initializes a single address space from a parsed XML tag\&. It knows which class derived from \fBAddrSpace\fP to instantiate based on the tag name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML tag 
+.br
+\fItrans\fP is the translator object to be associated with the new space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the initialized \fBAddrSpace\fP 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file translate\&.cc\&.
+.SS "void AddrSpaceManager::restoreXmlSpaces (const \fBElement\fP * el, const \fBTranslate\fP * trans)\fC [protected]\fP"
+
+.PP
+Restore address spaces in the model from an XML tag\&. This routine initializes (almost) all the address spaces used for a particular processor by using a \fB<spaces>\fP tag, which contains subtags for the specific address spaces\&. This also instantiates the builtin \fIconstant\fP space\&. It should probably also instantiate the \fBiop\fP, \fBfspec\fP, and \fBjoin\fP spaces, but this is currently done by the \fBArchitecture\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed \fB<spaces>\fP tag 
+.br
+\fItrans\fP is the processor translator to be associated with the spaces 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file translate\&.cc\&.
+.SS "void AddrSpaceManager::setDeadcodeDelay (int4 spcnum, int4 delaydelta)"
+
+.PP
+Set the deadcodedelay for a specific space\&. Set the number of passes for a specific \fBAddrSpace\fP before deadcode removal is allowed for that space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspcnum\fP is the index of the \fBAddrSpace\fP to change 
+.br
+\fIdelaydelta\fP is the number of rounds to the delay should be set to 
+.RE
+.PP
+
+.PP
+Definition at line 563 of file translate\&.cc\&.
+.SS "void AddrSpaceManager::setDefaultSpace (int4 index)\fC [protected]\fP"
+
+.PP
+Set the default address space\&. Once all the address spaces have been initialized, this routine should be called once to establish the official \fIdefault\fP space for the processor, via its index\&. Should only be called during initialization\&. 
+.PP
+\fBTodo\fP
+.RS 4
+This really shouldn't be public 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP is the index of the desired default space 
+.RE
+.PP
+
+.PP
+Definition at line 215 of file translate\&.cc\&.
+.SS "void AddrSpaceManager::setReverseJustified (\fBAddrSpace\fP * spc)\fC [protected]\fP"
+
+.PP
+Set reverse justified property on this space\&. For spaces with alignment restrictions, the address of a small variable must be justified within a larger aligned memory word, usually either to the left boundary for little endian encoding or to the right boundary for big endian encoding\&. Some compilers justify small variables to the opposite side of the one indicated by the endianness\&. Setting this property on a space causes the decompiler to use this justification 
+.PP
+Definition at line 230 of file translate\&.cc\&.
+.SS "void AddrSpaceManager::truncateSpace (const \fBTruncationTag\fP & tag)"
+
+.PP
+Mark a space as truncated from its original size\&. Mark the named space as truncated from its original size 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItag\fP is a description of the space and how it should be truncated 
+.RE
+.PP
+
+.PP
+Definition at line 571 of file translate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

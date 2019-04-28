@@ -1,0 +1,155 @@
+.TH "ContextPattern" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextPattern
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpattern\&.hh>\fP
+.PP
+Inherits \fBDisjointPattern\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBContextPattern\fP (void)"
+.br
+.ti -1c
+.RI "\fBContextPattern\fP (\fBPatternBlock\fP *mv)"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP * \fBgetBlock\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~ContextPattern\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBsimplifyClone\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBshiftInstruction\fP (int4 sa)"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoOr\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoAnd\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBcommonSubPattern\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual bool \fBisMatch\fP (\fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysTrue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysFalse\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysInstructionTrue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 105 of file slghpattern\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ContextPattern::ContextPattern (void)\fC [inline]\fP"
+
+.PP
+Definition at line 109 of file slghpattern\&.hh\&.
+.SS "ContextPattern::ContextPattern (\fBPatternBlock\fP * mv)\fC [inline]\fP"
+
+.PP
+Definition at line 110 of file slghpattern\&.hh\&.
+.SS "virtual ContextPattern::~ContextPattern (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 112 of file slghpattern\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool ContextPattern::alwaysFalse (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 120 of file slghpattern\&.hh\&.
+.SS "virtual bool ContextPattern::alwaysInstructionTrue (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 121 of file slghpattern\&.hh\&.
+.SS "virtual bool ContextPattern::alwaysTrue (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 119 of file slghpattern\&.hh\&.
+.SS "\fBPattern\fP * ContextPattern::commonSubPattern (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 663 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * ContextPattern::doAnd (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 652 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * ContextPattern::doOr (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 642 of file slghpattern\&.cc\&.
+.SS "\fBPatternBlock\fP* ContextPattern::getBlock (void)\fC [inline]\fP"
+
+.PP
+Definition at line 111 of file slghpattern\&.hh\&.
+.SS "virtual bool ContextPattern::isMatch (\fBParserWalker\fP & walker) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 118 of file slghpattern\&.hh\&.
+.SS "void ContextPattern::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 682 of file slghpattern\&.cc\&.
+.SS "void ContextPattern::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 674 of file slghpattern\&.cc\&.
+.SS "virtual void ContextPattern::shiftInstruction (int4 sa)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 114 of file slghpattern\&.hh\&.
+.SS "virtual \fBPattern\fP* ContextPattern::simplifyClone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 113 of file slghpattern\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

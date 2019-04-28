@@ -1,0 +1,103 @@
+.TH "PriorityQueue" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PriorityQueue \- Priority queue for the phi-node (MULTIEQUAL) placement algorithm\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <heritage\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPriorityQueue\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBreset\fP (int4 maxdepth)"
+.br
+.RI "Reset to an empty queue\&. "
+.ti -1c
+.RI "void \fBinsert\fP (\fBFlowBlock\fP *bl, int4 depth)"
+.br
+.RI "Insert a block into the queue given its priority\&. "
+.ti -1c
+.RI "\fBFlowBlock\fP * \fBextract\fP (void)"
+.br
+.RI "Retrieve the highest priority block\&. "
+.ti -1c
+.RI "bool \fBempty\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP queue is empty\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Priority queue for the phi-node (MULTIEQUAL) placement algorithm\&. 
+
+A \fIwork-list\fP for basic blocks used during phi-node placement\&. Implemented as a set of stacks with an associated priority\&. Blocks are placed in the \fIqueue\fP with an associated \fIpriority\fP (or depth) using the \fBinsert()\fP method\&. The current highest priority block is retrieved with the \fBextract()\fP method\&. 
+.PP
+Definition at line 64 of file heritage\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PriorityQueue::PriorityQueue (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 68 of file heritage\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool PriorityQueue::empty (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP queue is empty\&. 
+.PP
+Definition at line 72 of file heritage\&.hh\&.
+.SS "\fBFlowBlock\fP * PriorityQueue::extract (void)"
+
+.PP
+Retrieve the highest priority block\&. The block at the top of the highest priority non-empty stack is popped and returned\&. This will always return a block\&. It shouldn't be called if the queue is empty\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the highest priority block 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file heritage\&.cc\&.
+.SS "void PriorityQueue::insert (\fBFlowBlock\fP * bl, int4 depth)"
+
+.PP
+Insert a block into the queue given its priority\&. The block is pushed onto the stack of the given priority\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbl\fP is the block being added to the queue 
+.br
+\fIdepth\fP is the priority to associate with the block 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file heritage\&.cc\&.
+.SS "void PriorityQueue::reset (int4 maxdepth)"
+
+.PP
+Reset to an empty queue\&. Any basic blocks currently in \fBthis\fP queue are removed\&. Space is reserved for a new set of prioritized stacks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxdepth\fP is the number of stacks to allocate 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file heritage\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

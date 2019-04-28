@@ -1,0 +1,547 @@
+.TH "Symbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Symbol \- The base class for a symbol in a symbol table or scope\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBforce_hex\fP = 1, \fBforce_dec\fP = 2, \fBforce_oct\fP = 3, \fBforce_bin\fP = 4, \fBforce_char\fP = 5, \fBsize_typelock\fP = 8 }"
+.br
+.RI "Possible display (dispflag) properties for a \fBSymbol\fP\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSymbol\fP (\fBScope\fP *sc, const string &nm, \fBDatatype\fP *ct)"
+.br
+.RI "Construct given a name and data-type\&. "
+.ti -1c
+.RI "\fBSymbol\fP (\fBScope\fP *sc)"
+.br
+.RI "Construct for use with \fBrestoreXml()\fP "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the local name of the symbol\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetType\fP (void) const"
+.br
+.RI "Get the data-type\&. "
+.ti -1c
+.RI "uint4 \fBgetId\fP (void) const"
+.br
+.RI "Get a unique id for the symbol\&. "
+.ti -1c
+.RI "uint4 \fBgetFlags\fP (void) const"
+.br
+.RI "Get the boolean properties of the \fBSymbol\fP\&. "
+.ti -1c
+.RI "uint4 \fBgetDisplayFormat\fP (void) const"
+.br
+.RI "Get the format to display the \fBSymbol\fP in\&. "
+.ti -1c
+.RI "int2 \fBgetCategory\fP (void) const"
+.br
+.RI "Get the \fBSymbol\fP category\&. "
+.ti -1c
+.RI "uint2 \fBgetCategoryIndex\fP (void) const"
+.br
+.RI "Get the position of the \fBSymbol\fP within its category\&. "
+.ti -1c
+.RI "bool \fBisTypeLocked\fP (void) const"
+.br
+.RI "Is the \fBSymbol\fP type-locked\&. "
+.ti -1c
+.RI "bool \fBisNameLocked\fP (void) const"
+.br
+.RI "Is the \fBSymbol\fP name-locked\&. "
+.ti -1c
+.RI "bool \fBisSizeTypeLocked\fP (void) const"
+.br
+.RI "Is the \fBSymbol\fP size type-locked\&. "
+.ti -1c
+.RI "bool \fBisIndirectStorage\fP (void) const"
+.br
+.RI "Is storage really a pointer to the true \fBSymbol\fP\&. "
+.ti -1c
+.RI "bool \fBisHiddenReturn\fP (void) const"
+.br
+.RI "Is this a reference to the function return value\&. "
+.ti -1c
+.RI "bool \fBisNameUndefined\fP (void) const"
+.br
+.RI "Does \fBthis\fP have an undefined name\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBgetScope\fP (void) const"
+.br
+.RI "Get the scope owning \fBthis\fP \fBSymbol\fP\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBgetFirstWholeMap\fP (void) const"
+.br
+.RI "Get the first entire mapping of the symbol\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBgetMapEntry\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Get first mapping of the symbol that contains the given \fBAddress\fP\&. "
+.ti -1c
+.RI "void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.RI "Save basic \fBSymbol\fP properties as XML attributes\&. "
+.ti -1c
+.RI "void \fBrestoreXmlHeader\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore basic \fBSymbol\fP properties from XML\&. "
+.ti -1c
+.RI "void \fBsaveXmlBody\fP (ostream &s) const"
+.br
+.RI "Save details of the \fBSymbol\fP to XML\&. "
+.ti -1c
+.RI "void \fBrestoreXmlBody\fP (List::const_iterator iter)"
+.br
+.RI "Restore details of the \fBSymbol\fP from XML\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save \fBthis\fP \fBSymbol\fP to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP \fBSymbol\fP from an XML stream\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~Symbol\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetDisplayFormat\fP (uint4 val)"
+.br
+.RI "Set the display format for \fBthis\fP \fBSymbol\fP\&. "
+.ti -1c
+.RI "void \fBcheckSizeTypeLock\fP (void)"
+.br
+.RI "Calculate if \fBsize_typelock\fP property is on\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBScope\fP * \fBscope\fP"
+.br
+.RI "The scope that owns this symbol\&. "
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "The local name of the symbol\&. "
+.ti -1c
+.RI "uint4 \fBnameDedup\fP"
+.br
+.RI "id to distinguish symbols with the same name "
+.ti -1c
+.RI "\fBDatatype\fP * \fBtype\fP"
+.br
+.RI "The symbol's data-type\&. "
+.ti -1c
+.RI "uint4 \fBflags\fP"
+.br
+.RI "Varnode-like properties of the symbol\&. "
+.ti -1c
+.RI "uint4 \fBdispflags\fP"
+.br
+.RI "Flags affecting the display of this symbol\&. "
+.ti -1c
+.RI "int2 \fBcategory\fP"
+.br
+.RI "Special category (-1==none 0=parameter 1=equate) "
+.ti -1c
+.RI "uint2 \fBcatindex\fP"
+.br
+.RI "Index within category\&. "
+.ti -1c
+.RI "vector< list< \fBSymbolEntry\fP >::iterator > \fBmapentry\fP"
+.br
+.RI "List of storage locations labeled with \fBthis\fP \fBSymbol\fP\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScope\fP"
+.br
+.ti -1c
+.RI "class \fBScopeInternal\fP"
+.br
+.ti -1c
+.RI "class \fBSymbolCompareName\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base class for a symbol in a symbol table or scope\&. 
+
+At its most basic, a \fBSymbol\fP is a \fBname\fP and a \fBdata-type\fP\&. Practically a \fBSymbol\fP knows what \fBScope\fP its in, how it should be displayed, and the symbols \fIcategory\fP\&. A category is a subset of symbols that are stored together for quick access\&. The \fBcategory\fP field can be:
+.IP "\(bu" 2
+-1 for no category
+.IP "\(bu" 2
+0 indicates a function parameter
+.IP "\(bu" 2
+1 indicates an equate symbol 
+.PP
+
+.PP
+Definition at line 153 of file database\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+Possible display (dispflag) properties for a \fBSymbol\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIforce_hex \fP\fP
+Force hexadecimal printing of constant symbol\&. 
+.TP
+\fB\fIforce_dec \fP\fP
+Force decimal printing of constant symbol\&. 
+.TP
+\fB\fIforce_oct \fP\fP
+Force octal printing of constant symbol\&. 
+.TP
+\fB\fIforce_bin \fP\fP
+Force binary printing of constant symbol\&. 
+.TP
+\fB\fIforce_char \fP\fP
+Force integer to be printed as a character constant\&. 
+.TP
+\fB\fIsize_typelock \fP\fP
+Only the size of the symbol is typelocked\&. 
+.PP
+Definition at line 174 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Symbol::~Symbol (void)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 169 of file database\&.hh\&.
+.SS "Symbol::Symbol (\fBScope\fP * sc, const string & nm, \fBDatatype\fP * ct)\fC [inline]\fP"
+
+.PP
+Construct given a name and data-type\&. 
+.PP
+Definition at line 183 of file database\&.hh\&.
+.SS "Symbol::Symbol (\fBScope\fP * sc)\fC [inline]\fP"
+
+.PP
+Construct for use with \fBrestoreXml()\fP 
+.PP
+Definition at line 187 of file database\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Symbol::checkSizeTypeLock (void)\fC [protected]\fP"
+
+.PP
+Calculate if \fBsize_typelock\fP property is on\&. Examine the data-type to decide if the \fBSymbol\fP has the special property called \fBsize_typelock\fP, which indicates the \fIsize\fP of the \fBSymbol\fP is locked, but the data-type is not locked (and can float) 
+.PP
+Definition at line 225 of file database\&.cc\&.
+.SS "int2 Symbol::getCategory (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBSymbol\fP category\&. 
+.PP
+Definition at line 194 of file database\&.hh\&.
+.SS "uint2 Symbol::getCategoryIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the position of the \fBSymbol\fP within its category\&. 
+.PP
+Definition at line 195 of file database\&.hh\&.
+.SS "uint4 Symbol::getDisplayFormat (void) const\fC [inline]\fP"
+
+.PP
+Get the format to display the \fBSymbol\fP in\&. 
+.PP
+Definition at line 193 of file database\&.hh\&.
+.SS "\fBSymbolEntry\fP * Symbol::getFirstWholeMap (void) const"
+
+.PP
+Get the first entire mapping of the symbol\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the first \fBSymbolEntry\fP 
+.RE
+.PP
+
+.PP
+Definition at line 242 of file database\&.cc\&.
+.SS "uint4 Symbol::getFlags (void) const\fC [inline]\fP"
+
+.PP
+Get the boolean properties of the \fBSymbol\fP\&. 
+.PP
+Definition at line 192 of file database\&.hh\&.
+.SS "uint4 Symbol::getId (void) const\fC [inline]\fP"
+
+.PP
+Get a unique id for the symbol\&. 
+.PP
+Definition at line 191 of file database\&.hh\&.
+.SS "\fBSymbolEntry\fP * Symbol::getMapEntry (const \fBAddress\fP & addr) const"
+
+.PP
+Get first mapping of the symbol that contains the given \fBAddress\fP\&. This method may return a \fIpartial\fP entry, where the \fBSymbolEntry\fP is only holding part of the whole \fBSymbol\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is an address within the desired storage location of the \fBSymbol\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the first matching \fBSymbolEntry\fP 
+.RE
+.PP
+
+.PP
+Definition at line 254 of file database\&.cc\&.
+.SS "const string& Symbol::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the local name of the symbol\&. 
+.PP
+Definition at line 189 of file database\&.hh\&.
+.SS "\fBScope\fP* Symbol::getScope (void) const\fC [inline]\fP"
+
+.PP
+Get the scope owning \fBthis\fP \fBSymbol\fP\&. 
+.PP
+Definition at line 202 of file database\&.hh\&.
+.SS "\fBDatatype\fP* Symbol::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the data-type\&. 
+.PP
+Definition at line 190 of file database\&.hh\&.
+.SS "bool Symbol::isHiddenReturn (void) const\fC [inline]\fP"
+
+.PP
+Is this a reference to the function return value\&. 
+.PP
+Definition at line 200 of file database\&.hh\&.
+.SS "bool Symbol::isIndirectStorage (void) const\fC [inline]\fP"
+
+.PP
+Is storage really a pointer to the true \fBSymbol\fP\&. 
+.PP
+Definition at line 199 of file database\&.hh\&.
+.SS "bool Symbol::isNameLocked (void) const\fC [inline]\fP"
+
+.PP
+Is the \fBSymbol\fP name-locked\&. 
+.PP
+Definition at line 197 of file database\&.hh\&.
+.SS "bool Symbol::isNameUndefined (void) const"
+
+.PP
+Does \fBthis\fP have an undefined name\&. The name for a \fBSymbol\fP can be unspecified\&. See \fBScopeInternal::buildUndefinedName\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the name of \fBthis\fP is undefined 
+.RE
+.PP
+
+.PP
+Definition at line 235 of file database\&.cc\&.
+.SS "bool Symbol::isSizeTypeLocked (void) const\fC [inline]\fP"
+
+.PP
+Is the \fBSymbol\fP size type-locked\&. 
+.PP
+Definition at line 198 of file database\&.hh\&.
+.SS "bool Symbol::isTypeLocked (void) const\fC [inline]\fP"
+
+.PP
+Is the \fBSymbol\fP type-locked\&. 
+.PP
+Definition at line 196 of file database\&.hh\&.
+.SS "void Symbol::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore \fBthis\fP \fBSymbol\fP from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root XML tag of the symbol 
+.RE
+.PP
+
+.PP
+Definition at line 400 of file database\&.cc\&.
+.SS "void Symbol::restoreXmlBody (List::const_iterator iter)"
+
+.PP
+Restore details of the \fBSymbol\fP from XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiter\fP iterates over XML children of the root <symbol> tag 
+.RE
+.PP
+
+.PP
+Definition at line 380 of file database\&.cc\&.
+.SS "void Symbol::restoreXmlHeader (const \fBElement\fP * el)"
+
+.PP
+Restore basic \fBSymbol\fP properties from XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML <symbol> element 
+.RE
+.PP
+
+.PP
+Definition at line 311 of file database\&.cc\&.
+.SS "void Symbol::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save \fBthis\fP \fBSymbol\fP to an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 389 of file database\&.cc\&.
+.SS "void Symbol::saveXmlBody (ostream & s) const"
+
+.PP
+Save details of the \fBSymbol\fP to XML\&. Save the data-type for the \fBSymbol\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 373 of file database\&.cc\&.
+.SS "void Symbol::saveXmlHeader (ostream & s) const"
+
+.PP
+Save basic \fBSymbol\fP properties as XML attributes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 272 of file database\&.cc\&.
+.SS "void Symbol::setDisplayFormat (uint4 val)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Set the display format for \fBthis\fP \fBSymbol\fP\&. Force a specific display format for constant symbols 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the format: force_hex, force_dec, force_oct, etc\&. 
+.RE
+.PP
+
+.PP
+Definition at line 215 of file database\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBScope\fP\fC [friend]\fP"
+
+.PP
+Definition at line 154 of file database\&.hh\&.
+.SS "friend class \fBScopeInternal\fP\fC [friend]\fP"
+
+.PP
+Definition at line 155 of file database\&.hh\&.
+.SS "friend class \fBSymbolCompareName\fP\fC [friend]\fP"
+
+.PP
+Definition at line 156 of file database\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int2 Symbol::category\fC [protected]\fP"
+
+.PP
+Special category (-1==none 0=parameter 1=equate) 
+.PP
+Definition at line 166 of file database\&.hh\&.
+.SS "uint2 Symbol::catindex\fC [protected]\fP"
+
+.PP
+Index within category\&. 
+.PP
+Definition at line 167 of file database\&.hh\&.
+.SS "uint4 Symbol::dispflags\fC [protected]\fP"
+
+.PP
+Flags affecting the display of this symbol\&. 
+.PP
+Definition at line 165 of file database\&.hh\&.
+.SS "uint4 Symbol::flags\fC [protected]\fP"
+
+.PP
+Varnode-like properties of the symbol\&. 
+.PP
+Definition at line 162 of file database\&.hh\&.
+.SS "vector<list<\fBSymbolEntry\fP>::iterator> Symbol::mapentry\fC [protected]\fP"
+
+.PP
+List of storage locations labeled with \fBthis\fP \fBSymbol\fP\&. 
+.PP
+Definition at line 168 of file database\&.hh\&.
+.SS "string Symbol::name\fC [protected]\fP"
+
+.PP
+The local name of the symbol\&. 
+.PP
+Definition at line 159 of file database\&.hh\&.
+.SS "uint4 Symbol::nameDedup\fC [protected]\fP"
+
+.PP
+id to distinguish symbols with the same name 
+.PP
+Definition at line 160 of file database\&.hh\&.
+.SS "\fBScope\fP* Symbol::scope\fC [protected]\fP"
+
+.PP
+The scope that owns this symbol\&. 
+.PP
+Definition at line 158 of file database\&.hh\&.
+.SS "\fBDatatype\fP* Symbol::type\fC [protected]\fP"
+
+.PP
+The symbol's data-type\&. 
+.PP
+Definition at line 161 of file database\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

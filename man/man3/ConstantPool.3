@@ -1,0 +1,169 @@
+.TH "ConstantPool" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConstantPool \- An interface to the pool of \fBconstant\fP objects for byte-code languages\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cpool\&.hh>\fP
+.PP
+Inherited by \fBConstantPoolGhidra\fP, and \fBConstantPoolInternal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~ConstantPool\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual const \fBCPoolRecord\fP * \fBgetRecord\fP (const vector< \fBuintb\fP > &refs) const =0"
+.br
+.RI "Retrieve a constant pool record (\fBCPoolRecord\fP) given a \fIreference\fP to it\&. "
+.ti -1c
+.RI "void \fBputRecord\fP (const vector< \fBuintb\fP > &refs, uint4 tag, const string &tok, \fBDatatype\fP *ct)"
+.br
+.RI "A a new constant pool record to \fBthis\fP database\&. "
+.ti -1c
+.RI "const \fBCPoolRecord\fP * \fBrestoreXmlRecord\fP (const vector< \fBuintb\fP > &refs, const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore a \fBCPoolRecord\fP given a \fIreference\fP and an XML stream\&. "
+.ti -1c
+.RI "virtual bool \fBempty\fP (void) const =0"
+.br
+.RI "Is the container empty of records\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)=0"
+.br
+.RI "Release any (local) resources\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.RI "Save all records in this container to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)=0"
+.br
+.RI "Restore constant pool records from an XML stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An interface to the pool of \fBconstant\fP objects for byte-code languages\&. 
+
+This is an abstract base class that acts as a container for CPoolRecords\&. A \fIreference\fP (1 or more integer constants) maps to an individual \fBCPoolRecord\fP\&. A \fBCPoolRecord\fP object can be queried for using \fBgetRecord()\fP, and a new object can be added with \fBputRecord()\fP\&. Internally, the actual \fBCPoolRecord\fP object is produced by createRecord()\&. 
+.PP
+Definition at line 94 of file cpool\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual ConstantPool::~ConstantPool ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 103 of file cpool\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void ConstantPool::clear (void)\fC [pure virtual]\fP"
+
+.PP
+Release any (local) resources\&. 
+.PP
+Implemented in \fBConstantPoolInternal\fP, and \fBConstantPoolGhidra\fP\&.
+.SS "virtual bool ConstantPool::empty (void) const\fC [pure virtual]\fP"
+
+.PP
+Is the container empty of records\&. 
+.PP
+Implemented in \fBConstantPoolInternal\fP, and \fBConstantPoolGhidra\fP\&.
+.SS "virtual const \fBCPoolRecord\fP* ConstantPool::getRecord (const vector< \fBuintb\fP > & refs) const\fC [pure virtual]\fP"
+
+.PP
+Retrieve a constant pool record (\fBCPoolRecord\fP) given a \fIreference\fP to it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrefs\fP is the \fIreference\fP (made up of 1 or more identifying integers) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBCPoolRecord\fP or NULL if none matches the reference 
+.RE
+.PP
+
+.PP
+Implemented in \fBConstantPoolInternal\fP, and \fBConstantPoolGhidra\fP\&.
+.SS "void ConstantPool::putRecord (const vector< \fBuintb\fP > & refs, uint4 tag, const string & tok, \fBDatatype\fP * ct)"
+
+.PP
+A a new constant pool record to \fBthis\fP database\&. Given the basic constituents of the record, type, name, and data-type, create a new \fBCPoolRecord\fP object and associate it with the given \fIreference\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrefs\fP is the \fIreference\fP (made up of 1 or more identifying integers) 
+.br
+\fItag\fP is the type of record to create 
+.br
+\fItok\fP is the name associated with the object 
+.br
+\fIct\fP is the data-type associated with the object 
+.RE
+.PP
+
+.PP
+Definition at line 157 of file cpool\&.cc\&.
+.SS "virtual void ConstantPool::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [pure virtual]\fP"
+
+.PP
+Restore constant pool records from an XML stream\&. (If supported) The container is populated with CPooLRecords initialized from a <constantpool> XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the \fBTypeFactory\fP used to resolve data-type references in the XML 
+.RE
+.PP
+
+.PP
+Implemented in \fBConstantPoolInternal\fP, and \fBConstantPoolGhidra\fP\&.
+.SS "const \fBCPoolRecord\fP * ConstantPool::restoreXmlRecord (const vector< \fBuintb\fP > & refs, const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)"
+
+.PP
+Restore a \fBCPoolRecord\fP given a \fIreference\fP and an XML stream\&. A <cpoolrec> element initializes the new record which is immediately associated with the \fIreference\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrefs\fP is the \fIreference\fP (made up of 1 or more identifying integers) 
+.br
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the \fBTypeFactory\fP used to resolve data-type references in XML 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated and initialized \fBCPoolRecord\fP 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file cpool\&.cc\&.
+.SS "virtual void ConstantPool::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Save all records in this container to an XML stream\&. (If supported) An <constantpool> element is written containing <cpoolrec> child elements for each \fBCPoolRecord\fP in the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implemented in \fBConstantPoolInternal\fP, and \fBConstantPoolGhidra\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

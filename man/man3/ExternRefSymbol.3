@@ -1,0 +1,87 @@
+.TH "ExternRefSymbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ExternRefSymbol \- A function \fBSymbol\fP referring to an external location\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.PP
+Inherits Symbol\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExternRefSymbol\fP (\fBScope\fP *sc, const \fBAddress\fP &ref, const string &nm)"
+.br
+.RI "Construct given a \fIplaceholder\fP address\&. "
+.ti -1c
+.RI "\fBExternRefSymbol\fP (\fBScope\fP *sc)"
+.br
+.RI "For use with restoreXml\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetRefAddr\fP (void) const"
+.br
+.RI "Return the \fIplaceholder\fP address\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A function \fBSymbol\fP referring to an external location\&. 
+
+This \fBSymbol\fP is intended to label functions that have not been mapped directly into the image being analyzed\&. It holds a level of indirection between the address the image expects the symbol to be at and a \fBplaceholder\fP address the system hangs meta-data on\&. 
+.PP
+Definition at line 279 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ExternRefSymbol::ExternRefSymbol (\fBScope\fP * sc, const \fBAddress\fP & ref, const string & nm)"
+
+.PP
+Construct given a \fIplaceholder\fP address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsc\fP is the \fBScope\fP containing the \fBSymbol\fP 
+.br
+\fIref\fP is the placeholder address where the system will hold meta-data 
+.br
+\fInm\fP is the name of the \fBSymbol\fP 
+.RE
+.PP
+
+.PP
+Definition at line 600 of file database\&.cc\&.
+.SS "ExternRefSymbol::ExternRefSymbol (\fBScope\fP * sc)\fC [inline]\fP"
+
+.PP
+For use with restoreXml\&. 
+.PP
+Definition at line 285 of file database\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBAddress\fP& ExternRefSymbol::getRefAddr (void) const\fC [inline]\fP"
+
+.PP
+Return the \fIplaceholder\fP address\&. 
+.PP
+Definition at line 286 of file database\&.hh\&.
+.SS "void ExternRefSymbol::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Definition at line 617 of file database\&.cc\&.
+.SS "void ExternRefSymbol::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Definition at line 607 of file database\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

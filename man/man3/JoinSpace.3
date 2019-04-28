@@ -1,0 +1,199 @@
+.TH "JoinSpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JoinSpace \- The pool of logically joined variables\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <space\&.hh>\fP
+.PP
+Inherits \fBAddrSpace\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJoinSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, const string &nm, int4 ind)"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXmlAttributes\fP (ostream &s, \fBuintb\fP offset, int4 size) const"
+.br
+.ti -1c
+.RI "virtual \fBuintb\fP \fBrestoreXmlAttributes\fP (const \fBElement\fP *el, uint4 &size) const"
+.br
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, \fBuintb\fP offset) const"
+.br
+.RI "Write an address in this space to a stream\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBread\fP (const string &s, int4 &size) const"
+.br
+.RI "Read in an address (and possible size) from a string\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write the details of this space as XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Recover the details of this space from XML\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The pool of logically joined variables\&. 
+
+Some logical variables are split across non-contiguous regions of memory\&. This space creates a virtual place for these logical variables to exist\&. Any memory location within this space is backed by 2 or more memory locations in other spaces that physically hold the pieces of the logical value\&. The database controlling symbols is responsible for keeping track of mapping the logical address in this space to its physical pieces\&. Offsets into this space do not have an absolute meaning, the database may vary what offset is assigned to what set of pieces\&. 
+.PP
+Definition at line 199 of file space\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JoinSpace::JoinSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, const string & nm, int4 ind)"
+This is the constructor for the \fBjoin\fP space, which is automatically constructed by the analysis engine, and constructed only once\&. The name should always be \fBjoin\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the associated address space manager 
+.br
+\fIt\fP is the associated processor translator 
+.br
+\fInm\fP is the name of the space 
+.br
+\fIind\fP is the integer identifier 
+.RE
+.PP
+
+.PP
+Definition at line 473 of file space\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void JoinSpace::printRaw (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+
+.PP
+Write an address in this space to a stream\&. This is a printing method for the debugging routines\&. It prints taking into account the \fIwordsize\fP, adding a '+n' if the offset is not on-cut with wordsize\&. It also returns the expected/typical size of values from this space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.br
+\fIoffset\fP is the offset to be printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 588 of file space\&.cc\&.
+.SS "\fBuintb\fP JoinSpace::read (const string & s, int4 & size) const\fC [virtual]\fP"
+
+.PP
+Read in an address (and possible size) from a string\&. For the console mode, an address space can tailor how it converts user strings into offsets within the space\&. The base routine can read and convert register names as well as absolute hex addresses\&. A size can be indicated by appending a ':' and integer, \&.i\&.e\&. 0x1000:2\&. Offsets within a register can be indicated by appending a '+' and integer, i\&.e\&. eax+2 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the string to be parsed 
+.br
+\fIsize\fP is a reference to the size being returned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the parsed offset 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 609 of file space\&.cc\&.
+.SS "void JoinSpace::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Recover the details of this space from XML\&. Walk a parsed XML tag and recover all the properties defining this space\&. The processor translator, \fItrans\fP, and the \fItype\fP must already be filled in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML tag 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 650 of file space\&.cc\&.
+.SS "\fBuintb\fP JoinSpace::restoreXmlAttributes (const \fBElement\fP * el, uint4 & size) const\fC [virtual]\fP"
+Restore a join address from an XML tag\&. Pieces of the join are encoded as a sequence of tag attributes\&. The \fBTranslate::findAddJoin\fP method is used to construct a logical address within the join space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed XML element to extract the address from 
+.br
+\fIsize\fP is a reference to be filled in as the size encoded by the tag 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the offset of the final address encoded by the tag 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 539 of file space\&.cc\&.
+.SS "void JoinSpace::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write the details of this space as XML\&. Write a tag fully describing the details of this space suitable for later recovery via restoreXml\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 644 of file space\&.cc\&.
+.SS "void JoinSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset) const\fC [virtual]\fP"
+Save a join address to the stream as XML\&. This method in the interface only outputs XML attributes for a single tag, so we are forced to encode what should probably be recursive tags into an attribute 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written to 
+.br
+\fIoffset\fP is the offset within the address space to encode 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 486 of file space\&.cc\&.
+.SS "void JoinSpace::saveXmlAttributes (ostream & s, \fBuintb\fP offset, int4 size) const\fC [virtual]\fP"
+Save a join address to the stream as XML\&. This method in the interface only outputs XML attributes for a single tag, so we are forced to encode what should probably be recursive tags into an attribute 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written to 
+.br
+\fIoffset\fP is the offset within the address space to encode 
+.br
+\fIsize\fP is the size of the memory location being encoded 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 511 of file space\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,160 @@
+\hypertarget{class_extern_ref_symbol}{}\section{Extern\+Ref\+Symbol Class Reference}
+\label{class_extern_ref_symbol}\index{ExternRefSymbol@{ExternRefSymbol}}
+
+
+A function \mbox{\hyperlink{class_symbol}{Symbol}} referring to an external location.  
+
+
+
+
+{\ttfamily \#include $<$database.\+hh$>$}
+
+
+
+Inheritance diagram for Extern\+Ref\+Symbol\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{class_extern_ref_symbol__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Extern\+Ref\+Symbol\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{class_extern_ref_symbol__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_extern_ref_symbol_ac9c052df8c2ee617cdc3d1bd985121be}{Extern\+Ref\+Symbol}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$sc, const \mbox{\hyperlink{class_address}{Address}} \&ref, const string \&nm)
+\begin{DoxyCompactList}\small\item\em Construct given a {\itshape placeholder} address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_extern_ref_symbol_a49462aee64f40dd14c30962593f82648}{Extern\+Ref\+Symbol}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$sc)
+\begin{DoxyCompactList}\small\item\em For use with restore\+Xml. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_extern_ref_symbol_a8bd2e8984b35871f657d88cee1464390}{get\+Ref\+Addr}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the {\itshape placeholder} address. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_extern_ref_symbol_aaff9d3efb4a2594f857799db35eddc1d}{save\+Xml}} (ostream \&s) const
+\item 
+virtual void \mbox{\hyperlink{class_extern_ref_symbol_a84cae4cba0ca0ec757c93c63cd55921e}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A function \mbox{\hyperlink{class_symbol}{Symbol}} referring to an external location. 
+
+This \mbox{\hyperlink{class_symbol}{Symbol}} is intended to label functions that have not been mapped directly into the image being analyzed. It holds a level of indirection between the address the image expects the symbol to be at and a {\bfseries{placeholder}} address the system hangs meta-\/data on. 
+
+Definition at line 279 of file database.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_extern_ref_symbol_ac9c052df8c2ee617cdc3d1bd985121be}\label{class_extern_ref_symbol_ac9c052df8c2ee617cdc3d1bd985121be}} 
+\index{ExternRefSymbol@{ExternRefSymbol}!ExternRefSymbol@{ExternRefSymbol}}
+\index{ExternRefSymbol@{ExternRefSymbol}!ExternRefSymbol@{ExternRefSymbol}}
+\subsubsection{\texorpdfstring{ExternRefSymbol()}{ExternRefSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Extern\+Ref\+Symbol\+::\+Extern\+Ref\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{sc,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ref,  }\item[{const string \&}]{nm }\end{DoxyParamCaption})}
+
+
+
+Construct given a {\itshape placeholder} address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sc} & is the \mbox{\hyperlink{class_scope}{Scope}} containing the \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+{\em ref} & is the placeholder address where the system will hold meta-\/data \\
+\hline
+{\em nm} & is the name of the \mbox{\hyperlink{class_symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 600 of file database.\+cc.
+
+\mbox{\Hypertarget{class_extern_ref_symbol_a49462aee64f40dd14c30962593f82648}\label{class_extern_ref_symbol_a49462aee64f40dd14c30962593f82648}} 
+\index{ExternRefSymbol@{ExternRefSymbol}!ExternRefSymbol@{ExternRefSymbol}}
+\index{ExternRefSymbol@{ExternRefSymbol}!ExternRefSymbol@{ExternRefSymbol}}
+\subsubsection{\texorpdfstring{ExternRefSymbol()}{ExternRefSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Extern\+Ref\+Symbol\+::\+Extern\+Ref\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{sc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+For use with restore\+Xml. 
+
+
+
+Definition at line 285 of file database.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_extern_ref_symbol_a8bd2e8984b35871f657d88cee1464390}\label{class_extern_ref_symbol_a8bd2e8984b35871f657d88cee1464390}} 
+\index{ExternRefSymbol@{ExternRefSymbol}!getRefAddr@{getRefAddr}}
+\index{getRefAddr@{getRefAddr}!ExternRefSymbol@{ExternRefSymbol}}
+\subsubsection{\texorpdfstring{getRefAddr()}{getRefAddr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Extern\+Ref\+Symbol\+::get\+Ref\+Addr (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the {\itshape placeholder} address. 
+
+
+
+Definition at line 286 of file database.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_extern_ref_symbol_a8bd2e8984b35871f657d88cee1464390_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_extern_ref_symbol_a84cae4cba0ca0ec757c93c63cd55921e}\label{class_extern_ref_symbol_a84cae4cba0ca0ec757c93c63cd55921e}} 
+\index{ExternRefSymbol@{ExternRefSymbol}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!ExternRefSymbol@{ExternRefSymbol}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Extern\+Ref\+Symbol\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 617 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_extern_ref_symbol_a84cae4cba0ca0ec757c93c63cd55921e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_extern_ref_symbol_aaff9d3efb4a2594f857799db35eddc1d}\label{class_extern_ref_symbol_aaff9d3efb4a2594f857799db35eddc1d}} 
+\index{ExternRefSymbol@{ExternRefSymbol}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!ExternRefSymbol@{ExternRefSymbol}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Extern\+Ref\+Symbol\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 607 of file database.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_extern_ref_symbol_aaff9d3efb4a2594f857799db35eddc1d_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8hh}{database.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8cc}{database.\+cc}}\end{DoxyCompactItemize}

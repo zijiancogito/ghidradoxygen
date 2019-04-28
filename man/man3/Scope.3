@@ -1,0 +1,1741 @@
+.TH "Scope" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Scope \- A collection of \fBSymbol\fP objects within a single (namespace or functional) scope\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.PP
+Inherited by \fBScopeGhidra\fP, and \fBScopeInternal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScope\fP (const string &nm, \fBArchitecture\fP *g)"
+.br
+.RI "Construct an empty scope, given a name and \fBArchitecture\fP\&. "
+.ti -1c
+.RI "virtual \fB~Scope\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual \fBMapIterator\fP \fBbegin\fP (void) const =0"
+.br
+.RI "Beginning iterator to mapped SymbolEntrys\&. "
+.ti -1c
+.RI "virtual \fBMapIterator\fP \fBend\fP (void) const =0"
+.br
+.RI "Ending iterator to mapped SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::const_iterator \fBbeginDynamic\fP (void) const =0"
+.br
+.RI "Beginning iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::const_iterator \fBendDynamic\fP (void) const =0"
+.br
+.RI "Ending iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::iterator \fBbeginDynamic\fP (void)=0"
+.br
+.RI "Beginning iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual list< \fBSymbolEntry\fP >::iterator \fBendDynamic\fP (void)=0"
+.br
+.RI "Ending iterator to dynamic SymbolEntrys\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)=0"
+.br
+.RI "Clear all symbols from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBclearCategory\fP (int4 cat)=0"
+.br
+.RI "Clear all symbols of the given category from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBclearUnlocked\fP (void)=0"
+.br
+.RI "Clear all unlocked symbols from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual void \fBclearUnlockedCategory\fP (int4 cat)=0"
+.br
+.RI "Clear unlocked symbols of the given category from \fBthis\fP scope\&. "
+.ti -1c
+.RI "virtual bool \fBinScope\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Query if the given range is owned by \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBremoveSymbol\fP (\fBSymbol\fP *symbol)=0"
+.br
+.RI "Remove the given \fBSymbol\fP from \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBrenameSymbol\fP (\fBSymbol\fP *sym, const string &newname)=0"
+.br
+.RI "Rename a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBretypeSymbol\fP (\fBSymbol\fP *sym, \fBDatatype\fP *ct)=0"
+.br
+.RI "Change the data-type of a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetAttribute\fP (\fBSymbol\fP *sym, uint4 attr)=0"
+.br
+.RI "Set boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBclearAttribute\fP (\fBSymbol\fP *sym, uint4 attr)=0"
+.br
+.RI "Clear boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetDisplayFormat\fP (\fBSymbol\fP *sym, uint4 attr)=0"
+.br
+.RI "Set the display format for a \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindAddr\fP (const \fBAddress\fP &addr, const \fBAddress\fP &usepoint) const =0"
+.br
+.RI "Find a \fBSymbol\fP at a given address and \fBusepoint\fP\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindContainer\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const =0"
+.br
+.RI "Find the smallest \fBSymbol\fP containing the given memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindClosestFit\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const =0"
+.br
+.RI "Find \fBSymbol\fP which is the closest fit to the given memory range\&. "
+.ti -1c
+.RI "virtual \fBFuncdata\fP * \fBfindFunction\fP (const \fBAddress\fP &addr) const =0"
+.br
+.RI "Find the function starting at the given address\&. "
+.ti -1c
+.RI "virtual \fBExternRefSymbol\fP * \fBfindExternalRef\fP (const \fBAddress\fP &addr) const =0"
+.br
+.RI "Find an \fIexternal\fP \fIreference\fP at the given address\&. "
+.ti -1c
+.RI "virtual \fBLabSymbol\fP * \fBfindCodeLabel\fP (const \fBAddress\fP &addr) const =0"
+.br
+.RI "Find a label \fBSymbol\fP at the given address\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindOverlap\fP (const \fBAddress\fP &addr, int4 size) const =0"
+.br
+.RI "Find first \fBSymbol\fP overlapping the given memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindBefore\fP (const \fBAddress\fP &addr) const =0"
+.br
+.RI "Find first \fBSymbol\fP before (but not containing) a given address\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBfindAfter\fP (const \fBAddress\fP &addr) const =0"
+.br
+.RI "Find first \fBSymbol\fP after (but not containing) a given address\&. "
+.ti -1c
+.RI "virtual void \fBfindByName\fP (const string &\fBname\fP, vector< \fBSymbol\fP * > &res) const =0"
+.br
+.RI "Find a \fBSymbol\fP by name within \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual \fBFuncdata\fP * \fBresolveExternalRefFunction\fP (\fBExternRefSymbol\fP *sym) const =0"
+.br
+.RI "Convert an \fIexternal\fP \fIreference\fP to the referenced function\&. "
+.ti -1c
+.RI "virtual string \fBbuildVariableName\fP (const \fBAddress\fP &addr, const \fBAddress\fP &pc, \fBDatatype\fP *ct, int4 &index, uint4 flags) const =0"
+.br
+.RI "Given an address and data-type, build a suitable generic symbol name\&. "
+.ti -1c
+.RI "virtual string \fBbuildUndefinedName\fP (void) const =0"
+.br
+.RI "Build a formal \fBundefined\fP name, used internally when a \fBSymbol\fP is not given a name\&. "
+.ti -1c
+.RI "virtual string \fBmakeNameUnique\fP (const string &nm) const =0"
+.br
+.RI "Produce a version of the given symbol name that won't collide with other names in \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.RI "Write out \fBthis\fP as a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)=0"
+.br
+.RI "Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. "
+.ti -1c
+.RI "virtual void \fBprintEntries\fP (ostream &s) const =0"
+.br
+.RI "Dump a description of all \fBSymbolEntry\fP objects to a stream\&. "
+.ti -1c
+.RI "virtual int4 \fBgetCategorySize\fP (int4 cat) const =0"
+.br
+.RI "Get the number of Symbols in the given category\&. "
+.ti -1c
+.RI "virtual \fBSymbol\fP * \fBgetCategorySymbol\fP (int4 cat, int4 ind) const =0"
+.br
+.RI "Retrieve a \fBSymbol\fP by index within a specific \fIcategory\fP\&. "
+.ti -1c
+.RI "virtual void \fBsetCategory\fP (\fBSymbol\fP *sym, int4 cat, int4 ind)=0"
+.br
+.RI "Set the \fIcategory\fP and index for the given \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBaddSymbol\fP (const string &\fBname\fP, \fBDatatype\fP *ct, const \fBAddress\fP &addr, const \fBAddress\fP &usepoint)"
+.br
+.RI "Add a new \fBSymbol\fP to \fBthis\fP \fBScope\fP, given a name, data-type, and a single mapping\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the name of the \fBScope\fP\&. "
+.ti -1c
+.RI "bool \fBisGlobal\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP scope is global\&. "
+.ti -1c
+.RI "void \fBqueryByName\fP (const string &\fBname\fP, vector< \fBSymbol\fP * > &res) const"
+.br
+.RI "Look-up symbols by name\&. "
+.ti -1c
+.RI "\fBFuncdata\fP * \fBqueryFunction\fP (const string &\fBname\fP) const"
+.br
+.RI "Look-up a function by name\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBqueryByAddr\fP (const \fBAddress\fP &addr, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Get \fBSymbol\fP with matching address\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBqueryContainer\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Find the smallest containing \fBSymbol\fP\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBqueryProperties\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint, uint4 &flags) const"
+.br
+.RI "Find a \fBSymbol\fP or properties at the given address\&. "
+.ti -1c
+.RI "\fBFuncdata\fP * \fBqueryFunction\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Look-up a function by address\&. "
+.ti -1c
+.RI "\fBFuncdata\fP * \fBqueryExternalRefFunction\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Look-up a function thru an \fIexternal\fP \fIreference\fP\&. "
+.ti -1c
+.RI "\fBLabSymbol\fP * \fBqueryCodeLabel\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Look-up a code label by address\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBresolveScope\fP (const string &\fBname\fP) const"
+.br
+.RI "Find a child \fBScope\fP of \fBthis\fP\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBdiscoverScope\fP (const \fBAddress\fP &addr, int4 sz, const \fBAddress\fP &usepoint)"
+.br
+.RI "Find the owning \fBScope\fP of a given memory range\&. "
+.ti -1c
+.RI "ScopeMap::const_iterator \fBchildrenBegin\fP () const"
+.br
+.RI "Beginning iterator of child scopes\&. "
+.ti -1c
+.RI "ScopeMap::const_iterator \fBchildrenEnd\fP () const"
+.br
+.RI "Ending iterator of child scopes\&. "
+.ti -1c
+.RI "void \fBsaveXmlRecursive\fP (ostream &s, bool onlyGlobal) const"
+.br
+.RI "Save all contained scopes as an XML stream\&. "
+.ti -1c
+.RI "void \fBoverrideSizeLockType\fP (\fBSymbol\fP *sym, \fBDatatype\fP *ct)"
+.br
+.RI "Change the data-type of a \fBSymbol\fP that is \fIsizelocked\fP\&. "
+.ti -1c
+.RI "void \fBresetSizeLockType\fP (\fBSymbol\fP *sym)"
+.br
+.RI "Clear a \fBSymbol\fP's \fIsize-locked\fP data-type\&. "
+.ti -1c
+.RI "bool \fBisSubScope\fP (const \fBScope\fP *scp) const"
+.br
+.RI "Is this a sub-scope of the given \fBScope\fP\&. "
+.ti -1c
+.RI "string \fBgetFullName\fP (void) const"
+.br
+.RI "Get the full name of \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "void \fBgetNameSegments\fP (vector< string > &vec) const"
+.br
+.RI "Get the fullname of \fBthis\fP in segments\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.RI "Get the \fBArchitecture\fP associated with \fBthis\fP\&. "
+.ti -1c
+.RI "\fBScope\fP * \fBgetParent\fP (void) const"
+.br
+.RI "Get the parent \fBScope\fP (or NULL if \fBthis\fP is the global \fBScope\fP) "
+.ti -1c
+.RI "\fBSymbol\fP * \fBaddSymbol\fP (const string &\fBname\fP, \fBDatatype\fP *ct)"
+.br
+.RI "Add a new \fBSymbol\fP \fIwithout\fP mapping it to an address\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBaddMapPoint\fP (\fBSymbol\fP *sym, const \fBAddress\fP &addr, const \fBAddress\fP &usepoint)"
+.br
+.RI "Map a \fBSymbol\fP to a specific address\&. "
+.ti -1c
+.RI "\fBSymbol\fP * \fBaddMapSym\fP (const \fBElement\fP *el)"
+.br
+.RI "Add a mapped \fBSymbol\fP from a <mapsym> XML tag\&. "
+.ti -1c
+.RI "\fBFunctionSymbol\fP * \fBaddFunction\fP (const \fBAddress\fP &addr, const string &nm)"
+.br
+.RI "Create a function \fBSymbol\fP at the given address in \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "\fBExternRefSymbol\fP * \fBaddExternalRef\fP (const \fBAddress\fP &addr, const \fBAddress\fP &refaddr, const string &nm)"
+.br
+.ti -1c
+.RI "\fBLabSymbol\fP * \fBaddCodeLabel\fP (const \fBAddress\fP &addr, const string &nm)"
+.br
+.RI "Create a code label at the given address in \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "\fBSymbol\fP * \fBaddDynamicSymbol\fP (const string &nm, \fBDatatype\fP *ct, const \fBAddress\fP &caddr, uint8 hash)"
+.br
+.RI "Create a dynamically mapped \fBSymbol\fP attached to a specific data-flow\&. "
+.ti -1c
+.RI "bool \fBisReadOnly\fP (const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint) const"
+.br
+.RI "Is the given memory range marked as \fIread-only\fP\&. "
+.ti -1c
+.RI "void \fBprintBounds\fP (ostream &s) const"
+.br
+.RI "Print a description of \fBthis\fP \fBScope\fP's \fIowned\fP memory ranges\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const \fBRangeList\fP & \fBgetRangeTree\fP (void) const"
+.br
+.RI "Access the address ranges owned by \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBrestrictScope\fP (\fBFuncdata\fP *f)"
+.br
+.RI "Convert \fBthis\fP to a local \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBaddRange\fP (\fBAddrSpace\fP *spc, \fBuintb\fP first, \fBuintb\fP last)"
+.br
+.RI "Add a memory range to the ownership of \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBremoveRange\fP (\fBAddrSpace\fP *spc, \fBuintb\fP first, \fBuintb\fP last)"
+.br
+.RI "Remove a memory range from the ownership of \fBthis\fP \fBScope\fP\&. "
+.ti -1c
+.RI "virtual void \fBaddSymbolInternal\fP (\fBSymbol\fP *sym)=0"
+.br
+.RI "Put a \fBSymbol\fP into the name map\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBaddMapInternal\fP (\fBSymbol\fP *sym, uint4 exfl, const \fBAddress\fP &addr, int4 off, int4 sz, const \fBRangeList\fP &uselim)=0"
+.br
+.RI "Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a memory range\&. "
+.ti -1c
+.RI "virtual \fBSymbolEntry\fP * \fBaddDynamicMapInternal\fP (\fBSymbol\fP *sym, uint4 exfl, uint8 hash, int4 off, int4 sz, const \fBRangeList\fP &uselim)=0"
+.br
+.RI "Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a dynamic hash\&. "
+.ti -1c
+.RI "\fBSymbolEntry\fP * \fBaddMap\fP (const \fBSymbolEntry\fP &entry)"
+.br
+.RI "Integrate a \fBSymbolEntry\fP into the range maps\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static const \fBScope\fP * \fBstackAddr\fP (const \fBScope\fP *scope1, const \fBScope\fP *scope2, const \fBAddress\fP &addr, const \fBAddress\fP &usepoint, \fBSymbolEntry\fP **addrmatch)"
+.br
+.RI "Query for Symbols starting at a given address, which match a given \fBusepoint\fP\&. "
+.ti -1c
+.RI "static const \fBScope\fP * \fBstackContainer\fP (const \fBScope\fP *scope1, const \fBScope\fP *scope2, const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint, \fBSymbolEntry\fP **addrmatch)"
+.br
+.ti -1c
+.RI "static const \fBScope\fP * \fBstackClosestFit\fP (const \fBScope\fP *scope1, const \fBScope\fP *scope2, const \fBAddress\fP &addr, int4 size, const \fBAddress\fP &usepoint, \fBSymbolEntry\fP **addrmatch)"
+.br
+.ti -1c
+.RI "static const \fBScope\fP * \fBstackFunction\fP (const \fBScope\fP *scope1, const \fBScope\fP *scope2, const \fBAddress\fP &addr, \fBFuncdata\fP **addrmatch)"
+.br
+.ti -1c
+.RI "static const \fBScope\fP * \fBstackExternalRef\fP (const \fBScope\fP *scope1, const \fBScope\fP *scope2, const \fBAddress\fP &addr, \fBExternRefSymbol\fP **addrmatch)"
+.br
+.ti -1c
+.RI "static const \fBScope\fP * \fBstackCodeLabel\fP (const \fBScope\fP *scope1, const \fBScope\fP *scope2, const \fBAddress\fP &addr, \fBLabSymbol\fP **addrmatch)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBArchitecture\fP * \fBglb\fP"
+.br
+.RI "\fBArchitecture\fP of \fBthis\fP scope\&. "
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Name of \fBthis\fP scope\&. "
+.ti -1c
+.RI "\fBFuncdata\fP * \fBfd\fP"
+.br
+.RI "(If non-null) the function which \fBthis\fP is the local \fBScope\fP for "
+.ti -1c
+.RI "uint4 \fBdedupId\fP"
+.br
+.RI "Id to dedup scopes with same name (when allowed) "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBDatabase\fP"
+.br
+.ti -1c
+.RI "class \fBScopeCompare\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A collection of \fBSymbol\fP objects within a single (namespace or functional) scope\&. 
+
+This acts as a traditional \fBSymbol\fP container, allowing them to be accessed by name, but it also keeps track of how a \fBSymbol\fP is mapped into memory\&. It allows a \fBSymbol\fP to be looked up by its location in memory, which is sensitive to the address of the code accessing the \fBSymbol\fP\&.
+.PP
+Capabilities include:
+.IP "\(bu" 2
+Search for Symbols
+.IP "  \(bu" 4
+By name
+.IP "  \(bu" 4
+By storage address
+.IP "  \(bu" 4
+By type of \fBSymbol\fP
+.IP "  \(bu" 4
+Containing a range
+.IP "  \(bu" 4
+Overlapping a range
+.PP
+
+.IP "\(bu" 2
+Insert or remove a \fBSymbol\fP
+.IP "\(bu" 2
+Add or remove \fBSymbolEntry\fP objects which associate Symbols with storage and the code that accesses it
+.IP "\(bu" 2
+Modify properties of a \fBSymbol\fP
+.PP
+.PP
+A scope also supports the idea of \fBownership\fP of memory\&. In theory, for a \fBSymbol\fP in the scope, at the code locations where the \fBSymbol\fP storage is valid, the scope \fIowns\fP the storage memory\&. In practice, a \fBScope\fP object knows about memory ranges where a \fBSymbol\fP might be \fIdiscovered\fP\&. For instance, the global \fBScope\fP usually owns all memory in the \fIram\fP address space\&. 
+.PP
+Definition at line 396 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Scope::Scope (const string & nm, \fBArchitecture\fP * g)\fC [inline]\fP"
+
+.PP
+Construct an empty scope, given a name and \fBArchitecture\fP\&. 
+.PP
+Definition at line 486 of file database\&.hh\&.
+.SS "Scope::~Scope (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 981 of file database\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLabSymbol\fP * Scope::addCodeLabel (const \fBAddress\fP & addr, const string & nm)"
+
+.PP
+Create a code label at the given address in \fBthis\fP \fBScope\fP\&. A \fBLabSymbol\fP is created and mapped to the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address to map to 
+.br
+\fInm\fP is the name of the symbol/label 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBLabSymbol\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1413 of file database\&.cc\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::addDynamicMapInternal (\fBSymbol\fP * sym, uint4 exfl, uint8 hash, int4 off, int4 sz, const \fBRangeList\fP & uselim)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a dynamic hash\&. The \fBSymbolEntry\fP is specified in terms of a \fBhash\fP and \fBusepoint\fP, which describe how to find the temporary \fBVarnode\fP holding the symbol value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP being mapped 
+.br
+\fIexfl\fP are any boolean \fBVarnode\fP properties 
+.br
+\fIhash\fP is the given dynamic hash 
+.br
+\fIoff\fP is the byte offset of the new \fBSymbolEntry\fP (relative to the whole \fBSymbol\fP) 
+.br
+\fIsz\fP is the number of bytes occupied by the \fBVarnode\fP 
+.br
+\fIuselim\fP is the given \fBusepoint\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly created \fBSymbolEntry\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP\&.
+.SS "\fBSymbol\fP * Scope::addDynamicSymbol (const string & nm, \fBDatatype\fP * ct, const \fBAddress\fP & caddr, uint8 hash)"
+
+.PP
+Create a dynamically mapped \fBSymbol\fP attached to a specific data-flow\&. The \fBSymbol\fP is created and mapped to a dynamic \fIhash\fP and a code address where the \fBSymbol\fP is being used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the name of the \fBSymbol\fP 
+.br
+\fIct\fP is the data-type of the \fBSymbol\fP 
+.br
+\fIcaddr\fP is the code address where the \fBSymbol\fP is being used 
+.br
+\fIhash\fP is the dynamic hash 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBSymbol\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1439 of file database\&.cc\&.
+.SS "\fBExternRefSymbol\fP * Scope::addExternalRef (const \fBAddress\fP & addr, const \fBAddress\fP & refaddr, const string & nm)"
+Create an \fIexternal\fP \fIreference\fP at the given address in \fBthis\fP \fBScope\fP
+.PP
+An \fBExternRefSymbol\fP is created and mapped to the given address and stores a reference address to the actual function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address to map the \fBSymbol\fP to 
+.br
+\fIrefaddr\fP is the reference address 
+.br
+\fInm\fP is the name of the symbol/function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBExternRefSymbol\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1391 of file database\&.cc\&.
+.SS "\fBFunctionSymbol\fP * Scope::addFunction (const \fBAddress\fP & addr, const string & nm)"
+
+.PP
+Create a function \fBSymbol\fP at the given address in \fBthis\fP \fBScope\fP\&. The \fBFunctionSymbol\fP is created and mapped to the given address\&. A \fBFuncdata\fP object is only created once \fBFunctionSymbol::getFunction()\fP is called\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the entry address of the function 
+.br
+\fInm\fP is the name of the function, within \fBthis\fP \fBScope\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBFunctionSymbol\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1364 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * Scope::addMap (const \fBSymbolEntry\fP & entry)\fC [protected]\fP"
+
+.PP
+Integrate a \fBSymbolEntry\fP into the range maps\&. The mapping is given as an unintegrated \fBSymbolEntry\fP object\&. Memory may be specified in terms of join addresses, which this method must unravel\&. The \fBoffset\fP, \fBsize\fP, and \fBextraflags\fP fields of the \fBSymbolEntry\fP are not used\&. In particular, the \fBSymbolEntry\fP is assumed to map the entire \fBSymbol\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP is the given \fBSymbolEntry\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBSymbolEntry\fP which has been fully integrated 
+.RE
+.PP
+
+.PP
+Definition at line 936 of file database\&.cc\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::addMapInternal (\fBSymbol\fP * sym, uint4 exfl, const \fBAddress\fP & addr, int4 off, int4 sz, const \fBRangeList\fP & uselim)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Create a new \fBSymbolEntry\fP for a \fBSymbol\fP given a memory range\&. The \fBSymbolEntry\fP is specified in terms of a memory range and \fBusepoint\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP being mapped 
+.br
+\fIexfl\fP are any boolean \fBVarnode\fP properties specific to the memory range 
+.br
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIoff\fP is the byte offset of the new \fBSymbolEntry\fP (relative to the whole \fBSymbol\fP) 
+.br
+\fIsz\fP is the number of bytes in the range 
+.br
+\fIuselim\fP is the given \fBusepoint\fP (which may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly created \fBSymbolEntry\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP\&.
+.SS "\fBSymbolEntry\fP * Scope::addMapPoint (\fBSymbol\fP * sym, const \fBAddress\fP & addr, const \fBAddress\fP & usepoint)"
+
+.PP
+Map a \fBSymbol\fP to a specific address\&. Create a new \fBSymbolEntry\fP that maps the whole \fBSymbol\fP to the given address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP 
+.br
+\fIaddr\fP is the given address to map to 
+.br
+\fIusepoint\fP is a point at which the \fBSymbol\fP is accessed at that address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBSymbolEntry\fP representing the new mapping 
+.RE
+.PP
+
+.PP
+Definition at line 1296 of file database\&.cc\&.
+.SS "\fBSymbol\fP * Scope::addMapSym (const \fBElement\fP * el)"
+
+.PP
+Add a mapped \fBSymbol\fP from a <mapsym> XML tag\&. A tag describing the \fBSymbol\fP is parsed first, followed by sequences of <addr> or <hash> and <rangelist> which define 1 or more mappings of the \fBSymbol\fP The new \fBSymbol\fP and \fBSymbolEntry\fP mappings are integrated into \fBthis\fP \fBScope\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <mapsym> XML element 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBSymbol\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1312 of file database\&.cc\&.
+.SS "void Scope::addRange (\fBAddrSpace\fP * spc, \fBuintb\fP first, \fBuintb\fP last)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Add a memory range to the ownership of \fBthis\fP \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space of the range 
+.br
+\fIfirst\fP is the offset of the first byte in the range 
+.br
+\fIlast\fP is the offset of the last byte in the range 
+.RE
+.PP
+
+.PP
+Definition at line 915 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * Scope::addSymbol (const string & name, \fBDatatype\fP * ct, const \fBAddress\fP & addr, const \fBAddress\fP & usepoint)\fC [virtual]\fP"
+
+.PP
+Add a new \fBSymbol\fP to \fBthis\fP \fBScope\fP, given a name, data-type, and a single mapping\&. The \fBSymbol\fP object will be created with the given name and data-type\&. A single mapping (\fBSymbolEntry\fP) will be created for the \fBSymbol\fP based on a given storage address for the symbol and an address for code that accesses the \fBSymbol\fP at that storage location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the new name of the \fBSymbol\fP 
+.br
+\fIct\fP is the data-type of the new \fBSymbol\fP 
+.br
+\fIaddr\fP is the starting address of the \fBSymbol\fP storage 
+.br
+\fIusepoint\fP is the point accessing that storage (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBSymbolEntry\fP matching the new mapping 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBScopeGhidra\fP\&.
+.PP
+Definition at line 1280 of file database\&.cc\&.
+.SS "\fBSymbol\fP * Scope::addSymbol (const string & name, \fBDatatype\fP * ct)"
+
+.PP
+Add a new \fBSymbol\fP \fIwithout\fP mapping it to an address\&. The \fBSymbol\fP is created and added to any name map, but no \fBSymbolEntry\fP objects are created for it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the new \fBSymbol\fP 
+.br
+\fIct\fP is a data-type to assign to the new \fBSymbol\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new \fBSymbol\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1260 of file database\&.cc\&.
+.SS "virtual void Scope::addSymbolInternal (\fBSymbol\fP * sym)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Put a \fBSymbol\fP into the name map\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the preconstructed \fBSymbol\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP\&.
+.SS "virtual \fBMapIterator\fP Scope::begin (void) const\fC [pure virtual]\fP"
+
+.PP
+Beginning iterator to mapped SymbolEntrys\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual list<\fBSymbolEntry\fP>::const_iterator Scope::beginDynamic (void) const\fC [pure virtual]\fP"
+
+.PP
+Beginning iterator to dynamic SymbolEntrys\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual list<\fBSymbolEntry\fP>::iterator Scope::beginDynamic (void)\fC [pure virtual]\fP"
+
+.PP
+Beginning iterator to dynamic SymbolEntrys\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual string Scope::buildUndefinedName (void) const\fC [pure virtual]\fP"
+
+.PP
+Build a formal \fBundefined\fP name, used internally when a \fBSymbol\fP is not given a name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a special internal name that won't collide with other names in \fBthis\fP \fBScope\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual string Scope::buildVariableName (const \fBAddress\fP & addr, const \fBAddress\fP & pc, \fBDatatype\fP * ct, int4 & index, uint4 flags) const\fC [pure virtual]\fP"
+
+.PP
+Given an address and data-type, build a suitable generic symbol name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIpc\fP is the address at which the name is getting used 
+.br
+\fIct\fP is a data-type used to inform the name 
+.br
+\fIindex\fP is a reference to an index used to make the name unique, which will be updated 
+.br
+\fIflags\fP are boolean properties of the variable we need the name for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new variable name 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, \fBScopeLocal\fP, and \fBScopeGhidra\fP\&.
+.SS "ScopeMap::const_iterator Scope::childrenBegin () const\fC [inline]\fP"
+
+.PP
+Beginning iterator of child scopes\&. 
+.PP
+Definition at line 673 of file database\&.hh\&.
+.SS "ScopeMap::const_iterator Scope::childrenEnd () const\fC [inline]\fP"
+
+.PP
+Ending iterator of child scopes\&. 
+.PP
+Definition at line 674 of file database\&.hh\&.
+.SS "virtual void Scope::clear (void)\fC [pure virtual]\fP"
+
+.PP
+Clear all symbols from \fBthis\fP scope\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::clearAttribute (\fBSymbol\fP * sym, uint4 attr)\fC [pure virtual]\fP"
+
+.PP
+Clear boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::clearCategory (int4 cat)\fC [pure virtual]\fP"
+
+.PP
+Clear all symbols of the given category from \fBthis\fP scope\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::clearUnlocked (void)\fC [pure virtual]\fP"
+
+.PP
+Clear all unlocked symbols from \fBthis\fP scope\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::clearUnlockedCategory (int4 cat)\fC [pure virtual]\fP"
+
+.PP
+Clear unlocked symbols of the given category from \fBthis\fP scope\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "\fBScope\fP * Scope::discoverScope (const \fBAddress\fP & addr, int4 sz, const \fBAddress\fP & usepoint)"
+
+.PP
+Find the owning \fBScope\fP of a given memory range\&. Discover a sub-scope or containing \fBScope\fP of \fBthis\fP, that \fIowns\fP the given memory range at a specific \fBusepoint\fP\&. Note that ownership does not necessarily mean there is a known symbol there\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the memory range 
+.br
+\fIsz\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is a point at which the memory is getting accesses 
+.RE
+.PP
+
+.PP
+Definition at line 1132 of file database\&.cc\&.
+.SS "virtual \fBMapIterator\fP Scope::end (void) const\fC [pure virtual]\fP"
+
+.PP
+Ending iterator to mapped SymbolEntrys\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual list<\fBSymbolEntry\fP>::const_iterator Scope::endDynamic (void) const\fC [pure virtual]\fP"
+
+.PP
+Ending iterator to dynamic SymbolEntrys\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual list<\fBSymbolEntry\fP>::iterator Scope::endDynamic (void)\fC [pure virtual]\fP"
+
+.PP
+Ending iterator to dynamic SymbolEntrys\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::findAddr (const \fBAddress\fP & addr, const \fBAddress\fP & usepoint) const\fC [pure virtual]\fP"
+
+.PP
+Find a \fBSymbol\fP at a given address and \fBusepoint\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::findAfter (const \fBAddress\fP & addr) const\fC [pure virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP after (but not containing) a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBSymbolEntry\fP occurring immediately after or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::findBefore (const \fBAddress\fP & addr) const\fC [pure virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP before (but not containing) a given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBSymbolEntry\fP occurring immediately before or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::findByName (const string & name, vector< \fBSymbol\fP * > & res) const\fC [pure virtual]\fP"
+
+.PP
+Find a \fBSymbol\fP by name within \fBthis\fP \fBScope\fP\&. If there are multiple Symbols with the same name, all are passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name to search for 
+.br
+\fIres\fP will contain any matching Symbols 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::findClosestFit (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const\fC [pure virtual]\fP"
+
+.PP
+Find \fBSymbol\fP which is the closest fit to the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBLabSymbol\fP* Scope::findCodeLabel (const \fBAddress\fP & addr) const\fC [pure virtual]\fP"
+
+.PP
+Find a label \fBSymbol\fP at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBLabSymbol\fP or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::findContainer (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const\fC [pure virtual]\fP"
+
+.PP
+Find the smallest \fBSymbol\fP containing the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is the point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBExternRefSymbol\fP* Scope::findExternalRef (const \fBAddress\fP & addr) const\fC [pure virtual]\fP"
+
+.PP
+Find an \fIexternal\fP \fIreference\fP at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBExternRefSymbol\fP or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBFuncdata\fP* Scope::findFunction (const \fBAddress\fP & addr) const\fC [pure virtual]\fP"
+
+.PP
+Find the function starting at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBFuncdata\fP object or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBSymbolEntry\fP* Scope::findOverlap (const \fBAddress\fP & addr, int4 size) const\fC [pure virtual]\fP"
+
+.PP
+Find first \fBSymbol\fP overlapping the given memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an overlapping \fBSymbolEntry\fP or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "\fBArchitecture\fP* Scope::getArch (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBArchitecture\fP associated with \fBthis\fP\&. 
+.PP
+Definition at line 681 of file database\&.hh\&.
+.SS "virtual int4 Scope::getCategorySize (int4 cat) const\fC [pure virtual]\fP"
+
+.PP
+Get the number of Symbols in the given category\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcat\fP is the \fBSymbol\fP \fIcategory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number in that \fIcategory\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual \fBSymbol\fP* Scope::getCategorySymbol (int4 cat, int4 ind) const\fC [pure virtual]\fP"
+
+.PP
+Retrieve a \fBSymbol\fP by index within a specific \fIcategory\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcat\fP is the \fBSymbol\fP \fIcategory\fP 
+.br
+\fIind\fP is the index (within the category) of the \fBSymbol\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the indicated \fBSymbol\fP or NULL if no \fBSymbol\fP with that index exists 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "string Scope::getFullName (void) const"
+
+.PP
+Get the full name of \fBthis\fP \fBScope\fP\&. 
+.PP
+Definition at line 1222 of file database\&.cc\&.
+.SS "const string& Scope::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the name of the \fBScope\fP\&. 
+.PP
+Definition at line 655 of file database\&.hh\&.
+.SS "void Scope::getNameSegments (vector< string > & vec) const"
+
+.PP
+Get the fullname of \fBthis\fP in segments\&. Put the names of \fBthis\fP and all its parent Scopes into an array in order\&. The name of the first entry will generally be the name of the global \fBScope\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the array in which to store the names 
+.RE
+.PP
+
+.PP
+Definition at line 1238 of file database\&.cc\&.
+.SS "\fBScope\fP* Scope::getParent (void) const\fC [inline]\fP"
+
+.PP
+Get the parent \fBScope\fP (or NULL if \fBthis\fP is the global \fBScope\fP) 
+.PP
+Definition at line 682 of file database\&.hh\&.
+.SS "const \fBRangeList\fP& Scope::getRangeTree (void) const\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Access the address ranges owned by \fBthis\fP \fBScope\fP\&. 
+.PP
+Definition at line 438 of file database\&.hh\&.
+.SS "virtual bool Scope::inScope (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Query if the given range is owned by \fBthis\fP \fBScope\fP\&. All bytes in the range must be owned, and ownership can be informed by particular code that is accessing the range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is the code address at which the given range is being accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if \fBthis\fP \fBScope\fP owns the memory range 
+.RE
+.PP
+
+.PP
+Definition at line 512 of file database\&.hh\&.
+.SS "bool Scope::isGlobal (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP scope is global\&. 
+.PP
+Definition at line 656 of file database\&.hh\&.
+.SS "bool Scope::isReadOnly (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const"
+
+.PP
+Is the given memory range marked as \fIread-only\fP\&. Check for Symbols relative to \fBthis\fP \fBScope\fP that are marked as \fIread-only\fP, and look-up properties of the memory in general\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the given memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is a point where the range is getting accessed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the memory is marked as \fIread-only\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1461 of file database\&.cc\&.
+.SS "bool Scope::isSubScope (const \fBScope\fP * scp) const"
+
+.PP
+Is this a sub-scope of the given \fBScope\fP\&. Does the given \fBScope\fP contain \fBthis\fP as a sub-scope\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscp\fP is the given \fBScope\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP is a sub-scope 
+.RE
+.PP
+
+.PP
+Definition at line 1211 of file database\&.cc\&.
+.SS "virtual string Scope::makeNameUnique (const string & nm) const\fC [pure virtual]\fP"
+
+.PP
+Produce a version of the given symbol name that won't collide with other names in \fBthis\fP \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the given name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return a unique version of the name 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "void Scope::overrideSizeLockType (\fBSymbol\fP * sym, \fBDatatype\fP * ct)"
+
+.PP
+Change the data-type of a \fBSymbol\fP that is \fIsizelocked\fP\&. Change (override) the data-type of a \fIsizelocked\fP \fBSymbol\fP, while preserving the lock\&. An exception is thrown if the new data-type doesn't fit the size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the locked \fBSymbol\fP 
+.br
+\fIct\fP is the data-type to change the \fBSymbol\fP to 
+.RE
+.PP
+
+.PP
+Definition at line 1166 of file database\&.cc\&.
+.SS "void Scope::printBounds (ostream & s) const\fC [inline]\fP"
+
+.PP
+Print a description of \fBthis\fP \fBScope\fP's \fIowned\fP memory ranges\&. 
+.PP
+Definition at line 692 of file database\&.hh\&.
+.SS "virtual void Scope::printEntries (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Dump a description of all \fBSymbolEntry\fP objects to a stream\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "\fBSymbolEntry\fP * Scope::queryByAddr (const \fBAddress\fP & addr, const \fBAddress\fP & usepoint) const"
+
+.PP
+Get \fBSymbol\fP with matching address\&. Within a sub-scope or containing \fBScope\fP of \fBthis\fP, find a \fBSymbol\fP that is mapped to the given address, where the mapping is valid at a specific \fBusepoint\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fIusepoint\fP is the point at which code accesses that address (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1030 of file database\&.cc\&.
+.SS "void Scope::queryByName (const string & name, vector< \fBSymbol\fP * > & res) const"
+
+.PP
+Look-up symbols by name\&. Starting from \fBthis\fP \fBScope\fP, look for a \fBSymbol\fP with the given name\&. If there are no Symbols in \fBthis\fP \fBScope\fP, recurse into the parent \fBScope\fP\&. If there are 1 (or more) Symbols matching in \fBthis\fP \fBScope\fP, add them to the result list 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name to search for 
+.br
+\fIres\fP is the result list 
+.RE
+.PP
+
+.PP
+Definition at line 997 of file database\&.cc\&.
+.SS "\fBLabSymbol\fP * Scope::queryCodeLabel (const \fBAddress\fP & addr) const"
+
+.PP
+Look-up a code label by address\&. Within a sub-scope or containing \fBScope\fP of \fBthis\fP, find a label \fBSymbol\fP at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBLabSymbol\fP object, or NULL if it doesn't exist 
+.RE
+.PP
+
+.PP
+Definition at line 1100 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * Scope::queryContainer (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint) const"
+
+.PP
+Find the smallest containing \fBSymbol\fP\&. Within a sub-scope or containing \fBScope\fP of \fBthis\fP, find the smallest \fBSymbol\fP that contains a given memory range and can be accessed at a given \fBusepoint\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address of the memory range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is a point at which the \fBSymbol\fP is accessed (may be \fIinvalid\fP) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBSymbolEntry\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1045 of file database\&.cc\&.
+.SS "\fBFuncdata\fP * Scope::queryExternalRefFunction (const \fBAddress\fP & addr) const"
+
+.PP
+Look-up a function thru an \fIexternal\fP \fIreference\fP\&. Given an address, search for an \fIexternal\fP \fIreference\fP\&. If no \fBSymbol\fP is found and \fBthis\fP \fBScope\fP does not own the address, recurse searching in the parent \fBScope\fP\&. If an \fIexternal\fP \fIreference\fP is found, try to resolve the function it refers to and return it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address where an \fIexternal\fP \fIreference\fP might be 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the referred to \fBFuncdata\fP object or NULL if not found 
+.RE
+.PP
+
+.PP
+Definition at line 1195 of file database\&.cc\&.
+.SS "\fBFuncdata\fP * Scope::queryFunction (const string & name) const"
+
+.PP
+Look-up a function by name\&. Starting with \fBthis\fP \fBScope\fP, find a function with the given name\&. If there are no Symbols with that name in \fBthis\fP \fBScope\fP at all, recurse into the parent \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP if the name to search for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBFuncdata\fP object of the matching function, or NULL if it doesn't exist 
+.RE
+.PP
+
+.PP
+Definition at line 1011 of file database\&.cc\&.
+.SS "\fBFuncdata\fP * Scope::queryFunction (const \fBAddress\fP & addr) const"
+
+.PP
+Look-up a function by address\&. Within a sub-scope or containing \fBScope\fP of \fBthis\fP, find a function starting at the given address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBFuncdata\fP object of the matching function, or NULL if it doesn't exist 
+.RE
+.PP
+
+.PP
+Definition at line 1086 of file database\&.cc\&.
+.SS "\fBSymbolEntry\fP * Scope::queryProperties (const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint, uint4 & flags) const"
+
+.PP
+Find a \fBSymbol\fP or properties at the given address\&. Similarly to \fBqueryContainer()\fP, this searches for the smallest containing \fBSymbol\fP, but whether a known \fBSymbol\fP is found or not, boolean properties associated with the memory range are also search for and passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the range 
+.br
+\fIsize\fP is the number of bytes in the range 
+.br
+\fIusepoint\fP is a point at which the memory range is accessed (may be \fIinvalid\fP) 
+.br
+\fIflags\fP is a reference used to pass back the boolean properties of the memory range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the smallest \fBSymbolEntry\fP containing the range, or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1062 of file database\&.cc\&.
+.SS "void Scope::removeRange (\fBAddrSpace\fP * spc, \fBuintb\fP first, \fBuintb\fP last)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Remove a memory range from the ownership of \fBthis\fP \fBScope\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space of the range 
+.br
+\fIfirst\fP is the offset of the first byte in the range 
+.br
+\fIlast\fP is the offset of the last byte in the range 
+.RE
+.PP
+
+.PP
+Definition at line 924 of file database\&.cc\&.
+.SS "virtual void Scope::removeSymbol (\fBSymbol\fP * symbol)\fC [pure virtual]\fP"
+
+.PP
+Remove the given \fBSymbol\fP from \fBthis\fP \fBScope\fP\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::renameSymbol (\fBSymbol\fP * sym, const string & newname)\fC [pure virtual]\fP"
+
+.PP
+Rename a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "void Scope::resetSizeLockType (\fBSymbol\fP * sym)"
+
+.PP
+Clear a \fBSymbol\fP's \fIsize-locked\fP data-type\&. Replace any overriding data-type type with the locked UNKNOWN type of the correct size\&. The data-type is \fIcleared\fP, but the lock is preserved\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to clear 
+.RE
+.PP
+
+.PP
+Definition at line 1181 of file database\&.cc\&.
+.SS "virtual \fBFuncdata\fP* Scope::resolveExternalRefFunction (\fBExternRefSymbol\fP * sym) const\fC [pure virtual]\fP"
+
+.PP
+Convert an \fIexternal\fP \fIreference\fP to the referenced function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP marking the external reference 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the underlying \fBFuncdata\fP object or NULL if none exists 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "\fBScope\fP * Scope::resolveScope (const string & name) const"
+
+.PP
+Find a child \fBScope\fP of \fBthis\fP\&. Look for the (last) immediate child of \fBthis\fP with a given name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the child's name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the child \fBScope\fP or NULL if there is no child with that name 
+.RE
+.PP
+
+.PP
+Definition at line 1113 of file database\&.cc\&.
+.SS "virtual void Scope::restoreXml (const \fBElement\fP * el)\fC [pure virtual]\fP"
+
+.PP
+Restore \fBthis\fP \fBScope\fP from a <scope> XML tag\&. 
+.PP
+Implemented in \fBScopeInternal\fP, \fBScopeLocal\fP, and \fBScopeGhidra\fP\&.
+.SS "void Scope::restrictScope (\fBFuncdata\fP * f)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Convert \fBthis\fP to a local \fBScope\fP\&. Attach \fBthis\fP to the given function, which makes \fBthis\fP the local scope for the function 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP is the given function to attach to 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBScopeGhidra\fP\&.
+.PP
+Definition at line 906 of file database\&.cc\&.
+.SS "virtual void Scope::retypeSymbol (\fBSymbol\fP * sym, \fBDatatype\fP * ct)\fC [pure virtual]\fP"
+
+.PP
+Change the data-type of a \fBSymbol\fP within \fBthis\fP \fBScope\fP\&. If the size of the \fBSymbol\fP changes, any mapping (\fBSymbolEntry\fP) is adjusted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIct\fP is the new data-type 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Write out \fBthis\fP as a <scope> XML tag\&. 
+.PP
+Implemented in \fBScopeInternal\fP, \fBScopeLocal\fP, and \fBScopeGhidra\fP\&.
+.SS "void Scope::saveXmlRecursive (ostream & s, bool onlyGlobal) const"
+
+.PP
+Save all contained scopes as an XML stream\&. This \fBScope\fP and all of its sub-scopes are saved as a sequence of <scope> tags in post order\&. For each \fBScope\fP, the \fBsaveXml()\fP method is invoked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIonlyGlobal\fP is \fBtrue\fP if only non-local Scopes should be saved 
+.RE
+.PP
+
+.PP
+Definition at line 1150 of file database\&.cc\&.
+.SS "virtual void Scope::setAttribute (\fBSymbol\fP * sym, uint4 attr)\fC [pure virtual]\fP"
+
+.PP
+Set boolean \fBVarnode\fP properties on a \fBSymbol\fP\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::setCategory (\fBSymbol\fP * sym, int4 cat, int4 ind)\fC [pure virtual]\fP"
+
+.PP
+Set the \fIcategory\fP and index for the given \fBSymbol\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIcat\fP is the \fIcategory\fP to set for the \fBSymbol\fP 
+.br
+\fIind\fP is the index position to set (within the category) 
+.RE
+.PP
+
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "virtual void Scope::setDisplayFormat (\fBSymbol\fP * sym, uint4 attr)\fC [pure virtual]\fP"
+
+.PP
+Set the display format for a \fBSymbol\fP\&. 
+.PP
+Implemented in \fBScopeInternal\fP, and \fBScopeGhidra\fP\&.
+.SS "const \fBScope\fP * Scope::stackAddr (const \fBScope\fP * scope1, const \fBScope\fP * scope2, const \fBAddress\fP & addr, const \fBAddress\fP & usepoint, \fBSymbolEntry\fP ** addrmatch)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Query for Symbols starting at a given address, which match a given \fBusepoint\fP\&. Searching starts at a first scope, continuing thru parents up to a second scope, which is not queried\&. If a \fBScope\fP \fIcontrols\fP the memory at that address, the \fBScope\fP object is returned\&. Additionally, if a symbol matching the criterion is found, the matching \fBSymbolEntry\fP is passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope1\fP is the first \fBScope\fP where searching starts 
+.br
+\fIscope2\fP is the second \fBScope\fP where searching ends 
+.br
+\fIaddr\fP is the given address to search for 
+.br
+\fIusepoint\fP is the given point at which the memory is being accessed (can be an invalid address) 
+.br
+\fIaddrmatch\fP is used to pass-back any matching \fBSymbolEntry\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBScope\fP owning the address or NULL if none found 
+.RE
+.PP
+
+.PP
+Definition at line 719 of file database\&.cc\&.
+.SS "const \fBScope\fP * Scope::stackClosestFit (const \fBScope\fP * scope1, const \fBScope\fP * scope2, const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint, \fBSymbolEntry\fP ** addrmatch)\fC [static]\fP, \fC [protected]\fP"
+Query for a \fBSymbol\fP which most closely matches a given range and \fBusepoint\fP 
+.PP
+Searching starts at a first scope, continuing thru parents up to a second scope, which is not queried\&. If a \fBScope\fP \fIcontrols\fP the memory in the given range, the \fBScope\fP object is returned\&. Among symbols that overlap the given range, the \fBSymbolEntry\fP which most closely matches the starting address and size is passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope1\fP is the first \fBScope\fP where searching starts 
+.br
+\fIscope2\fP is the second \fBScope\fP where searching ends 
+.br
+\fIaddr\fP is the starting address of the given range 
+.br
+\fIsize\fP is the number of bytes in the given range 
+.br
+\fIusepoint\fP is the point at which the memory is being accessed (can be an invalid address) 
+.br
+\fIaddrmatch\fP is used to pass-back any matching \fBSymbolEntry\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBScope\fP owning the address or NULL if none found 
+.RE
+.PP
+
+.PP
+Definition at line 787 of file database\&.cc\&.
+.SS "const \fBScope\fP * Scope::stackCodeLabel (const \fBScope\fP * scope1, const \fBScope\fP * scope2, const \fBAddress\fP & addr, \fBLabSymbol\fP ** addrmatch)\fC [static]\fP, \fC [protected]\fP"
+Query for a label \fBSymbol\fP for a given address\&.
+.PP
+Searching starts at a first scope, continuing thru parents up to a second scope, which is not queried\&. If a \fBScope\fP \fIcontrols\fP the memory in the given range, the \fBScope\fP object is returned\&. If there is a label at that address, pass back the corresponding \fBLabSymbol\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope1\fP is the first \fBScope\fP where searching starts 
+.br
+\fIscope2\fP is the second \fBScope\fP where searching ends 
+.br
+\fIaddr\fP is the given address 
+.br
+\fIaddrmatch\fP is used to pass-back any matching \fBSymbol\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBScope\fP owning the address or NULL if none found 
+.RE
+.PP
+
+.PP
+Definition at line 884 of file database\&.cc\&.
+.SS "const \fBScope\fP * Scope::stackContainer (const \fBScope\fP * scope1, const \fBScope\fP * scope2, const \fBAddress\fP & addr, int4 size, const \fBAddress\fP & usepoint, \fBSymbolEntry\fP ** addrmatch)\fC [static]\fP, \fC [protected]\fP"
+Query for a \fBSymbol\fP containing a given range which is accessed at a given \fBusepoint\fP 
+.PP
+Searching starts at a first scope, continuing thru parents up to a second scope, which is not queried\&. If a \fBScope\fP \fIcontrols\fP the memory in the given range, the \fBScope\fP object is returned\&. If a known \fBSymbol\fP contains the range, the matching \fBSymbolEntry\fP is passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope1\fP is the first \fBScope\fP where searching starts 
+.br
+\fIscope2\fP is the second \fBScope\fP where searching ends 
+.br
+\fIaddr\fP is the starting address of the given range 
+.br
+\fIsize\fP is the number of bytes in the given range 
+.br
+\fIusepoint\fP is the point at which the memory is being accessed (can be an invalid address) 
+.br
+\fIaddrmatch\fP is used to pass-back any matching \fBSymbolEntry\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBScope\fP owning the address or NULL if none found 
+.RE
+.PP
+
+.PP
+Definition at line 753 of file database\&.cc\&.
+.SS "const \fBScope\fP * Scope::stackExternalRef (const \fBScope\fP * scope1, const \fBScope\fP * scope2, const \fBAddress\fP & addr, \fBExternRefSymbol\fP ** addrmatch)\fC [static]\fP, \fC [protected]\fP"
+Query for an \fIexternal\fP \fIreference\fP \fBSymbol\fP starting at the given address
+.PP
+Searching starts at a first scope, continuing thru parents up to a second scope, which is not queried\&. If a \fBScope\fP \fIcontrols\fP the memory in the given range, the \fBScope\fP object is returned\&. If an \fIexternal\fP \fIreference\fP is found at the address, pass back the matching \fBExternRefSymbol\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope1\fP is the first \fBScope\fP where searching starts 
+.br
+\fIscope2\fP is the second \fBScope\fP where searching ends 
+.br
+\fIaddr\fP is the given address 
+.br
+\fIaddrmatch\fP is used to pass-back any matching \fBSymbol\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBScope\fP owning the address or NULL if none found 
+.RE
+.PP
+
+.PP
+Definition at line 850 of file database\&.cc\&.
+.SS "const \fBScope\fP * Scope::stackFunction (const \fBScope\fP * scope1, const \fBScope\fP * scope2, const \fBAddress\fP & addr, \fBFuncdata\fP ** addrmatch)\fC [static]\fP, \fC [protected]\fP"
+Query for a function \fBSymbol\fP starting at the given address
+.PP
+Searching starts at a first scope, continuing thru parents up to a second scope, which is not queried\&. If a \fBScope\fP \fIcontrols\fP the memory in the given range, the \fBScope\fP object is returned\&. If a \fBFunctionSymbol\fP is found at the given address, the corresponding \fBFuncdata\fP object is passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope1\fP is the first \fBScope\fP where searching starts 
+.br
+\fIscope2\fP is the second \fBScope\fP where searching ends 
+.br
+\fIaddr\fP is the given address where the function should start 
+.br
+\fIaddrmatch\fP is used to pass-back any matching function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBScope\fP owning the address or NULL if none found 
+.RE
+.PP
+
+.PP
+Definition at line 819 of file database\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBDatabase\fP\fC [friend]\fP"
+
+.PP
+Definition at line 397 of file database\&.hh\&.
+.SS "friend class ScopeCompare\fC [friend]\fP"
+
+.PP
+Definition at line 398 of file database\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 Scope::dedupId\fC [protected]\fP"
+
+.PP
+Id to dedup scopes with same name (when allowed) 
+.PP
+Definition at line 409 of file database\&.hh\&.
+.SS "\fBFuncdata\fP* Scope::fd\fC [protected]\fP"
+
+.PP
+(If non-null) the function which \fBthis\fP is the local \fBScope\fP for 
+.PP
+Definition at line 408 of file database\&.hh\&.
+.SS "\fBArchitecture\fP* Scope::glb\fC [protected]\fP"
+
+.PP
+\fBArchitecture\fP of \fBthis\fP scope\&. 
+.PP
+Definition at line 406 of file database\&.hh\&.
+.SS "string Scope::name\fC [protected]\fP"
+
+.PP
+Name of \fBthis\fP scope\&. 
+.PP
+Definition at line 407 of file database\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

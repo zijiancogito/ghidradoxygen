@@ -1,0 +1,179 @@
+.TH "PrintJava" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintJava \- The java-language token emitter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printjava\&.hh>\fP
+.PP
+Inherits \fBPrintC\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPrintJava\fP (\fBArchitecture\fP *g, const string &nm='java\-language')"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBpushTypeStart\fP (const \fBDatatype\fP *ct, bool noident)"
+.br
+.ti -1c
+.RI "virtual void \fBpushTypeEnd\fP (const \fBDatatype\fP *ct)"
+.br
+.RI "Push the tail ends of a data-type declaration onto the RPN stack\&. "
+.ti -1c
+.RI "virtual bool \fBdoEmitWideCharPrefix\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this language requires a prefix when expressing \fIwide\fP characters\&. "
+.ti -1c
+.RI "virtual void \fBadjustTypeOperators\fP (void)"
+.br
+.RI "Set basic data-type information for p-code operators\&. "
+.ti -1c
+.RI "virtual void \fBopLoad\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a LOAD operator\&. "
+.ti -1c
+.RI "virtual void \fBopStore\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a STORE operator\&. "
+.ti -1c
+.RI "virtual void \fBopCallind\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a CALLIND operator\&. "
+.ti -1c
+.RI "virtual void \fBopCpoolRefOp\fP (const \fBPcodeOp\fP *op)"
+.br
+.RI "Emit a CPOOLREF operator\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The java-language token emitter\&. 
+
+This builds heavily on the c-language \fBPrintC\fP emitter\&. Most operator tokens, the format of function prototypes, and code structuring are shared\&. Specifics of the java constant pool are handled through the overloaded \fBopCpoolRefOp()\fP\&.
+.PP
+Java data-types are mapped into the decompiler's data-type system in a specific way\&. The primitives \fBint\fP, \fBlong\fP, \fBshort\fP, \fBbyte\fP, \fBboolean\fP, \fBfloat\fP, and \fBdouble\fP all map directly\&. The \fBchar\fP primitive is treated as a 2 byte unsigned integer\&. A \fBTypeStruct\fP object holds the field layout for a java class, then java objects get mapped as follows:
+.IP "\(bu" 2
+Class reference = pointer to TYPE_UINT
+.IP "\(bu" 2
+Array of \fBint\fP, \fBlong\fP, \fBshort\fP, or \fBbyte\fP = pointer to TYPE_INT
+.IP "\(bu" 2
+Array of \fBfloat\fP or \fBdouble\fP = pointer to TYPE_FLOAT
+.IP "\(bu" 2
+Array of \fBboolean\fP = pointer to TYPE_BOOL
+.IP "\(bu" 2
+Array of class objects = pointer to TYPE_PTR
+.PP
+.PP
+There are some adjustments to the printing of data-types and LOAD/STORE expressions to account for this mapping\&. 
+.PP
+Definition at line 55 of file printjava\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PrintJava::PrintJava (\fBArchitecture\fP * g, const string & nm = \fC'java\-language'\fP)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 37 of file printjava\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void PrintJava::adjustTypeOperators (void)\fC [virtual]\fP"
+
+.PP
+Set basic data-type information for p-code operators\&. 
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 99 of file printjava\&.cc\&.
+.SS "virtual bool PrintJava::doEmitWideCharPrefix (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return \fBtrue\fP if this language requires a prefix when expressing \fIwide\fP characters\&. The c-language standard requires that strings (and character constants) made up of \fIwide\fP character elements have an 'L' prefix added before the quote characters\&. Other related languages may not do this\&. Having this as a virtual method lets derived languages to tailor their strings while still using the basic \fBPrintC\fP functionality 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a prefix should be printed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 64 of file printjava\&.hh\&.
+.SS "void PrintJava::opCallind (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a CALLIND operator\&. 
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 227 of file printjava\&.cc\&.
+.SS "void PrintJava::opCpoolRefOp (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a CPOOLREF operator\&. 
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 251 of file printjava\&.cc\&.
+.SS "void PrintJava::opLoad (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a LOAD operator\&. 
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 196 of file printjava\&.cc\&.
+.SS "void PrintJava::opStore (const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Emit a STORE operator\&. 
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 208 of file printjava\&.cc\&.
+.SS "void PrintJava::pushTypeEnd (const \fBDatatype\fP * ct)\fC [virtual]\fP"
+
+.PP
+Push the tail ends of a data-type declaration onto the RPN stack\&. Because the front-ends were pushed on base-type -> final-modifier, the tail-ends are pushed on final-modifier -> base-type\&. The tail-ends amount to
+.IP "\(bu" 2
+array subscripts \&. [ # ] and
+.IP "\(bu" 2
+function parameters \&. ( paramlist )
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type being pushed 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 94 of file printjava\&.cc\&.
+.SS "void PrintJava::pushTypeStart (const \fBDatatype\fP * ct, bool noident)\fC [virtual]\fP"
+Print a data-type up to the identifier, store off array sizes for printing after the identifier\&. Find the root type (the one with an identifier) and the count number of wrapping arrays\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the given data-type 
+.br
+\fInoident\fP is \fBtrue\fP if no identifier will be pushed with this declaration 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBPrintC\fP\&.
+.PP
+Definition at line 54 of file printjava\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,340 @@
+.TH "DynamicHash" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DynamicHash \- A hash utility to uniquely identify a temporary \fBVarnode\fP in data-flow\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <dynamic\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Called for each additional hash (after the first) "
+.ti -1c
+.RI "void \fBcalcHash\fP (const \fBVarnode\fP *root, uint4 method)"
+.br
+.RI "Calculate the hash for given \fBVarnode\fP and method\&. "
+.ti -1c
+.RI "void \fBuniqueHash\fP (const \fBVarnode\fP *root, \fBFuncdata\fP *fd)"
+.br
+.RI "Select a unique hash for the given \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindVarnode\fP (\fBFuncdata\fP *fd, const \fBAddress\fP &addr, uint8 h)"
+.br
+.RI "Given an address and hash, find the unique matching \fBVarnode\fP\&. "
+.ti -1c
+.RI "uint8 \fBgetHash\fP (void) const"
+.br
+.RI "Get the (current) hash\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddress\fP (void) const"
+.br
+.RI "Get the (current) address\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBgatherFirstLevelVars\fP (vector< \fBVarnode\fP * > &varlist, \fBFuncdata\fP *fd, const \fBAddress\fP &addr, uint8 h)"
+.br
+.RI "Get the Varnodes immediately attached to PcodeOps at the given address\&. "
+.ti -1c
+.RI "static int4 \fBgetSlotFromHash\fP (uint8 h)"
+.br
+.RI "Retrieve the encoded slot from a hash\&. "
+.ti -1c
+.RI "static uint4 \fBgetMethodFromHash\fP (uint8 h)"
+.br
+.RI "Retrieve the encoded method from a hash\&. "
+.ti -1c
+.RI "static \fBOpCode\fP \fBgetOpCodeFromHash\fP (uint8 h)"
+.br
+.RI "Retrieve the encoded op-code from a hash\&. "
+.ti -1c
+.RI "static uint4 \fBgetPositionFromHash\fP (uint8 h)"
+.br
+.RI "Retrieve the encoded position from a hash\&. "
+.ti -1c
+.RI "static uint4 \fBgetTotalFromHash\fP (uint8 h)"
+.br
+.RI "Retrieve the encoded collision total from a hash\&. "
+.ti -1c
+.RI "static bool \fBgetIsNotAttached\fP (uint8 h)"
+.br
+.RI "Retrieve the attachment boolean from a hash\&. "
+.ti -1c
+.RI "static void \fBclearTotalPosition\fP (uint8 &h)"
+.br
+.RI "Clear the collision total and position fields within a hash\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static uint4 \fBtranstable\fP []"
+.br
+.RI "Translation of op-codes to hash values\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A hash utility to uniquely identify a temporary \fBVarnode\fP in data-flow\&. 
+
+Most Varnodes can be identified within the data-flow graph by their storage address and the address of the \fBPcodeOp\fP that defines them\&. For temporary registers, this does not work because the storage address is ephemeral\&. This class allows Varnodes like temporary registers (and constants) to be robustly identified by hashing details of the local data-flow\&.
+.PP
+This class, when presented a \fBVarnode\fP via \fBcalcHash()\fP, calculates a hash (\fBgetHash()\fP) and an address (\fBgetAddress()\fP) of the \fBPcodeOp\fP most closely associated with the \fBVarnode\fP, either the defining op or the op directly reading the \fBVarnode\fP\&. There are actually four hash variants that can be calculated, labeled 0, 1, 2, or 3, which incrementally hash in a larger portion of data-flow\&. The method \fBuniqueHash()\fP selects the simplest variant that causes the hash to be unique for the \fBVarnode\fP, among all the Varnodes that share the same address\&.
+.PP
+The variant index is encoded in the hash, so the hash and the address are enough information to uniquely identify the \fBVarnode\fP\&. This is what is stored in the symbol table for a \fIdynamic\fP \fBSymbol\fP\&. 
+.PP
+Definition at line 60 of file dynamic\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void DynamicHash::calcHash (const \fBVarnode\fP * root, uint4 method)"
+
+.PP
+Calculate the hash for given \fBVarnode\fP and method\&. A sub-graph is formed extending from the given \fBVarnode\fP as the root\&. The method specifies how the sub-graph is extended\&. In particular:
+.IP "\(bu" 2
+Method 0 is extends to just immediate p-code ops reading or writing root
+.IP "\(bu" 2
+Method 1 extends to one more level of inputs from method 0\&.
+.IP "\(bu" 2
+Method 2 extends to one more level of outputs from method 0\&.
+.IP "\(bu" 2
+Method 3 extends to inputs and outputs
+.PP
+.PP
+The resulting hash and address can be obtained after calling this method through \fBgetHash()\fP and \fBgetAddress()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroot\fP is the given root \fBVarnode\fP 
+.br
+\fImethod\fP is the hashing method to use: 0, 1, 2, 3 
+.RE
+.PP
+
+.PP
+Definition at line 210 of file dynamic\&.cc\&.
+.SS "void DynamicHash::clear (void)"
+
+.PP
+Called for each additional hash (after the first) 
+.PP
+Definition at line 190 of file dynamic\&.cc\&.
+.SS "void DynamicHash::clearTotalPosition (uint8 & h)\fC [static]\fP"
+
+.PP
+Clear the collision total and position fields within a hash\&. The position and total collisions fields are set by the uniqueness and need to be cleared when comparing raw hashes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is a reference to the hash to modify 
+.RE
+.PP
+
+.PP
+Definition at line 526 of file dynamic\&.cc\&.
+.SS "\fBVarnode\fP * DynamicHash::findVarnode (\fBFuncdata\fP * fd, const \fBAddress\fP & addr, uint8 h)"
+
+.PP
+Given an address and hash, find the unique matching \fBVarnode\fP\&. The method, number of collisions, and position are pulled out of the hash\&. Hashes for the method are performed at Varnodes linked to the given address, and the \fBVarnode\fP which matches the hash (and the position) is returned\&. If the number of collisions for the hash does not match, this method will not return a \fBVarnode\fP, even if the position looks valid\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the function containing the data-flow 
+.br
+\fIaddr\fP is the given address 
+.br
+\fIh\fP is the hash 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 396 of file dynamic\&.cc\&.
+.SS "void DynamicHash::gatherFirstLevelVars (vector< \fBVarnode\fP * > & varlist, \fBFuncdata\fP * fd, const \fBAddress\fP & addr, uint8 h)\fC [static]\fP"
+
+.PP
+Get the Varnodes immediately attached to PcodeOps at the given address\&. Varnodes can be either inputs or outputs to the PcodeOps\&. The op-code, slot, and attachment boolean encoded in the hash are used to further filter the \fBPcodeOp\fP and \fBVarnode\fP objects\&. Varnodes are passed back in sequence with a list container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvarlist\fP is the container that will hold the matching Varnodes 
+.br
+\fIfd\fP is the function holding the data-flow 
+.br
+\fIaddr\fP is the given address 
+.br
+\fIh\fP is the given hash 
+.RE
+.PP
+
+.PP
+Definition at line 426 of file dynamic\&.cc\&.
+.SS "const \fBAddress\fP& DynamicHash::getAddress (void) const\fC [inline]\fP"
+
+.PP
+Get the (current) address\&. 
+.PP
+Definition at line 85 of file dynamic\&.hh\&.
+.SS "uint8 DynamicHash::getHash (void) const\fC [inline]\fP"
+
+.PP
+Get the (current) hash\&. 
+.PP
+Definition at line 83 of file dynamic\&.hh\&.
+.SS "bool DynamicHash::getIsNotAttached (uint8 h)\fC [static]\fP"
+
+.PP
+Retrieve the attachment boolean from a hash\&. The hash encodes whether or not the root was directly attached to its \fBPcodeOp\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the hash value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the root was not attached 
+.RE
+.PP
+
+.PP
+Definition at line 517 of file dynamic\&.cc\&.
+.SS "uint4 DynamicHash::getMethodFromHash (uint8 h)\fC [static]\fP"
+
+.PP
+Retrieve the encoded method from a hash\&. The hash encodes the \fImethod\fP used to produce it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the hash value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the method: 0, 1, 2, 3 
+.RE
+.PP
+
+.PP
+Definition at line 481 of file dynamic\&.cc\&.
+.SS "\fBOpCode\fP DynamicHash::getOpCodeFromHash (uint8 h)\fC [static]\fP"
+
+.PP
+Retrieve the encoded op-code from a hash\&. The hash encodes the op-code of the p-code op attached to the root \fBVarnode\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the hash value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the op-code 
+.RE
+.PP
+
+.PP
+Definition at line 490 of file dynamic\&.cc\&.
+.SS "uint4 DynamicHash::getPositionFromHash (uint8 h)\fC [static]\fP"
+
+.PP
+Retrieve the encoded position from a hash\&. The hash encodes the position of the root \fBVarnode\fP within the list of hash collisions 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the hash value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the position of the root 
+.RE
+.PP
+
+.PP
+Definition at line 499 of file dynamic\&.cc\&.
+.SS "int4 DynamicHash::getSlotFromHash (uint8 h)\fC [static]\fP"
+
+.PP
+Retrieve the encoded slot from a hash\&. The hash encodes the input \fIslot\fP the root \fBVarnode\fP was attached to in its \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the hash value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the slot index or -1 if the \fBVarnode\fP was attached as output 
+.RE
+.PP
+
+.PP
+Definition at line 469 of file dynamic\&.cc\&.
+.SS "uint4 DynamicHash::getTotalFromHash (uint8 h)\fC [static]\fP"
+
+.PP
+Retrieve the encoded collision total from a hash\&. The hash encodes the total number of collisions for that hash 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the hash value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of collisions 
+.RE
+.PP
+
+.PP
+Definition at line 508 of file dynamic\&.cc\&.
+.SS "void DynamicHash::uniqueHash (const \fBVarnode\fP * root, \fBFuncdata\fP * fd)"
+
+.PP
+Select a unique hash for the given \fBVarnode\fP\&. Collect the set of Varnodes at the same address as the given \fBVarnode\fP\&. Starting with method 0, increment the method and calculate hashes of the Varnodes until the given \fBVarnode\fP has a unique hash within the set\&. The resulting hash and address can be obtained after calling this method through \fBgetHash()\fP and \fBgetAddress()\fP\&.
+.PP
+In the rare situation that the last method still does not yield a unique hash, the hash encodes:
+.IP "\(bu" 2
+the smallest number of hash collisions
+.IP "\(bu" 2
+the method that produced the smallest number of hash collisions
+.IP "\(bu" 2
+the position of the root within the collision list
+.PP
+.PP
+For most cases, this will still uniquely identify the root \fBVarnode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroot\fP is the given root \fBVarnode\fP 
+.br
+\fIfd\fP is the function (holding the data-flow graph) 
+.RE
+.PP
+
+.PP
+Definition at line 330 of file dynamic\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 DynamicHash::transtable\fC [static]\fP"
+
+.PP
+Translation of op-codes to hash values\&. 
+.PP
+Definition at line 94 of file dynamic\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,769 @@
+\hypertarget{class_param_trial}{}\section{Param\+Trial Class Reference}
+\label{class_param_trial}\index{ParamTrial@{ParamTrial}}
+
+
+A register or memory register that may be used to pass a parameter or return value.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2a2c072d9a2e3bc49347559e8f24c31829}{checked}} = 1, 
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2a279ad7257dfc9d26818a1ad80a54fbe9}{used}} = 2, 
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2a3798c0aef21d0245d1e9fb23be020d20}{defnouse}} = 4, 
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2aa197ba7c3d3418cb220e911b24022a07}{active}} = 8, 
+\newline
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2adb2ef4c29bcffea45f89d69b30a31253}{unref}} = 16, 
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2a7da8fea4839c73b4671fc73fd02e103b}{killedbycall}} = 32, 
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2aff924d3ea43eb53717814ce587b45a76}{rem\+\_\+formed}} = 64, 
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2ad3954f5b872e0e9bb1fb5a8b3fb78ac0}{indcreate\+\_\+formed}} = 128, 
+\newline
+\mbox{\hyperlink{class_param_trial_a716f03faac64ddccab096ba19364ffa2a78f62aca0c665a96ccb34c92e196ca60}{condexe\+\_\+effect}} = 256
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_param_trial_ac5046f61b5daca7e64e282d2552ba5c8}{Param\+Trial}} (const \mbox{\hyperlink{class_address}{Address}} \&ad, int4 sz, int4 sl)
+\begin{DoxyCompactList}\small\item\em Construct from components. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_param_trial_aad40b54a44a9eae8890e6d6ebbb6d5bb}{get\+Address}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the starting address of {\bfseries{this}} trial. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_trial_a92758568d74f243b6680258fa8cb440a}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of bytes in {\bfseries{this}} trial. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_trial_a54cb5c24617993dc4f2a6548059d2e10}{get\+Slot}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the {\itshape slot} associated with {\bfseries{this}} trial. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a64a57d4768366a15b920f0670ad2e83d}{set\+Slot}} (int4 val)
+\begin{DoxyCompactList}\small\item\em Set the {\itshape slot} associated with {\bfseries{this}} trial. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_param_entry}{Param\+Entry}} $\ast$ \mbox{\hyperlink{class_param_trial_aa4c4b22cd813b218292b6bc7db4e00e1}{get\+Entry}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the model entry associated with {\bfseries{this}} trial. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_trial_a7f3302664c5c80a9d9f6ca3ce4ae38d7}{get\+Offset}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the offset associated with {\bfseries{this}} trial. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_aed34fdf0eec82c9a56fc7ff105bad618}{set\+Entry}} (const \mbox{\hyperlink{class_param_entry}{Param\+Entry}} $\ast$ent, int4 off)
+\begin{DoxyCompactList}\small\item\em Set the model entry for this trial. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_aa4ffa0c04adb864a3cfcff61f5b75051}{mark\+Used}} (void)
+\begin{DoxyCompactList}\small\item\em Mark the trial as a formal parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_aa929e7464a8b48843ba7e03f7a741e0a}{mark\+Active}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that trial is actively used (in data-\/flow) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a2739d29f090bc6f5751dd10aa6cc9a65}{mark\+Inactive}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that trial is not actively used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a7006ab058b4af10027cc87ee1b81b476}{mark\+No\+Use}} (void)
+\begin{DoxyCompactList}\small\item\em Mark trial as definitely {\itshape not} a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a7ede623de85ba60fc1b3e463de10b0fc}{mark\+Unref}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that {\bfseries{this}} trial has no \mbox{\hyperlink{class_varnode}{Varnode}} representative. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a8b08e858cac5d750f527a673be97e322}{mark\+Killed\+By\+Call}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that {\bfseries{this}} storage is {\itshape killed-\/by-\/call}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a4ed0aada38fe913da929f7d29e47e61c}{is\+Checked}} (void) const
+\begin{DoxyCompactList}\small\item\em Has {\bfseries{this}} trial been checked. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a2b98b8c531ad081df9e4eb703ece9dc3}{is\+Active}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} trial actively used in data-\/flow. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a55ddad64a188a6513272a284098aea23}{is\+Definitely\+Not\+Used}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} trial as definitely not a parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a77ad2e667e0525e2417845e389dcfa9f}{is\+Used}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} trial as a formal parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a13bb1c434cce645e25a0a26359d6c889}{is\+Unref}} (void) const
+\begin{DoxyCompactList}\small\item\em Does {\bfseries{this}} trial not have a \mbox{\hyperlink{class_varnode}{Varnode}} representative. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_af67e7b4a445f7069a2680c63afe0a28c}{is\+Killed\+By\+Call}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} storage {\itshape killed-\/by-\/call}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a3fa95bb637e208d366f70cecaa6c331d}{set\+Rem\+Formed}} (void)
+\begin{DoxyCompactList}\small\item\em Mark that {\bfseries{this}} is formed by a I\+N\+T\+\_\+\+R\+EM operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a997491aac899992e8b17459b06af0149}{is\+Rem\+Formed}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} formed by a I\+N\+T\+\_\+\+R\+EM operation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a6a4ace8cab74a380e92b62505c70046a}{set\+Ind\+Create\+Formed}} (void)
+\begin{DoxyCompactList}\small\item\em Mark {\bfseries{this}} trial as formed by {\itshape indirect} {\itshape creation}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a70fbfc1bdd9e76295700b6b45f86f7da}{is\+Ind\+Create\+Formed}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} trial formed by {\itshape indirect} {\itshape creation}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_a32ff81889bdb636331549123ac1ca2e6}{set\+Cond\+Exe\+Effect}} (void)
+\begin{DoxyCompactList}\small\item\em Mark {\bfseries{this}} trial as possibly affected by conditional execution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a89e3ae18b8365695196d1202d3851e98}{has\+Cond\+Exe\+Effect}} (void) const
+\begin{DoxyCompactList}\small\item\em Is {\bfseries{this}} trial possibly affected by conditional execution. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_param_trial_a827f24578c88cbcd001d49ac820c12c2}{slot\+Group}} (void) const
+\begin{DoxyCompactList}\small\item\em Get position of {\bfseries{this}} within its parameter {\itshape group}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_param_trial_ad7ca7f738c822caea264fb6bf7b2738d}{set\+Address}} (const \mbox{\hyperlink{class_address}{Address}} \&ad, int4 sz)
+\begin{DoxyCompactList}\small\item\em Reset the memory range of {\bfseries{this}} trial. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_param_trial}{Param\+Trial}} \mbox{\hyperlink{class_param_trial_a59648aa757130b4607ec1c18926ff234}{split\+Hi}} (int4 sz) const
+\begin{DoxyCompactList}\small\item\em Create a trial representing the first part of {\bfseries{this}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_param_trial}{Param\+Trial}} \mbox{\hyperlink{class_param_trial_a28244bdb2c9f412028e2ac390921cfa0}{split\+Lo}} (int4 sz) const
+\begin{DoxyCompactList}\small\item\em Create a trial representing the last part of {\bfseries{this}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_a4bbb238263015249f040a7309e9335a6}{test\+Shrink}} (const \mbox{\hyperlink{class_address}{Address}} \&newaddr, int4 sz) const
+\begin{DoxyCompactList}\small\item\em Test if {\bfseries{this}} trial can be made smaller. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_param_trial_ac234b0e0b800d4319bc212dd2eb088d8}{operator$<$}} (const \mbox{\hyperlink{class_param_trial}{Param\+Trial}} \&b) const
+\begin{DoxyCompactList}\small\item\em Sort trials in formal parameter order. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A register or memory register that may be used to pass a parameter or return value. 
+
+The parameter recovery utilities (see \mbox{\hyperlink{class_param_active}{Param\+Active}}) use this to denote a putative parameter passing storage location. It is made up of the address and size of the memory range, a set of properties about the use of the range (as a parameter) in context, and a link to the matching part of the Prototype\+Model.
+
+Data-\/flow for the putative parameter is held directly by a \mbox{\hyperlink{class_varnode}{Varnode}}. To quickly map to the \mbox{\hyperlink{class_varnode}{Varnode}} (which may or may not exist at points during the \mbox{\hyperlink{class_param_trial}{Param\+Trial}} lifetime), the concept of {\bfseries{slot}} is used. Param\+Trials are assigned a {\itshape slot}, starting at 1. For sub-\/function parameters, this represents the actual input index of the \mbox{\hyperlink{class_varnode}{Varnode}} in the corresponding C\+A\+LL or C\+A\+L\+L\+I\+ND op. For parameters, this gives the position within the list of possible input Varnodes in address order. The {\itshape slot} ordering varies over the course of analysis and is unlikely to match the final parameter ordering. The \mbox{\hyperlink{class_param_trial}{Param\+Trial}} comparator sorts the trials in final parameter ordering. 
+
+Definition at line 115 of file fspec.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{checked@{checked}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!checked@{checked}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2a2c072d9a2e3bc49347559e8f24c31829}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2a2c072d9a2e3bc49347559e8f24c31829}} 
+checked&Trial has been checked. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{used@{used}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!used@{used}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2a279ad7257dfc9d26818a1ad80a54fbe9}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2a279ad7257dfc9d26818a1ad80a54fbe9}} 
+used&Trial is definitely used (final verdict) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{defnouse@{defnouse}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!defnouse@{defnouse}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2a3798c0aef21d0245d1e9fb23be020d20}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2a3798c0aef21d0245d1e9fb23be020d20}} 
+defnouse&Trial is definitely not used. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{active@{active}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!active@{active}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2aa197ba7c3d3418cb220e911b24022a07}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2aa197ba7c3d3418cb220e911b24022a07}} 
+active&Trial looks active (hint that it is used) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{unref@{unref}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!unref@{unref}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2adb2ef4c29bcffea45f89d69b30a31253}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2adb2ef4c29bcffea45f89d69b30a31253}} 
+unref&There is no direct reference to this parameter trial. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{killedbycall@{killedbycall}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!killedbycall@{killedbycall}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2a7da8fea4839c73b4671fc73fd02e103b}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2a7da8fea4839c73b4671fc73fd02e103b}} 
+killedbycall&Data in this location is unlikely to flow thru a func and still be a param. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{rem\_formed@{rem\_formed}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!rem\_formed@{rem\_formed}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2aff924d3ea43eb53717814ce587b45a76}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2aff924d3ea43eb53717814ce587b45a76}} 
+rem\+\_\+formed&The trial is built out of a remainder operation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{indcreate\_formed@{indcreate\_formed}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!indcreate\_formed@{indcreate\_formed}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2ad3954f5b872e0e9bb1fb5a8b3fb78ac0}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2ad3954f5b872e0e9bb1fb5a8b3fb78ac0}} 
+indcreate\+\_\+formed&The trial is built out of an indirect creation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{condexe\_effect@{condexe\_effect}!ParamTrial@{ParamTrial}}\index{ParamTrial@{ParamTrial}!condexe\_effect@{condexe\_effect}}}\mbox{\Hypertarget{class_param_trial_a716f03faac64ddccab096ba19364ffa2a78f62aca0c665a96ccb34c92e196ca60}\label{class_param_trial_a716f03faac64ddccab096ba19364ffa2a78f62aca0c665a96ccb34c92e196ca60}} 
+condexe\+\_\+effect&This trial may be affected by conditional execution. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 117 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_param_trial_ac5046f61b5daca7e64e282d2552ba5c8}\label{class_param_trial_ac5046f61b5daca7e64e282d2552ba5c8}} 
+\index{ParamTrial@{ParamTrial}!ParamTrial@{ParamTrial}}
+\index{ParamTrial@{ParamTrial}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{ParamTrial()}{ParamTrial()}}
+{\footnotesize\ttfamily Param\+Trial\+::\+Param\+Trial (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad,  }\item[{int4}]{sz,  }\item[{int4}]{sl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct from components. 
+
+
+
+Definition at line 137 of file fspec.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_param_trial_aad40b54a44a9eae8890e6d6ebbb6d5bb}\label{class_param_trial_aad40b54a44a9eae8890e6d6ebbb6d5bb}} 
+\index{ParamTrial@{ParamTrial}!getAddress@{getAddress}}
+\index{getAddress@{getAddress}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{getAddress()}{getAddress()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Param\+Trial\+::get\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the starting address of {\bfseries{this}} trial. 
+
+
+
+Definition at line 138 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_aad40b54a44a9eae8890e6d6ebbb6d5bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_aa4c4b22cd813b218292b6bc7db4e00e1}\label{class_param_trial_aa4c4b22cd813b218292b6bc7db4e00e1}} 
+\index{ParamTrial@{ParamTrial}!getEntry@{getEntry}}
+\index{getEntry@{getEntry}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{getEntry()}{getEntry()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_param_entry}{Param\+Entry}}$\ast$ Param\+Trial\+::get\+Entry (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the model entry associated with {\bfseries{this}} trial. 
+
+
+
+Definition at line 142 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_aa4c4b22cd813b218292b6bc7db4e00e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a7f3302664c5c80a9d9f6ca3ce4ae38d7}\label{class_param_trial_a7f3302664c5c80a9d9f6ca3ce4ae38d7}} 
+\index{ParamTrial@{ParamTrial}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{getOffset()}{getOffset()}}
+{\footnotesize\ttfamily int4 Param\+Trial\+::get\+Offset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the offset associated with {\bfseries{this}} trial. 
+
+
+
+Definition at line 143 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a92758568d74f243b6680258fa8cb440a}\label{class_param_trial_a92758568d74f243b6680258fa8cb440a}} 
+\index{ParamTrial@{ParamTrial}!getSize@{getSize}}
+\index{getSize@{getSize}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Param\+Trial\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of bytes in {\bfseries{this}} trial. 
+
+
+
+Definition at line 139 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a92758568d74f243b6680258fa8cb440a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a54cb5c24617993dc4f2a6548059d2e10}\label{class_param_trial_a54cb5c24617993dc4f2a6548059d2e10}} 
+\index{ParamTrial@{ParamTrial}!getSlot@{getSlot}}
+\index{getSlot@{getSlot}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{getSlot()}{getSlot()}}
+{\footnotesize\ttfamily int4 Param\+Trial\+::get\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the {\itshape slot} associated with {\bfseries{this}} trial. 
+
+
+
+Definition at line 140 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a54cb5c24617993dc4f2a6548059d2e10_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a89e3ae18b8365695196d1202d3851e98}\label{class_param_trial_a89e3ae18b8365695196d1202d3851e98}} 
+\index{ParamTrial@{ParamTrial}!hasCondExeEffect@{hasCondExeEffect}}
+\index{hasCondExeEffect@{hasCondExeEffect}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{hasCondExeEffect()}{hasCondExeEffect()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::has\+Cond\+Exe\+Effect (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} trial possibly affected by conditional execution. 
+
+
+
+Definition at line 162 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a89e3ae18b8365695196d1202d3851e98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a2b98b8c531ad081df9e4eb703ece9dc3}\label{class_param_trial_a2b98b8c531ad081df9e4eb703ece9dc3}} 
+\index{ParamTrial@{ParamTrial}!isActive@{isActive}}
+\index{isActive@{isActive}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Active (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} trial actively used in data-\/flow. 
+
+
+
+Definition at line 152 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a4ed0aada38fe913da929f7d29e47e61c}\label{class_param_trial_a4ed0aada38fe913da929f7d29e47e61c}} 
+\index{ParamTrial@{ParamTrial}!isChecked@{isChecked}}
+\index{isChecked@{isChecked}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isChecked()}{isChecked()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Checked (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Has {\bfseries{this}} trial been checked. 
+
+
+
+Definition at line 151 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a55ddad64a188a6513272a284098aea23}\label{class_param_trial_a55ddad64a188a6513272a284098aea23}} 
+\index{ParamTrial@{ParamTrial}!isDefinitelyNotUsed@{isDefinitelyNotUsed}}
+\index{isDefinitelyNotUsed@{isDefinitelyNotUsed}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isDefinitelyNotUsed()}{isDefinitelyNotUsed()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Definitely\+Not\+Used (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} trial as definitely not a parameter. 
+
+
+
+Definition at line 153 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a70fbfc1bdd9e76295700b6b45f86f7da}\label{class_param_trial_a70fbfc1bdd9e76295700b6b45f86f7da}} 
+\index{ParamTrial@{ParamTrial}!isIndCreateFormed@{isIndCreateFormed}}
+\index{isIndCreateFormed@{isIndCreateFormed}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isIndCreateFormed()}{isIndCreateFormed()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Ind\+Create\+Formed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} trial formed by {\itshape indirect} {\itshape creation}. 
+
+
+
+Definition at line 160 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_af67e7b4a445f7069a2680c63afe0a28c}\label{class_param_trial_af67e7b4a445f7069a2680c63afe0a28c}} 
+\index{ParamTrial@{ParamTrial}!isKilledByCall@{isKilledByCall}}
+\index{isKilledByCall@{isKilledByCall}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isKilledByCall()}{isKilledByCall()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Killed\+By\+Call (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} storage {\itshape killed-\/by-\/call}. 
+
+
+
+Definition at line 156 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a997491aac899992e8b17459b06af0149}\label{class_param_trial_a997491aac899992e8b17459b06af0149}} 
+\index{ParamTrial@{ParamTrial}!isRemFormed@{isRemFormed}}
+\index{isRemFormed@{isRemFormed}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isRemFormed()}{isRemFormed()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Rem\+Formed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} formed by a I\+N\+T\+\_\+\+R\+EM operation. 
+
+
+
+Definition at line 158 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a13bb1c434cce645e25a0a26359d6c889}\label{class_param_trial_a13bb1c434cce645e25a0a26359d6c889}} 
+\index{ParamTrial@{ParamTrial}!isUnref@{isUnref}}
+\index{isUnref@{isUnref}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isUnref()}{isUnref()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Unref (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Does {\bfseries{this}} trial not have a \mbox{\hyperlink{class_varnode}{Varnode}} representative. 
+
+
+
+Definition at line 155 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a77ad2e667e0525e2417845e389dcfa9f}\label{class_param_trial_a77ad2e667e0525e2417845e389dcfa9f}} 
+\index{ParamTrial@{ParamTrial}!isUsed@{isUsed}}
+\index{isUsed@{isUsed}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{isUsed()}{isUsed()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::is\+Used (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is {\bfseries{this}} trial as a formal parameter. 
+
+
+
+Definition at line 154 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a77ad2e667e0525e2417845e389dcfa9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_aa929e7464a8b48843ba7e03f7a741e0a}\label{class_param_trial_aa929e7464a8b48843ba7e03f7a741e0a}} 
+\index{ParamTrial@{ParamTrial}!markActive@{markActive}}
+\index{markActive@{markActive}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{markActive()}{markActive()}}
+{\footnotesize\ttfamily void Param\+Trial\+::mark\+Active (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that trial is actively used (in data-\/flow) 
+
+
+
+Definition at line 146 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_aa929e7464a8b48843ba7e03f7a741e0a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a2739d29f090bc6f5751dd10aa6cc9a65}\label{class_param_trial_a2739d29f090bc6f5751dd10aa6cc9a65}} 
+\index{ParamTrial@{ParamTrial}!markInactive@{markInactive}}
+\index{markInactive@{markInactive}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{markInactive()}{markInactive()}}
+{\footnotesize\ttfamily void Param\+Trial\+::mark\+Inactive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that trial is not actively used. 
+
+
+
+Definition at line 147 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a8b08e858cac5d750f527a673be97e322}\label{class_param_trial_a8b08e858cac5d750f527a673be97e322}} 
+\index{ParamTrial@{ParamTrial}!markKilledByCall@{markKilledByCall}}
+\index{markKilledByCall@{markKilledByCall}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{markKilledByCall()}{markKilledByCall()}}
+{\footnotesize\ttfamily void Param\+Trial\+::mark\+Killed\+By\+Call (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that {\bfseries{this}} storage is {\itshape killed-\/by-\/call}. 
+
+
+
+Definition at line 150 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a7006ab058b4af10027cc87ee1b81b476}\label{class_param_trial_a7006ab058b4af10027cc87ee1b81b476}} 
+\index{ParamTrial@{ParamTrial}!markNoUse@{markNoUse}}
+\index{markNoUse@{markNoUse}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{markNoUse()}{markNoUse()}}
+{\footnotesize\ttfamily void Param\+Trial\+::mark\+No\+Use (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark trial as definitely {\itshape not} a parameter. 
+
+
+
+Definition at line 148 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a7006ab058b4af10027cc87ee1b81b476_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a7ede623de85ba60fc1b3e463de10b0fc}\label{class_param_trial_a7ede623de85ba60fc1b3e463de10b0fc}} 
+\index{ParamTrial@{ParamTrial}!markUnref@{markUnref}}
+\index{markUnref@{markUnref}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{markUnref()}{markUnref()}}
+{\footnotesize\ttfamily void Param\+Trial\+::mark\+Unref (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that {\bfseries{this}} trial has no \mbox{\hyperlink{class_varnode}{Varnode}} representative. 
+
+
+
+Definition at line 149 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a7ede623de85ba60fc1b3e463de10b0fc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_aa4ffa0c04adb864a3cfcff61f5b75051}\label{class_param_trial_aa4ffa0c04adb864a3cfcff61f5b75051}} 
+\index{ParamTrial@{ParamTrial}!markUsed@{markUsed}}
+\index{markUsed@{markUsed}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{markUsed()}{markUsed()}}
+{\footnotesize\ttfamily void Param\+Trial\+::mark\+Used (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark the trial as a formal parameter. 
+
+
+
+Definition at line 145 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{class_param_trial_aa4ffa0c04adb864a3cfcff61f5b75051_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_ac234b0e0b800d4319bc212dd2eb088d8}\label{class_param_trial_ac234b0e0b800d4319bc212dd2eb088d8}} 
+\index{ParamTrial@{ParamTrial}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_param_trial}{Param\+Trial}} \&}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Sort trials in formal parameter order. 
+
+Trials are sorted primarily by the {\itshape group} index assigned by the Prototype\+Model. Trials within the same group are sorted in address order (or its reverse) 
+\begin{DoxyParams}{Parameters}
+{\em b} & is the other trial to compare with {\bfseries{this}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} should be ordered before the other trial 
+\end{DoxyReturn}
+
+
+Definition at line 1214 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_ac234b0e0b800d4319bc212dd2eb088d8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_ad7ca7f738c822caea264fb6bf7b2738d}\label{class_param_trial_ad7ca7f738c822caea264fb6bf7b2738d}} 
+\index{ParamTrial@{ParamTrial}!setAddress@{setAddress}}
+\index{setAddress@{setAddress}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{setAddress()}{setAddress()}}
+{\footnotesize\ttfamily void Param\+Trial\+::set\+Address (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{ad,  }\item[{int4}]{sz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset the memory range of {\bfseries{this}} trial. 
+
+
+
+Definition at line 164 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a32ff81889bdb636331549123ac1ca2e6}\label{class_param_trial_a32ff81889bdb636331549123ac1ca2e6}} 
+\index{ParamTrial@{ParamTrial}!setCondExeEffect@{setCondExeEffect}}
+\index{setCondExeEffect@{setCondExeEffect}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{setCondExeEffect()}{setCondExeEffect()}}
+{\footnotesize\ttfamily void Param\+Trial\+::set\+Cond\+Exe\+Effect (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark {\bfseries{this}} trial as possibly affected by conditional execution. 
+
+
+
+Definition at line 161 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_aed34fdf0eec82c9a56fc7ff105bad618}\label{class_param_trial_aed34fdf0eec82c9a56fc7ff105bad618}} 
+\index{ParamTrial@{ParamTrial}!setEntry@{setEntry}}
+\index{setEntry@{setEntry}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{setEntry()}{setEntry()}}
+{\footnotesize\ttfamily void Param\+Trial\+::set\+Entry (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_param_entry}{Param\+Entry}} $\ast$}]{ent,  }\item[{int4}]{off }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the model entry for this trial. 
+
+
+
+Definition at line 144 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a6a4ace8cab74a380e92b62505c70046a}\label{class_param_trial_a6a4ace8cab74a380e92b62505c70046a}} 
+\index{ParamTrial@{ParamTrial}!setIndCreateFormed@{setIndCreateFormed}}
+\index{setIndCreateFormed@{setIndCreateFormed}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{setIndCreateFormed()}{setIndCreateFormed()}}
+{\footnotesize\ttfamily void Param\+Trial\+::set\+Ind\+Create\+Formed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark {\bfseries{this}} trial as formed by {\itshape indirect} {\itshape creation}. 
+
+
+
+Definition at line 159 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_param_trial_a3fa95bb637e208d366f70cecaa6c331d}\label{class_param_trial_a3fa95bb637e208d366f70cecaa6c331d}} 
+\index{ParamTrial@{ParamTrial}!setRemFormed@{setRemFormed}}
+\index{setRemFormed@{setRemFormed}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{setRemFormed()}{setRemFormed()}}
+{\footnotesize\ttfamily void Param\+Trial\+::set\+Rem\+Formed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark that {\bfseries{this}} is formed by a I\+N\+T\+\_\+\+R\+EM operation. 
+
+
+
+Definition at line 157 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a3fa95bb637e208d366f70cecaa6c331d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a64a57d4768366a15b920f0670ad2e83d}\label{class_param_trial_a64a57d4768366a15b920f0670ad2e83d}} 
+\index{ParamTrial@{ParamTrial}!setSlot@{setSlot}}
+\index{setSlot@{setSlot}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{setSlot()}{setSlot()}}
+{\footnotesize\ttfamily void Param\+Trial\+::set\+Slot (\begin{DoxyParamCaption}\item[{int4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the {\itshape slot} associated with {\bfseries{this}} trial. 
+
+
+
+Definition at line 141 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a64a57d4768366a15b920f0670ad2e83d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a827f24578c88cbcd001d49ac820c12c2}\label{class_param_trial_a827f24578c88cbcd001d49ac820c12c2}} 
+\index{ParamTrial@{ParamTrial}!slotGroup@{slotGroup}}
+\index{slotGroup@{slotGroup}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{slotGroup()}{slotGroup()}}
+{\footnotesize\ttfamily int4 Param\+Trial\+::slot\+Group (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get position of {\bfseries{this}} within its parameter {\itshape group}. 
+
+
+
+Definition at line 163 of file fspec.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a827f24578c88cbcd001d49ac820c12c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_param_trial_a827f24578c88cbcd001d49ac820c12c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_param_trial_a59648aa757130b4607ec1c18926ff234}\label{class_param_trial_a59648aa757130b4607ec1c18926ff234}} 
+\index{ParamTrial@{ParamTrial}!splitHi@{splitHi}}
+\index{splitHi@{splitHi}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{splitHi()}{splitHi()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_param_trial}{Param\+Trial}} Param\+Trial\+::split\+Hi (\begin{DoxyParamCaption}\item[{int4}]{sz }\end{DoxyParamCaption}) const}
+
+
+
+Create a trial representing the first part of {\bfseries{this}}. 
+
+Create a new \mbox{\hyperlink{class_param_trial}{Param\+Trial}} based on the first bytes of the memory range. 
+\begin{DoxyParams}{Parameters}
+{\em sz} & is the number of bytes to include in the new trial \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new trial 
+\end{DoxyReturn}
+
+
+Definition at line 1166 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_param_trial_a28244bdb2c9f412028e2ac390921cfa0}\label{class_param_trial_a28244bdb2c9f412028e2ac390921cfa0}} 
+\index{ParamTrial@{ParamTrial}!splitLo@{splitLo}}
+\index{splitLo@{splitLo}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{splitLo()}{splitLo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_param_trial}{Param\+Trial}} Param\+Trial\+::split\+Lo (\begin{DoxyParamCaption}\item[{int4}]{sz }\end{DoxyParamCaption}) const}
+
+
+
+Create a trial representing the last part of {\bfseries{this}}. 
+
+Create a new \mbox{\hyperlink{class_param_trial}{Param\+Trial}} based on the last bytes of the memory range. 
+\begin{DoxyParams}{Parameters}
+{\em sz} & is the number of bytes to include in the new trial \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new trial 
+\end{DoxyReturn}
+
+
+Definition at line 1177 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_param_trial_a4bbb238263015249f040a7309e9335a6}\label{class_param_trial_a4bbb238263015249f040a7309e9335a6}} 
+\index{ParamTrial@{ParamTrial}!testShrink@{testShrink}}
+\index{testShrink@{testShrink}!ParamTrial@{ParamTrial}}
+\subsubsection{\texorpdfstring{testShrink()}{testShrink()}}
+{\footnotesize\ttfamily bool Param\+Trial\+::test\+Shrink (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{newaddr,  }\item[{int4}]{sz }\end{DoxyParamCaption}) const}
+
+
+
+Test if {\bfseries{this}} trial can be made smaller. 
+
+A new address and size for the memory range is given, which must respect the endianness of the putative parameter and any existing match with the Prototype\+Model 
+\begin{DoxyParams}{Parameters}
+{\em newaddr} & is the new address \\
+\hline
+{\em sz} & is the new size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the trial can be shrunk to the new range 
+\end{DoxyReturn}
+
+
+Definition at line 1192 of file fspec.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

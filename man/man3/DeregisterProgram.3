@@ -1,0 +1,59 @@
+.TH "DeregisterProgram" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DeregisterProgram \- Command to \fBrelease\fP all resources associated with a Program (executable) in the decompiler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBGhidraCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)"
+.br
+.RI "Perform the action of the command\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBres\fP"
+.br
+.RI "The meta-command being issued to send back\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Command to \fBrelease\fP all resources associated with a Program (executable) in the decompiler\&. 
+
+The command frees the \fBArchitectureGhidra\fP object (recursively affecting all resources) associated with the program\&. A \fItermination\fP meta-command is issued for this process\&. The command expects a single string parameter encoding the id of the program\&. 
+.PP
+Definition at line 119 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void DeregisterProgram::rawAction (void)\fC [virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implements \fBGhidraCommand\fP\&.
+.PP
+Definition at line 213 of file ghidra_process\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 DeregisterProgram::res"
+
+.PP
+The meta-command being issued to send back\&. 
+.PP
+Definition at line 124 of file ghidra_process\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

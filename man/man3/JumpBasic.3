@@ -1,0 +1,309 @@
+.TH "JumpBasic" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JumpBasic
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <jumptable\&.hh>\fP
+.PP
+Inherits \fBJumpModel\fP\&.
+.PP
+Inherited by \fBJumpBasic2\fP, and \fBJumpBasicOverride\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpBasic\fP (\fBJumpTable\fP *jt)"
+.br
+.ti -1c
+.RI "const \fBPathMeld\fP & \fBgetPathMeld\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBJumpValuesRange\fP * \fBgetValueRange\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fB~JumpBasic\fP (void)"
+.br
+.ti -1c
+.RI "virtual bool \fBisOverride\fP (void) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetTableSize\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBrecoverModel\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, uint4 matchsize, uint4 maxtablesize)"
+.br
+.ti -1c
+.RI "virtual void \fBbuildAddresses\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable, vector< \fBLoadTable\fP > *loadpoints) const"
+.br
+.ti -1c
+.RI "virtual void \fBfindUnnormalized\fP (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)"
+.br
+.ti -1c
+.RI "virtual void \fBbuildLabels\fP (\fBFuncdata\fP *fd, vector< \fBAddress\fP > &addresstable, vector< \fBuintb\fP > &label, const \fBJumpModel\fP *orig) const"
+.br
+.ti -1c
+.RI "virtual void \fBfoldInNormalization\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop)"
+.br
+.ti -1c
+.RI "virtual bool \fBfoldInGuards\fP (\fBFuncdata\fP *fd, \fBJumpTable\fP *jump)"
+.br
+.ti -1c
+.RI "virtual bool \fBsanityCheck\fP (\fBFuncdata\fP *fd, \fBPcodeOp\fP *indop, vector< \fBAddress\fP > &addresstable)"
+.br
+.ti -1c
+.RI "virtual \fBJumpModel\fP * \fBclone\fP (\fBJumpTable\fP *jt) const"
+.br
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBfindDeterminingVarnodes\fP (\fBPcodeOp\fP *op, int4 slot)"
+.br
+.ti -1c
+.RI "void \fBanalyzeGuards\fP (\fBBlockBasic\fP *bl, int4 pathout)"
+.br
+.ti -1c
+.RI "void \fBcalcRange\fP (\fBVarnode\fP *vn, \fBCircleRange\fP &rng) const"
+.br
+.ti -1c
+.RI "void \fBfindSmallestNormal\fP (uint4 matchsize)"
+.br
+.ti -1c
+.RI "void \fBfindNormalized\fP (\fBFuncdata\fP *fd, \fBBlockBasic\fP *rootbl, int4 pathout, uint4 matchsize, uint4 maxtablesize)"
+.br
+.ti -1c
+.RI "void \fBmarkFoldableGuards\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBfoldInOneGuard\fP (\fBFuncdata\fP *fd, \fBGuardRecord\fP &guard, \fBJumpTable\fP *jump)"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBisprune\fP (\fBVarnode\fP *vn)"
+.br
+.ti -1c
+.RI "static bool \fBispoint\fP (\fBVarnode\fP *vn)"
+.br
+.ti -1c
+.RI "static void \fBsetStride\fP (\fBVarnode\fP *vn, \fBCircleRange\fP &rng)"
+.br
+.ti -1c
+.RI "static \fBuintb\fP \fBbackup2Switch\fP (\fBFuncdata\fP *fd, \fBuintb\fP output, \fBVarnode\fP *outvn, \fBVarnode\fP *invn)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBJumpValuesRange\fP * \fBjrange\fP"
+.br
+.ti -1c
+.RI "\fBPathMeld\fP \fBpathMeld\fP"
+.br
+.ti -1c
+.RI "vector< \fBGuardRecord\fP > \fBselectguards\fP"
+.br
+.ti -1c
+.RI "int4 \fBvarnodeIndex\fP"
+.br
+.ti -1c
+.RI "\fBVarnode\fP * \fBnormalvn\fP"
+.br
+.ti -1c
+.RI "\fBVarnode\fP * \fBswitchvn\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 226 of file jumptable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JumpBasic::JumpBasic (\fBJumpTable\fP * jt)\fC [inline]\fP"
+
+.PP
+Definition at line 246 of file jumptable\&.hh\&.
+.SS "JumpBasic::~JumpBasic (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 1076 of file jumptable\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void JumpBasic::analyzeGuards (\fBBlockBasic\fP * bl, int4 pathout)\fC [protected]\fP"
+
+.PP
+Definition at line 853 of file jumptable\&.cc\&.
+.SS "\fBuintb\fP JumpBasic::backup2Switch (\fBFuncdata\fP * fd, \fBuintb\fP output, \fBVarnode\fP * outvn, \fBVarnode\fP * invn)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 420 of file jumptable\&.cc\&.
+.SS "void JumpBasic::buildAddresses (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable, vector< \fBLoadTable\fP > * loadpoints) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 1099 of file jumptable\&.cc\&.
+.SS "void JumpBasic::buildLabels (\fBFuncdata\fP * fd, vector< \fBAddress\fP > & addresstable, vector< \fBuintb\fP > & label, const \fBJumpModel\fP * orig) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 1166 of file jumptable\&.cc\&.
+.SS "void JumpBasic::calcRange (\fBVarnode\fP * vn, \fBCircleRange\fP & rng) const\fC [protected]\fP"
+
+.PP
+Definition at line 911 of file jumptable\&.cc\&.
+.SS "void JumpBasic::clear (void)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP, and \fBJumpBasic2\fP\&.
+.PP
+Definition at line 1284 of file jumptable\&.cc\&.
+.SS "\fBJumpModel\fP * JumpBasic::clone (\fBJumpTable\fP * jt) const\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP, and \fBJumpBasic2\fP\&.
+.PP
+Definition at line 1276 of file jumptable\&.cc\&.
+.SS "void JumpBasic::findDeterminingVarnodes (\fBPcodeOp\fP * op, int4 slot)\fC [protected]\fP"
+
+.PP
+Definition at line 456 of file jumptable\&.cc\&.
+.SS "void JumpBasic::findNormalized (\fBFuncdata\fP * fd, \fBBlockBasic\fP * rootbl, int4 pathout, uint4 matchsize, uint4 maxtablesize)\fC [protected]\fP"
+
+.PP
+Definition at line 990 of file jumptable\&.cc\&.
+.SS "void JumpBasic::findSmallestNormal (uint4 matchsize)\fC [protected]\fP"
+
+.PP
+Definition at line 960 of file jumptable\&.cc\&.
+.SS "void JumpBasic::findUnnormalized (uint4 maxaddsub, uint4 maxleftright, uint4 maxext)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasic2\fP\&.
+.PP
+Definition at line 1122 of file jumptable\&.cc\&.
+.SS "bool JumpBasic::foldInGuards (\fBFuncdata\fP * fd, \fBJumpTable\fP * jump)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 1216 of file jumptable\&.cc\&.
+.SS "void JumpBasic::foldInNormalization (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Definition at line 1207 of file jumptable\&.cc\&.
+.SS "bool JumpBasic::foldInOneGuard (\fBFuncdata\fP * fd, \fBGuardRecord\fP & guard, \fBJumpTable\fP * jump)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 1034 of file jumptable\&.cc\&.
+.SS "const \fBPathMeld\fP& JumpBasic::getPathMeld (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 247 of file jumptable\&.hh\&.
+.SS "virtual int4 JumpBasic::getTableSize (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 251 of file jumptable\&.hh\&.
+.SS "const \fBJumpValuesRange\fP* JumpBasic::getValueRange (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 248 of file jumptable\&.hh\&.
+.SS "virtual bool JumpBasic::isOverride (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 250 of file jumptable\&.hh\&.
+.SS "bool JumpBasic::ispoint (\fBVarnode\fP * vn)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 397 of file jumptable\&.cc\&.
+.SS "bool JumpBasic::isprune (\fBVarnode\fP * vn)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 387 of file jumptable\&.cc\&.
+.SS "void JumpBasic::markFoldableGuards (void)\fC [protected]\fP"
+
+.PP
+Definition at line 1021 of file jumptable\&.cc\&.
+.SS "bool JumpBasic::recoverModel (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, uint4 matchsize, uint4 maxtablesize)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP, and \fBJumpBasic2\fP\&.
+.PP
+Definition at line 1083 of file jumptable\&.cc\&.
+.SS "bool JumpBasic::sanityCheck (\fBFuncdata\fP * fd, \fBPcodeOp\fP * indop, vector< \fBAddress\fP > & addresstable)\fC [virtual]\fP"
+
+.PP
+Implements \fBJumpModel\fP\&.
+.PP
+Reimplemented in \fBJumpBasicOverride\fP\&.
+.PP
+Definition at line 1238 of file jumptable\&.cc\&.
+.SS "void JumpBasic::setStride (\fBVarnode\fP * vn, \fBCircleRange\fP & rng)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 406 of file jumptable\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBJumpValuesRange\fP* JumpBasic::jrange\fC [protected]\fP"
+
+.PP
+Definition at line 228 of file jumptable\&.hh\&.
+.SS "\fBVarnode\fP* JumpBasic::normalvn\fC [protected]\fP"
+
+.PP
+Definition at line 232 of file jumptable\&.hh\&.
+.SS "\fBPathMeld\fP JumpBasic::pathMeld\fC [protected]\fP"
+
+.PP
+Definition at line 229 of file jumptable\&.hh\&.
+.SS "vector<\fBGuardRecord\fP> JumpBasic::selectguards\fC [protected]\fP"
+
+.PP
+Definition at line 230 of file jumptable\&.hh\&.
+.SS "\fBVarnode\fP* JumpBasic::switchvn\fC [protected]\fP"
+
+.PP
+Definition at line 233 of file jumptable\&.hh\&.
+.SS "int4 JumpBasic::varnodeIndex\fC [protected]\fP"
+
+.PP
+Definition at line 231 of file jumptable\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

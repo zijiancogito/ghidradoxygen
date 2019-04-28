@@ -1,0 +1,584 @@
+\hypertarget{class_circle_range}{}\section{Circle\+Range Class Reference}
+\label{class_circle_range}\index{CircleRange@{CircleRange}}
+
+
+A class for manipulating integer value ranges.  
+
+
+
+
+{\ttfamily \#include $<$rangeutil.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_circle_range_a4771182938dbac834d9474c5603ef2e3}{Circle\+Range}} (void)
+\begin{DoxyCompactList}\small\item\em Construct an empty range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_circle_range_a103e8c9764ba08acce7a179e5b4ecff7}{Circle\+Range}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} mn, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} mx, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} m)
+\begin{DoxyCompactList}\small\item\em Construct given specific boundaries. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_circle_range_a5e27e7c2f13b6bcc509d80723d62ab7a}{Circle\+Range}} (bool val)
+\begin{DoxyCompactList}\small\item\em Construct a boolean range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_circle_range_a7117ce750ace3935fbe5656cd7d918bb}{Circle\+Range}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val, int4 size)
+\begin{DoxyCompactList}\small\item\em Construct range with single value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_circle_range_a2f1ae90649907ae47662da51137b363c}{is\+Empty}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if {\bfseries{this}} range is empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_circle_range_a4f3f3d4447720427b4a3e5c08da40a22}{get\+Min}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the left boundary of the range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_circle_range_ab7d87070d5438997797f5996246715f5}{get\+Max}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the right-\/most integer contained in the range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_circle_range_a57c77df53b7ce6f316044d14b6446028}{get\+End}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the right boundary of the range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_circle_range_ad159c5cf77ea4b8e923471499a6c79ad}{get\+Mask}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the mask. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_circle_range_a606c680231a59b4439f17409d8c479e5}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the size of this range. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_circle_range_a761580f8aa6158005bf278654fc21cd1}{get\+Next}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&val) const
+\begin{DoxyCompactList}\small\item\em Advance an integer within the range. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_circle_range_a9973f2c914dcfe8760079aaa0459d758}{contains}} (const \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Check containment of another range in {\bfseries{this}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_circle_range_a4681b55d158417a6598dd09c08850848}{contains}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} val) const
+\begin{DoxyCompactList}\small\item\em Check containment of a specific integer. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_circle_range_a9d8c4b0c9c8e9d51baa6eb2cbb551c6d}{intersect}} (const \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&op2)
+\begin{DoxyCompactList}\small\item\em Intersect {\bfseries{this}} with another range. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_circle_range_a82f38601c64d4bdcc4aa977c2896b0f4}{set\+N\+Z\+Mask}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} nzmask, int4 size)
+\begin{DoxyCompactList}\small\item\em Set the range based on a putative mask. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_circle_range_a286db51910f20ec7624132f8298cfe9b}{circle\+Union}} (const \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&op2)
+\begin{DoxyCompactList}\small\item\em Union two ranges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_circle_range_a44fa8dca988417e0381e891268713a03}{set\+Stride}} (int4 newshift)
+\begin{DoxyCompactList}\small\item\em Set a new stride on {\bfseries{this}} range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_circle_range_a8b2b3063264a1169940c7131628b9a4b}{pull\+Back}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$$\ast$const\+Markup, bool usenzmask)
+\begin{DoxyCompactList}\small\item\em Pull-\/back {\bfseries{this}} range through given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_circle_range_abcf8280b8e4527ec260c396b6590fdae}{translate2\+Op}} (\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} \&opc, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&c, int4 \&cslot) const
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_translate}{Translate}} range to a comparison op. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class for manipulating integer value ranges. 
+
+The idea is to have a representation of common sets of values that a varnode might take on in analysis so that the representation can be manipulated symbolically to some extent. The representation is a circular range (determined by a half-\/open interval \mbox{[}left,right)), over the integers mod 2$^\wedge$n, where mask = 2$^\wedge$n-\/1. The range can support a step, if some of the least significant bits of the mask are set to zero.
+
+The class then can
+\begin{DoxyItemize}
+\item Generate ranges based on a pcode condition\+:
+\begin{DoxyItemize}
+\item x $<$ 2 =$>$ left=0 right=2 mask=sizeof(x)
+\item 5 $>$= x =$>$ left=5 right=0 mask=sizeof(x)
+\end{DoxyItemize}
+\item Intersect and union ranges, if the result is another range
+\item Pull-\/back a range through a transformation operation
+\item Iterate
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{val = range.getMin();}
+\DoxyCodeLine{\textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{\} \textcolor{keywordflow}{while}(range.getNext(val));}
+\end{DoxyCode}
+ 
+
+Definition at line 48 of file rangeutil.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_circle_range_a4771182938dbac834d9474c5603ef2e3}\label{class_circle_range_a4771182938dbac834d9474c5603ef2e3}} 
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{CircleRange()}{CircleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Circle\+Range\+::\+Circle\+Range (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct an empty range. 
+
+
+
+Definition at line 62 of file rangeutil.\+hh.
+
+\mbox{\Hypertarget{class_circle_range_a103e8c9764ba08acce7a179e5b4ecff7}\label{class_circle_range_a103e8c9764ba08acce7a179e5b4ecff7}} 
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{CircleRange()}{CircleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Circle\+Range\+::\+Circle\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{mn,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{mx,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{m }\end{DoxyParamCaption})}
+
+
+
+Construct given specific boundaries. 
+
+Give specific left/right boundaries and a mask. 
+\begin{DoxyParams}{Parameters}
+{\em mn} & is the left boundary of the range \\
+\hline
+{\em mx} & is the right boundary of the range \\
+\hline
+{\em m} & is the mask encoding a size and stride \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 127 of file rangeutil.\+cc.
+
+\mbox{\Hypertarget{class_circle_range_a5e27e7c2f13b6bcc509d80723d62ab7a}\label{class_circle_range_a5e27e7c2f13b6bcc509d80723d62ab7a}} 
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{CircleRange()}{CircleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Circle\+Range\+::\+Circle\+Range (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})}
+
+
+
+Construct a boolean range. 
+
+The range contains only a single integer, 0 or 1, depending on the boolean parameter. 
+\begin{DoxyParams}{Parameters}
+{\em val} & is the boolean parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 139 of file rangeutil.\+cc.
+
+\mbox{\Hypertarget{class_circle_range_a7117ce750ace3935fbe5656cd7d918bb}\label{class_circle_range_a7117ce750ace3935fbe5656cd7d918bb}} 
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\index{CircleRange@{CircleRange}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{CircleRange()}{CircleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Circle\+Range\+::\+Circle\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val,  }\item[{int4}]{size }\end{DoxyParamCaption})}
+
+
+
+Construct range with single value. 
+
+A size specifies the number of bytes ($\ast$8 to get number of bits) in the mask. The stride is assumed to be 1. 
+\begin{DoxyParams}{Parameters}
+{\em val} & is is the single value \\
+\hline
+{\em size} & is the size of the mask in bytes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 154 of file rangeutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{class_circle_range_a7117ce750ace3935fbe5656cd7d918bb_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_circle_range_a286db51910f20ec7624132f8298cfe9b}\label{class_circle_range_a286db51910f20ec7624132f8298cfe9b}} 
+\index{CircleRange@{CircleRange}!circleUnion@{circleUnion}}
+\index{circleUnion@{circleUnion}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{circleUnion()}{circleUnion()}}
+{\footnotesize\ttfamily int4 Circle\+Range\+::circle\+Union (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&}]{op2 }\end{DoxyParamCaption})}
+
+
+
+Union two ranges. 
+
+Set {\bfseries{this}} to the union of {\bfseries{this}} and {\bfseries{op2}} as a single interval. Return 0 if the result is valid. Return 2 if the union is two pieces. If result is not zero, {\bfseries{this}} is not modified. 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the range to union with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the result code 
+\end{DoxyReturn}
+
+
+Definition at line 233 of file rangeutil.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a286db51910f20ec7624132f8298cfe9b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a9973f2c914dcfe8760079aaa0459d758}\label{class_circle_range_a9973f2c914dcfe8760079aaa0459d758}} 
+\index{CircleRange@{CircleRange}!contains@{contains}}
+\index{contains@{contains}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Circle\+Range\+::contains (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&}]{op2 }\end{DoxyParamCaption}) const}
+
+
+
+Check containment of another range in {\bfseries{this}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the specific range to test for containment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{true}} contains the interval {\bfseries{op2}} 
+\end{DoxyReturn}
+
+
+Definition at line 188 of file rangeutil.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a9973f2c914dcfe8760079aaa0459d758_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a4681b55d158417a6598dd09c08850848}\label{class_circle_range_a4681b55d158417a6598dd09c08850848}} 
+\index{CircleRange@{CircleRange}!contains@{contains}}
+\index{contains@{contains}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Circle\+Range\+::contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{val }\end{DoxyParamCaption}) const}
+
+
+
+Check containment of a specific integer. 
+
+Check if a specific integer is a member of {\bfseries{this}} range. 
+\begin{DoxyParams}{Parameters}
+{\em val} & is the specific integer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if it is contained in {\bfseries{this}} 
+\end{DoxyReturn}
+
+
+Definition at line 210 of file rangeutil.\+cc.
+
+\mbox{\Hypertarget{class_circle_range_a57c77df53b7ce6f316044d14b6446028}\label{class_circle_range_a57c77df53b7ce6f316044d14b6446028}} 
+\index{CircleRange@{CircleRange}!getEnd@{getEnd}}
+\index{getEnd@{getEnd}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{getEnd()}{getEnd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Circle\+Range\+::get\+End (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the right boundary of the range. 
+
+
+
+Definition at line 69 of file rangeutil.\+hh.
+
+\mbox{\Hypertarget{class_circle_range_ad159c5cf77ea4b8e923471499a6c79ad}\label{class_circle_range_ad159c5cf77ea4b8e923471499a6c79ad}} 
+\index{CircleRange@{CircleRange}!getMask@{getMask}}
+\index{getMask@{getMask}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{getMask()}{getMask()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Circle\+Range\+::get\+Mask (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the mask. 
+
+
+
+Definition at line 70 of file rangeutil.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_ad159c5cf77ea4b8e923471499a6c79ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_ab7d87070d5438997797f5996246715f5}\label{class_circle_range_ab7d87070d5438997797f5996246715f5}} 
+\index{CircleRange@{CircleRange}!getMax@{getMax}}
+\index{getMax@{getMax}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{getMax()}{getMax()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Circle\+Range\+::get\+Max (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the right-\/most integer contained in the range. 
+
+
+
+Definition at line 68 of file rangeutil.\+hh.
+
+\mbox{\Hypertarget{class_circle_range_a4f3f3d4447720427b4a3e5c08da40a22}\label{class_circle_range_a4f3f3d4447720427b4a3e5c08da40a22}} 
+\index{CircleRange@{CircleRange}!getMin@{getMin}}
+\index{getMin@{getMin}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{getMin()}{getMin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Circle\+Range\+::get\+Min (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the left boundary of the range. 
+
+
+
+Definition at line 67 of file rangeutil.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a4f3f3d4447720427b4a3e5c08da40a22_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a761580f8aa6158005bf278654fc21cd1}\label{class_circle_range_a761580f8aa6158005bf278654fc21cd1}} 
+\index{CircleRange@{CircleRange}!getNext@{getNext}}
+\index{getNext@{getNext}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{getNext()}{getNext()}}
+{\footnotesize\ttfamily bool Circle\+Range\+::get\+Next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&}]{val }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Advance an integer within the range. 
+
+
+
+Definition at line 72 of file rangeutil.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a761580f8aa6158005bf278654fc21cd1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a606c680231a59b4439f17409d8c479e5}\label{class_circle_range_a606c680231a59b4439f17409d8c479e5}} 
+\index{CircleRange@{CircleRange}!getSize@{getSize}}
+\index{getSize@{getSize}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Circle\+Range\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the size of this range. 
+
+\begin{DoxyReturn}{Returns}
+the number of integers contained in this range 
+\end{DoxyReturn}
+
+
+Definition at line 166 of file rangeutil.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a606c680231a59b4439f17409d8c479e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a9d8c4b0c9c8e9d51baa6eb2cbb551c6d}\label{class_circle_range_a9d8c4b0c9c8e9d51baa6eb2cbb551c6d}} 
+\index{CircleRange@{CircleRange}!intersect@{intersect}}
+\index{intersect@{intersect}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{intersect()}{intersect()}}
+{\footnotesize\ttfamily int4 Circle\+Range\+::intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_circle_range}{Circle\+Range}} \&}]{op2 }\end{DoxyParamCaption})}
+
+
+
+Intersect {\bfseries{this}} with another range. 
+
+Set {\bfseries{this}} to the intersection of {\bfseries{this}} and {\bfseries{op2}} as a single interval if possible. Return 0 if the result is valid Return 2 if the intersection is two pieces If result is not zero, {\bfseries{this}} is not modified 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the second range \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the intersection code 
+\end{DoxyReturn}
+
+
+Definition at line 299 of file rangeutil.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a9d8c4b0c9c8e9d51baa6eb2cbb551c6d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a2f1ae90649907ae47662da51137b363c}\label{class_circle_range_a2f1ae90649907ae47662da51137b363c}} 
+\index{CircleRange@{CircleRange}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Circle\+Range\+::is\+Empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if {\bfseries{this}} range is empty. 
+
+
+
+Definition at line 66 of file rangeutil.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a2f1ae90649907ae47662da51137b363c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a8b2b3063264a1169940c7131628b9a4b}\label{class_circle_range_a8b2b3063264a1169940c7131628b9a4b}} 
+\index{CircleRange@{CircleRange}!pullBack@{pullBack}}
+\index{pullBack@{pullBack}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{pullBack()}{pullBack()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ Circle\+Range\+::pull\+Back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$$\ast$}]{const\+Markup,  }\item[{bool}]{usenzmask }\end{DoxyParamCaption})}
+
+
+
+Pull-\/back {\bfseries{this}} range through given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+The pull-\/back is performed through a given p-\/code {\bfseries{op}} and set {\bfseries{this}} to the resulting range (if possible). If there is a single unknown input, and the set of values for this input that cause the output of {\bfseries{op}} to fall into {\bfseries{this}} form a range, then set {\bfseries{this}} to the range (the \char`\"{}pull\+Back\char`\"{}) and return the unknown varnode. Return null otherwise.
+
+We may know something about the input varnode in the form of its N\+Z\+M\+A\+SK, which can further restrict the range we return. If {\bfseries{usenzmask}} is true, and N\+Z\+M\+A\+SK forms a range, intersect {\bfseries{this}} with the result.
+
+If there is \mbox{\hyperlink{class_symbol}{Symbol}} markup on any constant passed into the op, pass that information back. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em const\+Markup} & is the reference for passing back the constant relevant to the pull-\/back \\
+\hline
+{\em usenzmask} & specifies whether to use the N\+Z\+M\+A\+SK \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the input \mbox{\hyperlink{class_varnode}{Varnode}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 481 of file rangeutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a8b2b3063264a1169940c7131628b9a4b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a8b2b3063264a1169940c7131628b9a4b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a82f38601c64d4bdcc4aa977c2896b0f4}\label{class_circle_range_a82f38601c64d4bdcc4aa977c2896b0f4}} 
+\index{CircleRange@{CircleRange}!setNZMask@{setNZMask}}
+\index{setNZMask@{setNZMask}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{setNZMask()}{setNZMask()}}
+{\footnotesize\ttfamily bool Circle\+Range\+::set\+N\+Z\+Mask (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{nzmask,  }\item[{int4}]{size }\end{DoxyParamCaption})}
+
+
+
+Set the range based on a putative mask. 
+
+Try to create a range given a value that is not necessarily a valid mask. If the mask is valid, range is set to all possible values that whose non-\/zero bits are contained in the mask. If the mask is invalid, {\bfseries{this}} range is not modified. 
+\begin{DoxyParams}{Parameters}
+{\em nzmask} & is the putative mask \\
+\hline
+{\em size} & is a maximum size (in bytes) for the mask \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the mask is valid 
+\end{DoxyReturn}
+
+
+Definition at line 403 of file rangeutil.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{class_circle_range_a82f38601c64d4bdcc4aa977c2896b0f4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a82f38601c64d4bdcc4aa977c2896b0f4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_a44fa8dca988417e0381e891268713a03}\label{class_circle_range_a44fa8dca988417e0381e891268713a03}} 
+\index{CircleRange@{CircleRange}!setStride@{setStride}}
+\index{setStride@{setStride}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{setStride()}{setStride()}}
+{\footnotesize\ttfamily void Circle\+Range\+::set\+Stride (\begin{DoxyParamCaption}\item[{int4}]{newshift }\end{DoxyParamCaption})}
+
+
+
+Set a new stride on {\bfseries{this}} range. 
+
+The new stride is specified by giving the number of bits of shift (log2(stride)) 
+\begin{DoxyParams}{Parameters}
+{\em newshift} & is the number of bits of shift \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 439 of file rangeutil.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_a44fa8dca988417e0381e891268713a03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_circle_range_abcf8280b8e4527ec260c396b6590fdae}\label{class_circle_range_abcf8280b8e4527ec260c396b6590fdae}} 
+\index{CircleRange@{CircleRange}!translate2Op@{translate2Op}}
+\index{translate2Op@{translate2Op}!CircleRange@{CircleRange}}
+\subsubsection{\texorpdfstring{translate2Op()}{translate2Op()}}
+{\footnotesize\ttfamily int4 Circle\+Range\+::translate2\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} \&}]{opc,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \&}]{c,  }\item[{int4 \&}]{cslot }\end{DoxyParamCaption}) const}
+
+
+
+\mbox{\hyperlink{class_translate}{Translate}} range to a comparison op. 
+
+Recover parameters for a comparison \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}, that returns true for input values exactly in {\bfseries{this}} range. Return\+:
+\begin{DoxyItemize}
+\item 0 on success
+\item 1 if all inputs must return true
+\item 2 if this is not possible
+\item 3 if no inputs must return true 
+\begin{DoxyParams}{Parameters}
+{\em opc} & will contain the Op\+Code for the comparison \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+{\em c} & will contain the constant input to the op \\
+\hline
+{\em cslot} & will indicate the slot holding the constant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the success code 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line 811 of file rangeutil.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_circle_range_abcf8280b8e4527ec260c396b6590fdae_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{rangeutil_8hh}{rangeutil.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{rangeutil_8cc}{rangeutil.\+cc}}\end{DoxyCompactItemize}

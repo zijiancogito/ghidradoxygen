@@ -1,0 +1,320 @@
+.TH "CodeDataAnalysis" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CodeDataAnalysis
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <codedata\&.hh>\fP
+.PP
+Inherits \fBIfaceData\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~CodeDataAnalysis\fP (void)"
+.br
+.ti -1c
+.RI "void \fBinit\fP (\fBArchitecture\fP *g)"
+.br
+.ti -1c
+.RI "void \fBpushTaintAddress\fP (const \fBAddress\fP &addr)"
+.br
+.ti -1c
+.RI "void \fBprocessTaint\fP (void)"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBcommitCodeVec\fP (const \fBAddress\fP &addr, vector< \fBCodeUnit\fP > &codevec, map< \fBAddrLink\fP, uint4 > &fromto_vec)"
+.br
+.ti -1c
+.RI "void \fBclearHitBy\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclearCrossRefs\fP (const \fBAddress\fP &addr, const \fBAddress\fP &endaddr)"
+.br
+.ti -1c
+.RI "void \fBclearCodeUnits\fP (const \fBAddress\fP &addr, const \fBAddress\fP &endaddr)"
+.br
+.ti -1c
+.RI "void \fBaddTarget\fP (const string &nm, const \fBAddress\fP &addr, uint4 mask)"
+.br
+.ti -1c
+.RI "int4 \fBgetNumTargets\fP (void) const"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBdisassembleBlock\fP (const \fBAddress\fP &addr, const \fBAddress\fP &endaddr)"
+.br
+.ti -1c
+.RI "void \fBdisassembleRange\fP (const \fBRange\fP &range)"
+.br
+.ti -1c
+.RI "void \fBdisassembleRangeList\fP (const \fBRangeList\fP &rangelist)"
+.br
+.ti -1c
+.RI "void \fBfindNotCodeUnits\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmarkFallthruHits\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmarkCrossHits\fP (void)"
+.br
+.ti -1c
+.RI "void \fBaddTargetHit\fP (const \fBAddress\fP &codeaddr, \fBuintb\fP targethit)"
+.br
+.ti -1c
+.RI "void \fBresolveThunkHit\fP (const \fBAddress\fP &codeaddr, \fBuintb\fP targethit)"
+.br
+.ti -1c
+.RI "void \fBfindUnlinked\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBcheckErrantStart\fP (map< \fBAddress\fP, \fBCodeUnit\fP >::iterator iter)"
+.br
+.ti -1c
+.RI "bool \fBrepairJump\fP (const \fBAddress\fP &addr, int4 max)"
+.br
+.ti -1c
+.RI "void \fBfindOffCut\fP (void)"
+.br
+.ti -1c
+.RI "\fBAddress\fP \fBfindFunctionStart\fP (const \fBAddress\fP &addr) const"
+.br
+.ti -1c
+.RI "const list< \fBTargetHit\fP > & \fBgetTargetHits\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBdumpModelHits\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBdumpCrossRefs\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBdumpFunctionStarts\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBdumpUnlinked\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBdumpTargetHits\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrunModel\fP (void)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBalignment\fP"
+.br
+.ti -1c
+.RI "\fBArchitecture\fP * \fBglb\fP"
+.br
+.ti -1c
+.RI "\fBDisassemblyEngine\fP \fBdisengine\fP"
+.br
+.ti -1c
+.RI "\fBRangeList\fP \fBmodelhits\fP"
+.br
+.ti -1c
+.RI "map< \fBAddress\fP, \fBCodeUnit\fP > \fBcodeunit\fP"
+.br
+.ti -1c
+.RI "map< \fBAddrLink\fP, uint4 > \fBfromto_crossref\fP"
+.br
+.ti -1c
+.RI "map< \fBAddrLink\fP, uint4 > \fBtofrom_crossref\fP"
+.br
+.ti -1c
+.RI "list< map< \fBAddress\fP, \fBCodeUnit\fP >::iterator > \fBtaintlist\fP"
+.br
+.ti -1c
+.RI "list< \fBAddress\fP > \fBunlinkedstarts\fP"
+.br
+.ti -1c
+.RI "list< \fBTargetHit\fP > \fBtargethits\fP"
+.br
+.ti -1c
+.RI "map< \fBAddress\fP, \fBTargetFeature\fP > \fBtargets\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 99 of file codedata\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual CodeDataAnalysis::~CodeDataAnalysis (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 112 of file codedata\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CodeDataAnalysis::addTarget (const string & nm, const \fBAddress\fP & addr, uint4 mask)"
+
+.PP
+Definition at line 240 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::addTargetHit (const \fBAddress\fP & codeaddr, \fBuintb\fP targethit)"
+
+.PP
+Definition at line 429 of file codedata\&.cc\&.
+.SS "bool CodeDataAnalysis::checkErrantStart (map< \fBAddress\fP, \fBCodeUnit\fP >::iterator iter)"
+
+.PP
+Definition at line 484 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::clearCodeUnits (const \fBAddress\fP & addr, const \fBAddress\fP & endaddr)"
+
+.PP
+Definition at line 249 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::clearCrossRefs (const \fBAddress\fP & addr, const \fBAddress\fP & endaddr)"
+
+.PP
+Definition at line 224 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::clearHitBy (void)"
+
+.PP
+Definition at line 213 of file codedata\&.cc\&.
+.SS "\fBAddress\fP CodeDataAnalysis::commitCodeVec (const \fBAddress\fP & addr, vector< \fBCodeUnit\fP > & codevec, map< \fBAddrLink\fP, uint4 > & fromto_vec)"
+
+.PP
+Definition at line 195 of file codedata\&.cc\&.
+.SS "\fBAddress\fP CodeDataAnalysis::disassembleBlock (const \fBAddress\fP & addr, const \fBAddress\fP & endaddr)"
+
+.PP
+Definition at line 260 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::disassembleRange (const \fBRange\fP & range)"
+
+.PP
+Definition at line 354 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::disassembleRangeList (const \fBRangeList\fP & rangelist)"
+
+.PP
+Definition at line 364 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::dumpCrossRefs (ostream & s) const"
+
+.PP
+Definition at line 622 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::dumpFunctionStarts (ostream & s) const"
+
+.PP
+Definition at line 638 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::dumpModelHits (ostream & s) const"
+
+.PP
+Definition at line 602 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::dumpTargetHits (ostream & s) const"
+
+.PP
+Definition at line 662 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::dumpUnlinked (ostream & s) const"
+
+.PP
+Definition at line 652 of file codedata\&.cc\&.
+.SS "\fBAddress\fP CodeDataAnalysis::findFunctionStart (const \fBAddress\fP & addr) const"
+
+.PP
+Definition at line 588 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::findNotCodeUnits (void)"
+
+.PP
+Definition at line 377 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::findOffCut (void)"
+
+.PP
+Definition at line 541 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::findUnlinked (void)"
+
+.PP
+Definition at line 461 of file codedata\&.cc\&.
+.SS "int4 CodeDataAnalysis::getNumTargets (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 121 of file codedata\&.hh\&.
+.SS "const list<\fBTargetHit\fP>& CodeDataAnalysis::getTargetHits (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 135 of file codedata\&.hh\&.
+.SS "void CodeDataAnalysis::init (\fBArchitecture\fP * g)"
+
+.PP
+Definition at line 131 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::markCrossHits (void)"
+
+.PP
+Definition at line 411 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::markFallthruHits (void)"
+
+.PP
+Definition at line 394 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::processTaint (void)"
+
+.PP
+Definition at line 161 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::pushTaintAddress (const \fBAddress\fP & addr)"
+
+.PP
+Definition at line 147 of file codedata\&.cc\&.
+.SS "bool CodeDataAnalysis::repairJump (const \fBAddress\fP & addr, int4 max)"
+
+.PP
+Definition at line 504 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::resolveThunkHit (const \fBAddress\fP & codeaddr, \fBuintb\fP targethit)"
+
+.PP
+Definition at line 444 of file codedata\&.cc\&.
+.SS "void CodeDataAnalysis::runModel (void)"
+
+.PP
+Definition at line 679 of file codedata\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 CodeDataAnalysis::alignment"
+
+.PP
+Definition at line 101 of file codedata\&.hh\&.
+.SS "map<\fBAddress\fP,\fBCodeUnit\fP> CodeDataAnalysis::codeunit"
+
+.PP
+Definition at line 105 of file codedata\&.hh\&.
+.SS "\fBDisassemblyEngine\fP CodeDataAnalysis::disengine"
+
+.PP
+Definition at line 103 of file codedata\&.hh\&.
+.SS "map<\fBAddrLink\fP,uint4> CodeDataAnalysis::fromto_crossref"
+
+.PP
+Definition at line 106 of file codedata\&.hh\&.
+.SS "\fBArchitecture\fP* CodeDataAnalysis::glb"
+
+.PP
+Definition at line 102 of file codedata\&.hh\&.
+.SS "\fBRangeList\fP CodeDataAnalysis::modelhits"
+
+.PP
+Definition at line 104 of file codedata\&.hh\&.
+.SS "list<map<\fBAddress\fP,\fBCodeUnit\fP>::iterator> CodeDataAnalysis::taintlist"
+
+.PP
+Definition at line 108 of file codedata\&.hh\&.
+.SS "list<\fBTargetHit\fP> CodeDataAnalysis::targethits"
+
+.PP
+Definition at line 110 of file codedata\&.hh\&.
+.SS "map<\fBAddress\fP,\fBTargetFeature\fP> CodeDataAnalysis::targets"
+
+.PP
+Definition at line 111 of file codedata\&.hh\&.
+.SS "map<\fBAddrLink\fP,uint4> CodeDataAnalysis::tofrom_crossref"
+
+.PP
+Definition at line 107 of file codedata\&.hh\&.
+.SS "list<\fBAddress\fP> CodeDataAnalysis::unlinkedstarts"
+
+.PP
+Definition at line 109 of file codedata\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

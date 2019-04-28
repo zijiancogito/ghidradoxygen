@@ -1,0 +1,134 @@
+.TH "ConditionMarker" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConditionMarker \- A helper class for describing the similarity of the boolean condition between 2 CBRANCH operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <condexe\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConditionMarker\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fB~ConditionMarker\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "bool \fBverifyCondition\fP (\fBPcodeOp\fP *op, \fBPcodeOp\fP *initop)"
+.br
+.RI "Perform the correlation test on two CBRANCH operations\&. "
+.ti -1c
+.RI "int4 \fBgetMultiSlot\fP (void) const"
+.br
+.RI "Get the MULTIEQUAL slot in the critical path\&. "
+.ti -1c
+.RI "bool \fBgetFlip\fP (void) const"
+.br
+.RI "Return \fBtrue\fP is the expressions are anti-correlated\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBvarnodeSame\fP (\fBVarnode\fP *a, \fBVarnode\fP *b)"
+.br
+.RI "Do the given Varnodes hold the same value, possibly as constants\&. "
+.ti -1c
+.RI "static bool \fBvarnodeComplement\fP (\fBVarnode\fP *a, \fBVarnode\fP *b)"
+.br
+.RI "Do the given boolean Varnodes always hold complementary values\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A helper class for describing the similarity of the boolean condition between 2 CBRANCH operations\&. 
+
+This class determines if two CBRANCHs share the same condition\&. It also determines if the conditions are complements of each other, and/or they are shared along only one path\&.
+.PP
+The expression computing the root boolean value for one CBRANCH is marked out by setupInitOp()\&. For the other CBRANCH, findMatch() tries to find common \fBVarnode\fP in its boolean expression and then maps a critical path from the \fBVarnode\fP to the final boolean\&. Assuming the common \fBVarnode\fP exists, the method finalJudgement() decides if the two boolean values are the same, uncorrelated, or complements of one another\&. 
+.PP
+Definition at line 33 of file condexe\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConditionMarker::ConditionMarker (void)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 18 of file condexe\&.cc\&.
+.SS "ConditionMarker::~ConditionMarker (void)"
+
+.PP
+Destructor\&. Any marks on Varnodes in the root expression are cleared\&. 
+.PP
+Definition at line 30 of file condexe\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool ConditionMarker::getFlip (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP is the expressions are anti-correlated\&. 
+.PP
+Definition at line 60 of file condexe\&.hh\&.
+.SS "int4 ConditionMarker::getMultiSlot (void) const\fC [inline]\fP"
+
+.PP
+Get the MULTIEQUAL slot in the critical path\&. 
+.PP
+Definition at line 59 of file condexe\&.hh\&.
+.SS "bool ConditionMarker::varnodeComplement (\fBVarnode\fP * a, \fBVarnode\fP * b)\fC [static]\fP"
+
+.PP
+Do the given boolean Varnodes always hold complementary values\&. Test if they are constants, 1 and 0, or if one is the direct BOOL_NEGATE of the other\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBVarnode\fP to compare 
+.br
+\fIb\fP is the second \fBVarnode\fP to compare 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the Varnodes (always) hold complementary values 
+.RE
+.PP
+
+.PP
+Definition at line 193 of file condexe\&.cc\&.
+.SS "bool ConditionMarker::varnodeSame (\fBVarnode\fP * a, \fBVarnode\fP * b)\fC [static]\fP"
+
+.PP
+Do the given Varnodes hold the same value, possibly as constants\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBVarnode\fP to compare 
+.br
+\fIb\fP is the second \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the Varnodes (always) hold the same value 
+.RE
+.PP
+
+.PP
+Definition at line 178 of file condexe\&.cc\&.
+.SS "bool ConditionMarker::verifyCondition (\fBPcodeOp\fP * op, \fBPcodeOp\fP * initop)"
+
+.PP
+Perform the correlation test on two CBRANCH operations\&. 
+.PP
+Definition at line 341 of file condexe\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,146 @@
+\hypertarget{class_block_varnode}{}\section{Block\+Varnode Class Reference}
+\label{class_block_varnode}\index{BlockVarnode@{BlockVarnode}}
+
+
+Helper class associating a \mbox{\hyperlink{class_varnode}{Varnode}} with the block where it is defined.  
+
+
+
+
+{\ttfamily \#include $<$merge.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_block_varnode_af4aa0725ff5d05784b84fe6db6a69480}{set}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Set {\bfseries{this}} as representing the given \mbox{\hyperlink{class_varnode}{Varnode}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_block_varnode_a2946b402e8612fd8d690b85929b8fec6}{operator$<$}} (const \mbox{\hyperlink{class_block_varnode}{Block\+Varnode}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Comparator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_block_varnode_af6e07968e7891b7e7e75e92351de0ba1}{get\+Varnode}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_varnode}{Varnode}} represented by {\bfseries{this}}. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_block_varnode_a51eeb35ed7db7fefa0cfd52ec9b719ac}{get\+Index}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_varnode}{Varnode}}\textquotesingle{}s defining block index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int4 \mbox{\hyperlink{class_block_varnode_a944320adf17c44b207d095cca216ee63}{find\+Front}} (int4 blocknum, const vector$<$ \mbox{\hyperlink{class_block_varnode}{Block\+Varnode}} $>$ \&list)
+\begin{DoxyCompactList}\small\item\em Find the first \mbox{\hyperlink{class_varnode}{Varnode}} defined in the \mbox{\hyperlink{class_block_basic}{Block\+Basic}} of the given index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class associating a \mbox{\hyperlink{class_varnode}{Varnode}} with the block where it is defined. 
+
+This class explicitly stores a \mbox{\hyperlink{class_varnode}{Varnode}} with the index of the \mbox{\hyperlink{class_block_basic}{Block\+Basic}} that defines it. If a \mbox{\hyperlink{class_varnode}{Varnode}} does not have a defining \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} it is assigned an index of 0. This facilitates quicker sorting of Varnodes based on their defining block. 
+
+Definition at line 44 of file merge.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_block_varnode_a944320adf17c44b207d095cca216ee63}\label{class_block_varnode_a944320adf17c44b207d095cca216ee63}} 
+\index{BlockVarnode@{BlockVarnode}!findFront@{findFront}}
+\index{findFront@{findFront}!BlockVarnode@{BlockVarnode}}
+\subsubsection{\texorpdfstring{findFront()}{findFront()}}
+{\footnotesize\ttfamily int4 Block\+Varnode\+::find\+Front (\begin{DoxyParamCaption}\item[{int4}]{blocknum,  }\item[{const vector$<$ \mbox{\hyperlink{class_block_varnode}{Block\+Varnode}} $>$ \&}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Find the first \mbox{\hyperlink{class_varnode}{Varnode}} defined in the \mbox{\hyperlink{class_block_basic}{Block\+Basic}} of the given index. 
+
+A \mbox{\hyperlink{class_block_varnode}{Block\+Varnode}} is identified from a sorted {\bfseries{list}}. The position of the first \mbox{\hyperlink{class_block_varnode}{Block\+Varnode}} in this list that has the given \mbox{\hyperlink{class_block_basic}{Block\+Basic}} {\itshape index} is returned. 
+\begin{DoxyParams}{Parameters}
+{\em blocknum} & is the index of the \mbox{\hyperlink{class_block_basic}{Block\+Basic}} to search for \\
+\hline
+{\em list} & is the sorted list of Block\+Varnodes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the \mbox{\hyperlink{class_block_varnode}{Block\+Varnode}} within the list or -\/1 if no \mbox{\hyperlink{class_varnode}{Varnode}} in the block is found 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file merge.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_varnode_a944320adf17c44b207d095cca216ee63_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_varnode_a51eeb35ed7db7fefa0cfd52ec9b719ac}\label{class_block_varnode_a51eeb35ed7db7fefa0cfd52ec9b719ac}} 
+\index{BlockVarnode@{BlockVarnode}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!BlockVarnode@{BlockVarnode}}
+\subsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily int4 Block\+Varnode\+::get\+Index (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_varnode}{Varnode}}\textquotesingle{}s defining block index. 
+
+
+
+Definition at line 51 of file merge.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_varnode_a51eeb35ed7db7fefa0cfd52ec9b719ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_block_varnode_af6e07968e7891b7e7e75e92351de0ba1}\label{class_block_varnode_af6e07968e7891b7e7e75e92351de0ba1}} 
+\index{BlockVarnode@{BlockVarnode}!getVarnode@{getVarnode}}
+\index{getVarnode@{getVarnode}!BlockVarnode@{BlockVarnode}}
+\subsubsection{\texorpdfstring{getVarnode()}{getVarnode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}}$\ast$ Block\+Varnode\+::get\+Varnode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_varnode}{Varnode}} represented by {\bfseries{this}}. 
+
+
+
+Definition at line 50 of file merge.\+hh.
+
+\mbox{\Hypertarget{class_block_varnode_a2946b402e8612fd8d690b85929b8fec6}\label{class_block_varnode_a2946b402e8612fd8d690b85929b8fec6}} 
+\index{BlockVarnode@{BlockVarnode}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!BlockVarnode@{BlockVarnode}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Block\+Varnode\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_block_varnode}{Block\+Varnode}} \&}]{op2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Comparator. 
+
+
+
+Definition at line 49 of file merge.\+hh.
+
+\mbox{\Hypertarget{class_block_varnode_af4aa0725ff5d05784b84fe6db6a69480}\label{class_block_varnode_af4aa0725ff5d05784b84fe6db6a69480}} 
+\index{BlockVarnode@{BlockVarnode}!set@{set}}
+\index{set@{set}!BlockVarnode@{BlockVarnode}}
+\subsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Block\+Varnode\+::set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+Set {\bfseries{this}} as representing the given \mbox{\hyperlink{class_varnode}{Varnode}}. 
+
+This instance assumes the identity of the given \mbox{\hyperlink{class_varnode}{Varnode}} and the defining index is cached to facilitate quick sorting. 
+\begin{DoxyParams}{Parameters}
+{\em v} & is the given \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file merge.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{merge_8hh}{merge.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{merge_8cc}{merge.\+cc}}\end{DoxyCompactItemize}

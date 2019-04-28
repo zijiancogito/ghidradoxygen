@@ -1,0 +1,126 @@
+\hypertarget{struct_op_follow}{}\section{Op\+Follow Struct Reference}
+\label{struct_op_follow}\index{OpFollow@{OpFollow}}
+
+
+A simple node used to dynamically define a sequence of operations.  
+
+
+
+
+{\ttfamily \#include $<$userop.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_op_follow_a5eb345f3be76c5ff4b0c90f4a4a64091}{Op\+Follow}} (void)
+\begin{DoxyCompactList}\small\item\em Construct an empty object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_op_follow_a31cd6faa65b443adea57d0830b87d16b}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore {\bfseries{this}} node from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} \mbox{\hyperlink{struct_op_follow_a9b8a62fc43b7a806b8cc339d68422749}{opc}}
+\begin{DoxyCompactList}\small\item\em The particular p-\/code operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{struct_op_follow_a1a70586a4329aae03bf49b7e129eed8c}{val}}
+\begin{DoxyCompactList}\small\item\em A possible constant second input. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{struct_op_follow_a6a4f47ec389b5c9ef9ee6ecfa259fdb8}{slot}}
+\begin{DoxyCompactList}\small\item\em Slot to follow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A simple node used to dynamically define a sequence of operations. 
+
+This should be deprecated in favor of \mbox{\hyperlink{class_executable_pcode}{Executable\+Pcode}} objects. This class holds a single operation (within a sequence). It acts on the output of the previous operation with an optional constant value as the second input. 
+
+Definition at line 169 of file userop.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_op_follow_a5eb345f3be76c5ff4b0c90f4a4a64091}\label{struct_op_follow_a5eb345f3be76c5ff4b0c90f4a4a64091}} 
+\index{OpFollow@{OpFollow}!OpFollow@{OpFollow}}
+\index{OpFollow@{OpFollow}!OpFollow@{OpFollow}}
+\subsubsection{\texorpdfstring{OpFollow()}{OpFollow()}}
+{\footnotesize\ttfamily Op\+Follow\+::\+Op\+Follow (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct an empty object. 
+
+
+
+Definition at line 173 of file userop.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_op_follow_a31cd6faa65b443adea57d0830b87d16b}\label{struct_op_follow_a31cd6faa65b443adea57d0830b87d16b}} 
+\index{OpFollow@{OpFollow}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!OpFollow@{OpFollow}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Op\+Follow\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Restore {\bfseries{this}} node from an X\+ML stream. 
+
+Process either a $<$baseop$>$ or $<$innerop$>$ element. Currently this only supports I\+N\+T\+\_\+\+Z\+E\+XT, I\+N\+T\+\_\+\+L\+E\+FT, and I\+N\+T\+\_\+\+A\+ND operations 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 84 of file userop.\+cc.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_op_follow_a9b8a62fc43b7a806b8cc339d68422749}\label{struct_op_follow_a9b8a62fc43b7a806b8cc339d68422749}} 
+\index{OpFollow@{OpFollow}!opc@{opc}}
+\index{opc@{opc}!OpFollow@{OpFollow}}
+\subsubsection{\texorpdfstring{opc}{opc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{opcodes_8hh_abeb7dfb0e9e2b3114e240a405d046ea7}{Op\+Code}} Op\+Follow\+::opc}
+
+
+
+The particular p-\/code operation. 
+
+
+
+Definition at line 170 of file userop.\+hh.
+
+\mbox{\Hypertarget{struct_op_follow_a6a4f47ec389b5c9ef9ee6ecfa259fdb8}\label{struct_op_follow_a6a4f47ec389b5c9ef9ee6ecfa259fdb8}} 
+\index{OpFollow@{OpFollow}!slot@{slot}}
+\index{slot@{slot}!OpFollow@{OpFollow}}
+\subsubsection{\texorpdfstring{slot}{slot}}
+{\footnotesize\ttfamily int4 Op\+Follow\+::slot}
+
+
+
+Slot to follow. 
+
+
+
+Definition at line 172 of file userop.\+hh.
+
+\mbox{\Hypertarget{struct_op_follow_a1a70586a4329aae03bf49b7e129eed8c}\label{struct_op_follow_a1a70586a4329aae03bf49b7e129eed8c}} 
+\index{OpFollow@{OpFollow}!val@{val}}
+\index{val@{val}!OpFollow@{OpFollow}}
+\subsubsection{\texorpdfstring{val}{val}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Op\+Follow\+::val}
+
+
+
+A possible constant second input. 
+
+
+
+Definition at line 171 of file userop.\+hh.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8hh}{userop.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{userop_8cc}{userop.\+cc}}\end{DoxyCompactItemize}

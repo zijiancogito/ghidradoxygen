@@ -1,0 +1,108 @@
+.TH "MemoryImage" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryImage \- A kind of \fBMemoryBank\fP which retrieves its data from an underlying \fBLoadImage\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memstate\&.hh>\fP
+.PP
+Inherits \fBMemoryBank\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryImage\fP (\fBAddrSpace\fP *spc, int4 ws, int4 ps, \fBLoadImage\fP *ld)"
+.br
+.RI "\fBConstructor\fP for a loadimage memorybank\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBinsert\fP (\fBuintb\fP addr, \fBuintb\fP val)"
+.br
+.RI "Exception is thrown for write attempts\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBfind\fP (\fBuintb\fP addr) const"
+.br
+.RI "Overridden find method\&. "
+.ti -1c
+.RI "virtual void \fBgetPage\fP (\fBuintb\fP addr, uint1 *res, int4 skip, int4 size) const"
+.br
+.RI "Overridded getPage method\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A kind of \fBMemoryBank\fP which retrieves its data from an underlying \fBLoadImage\fP\&. 
+
+Any bytes requested on the bank which lie in the \fBLoadImage\fP are retrieved from the \fBLoadImage\fP\&. Other addresses in the space are filled in with zero\&. This bank cannot be written to\&. 
+.PP
+Definition at line 93 of file memstate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MemoryImage::MemoryImage (\fBAddrSpace\fP * spc, int4 ws, int4 ps, \fBLoadImage\fP * ld)"
+
+.PP
+\fBConstructor\fP for a loadimage memorybank\&. A \fBMemoryImage\fP needs everything a basic memory bank needs and is needs to know the underlying \fBLoadImage\fP object to forward read reqests to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space associated with the memory bank 
+.br
+\fIws\fP is the number of bytes in the preferred wordsize (must be power of 2) 
+.br
+\fIps\fP is the number of bytes in a page (must be power of 2) 
+.br
+\fIld\fP is the underlying \fBLoadImage\fP 
+.RE
+.PP
+
+.PP
+Definition at line 405 of file memstate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP MemoryImage::find (\fBuintb\fP addr) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridden find method\&. Find an aligned word from the bank\&. First an attempt is made to fetch the data from the \fBLoadImage\fP\&. If this fails, the value is returned as 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the address of the word to fetch 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the fetched value 
+.RE
+.PP
+
+.PP
+Implements \fBMemoryBank\fP\&.
+.PP
+Definition at line 363 of file memstate\&.cc\&.
+.SS "void MemoryImage::getPage (\fBuintb\fP addr, uint1 * res, int4 skip, int4 size) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridded getPage method\&. Retrieve an aligned page from the bank\&. First an attempt is made to retrieve the page from the \fBLoadImage\fP, which may do its own zero filling\&. If the attempt fails, the page is entirely filled in with zeros\&. 
+.PP
+Reimplemented from \fBMemoryBank\fP\&.
+.PP
+Definition at line 384 of file memstate\&.cc\&.
+.SS "virtual void MemoryImage::insert (\fBuintb\fP addr, \fBuintb\fP val)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Exception is thrown for write attempts\&. 
+.PP
+Implements \fBMemoryBank\fP\&.
+.PP
+Definition at line 96 of file memstate\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

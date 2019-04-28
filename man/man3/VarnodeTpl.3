@@ -1,0 +1,199 @@
+.TH "VarnodeTpl" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VarnodeTpl
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <semantics\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVarnodeTpl\fP (int4 hand, bool zerosize)"
+.br
+.ti -1c
+.RI "\fBVarnodeTpl\fP (void)"
+.br
+.ti -1c
+.RI "\fBVarnodeTpl\fP (const \fBConstTpl\fP &sp, const \fBConstTpl\fP &off, const \fBConstTpl\fP &sz)"
+.br
+.ti -1c
+.RI "\fBVarnodeTpl\fP (const \fBVarnodeTpl\fP &vn)"
+.br
+.ti -1c
+.RI "const \fBConstTpl\fP & \fBgetSpace\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBConstTpl\fP & \fBgetOffset\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBConstTpl\fP & \fBgetSize\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisDynamic\fP (const \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "int4 \fBtransfer\fP (const vector< \fBHandleTpl\fP * > &params)"
+.br
+.ti -1c
+.RI "bool \fBisZeroSize\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBVarnodeTpl\fP &op2) const"
+.br
+.ti -1c
+.RI "void \fBsetOffset\fP (\fBuintb\fP constVal)"
+.br
+.ti -1c
+.RI "void \fBsetRelative\fP (\fBuintb\fP constVal)"
+.br
+.ti -1c
+.RI "void \fBsetSize\fP (const \fBConstTpl\fP &sz)"
+.br
+.ti -1c
+.RI "bool \fBisUnnamed\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetUnnamed\fP (bool val)"
+.br
+.ti -1c
+.RI "bool \fBisLocalTemp\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisRelative\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBchangeHandleIndex\fP (const vector< int4 > &handmap)"
+.br
+.ti -1c
+.RI "bool \fBadjustTruncation\fP (int4 sz, bool isbigendian)"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBOpTpl\fP"
+.br
+.ti -1c
+.RI "class \fBHandleTpl\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 77 of file semantics\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "VarnodeTpl::VarnodeTpl (int4 hand, bool zerosize)"
+
+.PP
+Definition at line 438 of file semantics\&.cc\&.
+.SS "VarnodeTpl::VarnodeTpl (void)\fC [inline]\fP"
+
+.PP
+Definition at line 84 of file semantics\&.hh\&.
+.SS "VarnodeTpl::VarnodeTpl (const \fBConstTpl\fP & sp, const \fBConstTpl\fP & off, const \fBConstTpl\fP & sz)"
+
+.PP
+Definition at line 447 of file semantics\&.cc\&.
+.SS "VarnodeTpl::VarnodeTpl (const \fBVarnodeTpl\fP & vn)"
+
+.PP
+Definition at line 454 of file semantics\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool VarnodeTpl::adjustTruncation (int4 sz, bool isbigendian)"
+
+.PP
+Definition at line 510 of file semantics\&.cc\&.
+.SS "void VarnodeTpl::changeHandleIndex (const vector< int4 > & handmap)"
+
+.PP
+Definition at line 502 of file semantics\&.cc\&.
+.SS "const \fBConstTpl\fP& VarnodeTpl::getOffset (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 88 of file semantics\&.hh\&.
+.SS "const \fBConstTpl\fP& VarnodeTpl::getSize (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 89 of file semantics\&.hh\&.
+.SS "const \fBConstTpl\fP& VarnodeTpl::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 87 of file semantics\&.hh\&.
+.SS "bool VarnodeTpl::isDynamic (const \fBParserWalker\fP & walker) const"
+
+.PP
+Definition at line 468 of file semantics\&.cc\&.
+.SS "bool VarnodeTpl::isLocalTemp (void) const"
+
+.PP
+Definition at line 460 of file semantics\&.cc\&.
+.SS "bool VarnodeTpl::isRelative (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 100 of file semantics\&.hh\&.
+.SS "bool VarnodeTpl::isUnnamed (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 97 of file semantics\&.hh\&.
+.SS "bool VarnodeTpl::isZeroSize (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 92 of file semantics\&.hh\&.
+.SS "bool VarnodeTpl::operator< (const \fBVarnodeTpl\fP & op2) const"
+
+.PP
+Definition at line 559 of file semantics\&.cc\&.
+.SS "void VarnodeTpl::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Definition at line 546 of file semantics\&.cc\&.
+.SS "void VarnodeTpl::saveXml (ostream & s) const"
+
+.PP
+Definition at line 536 of file semantics\&.cc\&.
+.SS "void VarnodeTpl::setOffset (\fBuintb\fP constVal)\fC [inline]\fP"
+
+.PP
+Definition at line 94 of file semantics\&.hh\&.
+.SS "void VarnodeTpl::setRelative (\fBuintb\fP constVal)\fC [inline]\fP"
+
+.PP
+Definition at line 95 of file semantics\&.hh\&.
+.SS "void VarnodeTpl::setSize (const \fBConstTpl\fP & sz)\fC [inline]\fP"
+
+.PP
+Definition at line 96 of file semantics\&.hh\&.
+.SS "void VarnodeTpl::setUnnamed (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 98 of file semantics\&.hh\&.
+.SS "int4 VarnodeTpl::transfer (const vector< \fBHandleTpl\fP * > & params)"
+
+.PP
+Definition at line 479 of file semantics\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBHandleTpl\fP\fC [friend]\fP"
+
+.PP
+Definition at line 79 of file semantics\&.hh\&.
+.SS "friend class \fBOpTpl\fP\fC [friend]\fP"
+
+.PP
+Definition at line 78 of file semantics\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

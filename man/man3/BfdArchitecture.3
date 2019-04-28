@@ -1,0 +1,97 @@
+.TH "BfdArchitecture" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BfdArchitecture \- \fBArchitecture\fP that reads executable files using GNU BFD libraries\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <bfd_arch\&.hh>\fP
+.PP
+Inherits \fBSleighArchitecture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize this architecture to XML\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (\fBDocumentStorage\fP &store)"
+.br
+.RI "Restore the \fBArchitecture\fP state from an XML stream\&. "
+.ti -1c
+.RI "\fBBfdArchitecture\fP (const string &fname, const string &targ, ostream *estream)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~BfdArchitecture\fP (void)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBArchitecture\fP that reads executable files using GNU BFD libraries\&. 
+.PP
+Definition at line 38 of file bfd_arch\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BfdArchitecture::BfdArchitecture (const string & fname, const string & targ, ostream * estream)"
+
+.PP
+\fBConstructor\fP\&. This just wraps the base class constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfname\fP is the path to the executable file 
+.br
+\fItarg\fP is the (optional) language id to use for the file 
+.br
+\fIestream\fP is the stream to use for the error console 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file bfd_arch\&.cc\&.
+.SS "virtual BfdArchitecture::~BfdArchitecture (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 47 of file bfd_arch\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void BfdArchitecture::restoreXml (\fBDocumentStorage\fP & store)\fC [virtual]\fP"
+
+.PP
+Restore the \fBArchitecture\fP state from an XML stream\&. Read in all the sub-component state from a <save_state> XML tag When adding stuff to this BEWARE: The spec file has already initialized stuff 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstore\fP is document store containing the parsed root tag 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBArchitecture\fP\&.
+.PP
+Definition at line 140 of file bfd_arch\&.cc\&.
+.SS "void BfdArchitecture::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize this architecture to XML\&. Write the current state of all types, symbols, functions, etc\&. an XML stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBArchitecture\fP\&.
+.PP
+Definition at line 128 of file bfd_arch\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

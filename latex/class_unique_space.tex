@@ -1,0 +1,146 @@
+\hypertarget{class_unique_space}{}\section{Unique\+Space Class Reference}
+\label{class_unique_space}\index{UniqueSpace@{UniqueSpace}}
+
+
+The pool of temporary storage registers.  
+
+
+
+
+{\ttfamily \#include $<$space.\+hh$>$}
+
+
+
+Inheritance diagram for Unique\+Space\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{class_unique_space__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Unique\+Space\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{class_unique_space__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_unique_space_a89865e280e05b6123fbb4fc351b63b03}{Unique\+Space}} (\mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$m, const \mbox{\hyperlink{class_translate}{Translate}} $\ast$t, const string \&nm, int4 ind, uint4 fl)
+\item 
+\mbox{\hyperlink{class_unique_space_a2e6be3e2ab55c7d98fce723b9ee3047c}{Unique\+Space}} (\mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$m, const \mbox{\hyperlink{class_translate}{Translate}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em For use with restore\+Xml. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_unique_space_a119a41fbbdc811d44d532451ae2785f4}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Write the details of this space as X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The pool of temporary storage registers. 
+
+It is convenient both for modelling processor instructions in an R\+TL and for later transforming of the R\+TL to have a pool of temporary registers that can hold data but that aren\textquotesingle{}t a formal part of the state of the processor. The \mbox{\hyperlink{class_unique_space}{Unique\+Space}} provides a specific location for this pool. The analysis engine always creates exactly one of these spaces named {\bfseries{unique}}. 
+
+Definition at line 184 of file space.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_unique_space_a89865e280e05b6123fbb4fc351b63b03}\label{class_unique_space_a89865e280e05b6123fbb4fc351b63b03}} 
+\index{UniqueSpace@{UniqueSpace}!UniqueSpace@{UniqueSpace}}
+\index{UniqueSpace@{UniqueSpace}!UniqueSpace@{UniqueSpace}}
+\subsubsection{\texorpdfstring{UniqueSpace()}{UniqueSpace()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Unique\+Space\+::\+Unique\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{m,  }\item[{const \mbox{\hyperlink{class_translate}{Translate}} $\ast$}]{t,  }\item[{const string \&}]{nm,  }\item[{int4}]{ind,  }\item[{uint4}]{fl }\end{DoxyParamCaption})}
+
+This is the constructor for the {\bfseries{unique}} space, which is automatically constructed by the analysis engine, and constructed only once. The name should always be {\bfseries{unique}}. 
+\begin{DoxyParams}{Parameters}
+{\em m} & is the associated address space manager \\
+\hline
+{\em t} & is the associated processor translator \\
+\hline
+{\em nm} & is the name of the space \\
+\hline
+{\em ind} & is the integer identifier \\
+\hline
+{\em fl} & are attribute flags (currently unused) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 446 of file space.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unique_space_a89865e280e05b6123fbb4fc351b63b03_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unique_space_a2e6be3e2ab55c7d98fce723b9ee3047c}\label{class_unique_space_a2e6be3e2ab55c7d98fce723b9ee3047c}} 
+\index{UniqueSpace@{UniqueSpace}!UniqueSpace@{UniqueSpace}}
+\index{UniqueSpace@{UniqueSpace}!UniqueSpace@{UniqueSpace}}
+\subsubsection{\texorpdfstring{UniqueSpace()}{UniqueSpace()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Unique\+Space\+::\+Unique\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{m,  }\item[{const \mbox{\hyperlink{class_translate}{Translate}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+For use with restore\+Xml. 
+
+
+
+Definition at line 453 of file space.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unique_space_a2e6be3e2ab55c7d98fce723b9ee3047c_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_unique_space_a119a41fbbdc811d44d532451ae2785f4}\label{class_unique_space_a119a41fbbdc811d44d532451ae2785f4}} 
+\index{UniqueSpace@{UniqueSpace}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!UniqueSpace@{UniqueSpace}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Unique\+Space\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Write the details of this space as X\+ML. 
+
+Write a tag fully describing the details of this space suitable for later recovery via restore\+Xml. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the stream being written \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_addr_space_ac073a4d446677c54d769abba01318864}{Addr\+Space}}.
+
+
+
+Definition at line 459 of file space.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unique_space_a119a41fbbdc811d44d532451ae2785f4_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{space_8hh}{space.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{space_8cc}{space.\+cc}}\end{DoxyCompactItemize}

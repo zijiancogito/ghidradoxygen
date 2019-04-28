@@ -1,0 +1,92 @@
+.TH "LoadImageSection" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoadImageSection \- A record describing a section bytes in the executable\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <loadimage\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBunalloc\fP = 1, \fBnoload\fP = 2, \fBcode\fP = 4, \fBdata\fP = 8, \fBreadonly\fP = 16 }"
+.br
+.RI "Boolean properties a section might have\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBAddress\fP \fBaddress\fP"
+.br
+.RI "Starting address of section\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBsize\fP"
+.br
+.RI "Number of bytes in section\&. "
+.ti -1c
+.RI "uint4 \fBflags\fP"
+.br
+.RI "Properties of the section\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A record describing a section bytes in the executable\&. 
+
+A lightweight object specifying the location and size of the section and basic properties 
+.PP
+Definition at line 44 of file loadimage\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+Boolean properties a section might have\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIunalloc \fP\fP
+Not allocated in memory (debug info) 
+.TP
+\fB\fInoload \fP\fP
+uninitialized section 
+.TP
+\fB\fIcode \fP\fP
+code only 
+.TP
+\fB\fIdata \fP\fP
+data only 
+.TP
+\fB\fIreadonly \fP\fP
+read only section 
+.PP
+Definition at line 46 of file loadimage\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBAddress\fP LoadImageSection::address"
+
+.PP
+Starting address of section\&. 
+.PP
+Definition at line 53 of file loadimage\&.hh\&.
+.SS "uint4 LoadImageSection::flags"
+
+.PP
+Properties of the section\&. 
+.PP
+Definition at line 55 of file loadimage\&.hh\&.
+.SS "\fBuintb\fP LoadImageSection::size"
+
+.PP
+Number of bytes in section\&. 
+.PP
+Definition at line 54 of file loadimage\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

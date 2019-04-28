@@ -1,0 +1,214 @@
+.TH "ArchitectureCapability" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ArchitectureCapability \- Abstract extension point for building \fBArchitecture\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <architecture\&.hh>\fP
+.PP
+Inherits \fBCapabilityPoint\fP\&.
+.PP
+Inherited by \fBBfdArchitectureCapability\fP, \fBRawBinaryArchitectureCapability\fP, and \fBXmlArchitectureCapability\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the capability identifier\&. "
+.ti -1c
+.RI "virtual void \fBinitialize\fP (void)"
+.br
+.RI "Do specialized initialization\&. "
+.ti -1c
+.RI "virtual \fBArchitecture\fP * \fBbuildArchitecture\fP (const string &filename, const string &target, ostream *estream)=0"
+.br
+.RI "Build an \fBArchitecture\fP given a raw file or data\&. "
+.ti -1c
+.RI "virtual bool \fBisFileMatch\fP (const string &filename) const =0"
+.br
+.RI "Determine if this extension can handle this file\&. "
+.ti -1c
+.RI "virtual bool \fBisXmlMatch\fP (\fBDocument\fP *doc) const =0"
+.br
+.RI "Determine is this extension can handle this XML document\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBArchitectureCapability\fP * \fBfindCapability\fP (const string &filename)"
+.br
+.RI "Find an extension to process a file\&. "
+.ti -1c
+.RI "static \fBArchitectureCapability\fP * \fBfindCapability\fP (\fBDocument\fP *doc)"
+.br
+.RI "Find an extension to process an XML document\&. "
+.ti -1c
+.RI "static void \fBsortCapabilities\fP (void)"
+.br
+.RI "Sort extensions\&. "
+.ti -1c
+.RI "static uint4 \fBgetMajorVersion\fP (void)"
+.br
+.RI "Get \fImajor\fP decompiler version\&. "
+.ti -1c
+.RI "static uint4 \fBgetMinorVersion\fP (void)"
+.br
+.RI "Get \fIminor\fP decompiler version\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Identifier for this capability\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Abstract extension point for building \fBArchitecture\fP objects\&. 
+
+Decompilation hinges on initially recognizing the format of code then bootstrapping into discovering the processor etc\&. This is the base class for the different extensions that perform this process\&. Each extension implements the \fBbuildArchitecture()\fP method as the formal entry point for the bootstrapping process\&. 
+.PP
+Definition at line 69 of file architecture\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBArchitecture\fP* ArchitectureCapability::buildArchitecture (const string & filename, const string & target, ostream * estream)\fC [pure virtual]\fP"
+
+.PP
+Build an \fBArchitecture\fP given a raw file or data\&. This is implemented by each separate extension\&. The method is handed a \fIfilename\fP and possibly external target information and must build the \fBArchitecture\fP object, initializing all the major subcomponents, using just this info\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP is the path to the executable file to examine 
+.br
+\fItarget\fP if non-empty is a language id string 
+.br
+\fIestream\fP is an output stream for error messages 
+.RE
+.PP
+
+.PP
+Implemented in \fBBfdArchitectureCapability\fP, \fBRawBinaryArchitectureCapability\fP, and \fBXmlArchitectureCapability\fP\&.
+.SS "\fBArchitectureCapability\fP * ArchitectureCapability::findCapability (const string & filename)\fC [static]\fP"
+
+.PP
+Find an extension to process a file\&. Given a specific file, find an \fBArchitectureCapability\fP that can handle it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP is the path to the file 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an \fBArchitectureCapability\fP that can handle it or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file architecture\&.cc\&.
+.SS "\fBArchitectureCapability\fP * ArchitectureCapability::findCapability (\fBDocument\fP * doc)\fC [static]\fP"
+
+.PP
+Find an extension to process an XML document\&. Given a parsed XML document, find an \fBArchitectureCapability\fP that can handle it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdoc\fP is the parsed XML document 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an \fBArchitectureCapability\fP that can handle it or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file architecture\&.cc\&.
+.SS "static uint4 ArchitectureCapability::getMajorVersion (void)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Get \fImajor\fP decompiler version\&. 
+.PP
+Definition at line 106 of file architecture\&.hh\&.
+.SS "static uint4 ArchitectureCapability::getMinorVersion (void)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Get \fIminor\fP decompiler version\&. 
+.PP
+Definition at line 107 of file architecture\&.hh\&.
+.SS "const string& ArchitectureCapability::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the capability identifier\&. 
+.PP
+Definition at line 76 of file architecture\&.hh\&.
+.SS "void ArchitectureCapability::initialize (void)\fC [virtual]\fP"
+
+.PP
+Do specialized initialization\&. This builds a list of just the \fBArchitectureCapability\fP extensions\&. 
+.PP
+Implements \fBCapabilityPoint\fP\&.
+.PP
+Definition at line 32 of file architecture\&.cc\&.
+.SS "virtual bool ArchitectureCapability::isFileMatch (const string & filename) const\fC [pure virtual]\fP"
+
+.PP
+Determine if this extension can handle this file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP is the name of the file to examine 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP is \fBthis\fP extension is suitable for analyzing the file 
+.RE
+.PP
+
+.PP
+Implemented in \fBBfdArchitectureCapability\fP, \fBRawBinaryArchitectureCapability\fP, and \fBXmlArchitectureCapability\fP\&.
+.SS "virtual bool ArchitectureCapability::isXmlMatch (\fBDocument\fP * doc) const\fC [pure virtual]\fP"
+
+.PP
+Determine is this extension can handle this XML document\&. If a file to analyze is XML based, this method examines the XML parse to determine if \fBthis\fP extension can understand the document 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdoc\fP is the parsed XML document 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP extension understands the XML 
+.RE
+.PP
+
+.PP
+Implemented in \fBBfdArchitectureCapability\fP, \fBRawBinaryArchitectureCapability\fP, and \fBXmlArchitectureCapability\fP\&.
+.SS "void ArchitectureCapability::sortCapabilities (void)\fC [static]\fP"
+
+.PP
+Sort extensions\&. Modify order that extensions are searched, to effect which gets a chance to run first\&. Right now all we need to do is make sure the raw architecture comes last 
+.PP
+Definition at line 69 of file architecture\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "string ArchitectureCapability::name\fC [protected]\fP"
+
+.PP
+Identifier for this capability\&. 
+.PP
+Definition at line 74 of file architecture\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

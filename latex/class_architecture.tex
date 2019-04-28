@@ -1,0 +1,2612 @@
+\hypertarget{class_architecture}{}\section{Architecture Class Reference}
+\label{class_architecture}\index{Architecture@{Architecture}}
+
+
+Manager for all the major decompiler subsystems.  
+
+
+
+
+{\ttfamily \#include $<$architecture.\+hh$>$}
+
+
+
+Inheritance diagram for Architecture\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Architecture\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_architecture_aea7049f03a24618ef02d876b0659f67d}{Architecture}} (void)
+\begin{DoxyCompactList}\small\item\em Construct an uninitialized \mbox{\hyperlink{class_architecture}{Architecture}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_abcf0d020ebe4248b9b35f3a51b78363b}{init}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Load the image and configure architecture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ \mbox{\hyperlink{class_architecture_a03485a52fdf3b18f004ff4687d159a1e}{get\+Model}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Get a specific Prototype\+Model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_architecture_a0075f8ca742086c8be493703b3f2f3cd}{has\+Model}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Does this \mbox{\hyperlink{class_architecture}{Architecture}} have a specific Prototype\+Model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_architecture_a9ec2e6c18d4b1280dc955ec0ace7d476}{high\+Ptr\+Possible}} (const \mbox{\hyperlink{class_address}{Address}} \&loc, int4 size) const
+\begin{DoxyCompactList}\small\item\em Are pointers possible to the given location? \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ \mbox{\hyperlink{class_architecture_a6cef69bf3d546ca1012fcf5c017f7f3a}{get\+Space\+By\+Spacebase}} (const \mbox{\hyperlink{class_address}{Address}} \&loc, int4 size) const
+\begin{DoxyCompactList}\small\item\em Get space associated with a {\itshape spacebase} register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_afc351278b2e416181b2a7c5b65cc614b}{set\+Default\+Model}} (const string \&nm)
+\begin{DoxyCompactList}\small\item\em Set the default Prototype\+Model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a5cb912926505aad414d6054071a9e8d8}{clear\+Analysis}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\begin{DoxyCompactList}\small\item\em Clear analysis specific to a function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_ac6c95a933f8a42d6d1d46d8663a793a2}{read\+Loader\+Symbols}} (void)
+\begin{DoxyCompactList}\small\item\em Read any symbols from loader into database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a5499f02b08260cd95354143546fd374b}{collect\+Behaviors}} (vector$<$ \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} $\ast$ $>$ \&behave) const
+\begin{DoxyCompactList}\small\item\em Provide a list of \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} objects. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_architecture_a70c9e30f83ab8aba74049198f802baa7}{has\+Near\+Pointers}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$spc) const
+\begin{DoxyCompactList}\small\item\em Does the given address space support {\itshape near} pointers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a10d78ec7be0df339288b7b3adc4c38e7}{set\+Prototype}} (const \mbox{\hyperlink{struct_prototype_pieces}{Prototype\+Pieces}} \&pieces)
+\begin{DoxyCompactList}\small\item\em Set the prototype for a particular function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_ae002322a1fd364665099cbe3f98b63a6}{set\+Print\+Language}} (const string \&nm)
+\begin{DoxyCompactList}\small\item\em Establish a particular output language. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a726878f225eebebb51d4e618f4d53631}{globalify}} (void)
+\begin{DoxyCompactList}\small\item\em Mark {\itshape all} spaces as global. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a4181297a704049ca50c3fc3d233bc0e4}{restore\+Flow\+Override}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Set flow overrides from X\+ML. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_architecture_aaef3c8d834e7f5c22db0cf15eefc7e45}{$\sim$\+Architecture}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_a69348906c7601efa002f1f1365decda9}{print\+Message}} (const string \&message) const =0
+\begin{DoxyCompactList}\small\item\em Print an error message to console. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_af760a127622d4cdd4b6b436122478cb5}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Serialize this architecture to X\+ML. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_ab15a398b9f84dd62ad36d1e83895783a}{restore\+Xml}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Restore the \mbox{\hyperlink{class_architecture}{Architecture}} state from an X\+ML stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_a7bd655cd2adbd6538883e1771276604e}{name\+Function}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, string \&name) const
+\begin{DoxyCompactList}\small\item\em Pick a default name for a function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_architecture_a78260a0e141deda850d56d17e6e728cf}{archid}}
+\begin{DoxyCompactList}\small\item\em ID string uniquely describing this architecture. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_architecture_ad7765062ff51f487874d768e763b82d0}{description}}
+\begin{DoxyCompactList}\small\item\em Description of architecture. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_architecture_a9fa6f1ec97e17635fb65b30c3b734efb}{version}}
+\begin{DoxyCompactList}\small\item\em Configuration version. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_architecture_adbb294ba6c3bb21f691e0208c1ac53a1}{trim\+\_\+recurse\+\_\+max}}
+\begin{DoxyCompactList}\small\item\em How many levels to let parameter trims recurse. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_architecture_a6c32c1c7e592435d70f41145d5c548f1}{max\+\_\+implied\+\_\+ref}}
+\begin{DoxyCompactList}\small\item\em Maximum number of references to an implied var. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_architecture_a99db0ca5ac8e5c9edfa7515f97b2ab5a}{max\+\_\+term\+\_\+duplication}}
+\begin{DoxyCompactList}\small\item\em Max terms duplicated without a new variable. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_architecture_a37de4bf5cb39955f32a24074e768a591}{max\+\_\+basetype\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em Maximum size of an \char`\"{}integer\char`\"{} type before creating an array type. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_architecture_aa5c79b6eca1b3c98884bb53c90bf417d}{min\+\_\+funcsymbol\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em Minimum size of a function symbol. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_architecture_a51c3648c6133efc1d5115b86dd10115a}{aggressive\+\_\+ext\+\_\+trim}}
+\begin{DoxyCompactList}\small\item\em Aggressively trim inputs that look like they are sign extended. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_architecture_a64c49555bfdee44b82f3a9a98005ed0d}{readonlypropagate}}
+\begin{DoxyCompactList}\small\item\em true if readonly values should be treated as constants \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_architecture_adbeb3c604a337ce88bd4e9d8beb78806}{infer\+\_\+pointers}}
+\begin{DoxyCompactList}\small\item\em True if we should infer pointers from constants that are likely addresses. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_architecture_aa6544ee69038548a7f09157beb38e8d4}{pointer\+\_\+lowerbound}}
+\begin{DoxyCompactList}\small\item\em Zero or lowest value that can be inferred as an address. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_architecture_af1b94f4312717f6cd89eb784e3e73611}{funcptr\+\_\+align}}
+\begin{DoxyCompactList}\small\item\em How many bits of alignment a function ptr has. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_architecture_a4ed18744b8dc08d3ca81d6b1b6df682e}{flowoptions}}
+\begin{DoxyCompactList}\small\item\em options passed to flow following engine \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_rule}{Rule}} $\ast$ $>$ \mbox{\hyperlink{class_architecture_a6218d36328733cd9798ad6c3dbe921d8}{extra\+\_\+pool\+\_\+rules}}
+\begin{DoxyCompactList}\small\item\em Extra rules that go in the main pool (cpu specific, experimental) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_database}{Database}} $\ast$ \mbox{\hyperlink{class_architecture_ab426c9baa9013d9826041a4083e844ef}{symboltab}}
+\begin{DoxyCompactList}\small\item\em Memory map of global variables and functions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_context_database}{Context\+Database}} $\ast$ \mbox{\hyperlink{class_architecture_abbbd3d4cf806f7ca3a2a2943aab28165}{context}}
+\begin{DoxyCompactList}\small\item\em Map from addresses to context settings. \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ $>$ \mbox{\hyperlink{class_architecture_ab15c8b7bbcb9408075014902da4f8687}{proto\+Models}}
+\begin{DoxyCompactList}\small\item\em Parsed forms of possible prototypes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ \mbox{\hyperlink{class_architecture_a1e0f5d45f6dcd494b15bb55f81f656b2}{defaultfp}}
+\begin{DoxyCompactList}\small\item\em Parsed form of default prototype. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \mbox{\hyperlink{class_architecture_ad0b5e0d6c22247d4ec2422c81ddec8f8}{default\+Return\+Addr}}
+\begin{DoxyCompactList}\small\item\em Default storage location of return address (for current function) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ \mbox{\hyperlink{class_architecture_a9fb08ee0ed38a4c586a99d0f45a3af6e}{evalfp\+\_\+current}}
+\begin{DoxyCompactList}\small\item\em Function proto to use when evaluating current function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ \mbox{\hyperlink{class_architecture_a44c624320bcc9d52dcecdf553f3b4796}{evalfp\+\_\+called}}
+\begin{DoxyCompactList}\small\item\em Function proto to use when evaluating called functions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_type_factory}{Type\+Factory}} $\ast$ \mbox{\hyperlink{class_architecture_a8225ba7bd6ac802660e03ee793289dd1}{types}}
+\begin{DoxyCompactList}\small\item\em List of types for this binary. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_translate}{Translate}} $\ast$ \mbox{\hyperlink{class_architecture_a81f2db17fdc609a7d1cedbc0a2eb7753}{translate}}
+\begin{DoxyCompactList}\small\item\em Translation method for this binary. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_load_image}{Load\+Image}} $\ast$ \mbox{\hyperlink{class_architecture_a344b1348ed8f0bbe0d050e7038bb290d}{loader}}
+\begin{DoxyCompactList}\small\item\em Method for loading portions of binary. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_inject_library}{Pcode\+Inject\+Library}} $\ast$ \mbox{\hyperlink{class_architecture_a7d04d77ca75b9e75caa3750c156d9bbf}{pcodeinjectlib}}
+\begin{DoxyCompactList}\small\item\em Pcode injection manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_range_list}{Range\+List}} \mbox{\hyperlink{class_architecture_a693da460aeb788e4fbaf3361bd07756a}{nohighptr}}
+\begin{DoxyCompactList}\small\item\em Ranges for which high-\/level pointers are not possible. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_comment_database}{Comment\+Database}} $\ast$ \mbox{\hyperlink{class_architecture_a5425576df9b7ce15b6ddddbf17b03df6}{commentdb}}
+\begin{DoxyCompactList}\small\item\em Comments for this architecture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_constant_pool}{Constant\+Pool}} $\ast$ \mbox{\hyperlink{class_architecture_adeb5761c98d8af556fb59753d68dfd97}{cpool}}
+\begin{DoxyCompactList}\small\item\em Deferred constant values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$ \mbox{\hyperlink{class_architecture_af72890bc88edf8d6074e24d92fd31c57}{print}}
+\begin{DoxyCompactList}\small\item\em Current high-\/level language printer. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$ $>$ \mbox{\hyperlink{class_architecture_a118dbf145a9f2b6cae5d48b40f00e4d8}{printlist}}
+\begin{DoxyCompactList}\small\item\em List of high-\/level language printers supported. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_option_database}{Option\+Database}} $\ast$ \mbox{\hyperlink{class_architecture_ab581a0109bda8e9206bb155a80a3a694}{options}}
+\begin{DoxyCompactList}\small\item\em Options that can be configured. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_type_op}{Type\+Op}} $\ast$ $>$ \mbox{\hyperlink{class_architecture_a3a9badb712693d9abec7e21abc20fde1}{inst}}
+\begin{DoxyCompactList}\small\item\em Registered p-\/code instructions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user_op_manage}{User\+Op\+Manage}} \mbox{\hyperlink{class_architecture_abd9c927fbda44de1ab46122f49248003}{userops}}
+\begin{DoxyCompactList}\small\item\em Specifically registered user-\/defined p-\/code ops. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{struct_prefer_split_record}{Prefer\+Split\+Record}} $>$ \mbox{\hyperlink{class_architecture_a2ed25d7790e67e8bfaef34c092e5f39b}{splitrecords}}
+\begin{DoxyCompactList}\small\item\em registers that we would prefer to see split for this processor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_action_database}{Action\+Database}} \mbox{\hyperlink{class_architecture_a4cbe1c5d170cb2a4d359765b97fef26f}{allacts}}
+\begin{DoxyCompactList}\small\item\em Actions that can be applied in this architecture. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_architecture_aff44e0cd6303a22689d6601fc5418918}{loadersymbols\+\_\+parsed}}
+\begin{DoxyCompactList}\small\item\em True if loader symbols have been read. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_architecture_a3bbc62dedbb13b6fdb2969e1e83446d5}{add\+Spacebase}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$basespace, const string \&nm, const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \&ptrdata, int4 trunc\+Size, bool isreversejustified, bool stack\+Growth)
+\begin{DoxyCompactList}\small\item\em Create a new space and associated pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a70efc8f5d9e212d039dccbfe8556f05d}{add\+No\+High\+Ptr}} (const \mbox{\hyperlink{class_range}{Range}} \&rng)
+\begin{DoxyCompactList}\small\item\em Add a new region where pointers do not exist. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_scope}{Scope}} $\ast$ \mbox{\hyperlink{class_architecture_afa2d6a96b669efefe4b89915aa8a65f7}{build\+Global\+Scope}} (void)
+\begin{DoxyCompactList}\small\item\em Build the global scope for this executable. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_translate}{Translate}} $\ast$ \mbox{\hyperlink{class_architecture_ab951056481cac3e73770db9d567d5212}{build\+Translator}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)=0
+\begin{DoxyCompactList}\small\item\em Build the Translator object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_a9a19e1f07ba0449dfb21d3388b0dbc33}{build\+Loader}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)=0
+\begin{DoxyCompactList}\small\item\em Build the \mbox{\hyperlink{class_load_image}{Load\+Image}} object and load the executable image. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_pcode_inject_library}{Pcode\+Inject\+Library}} $\ast$ \mbox{\hyperlink{class_architecture_a7dae4f59e2c196a623b45e68cacc1a7a}{build\+Pcode\+Inject\+Library}} (void)=0
+\begin{DoxyCompactList}\small\item\em Build the injection library. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_aaf041374ee649d2c0d8e95e450af5bf9}{build\+Typegrp}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Build the data-\/type factory/container. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_a517bf0e0ba766b241edf122422766249}{build\+Comment\+DB}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Build the comment database. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_aed8aa1186293e453601bedb0db3d4ec1}{build\+Constant\+Pool}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Build the constant pool. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_aa059c551a53018c8d70a1c2f9fc6ed73}{build\+Instructions}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Register the p-\/code operations. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_ad646d95818d9c3615da8a259732546b8}{build\+Action}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Build the \mbox{\hyperlink{class_action}{Action}} framework. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_a9a2fd38d4d08155637ebee1e043fd9a8}{build\+Context}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Build the Context database. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_ad9e8edfa21e63d4b37b8003397804933}{build\+Spec\+File}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)=0
+\begin{DoxyCompactList}\small\item\em Load any relevant specification files. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_aec1784d8729ba0f13cd7ea63ee546995}{modify\+Spaces}} (\mbox{\hyperlink{class_translate}{Translate}} $\ast$trans)=0
+\begin{DoxyCompactList}\small\item\em Modify address spaces as required by {\bfseries{this}} \mbox{\hyperlink{class_architecture}{Architecture}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_a7cee782dabf4362f10a0bbb4c950f85e}{post\+Spec\+File}} (void)
+\begin{DoxyCompactList}\small\item\em Let components initialize after \mbox{\hyperlink{class_translate}{Translate}} is built. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_aea7d061dab582340c8e9bb3323abdf4a}{resolve\+Architecture}} (void)=0
+\begin{DoxyCompactList}\small\item\em Figure out the processor and compiler of the target executable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_aed18df408eb73d0735966c68b44e413b}{restore\+From\+Spec}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Fully initialize the \mbox{\hyperlink{class_translate}{Translate}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a74b374a6d9b25a638567c3519ac1796c}{fillin\+Read\+Only\+From\+Loader}} (void)
+\begin{DoxyCompactList}\small\item\em Load info about read-\/only sections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a20fb7a8902a213abbf0c730fa5b6a9d7}{initialize\+Segments}} ()
+\begin{DoxyCompactList}\small\item\em Set up segment resolvers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a4cd4815cc79c6582840043de2e3e65eb}{parse\+Processor\+Config}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Apply processor specific configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a20147b2a4be785c30ea29cc7d9278b42}{parse\+Compiler\+Config}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Apply compiler specific configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a568ff11996bb679327d3d83dbb50d454}{parse\+Extra\+Rules}} (\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&store)
+\begin{DoxyCompactList}\small\item\em Apply any \mbox{\hyperlink{class_rule}{Rule}} tags. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_aef6b370b90db6fbf3a8b8b62740c77ba}{parse\+Dynamic\+Rule}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply details of a dynamic \mbox{\hyperlink{class_rule}{Rule}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ \mbox{\hyperlink{class_architecture_afb2938da725012462a68a85627a2dc2c}{parse\+Proto}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Build a proto-\/type model from an X\+ML tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a3e32daad5f4744f55c43f8acdd7ee8eb}{parse\+Proto\+Eval}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply prototype evaluation configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a1ea36f2638d65351dd00ba06fe0dc00b}{parse\+Default\+Proto}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply default prototype model configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a6348f797097deb07776eca437458ecc8}{parse\+Global}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply global space configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a85374e24548406ae6497021150aa5d2c}{parse\+Read\+Only}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply read-\/only region configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a90175b3753d44c818064e08425c57d97}{parse\+Volatile}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply volatile region configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a24090e497ce6273f83bcb842be816ccb}{parse\+Return\+Address}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply return address configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a8b2290f8d9cf479d4b49fb26c83ff8c5}{parse\+Incidental\+Copy}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply incidental copy configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_aac48da0d464ff216982db607b43d4757}{parse\+Stack\+Pointer}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply stack pointer configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a29ad4de633bc630b03425ab46b31f42b}{parse\+Deadcode\+Delay}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply dead-\/code delay configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a5e10589073ea41018047b8affb10025e}{parse\+Func\+Ptr\+Align}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply function pointer alignment configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_adf3b1aecaff0ca84c647ddbe6e25de5c}{parse\+Spacebase}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Create an additional indexed space. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a6f51fadb288b36927fa9dfda725ffd88}{parse\+No\+High\+Ptr}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Apply memory alias configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a7cbe749d5bcc143838f2590fc08acf26}{parse\+Prefer\+Split}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Designate registers to be split. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_architecture_a8be334560223db2a9742d8097edf2cf6}{parse\+Aggressive\+Trim}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Designate how to trim extension p-\/code ops. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manager for all the major decompiler subsystems. 
+
+An instantiation is tailored to a specific \mbox{\hyperlink{class_load_image}{Load\+Image}}, processor, and compiler spec. This class is the {\itshape owner} of the \mbox{\hyperlink{class_load_image}{Load\+Image}}, \mbox{\hyperlink{class_translate}{Translate}}, symbols (\mbox{\hyperlink{class_database}{Database}}), \mbox{\hyperlink{class_print_language}{Print\+Language}}, etc. This class also holds numerous configuration parameters for the analysis process 
+
+Definition at line 116 of file architecture.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_architecture_aea7049f03a24618ef02d876b0659f67d}\label{class_architecture_aea7049f03a24618ef02d876b0659f67d}} 
+\index{Architecture@{Architecture}!Architecture@{Architecture}}
+\index{Architecture@{Architecture}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{Architecture()}{Architecture()}}
+{\footnotesize\ttfamily Architecture\+::\+Architecture (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Construct an uninitialized \mbox{\hyperlink{class_architecture}{Architecture}}. 
+
+Set most sub-\/components to null pointers. Provide reasonable defaults for the configurable options 
+
+Definition at line 85 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aea7049f03a24618ef02d876b0659f67d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aaef3c8d834e7f5c22db0cf15eefc7e45}\label{class_architecture_aaef3c8d834e7f5c22db0cf15eefc7e45}} 
+\index{Architecture@{Architecture}!````~Architecture@{$\sim$Architecture}}
+\index{````~Architecture@{$\sim$Architecture}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{$\sim$Architecture()}{~Architecture()}}
+{\footnotesize\ttfamily Architecture\+::$\sim$\+Architecture (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+Release resources for all sub-\/components. 
+
+Definition at line 125 of file architecture.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_architecture_a70efc8f5d9e212d039dccbfe8556f05d}\label{class_architecture_a70efc8f5d9e212d039dccbfe8556f05d}} 
+\index{Architecture@{Architecture}!addNoHighPtr@{addNoHighPtr}}
+\index{addNoHighPtr@{addNoHighPtr}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{addNoHighPtr()}{addNoHighPtr()}}
+{\footnotesize\ttfamily void Architecture\+::add\+No\+High\+Ptr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_range}{Range}} \&}]{rng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Add a new region where pointers do not exist. 
+
+This routine is used by the initialization process to add address ranges to which there is never an (indirect) pointer Should only be called during initialization 
+\begin{DoxyParams}{Parameters}
+{\em rng} & is the new range with no aliases to be added \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 462 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a70efc8f5d9e212d039dccbfe8556f05d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a70efc8f5d9e212d039dccbfe8556f05d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a3bbc62dedbb13b6fdb2969e1e83446d5}\label{class_architecture_a3bbc62dedbb13b6fdb2969e1e83446d5}} 
+\index{Architecture@{Architecture}!addSpacebase@{addSpacebase}}
+\index{addSpacebase@{addSpacebase}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{addSpacebase()}{addSpacebase()}}
+{\footnotesize\ttfamily void Architecture\+::add\+Spacebase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{basespace,  }\item[{const string \&}]{nm,  }\item[{const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \&}]{ptrdata,  }\item[{int4}]{trunc\+Size,  }\item[{bool}]{isreversejustified,  }\item[{bool}]{stack\+Growth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Create a new space and associated pointer. 
+
+This process sets up a \char`\"{}register relative\char`\"{} space for this architecture If the name is \char`\"{}stack\char`\"{}, this space takes on the role of an \char`\"{}official\char`\"{} stack space Should only be called once during initialization 
+\begin{DoxyParams}{Parameters}
+{\em basespace} & is the address space underlying the stack \\
+\hline
+{\em nm} & is the name of the new space \\
+\hline
+{\em ptrdata} & is the register location acting as a pointer into the new space \\
+\hline
+{\em trunc\+Size} & is the (possibly truncated) size of the register that fits the space \\
+\hline
+{\em isreversejustified} & is {\bfseries{true}} if small variables are justified opposite of endianness \\
+\hline
+{\em stack\+Growth} & is {\bfseries{true}} if a stack implemented in this space grows in the negative direction \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 445 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a3bbc62dedbb13b6fdb2969e1e83446d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a3bbc62dedbb13b6fdb2969e1e83446d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_ad646d95818d9c3615da8a259732546b8}\label{class_architecture_ad646d95818d9c3615da8a259732546b8}} 
+\index{Architecture@{Architecture}!buildAction@{buildAction}}
+\index{buildAction@{buildAction}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildAction()}{buildAction()}}
+{\footnotesize\ttfamily void Architecture\+::build\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Build the \mbox{\hyperlink{class_action}{Action}} framework. 
+
+This builds the {\itshape universal} \mbox{\hyperlink{class_action}{Action}} for function transformation and instantiates the \char`\"{}decompile\char`\"{} root \mbox{\hyperlink{class_action}{Action}} 
+\begin{DoxyParams}{Parameters}
+{\em store} & may hold configuration information \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 471 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ad646d95818d9c3615da8a259732546b8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ad646d95818d9c3615da8a259732546b8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a517bf0e0ba766b241edf122422766249}\label{class_architecture_a517bf0e0ba766b241edf122422766249}} 
+\index{Architecture@{Architecture}!buildCommentDB@{buildCommentDB}}
+\index{buildCommentDB@{buildCommentDB}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildCommentDB()}{buildCommentDB()}}
+{\footnotesize\ttfamily void Architecture\+::build\+Comment\+DB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Build the comment database. 
+
+Build the container that holds comments for executable in this \mbox{\hyperlink{class_architecture}{Architecture}}. 
+\begin{DoxyParams}{Parameters}
+{\em store} & may hold configuration information \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 542 of file architecture.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a517bf0e0ba766b241edf122422766249_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aed8aa1186293e453601bedb0db3d4ec1}\label{class_architecture_aed8aa1186293e453601bedb0db3d4ec1}} 
+\index{Architecture@{Architecture}!buildConstantPool@{buildConstantPool}}
+\index{buildConstantPool@{buildConstantPool}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildConstantPool()}{buildConstantPool()}}
+{\footnotesize\ttfamily void Architecture\+::build\+Constant\+Pool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Build the constant pool. 
+
+Some processor models (Java byte-\/code) need a database of constants. The database is always built, but may remain empty. 
+\begin{DoxyParams}{Parameters}
+{\em store} & may hold configuration information \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 551 of file architecture.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aed8aa1186293e453601bedb0db3d4ec1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a9a2fd38d4d08155637ebee1e043fd9a8}\label{class_architecture_a9a2fd38d4d08155637ebee1e043fd9a8}} 
+\index{Architecture@{Architecture}!buildContext@{buildContext}}
+\index{buildContext@{buildContext}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildContext()}{buildContext()}}
+{\footnotesize\ttfamily void Architecture\+::build\+Context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Build the Context database. 
+
+This builds the database which holds the status registers setings and other information that can affect disassembly depending on context. 
+\begin{DoxyParams}{Parameters}
+{\em store} & may hold configuration information \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 482 of file architecture.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a9a2fd38d4d08155637ebee1e043fd9a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_afa2d6a96b669efefe4b89915aa8a65f7}\label{class_architecture_afa2d6a96b669efefe4b89915aa8a65f7}} 
+\index{Architecture@{Architecture}!buildGlobalScope@{buildGlobalScope}}
+\index{buildGlobalScope@{buildGlobalScope}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildGlobalScope()}{buildGlobalScope()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scope}{Scope}} $\ast$ Architecture\+::build\+Global\+Scope (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Build the global scope for this executable. 
+
+If it does not already exist create the glocal \mbox{\hyperlink{class_scope}{Scope}} object \begin{DoxyReturn}{Returns}
+the global \mbox{\hyperlink{class_scope}{Scope}} object 
+\end{DoxyReturn}
+
+
+Definition at line 490 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_afa2d6a96b669efefe4b89915aa8a65f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_afa2d6a96b669efefe4b89915aa8a65f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aa059c551a53018c8d70a1c2f9fc6ed73}\label{class_architecture_aa059c551a53018c8d70a1c2f9fc6ed73}} 
+\index{Architecture@{Architecture}!buildInstructions@{buildInstructions}}
+\index{buildInstructions@{buildInstructions}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildInstructions()}{buildInstructions()}}
+{\footnotesize\ttfamily void Architecture\+::build\+Instructions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Register the p-\/code operations. 
+
+This registers the \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} objects for all known p-\/code Op\+Codes. The \mbox{\hyperlink{class_translate}{Translate}} and \mbox{\hyperlink{class_type_factory}{Type\+Factory}} object should already be built. 
+\begin{DoxyParams}{Parameters}
+{\em store} & may hold configuration information \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 560 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aa059c551a53018c8d70a1c2f9fc6ed73_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aa059c551a53018c8d70a1c2f9fc6ed73_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a9a19e1f07ba0449dfb21d3388b0dbc33}\label{class_architecture_a9a19e1f07ba0449dfb21d3388b0dbc33}} 
+\index{Architecture@{Architecture}!buildLoader@{buildLoader}}
+\index{buildLoader@{buildLoader}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildLoader()}{buildLoader()}}
+{\footnotesize\ttfamily virtual void Architecture\+::build\+Loader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Build the \mbox{\hyperlink{class_load_image}{Load\+Image}} object and load the executable image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & may hold configuration information \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a9a19e1f07ba0449dfb21d3388b0dbc33_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a7dae4f59e2c196a623b45e68cacc1a7a}\label{class_architecture_a7dae4f59e2c196a623b45e68cacc1a7a}} 
+\index{Architecture@{Architecture}!buildPcodeInjectLibrary@{buildPcodeInjectLibrary}}
+\index{buildPcodeInjectLibrary@{buildPcodeInjectLibrary}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildPcodeInjectLibrary()}{buildPcodeInjectLibrary()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_pcode_inject_library}{Pcode\+Inject\+Library}}$\ast$ Architecture\+::build\+Pcode\+Inject\+Library (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Build the injection library. 
+
+This creates the container for p-\/code injections. It is initially empty. \begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_pcode_inject_library}{Pcode\+Inject\+Library}} object 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_sleigh_architecture_ae0b7773ee748ea290358c389e71f2003}{Sleigh\+Architecture}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a7dae4f59e2c196a623b45e68cacc1a7a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_ad9e8edfa21e63d4b37b8003397804933}\label{class_architecture_ad9e8edfa21e63d4b37b8003397804933}} 
+\index{Architecture@{Architecture}!buildSpecFile@{buildSpecFile}}
+\index{buildSpecFile@{buildSpecFile}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildSpecFile()}{buildSpecFile()}}
+{\footnotesize\ttfamily virtual void Architecture\+::build\+Spec\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Load any relevant specification files. 
+
+Processor/architecture specific configuration files are loaded into the X\+ML store 
+\begin{DoxyParams}{Parameters}
+{\em store} & is the document store that will hold the configuration \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_sleigh_architecture_a80e8e72ca0059be816575262b7db395f}{Sleigh\+Architecture}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ad9e8edfa21e63d4b37b8003397804933_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_ab951056481cac3e73770db9d567d5212}\label{class_architecture_ab951056481cac3e73770db9d567d5212}} 
+\index{Architecture@{Architecture}!buildTranslator@{buildTranslator}}
+\index{buildTranslator@{buildTranslator}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildTranslator()}{buildTranslator()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_translate}{Translate}}$\ast$ Architecture\+::build\+Translator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Build the Translator object. 
+
+This builds the main disassembly component for the \mbox{\hyperlink{class_architecture}{Architecture}} This does {\itshape not} initially the engine for a specific processor. 
+\begin{DoxyParams}{Parameters}
+{\em store} & may hold configuration information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_translate}{Translate}} object 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_sleigh_architecture_aae195ea2828d13b6e15d16c722d14b18}{Sleigh\+Architecture}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ab951056481cac3e73770db9d567d5212_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aaf041374ee649d2c0d8e95e450af5bf9}\label{class_architecture_aaf041374ee649d2c0d8e95e450af5bf9}} 
+\index{Architecture@{Architecture}!buildTypegrp@{buildTypegrp}}
+\index{buildTypegrp@{buildTypegrp}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{buildTypegrp()}{buildTypegrp()}}
+{\footnotesize\ttfamily void Architecture\+::build\+Typegrp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Build the data-\/type factory/container. 
+
+This builds the \mbox{\hyperlink{class_type_factory}{Type\+Factory}} object specific to this architecture and prepopulates it with the {\itshape core} types. Core types may be pulled from the configuration information, or default core types are used. 
+\begin{DoxyParams}{Parameters}
+{\em store} & contains possible configuration information \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 505 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aaf041374ee649d2c0d8e95e450af5bf9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aaf041374ee649d2c0d8e95e450af5bf9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a5cb912926505aad414d6054071a9e8d8}\label{class_architecture_a5cb912926505aad414d6054071a9e8d8}} 
+\index{Architecture@{Architecture}!clearAnalysis@{clearAnalysis}}
+\index{clearAnalysis@{clearAnalysis}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{clearAnalysis()}{clearAnalysis()}}
+{\footnotesize\ttfamily void Architecture\+::clear\+Analysis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})}
+
+
+
+Clear analysis specific to a function. 
+
+Throw out the syntax tree, (unlocked) symbols, comments, and other derived information about a single function. 
+\begin{DoxyParams}{Parameters}
+{\em fd} & is the function to clear \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 234 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a5cb912926505aad414d6054071a9e8d8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a5cb912926505aad414d6054071a9e8d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a5499f02b08260cd95354143546fd374b}\label{class_architecture_a5499f02b08260cd95354143546fd374b}} 
+\index{Architecture@{Architecture}!collectBehaviors@{collectBehaviors}}
+\index{collectBehaviors@{collectBehaviors}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{collectBehaviors()}{collectBehaviors()}}
+{\footnotesize\ttfamily void Architecture\+::collect\+Behaviors (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} $\ast$ $>$ \&}]{behave }\end{DoxyParamCaption}) const}
+
+
+
+Provide a list of \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} objects. 
+
+For all registered p-\/code opcodes, return the corresponding \mbox{\hyperlink{class_op_behavior}{Op\+Behavior}} object. The object pointers are provided in a list indexed by Op\+Code. 
+\begin{DoxyParams}{Parameters}
+{\em behave} & is the list to be populated \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 261 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a5499f02b08260cd95354143546fd374b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a5499f02b08260cd95354143546fd374b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a74b374a6d9b25a638567c3519ac1796c}\label{class_architecture_a74b374a6d9b25a638567c3519ac1796c}} 
+\index{Architecture@{Architecture}!fillinReadOnlyFromLoader@{fillinReadOnlyFromLoader}}
+\index{fillinReadOnlyFromLoader@{fillinReadOnlyFromLoader}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{fillinReadOnlyFromLoader()}{fillinReadOnlyFromLoader()}}
+{\footnotesize\ttfamily void Architecture\+::fillin\+Read\+Only\+From\+Loader (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Load info about read-\/only sections. 
+
+The \mbox{\hyperlink{class_load_image}{Load\+Image}} may have access information about the executables sections. Query for any read-\/only ranges and store this information in the property database 
+
+Definition at line 1076 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a74b374a6d9b25a638567c3519ac1796c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a74b374a6d9b25a638567c3519ac1796c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a03485a52fdf3b18f004ff4687d159a1e}\label{class_architecture_a03485a52fdf3b18f004ff4687d159a1e}} 
+\index{Architecture@{Architecture}!getModel@{getModel}}
+\index{getModel@{getModel}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{getModel()}{getModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ Architecture\+::get\+Model (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const}
+
+
+
+Get a specific Prototype\+Model. 
+
+The \mbox{\hyperlink{class_architecture}{Architecture}} maintains the set of prototype models that can be applied for this particular executable. Retrieve one by name. The model must exist or an exception is thrown. 
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching model 
+\end{DoxyReturn}
+
+
+Definition at line 172 of file architecture.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a03485a52fdf3b18f004ff4687d159a1e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a6cef69bf3d546ca1012fcf5c017f7f3a}\label{class_architecture_a6cef69bf3d546ca1012fcf5c017f7f3a}} 
+\index{Architecture@{Architecture}!getSpaceBySpacebase@{getSpaceBySpacebase}}
+\index{getSpaceBySpacebase@{getSpaceBySpacebase}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{getSpaceBySpacebase()}{getSpaceBySpacebase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$ Architecture\+::get\+Space\+By\+Spacebase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{loc,  }\item[{int4}]{size }\end{DoxyParamCaption}) const}
+
+
+
+Get space associated with a {\itshape spacebase} register. 
+
+Get the address space associated with the indicated {\itshape spacebase} register. I.\+e. if the location of the {\itshape stack} {\itshape pointer} is passed in, this routine would return a pointer to the {\bfseries{stack}} space. An exception is thrown if no corresponding space is found. 
+\begin{DoxyParams}{Parameters}
+{\em loc} & is the location of the {\itshape spacebase} register \\
+\hline
+{\em size} & is the size of the register in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the address space 
+\end{DoxyReturn}
+
+
+Definition at line 202 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a6cef69bf3d546ca1012fcf5c017f7f3a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a726878f225eebebb51d4e618f4d53631}\label{class_architecture_a726878f225eebebb51d4e618f4d53631}} 
+\index{Architecture@{Architecture}!globalify@{globalify}}
+\index{globalify@{globalify}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{globalify()}{globalify()}}
+{\footnotesize\ttfamily void Architecture\+::globalify (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Mark {\itshape all} spaces as global. 
+
+Set all I\+P\+T\+R\+\_\+\+P\+R\+O\+C\+E\+S\+S\+OR and I\+P\+T\+R\+\_\+\+S\+P\+A\+C\+E\+B\+A\+SE spaces to be global. 
+
+Definition at line 332 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a726878f225eebebb51d4e618f4d53631_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_architecture_a726878f225eebebb51d4e618f4d53631_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a0075f8ca742086c8be493703b3f2f3cd}\label{class_architecture_a0075f8ca742086c8be493703b3f2f3cd}} 
+\index{Architecture@{Architecture}!hasModel@{hasModel}}
+\index{hasModel@{hasModel}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{hasModel()}{hasModel()}}
+{\footnotesize\ttfamily bool Architecture\+::has\+Model (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const}
+
+
+
+Does this \mbox{\hyperlink{class_architecture}{Architecture}} have a specific Prototype\+Model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if this \mbox{\hyperlink{class_architecture}{Architecture}} supports a model with that name 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file architecture.\+cc.
+
+\mbox{\Hypertarget{class_architecture_a70c9e30f83ab8aba74049198f802baa7}\label{class_architecture_a70c9e30f83ab8aba74049198f802baa7}} 
+\index{Architecture@{Architecture}!hasNearPointers@{hasNearPointers}}
+\index{hasNearPointers@{hasNearPointers}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{hasNearPointers()}{hasNearPointers()}}
+{\footnotesize\ttfamily bool Architecture\+::has\+Near\+Pointers (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{spc }\end{DoxyParamCaption}) const}
+
+
+
+Does the given address space support {\itshape near} pointers. 
+
+A {\bfseries{near}} pointer is some form of truncated pointer that needs {\itshape segment} or other information to fully form an address. This method searches for a user-\/defined segment op registered for the space 
+\begin{DoxyParams}{Parameters}
+{\em spc} & is the address space to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the space supports a segment operation 
+\end{DoxyReturn}
+
+
+Definition at line 278 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a70c9e30f83ab8aba74049198f802baa7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a70c9e30f83ab8aba74049198f802baa7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a9ec2e6c18d4b1280dc955ec0ace7d476}\label{class_architecture_a9ec2e6c18d4b1280dc955ec0ace7d476}} 
+\index{Architecture@{Architecture}!highPtrPossible@{highPtrPossible}}
+\index{highPtrPossible@{highPtrPossible}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{highPtrPossible()}{highPtrPossible()}}
+{\footnotesize\ttfamily bool Architecture\+::high\+Ptr\+Possible (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{loc,  }\item[{int4}]{size }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Are pointers possible to the given location? 
+
+The \mbox{\hyperlink{class_translate}{Translate}} object keeps track of address ranges for which it is effectively impossible to have a pointer into. This is used for pointer aliasing calculations. This routine returns {\bfseries{true}} if it is {\itshape possible} to have pointers into the indicated range. 
+\begin{DoxyParams}{Parameters}
+{\em loc} & is the starting address of the range \\
+\hline
+{\em size} & is the size of the range in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if pointers are possible 
+\end{DoxyReturn}
+
+
+Definition at line 297 of file architecture.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a9ec2e6c18d4b1280dc955ec0ace7d476_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_abcf0d020ebe4248b9b35f3a51b78363b}\label{class_architecture_abcf0d020ebe4248b9b35f3a51b78363b}} 
+\index{Architecture@{Architecture}!init@{init}}
+\index{init@{init}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Architecture\+::init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})}
+
+
+
+Load the image and configure architecture. 
+
+Create the \mbox{\hyperlink{class_load_image}{Load\+Image}} and load the executable to be analyzed. Using this and possibly other initialization information, create all the sub-\/components necessary for a complete \mbox{\hyperlink{class_architecture}{Architecture}} The Document\+Store may hold previously gleaned configuration information and is used to read in other configuration files while initializing. 
+\begin{DoxyParams}{Parameters}
+{\em store} & is the X\+ML document store \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1096 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_abcf0d020ebe4248b9b35f3a51b78363b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{class_architecture_abcf0d020ebe4248b9b35f3a51b78363b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a20fb7a8902a213abbf0c730fa5b6a9d7}\label{class_architecture_a20fb7a8902a213abbf0c730fa5b6a9d7}} 
+\index{Architecture@{Architecture}!initializeSegments@{initializeSegments}}
+\index{initializeSegments@{initializeSegments}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{initializeSegments()}{initializeSegments()}}
+{\footnotesize\ttfamily void Architecture\+::initialize\+Segments (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Set up segment resolvers. 
+
+If any address space supports near pointers and segment operators, setup \mbox{\hyperlink{class_segmented_resolver}{Segmented\+Resolver}} objects that can be used to recover full pointers in context. 
+
+Definition at line 595 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a20fb7a8902a213abbf0c730fa5b6a9d7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a20fb7a8902a213abbf0c730fa5b6a9d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aec1784d8729ba0f13cd7ea63ee546995}\label{class_architecture_aec1784d8729ba0f13cd7ea63ee546995}} 
+\index{Architecture@{Architecture}!modifySpaces@{modifySpaces}}
+\index{modifySpaces@{modifySpaces}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{modifySpaces()}{modifySpaces()}}
+{\footnotesize\ttfamily virtual void Architecture\+::modify\+Spaces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_translate}{Translate}} $\ast$}]{trans }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Modify address spaces as required by {\bfseries{this}} \mbox{\hyperlink{class_architecture}{Architecture}}. 
+
+If spaces need to be truncated or otherwise changed from processor defaults, this routine performs the modification. 
+\begin{DoxyParams}{Parameters}
+{\em trans} & is the processor disassembly object \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_sleigh_architecture_aaf0c0ad5b1160d42fecce0a27ce05674}{Sleigh\+Architecture}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aec1784d8729ba0f13cd7ea63ee546995_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a7bd655cd2adbd6538883e1771276604e}\label{class_architecture_a7bd655cd2adbd6538883e1771276604e}} 
+\index{Architecture@{Architecture}!nameFunction@{nameFunction}}
+\index{nameFunction@{nameFunction}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{nameFunction()}{nameFunction()}}
+{\footnotesize\ttfamily void Architecture\+::name\+Function (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Pick a default name for a function. 
+
+If no better name is available, this method can be used to generate a function name based on its address 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the address of the function \\
+\hline
+{\em name} & will hold the constructed name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 427 of file architecture.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a7bd655cd2adbd6538883e1771276604e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a8be334560223db2a9742d8097edf2cf6}\label{class_architecture_a8be334560223db2a9742d8097edf2cf6}} 
+\index{Architecture@{Architecture}!parseAggressiveTrim@{parseAggressiveTrim}}
+\index{parseAggressiveTrim@{parseAggressiveTrim}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseAggressiveTrim()}{parseAggressiveTrim()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Aggressive\+Trim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Designate how to trim extension p-\/code ops. 
+
+Configure based on the $<$aggressivetrim$>$ tag, how aggressively the decompiler will remove extension operations. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 920 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a8be334560223db2a9742d8097edf2cf6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a8be334560223db2a9742d8097edf2cf6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a20147b2a4be785c30ea29cc7d9278b42}\label{class_architecture_a20147b2a4be785c30ea29cc7d9278b42}} 
+\index{Architecture@{Architecture}!parseCompilerConfig@{parseCompilerConfig}}
+\index{parseCompilerConfig@{parseCompilerConfig}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseCompilerConfig()}{parseCompilerConfig()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Compiler\+Config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply compiler specific configuration. 
+
+This looks for the $<$compiler\+\_\+spec$>$ tag and sets configuration parameters based on it. 
+\begin{DoxyParams}{Parameters}
+{\em store} & is the document store holding the tag \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 976 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a20147b2a4be785c30ea29cc7d9278b42_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a20147b2a4be785c30ea29cc7d9278b42_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a29ad4de633bc630b03425ab46b31f42b}\label{class_architecture_a29ad4de633bc630b03425ab46b31f42b}} 
+\index{Architecture@{Architecture}!parseDeadcodeDelay@{parseDeadcodeDelay}}
+\index{parseDeadcodeDelay@{parseDeadcodeDelay}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseDeadcodeDelay()}{parseDeadcodeDelay()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Deadcode\+Delay (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply dead-\/code delay configuration. 
+
+Manually alter the dead-\/code delay for a specific address space, based on a $<$deadcodedelay$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 827 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a29ad4de633bc630b03425ab46b31f42b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a29ad4de633bc630b03425ab46b31f42b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a1ea36f2638d65351dd00ba06fe0dc00b}\label{class_architecture_a1ea36f2638d65351dd00ba06fe0dc00b}} 
+\index{Architecture@{Architecture}!parseDefaultProto@{parseDefaultProto}}
+\index{parseDefaultProto@{parseDefaultProto}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseDefaultProto()}{parseDefaultProto()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Default\+Proto (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply default prototype model configuration. 
+
+There should be exactly one $<$default\+\_\+proto$>$ tag that specifies what the default prototype model is. This builds the \mbox{\hyperlink{class_proto_model}{Proto\+Model}} object and sets it as the default. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 688 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a1ea36f2638d65351dd00ba06fe0dc00b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a1ea36f2638d65351dd00ba06fe0dc00b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aef6b370b90db6fbf3a8b8b62740c77ba}\label{class_architecture_aef6b370b90db6fbf3a8b8b62740c77ba}} 
+\index{Architecture@{Architecture}!parseDynamicRule@{parseDynamicRule}}
+\index{parseDynamicRule@{parseDynamicRule}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseDynamicRule()}{parseDynamicRule()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Dynamic\+Rule (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply details of a dynamic \mbox{\hyperlink{class_rule}{Rule}} object. 
+
+Recover information out of a $<$rule$>$ tag and build the new \mbox{\hyperlink{class_rule}{Rule}} object. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 609 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aef6b370b90db6fbf3a8b8b62740c77ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aef6b370b90db6fbf3a8b8b62740c77ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a568ff11996bb679327d3d83dbb50d454}\label{class_architecture_a568ff11996bb679327d3d83dbb50d454}} 
+\index{Architecture@{Architecture}!parseExtraRules@{parseExtraRules}}
+\index{parseExtraRules@{parseExtraRules}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseExtraRules()}{parseExtraRules()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Extra\+Rules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply any \mbox{\hyperlink{class_rule}{Rule}} tags. 
+
+Look for the $<$experimental\+\_\+rules$>$ tag and create any dynamic \mbox{\hyperlink{class_rule}{Rule}} objects it specifies. 
+\begin{DoxyParams}{Parameters}
+{\em store} & is the document store containing the tag \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1060 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a568ff11996bb679327d3d83dbb50d454_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a568ff11996bb679327d3d83dbb50d454_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a5e10589073ea41018047b8affb10025e}\label{class_architecture_a5e10589073ea41018047b8affb10025e}} 
+\index{Architecture@{Architecture}!parseFuncPtrAlign@{parseFuncPtrAlign}}
+\index{parseFuncPtrAlign@{parseFuncPtrAlign}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseFuncPtrAlign()}{parseFuncPtrAlign()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Func\+Ptr\+Align (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply function pointer alignment configuration. 
+
+Pull information from a $<$funcptr$>$ tag. Turn on alignment analysis of function pointers, some architectures have aligned function pointers and encode extra information in the unused bits. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 847 of file architecture.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a5e10589073ea41018047b8affb10025e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a6348f797097deb07776eca437458ecc8}\label{class_architecture_a6348f797097deb07776eca437458ecc8}} 
+\index{Architecture@{Architecture}!parseGlobal@{parseGlobal}}
+\index{parseGlobal@{parseGlobal}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseGlobal()}{parseGlobal()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Global (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply global space configuration. 
+
+This handles the $<$global$>$ tag adding an address space (or part of the space) to the global scope. Varnodes in this region will be assumed to be global variables. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 704 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a6348f797097deb07776eca437458ecc8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a6348f797097deb07776eca437458ecc8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a8b2290f8d9cf479d4b49fb26c83ff8c5}\label{class_architecture_a8b2290f8d9cf479d4b49fb26c83ff8c5}} 
+\index{Architecture@{Architecture}!parseIncidentalCopy@{parseIncidentalCopy}}
+\index{parseIncidentalCopy@{parseIncidentalCopy}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseIncidentalCopy()}{parseIncidentalCopy()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Incidental\+Copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply incidental copy configuration. 
+
+Apply information from an $<$incidentalcopy$>$ tag, which marks a set of addresses as being copied to incidentally. This allows the decompiler to ignore certain side-\/effects. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 780 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a8b2290f8d9cf479d4b49fb26c83ff8c5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a8b2290f8d9cf479d4b49fb26c83ff8c5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a6f51fadb288b36927fa9dfda725ffd88}\label{class_architecture_a6f51fadb288b36927fa9dfda725ffd88}} 
+\index{Architecture@{Architecture}!parseNoHighPtr@{parseNoHighPtr}}
+\index{parseNoHighPtr@{parseNoHighPtr}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseNoHighPtr()}{parseNoHighPtr()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+No\+High\+Ptr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply memory alias configuration. 
+
+Configure memory based on a $<$nohighptr$>$ tag. Mark specific address ranges to indicate the decompiler will not encounter pointers (aliases) into the range. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 884 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a6f51fadb288b36927fa9dfda725ffd88_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a6f51fadb288b36927fa9dfda725ffd88_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a7cbe749d5bcc143838f2590fc08acf26}\label{class_architecture_a7cbe749d5bcc143838f2590fc08acf26}} 
+\index{Architecture@{Architecture}!parsePreferSplit@{parsePreferSplit}}
+\index{parsePreferSplit@{parsePreferSplit}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parsePreferSplit()}{parsePreferSplit()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Prefer\+Split (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Designate registers to be split. 
+
+Configure registers based on a $<$prefersplit$>$ tag. Mark specific varnodes that the decompiler should automatically split when it first sees them. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 900 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a7cbe749d5bcc143838f2590fc08acf26_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a7cbe749d5bcc143838f2590fc08acf26_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a4cd4815cc79c6582840043de2e3e65eb}\label{class_architecture_a4cd4815cc79c6582840043de2e3e65eb}} 
+\index{Architecture@{Architecture}!parseProcessorConfig@{parseProcessorConfig}}
+\index{parseProcessorConfig@{parseProcessorConfig}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseProcessorConfig()}{parseProcessorConfig()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Processor\+Config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply processor specific configuration. 
+
+This looks for the $<$processor\+\_\+spec$>$ tag and and sets configuration parameters based on it. 
+\begin{DoxyParams}{Parameters}
+{\em store} & is the document store holding the tag \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 935 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a4cd4815cc79c6582840043de2e3e65eb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a4cd4815cc79c6582840043de2e3e65eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_afb2938da725012462a68a85627a2dc2c}\label{class_architecture_afb2938da725012462a68a85627a2dc2c}} 
+\index{Architecture@{Architecture}!parseProto@{parseProto}}
+\index{parseProto@{parseProto}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseProto()}{parseProto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$ Architecture\+::parse\+Proto (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Build a proto-\/type model from an X\+ML tag. 
+
+This handles the $<$prototype$>$ and $<$resolveprototype$>$ tags. It builds the \mbox{\hyperlink{class_proto_model}{Proto\+Model}} object based on the tag and makes it available generally to the decompiler. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML tag element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 639 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_afb2938da725012462a68a85627a2dc2c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_afb2938da725012462a68a85627a2dc2c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a3e32daad5f4744f55c43f8acdd7ee8eb}\label{class_architecture_a3e32daad5f4744f55c43f8acdd7ee8eb}} 
+\index{Architecture@{Architecture}!parseProtoEval@{parseProtoEval}}
+\index{parseProtoEval@{parseProtoEval}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseProtoEval()}{parseProtoEval()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Proto\+Eval (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply prototype evaluation configuration. 
+
+This supports the $<$eval\+\_\+called\+\_\+prototype$>$ and $<$eval\+\_\+current\+\_\+prototype$>$ tag. This determines which prototype model to assume when recovering the prototype for a {\itshape called} function and the {\itshape current} function respectively. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 665 of file architecture.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a3e32daad5f4744f55c43f8acdd7ee8eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a85374e24548406ae6497021150aa5d2c}\label{class_architecture_a85374e24548406ae6497021150aa5d2c}} 
+\index{Architecture@{Architecture}!parseReadOnly@{parseReadOnly}}
+\index{parseReadOnly@{parseReadOnly}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseReadOnly()}{parseReadOnly()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Read\+Only (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply read-\/only region configuration. 
+
+This applies info from a $<$readonly$>$ tag marking a specific region of the executable as {\itshape read-\/only}. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 731 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a85374e24548406ae6497021150aa5d2c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a85374e24548406ae6497021150aa5d2c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a24090e497ce6273f83bcb842be816ccb}\label{class_architecture_a24090e497ce6273f83bcb842be816ccb}} 
+\index{Architecture@{Architecture}!parseReturnAddress@{parseReturnAddress}}
+\index{parseReturnAddress@{parseReturnAddress}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseReturnAddress()}{parseReturnAddress()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Return\+Address (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply return address configuration. 
+
+This applies info from $<$returnaddress$>$ tag and sets the default storage location for the {\itshape return} {\itshape address} of a function. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 764 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a24090e497ce6273f83bcb842be816ccb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a24090e497ce6273f83bcb842be816ccb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_adf3b1aecaff0ca84c647ddbe6e25de5c}\label{class_architecture_adf3b1aecaff0ca84c647ddbe6e25de5c}} 
+\index{Architecture@{Architecture}!parseSpacebase@{parseSpacebase}}
+\index{parseSpacebase@{parseSpacebase}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseSpacebase()}{parseSpacebase()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Spacebase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Create an additional indexed space. 
+
+Designate a new index register and create a new address space associated with it, based on a $<$spacebase$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 870 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_adf3b1aecaff0ca84c647ddbe6e25de5c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_adf3b1aecaff0ca84c647ddbe6e25de5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aac48da0d464ff216982db607b43d4757}\label{class_architecture_aac48da0d464ff216982db607b43d4757}} 
+\index{Architecture@{Architecture}!parseStackPointer@{parseStackPointer}}
+\index{parseStackPointer@{parseStackPointer}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseStackPointer()}{parseStackPointer()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Stack\+Pointer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply stack pointer configuration. 
+
+Create a stack space and a stack-\/pointer register from this $<$stackpointer$>$ element 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 796 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aac48da0d464ff216982db607b43d4757_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aac48da0d464ff216982db607b43d4757_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a90175b3753d44c818064e08425c57d97}\label{class_architecture_a90175b3753d44c818064e08425c57d97}} 
+\index{Architecture@{Architecture}!parseVolatile@{parseVolatile}}
+\index{parseVolatile@{parseVolatile}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{parseVolatile()}{parseVolatile()}}
+{\footnotesize\ttfamily void Architecture\+::parse\+Volatile (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Apply volatile region configuration. 
+
+This applies info from a $<$volatile$>$ tag marking specific regions of the executable as holding {\itshape volatile} memory or registers. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 747 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a90175b3753d44c818064e08425c57d97_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a90175b3753d44c818064e08425c57d97_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a7cee782dabf4362f10a0bbb4c950f85e}\label{class_architecture_a7cee782dabf4362f10a0bbb4c950f85e}} 
+\index{Architecture@{Architecture}!postSpecFile@{postSpecFile}}
+\index{postSpecFile@{postSpecFile}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{postSpecFile()}{postSpecFile()}}
+{\footnotesize\ttfamily virtual void Architecture\+::post\+Spec\+File (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Let components initialize after \mbox{\hyperlink{class_translate}{Translate}} is built. 
+
+
+
+Definition at line 240 of file architecture.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a7cee782dabf4362f10a0bbb4c950f85e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a69348906c7601efa002f1f1365decda9}\label{class_architecture_a69348906c7601efa002f1f1365decda9}} 
+\index{Architecture@{Architecture}!printMessage@{printMessage}}
+\index{printMessage@{printMessage}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{printMessage()}{printMessage()}}
+{\footnotesize\ttfamily virtual void Architecture\+::print\+Message (\begin{DoxyParamCaption}\item[{const string \&}]{message }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Print an error message to console. 
+
+Write the given message to whatever the registered error stream is 
+\begin{DoxyParams}{Parameters}
+{\em message} & is the error message \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_architecture_ghidra_ae7cdac6309428d288bc2317f9997aa4e}{Architecture\+Ghidra}}, and \mbox{\hyperlink{class_sleigh_architecture_a70cc8c22ebab95cf41ab21b7d886c08f}{Sleigh\+Architecture}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a69348906c7601efa002f1f1365decda9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_ac6c95a933f8a42d6d1d46d8663a793a2}\label{class_architecture_ac6c95a933f8a42d6d1d46d8663a793a2}} 
+\index{Architecture@{Architecture}!readLoaderSymbols@{readLoaderSymbols}}
+\index{readLoaderSymbols@{readLoaderSymbols}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{readLoaderSymbols()}{readLoaderSymbols()}}
+{\footnotesize\ttfamily void Architecture\+::read\+Loader\+Symbols (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read any symbols from loader into database. 
+
+Symbols do not necessarily need to be available for the decompiler. This routine loads all the {\itshape load} {\itshape image} knows about into the symbol table 
+
+Definition at line 244 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ac6c95a933f8a42d6d1d46d8663a793a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ac6c95a933f8a42d6d1d46d8663a793a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aea7d061dab582340c8e9bb3323abdf4a}\label{class_architecture_aea7d061dab582340c8e9bb3323abdf4a}} 
+\index{Architecture@{Architecture}!resolveArchitecture@{resolveArchitecture}}
+\index{resolveArchitecture@{resolveArchitecture}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{resolveArchitecture()}{resolveArchitecture()}}
+{\footnotesize\ttfamily virtual void Architecture\+::resolve\+Architecture (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Figure out the processor and compiler of the target executable. 
+
+
+
+Implemented in \mbox{\hyperlink{class_sleigh_architecture_a937a743a8538c2cbfdb40926cd7bc7f8}{Sleigh\+Architecture}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aea7d061dab582340c8e9bb3323abdf4a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a4181297a704049ca50c3fc3d233bc0e4}\label{class_architecture_a4181297a704049ca50c3fc3d233bc0e4}} 
+\index{Architecture@{Architecture}!restoreFlowOverride@{restoreFlowOverride}}
+\index{restoreFlowOverride@{restoreFlowOverride}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{restoreFlowOverride()}{restoreFlowOverride()}}
+{\footnotesize\ttfamily void Architecture\+::restore\+Flow\+Override (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Set flow overrides from X\+ML. 
+
+Insert a series of out-\/of-\/band flow overrides based on a $<$flowoverridelist$>$ tag. 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 347 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a4181297a704049ca50c3fc3d233bc0e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a4181297a704049ca50c3fc3d233bc0e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_aed18df408eb73d0735966c68b44e413b}\label{class_architecture_aed18df408eb73d0735966c68b44e413b}} 
+\index{Architecture@{Architecture}!restoreFromSpec@{restoreFromSpec}}
+\index{restoreFromSpec@{restoreFromSpec}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{restoreFromSpec()}{restoreFromSpec()}}
+{\footnotesize\ttfamily void Architecture\+::restore\+From\+Spec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Fully initialize the \mbox{\hyperlink{class_translate}{Translate}} object. 
+
+Once the processor is known, the \mbox{\hyperlink{class_translate}{Translate}} object can be built and fully initialized. Processor and compiler specific configuration is performed 
+\begin{DoxyParams}{Parameters}
+{\em store} & will hold parsed configuration information \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 569 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_architecture_aed18df408eb73d0735966c68b44e413b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_aed18df408eb73d0735966c68b44e413b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_ab15a398b9f84dd62ad36d1e83895783a}\label{class_architecture_ab15a398b9f84dd62ad36d1e83895783a}} 
+\index{Architecture@{Architecture}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Architecture\+::restore\+Xml (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document_storage}{Document\+Storage}} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore the \mbox{\hyperlink{class_architecture}{Architecture}} state from an X\+ML stream. 
+
+Read in all the sub-\/component state from a $<$save\+\_\+state$>$ X\+ML tag When adding stuff to this B\+E\+W\+A\+RE\+: The spec file has already initialized stuff 
+\begin{DoxyParams}{Parameters}
+{\em store} & is document store containing the parsed root tag \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_bfd_architecture_a577d1f082486f2cd6f134d1ce5eb3989}{Bfd\+Architecture}}, \mbox{\hyperlink{class_raw_binary_architecture_a381c8c1c048d0c8a17322ef8a17ae6ea}{Raw\+Binary\+Architecture}}, and \mbox{\hyperlink{class_xml_architecture_aead4d5224e18ab98cd30ca89774b9faa}{Xml\+Architecture}}.
+
+
+
+Definition at line 386 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ab15a398b9f84dd62ad36d1e83895783a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ab15a398b9f84dd62ad36d1e83895783a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_af760a127622d4cdd4b6b436122478cb5}\label{class_architecture_af760a127622d4cdd4b6b436122478cb5}} 
+\index{Architecture@{Architecture}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Architecture\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Serialize this architecture to X\+ML. 
+
+Write the current state of all types, symbols, functions, etc. an X\+ML stream 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_bfd_architecture_ac775d8894dd3abba1effafe22881a131}{Bfd\+Architecture}}, \mbox{\hyperlink{class_raw_binary_architecture_a3aafb658662f5d6af564e22f5b35aafc}{Raw\+Binary\+Architecture}}, and \mbox{\hyperlink{class_xml_architecture_abf5dd16b5343f89d2b165cf2206c7bf6}{Xml\+Architecture}}.
+
+
+
+Definition at line 368 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_af760a127622d4cdd4b6b436122478cb5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_af760a127622d4cdd4b6b436122478cb5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_afc351278b2e416181b2a7c5b65cc614b}\label{class_architecture_afc351278b2e416181b2a7c5b65cc614b}} 
+\index{Architecture@{Architecture}!setDefaultModel@{setDefaultModel}}
+\index{setDefaultModel@{setDefaultModel}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{setDefaultModel()}{setDefaultModel()}}
+{\footnotesize\ttfamily void Architecture\+::set\+Default\+Model (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption})}
+
+
+
+Set the default Prototype\+Model. 
+
+The default model is used whenever an explicit model is not known or can\textquotesingle{}t be determined. 
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the model to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 225 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_afc351278b2e416181b2a7c5b65cc614b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_afc351278b2e416181b2a7c5b65cc614b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_ae002322a1fd364665099cbe3f98b63a6}\label{class_architecture_ae002322a1fd364665099cbe3f98b63a6}} 
+\index{Architecture@{Architecture}!setPrintLanguage@{setPrintLanguage}}
+\index{setPrintLanguage@{setPrintLanguage}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{setPrintLanguage()}{setPrintLanguage()}}
+{\footnotesize\ttfamily void Architecture\+::set\+Print\+Language (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption})}
+
+
+
+Establish a particular output language. 
+
+The decompiler supports one or more output languages (C, Java). This method does the main work of selecting one of the supported languages. In addition to selecting the main \mbox{\hyperlink{class_print_language}{Print\+Language}} object, this triggers configuration of the cast strategy and p-\/code op behaviors. 
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the language \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 306 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ae002322a1fd364665099cbe3f98b63a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_ae002322a1fd364665099cbe3f98b63a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_a10d78ec7be0df339288b7b3adc4c38e7}\label{class_architecture_a10d78ec7be0df339288b7b3adc4c38e7}} 
+\index{Architecture@{Architecture}!setPrototype@{setPrototype}}
+\index{setPrototype@{setPrototype}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{setPrototype()}{setPrototype()}}
+{\footnotesize\ttfamily void Architecture\+::set\+Prototype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_prototype_pieces}{Prototype\+Pieces}} \&}]{pieces }\end{DoxyParamCaption})}
+
+
+
+Set the prototype for a particular function. 
+
+Establish details of the prototype for a given function symbol 
+\begin{DoxyParams}{Parameters}
+{\em pieces} & holds the raw prototype information and the symbol name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 291 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_a10d78ec7be0df339288b7b3adc4c38e7_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_architecture_a51c3648c6133efc1d5115b86dd10115a}\label{class_architecture_a51c3648c6133efc1d5115b86dd10115a}} 
+\index{Architecture@{Architecture}!aggressive\_ext\_trim@{aggressive\_ext\_trim}}
+\index{aggressive\_ext\_trim@{aggressive\_ext\_trim}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{aggressive\_ext\_trim}{aggressive\_ext\_trim}}
+{\footnotesize\ttfamily bool Architecture\+::aggressive\+\_\+ext\+\_\+trim}
+
+
+
+Aggressively trim inputs that look like they are sign extended. 
+
+
+
+Definition at line 128 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a4cbe1c5d170cb2a4d359765b97fef26f}\label{class_architecture_a4cbe1c5d170cb2a4d359765b97fef26f}} 
+\index{Architecture@{Architecture}!allacts@{allacts}}
+\index{allacts@{allacts}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{allacts}{allacts}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_action_database}{Action\+Database}} Architecture\+::allacts}
+
+
+
+Actions that can be applied in this architecture. 
+
+
+
+Definition at line 156 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a78260a0e141deda850d56d17e6e728cf}\label{class_architecture_a78260a0e141deda850d56d17e6e728cf}} 
+\index{Architecture@{Architecture}!archid@{archid}}
+\index{archid@{archid}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{archid}{archid}}
+{\footnotesize\ttfamily string Architecture\+::archid}
+
+
+
+ID string uniquely describing this architecture. 
+
+
+
+Definition at line 118 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a5425576df9b7ce15b6ddddbf17b03df6}\label{class_architecture_a5425576df9b7ce15b6ddddbf17b03df6}} 
+\index{Architecture@{Architecture}!commentdb@{commentdb}}
+\index{commentdb@{commentdb}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{commentdb}{commentdb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_comment_database}{Comment\+Database}}$\ast$ Architecture\+::commentdb}
+
+
+
+Comments for this architecture. 
+
+
+
+Definition at line 148 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_abbbd3d4cf806f7ca3a2a2943aab28165}\label{class_architecture_abbbd3d4cf806f7ca3a2a2943aab28165}} 
+\index{Architecture@{Architecture}!context@{context}}
+\index{context@{context}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{context}{context}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_context_database}{Context\+Database}}$\ast$ Architecture\+::context}
+
+
+
+Map from addresses to context settings. 
+
+
+
+Definition at line 137 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_adeb5761c98d8af556fb59753d68dfd97}\label{class_architecture_adeb5761c98d8af556fb59753d68dfd97}} 
+\index{Architecture@{Architecture}!cpool@{cpool}}
+\index{cpool@{cpool}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{cpool}{cpool}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_constant_pool}{Constant\+Pool}}$\ast$ Architecture\+::cpool}
+
+
+
+Deferred constant values. 
+
+
+
+Definition at line 149 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a1e0f5d45f6dcd494b15bb55f81f656b2}\label{class_architecture_a1e0f5d45f6dcd494b15bb55f81f656b2}} 
+\index{Architecture@{Architecture}!defaultfp@{defaultfp}}
+\index{defaultfp@{defaultfp}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{defaultfp}{defaultfp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_model}{Proto\+Model}}$\ast$ Architecture\+::defaultfp}
+
+
+
+Parsed form of default prototype. 
+
+
+
+Definition at line 139 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_ad0b5e0d6c22247d4ec2422c81ddec8f8}\label{class_architecture_ad0b5e0d6c22247d4ec2422c81ddec8f8}} 
+\index{Architecture@{Architecture}!defaultReturnAddr@{defaultReturnAddr}}
+\index{defaultReturnAddr@{defaultReturnAddr}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{defaultReturnAddr}{defaultReturnAddr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} Architecture\+::default\+Return\+Addr}
+
+
+
+Default storage location of return address (for current function) 
+
+
+
+Definition at line 140 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_ad7765062ff51f487874d768e763b82d0}\label{class_architecture_ad7765062ff51f487874d768e763b82d0}} 
+\index{Architecture@{Architecture}!description@{description}}
+\index{description@{description}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily string Architecture\+::description}
+
+
+
+Description of architecture. 
+
+
+
+Definition at line 119 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a44c624320bcc9d52dcecdf553f3b4796}\label{class_architecture_a44c624320bcc9d52dcecdf553f3b4796}} 
+\index{Architecture@{Architecture}!evalfp\_called@{evalfp\_called}}
+\index{evalfp\_called@{evalfp\_called}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{evalfp\_called}{evalfp\_called}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_model}{Proto\+Model}}$\ast$ Architecture\+::evalfp\+\_\+called}
+
+
+
+Function proto to use when evaluating called functions. 
+
+
+
+Definition at line 142 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a9fb08ee0ed38a4c586a99d0f45a3af6e}\label{class_architecture_a9fb08ee0ed38a4c586a99d0f45a3af6e}} 
+\index{Architecture@{Architecture}!evalfp\_current@{evalfp\_current}}
+\index{evalfp\_current@{evalfp\_current}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{evalfp\_current}{evalfp\_current}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_model}{Proto\+Model}}$\ast$ Architecture\+::evalfp\+\_\+current}
+
+
+
+Function proto to use when evaluating current function. 
+
+
+
+Definition at line 141 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a6218d36328733cd9798ad6c3dbe921d8}\label{class_architecture_a6218d36328733cd9798ad6c3dbe921d8}} 
+\index{Architecture@{Architecture}!extra\_pool\_rules@{extra\_pool\_rules}}
+\index{extra\_pool\_rules@{extra\_pool\_rules}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{extra\_pool\_rules}{extra\_pool\_rules}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_rule}{Rule}} $\ast$$>$ Architecture\+::extra\+\_\+pool\+\_\+rules}
+
+
+
+Extra rules that go in the main pool (cpu specific, experimental) 
+
+
+
+Definition at line 134 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a4ed18744b8dc08d3ca81d6b1b6df682e}\label{class_architecture_a4ed18744b8dc08d3ca81d6b1b6df682e}} 
+\index{Architecture@{Architecture}!flowoptions@{flowoptions}}
+\index{flowoptions@{flowoptions}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{flowoptions}{flowoptions}}
+{\footnotesize\ttfamily uint4 Architecture\+::flowoptions}
+
+
+
+options passed to flow following engine 
+
+
+
+Definition at line 133 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_af1b94f4312717f6cd89eb784e3e73611}\label{class_architecture_af1b94f4312717f6cd89eb784e3e73611}} 
+\index{Architecture@{Architecture}!funcptr\_align@{funcptr\_align}}
+\index{funcptr\_align@{funcptr\_align}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{funcptr\_align}{funcptr\_align}}
+{\footnotesize\ttfamily int4 Architecture\+::funcptr\+\_\+align}
+
+
+
+How many bits of alignment a function ptr has. 
+
+
+
+Definition at line 132 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_adbeb3c604a337ce88bd4e9d8beb78806}\label{class_architecture_adbeb3c604a337ce88bd4e9d8beb78806}} 
+\index{Architecture@{Architecture}!infer\_pointers@{infer\_pointers}}
+\index{infer\_pointers@{infer\_pointers}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{infer\_pointers}{infer\_pointers}}
+{\footnotesize\ttfamily bool Architecture\+::infer\+\_\+pointers}
+
+
+
+True if we should infer pointers from constants that are likely addresses. 
+
+
+
+Definition at line 130 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a3a9badb712693d9abec7e21abc20fde1}\label{class_architecture_a3a9badb712693d9abec7e21abc20fde1}} 
+\index{Architecture@{Architecture}!inst@{inst}}
+\index{inst@{inst}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{inst}{inst}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_type_op}{Type\+Op}} $\ast$$>$ Architecture\+::inst}
+
+
+
+Registered p-\/code instructions. 
+
+
+
+Definition at line 153 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a344b1348ed8f0bbe0d050e7038bb290d}\label{class_architecture_a344b1348ed8f0bbe0d050e7038bb290d}} 
+\index{Architecture@{Architecture}!loader@{loader}}
+\index{loader@{loader}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{loader}{loader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_load_image}{Load\+Image}}$\ast$ Architecture\+::loader}
+
+
+
+Method for loading portions of binary. 
+
+
+
+Definition at line 145 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_aff44e0cd6303a22689d6601fc5418918}\label{class_architecture_aff44e0cd6303a22689d6601fc5418918}} 
+\index{Architecture@{Architecture}!loadersymbols\_parsed@{loadersymbols\_parsed}}
+\index{loadersymbols\_parsed@{loadersymbols\_parsed}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{loadersymbols\_parsed}{loadersymbols\_parsed}}
+{\footnotesize\ttfamily bool Architecture\+::loadersymbols\+\_\+parsed}
+
+
+
+True if loader symbols have been read. 
+
+
+
+Definition at line 157 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a37de4bf5cb39955f32a24074e768a591}\label{class_architecture_a37de4bf5cb39955f32a24074e768a591}} 
+\index{Architecture@{Architecture}!max\_basetype\_size@{max\_basetype\_size}}
+\index{max\_basetype\_size@{max\_basetype\_size}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{max\_basetype\_size}{max\_basetype\_size}}
+{\footnotesize\ttfamily int4 Architecture\+::max\+\_\+basetype\+\_\+size}
+
+
+
+Maximum size of an \char`\"{}integer\char`\"{} type before creating an array type. 
+
+
+
+Definition at line 126 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a6c32c1c7e592435d70f41145d5c548f1}\label{class_architecture_a6c32c1c7e592435d70f41145d5c548f1}} 
+\index{Architecture@{Architecture}!max\_implied\_ref@{max\_implied\_ref}}
+\index{max\_implied\_ref@{max\_implied\_ref}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{max\_implied\_ref}{max\_implied\_ref}}
+{\footnotesize\ttfamily int4 Architecture\+::max\+\_\+implied\+\_\+ref}
+
+
+
+Maximum number of references to an implied var. 
+
+
+
+Definition at line 124 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a99db0ca5ac8e5c9edfa7515f97b2ab5a}\label{class_architecture_a99db0ca5ac8e5c9edfa7515f97b2ab5a}} 
+\index{Architecture@{Architecture}!max\_term\_duplication@{max\_term\_duplication}}
+\index{max\_term\_duplication@{max\_term\_duplication}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{max\_term\_duplication}{max\_term\_duplication}}
+{\footnotesize\ttfamily int4 Architecture\+::max\+\_\+term\+\_\+duplication}
+
+
+
+Max terms duplicated without a new variable. 
+
+
+
+Definition at line 125 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_aa5c79b6eca1b3c98884bb53c90bf417d}\label{class_architecture_aa5c79b6eca1b3c98884bb53c90bf417d}} 
+\index{Architecture@{Architecture}!min\_funcsymbol\_size@{min\_funcsymbol\_size}}
+\index{min\_funcsymbol\_size@{min\_funcsymbol\_size}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{min\_funcsymbol\_size}{min\_funcsymbol\_size}}
+{\footnotesize\ttfamily int4 Architecture\+::min\+\_\+funcsymbol\+\_\+size}
+
+
+
+Minimum size of a function symbol. 
+
+
+
+Definition at line 127 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a693da460aeb788e4fbaf3361bd07756a}\label{class_architecture_a693da460aeb788e4fbaf3361bd07756a}} 
+\index{Architecture@{Architecture}!nohighptr@{nohighptr}}
+\index{nohighptr@{nohighptr}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{nohighptr}{nohighptr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_range_list}{Range\+List}} Architecture\+::nohighptr}
+
+
+
+Ranges for which high-\/level pointers are not possible. 
+
+
+
+Definition at line 147 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_ab581a0109bda8e9206bb155a80a3a694}\label{class_architecture_ab581a0109bda8e9206bb155a80a3a694}} 
+\index{Architecture@{Architecture}!options@{options}}
+\index{options@{options}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{options}{options}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_option_database}{Option\+Database}}$\ast$ Architecture\+::options}
+
+
+
+Options that can be configured. 
+
+
+
+Definition at line 152 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a7d04d77ca75b9e75caa3750c156d9bbf}\label{class_architecture_a7d04d77ca75b9e75caa3750c156d9bbf}} 
+\index{Architecture@{Architecture}!pcodeinjectlib@{pcodeinjectlib}}
+\index{pcodeinjectlib@{pcodeinjectlib}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{pcodeinjectlib}{pcodeinjectlib}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_inject_library}{Pcode\+Inject\+Library}}$\ast$ Architecture\+::pcodeinjectlib}
+
+
+
+Pcode injection manager. 
+
+
+
+Definition at line 146 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_aa6544ee69038548a7f09157beb38e8d4}\label{class_architecture_aa6544ee69038548a7f09157beb38e8d4}} 
+\index{Architecture@{Architecture}!pointer\_lowerbound@{pointer\_lowerbound}}
+\index{pointer\_lowerbound@{pointer\_lowerbound}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{pointer\_lowerbound}{pointer\_lowerbound}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Architecture\+::pointer\+\_\+lowerbound}
+
+
+
+Zero or lowest value that can be inferred as an address. 
+
+
+
+Definition at line 131 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_af72890bc88edf8d6074e24d92fd31c57}\label{class_architecture_af72890bc88edf8d6074e24d92fd31c57}} 
+\index{Architecture@{Architecture}!print@{print}}
+\index{print@{print}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{print}{print}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_print_language}{Print\+Language}}$\ast$ Architecture\+::print}
+
+
+
+Current high-\/level language printer. 
+
+
+
+Definition at line 150 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a118dbf145a9f2b6cae5d48b40f00e4d8}\label{class_architecture_a118dbf145a9f2b6cae5d48b40f00e4d8}} 
+\index{Architecture@{Architecture}!printlist@{printlist}}
+\index{printlist@{printlist}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{printlist}{printlist}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$$>$ Architecture\+::printlist}
+
+
+
+List of high-\/level language printers supported. 
+
+
+
+Definition at line 151 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_ab15c8b7bbcb9408075014902da4f8687}\label{class_architecture_ab15c8b7bbcb9408075014902da4f8687}} 
+\index{Architecture@{Architecture}!protoModels@{protoModels}}
+\index{protoModels@{protoModels}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{protoModels}{protoModels}}
+{\footnotesize\ttfamily map$<$string,\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$$>$ Architecture\+::proto\+Models}
+
+
+
+Parsed forms of possible prototypes. 
+
+
+
+Definition at line 138 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a64c49555bfdee44b82f3a9a98005ed0d}\label{class_architecture_a64c49555bfdee44b82f3a9a98005ed0d}} 
+\index{Architecture@{Architecture}!readonlypropagate@{readonlypropagate}}
+\index{readonlypropagate@{readonlypropagate}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{readonlypropagate}{readonlypropagate}}
+{\footnotesize\ttfamily bool Architecture\+::readonlypropagate}
+
+
+
+true if readonly values should be treated as constants 
+
+
+
+Definition at line 129 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a2ed25d7790e67e8bfaef34c092e5f39b}\label{class_architecture_a2ed25d7790e67e8bfaef34c092e5f39b}} 
+\index{Architecture@{Architecture}!splitrecords@{splitrecords}}
+\index{splitrecords@{splitrecords}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{splitrecords}{splitrecords}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{struct_prefer_split_record}{Prefer\+Split\+Record}}$>$ Architecture\+::splitrecords}
+
+
+
+registers that we would prefer to see split for this processor 
+
+
+
+Definition at line 155 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_ab426c9baa9013d9826041a4083e844ef}\label{class_architecture_ab426c9baa9013d9826041a4083e844ef}} 
+\index{Architecture@{Architecture}!symboltab@{symboltab}}
+\index{symboltab@{symboltab}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{symboltab}{symboltab}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_database}{Database}}$\ast$ Architecture\+::symboltab}
+
+
+
+Memory map of global variables and functions. 
+
+
+
+Definition at line 136 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a81f2db17fdc609a7d1cedbc0a2eb7753}\label{class_architecture_a81f2db17fdc609a7d1cedbc0a2eb7753}} 
+\index{Architecture@{Architecture}!translate@{translate}}
+\index{translate@{translate}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{translate}{translate}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_translate}{Translate}}$\ast$ Architecture\+::translate}
+
+
+
+Translation method for this binary. 
+
+
+
+Definition at line 144 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_adbb294ba6c3bb21f691e0208c1ac53a1}\label{class_architecture_adbb294ba6c3bb21f691e0208c1ac53a1}} 
+\index{Architecture@{Architecture}!trim\_recurse\_max@{trim\_recurse\_max}}
+\index{trim\_recurse\_max@{trim\_recurse\_max}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{trim\_recurse\_max}{trim\_recurse\_max}}
+{\footnotesize\ttfamily int4 Architecture\+::trim\+\_\+recurse\+\_\+max}
+
+
+
+How many levels to let parameter trims recurse. 
+
+
+
+Definition at line 123 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a8225ba7bd6ac802660e03ee793289dd1}\label{class_architecture_a8225ba7bd6ac802660e03ee793289dd1}} 
+\index{Architecture@{Architecture}!types@{types}}
+\index{types@{types}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{types}{types}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_type_factory}{Type\+Factory}}$\ast$ Architecture\+::types}
+
+
+
+List of types for this binary. 
+
+
+
+Definition at line 143 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_abd9c927fbda44de1ab46122f49248003}\label{class_architecture_abd9c927fbda44de1ab46122f49248003}} 
+\index{Architecture@{Architecture}!userops@{userops}}
+\index{userops@{userops}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{userops}{userops}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_user_op_manage}{User\+Op\+Manage}} Architecture\+::userops}
+
+
+
+Specifically registered user-\/defined p-\/code ops. 
+
+
+
+Definition at line 154 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_a9fa6f1ec97e17635fb65b30c3b734efb}\label{class_architecture_a9fa6f1ec97e17635fb65b30c3b734efb}} 
+\index{Architecture@{Architecture}!version@{version}}
+\index{version@{version}!Architecture@{Architecture}}
+\subsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily string Architecture\+::version}
+
+
+
+Configuration version. 
+
+
+
+Definition at line 120 of file architecture.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{architecture_8hh}{architecture.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{architecture_8cc}{architecture.\+cc}}\end{DoxyCompactItemize}

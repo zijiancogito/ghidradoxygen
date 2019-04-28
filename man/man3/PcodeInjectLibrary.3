@@ -1,0 +1,536 @@
+.TH "PcodeInjectLibrary" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeInjectLibrary \- A collection of p-code injection payloads\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pcodeinject\&.hh>\fP
+.PP
+Inherited by \fBPcodeInjectLibraryGhidra\fP, and \fBPcodeInjectLibrarySleigh\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPcodeInjectLibrary\fP (\fBArchitecture\fP *g, \fBuintb\fP tmpbase)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~PcodeInjectLibrary\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetUniqueBase\fP (void) const"
+.br
+.RI "Get the (current) offset for building temporary registers\&. "
+.ti -1c
+.RI "int4 \fBgetPayloadId\fP (int4 type, const string &nm) const"
+.br
+.RI "Map name and type to the payload id\&. "
+.ti -1c
+.RI "\fBInjectPayload\fP * \fBgetPayload\fP (int4 id) const"
+.br
+.RI "Get the \fBInjectPayload\fP by id\&. "
+.ti -1c
+.RI "string \fBgetCallFixupName\fP (int4 injectid) const"
+.br
+.RI "Get the call-fixup name associated with an id\&. "
+.ti -1c
+.RI "string \fBgetCallOtherTarget\fP (int4 injectid) const"
+.br
+.RI "Get the callother-fixup name associated with an id\&. "
+.ti -1c
+.RI "string \fBgetCallMechanismName\fP (int4 injectid) const"
+.br
+.RI "Get the call mechanism name associated with an id\&. "
+.ti -1c
+.RI "int4 \fBrestoreXmlInject\fP (const string &src, const string &nm, int4 tp, const \fBElement\fP *el)"
+.br
+.RI "Read in and register an injection payload from an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreDebug\fP (const \fBElement\fP *el)"
+.br
+.RI "A method for reading in p-code generated externally for use in debugging\&. "
+.ti -1c
+.RI "virtual int4 \fBmanualCallFixup\fP (const string &name, const string &snippetstring)=0"
+.br
+.RI "Manually add a call-fixup payload given a compilable snippet of p-code \fIsource\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBmanualCallOtherFixup\fP (const string &name, const string &outname, const vector< string > &inname, const string &snippet)=0"
+.br
+.RI "Manually add a callother-fixup payload given a compilable snippet of p-code \fIsource\fP\&. "
+.ti -1c
+.RI "virtual \fBInjectContext\fP & \fBgetCachedContext\fP (void)=0"
+.br
+.RI "Retrieve a reusable context object for \fBthis\fP library\&. "
+.ti -1c
+.RI "virtual const vector< \fBOpBehavior\fP * > & \fBgetBehaviors\fP (void)=0"
+.br
+.RI "Get the array of op-code behaviors for initializing and emulator\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBregisterCallFixup\fP (const string &fixupName, int4 injectid)"
+.br
+.RI "Map a \fIcall-fixup\fP name to a payload id\&. "
+.ti -1c
+.RI "void \fBregisterCallOtherFixup\fP (const string &fixupName, int4 injectid)"
+.br
+.RI "Map a \fIcallother-fixup\fP name to a payload id\&. "
+.ti -1c
+.RI "void \fBregisterCallMechanism\fP (const string &fixupName, int4 injectid)"
+.br
+.RI "Map a \fIcall\fP \fImechanism\fP name to a payload id\&. "
+.ti -1c
+.RI "void \fBregisterExeScript\fP (const string &scriptName, int4 injectid)"
+.br
+.RI "Map a \fIp-code\fP \fIscript\fP name to a payload id\&. "
+.ti -1c
+.RI "virtual int4 \fBallocateInject\fP (const string &sourceName, const string &name, int4 type)=0"
+.br
+.RI "Allocate a new \fBInjectPayload\fP object\&. "
+.ti -1c
+.RI "virtual void \fBregisterInject\fP (int4 injectid)=0"
+.br
+.RI "Finalize a payload within the library, once the payload is initialized\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBArchitecture\fP * \fBglb\fP"
+.br
+.RI "The \fBArchitecture\fP to which the injection payloads apply\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBtempbase\fP"
+.br
+.RI "Offset within \fIunique\fP space for allocating temporaries within a payload\&. "
+.ti -1c
+.RI "vector< \fBInjectPayload\fP * > \fBinjection\fP"
+.br
+.RI "Registered injections\&. "
+.ti -1c
+.RI "map< string, int4 > \fBcallFixupMap\fP"
+.br
+.RI "Map of registered call-fixup names to injection id\&. "
+.ti -1c
+.RI "map< string, int4 > \fBcallOtherFixupMap\fP"
+.br
+.RI "Map of registered callother-fixup names to injection id\&. "
+.ti -1c
+.RI "map< string, int4 > \fBcallMechFixupMap\fP"
+.br
+.RI "Map of registered mechanism names to injection id\&. "
+.ti -1c
+.RI "map< string, int4 > \fBscriptMap\fP"
+.br
+.RI "Map of registered script names to \fBExecutablePcode\fP id\&. "
+.ti -1c
+.RI "vector< string > \fBcallFixupNames\fP"
+.br
+.RI "Map from injectid to call-fixup name\&. "
+.ti -1c
+.RI "vector< string > \fBcallOtherTarget\fP"
+.br
+.RI "Map from injectid to callother-fixup target-op name\&. "
+.ti -1c
+.RI "vector< string > \fBcallMechTarget\fP"
+.br
+.RI "Map from injectid to call-mech name\&. "
+.ti -1c
+.RI "vector< string > \fBscriptNames\fP"
+.br
+.RI "Map from injectid to script name\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A collection of p-code injection payloads\&. 
+
+This is a container of \fBInjectPayload\fP objects that can be applied for a specific \fBArchitecture\fP\&. Payloads can be read in via XML (\fBrestoreXmlInject()\fP) and manually via \fBmanualCallFixup()\fP and \fBmanualCallOtherFixup()\fP\&. Each payload is assigned an integer \fIid\fP when it is read in, and \fBgetPayload()\fP fetches the payload during analysis\&. The library also associates the formal names of payloads with the id\&. Payloads of different types, CALLFIXUP_TYPE, CALLOTHERFIXUP_TYPE, etc\&., are stored in separate namespaces\&.
+.PP
+This is an abstract base class\&. The derived classes determine the type of storage used by the payloads\&. The library also provides a reusable \fBInjectContext\fP object to match the payloads, which can be obtained via \fBgetCachedContext()\fP\&. 
+.PP
+Definition at line 160 of file pcodeinject\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PcodeInjectLibrary::PcodeInjectLibrary (\fBArchitecture\fP * g, \fBuintb\fP tmpbase)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 196 of file pcodeinject\&.hh\&.
+.SS "PcodeInjectLibrary::~PcodeInjectLibrary (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 173 of file pcodeinject\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int4 PcodeInjectLibrary::allocateInject (const string & sourceName, const string & name, int4 type)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Allocate a new \fBInjectPayload\fP object\&. This acts as an \fBInjectPayload\fP factory\&. The formal name and type of the payload are given, \fBthis\fP library allocates a new object that fits with its storage scheme and returns the id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceName\fP is a string describing the source of the new payload 
+.br
+\fIname\fP is the formal name of the payload 
+.br
+\fItype\fP is the formal type (CALLFIXUP_TYPE, CALLOTHERFIXUP_TYPE, etc\&.) of the payload 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id associated with the new \fBInjectPayload\fP object 
+.RE
+.PP
+
+.PP
+Implemented in \fBPcodeInjectLibrarySleigh\fP\&.
+.SS "virtual const vector<\fBOpBehavior\fP *>& PcodeInjectLibrary::getBehaviors (void)\fC [pure virtual]\fP"
+
+.PP
+Get the array of op-code behaviors for initializing and emulator\&. Behaviors are pulled from the underlying architecture in order to initialize the \fBEmulate\fP object which services the \fIp-code\fP \fIscript\fP payloads\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the array of \fBOpBehavior\fP objects indexed by op-code 
+.RE
+.PP
+
+.PP
+Implemented in \fBPcodeInjectLibrarySleigh\fP, and \fBPcodeInjectLibraryGhidra\fP\&.
+.SS "virtual \fBInjectContext\fP& PcodeInjectLibrary::getCachedContext (void)\fC [pure virtual]\fP"
+
+.PP
+Retrieve a reusable context object for \fBthis\fP library\&. The object returned by this method gets passed to the payload inject() method\&. The clear() method must be called between uses\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the cached context object 
+.RE
+.PP
+
+.PP
+Implemented in \fBPcodeInjectLibrarySleigh\fP, and \fBPcodeInjectLibraryGhidra\fP\&.
+.SS "string PcodeInjectLibrary::getCallFixupName (int4 injectid) const"
+
+.PP
+Get the call-fixup name associated with an id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinjectid\fP is an integer id of a call-fixup payload 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the payload or the empty string 
+.RE
+.PP
+
+.PP
+Definition at line 279 of file pcodeinject\&.cc\&.
+.SS "string PcodeInjectLibrary::getCallMechanismName (int4 injectid) const"
+
+.PP
+Get the call mechanism name associated with an id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinjectid\fP is an integer id of a call mechanism payload 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the payload or the empty string 
+.RE
+.PP
+
+.PP
+Definition at line 299 of file pcodeinject\&.cc\&.
+.SS "string PcodeInjectLibrary::getCallOtherTarget (int4 injectid) const"
+
+.PP
+Get the callother-fixup name associated with an id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinjectid\fP is an integer id of a callother-fixup payload 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the payload or the empty string 
+.RE
+.PP
+
+.PP
+Definition at line 289 of file pcodeinject\&.cc\&.
+.SS "\fBInjectPayload\fP* PcodeInjectLibrary::getPayload (int4 id) const\fC [inline]\fP"
+
+.PP
+Get the \fBInjectPayload\fP by id\&. 
+.PP
+Definition at line 200 of file pcodeinject\&.hh\&.
+.SS "int4 PcodeInjectLibrary::getPayloadId (int4 type, const string & nm) const"
+
+.PP
+Map name and type to the payload id\&. The given name is looked up in a symbol table depending on the given type\&. The integer id of the matching \fBInjectPayload\fP is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP is the payload type 
+.br
+\fInm\fP is the formal name of the payload 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the payload id or -1 if there is no matching payload 
+.RE
+.PP
+
+.PP
+Definition at line 250 of file pcodeinject\&.cc\&.
+.SS "\fBuintb\fP PcodeInjectLibrary::getUniqueBase (void) const\fC [inline]\fP"
+
+.PP
+Get the (current) offset for building temporary registers\&. 
+.PP
+Definition at line 198 of file pcodeinject\&.hh\&.
+.SS "virtual int4 PcodeInjectLibrary::manualCallFixup (const string & name, const string & snippetstring)\fC [pure virtual]\fP"
+
+.PP
+Manually add a call-fixup payload given a compilable snippet of p-code \fIsource\fP\&. The snippet is compiled immediately to produce the payload\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the formal name of the new payload 
+.br
+\fIsnippetstring\fP is the compilable snippet of p-code \fIsource\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id of the new payload 
+.RE
+.PP
+
+.PP
+Implemented in \fBPcodeInjectLibrarySleigh\fP, and \fBPcodeInjectLibraryGhidra\fP\&.
+.SS "virtual int4 PcodeInjectLibrary::manualCallOtherFixup (const string & name, const string & outname, const vector< string > & inname, const string & snippet)\fC [pure virtual]\fP"
+
+.PP
+Manually add a callother-fixup payload given a compilable snippet of p-code \fIsource\fP\&. The snippet is compiled immediately to produce the payload\&. \fBSymbol\fP names for input and output parameters must be provided to the compiler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the formal name of the new payload 
+.br
+\fIoutname\fP is the name of the output symbol 
+.br
+\fIinname\fP is the ordered list of input symbol names 
+.br
+\fIsnippet\fP is the compilable snippet of p-code \fIsource\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id of the new payload 
+.RE
+.PP
+
+.PP
+Implemented in \fBPcodeInjectLibrarySleigh\fP, and \fBPcodeInjectLibraryGhidra\fP\&.
+.SS "void PcodeInjectLibrary::registerCallFixup (const string & fixupName, int4 injectid)\fC [protected]\fP"
+
+.PP
+Map a \fIcall-fixup\fP name to a payload id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfixupName\fP is the formal name of the call-fixup 
+.br
+\fIinjectid\fP is the integer id 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file pcodeinject\&.cc\&.
+.SS "void PcodeInjectLibrary::registerCallMechanism (const string & fixupName, int4 injectid)\fC [protected]\fP"
+
+.PP
+Map a \fIcall\fP \fImechanism\fP name to a payload id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfixupName\fP is the formal name of the call mechanism 
+.br
+\fIinjectid\fP is the integer id 
+.RE
+.PP
+
+.PP
+Definition at line 217 of file pcodeinject\&.cc\&.
+.SS "void PcodeInjectLibrary::registerCallOtherFixup (const string & fixupName, int4 injectid)\fC [protected]\fP"
+
+.PP
+Map a \fIcallother-fixup\fP name to a payload id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfixupName\fP is the formal name of the callother-fixup 
+.br
+\fIinjectid\fP is the integer id 
+.RE
+.PP
+
+.PP
+Definition at line 201 of file pcodeinject\&.cc\&.
+.SS "void PcodeInjectLibrary::registerExeScript (const string & scriptName, int4 injectid)\fC [protected]\fP"
+
+.PP
+Map a \fIp-code\fP \fIscript\fP name to a payload id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscriptName\fP is the formal name of the p-code script 
+.br
+\fIinjectid\fP is the integer id 
+.RE
+.PP
+
+.PP
+Definition at line 233 of file pcodeinject\&.cc\&.
+.SS "virtual void PcodeInjectLibrary::registerInject (int4 injectid)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Finalize a payload within the library, once the payload is initialized\&. This provides the derived class the opportunity to add the payload name to the symbol tables or do anything else it needs to once the \fBInjectPayload\fP object has been fully initialized\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinjectid\fP is the id of the \fBInjectPayload\fP to finalize 
+.RE
+.PP
+
+.PP
+Implemented in \fBPcodeInjectLibrarySleigh\fP\&.
+.SS "virtual void PcodeInjectLibrary::restoreDebug (const \fBElement\fP * el)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+A method for reading in p-code generated externally for use in debugging\&. Instantiate a special \fBInjectPayloadDynamic\fP object initialized with an <injectdebug> tag\&. Within the library, this replaces the original \fBInjectPayload\fP, allowing its p-code to be \fIreplayed\fP for debugging purposes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <injectdebug> element 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBPcodeInjectLibrarySleigh\fP\&.
+.PP
+Definition at line 212 of file pcodeinject\&.hh\&.
+.SS "int4 PcodeInjectLibrary::restoreXmlInject (const string & src, const string & nm, int4 tp, const \fBElement\fP * el)"
+
+.PP
+Read in and register an injection payload from an XML stream\&. The root XML element describing the payload is given (<pcode>, <callfixup> <callotherfixup>, etc\&.), the \fBInjectPayload\fP is allocated and then initialized using the element\&. Then the \fBInjectPayload\fP is finalized with the library\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrc\fP is a string describing the source of the payload being restored 
+.br
+\fInm\fP is the name of the payload 
+.br
+\fItp\fP is the type of the payload (CALLFIXUP_TYPE, EXECUTABLEPCODE_TYPE, etc\&.) 
+.br
+\fIel\fP is the given XML element 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id of the newly registered payload 
+.RE
+.PP
+
+.PP
+Definition at line 317 of file pcodeinject\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "map<string,int4> PcodeInjectLibrary::callFixupMap\fC [protected]\fP"
+
+.PP
+Map of registered call-fixup names to injection id\&. 
+.PP
+Definition at line 165 of file pcodeinject\&.hh\&.
+.SS "vector<string> PcodeInjectLibrary::callFixupNames\fC [protected]\fP"
+
+.PP
+Map from injectid to call-fixup name\&. 
+.PP
+Definition at line 169 of file pcodeinject\&.hh\&.
+.SS "map<string,int4> PcodeInjectLibrary::callMechFixupMap\fC [protected]\fP"
+
+.PP
+Map of registered mechanism names to injection id\&. 
+.PP
+Definition at line 167 of file pcodeinject\&.hh\&.
+.SS "vector<string> PcodeInjectLibrary::callMechTarget\fC [protected]\fP"
+
+.PP
+Map from injectid to call-mech name\&. 
+.PP
+Definition at line 171 of file pcodeinject\&.hh\&.
+.SS "map<string,int4> PcodeInjectLibrary::callOtherFixupMap\fC [protected]\fP"
+
+.PP
+Map of registered callother-fixup names to injection id\&. 
+.PP
+Definition at line 166 of file pcodeinject\&.hh\&.
+.SS "vector<string> PcodeInjectLibrary::callOtherTarget\fC [protected]\fP"
+
+.PP
+Map from injectid to callother-fixup target-op name\&. 
+.PP
+Definition at line 170 of file pcodeinject\&.hh\&.
+.SS "\fBArchitecture\fP* PcodeInjectLibrary::glb\fC [protected]\fP"
+
+.PP
+The \fBArchitecture\fP to which the injection payloads apply\&. 
+.PP
+Definition at line 162 of file pcodeinject\&.hh\&.
+.SS "vector<\fBInjectPayload\fP *> PcodeInjectLibrary::injection\fC [protected]\fP"
+
+.PP
+Registered injections\&. 
+.PP
+Definition at line 164 of file pcodeinject\&.hh\&.
+.SS "map<string,int4> PcodeInjectLibrary::scriptMap\fC [protected]\fP"
+
+.PP
+Map of registered script names to \fBExecutablePcode\fP id\&. 
+.PP
+Definition at line 168 of file pcodeinject\&.hh\&.
+.SS "vector<string> PcodeInjectLibrary::scriptNames\fC [protected]\fP"
+
+.PP
+Map from injectid to script name\&. 
+.PP
+Definition at line 172 of file pcodeinject\&.hh\&.
+.SS "\fBuintb\fP PcodeInjectLibrary::tempbase\fC [protected]\fP"
+
+.PP
+Offset within \fIunique\fP space for allocating temporaries within a payload\&. 
+.PP
+Definition at line 163 of file pcodeinject\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,105 @@
+.TH "TermPatternOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TermPatternOp \- A user defined p-code op that has a dynamically defined procedure\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.PP
+Inherits \fBUserPcodeOp\fP\&.
+.PP
+Inherited by \fBSegmentOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTermPatternOp\fP (\fBArchitecture\fP *g, const string &nm, int4 ind)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBgetNumVariableTerms\fP (void) const =0"
+.br
+.RI "Get the number of input Varnodes expected\&. "
+.ti -1c
+.RI "virtual bool \fBunify\fP (\fBFuncdata\fP &data, \fBPcodeOp\fP *op, vector< \fBVarnode\fP * > &bindlist) const =0"
+.br
+.RI "Gather the formal input \fBVarnode\fP objects given the root \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBexecute\fP (const vector< \fBuintb\fP > &input) const =0"
+.br
+.RI "Compute the output value of \fBthis\fP operation, given constant inputs\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A user defined p-code op that has a dynamically defined procedure\&. 
+
+The behavior of this op on constant inputs can be dynamically defined\&. This class defines a \fBunify()\fP method that picks out the input varnodes to the operation, given the root \fBPcodeOp\fP\&. The input varnodes would generally just be the input varnodes to the raw CALLOTHER after the constant id, but skipping, reordering, or other tree traversal is possible\&.
+.PP
+This class also defines an \fBexecute()\fP method that computes the output given constant inputs (matching the format determined by \fBunify()\fP)\&. 
+.PP
+Definition at line 144 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TermPatternOp::TermPatternOp (\fBArchitecture\fP * g, const string & nm, int4 ind)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 146 of file userop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBuintb\fP TermPatternOp::execute (const vector< \fBuintb\fP > & input) const\fC [pure virtual]\fP"
+
+.PP
+Compute the output value of \fBthis\fP operation, given constant inputs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP is the ordered list of constant inputs 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the resulting value as a constant 
+.RE
+.PP
+
+.PP
+Implemented in \fBSegmentOp\fP\&.
+.SS "virtual int4 TermPatternOp::getNumVariableTerms (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the number of input Varnodes expected\&. 
+.PP
+Implemented in \fBSegmentOp\fP\&.
+.SS "virtual bool TermPatternOp::unify (\fBFuncdata\fP & data, \fBPcodeOp\fP * op, vector< \fBVarnode\fP * > & bindlist) const\fC [pure virtual]\fP"
+
+.PP
+Gather the formal input \fBVarnode\fP objects given the root \fBPcodeOp\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being analyzed 
+.br
+\fIop\fP is the root operation 
+.br
+\fIbindlist\fP will hold the ordered list of input Varnodes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the requisite inputs were found 
+.RE
+.PP
+
+.PP
+Implemented in \fBSegmentOp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

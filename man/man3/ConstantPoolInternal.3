@@ -1,0 +1,118 @@
+.TH "ConstantPoolInternal" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConstantPoolInternal \- An implementation of the \fBConstantPool\fP interface storing records internally in RAM\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cpool\&.hh>\fP
+.PP
+Inherits \fBConstantPool\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual const \fBCPoolRecord\fP * \fBgetRecord\fP (const vector< \fBuintb\fP > &refs) const"
+.br
+.RI "Retrieve a constant pool record (\fBCPoolRecord\fP) given a \fIreference\fP to it\&. "
+.ti -1c
+.RI "virtual bool \fBempty\fP (void) const"
+.br
+.RI "Is the container empty of records\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.RI "Release any (local) resources\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save all records in this container to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore constant pool records from an XML stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An implementation of the \fBConstantPool\fP interface storing records internally in RAM\&. 
+
+The \fBCPoolRecord\fP objects are held directly in a map container\&. This class can be used as a stand-alone \fBConstantPool\fP that holds all its records in RAM\&. Or, it can act as a local \fBCPoolRecord\fP cache for some other implementation\&. 
+.PP
+Definition at line 155 of file cpool\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void ConstantPoolInternal::clear (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Release any (local) resources\&. 
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 195 of file cpool\&.hh\&.
+.SS "virtual bool ConstantPoolInternal::empty (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Is the container empty of records\&. 
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 194 of file cpool\&.hh\&.
+.SS "const \fBCPoolRecord\fP * ConstantPoolInternal::getRecord (const vector< \fBuintb\fP > & refs) const\fC [virtual]\fP"
+
+.PP
+Retrieve a constant pool record (\fBCPoolRecord\fP) given a \fIreference\fP to it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrefs\fP is the \fIreference\fP (made up of 1 or more identifying integers) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBCPoolRecord\fP or NULL if none matches the reference 
+.RE
+.PP
+
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 209 of file cpool\&.cc\&.
+.SS "void ConstantPoolInternal::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [virtual]\fP"
+
+.PP
+Restore constant pool records from an XML stream\&. (If supported) The container is populated with CPooLRecords initialized from a <constantpool> XML tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the \fBTypeFactory\fP used to resolve data-type references in the XML 
+.RE
+.PP
+
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 232 of file cpool\&.cc\&.
+.SS "void ConstantPoolInternal::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save all records in this container to an XML stream\&. (If supported) An <constantpool> element is written containing <cpoolrec> child elements for each \fBCPoolRecord\fP in the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implements \fBConstantPool\fP\&.
+.PP
+Definition at line 220 of file cpool\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

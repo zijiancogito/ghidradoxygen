@@ -1,0 +1,383 @@
+.TH "CastStrategy" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CastStrategy \- A strategy for applying type casts\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cast\&.hh>\fP
+.PP
+Inherited by \fBCastStrategyC\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBIntPromotionCode\fP { \fBNO_PROMOTION\fP = -1, \fBUNKNOWN_PROMOTION\fP = 0, \fBUNSIGNED_EXTENSION\fP = 1, \fBSIGNED_EXTENSION\fP = 2, \fBEITHER_EXTENSION\fP = 3 }"
+.br
+.RI "Types of integer promotion\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCastStrategy\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "void \fBsetTypeFactory\fP (\fBTypeFactory\fP *t)"
+.br
+.RI "Establish the data-type factory\&. "
+.ti -1c
+.RI "virtual \fB~CastStrategy\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual int4 \fBlocalExtensionType\fP (const \fBVarnode\fP *vn) const =0"
+.br
+.RI "Decide on integer promotion by examining just local properties of the given \fBVarnode\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBintPromotionType\fP (const \fBVarnode\fP *vn) const =0"
+.br
+.RI "Calculate the integer promotion code of a given \fBVarnode\fP\&. "
+.ti -1c
+.RI "virtual bool \fBcheckIntPromotionForCompare\fP (const \fBPcodeOp\fP *op, int4 slot) const =0"
+.br
+.RI "Check if integer promotion forces a cast for the given comparison op and slot\&. "
+.ti -1c
+.RI "virtual bool \fBcheckIntPromotionForExtension\fP (const \fBPcodeOp\fP *op) const =0"
+.br
+.RI "Check if integer promotion forces a cast for the input to the given extension\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBcastStandard\fP (\fBDatatype\fP *reqtype, \fBDatatype\fP *curtype, bool care_uint_int, bool care_ptr_uint) const =0"
+.br
+.RI "Does there need to be a visible cast between the given data-types\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBarithmeticOutputStandard\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "What is the output data-type produced by the given integer arithmetic operation\&. "
+.ti -1c
+.RI "virtual bool \fBisSubpieceCast\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype, uint4 offset) const =0"
+.br
+.RI "Is truncating an input data-type, producing an output data-type, considered a cast\&. "
+.ti -1c
+.RI "virtual bool \fBisSubpieceCastEndian\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype, uint4 offset, bool isbigend) const =0"
+.br
+.RI "Is the given data-type truncation considered a cast, given endianess concerns\&. "
+.ti -1c
+.RI "virtual bool \fBisSextCast\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype) const =0"
+.br
+.RI "Is sign-extending an input data-type, producing an output data-type, considered a cast\&. "
+.ti -1c
+.RI "virtual bool \fBisZextCast\fP (\fBDatatype\fP *outtype, \fBDatatype\fP *intype) const =0"
+.br
+.RI "Is zero-extending an input data-type, producing an output data-type, considered a cast\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeFactory\fP * \fBtlst\fP"
+.br
+.RI "Type factory associated with the \fBArchitecture\fP\&. "
+.ti -1c
+.RI "int4 \fBpromoteSize\fP"
+.br
+.RI "Size of \fBint\fP data-type, (size that integers get promoted to) "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strategy for applying type casts\&. 
+
+A \fIcast\fP operation in C or other languages masks a variety of possible low-level conversions, such as extensions, truncations, integer to floating-point, etc\&. On top of this, languages allow many of these types of operations to be \fIimplied\fP in the source code, with no explicit token representing the conversion\&. Conversions happen automatically for things like \fIinteger\fP \fIpromotion\fP, between different sizes (of integers), and between signed and unsigned data-type variants\&.
+.PP
+This class is the API for making four kinds of decisions:
+.IP "\(bu" 2
+Do we need a cast operator for a given assignment
+.IP "\(bu" 2
+Does the given conversion operation need to be represented as a cast
+.IP "\(bu" 2
+Does the given extension or comparison match with the expected level of integer promotion
+.IP "\(bu" 2
+What data-type is produced by a particular integer arithmetic operation 
+.PP
+
+.PP
+Definition at line 40 of file cast\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCastStrategy::IntPromotionCode\fP"
+
+.PP
+Types of integer promotion\&. For many languages, small integers are automatically \fIpromoted\fP to a standard size\&. The decompiler describes how an expression is or will be affected by integer promotion, using these codes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINO_PROMOTION \fP\fP
+There is no integer promotion\&. 
+.TP
+\fB\fIUNKNOWN_PROMOTION \fP\fP
+The type of integer promotion cannot be determined\&. 
+.TP
+\fB\fIUNSIGNED_EXTENSION \fP\fP
+The value is promoted using unsigned extension\&. 
+.TP
+\fB\fISIGNED_EXTENSION \fP\fP
+The value is promoted using signed extension\&. 
+.TP
+\fB\fIEITHER_EXTENSION \fP\fP
+The value is promoted using either signed or unsigned extension\&. 
+.PP
+Definition at line 46 of file cast\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CastStrategy::CastStrategy (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 57 of file cast\&.hh\&.
+.SS "virtual CastStrategy::~CastStrategy (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 59 of file cast\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* CastStrategy::arithmeticOutputStandard (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+What is the output data-type produced by the given integer arithmetic operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given operation 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output data-type 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "virtual \fBDatatype\fP* CastStrategy::castStandard (\fBDatatype\fP * reqtype, \fBDatatype\fP * curtype, bool care_uint_int, bool care_ptr_uint) const\fC [pure virtual]\fP"
+
+.PP
+Does there need to be a visible cast between the given data-types\&. The cast is from a \fIcurrent\fP data-type to an \fIexpected\fP data-type\&. NULL is returned if no cast is required, otherwise the data-type to cast to (usually the expected data-type) is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreqtype\fP is the \fIexpected\fP data-type 
+.br
+\fIcurtype\fP is the \fIcurrent\fP data-type 
+.br
+\fIcare_uint_int\fP is \fBtrue\fP if we care about a change in signedness 
+.br
+\fIcare_ptr_uint\fP is \fBtrue\fP if we care about conversions between pointers and unsigned values 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NULL to indicate no cast, or the data-type to cast to 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyJava\fP, and \fBCastStrategyC\fP\&.
+.SS "virtual bool CastStrategy::checkIntPromotionForCompare (const \fBPcodeOp\fP * op, int4 slot) const\fC [pure virtual]\fP"
+
+.PP
+Check if integer promotion forces a cast for the given comparison op and slot\&. Compute to what level the given slot has seen integer promotion and if a cast is required before the comparison operator makes sense\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given comparison operator 
+.br
+\fIslot\fP is the input slot being tested 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a cast is required before comparing 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "virtual bool CastStrategy::checkIntPromotionForExtension (const \fBPcodeOp\fP * op) const\fC [pure virtual]\fP"
+
+.PP
+Check if integer promotion forces a cast for the input to the given extension\&. Compute to what level the given slot has seen integer promotion and if a cast is required before the extension operator makes sense\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given extension operator INT_ZEXT or INT_SEXT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a cast is required before extending 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "virtual int4 CastStrategy::intPromotionType (const \fBVarnode\fP * vn) const\fC [pure virtual]\fP"
+
+.PP
+Calculate the integer promotion code of a given \fBVarnode\fP\&. Recursively examine the expression defining the \fBVarnode\fP as necessary 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the IntPromotionCode 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "virtual bool CastStrategy::isSextCast (\fBDatatype\fP * outtype, \fBDatatype\fP * intype) const\fC [pure virtual]\fP"
+
+.PP
+Is sign-extending an input data-type, producing an output data-type, considered a cast\&. Data-types must be provided from the input and output of an INT_SEXT operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the INT_SEXT should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "virtual bool CastStrategy::isSubpieceCast (\fBDatatype\fP * outtype, \fBDatatype\fP * intype, uint4 offset) const\fC [pure virtual]\fP"
+
+.PP
+Is truncating an input data-type, producing an output data-type, considered a cast\&. Data-types must be provided from the input and output of a SUBPIECE operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.br
+\fIoffset\fP is number of bytes truncated by the SUBPIECE 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the SUBPIECE should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "virtual bool CastStrategy::isSubpieceCastEndian (\fBDatatype\fP * outtype, \fBDatatype\fP * intype, uint4 offset, bool isbigend) const\fC [pure virtual]\fP"
+
+.PP
+Is the given data-type truncation considered a cast, given endianess concerns\&. This is equivalent to \fBisSubpieceCast()\fP but where the truncation is accomplished by pulling bytes directly out of memory\&. We assume the input data-type is layed down in memory, and we pull the output value starting at a given byte offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.br
+\fIoffset\fP is the given byte offset (into the input memory) 
+.br
+\fIisbigend\fP is \fBtrue\fP if the address space holding the memory is big endian\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the truncation should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "virtual bool CastStrategy::isZextCast (\fBDatatype\fP * outtype, \fBDatatype\fP * intype) const\fC [pure virtual]\fP"
+
+.PP
+Is zero-extending an input data-type, producing an output data-type, considered a cast\&. Data-types must be provided from the input and output of an INT_ZEXT operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouttype\fP is the output data-type 
+.br
+\fIintype\fP is the input data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the INT_ZEXT should be represented as a cast 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyJava\fP, and \fBCastStrategyC\fP\&.
+.SS "virtual int4 CastStrategy::localExtensionType (const \fBVarnode\fP * vn) const\fC [pure virtual]\fP"
+
+.PP
+Decide on integer promotion by examining just local properties of the given \fBVarnode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an IntPromotionCode (excluding NO_PROMOTION) 
+.RE
+.PP
+
+.PP
+Implemented in \fBCastStrategyC\fP\&.
+.SS "void CastStrategy::setTypeFactory (\fBTypeFactory\fP * t)"
+
+.PP
+Establish the data-type factory\&. Sets the \fBTypeFactory\fP used to produce data-types for the \fBarithmeticOutputStandard()\fP method 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP is the \fBTypeFactory\fP 
+.RE
+.PP
+
+.PP
+Definition at line 21 of file cast\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int4 CastStrategy::promoteSize\fC [protected]\fP"
+
+.PP
+Size of \fBint\fP data-type, (size that integers get promoted to) 
+.PP
+Definition at line 55 of file cast\&.hh\&.
+.SS "\fBTypeFactory\fP* CastStrategy::tlst\fC [protected]\fP"
+
+.PP
+Type factory associated with the \fBArchitecture\fP\&. 
+.PP
+Definition at line 54 of file cast\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

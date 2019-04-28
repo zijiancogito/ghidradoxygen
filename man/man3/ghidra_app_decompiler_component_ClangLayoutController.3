@@ -1,0 +1,188 @@
+.TH "ghidra.app.decompiler.component.ClangLayoutController" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.ClangLayoutController
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits LayoutModel, and LayoutModelListener\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClangLayoutController\fP (\fBDecompileOptions\fP opt, \fBDecompilerPanel\fP decompilerPanel, FontMetrics met, HighlightFactory hlFactory)"
+.br
+.ti -1c
+.RI "ArrayList< \fBClangLine\fP > \fBgetLines\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisUniform\fP ()"
+.br
+.ti -1c
+.RI "Dimension \fBgetPreferredViewSize\fP ()"
+.br
+.ti -1c
+.RI "BigInteger \fBgetNumIndexes\fP ()"
+.br
+.ti -1c
+.RI "Layout \fBgetLayout\fP (BigInteger index)"
+.br
+.ti -1c
+.RI "void \fBaddLayoutModelListener\fP (LayoutModelListener listener)"
+.br
+.ti -1c
+.RI "void \fBremoveLayoutModelListener\fP (LayoutModelListener listener)"
+.br
+.ti -1c
+.RI "void \fBmodelSizeChanged\fP ()"
+.br
+.ti -1c
+.RI "void \fBmodelChanged\fP ()"
+.br
+.ti -1c
+.RI "void \fBdataChanged\fP (BigInteger start, BigInteger end)"
+.br
+.ti -1c
+.RI "void \fBlayoutChanged\fP ()"
+.br
+.ti -1c
+.RI "BigInteger \fBgetIndexAfter\fP (BigInteger index)"
+.br
+.ti -1c
+.RI "BigInteger \fBgetIndexBefore\fP (BigInteger index)"
+.br
+.ti -1c
+.RI "int \fBgetIndexBefore\fP (int index)"
+.br
+.ti -1c
+.RI "\fBClangTokenGroup\fP \fBgetRoot\fP ()"
+.br
+.ti -1c
+.RI "void \fBbuildLayouts\fP (Function function, \fBClangTokenGroup\fP doc, String errmsg, boolean display)"
+.br
+.ti -1c
+.RI "HighFunction \fBgetHighFunction\fP (int i)"
+.br
+.ti -1c
+.RI "SearchLocation \fBfindNextTokenForSearchRegex\fP (String searchString, FieldLocation currentLocation, boolean forwardSearch)"
+.br
+.ti -1c
+.RI "SearchLocation \fBfindNextTokenForSearch\fP (String searchString, FieldLocation currentLocation, boolean forwardSearch)"
+.br
+.ti -1c
+.RI "void \fBlocationChanged\fP (FieldLocation loc, Field field, Color locationColor, Color parenColor)"
+.br
+.ti -1c
+.RI "boolean \fBchangePending\fP ()"
+.br
+.ti -1c
+.RI "void \fBflushChanges\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Control the GUI layout for displaying tokenized C code 
+.PP
+Definition at line 47 of file ClangLayoutController\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.ClangLayoutController (\fBDecompileOptions\fP opt, \fBDecompilerPanel\fP decompilerPanel, FontMetrics met, HighlightFactory hlFactory)\fC [inline]\fP"
+
+.PP
+Definition at line 73 of file ClangLayoutController\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.addLayoutModelListener (LayoutModelListener listener)\fC [inline]\fP"
+
+.PP
+Definition at line 113 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.buildLayouts (Function function, \fBClangTokenGroup\fP doc, String errmsg, boolean display)\fC [inline]\fP"
+
+.PP
+Definition at line 392 of file ClangLayoutController\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.changePending ()\fC [inline]\fP"
+
+.PP
+Definition at line 606 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.dataChanged (BigInteger start, BigInteger end)\fC [inline]\fP"
+
+.PP
+Definition at line 136 of file ClangLayoutController\&.java\&.
+.SS "SearchLocation ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.findNextTokenForSearch (String searchString, FieldLocation currentLocation, boolean forwardSearch)\fC [inline]\fP"
+
+.PP
+Definition at line 518 of file ClangLayoutController\&.java\&.
+.SS "SearchLocation ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.findNextTokenForSearchRegex (String searchString, FieldLocation currentLocation, boolean forwardSearch)\fC [inline]\fP"
+
+.PP
+Definition at line 464 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.flushChanges ()\fC [inline]\fP"
+
+.PP
+Definition at line 611 of file ClangLayoutController\&.java\&.
+.SS "HighFunction ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getHighFunction (int i)\fC [inline]\fP"
+
+.PP
+Definition at line 399 of file ClangLayoutController\&.java\&.
+.SS "BigInteger ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getIndexAfter (BigInteger index)\fC [inline]\fP"
+
+.PP
+Definition at line 149 of file ClangLayoutController\&.java\&.
+.SS "BigInteger ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getIndexBefore (BigInteger index)\fC [inline]\fP"
+
+.PP
+Definition at line 158 of file ClangLayoutController\&.java\&.
+.SS "int ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getIndexBefore (int index)\fC [inline]\fP"
+
+.PP
+Definition at line 165 of file ClangLayoutController\&.java\&.
+.SS "Layout ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getLayout (BigInteger index)\fC [inline]\fP"
+
+.PP
+Definition at line 105 of file ClangLayoutController\&.java\&.
+.SS "ArrayList<\fBClangLine\fP> ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getLines ()\fC [inline]\fP"
+
+.PP
+Definition at line 85 of file ClangLayoutController\&.java\&.
+.SS "BigInteger ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getNumIndexes ()\fC [inline]\fP"
+
+.PP
+Definition at line 100 of file ClangLayoutController\&.java\&.
+.SS "Dimension ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getPreferredViewSize ()\fC [inline]\fP"
+
+.PP
+Definition at line 95 of file ClangLayoutController\&.java\&.
+.SS "\fBClangTokenGroup\fP ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.getRoot ()\fC [inline]\fP"
+
+.PP
+Definition at line 169 of file ClangLayoutController\&.java\&.
+.SS "boolean ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.isUniform ()\fC [inline]\fP"
+
+.PP
+Definition at line 90 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.layoutChanged ()\fC [inline]\fP"
+
+.PP
+Definition at line 142 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.locationChanged (FieldLocation loc, Field field, Color locationColor, Color parenColor)\fC [inline]\fP"
+
+.PP
+Definition at line 601 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.modelChanged ()\fC [inline]\fP"
+
+.PP
+Definition at line 129 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.modelSizeChanged ()\fC [inline]\fP"
+
+.PP
+Definition at line 123 of file ClangLayoutController\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.ClangLayoutController\&.removeLayoutModelListener (LayoutModelListener listener)\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file ClangLayoutController\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,278 @@
+.TH "OperandSymbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OperandSymbol
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghsymbol\&.hh>\fP
+.PP
+Inherits \fBSpecificSymbol\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBcode_address\fP =1, \fBoffset_irrel\fP =2, \fBvariable_len\fP =4, \fBmarked\fP =8 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOperandSymbol\fP (void)"
+.br
+.ti -1c
+.RI "\fBOperandSymbol\fP (const string &nm, int4 index, \fBConstructor\fP *ct)"
+.br
+.ti -1c
+.RI "uint4 \fBgetRelativeOffset\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetOffsetBase\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetMinimumLength\fP (void) const"
+.br
+.ti -1c
+.RI "\fBPatternExpression\fP * \fBgetDefiningExpression\fP (void) const"
+.br
+.ti -1c
+.RI "\fBTripleSymbol\fP * \fBgetDefiningSymbol\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetIndex\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBdefineOperand\fP (\fBPatternExpression\fP *pe)"
+.br
+.ti -1c
+.RI "void \fBdefineOperand\fP (\fBTripleSymbol\fP *tri)"
+.br
+.ti -1c
+.RI "void \fBsetCodeAddress\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBisCodeAddress\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetOffsetIrrelevant\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBisOffsetIrrelevant\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetMark\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclearMark\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBisMarked\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fB~OperandSymbol\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBVarnodeTpl\fP * \fBgetVarnode\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBPatternExpression\fP * \fBgetPatternExpression\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBgetFixedHandle\fP (\fBFixedHandle\fP &hnd, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBgetSize\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBprint\fP (ostream &s, \fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual \fBsymbol_type\fP \fBgetType\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXmlHeader\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBSleighBase\fP *trans)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBOperandEquation\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 311 of file slghsymbol\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIcode_address \fP\fP
+.TP
+\fB\fIoffset_irrel \fP\fP
+.TP
+\fB\fIvariable_len \fP\fP
+.TP
+\fB\fImarked \fP\fP
+.PP
+Definition at line 315 of file slghsymbol\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "OperandSymbol::OperandSymbol (void)\fC [inline]\fP"
+
+.PP
+Definition at line 328 of file slghsymbol\&.hh\&.
+.SS "OperandSymbol::OperandSymbol (const string & nm, int4 index, \fBConstructor\fP * ct)"
+
+.PP
+Definition at line 948 of file slghsymbol\&.cc\&.
+.SS "OperandSymbol::~OperandSymbol (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 976 of file slghsymbol\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void OperandSymbol::clearMark (void)\fC [inline]\fP"
+
+.PP
+Definition at line 343 of file slghsymbol\&.hh\&.
+.SS "void OperandSymbol::defineOperand (\fBPatternExpression\fP * pe)"
+
+.PP
+Definition at line 959 of file slghsymbol\&.cc\&.
+.SS "void OperandSymbol::defineOperand (\fBTripleSymbol\fP * tri)"
+
+.PP
+Definition at line 968 of file slghsymbol\&.cc\&.
+.SS "\fBPatternExpression\fP* OperandSymbol::getDefiningExpression (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 333 of file slghsymbol\&.hh\&.
+.SS "\fBTripleSymbol\fP* OperandSymbol::getDefiningSymbol (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 334 of file slghsymbol\&.hh\&.
+.SS "void OperandSymbol::getFixedHandle (\fBFixedHandle\fP & hnd, \fBParserWalker\fP & walker) const\fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Definition at line 1003 of file slghsymbol\&.cc\&.
+.SS "int4 OperandSymbol::getIndex (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 335 of file slghsymbol\&.hh\&.
+.SS "int4 OperandSymbol::getMinimumLength (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 332 of file slghsymbol\&.hh\&.
+.SS "int4 OperandSymbol::getOffsetBase (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 331 of file slghsymbol\&.hh\&.
+.SS "virtual \fBPatternExpression\fP* OperandSymbol::getPatternExpression (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Definition at line 347 of file slghsymbol\&.hh\&.
+.SS "uint4 OperandSymbol::getRelativeOffset (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 330 of file slghsymbol\&.hh\&.
+.SS "int4 OperandSymbol::getSize (void) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBTripleSymbol\fP\&.
+.PP
+Definition at line 1009 of file slghsymbol\&.cc\&.
+.SS "virtual \fBsymbol_type\fP OperandSymbol::getType (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 351 of file slghsymbol\&.hh\&.
+.SS "\fBVarnodeTpl\fP * OperandSymbol::getVarnode (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBSpecificSymbol\fP\&.
+.PP
+Definition at line 984 of file slghsymbol\&.cc\&.
+.SS "bool OperandSymbol::isCodeAddress (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 339 of file slghsymbol\&.hh\&.
+.SS "bool OperandSymbol::isMarked (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 344 of file slghsymbol\&.hh\&.
+.SS "bool OperandSymbol::isOffsetIrrelevant (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 341 of file slghsymbol\&.hh\&.
+.SS "void OperandSymbol::print (ostream & s, \fBParserWalker\fP & walker) const\fC [virtual]\fP"
+
+.PP
+Implements \fBTripleSymbol\fP\&.
+.PP
+Definition at line 1017 of file slghsymbol\&.cc\&.
+.SS "void OperandSymbol::restoreXml (const \fBElement\fP * el, \fBSleighBase\fP * trans)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 1064 of file slghsymbol\&.cc\&.
+.SS "void OperandSymbol::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 1037 of file slghsymbol\&.cc\&.
+.SS "void OperandSymbol::saveXmlHeader (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBSleighSymbol\fP\&.
+.PP
+Definition at line 1056 of file slghsymbol\&.cc\&.
+.SS "void OperandSymbol::setCodeAddress (void)\fC [inline]\fP"
+
+.PP
+Definition at line 338 of file slghsymbol\&.hh\&.
+.SS "void OperandSymbol::setMark (void)\fC [inline]\fP"
+
+.PP
+Definition at line 342 of file slghsymbol\&.hh\&.
+.SS "void OperandSymbol::setOffsetIrrelevant (void)\fC [inline]\fP"
+
+.PP
+Definition at line 340 of file slghsymbol\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBConstructor\fP\fC [friend]\fP"
+
+.PP
+Definition at line 312 of file slghsymbol\&.hh\&.
+.SS "friend class \fBOperandEquation\fP\fC [friend]\fP"
+
+.PP
+Definition at line 313 of file slghsymbol\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

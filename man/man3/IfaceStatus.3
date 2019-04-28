@@ -1,0 +1,206 @@
+.TH "IfaceStatus" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IfaceStatus
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <interface\&.hh>\fP
+.PP
+Inherited by \fBIfaceTerm\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIfaceStatus\fP (const string &prmpt, istream &is, ostream &os, int4 mxhist=10)"
+.br
+.ti -1c
+.RI "virtual \fB~IfaceStatus\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetErrorIsDone\fP (bool val)"
+.br
+.ti -1c
+.RI "void \fBpushScript\fP (const string &filename, const string &newprompt)"
+.br
+.ti -1c
+.RI "void \fBpopScript\fP (void)"
+.br
+.ti -1c
+.RI "int4 \fBgetNumInputStreamSize\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBwritePrompt\fP (void)"
+.br
+.ti -1c
+.RI "void \fBregisterCom\fP (\fBIfaceCommand\fP *fptr, const char *nm1, const char *nm2=(const char *) 0, const char *nm3=(const char *) 0, const char *nm4=(const char *) 0, const char *nm5=(const char *) 0)"
+.br
+.ti -1c
+.RI "\fBIfaceData\fP * \fBgetData\fP (const string &nm) const"
+.br
+.ti -1c
+.RI "bool \fBrunCommand\fP (void)"
+.br
+.ti -1c
+.RI "void \fBgetHistory\fP (string &line, int4 i) const"
+.br
+.ti -1c
+.RI "int4 \fBgetHistorySize\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisStreamFinished\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisInError\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBevaluateError\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBwordsToString\fP (string &res, const vector< string > &list)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBdone\fP"
+.br
+.ti -1c
+.RI "ostream * \fBoptr\fP"
+.br
+.ti -1c
+.RI "ostream * \fBfileoptr\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBexpandCom\fP (vector< string > &expand, istream &s, vector< \fBIfaceCommand\fP * >::const_iterator &first, vector< \fBIfaceCommand\fP * >::const_iterator &last)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "istream * \fBsptr\fP"
+.br
+.ti -1c
+.RI "vector< \fBIfaceCommand\fP * > \fBcomlist\fP"
+.br
+.ti -1c
+.RI "map< string, \fBIfaceData\fP * > \fBdatamap\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 108 of file interface\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "IfaceStatus::IfaceStatus (const string & prmpt, istream & is, ostream & os, int4 mxhist = \fC10\fP)"
+
+.PP
+Definition at line 33 of file interface\&.cc\&.
+.SS "IfaceStatus::~IfaceStatus (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 131 of file interface\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void IfaceStatus::evaluateError (void)"
+
+.PP
+Definition at line 101 of file interface\&.cc\&.
+.SS "int4 IfaceStatus::expandCom (vector< string > & expand, istream & s, vector< \fBIfaceCommand\fP * >::const_iterator & first, vector< \fBIfaceCommand\fP * >::const_iterator & last)\fC [protected]\fP"
+
+.PP
+Definition at line 274 of file interface\&.cc\&.
+.SS "\fBIfaceData\fP * IfaceStatus::getData (const string & nm) const"
+
+.PP
+Definition at line 180 of file interface\&.cc\&.
+.SS "void IfaceStatus::getHistory (string & line, int4 i) const"
+
+.PP
+Definition at line 90 of file interface\&.cc\&.
+.SS "int4 IfaceStatus::getHistorySize (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 149 of file interface\&.hh\&.
+.SS "int4 IfaceStatus::getNumInputStreamSize (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 139 of file interface\&.hh\&.
+.SS "bool IfaceStatus::isInError (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 151 of file interface\&.hh\&.
+.SS "bool IfaceStatus::isStreamFinished (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 150 of file interface\&.hh\&.
+.SS "void IfaceStatus::popScript (void)"
+
+.PP
+Definition at line 64 of file interface\&.cc\&.
+.SS "void IfaceStatus::pushScript (const string & filename, const string & newprompt)"
+
+.PP
+Definition at line 48 of file interface\&.cc\&.
+.SS "void IfaceStatus::registerCom (\fBIfaceCommand\fP * fptr, const char * nm1, const char * nm2 = \fC(const char *)0\fP, const char * nm3 = \fC(const char *)0\fP, const char * nm4 = \fC(const char *)0\fP, const char * nm5 = \fC(const char *)0\fP)"
+
+.PP
+Definition at line 148 of file interface\&.cc\&.
+.SS "bool IfaceStatus::runCommand (void)"
+
+.PP
+Definition at line 189 of file interface\&.cc\&.
+.SS "void IfaceStatus::setErrorIsDone (bool val)\fC [inline]\fP"
+
+.PP
+Definition at line 136 of file interface\&.hh\&.
+.SS "void IfaceStatus::wordsToString (string & res, const vector< string > & list)\fC [static]\fP"
+
+.PP
+Definition at line 118 of file interface\&.cc\&.
+.SS "void IfaceStatus::writePrompt (void)\fC [inline]\fP"
+
+.PP
+Definition at line 140 of file interface\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vector<\fBIfaceCommand\fP *> IfaceStatus::comlist\fC [protected]\fP"
+
+.PP
+Definition at line 124 of file interface\&.hh\&.
+.SS "map<string,\fBIfaceData\fP *> IfaceStatus::datamap\fC [protected]\fP"
+
+.PP
+Definition at line 125 of file interface\&.hh\&.
+.SS "bool IfaceStatus::done"
+
+.PP
+Definition at line 130 of file interface\&.hh\&.
+.SS "ostream* IfaceStatus::fileoptr"
+
+.PP
+Definition at line 132 of file interface\&.hh\&.
+.SS "ostream* IfaceStatus::optr"
+
+.PP
+Definition at line 131 of file interface\&.hh\&.
+.SS "istream* IfaceStatus::sptr\fC [protected]\fP"
+
+.PP
+Definition at line 123 of file interface\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

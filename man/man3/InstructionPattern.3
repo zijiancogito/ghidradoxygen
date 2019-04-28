@@ -1,0 +1,162 @@
+.TH "InstructionPattern" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InstructionPattern
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpattern\&.hh>\fP
+.PP
+Inherits \fBDisjointPattern\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInstructionPattern\fP (void)"
+.br
+.ti -1c
+.RI "\fBInstructionPattern\fP (\fBPatternBlock\fP *mv)"
+.br
+.ti -1c
+.RI "\fBInstructionPattern\fP (bool tf)"
+.br
+.ti -1c
+.RI "\fBPatternBlock\fP * \fBgetBlock\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~InstructionPattern\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBsimplifyClone\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBshiftInstruction\fP (int4 sa)"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoOr\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoAnd\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBcommonSubPattern\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual bool \fBisMatch\fP (\fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysTrue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysFalse\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysInstructionTrue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 83 of file slghpattern\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "InstructionPattern::InstructionPattern (void)\fC [inline]\fP"
+
+.PP
+Definition at line 87 of file slghpattern\&.hh\&.
+.SS "InstructionPattern::InstructionPattern (\fBPatternBlock\fP * mv)\fC [inline]\fP"
+
+.PP
+Definition at line 88 of file slghpattern\&.hh\&.
+.SS "InstructionPattern::InstructionPattern (bool tf)\fC [inline]\fP"
+
+.PP
+Definition at line 89 of file slghpattern\&.hh\&.
+.SS "virtual InstructionPattern::~InstructionPattern (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 91 of file slghpattern\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool InstructionPattern::alwaysFalse (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 99 of file slghpattern\&.hh\&.
+.SS "virtual bool InstructionPattern::alwaysInstructionTrue (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 100 of file slghpattern\&.hh\&.
+.SS "virtual bool InstructionPattern::alwaysTrue (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 98 of file slghpattern\&.hh\&.
+.SS "\fBPattern\fP * InstructionPattern::commonSubPattern (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 571 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * InstructionPattern::doAnd (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 536 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * InstructionPattern::doOr (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 604 of file slghpattern\&.cc\&.
+.SS "\fBPatternBlock\fP* InstructionPattern::getBlock (void)\fC [inline]\fP"
+
+.PP
+Definition at line 90 of file slghpattern\&.hh\&.
+.SS "virtual bool InstructionPattern::isMatch (\fBParserWalker\fP & walker) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 97 of file slghpattern\&.hh\&.
+.SS "void InstructionPattern::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 632 of file slghpattern\&.cc\&.
+.SS "void InstructionPattern::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 624 of file slghpattern\&.cc\&.
+.SS "virtual void InstructionPattern::shiftInstruction (int4 sa)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 93 of file slghpattern\&.hh\&.
+.SS "virtual \fBPattern\fP* InstructionPattern::simplifyClone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 92 of file slghpattern\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

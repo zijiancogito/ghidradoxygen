@@ -1,0 +1,156 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/options.hh \- Classes for processing architecture configuration options\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'error\&.hh'\fP
+.br
+\fC#include 'xml\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBArchOption\fP"
+.br
+.RI "Base class for options classes that affect the configuration of the \fBArchitecture\fP object\&. "
+.ti -1c
+.RI "class \fBOptionDatabase\fP"
+.br
+.RI "A Dispatcher for possible \fBArchOption\fP commands\&. "
+.ti -1c
+.RI "class \fBOptionExtraPop\fP"
+.br
+.RI "Set the \fBextrapop\fP parameter used by the (default) prototype model\&. "
+.ti -1c
+.RI "class \fBOptionReadOnly\fP"
+.br
+.RI "Toggle whether read-only memory locations have their value propagated\&. "
+.ti -1c
+.RI "class \fBOptionDefaultPrototype\fP"
+.br
+.RI "Set the default prototype model for analyzing unknown functions\&. "
+.ti -1c
+.RI "class \fBOptionInferConstPtr\fP"
+.br
+.RI "Toggle whether the decompiler attempts to infer constant pointers\&. "
+.ti -1c
+.RI "class \fBOptionInline\fP"
+.br
+.RI "Mark/unmark a specific function as \fIinline\fP\&. "
+.ti -1c
+.RI "class \fBOptionNoReturn\fP"
+.br
+.RI "Mark/unmark a specific function with the \fInoreturn\fP property\&. "
+.ti -1c
+.RI "class \fBOptionStructAlign\fP"
+.br
+.RI "Alter the 'structure alignment' data organization setting\&. "
+.ti -1c
+.RI "class \fBOptionWarning\fP"
+.br
+.RI "Toggle whether a warning should be issued if a specific action/rule is applied\&. "
+.ti -1c
+.RI "class \fBOptionNullPrinting\fP"
+.br
+.RI "Toggle whether null pointers should be printed as the string 'NULL'\&. "
+.ti -1c
+.RI "class \fBOptionInPlaceOps\fP"
+.br
+.RI "Toggle whether \fIin-place\fP operators (+=, *=, &=, etc\&.) are emitted by the decompiler\&. "
+.ti -1c
+.RI "class \fBOptionConventionPrinting\fP"
+.br
+.RI "Toggle whether the \fIcalling\fP \fIconvention\fP is printed when emitting function prototypes\&. "
+.ti -1c
+.RI "class \fBOptionNoCastPrinting\fP"
+.br
+.RI "Toggle whether \fIcast\fP syntax is emitted by the decompiler or stripped\&. "
+.ti -1c
+.RI "class \fBOptionMaxLineWidth\fP"
+.br
+.RI "Set the maximum number of characters per decompiled line\&. "
+.ti -1c
+.RI "class \fBOptionIndentIncrement\fP"
+.br
+.RI "Set the number of characters to indent per nested scope\&. "
+.ti -1c
+.RI "class \fBOptionCommentIndent\fP"
+.br
+.RI "How many characters to indent comment lines\&. "
+.ti -1c
+.RI "class \fBOptionCommentStyle\fP"
+.br
+.RI "Set the style of comment emitted by the decompiler\&. "
+.ti -1c
+.RI "class \fBOptionCommentHeader\fP"
+.br
+.RI "Toggle whether different comment \fItypes\fP are emitted by the decompiler in the header for a function\&. "
+.ti -1c
+.RI "class \fBOptionCommentInstruction\fP"
+.br
+.RI "Toggle whether different comment \fItypes\fP are emitted by the decompiler in the body of a function\&. "
+.ti -1c
+.RI "class \fBOptionIntegerFormat\fP"
+.br
+.RI "Set the formatting strategy used by the decompiler to emit integers\&. "
+.ti -1c
+.RI "class \fBOptionSetAction\fP"
+.br
+.RI "Establish a new root \fBAction\fP for the decompiler\&. "
+.ti -1c
+.RI "class \fBOptionCurrentAction\fP"
+.br
+.RI "Toggle a sub-group of actions within a root \fBAction\fP\&. "
+.ti -1c
+.RI "class \fBOptionAllowContextSet\fP"
+.br
+.RI "Toggle whether the disassembly engine is allowed to modify context\&. "
+.ti -1c
+.RI "class \fBOptionIgnoreUnimplemented\fP"
+.br
+.RI "Toggle whether unimplemented instructions are treated as a \fIno-operation\fP\&. "
+.ti -1c
+.RI "class \fBOptionErrorUnimplemented\fP"
+.br
+.RI "Toggle whether unimplemented instructions are treated as a fatal error\&. "
+.ti -1c
+.RI "class \fBOptionErrorReinterpreted\fP"
+.br
+.RI "Toggle whether off-cut reinterpretation of an instruction is a fatal error\&. "
+.ti -1c
+.RI "class \fBOptionErrorTooManyInstructions\fP"
+.br
+.RI "Toggle whether too many instructions in one function body is considered a fatal error\&. "
+.ti -1c
+.RI "class \fBOptionProtoEval\fP"
+.br
+.RI "Set the prototype model to use when evaluating the parameters of the \fIcurrent\fP function\&. "
+.ti -1c
+.RI "class \fBOptionSetLanguage\fP"
+.br
+.RI "Set the current language emitted by the decompiler\&. "
+.ti -1c
+.RI "class \fBOptionJumpLoad\fP"
+.br
+.RI "Toggle whether the decompiler should try to recover the table used to evaluate a switch\&. "
+.ti -1c
+.RI "class \fBOptionToggleRule\fP"
+.br
+.RI "Toggle whether a specific \fBRule\fP is applied in the current \fBAction\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classes for processing architecture configuration options\&. 
+
+
+.PP
+Definition in file \fBoptions\&.hh\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

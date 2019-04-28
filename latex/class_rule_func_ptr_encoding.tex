@@ -1,0 +1,176 @@
+\hypertarget{class_rule_func_ptr_encoding}{}\section{Rule\+Func\+Ptr\+Encoding Class Reference}
+\label{class_rule_func_ptr_encoding}\index{RuleFuncPtrEncoding@{RuleFuncPtrEncoding}}
+
+
+Eliminate A\+R\+M/\+T\+H\+U\+MB style masking of the low order bits on function pointers.  
+
+
+
+
+{\ttfamily \#include $<$ruleaction.\+hh$>$}
+
+
+
+Inheritance diagram for Rule\+Func\+Ptr\+Encoding\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{class_rule_func_ptr_encoding__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Rule\+Func\+Ptr\+Encoding\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{class_rule_func_ptr_encoding__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rule_func_ptr_encoding_ad780526b76dcbae30cfaed4ae912c914}{Rule\+Func\+Ptr\+Encoding}} (const string \&g)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_rule}{Rule}} $\ast$ \mbox{\hyperlink{class_rule_func_ptr_encoding_a6738c42c8cf1be1152c573c815206876}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rule_func_ptr_encoding_a8f25db221c10666f0857bc9650f46113}{get\+Op\+List}} (vector$<$ uint4 $>$ \&oplist) const
+\begin{DoxyCompactList}\small\item\em List of op codes this rule operates on. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_rule_func_ptr_encoding_ab4cf320ff9f365e41dde30a21dc7a277}{apply\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op, \mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Eliminate A\+R\+M/\+T\+H\+U\+MB style masking of the low order bits on function pointers. 
+
+N\+O\+TE\+: The emulation philosophy is that it really isn\textquotesingle{}t eliminated but, the C\+A\+L\+L\+I\+ND operator is now dealing with it. Hence actions like \mbox{\hyperlink{class_action_deindirect}{Action\+Deindirect}} that are modeling a C\+A\+L\+L\+I\+ND\textquotesingle{}s behavior need to take this into account. 
+
+Definition at line 1335 of file ruleaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rule_func_ptr_encoding_ad780526b76dcbae30cfaed4ae912c914}\label{class_rule_func_ptr_encoding_ad780526b76dcbae30cfaed4ae912c914}} 
+\index{RuleFuncPtrEncoding@{RuleFuncPtrEncoding}!RuleFuncPtrEncoding@{RuleFuncPtrEncoding}}
+\index{RuleFuncPtrEncoding@{RuleFuncPtrEncoding}!RuleFuncPtrEncoding@{RuleFuncPtrEncoding}}
+\subsubsection{\texorpdfstring{RuleFuncPtrEncoding()}{RuleFuncPtrEncoding()}}
+{\footnotesize\ttfamily Rule\+Func\+Ptr\+Encoding\+::\+Rule\+Func\+Ptr\+Encoding (\begin{DoxyParamCaption}\item[{const string \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+
+Definition at line 1337 of file ruleaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_rule_func_ptr_encoding_ad780526b76dcbae30cfaed4ae912c914_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rule_func_ptr_encoding_ab4cf320ff9f365e41dde30a21dc7a277}\label{class_rule_func_ptr_encoding_ab4cf320ff9f365e41dde30a21dc7a277}} 
+\index{RuleFuncPtrEncoding@{RuleFuncPtrEncoding}!applyOp@{applyOp}}
+\index{applyOp@{applyOp}!RuleFuncPtrEncoding@{RuleFuncPtrEncoding}}
+\subsubsection{\texorpdfstring{applyOp()}{applyOp()}}
+{\footnotesize\ttfamily int4 Rule\+Func\+Ptr\+Encoding\+::apply\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}}. 
+
+This method contains the main logic for applying the \mbox{\hyperlink{class_rule}{Rule}}. It must use a given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} as the point at which the \mbox{\hyperlink{class_rule}{Rule}} applies. If it does apply, changes are made directly to the function and 1 (non-\/zero) is returned, otherwise 0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} where the \mbox{\hyperlink{class_rule}{Rule}} may apply \\
+\hline
+{\em data} & is the function to which to apply \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4e3e61f066670175009f60fb9dc60848}{Rule}}.
+
+
+
+Definition at line 7671 of file ruleaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_func_ptr_encoding_ab4cf320ff9f365e41dde30a21dc7a277_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_func_ptr_encoding_a6738c42c8cf1be1152c573c815206876}\label{class_rule_func_ptr_encoding_a6738c42c8cf1be1152c573c815206876}} 
+\index{RuleFuncPtrEncoding@{RuleFuncPtrEncoding}!clone@{clone}}
+\index{clone@{clone}!RuleFuncPtrEncoding@{RuleFuncPtrEncoding}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_rule}{Rule}}$\ast$ Rule\+Func\+Ptr\+Encoding\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_rule}{Rule}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_rule}{Rule}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_rule}{Rule}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_rule}{Rule}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_rule_a70de90a76461bfa7ea0b575ce3c11e4d}{Rule}}.
+
+
+
+Definition at line 1338 of file ruleaction.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_rule_func_ptr_encoding_a6738c42c8cf1be1152c573c815206876_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_rule_func_ptr_encoding_a8f25db221c10666f0857bc9650f46113}\label{class_rule_func_ptr_encoding_a8f25db221c10666f0857bc9650f46113}} 
+\index{RuleFuncPtrEncoding@{RuleFuncPtrEncoding}!getOpList@{getOpList}}
+\index{getOpList@{getOpList}!RuleFuncPtrEncoding@{RuleFuncPtrEncoding}}
+\subsubsection{\texorpdfstring{getOpList()}{getOpList()}}
+{\footnotesize\ttfamily void Rule\+Func\+Ptr\+Encoding\+::get\+Op\+List (\begin{DoxyParamCaption}\item[{vector$<$ uint4 $>$ \&}]{oplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+List of op codes this rule operates on. 
+
+Populate the given array with all possible Op\+Codes this \mbox{\hyperlink{class_rule}{Rule}} might apply to. By default, this method returns all possible Op\+Codes 
+\begin{DoxyParams}{Parameters}
+{\em oplist} & is the array to populate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_rule_a4023bfc7825de0ab866790551856d10e}{Rule}}.
+
+
+
+Definition at line 7665 of file ruleaction.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8hh}{ruleaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{ruleaction_8cc}{ruleaction.\+cc}}\end{DoxyCompactItemize}

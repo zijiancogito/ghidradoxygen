@@ -1,0 +1,90 @@
+.TH "EquateSymbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EquateSymbol \- A \fBSymbol\fP that holds \fBequate\fP information for a constant\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.PP
+Inherits Symbol\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEquateSymbol\fP (\fBScope\fP *sc)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetValue\fP (void) const"
+.br
+.RI "Get the constant value\&. "
+.ti -1c
+.RI "bool \fBisValueClose\fP (\fBuintb\fP op2Value, int4 size) const"
+.br
+.RI "Is the given value similar to \fBthis\fP equate\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBSymbol\fP that holds \fBequate\fP information for a constant\&. 
+
+This is a symbol that labels a constant\&. It can either replace the constant's token with the symbol name, or it can force a conversion in the emitted format of the constant\&. 
+.PP
+Definition at line 253 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "EquateSymbol::EquateSymbol (\fBScope\fP * sc)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with restoreXml\&. 
+.PP
+Definition at line 256 of file database\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP EquateSymbol::getValue (void) const\fC [inline]\fP"
+
+.PP
+Get the constant value\&. 
+.PP
+Definition at line 257 of file database\&.hh\&.
+.SS "bool EquateSymbol::isValueClose (\fBuintb\fP op2Value, int4 size) const"
+
+.PP
+Is the given value similar to \fBthis\fP equate\&. An \fBEquateSymbol\fP should survive certain kinds of transforms during decompilation, such as negation, twos-complementing, adding or subtracting 1\&. Return \fBtrue\fP if the given value looks like a transform of this type relative to the underlying value of \fBthis\fP equate\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2Value\fP is the given value 
+.br
+\fIsize\fP is the number of bytes of precision 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if it is a transformed form 
+.RE
+.PP
+
+.PP
+Definition at line 497 of file database\&.cc\&.
+.SS "void EquateSymbol::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Definition at line 526 of file database\&.cc\&.
+.SS "void EquateSymbol::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Definition at line 516 of file database\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

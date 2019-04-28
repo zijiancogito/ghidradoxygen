@@ -1,0 +1,80 @@
+.TH "TypeFactoryGhidra" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeFactoryGhidra \- An implementation of the \fBTypeFactory\fP interface, query a Ghidra client for data-type information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typegrp_ghidra\&.hh>\fP
+.PP
+Inherits \fBTypeFactory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeFactoryGhidra\fP (\fBArchitectureGhidra\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~TypeFactoryGhidra\fP (void)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBfindById\fP (const string &n, uint8 id)"
+.br
+.RI "Search by name and id\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An implementation of the \fBTypeFactory\fP interface, query a Ghidra client for data-type information\&. 
+
+Requests for a specific data-type name and id are marshaled to the Ghidra client, which sends back a description of the data-type\&. The description is parsed and converted into a \fBDatatype\fP object and cached in this object\&. 
+.PP
+Definition at line 30 of file typegrp_ghidra\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeFactoryGhidra::TypeFactoryGhidra (\fBArchitectureGhidra\fP * g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 34 of file typegrp_ghidra\&.hh\&.
+.SS "virtual TypeFactoryGhidra::~TypeFactoryGhidra (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 35 of file typegrp_ghidra\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDatatype\fP * TypeFactoryGhidra::findById (const string & n, uint8 id)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Search by name and id\&. Search for a \fBDatatype\fP by \fBname\fP and/or \fBid\fP\&. Derived classes may search outside this container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP is the name of the data-type 
+.br
+\fIid\fP is the type id of the data-type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBDatatype\fP object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeFactory\fP\&.
+.PP
+Definition at line 19 of file typegrp_ghidra\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

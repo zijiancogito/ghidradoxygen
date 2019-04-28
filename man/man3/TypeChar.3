@@ -1,0 +1,97 @@
+.TH "TypeChar" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeChar \- Base type for character data-types: i\&.e\&. char\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBTypeBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeChar\fP (const \fBTypeChar\fP &op)"
+.br
+.RI "Construct \fBTypeChar\fP copying properties from another data-type\&. "
+.ti -1c
+.RI "\fBTypeChar\fP (const string &n)"
+.br
+.RI "Construct a char (always 1-byte) given a name\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base type for character data-types: i\&.e\&. char\&. 
+
+This is always presumed to be UTF-8 encoded 
+.PP
+Definition at line 173 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeChar::TypeChar (const \fBTypeChar\fP & op)\fC [inline]\fP"
+
+.PP
+Construct \fBTypeChar\fP copying properties from another data-type\&. 
+.PP
+Definition at line 178 of file type\&.hh\&.
+.SS "TypeChar::TypeChar (const string & n)\fC [inline]\fP"
+
+.PP
+Construct a char (always 1-byte) given a name\&. 
+.PP
+Definition at line 180 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* TypeChar::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Reimplemented from \fBTypeBase\fP\&.
+.PP
+Definition at line 181 of file type\&.hh\&.
+.SS "void TypeChar::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 329 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 175 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,882 @@
+\hypertarget{class_code_data_analysis}{}\section{Code\+Data\+Analysis Class Reference}
+\label{class_code_data_analysis}\index{CodeDataAnalysis@{CodeDataAnalysis}}
+
+
+{\ttfamily \#include $<$codedata.\+hh$>$}
+
+
+
+Inheritance diagram for Code\+Data\+Analysis\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{class_code_data_analysis__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Code\+Data\+Analysis\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_code_data_analysis_aafb112248968cfe4a812d27b022703af}{$\sim$\+Code\+Data\+Analysis}} (void)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a0d201fd15ac961362b9dc8b51134bea3}{init}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_aa8cc98d84537294fa40b2f6dd9dce67c}{push\+Taint\+Address}} (const \mbox{\hyperlink{class_address}{Address}} \&addr)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_af81c1c8ff3416ae4487a9d81eb0c1df3}{process\+Taint}} (void)
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_code_data_analysis_aa6c8fe296a63965974a3cc279e1a7c65}{commit\+Code\+Vec}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, vector$<$ \mbox{\hyperlink{class_code_unit}{Code\+Unit}} $>$ \&codevec, map$<$ \mbox{\hyperlink{struct_addr_link}{Addr\+Link}}, uint4 $>$ \&fromto\+\_\+vec)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a8f2c1a7e1a417f0333a5974afdc0e995}{clear\+Hit\+By}} (void)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a0a06f9379e9589429827bd9aa4cd8b0a}{clear\+Cross\+Refs}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&endaddr)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_afa5b4f6f0ba4c12e7700fbf5738c32e7}{clear\+Code\+Units}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&endaddr)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a67d42a5bdfb0801cb8ae03e4d8c5b021}{add\+Target}} (const string \&nm, const \mbox{\hyperlink{class_address}{Address}} \&addr, uint4 mask)
+\item 
+int4 \mbox{\hyperlink{class_code_data_analysis_a1f9e8eeaba902f353013deeb95ccf20c}{get\+Num\+Targets}} (void) const
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_code_data_analysis_adee07d792d5bf97891fb5d79c3c44d3a}{disassemble\+Block}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, const \mbox{\hyperlink{class_address}{Address}} \&endaddr)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a723b35a19d5263fbcc3ed8b31e244758}{disassemble\+Range}} (const \mbox{\hyperlink{class_range}{Range}} \&range)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a150d37b82ebb1e11dea740e5b0d370d5}{disassemble\+Range\+List}} (const \mbox{\hyperlink{class_range_list}{Range\+List}} \&rangelist)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_ae2dec2b15124c18ebc197f1e21efe357}{find\+Not\+Code\+Units}} (void)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_acfa3dd51339107e25b206a6b7f5fd3ab}{mark\+Fallthru\+Hits}} (void)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a1ac3f1a95c3c0ad7a59e15d1027f9909}{mark\+Cross\+Hits}} (void)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_aa393f0d01fea19b3249d4a282bd17b52}{add\+Target\+Hit}} (const \mbox{\hyperlink{class_address}{Address}} \&codeaddr, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} targethit)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_ad565b8a13360e457de73216e3556b583}{resolve\+Thunk\+Hit}} (const \mbox{\hyperlink{class_address}{Address}} \&codeaddr, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} targethit)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a0e11a53182ac0d58d9fc3d9e8231e61e}{find\+Unlinked}} (void)
+\item 
+bool \mbox{\hyperlink{class_code_data_analysis_ab41f0acf673f7cff1aac362a5be63899}{check\+Errant\+Start}} (map$<$ \mbox{\hyperlink{class_address}{Address}}, \mbox{\hyperlink{class_code_unit}{Code\+Unit}} $>$\+::iterator iter)
+\item 
+bool \mbox{\hyperlink{class_code_data_analysis_a0c1f590455ec5bdd79d45bfe73b0a640}{repair\+Jump}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 max)
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_ad069e36b39959763921b330663387d3c}{find\+Off\+Cut}} (void)
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_code_data_analysis_ac296d58998c63e13db49b6164dabc21d}{find\+Function\+Start}} (const \mbox{\hyperlink{class_address}{Address}} \&addr) const
+\item 
+const list$<$ \mbox{\hyperlink{class_target_hit}{Target\+Hit}} $>$ \& \mbox{\hyperlink{class_code_data_analysis_a22b2269201919435d22089b292976e56}{get\+Target\+Hits}} (void) const
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a6bbc01214c5235583b79a2e9f014bfbf}{dump\+Model\+Hits}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a0bc5f3f9fe210f9602025884b41a39aa}{dump\+Cross\+Refs}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a4929ff0dbefe9f019e29f675d2a8d16e}{dump\+Function\+Starts}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_a1817d772abce6c94e56ce48ba36b9058}{dump\+Unlinked}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_af1e3bf0ac6da27639cfcd8cb22f931d6}{dump\+Target\+Hits}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_code_data_analysis_af2376b45db9a51691d61a95d07220786}{run\+Model}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int4 \mbox{\hyperlink{class_code_data_analysis_a1f4e342373fe3b26b02fc9cc07fc4cde}{alignment}}
+\item 
+\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_code_data_analysis_a3c42ba4de31cfbe754538420bc1c3281}{glb}}
+\item 
+\mbox{\hyperlink{class_disassembly_engine}{Disassembly\+Engine}} \mbox{\hyperlink{class_code_data_analysis_a9ae1dd22443a06992d53129be1e97404}{disengine}}
+\item 
+\mbox{\hyperlink{class_range_list}{Range\+List}} \mbox{\hyperlink{class_code_data_analysis_a626bdcd7e8956d51c4ea0ed0c1473a40}{modelhits}}
+\item 
+map$<$ \mbox{\hyperlink{class_address}{Address}}, \mbox{\hyperlink{class_code_unit}{Code\+Unit}} $>$ \mbox{\hyperlink{class_code_data_analysis_abbf92545b2c660b34199932f22d74523}{codeunit}}
+\item 
+map$<$ \mbox{\hyperlink{struct_addr_link}{Addr\+Link}}, uint4 $>$ \mbox{\hyperlink{class_code_data_analysis_aa4095aa8e677214f3a6b7abe817d24f4}{fromto\+\_\+crossref}}
+\item 
+map$<$ \mbox{\hyperlink{struct_addr_link}{Addr\+Link}}, uint4 $>$ \mbox{\hyperlink{class_code_data_analysis_ac284b65ea4121cecbeeac54fdb466cee}{tofrom\+\_\+crossref}}
+\item 
+list$<$ map$<$ \mbox{\hyperlink{class_address}{Address}}, \mbox{\hyperlink{class_code_unit}{Code\+Unit}} $>$\+::iterator $>$ \mbox{\hyperlink{class_code_data_analysis_aeaaace760ea39195437919ece684c69c}{taintlist}}
+\item 
+list$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \mbox{\hyperlink{class_code_data_analysis_a3d2f7273689a3802d8b2aa615c6352a5}{unlinkedstarts}}
+\item 
+list$<$ \mbox{\hyperlink{class_target_hit}{Target\+Hit}} $>$ \mbox{\hyperlink{class_code_data_analysis_aae3eb34a130a61c4b6ddfb688a10ac3d}{targethits}}
+\item 
+map$<$ \mbox{\hyperlink{class_address}{Address}}, \mbox{\hyperlink{struct_target_feature}{Target\+Feature}} $>$ \mbox{\hyperlink{class_code_data_analysis_a07bd461ce70fb7e87a8f8e62378ca857}{targets}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 99 of file codedata.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_code_data_analysis_aafb112248968cfe4a812d27b022703af}\label{class_code_data_analysis_aafb112248968cfe4a812d27b022703af}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!````~CodeDataAnalysis@{$\sim$CodeDataAnalysis}}
+\index{````~CodeDataAnalysis@{$\sim$CodeDataAnalysis}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{$\sim$CodeDataAnalysis()}{~CodeDataAnalysis()}}
+{\footnotesize\ttfamily virtual Code\+Data\+Analysis\+::$\sim$\+Code\+Data\+Analysis (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 112 of file codedata.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_code_data_analysis_a67d42a5bdfb0801cb8ae03e4d8c5b021}\label{class_code_data_analysis_a67d42a5bdfb0801cb8ae03e4d8c5b021}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!addTarget@{addTarget}}
+\index{addTarget@{addTarget}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{addTarget()}{addTarget()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::add\+Target (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{uint4}]{mask }\end{DoxyParamCaption})}
+
+
+
+Definition at line 240 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a67d42a5bdfb0801cb8ae03e4d8c5b021_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a67d42a5bdfb0801cb8ae03e4d8c5b021_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_aa393f0d01fea19b3249d4a282bd17b52}\label{class_code_data_analysis_aa393f0d01fea19b3249d4a282bd17b52}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!addTargetHit@{addTargetHit}}
+\index{addTargetHit@{addTargetHit}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{addTargetHit()}{addTargetHit()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::add\+Target\+Hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{codeaddr,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{targethit }\end{DoxyParamCaption})}
+
+
+
+Definition at line 429 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_aa393f0d01fea19b3249d4a282bd17b52_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_aa393f0d01fea19b3249d4a282bd17b52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_ab41f0acf673f7cff1aac362a5be63899}\label{class_code_data_analysis_ab41f0acf673f7cff1aac362a5be63899}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!checkErrantStart@{checkErrantStart}}
+\index{checkErrantStart@{checkErrantStart}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{checkErrantStart()}{checkErrantStart()}}
+{\footnotesize\ttfamily bool Code\+Data\+Analysis\+::check\+Errant\+Start (\begin{DoxyParamCaption}\item[{map$<$ \mbox{\hyperlink{class_address}{Address}}, \mbox{\hyperlink{class_code_unit}{Code\+Unit}} $>$\+::iterator}]{iter }\end{DoxyParamCaption})}
+
+
+
+Definition at line 484 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ab41f0acf673f7cff1aac362a5be63899_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_afa5b4f6f0ba4c12e7700fbf5738c32e7}\label{class_code_data_analysis_afa5b4f6f0ba4c12e7700fbf5738c32e7}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!clearCodeUnits@{clearCodeUnits}}
+\index{clearCodeUnits@{clearCodeUnits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{clearCodeUnits()}{clearCodeUnits()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::clear\+Code\+Units (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{endaddr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 249 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_afa5b4f6f0ba4c12e7700fbf5738c32e7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_afa5b4f6f0ba4c12e7700fbf5738c32e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a0a06f9379e9589429827bd9aa4cd8b0a}\label{class_code_data_analysis_a0a06f9379e9589429827bd9aa4cd8b0a}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!clearCrossRefs@{clearCrossRefs}}
+\index{clearCrossRefs@{clearCrossRefs}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{clearCrossRefs()}{clearCrossRefs()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::clear\+Cross\+Refs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{endaddr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 224 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0a06f9379e9589429827bd9aa4cd8b0a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a8f2c1a7e1a417f0333a5974afdc0e995}\label{class_code_data_analysis_a8f2c1a7e1a417f0333a5974afdc0e995}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!clearHitBy@{clearHitBy}}
+\index{clearHitBy@{clearHitBy}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{clearHitBy()}{clearHitBy()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::clear\+Hit\+By (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 213 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a8f2c1a7e1a417f0333a5974afdc0e995_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_aa6c8fe296a63965974a3cc279e1a7c65}\label{class_code_data_analysis_aa6c8fe296a63965974a3cc279e1a7c65}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!commitCodeVec@{commitCodeVec}}
+\index{commitCodeVec@{commitCodeVec}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{commitCodeVec()}{commitCodeVec()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Code\+Data\+Analysis\+::commit\+Code\+Vec (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{vector$<$ \mbox{\hyperlink{class_code_unit}{Code\+Unit}} $>$ \&}]{codevec,  }\item[{map$<$ \mbox{\hyperlink{struct_addr_link}{Addr\+Link}}, uint4 $>$ \&}]{fromto\+\_\+vec }\end{DoxyParamCaption})}
+
+
+
+Definition at line 195 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_aa6c8fe296a63965974a3cc279e1a7c65_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_adee07d792d5bf97891fb5d79c3c44d3a}\label{class_code_data_analysis_adee07d792d5bf97891fb5d79c3c44d3a}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!disassembleBlock@{disassembleBlock}}
+\index{disassembleBlock@{disassembleBlock}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{disassembleBlock()}{disassembleBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Code\+Data\+Analysis\+::disassemble\+Block (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{endaddr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 260 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_adee07d792d5bf97891fb5d79c3c44d3a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_adee07d792d5bf97891fb5d79c3c44d3a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a723b35a19d5263fbcc3ed8b31e244758}\label{class_code_data_analysis_a723b35a19d5263fbcc3ed8b31e244758}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!disassembleRange@{disassembleRange}}
+\index{disassembleRange@{disassembleRange}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{disassembleRange()}{disassembleRange()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::disassemble\+Range (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_range}{Range}} \&}]{range }\end{DoxyParamCaption})}
+
+
+
+Definition at line 354 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a723b35a19d5263fbcc3ed8b31e244758_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a723b35a19d5263fbcc3ed8b31e244758_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a150d37b82ebb1e11dea740e5b0d370d5}\label{class_code_data_analysis_a150d37b82ebb1e11dea740e5b0d370d5}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!disassembleRangeList@{disassembleRangeList}}
+\index{disassembleRangeList@{disassembleRangeList}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{disassembleRangeList()}{disassembleRangeList()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::disassemble\+Range\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_range_list}{Range\+List}} \&}]{rangelist }\end{DoxyParamCaption})}
+
+
+
+Definition at line 364 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a150d37b82ebb1e11dea740e5b0d370d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a150d37b82ebb1e11dea740e5b0d370d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a0bc5f3f9fe210f9602025884b41a39aa}\label{class_code_data_analysis_a0bc5f3f9fe210f9602025884b41a39aa}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!dumpCrossRefs@{dumpCrossRefs}}
+\index{dumpCrossRefs@{dumpCrossRefs}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{dumpCrossRefs()}{dumpCrossRefs()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::dump\+Cross\+Refs (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 622 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0bc5f3f9fe210f9602025884b41a39aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a4929ff0dbefe9f019e29f675d2a8d16e}\label{class_code_data_analysis_a4929ff0dbefe9f019e29f675d2a8d16e}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!dumpFunctionStarts@{dumpFunctionStarts}}
+\index{dumpFunctionStarts@{dumpFunctionStarts}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{dumpFunctionStarts()}{dumpFunctionStarts()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::dump\+Function\+Starts (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 638 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a4929ff0dbefe9f019e29f675d2a8d16e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a6bbc01214c5235583b79a2e9f014bfbf}\label{class_code_data_analysis_a6bbc01214c5235583b79a2e9f014bfbf}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!dumpModelHits@{dumpModelHits}}
+\index{dumpModelHits@{dumpModelHits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{dumpModelHits()}{dumpModelHits()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::dump\+Model\+Hits (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 602 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a6bbc01214c5235583b79a2e9f014bfbf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a6bbc01214c5235583b79a2e9f014bfbf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_af1e3bf0ac6da27639cfcd8cb22f931d6}\label{class_code_data_analysis_af1e3bf0ac6da27639cfcd8cb22f931d6}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!dumpTargetHits@{dumpTargetHits}}
+\index{dumpTargetHits@{dumpTargetHits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{dumpTargetHits()}{dumpTargetHits()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::dump\+Target\+Hits (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 662 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_af1e3bf0ac6da27639cfcd8cb22f931d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a1817d772abce6c94e56ce48ba36b9058}\label{class_code_data_analysis_a1817d772abce6c94e56ce48ba36b9058}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!dumpUnlinked@{dumpUnlinked}}
+\index{dumpUnlinked@{dumpUnlinked}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{dumpUnlinked()}{dumpUnlinked()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::dump\+Unlinked (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 652 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a1817d772abce6c94e56ce48ba36b9058_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_ac296d58998c63e13db49b6164dabc21d}\label{class_code_data_analysis_ac296d58998c63e13db49b6164dabc21d}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!findFunctionStart@{findFunctionStart}}
+\index{findFunctionStart@{findFunctionStart}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{findFunctionStart()}{findFunctionStart()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Code\+Data\+Analysis\+::find\+Function\+Start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 588 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ac296d58998c63e13db49b6164dabc21d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_ae2dec2b15124c18ebc197f1e21efe357}\label{class_code_data_analysis_ae2dec2b15124c18ebc197f1e21efe357}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!findNotCodeUnits@{findNotCodeUnits}}
+\index{findNotCodeUnits@{findNotCodeUnits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{findNotCodeUnits()}{findNotCodeUnits()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::find\+Not\+Code\+Units (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 377 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ae2dec2b15124c18ebc197f1e21efe357_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ae2dec2b15124c18ebc197f1e21efe357_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_ad069e36b39959763921b330663387d3c}\label{class_code_data_analysis_ad069e36b39959763921b330663387d3c}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!findOffCut@{findOffCut}}
+\index{findOffCut@{findOffCut}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{findOffCut()}{findOffCut()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::find\+Off\+Cut (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 541 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ad069e36b39959763921b330663387d3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ad069e36b39959763921b330663387d3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a0e11a53182ac0d58d9fc3d9e8231e61e}\label{class_code_data_analysis_a0e11a53182ac0d58d9fc3d9e8231e61e}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!findUnlinked@{findUnlinked}}
+\index{findUnlinked@{findUnlinked}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{findUnlinked()}{findUnlinked()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::find\+Unlinked (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 461 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0e11a53182ac0d58d9fc3d9e8231e61e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0e11a53182ac0d58d9fc3d9e8231e61e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a1f9e8eeaba902f353013deeb95ccf20c}\label{class_code_data_analysis_a1f9e8eeaba902f353013deeb95ccf20c}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!getNumTargets@{getNumTargets}}
+\index{getNumTargets@{getNumTargets}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{getNumTargets()}{getNumTargets()}}
+{\footnotesize\ttfamily int4 Code\+Data\+Analysis\+::get\+Num\+Targets (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 121 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_a22b2269201919435d22089b292976e56}\label{class_code_data_analysis_a22b2269201919435d22089b292976e56}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!getTargetHits@{getTargetHits}}
+\index{getTargetHits@{getTargetHits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{getTargetHits()}{getTargetHits()}}
+{\footnotesize\ttfamily const list$<$\mbox{\hyperlink{class_target_hit}{Target\+Hit}}$>$\& Code\+Data\+Analysis\+::get\+Target\+Hits (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 135 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_a0d201fd15ac961362b9dc8b51134bea3}\label{class_code_data_analysis_a0d201fd15ac961362b9dc8b51134bea3}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!init@{init}}
+\index{init@{init}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Definition at line 131 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0d201fd15ac961362b9dc8b51134bea3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0d201fd15ac961362b9dc8b51134bea3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a1ac3f1a95c3c0ad7a59e15d1027f9909}\label{class_code_data_analysis_a1ac3f1a95c3c0ad7a59e15d1027f9909}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!markCrossHits@{markCrossHits}}
+\index{markCrossHits@{markCrossHits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{markCrossHits()}{markCrossHits()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::mark\+Cross\+Hits (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 411 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a1ac3f1a95c3c0ad7a59e15d1027f9909_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_acfa3dd51339107e25b206a6b7f5fd3ab}\label{class_code_data_analysis_acfa3dd51339107e25b206a6b7f5fd3ab}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!markFallthruHits@{markFallthruHits}}
+\index{markFallthruHits@{markFallthruHits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{markFallthruHits()}{markFallthruHits()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::mark\+Fallthru\+Hits (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 394 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_acfa3dd51339107e25b206a6b7f5fd3ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_af81c1c8ff3416ae4487a9d81eb0c1df3}\label{class_code_data_analysis_af81c1c8ff3416ae4487a9d81eb0c1df3}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!processTaint@{processTaint}}
+\index{processTaint@{processTaint}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{processTaint()}{processTaint()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::process\+Taint (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 161 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_af81c1c8ff3416ae4487a9d81eb0c1df3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_af81c1c8ff3416ae4487a9d81eb0c1df3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_aa8cc98d84537294fa40b2f6dd9dce67c}\label{class_code_data_analysis_aa8cc98d84537294fa40b2f6dd9dce67c}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!pushTaintAddress@{pushTaintAddress}}
+\index{pushTaintAddress@{pushTaintAddress}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{pushTaintAddress()}{pushTaintAddress()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::push\+Taint\+Address (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 147 of file codedata.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_aa8cc98d84537294fa40b2f6dd9dce67c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_a0c1f590455ec5bdd79d45bfe73b0a640}\label{class_code_data_analysis_a0c1f590455ec5bdd79d45bfe73b0a640}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!repairJump@{repairJump}}
+\index{repairJump@{repairJump}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{repairJump()}{repairJump()}}
+{\footnotesize\ttfamily bool Code\+Data\+Analysis\+::repair\+Jump (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{max }\end{DoxyParamCaption})}
+
+
+
+Definition at line 504 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0c1f590455ec5bdd79d45bfe73b0a640_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_a0c1f590455ec5bdd79d45bfe73b0a640_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_ad565b8a13360e457de73216e3556b583}\label{class_code_data_analysis_ad565b8a13360e457de73216e3556b583}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!resolveThunkHit@{resolveThunkHit}}
+\index{resolveThunkHit@{resolveThunkHit}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{resolveThunkHit()}{resolveThunkHit()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::resolve\+Thunk\+Hit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{codeaddr,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{targethit }\end{DoxyParamCaption})}
+
+
+
+Definition at line 444 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ad565b8a13360e457de73216e3556b583_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_ad565b8a13360e457de73216e3556b583_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_code_data_analysis_af2376b45db9a51691d61a95d07220786}\label{class_code_data_analysis_af2376b45db9a51691d61a95d07220786}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!runModel@{runModel}}
+\index{runModel@{runModel}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{runModel()}{runModel()}}
+{\footnotesize\ttfamily void Code\+Data\+Analysis\+::run\+Model (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 679 of file codedata.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_af2376b45db9a51691d61a95d07220786_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_code_data_analysis_af2376b45db9a51691d61a95d07220786_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_code_data_analysis_a1f4e342373fe3b26b02fc9cc07fc4cde}\label{class_code_data_analysis_a1f4e342373fe3b26b02fc9cc07fc4cde}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!alignment@{alignment}}
+\index{alignment@{alignment}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{alignment}{alignment}}
+{\footnotesize\ttfamily int4 Code\+Data\+Analysis\+::alignment}
+
+
+
+Definition at line 101 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_abbf92545b2c660b34199932f22d74523}\label{class_code_data_analysis_abbf92545b2c660b34199932f22d74523}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!codeunit@{codeunit}}
+\index{codeunit@{codeunit}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{codeunit}{codeunit}}
+{\footnotesize\ttfamily map$<$\mbox{\hyperlink{class_address}{Address}},\mbox{\hyperlink{class_code_unit}{Code\+Unit}}$>$ Code\+Data\+Analysis\+::codeunit}
+
+
+
+Definition at line 105 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_a9ae1dd22443a06992d53129be1e97404}\label{class_code_data_analysis_a9ae1dd22443a06992d53129be1e97404}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!disengine@{disengine}}
+\index{disengine@{disengine}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{disengine}{disengine}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_disassembly_engine}{Disassembly\+Engine}} Code\+Data\+Analysis\+::disengine}
+
+
+
+Definition at line 103 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_aa4095aa8e677214f3a6b7abe817d24f4}\label{class_code_data_analysis_aa4095aa8e677214f3a6b7abe817d24f4}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!fromto\_crossref@{fromto\_crossref}}
+\index{fromto\_crossref@{fromto\_crossref}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{fromto\_crossref}{fromto\_crossref}}
+{\footnotesize\ttfamily map$<$\mbox{\hyperlink{struct_addr_link}{Addr\+Link}},uint4$>$ Code\+Data\+Analysis\+::fromto\+\_\+crossref}
+
+
+
+Definition at line 106 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_a3c42ba4de31cfbe754538420bc1c3281}\label{class_code_data_analysis_a3c42ba4de31cfbe754538420bc1c3281}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!glb@{glb}}
+\index{glb@{glb}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{glb}{glb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ Code\+Data\+Analysis\+::glb}
+
+
+
+Definition at line 102 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_a626bdcd7e8956d51c4ea0ed0c1473a40}\label{class_code_data_analysis_a626bdcd7e8956d51c4ea0ed0c1473a40}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!modelhits@{modelhits}}
+\index{modelhits@{modelhits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{modelhits}{modelhits}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_range_list}{Range\+List}} Code\+Data\+Analysis\+::modelhits}
+
+
+
+Definition at line 104 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_aeaaace760ea39195437919ece684c69c}\label{class_code_data_analysis_aeaaace760ea39195437919ece684c69c}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!taintlist@{taintlist}}
+\index{taintlist@{taintlist}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{taintlist}{taintlist}}
+{\footnotesize\ttfamily list$<$map$<$\mbox{\hyperlink{class_address}{Address}},\mbox{\hyperlink{class_code_unit}{Code\+Unit}}$>$\+::iterator$>$ Code\+Data\+Analysis\+::taintlist}
+
+
+
+Definition at line 108 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_aae3eb34a130a61c4b6ddfb688a10ac3d}\label{class_code_data_analysis_aae3eb34a130a61c4b6ddfb688a10ac3d}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!targethits@{targethits}}
+\index{targethits@{targethits}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{targethits}{targethits}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_target_hit}{Target\+Hit}}$>$ Code\+Data\+Analysis\+::targethits}
+
+
+
+Definition at line 110 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_a07bd461ce70fb7e87a8f8e62378ca857}\label{class_code_data_analysis_a07bd461ce70fb7e87a8f8e62378ca857}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!targets@{targets}}
+\index{targets@{targets}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{targets}{targets}}
+{\footnotesize\ttfamily map$<$\mbox{\hyperlink{class_address}{Address}},\mbox{\hyperlink{struct_target_feature}{Target\+Feature}}$>$ Code\+Data\+Analysis\+::targets}
+
+
+
+Definition at line 111 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_ac284b65ea4121cecbeeac54fdb466cee}\label{class_code_data_analysis_ac284b65ea4121cecbeeac54fdb466cee}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!tofrom\_crossref@{tofrom\_crossref}}
+\index{tofrom\_crossref@{tofrom\_crossref}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{tofrom\_crossref}{tofrom\_crossref}}
+{\footnotesize\ttfamily map$<$\mbox{\hyperlink{struct_addr_link}{Addr\+Link}},uint4$>$ Code\+Data\+Analysis\+::tofrom\+\_\+crossref}
+
+
+
+Definition at line 107 of file codedata.\+hh.
+
+\mbox{\Hypertarget{class_code_data_analysis_a3d2f7273689a3802d8b2aa615c6352a5}\label{class_code_data_analysis_a3d2f7273689a3802d8b2aa615c6352a5}} 
+\index{CodeDataAnalysis@{CodeDataAnalysis}!unlinkedstarts@{unlinkedstarts}}
+\index{unlinkedstarts@{unlinkedstarts}!CodeDataAnalysis@{CodeDataAnalysis}}
+\subsubsection{\texorpdfstring{unlinkedstarts}{unlinkedstarts}}
+{\footnotesize\ttfamily list$<$\mbox{\hyperlink{class_address}{Address}}$>$ Code\+Data\+Analysis\+::unlinkedstarts}
+
+
+
+Definition at line 109 of file codedata.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{codedata_8hh}{codedata.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{codedata_8cc}{codedata.\+cc}}\end{DoxyCompactItemize}

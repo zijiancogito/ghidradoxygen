@@ -1,0 +1,83 @@
+.TH "PcodeEmitCache" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeEmitCache \- P-code emitter that dumps its raw Varnodes and PcodeOps to an in memory cache\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emulate\&.hh>\fP
+.PP
+Inherits \fBPcodeEmit\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPcodeEmitCache\fP (vector< \fBPcodeOpRaw\fP * > &ocache, vector< \fBVarnodeData\fP * > &vcache, const vector< \fBOpBehavior\fP * > &in, \fBuintb\fP uniqReserve)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBdump\fP (const \fBAddress\fP &addr, \fBOpCode\fP opc, \fBVarnodeData\fP *outvar, \fBVarnodeData\fP *vars, int4 isize)"
+.br
+.RI "The main pcode emit method\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+P-code emitter that dumps its raw Varnodes and PcodeOps to an in memory cache\&. 
+
+This is used for emulation when full \fBVarnode\fP and \fBPcodeOp\fP objects aren't needed 
+.PP
+Definition at line 278 of file emulate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PcodeEmitCache::PcodeEmitCache (vector< \fBPcodeOpRaw\fP * > & ocache, vector< \fBVarnodeData\fP * > & vcache, const vector< \fBOpBehavior\fP * > & in, \fBuintb\fP uniqReserve)"
+
+.PP
+\fBConstructor\fP\&. Provide the emitter with the containers that will hold the cached p-code ops and varnodes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIocache\fP is the container for cached \fBPcodeOpRaw\fP 
+.br
+\fIvcache\fP is the container for cached \fBVarnodeData\fP 
+.br
+\fIin\fP is the map of \fBOpBehavior\fP 
+.br
+\fIuniqReserve\fP is the starting offset for temporaries in the \fIunique\fP space 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file emulate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void PcodeEmitCache::dump (const \fBAddress\fP & addr, \fBOpCode\fP opc, \fBVarnodeData\fP * outvar, \fBVarnodeData\fP * vars, int4 isize)\fC [virtual]\fP"
+
+.PP
+The main pcode emit method\&. A single pcode instruction is returned to the application via this method\&. Particular applications override it to tailor how the operations are used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fBAddress\fP of the machine instruction 
+.br
+\fIopc\fP is the opcode of the particular pcode instruction 
+.br
+\fIoutvar\fP if not \fInull\fP is a pointer to data about the output varnode 
+.br
+\fIvars\fP is a pointer to an array of \fBVarnodeData\fP for each input varnode 
+.br
+\fIisize\fP is the number of input varnodes 
+.RE
+.PP
+
+.PP
+Implements \fBPcodeEmit\fP\&.
+.PP
+Definition at line 121 of file emulate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

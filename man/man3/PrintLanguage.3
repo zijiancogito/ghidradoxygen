@@ -1,0 +1,2164 @@
+.TH "PrintLanguage" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PrintLanguage \- The base class API for emitting a high-level language\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <printlanguage\&.hh>\fP
+.PP
+Inherited by \fBPrintC\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBAtom\fP"
+.br
+.RI "A single non-operator token emitted by the decompiler\&. "
+.ti -1c
+.RI "struct \fBNodePending\fP"
+.br
+.RI "A pending data-flow node; waiting to be placed on the reverse polish notation stack\&. "
+.ti -1c
+.RI "struct \fBReversePolish\fP"
+.br
+.RI "An entry on the reverse polish notation (RPN) stack\&. "
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBmodifiers\fP { \fBforce_hex\fP = 1, \fBforce_dec\fP = 2, \fBbestfit\fP = 4, \fBforce_scinote\fP = 8, \fBforce_pointer\fP = 0x10, \fBprint_load_value\fP = 0x20, \fBprint_store_value\fP = 0x40, \fBno_branch\fP = 0x80, \fBonly_branch\fP = 0x100, \fBcomma_separate\fP = 0x200, \fBflat\fP = 0x400, \fBfalsebranch\fP = 0x800, \fBnofallthru\fP = 0x1000, \fBnegatetoken\fP = 0x2000, \fBhide_thisparam\fP = 0x4000 }"
+.br
+.RI "Possible context sensitive modifiers to how tokens get emitted\&. "
+.ti -1c
+.RI "enum \fBtagtype\fP { \fBsyntax\fP, \fBvartoken\fP, \fBfunctoken\fP, \fBoptoken\fP, \fBtypetoken\fP, \fBfieldtoken\fP, \fBblanktoken\fP }"
+.br
+.RI "Possible types of \fBAtom\fP\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPrintLanguage\fP (\fBArchitecture\fP *g, const string &nm)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~PrintLanguage\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the language name\&. "
+.ti -1c
+.RI "\fBCastStrategy\fP * \fBgetCastStrategy\fP (void) const"
+.br
+.RI "Get the casting strategy for the language\&. "
+.ti -1c
+.RI "ostream * \fBgetOutputStream\fP (void) const"
+.br
+.RI "Get the output stream being emitted to\&. "
+.ti -1c
+.RI "void \fBsetOutputStream\fP (ostream *t)"
+.br
+.RI "Set the output stream to emit to\&. "
+.ti -1c
+.RI "void \fBsetScope\fP (\fBScope\fP *sc)"
+.br
+.RI "Set the current \fBSymbol\fP scope\&. "
+.ti -1c
+.RI "void \fBsetMaxLineSize\fP (int4 mls)"
+.br
+.RI "Set the maximum number of characters per line\&. "
+.ti -1c
+.RI "void \fBsetIndentIncrement\fP (int4 inc)"
+.br
+.RI "Set the number of characters to indent per level of code nesting\&. "
+.ti -1c
+.RI "void \fBsetLineCommentIndent\fP (int4 val)"
+.br
+.RI "Set the number of characters to indent comment lines\&. "
+.ti -1c
+.RI "void \fBsetCommentDelimeter\fP (const string &start, const string &stop, bool usecommentfill)"
+.br
+.RI "Establish comment delimiters for the language\&. "
+.ti -1c
+.RI "uint4 \fBgetInstructionComment\fP (void) const"
+.br
+.RI "Get the type of comments suitable within the body of a function\&. "
+.ti -1c
+.RI "void \fBsetInstructionComment\fP (uint4 val)"
+.br
+.RI "Set the type of comments suitable within the body of a function\&. "
+.ti -1c
+.RI "uint4 \fBgetHeaderComment\fP (void) const"
+.br
+.RI "Get the type of comments suitable for a function header\&. "
+.ti -1c
+.RI "void \fBsetHeaderComment\fP (uint4 val)"
+.br
+.RI "Set the type of comments suitable for a function header\&. "
+.ti -1c
+.RI "bool \fBemitsXml\fP (void) const"
+.br
+.RI "Does the low-level emitter, emit XML markup\&. "
+.ti -1c
+.RI "void \fBsetXML\fP (bool val)"
+.br
+.RI "Set whether the low-level emitter, emits XML markup\&. "
+.ti -1c
+.RI "void \fBsetFlat\fP (bool val)"
+.br
+.RI "Set whether nesting code structure should be emitted\&. "
+.ti -1c
+.RI "virtual void \fBadjustTypeOperators\fP (void)=0"
+.br
+.RI "Set basic data-type information for p-code operators\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)"
+.br
+.RI "Clear the RPN stack and the low-level emitter\&. "
+.ti -1c
+.RI "virtual void \fBsetIntegerFormat\fP (const string &nm)"
+.br
+.RI "Set the default integer format\&. "
+.ti -1c
+.RI "virtual void \fBsetCommentStyle\fP (const string &nm)=0"
+.br
+.RI "Set the way comments are displayed in decompiler output\&. "
+.ti -1c
+.RI "virtual bool \fBisCharacterConstant\fP (const uint1 *buf, int4 size, int4 charsize) const =0"
+.br
+.RI "Decide is the given byte array looks like a character string\&. "
+.ti -1c
+.RI "virtual void \fBdocTypeDefinitions\fP (const \fBTypeFactory\fP *typegrp)=0"
+.br
+.RI "Emit definitions of data-types\&. "
+.ti -1c
+.RI "virtual void \fBdocAllGlobals\fP (void)=0"
+.br
+.RI "Emit declarations of global variables\&. "
+.ti -1c
+.RI "virtual void \fBdocSingleGlobal\fP (const \fBSymbol\fP *sym)=0"
+.br
+.RI "Emit the declaration for a single (global) \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBdocFunction\fP (const \fBFuncdata\fP *fd)=0"
+.br
+.RI "Emit the declaration (and body) of a function\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockBasic\fP (const \fBBlockBasic\fP *bb)=0"
+.br
+.RI "Emit statements in a basic block\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockGraph\fP (const \fBBlockGraph\fP *bl)=0"
+.br
+.RI "Emit (an unspecified) list of blocks\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockCopy\fP (const \fBBlockCopy\fP *bl)=0"
+.br
+.RI "Emit a basic block (with any labels) "
+.ti -1c
+.RI "virtual void \fBemitBlockGoto\fP (const \fBBlockGoto\fP *bl)=0"
+.br
+.RI "Emit a block ending with a goto statement\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockLs\fP (const \fBBlockList\fP *bl)=0"
+.br
+.RI "Emit a sequence of blocks\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockCondition\fP (const \fBBlockCondition\fP *bl)=0"
+.br
+.RI "Emit a conditional statement\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockIf\fP (const \fBBlockIf\fP *bl)=0"
+.br
+.RI "Emit an if/else style construct\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockWhileDo\fP (const \fBBlockWhileDo\fP *bl)=0"
+.br
+.RI "Emit a loop structure, check at top\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockDoWhile\fP (const \fBBlockDoWhile\fP *bl)=0"
+.br
+.RI "Emit a loop structure, check at bottom\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockInfLoop\fP (const \fBBlockInfLoop\fP *bl)=0"
+.br
+.RI "Emit an infinite loop structure\&. "
+.ti -1c
+.RI "virtual void \fBemitBlockSwitch\fP (const \fBBlockSwitch\fP *bl)=0"
+.br
+.RI "Emit a switch structure\&. "
+.ti -1c
+.RI "virtual void \fBopCopy\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a COPY operator\&. "
+.ti -1c
+.RI "virtual void \fBopLoad\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a LOAD operator\&. "
+.ti -1c
+.RI "virtual void \fBopStore\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a STORE operator\&. "
+.ti -1c
+.RI "virtual void \fBopBranch\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a BRANCH operator\&. "
+.ti -1c
+.RI "virtual void \fBopCbranch\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a CBRANCH operator\&. "
+.ti -1c
+.RI "virtual void \fBopBranchind\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a BRANCHIND operator\&. "
+.ti -1c
+.RI "virtual void \fBopCall\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a CALL operator\&. "
+.ti -1c
+.RI "virtual void \fBopCallind\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a CALLIND operator\&. "
+.ti -1c
+.RI "virtual void \fBopCallother\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a CALLOTHER operator\&. "
+.ti -1c
+.RI "virtual void \fBopConstructor\fP (const \fBPcodeOp\fP *op, bool withNew)=0"
+.br
+.RI "Emit an operator constructing an object\&. "
+.ti -1c
+.RI "virtual void \fBopReturn\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a RETURN operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntEqual\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_EQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntNotEqual\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_NOTEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSless\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SLESS operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSlessEqual\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SLESSEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntLess\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_LESS operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntLessEqual\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_LESSEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntZext\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_ZEXT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSext\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SEXT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntAdd\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_ADD operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSub\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SUB operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntCarry\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_CARRY operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntScarry\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SCARRY operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSborrow\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SBORROW operator\&. "
+.ti -1c
+.RI "virtual void \fBopInt2Comp\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_2COMP operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntNegate\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_NEGATE operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntXor\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_XOR operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntAnd\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_AND operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntOr\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_OR operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntLeft\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_LEFT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntRight\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_RIGHT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSright\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SRIGHT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntMult\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_MULT operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntDiv\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_DIV operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSdiv\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SDIV operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntRem\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_REM operator\&. "
+.ti -1c
+.RI "virtual void \fBopIntSrem\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INT_SREM operator\&. "
+.ti -1c
+.RI "virtual void \fBopBoolNegate\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a BOOL_NEGATE operator\&. "
+.ti -1c
+.RI "virtual void \fBopBoolXor\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a BOOL_XOR operator\&. "
+.ti -1c
+.RI "virtual void \fBopBoolAnd\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a BOOL_AND operator\&. "
+.ti -1c
+.RI "virtual void \fBopBoolOr\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a BOOL_OR operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatEqual\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_EQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatNotEqual\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_NOTEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatLess\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_LESS operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatLessEqual\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_LESSEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatNan\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_NAN operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatAdd\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_ADD operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatDiv\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_DIV operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatMult\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_MULT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatSub\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_SUB operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatNeg\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_NEG operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatAbs\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_ABS operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatSqrt\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_SQRT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatInt2Float\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_INT2FLOAT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatFloat2Float\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_FLOAT2FLOAT operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatTrunc\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_TRUNC operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatCeil\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_CEIL operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatFloor\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_FLOOR operator\&. "
+.ti -1c
+.RI "virtual void \fBopFloatRound\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a FLOAT_ROUND operator\&. "
+.ti -1c
+.RI "virtual void \fBopMultiequal\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a MULTIEQUAL operator\&. "
+.ti -1c
+.RI "virtual void \fBopIndirect\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a INDIRECT operator\&. "
+.ti -1c
+.RI "virtual void \fBopPiece\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a PIECE operator\&. "
+.ti -1c
+.RI "virtual void \fBopSubpiece\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a SUBPIECE operator\&. "
+.ti -1c
+.RI "virtual void \fBopCast\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a CAST operator\&. "
+.ti -1c
+.RI "virtual void \fBopPtradd\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a PTRADD operator\&. "
+.ti -1c
+.RI "virtual void \fBopPtrsub\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a PTRSUB operator\&. "
+.ti -1c
+.RI "virtual void \fBopSegmentOp\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a SEGMENTOP operator\&. "
+.ti -1c
+.RI "virtual void \fBopCpoolRefOp\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a CPOOLREF operator\&. "
+.ti -1c
+.RI "virtual void \fBopNewOp\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a NEW operator\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int4 \fBmostNaturalBase\fP (\fBuintb\fP val)"
+.br
+.RI "Determine the most natural base for an integer\&. "
+.ti -1c
+.RI "static void \fBformatBinary\fP (ostream &s, \fBuintb\fP val)"
+.br
+.RI "Print a number in binary form\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBisSet\fP (uint4 m) const"
+.br
+.RI "Is the given printing modification active\&. "
+.ti -1c
+.RI "void \fBpushScope\fP (\fBScope\fP *sc)"
+.br
+.RI "Push a new symbol scope\&. "
+.ti -1c
+.RI "void \fBpopScope\fP (void)"
+.br
+.RI "Pop to the previous symbol scope\&. "
+.ti -1c
+.RI "void \fBpushMod\fP (void)"
+.br
+.RI "Push current printing modifications to the stack\&. "
+.ti -1c
+.RI "void \fBpopMod\fP (void)"
+.br
+.RI "Pop to the previous printing modifications\&. "
+.ti -1c
+.RI "void \fBsetMod\fP (uint4 m)"
+.br
+.RI "Activate the given printing modification\&. "
+.ti -1c
+.RI "void \fBunsetMod\fP (uint4 m)"
+.br
+.RI "Deactivate the given printing modification\&. "
+.ti -1c
+.RI "void \fBpushOp\fP (const \fBOpToken\fP *tok, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push an operator token onto the RPN stack\&. "
+.ti -1c
+.RI "void \fBpushAtom\fP (const \fBAtom\fP &atom)"
+.br
+.RI "Push a variable token onto the RPN stack\&. "
+.ti -1c
+.RI "void \fBpushVnImplied\fP (const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op, uint4 m)"
+.br
+.RI "Push an implied variable onto the RPN stack\&. "
+.ti -1c
+.RI "void \fBpushVnExplicit\fP (const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push an explicit variable onto the RPN stack\&. "
+.ti -1c
+.RI "void \fBpushVnLHS\fP (const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a variable as the left-hand side of an expression\&. "
+.ti -1c
+.RI "void \fBemitOp\fP (const \fBReversePolish\fP &entry)"
+.br
+.RI "Send an operator token from the RPN to the emitter\&. "
+.ti -1c
+.RI "void \fBemitAtom\fP (const \fBAtom\fP &atom)"
+.br
+.RI "Send an variable token from the RPN to the emitter\&. "
+.ti -1c
+.RI "bool \fBescapeCharacterData\fP (ostream &s, const uint1 *buf, int4 count, int4 charsize, bool bigend) const"
+.br
+.RI "Emit a byte buffer to the stream as unicode characters\&. "
+.ti -1c
+.RI "void \fBrecurse\fP (void)"
+.br
+.RI "Emit from the RPN stack as much as possible\&. "
+.ti -1c
+.RI "void \fBopBinary\fP (const \fBOpToken\fP *tok, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a binary operator onto the RPN stack\&. "
+.ti -1c
+.RI "void \fBopUnary\fP (const \fBOpToken\fP *tok, const \fBPcodeOp\fP *op)"
+.br
+.RI "Push a unary operator onto the RPN stack\&. "
+.ti -1c
+.RI "int4 \fBgetPending\fP (void) const"
+.br
+.RI "Get the number of pending nodes yet to be put on the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBprintUnicode\fP (ostream &s, int4 onechar) const =0"
+.br
+.RI "Print a single unicode character as a \fIcharacter\fP \fIconstant\fP for the high-level language\&. "
+.ti -1c
+.RI "virtual void \fBpushType\fP (const \fBDatatype\fP *ct)=0"
+.br
+.RI "Push a data-type name onto the RPN expression stack\&. "
+.ti -1c
+.RI "virtual void \fBpushConstant\fP (\fBuintb\fP val, const \fBDatatype\fP *ct, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Push a constant onto the RPN stack\&. "
+.ti -1c
+.RI "virtual bool \fBpushEquate\fP (\fBuintb\fP val, int4 sz, const \fBEquateSymbol\fP *sym, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Push a constant marked up by and \fBEquateSymbol\fP onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushAnnotation\fP (const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Push an address which is not in the normal data-flow\&. "
+.ti -1c
+.RI "virtual void \fBpushSymbol\fP (const \fBSymbol\fP *sym, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Push a specific \fBSymbol\fP onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushUnnamedLocation\fP (const \fBAddress\fP &addr, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Push an address as a substitute for a \fBSymbol\fP onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushPartialSymbol\fP (const \fBSymbol\fP *sym, int4 off, int4 sz, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op, \fBDatatype\fP *outtype)=0"
+.br
+.RI "Push a variable that represents only part of a symbol onto the RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBpushMismatchSymbol\fP (const \fBSymbol\fP *sym, int4 off, int4 sz, const \fBVarnode\fP *vn, const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Push an identifier for a variable that mismatches with its \fBSymbol\fP\&. "
+.ti -1c
+.RI "virtual void \fBemitLineComment\fP (int4 indent, const \fBComment\fP *comm)"
+.br
+.RI "Emit a comment line\&. "
+.ti -1c
+.RI "virtual void \fBemitVarDecl\fP (const \fBSymbol\fP *sym)=0"
+.br
+.RI "Emit a variable declaration\&. "
+.ti -1c
+.RI "virtual void \fBemitVarDeclStatement\fP (const \fBSymbol\fP *sym)=0"
+.br
+.RI "Emit a variable declaration statement\&. "
+.ti -1c
+.RI "virtual bool \fBemitScopeVarDecls\fP (const \fBScope\fP *scope, int4 cat)=0"
+.br
+.RI "Emit all the variable declarations for a given scope\&. "
+.ti -1c
+.RI "virtual void \fBemitExpression\fP (const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Emit a full expression\&. "
+.ti -1c
+.RI "virtual void \fBemitFunctionDeclaration\fP (const \fBFuncdata\fP *fd)=0"
+.br
+.RI "Emit a function declaration\&. "
+.ti -1c
+.RI "virtual bool \fBcheckPrintNegation\fP (const \fBVarnode\fP *vn)=0"
+.br
+.RI "Check whether a given boolean \fBVarnode\fP can be printed in negated form\&. "
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBunicodeNeedsEscape\fP (int4 codepoint)"
+.br
+.RI "Determine if the given codepoint needs to be escaped\&. "
+.ti -1c
+.RI "static void \fBwriteUtf8\fP (ostream &s, int4 codepoint)"
+.br
+.RI "Write unicode character to stream in UTF8 encoding\&. "
+.ti -1c
+.RI "static int4 \fBreadUtf16\fP (const uint1 *buf, bool bigend)"
+.br
+.RI "Read a 2-byte UTF16 element from a byte array\&. "
+.ti -1c
+.RI "static int4 \fBgetCodepoint\fP (const uint1 *buf, int4 charsize, bool bigend, int4 &skip)"
+.br
+.RI "Extract the next \fIunicode\fP \fIcodepoint\fP from an array of character data\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBArchitecture\fP * \fBglb\fP"
+.br
+.RI "The \fBArchitecture\fP owning the language emitter\&. "
+.ti -1c
+.RI "\fBCastStrategy\fP * \fBcastStrategy\fP"
+.br
+.RI "The strategy for emitting explicit \fIcase\fP operations\&. "
+.ti -1c
+.RI "\fBEmitXml\fP * \fBemit\fP"
+.br
+.RI "The low-level token emitter\&. "
+.ti -1c
+.RI "uint4 \fBmods\fP"
+.br
+.RI "Currently active printing modifications\&. "
+.ti -1c
+.RI "uint4 \fBinstr_comment_type\fP"
+.br
+.RI "Type of instruction comments to display\&. "
+.ti -1c
+.RI "uint4 \fBhead_comment_type\fP"
+.br
+.RI "Type of header comments to display\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base class API for emitting a high-level language\&. 
+
+Instances of this object are responsible for converting a function's (transformed) data-flow graph into the final stream of tokens of a high-level source code language\&. There a few main entry points including:
+.IP "\(bu" 2
+\fBdocFunction()\fP
+.IP "\(bu" 2
+\fBdocAllGlobals()\fP
+.IP "\(bu" 2
+\fBdocTypeDefinitions()\fP
+.PP
+.PP
+The system is responsible for printing:
+.IP "\(bu" 2
+Control-flow structures
+.IP "\(bu" 2
+Expressions
+.IP "\(bu" 2
+Type declarations
+.IP "\(bu" 2
+Function prototypes
+.IP "\(bu" 2
+Comments
+.PP
+.PP
+As part of all this printing, the system is also responsible for
+.IP "\(bu" 2
+Emitting integers, floats, and character constants
+.IP "\(bu" 2
+Placing parentheses within expressions to properly represent data-flow
+.IP "\(bu" 2
+Deciding whether \fIcast\fP operations need an explicit cast token
+.IP "\(bu" 2
+Indenting and line wrapping
+.PP
+.PP
+To accomplish this, the API is broken up into three sections\&. The first section are the main entry point 'doc' methods\&. The second section are 'emit' methods, which are responsible for printing a representation of a particular high-level code construct\&. The third section are 'push' and 'op' methods, which are responsible for walking expression trees\&. The order in which tokens are emitted for an expression is determined by a Reverse Polish Notation (RPN) stack, that the 'push' methods manipulate\&. Operators and variables are \fIpushed\fP onto this stack and are ultimately \fIemitted\fP in the correct order\&.
+.PP
+The base class provides a generic \fIprinting\fP \fImodifications\fP stack and a \fIsymbol\fP \fIscope\fP stack to provide a printing context mechanism for derived classes\&. 
+.PP
+Definition at line 134 of file printlanguage\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBPrintLanguage::modifiers\fP"
+
+.PP
+Possible context sensitive modifiers to how tokens get emitted\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIforce_hex \fP\fP
+Force printing of hex\&. 
+.TP
+\fB\fIforce_dec \fP\fP
+Force printing of dec\&. 
+.TP
+\fB\fIbestfit \fP\fP
+Decide on most aesthetic form\&. 
+.TP
+\fB\fIforce_scinote \fP\fP
+Force scientific notation for floats\&. 
+.TP
+\fB\fIforce_pointer \fP\fP
+Force '*' notation for pointers\&. 
+.TP
+\fB\fIprint_load_value \fP\fP
+Hide pointer deref for load with other ops\&. 
+.TP
+\fB\fIprint_store_value \fP\fP
+Hide pointer deref for store with other ops\&. 
+.TP
+\fB\fIno_branch \fP\fP
+Do not print branch instruction\&. 
+.TP
+\fB\fIonly_branch \fP\fP
+Print only the branch instruction\&. 
+.TP
+\fB\fIcomma_separate \fP\fP
+Statements within condition\&. 
+.TP
+\fB\fIflat \fP\fP
+Do not print block structure\&. 
+.TP
+\fB\fIfalsebranch \fP\fP
+Print the false branch (for flat) 
+.TP
+\fB\fInofallthru \fP\fP
+Fall-thru no longer exists\&. 
+.TP
+\fB\fInegatetoken \fP\fP
+Print the token representing the negation of current token\&. 
+.TP
+\fB\fIhide_thisparam \fP\fP
+Do not print the 'this' parameter in argument lists\&. 
+.PP
+Definition at line 137 of file printlanguage\&.hh\&.
+.SS "enum \fBPrintLanguage::tagtype\fP"
+
+.PP
+Possible types of \fBAtom\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIsyntax \fP\fP
+Emit atom as syntax\&. 
+.TP
+\fB\fIvartoken \fP\fP
+Emit atom as variable\&. 
+.TP
+\fB\fIfunctoken \fP\fP
+Emit atom as function name\&. 
+.TP
+\fB\fIoptoken \fP\fP
+Emit atom as operator\&. 
+.TP
+\fB\fItypetoken \fP\fP
+Emit atom as operator\&. 
+.TP
+\fB\fIfieldtoken \fP\fP
+Emit atom as structure field\&. 
+.TP
+\fB\fIblanktoken \fP\fP
+For anonymous types\&. 
+.PP
+Definition at line 155 of file printlanguage\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PrintLanguage::PrintLanguage (\fBArchitecture\fP * g, const string & nm)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the \fBArchitecture\fP that owns and will use this \fBPrintLanguage\fP 
+.br
+\fInm\fP is the formal name of the language 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file printlanguage\&.cc\&.
+.SS "PrintLanguage::~PrintLanguage (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 122 of file printlanguage\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void PrintLanguage::adjustTypeOperators (void)\fC [pure virtual]\fP"
+
+.PP
+Set basic data-type information for p-code operators\&. 
+.PP
+Implemented in \fBPrintC\fP, and \fBPrintJava\fP\&.
+.SS "virtual bool PrintLanguage::checkPrintNegation (const \fBVarnode\fP * vn)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Check whether a given boolean \fBVarnode\fP can be printed in negated form\&. In many situations a boolean value can be inverted by flipping the operator token producing it to a complementary token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given boolean \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the value can be easily inverted 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::clear (void)\fC [virtual]\fP"
+
+.PP
+Clear the RPN stack and the low-level emitter\&. 
+.PP
+Definition at line 750 of file printlanguage\&.cc\&.
+.SS "virtual void PrintLanguage::docAllGlobals (void)\fC [pure virtual]\fP"
+
+.PP
+Emit declarations of global variables\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::docFunction (const \fBFuncdata\fP * fd)\fC [pure virtual]\fP"
+
+.PP
+Emit the declaration (and body) of a function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the function to emit 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::docSingleGlobal (const \fBSymbol\fP * sym)\fC [pure virtual]\fP"
+
+.PP
+Emit the declaration for a single (global) \fBSymbol\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to declare 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::docTypeDefinitions (const \fBTypeFactory\fP * typegrp)\fC [pure virtual]\fP"
+
+.PP
+Emit definitions of data-types\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypegrp\fP is the container for the data-types that should be defined 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::emitAtom (const \fBAtom\fP & atom)\fC [protected]\fP"
+
+.PP
+Send an variable token from the RPN to the emitter\&. Send the given \fBAtom\fP to the low-level emitter, marking it up according to its type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIatom\fP is the given \fBAtom\fP to emit 
+.RE
+.PP
+
+.PP
+Definition at line 359 of file printlanguage\&.cc\&.
+.SS "virtual void PrintLanguage::emitBlockBasic (const \fBBlockBasic\fP * bb)\fC [pure virtual]\fP"
+
+.PP
+Emit statements in a basic block\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockCondition (const \fBBlockCondition\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit a conditional statement\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockCopy (const \fBBlockCopy\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit a basic block (with any labels) 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockDoWhile (const \fBBlockDoWhile\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit a loop structure, check at bottom\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockGoto (const \fBBlockGoto\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit a block ending with a goto statement\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockGraph (const \fBBlockGraph\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit (an unspecified) list of blocks\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockIf (const \fBBlockIf\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit an if/else style construct\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockInfLoop (const \fBBlockInfLoop\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit an infinite loop structure\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockLs (const \fBBlockList\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit a sequence of blocks\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockSwitch (const \fBBlockSwitch\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit a switch structure\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitBlockWhileDo (const \fBBlockWhileDo\fP * bl)\fC [pure virtual]\fP"
+
+.PP
+Emit a loop structure, check at top\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitExpression (const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Emit a full expression\&. This can be an assignment statement, if the given \fBPcodeOp\fP has an output \fBVarnode\fP, or it can be a statement with no left-hand side\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP performing the final operation of the expression 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitFunctionDeclaration (const \fBFuncdata\fP * fd)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Emit a function declaration\&. This prints the formal defining prototype for a function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is the \fBFuncdata\fP object representing the function to be emitted 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::emitLineComment (int4 indent, const \fBComment\fP * comm)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Emit a comment line\&. The comment will get emitted as a single line using the high-level language's delimiters with the given indent level 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindent\fP is the number of characters to indent 
+.br
+\fIcomm\fP is the \fBComment\fP object containing the character data and associated markup info 
+.RE
+.PP
+
+.PP
+Definition at line 679 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::emitOp (const \fBReversePolish\fP & entry)\fC [protected]\fP"
+
+.PP
+Send an operator token from the RPN to the emitter\&. An \fBOpToken\fP directly from the RPN is sent to the low-level emitter, resolving any final spacing or parentheses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP is the RPN entry to be emitted 
+.RE
+.PP
+
+.PP
+Definition at line 314 of file printlanguage\&.cc\&.
+.SS "virtual bool PrintLanguage::emitScopeVarDecls (const \fBScope\fP * scope, int4 cat)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Emit all the variable declarations for a given scope\&. A subset of all variables can be declared by specifying a category, 0 for parameters, -1 for everything\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscope\fP is the given \fBScope\fP 
+.br
+\fIcat\fP is the category of variable to declare 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "bool PrintLanguage::emitsXml (void) const\fC [inline]\fP"
+
+.PP
+Does the low-level emitter, emit XML markup\&. 
+.PP
+Definition at line 418 of file printlanguage\&.hh\&.
+.SS "virtual void PrintLanguage::emitVarDecl (const \fBSymbol\fP * sym)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Emit a variable declaration\&. This can be part of a full a statement, or just the declaration of a function parameter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to be declared 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::emitVarDeclStatement (const \fBSymbol\fP * sym)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Emit a variable declaration statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to be declared 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "bool PrintLanguage::escapeCharacterData (ostream & s, const uint1 * buf, int4 count, int4 charsize, bool bigend) const\fC [protected]\fP"
+
+.PP
+Emit a byte buffer to the stream as unicode characters\&. Characters are emitted until we reach a terminator character or \fBcount\fP bytes is consumed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIbuf\fP is the byte buffer 
+.br
+\fIcount\fP is the maximum number of bytes to consume 
+.br
+\fIcharsize\fP is 1 for UTF8, 2 for UTF16, or 4 for UTF32 
+.br
+\fIbigend\fP is \fBtrue\fP for a big endian encoding of UTF elements 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if we reach a terminator character 
+.RE
+.PP
+
+.PP
+Definition at line 605 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::formatBinary (ostream & s, \fBuintb\fP val)\fC [static]\fP"
+
+.PP
+Print a number in binary form\&. Print a string a '0' and '1' characters representing the given value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIval\fP is the given value 
+.RE
+.PP
+
+.PP
+Definition at line 854 of file printlanguage\&.cc\&.
+.SS "\fBCastStrategy\fP* PrintLanguage::getCastStrategy (void) const\fC [inline]\fP"
+
+.PP
+Get the casting strategy for the language\&. 
+.PP
+Definition at line 405 of file printlanguage\&.hh\&.
+.SS "int4 PrintLanguage::getCodepoint (const uint1 * buf, int4 charsize, bool bigend, int4 & skip)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Extract the next \fIunicode\fP \fIcodepoint\fP from an array of character data\&. One or more bytes is consumed from the array, and the number of bytes used is passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP is a pointer to the bytes in the character array 
+.br
+\fIcharsize\fP is 1 for UTF8, 2 for UTF16, or 4 for UTF32 
+.br
+\fIbigend\fP is \fBtrue\fP for big endian encoding of the UTF element 
+.br
+\fIskip\fP is a reference for passing back the number of bytes consumed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the codepoint or -1 if the encoding is invalid 
+.RE
+.PP
+
+.PP
+Definition at line 535 of file printlanguage\&.cc\&.
+.SS "uint4 PrintLanguage::getHeaderComment (void) const\fC [inline]\fP"
+
+.PP
+Get the type of comments suitable for a function header\&. 
+.PP
+Definition at line 416 of file printlanguage\&.hh\&.
+.SS "uint4 PrintLanguage::getInstructionComment (void) const\fC [inline]\fP"
+
+.PP
+Get the type of comments suitable within the body of a function\&. 
+.PP
+Definition at line 414 of file printlanguage\&.hh\&.
+.SS "const string& PrintLanguage::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the language name\&. 
+.PP
+Definition at line 404 of file printlanguage\&.hh\&.
+.SS "ostream* PrintLanguage::getOutputStream (void) const\fC [inline]\fP"
+
+.PP
+Get the output stream being emitted to\&. 
+.PP
+Definition at line 406 of file printlanguage\&.hh\&.
+.SS "int4 PrintLanguage::getPending (void) const\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Get the number of pending nodes yet to be put on the RPN stack\&. 
+.PP
+Definition at line 276 of file printlanguage\&.hh\&.
+.SS "virtual bool PrintLanguage::isCharacterConstant (const uint1 * buf, int4 size, int4 charsize) const\fC [pure virtual]\fP"
+
+.PP
+Decide is the given byte array looks like a character string\&. This looks for encodings and/or a terminator that is appropriate for the high-level language 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP is a pointer to the byte array 
+.br
+\fIsize\fP is the number of bytes in the array 
+.br
+\fIcharsize\fP is the size in bytes of the encoding element (i\&.e\&. UTF8, UTF16, etc\&.) to assume 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "bool PrintLanguage::isSet (uint4 m) const\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Is the given printing modification active\&. 
+.PP
+Definition at line 253 of file printlanguage\&.hh\&.
+.SS "int4 PrintLanguage::mostNaturalBase (\fBuintb\fP val)\fC [static]\fP"
+
+.PP
+Determine the most natural base for an integer\&. Count '0' and '9' digits base 10\&. Count '0' and 'f' digits base 16\&. The highest count is the preferred base\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the given integer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+10 for decimal or 16 for hexidecimal 
+.RE
+.PP
+
+.PP
+Definition at line 792 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::opBinary (const \fBOpToken\fP * tok, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push a binary operator onto the RPN stack\&. Push an operator onto the stack that has a normal binary format\&. Both of its input expressions are also pushed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItok\fP is the operator token to push 
+.br
+\fIop\fP is the associated \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 646 of file printlanguage\&.cc\&.
+.SS "virtual void PrintLanguage::opBoolAnd (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a BOOL_AND operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opBoolNegate (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a BOOL_NEGATE operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opBoolOr (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a BOOL_OR operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opBoolXor (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a BOOL_XOR operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opBranch (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a BRANCH operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opBranchind (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a BRANCHIND operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opCall (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a CALL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opCallind (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a CALLIND operator\&. 
+.PP
+Implemented in \fBPrintC\fP, and \fBPrintJava\fP\&.
+.SS "virtual void PrintLanguage::opCallother (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a CALLOTHER operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opCast (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a CAST operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opCbranch (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a CBRANCH operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opConstructor (const \fBPcodeOp\fP * op, bool withNew)\fC [pure virtual]\fP"
+
+.PP
+Emit an operator constructing an object\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opCopy (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a COPY operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opCpoolRefOp (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a CPOOLREF operator\&. 
+.PP
+Implemented in \fBPrintC\fP, and \fBPrintJava\fP\&.
+.SS "virtual void PrintLanguage::opFloatAbs (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_ABS operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatAdd (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_ADD operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatCeil (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_CEIL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatDiv (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_DIV operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatEqual (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_EQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatFloat2Float (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_FLOAT2FLOAT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatFloor (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_FLOOR operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatInt2Float (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_INT2FLOAT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatLess (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_LESS operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatLessEqual (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_LESSEQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatMult (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_MULT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatNan (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_NAN operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatNeg (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_NEG operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatNotEqual (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_NOTEQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatRound (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_ROUND operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatSqrt (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_SQRT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatSub (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_SUB operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opFloatTrunc (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a FLOAT_TRUNC operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIndirect (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INDIRECT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opInt2Comp (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_2COMP operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntAdd (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_ADD operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntAnd (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_AND operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntCarry (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_CARRY operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntDiv (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_DIV operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntEqual (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_EQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntLeft (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_LEFT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntLess (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_LESS operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntLessEqual (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_LESSEQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntMult (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_MULT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntNegate (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_NEGATE operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntNotEqual (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_NOTEQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntOr (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_OR operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntRem (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_REM operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntRight (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_RIGHT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSborrow (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SBORROW operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntScarry (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SCARRY operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSdiv (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SDIV operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSext (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SEXT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSless (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SLESS operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSlessEqual (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SLESSEQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSrem (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SREM operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSright (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SRIGHT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntSub (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_SUB operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntXor (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_XOR operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opIntZext (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a INT_ZEXT operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opLoad (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a LOAD operator\&. 
+.PP
+Implemented in \fBPrintC\fP, and \fBPrintJava\fP\&.
+.SS "virtual void PrintLanguage::opMultiequal (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a MULTIEQUAL operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opNewOp (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a NEW operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opPiece (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a PIECE operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opPtradd (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a PTRADD operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opPtrsub (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a PTRSUB operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opReturn (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a RETURN operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opSegmentOp (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a SEGMENTOP operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::opStore (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a STORE operator\&. 
+.PP
+Implemented in \fBPrintC\fP, and \fBPrintJava\fP\&.
+.SS "virtual void PrintLanguage::opSubpiece (const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Emit a SUBPIECE operator\&. 
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::opUnary (const \fBOpToken\fP * tok, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push a unary operator onto the RPN stack\&. Push an operator onto the stack that has a normal unary format\&. Its input expression is also pushed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItok\fP is the operator token to push 
+.br
+\fIop\fP is the associated \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 666 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::popMod (void)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Pop to the previous printing modifications\&. 
+.PP
+Definition at line 257 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::popScope (void)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Pop to the previous symbol scope\&. 
+.PP
+Definition at line 255 of file printlanguage\&.hh\&.
+.SS "virtual void PrintLanguage::printUnicode (ostream & s, int4 onechar) const\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Print a single unicode character as a \fIcharacter\fP \fIconstant\fP for the high-level language\&. For most languages, this prints the character surrounded by single quotes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIonechar\fP is the unicode code point of the character to print 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::pushAnnotation (const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push an address which is not in the normal data-flow\&. The given \fBVarnode\fP is treated as an address, which may or may not have a symbol name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the annotation \fBVarnode\fP 
+.br
+\fIop\fP is the \fBPcodeOp\fP which takes the annotation as input 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::pushAtom (const \fBAtom\fP & atom)\fC [protected]\fP"
+
+.PP
+Push a variable token onto the RPN stack\&. Push a single token (an \fBAtom\fP) onto the RPN stack\&. This may trigger some amount of the RPN stack to get emitted, depending on what was pushed previously\&. The 'emit' routines are called, popping off as much as possible\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIatom\fP is the token to be pushed 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file printlanguage\&.cc\&.
+.SS "virtual void PrintLanguage::pushConstant (\fBuintb\fP val, const \fBDatatype\fP * ct, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push a constant onto the RPN stack\&. The value is ultimately emitted based on its data-type and other associated mark-up 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value of the constant 
+.br
+\fIct\fP is the data-type of the constant 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the constant (optional) 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the constant (optional) 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual bool PrintLanguage::pushEquate (\fBuintb\fP val, int4 sz, const \fBEquateSymbol\fP * sym, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push a constant marked up by and \fBEquateSymbol\fP onto the RPN stack\&. The equate may substitute a name or force a conversion for the constant 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value of the constant 
+.br
+\fIsz\fP is the number of bytes to use for the encoding 
+.br
+\fIsym\fP is the \fBEquateSymbol\fP that marks up the constant 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the constant (optional) 
+.br
+\fIop\fP is the \fBPcodeOp\fP using the constant (optional) 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::pushMismatchSymbol (const \fBSymbol\fP * sym, int4 off, int4 sz, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push an identifier for a variable that mismatches with its \fBSymbol\fP\&. This happens when a \fBVarnode\fP overlaps, but is not contained by a \fBSymbol\fP\&. This most commonly happens when the size of a \fBSymbol\fP is unknown 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the overlapped symbol 
+.br
+\fIoff\fP is the byte offset of the variable relative to the symbol 
+.br
+\fIsz\fP is the size of the variable in bytes 
+.br
+\fIvn\fP is the \fBVarnode\fP representing the variable 
+.br
+\fIop\fP is a \fBPcodeOp\fP associated with the \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::pushMod (void)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Push current printing modifications to the stack\&. 
+.PP
+Definition at line 256 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::pushOp (const \fBOpToken\fP * tok, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push an operator token onto the RPN stack\&. This generally will recursively push an entire expression onto the RPN stack, up to \fBVarnode\fP objects marked as \fIexplicit\fP, and will decide token order and parenthesis placement\&. As the ordering gets resolved, some amount of the expression may get emitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItok\fP is the operator token to push 
+.br
+\fIop\fP is the \fBPcodeOp\fP associated with the token 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file printlanguage\&.cc\&.
+.SS "virtual void PrintLanguage::pushPartialSymbol (const \fBSymbol\fP * sym, int4 off, int4 sz, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op, \fBDatatype\fP * outtype)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push a variable that represents only part of a symbol onto the RPN stack\&. Generally \fImember\fP syntax specifying a field within a structure gets emitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the root \fBSymbol\fP 
+.br
+\fIoff\fP is the byte offset, within the \fBSymbol\fP, of the partial variable 
+.br
+\fIsz\fP is the number of bytes in the partial variable 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the partial value 
+.br
+\fIop\fP is a \fBPcodeOp\fP associate with the \fBVarnode\fP 
+.br
+\fIouttype\fP is the data-type expected by expression using the partial variable 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::pushScope (\fBScope\fP * sc)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Push a new symbol scope\&. 
+.PP
+Definition at line 254 of file printlanguage\&.hh\&.
+.SS "virtual void PrintLanguage::pushSymbol (const \fBSymbol\fP * sym, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push a specific \fBSymbol\fP onto the RPN stack\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the given \fBSymbol\fP 
+.br
+\fIvn\fP is the \fBVarnode\fP holding the \fBSymbol\fP value 
+.br
+\fIop\fP is a \fBPcodeOp\fP associated with the \fBVarnode\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::pushType (const \fBDatatype\fP * ct)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push a data-type name onto the RPN expression stack\&. The data-type is generally emitted as if for a cast\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the data-type to push 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "virtual void PrintLanguage::pushUnnamedLocation (const \fBAddress\fP & addr, const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Push an address as a substitute for a \fBSymbol\fP onto the RPN stack\&. If there is no \fBSymbol\fP or other name source for an explicit variable, this method is used to print something to represent the variable based on its storage address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the storage address 
+.br
+\fIvn\fP is the \fBVarnode\fP representing the variable (if present) 
+.br
+\fIop\fP is a \fBPcodeOp\fP associated with the variable 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::pushVnExplicit (const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push an explicit variable onto the RPN stack\&. This method pushes a given \fBVarnode\fP as a \fBleaf\fP of the current expression\&. It decides how the \fBVarnode\fP should get emitted, as a symbol, constant, etc\&., and then pushes the resulting leaf \fBAtom\fP onto the stack\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given explicit \fBVarnode\fP 
+.br
+\fIop\fP is the \fBPcodeOp\fP incorporating the \fBVarnode\fP into the current expression 
+.RE
+.PP
+
+.PP
+Definition at line 255 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::pushVnImplied (const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op, uint4 m)\fC [protected]\fP"
+
+.PP
+Push an implied variable onto the RPN stack\&. For a given implied \fBVarnode\fP, the entire expression producing it is recursively pushed onto the RPN stack\&.
+.PP
+When calling this method multiple times to push \fBVarnode\fP inputs for a single p-code op, the inputs must be pushed in reverse order\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given implied \fBVarnode\fP 
+.br
+\fIop\fP is \fBPcodeOp\fP taking the \fBVarnode\fP as input 
+.br
+\fIm\fP is the set of printing modifications to apply for this sub-expression 
+.RE
+.PP
+
+.PP
+Definition at line 234 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::pushVnLHS (const \fBVarnode\fP * vn, const \fBPcodeOp\fP * op)\fC [protected]\fP"
+
+.PP
+Push a variable as the left-hand side of an expression\&. The given \fBVarnode\fP will ultimately be emitted as an explicit variable on the left-hand side of an \fIassignment\fP statement\&. As with \fBpushVnExplicit()\fP, this method decides how the \fBVarnode\fP will be emitted and pushes the resulting \fBAtom\fP onto the RPN stack\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given LSH \fBVarnode\fP 
+.br
+\fIop\fP is the \fBPcodeOp\fP which produces the \fBVarnode\fP as an output 
+.RE
+.PP
+
+.PP
+Definition at line 290 of file printlanguage\&.cc\&.
+.SS "int4 PrintLanguage::readUtf16 (const uint1 * buf, bool bigend)\fC [inline]\fP, \fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Read a 2-byte UTF16 element from a byte array\&. Pull the first two bytes from the byte array and combine them in the indicated endian order 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP is the byte array 
+.br
+\fIbigend\fP is \fBtrue\fP to request big endian encoding 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the decoded UTF16 element 
+.RE
+.PP
+
+.PP
+Definition at line 510 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::recurse (void)\fC [protected]\fP"
+
+.PP
+Emit from the RPN stack as much as possible\&. Any complete sub-expressions that are still on the RPN will get emitted\&. 
+.PP
+Definition at line 621 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::setCommentDelimeter (const string & start, const string & stop, bool usecommentfill)"
+
+.PP
+Establish comment delimiters for the language\&. By default, comments are indicated in the high-level language by preceding them with a specific sequence of delimiter characters, and optionally by ending the comment with another set of delimiter characters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstart\fP is the initial sequence of characters delimiting a comment 
+.br
+\fIstop\fP if not empty is the sequence delimiting the end of the comment 
+.br
+\fIusecommentfill\fP is \fBtrue\fP if the delimiter needs to be emitted after every line break 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file printlanguage\&.cc\&.
+.SS "virtual void PrintLanguage::setCommentStyle (const string & nm)\fC [pure virtual]\fP"
+
+.PP
+Set the way comments are displayed in decompiler output\&. This method can either be provided a formal name or a \fIsample\fP of the initial delimiter, then it will choose from among the schemes it knows 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the configuration description 
+.RE
+.PP
+
+.PP
+Implemented in \fBPrintC\fP\&.
+.SS "void PrintLanguage::setFlat (bool val)"
+
+.PP
+Set whether nesting code structure should be emitted\&. Emitting formal code structuring can be turned off, causing all control-flow to be represented as \fIgoto\fP statements and \fIlabels\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP if no code structuring should be emitted 
+.RE
+.PP
+
+.PP
+Definition at line 741 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::setHeaderComment (uint4 val)\fC [inline]\fP"
+
+.PP
+Set the type of comments suitable for a function header\&. 
+.PP
+Definition at line 417 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::setIndentIncrement (int4 inc)\fC [inline]\fP"
+
+.PP
+Set the number of characters to indent per level of code nesting\&. 
+.PP
+Definition at line 410 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::setInstructionComment (uint4 val)\fC [inline]\fP"
+
+.PP
+Set the type of comments suitable within the body of a function\&. 
+.PP
+Definition at line 415 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::setIntegerFormat (const string & nm)\fC [virtual]\fP"
+
+.PP
+Set the default integer format\&. This determines how integers are displayed by default\&. Possible values are 'hex' and 'dec' to force a given format, or 'best' can be used to let the decompiler select what it thinks best for each individual integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is 'hex', 'dec', or 'best' 
+.RE
+.PP
+
+.PP
+Definition at line 772 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::setLineCommentIndent (int4 val)"
+
+.PP
+Set the number of characters to indent comment lines\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the number of characters 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::setMaxLineSize (int4 mls)\fC [inline]\fP"
+
+.PP
+Set the maximum number of characters per line\&. 
+.PP
+Definition at line 409 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::setMod (uint4 m)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Activate the given printing modification\&. 
+.PP
+Definition at line 258 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::setOutputStream (ostream * t)\fC [inline]\fP"
+
+.PP
+Set the output stream to emit to\&. 
+.PP
+Definition at line 407 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::setScope (\fBScope\fP * sc)\fC [inline]\fP"
+
+.PP
+Set the current \fBSymbol\fP scope\&. 
+.PP
+Definition at line 408 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::setXML (bool val)"
+
+.PP
+Set whether the low-level emitter, emits XML markup\&. Tell the emitter whether to emit just the raw tokens or if output is in XML format with additional mark-up on the raw tokens\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is \fBtrue\fP for XML mark-up 
+.RE
+.PP
+
+.PP
+Definition at line 732 of file printlanguage\&.cc\&.
+.SS "bool PrintLanguage::unicodeNeedsEscape (int4 codepoint)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Determine if the given codepoint needs to be escaped\&. Separate unicode characters that can be clearly emitted in a source code string (letters, numbers, punctuation, symbols) from characters that are better represented in source code with an escape sequence (control characters, unusual spaces, separators, private use characters etc\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcodepoint\fP is the given unicode codepoint to categorize\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the codepoint needs to be escaped 
+.RE
+.PP
+
+.PP
+Definition at line 394 of file printlanguage\&.cc\&.
+.SS "void PrintLanguage::unsetMod (uint4 m)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Deactivate the given printing modification\&. 
+.PP
+Definition at line 259 of file printlanguage\&.hh\&.
+.SS "void PrintLanguage::writeUtf8 (ostream & s, int4 codepoint)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Write unicode character to stream in UTF8 encoding\&. Encode the given unicode codepoint as UTF8 (1, 2, 3, or 4 bytes) and write the bytes to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIcodepoint\fP is the unicode codepoint 
+.RE
+.PP
+
+.PP
+Definition at line 470 of file printlanguage\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCastStrategy\fP* PrintLanguage::castStrategy\fC [protected]\fP"
+
+.PP
+The strategy for emitting explicit \fIcase\fP operations\&. 
+.PP
+Definition at line 243 of file printlanguage\&.hh\&.
+.SS "\fBEmitXml\fP* PrintLanguage::emit\fC [protected]\fP"
+
+.PP
+The low-level token emitter\&. 
+.PP
+Definition at line 244 of file printlanguage\&.hh\&.
+.SS "\fBArchitecture\fP* PrintLanguage::glb\fC [protected]\fP"
+
+.PP
+The \fBArchitecture\fP owning the language emitter\&. 
+.PP
+Definition at line 242 of file printlanguage\&.hh\&.
+.SS "uint4 PrintLanguage::head_comment_type\fC [protected]\fP"
+
+.PP
+Type of header comments to display\&. 
+.PP
+Definition at line 247 of file printlanguage\&.hh\&.
+.SS "uint4 PrintLanguage::instr_comment_type\fC [protected]\fP"
+
+.PP
+Type of instruction comments to display\&. 
+.PP
+Definition at line 246 of file printlanguage\&.hh\&.
+.SS "uint4 PrintLanguage::mods\fC [protected]\fP"
+
+.PP
+Currently active printing modifications\&. 
+.PP
+Definition at line 245 of file printlanguage\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

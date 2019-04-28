@@ -1,0 +1,292 @@
+\hypertarget{class_symbol_table}{}\section{Symbol\+Table Class Reference}
+\label{class_symbol_table}\index{SymbolTable@{SymbolTable}}
+
+
+{\ttfamily \#include $<$slghsymbol.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_symbol_table_ab291d6d0a49c3dc33969f2852b7fe9ce}{Symbol\+Table}} (void)
+\item 
+\mbox{\hyperlink{class_symbol_table_a73e3a36a768a5799bd8ea83449f26ecb}{$\sim$\+Symbol\+Table}} (void)
+\item 
+\mbox{\hyperlink{class_symbol_scope}{Symbol\+Scope}} $\ast$ \mbox{\hyperlink{class_symbol_table_ab0831c894cb828ab8e7b307ec82a0772}{get\+Current\+Scope}} (void)
+\item 
+\mbox{\hyperlink{class_symbol_scope}{Symbol\+Scope}} $\ast$ \mbox{\hyperlink{class_symbol_table_a66d6512a45da8f2fc3d12b2d0993b9c9}{get\+Global\+Scope}} (void)
+\item 
+void \mbox{\hyperlink{class_symbol_table_addcd839d5b960ec9e76d661c6896b742}{set\+Current\+Scope}} (\mbox{\hyperlink{class_symbol_scope}{Symbol\+Scope}} $\ast$scope)
+\item 
+void \mbox{\hyperlink{class_symbol_table_a6fedbdf936a8d9d5026fdcfa781aed36}{add\+Scope}} (void)
+\item 
+void \mbox{\hyperlink{class_symbol_table_a66df4cebfc5231736341e3d2845dc298}{pop\+Scope}} (void)
+\item 
+void \mbox{\hyperlink{class_symbol_table_a89ba2f534939813435049b947d9dae30}{add\+Global\+Symbol}} (\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$a)
+\item 
+void \mbox{\hyperlink{class_symbol_table_a2555ddfe5e531fa48bb0aaca7e59501d}{add\+Symbol}} (\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$a)
+\item 
+\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$ \mbox{\hyperlink{class_symbol_table_ad9979f9aa4a6588bbf016182c472b40b}{find\+Symbol}} (const string \&nm) const
+\item 
+\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$ \mbox{\hyperlink{class_symbol_table_af9e38cf4a6423e179b08d1fc74a85d39}{find\+Symbol}} (const string \&nm, int4 skip) const
+\item 
+\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$ \mbox{\hyperlink{class_symbol_table_aed0e996f3d74f5a369fdc66ac410add2}{find\+Global\+Symbol}} (const string \&nm) const
+\item 
+\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$ \mbox{\hyperlink{class_symbol_table_aa4fcf3260ef36229e7a1ba1a89a2cf15}{find\+Symbol}} (uintm id) const
+\item 
+void \mbox{\hyperlink{class_symbol_table_abb39dd66d5ca2d581be14628c7e596da}{replace\+Symbol}} (\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$a, \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$b)
+\item 
+void \mbox{\hyperlink{class_symbol_table_a9b483237599214e761b8724ef50dd691}{save\+Xml}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_symbol_table_a015f2273420eca3b76e82bab4b006ddc}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, \mbox{\hyperlink{class_sleigh_base}{Sleigh\+Base}} $\ast$trans)
+\item 
+void \mbox{\hyperlink{class_symbol_table_aeb92078f011975c7da3a906187baed21}{restore\+Symbol\+Header}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\item 
+void \mbox{\hyperlink{class_symbol_table_ac10fcbcf54614b127d5817f8c43a2cc3}{purge}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 70 of file slghsymbol.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_symbol_table_ab291d6d0a49c3dc33969f2852b7fe9ce}\label{class_symbol_table_ab291d6d0a49c3dc33969f2852b7fe9ce}} 
+\index{SymbolTable@{SymbolTable}!SymbolTable@{SymbolTable}}
+\index{SymbolTable@{SymbolTable}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{SymbolTable()}{SymbolTable()}}
+{\footnotesize\ttfamily Symbol\+Table\+::\+Symbol\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 78 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_symbol_table_a73e3a36a768a5799bd8ea83449f26ecb}\label{class_symbol_table_a73e3a36a768a5799bd8ea83449f26ecb}} 
+\index{SymbolTable@{SymbolTable}!````~SymbolTable@{$\sim$SymbolTable}}
+\index{````~SymbolTable@{$\sim$SymbolTable}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{$\sim$SymbolTable()}{~SymbolTable()}}
+{\footnotesize\ttfamily Symbol\+Table\+::$\sim$\+Symbol\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 43 of file slghsymbol.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_symbol_table_a89ba2f534939813435049b947d9dae30}\label{class_symbol_table_a89ba2f534939813435049b947d9dae30}} 
+\index{SymbolTable@{SymbolTable}!addGlobalSymbol@{addGlobalSymbol}}
+\index{addGlobalSymbol@{addGlobalSymbol}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{addGlobalSymbol()}{addGlobalSymbol()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::add\+Global\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 80 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_table_a89ba2f534939813435049b947d9dae30_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_table_a6fedbdf936a8d9d5026fdcfa781aed36}\label{class_symbol_table_a6fedbdf936a8d9d5026fdcfa781aed36}} 
+\index{SymbolTable@{SymbolTable}!addScope@{addScope}}
+\index{addScope@{addScope}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{addScope()}{addScope()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::add\+Scope (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file slghsymbol.\+cc.
+
+\mbox{\Hypertarget{class_symbol_table_a2555ddfe5e531fa48bb0aaca7e59501d}\label{class_symbol_table_a2555ddfe5e531fa48bb0aaca7e59501d}} 
+\index{SymbolTable@{SymbolTable}!addSymbol@{addSymbol}}
+\index{addSymbol@{addSymbol}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{addSymbol()}{addSymbol()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::add\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 92 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_table_a2555ddfe5e531fa48bb0aaca7e59501d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_table_aed0e996f3d74f5a369fdc66ac410add2}\label{class_symbol_table_aed0e996f3d74f5a369fdc66ac410add2}} 
+\index{SymbolTable@{SymbolTable}!findGlobalSymbol@{findGlobalSymbol}}
+\index{findGlobalSymbol@{findGlobalSymbol}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{findGlobalSymbol()}{findGlobalSymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}}$\ast$ Symbol\+Table\+::find\+Global\+Symbol (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 90 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_symbol_table_ad9979f9aa4a6588bbf016182c472b40b}\label{class_symbol_table_ad9979f9aa4a6588bbf016182c472b40b}} 
+\index{SymbolTable@{SymbolTable}!findSymbol@{findSymbol}}
+\index{findSymbol@{findSymbol}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{findSymbol()}{findSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}}$\ast$ Symbol\+Table\+::find\+Symbol (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 88 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_symbol_table_af9e38cf4a6423e179b08d1fc74a85d39}\label{class_symbol_table_af9e38cf4a6423e179b08d1fc74a85d39}} 
+\index{SymbolTable@{SymbolTable}!findSymbol@{findSymbol}}
+\index{findSymbol@{findSymbol}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{findSymbol()}{findSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}}$\ast$ Symbol\+Table\+::find\+Symbol (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{int4}]{skip }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 89 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_symbol_table_aa4fcf3260ef36229e7a1ba1a89a2cf15}\label{class_symbol_table_aa4fcf3260ef36229e7a1ba1a89a2cf15}} 
+\index{SymbolTable@{SymbolTable}!findSymbol@{findSymbol}}
+\index{findSymbol@{findSymbol}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{findSymbol()}{findSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}}$\ast$ Symbol\+Table\+::find\+Symbol (\begin{DoxyParamCaption}\item[{uintm}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 91 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_symbol_table_ab0831c894cb828ab8e7b307ec82a0772}\label{class_symbol_table_ab0831c894cb828ab8e7b307ec82a0772}} 
+\index{SymbolTable@{SymbolTable}!getCurrentScope@{getCurrentScope}}
+\index{getCurrentScope@{getCurrentScope}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{getCurrentScope()}{getCurrentScope()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_scope}{Symbol\+Scope}}$\ast$ Symbol\+Table\+::get\+Current\+Scope (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 80 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_symbol_table_a66d6512a45da8f2fc3d12b2d0993b9c9}\label{class_symbol_table_a66d6512a45da8f2fc3d12b2d0993b9c9}} 
+\index{SymbolTable@{SymbolTable}!getGlobalScope@{getGlobalScope}}
+\index{getGlobalScope@{getGlobalScope}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{getGlobalScope()}{getGlobalScope()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_scope}{Symbol\+Scope}}$\ast$ Symbol\+Table\+::get\+Global\+Scope (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 81 of file slghsymbol.\+hh.
+
+\mbox{\Hypertarget{class_symbol_table_a66df4cebfc5231736341e3d2845dc298}\label{class_symbol_table_a66df4cebfc5231736341e3d2845dc298}} 
+\index{SymbolTable@{SymbolTable}!popScope@{popScope}}
+\index{popScope@{popScope}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{popScope()}{popScope()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::pop\+Scope (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file slghsymbol.\+cc.
+
+\mbox{\Hypertarget{class_symbol_table_ac10fcbcf54614b127d5817f8c43a2cc3}\label{class_symbol_table_ac10fcbcf54614b127d5817f8c43a2cc3}} 
+\index{SymbolTable@{SymbolTable}!purge@{purge}}
+\index{purge@{purge}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{purge()}{purge()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::purge (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 268 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_table_ac10fcbcf54614b127d5817f8c43a2cc3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_table_abb39dd66d5ca2d581be14628c7e596da}\label{class_symbol_table_abb39dd66d5ca2d581be14628c7e596da}} 
+\index{SymbolTable@{SymbolTable}!replaceSymbol@{replaceSymbol}}
+\index{replaceSymbol@{replaceSymbol}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{replaceSymbol()}{replaceSymbol()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::replace\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$}]{a,  }\item[{\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line 117 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_table_abb39dd66d5ca2d581be14628c7e596da_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_table_aeb92078f011975c7da3a906187baed21}\label{class_symbol_table_aeb92078f011975c7da3a906187baed21}} 
+\index{SymbolTable@{SymbolTable}!restoreSymbolHeader@{restoreSymbolHeader}}
+\index{restoreSymbolHeader@{restoreSymbolHeader}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{restoreSymbolHeader()}{restoreSymbolHeader()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::restore\+Symbol\+Header (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Definition at line 228 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_table_aeb92078f011975c7da3a906187baed21_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_table_a015f2273420eca3b76e82bab4b006ddc}\label{class_symbol_table_a015f2273420eca3b76e82bab4b006ddc}} 
+\index{SymbolTable@{SymbolTable}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{\mbox{\hyperlink{class_sleigh_base}{Sleigh\+Base}} $\ast$}]{trans }\end{DoxyParamCaption})}
+
+
+
+Definition at line 165 of file slghsymbol.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_symbol_table_a015f2273420eca3b76e82bab4b006ddc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_symbol_table_a9b483237599214e761b8724ef50dd691}\label{class_symbol_table_a9b483237599214e761b8724ef50dd691}} 
+\index{SymbolTable@{SymbolTable}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 139 of file slghsymbol.\+cc.
+
+\mbox{\Hypertarget{class_symbol_table_addcd839d5b960ec9e76d661c6896b742}\label{class_symbol_table_addcd839d5b960ec9e76d661c6896b742}} 
+\index{SymbolTable@{SymbolTable}!setCurrentScope@{setCurrentScope}}
+\index{setCurrentScope@{setCurrentScope}!SymbolTable@{SymbolTable}}
+\subsubsection{\texorpdfstring{setCurrentScope()}{setCurrentScope()}}
+{\footnotesize\ttfamily void Symbol\+Table\+::set\+Current\+Scope (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_symbol_scope}{Symbol\+Scope}} $\ast$}]{scope }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 83 of file slghsymbol.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghsymbol_8hh}{slghsymbol.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghsymbol_8cc}{slghsymbol.\+cc}}\end{DoxyCompactItemize}

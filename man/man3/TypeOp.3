@@ -1,0 +1,596 @@
+.TH "TypeOp" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeOp \- Associate data-type and behavior information with a specific p-code op-code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typeop\&.hh>\fP
+.PP
+Inherited by \fBTypeOpBinary\fP, \fBTypeOpBranch\fP, \fBTypeOpBranchind\fP, \fBTypeOpCall\fP, \fBTypeOpCallind\fP, \fBTypeOpCallother\fP, \fBTypeOpCast\fP, \fBTypeOpCbranch\fP, \fBTypeOpCopy\fP, \fBTypeOpCpoolref\fP, \fBTypeOpFunc\fP, \fBTypeOpIndirect\fP, \fBTypeOpLoad\fP, \fBTypeOpMulti\fP, \fBTypeOpNew\fP, \fBTypeOpPtradd\fP, \fBTypeOpPtrsub\fP, \fBTypeOpReturn\fP, \fBTypeOpSegment\fP, \fBTypeOpStore\fP, and \fBTypeOpUnary\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBinherits_sign\fP = 1, \fBinherits_sign_zero\fP = 2 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeOp\fP (\fBTypeFactory\fP *t, \fBOpCode\fP opc, const string &n)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~TypeOp\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the display name of the op-code\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBgetOpcode\fP (void) const"
+.br
+.RI "Get the op-code value\&. "
+.ti -1c
+.RI "uint4 \fBgetFlags\fP (void) const"
+.br
+.RI "Get the properties associated with the op-code\&. "
+.ti -1c
+.RI "\fBOpBehavior\fP * \fBgetBehavior\fP (void) const"
+.br
+.RI "Get the behavior associated with the op-code\&. "
+.ti -1c
+.RI "bool \fBmarkExplicitUnsigned\fP (\fBPcodeOp\fP *op, int4 slot) const"
+.br
+.RI "Check if a constant input should be explicitly labeled as \fIunsigned\fP\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBevaluateUnary\fP (int4 sizeout, int4 sizein, \fBuintb\fP in1) const"
+.br
+.RI "\fBEmulate\fP the unary op-code on an input value\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBevaluateBinary\fP (int4 sizeout, int4 sizein, \fBuintb\fP in1, \fBuintb\fP in2) const"
+.br
+.RI "\fBEmulate\fP the binary op-code on an input value\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBrecoverInputBinary\fP (int4 slot, int4 sizeout, \fBuintb\fP out, int4 sizein, \fBuintb\fP in) const"
+.br
+.RI "Reverse the binary op-code operation, recovering a constant input value\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBrecoverInputUnary\fP (int4 sizeout, \fBuintb\fP out, int4 sizein) const"
+.br
+.RI "Reverse the unary op-code operation, recovering a constant input value\&. "
+.ti -1c
+.RI "bool \fBisCommutative\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if this op-code is commutative\&. "
+.ti -1c
+.RI "bool \fBinheritsSign\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if the op-code inherits it signedness from its inputs\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetOutputLocal\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Find the minimal (or suggested) data-type of an output to \fBthis\fP op-code\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetInputLocal\fP (const \fBPcodeOp\fP *op, int4 slot) const"
+.br
+.RI "Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetOutputToken\fP (const \fBPcodeOp\fP *op, \fBCastStrategy\fP *castStrategy) const"
+.br
+.RI "Find the data-type of the output that would be assigned by a compiler\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetInputCast\fP (const \fBPcodeOp\fP *op, int4 slot, const \fBCastStrategy\fP *castStrategy) const"
+.br
+.RI "Find the data-type of the input to a specific \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "virtual void \fBpush\fP (\fBPrintLanguage\fP *lng, const \fBPcodeOp\fP *op) const =0"
+.br
+.RI "Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, const \fBPcodeOp\fP *op)=0"
+.br
+.RI "Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. "
+.ti -1c
+.RI "virtual string \fBgetOperatorName\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Get the name of the op-code as it should be displayed in context\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBregisterInstructions\fP (vector< \fBTypeOp\fP * > &inst, \fBTypeFactory\fP *\fBtlst\fP, const \fBTranslate\fP *trans)"
+.br
+.RI "Build a map from op-code value to the \fBTypeOp\fP information objects\&. "
+.ti -1c
+.RI "static void \fBselectJavaOperators\fP (vector< \fBTypeOp\fP * > &inst, bool val)"
+.br
+.RI "Toggle Java specific aspects of the op-code information\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBsetMetatypeIn\fP (\fBtype_metatype\fP val)"
+.br
+.RI "Set the data-type associated with inputs to this opcode\&. "
+.ti -1c
+.RI "virtual void \fBsetMetatypeOut\fP (\fBtype_metatype\fP val)"
+.br
+.RI "Set the data-type associated with outputs of this opcode\&. "
+.ti -1c
+.RI "virtual void \fBsetSymbol\fP (const string &nm)"
+.br
+.RI "Set the display symbol associated with the op-code\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeFactory\fP * \fBtlst\fP"
+.br
+.RI "Pointer to data-type factory\&. "
+.ti -1c
+.RI "\fBOpCode\fP \fBopcode\fP"
+.br
+.RI "The op-code value\&. "
+.ti -1c
+.RI "uint4 \fBopflags\fP"
+.br
+.RI "Cached pcode-op properties for this op-code\&. "
+.ti -1c
+.RI "uint4 \fBaddlflags\fP"
+.br
+.RI "Additional properties\&. "
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "\fBSymbol\fP denoting this operation\&. "
+.ti -1c
+.RI "\fBOpBehavior\fP * \fBbehave\fP"
+.br
+.RI "Object for emulating the behavior of the op-code\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Associate data-type and behavior information with a specific p-code op-code\&. 
+
+This holds all information about a p-code op-code\&. The main \fBPcodeOp\fP object holds this as a representative of the op-code\&. The evaluate* methods can be used to let the op-code act on constant input values\&. The getOutput* and getInput* methods are used to obtain data-type information that is specific to the op-code\&. This also holds other \fBPcodeOp\fP boolean properties that are set in common for the op-code\&. 
+.PP
+Definition at line 37 of file typeop\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIinherits_sign \fP\fP
+Operator token inherits signedness from its inputs\&. 
+.TP
+\fB\fIinherits_sign_zero \fP\fP
+Only inherits sign from first operand, not the second\&. 
+.PP
+Definition at line 39 of file typeop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeOp::TypeOp (\fBTypeFactory\fP * t, \fBOpCode\fP opc, const string & n)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP is the \fBTypeFactory\fP used to construct data-types 
+.br
+\fIopc\fP is the op-code value the new object will represent 
+.br
+\fIn\fP is the display name that will represent the op-code 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file typeop\&.cc\&.
+.SS "TypeOp::~TypeOp (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 158 of file typeop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP TypeOp::evaluateBinary (int4 sizeout, int4 sizein, \fBuintb\fP in1, \fBuintb\fP in2) const\fC [inline]\fP"
+
+.PP
+\fBEmulate\fP the binary op-code on an input value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIsizein\fP is the size of the inputs in bytes 
+.br
+\fIin1\fP is the first input value 
+.br
+\fIin2\fP is the second input value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output value 
+.RE
+.PP
+
+.PP
+Definition at line 78 of file typeop\&.hh\&.
+.SS "\fBuintb\fP TypeOp::evaluateUnary (int4 sizeout, int4 sizein, \fBuintb\fP in1) const\fC [inline]\fP"
+
+.PP
+\fBEmulate\fP the unary op-code on an input value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIsizein\fP is the size of the input in bytes 
+.br
+\fIin1\fP is the input value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output value 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file typeop\&.hh\&.
+.SS "\fBOpBehavior\fP* TypeOp::getBehavior (void) const\fC [inline]\fP"
+
+.PP
+Get the behavior associated with the op-code\&. 
+.PP
+Definition at line 59 of file typeop\&.hh\&.
+.SS "uint4 TypeOp::getFlags (void) const\fC [inline]\fP"
+
+.PP
+Get the properties associated with the op-code\&. 
+.PP
+Definition at line 58 of file typeop\&.hh\&.
+.SS "\fBDatatype\fP * TypeOp::getInputCast (const \fBPcodeOp\fP * op, int4 slot, const \fBCastStrategy\fP * castStrategy) const\fC [virtual]\fP"
+
+.PP
+Find the data-type of the input to a specific \fBPcodeOp\fP\&. Calculate the actual data-type of the input to the specific \fBPcodeOp\fP\&. A \fBnull\fP result indicates the input data-type is the same as or otherwise doesn't need a cast from the data-type of the actual input \fBVarnode\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the specific \fBPcodeOp\fP 
+.br
+\fIslot\fP is the input to consider 
+.br
+\fIcastStrategy\fP is the current casting strategy 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeOpNew\fP, \fBTypeOpCpoolref\fP, \fBTypeOpSegment\fP, \fBTypeOpPtrsub\fP, \fBTypeOpPtradd\fP, \fBTypeOpIntSrem\fP, \fBTypeOpIntRem\fP, \fBTypeOpIntSdiv\fP, \fBTypeOpIntDiv\fP, \fBTypeOpIntSright\fP, \fBTypeOpIntRight\fP, \fBTypeOpIntSext\fP, \fBTypeOpIntZext\fP, \fBTypeOpIntLessEqual\fP, \fBTypeOpIntLess\fP, \fBTypeOpIntSlessEqual\fP, \fBTypeOpIntSless\fP, \fBTypeOpNotEqual\fP, \fBTypeOpEqual\fP, \fBTypeOpStore\fP, \fBTypeOpLoad\fP, and \fBTypeOpCopy\fP\&.
+.PP
+Definition at line 209 of file typeop\&.cc\&.
+.SS "\fBDatatype\fP * TypeOp::getInputLocal (const \fBPcodeOp\fP * op, int4 slot) const\fC [virtual]\fP"
+
+.PP
+Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. The result should depend only on the op-code itself (and the size of the input) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP being considered 
+.br
+\fIslot\fP is the input being considered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeOpCpoolref\fP, \fBTypeOpPtrsub\fP, \fBTypeOpPtradd\fP, \fBTypeOpIndirect\fP, \fBTypeOpIntSright\fP, \fBTypeOpIntRight\fP, \fBTypeOpIntLeft\fP, \fBTypeOpReturn\fP, \fBTypeOpCallother\fP, \fBTypeOpCallind\fP, \fBTypeOpCall\fP, \fBTypeOpCbranch\fP, \fBTypeOpFunc\fP, \fBTypeOpUnary\fP, and \fBTypeOpBinary\fP\&.
+.PP
+Definition at line 185 of file typeop\&.cc\&.
+.SS "const string& TypeOp::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the display name of the op-code\&. 
+.PP
+Definition at line 56 of file typeop\&.hh\&.
+.SS "\fBOpCode\fP TypeOp::getOpcode (void) const\fC [inline]\fP"
+
+.PP
+Get the op-code value\&. 
+.PP
+Definition at line 57 of file typeop\&.hh\&.
+.SS "virtual string TypeOp::getOperatorName (const \fBPcodeOp\fP * op) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the name of the op-code as it should be displayed in context\&. Depending on the context, the same op-code may get displayed in different ways\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP context 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the display token 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeOpSubpiece\fP, \fBTypeOpPiece\fP, \fBTypeOpIntSborrow\fP, \fBTypeOpIntScarry\fP, \fBTypeOpIntCarry\fP, \fBTypeOpIntSext\fP, \fBTypeOpIntZext\fP, and \fBTypeOpCallother\fP\&.
+.PP
+Definition at line 139 of file typeop\&.hh\&.
+.SS "\fBDatatype\fP * TypeOp::getOutputLocal (const \fBPcodeOp\fP * op) const\fC [virtual]\fP"
+
+.PP
+Find the minimal (or suggested) data-type of an output to \fBthis\fP op-code\&. The result should depend only on the op-code itself (and the size of the output) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP being considered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeOpCpoolref\fP, \fBTypeOpPtrsub\fP, \fBTypeOpPtradd\fP, \fBTypeOpCallother\fP, \fBTypeOpCallind\fP, \fBTypeOpCall\fP, \fBTypeOpFunc\fP, \fBTypeOpUnary\fP, and \fBTypeOpBinary\fP\&.
+.PP
+Definition at line 175 of file typeop\&.cc\&.
+.SS "\fBDatatype\fP * TypeOp::getOutputToken (const \fBPcodeOp\fP * op, \fBCastStrategy\fP * castStrategy) const\fC [virtual]\fP"
+
+.PP
+Find the data-type of the output that would be assigned by a compiler\&. Calculate the actual data-type of the output for a specific \fBPcodeOp\fP as would be assigned by a C compiler parsing a grammar containing this op\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the specific \fBPcodeOp\fP 
+.br
+\fIcastStrategy\fP is the current casting strategy 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTypeOpSegment\fP, \fBTypeOpPtrsub\fP, \fBTypeOpPtradd\fP, \fBTypeOpSubpiece\fP, \fBTypeOpPiece\fP, \fBTypeOpIntMult\fP, \fBTypeOpIntSright\fP, \fBTypeOpIntRight\fP, \fBTypeOpIntLeft\fP, \fBTypeOpIntOr\fP, \fBTypeOpIntAnd\fP, \fBTypeOpIntXor\fP, \fBTypeOpIntNegate\fP, \fBTypeOpInt2Comp\fP, \fBTypeOpIntSub\fP, \fBTypeOpIntAdd\fP, \fBTypeOpLoad\fP, and \fBTypeOpCopy\fP\&.
+.PP
+Definition at line 196 of file typeop\&.cc\&.
+.SS "bool TypeOp::inheritsSign (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if the op-code inherits it signedness from its inputs\&. 
+.PP
+Definition at line 107 of file typeop\&.hh\&.
+.SS "bool TypeOp::isCommutative (void) const"
+
+.PP
+Return \fBtrue\fP if this op-code is commutative\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the ordering of the inputs does not affect the output 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file typeop\&.cc\&.
+.SS "bool TypeOp::markExplicitUnsigned (\fBPcodeOp\fP * op, int4 slot) const"
+
+.PP
+Check if a constant input should be explicitly labeled as \fIunsigned\fP\&. Many languages can mark an integer constant as explicitly \fIunsigned\fP\&. When the decompiler is deciding on \fIcast\fP operations, this is one of the checks it performs\&. This method checks if the indicated input is an integer constant that needs to be coerced (as a source token) into being unsigned\&. If this is \fBtrue\fP, the input \fBVarnode\fP is marked for printing as explicitly \fIunsigned\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP taking the value as input 
+.br
+\fIslot\fP is the input slot of the value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBVarnode\fP gets marked for printing 
+.RE
+.PP
+
+.PP
+Definition at line 227 of file typeop\&.cc\&.
+.SS "virtual void TypeOp::printRaw (ostream & s, const \fBPcodeOp\fP * op)\fC [pure virtual]\fP"
+
+.PP
+Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP to print 
+.RE
+.PP
+
+.PP
+Implemented in \fBTypeOpNew\fP, \fBTypeOpCpoolref\fP, \fBTypeOpSegment\fP, \fBTypeOpPtrsub\fP, \fBTypeOpPtradd\fP, \fBTypeOpCast\fP, \fBTypeOpIndirect\fP, \fBTypeOpMulti\fP, \fBTypeOpIntSright\fP, \fBTypeOpReturn\fP, \fBTypeOpCallother\fP, \fBTypeOpCallind\fP, \fBTypeOpCall\fP, \fBTypeOpBranchind\fP, \fBTypeOpCbranch\fP, \fBTypeOpBranch\fP, \fBTypeOpStore\fP, \fBTypeOpLoad\fP, \fBTypeOpCopy\fP, \fBTypeOpFunc\fP, \fBTypeOpUnary\fP, and \fBTypeOpBinary\fP\&.
+.SS "virtual void TypeOp::push (\fBPrintLanguage\fP * lng, const \fBPcodeOp\fP * op) const\fC [pure virtual]\fP"
+
+.PP
+Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. Given a specific language and \fBPcodeOp\fP, emit the expression rooted at the operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP to emit 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBTypeOpNew\fP, \fBTypeOpCpoolref\fP, \fBTypeOpSegment\fP, \fBTypeOpPtrsub\fP, \fBTypeOpPtradd\fP, \fBTypeOpCast\fP, \fBTypeOpSubpiece\fP, \fBTypeOpPiece\fP, \fBTypeOpIndirect\fP, \fBTypeOpMulti\fP, \fBTypeOpFloatRound\fP, \fBTypeOpFloatFloor\fP, \fBTypeOpFloatCeil\fP, \fBTypeOpFloatTrunc\fP, \fBTypeOpFloatFloat2Float\fP, \fBTypeOpFloatInt2Float\fP, \fBTypeOpFloatSqrt\fP, \fBTypeOpFloatAbs\fP, \fBTypeOpFloatNeg\fP, \fBTypeOpFloatSub\fP, \fBTypeOpFloatMult\fP, \fBTypeOpFloatDiv\fP, \fBTypeOpFloatAdd\fP, \fBTypeOpFloatNan\fP, \fBTypeOpFloatLessEqual\fP, \fBTypeOpFloatLess\fP, \fBTypeOpFloatNotEqual\fP, \fBTypeOpFloatEqual\fP, \fBTypeOpBoolOr\fP, \fBTypeOpBoolAnd\fP, \fBTypeOpBoolXor\fP, \fBTypeOpBoolNegate\fP, \fBTypeOpIntSrem\fP, \fBTypeOpIntRem\fP, \fBTypeOpIntSdiv\fP, \fBTypeOpIntDiv\fP, \fBTypeOpIntMult\fP, \fBTypeOpIntSright\fP, \fBTypeOpIntRight\fP, \fBTypeOpIntLeft\fP, \fBTypeOpIntOr\fP, \fBTypeOpIntAnd\fP, \fBTypeOpIntXor\fP, \fBTypeOpIntNegate\fP, \fBTypeOpInt2Comp\fP, \fBTypeOpIntSborrow\fP, \fBTypeOpIntScarry\fP, \fBTypeOpIntCarry\fP, \fBTypeOpIntSub\fP, \fBTypeOpIntAdd\fP, \fBTypeOpIntSext\fP, \fBTypeOpIntZext\fP, \fBTypeOpIntLessEqual\fP, \fBTypeOpIntLess\fP, \fBTypeOpIntSlessEqual\fP, \fBTypeOpIntSless\fP, \fBTypeOpNotEqual\fP, \fBTypeOpEqual\fP, \fBTypeOpReturn\fP, \fBTypeOpCallother\fP, \fBTypeOpCallind\fP, \fBTypeOpCall\fP, \fBTypeOpBranchind\fP, \fBTypeOpCbranch\fP, \fBTypeOpBranch\fP, \fBTypeOpStore\fP, \fBTypeOpLoad\fP, and \fBTypeOpCopy\fP\&.
+.SS "\fBuintb\fP TypeOp::recoverInputBinary (int4 slot, int4 sizeout, \fBuintb\fP out, int4 sizein, \fBuintb\fP in) const\fC [inline]\fP"
+
+.PP
+Reverse the binary op-code operation, recovering a constant input value\&. If the output value and one of the input values is known, recover the value of the other input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslot\fP is the input slot to recover 
+.br
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIout\fP is the output value 
+.br
+\fIsizein\fP is the size of the inputs in bytes 
+.br
+\fIin\fP is the known input value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the input value corresponding to the \fBslot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file typeop\&.hh\&.
+.SS "\fBuintb\fP TypeOp::recoverInputUnary (int4 sizeout, \fBuintb\fP out, int4 sizein) const\fC [inline]\fP"
+
+.PP
+Reverse the unary op-code operation, recovering a constant input value\&. If the output value is known, recover the input value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsizeout\fP is the size of the output in bytes 
+.br
+\fIout\fP is the output value 
+.br
+\fIsizein\fP is the size of the input in bytes 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the input value 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file typeop\&.hh\&.
+.SS "void TypeOp::registerInstructions (vector< \fBTypeOp\fP * > & inst, \fBTypeFactory\fP * tlst, const \fBTranslate\fP * trans)\fC [static]\fP"
+
+.PP
+Build a map from op-code value to the \fBTypeOp\fP information objects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinst\fP will hold the array of \fBTypeOp\fP objects, indexed on op-code 
+.br
+\fItlst\fP is the corresponding \fBTypeFactory\fP for the \fBArchitecture\fP 
+.br
+\fItrans\fP is the \fBTranslate\fP object for floating-point formats 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file typeop\&.cc\&.
+.SS "void TypeOp::selectJavaOperators (vector< \fBTypeOp\fP * > & inst, bool val)\fC [static]\fP"
+
+.PP
+Toggle Java specific aspects of the op-code information\&. Change basic data-type info (signed vs unsigned) and operator names ( '>>' vs '>>>' ) depending on the specific language\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinst\fP is the array of \fBTypeOp\fP information objects 
+.br
+\fIval\fP is set to \fBtrue\fP for Java operators, \fBfalse\fP for C operators 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file typeop\&.cc\&.
+.SS "virtual void TypeOp::setMetatypeIn (\fBtype_metatype\fP val)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Set the data-type associated with inputs to this opcode\&. 
+.PP
+Definition at line 50 of file typeop\&.hh\&.
+.SS "virtual void TypeOp::setMetatypeOut (\fBtype_metatype\fP val)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Set the data-type associated with outputs of this opcode\&. 
+.PP
+Definition at line 51 of file typeop\&.hh\&.
+.SS "virtual void TypeOp::setSymbol (const string & nm)\fC [inline]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Set the display symbol associated with the op-code\&. 
+.PP
+Definition at line 52 of file typeop\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "uint4 TypeOp::addlflags\fC [protected]\fP"
+
+.PP
+Additional properties\&. 
+.PP
+Definition at line 47 of file typeop\&.hh\&.
+.SS "\fBOpBehavior\fP* TypeOp::behave\fC [protected]\fP"
+
+.PP
+Object for emulating the behavior of the op-code\&. 
+.PP
+Definition at line 49 of file typeop\&.hh\&.
+.SS "string TypeOp::name\fC [protected]\fP"
+
+.PP
+\fBSymbol\fP denoting this operation\&. 
+.PP
+Definition at line 48 of file typeop\&.hh\&.
+.SS "\fBOpCode\fP TypeOp::opcode\fC [protected]\fP"
+
+.PP
+The op-code value\&. 
+.PP
+Definition at line 45 of file typeop\&.hh\&.
+.SS "uint4 TypeOp::opflags\fC [protected]\fP"
+
+.PP
+Cached pcode-op properties for this op-code\&. 
+.PP
+Definition at line 46 of file typeop\&.hh\&.
+.SS "\fBTypeFactory\fP* TypeOp::tlst\fC [protected]\fP"
+
+.PP
+Pointer to data-type factory\&. 
+.PP
+Definition at line 44 of file typeop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

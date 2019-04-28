@@ -1,0 +1,172 @@
+.TH "OrPattern" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+OrPattern
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpattern\&.hh>\fP
+.PP
+Inherits \fBPattern\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOrPattern\fP (void)"
+.br
+.ti -1c
+.RI "\fBOrPattern\fP (\fBDisjointPattern\fP *a, \fBDisjointPattern\fP *b)"
+.br
+.ti -1c
+.RI "\fBOrPattern\fP (const vector< \fBDisjointPattern\fP * > &list)"
+.br
+.ti -1c
+.RI "virtual \fB~OrPattern\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBsimplifyClone\fP (void) const"
+.br
+.ti -1c
+.RI "virtual void \fBshiftInstruction\fP (int4 sa)"
+.br
+.ti -1c
+.RI "virtual bool \fBisMatch\fP (\fBParserWalker\fP &walker) const"
+.br
+.ti -1c
+.RI "virtual int4 \fBnumDisjoint\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBDisjointPattern\fP * \fBgetDisjoint\fP (int4 i) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysTrue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysFalse\fP (void) const"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysInstructionTrue\fP (void) const"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoOr\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoAnd\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBcommonSubPattern\fP (const \fBPattern\fP *b, int4 sa) const"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 149 of file slghpattern\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "OrPattern::OrPattern (void)\fC [inline]\fP"
+
+.PP
+Definition at line 152 of file slghpattern\&.hh\&.
+.SS "OrPattern::OrPattern (\fBDisjointPattern\fP * a, \fBDisjointPattern\fP * b)"
+
+.PP
+Definition at line 827 of file slghpattern\&.cc\&.
+.SS "OrPattern::OrPattern (const vector< \fBDisjointPattern\fP * > & list)"
+
+.PP
+Definition at line 834 of file slghpattern\&.cc\&.
+.SS "OrPattern::~OrPattern (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 843 of file slghpattern\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool OrPattern::alwaysFalse (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 881 of file slghpattern\&.cc\&.
+.SS "bool OrPattern::alwaysInstructionTrue (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 891 of file slghpattern\&.cc\&.
+.SS "bool OrPattern::alwaysTrue (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 870 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * OrPattern::commonSubPattern (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 927 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * OrPattern::doAnd (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 901 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * OrPattern::doOr (const \fBPattern\fP * b, int4 sa) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 948 of file slghpattern\&.cc\&.
+.SS "virtual \fBDisjointPattern\fP* OrPattern::getDisjoint (int4 i) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 160 of file slghpattern\&.hh\&.
+.SS "bool OrPattern::isMatch (\fBParserWalker\fP & walker) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 861 of file slghpattern\&.cc\&.
+.SS "virtual int4 OrPattern::numDisjoint (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 159 of file slghpattern\&.hh\&.
+.SS "void OrPattern::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 1005 of file slghpattern\&.cc\&.
+.SS "void OrPattern::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 996 of file slghpattern\&.cc\&.
+.SS "void OrPattern::shiftInstruction (int4 sa)\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 852 of file slghpattern\&.cc\&.
+.SS "\fBPattern\fP * OrPattern::simplifyClone (void) const\fC [virtual]\fP"
+
+.PP
+Implements \fBPattern\fP\&.
+.PP
+Definition at line 975 of file slghpattern\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

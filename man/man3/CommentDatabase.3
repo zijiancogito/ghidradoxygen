@@ -1,0 +1,229 @@
+.TH "CommentDatabase" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CommentDatabase \- An interface to a container of comments\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <comment\&.hh>\fP
+.PP
+Inherited by \fBCommentDatabaseGhidra\fP, and \fBCommentDatabaseInternal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommentDatabase\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~CommentDatabase\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP (void)=0"
+.br
+.RI "Clear all comments from this container\&. "
+.ti -1c
+.RI "virtual void \fBclearType\fP (const \fBAddress\fP &fad, uint4 tp)=0"
+.br
+.RI "Clear all comments matching (one of) the indicated types\&. "
+.ti -1c
+.RI "virtual void \fBaddComment\fP (uint4 tp, const \fBAddress\fP &fad, const \fBAddress\fP &ad, const string &txt)=0"
+.br
+.RI "Add a new comment to the container\&. "
+.ti -1c
+.RI "virtual bool \fBaddCommentNoDuplicate\fP (uint4 tp, const \fBAddress\fP &fad, const \fBAddress\fP &ad, const string &txt)=0"
+.br
+.RI "Add a new comment to the container, making sure there is no duplicate\&. "
+.ti -1c
+.RI "virtual void \fBdeleteComment\fP (\fBComment\fP *com)=0"
+.br
+.RI "Remove the given \fBComment\fP object from the container\&. "
+.ti -1c
+.RI "virtual CommentSet::const_iterator \fBbeginComment\fP (const \fBAddress\fP &fad) const =0"
+.br
+.RI "Get an iterator to the beginning of comments for a single function\&. "
+.ti -1c
+.RI "virtual CommentSet::const_iterator \fBendComment\fP (const \fBAddress\fP &fad) const =0"
+.br
+.RI "Get an iterator to the ending of comments for a single function\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.RI "Save all comments in the container to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)=0"
+.br
+.RI "Restore all comments from XML\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An interface to a container of comments\&. 
+
+Comments can be added (and removed) from a database, keying on the function and address the \fBComment\fP is attached to\&. The interface can generate a \fIbegin\fP and \fIend\fP iterator covering all \fBComment\fP objects for a single function\&. 
+.PP
+Definition at line 84 of file comment\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CommentDatabase::CommentDatabase (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 86 of file comment\&.hh\&.
+.SS "virtual CommentDatabase::~CommentDatabase (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 87 of file comment\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void CommentDatabase::addComment (uint4 tp, const \fBAddress\fP & fad, const \fBAddress\fP & ad, const string & txt)\fC [pure virtual]\fP"
+
+.PP
+Add a new comment to the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is a set of properties to associate with the new comment (may be zero) 
+.br
+\fIfad\fP is the address of the function to which the comment belongs 
+.br
+\fIad\fP is the address to which the comment is attached 
+.br
+\fItxt\fP is the body of the comment 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual bool CommentDatabase::addCommentNoDuplicate (uint4 tp, const \fBAddress\fP & fad, const \fBAddress\fP & ad, const string & txt)\fC [pure virtual]\fP"
+
+.PP
+Add a new comment to the container, making sure there is no duplicate\&. If there is already a comment at the same address with the same body, no new comment is added\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is a set of properties to associate with the new comment (may be zero) 
+.br
+\fIfad\fP is the address of the function to which the comment belongs 
+.br
+\fIad\fP is the address to which the comment is attached 
+.br
+\fItxt\fP is the body of the comment 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a new \fBComment\fP was created, \fBfalse\fP if there was a duplicate 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual CommentSet::const_iterator CommentDatabase::beginComment (const \fBAddress\fP & fad) const\fC [pure virtual]\fP"
+
+.PP
+Get an iterator to the beginning of comments for a single function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfad\fP is the address of the function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual void CommentDatabase::clear (void)\fC [pure virtual]\fP"
+
+.PP
+Clear all comments from this container\&. 
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual void CommentDatabase::clearType (const \fBAddress\fP & fad, uint4 tp)\fC [pure virtual]\fP"
+
+.PP
+Clear all comments matching (one of) the indicated types\&. Clearing is restricted to comments belonging to a specific function and matching at least one of the given properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfad\fP is the address of the owning function 
+.br
+\fItp\fP is a set of one or more properties 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual void CommentDatabase::deleteComment (\fBComment\fP * com)\fC [pure virtual]\fP"
+
+.PP
+Remove the given \fBComment\fP object from the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcom\fP is the given \fBComment\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual CommentSet::const_iterator CommentDatabase::endComment (const \fBAddress\fP & fad) const\fC [pure virtual]\fP"
+
+.PP
+Get an iterator to the ending of comments for a single function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfad\fP is the address of the function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual void CommentDatabase::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)\fC [pure virtual]\fP"
+
+.PP
+Restore all comments from XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <commentdb> element 
+.br
+\fImanage\fP is a manager for resolving address space references 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+.SS "virtual void CommentDatabase::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Save all comments in the container to an XML stream\&. Writes a <commentdb> tag, with <comment> sub-tags for each \fBComment\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implemented in \fBCommentDatabaseInternal\fP, and \fBCommentDatabaseGhidra\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,352 @@
+.TH "Rule" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Rule \- Class for performing a single transformation on a \fBPcodeOp\fP or \fBVarnode\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <action\&.hh>\fP
+.PP
+Inherited by \fBRule2Comp2Mult\fP, \fBRule2Comp2Sub\fP, \fBRuleAddMultCollapse\fP, \fBRuleAddUnsigned\fP, \fBRuleAndCommute\fP, \fBRuleAndCompare\fP, \fBRuleAndDistribute\fP, \fBRuleAndMask\fP, \fBRuleAndOrLump\fP, \fBRuleAndPiece\fP, \fBRuleBitUndistribute\fP, \fBRuleBooleanNegate\fP, \fBRuleBoolNegate\fP, \fBRuleBoolZext\fP, \fBRuleBxor2NotEqual\fP, \fBRuleCarryElim\fP, \fBRuleCollapseConstants\fP, \fBRuleCollectTerms\fP, \fBRuleConcatCommute\fP, \fBRuleConcatLeftShift\fP, \fBRuleConcatShift\fP, \fBRuleConcatZero\fP, \fBRuleConcatZext\fP, \fBRuleConditionalMove\fP, \fBRuleCondNegate\fP, \fBRuleDivOpt\fP, \fBRuleDivTermAdd\fP, \fBRuleDivTermAdd2\fP, \fBRuleDoubleIn\fP, \fBRuleDoubleLoad\fP, \fBRuleDoubleShift\fP, \fBRuleDoubleSub\fP, \fBRuleDumptyHump\fP, \fBRuleEarlyRemoval\fP, \fBRuleEmbed\fP, \fBRuleEqual2Constant\fP, \fBRuleEqual2Zero\fP, \fBRuleEquality\fP, \fBRuleFloatCast\fP, \fBRuleFloatRange\fP, \fBRuleFuncPtrEncoding\fP, \fBRuleGeneric\fP, \fBRuleHighOrderAnd\fP, \fBRuleHumptyDumpty\fP, \fBRuleHumptyOr\fP, \fBRuleIdentityEl\fP, \fBRuleIgnoreNan\fP, \fBRuleIndirectCollapse\fP, \fBRuleIntLessEqual\fP, \fBRuleLeftRight\fP, \fBRuleLess2Zero\fP, \fBRuleLessEqual\fP, \fBRuleLessEqual2Zero\fP, \fBRuleLessNotEqual\fP, \fBRuleLessOne\fP, \fBRuleLoadVarnode\fP, \fBRuleLogic2Bool\fP, \fBRuleModOpt\fP, \fBRuleMultiCollapse\fP, \fBRuleMultNegOne\fP, \fBRuleNegateIdentity\fP, \fBRuleNegateNegate\fP, \fBRuleNotDistribute\fP, \fBRuleOrCollapse\fP, \fBRuleOrMask\fP, \fBRuleOrPredicate\fP, \fBRulePiece2Sext\fP, \fBRulePiece2Zext\fP, \fBRulePropagateCopy\fP, \fBRulePtraddUndo\fP, \fBRulePtrArith\fP, \fBRulePtrFlow\fP, \fBRulePtrsubCharConstant\fP, \fBRulePtrsubUndo\fP, \fBRulePullsubIndirect\fP, \fBRulePullsubMulti\fP, \fBRulePushMulti\fP, \fBRulePushPtr\fP, \fBRuleRangeMeld\fP, \fBRuleSborrow\fP, \fBRuleSegment\fP, \fBRuleSelectCse\fP, \fBRuleShift2Mult\fP, \fBRuleShiftAnd\fP, \fBRuleShiftBitops\fP, \fBRuleShiftCompare\fP, \fBRuleShiftPiece\fP, \fBRuleShiftSub\fP, \fBRuleSignDiv2\fP, \fBRuleSignForm\fP, \fBRuleSignNearMult\fP, \fBRuleSLess2Zero\fP, \fBRuleSlessToLess\fP, \fBRuleSplitFlow\fP, \fBRuleStoreVarnode\fP, \fBRuleStructOffset0\fP, \fBRuleSub2Add\fP, \fBRuleSubCancel\fP, \fBRuleSubCommute\fP, \fBRuleSubExtComm\fP, \fBRuleSubfloatConvert\fP, \fBRuleSubNormal\fP, \fBRuleSubRight\fP, \fBRuleSubvarAnd\fP, \fBRuleSubvarCompZero\fP, \fBRuleSubvarSext\fP, \fBRuleSubvarShift\fP, \fBRuleSubvarSubpiece\fP, \fBRuleSubvarZext\fP, \fBRuleSubZext\fP, \fBRuleSwitchSingle\fP, \fBRuleTermOrder\fP, \fBRuleThreeWayCompare\fP, \fBRuleTransformCpool\fP, \fBRuleTrivialArith\fP, \fBRuleTrivialBool\fP, \fBRuleTrivialShift\fP, \fBRuleXorCollapse\fP, \fBRuleZextCommute\fP, \fBRuleZextEliminate\fP, \fBRuleZextShiftZext\fP, and \fBRuleZextSless\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBtypeflags\fP { \fBtype_disable\fP = 1, \fBrule_debug\fP = 2, \fBwarnings_on\fP = 4, \fBwarnings_given\fP = 8 }"
+.br
+.RI "Properties associated with a \fBRule\fP\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRule\fP (const string &g, uint4 fl, const string &nm)"
+.br
+.RI "Construct given group, properties name\&. "
+.ti -1c
+.RI "virtual \fB~Rule\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Return the name of \fBthis\fP \fBRule\fP\&. "
+.ti -1c
+.RI "const string & \fBgetGroup\fP (void) const"
+.br
+.RI "Return the group \fBthis\fP \fBRule\fP belongs to\&. "
+.ti -1c
+.RI "uint4 \fBgetNumTests\fP (void)"
+.br
+.RI "Get number of attempted applications\&. "
+.ti -1c
+.RI "uint4 \fBgetNumApply\fP (void)"
+.br
+.RI "Get number of successful applications\&. "
+.ti -1c
+.RI "void \fBsetBreak\fP (uint4 tp)"
+.br
+.RI "Set a breakpoint on \fBthis\fP \fBRule\fP\&. "
+.ti -1c
+.RI "void \fBclearBreak\fP (uint4 tp)"
+.br
+.RI "Clear a breakpoint on \fBthis\fP \fBRule\fP\&. "
+.ti -1c
+.RI "void \fBturnOnWarnings\fP (void)"
+.br
+.RI "Enable warnings for \fBthis\fP \fBRule\fP\&. "
+.ti -1c
+.RI "void \fBturnOffWarnings\fP (void)"
+.br
+.RI "Disable warnings for \fBthis\fP \fBRule\fP\&. "
+.ti -1c
+.RI "bool \fBisDisabled\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP \fBRule\fP is disabled\&. "
+.ti -1c
+.RI "void \fBsetDisable\fP (void)"
+.br
+.RI "Disable this \fBRule\fP (within its pool) "
+.ti -1c
+.RI "void \fBclearDisable\fP (void)"
+.br
+.RI "Enable this \fBRule\fP (within its pool) "
+.ti -1c
+.RI "bool \fBcheckActionBreak\fP (void)"
+.br
+.RI "Check if an action breakpoint is turned on\&. "
+.ti -1c
+.RI "uint4 \fBgetBreakPoint\fP (void) const"
+.br
+.RI "Return breakpoint toggles\&. "
+.ti -1c
+.RI "virtual \fBRule\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const =0"
+.br
+.RI "Clone the \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBgetOpList\fP (vector< uint4 > &oplist) const"
+.br
+.RI "List of op codes this rule operates on\&. "
+.ti -1c
+.RI "virtual int4 \fBapplyOp\fP (\fBPcodeOp\fP *op, \fBFuncdata\fP &data)"
+.br
+.RI "Attempt to apply \fBthis\fP \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBreset\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Reset \fBthis\fP \fBRule\fP\&. "
+.ti -1c
+.RI "virtual void \fBresetStats\fP (void)"
+.br
+.RI "Reset \fBRule\fP statistics\&. "
+.ti -1c
+.RI "virtual void \fBprintStatistics\fP (ostream &s) const"
+.br
+.RI "Print statistics for \fBthis\fP \fBRule\fP\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "struct \fBActionPool\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for performing a single transformation on a \fBPcodeOp\fP or \fBVarnode\fP\&. 
+
+A \fBRule\fP, through its \fBapplyOp()\fP method, is handed a specific \fBPcodeOp\fP as a potential point to apply\&. It determines if it can apply at that point, then makes any changes\&. Rules inform the system of what types of PcodeOps they can possibly apply to through the \fBgetOpList()\fP method\&. A set of Rules are pooled together into a single \fBAction\fP via the \fBActionPool\fP, which efficiently applies each \fBRule\fP across a whole function\&. A \fBRule\fP supports the same breakpoint properties as an \fBAction\fP\&. A \fBRule\fP is allowed to keep state that is specific to a given function (\fBFuncdata\fP)\&. The \fBreset()\fP method is invoked to purge this state for each new function to be transformed\&. 
+.PP
+Definition at line 192 of file action\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBRule::typeflags\fP"
+
+.PP
+Properties associated with a \fBRule\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fItype_disable \fP\fP
+Is this rule disabled\&. 
+.TP
+\fB\fIrule_debug \fP\fP
+Print debug info specific for this rule\&. 
+.TP
+\fB\fIwarnings_on \fP\fP
+A warning is issued if this rule is applied\&. 
+.TP
+\fB\fIwarnings_given \fP\fP
+Set if a warning for this rule has been given before\&. 
+.PP
+Definition at line 195 of file action\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Rule::Rule (const string & g, uint4 fl, const string & nm)"
+
+.PP
+Construct given group, properties name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the groupname to which \fBthis\fP \fBRule\fP belongs 
+.br
+\fIfl\fP is the set of properties 
+.br
+\fInm\fP is the name of the \fBRule\fP 
+.RE
+.PP
+
+.PP
+Definition at line 605 of file action\&.cc\&.
+.SS "virtual Rule::~Rule (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 212 of file action\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int4 Rule::applyOp (\fBPcodeOp\fP * op, \fBFuncdata\fP & data)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Attempt to apply \fBthis\fP \fBRule\fP\&. This method contains the main logic for applying the \fBRule\fP\&. It must use a given \fBPcodeOp\fP as the point at which the \fBRule\fP applies\&. If it does apply, changes are made directly to the function and 1 (non-zero) is returned, otherwise 0 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP where the \fBRule\fP may apply 
+.br
+\fIdata\fP is the function to which to apply 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBRuleThreeWayCompare\fP, \fBRuleFuncPtrEncoding\fP, \fBRuleIgnoreNan\fP, \fBRuleFloatCast\fP, \fBRuleConditionalMove\fP, \fBRuleNegateNegate\fP, \fBRuleSubfloatConvert\fP, \fBRuleSubvarSext\fP, \fBRuleSubvarZext\fP, \fBRuleSubvarShift\fP, \fBRuleSubvarCompZero\fP, \fBRulePtrFlow\fP, \fBRuleSplitFlow\fP, \fBRuleSubvarSubpiece\fP, \fBRuleSubvarAnd\fP, \fBRuleSegment\fP, \fBRuleModOpt\fP, \fBRuleSignNearMult\fP, \fBRuleSignForm\fP, \fBRuleSignDiv2\fP, \fBRuleDivOpt\fP, \fBRuleDivTermAdd2\fP, \fBRuleDivTermAdd\fP, \fBRuleSubNormal\fP, \fBRulePtrsubCharConstant\fP, \fBRuleSubRight\fP, \fBRule2Comp2Sub\fP, \fBRuleAddUnsigned\fP, \fBRuleMultNegOne\fP, \fBRulePtrsubUndo\fP, \fBRulePtraddUndo\fP, \fBRulePushPtr\fP, \fBRuleStructOffset0\fP, \fBRulePtrArith\fP, \fBRuleEqual2Constant\fP, \fBRuleEqual2Zero\fP, \fBRuleSLess2Zero\fP, \fBRuleLessEqual2Zero\fP, \fBRuleLess2Zero\fP, \fBRuleBoolNegate\fP, \fBRuleCondNegate\fP, \fBRuleSwitchSingle\fP, \fBRuleEmbed\fP, \fBRuleHumptyOr\fP, \fBRuleDumptyHump\fP, \fBRuleHumptyDumpty\fP, \fBRuleShiftSub\fP, \fBRuleSubCancel\fP, \fBRuleSubZext\fP, \fBRuleConcatLeftShift\fP, \fBRuleConcatZero\fP, \fBRuleShiftAnd\fP, \fBRuleZextShiftZext\fP, \fBRuleZextCommute\fP, \fBRuleConcatZext\fP, \fBRuleConcatCommute\fP, \fBRuleSubCommute\fP, \fBRuleSubExtComm\fP, \fBRuleStoreVarnode\fP, \fBRuleLoadVarnode\fP, \fBRuleAddMultCollapse\fP, \fBRuleXorCollapse\fP, \fBRuleSub2Add\fP, \fBRuleCarryElim\fP, \fBRule2Comp2Mult\fP, \fBRulePropagateCopy\fP, \fBRuleTransformCpool\fP, \fBRuleCollapseConstants\fP, \fBRuleShiftPiece\fP, \fBRuleShift2Mult\fP, \fBRuleIdentityEl\fP, \fBRuleTrivialShift\fP, \fBRuleSborrow\fP, \fBRuleMultiCollapse\fP, \fBRuleIndirectCollapse\fP, \fBRuleLogic2Bool\fP, \fBRuleBoolZext\fP, \fBRuleBooleanNegate\fP, \fBRuleBitUndistribute\fP, \fBRuleZextSless\fP, \fBRuleSlessToLess\fP, \fBRuleZextEliminate\fP, \fBRuleTrivialBool\fP, \fBRuleTrivialArith\fP, \fBRuleLessNotEqual\fP, \fBRuleLessEqual\fP, \fBRuleShiftCompare\fP, \fBRuleLeftRight\fP, \fBRuleConcatShift\fP, \fBRuleDoubleShift\fP, \fBRuleDoubleSub\fP, \fBRuleAndCompare\fP, \fBRuleAndPiece\fP, \fBRuleDoubleLoad\fP, \fBRuleAndCommute\fP, \fBRuleDoubleIn\fP, \fBRuleFloatRange\fP, \fBRuleRangeMeld\fP, \fBRuleLessOne\fP, \fBRuleAndDistribute\fP, \fBRuleHighOrderAnd\fP, \fBRuleNotDistribute\fP, \fBRulePushMulti\fP, \fBRuleOrPredicate\fP, \fBRulePullsubIndirect\fP, \fBRulePullsubMulti\fP, \fBRuleTermOrder\fP, \fBRuleEquality\fP, \fBRuleIntLessEqual\fP, \fBRuleShiftBitops\fP, \fBRuleNegateIdentity\fP, \fBRuleGeneric\fP, \fBRuleAndOrLump\fP, \fBRuleOrCollapse\fP, \fBRuleAndMask\fP, \fBRuleOrMask\fP, \fBRuleBxor2NotEqual\fP, \fBRulePiece2Sext\fP, \fBRulePiece2Zext\fP, \fBRuleSelectCse\fP, \fBRuleCollectTerms\fP, and \fBRuleEarlyRemoval\fP\&.
+.PP
+Definition at line 243 of file action\&.hh\&.
+.SS "bool Rule::checkActionBreak (void)"
+
+.PP
+Check if an action breakpoint is turned on\&. This method is called every time the \fBRule\fP successfully applies\&. If it returns \fBtrue\fP, this indicates to the system that an action breakpoint has occurred\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if an action breakpoint should occur because of this \fBRule\fP 
+.RE
+.PP
+
+.PP
+Definition at line 701 of file action\&.cc\&.
+.SS "void Rule::clearBreak (uint4 tp)\fC [inline]\fP"
+
+.PP
+Clear a breakpoint on \fBthis\fP \fBRule\fP\&. 
+.PP
+Definition at line 218 of file action\&.hh\&.
+.SS "void Rule::clearDisable (void)\fC [inline]\fP"
+
+.PP
+Enable this \fBRule\fP (within its pool) 
+.PP
+Definition at line 223 of file action\&.hh\&.
+.SS "virtual \fBRule\fP* Rule::clone (const \fBActionGroupList\fP & grouplist) const\fC [pure virtual]\fP"
+
+.PP
+Clone the \fBRule\fP\&. If \fBthis\fP \fBRule\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBRule\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBRule\fP or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBRuleThreeWayCompare\fP, \fBRuleFuncPtrEncoding\fP, \fBRuleIgnoreNan\fP, \fBRuleFloatCast\fP, \fBRuleConditionalMove\fP, \fBRuleNegateNegate\fP, \fBRuleSubfloatConvert\fP, \fBRuleSubvarSext\fP, \fBRuleSubvarZext\fP, \fBRuleSubvarShift\fP, \fBRuleSubvarCompZero\fP, \fBRulePtrFlow\fP, \fBRuleSplitFlow\fP, \fBRuleSubvarSubpiece\fP, \fBRuleSubvarAnd\fP, \fBRuleSegment\fP, \fBRuleModOpt\fP, \fBRuleSignNearMult\fP, \fBRuleSignForm\fP, \fBRuleSignDiv2\fP, \fBRuleDivOpt\fP, \fBRuleDivTermAdd2\fP, \fBRuleDivTermAdd\fP, \fBRuleSubNormal\fP, \fBRulePtrsubCharConstant\fP, \fBRuleSubRight\fP, \fBRule2Comp2Sub\fP, \fBRuleAddUnsigned\fP, \fBRuleMultNegOne\fP, \fBRulePtrsubUndo\fP, \fBRulePtraddUndo\fP, \fBRulePushPtr\fP, \fBRuleStructOffset0\fP, \fBRulePtrArith\fP, \fBRuleEqual2Constant\fP, \fBRuleEqual2Zero\fP, \fBRuleSLess2Zero\fP, \fBRuleLessEqual2Zero\fP, \fBRuleLess2Zero\fP, \fBRuleBoolNegate\fP, \fBRuleCondNegate\fP, \fBRuleSwitchSingle\fP, \fBRuleEmbed\fP, \fBRuleHumptyOr\fP, \fBRuleDumptyHump\fP, \fBRuleHumptyDumpty\fP, \fBRuleShiftSub\fP, \fBRuleSubCancel\fP, \fBRuleSubZext\fP, \fBRuleConcatLeftShift\fP, \fBRuleConcatZero\fP, \fBRuleShiftAnd\fP, \fBRuleZextShiftZext\fP, \fBRuleZextCommute\fP, \fBRuleConcatZext\fP, \fBRuleConcatCommute\fP, \fBRuleSubCommute\fP, \fBRuleSubExtComm\fP, \fBRuleStoreVarnode\fP, \fBRuleLoadVarnode\fP, \fBRuleAddMultCollapse\fP, \fBRuleXorCollapse\fP, \fBRuleSub2Add\fP, \fBRuleCarryElim\fP, \fBRule2Comp2Mult\fP, \fBRulePropagateCopy\fP, \fBRuleTransformCpool\fP, \fBRuleCollapseConstants\fP, \fBRuleShiftPiece\fP, \fBRuleShift2Mult\fP, \fBRuleIdentityEl\fP, \fBRuleTrivialShift\fP, \fBRuleSborrow\fP, \fBRuleMultiCollapse\fP, \fBRuleIndirectCollapse\fP, \fBRuleLogic2Bool\fP, \fBRuleBoolZext\fP, \fBRuleBooleanNegate\fP, \fBRuleBitUndistribute\fP, \fBRuleZextSless\fP, \fBRuleSlessToLess\fP, \fBRuleZextEliminate\fP, \fBRuleTrivialBool\fP, \fBRuleTrivialArith\fP, \fBRuleLessNotEqual\fP, \fBRuleLessEqual\fP, \fBRuleShiftCompare\fP, \fBRuleLeftRight\fP, \fBRuleConcatShift\fP, \fBRuleDoubleShift\fP, \fBRuleDoubleSub\fP, \fBRuleAndCompare\fP, \fBRuleAndPiece\fP, \fBRuleDoubleLoad\fP, \fBRuleAndCommute\fP, \fBRuleDoubleIn\fP, \fBRuleFloatRange\fP, \fBRuleRangeMeld\fP, \fBRuleLessOne\fP, \fBRuleAndDistribute\fP, \fBRuleHighOrderAnd\fP, \fBRuleNotDistribute\fP, \fBRulePushMulti\fP, \fBRuleOrPredicate\fP, \fBRulePullsubIndirect\fP, \fBRulePullsubMulti\fP, \fBRuleTermOrder\fP, \fBRuleEquality\fP, \fBRuleIntLessEqual\fP, \fBRuleShiftBitops\fP, \fBRuleNegateIdentity\fP, \fBRuleGeneric\fP, \fBRuleAndOrLump\fP, \fBRuleOrCollapse\fP, \fBRuleAndMask\fP, \fBRuleOrMask\fP, \fBRuleBxor2NotEqual\fP, \fBRulePiece2Sext\fP, \fBRulePiece2Zext\fP, \fBRuleSelectCse\fP, \fBRuleCollectTerms\fP, and \fBRuleEarlyRemoval\fP\&.
+.SS "uint4 Rule::getBreakPoint (void) const\fC [inline]\fP"
+
+.PP
+Return breakpoint toggles\&. 
+.PP
+Definition at line 225 of file action\&.hh\&.
+.SS "const string& Rule::getGroup (void) const\fC [inline]\fP"
+
+.PP
+Return the group \fBthis\fP \fBRule\fP belongs to\&. 
+.PP
+Definition at line 214 of file action\&.hh\&.
+.SS "const string& Rule::getName (void) const\fC [inline]\fP"
+
+.PP
+Return the name of \fBthis\fP \fBRule\fP\&. 
+.PP
+Definition at line 213 of file action\&.hh\&.
+.SS "uint4 Rule::getNumApply (void)\fC [inline]\fP"
+
+.PP
+Get number of successful applications\&. 
+.PP
+Definition at line 216 of file action\&.hh\&.
+.SS "uint4 Rule::getNumTests (void)\fC [inline]\fP"
+
+.PP
+Get number of attempted applications\&. 
+.PP
+Definition at line 215 of file action\&.hh\&.
+.SS "void Rule::getOpList (vector< uint4 > & oplist) const\fC [virtual]\fP"
+
+.PP
+List of op codes this rule operates on\&. Populate the given array with all possible OpCodes this \fBRule\fP might apply to\&. By default, this method returns all possible OpCodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoplist\fP is the array to populate 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBRuleThreeWayCompare\fP, \fBRuleFuncPtrEncoding\fP, \fBRuleIgnoreNan\fP, \fBRuleFloatCast\fP, \fBRuleConditionalMove\fP, \fBRuleNegateNegate\fP, \fBRuleSubfloatConvert\fP, \fBRuleSubvarSext\fP, \fBRuleSubvarZext\fP, \fBRuleSubvarShift\fP, \fBRuleSubvarCompZero\fP, \fBRulePtrFlow\fP, \fBRuleSplitFlow\fP, \fBRuleSubvarSubpiece\fP, \fBRuleSubvarAnd\fP, \fBRuleSegment\fP, \fBRuleModOpt\fP, \fBRuleSignNearMult\fP, \fBRuleSignForm\fP, \fBRuleSignDiv2\fP, \fBRuleDivOpt\fP, \fBRuleDivTermAdd2\fP, \fBRuleDivTermAdd\fP, \fBRuleSubNormal\fP, \fBRulePtrsubCharConstant\fP, \fBRuleSubRight\fP, \fBRule2Comp2Sub\fP, \fBRuleAddUnsigned\fP, \fBRuleMultNegOne\fP, \fBRulePtrsubUndo\fP, \fBRulePtraddUndo\fP, \fBRulePushPtr\fP, \fBRuleStructOffset0\fP, \fBRulePtrArith\fP, \fBRuleEqual2Constant\fP, \fBRuleEqual2Zero\fP, \fBRuleSLess2Zero\fP, \fBRuleLessEqual2Zero\fP, \fBRuleLess2Zero\fP, \fBRuleBoolNegate\fP, \fBRuleCondNegate\fP, \fBRuleSwitchSingle\fP, \fBRuleEmbed\fP, \fBRuleHumptyOr\fP, \fBRuleDumptyHump\fP, \fBRuleHumptyDumpty\fP, \fBRuleShiftSub\fP, \fBRuleSubCancel\fP, \fBRuleSubZext\fP, \fBRuleConcatLeftShift\fP, \fBRuleConcatZero\fP, \fBRuleShiftAnd\fP, \fBRuleZextShiftZext\fP, \fBRuleZextCommute\fP, \fBRuleConcatZext\fP, \fBRuleConcatCommute\fP, \fBRuleSubCommute\fP, \fBRuleSubExtComm\fP, \fBRuleStoreVarnode\fP, \fBRuleLoadVarnode\fP, \fBRuleAddMultCollapse\fP, \fBRuleXorCollapse\fP, \fBRuleSub2Add\fP, \fBRuleCarryElim\fP, \fBRule2Comp2Mult\fP, \fBRuleTransformCpool\fP, \fBRuleShiftPiece\fP, \fBRuleShift2Mult\fP, \fBRuleIdentityEl\fP, \fBRuleTrivialShift\fP, \fBRuleSborrow\fP, \fBRuleMultiCollapse\fP, \fBRuleIndirectCollapse\fP, \fBRuleLogic2Bool\fP, \fBRuleBoolZext\fP, \fBRuleBooleanNegate\fP, \fBRuleBitUndistribute\fP, \fBRuleZextSless\fP, \fBRuleSlessToLess\fP, \fBRuleZextEliminate\fP, \fBRuleTrivialBool\fP, \fBRuleTrivialArith\fP, \fBRuleLessNotEqual\fP, \fBRuleLessEqual\fP, \fBRuleShiftCompare\fP, \fBRuleLeftRight\fP, \fBRuleConcatShift\fP, \fBRuleDoubleShift\fP, \fBRuleDoubleSub\fP, \fBRuleAndCompare\fP, \fBRuleAndPiece\fP, \fBRuleDoubleLoad\fP, \fBRuleAndCommute\fP, \fBRuleDoubleIn\fP, \fBRuleFloatRange\fP, \fBRuleRangeMeld\fP, \fBRuleLessOne\fP, \fBRuleAndDistribute\fP, \fBRuleHighOrderAnd\fP, \fBRuleNotDistribute\fP, \fBRulePushMulti\fP, \fBRuleOrPredicate\fP, \fBRulePullsubIndirect\fP, \fBRulePullsubMulti\fP, \fBRuleTermOrder\fP, \fBRuleEquality\fP, \fBRuleIntLessEqual\fP, \fBRuleShiftBitops\fP, \fBRuleNegateIdentity\fP, \fBRuleGeneric\fP, \fBRuleAndOrLump\fP, \fBRuleOrCollapse\fP, \fBRuleAndMask\fP, \fBRuleOrMask\fP, \fBRuleBxor2NotEqual\fP, \fBRulePiece2Sext\fP, \fBRulePiece2Zext\fP, \fBRuleSelectCse\fP, and \fBRuleCollectTerms\fP\&.
+.PP
+Definition at line 689 of file action\&.cc\&.
+.SS "bool Rule::isDisabled (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP \fBRule\fP is disabled\&. 
+.PP
+Definition at line 221 of file action\&.hh\&.
+.SS "void Rule::printStatistics (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print statistics for \fBthis\fP \fBRule\fP\&. Print the accumulated counts associated with applying this \fBRule\fP to stream\&. This method is intended for console mode debugging\&. Derived Rules may override this to display their own statistics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 680 of file action\&.cc\&.
+.SS "void Rule::reset (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Reset \fBthis\fP \fBRule\fP\&. Any state that is specific to a particular function is cleared by this method\&. This method can be used to initialize a \fBRule\fP based on a new function it will apply to 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the \fInew\fP function about to be transformed 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBRuleSubvarSext\fP, and \fBRuleDoubleIn\fP\&.
+.PP
+Definition at line 633 of file action\&.cc\&.
+.SS "void Rule::resetStats (void)\fC [virtual]\fP"
+
+.PP
+Reset \fBRule\fP statistics\&. Counts of when this \fBRule\fP has been attempted/applied are reset to zero\&. Derived Rules may reset their own statistics\&. 
+.PP
+Definition at line 641 of file action\&.cc\&.
+.SS "void Rule::setBreak (uint4 tp)\fC [inline]\fP"
+
+.PP
+Set a breakpoint on \fBthis\fP \fBRule\fP\&. 
+.PP
+Definition at line 217 of file action\&.hh\&.
+.SS "void Rule::setDisable (void)\fC [inline]\fP"
+
+.PP
+Disable this \fBRule\fP (within its pool) 
+.PP
+Definition at line 222 of file action\&.hh\&.
+.SS "void Rule::turnOffWarnings (void)\fC [inline]\fP"
+
+.PP
+Disable warnings for \fBthis\fP \fBRule\fP\&. 
+.PP
+Definition at line 220 of file action\&.hh\&.
+.SS "void Rule::turnOnWarnings (void)\fC [inline]\fP"
+
+.PP
+Enable warnings for \fBthis\fP \fBRule\fP\&. 
+.PP
+Definition at line 219 of file action\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend struct \fBActionPool\fP\fC [friend]\fP"
+
+.PP
+Definition at line 202 of file action\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

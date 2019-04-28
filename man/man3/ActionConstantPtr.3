@@ -1,0 +1,108 @@
+.TH "ActionConstantPtr" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ActionConstantPtr \- Check for constants, with pointer type, that correspond to global symbols\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coreaction\&.hh>\fP
+.PP
+Inherits \fBAction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionConstantPtr\fP (const string &g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBreset\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Reset the \fBAction\fP for a new function\&. "
+.ti -1c
+.RI "virtual \fBAction\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const"
+.br
+.RI "Clone the \fBAction\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBapply\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Make a single attempt to apply \fBthis\fP \fBAction\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Check for constants, with pointer type, that correspond to global symbols\&. 
+.PP
+Definition at line 163 of file coreaction\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ActionConstantPtr::ActionConstantPtr (const string & g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 167 of file coreaction\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 ActionConstantPtr::apply (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Make a single attempt to apply \fBthis\fP \fBAction\fP\&. This is the main entry point for applying changes to a function that are specific to \fBthis\fP \fBAction\fP\&. The method can inspect whatever it wants to decide if the \fBAction\fP does or does not apply\&. Changes are indicated by incrementing the \fBcount\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to inspect/modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 for a complete application, -1 for a partial completion (due to breakpoint) 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Definition at line 898 of file coreaction\&.cc\&.
+.SS "virtual \fBAction\fP* ActionConstantPtr::clone (const \fBActionGroupList\fP & grouplist) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the \fBAction\fP\&. If \fBthis\fP \fBAction\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBAction\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBAction\fP or NULL 
+.RE
+.PP
+
+.PP
+Implements \fBAction\fP\&.
+.PP
+Definition at line 169 of file coreaction\&.hh\&.
+.SS "virtual void ActionConstantPtr::reset (\fBFuncdata\fP & data)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reset the \fBAction\fP for a new function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the new function \fBthis\fP \fBAction\fP may affect 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAction\fP\&.
+.PP
+Definition at line 168 of file coreaction\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

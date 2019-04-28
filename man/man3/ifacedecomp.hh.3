@@ -1,0 +1,328 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ifacedecomp.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/ifacedecomp.hh
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'ifaceterm\&.hh'\fP
+.br
+\fC#include 'graph\&.hh'\fP
+.br
+\fC#include 'grammar\&.hh'\fP
+.br
+\fC#include 'callgraph\&.hh'\fP
+.br
+\fC#include 'paramid\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBIfaceDecompCapability\fP"
+.br
+.ti -1c
+.RI "class \fBIfaceDecompData\fP"
+.br
+.ti -1c
+.RI "class \fBIfaceAssemblyEmit\fP"
+.br
+.ti -1c
+.RI "class \fBIfaceDecompCommand\fP"
+.br
+.ti -1c
+.RI "class \fBIfcSource\fP"
+.br
+.ti -1c
+.RI "class \fBIfcOption\fP"
+.br
+.ti -1c
+.RI "class \fBIfcParseLine\fP"
+.br
+.ti -1c
+.RI "class \fBIfcParseFile\fP"
+.br
+.ti -1c
+.RI "class \fBIfcAdjustVma\fP"
+.br
+.ti -1c
+.RI "class \fBIfcFuncload\fP"
+.br
+.ti -1c
+.RI "class \fBIfcAddrrangeLoad\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCleararch\fP"
+.br
+.ti -1c
+.RI "class \fBIfcReadSymbols\fP"
+.br
+.ti -1c
+.RI "class \fBIfcMapaddress\fP"
+.br
+.ti -1c
+.RI "class \fBIfcMaphash\fP"
+.br
+.ti -1c
+.RI "class \fBIfcMapfunction\fP"
+.br
+.ti -1c
+.RI "class \fBIfcMapexternalref\fP"
+.br
+.ti -1c
+.RI "class \fBIfcMaplabel\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintdisasm\fP"
+.br
+.ti -1c
+.RI "class \fBIfcDump\fP"
+.br
+.ti -1c
+.RI "class \fBIfcDumpbinary\fP"
+.br
+.ti -1c
+.RI "class \fBIfcDecompile\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintLanguage\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintCXml\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintCFlat\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintCStruct\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintCGlobals\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintCTypes\fP"
+.br
+.ti -1c
+.RI "class \fBIfcProduceC\fP"
+.br
+.ti -1c
+.RI "class \fBIfcProducePrototypes\fP"
+.br
+.ti -1c
+.RI "class \fBIfcListaction\fP"
+.br
+.ti -1c
+.RI "class \fBIfcListOverride\fP"
+.br
+.ti -1c
+.RI "class \fBIfcListprototypes\fP"
+.br
+.ti -1c
+.RI "class \fBIfcSetcontextrange\fP"
+.br
+.ti -1c
+.RI "class \fBIfcSettrackedrange\fP"
+.br
+.ti -1c
+.RI "class \fBIfcBreakstart\fP"
+.br
+.ti -1c
+.RI "class \fBIfcBreakaction\fP"
+.br
+.ti -1c
+.RI "class \fBIfcBreakjump\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintTree\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintBlocktree\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintSpaces\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintHigh\fP"
+.br
+.ti -1c
+.RI "class \fBIfcParamIDAnalysis\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintParamMeasures\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintParamMeasuresXml\fP"
+.br
+.ti -1c
+.RI "class \fBIfcRename\fP"
+.br
+.ti -1c
+.RI "class \fBIfcRetype\fP"
+.br
+.ti -1c
+.RI "class \fBIfcRemove\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintVarnode\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintCover\fP"
+.br
+.ti -1c
+.RI "class \fBIfcVarnodehighCover\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintExtrapop\fP"
+.br
+.ti -1c
+.RI "class \fBIfcVarnodeCover\fP"
+.br
+.ti -1c
+.RI "class \fBIfcNameVarnode\fP"
+.br
+.ti -1c
+.RI "class \fBIfcTypeVarnode\fP"
+.br
+.ti -1c
+.RI "class \fBIfcForceHex\fP"
+.br
+.ti -1c
+.RI "class \fBIfcForceDec\fP"
+.br
+.ti -1c
+.RI "class \fBIfcForcegoto\fP"
+.br
+.ti -1c
+.RI "class \fBIfcProtooverride\fP"
+.br
+.ti -1c
+.RI "class \fBIfcJumpOverride\fP"
+.br
+.ti -1c
+.RI "class \fBIfcFlowOverride\fP"
+.br
+.ti -1c
+.RI "class \fBIfcDeadcodedelay\fP"
+.br
+.ti -1c
+.RI "class \fBIfcGlobalAdd\fP"
+.br
+.ti -1c
+.RI "class \fBIfcGlobalRemove\fP"
+.br
+.ti -1c
+.RI "class \fBIfcGlobalify\fP"
+.br
+.ti -1c
+.RI "class \fBIfcGlobalRegisters\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintInputs\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintInputsAll\fP"
+.br
+.ti -1c
+.RI "class \fBIfcLockPrototype\fP"
+.br
+.ti -1c
+.RI "class \fBIfcUnlockPrototype\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintLocalrange\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintMap\fP"
+.br
+.ti -1c
+.RI "class \fBIfcContinue\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintRaw\fP"
+.br
+.ti -1c
+.RI "class \fBIfcGraphDataflow\fP"
+.br
+.ti -1c
+.RI "class \fBIfcGraphControlflow\fP"
+.br
+.ti -1c
+.RI "class \fBIfcGraphDom\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCommentInstr\fP"
+.br
+.ti -1c
+.RI "class \fBIfcDuplicateHash\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCallGraphDump\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCallGraphBuild\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCallGraphBuildQuick\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCallGraphLoad\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCallGraphList\fP"
+.br
+.ti -1c
+.RI "class \fBIfcComment\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCallFixup\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCallOtherFixup\fP"
+.br
+.ti -1c
+.RI "class \fBIfcCountPcode\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPrintActionstats\fP"
+.br
+.ti -1c
+.RI "class \fBIfcResetActionstats\fP"
+.br
+.ti -1c
+.RI "class \fBIfcVolatile\fP"
+.br
+.ti -1c
+.RI "class \fBIfcPreferSplit\fP"
+.br
+.ti -1c
+.RI "class \fBIfcStructureBlocks\fP"
+.br
+.ti -1c
+.RI "class \fBIfcExperimentalRules\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBexecute\fP (\fBIfaceStatus\fP *status, \fBIfaceDecompData\fP *dcp)"
+.br
+.ti -1c
+.RI "void \fBmainloop\fP (\fBIfaceStatus\fP *status)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void execute (\fBIfaceStatus\fP * status, \fBIfaceDecompData\fP * dcp)"
+
+.PP
+Definition at line 2639 of file ifacedecomp\&.cc\&.
+.SS "void mainloop (\fBIfaceStatus\fP * status)"
+
+.PP
+Definition at line 2672 of file ifacedecomp\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

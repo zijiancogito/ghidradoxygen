@@ -1,0 +1,804 @@
+.TH "VarnodeBank" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VarnodeBank \- A container for \fBVarnode\fP objects from a specific function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <varnode\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVarnodeBank\fP (\fBAddrSpaceManager\fP *m, \fBAddrSpace\fP *uspace, uintm ubase)"
+.br
+.RI "Construct the container\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear out all Varnodes and reset counters\&. "
+.ti -1c
+.RI "\fB~VarnodeBank\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "int4 \fBnumVarnodes\fP (void) const"
+.br
+.RI "Get number of Varnodes \fBthis\fP contains\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBcreate\fP (int4 s, const \fBAddress\fP &m, \fBDatatype\fP *ct)"
+.br
+.RI "Create a \fIfree\fP \fBVarnode\fP object\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBcreateDef\fP (int4 s, const \fBAddress\fP &m, \fBDatatype\fP *ct, \fBPcodeOp\fP *op)"
+.br
+.RI "Create a \fBVarnode\fP as the output of a \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBcreateUnique\fP (int4 s, \fBDatatype\fP *ct)"
+.br
+.RI "Create a temporary varnode\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBcreateDefUnique\fP (int4 s, \fBDatatype\fP *ct, \fBPcodeOp\fP *op)"
+.br
+.RI "Create a temporary \fBVarnode\fP as output of a \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBdestroy\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Remove a \fBVarnode\fP from the container\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBsetInput\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Mark a \fBVarnode\fP as an input to the function\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBsetDef\fP (\fBVarnode\fP *vn, \fBPcodeOp\fP *op)"
+.br
+.RI "Change \fBVarnode\fP to be defined by the given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "void \fBmakeFree\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Convert a \fBVarnode\fP to be \fIfree\fP\&. "
+.ti -1c
+.RI "void \fBreplace\fP (\fBVarnode\fP *oldvn, \fBVarnode\fP *newvn)"
+.br
+.RI "Replace every read of one \fBVarnode\fP with another\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfind\fP (int4 s, const \fBAddress\fP &loc, const \fBAddress\fP &pc, uintm uniq=~((uintm) 0)) const"
+.br
+.RI "Find a \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindInput\fP (int4 s, const \fBAddress\fP &loc) const"
+.br
+.RI "Find an input \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindCoveredInput\fP (int4 s, const \fBAddress\fP &loc) const"
+.br
+.RI "Find an input \fBVarnode\fP contained within this range\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBfindCoveringInput\fP (int4 s, const \fBAddress\fP &loc) const"
+.br
+.RI "Find an input \fBVarnode\fP covering a range\&. "
+.ti -1c
+.RI "uint4 \fBgetCreateIndex\fP (void) const"
+.br
+.RI "Get the next creation index to be assigned\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (void) const"
+.br
+.RI "Beginning of location list\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (void) const"
+.br
+.RI "End of location list\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (\fBAddrSpace\fP *spaceid) const"
+.br
+.RI "Beginning of Varnodes in given address space sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (\fBAddrSpace\fP *spaceid) const"
+.br
+.RI "Ending of Varnodes in given address space sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "Beginning of Varnodes starting at a given address sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (const \fBAddress\fP &addr) const"
+.br
+.RI "End of Varnodes starting at a given address sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (int4 s, const \fBAddress\fP &addr) const"
+.br
+.RI "Beginning of Varnodes of given size and starting address sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (int4 s, const \fBAddress\fP &addr) const"
+.br
+.RI "End of Varnodes of given size and starting address sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (int4 s, const \fBAddress\fP &addr, uint4 fl) const"
+.br
+.RI "Beginning of Varnodes sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (int4 s, const \fBAddress\fP &addr, uint4 fl) const"
+.br
+.RI "End of Varnodes sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBbeginLoc\fP (int4 s, const \fBAddress\fP &addr, const \fBAddress\fP &pc, uintm uniq) const"
+.br
+.RI "Beginning of Varnodes sorted by location\&. "
+.ti -1c
+.RI "VarnodeLocSet::const_iterator \fBendLoc\fP (int4 s, const \fBAddress\fP &addr, const \fBAddress\fP &pc, uintm uniq) const"
+.br
+.RI "End of Varnodes sorted by location\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBbeginDef\fP (void) const"
+.br
+.RI "Beginning of Varnodes sorted by definition\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBendDef\fP (void) const"
+.br
+.RI "End of Varnodes sorted by definition\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBbeginDef\fP (uint4 fl) const"
+.br
+.RI "Beginning of varnodes with set definition property\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBendDef\fP (uint4 fl) const"
+.br
+.RI "End of varnodes with set definition property\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBbeginDef\fP (uint4 fl, const \fBAddress\fP &addr) const"
+.br
+.RI "Beginning of varnodes starting at a given address with a set definition property\&. "
+.ti -1c
+.RI "VarnodeDefSet::const_iterator \fBendDef\fP (uint4 fl, const \fBAddress\fP &addr) const"
+.br
+.RI "End of varnodes starting at a given address with a set definition property\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A container for \fBVarnode\fP objects from a specific function\&. 
+
+The API allows the creation, deletion, search, and iteration of \fBVarnode\fP objects from one function\&. The class maintains two ordering for efficiency:
+.IP "\(bu" 2
+Sorting based on storage location (\fBloc\fP)
+.IP "\(bu" 2
+Sorting based on point of definition (\fBdef\fP) The class maintains a \fIlast\fP \fIoffset\fP counter for allocation temporary \fBVarnode\fP objects in the \fIunique\fP space\&. Constants are created by passing a constant address to the \fBcreate()\fP method\&. 
+.PP
+
+.PP
+Definition at line 313 of file varnode\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "VarnodeBank::VarnodeBank (\fBAddrSpaceManager\fP * m, \fBAddrSpace\fP * uspace, uintm ubase)"
+
+.PP
+Construct the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the underlying address space manager 
+.br
+\fIuspace\fP is the \fIunique\fP space 
+.br
+\fIubase\fP is the base offset for allocating temporaries 
+.RE
+.PP
+
+.PP
+Definition at line 791 of file varnode\&.cc\&.
+.SS "VarnodeBank::~VarnodeBank (void)\fC [inline]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 326 of file varnode\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "VarnodeDefSet::const_iterator VarnodeBank::beginDef (void) const\fC [inline]\fP"
+
+.PP
+Beginning of Varnodes sorted by definition\&. 
+.PP
+Definition at line 354 of file varnode\&.hh\&.
+.SS "VarnodeDefSet::const_iterator VarnodeBank::beginDef (uint4 fl) const"
+
+.PP
+Beginning of varnodes with set definition property\&. Get an iterator to Varnodes in definition order restricted with the following properties:
+.IP "\(bu" 2
+\fBVarnode::input\fP for Varnodes which are inputs to the function
+.IP "\(bu" 2
+\fBVarnode::written\fP for Varnodes that are defined by a \fBPcodeOp\fP
+.IP "\(bu" 2
+0 for \fIfree\fP Varnodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfl\fP is the property restriction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 1341 of file varnode\&.cc\&.
+.SS "VarnodeDefSet::const_iterator VarnodeBank::beginDef (uint4 fl, const \fBAddress\fP & addr) const"
+
+.PP
+Beginning of varnodes starting at a given address with a set definition property\&. Get an iterator to Varnodes in definition order\&. The starting address of the Varnodes must match the given address, and they are further restricted by the following properties:
+.IP "\(bu" 2
+\fBVarnode::input\fP for Varnodes which are inputs to the function
+.IP "\(bu" 2
+\fBVarnode::written\fP for Varnodes that are defined by a \fBPcodeOp\fP
+.IP "\(bu" 2
+0 for \fIfree\fP Varnodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfl\fP is the property restriction 
+.br
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 1418 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::beginLoc (void) const\fC [inline]\fP"
+
+.PP
+Beginning of location list\&. 
+.PP
+Definition at line 342 of file varnode\&.hh\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::beginLoc (\fBAddrSpace\fP * spaceid) const"
+
+.PP
+Beginning of Varnodes in given address space sorted by location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspaceid\fP is the given address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1110 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::beginLoc (const \fBAddress\fP & addr) const"
+
+.PP
+Beginning of Varnodes starting at a given address sorted by location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1132 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::beginLoc (int4 s, const \fBAddress\fP & addr) const"
+
+.PP
+Beginning of Varnodes of given size and starting address sorted by location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the given size 
+.br
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1160 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::beginLoc (int4 s, const \fBAddress\fP & addr, uint4 fl) const"
+
+.PP
+Beginning of Varnodes sorted by location\&. Varnodes are restricted by a given size and location and by the property
+.IP "\(bu" 2
+\fBVarnode::input\fP for Varnodes that are inputs to the function
+.IP "\(bu" 2
+\fBVarnode::written\fP for Varnodes that are defined by a \fBPcodeOp\fP
+.IP "\(bu" 2
+0 for \fIfree\fP Varnodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the given size 
+.br
+\fIaddr\fP is the given starting address 
+.br
+\fIfl\fP is the property restriction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 1195 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::beginLoc (int4 s, const \fBAddress\fP & addr, const \fBAddress\fP & pc, uintm uniq) const"
+
+.PP
+Beginning of Varnodes sorted by location\&. Varnodes are restricted by a given size and location and by the sequence number of the \fBPcodeOp\fP defining it 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the given size 
+.br
+\fIaddr\fP is the given starting address 
+.br
+\fIpc\fP is the address of the \fBPcodeOp\fP defining the \fBVarnode\fP 
+.br
+\fIuniq\fP is the sequence number of the \fBPcodeOp\fP or -1 for now sequence number restriction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the beginning iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1282 of file varnode\&.cc\&.
+.SS "void VarnodeBank::clear (void)"
+
+.PP
+Clear out all Varnodes and reset counters\&. 
+.PP
+Definition at line 803 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::create (int4 s, const \fBAddress\fP & m, \fBDatatype\fP * ct)"
+
+.PP
+Create a \fIfree\fP \fBVarnode\fP object\&. The \fBVarnode\fP is created and inserted into the maps as \fIfree:\fP not defined as the output of a p-code op or the input to a function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the \fBVarnode\fP in bytes 
+.br
+\fIm\fP is the starting address 
+.br
+\fIct\fP is the data-type of the new varnode (must not be NULL) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly allocated \fBVarnode\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 823 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::createDef (int4 s, const \fBAddress\fP & m, \fBDatatype\fP * ct, \fBPcodeOp\fP * op)"
+
+.PP
+Create a \fBVarnode\fP as the output of a \fBPcodeOp\fP\&. The new \fBVarnode\fP object will already be put in the \fIdefinition\fP list as if it were the output of the given \fBPcodeOp\fP\&. The \fBVarnode\fP must still be set as the output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size in bytes 
+.br
+\fIm\fP is the starting address 
+.br
+\fIct\fP is the data-type to associate 
+.br
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 984 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::createDefUnique (int4 s, \fBDatatype\fP * ct, \fBPcodeOp\fP * op)"
+
+.PP
+Create a temporary \fBVarnode\fP as output of a \fBPcodeOp\fP\&. The new \fBVarnode\fP will be assigned from the \fIunique\fP space, and it will already be put in the \fIdefinition\fP list as if it were the output of the given \fBPcodeOp\fP\&. The \fBVarnode\fP must still be set as the output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size in bytes 
+.br
+\fIct\fP is the data-type to associate 
+.br
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 999 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::createUnique (int4 s, \fBDatatype\fP * ct)"
+
+.PP
+Create a temporary varnode\&. The \fBVarnode\fP is allocated in the \fIunique\fP space and automatically assigned an offset\&. The \fBVarnode\fP is initially \fIfree\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the \fBVarnode\fP in bytes 
+.br
+\fIct\fP is the data-type to assign (must not be NULL) 
+.RE
+.PP
+
+.PP
+Definition at line 838 of file varnode\&.cc\&.
+.SS "void VarnodeBank::destroy (\fBVarnode\fP * vn)"
+
+.PP
+Remove a \fBVarnode\fP from the container\&. The \fBVarnode\fP object is removed from the sorted lists and its memory reclaimed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to remove 
+.RE
+.PP
+
+.PP
+Definition at line 849 of file varnode\&.cc\&.
+.SS "VarnodeDefSet::const_iterator VarnodeBank::endDef (void) const\fC [inline]\fP"
+
+.PP
+End of Varnodes sorted by definition\&. 
+.PP
+Definition at line 355 of file varnode\&.hh\&.
+.SS "VarnodeDefSet::const_iterator VarnodeBank::endDef (uint4 fl) const"
+
+.PP
+End of varnodes with set definition property\&. Get an iterator to Varnodes in definition order restricted with the following properties:
+.IP "\(bu" 2
+\fBVarnode::input\fP for Varnodes which are inputs to the function
+.IP "\(bu" 2
+\fBVarnode::written\fP for Varnodes that are defined by a \fBPcodeOp\fP
+.IP "\(bu" 2
+0 for \fIfree\fP Varnodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfl\fP is the property restriction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 1379 of file varnode\&.cc\&.
+.SS "VarnodeDefSet::const_iterator VarnodeBank::endDef (uint4 fl, const \fBAddress\fP & addr) const"
+
+.PP
+End of varnodes starting at a given address with a set definition property\&. Get an iterator to Varnodes in definition order\&. The starting address of the Varnodes must match the given address, and they are further restricted by the following properties:
+.IP "\(bu" 2
+\fBVarnode::input\fP for Varnodes which are inputs to the function
+.IP "\(bu" 2
+\fBVarnode::written\fP for Varnodes that are defined by a \fBPcodeOp\fP
+.IP "\(bu" 2
+0 for \fIfree\fP Varnodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfl\fP is the property restriction 
+.br
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 1452 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::endLoc (void) const\fC [inline]\fP"
+
+.PP
+End of location list\&. 
+.PP
+Definition at line 343 of file varnode\&.hh\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::endLoc (\fBAddrSpace\fP * spaceid) const"
+
+.PP
+Ending of Varnodes in given address space sorted by location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspaceid\fP is the given address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1121 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::endLoc (const \fBAddress\fP & addr) const"
+
+.PP
+End of Varnodes starting at a given address sorted by location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1143 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::endLoc (int4 s, const \fBAddress\fP & addr) const"
+
+.PP
+End of Varnodes of given size and starting address sorted by location\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the given size 
+.br
+\fIaddr\fP is the given starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1175 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::endLoc (int4 s, const \fBAddress\fP & addr, uint4 fl) const"
+
+.PP
+End of Varnodes sorted by location\&. Varnodes are restricted by a given size and location and by the property
+.IP "\(bu" 2
+\fBVarnode::input\fP for Varnodes that are inputs to the function
+.IP "\(bu" 2
+\fBVarnode::written\fP for Varnodes that are defined by a \fBPcodeOp\fP
+.IP "\(bu" 2
+0 for \fIfree\fP Varnodes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the given size 
+.br
+\fIaddr\fP is the given starting address 
+.br
+\fIfl\fP is the property restriction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 1243 of file varnode\&.cc\&.
+.SS "VarnodeLocSet::const_iterator VarnodeBank::endLoc (int4 s, const \fBAddress\fP & addr, const \fBAddress\fP & pc, uintm uniq) const"
+
+.PP
+End of Varnodes sorted by location\&. Varnodes are restricted by a given size and location and by the sequence number of the \fBPcodeOp\fP defining it 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the given size 
+.br
+\fIaddr\fP is the given starting address 
+.br
+\fIpc\fP is the address of the \fBPcodeOp\fP defining the \fBVarnode\fP 
+.br
+\fIuniq\fP is the sequence number of the \fBPcodeOp\fP or -1 for now sequence number restriction 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ending iterator 
+.RE
+.PP
+
+.PP
+Definition at line 1312 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::find (int4 s, const \fBAddress\fP & loc, const \fBAddress\fP & pc, uintm uniq = \fC~((uintm)0)\fP) const"
+
+.PP
+Find a \fBVarnode\fP\&. Find a \fBVarnode\fP given its (loc,size) and the address where it is defined\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the \fBVarnode\fP 
+.br
+\fIloc\fP is its starting address 
+.br
+\fIpc\fP is the address where it is defined 
+.br
+\fIuniq\fP is the sequence number or -1 if not specified 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1013 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::findCoveredInput (int4 s, const \fBAddress\fP & loc) const"
+
+.PP
+Find an input \fBVarnode\fP contained within this range\&. Find the first \fBVarnode\fP completely contained within the given range, which is also marked as a function input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the range 
+.br
+\fIloc\fP is the starting address of the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBVarnode\fP object or NULL if no \fBVarnode\fP met the conditions 
+.RE
+.PP
+
+.PP
+Definition at line 1058 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::findCoveringInput (int4 s, const \fBAddress\fP & loc) const"
+
+.PP
+Find an input \fBVarnode\fP covering a range\&. Search for the \fBVarnode\fP that completely contains the given range and is marked as an input to the function\&. If it exists, it is unique\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size of the range 
+.br
+\fIloc\fP is the starting address of the range 
+.RE
+.PP
+
+.PP
+Definition at line 1086 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::findInput (int4 s, const \fBAddress\fP & loc) const"
+
+.PP
+Find an input \fBVarnode\fP\&. Find a \fBVarnode\fP marked as a function input given its size and address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the size 
+.br
+\fIloc\fP is the starting address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the match \fBVarnode\fP object or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 1038 of file varnode\&.cc\&.
+.SS "uint4 VarnodeBank::getCreateIndex (void) const\fC [inline]\fP"
+
+.PP
+Get the next creation index to be assigned\&. 
+.PP
+Definition at line 341 of file varnode\&.hh\&.
+.SS "void VarnodeBank::makeFree (\fBVarnode\fP * vn)"
+
+.PP
+Convert a \fBVarnode\fP to be \fIfree\fP\&. The \fBVarnode\fP is removed from the cross-referencing lists and reinserted as as if it were not defined by any \fBPcodeOp\fP and not an input to the function\&. If the \fBVarnode\fP was originally a \fBPcodeOp\fP output, this must be explicitly cleared\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to modify 
+.RE
+.PP
+
+.PP
+Definition at line 889 of file varnode\&.cc\&.
+.SS "int4 VarnodeBank::numVarnodes (void) const\fC [inline]\fP"
+
+.PP
+Get number of Varnodes \fBthis\fP contains\&. 
+.PP
+Definition at line 327 of file varnode\&.hh\&.
+.SS "void VarnodeBank::replace (\fBVarnode\fP * oldvn, \fBVarnode\fP * newvn)"
+
+.PP
+Replace every read of one \fBVarnode\fP with another\&. Any PcodeOps that read \fBoldvn\fP are changed to read \fBnewvn\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldvn\fP is the old \fBVarnode\fP 
+.br
+\fInewvn\fP is the \fBVarnode\fP to replace it with 
+.RE
+.PP
+
+.PP
+Definition at line 905 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::setDef (\fBVarnode\fP * vn, \fBPcodeOp\fP * op)"
+
+.PP
+Change \fBVarnode\fP to be defined by the given \fBPcodeOp\fP\&. The \fBVarnode\fP must initially be \fIfree\fP\&. It will be removed from the cross-referencing lists and reinserted as if its were the output of the given \fBPcodeOp\fP\&. It still must be explicitly set as the output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to modify 
+.br
+\fIop\fP is the given \fBPcodeOp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the modified \fBVarnode\fP, which may be a different object than the original 
+.RE
+.PP
+
+.PP
+Definition at line 953 of file varnode\&.cc\&.
+.SS "\fBVarnode\fP * VarnodeBank::setInput (\fBVarnode\fP * vn)"
+
+.PP
+Mark a \fBVarnode\fP as an input to the function\&. Define the \fBVarnode\fP as an input formally; it is no longer considered \fIfree\fP\&. Its position in the cross-referencing lists will change 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to mark 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the modified \fBVarnode\fP, which be a different object than the original 
+.RE
+.PP
+
+.PP
+Definition at line 931 of file varnode\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

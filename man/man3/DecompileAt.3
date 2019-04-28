@@ -1,0 +1,43 @@
+.TH "DecompileAt" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DecompileAt \- Command to \fBdecompile\fP a specific function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBGhidraCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)"
+.br
+.RI "Perform the action of the command\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Command to \fBdecompile\fP a specific function\&. 
+
+The command expects 2 string parameters: the encoded integer id of the program, and an <addr> tag describing the entry point address of the function to decompile\&. The function follows flow from the entry point up to RETURN ops or other boundaries of the function\&. The control-flow and data-flow structures are built and transformed according to the current configuration of the \fBArchitecture\fP and the active \fIroot\fP \fBAction\fP\&. Symbols, data-types and p-code are fetched as needed from the client and cached in the \fBArchitecture\fP object\&. XML Documents containing source code results, data-flow and control-flow structures, symbol information, etc\&., are sent back to the client\&. 
+.PP
+Definition at line 152 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void DecompileAt::rawAction (void)\fC [virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implements \fBGhidraCommand\fP\&.
+.PP
+Definition at line 273 of file ghidra_process\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

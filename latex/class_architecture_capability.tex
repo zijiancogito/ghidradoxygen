@@ -1,0 +1,355 @@
+\hypertarget{class_architecture_capability}{}\section{Architecture\+Capability Class Reference}
+\label{class_architecture_capability}\index{ArchitectureCapability@{ArchitectureCapability}}
+
+
+Abstract extension point for building \mbox{\hyperlink{class_architecture}{Architecture}} objects.  
+
+
+
+
+{\ttfamily \#include $<$architecture.\+hh$>$}
+
+
+
+Inheritance diagram for Architecture\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_capability__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Architecture\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{class_architecture_capability__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const string \& \mbox{\hyperlink{class_architecture_capability_ad8a6f6079fde87a12582a68bfeab73af}{get\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the capability identifier. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_architecture_capability_af414aa921939711c0199d02e2ff35e26}{initialize}} (void)
+\begin{DoxyCompactList}\small\item\em Do specialized initialization. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_architecture}{Architecture}} $\ast$ \mbox{\hyperlink{class_architecture_capability_a42e418206c4bcd9c0bc86d8ddfbf03e0}{build\+Architecture}} (const string \&filename, const string \&target, ostream $\ast$estream)=0
+\begin{DoxyCompactList}\small\item\em Build an \mbox{\hyperlink{class_architecture}{Architecture}} given a raw file or data. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_architecture_capability_aa3d4fed15e42f3e853851babaf379376}{is\+File\+Match}} (const string \&filename) const =0
+\begin{DoxyCompactList}\small\item\em Determine if this extension can handle this file. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_architecture_capability_a653243b342d480273e0f04f7194094b8}{is\+Xml\+Match}} (\mbox{\hyperlink{class_document}{Document}} $\ast$doc) const =0
+\begin{DoxyCompactList}\small\item\em Determine is this extension can handle this X\+ML document. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} $\ast$ \mbox{\hyperlink{class_architecture_capability_a0150ffd9a1532fc394f75f67662b7cae}{find\+Capability}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Find an extension to process a file. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} $\ast$ \mbox{\hyperlink{class_architecture_capability_ac85f63c6e2e12e2f37f239cd5399ad42}{find\+Capability}} (\mbox{\hyperlink{class_document}{Document}} $\ast$doc)
+\begin{DoxyCompactList}\small\item\em Find an extension to process an X\+ML document. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_architecture_capability_aa2c4dc37eac39cfe01d8ee5ec75d0c61}{sort\+Capabilities}} (void)
+\begin{DoxyCompactList}\small\item\em Sort extensions. \end{DoxyCompactList}\item 
+static uint4 \mbox{\hyperlink{class_architecture_capability_acac89caf4ab91f7ff041d6b24e7b3ffc}{get\+Major\+Version}} (void)
+\begin{DoxyCompactList}\small\item\em Get {\itshape major} decompiler version. \end{DoxyCompactList}\item 
+static uint4 \mbox{\hyperlink{class_architecture_capability_a4faeb6f1d9405d04c76e5b70f76d0cb4}{get\+Minor\+Version}} (void)
+\begin{DoxyCompactList}\small\item\em Get {\itshape minor} decompiler version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_architecture_capability_a685df0ea6f90347afa6eb27d0b3fd3cc}{name}}
+\begin{DoxyCompactList}\small\item\em Identifier for this capability. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Abstract extension point for building \mbox{\hyperlink{class_architecture}{Architecture}} objects. 
+
+Decompilation hinges on initially recognizing the format of code then bootstrapping into discovering the processor etc. This is the base class for the different extensions that perform this process. Each extension implements the \mbox{\hyperlink{class_architecture_capability_a42e418206c4bcd9c0bc86d8ddfbf03e0}{build\+Architecture()}} method as the formal entry point for the bootstrapping process. 
+
+Definition at line 69 of file architecture.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_architecture_capability_a42e418206c4bcd9c0bc86d8ddfbf03e0}\label{class_architecture_capability_a42e418206c4bcd9c0bc86d8ddfbf03e0}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!buildArchitecture@{buildArchitecture}}
+\index{buildArchitecture@{buildArchitecture}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{buildArchitecture()}{buildArchitecture()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_architecture}{Architecture}}$\ast$ Architecture\+Capability\+::build\+Architecture (\begin{DoxyParamCaption}\item[{const string \&}]{filename,  }\item[{const string \&}]{target,  }\item[{ostream $\ast$}]{estream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Build an \mbox{\hyperlink{class_architecture}{Architecture}} given a raw file or data. 
+
+This is implemented by each separate extension. The method is handed a {\itshape filename} and possibly external target information and must build the \mbox{\hyperlink{class_architecture}{Architecture}} object, initializing all the major subcomponents, using just this info. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & is the path to the executable file to examine \\
+\hline
+{\em target} & if non-\/empty is a language id string \\
+\hline
+{\em estream} & is an output stream for error messages \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_bfd_architecture_capability_ac03b938e119bf80fcbc83b22db84ccf1}{Bfd\+Architecture\+Capability}}, \mbox{\hyperlink{class_raw_binary_architecture_capability_a69e87f1ba9b72c89b74981b168074062}{Raw\+Binary\+Architecture\+Capability}}, and \mbox{\hyperlink{class_xml_architecture_capability_a3aedd28755471c050f539d7fcb9553f9}{Xml\+Architecture\+Capability}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_architecture_capability_a42e418206c4bcd9c0bc86d8ddfbf03e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_capability_a0150ffd9a1532fc394f75f67662b7cae}\label{class_architecture_capability_a0150ffd9a1532fc394f75f67662b7cae}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!findCapability@{findCapability}}
+\index{findCapability@{findCapability}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{findCapability()}{findCapability()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} $\ast$ Architecture\+Capability\+::find\+Capability (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Find an extension to process a file. 
+
+Given a specific file, find an \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} that can handle it. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & is the path to the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} that can handle it or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_architecture_capability_a0150ffd9a1532fc394f75f67662b7cae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_architecture_capability_a0150ffd9a1532fc394f75f67662b7cae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_capability_ac85f63c6e2e12e2f37f239cd5399ad42}\label{class_architecture_capability_ac85f63c6e2e12e2f37f239cd5399ad42}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!findCapability@{findCapability}}
+\index{findCapability@{findCapability}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{findCapability()}{findCapability()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} $\ast$ Architecture\+Capability\+::find\+Capability (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document}{Document}} $\ast$}]{doc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Find an extension to process an X\+ML document. 
+
+Given a parsed X\+ML document, find an \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} that can handle it. 
+\begin{DoxyParams}{Parameters}
+{\em doc} & is the parsed X\+ML document \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} that can handle it or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 55 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_architecture_capability_ac85f63c6e2e12e2f37f239cd5399ad42_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_capability_acac89caf4ab91f7ff041d6b24e7b3ffc}\label{class_architecture_capability_acac89caf4ab91f7ff041d6b24e7b3ffc}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!getMajorVersion@{getMajorVersion}}
+\index{getMajorVersion@{getMajorVersion}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{getMajorVersion()}{getMajorVersion()}}
+{\footnotesize\ttfamily static uint4 Architecture\+Capability\+::get\+Major\+Version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get {\itshape major} decompiler version. 
+
+
+
+Definition at line 106 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_capability_a4faeb6f1d9405d04c76e5b70f76d0cb4}\label{class_architecture_capability_a4faeb6f1d9405d04c76e5b70f76d0cb4}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!getMinorVersion@{getMinorVersion}}
+\index{getMinorVersion@{getMinorVersion}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{getMinorVersion()}{getMinorVersion()}}
+{\footnotesize\ttfamily static uint4 Architecture\+Capability\+::get\+Minor\+Version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get {\itshape minor} decompiler version. 
+
+
+
+Definition at line 107 of file architecture.\+hh.
+
+\mbox{\Hypertarget{class_architecture_capability_ad8a6f6079fde87a12582a68bfeab73af}\label{class_architecture_capability_ad8a6f6079fde87a12582a68bfeab73af}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!getName@{getName}}
+\index{getName@{getName}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const string\& Architecture\+Capability\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the capability identifier. 
+
+
+
+Definition at line 76 of file architecture.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_capability_ad8a6f6079fde87a12582a68bfeab73af_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_capability_af414aa921939711c0199d02e2ff35e26}\label{class_architecture_capability_af414aa921939711c0199d02e2ff35e26}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!initialize@{initialize}}
+\index{initialize@{initialize}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Architecture\+Capability\+::initialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Do specialized initialization. 
+
+This builds a list of just the \mbox{\hyperlink{class_architecture_capability}{Architecture\+Capability}} extensions. 
+
+Implements \mbox{\hyperlink{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab}{Capability\+Point}}.
+
+
+
+Definition at line 32 of file architecture.\+cc.
+
+\mbox{\Hypertarget{class_architecture_capability_aa3d4fed15e42f3e853851babaf379376}\label{class_architecture_capability_aa3d4fed15e42f3e853851babaf379376}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!isFileMatch@{isFileMatch}}
+\index{isFileMatch@{isFileMatch}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{isFileMatch()}{isFileMatch()}}
+{\footnotesize\ttfamily virtual bool Architecture\+Capability\+::is\+File\+Match (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Determine if this extension can handle this file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & is the name of the file to examine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} is {\bfseries{this}} extension is suitable for analyzing the file 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_bfd_architecture_capability_a0191dabc12d97b8c5fc0ba14392077b1}{Bfd\+Architecture\+Capability}}, \mbox{\hyperlink{class_raw_binary_architecture_capability_aef426ad157b2f6b9130159322e2a2465}{Raw\+Binary\+Architecture\+Capability}}, and \mbox{\hyperlink{class_xml_architecture_capability_a90009c1feff64b66e29562b68b5f2a5a}{Xml\+Architecture\+Capability}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_architecture_capability_aa3d4fed15e42f3e853851babaf379376_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_capability_a653243b342d480273e0f04f7194094b8}\label{class_architecture_capability_a653243b342d480273e0f04f7194094b8}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!isXmlMatch@{isXmlMatch}}
+\index{isXmlMatch@{isXmlMatch}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{isXmlMatch()}{isXmlMatch()}}
+{\footnotesize\ttfamily virtual bool Architecture\+Capability\+::is\+Xml\+Match (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document}{Document}} $\ast$}]{doc }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Determine is this extension can handle this X\+ML document. 
+
+If a file to analyze is X\+ML based, this method examines the X\+ML parse to determine if {\bfseries{this}} extension can understand the document 
+\begin{DoxyParams}{Parameters}
+{\em doc} & is the parsed X\+ML document \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} extension understands the X\+ML 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_bfd_architecture_capability_aa5231740c6fb12308f8e9a31ea291cf4}{Bfd\+Architecture\+Capability}}, \mbox{\hyperlink{class_raw_binary_architecture_capability_ad26a1a35fec33c5952a3f499dc0e43db}{Raw\+Binary\+Architecture\+Capability}}, and \mbox{\hyperlink{class_xml_architecture_capability_ab834c8722ce6813e4b5cf34a207b0f52}{Xml\+Architecture\+Capability}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_architecture_capability_a653243b342d480273e0f04f7194094b8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_architecture_capability_aa2c4dc37eac39cfe01d8ee5ec75d0c61}\label{class_architecture_capability_aa2c4dc37eac39cfe01d8ee5ec75d0c61}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!sortCapabilities@{sortCapabilities}}
+\index{sortCapabilities@{sortCapabilities}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{sortCapabilities()}{sortCapabilities()}}
+{\footnotesize\ttfamily void Architecture\+Capability\+::sort\+Capabilities (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sort extensions. 
+
+Modify order that extensions are searched, to effect which gets a chance to run first. Right now all we need to do is make sure the raw architecture comes last 
+
+Definition at line 69 of file architecture.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_architecture_capability_aa2c4dc37eac39cfe01d8ee5ec75d0c61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_architecture_capability_aa2c4dc37eac39cfe01d8ee5ec75d0c61_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_architecture_capability_a685df0ea6f90347afa6eb27d0b3fd3cc}\label{class_architecture_capability_a685df0ea6f90347afa6eb27d0b3fd3cc}} 
+\index{ArchitectureCapability@{ArchitectureCapability}!name@{name}}
+\index{name@{name}!ArchitectureCapability@{ArchitectureCapability}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Architecture\+Capability\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Identifier for this capability. 
+
+
+
+Definition at line 74 of file architecture.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{architecture_8hh}{architecture.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{architecture_8cc}{architecture.\+cc}}\end{DoxyCompactItemize}

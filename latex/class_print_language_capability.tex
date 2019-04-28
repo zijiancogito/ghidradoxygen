@@ -1,0 +1,239 @@
+\hypertarget{class_print_language_capability}{}\section{Print\+Language\+Capability Class Reference}
+\label{class_print_language_capability}\index{PrintLanguageCapability@{PrintLanguageCapability}}
+
+
+Base class for high-\/level language capabilities.  
+
+
+
+
+{\ttfamily \#include $<$printlanguage.\+hh$>$}
+
+
+
+Inheritance diagram for Print\+Language\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{class_print_language_capability__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Print\+Language\+Capability\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_print_language_capability__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const string \& \mbox{\hyperlink{class_print_language_capability_abca4d334109a9e47968240cccbf72236}{get\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the high-\/level language name. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_print_language_capability_ac0c50c753c0e5b11a97ce789f18d33c7}{initialize}} (void)
+\begin{DoxyCompactList}\small\item\em Complete initialization of an extension point. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_print_language}{Print\+Language}} $\ast$ \mbox{\hyperlink{class_print_language_capability_a50e2abb3f0b4cf3ab67556f77eacc51e}{build\+Language}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$glb)=0
+\begin{DoxyCompactList}\small\item\em Build the main \mbox{\hyperlink{class_print_language}{Print\+Language}} object corresponding to {\bfseries{this}} capability. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_print_language_capability}{Print\+Language\+Capability}} $\ast$ \mbox{\hyperlink{class_print_language_capability_a2902f4f1ca2e24f215dcd431dbedc310}{get\+Default}} (void)
+\begin{DoxyCompactList}\small\item\em Retrieve the default language capability. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_print_language_capability}{Print\+Language\+Capability}} $\ast$ \mbox{\hyperlink{class_print_language_capability_a5feea559122bb1d976707540eb4b32ff}{find\+Capability}} (const string \&\mbox{\hyperlink{class_print_language_capability_ac286f0481d6c9ebfcf2cd497cc786e8b}{name}})
+\begin{DoxyCompactList}\small\item\em Find a language capability by name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_print_language_capability_ac286f0481d6c9ebfcf2cd497cc786e8b}{name}}
+\begin{DoxyCompactList}\small\item\em Unique identifier for language capability. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_print_language_capability_ac59b85a0cca4d610739ae88a614361bc}{isdefault}}
+\begin{DoxyCompactList}\small\item\em Set to {\bfseries{true}} to treat {\bfseries{this}} as the default language. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Base class for high-\/level language capabilities. 
+
+This class is overridden to introduce a new high-\/level language back-\/end to the system. A static singleton is instantiated to automatically register the new capability with the system. A static array keeps track of all the registered capabilities.
+
+The singleton is registered with a name, which the user can use to select the language, and it acts as a factory for the main language printing class for the capability, which must be derived from \mbox{\hyperlink{class_print_language}{Print\+Language}}. The factory method for the capability to override is \mbox{\hyperlink{class_print_language_capability_a50e2abb3f0b4cf3ab67556f77eacc51e}{build\+Language()}}. 
+
+Definition at line 39 of file printlanguage.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_print_language_capability_a50e2abb3f0b4cf3ab67556f77eacc51e}\label{class_print_language_capability_a50e2abb3f0b4cf3ab67556f77eacc51e}} 
+\index{PrintLanguageCapability@{PrintLanguageCapability}!buildLanguage@{buildLanguage}}
+\index{buildLanguage@{buildLanguage}!PrintLanguageCapability@{PrintLanguageCapability}}
+\subsubsection{\texorpdfstring{buildLanguage()}{buildLanguage()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_print_language}{Print\+Language}}$\ast$ Print\+Language\+Capability\+::build\+Language (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{glb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Build the main \mbox{\hyperlink{class_print_language}{Print\+Language}} object corresponding to {\bfseries{this}} capability. 
+
+An \mbox{\hyperlink{class_architecture}{Architecture}} will call this once. All decompiling from this \mbox{\hyperlink{class_architecture}{Architecture}} will use this same emitter. 
+\begin{DoxyParams}{Parameters}
+{\em glb} & is the \mbox{\hyperlink{class_architecture}{Architecture}} that will own the new emitter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the instantiated \mbox{\hyperlink{class_print_language}{Print\+Language}} emittter 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_print_c_capability_a248a6da5b381c20a11eb43e11f58f60f}{Print\+C\+Capability}}, and \mbox{\hyperlink{class_print_java_capability_ada79946f1067abeecf609e64bc348a88}{Print\+Java\+Capability}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_language_capability_a50e2abb3f0b4cf3ab67556f77eacc51e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_language_capability_a5feea559122bb1d976707540eb4b32ff}\label{class_print_language_capability_a5feea559122bb1d976707540eb4b32ff}} 
+\index{PrintLanguageCapability@{PrintLanguageCapability}!findCapability@{findCapability}}
+\index{findCapability@{findCapability}!PrintLanguageCapability@{PrintLanguageCapability}}
+\subsubsection{\texorpdfstring{findCapability()}{findCapability()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_print_language_capability}{Print\+Language\+Capability}} $\ast$ Print\+Language\+Capability\+::find\+Capability (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Find a language capability by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & is the language name to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the matching language capability or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file printlanguage.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_language_capability_a5feea559122bb1d976707540eb4b32ff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_language_capability_a5feea559122bb1d976707540eb4b32ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_language_capability_a2902f4f1ca2e24f215dcd431dbedc310}\label{class_print_language_capability_a2902f4f1ca2e24f215dcd431dbedc310}} 
+\index{PrintLanguageCapability@{PrintLanguageCapability}!getDefault@{getDefault}}
+\index{getDefault@{getDefault}!PrintLanguageCapability@{PrintLanguageCapability}}
+\subsubsection{\texorpdfstring{getDefault()}{getDefault()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_print_language_capability}{Print\+Language\+Capability}} $\ast$ Print\+Language\+Capability\+::get\+Default (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieve the default language capability. 
+
+This retrieves the capability with its {\bfseries{isdefault}} field set or the first capability registered. \begin{DoxyReturn}{Returns}
+the default language capability 
+\end{DoxyReturn}
+
+
+Definition at line 25 of file printlanguage.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_language_capability_a2902f4f1ca2e24f215dcd431dbedc310_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_language_capability_abca4d334109a9e47968240cccbf72236}\label{class_print_language_capability_abca4d334109a9e47968240cccbf72236}} 
+\index{PrintLanguageCapability@{PrintLanguageCapability}!getName@{getName}}
+\index{getName@{getName}!PrintLanguageCapability@{PrintLanguageCapability}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const string\& Print\+Language\+Capability\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the high-\/level language name. 
+
+
+
+Definition at line 45 of file printlanguage.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_print_language_capability_abca4d334109a9e47968240cccbf72236_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_print_language_capability_ac0c50c753c0e5b11a97ce789f18d33c7}\label{class_print_language_capability_ac0c50c753c0e5b11a97ce789f18d33c7}} 
+\index{PrintLanguageCapability@{PrintLanguageCapability}!initialize@{initialize}}
+\index{initialize@{initialize}!PrintLanguageCapability@{PrintLanguageCapability}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Print\+Language\+Capability\+::initialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Complete initialization of an extension point. 
+
+This method is implemented by each extension so it can do specialized integration 
+
+Implements \mbox{\hyperlink{class_capability_point_a493d24125e7e024a9b2d6c2ad4bfbfab}{Capability\+Point}}.
+
+
+
+Definition at line 33 of file printlanguage.\+cc.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_print_language_capability_ac59b85a0cca4d610739ae88a614361bc}\label{class_print_language_capability_ac59b85a0cca4d610739ae88a614361bc}} 
+\index{PrintLanguageCapability@{PrintLanguageCapability}!isdefault@{isdefault}}
+\index{isdefault@{isdefault}!PrintLanguageCapability@{PrintLanguageCapability}}
+\subsubsection{\texorpdfstring{isdefault}{isdefault}}
+{\footnotesize\ttfamily bool Print\+Language\+Capability\+::isdefault\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Set to {\bfseries{true}} to treat {\bfseries{this}} as the default language. 
+
+
+
+Definition at line 43 of file printlanguage.\+hh.
+
+\mbox{\Hypertarget{class_print_language_capability_ac286f0481d6c9ebfcf2cd497cc786e8b}\label{class_print_language_capability_ac286f0481d6c9ebfcf2cd497cc786e8b}} 
+\index{PrintLanguageCapability@{PrintLanguageCapability}!name@{name}}
+\index{name@{name}!PrintLanguageCapability@{PrintLanguageCapability}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Print\+Language\+Capability\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Unique identifier for language capability. 
+
+
+
+Definition at line 42 of file printlanguage.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{printlanguage_8hh}{printlanguage.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{printlanguage_8cc}{printlanguage.\+cc}}\end{DoxyCompactItemize}

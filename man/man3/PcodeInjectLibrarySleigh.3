@@ -1,0 +1,199 @@
+.TH "PcodeInjectLibrarySleigh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PcodeInjectLibrarySleigh
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <inject_sleigh\&.hh>\fP
+.PP
+Inherits \fBPcodeInjectLibrary\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPcodeInjectLibrarySleigh\fP (\fBArchitecture\fP *g, \fBuintb\fP tmpbase)"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreDebug\fP (const \fBElement\fP *el)"
+.br
+.RI "A method for reading in p-code generated externally for use in debugging\&. "
+.ti -1c
+.RI "virtual int4 \fBmanualCallFixup\fP (const string &name, const string &snippetstring)"
+.br
+.RI "Manually add a call-fixup payload given a compilable snippet of p-code \fIsource\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBmanualCallOtherFixup\fP (const string &name, const string &outname, const vector< string > &inname, const string &snippet)"
+.br
+.RI "Manually add a callother-fixup payload given a compilable snippet of p-code \fIsource\fP\&. "
+.ti -1c
+.RI "virtual \fBInjectContext\fP & \fBgetCachedContext\fP (void)"
+.br
+.RI "Retrieve a reusable context object for \fBthis\fP library\&. "
+.ti -1c
+.RI "virtual const vector< \fBOpBehavior\fP * > & \fBgetBehaviors\fP (void)"
+.br
+.RI "Get the array of op-code behaviors for initializing and emulator\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual int4 \fBallocateInject\fP (const string &sourceName, const string &name, int4 type)"
+.br
+.RI "Allocate a new \fBInjectPayload\fP object\&. "
+.ti -1c
+.RI "virtual void \fBregisterInject\fP (int4 injectid)"
+.br
+.RI "Finalize a payload within the library, once the payload is initialized\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 89 of file inject_sleigh\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PcodeInjectLibrarySleigh::PcodeInjectLibrarySleigh (\fBArchitecture\fP * g, \fBuintb\fP tmpbase)"
+
+.PP
+Definition at line 281 of file inject_sleigh\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 PcodeInjectLibrarySleigh::allocateInject (const string & sourceName, const string & name, int4 type)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Allocate a new \fBInjectPayload\fP object\&. This acts as an \fBInjectPayload\fP factory\&. The formal name and type of the payload are given, \fBthis\fP library allocates a new object that fits with its storage scheme and returns the id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceName\fP is a string describing the source of the new payload 
+.br
+\fIname\fP is the formal name of the payload 
+.br
+\fItype\fP is the formal type (CALLFIXUP_TYPE, CALLOTHERFIXUP_TYPE, etc\&.) of the payload 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id associated with the new \fBInjectPayload\fP object 
+.RE
+.PP
+
+.PP
+Implements \fBPcodeInjectLibrary\fP\&.
+.PP
+Definition at line 342 of file inject_sleigh\&.cc\&.
+.SS "const vector< \fBOpBehavior\fP * > & PcodeInjectLibrarySleigh::getBehaviors (void)\fC [virtual]\fP"
+
+.PP
+Get the array of op-code behaviors for initializing and emulator\&. Behaviors are pulled from the underlying architecture in order to initialize the \fBEmulate\fP object which services the \fIp-code\fP \fIscript\fP payloads\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the array of \fBOpBehavior\fP objects indexed by op-code 
+.RE
+.PP
+
+.PP
+Implements \fBPcodeInjectLibrary\fP\&.
+.PP
+Definition at line 410 of file inject_sleigh\&.cc\&.
+.SS "virtual \fBInjectContext\fP& PcodeInjectLibrarySleigh::getCachedContext (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Retrieve a reusable context object for \fBthis\fP library\&. The object returned by this method gets passed to the payload inject() method\&. The clear() method must be called between uses\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the cached context object 
+.RE
+.PP
+
+.PP
+Implements \fBPcodeInjectLibrary\fP\&.
+.PP
+Definition at line 105 of file inject_sleigh\&.hh\&.
+.SS "int4 PcodeInjectLibrarySleigh::manualCallFixup (const string & name, const string & snippetstring)\fC [virtual]\fP"
+
+.PP
+Manually add a call-fixup payload given a compilable snippet of p-code \fIsource\fP\&. The snippet is compiled immediately to produce the payload\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the formal name of the new payload 
+.br
+\fIsnippetstring\fP is the compilable snippet of p-code \fIsource\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id of the new payload 
+.RE
+.PP
+
+.PP
+Implements \fBPcodeInjectLibrary\fP\&.
+.PP
+Definition at line 418 of file inject_sleigh\&.cc\&.
+.SS "int4 PcodeInjectLibrarySleigh::manualCallOtherFixup (const string & name, const string & outname, const vector< string > & inname, const string & snippet)\fC [virtual]\fP"
+
+.PP
+Manually add a callother-fixup payload given a compilable snippet of p-code \fIsource\fP\&. The snippet is compiled immediately to produce the payload\&. \fBSymbol\fP names for input and output parameters must be provided to the compiler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the formal name of the new payload 
+.br
+\fIoutname\fP is the name of the output symbol 
+.br
+\fIinname\fP is the ordered list of input symbol names 
+.br
+\fIsnippet\fP is the compilable snippet of p-code \fIsource\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id of the new payload 
+.RE
+.PP
+
+.PP
+Implements \fBPcodeInjectLibrary\fP\&.
+.PP
+Definition at line 429 of file inject_sleigh\&.cc\&.
+.SS "void PcodeInjectLibrarySleigh::registerInject (int4 injectid)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Finalize a payload within the library, once the payload is initialized\&. This provides the derived class the opportunity to add the payload name to the symbol tables or do anything else it needs to once the \fBInjectPayload\fP object has been fully initialized\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinjectid\fP is the id of the \fBInjectPayload\fP to finalize 
+.RE
+.PP
+
+.PP
+Implements \fBPcodeInjectLibrary\fP\&.
+.PP
+Definition at line 357 of file inject_sleigh\&.cc\&.
+.SS "void PcodeInjectLibrarySleigh::restoreDebug (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+A method for reading in p-code generated externally for use in debugging\&. Instantiate a special \fBInjectPayloadDynamic\fP object initialized with an <injectdebug> tag\&. Within the library, this replaces the original \fBInjectPayload\fP, allowing its p-code to be \fIreplayed\fP for debugging purposes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <injectdebug> element 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBPcodeInjectLibrary\fP\&.
+.PP
+Definition at line 389 of file inject_sleigh\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

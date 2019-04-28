@@ -1,0 +1,417 @@
+\hypertarget{class_context_pattern}{}\section{Context\+Pattern Class Reference}
+\label{class_context_pattern}\index{ContextPattern@{ContextPattern}}
+
+
+{\ttfamily \#include $<$slghpattern.\+hh$>$}
+
+
+
+Inheritance diagram for Context\+Pattern\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_context_pattern__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Context\+Pattern\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_context_pattern__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_context_pattern_a66b65ac40587ea7fcb7056341ae5a217}{Context\+Pattern}} (void)
+\item 
+\mbox{\hyperlink{class_context_pattern_a2b3f651f71bc240b9eabc99e0aa41b52}{Context\+Pattern}} (\mbox{\hyperlink{class_pattern_block}{Pattern\+Block}} $\ast$mv)
+\item 
+\mbox{\hyperlink{class_pattern_block}{Pattern\+Block}} $\ast$ \mbox{\hyperlink{class_context_pattern_aed7d47ba0d1e4c2e028f6c04fec131da}{get\+Block}} (void)
+\item 
+virtual \mbox{\hyperlink{class_context_pattern_af9738f7fdf8fcf39acec1c65f7ec023e}{$\sim$\+Context\+Pattern}} (void)
+\item 
+virtual \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$ \mbox{\hyperlink{class_context_pattern_a42838644f963d9b251c0d221c20c8116}{simplify\+Clone}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_context_pattern_acc26908cd60dbce4c4e13afed17036ba}{shift\+Instruction}} (int4 sa)
+\item 
+virtual \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$ \mbox{\hyperlink{class_context_pattern_aa80ff4baf1fae14a7e5cd744d1409620}{do\+Or}} (const \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$b, int4 sa) const
+\item 
+virtual \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$ \mbox{\hyperlink{class_context_pattern_acffa2b64552acaf8824b2093119f9eca}{do\+And}} (const \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$b, int4 sa) const
+\item 
+virtual \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$ \mbox{\hyperlink{class_context_pattern_a6fb24df62ecafb88fb1a41e8b710ab62}{common\+Sub\+Pattern}} (const \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$b, int4 sa) const
+\item 
+virtual bool \mbox{\hyperlink{class_context_pattern_ae9007dafab8003fbde577e75813000d1}{is\+Match}} (\mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&walker) const
+\item 
+virtual bool \mbox{\hyperlink{class_context_pattern_aa3a3b46175e110b361f342ad411a2c80}{always\+True}} (void) const
+\item 
+virtual bool \mbox{\hyperlink{class_context_pattern_a61a99b63f09aed4e7a18933eba517b90}{always\+False}} (void) const
+\item 
+virtual bool \mbox{\hyperlink{class_context_pattern_addfef0aa6b03d6d6c3cce66bd64b903d}{always\+Instruction\+True}} (void) const
+\item 
+virtual void \mbox{\hyperlink{class_context_pattern_a405d7ca6e777696895091684d1debfd8}{save\+Xml}} (ostream \&s) const
+\item 
+virtual void \mbox{\hyperlink{class_context_pattern_a0a49308ce8b3b8b66226f78911f5d0ec}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 105 of file slghpattern.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_context_pattern_a66b65ac40587ea7fcb7056341ae5a217}\label{class_context_pattern_a66b65ac40587ea7fcb7056341ae5a217}} 
+\index{ContextPattern@{ContextPattern}!ContextPattern@{ContextPattern}}
+\index{ContextPattern@{ContextPattern}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{ContextPattern()}{ContextPattern()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Context\+Pattern\+::\+Context\+Pattern (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 109 of file slghpattern.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a66b65ac40587ea7fcb7056341ae5a217_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_a2b3f651f71bc240b9eabc99e0aa41b52}\label{class_context_pattern_a2b3f651f71bc240b9eabc99e0aa41b52}} 
+\index{ContextPattern@{ContextPattern}!ContextPattern@{ContextPattern}}
+\index{ContextPattern@{ContextPattern}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{ContextPattern()}{ContextPattern()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Context\+Pattern\+::\+Context\+Pattern (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pattern_block}{Pattern\+Block}} $\ast$}]{mv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 110 of file slghpattern.\+hh.
+
+\mbox{\Hypertarget{class_context_pattern_af9738f7fdf8fcf39acec1c65f7ec023e}\label{class_context_pattern_af9738f7fdf8fcf39acec1c65f7ec023e}} 
+\index{ContextPattern@{ContextPattern}!````~ContextPattern@{$\sim$ContextPattern}}
+\index{````~ContextPattern@{$\sim$ContextPattern}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{$\sim$ContextPattern()}{~ContextPattern()}}
+{\footnotesize\ttfamily virtual Context\+Pattern\+::$\sim$\+Context\+Pattern (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 112 of file slghpattern.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_context_pattern_a61a99b63f09aed4e7a18933eba517b90}\label{class_context_pattern_a61a99b63f09aed4e7a18933eba517b90}} 
+\index{ContextPattern@{ContextPattern}!alwaysFalse@{alwaysFalse}}
+\index{alwaysFalse@{alwaysFalse}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{alwaysFalse()}{alwaysFalse()}}
+{\footnotesize\ttfamily virtual bool Context\+Pattern\+::always\+False (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_ab7e66817fda44ad29954c8cfcb9c9266}{Pattern}}.
+
+
+
+Definition at line 120 of file slghpattern.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a61a99b63f09aed4e7a18933eba517b90_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a61a99b63f09aed4e7a18933eba517b90_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_addfef0aa6b03d6d6c3cce66bd64b903d}\label{class_context_pattern_addfef0aa6b03d6d6c3cce66bd64b903d}} 
+\index{ContextPattern@{ContextPattern}!alwaysInstructionTrue@{alwaysInstructionTrue}}
+\index{alwaysInstructionTrue@{alwaysInstructionTrue}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{alwaysInstructionTrue()}{alwaysInstructionTrue()}}
+{\footnotesize\ttfamily virtual bool Context\+Pattern\+::always\+Instruction\+True (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a62dd2f6b8bbb33279586739924ba4fa9}{Pattern}}.
+
+
+
+Definition at line 121 of file slghpattern.\+hh.
+
+\mbox{\Hypertarget{class_context_pattern_aa3a3b46175e110b361f342ad411a2c80}\label{class_context_pattern_aa3a3b46175e110b361f342ad411a2c80}} 
+\index{ContextPattern@{ContextPattern}!alwaysTrue@{alwaysTrue}}
+\index{alwaysTrue@{alwaysTrue}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{alwaysTrue()}{alwaysTrue()}}
+{\footnotesize\ttfamily virtual bool Context\+Pattern\+::always\+True (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_ab1527189c63b797a70c23047c033d35f}{Pattern}}.
+
+
+
+Definition at line 119 of file slghpattern.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_aa3a3b46175e110b361f342ad411a2c80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_aa3a3b46175e110b361f342ad411a2c80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_a6fb24df62ecafb88fb1a41e8b710ab62}\label{class_context_pattern_a6fb24df62ecafb88fb1a41e8b710ab62}} 
+\index{ContextPattern@{ContextPattern}!commonSubPattern@{commonSubPattern}}
+\index{commonSubPattern@{commonSubPattern}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{commonSubPattern()}{commonSubPattern()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$ Context\+Pattern\+::common\+Sub\+Pattern (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$}]{b,  }\item[{int4}]{sa }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a54daed6fc84146ad309a25dfa8a68052}{Pattern}}.
+
+
+
+Definition at line 663 of file slghpattern.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a6fb24df62ecafb88fb1a41e8b710ab62_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a6fb24df62ecafb88fb1a41e8b710ab62_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_acffa2b64552acaf8824b2093119f9eca}\label{class_context_pattern_acffa2b64552acaf8824b2093119f9eca}} 
+\index{ContextPattern@{ContextPattern}!doAnd@{doAnd}}
+\index{doAnd@{doAnd}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{doAnd()}{doAnd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$ Context\+Pattern\+::do\+And (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$}]{b,  }\item[{int4}]{sa }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a960f3e000e2642c452fe11f5b55a9589}{Pattern}}.
+
+
+
+Definition at line 652 of file slghpattern.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_acffa2b64552acaf8824b2093119f9eca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_acffa2b64552acaf8824b2093119f9eca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_aa80ff4baf1fae14a7e5cd744d1409620}\label{class_context_pattern_aa80ff4baf1fae14a7e5cd744d1409620}} 
+\index{ContextPattern@{ContextPattern}!doOr@{doOr}}
+\index{doOr@{doOr}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{doOr()}{doOr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$ Context\+Pattern\+::do\+Or (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pattern}{Pattern}} $\ast$}]{b,  }\item[{int4}]{sa }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a130c23bfea1cb4a1c6e83edf9e2503d3}{Pattern}}.
+
+
+
+Definition at line 642 of file slghpattern.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_aa80ff4baf1fae14a7e5cd744d1409620_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_aed7d47ba0d1e4c2e028f6c04fec131da}\label{class_context_pattern_aed7d47ba0d1e4c2e028f6c04fec131da}} 
+\index{ContextPattern@{ContextPattern}!getBlock@{getBlock}}
+\index{getBlock@{getBlock}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{getBlock()}{getBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pattern_block}{Pattern\+Block}}$\ast$ Context\+Pattern\+::get\+Block (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 111 of file slghpattern.\+hh.
+
+\mbox{\Hypertarget{class_context_pattern_ae9007dafab8003fbde577e75813000d1}\label{class_context_pattern_ae9007dafab8003fbde577e75813000d1}} 
+\index{ContextPattern@{ContextPattern}!isMatch@{isMatch}}
+\index{isMatch@{isMatch}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{isMatch()}{isMatch()}}
+{\footnotesize\ttfamily virtual bool Context\+Pattern\+::is\+Match (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parser_walker}{Parser\+Walker}} \&}]{walker }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a2a85729a1c78a4905bd6ee1d11ea59d5}{Pattern}}.
+
+
+
+Definition at line 118 of file slghpattern.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_ae9007dafab8003fbde577e75813000d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_ae9007dafab8003fbde577e75813000d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_a0a49308ce8b3b8b66226f78911f5d0ec}\label{class_context_pattern_a0a49308ce8b3b8b66226f78911f5d0ec}} 
+\index{ContextPattern@{ContextPattern}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Context\+Pattern\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_aaa8fb2873854fb42d944fa8876102bb5}{Pattern}}.
+
+
+
+Definition at line 682 of file slghpattern.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a0a49308ce8b3b8b66226f78911f5d0ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a0a49308ce8b3b8b66226f78911f5d0ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_a405d7ca6e777696895091684d1debfd8}\label{class_context_pattern_a405d7ca6e777696895091684d1debfd8}} 
+\index{ContextPattern@{ContextPattern}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Context\+Pattern\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a1ad6c2ad66849318427095662b718fa9}{Pattern}}.
+
+
+
+Definition at line 674 of file slghpattern.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a405d7ca6e777696895091684d1debfd8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a405d7ca6e777696895091684d1debfd8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_context_pattern_acc26908cd60dbce4c4e13afed17036ba}\label{class_context_pattern_acc26908cd60dbce4c4e13afed17036ba}} 
+\index{ContextPattern@{ContextPattern}!shiftInstruction@{shiftInstruction}}
+\index{shiftInstruction@{shiftInstruction}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{shiftInstruction()}{shiftInstruction()}}
+{\footnotesize\ttfamily virtual void Context\+Pattern\+::shift\+Instruction (\begin{DoxyParamCaption}\item[{int4}]{sa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a8a84c1487128e33cdc27c2069eb4c02a}{Pattern}}.
+
+
+
+Definition at line 114 of file slghpattern.\+hh.
+
+\mbox{\Hypertarget{class_context_pattern_a42838644f963d9b251c0d221c20c8116}\label{class_context_pattern_a42838644f963d9b251c0d221c20c8116}} 
+\index{ContextPattern@{ContextPattern}!simplifyClone@{simplifyClone}}
+\index{simplifyClone@{simplifyClone}!ContextPattern@{ContextPattern}}
+\subsubsection{\texorpdfstring{simplifyClone()}{simplifyClone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_pattern}{Pattern}}$\ast$ Context\+Pattern\+::simplify\+Clone (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pattern_a9c2c1383d7f836f8af237a03e463d94d}{Pattern}}.
+
+
+
+Definition at line 113 of file slghpattern.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a42838644f963d9b251c0d221c20c8116_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_context_pattern_a42838644f963d9b251c0d221c20c8116_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghpattern_8hh}{slghpattern.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{slghpattern_8cc}{slghpattern.\+cc}}\end{DoxyCompactItemize}

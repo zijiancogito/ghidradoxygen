@@ -1,0 +1,249 @@
+.TH "Comment" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Comment \- A comment attached to a specific function and code address\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <comment\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBcomment_type\fP { \fBuser1\fP = 1, \fBuser2\fP = 2, \fBuser3\fP = 4, \fBheader\fP = 8, \fBwarning\fP = 16, \fBwarningheader\fP = 32 }"
+.br
+.RI "Possible properties associated with a comment\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBComment\fP (uint4 tp, const \fBAddress\fP &fad, const \fBAddress\fP &ad, int4 uq, const string &txt)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fBComment\fP (void)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml\&. "
+.ti -1c
+.RI "uint4 \fBgetType\fP (void) const"
+.br
+.RI "Get the properties associated with the comment\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetFuncAddr\fP (void) const"
+.br
+.RI "Get the address of the function containing the comment\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddr\fP (void) const"
+.br
+.RI "Get the address to which the instruction is attached\&. "
+.ti -1c
+.RI "int4 \fBgetUniq\fP (void) const"
+.br
+.RI "Get the sub-sorting index\&. "
+.ti -1c
+.RI "const string & \fBgetText\fP (void) const"
+.br
+.RI "Get the body of the comment\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save the comment to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore the comment from XML\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static uint4 \fBencodeCommentType\fP (const string &name)"
+.br
+.RI "Convert name string to comment property\&. "
+.ti -1c
+.RI "static string \fBdecodeCommentType\fP (uint4 val)"
+.br
+.RI "Convert comment property to string\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBCommentDatabaseInternal\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A comment attached to a specific function and code address\&. 
+
+Things contains the actual character data of the comment\&. It is fundamentally attached to a specific function and to the address of an instruction (within the function's body)\&. Comments can be categorized as a \fIheader\fP (or not) depending on whether it should be displayed as part of the general description of the function or not\&. Other properties can be assigned to a comment, to allow the user to specify the subset of all comments they want to display\&. 
+.PP
+Definition at line 37 of file comment\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBComment::comment_type\fP"
+
+.PP
+Possible properties associated with a comment\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIuser1 \fP\fP
+The first user defined property\&. 
+.TP
+\fB\fIuser2 \fP\fP
+The second user defined property\&. 
+.TP
+\fB\fIuser3 \fP\fP
+The third user defined property\&. 
+.TP
+\fB\fIheader \fP\fP
+The comment should be displayed in the function header\&. 
+.TP
+\fB\fIwarning \fP\fP
+The comment is auto-generated to alert the user\&. 
+.TP
+\fB\fIwarningheader \fP\fP
+The comment is auto-generated and should be in the header\&. 
+.PP
+Definition at line 46 of file comment\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Comment::Comment (uint4 tp, const \fBAddress\fP & fad, const \fBAddress\fP & ad, int4 uq, const string & txt)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is the set of properties to associate with the comment (or 0 for no properties) 
+.br
+\fIfad\fP is the \fBAddress\fP of the function containing the comment 
+.br
+\fIad\fP is the \fBAddress\fP of the instruction associated with the comment 
+.br
+\fIuq\fP is used internally to sub-sort comments at the same address 
+.br
+\fItxt\fP is the body of the comment 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file comment\&.cc\&.
+.SS "Comment::Comment (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP for use with restoreXml\&. 
+.PP
+Definition at line 56 of file comment\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string Comment::decodeCommentType (uint4 val)\fC [static]\fP"
+
+.PP
+Convert comment property to string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is a single comment property 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the string representation of the property 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file comment\&.cc\&.
+.SS "uint4 Comment::encodeCommentType (const string & name)\fC [static]\fP"
+
+.PP
+Convert name string to comment property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is a string representation of a single comment property 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the enumerated property type 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file comment\&.cc\&.
+.SS "const \fBAddress\fP& Comment::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the address to which the instruction is attached\&. 
+.PP
+Definition at line 59 of file comment\&.hh\&.
+.SS "const \fBAddress\fP& Comment::getFuncAddr (void) const\fC [inline]\fP"
+
+.PP
+Get the address of the function containing the comment\&. 
+.PP
+Definition at line 58 of file comment\&.hh\&.
+.SS "const string& Comment::getText (void) const\fC [inline]\fP"
+
+.PP
+Get the body of the comment\&. 
+.PP
+Definition at line 61 of file comment\&.hh\&.
+.SS "uint4 Comment::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the properties associated with the comment\&. 
+.PP
+Definition at line 57 of file comment\&.hh\&.
+.SS "int4 Comment::getUniq (void) const\fC [inline]\fP"
+
+.PP
+Get the sub-sorting index\&. 
+.PP
+Definition at line 60 of file comment\&.hh\&.
+.SS "void Comment::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Restore the comment from XML\&. The comment is parsed from a <comment> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <comment> element 
+.br
+\fImanage\fP is a manager for resolving address space references 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file comment\&.cc\&.
+.SS "void Comment::saveXml (ostream & s) const"
+
+.PP
+Save the comment to an XML stream\&. The single comment is saved as a <comment> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 33 of file comment\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBCommentDatabaseInternal\fP\fC [friend]\fP"
+
+.PP
+Definition at line 38 of file comment\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

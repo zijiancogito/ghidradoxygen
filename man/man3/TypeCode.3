@@ -1,0 +1,300 @@
+.TH "TypeCode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeCode \- \fBDatatype\fP object representing executable code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBDatatype\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeCode\fP (const \fBTypeCode\fP &op)"
+.br
+.RI "Construct from another \fBTypeCode\fP\&. "
+.ti -1c
+.RI "\fBTypeCode\fP (const string &nm)"
+.br
+.RI "Construct from a name\&. "
+.ti -1c
+.RI "int4 \fBcompareBasic\fP (const \fBTypeCode\fP *op) const"
+.br
+.RI "Compare surface characteristics of two TypeCodes\&. "
+.ti -1c
+.RI "const \fBFuncProto\fP * \fBgetPrototype\fP (void) const"
+.br
+.RI "Get the function prototype\&. "
+.ti -1c
+.RI "void \fBsetProperties\fP (bool hasThisPtr, bool isConstructor, bool isDestructor)"
+.br
+.RI "Set additional function properties\&. "
+.ti -1c
+.RI "virtual \fB~TypeCode\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print a description of the type to stream\&. "
+.ti -1c
+.RI "virtual int4 \fBcompare\fP (const \fBDatatype\fP &op, int4 level) const"
+.br
+.RI "Compare for functional equivalence\&. "
+.ti -1c
+.RI "virtual int4 \fBcompareDependency\fP (const \fBDatatype\fP &op) const"
+.br
+.RI "Compare for storage in tree structure\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBset\fP (\fBProtoModel\fP *model, \fBDatatype\fP *outtype, const vector< \fBDatatype\fP * > &intypes, bool dotdotdot, \fBDatatype\fP *voidtype)"
+.br
+.RI "Establish a function pointer\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore data-type from XML\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBFuncProto\fP * \fBproto\fP"
+.br
+.RI "If non-null, this describes the prototype of the underlying function\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBDatatype\fP object representing executable code\&. 
+
+Sometimes, this holds the 'function' being pointed to by a function pointer 
+.PP
+Definition at line 328 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeCode::TypeCode (const \fBTypeCode\fP & op)"
+
+.PP
+Construct from another \fBTypeCode\fP\&. 
+.PP
+Definition at line 937 of file type\&.cc\&.
+.SS "TypeCode::TypeCode (const string & nm)"
+
+.PP
+Construct from a name\&. 
+.PP
+Definition at line 947 of file type\&.cc\&.
+.SS "TypeCode::~TypeCode (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 953 of file type\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* TypeCode::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Implements \fBDatatype\fP\&.
+.PP
+Definition at line 346 of file type\&.hh\&.
+.SS "int4 TypeCode::compare (const \fBDatatype\fP & op, int4 level) const\fC [virtual]\fP"
+
+.PP
+Compare for functional equivalence\&. Compare \fBthis\fP with another data-type\&. 0 (equality) means the data-types are functionally equivalent (even if names differ) Smaller types come earlier\&. More specific types come earlier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.br
+\fIlevel\fP is maximum level to descend when recursively comparing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1024 of file type\&.cc\&.
+.SS "int4 TypeCode::compareBasic (const \fBTypeCode\fP * op) const"
+
+.PP
+Compare surface characteristics of two TypeCodes\&. Compare basic characteristics of \fBthis\fP with another \fBTypeCode\fP, not including the prototype
+.IP "\(bu" 2
+-1 or 1 if -this- and -op- are different in surface characteristics
+.IP "\(bu" 2
+0 if they are exactly equal and have no parameters
+.IP "\(bu" 2
+2 if they are equal on the surface, but additional comparisons must be made on parameters 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the other data-type to compare to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the comparison value 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 989 of file type\&.cc\&.
+.SS "int4 TypeCode::compareDependency (const \fBDatatype\fP & op) const\fC [virtual]\fP"
+
+.PP
+Compare for storage in tree structure\&. Ordering of data-types for the main \fBTypeFactory\fP container\&. Comparison only goes down one-level in the component structure, before just comparing pointers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1054 of file type\&.cc\&.
+.SS "const \fBFuncProto\fP* TypeCode::getPrototype (void) const\fC [inline]\fP"
+
+.PP
+Get the function prototype\&. 
+.PP
+Definition at line 340 of file type\&.hh\&.
+.SS "void TypeCode::printRaw (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a description of the type to stream\&. Print a raw description of the type to stream\&. Intended for debugging\&. Not intended to produce parsable C\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 960 of file type\&.cc\&.
+.SS "void TypeCode::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Restore data-type from XML\&. Restore a \fBDatatype\fP object from an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the underlying \fBTypeFactory\fP that will hold the new object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1091 of file type\&.cc\&.
+.SS "void TypeCode::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 1080 of file type\&.cc\&.
+.SS "void TypeCode::set (\fBProtoModel\fP * model, \fBDatatype\fP * outtype, const vector< \fBDatatype\fP * > & intypes, bool dotdotdot, \fBDatatype\fP * voidtype)\fC [protected]\fP"
+
+.PP
+Establish a function pointer\&. Turn on the data-type's function prototype 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImodel\fP is the prototype model 
+.br
+\fIouttype\fP is the return type of the prototype 
+.br
+\fIintypes\fP is the list of input parameters 
+.br
+\fIdotdotdot\fP is true if the prototype takes variable arguments 
+.br
+\fIvoidtype\fP is the reference 'void' data-type 
+.RE
+.PP
+
+.PP
+Definition at line 915 of file type\&.cc\&.
+.SS "void TypeCode::setProperties (bool hasThisPtr, bool isConstructor, bool isDestructor)"
+
+.PP
+Set additional function properties\&. Assuming \fBthis\fP has an underlying function prototype, set some of its boolean properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhasThisPtr\fP toggles whether prototype has takes a 'this' pointer 
+.br
+\fIisConstructor\fP toggles whether the function is a constructor 
+.br
+\fIisDestructor\fP toggles whether the function is a destructor 
+.RE
+.PP
+
+.PP
+Definition at line 974 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 330 of file type\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBFuncProto\fP* TypeCode::proto\fC [protected]\fP"
+
+.PP
+If non-null, this describes the prototype of the underlying function\&. 
+.PP
+Definition at line 331 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

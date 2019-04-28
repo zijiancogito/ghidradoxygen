@@ -1,0 +1,107 @@
+.TH "MemoryHashOverlay" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryHashOverlay \- A memory bank that implements reads and writes using a hash table\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memstate\&.hh>\fP
+.PP
+Inherits \fBMemoryBank\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryHashOverlay\fP (\fBAddrSpace\fP *spc, int4 ws, int4 ps, int4 hashsize, \fBMemoryBank\fP *ul)"
+.br
+.RI "\fBConstructor\fP for hash overlay\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBinsert\fP (\fBuintb\fP addr, \fBuintb\fP val)"
+.br
+.RI "Overridden aligned word insert\&. "
+.ti -1c
+.RI "virtual \fBuintb\fP \fBfind\fP (\fBuintb\fP addr) const"
+.br
+.RI "Overridden aligned word find\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A memory bank that implements reads and writes using a hash table\&. 
+
+The initial state of the bank is taken from an \fIunderlying\fP memory bank or is all zero, if this bank is initialized with a \fBnull\fP pointer\&. This implementation will not be very efficient for accessing entire pages\&. 
+.PP
+Definition at line 128 of file memstate\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MemoryHashOverlay::MemoryHashOverlay (\fBAddrSpace\fP * spc, int4 ws, int4 ps, int4 hashsize, \fBMemoryBank\fP * ul)"
+
+.PP
+\fBConstructor\fP for hash overlay\&. A \fBMemoryBank\fP implemented as a hash table needs everything associated with a generic memory bank, but the constructor also needs to know the size of the hashtable and the underlying memorybank to forward reads and writes to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space associated with the memory bank 
+.br
+\fIws\fP is the number of bytes in the preferred wordsize (must be power of 2) 
+.br
+\fIps\fP is the number of bytes in a page (must be a power of 2) 
+.br
+\fIhashsize\fP is the maximum number of entries in the hashtable 
+.br
+\fIul\fP is the underlying memory bank being overlayed 
+.RE
+.PP
+
+.PP
+Definition at line 600 of file memstate\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP MemoryHashOverlay::find (\fBuintb\fP addr) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridden aligned word find\&. First search for an entry in the hashtable using \fBaddr\fP as a key\&. If there is no entry, forward the query to the underlying memory bank, or return 0 if there is no underlying bank 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the aligned address of the word to retrieve 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the retrieved value 
+.RE
+.PP
+
+.PP
+Implements \fBMemoryBank\fP\&.
+.PP
+Definition at line 573 of file memstate\&.cc\&.
+.SS "void MemoryHashOverlay::insert (\fBuintb\fP addr, \fBuintb\fP val)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overridden aligned word insert\&. Write the value into the hashtable, using \fBaddr\fP as a key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the aligned address of the word being written 
+.br
+\fIval\fP is the value of the word to write 
+.RE
+.PP
+
+.PP
+Implements \fBMemoryBank\fP\&.
+.PP
+Definition at line 549 of file memstate\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

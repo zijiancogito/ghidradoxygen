@@ -1,0 +1,1143 @@
+\hypertarget{class_float_format}{}\section{Float\+Format Class Reference}
+\label{class_float_format}\index{FloatFormat@{FloatFormat}}
+
+
+Encoding information for a single floating-\/point format.  
+
+
+
+
+{\ttfamily \#include $<$float.\+hh$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481}{floatclass}} \{ \newline
+\mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481af3348da859f2ff00a47e32cc28a2edff}{normalized}} = 0, 
+\mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481afeac6c1ae11af57235ccfa9c04d24a95}{infinity}} = 1, 
+\mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481aa26c0572abbf40f500f62893f06d478f}{zero}} = 2, 
+\mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481ae3b854531adab08356b32f687c2227de}{nan}} = 3, 
+\newline
+\mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481a15a0236a6b55e962846bdb2ae698cbeb}{denormalized}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em The various classes of floating-\/point encodings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_float_format_aac151782bc5f16b0854ea3da1feec4a9}{Float\+Format}} (void)
+\begin{DoxyCompactList}\small\item\em Construct for use with \mbox{\hyperlink{class_float_format_aa6e0b189a1a66251b200fcf829d98356}{restore\+Xml()}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_float_format_a0c5efdce272fb2a9b63f05affedbb74a}{Float\+Format}} (int4 sz)
+\begin{DoxyCompactList}\small\item\em Construct default I\+E\+EE 754 standard settings. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_float_format_ad8a88c53da2b55aae1c707a33a53c501}{get\+Size}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the size of the encoding in bytes. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_float_format_a5205f99f7973cde7ffe0054d07cf82bc}{get\+Host\+Float}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} encoding, \mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481}{floatclass}} $\ast$type) const
+\begin{DoxyCompactList}\small\item\em Convert an encoding into host\textquotesingle{}s double. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a6f8450c4637e1e2c098b6b1c38f6061f}{get\+Encoding}} (double host) const
+\begin{DoxyCompactList}\small\item\em Convert host\textquotesingle{}s double into {\bfseries{this}} encoding. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a8b9460ada306b44861228990529d5410}{convert\+Encoding}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} encoding, const \mbox{\hyperlink{class_float_format}{Float\+Format}} $\ast$formin) const
+\begin{DoxyCompactList}\small\item\em Convert between two different formats. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_af06109651ce301156e5a384c946e7780}{extract\+Fractional\+Code}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} x) const
+\begin{DoxyCompactList}\small\item\em Extract the fractional part of the encoding. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_float_format_afa7d38ddb73a8cd9f4d29b839af04d1d}{extract\+Sign}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} x) const
+\begin{DoxyCompactList}\small\item\em Extract the sign bit from the encoding. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_float_format_a266d06329a88845bbc202b87141f64df}{extract\+Exponent\+Code}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} x) const
+\begin{DoxyCompactList}\small\item\em Extract the exponent from the encoding. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a1c59c49b0bdbc8d31d2df59eb0624d06}{op\+Equal}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Equality comparison (==) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a1f28cec1861ddf0f416033f971a43b16}{op\+Not\+Equal}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Inequality comparison (!=) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a257b216d9b9e5aad3b693df46624cc6d}{op\+Less}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Less-\/than comparison ($<$) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_adaf425a89e09270969f6fd848bf06025}{op\+Less\+Equal}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Less-\/than-\/or-\/equal comparison ($<$=) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a64576b3f398b049f002a6c95e45f2296}{op\+Nan}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a) const
+\begin{DoxyCompactList}\small\item\em Test if Not-\/a-\/\+Number (NaN) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_ad342814d842cb20b16dbe4fc9af59e1e}{op\+Add}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Addition (+) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_abcd8caf82f65bac1e32be3cecd9f80e3}{op\+Div}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Division (/) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a289c2216fe9add39e225991fc7baad3c}{op\+Mult}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Multiplication ($\ast$) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_affc23eaa38dae2db40e8e16c9cf9c821}{op\+Sub}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} b) const
+\begin{DoxyCompactList}\small\item\em Subtraction (-\/) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_af639368d2760482533e8ebf5ee18995b}{op\+Neg}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a) const
+\begin{DoxyCompactList}\small\item\em Unary negate. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a5edfc9c055efded2f22bb42a91058164}{op\+Abs}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a) const
+\begin{DoxyCompactList}\small\item\em Absolute value (abs) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a13cc7817eee998adc9699333cb8f144d}{op\+Sqrt}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a) const
+\begin{DoxyCompactList}\small\item\em Square root (sqrt) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a97577950c7ef0b53099d17deee29f198}{op\+Trunc}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, int4 sizeout) const
+\begin{DoxyCompactList}\small\item\em Convert floating-\/point to integer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a997db68ddb2ee0835f3ffde93f4c4958}{op\+Ceil}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a) const
+\begin{DoxyCompactList}\small\item\em Ceiling (ceil) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_ad2e38aad3a27346e0eb55aedcbf531cd}{op\+Floor}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a) const
+\begin{DoxyCompactList}\small\item\em Floor (floor) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_adde6362a78f0ad6cd66fdd04c71032cf}{op\+Round}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a) const
+\begin{DoxyCompactList}\small\item\em Round. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a610b9f8efe3b41368250940184691156}{op\+Int2\+Float}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, int4 sizein) const
+\begin{DoxyCompactList}\small\item\em Convert integer to floating-\/point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_float_format_a4adac47dcb6d1ddbcf9c5f6980528fd2}{op\+Float2\+Float}} (\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} a, const \mbox{\hyperlink{class_float_format}{Float\+Format}} \&outformat) const
+\begin{DoxyCompactList}\small\item\em Convert between floating-\/point precisions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_float_format_adc679e89dcd8c63b0b9cc08f3464ba1a}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save the format to an X\+ML stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_float_format_aa6e0b189a1a66251b200fcf829d98356}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Restore the format from X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Encoding information for a single floating-\/point format. 
+
+This class supports manipulation of a single floating-\/point encoding. An encoding can be converted to and from the host format and convenience methods allow p-\/code floating-\/point operations to be performed on natively encoded operands. This follows the I\+E\+E\+E754 standards. 
+
+Definition at line 30 of file float.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481}\label{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481}} 
+\index{FloatFormat@{FloatFormat}!floatclass@{floatclass}}
+\index{floatclass@{floatclass}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{floatclass}{floatclass}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481}{Float\+Format\+::floatclass}}}
+
+
+
+The various classes of floating-\/point encodings. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{normalized@{normalized}!FloatFormat@{FloatFormat}}\index{FloatFormat@{FloatFormat}!normalized@{normalized}}}\mbox{\Hypertarget{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481af3348da859f2ff00a47e32cc28a2edff}\label{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481af3348da859f2ff00a47e32cc28a2edff}} 
+normalized&A normal floating-\/point number. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{infinity@{infinity}!FloatFormat@{FloatFormat}}\index{FloatFormat@{FloatFormat}!infinity@{infinity}}}\mbox{\Hypertarget{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481afeac6c1ae11af57235ccfa9c04d24a95}\label{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481afeac6c1ae11af57235ccfa9c04d24a95}} 
+infinity&An encoding representing an infinite value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{zero@{zero}!FloatFormat@{FloatFormat}}\index{FloatFormat@{FloatFormat}!zero@{zero}}}\mbox{\Hypertarget{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481aa26c0572abbf40f500f62893f06d478f}\label{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481aa26c0572abbf40f500f62893f06d478f}} 
+zero&An encoding of the value zero. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{nan@{nan}!FloatFormat@{FloatFormat}}\index{FloatFormat@{FloatFormat}!nan@{nan}}}\mbox{\Hypertarget{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481ae3b854531adab08356b32f687c2227de}\label{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481ae3b854531adab08356b32f687c2227de}} 
+nan&An invalid encoding, Not-\/a-\/\+Number. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{denormalized@{denormalized}!FloatFormat@{FloatFormat}}\index{FloatFormat@{FloatFormat}!denormalized@{denormalized}}}\mbox{\Hypertarget{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481a15a0236a6b55e962846bdb2ae698cbeb}\label{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481a15a0236a6b55e962846bdb2ae698cbeb}} 
+denormalized&A denormalized encoding (for very small values) \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 33 of file float.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_float_format_aac151782bc5f16b0854ea3da1feec4a9}\label{class_float_format_aac151782bc5f16b0854ea3da1feec4a9}} 
+\index{FloatFormat@{FloatFormat}!FloatFormat@{FloatFormat}}
+\index{FloatFormat@{FloatFormat}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{FloatFormat()}{FloatFormat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Float\+Format\+::\+Float\+Format (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct for use with \mbox{\hyperlink{class_float_format_aa6e0b189a1a66251b200fcf829d98356}{restore\+Xml()}} 
+
+
+
+Definition at line 59 of file float.\+hh.
+
+\mbox{\Hypertarget{class_float_format_a0c5efdce272fb2a9b63f05affedbb74a}\label{class_float_format_a0c5efdce272fb2a9b63f05affedbb74a}} 
+\index{FloatFormat@{FloatFormat}!FloatFormat@{FloatFormat}}
+\index{FloatFormat@{FloatFormat}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{FloatFormat()}{FloatFormat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Float\+Format\+::\+Float\+Format (\begin{DoxyParamCaption}\item[{int4}]{sz }\end{DoxyParamCaption})}
+
+
+
+Construct default I\+E\+EE 754 standard settings. 
+
+Set format for a given encoding size according to I\+E\+EE 754 standards 
+\begin{DoxyParams}{Parameters}
+{\em sz} & is the size of the encoding in bytes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file float.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_float_format_a8b9460ada306b44861228990529d5410}\label{class_float_format_a8b9460ada306b44861228990529d5410}} 
+\index{FloatFormat@{FloatFormat}!convertEncoding@{convertEncoding}}
+\index{convertEncoding@{convertEncoding}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{convertEncoding()}{convertEncoding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::convert\+Encoding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{encoding,  }\item[{const \mbox{\hyperlink{class_float_format}{Float\+Format}} $\ast$}]{formin }\end{DoxyParamCaption}) const}
+
+
+
+Convert between two different formats. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em encoding} & is the value in the {\itshape other} \mbox{\hyperlink{class_float_format}{Float\+Format}} \\
+\hline
+{\em formin} & is the {\itshape other} \mbox{\hyperlink{class_float_format}{Float\+Format}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the equivalent value in {\bfseries{this}} \mbox{\hyperlink{class_float_format}{Float\+Format}} 
+\end{DoxyReturn}
+
+
+Definition at line 311 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a8b9460ada306b44861228990529d5410_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a266d06329a88845bbc202b87141f64df}\label{class_float_format_a266d06329a88845bbc202b87141f64df}} 
+\index{FloatFormat@{FloatFormat}!extractExponentCode@{extractExponentCode}}
+\index{extractExponentCode@{extractExponentCode}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{extractExponentCode()}{extractExponentCode()}}
+{\footnotesize\ttfamily int4 Float\+Format\+::extract\+Exponent\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{x }\end{DoxyParamCaption}) const}
+
+
+
+Extract the exponent from the encoding. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the (signed) exponent 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file float.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a266d06329a88845bbc202b87141f64df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_af06109651ce301156e5a384c946e7780}\label{class_float_format_af06109651ce301156e5a384c946e7780}} 
+\index{FloatFormat@{FloatFormat}!extractFractionalCode@{extractFractionalCode}}
+\index{extractFractionalCode@{extractFractionalCode}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{extractFractionalCode()}{extractFractionalCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::extract\+Fractional\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{x }\end{DoxyParamCaption}) const}
+
+
+
+Extract the fractional part of the encoding. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the fraction part of the value aligned to the top of the word 
+\end{DoxyReturn}
+
+
+Definition at line 126 of file float.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_af06109651ce301156e5a384c946e7780_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_afa7d38ddb73a8cd9f4d29b839af04d1d}\label{class_float_format_afa7d38ddb73a8cd9f4d29b839af04d1d}} 
+\index{FloatFormat@{FloatFormat}!extractSign@{extractSign}}
+\index{extractSign@{extractSign}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{extractSign()}{extractSign()}}
+{\footnotesize\ttfamily bool Float\+Format\+::extract\+Sign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{x }\end{DoxyParamCaption}) const}
+
+
+
+Extract the sign bit from the encoding. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the sign bit 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file float.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_afa7d38ddb73a8cd9f4d29b839af04d1d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a6f8450c4637e1e2c098b6b1c38f6061f}\label{class_float_format_a6f8450c4637e1e2c098b6b1c38f6061f}} 
+\index{FloatFormat@{FloatFormat}!getEncoding@{getEncoding}}
+\index{getEncoding@{getEncoding}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{getEncoding()}{getEncoding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::get\+Encoding (\begin{DoxyParamCaption}\item[{double}]{host }\end{DoxyParamCaption}) const}
+
+
+
+Convert host\textquotesingle{}s double into {\bfseries{this}} encoding. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & is the double value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the equivalent encoded value 
+\end{DoxyReturn}
+
+
+Definition at line 277 of file float.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a6f8450c4637e1e2c098b6b1c38f6061f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a5205f99f7973cde7ffe0054d07cf82bc}\label{class_float_format_a5205f99f7973cde7ffe0054d07cf82bc}} 
+\index{FloatFormat@{FloatFormat}!getHostFloat@{getHostFloat}}
+\index{getHostFloat@{getHostFloat}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{getHostFloat()}{getHostFloat()}}
+{\footnotesize\ttfamily double Float\+Format\+::get\+Host\+Float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{encoding,  }\item[{\mbox{\hyperlink{class_float_format_a18acf57dc2fa19c8afe87fa1f61a0481}{floatclass}} $\ast$}]{type }\end{DoxyParamCaption}) const}
+
+
+
+Convert an encoding into host\textquotesingle{}s double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em encoding} & is the encoding value \\
+\hline
+{\em type} & points to the floating-\/point class, which is passed back \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the equivalent double value 
+\end{DoxyReturn}
+
+
+Definition at line 233 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a5205f99f7973cde7ffe0054d07cf82bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a5205f99f7973cde7ffe0054d07cf82bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_ad8a88c53da2b55aae1c707a33a53c501}\label{class_float_format_ad8a88c53da2b55aae1c707a33a53c501}} 
+\index{FloatFormat@{FloatFormat}!getSize@{getSize}}
+\index{getSize@{getSize}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int4 Float\+Format\+::get\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the size of the encoding in bytes. 
+
+
+
+Definition at line 61 of file float.\+hh.
+
+\mbox{\Hypertarget{class_float_format_a5edfc9c055efded2f22bb42a91058164}\label{class_float_format_a5edfc9c055efded2f22bb42a91058164}} 
+\index{FloatFormat@{FloatFormat}!opAbs@{opAbs}}
+\index{opAbs@{opAbs}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opAbs()}{opAbs()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Abs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Absolute value (abs) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+abs(a) 
+\end{DoxyReturn}
+
+
+Definition at line 472 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a5edfc9c055efded2f22bb42a91058164_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{class_float_format_a5edfc9c055efded2f22bb42a91058164_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_ad342814d842cb20b16dbe4fc9af59e1e}\label{class_float_format_ad342814d842cb20b16dbe4fc9af59e1e}} 
+\index{FloatFormat@{FloatFormat}!opAdd@{opAdd}}
+\index{opAdd@{opAdd}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opAdd()}{opAdd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Addition (+) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a + b 
+\end{DoxyReturn}
+
+
+Definition at line 415 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_ad342814d842cb20b16dbe4fc9af59e1e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{class_float_format_ad342814d842cb20b16dbe4fc9af59e1e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a997db68ddb2ee0835f3ffde93f4c4958}\label{class_float_format_a997db68ddb2ee0835f3ffde93f4c4958}} 
+\index{FloatFormat@{FloatFormat}!opCeil@{opCeil}}
+\index{opCeil@{opCeil}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opCeil()}{opCeil()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Ceil (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Ceiling (ceil) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ceil(a) 
+\end{DoxyReturn}
+
+
+Definition at line 529 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a997db68ddb2ee0835f3ffde93f4c4958_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_float_format_a997db68ddb2ee0835f3ffde93f4c4958_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_abcd8caf82f65bac1e32be3cecd9f80e3}\label{class_float_format_abcd8caf82f65bac1e32be3cecd9f80e3}} 
+\index{FloatFormat@{FloatFormat}!opDiv@{opDiv}}
+\index{opDiv@{opDiv}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opDiv()}{opDiv()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Div (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Division (/) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a / b 
+\end{DoxyReturn}
+
+
+Definition at line 427 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_abcd8caf82f65bac1e32be3cecd9f80e3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{class_float_format_abcd8caf82f65bac1e32be3cecd9f80e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a1c59c49b0bdbc8d31d2df59eb0624d06}\label{class_float_format_a1c59c49b0bdbc8d31d2df59eb0624d06}} 
+\index{FloatFormat@{FloatFormat}!opEqual@{opEqual}}
+\index{opEqual@{opEqual}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opEqual()}{opEqual()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Equal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Equality comparison (==) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if (a == b) 
+\end{DoxyReturn}
+
+
+Definition at line 352 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a1c59c49b0bdbc8d31d2df59eb0624d06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_float_format_a1c59c49b0bdbc8d31d2df59eb0624d06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a4adac47dcb6d1ddbcf9c5f6980528fd2}\label{class_float_format_a4adac47dcb6d1ddbcf9c5f6980528fd2}} 
+\index{FloatFormat@{FloatFormat}!opFloat2Float@{opFloat2Float}}
+\index{opFloat2Float@{opFloat2Float}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opFloat2Float()}{opFloat2Float()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Float2\+Float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{const \mbox{\hyperlink{class_float_format}{Float\+Format}} \&}]{outformat }\end{DoxyParamCaption}) const}
+
+
+
+Convert between floating-\/point precisions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+{\em outformat} & is the desired output \mbox{\hyperlink{class_float_format}{Float\+Format}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a converted to the output \mbox{\hyperlink{class_float_format}{Float\+Format}} 
+\end{DoxyReturn}
+
+
+Definition at line 505 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a4adac47dcb6d1ddbcf9c5f6980528fd2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a4adac47dcb6d1ddbcf9c5f6980528fd2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_ad2e38aad3a27346e0eb55aedcbf531cd}\label{class_float_format_ad2e38aad3a27346e0eb55aedcbf531cd}} 
+\index{FloatFormat@{FloatFormat}!opFloor@{opFloor}}
+\index{opFloor@{opFloor}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opFloor()}{opFloor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Floor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Floor (floor) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+floor(a) 
+\end{DoxyReturn}
+
+
+Definition at line 539 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_ad2e38aad3a27346e0eb55aedcbf531cd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_float_format_ad2e38aad3a27346e0eb55aedcbf531cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a610b9f8efe3b41368250940184691156}\label{class_float_format_a610b9f8efe3b41368250940184691156}} 
+\index{FloatFormat@{FloatFormat}!opInt2Float@{opInt2Float}}
+\index{opInt2Float@{opInt2Float}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opInt2Float()}{opInt2Float()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Int2\+Float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{int4}]{sizein }\end{DoxyParamCaption}) const}
+
+
+
+Convert integer to floating-\/point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is a signed integer value \\
+\hline
+{\em sizein} & is the number of bytes in the integer encoding \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a converted to an encoded floating-\/point value 
+\end{DoxyReturn}
+
+
+Definition at line 493 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a610b9f8efe3b41368250940184691156_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a610b9f8efe3b41368250940184691156_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a257b216d9b9e5aad3b693df46624cc6d}\label{class_float_format_a257b216d9b9e5aad3b693df46624cc6d}} 
+\index{FloatFormat@{FloatFormat}!opLess@{opLess}}
+\index{opLess@{opLess}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opLess()}{opLess()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Less (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Less-\/than comparison ($<$) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if (a $<$ b) 
+\end{DoxyReturn}
+
+
+Definition at line 378 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a257b216d9b9e5aad3b693df46624cc6d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_float_format_a257b216d9b9e5aad3b693df46624cc6d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_adaf425a89e09270969f6fd848bf06025}\label{class_float_format_adaf425a89e09270969f6fd848bf06025}} 
+\index{FloatFormat@{FloatFormat}!opLessEqual@{opLessEqual}}
+\index{opLessEqual@{opLessEqual}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opLessEqual()}{opLessEqual()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Less\+Equal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Less-\/than-\/or-\/equal comparison ($<$=) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if (a $<$= b) 
+\end{DoxyReturn}
+
+
+Definition at line 391 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_adaf425a89e09270969f6fd848bf06025_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_adaf425a89e09270969f6fd848bf06025_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a289c2216fe9add39e225991fc7baad3c}\label{class_float_format_a289c2216fe9add39e225991fc7baad3c}} 
+\index{FloatFormat@{FloatFormat}!opMult@{opMult}}
+\index{opMult@{opMult}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opMult()}{opMult()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Mult (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Multiplication ($\ast$) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a $\ast$ b 
+\end{DoxyReturn}
+
+
+Definition at line 439 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a289c2216fe9add39e225991fc7baad3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_float_format_a289c2216fe9add39e225991fc7baad3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a64576b3f398b049f002a6c95e45f2296}\label{class_float_format_a64576b3f398b049f002a6c95e45f2296}} 
+\index{FloatFormat@{FloatFormat}!opNan@{opNan}}
+\index{opNan@{opNan}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opNan()}{opNan()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Nan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Test if Not-\/a-\/\+Number (NaN) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if a is Not-\/a-\/\+Number 
+\end{DoxyReturn}
+
+
+Definition at line 403 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a64576b3f398b049f002a6c95e45f2296_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{class_float_format_a64576b3f398b049f002a6c95e45f2296_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_af639368d2760482533e8ebf5ee18995b}\label{class_float_format_af639368d2760482533e8ebf5ee18995b}} 
+\index{FloatFormat@{FloatFormat}!opNeg@{opNeg}}
+\index{opNeg@{opNeg}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opNeg()}{opNeg()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Neg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Unary negate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/a 
+\end{DoxyReturn}
+
+
+Definition at line 462 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_af639368d2760482533e8ebf5ee18995b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{class_float_format_af639368d2760482533e8ebf5ee18995b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a1f28cec1861ddf0f416033f971a43b16}\label{class_float_format_a1f28cec1861ddf0f416033f971a43b16}} 
+\index{FloatFormat@{FloatFormat}!opNotEqual@{opNotEqual}}
+\index{opNotEqual@{opNotEqual}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opNotEqual()}{opNotEqual()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Not\+Equal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Inequality comparison (!=) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if (a != b) 
+\end{DoxyReturn}
+
+
+Definition at line 365 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a1f28cec1861ddf0f416033f971a43b16_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a1f28cec1861ddf0f416033f971a43b16_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_adde6362a78f0ad6cd66fdd04c71032cf}\label{class_float_format_adde6362a78f0ad6cd66fdd04c71032cf}} 
+\index{FloatFormat@{FloatFormat}!opRound@{opRound}}
+\index{opRound@{opRound}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opRound()}{opRound()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Round (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Round. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+round(a) 
+\end{DoxyReturn}
+
+
+Definition at line 549 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_adde6362a78f0ad6cd66fdd04c71032cf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_float_format_adde6362a78f0ad6cd66fdd04c71032cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a13cc7817eee998adc9699333cb8f144d}\label{class_float_format_a13cc7817eee998adc9699333cb8f144d}} 
+\index{FloatFormat@{FloatFormat}!opSqrt@{opSqrt}}
+\index{opSqrt@{opSqrt}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opSqrt()}{opSqrt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Sqrt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a }\end{DoxyParamCaption}) const}
+
+
+
+Square root (sqrt) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sqrt(a) 
+\end{DoxyReturn}
+
+
+Definition at line 482 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a13cc7817eee998adc9699333cb8f144d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{class_float_format_a13cc7817eee998adc9699333cb8f144d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_affc23eaa38dae2db40e8e16c9cf9c821}\label{class_float_format_affc23eaa38dae2db40e8e16c9cf9c821}} 
+\index{FloatFormat@{FloatFormat}!opSub@{opSub}}
+\index{opSub@{opSub}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opSub()}{opSub()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Sub (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{b }\end{DoxyParamCaption}) const}
+
+
+
+Subtraction (-\/) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first floating-\/point value \\
+\hline
+{\em b} & is the second floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a -\/ b 
+\end{DoxyReturn}
+
+
+Definition at line 451 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_affc23eaa38dae2db40e8e16c9cf9c821_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{class_float_format_affc23eaa38dae2db40e8e16c9cf9c821_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_a97577950c7ef0b53099d17deee29f198}\label{class_float_format_a97577950c7ef0b53099d17deee29f198}} 
+\index{FloatFormat@{FloatFormat}!opTrunc@{opTrunc}}
+\index{opTrunc@{opTrunc}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{opTrunc()}{opTrunc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Float\+Format\+::op\+Trunc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{a,  }\item[{int4}]{sizeout }\end{DoxyParamCaption}) const}
+
+
+
+Convert floating-\/point to integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is an encoded floating-\/point value \\
+\hline
+{\em sizeout} & is the desired encoding size of the output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an integer encoding of a 
+\end{DoxyReturn}
+
+
+Definition at line 516 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_float_format_a97577950c7ef0b53099d17deee29f198_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_float_format_a97577950c7ef0b53099d17deee29f198_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_aa6e0b189a1a66251b200fcf829d98356}\label{class_float_format_aa6e0b189a1a66251b200fcf829d98356}} 
+\index{FloatFormat@{FloatFormat}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Float\+Format\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Restore the format from X\+ML. 
+
+Restore {\bfseries{object}} from a $<$floatformat$>$ X\+ML tag 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 576 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{class_float_format_aa6e0b189a1a66251b200fcf829d98356_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_float_format_adc679e89dcd8c63b0b9cc08f3464ba1a}\label{class_float_format_adc679e89dcd8c63b0b9cc08f3464ba1a}} 
+\index{FloatFormat@{FloatFormat}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!FloatFormat@{FloatFormat}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Float\+Format\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Save the format to an X\+ML stream. 
+
+Write the format out to a $<$floatformat$>$ X\+ML tag. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 559 of file float.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{class_float_format_adc679e89dcd8c63b0b9cc08f3464ba1a_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{float_8hh}{float.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{float_8cc}{float.\+cc}}\end{DoxyCompactItemize}

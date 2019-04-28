@@ -1,0 +1,728 @@
+.TH "Address" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Address \- A low-level machine address for labelling bytes and data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <address\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBmach_extreme\fP { \fBm_minimal\fP, \fBm_maximal\fP }"
+.br
+.RI "An enum for specifying extremal addresses\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAddress\fP (\fBmach_extreme\fP ex)"
+.br
+.RI "Initialize an extremal address\&. "
+.ti -1c
+.RI "\fBAddress\fP (void)"
+.br
+.RI "Create an invalid address\&. "
+.ti -1c
+.RI "\fBAddress\fP (\fBAddrSpace\fP *id, \fBuintb\fP off)"
+.br
+.RI "Construct an address with a space/offset pair\&. "
+.ti -1c
+.RI "\fBAddress\fP (const \fBAddress\fP &op2)"
+.br
+.RI "A copy constructor\&. "
+.ti -1c
+.RI "bool \fBisInvalid\fP (void) const"
+.br
+.RI "Is the address invalid? "
+.ti -1c
+.RI "int4 \fBgetAddrSize\fP (void) const"
+.br
+.RI "Get the number of bytes in the address\&. "
+.ti -1c
+.RI "bool \fBisBigEndian\fP (void) const"
+.br
+.RI "Is data at this address big endian encoded\&. "
+.ti -1c
+.RI "void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Write a raw version of the address to a stream\&. "
+.ti -1c
+.RI "int4 \fBread\fP (const string &s)"
+.br
+.RI "Read in the address from a string\&. "
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetSpace\fP (void) const"
+.br
+.RI "Get the address space\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetOffset\fP (void) const"
+.br
+.RI "Get the address offset\&. "
+.ti -1c
+.RI "void \fBtoPhysical\fP (void)"
+.br
+.RI "Convert this to a physical address\&. "
+.ti -1c
+.RI "char \fBgetShortcut\fP (void) const"
+.br
+.RI "Get the shortcut character for the address space\&. "
+.ti -1c
+.RI "\fBAddress\fP & \fBoperator=\fP (const \fBAddress\fP &op2)"
+.br
+.RI "Copy an address\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBAddress\fP &op2) const"
+.br
+.RI "Compare two addresses for equality\&. "
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBAddress\fP &op2) const"
+.br
+.RI "Compare two addresses for inequality\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBAddress\fP &op2) const"
+.br
+.RI "Compare two addresses via their natural ordering\&. "
+.ti -1c
+.RI "bool \fBoperator<=\fP (const \fBAddress\fP &op2) const"
+.br
+.RI "Compare two addresses via their natural ordering\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBoperator+\fP (int4 off) const"
+.br
+.RI "Increment address by a number of bytes\&. "
+.ti -1c
+.RI "\fBAddress\fP \fBoperator\-\fP (int4 off) const"
+.br
+.RI "Decrement address by a number of bytes\&. "
+.ti -1c
+.RI "int4 \fBjustifiedContain\fP (int4 sz, const \fBAddress\fP &op2, int4 sz2, bool forceleft) const"
+.br
+.RI "Determine if \fIop2\fP is the least significant part of \fIthis\fP\&. "
+.ti -1c
+.RI "int4 \fBoverlap\fP (int4 skip, const \fBAddress\fP &op, int4 size) const"
+.br
+.RI "Determine how two address ranges overlap\&. "
+.ti -1c
+.RI "bool \fBisContiguous\fP (int4 sz, const \fBAddress\fP &loaddr, int4 losz) const"
+.br
+.RI "Does \fIthis\fP form a contigous range with \fIloaddr\fP\&. "
+.ti -1c
+.RI "bool \fBisConstant\fP (void) const"
+.br
+.RI "Is this a \fIconstant\fP \fIvalue\fP\&. "
+.ti -1c
+.RI "bool \fBisJoin\fP (void) const"
+.br
+.RI "Is this a \fIjoin\fP \fIvalue\fP\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save this to a stream as an XML tag\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s, int4 size) const"
+.br
+.RI "Save this and a size to a stream as an XML tag\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBAddress\fP \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore an address from parsed XML\&. "
+.ti -1c
+.RI "static \fBAddress\fP \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage, int4 &size)"
+.br
+.RI "Restore an address and size from parsed XML\&. "
+.ti -1c
+.RI "static \fBAddrSpace\fP * \fBgetSpaceFromConst\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Recover an encoded address space from an address\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBbase\fP"
+.br
+.RI "Pointer to our address space\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBoffset\fP"
+.br
+.RI "Offset (in bytes) "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "ostream & \fBoperator<<\fP (ostream &s, const \fBAddress\fP &addr)"
+.br
+.RI "Write out an address to stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A low-level machine address for labelling bytes and data\&. 
+
+All data that can be manipulated within the processor reverse engineering model can be labelled with an \fBAddress\fP\&. It is simply an address space (\fBAddrSpace\fP) and an offset within that space\&. Note that processor registers are typically modelled by creating a dedicated address space for them, as distinct from RAM say, and then specifying certain addresses within the register space that correspond to particular registers\&. However, an arbitrary address could refer to anything, RAM, ROM, cpu register, data segment, coprocessor, stack, nvram, etc\&. An \fBAddress\fP represents an offset \fIonly\fP, not an offset and length 
+.PP
+Definition at line 46 of file address\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBAddress::mach_extreme\fP"
+
+.PP
+An enum for specifying extremal addresses\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIm_minimal \fP\fP
+Smallest possible address\&. 
+.TP
+\fB\fIm_maximal \fP\fP
+Biggest possible address\&. 
+.PP
+Definition at line 52 of file address\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Address::Address (\fBmach_extreme\fP ex)"
+
+.PP
+Initialize an extremal address\&. Some data structures sort on an \fBAddress\fP, and it is convenient to be able to create an \fBAddress\fP that is either bigger than or smaller than all other Addresses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIex\fP is either \fIm_minimal\fP or \fIm_maximal\fP 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file address\&.cc\&.
+.SS "Address::Address (void)\fC [inline]\fP"
+
+.PP
+Create an invalid address\&. An invalid address is possible in some circumstances\&. This deliberately constructs an invalid address 
+.PP
+Definition at line 232 of file address\&.hh\&.
+.SS "Address::Address (\fBAddrSpace\fP * id, \fBuintb\fP off)\fC [inline]\fP"
+
+.PP
+Construct an address with a space/offset pair\&. This is the basic \fBAddress\fP constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the space containing the address 
+.br
+\fIoff\fP is the offset of the address 
+.RE
+.PP
+
+.PP
+Definition at line 239 of file address\&.hh\&.
+.SS "Address::Address (const \fBAddress\fP & op2)\fC [inline]\fP"
+
+.PP
+A copy constructor\&. This is a standard copy constructor, copying the address space and the offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the \fBAddress\fP to copy 
+.RE
+.PP
+
+.PP
+Definition at line 246 of file address\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 Address::getAddrSize (void) const\fC [inline]\fP"
+
+.PP
+Get the number of bytes in the address\&. Get the number of bytes needed to encode the \fIoffset\fP for this address\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of bytes in the encoding 
+.RE
+.PP
+
+.PP
+Definition at line 261 of file address\&.hh\&.
+.SS "\fBuintb\fP Address::getOffset (void) const\fC [inline]\fP"
+
+.PP
+Get the address offset\&. Get the offset of the address as an integer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the offset integer 
+.RE
+.PP
+
+.PP
+Definition at line 298 of file address\&.hh\&.
+.SS "char Address::getShortcut (void) const\fC [inline]\fP"
+
+.PP
+Get the shortcut character for the address space\&. Each address has a shortcut character associated with it for use with the read and printRaw methods\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the shortcut char 
+.RE
+.PP
+
+.PP
+Definition at line 305 of file address\&.hh\&.
+.SS "\fBAddrSpace\fP * Address::getSpace (void) const\fC [inline]\fP"
+
+.PP
+Get the address space\&. Get the address space associated with this address\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the AddressSpace pointer, or \fBNULL\fP if invalid 
+.RE
+.PP
+
+.PP
+Definition at line 292 of file address\&.hh\&.
+.SS "\fBAddrSpace\fP * Address::getSpaceFromConst (const \fBAddress\fP & addr)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Recover an encoded address space from an address\&. In \fBLOAD\fP and \fBSTORE\fP instructions, the particular address space being read/written is encoded as a constant input parameter to the instruction\&. Internally, this constant is the actual pointer to the \fBAddrSpace\fP\&. This function allows the encoded pointer to be recovered from the address it is encoded in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the \fBAddress\fP encoding the pointer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBAddrSpace\fP pointer 
+.RE
+.PP
+
+.PP
+Definition at line 450 of file address\&.hh\&.
+.SS "bool Address::isBigEndian (void) const\fC [inline]\fP"
+
+.PP
+Is data at this address big endian encoded\&. Determine if data stored at this address is big endian encoded\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the address is big endian 
+.RE
+.PP
+
+.PP
+Definition at line 267 of file address\&.hh\&.
+.SS "bool Address::isConstant (void) const\fC [inline]\fP"
+
+.PP
+Is this a \fIconstant\fP \fIvalue\fP\&. Determine if this address is from the \fIconstant\fP \fIspace\fP\&. All constant values are represented as an offset into the \fIconstant\fP \fIspace\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if this address represents a constant 
+.RE
+.PP
+
+.PP
+Definition at line 410 of file address\&.hh\&.
+.SS "bool Address::isContiguous (int4 sz, const \fBAddress\fP & loaddr, int4 losz) const"
+
+.PP
+Does \fIthis\fP form a contigous range with \fIloaddr\fP\&. Does the location \fIthis\fP, \fIsz\fP form a contiguous region to \fIloaddr\fP, \fIlosz\fP, where \fIthis\fP forms the most significant piece of the logical whole 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsz\fP is the size of \fIthis\fP hi region 
+.br
+\fIloaddr\fP is the starting address of the low region 
+.br
+\fIlosz\fP is the size of the low region 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the pieces form a contiguous whole 
+.RE
+.PP
+
+.PP
+Definition at line 151 of file address\&.cc\&.
+.SS "bool Address::isInvalid (void) const\fC [inline]\fP"
+
+.PP
+Is the address invalid? Determine if this is an invalid address\&. This only detects \fIdeliberate\fP invalid addresses\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the address is invalid 
+.RE
+.PP
+
+.PP
+Definition at line 254 of file address\&.hh\&.
+.SS "bool Address::isJoin (void) const\fC [inline]\fP"
+
+.PP
+Is this a \fIjoin\fP \fIvalue\fP\&. Determine if this address represents a set of joined memory locations\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if this address represents a join 
+.RE
+.PP
+
+.PP
+Definition at line 416 of file address\&.hh\&.
+.SS "int4 Address::justifiedContain (int4 sz, const \fBAddress\fP & op2, int4 sz2, bool forceleft) const"
+
+.PP
+Determine if \fIop2\fP is the least significant part of \fIthis\fP\&. Return -1 if (\fIop2\fP,\fIsz2\fP) is not properly contained in (\fIthis\fP,\fIsz\fP)\&. If it is contained, return the endian aware offset of (\fIop2\fP,\fIsz2\fP) I\&.e\&. if the least significant byte of the \fIop2\fP range falls on the least significant byte of the \fIthis\fP range, return 0\&. If it intersects the second least significant, return 1, etc\&. The -forceleft- toggle causes the check to be made against the left (lowest address) side of the container, regardless of the endianness\&. I\&.e\&. it forces a little endian interpretation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsz\fP is the size of \fIthis\fP range 
+.br
+\fIop2\fP is the address of the second range 
+.br
+\fIsz2\fP is the size of the second range 
+.br
+\fIforceleft\fP is \fBtrue\fP if containments is forced to be on the left even for big endian 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the endian aware offset, or -1 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file address\&.cc\&.
+.SS "bool Address::operator!= (const \fBAddress\fP & op2) const\fC [inline]\fP"
+
+.PP
+Compare two addresses for inequality\&. Check if two addresses are not equal\&. I\&.e\&. if either their address space or offset are different\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the address to compare to \fIthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the addresses are different 
+.RE
+.PP
+
+.PP
+Definition at line 333 of file address\&.hh\&.
+.SS "\fBAddress\fP Address::operator+ (int4 off) const\fC [inline]\fP"
+
+.PP
+Increment address by a number of bytes\&. Add an integer value to the offset portion of the address\&. The addition takes into account the \fIsize\fP of the address space, and the \fBAddress\fP will wrap around if necessary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the number to add to the offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new incremented address 
+.RE
+.PP
+
+.PP
+Definition at line 392 of file address\&.hh\&.
+.SS "\fBAddress\fP Address::operator\- (int4 off) const\fC [inline]\fP"
+
+.PP
+Decrement address by a number of bytes\&. Subtract an integer value from the offset portion of the address\&. The subtraction takes into account the \fIsize\fP of the address space, and the \fBAddress\fP will wrap around if necessary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the number to subtract from the offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new decremented address 
+.RE
+.PP
+
+.PP
+Definition at line 402 of file address\&.hh\&.
+.SS "bool Address::operator< (const \fBAddress\fP & op2) const\fC [inline]\fP"
+
+.PP
+Compare two addresses via their natural ordering\&. Do an ordering comparison of two addresses\&. Addresses are sorted first on space, then on offset\&. So two addresses in the same space compare naturally based on their offset, but addresses in different spaces also compare\&. Different spaces are ordered by their index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the address to compare to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fIthis\fP comes before \fIop2\fP 
+.RE
+.PP
+
+.PP
+Definition at line 344 of file address\&.hh\&.
+.SS "bool Address::operator<= (const \fBAddress\fP & op2) const\fC [inline]\fP"
+
+.PP
+Compare two addresses via their natural ordering\&. Do an ordering comparison of two addresses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the address to compare to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fIthis\fP comes before or is equal to \fIop2\fP 
+.RE
+.PP
+
+.PP
+Definition at line 367 of file address\&.hh\&.
+.SS "\fBAddress\fP & Address::operator= (const \fBAddress\fP & op2)\fC [inline]\fP"
+
+.PP
+Copy an address\&. This is a standard assignment operator, copying the address space pointer and the offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the \fBAddress\fP being assigned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reference to altered address 
+.RE
+.PP
+
+.PP
+Definition at line 313 of file address\&.hh\&.
+.SS "bool Address::operator== (const \fBAddress\fP & op2) const\fC [inline]\fP"
+
+.PP
+Compare two addresses for equality\&. Check if two addresses are equal\&. I\&.e\&. if their address space and offset are the same\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the address to compare to \fIthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the addresses are the same 
+.RE
+.PP
+
+.PP
+Definition at line 325 of file address\&.hh\&.
+.SS "int4 Address::overlap (int4 skip, const \fBAddress\fP & op, int4 size) const"
+
+.PP
+Determine how two address ranges overlap\&. If \fIthis\fP + \fIskip\fP falls in the range \fIop\fP to \fIop\fP + \fIsize\fP, then a non-negative integer is returned indicating where in the interval it falls\&. I\&.e\&. if \fIthis\fP + \fIskip\fP == \fIop\fP, then 0 is returned\&. Otherwise -1 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIskip\fP is an adjust to \fIthis\fP address 
+.br
+\fIop\fP is the start of the range to check 
+.br
+\fIsize\fP is the size of the range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an integer indicating how overlap occurs 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file address\&.cc\&.
+.SS "void Address::printRaw (ostream & s) const\fC [inline]\fP"
+
+.PP
+Write a raw version of the address to a stream\&. Write a short-hand or debug version of this address to a stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Definition at line 274 of file address\&.hh\&.
+.SS "int4 Address::read (const string & s)\fC [inline]\fP"
+
+.PP
+Read in the address from a string\&. Convert a string into an address\&. The string format can be tailored for the particular address space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the string to parse 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+any size associated with the parsed string 
+.RE
+.PP
+
+.PP
+Definition at line 286 of file address\&.hh\&.
+.SS "\fBAddress\fP Address::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)\fC [static]\fP"
+
+.PP
+Restore an address from parsed XML\&. This is usually used to build an address from an \fB<addr>\fP tag, but it can be used to create an address from any tag with the appropriate attributes
+.IP "\(bu" 2
+\fIspace\fP indicates the address space of the tag
+.IP "\(bu" 2
+\fIoffset\fP indicates the offset within the space
+.PP
+.PP
+or a \fIname\fP attribute can be used to recover an address based on a register name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed tag 
+.br
+\fImanage\fP is the address space manager for the program 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the resulting \fBAddress\fP 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file address\&.cc\&.
+.SS "\fBAddress\fP Address::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage, int4 & size)\fC [static]\fP"
+
+.PP
+Restore an address and size from parsed XML\&. This is usually used to build an address from an \fB<addr>\fP tag, but it can be used to create an address from any tag with the appropriate attributes
+.IP "\(bu" 2
+\fIspace\fP indicates the address space of the tag
+.IP "\(bu" 2
+\fIoffset\fP indicates the offset within the space
+.IP "\(bu" 2
+\fIsize\fP indicates the size of an address range
+.PP
+.PP
+or a \fIname\fP attribute can be used to recover an address and size based on a register name\&. If a size is recovered it is stored in \fIsize\fP reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the parsed tag 
+.br
+\fImanage\fP is the address space manager for the program 
+.br
+\fIsize\fP is the reference to any recovered size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the resulting \fBAddress\fP 
+.RE
+.PP
+
+.PP
+Definition at line 200 of file address\&.cc\&.
+.SS "void Address::saveXml (ostream & s) const\fC [inline]\fP"
+
+.PP
+Save this to a stream as an XML tag\&. Save an \fB<addr>\fP tag corresponding to this address to a stream\&. The exact format is determined by the address space, but this generally has a \fIspace\fP and an \fIoffset\fP attribute\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written to 
+.RE
+.PP
+
+.PP
+Definition at line 424 of file address\&.hh\&.
+.SS "void Address::saveXml (ostream & s, int4 size) const\fC [inline]\fP"
+
+.PP
+Save this and a size to a stream as an XML tag\&. Save an \fB<addr>\fP tag corresponding to this address to a stream\&. The tag will also include an extra \fIsize\fP attribute so that it can describe an entire memory range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written to 
+.br
+\fIsize\fP is the number of bytes in the range 
+.RE
+.PP
+
+.PP
+Definition at line 436 of file address\&.hh\&.
+.SS "void Address::toPhysical (void)"
+
+.PP
+Convert this to a physical address\&. 
+.PP
+\fBDeprecated\fP
+.RS 4
+Convert this to the most basic physical address\&. This routine is only present for backward compatibility with SLED 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file address\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "ostream& operator<< (ostream & s, const \fBAddress\fP & addr)\fC [friend]\fP"
+
+.PP
+Write out an address to stream\&. This allows an \fBAddress\fP to be written to a stream using the standard '<<' operator\&. This is a wrapper for the printRaw method and is intended for debugging and console mode uses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written to 
+.br
+\fIaddr\fP is the \fBAddress\fP to write 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file address\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBAddrSpace\fP* Address::base\fC [protected]\fP"
+
+.PP
+Pointer to our address space\&. 
+.PP
+Definition at line 48 of file address\&.hh\&.
+.SS "\fBuintb\fP Address::offset\fC [protected]\fP"
+
+.PP
+Offset (in bytes) 
+.PP
+Definition at line 49 of file address\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

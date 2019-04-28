@@ -1,0 +1,95 @@
+.TH "StackSolver" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+StackSolver \- A class that solves for stack-pointer changes across unknown sub-functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsolve\fP (void)"
+.br
+.RI "Solve the system of equations\&. "
+.ti -1c
+.RI "void \fBbuild\fP (const \fBFuncdata\fP &data, \fBAddrSpace\fP *id, int4 spcbase)"
+.br
+.RI "Build the system of equations\&. "
+.ti -1c
+.RI "int4 \fBgetNumVariables\fP (void) const"
+.br
+.RI "Get the number of variables in the system\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetVariable\fP (int4 i) const"
+.br
+.RI "Get the i-th \fBVarnode\fP variable\&. "
+.ti -1c
+.RI "int4 \fBgetCompanion\fP (int4 i) const"
+.br
+.RI "Get the i-th variable's companion index\&. "
+.ti -1c
+.RI "int4 \fBgetSolution\fP (int4 i) const"
+.br
+.RI "Get the i-th variable's solution\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class that solves for stack-pointer changes across unknown sub-functions\&. 
+.PP
+Definition at line 29 of file coreaction\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void StackSolver::build (const \fBFuncdata\fP & data, \fBAddrSpace\fP * id, int4 spcbase)"
+
+.PP
+Build the system of equations\&. Collect references to the stack-pointer as variables, and examine their defining PcodeOps to determine equations and coefficient\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being analyzed 
+.br
+\fIid\fP is the \fIstack\fP address space 
+.br
+\fIspcbase\fP is the index, relative to the stack space, of the stack pointer 
+.RE
+.PP
+
+.PP
+Definition at line 143 of file coreaction\&.cc\&.
+.SS "int4 StackSolver::getCompanion (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th variable's companion index\&. 
+.PP
+Definition at line 44 of file coreaction\&.cc\&.
+.SS "int4 StackSolver::getNumVariables (void) const\fC [inline]\fP"
+
+.PP
+Get the number of variables in the system\&. 
+.PP
+Definition at line 42 of file coreaction\&.cc\&.
+.SS "int4 StackSolver::getSolution (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th variable's solution\&. 
+.PP
+Definition at line 45 of file coreaction\&.cc\&.
+.SS "\fBVarnode\fP* StackSolver::getVariable (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th \fBVarnode\fP variable\&. 
+.PP
+Definition at line 43 of file coreaction\&.cc\&.
+.SS "void StackSolver::solve (void)"
+
+.PP
+Solve the system of equations\&. 
+.PP
+Definition at line 108 of file coreaction\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

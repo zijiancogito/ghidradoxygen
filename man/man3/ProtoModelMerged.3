@@ -1,0 +1,143 @@
+.TH "ProtoModelMerged" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ProtoModelMerged \- A prototype model made by merging together other models\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherits \fBProtoModel\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProtoModelMerged\fP (\fBArchitecture\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~ProtoModelMerged\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "int4 \fBnumModels\fP (void) const"
+.br
+.RI "Get the number of constituent models\&. "
+.ti -1c
+.RI "\fBProtoModel\fP * \fBgetModel\fP (int4 i) const"
+.br
+.RI "Get the i-th model\&. "
+.ti -1c
+.RI "void \fBfoldIn\fP (\fBProtoModel\fP *model)"
+.br
+.RI "Fold-in an additional prototype model\&. "
+.ti -1c
+.RI "\fBProtoModel\fP * \fBselectModel\fP (\fBParamActive\fP *active) const"
+.br
+.RI "Select the best model given a set of trials\&. "
+.ti -1c
+.RI "virtual bool \fBisMerged\fP (void) const"
+.br
+.RI "Is \fBthis\fP a merged prototype model\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.RI "Restore \fBthis\fP model from an XML stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A prototype model made by merging together other models\&. 
+
+This model serves as a placeholder for multiple models, when the exact model hasn't been immediately determined\&. At the time of active parameter recovery the correct model is selected for the given set of trials from among the constituent prototype models used to build \fBthis\fP, by calling the method \fBselectModel()\fP\&. Up to this time, \fBthis\fP serves as a merged form of the models so that all potential parameter trials will be included in the analysis\&. The parameter recovery for the output part of the model is currently limited, so the constituent models must all share the same output model, and this part is \fInot\fP currently merged\&. 
+.PP
+Definition at line 788 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ProtoModelMerged::ProtoModelMerged (\fBArchitecture\fP * g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 793 of file fspec\&.hh\&.
+.SS "virtual ProtoModelMerged::~ProtoModelMerged (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 794 of file fspec\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ProtoModelMerged::foldIn (\fBProtoModel\fP * model)"
+
+.PP
+Fold-in an additional prototype model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImodel\fP is the new prototype model to add to the merge 
+.RE
+.PP
+
+.PP
+Definition at line 2034 of file fspec\&.cc\&.
+.SS "\fBProtoModel\fP* ProtoModelMerged::getModel (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th model\&. 
+.PP
+Definition at line 796 of file fspec\&.hh\&.
+.SS "virtual bool ProtoModelMerged::isMerged (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Is \fBthis\fP a merged prototype model\&. 
+.PP
+Reimplemented from \fBProtoModel\fP\&.
+.PP
+Definition at line 799 of file fspec\&.hh\&.
+.SS "int4 ProtoModelMerged::numModels (void) const\fC [inline]\fP"
+
+.PP
+Get the number of constituent models\&. 
+.PP
+Definition at line 795 of file fspec\&.hh\&.
+.SS "void ProtoModelMerged::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Restore \fBthis\fP model from an XML stream\&. Read in details about \fBthis\fP model from a <prototype> tag 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the <prototype> element 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBProtoModel\fP\&.
+.PP
+Definition at line 2103 of file fspec\&.cc\&.
+.SS "\fBProtoModel\fP * ProtoModelMerged::selectModel (\fBParamActive\fP * active) const"
+
+.PP
+Select the best model given a set of trials\&. The model that best matches the given set of input parameter trials is returned\&. This method currently uses the \fBScoreProtoModel\fP object to score the different prototype models\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactive\fP is the set of parameter trials 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the prototype model that scores the best 
+.RE
+.PP
+
+.PP
+Definition at line 2076 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

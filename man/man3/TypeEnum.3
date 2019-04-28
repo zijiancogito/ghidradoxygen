@@ -1,0 +1,262 @@
+.TH "TypeEnum" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeEnum \- An enumerated \fBDatatype\fP object: an integer with named values\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBTypeBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeEnum\fP (const \fBTypeEnum\fP &op)"
+.br
+.RI "Construct from another \fBTypeEnum\fP\&. "
+.ti -1c
+.RI "\fBTypeEnum\fP (int4 s, \fBtype_metatype\fP m)"
+.br
+.RI "Construct from a size and meta-type (TYPE_INT or TYPE_UINT) "
+.ti -1c
+.RI "\fBTypeEnum\fP (int4 s, \fBtype_metatype\fP m, const string &nm)"
+.br
+.RI "Construct from a size, meta-type, and name\&. "
+.ti -1c
+.RI "map< \fBuintb\fP, string >::const_iterator \fBbeginEnum\fP (void) const"
+.br
+.RI "Beginning of name map\&. "
+.ti -1c
+.RI "map< \fBuintb\fP, string >::const_iterator \fBendEnum\fP (void) const"
+.br
+.RI "End of name map\&. "
+.ti -1c
+.RI "bool \fBgetMatches\fP (\fBuintb\fP val, vector< string > &matchname) const"
+.br
+.RI "Recover the named representation\&. "
+.ti -1c
+.RI "virtual int4 \fBcompare\fP (const \fBDatatype\fP &op, int4 level) const"
+.br
+.RI "Compare for functional equivalence\&. "
+.ti -1c
+.RI "virtual int4 \fBcompareDependency\fP (const \fBDatatype\fP &op) const"
+.br
+.RI "Compare for storage in tree structure\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetNameMap\fP (const map< \fBuintb\fP, string > &nmap)"
+.br
+.RI "Establish the value -> name map\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore data-type from XML\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "map< \fBuintb\fP, string > \fBnamemap\fP"
+.br
+.RI "Map from integer to name\&. "
+.ti -1c
+.RI "vector< \fBuintb\fP > \fBmasklist\fP"
+.br
+.RI "Masks for each bitfield within the enum\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An enumerated \fBDatatype\fP object: an integer with named values\&. 
+
+This supports combinations of the enumeration values (using logical OR and bit-wise complement) by defining independent \fBbit-fields\fP\&. 
+.PP
+Definition at line 276 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeEnum::TypeEnum (const \fBTypeEnum\fP & op)"
+
+.PP
+Construct from another \fBTypeEnum\fP\&. 
+.PP
+Definition at line 531 of file type\&.cc\&.
+.SS "TypeEnum::TypeEnum (int4 s, \fBtype_metatype\fP m)\fC [inline]\fP"
+
+.PP
+Construct from a size and meta-type (TYPE_INT or TYPE_UINT) 
+.PP
+Definition at line 287 of file type\&.hh\&.
+.SS "TypeEnum::TypeEnum (int4 s, \fBtype_metatype\fP m, const string & nm)\fC [inline]\fP"
+
+.PP
+Construct from a size, meta-type, and name\&. 
+.PP
+Definition at line 289 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "map<\fBuintb\fP,string>::const_iterator TypeEnum::beginEnum (void) const\fC [inline]\fP"
+
+.PP
+Beginning of name map\&. 
+.PP
+Definition at line 290 of file type\&.hh\&.
+.SS "virtual \fBDatatype\fP* TypeEnum::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Reimplemented from \fBTypeBase\fP\&.
+.PP
+Definition at line 295 of file type\&.hh\&.
+.SS "int4 TypeEnum::compare (const \fBDatatype\fP & op, int4 level) const\fC [virtual]\fP"
+
+.PP
+Compare for functional equivalence\&. Compare \fBthis\fP with another data-type\&. 0 (equality) means the data-types are functionally equivalent (even if names differ) Smaller types come earlier\&. More specific types come earlier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.br
+\fIlevel\fP is maximum level to descend when recursively comparing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 646 of file type\&.cc\&.
+.SS "int4 TypeEnum::compareDependency (const \fBDatatype\fP & op) const\fC [virtual]\fP"
+
+.PP
+Compare for storage in tree structure\&. Ordering of data-types for the main \fBTypeFactory\fP container\&. Comparison only goes down one-level in the component structure, before just comparing pointers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 652 of file type\&.cc\&.
+.SS "map<\fBuintb\fP,string>::const_iterator TypeEnum::endEnum (void) const\fC [inline]\fP"
+
+.PP
+End of name map\&. 
+.PP
+Definition at line 291 of file type\&.hh\&.
+.SS "bool TypeEnum::getMatches (\fBuintb\fP val, vector< string > & valnames) const"
+
+.PP
+Recover the named representation\&. Given a specific value of the enumeration, calculate the named representation of that value\&. The representation is returned as a list of names that must logically ORed and possibly complemented\&. If no representation is possible, no names will be returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value to find the representation for 
+.br
+\fIvalnames\fP will hold the returned list of names 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the representation needs to be complemented 
+.RE
+.PP
+
+.PP
+Definition at line 609 of file type\&.cc\&.
+.SS "void TypeEnum::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Restore data-type from XML\&. Restore a \fBDatatype\fP object from an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the underlying \fBTypeFactory\fP that will hold the new object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 691 of file type\&.cc\&.
+.SS "void TypeEnum::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 674 of file type\&.cc\&.
+.SS "void TypeEnum::setNameMap (const map< \fBuintb\fP, string > & nmap)\fC [protected]\fP"
+
+.PP
+Establish the value -> name map\&. Set the map\&. Calculate the independent bit-fields within the named values of the enumeration Two bits are in the same bit-field if there is a name in the map whose value has those two bits set\&. Bit-fields must be a contiguous range of bits\&. 
+.PP
+Definition at line 542 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 278 of file type\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vector<\fBuintb\fP> TypeEnum::masklist\fC [protected]\fP"
+
+.PP
+Masks for each bitfield within the enum\&. 
+.PP
+Definition at line 280 of file type\&.hh\&.
+.SS "map<\fBuintb\fP,string> TypeEnum::namemap\fC [protected]\fP"
+
+.PP
+Map from integer to name\&. 
+.PP
+Definition at line 279 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

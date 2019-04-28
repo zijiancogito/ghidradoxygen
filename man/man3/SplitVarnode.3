@@ -1,0 +1,372 @@
+.TH "SplitVarnode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SplitVarnode
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <double\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSplitVarnode\fP (void)"
+.br
+.ti -1c
+.RI "\fBSplitVarnode\fP (int4 sz, \fBuintb\fP v)"
+.br
+.ti -1c
+.RI "\fBSplitVarnode\fP (\fBVarnode\fP *l, \fBVarnode\fP *h)"
+.br
+.ti -1c
+.RI "void \fBinitAll\fP (\fBVarnode\fP *w, \fBVarnode\fP *l, \fBVarnode\fP *h)"
+.br
+.ti -1c
+.RI "void \fBinitPartial\fP (int4 sz, \fBuintb\fP v)"
+.br
+.ti -1c
+.RI "void \fBinitPartial\fP (\fBVarnode\fP *l, \fBVarnode\fP *h)"
+.br
+.ti -1c
+.RI "bool \fBinHandHi\fP (\fBVarnode\fP *h)"
+.br
+.ti -1c
+.RI "bool \fBinHandLo\fP (\fBVarnode\fP *l)"
+.br
+.ti -1c
+.RI "bool \fBinHandLoNoHi\fP (\fBVarnode\fP *l)"
+.br
+.ti -1c
+.RI "bool \fBinHandHiOut\fP (\fBVarnode\fP *h)"
+.br
+.ti -1c
+.RI "bool \fBinHandLoOut\fP (\fBVarnode\fP *h)"
+.br
+.ti -1c
+.RI "bool \fBisConstant\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBhasBothPieces\fP (void) const"
+.br
+.ti -1c
+.RI "int4 \fBgetSize\fP (void) const"
+.br
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetLo\fP (void) const"
+.br
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetHi\fP (void) const"
+.br
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetWhole\fP (void) const"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBgetDefPoint\fP (void) const"
+.br
+.ti -1c
+.RI "\fBBlockBasic\fP * \fBgetDefBlock\fP (void) const"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBgetValue\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBisWholeFeasible\fP (\fBPcodeOp\fP *existop)"
+.br
+.ti -1c
+.RI "bool \fBisWholePhiFeasible\fP (\fBFlowBlock\fP *bl)"
+.br
+.ti -1c
+.RI "void \fBfindCreateWhole\fP (\fBFuncdata\fP &data)"
+.br
+.ti -1c
+.RI "void \fBfindCreateOutputWhole\fP (\fBFuncdata\fP &data)"
+.br
+.ti -1c
+.RI "void \fBcreateJoinedWhole\fP (\fBFuncdata\fP &data)"
+.br
+.ti -1c
+.RI "void \fBbuildLoFromWhole\fP (\fBFuncdata\fP &data)"
+.br
+.ti -1c
+.RI "void \fBbuildHiFromWhole\fP (\fBFuncdata\fP &data)"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBfindEarliestSplitPoint\fP (void)"
+.br
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBfindOutExist\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBadjacentOffsets\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2, \fBuintb\fP size1)"
+.br
+.ti -1c
+.RI "static bool \fBtestContiguousLoad\fP (\fBPcodeOp\fP *most, \fBPcodeOp\fP *least, bool allowfree, \fBPcodeOp\fP *&first, \fBPcodeOp\fP *&second, \fBAddrSpace\fP *&spc, int4 &sizeres)"
+.br
+.ti -1c
+.RI "static bool \fBisAddrTiedContiguous\fP (\fBVarnode\fP *lo, \fBVarnode\fP *hi, \fBAddress\fP &res)"
+.br
+.ti -1c
+.RI "static void \fBwholeList\fP (\fBVarnode\fP *w, vector< \fBSplitVarnode\fP > &splitvec)"
+.br
+.ti -1c
+.RI "static void \fBfindCopies\fP (const \fBSplitVarnode\fP &in, vector< \fBSplitVarnode\fP > &splitvec)"
+.br
+.ti -1c
+.RI "static void \fBgetTrueFalse\fP (\fBPcodeOp\fP *boolop, bool flip, \fBBlockBasic\fP *&trueout, \fBBlockBasic\fP *&falseout)"
+.br
+.ti -1c
+.RI "static bool \fBotherwiseEmpty\fP (\fBPcodeOp\fP *branchop)"
+.br
+.ti -1c
+.RI "static bool \fBverifyMultNegOne\fP (\fBPcodeOp\fP *op)"
+.br
+.ti -1c
+.RI "static \fBPcodeOp\fP * \fBprepareBinaryOp\fP (\fBSplitVarnode\fP &out, \fBSplitVarnode\fP &in1, \fBSplitVarnode\fP &in2)"
+.br
+.ti -1c
+.RI "static void \fBcreateBinaryOp\fP (\fBFuncdata\fP &data, \fBSplitVarnode\fP &out, \fBSplitVarnode\fP &in1, \fBSplitVarnode\fP &in2, \fBPcodeOp\fP *existop, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "static \fBPcodeOp\fP * \fBprepareShiftOp\fP (\fBSplitVarnode\fP &out, \fBSplitVarnode\fP &in)"
+.br
+.ti -1c
+.RI "static void \fBcreateShiftOp\fP (\fBFuncdata\fP &data, \fBSplitVarnode\fP &out, \fBSplitVarnode\fP &in, \fBVarnode\fP *sa, \fBPcodeOp\fP *existop, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "static void \fBreplaceBoolOp\fP (\fBFuncdata\fP &data, \fBPcodeOp\fP *boolop, \fBSplitVarnode\fP &in1, \fBSplitVarnode\fP &in2, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "static bool \fBprepareBoolOp\fP (\fBSplitVarnode\fP &in1, \fBSplitVarnode\fP &in2, \fBPcodeOp\fP *testop)"
+.br
+.ti -1c
+.RI "static void \fBcreateBoolOp\fP (\fBFuncdata\fP &data, \fBPcodeOp\fP *cbranch, \fBSplitVarnode\fP &in1, \fBSplitVarnode\fP &in2, \fBOpCode\fP opc)"
+.br
+.ti -1c
+.RI "static \fBPcodeOp\fP * \fBpreparePhiOp\fP (\fBSplitVarnode\fP &out, vector< \fBSplitVarnode\fP > &inlist)"
+.br
+.ti -1c
+.RI "static void \fBcreatePhiOp\fP (\fBFuncdata\fP &data, \fBSplitVarnode\fP &out, vector< \fBSplitVarnode\fP > &inlist, \fBPcodeOp\fP *existop)"
+.br
+.ti -1c
+.RI "static bool \fBprepareIndirectOp\fP (\fBSplitVarnode\fP &in, \fBPcodeOp\fP *affector)"
+.br
+.ti -1c
+.RI "static void \fBreplaceIndirectOp\fP (\fBFuncdata\fP &data, \fBSplitVarnode\fP &out, \fBSplitVarnode\fP &in, \fBPcodeOp\fP *affector)"
+.br
+.ti -1c
+.RI "static int4 \fBapplyRuleIn\fP (\fBSplitVarnode\fP &in, \fBFuncdata\fP &data)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 22 of file double\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SplitVarnode::SplitVarnode (void)\fC [inline]\fP"
+
+.PP
+Definition at line 34 of file double\&.hh\&.
+.SS "SplitVarnode::SplitVarnode (int4 sz, \fBuintb\fP v)"
+
+.PP
+Definition at line 18 of file double\&.cc\&.
+.SS "SplitVarnode::SplitVarnode (\fBVarnode\fP * l, \fBVarnode\fP * h)\fC [inline]\fP"
+
+.PP
+Definition at line 36 of file double\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool SplitVarnode::adjacentOffsets (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2, \fBuintb\fP size1)\fC [static]\fP"
+
+.PP
+Definition at line 603 of file double\&.cc\&.
+.SS "int4 SplitVarnode::applyRuleIn (\fBSplitVarnode\fP & in, \fBFuncdata\fP & data)\fC [static]\fP"
+
+.PP
+Definition at line 878 of file double\&.cc\&.
+.SS "void SplitVarnode::buildHiFromWhole (\fBFuncdata\fP & data)"
+
+.PP
+Definition at line 533 of file double\&.cc\&.
+.SS "void SplitVarnode::buildLoFromWhole (\fBFuncdata\fP & data)"
+
+.PP
+Definition at line 499 of file double\&.cc\&.
+.SS "void SplitVarnode::createBinaryOp (\fBFuncdata\fP & data, \fBSplitVarnode\fP & out, \fBSplitVarnode\fP & in1, \fBSplitVarnode\fP & in2, \fBPcodeOp\fP * existop, \fBOpCode\fP opc)\fC [static]\fP"
+
+.PP
+Definition at line 819 of file double\&.cc\&.
+.SS "void SplitVarnode::createBoolOp (\fBFuncdata\fP & data, \fBPcodeOp\fP * cbranch, \fBSplitVarnode\fP & in1, \fBSplitVarnode\fP & in2, \fBOpCode\fP opc)\fC [static]\fP"
+
+.PP
+Definition at line 1039 of file double\&.cc\&.
+.SS "void SplitVarnode::createJoinedWhole (\fBFuncdata\fP & data)"
+
+.PP
+Definition at line 483 of file double\&.cc\&.
+.SS "void SplitVarnode::createPhiOp (\fBFuncdata\fP & data, \fBSplitVarnode\fP & out, vector< \fBSplitVarnode\fP > & inlist, \fBPcodeOp\fP * existop)\fC [static]\fP"
+
+.PP
+Definition at line 1075 of file double\&.cc\&.
+.SS "void SplitVarnode::createShiftOp (\fBFuncdata\fP & data, \fBSplitVarnode\fP & out, \fBSplitVarnode\fP & in, \fBVarnode\fP * sa, \fBPcodeOp\fP * existop, \fBOpCode\fP opc)\fC [static]\fP"
+
+.PP
+Definition at line 853 of file double\&.cc\&.
+.SS "void SplitVarnode::findCopies (const \fBSplitVarnode\fP & in, vector< \fBSplitVarnode\fP > & splitvec)\fC [static]\fP"
+
+.PP
+Definition at line 726 of file double\&.cc\&.
+.SS "void SplitVarnode::findCreateOutputWhole (\fBFuncdata\fP & data)"
+
+.PP
+Definition at line 474 of file double\&.cc\&.
+.SS "void SplitVarnode::findCreateWhole (\fBFuncdata\fP & data)"
+
+.PP
+Definition at line 431 of file double\&.cc\&.
+.SS "\fBPcodeOp\fP * SplitVarnode::findEarliestSplitPoint (void)"
+
+.PP
+Definition at line 327 of file double\&.cc\&.
+.SS "\fBPcodeOp\fP * SplitVarnode::findOutExist (void)"
+
+.PP
+Definition at line 594 of file double\&.cc\&.
+.SS "\fBBlockBasic\fP* SplitVarnode::getDefBlock (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 52 of file double\&.hh\&.
+.SS "\fBPcodeOp\fP* SplitVarnode::getDefPoint (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 51 of file double\&.hh\&.
+.SS "\fBVarnode\fP* SplitVarnode::getHi (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 49 of file double\&.hh\&.
+.SS "\fBVarnode\fP* SplitVarnode::getLo (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file double\&.hh\&.
+.SS "int4 SplitVarnode::getSize (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 47 of file double\&.hh\&.
+.SS "void SplitVarnode::getTrueFalse (\fBPcodeOp\fP * boolop, bool flip, \fBBlockBasic\fP *& trueout, \fBBlockBasic\fP *& falseout)\fC [static]\fP"
+
+.PP
+Definition at line 761 of file double\&.cc\&.
+.SS "\fBuintb\fP SplitVarnode::getValue (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 53 of file double\&.hh\&.
+.SS "\fBVarnode\fP* SplitVarnode::getWhole (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file double\&.hh\&.
+.SS "bool SplitVarnode::hasBothPieces (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 46 of file double\&.hh\&.
+.SS "bool SplitVarnode::inHandHi (\fBVarnode\fP * h)"
+
+.PP
+Definition at line 81 of file double\&.cc\&.
+.SS "bool SplitVarnode::inHandHiOut (\fBVarnode\fP * h)"
+
+.PP
+Definition at line 175 of file double\&.cc\&.
+.SS "bool SplitVarnode::inHandLo (\fBVarnode\fP * l)"
+
+.PP
+Definition at line 113 of file double\&.cc\&.
+.SS "bool SplitVarnode::inHandLoNoHi (\fBVarnode\fP * l)"
+
+.PP
+Definition at line 145 of file double\&.cc\&.
+.SS "bool SplitVarnode::inHandLoOut (\fBVarnode\fP * h)"
+
+.PP
+Definition at line 201 of file double\&.cc\&.
+.SS "void SplitVarnode::initAll (\fBVarnode\fP * w, \fBVarnode\fP * l, \fBVarnode\fP * h)"
+
+.PP
+Definition at line 70 of file double\&.cc\&.
+.SS "void SplitVarnode::initPartial (int4 sz, \fBuintb\fP v)"
+
+.PP
+Definition at line 30 of file double\&.cc\&.
+.SS "void SplitVarnode::initPartial (\fBVarnode\fP * l, \fBVarnode\fP * h)"
+
+.PP
+Definition at line 42 of file double\&.cc\&.
+.SS "bool SplitVarnode::isAddrTiedContiguous (\fBVarnode\fP * lo, \fBVarnode\fP * hi, \fBAddress\fP & res)\fC [static]\fP"
+
+.PP
+Definition at line 662 of file double\&.cc\&.
+.SS "bool SplitVarnode::isConstant (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 45 of file double\&.hh\&.
+.SS "bool SplitVarnode::isWholeFeasible (\fBPcodeOp\fP * existop)"
+
+.PP
+Definition at line 386 of file double\&.cc\&.
+.SS "bool SplitVarnode::isWholePhiFeasible (\fBFlowBlock\fP * bl)"
+
+.PP
+Definition at line 410 of file double\&.cc\&.
+.SS "bool SplitVarnode::otherwiseEmpty (\fBPcodeOp\fP * branchop)\fC [static]\fP"
+
+.PP
+Definition at line 777 of file double\&.cc\&.
+.SS "\fBPcodeOp\fP * SplitVarnode::prepareBinaryOp (\fBSplitVarnode\fP & out, \fBSplitVarnode\fP & in1, \fBSplitVarnode\fP & in2)\fC [static]\fP"
+
+.PP
+Definition at line 809 of file double\&.cc\&.
+.SS "bool SplitVarnode::prepareBoolOp (\fBSplitVarnode\fP & in1, \fBSplitVarnode\fP & in2, \fBPcodeOp\fP * testop)\fC [static]\fP"
+
+.PP
+Definition at line 1019 of file double\&.cc\&.
+.SS "bool SplitVarnode::prepareIndirectOp (\fBSplitVarnode\fP & in, \fBPcodeOp\fP * affector)\fC [static]\fP"
+
+.PP
+Definition at line 1096 of file double\&.cc\&.
+.SS "\fBPcodeOp\fP * SplitVarnode::preparePhiOp (\fBSplitVarnode\fP & out, vector< \fBSplitVarnode\fP > & inlist)\fC [static]\fP"
+
+.PP
+Definition at line 1059 of file double\&.cc\&.
+.SS "\fBPcodeOp\fP * SplitVarnode::prepareShiftOp (\fBSplitVarnode\fP & out, \fBSplitVarnode\fP & in)\fC [static]\fP"
+
+.PP
+Definition at line 844 of file double\&.cc\&.
+.SS "void SplitVarnode::replaceBoolOp (\fBFuncdata\fP & data, \fBPcodeOp\fP * boolop, \fBSplitVarnode\fP & in1, \fBSplitVarnode\fP & in2, \fBOpCode\fP opc)\fC [static]\fP"
+
+.PP
+Definition at line 1027 of file double\&.cc\&.
+.SS "void SplitVarnode::replaceIndirectOp (\fBFuncdata\fP & data, \fBSplitVarnode\fP & out, \fBSplitVarnode\fP & in, \fBPcodeOp\fP * affector)\fC [static]\fP"
+
+.PP
+Definition at line 1105 of file double\&.cc\&.
+.SS "bool SplitVarnode::testContiguousLoad (\fBPcodeOp\fP * most, \fBPcodeOp\fP * least, bool allowfree, \fBPcodeOp\fP *& first, \fBPcodeOp\fP *& second, \fBAddrSpace\fP *& spc, int4 & sizeres)\fC [static]\fP"
+
+.PP
+Definition at line 632 of file double\&.cc\&.
+.SS "bool SplitVarnode::verifyMultNegOne (\fBPcodeOp\fP * op)\fC [static]\fP"
+
+.PP
+Definition at line 799 of file double\&.cc\&.
+.SS "void SplitVarnode::wholeList (\fBVarnode\fP * w, vector< \fBSplitVarnode\fP > & splitvec)\fC [static]\fP"
+
+.PP
+Definition at line 690 of file double\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,185 @@
+\hypertarget{class_action_restart_group}{}\section{Action\+Restart\+Group Class Reference}
+\label{class_action_restart_group}\index{ActionRestartGroup@{ActionRestartGroup}}
+
+
+\mbox{\hyperlink{class_action}{Action}} which checks if restart (sub)actions have been generated and restarts itself.  
+
+
+
+
+{\ttfamily \#include $<$action.\+hh$>$}
+
+
+
+Inheritance diagram for Action\+Restart\+Group\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_action_restart_group__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Restart\+Group\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_action_restart_group__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_restart_group_af230c26a56dadb0f71c17f28ccc75876}{Action\+Restart\+Group}} (uint4 f, const string \&nm, int4 max)
+\begin{DoxyCompactList}\small\item\em Construct this providing maximum number of restarts. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_action}{Action}} $\ast$ \mbox{\hyperlink{class_action_restart_group_a2dd3daab632e0a41e64d9515f47c7200}{clone}} (const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&grouplist) const
+\begin{DoxyCompactList}\small\item\em Clone the \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_action_restart_group_a8a48151026811fbe97f4aa3eecf67cf0}{reset}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_action_restart_group_ab597697ab15a9b8f1a25832f43bdeb0d}{apply}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_action}{Action}} which checks if restart (sub)actions have been generated and restarts itself. 
+
+Actions or Rules can request a restart on a \mbox{\hyperlink{class_funcdata}{Funcdata}} object by calling set\+Restart\+Pending(true) on it. This action checks for the request then resets and reruns the group of Actions as appropriate. 
+
+Definition at line 171 of file action.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_restart_group_af230c26a56dadb0f71c17f28ccc75876}\label{class_action_restart_group_af230c26a56dadb0f71c17f28ccc75876}} 
+\index{ActionRestartGroup@{ActionRestartGroup}!ActionRestartGroup@{ActionRestartGroup}}
+\index{ActionRestartGroup@{ActionRestartGroup}!ActionRestartGroup@{ActionRestartGroup}}
+\subsubsection{\texorpdfstring{ActionRestartGroup()}{ActionRestartGroup()}}
+{\footnotesize\ttfamily Action\+Restart\+Group\+::\+Action\+Restart\+Group (\begin{DoxyParamCaption}\item[{uint4}]{f,  }\item[{const string \&}]{nm,  }\item[{int4}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct this providing maximum number of restarts. 
+
+
+
+Definition at line 175 of file action.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{class_action_restart_group_af230c26a56dadb0f71c17f28ccc75876_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_restart_group_ab597697ab15a9b8f1a25832f43bdeb0d}\label{class_action_restart_group_ab597697ab15a9b8f1a25832f43bdeb0d}} 
+\index{ActionRestartGroup@{ActionRestartGroup}!apply@{apply}}
+\index{apply@{apply}!ActionRestartGroup@{ActionRestartGroup}}
+\subsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily int4 Action\+Restart\+Group\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Make a single attempt to apply {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. 
+
+This is the main entry point for applying changes to a function that are specific to {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}}. The method can inspect whatever it wants to decide if the \mbox{\hyperlink{class_action}{Action}} does or does not apply. Changes are indicated by incrementing the {\bfseries{count}} field. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the function to inspect/modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for a complete application, -\/1 for a partial completion (due to breakpoint) 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_group_aaaab0b0f5c7a14752cd57478de2e9290}{Action\+Group}}.
+
+
+
+Definition at line 536 of file action.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_restart_group_ab597697ab15a9b8f1a25832f43bdeb0d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_restart_group_a2dd3daab632e0a41e64d9515f47c7200}\label{class_action_restart_group_a2dd3daab632e0a41e64d9515f47c7200}} 
+\index{ActionRestartGroup@{ActionRestartGroup}!clone@{clone}}
+\index{clone@{clone}!ActionRestartGroup@{ActionRestartGroup}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_action}{Action}} $\ast$ Action\+Restart\+Group\+::clone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_action_group_list}{Action\+Group\+List}} \&}]{grouplist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clone the \mbox{\hyperlink{class_action}{Action}}. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} is a member of one of the groups in the grouplist, this returns a clone of the \mbox{\hyperlink{class_action}{Action}}, otherwise N\+U\+LL is returned. 
+\begin{DoxyParams}{Parameters}
+{\em grouplist} & is the list of groups being cloned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_action}{Action}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_group_ace0724b13474c6c098eb25aee96dd1d6}{Action\+Group}}.
+
+
+
+Definition at line 512 of file action.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_action_restart_group_a2dd3daab632e0a41e64d9515f47c7200_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_action_restart_group_a8a48151026811fbe97f4aa3eecf67cf0}\label{class_action_restart_group_a8a48151026811fbe97f4aa3eecf67cf0}} 
+\index{ActionRestartGroup@{ActionRestartGroup}!reset@{reset}}
+\index{reset@{reset}!ActionRestartGroup@{ActionRestartGroup}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Action\+Restart\+Group\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reset the \mbox{\hyperlink{class_action}{Action}} for a new function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the new function {\bfseries{this}} \mbox{\hyperlink{class_action}{Action}} may affect \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_group_ae5f0c78e136f9bb5b9bcd6256b8ad097}{Action\+Group}}.
+
+
+
+Definition at line 529 of file action.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_action_restart_group_a8a48151026811fbe97f4aa3eecf67cf0_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{action_8hh}{action.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{action_8cc}{action.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,395 @@
+.TH "CircleRange" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CircleRange \- A class for manipulating integer value ranges\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rangeutil\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCircleRange\fP (void)"
+.br
+.RI "Construct an empty range\&. "
+.ti -1c
+.RI "\fBCircleRange\fP (\fBuintb\fP mn, \fBuintb\fP mx, \fBuintb\fP m)"
+.br
+.RI "Construct given specific boundaries\&. "
+.ti -1c
+.RI "\fBCircleRange\fP (bool val)"
+.br
+.RI "Construct a boolean range\&. "
+.ti -1c
+.RI "\fBCircleRange\fP (\fBuintb\fP val, int4 size)"
+.br
+.RI "Construct range with single value\&. "
+.ti -1c
+.RI "bool \fBisEmpty\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP range is empty\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetMin\fP (void) const"
+.br
+.RI "Get the left boundary of the range\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetMax\fP (void) const"
+.br
+.RI "Get the right-most integer contained in the range\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetEnd\fP (void) const"
+.br
+.RI "Get the right boundary of the range\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetMask\fP (void) const"
+.br
+.RI "Get the mask\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetSize\fP (void) const"
+.br
+.RI "Get the size of this range\&. "
+.ti -1c
+.RI "bool \fBgetNext\fP (\fBuintb\fP &val) const"
+.br
+.RI "Advance an integer within the range\&. "
+.ti -1c
+.RI "bool \fBcontains\fP (const \fBCircleRange\fP &op2) const"
+.br
+.RI "Check containment of another range in \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBcontains\fP (\fBuintb\fP val) const"
+.br
+.RI "Check containment of a specific integer\&. "
+.ti -1c
+.RI "int4 \fBintersect\fP (const \fBCircleRange\fP &op2)"
+.br
+.RI "Intersect \fBthis\fP with another range\&. "
+.ti -1c
+.RI "bool \fBsetNZMask\fP (\fBuintb\fP nzmask, int4 size)"
+.br
+.RI "Set the range based on a putative mask\&. "
+.ti -1c
+.RI "int4 \fBcircleUnion\fP (const \fBCircleRange\fP &op2)"
+.br
+.RI "Union two ranges\&. "
+.ti -1c
+.RI "void \fBsetStride\fP (int4 newshift)"
+.br
+.RI "Set a new stride on \fBthis\fP range\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBpullBack\fP (\fBPcodeOp\fP *op, \fBVarnode\fP **constMarkup, bool usenzmask)"
+.br
+.RI "Pull-back \fBthis\fP range through given \fBPcodeOp\fP\&. "
+.ti -1c
+.RI "int4 \fBtranslate2Op\fP (\fBOpCode\fP &opc, \fBuintb\fP &c, int4 &cslot) const"
+.br
+.RI "\fBTranslate\fP range to a comparison op\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class for manipulating integer value ranges\&. 
+
+The idea is to have a representation of common sets of values that a varnode might take on in analysis so that the representation can be manipulated symbolically to some extent\&. The representation is a circular range (determined by a half-open interval [left,right)), over the integers mod 2^n, where mask = 2^n-1\&. The range can support a step, if some of the least significant bits of the mask are set to zero\&.
+.PP
+The class then can
+.IP "\(bu" 2
+Generate ranges based on a pcode condition:
+.IP "  \(bu" 4
+x < 2 => left=0 right=2 mask=sizeof(x)
+.IP "  \(bu" 4
+5 >= x => left=5 right=0 mask=sizeof(x)
+.PP
+
+.IP "\(bu" 2
+Intersect and union ranges, if the result is another range
+.IP "\(bu" 2
+Pull-back a range through a transformation operation
+.IP "\(bu" 2
+Iterate
+.PP
+.PP
+.PP
+.nf
+val = range\&.getMin();
+do {
+} while(range\&.getNext(val));
+.fi
+.PP
+ 
+.PP
+Definition at line 48 of file rangeutil\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CircleRange::CircleRange (void)\fC [inline]\fP"
+
+.PP
+Construct an empty range\&. 
+.PP
+Definition at line 62 of file rangeutil\&.hh\&.
+.SS "CircleRange::CircleRange (\fBuintb\fP mn, \fBuintb\fP mx, \fBuintb\fP m)"
+
+.PP
+Construct given specific boundaries\&. Give specific left/right boundaries and a mask\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImn\fP is the left boundary of the range 
+.br
+\fImx\fP is the right boundary of the range 
+.br
+\fIm\fP is the mask encoding a size and stride 
+.RE
+.PP
+
+.PP
+Definition at line 127 of file rangeutil\&.cc\&.
+.SS "CircleRange::CircleRange (bool val)"
+
+.PP
+Construct a boolean range\&. The range contains only a single integer, 0 or 1, depending on the boolean parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the boolean parameter 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file rangeutil\&.cc\&.
+.SS "CircleRange::CircleRange (\fBuintb\fP val, int4 size)"
+
+.PP
+Construct range with single value\&. A size specifies the number of bytes (*8 to get number of bits) in the mask\&. The stride is assumed to be 1\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is is the single value 
+.br
+\fIsize\fP is the size of the mask in bytes 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file rangeutil\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int4 CircleRange::circleUnion (const \fBCircleRange\fP & op2)"
+
+.PP
+Union two ranges\&. Set \fBthis\fP to the union of \fBthis\fP and \fBop2\fP as a single interval\&. Return 0 if the result is valid\&. Return 2 if the union is two pieces\&. If result is not zero, \fBthis\fP is not modified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the range to union with 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the result code 
+.RE
+.PP
+
+.PP
+Definition at line 233 of file rangeutil\&.cc\&.
+.SS "bool CircleRange::contains (const \fBCircleRange\fP & op2) const"
+
+.PP
+Check containment of another range in \fBthis\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the specific range to test for containment\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBtrue\fP contains the interval \fBop2\fP 
+.RE
+.PP
+
+.PP
+Definition at line 188 of file rangeutil\&.cc\&.
+.SS "bool CircleRange::contains (\fBuintb\fP val) const"
+
+.PP
+Check containment of a specific integer\&. Check if a specific integer is a member of \fBthis\fP range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the specific integer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if it is contained in \fBthis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 210 of file rangeutil\&.cc\&.
+.SS "\fBuintb\fP CircleRange::getEnd (void) const\fC [inline]\fP"
+
+.PP
+Get the right boundary of the range\&. 
+.PP
+Definition at line 69 of file rangeutil\&.hh\&.
+.SS "\fBuintb\fP CircleRange::getMask (void) const\fC [inline]\fP"
+
+.PP
+Get the mask\&. 
+.PP
+Definition at line 70 of file rangeutil\&.hh\&.
+.SS "\fBuintb\fP CircleRange::getMax (void) const\fC [inline]\fP"
+
+.PP
+Get the right-most integer contained in the range\&. 
+.PP
+Definition at line 68 of file rangeutil\&.hh\&.
+.SS "\fBuintb\fP CircleRange::getMin (void) const\fC [inline]\fP"
+
+.PP
+Get the left boundary of the range\&. 
+.PP
+Definition at line 67 of file rangeutil\&.hh\&.
+.SS "bool CircleRange::getNext (\fBuintb\fP & val) const\fC [inline]\fP"
+
+.PP
+Advance an integer within the range\&. 
+.PP
+Definition at line 72 of file rangeutil\&.hh\&.
+.SS "\fBuintb\fP CircleRange::getSize (void) const"
+
+.PP
+Get the size of this range\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the number of integers contained in this range 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file rangeutil\&.cc\&.
+.SS "int4 CircleRange::intersect (const \fBCircleRange\fP & op2)"
+
+.PP
+Intersect \fBthis\fP with another range\&. Set \fBthis\fP to the intersection of \fBthis\fP and \fBop2\fP as a single interval if possible\&. Return 0 if the result is valid Return 2 if the intersection is two pieces If result is not zero, \fBthis\fP is not modified 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the second range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the intersection code 
+.RE
+.PP
+
+.PP
+Definition at line 299 of file rangeutil\&.cc\&.
+.SS "bool CircleRange::isEmpty (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP range is empty\&. 
+.PP
+Definition at line 66 of file rangeutil\&.hh\&.
+.SS "\fBVarnode\fP * CircleRange::pullBack (\fBPcodeOp\fP * op, \fBVarnode\fP ** constMarkup, bool usenzmask)"
+
+.PP
+Pull-back \fBthis\fP range through given \fBPcodeOp\fP\&. The pull-back is performed through a given p-code \fBop\fP and set \fBthis\fP to the resulting range (if possible)\&. If there is a single unknown input, and the set of values for this input that cause the output of \fBop\fP to fall into \fBthis\fP form a range, then set \fBthis\fP to the range (the 'pullBack') and return the unknown varnode\&. Return null otherwise\&.
+.PP
+We may know something about the input varnode in the form of its NZMASK, which can further restrict the range we return\&. If \fBusenzmask\fP is true, and NZMASK forms a range, intersect \fBthis\fP with the result\&.
+.PP
+If there is \fBSymbol\fP markup on any constant passed into the op, pass that information back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the given \fBPcodeOp\fP 
+.br
+\fIconstMarkup\fP is the reference for passing back the constant relevant to the pull-back 
+.br
+\fIusenzmask\fP specifies whether to use the NZMASK 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the input \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 481 of file rangeutil\&.cc\&.
+.SS "bool CircleRange::setNZMask (\fBuintb\fP nzmask, int4 size)"
+
+.PP
+Set the range based on a putative mask\&. Try to create a range given a value that is not necessarily a valid mask\&. If the mask is valid, range is set to all possible values that whose non-zero bits are contained in the mask\&. If the mask is invalid, \fBthis\fP range is not modified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInzmask\fP is the putative mask 
+.br
+\fIsize\fP is a maximum size (in bytes) for the mask 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the mask is valid 
+.RE
+.PP
+
+.PP
+Definition at line 403 of file rangeutil\&.cc\&.
+.SS "void CircleRange::setStride (int4 newshift)"
+
+.PP
+Set a new stride on \fBthis\fP range\&. The new stride is specified by giving the number of bits of shift (log2(stride)) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewshift\fP is the number of bits of shift 
+.RE
+.PP
+
+.PP
+Definition at line 439 of file rangeutil\&.cc\&.
+.SS "int4 CircleRange::translate2Op (\fBOpCode\fP & opc, \fBuintb\fP & c, int4 & cslot) const"
+
+.PP
+\fBTranslate\fP range to a comparison op\&. Recover parameters for a comparison \fBPcodeOp\fP, that returns true for input values exactly in \fBthis\fP range\&. Return:
+.IP "\(bu" 2
+0 on success
+.IP "\(bu" 2
+1 if all inputs must return true
+.IP "\(bu" 2
+2 if this is not possible
+.IP "\(bu" 2
+3 if no inputs must return true 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopc\fP will contain the OpCode for the comparison \fBPcodeOp\fP 
+.br
+\fIc\fP will contain the constant input to the op 
+.br
+\fIcslot\fP will indicate the slot holding the constant 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the success code 
+.RE
+.PP
+
+.PP
+
+.PP
+Definition at line 811 of file rangeutil\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

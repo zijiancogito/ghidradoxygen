@@ -1,0 +1,418 @@
+\hypertarget{class_cover_block}{}\section{Cover\+Block Class Reference}
+\label{class_cover_block}\index{CoverBlock@{CoverBlock}}
+
+
+The topological scope of a variable within a basic block.  
+
+
+
+
+{\ttfamily \#include $<$cover.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cover_block_a1b86770acf90e77a85a9a5b3f7f408f6}{Cover\+Block}} (void)
+\begin{DoxyCompactList}\small\item\em Construct empty/uncovered block. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_cover_block_a9871d2c0a1f58701fc43125de929783e}{get\+Start}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the start of the range. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_cover_block_ad436bf26eddb13766c89480390ec3cc6}{get\+Stop}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the end of the range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cover_block_a735783c16ee76a3072a541601e01085c}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Clear {\bfseries{this}} block to empty/uncovered. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cover_block_acf6e1171ca6513855789a057f9c4f92c}{set\+All}} (void)
+\begin{DoxyCompactList}\small\item\em Mark whole block as covered. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cover_block_a9c1ef0ab93cc4107a954cd4842ca1d27}{set\+Begin}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$begin)
+\begin{DoxyCompactList}\small\item\em Reset start of range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cover_block_aa6171bf30cc73dcf75bafdbe71b83a5d}{set\+End}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$end)
+\begin{DoxyCompactList}\small\item\em Reset end of range. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_cover_block_a26da4f088471ccf7e896fa2e7f657444}{intersect}} (const \mbox{\hyperlink{class_cover_block}{Cover\+Block}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Compute intersection with another \mbox{\hyperlink{class_cover_block}{Cover\+Block}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cover_block_a2de972d5c460a06fe8340a454423f509}{empty}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if {\bfseries{this}} is empty/uncovered. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cover_block_abdea54abaa486a9cdfc03e083aaabb65}{contain}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$point) const
+\begin{DoxyCompactList}\small\item\em Check containment of given point. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_cover_block_ad8f60860ed4169e0f574d4e1ebc1b779}{boundary}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$point) const
+\begin{DoxyCompactList}\small\item\em Characterize given point as boundary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cover_block_ad686102d99fec796c67db2778d9981e5}{merge}} (const \mbox{\hyperlink{class_cover_block}{Cover\+Block}} \&op2)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_merge}{Merge}} another \mbox{\hyperlink{class_cover_block}{Cover\+Block}} into {\bfseries{this}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cover_block_a58f570ab514cdabc3b9671cdb08911e7}{print}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Dump a description to stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uintm \mbox{\hyperlink{class_cover_block_ad0e8085aae35a181fd4c1666f53429ee}{get\+U\+Index}} (const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Get the comparison index for a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The topological scope of a variable within a basic block. 
+
+Within a basic block, the topological scope of a variable can be considered a contiguous range of p-\/code operations. This range can be described with a {\itshape start} and {\itshape stop} \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} object, indicating all p-\/code operations between the two inclusive. The {\itshape start} and {\itshape stop} may hold special encodings meaning\+:
+\begin{DoxyItemize}
+\item From the beginning of the block
+\item To the end of the block 
+\end{DoxyItemize}
+
+Definition at line 35 of file cover.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cover_block_a1b86770acf90e77a85a9a5b3f7f408f6}\label{class_cover_block_a1b86770acf90e77a85a9a5b3f7f408f6}} 
+\index{CoverBlock@{CoverBlock}!CoverBlock@{CoverBlock}}
+\index{CoverBlock@{CoverBlock}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{CoverBlock()}{CoverBlock()}}
+{\footnotesize\ttfamily Cover\+Block\+::\+Cover\+Block (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct empty/uncovered block. 
+
+
+
+Definition at line 39 of file cover.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cover_block_ad8f60860ed4169e0f574d4e1ebc1b779}\label{class_cover_block_ad8f60860ed4169e0f574d4e1ebc1b779}} 
+\index{CoverBlock@{CoverBlock}!boundary@{boundary}}
+\index{boundary@{boundary}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{boundary()}{boundary()}}
+{\footnotesize\ttfamily int4 Cover\+Block\+::boundary (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{point }\end{DoxyParamCaption}) const}
+
+
+
+Characterize given point as boundary. 
+
+Return\+:
+\begin{DoxyItemize}
+\item 0 if point not on boundary
+\item 1 if on tail
+\item 2 if on the defining point
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the characterization 
+\end{DoxyReturn}
+
+
+Definition at line 125 of file cover.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_ad8f60860ed4169e0f574d4e1ebc1b779_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_a735783c16ee76a3072a541601e01085c}\label{class_cover_block_a735783c16ee76a3072a541601e01085c}} 
+\index{CoverBlock@{CoverBlock}!clear@{clear}}
+\index{clear@{clear}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Cover\+Block\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clear {\bfseries{this}} block to empty/uncovered. 
+
+
+
+Definition at line 43 of file cover.\+hh.
+
+\mbox{\Hypertarget{class_cover_block_abdea54abaa486a9cdfc03e083aaabb65}\label{class_cover_block_abdea54abaa486a9cdfc03e083aaabb65}} 
+\index{CoverBlock@{CoverBlock}!contain@{contain}}
+\index{contain@{contain}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{contain()}{contain()}}
+{\footnotesize\ttfamily bool Cover\+Block\+::contain (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{point }\end{DoxyParamCaption}) const}
+
+
+
+Check containment of given point. 
+
+If the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} or boundary point is contained in {\bfseries{this}} range, return true. 
+\begin{DoxyParams}{Parameters}
+{\em point} & is the given \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the point is contained 
+\end{DoxyReturn}
+
+
+Definition at line 103 of file cover.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_abdea54abaa486a9cdfc03e083aaabb65_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{class_cover_block_abdea54abaa486a9cdfc03e083aaabb65_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_a2de972d5c460a06fe8340a454423f509}\label{class_cover_block_a2de972d5c460a06fe8340a454423f509}} 
+\index{CoverBlock@{CoverBlock}!empty@{empty}}
+\index{empty@{empty}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool Cover\+Block\+::empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if {\bfseries{this}} is empty/uncovered. 
+
+
+
+Definition at line 50 of file cover.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_a2de972d5c460a06fe8340a454423f509_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_a9871d2c0a1f58701fc43125de929783e}\label{class_cover_block_a9871d2c0a1f58701fc43125de929783e}} 
+\index{CoverBlock@{CoverBlock}!getStart@{getStart}}
+\index{getStart@{getStart}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{getStart()}{getStart()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Cover\+Block\+::get\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the start of the range. 
+
+
+
+Definition at line 41 of file cover.\+hh.
+
+\mbox{\Hypertarget{class_cover_block_ad436bf26eddb13766c89480390ec3cc6}\label{class_cover_block_ad436bf26eddb13766c89480390ec3cc6}} 
+\index{CoverBlock@{CoverBlock}!getStop@{getStop}}
+\index{getStop@{getStop}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{getStop()}{getStop()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Cover\+Block\+::get\+Stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the end of the range. 
+
+
+
+Definition at line 42 of file cover.\+hh.
+
+\mbox{\Hypertarget{class_cover_block_ad0e8085aae35a181fd4c1666f53429ee}\label{class_cover_block_ad0e8085aae35a181fd4c1666f53429ee}} 
+\index{CoverBlock@{CoverBlock}!getUIndex@{getUIndex}}
+\index{getUIndex@{getUIndex}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{getUIndex()}{getUIndex()}}
+{\footnotesize\ttfamily uintm Cover\+Block\+::get\+U\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the comparison index for a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}. 
+
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} objects and a \mbox{\hyperlink{class_cover_block}{Cover\+Block}} start/stop boundaries have a natural ordering that can be used to tell if a \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} falls between boundary points and if \mbox{\hyperlink{class_cover_block}{Cover\+Block}} objects intersect. Ordering is determined by comparing the values returned by this method. 
+\begin{DoxyParams}{Parameters}
+{\em op} & is the \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} and/or boundary point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a value for comparison 
+\end{DoxyReturn}
+
+
+Definition at line 25 of file cover.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_ad0e8085aae35a181fd4c1666f53429ee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_ad0e8085aae35a181fd4c1666f53429ee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_a26da4f088471ccf7e896fa2e7f657444}\label{class_cover_block_a26da4f088471ccf7e896fa2e7f657444}} 
+\index{CoverBlock@{CoverBlock}!intersect@{intersect}}
+\index{intersect@{intersect}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{intersect()}{intersect()}}
+{\footnotesize\ttfamily int4 Cover\+Block\+::intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_cover_block}{Cover\+Block}} \&}]{op2 }\end{DoxyParamCaption}) const}
+
+
+
+Compute intersection with another \mbox{\hyperlink{class_cover_block}{Cover\+Block}}. 
+
+Characterize the intersection of {\bfseries{this}} range with another \mbox{\hyperlink{class_cover_block}{Cover\+Block}}. Return\+:
+\begin{DoxyItemize}
+\item 0 if there is no intersection
+\item 1 if only the intersection is at boundary points
+\item 2 if a whole interval intersects
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the other \mbox{\hyperlink{class_cover_block}{Cover\+Block}} to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the intersection characterization 
+\end{DoxyReturn}
+
+
+Definition at line 55 of file cover.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_a26da4f088471ccf7e896fa2e7f657444_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_ad686102d99fec796c67db2778d9981e5}\label{class_cover_block_ad686102d99fec796c67db2778d9981e5}} 
+\index{CoverBlock@{CoverBlock}!merge@{merge}}
+\index{merge@{merge}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily void Cover\+Block\+::merge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_cover_block}{Cover\+Block}} \&}]{op2 }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_merge}{Merge}} another \mbox{\hyperlink{class_cover_block}{Cover\+Block}} into {\bfseries{this}}. 
+
+Compute the union of {\bfseries{this}} with the other given \mbox{\hyperlink{class_cover_block}{Cover\+Block}}, replacing {\bfseries{this}} in place. 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the other given \mbox{\hyperlink{class_cover_block}{Cover\+Block}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 143 of file cover.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_ad686102d99fec796c67db2778d9981e5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_a58f570ab514cdabc3b9671cdb08911e7}\label{class_cover_block_a58f570ab514cdabc3b9671cdb08911e7}} 
+\index{CoverBlock@{CoverBlock}!print@{print}}
+\index{print@{print}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Cover\+Block\+::print (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Dump a description to stream. 
+
+Print a description of the covered range of ops in this block 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 184 of file cover.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_a58f570ab514cdabc3b9671cdb08911e7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_acf6e1171ca6513855789a057f9c4f92c}\label{class_cover_block_acf6e1171ca6513855789a057f9c4f92c}} 
+\index{CoverBlock@{CoverBlock}!setAll@{setAll}}
+\index{setAll@{setAll}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{setAll()}{setAll()}}
+{\footnotesize\ttfamily void Cover\+Block\+::set\+All (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mark whole block as covered. 
+
+
+
+Definition at line 44 of file cover.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{class_cover_block_acf6e1171ca6513855789a057f9c4f92c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_a9c1ef0ab93cc4107a954cd4842ca1d27}\label{class_cover_block_a9c1ef0ab93cc4107a954cd4842ca1d27}} 
+\index{CoverBlock@{CoverBlock}!setBegin@{setBegin}}
+\index{setBegin@{setBegin}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{setBegin()}{setBegin()}}
+{\footnotesize\ttfamily void Cover\+Block\+::set\+Begin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{begin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset start of range. 
+
+
+
+Definition at line 46 of file cover.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_a9c1ef0ab93cc4107a954cd4842ca1d27_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_cover_block_aa6171bf30cc73dcf75bafdbe71b83a5d}\label{class_cover_block_aa6171bf30cc73dcf75bafdbe71b83a5d}} 
+\index{CoverBlock@{CoverBlock}!setEnd@{setEnd}}
+\index{setEnd@{setEnd}!CoverBlock@{CoverBlock}}
+\subsubsection{\texorpdfstring{setEnd()}{setEnd()}}
+{\footnotesize\ttfamily void Cover\+Block\+::set\+End (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset end of range. 
+
+
+
+Definition at line 48 of file cover.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cover_block_aa6171bf30cc73dcf75bafdbe71b83a5d_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{cover_8hh}{cover.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{cover_8cc}{cover.\+cc}}\end{DoxyCompactItemize}

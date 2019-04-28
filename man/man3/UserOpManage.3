@@ -1,0 +1,275 @@
+.TH "UserOpManage" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UserOpManage \- Manager/container for description objects (\fBUserPcodeOp\fP) of user defined p-code ops\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <userop\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUserOpManage\fP (void)"
+.br
+.RI "Construct an empty manager\&. "
+.ti -1c
+.RI "\fB~UserOpManage\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBinitialize\fP (\fBArchitecture\fP *glb)"
+.br
+.RI "Initialize description objects for all user defined ops\&. "
+.ti -1c
+.RI "void \fBsetDefaults\fP (\fBArchitecture\fP *glb)"
+.br
+.RI "Create any required operations if they weren't explicitly defined\&. "
+.ti -1c
+.RI "int4 \fBnumSegmentOps\fP (void) const"
+.br
+.RI "Number of segment operations supported\&. "
+.ti -1c
+.RI "\fBUserPcodeOp\fP * \fBgetOp\fP (int4 i) const"
+.br
+.ti -1c
+.RI "\fBUserPcodeOp\fP * \fBgetOp\fP (const string &nm) const"
+.br
+.RI "Retrieve description by name\&. "
+.ti -1c
+.RI "\fBSegmentOp\fP * \fBgetSegmentOp\fP (int4 i) const"
+.br
+.ti -1c
+.RI "\fBVolatileReadOp\fP * \fBgetVolatileRead\fP (void) const"
+.br
+.RI "Get (the) volatile read description\&. "
+.ti -1c
+.RI "\fBVolatileWriteOp\fP * \fBgetVolatileWrite\fP (void) const"
+.br
+.RI "Get (the) volatile write description\&. "
+.ti -1c
+.RI "void \fBparseSegmentOp\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.RI "Parse a <segmentop> XML tag\&. "
+.ti -1c
+.RI "void \fBparseVolatile\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.RI "Parse a <volatile> XML tag\&. "
+.ti -1c
+.RI "void \fBparseCallOtherFixup\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.RI "Parse a <callotherfixup> XML tag\&. "
+.ti -1c
+.RI "void \fBparseJumpAssist\fP (const \fBElement\fP *el, \fBArchitecture\fP *glb)"
+.br
+.RI "Parse a <jumpassist> XML tag\&. "
+.ti -1c
+.RI "void \fBmanualCallOtherFixup\fP (const string &useropname, const string &outname, const vector< string > &inname, const string &snippet, \fBArchitecture\fP *glb)"
+.br
+.RI "Manually install an \fBInjectedUserOp\fP given just names of the user defined op and the p-code snippet\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manager/container for description objects (\fBUserPcodeOp\fP) of user defined p-code ops\&. 
+
+The description objects are referenced by the CALLOTHER constant id, (or by name during initialization)\&. During \fBinitialize()\fP, every user defined p-code op presented by the \fBArchitecture\fP is assigned a default \fBUnspecializedPcodeOp\fP description\&. Further processing of the \&.cspec or \&.pspec may reassign a more specialized description object by parsing specific tags using on of \fBthis\fP class's parse* methods\&. 
+.PP
+Definition at line 255 of file userop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "UserOpManage::UserOpManage (void)"
+
+.PP
+Construct an empty manager\&. 
+.PP
+Definition at line 330 of file userop\&.cc\&.
+.SS "UserOpManage::~UserOpManage (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 337 of file userop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBUserPcodeOp\fP* UserOpManage::getOp (int4 i) const\fC [inline]\fP"
+Retrieve a user-op description object by index 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the indicated user-op description 
+.RE
+.PP
+
+.PP
+Definition at line 272 of file userop\&.hh\&.
+.SS "\fBUserPcodeOp\fP * UserOpManage::getOp (const string & nm) const"
+
+.PP
+Retrieve description by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInm\fP is the low-level operation name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching description object or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 382 of file userop\&.cc\&.
+.SS "\fBSegmentOp\fP* UserOpManage::getSegmentOp (int4 i) const\fC [inline]\fP"
+Retrieve a segment-op description object by index 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the indicated segment-op description 
+.RE
+.PP
+
+.PP
+Definition at line 282 of file userop\&.hh\&.
+.SS "\fBVolatileReadOp\fP* UserOpManage::getVolatileRead (void) const\fC [inline]\fP"
+
+.PP
+Get (the) volatile read description\&. 
+.PP
+Definition at line 287 of file userop\&.hh\&.
+.SS "\fBVolatileWriteOp\fP* UserOpManage::getVolatileWrite (void) const\fC [inline]\fP"
+
+.PP
+Get (the) volatile write description\&. 
+.PP
+Definition at line 288 of file userop\&.hh\&.
+.SS "void UserOpManage::initialize (\fBArchitecture\fP * glb)"
+
+.PP
+Initialize description objects for all user defined ops\&. Every user defined p-code op is initially assigned an \fBUnspecializedPcodeOp\fP description, which may get overridden later\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglb\fP is the \fBArchitecture\fP from which to draw user defined operations 
+.RE
+.PP
+
+.PP
+Definition at line 352 of file userop\&.cc\&.
+.SS "void UserOpManage::manualCallOtherFixup (const string & useropname, const string & outname, const vector< string > & inname, const string & snippet, \fBArchitecture\fP * glb)"
+
+.PP
+Manually install an \fBInjectedUserOp\fP given just names of the user defined op and the p-code snippet\&. An alternate way to attach a call-fixup to user defined p-code ops, without using XML\&. The p-code to inject is presented as a raw string to be handed to the p-code parser\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuseropname\fP is the name of the user defined op 
+.br
+\fIoutname\fP is the name of the output variable in the snippet 
+.br
+\fIinname\fP is the list of input variable names in the snippet 
+.br
+\fIsnippet\fP is the raw p-code source snippet 
+.br
+\fIglb\fP is the owning \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 540 of file userop\&.cc\&.
+.SS "int4 UserOpManage::numSegmentOps (void) const\fC [inline]\fP"
+
+.PP
+Number of segment operations supported\&. 
+.PP
+Definition at line 267 of file userop\&.hh\&.
+.SS "void UserOpManage::parseCallOtherFixup (const \fBElement\fP * el, \fBArchitecture\fP * glb)"
+
+.PP
+Parse a <callotherfixup> XML tag\&. Create an \fBInjectedUserOp\fP description object based on the XML description and register it with \fBthis\fP manager\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <callotherfixup> element 
+.br
+\fIglb\fP is the owning \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 501 of file userop\&.cc\&.
+.SS "void UserOpManage::parseJumpAssist (const \fBElement\fP * el, \fBArchitecture\fP * glb)"
+
+.PP
+Parse a <jumpassist> XML tag\&. Create a \fBJumpAssistOp\fP description object based on the XML description and register it with \fBthis\fP manager\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <jumpassist> element 
+.br
+\fIglb\fP is the owning \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 518 of file userop\&.cc\&.
+.SS "void UserOpManage::parseSegmentOp (const \fBElement\fP * el, \fBArchitecture\fP * glb)"
+
+.PP
+Parse a <segmentop> XML tag\&. Create a \fBSegmentOp\fP description object based on the tag details and register it with \fBthis\fP manager\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <segmentop> element 
+.br
+\fIglb\fP is the owning \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 451 of file userop\&.cc\&.
+.SS "void UserOpManage::parseVolatile (const \fBElement\fP * el, \fBArchitecture\fP * glb)"
+
+.PP
+Parse a <volatile> XML tag\&. Create either a \fBVolatileReadOp\fP or \fBVolatileWriteOp\fP description object based on the XML details and register it with \fBthis\fP manager\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the root <volatile> element 
+.br
+\fIglb\fP is the owning \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 469 of file userop\&.cc\&.
+.SS "void UserOpManage::setDefaults (\fBArchitecture\fP * glb)"
+
+.PP
+Create any required operations if they weren't explicitly defined\&. Establish defaults for necessary operators not already defined\&. Currently this forces volatile read/write operations to exist\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglb\fP is the owning \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 367 of file userop\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

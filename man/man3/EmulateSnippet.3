@@ -1,0 +1,227 @@
+.TH "EmulateSnippet" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EmulateSnippet \- \fBEmulate\fP a \fIsnippet\fP of PcodeOps out of a functional context\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emulateutil\&.hh>\fP
+.PP
+Inherits \fBEmulate\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmulateSnippet\fP (\fBArchitecture\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~EmulateSnippet\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBsetExecuteAddress\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Set the address of the next instruction to emulate\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetExecuteAddress\fP (void) const"
+.br
+.RI "Get the address of the current instruction being executed\&. "
+.ti -1c
+.RI "\fBArchitecture\fP * \fBgetArch\fP (void) const"
+.br
+.RI "Get the underlying \fBArchitecture\fP\&. "
+.ti -1c
+.RI "void \fBresetMemory\fP (void)"
+.br
+.RI "Reset the emulation snippet\&. "
+.ti -1c
+.RI "\fBPcodeEmit\fP * \fBbuildEmitter\fP (const vector< \fBOpBehavior\fP * > &inst, \fBuintb\fP uniqReserve)"
+.br
+.RI "Provide the caller with an emitter for building the p-code snippet\&. "
+.ti -1c
+.RI "bool \fBcheckForLegalCode\fP (void) const"
+.br
+.RI "Check for p-code that is deemed illegal for a \fIsnippet\fP\&. "
+.ti -1c
+.RI "void \fBsetCurrentOp\fP (int4 i)"
+.br
+.RI "Set the current executing p-code op by index\&. "
+.ti -1c
+.RI "void \fBsetVarnodeValue\fP (\fBuintb\fP offset, \fBuintb\fP val)"
+.br
+.RI "Set a temporary register value in the machine state\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetVarnodeValue\fP (\fBVarnodeData\fP *vn) const"
+.br
+.RI "Retrieve the value of a \fBVarnode\fP from the current machine state\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetTempValue\fP (\fBuintb\fP offset) const"
+.br
+.RI "Retrieve a temporary register value directly\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBEmulate\fP a \fIsnippet\fP of PcodeOps out of a functional context\&. 
+
+Emulation is performed on a short sequence (\fBsnippet\fP) of \fBPcodeOpRaw\fP objects\&. Control-flow emulation is limited to this snippet; BRANCH and CBRANCH operations can happen using p-code relative branching\&. Executing BRANCHIND, CALL, CALLIND, CALLOTHER, STORE, MULTIEQUAL, INDIRECT, SEGMENTOP, CPOOLOP, and NEW ops is treated as illegal and an exception is thrown\&. Expressions can only use temporary registers or read from the \fBLoadImage\fP\&.
+.PP
+The set of \fBPcodeOpRaw\fP objects in the snippet is provided by emitting p-code to the object returned by \fBbuildEmitter()\fP\&. This is designed for one-time initialization of this class, which can be repeatedly used by calling \fBresetMemory()\fP between executions\&. 
+.PP
+Definition at line 111 of file emulateutil\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "EmulateSnippet::EmulateSnippet (\fBArchitecture\fP * g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 145 of file emulateutil\&.hh\&.
+.SS "EmulateSnippet::~EmulateSnippet (void)\fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 293 of file emulateutil\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBPcodeEmit\fP * EmulateSnippet::buildEmitter (const vector< \fBOpBehavior\fP * > & inst, \fBuintb\fP uniqReserve)"
+
+.PP
+Provide the caller with an emitter for building the p-code snippet\&. Any p-code produced by the \fBPcodeEmit\fP, when triggered by the caller, becomes part of the \fIsnippet\fP that will get emulated by \fBthis\fP\&. The caller should free the \fBPcodeEmit\fP object immediately after use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinst\fP is the \fIopcode\fP to \fIbehavior\fP map the emitter will use 
+.br
+\fIuniqReserve\fP is the starting offset within the \fIunique\fP address space for any temporary registers 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the newly constructed emitter 
+.RE
+.PP
+
+.PP
+Definition at line 310 of file emulateutil\&.cc\&.
+.SS "bool EmulateSnippet::checkForLegalCode (void) const"
+
+.PP
+Check for p-code that is deemed illegal for a \fIsnippet\fP\&. This method facilitates enforcement of the formal rules for snippet code\&.
+.IP "\(bu" 2
+Branches must use p-code relative addressing\&.
+.IP "\(bu" 2
+Snippets can only read/write from temporary registers
+.IP "\(bu" 2
+Snippets cannot use BRANCHIND, CALL, CALLIND, CALLOTHER, STORE, SEGMENTOP, CPOOLREF, NEW, MULTIEQUAL, or INDIRECT
+.PP
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the current snippet is legal 
+.RE
+.PP
+
+.PP
+Definition at line 325 of file emulateutil\&.cc\&.
+.SS "\fBArchitecture\fP* EmulateSnippet::getArch (void) const\fC [inline]\fP"
+
+.PP
+Get the underlying \fBArchitecture\fP\&. 
+.PP
+Definition at line 149 of file emulateutil\&.hh\&.
+.SS "virtual \fBAddress\fP EmulateSnippet::getExecuteAddress (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Get the address of the current instruction being executed\&. 
+.PP
+Implements \fBEmulate\fP\&.
+.PP
+Definition at line 148 of file emulateutil\&.hh\&.
+.SS "\fBuintb\fP EmulateSnippet::getTempValue (\fBuintb\fP offset) const"
+
+.PP
+Retrieve a temporary register value directly\&. This allows the user to obtain the final value of the snippet calculation, without having to have the \fBVarnode\fP object in hand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the offset of the temporary register to retrieve 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the calculated value or 0 if the register was never written 
+.RE
+.PP
+
+.PP
+Definition at line 386 of file emulateutil\&.cc\&.
+.SS "\fBuintb\fP EmulateSnippet::getVarnodeValue (\fBVarnodeData\fP * vn) const"
+
+.PP
+Retrieve the value of a \fBVarnode\fP from the current machine state\&. If the \fBVarnode\fP is a temporary registers, the storage offset is used to look up the value from the machine state cache\&. If the \fBVarnode\fP represents a RAM location, the value is pulled directly out of the load-image\&. If the value does not exist, a 'Read before write' exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the \fBVarnode\fP to read 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the retrieved value 
+.RE
+.PP
+
+.PP
+Definition at line 363 of file emulateutil\&.cc\&.
+.SS "void EmulateSnippet::resetMemory (void)\fC [inline]\fP"
+
+.PP
+Reset the emulation snippet\&. Reset the memory state, and set the first p-code op as current\&. 
+.PP
+Definition at line 154 of file emulateutil\&.hh\&.
+.SS "void EmulateSnippet::setCurrentOp (int4 i)\fC [inline]\fP"
+
+.PP
+Set the current executing p-code op by index\&. The i-th p-code op in the snippet sequence is set as the currently executing op\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index 
+.RE
+.PP
+
+.PP
+Definition at line 163 of file emulateutil\&.hh\&.
+.SS "virtual void EmulateSnippet::setExecuteAddress (const \fBAddress\fP & addr)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Set the address of the next instruction to emulate\&. 
+.PP
+Implements \fBEmulate\fP\&.
+.PP
+Definition at line 147 of file emulateutil\&.hh\&.
+.SS "void EmulateSnippet::setVarnodeValue (\fBuintb\fP offset, \fBuintb\fP val)\fC [inline]\fP"
+
+.PP
+Set a temporary register value in the machine state\&. The temporary \fBVarnode\fP's storage offset is used as key into the machine state map\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the temporary storage offset 
+.br
+\fIval\fP is the value to put into the machine state 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file emulateutil\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,53 @@
+.TH "ghidra.app.decompiler.component.DecompilerManager" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.DecompilerManager
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompilerManager\fP (\fBDecompilerController\fP decompilerController, \fBDecompileOptions\fP options)"
+.br
+.ti -1c
+.RI "synchronized boolean \fBisBusy\fP ()"
+.br
+.ti -1c
+.RI "synchronized void \fBcancelAll\fP ()"
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages the threading involved with dealing with the decompiler\&. It uses a simpler approach than previous versions\&. Currently, there is only one Runnable ever scheduled to the RunManager\&. If a new Decompile request comes in while a decompile is in progress, the new request is first checked to see if it going to result in the same function being decompile\&. If so, then the location is updated and the current decompile is allowed to continue\&. If the new request is a new function or the 'forceDecompile' option is on, then the current decompile is stopped and a new one is scheduled\&. A SwingUpdateManger is used to prevent lots of decompile requests from coming to quickly\&. 
+.PP
+Definition at line 40 of file DecompilerManager\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.component\&.DecompilerManager\&.DecompilerManager (\fBDecompilerController\fP decompilerController, \fBDecompileOptions\fP options)\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file DecompilerManager\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "synchronized void ghidra\&.app\&.decompiler\&.component\&.DecompilerManager\&.cancelAll ()\fC [inline]\fP"
+
+.PP
+Definition at line 126 of file DecompilerManager\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.component\&.DecompilerManager\&.dispose ()\fC [inline]\fP"
+
+.PP
+Definition at line 139 of file DecompilerManager\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.component\&.DecompilerManager\&.isBusy ()\fC [inline]\fP"
+
+.PP
+Definition at line 122 of file DecompilerManager\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

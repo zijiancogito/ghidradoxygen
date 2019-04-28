@@ -1,0 +1,236 @@
+.TH "ghidra.app.decompiler.DecompileProcess" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.DecompileProcess
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDisposeState\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompileProcess\fP (String path)"
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.ti -1c
+.RI "\fBDisposeState\fP \fBgetDisposeState\fP ()"
+.br
+.ti -1c
+.RI "synchronized void \fBregisterProgram\fP (\fBDecompileCallback\fP cback, String pspecxml, String cspecxml, String tspecxml, String coretypesxml)  throws IOException, 			DecompileException "
+.br
+.ti -1c
+.RI "synchronized int \fBderegisterProgram\fP ()  throws IOException, DecompileException "
+.br
+.ti -1c
+.RI "synchronized \fBLimitedByteBuffer\fP \fBsendCommand\fP (String command)  throws IOException, DecompileException "
+.br
+.ti -1c
+.RI "synchronized boolean \fBisReady\fP ()"
+.br
+.ti -1c
+.RI "synchronized \fBLimitedByteBuffer\fP \fBsendCommand1ParamTimeout\fP (String command, String param, int timeoutSecs)  throws IOException, DecompileException "
+.br
+.ti -1c
+.RI "synchronized \fBLimitedByteBuffer\fP \fBsendCommand2Params\fP (String command, String param1, String param2)  throws IOException, DecompileException "
+.br
+.ti -1c
+.RI "void \fBsetMaxResultSize\fP (int maxResultSizeMBytes)"
+.br
+.ti -1c
+.RI "void \fBsetShowNamespace\fP (boolean showNamespace)"
+.br
+.ti -1c
+.RI "synchronized \fBLimitedByteBuffer\fP \fBsendCommand1Param\fP (String command, String param1)  throws IOException, 			DecompileException "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for communicating with a single decompiler process\&. The process controls decompilation for a single Program\&. The process is initiated by the registerProgram method\&. If the process is ready, the statusGood flag will be set to true\&. This flag must be checked via the isReady method prior to invoking any of the public methods\&. If the process isn't ready, the only way to recover is by reissuing the registerProgram call and making any other necessary initialization calls\&. 
+.PP
+Definition at line 44 of file DecompileProcess\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ghidra\&.app\&.decompiler\&.DecompileProcess\&.DecompileProcess (String path)\fC [inline]\fP"
+
+.PP
+Definition at line 84 of file DecompileProcess\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "synchronized int ghidra\&.app\&.decompiler\&.DecompileProcess\&.deregisterProgram () throws IOException, \fBDecompileException\fP\fC [inline]\fP"
+Free decompiler resources 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.br
+\fI\fBDecompileException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 459 of file DecompileProcess\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileProcess\&.dispose ()\fC [inline]\fP"
+
+.PP
+Definition at line 98 of file DecompileProcess\&.java\&.
+.SS "\fBDisposeState\fP ghidra\&.app\&.decompiler\&.DecompileProcess\&.getDisposeState ()\fC [inline]\fP"
+
+.PP
+Definition at line 110 of file DecompileProcess\&.java\&.
+.SS "synchronized boolean ghidra\&.app\&.decompiler\&.DecompileProcess\&.isReady ()\fC [inline]\fP"
+
+.PP
+Definition at line 503 of file DecompileProcess\&.java\&.
+.SS "synchronized void ghidra\&.app\&.decompiler\&.DecompileProcess\&.registerProgram (\fBDecompileCallback\fP cback, String pspecxml, String cspecxml, String tspecxml, String coretypesxml) throws IOException, 			\fBDecompileException\fP\fC [inline]\fP"
+Initialize decompiler for a particular platform 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcback\fP = callback object for decompiler 
+.br
+\fIpspecxml\fP = string containing \&.pspec xml 
+.br
+\fIcspecxml\fP = string containing \&.cspec xml 
+.br
+\fItspecxml\fP = XML string containing translator spec 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.br
+\fI\fBDecompileException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 428 of file DecompileProcess\&.java\&.
+.SS "synchronized \fBLimitedByteBuffer\fP ghidra\&.app\&.decompiler\&.DecompileProcess\&.sendCommand (String command) throws IOException, \fBDecompileException\fP\fC [inline]\fP"
+Send a single command to the decompiler with no parameters and return response 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP is the name of the command to execute 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the response String 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.br
+\fI\fBDecompileException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 484 of file DecompileProcess\&.java\&.
+.SS "synchronized \fBLimitedByteBuffer\fP ghidra\&.app\&.decompiler\&.DecompileProcess\&.sendCommand1Param (String command, String param1) throws IOException, 			\fBDecompileException\fP\fC [inline]\fP"
+Send a command to the decompiler with one parameter and return the result 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP is the command string 
+.br
+\fIparam1\fP is the parameter as a string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the result string 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.br
+\fI\fBDecompileException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 594 of file DecompileProcess\&.java\&.
+.SS "synchronized \fBLimitedByteBuffer\fP ghidra\&.app\&.decompiler\&.DecompileProcess\&.sendCommand1ParamTimeout (String command, String param, int timeoutSecs) throws IOException, \fBDecompileException\fP\fC [inline]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP the decompiler should execute 
+.br
+\fIparam\fP an additional parameter for the command 
+.br
+\fItimeoutSecs\fP the number of seconds to run before timing out 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the response string 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.br
+\fI\fBDecompileException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 515 of file DecompileProcess\&.java\&.
+.SS "synchronized \fBLimitedByteBuffer\fP ghidra\&.app\&.decompiler\&.DecompileProcess\&.sendCommand2Params (String command, String param1, String param2) throws IOException, \fBDecompileException\fP\fC [inline]\fP"
+Send a command with 2 parameters to the decompiler and read the result 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP string to send 
+.br
+\fIparam1\fP is the first parameter string 
+.br
+\fIparam2\fP is the second parameter string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the result string 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.br
+\fI\fBDecompileException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 555 of file DecompileProcess\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileProcess\&.setMaxResultSize (int maxResultSizeMBytes)\fC [inline]\fP"
+
+.PP
+Definition at line 577 of file DecompileProcess\&.java\&.
+.SS "void ghidra\&.app\&.decompiler\&.DecompileProcess\&.setShowNamespace (boolean showNamespace)\fC [inline]\fP"
+
+.PP
+Definition at line 581 of file DecompileProcess\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

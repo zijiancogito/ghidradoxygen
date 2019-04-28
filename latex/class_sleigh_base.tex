@@ -1,0 +1,541 @@
+\hypertarget{class_sleigh_base}{}\section{Sleigh\+Base Class Reference}
+\label{class_sleigh_base}\index{SleighBase@{SleighBase}}
+
+
+Common core of classes that read or write S\+L\+E\+I\+GH specification files natively.  
+
+
+
+
+{\ttfamily \#include $<$sleighbase.\+hh$>$}
+
+
+
+Inheritance diagram for Sleigh\+Base\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{class_sleigh_base__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sleigh\+Base\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sleigh_base_af8e1d433a766cd09a21ad106f6428b11}{Sleigh\+Base}} (void)
+\begin{DoxyCompactList}\small\item\em Construct an uninitialized translator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sleigh_base_a20fd6cc75489602f9dbb0cd272a7832c}{is\+Initialized}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if {\bfseries{this}} is initialized. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_sleigh_base_a61f8edca04aa8f77e8d3d8e18ca95e2c}{$\sim$\+Sleigh\+Base}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sleigh_base_ae0605dc3af75f3227793c7dfddb8c9f9}{add\+Register}} (const string \&nm, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$base, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} offset, int4 size)
+\begin{DoxyCompactList}\small\item\em Add a named register to the model for this processor. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \& \mbox{\hyperlink{class_sleigh_base_ad347067ddd9469322e79b97a19386f82}{get\+Register}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Get a register as \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} given its name. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_sleigh_base_a76bd4052e92fd37b38c49768e4020652}{get\+Register\+Name}} (\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$base, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} off, int4 size) const
+\begin{DoxyCompactList}\small\item\em Get the name of a register given its location. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sleigh_base_a4955cd43fdbc36936982f32850bac0ed}{get\+All\+Registers}} (map$<$ \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}}, string $>$ \&reglist) const
+\begin{DoxyCompactList}\small\item\em Get a list of all register names and the corresponding location. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sleigh_base_a5a3a4777d4e63afce414c17bf23617dd}{get\+User\+Op\+Names}} (vector$<$ string $>$ \&res) const
+\begin{DoxyCompactList}\small\item\em Get a list of all {\itshape user-\/defined} pcode ops. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$ \mbox{\hyperlink{class_sleigh_base_ab20a4e83bfe267c5a524327856e8ee54}{find\+Symbol}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Find a specific S\+L\+E\+I\+GH symbol by name in the current scope. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$ \mbox{\hyperlink{class_sleigh_base_a972d77c5f1fe151be99689dc6bbbbb24}{find\+Symbol}} (uintm id) const
+\begin{DoxyCompactList}\small\item\em Find a specific S\+L\+E\+I\+GH symbol by id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}} $\ast$ \mbox{\hyperlink{class_sleigh_base_aa0df65ed7937d35defce5296a55e5fe5}{find\+Global\+Symbol}} (const string \&nm) const
+\begin{DoxyCompactList}\small\item\em Find a specific global S\+L\+E\+I\+GH symbol by name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sleigh_base_a2231c60a93b577e7bd844b97ac0ef60f}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Write out the S\+L\+E\+I\+GH specification as an X\+ML $<$sleigh$>$ tag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sleigh_base_a25a5389699beb6eeb71db527808cddf7}{build\+Xrefs}} (void)
+\begin{DoxyCompactList}\small\item\em Build register map. Collect user-\/ops and context-\/fields. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sleigh_base_a8d6034782b1d4ada68289054d4cdf8c3}{reregister\+Context}} (void)
+\begin{DoxyCompactList}\small\item\em Reregister context fields for a new executable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sleigh_base_a4f2cd05135b68d2bafb549cfe87d3be5}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\begin{DoxyCompactList}\small\item\em Read a S\+L\+E\+I\+GH specification from X\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_subtable_symbol}{Subtable\+Symbol}} $\ast$ \mbox{\hyperlink{class_sleigh_base_a63699520bf1186106cf8200718b51039}{root}}
+\begin{DoxyCompactList}\small\item\em The root S\+L\+E\+I\+GH decoding symbol. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_symbol_table}{Symbol\+Table}} \mbox{\hyperlink{class_sleigh_base_ab7bf39a81c8133d7b21d491257b2627d}{symtab}}
+\begin{DoxyCompactList}\small\item\em The S\+L\+E\+I\+GH symbol table. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_sleigh_base_aeaa260676163d56933c45d67243b74c3}{maxdelayslotbytes}}
+\begin{DoxyCompactList}\small\item\em Maximum number of bytes in a delay-\/slot directive. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_sleigh_base_a846f60e02230c33557328d9e0d7f8914}{unique\+\_\+allocatemask}}
+\begin{DoxyCompactList}\small\item\em Bits that are guaranteed to be zero in the unique allocation scheme. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_sleigh_base_ad2fa79db86516492f21ed6d826e7b2c4}{num\+Sections}}
+\begin{DoxyCompactList}\small\item\em Number of {\itshape named} sections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Common core of classes that read or write S\+L\+E\+I\+GH specification files natively. 
+
+This class represents what\textquotesingle{}s in common across the S\+L\+E\+I\+GH infrastructure between\+:
+\begin{DoxyItemize}
+\item Reading the various S\+L\+E\+I\+GH specification files
+\item Building and writing out S\+L\+E\+I\+GH specification files 
+\end{DoxyItemize}
+
+Definition at line 29 of file sleighbase.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sleigh_base_af8e1d433a766cd09a21ad106f6428b11}\label{class_sleigh_base_af8e1d433a766cd09a21ad106f6428b11}} 
+\index{SleighBase@{SleighBase}!SleighBase@{SleighBase}}
+\index{SleighBase@{SleighBase}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{SleighBase()}{SleighBase()}}
+{\footnotesize\ttfamily Sleigh\+Base\+::\+Sleigh\+Base (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Construct an uninitialized translator. 
+
+
+
+Definition at line 18 of file sleighbase.\+cc.
+
+\mbox{\Hypertarget{class_sleigh_base_a61f8edca04aa8f77e8d3d8e18ca95e2c}\label{class_sleigh_base_a61f8edca04aa8f77e8d3d8e18ca95e2c}} 
+\index{SleighBase@{SleighBase}!````~SleighBase@{$\sim$SleighBase}}
+\index{````~SleighBase@{$\sim$SleighBase}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{$\sim$SleighBase()}{~SleighBase()}}
+{\footnotesize\ttfamily virtual Sleigh\+Base\+::$\sim$\+Sleigh\+Base (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 44 of file sleighbase.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sleigh_base_ae0605dc3af75f3227793c7dfddb8c9f9}\label{class_sleigh_base_ae0605dc3af75f3227793c7dfddb8c9f9}} 
+\index{SleighBase@{SleighBase}!addRegister@{addRegister}}
+\index{addRegister@{addRegister}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{addRegister()}{addRegister()}}
+{\footnotesize\ttfamily void Sleigh\+Base\+::add\+Register (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{base,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{offset,  }\item[{int4}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Add a named register to the model for this processor. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000002}{Deprecated}}]All registers used to be formally added to the processor model through this method. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the new register \\
+\hline
+{\em base} & is the address space containing the register \\
+\hline
+{\em offset} & is the offset of the register \\
+\hline
+{\em size} & is the number of bytes in the register \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_a2614aefa5c03a9f1ed0b2dba794cad2c}{Translate}}.
+
+
+
+Definition at line 87 of file sleighbase.\+cc.
+
+\mbox{\Hypertarget{class_sleigh_base_a25a5389699beb6eeb71db527808cddf7}\label{class_sleigh_base_a25a5389699beb6eeb71db527808cddf7}} 
+\index{SleighBase@{SleighBase}!buildXrefs@{buildXrefs}}
+\index{buildXrefs@{buildXrefs}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{buildXrefs()}{buildXrefs()}}
+{\footnotesize\ttfamily void Sleigh\+Base\+::build\+Xrefs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Build register map. Collect user-\/ops and context-\/fields. 
+
+Assuming the symbol table is populated, iterate through the table collecting registers (for the map), user-\/op names, and context fields. 
+
+Definition at line 29 of file sleighbase.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base_a25a5389699beb6eeb71db527808cddf7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base_a25a5389699beb6eeb71db527808cddf7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_sleigh_base_aa0df65ed7937d35defce5296a55e5fe5}\label{class_sleigh_base_aa0df65ed7937d35defce5296a55e5fe5}} 
+\index{SleighBase@{SleighBase}!findGlobalSymbol@{findGlobalSymbol}}
+\index{findGlobalSymbol@{findGlobalSymbol}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{findGlobalSymbol()}{findGlobalSymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}}$\ast$ Sleigh\+Base\+::find\+Global\+Symbol (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find a specific global S\+L\+E\+I\+GH symbol by name. 
+
+
+
+Definition at line 53 of file sleighbase.\+hh.
+
+\mbox{\Hypertarget{class_sleigh_base_ab20a4e83bfe267c5a524327856e8ee54}\label{class_sleigh_base_ab20a4e83bfe267c5a524327856e8ee54}} 
+\index{SleighBase@{SleighBase}!findSymbol@{findSymbol}}
+\index{findSymbol@{findSymbol}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{findSymbol()}{findSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}}$\ast$ Sleigh\+Base\+::find\+Symbol (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find a specific S\+L\+E\+I\+GH symbol by name in the current scope. 
+
+
+
+Definition at line 51 of file sleighbase.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base_ab20a4e83bfe267c5a524327856e8ee54_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_sleigh_base_a972d77c5f1fe151be99689dc6bbbbb24}\label{class_sleigh_base_a972d77c5f1fe151be99689dc6bbbbb24}} 
+\index{SleighBase@{SleighBase}!findSymbol@{findSymbol}}
+\index{findSymbol@{findSymbol}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{findSymbol()}{findSymbol()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sleigh_symbol}{Sleigh\+Symbol}}$\ast$ Sleigh\+Base\+::find\+Symbol (\begin{DoxyParamCaption}\item[{uintm}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find a specific S\+L\+E\+I\+GH symbol by id. 
+
+
+
+Definition at line 52 of file sleighbase.\+hh.
+
+\mbox{\Hypertarget{class_sleigh_base_a4955cd43fdbc36936982f32850bac0ed}\label{class_sleigh_base_a4955cd43fdbc36936982f32850bac0ed}} 
+\index{SleighBase@{SleighBase}!getAllRegisters@{getAllRegisters}}
+\index{getAllRegisters@{getAllRegisters}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{getAllRegisters()}{getAllRegisters()}}
+{\footnotesize\ttfamily void Sleigh\+Base\+::get\+All\+Registers (\begin{DoxyParamCaption}\item[{map$<$ \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}}, string $>$ \&}]{reglist }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a list of all register names and the corresponding location. 
+
+Most processors have a list of named registers and possibly other memory locations that are specific to it. This function populates a map from the location information to the name, for every named location known by the translator 
+\begin{DoxyParams}{Parameters}
+{\em reglist} & is the map which will be populated by the call \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_a4de12a5d1ad5f080604451e2ed3c163e}{Translate}}.
+
+
+
+Definition at line 131 of file sleighbase.\+cc.
+
+\mbox{\Hypertarget{class_sleigh_base_ad347067ddd9469322e79b97a19386f82}\label{class_sleigh_base_ad347067ddd9469322e79b97a19386f82}} 
+\index{SleighBase@{SleighBase}!getRegister@{getRegister}}
+\index{getRegister@{getRegister}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{getRegister()}{getRegister()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} \& Sleigh\+Base\+::get\+Register (\begin{DoxyParamCaption}\item[{const string \&}]{nm }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a register as \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} given its name. 
+
+Retrieve the location and size of a register given its name 
+\begin{DoxyParams}{Parameters}
+{\em nm} & is the name of the register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{struct_varnode_data}{Varnode\+Data}} for the register 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_translate_a3a62c460db4eccc285fa3dd29dd4a29b}{Translate}}.
+
+
+
+Definition at line 94 of file sleighbase.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base_ad347067ddd9469322e79b97a19386f82_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_sleigh_base_a76bd4052e92fd37b38c49768e4020652}\label{class_sleigh_base_a76bd4052e92fd37b38c49768e4020652}} 
+\index{SleighBase@{SleighBase}!getRegisterName@{getRegisterName}}
+\index{getRegisterName@{getRegisterName}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{getRegisterName()}{getRegisterName()}}
+{\footnotesize\ttfamily string Sleigh\+Base\+::get\+Register\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{base,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{off,  }\item[{int4}]{size }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the name of a register given its location. 
+
+Generic references to locations in a {\itshape register} space can be translated into the associated register {\itshape name}. If the location doesn\textquotesingle{}t match a register {\itshape exactly}, an empty string is returned. 
+\begin{DoxyParams}{Parameters}
+{\em base} & is the address space containing the location \\
+\hline
+{\em off} & is the offset of the location \\
+\hline
+{\em size} & is the size of the location \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the name of the register, or an empty string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_translate_a1da0ef001f801641313d9168fb359f02}{Translate}}.
+
+
+
+Definition at line 105 of file sleighbase.\+cc.
+
+\mbox{\Hypertarget{class_sleigh_base_a5a3a4777d4e63afce414c17bf23617dd}\label{class_sleigh_base_a5a3a4777d4e63afce414c17bf23617dd}} 
+\index{SleighBase@{SleighBase}!getUserOpNames@{getUserOpNames}}
+\index{getUserOpNames@{getUserOpNames}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{getUserOpNames()}{getUserOpNames()}}
+{\footnotesize\ttfamily void Sleigh\+Base\+::get\+User\+Op\+Names (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{res }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a list of all {\itshape user-\/defined} pcode ops. 
+
+The pcode model allows processors to define new pcode instructions that are specific to that processor. These {\itshape user-\/defined} instructions are all identified by a name and an index. This method returns a list of these ops in index order. 
+\begin{DoxyParams}{Parameters}
+{\em res} & is the resulting vector of user op names \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_translate_a2475ba8a71e0d514903b3b5458e6cf45}{Translate}}.
+
+
+
+Definition at line 137 of file sleighbase.\+cc.
+
+\mbox{\Hypertarget{class_sleigh_base_a20fd6cc75489602f9dbb0cd272a7832c}\label{class_sleigh_base_a20fd6cc75489602f9dbb0cd272a7832c}} 
+\index{SleighBase@{SleighBase}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily bool Sleigh\+Base\+::is\+Initialized (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if {\bfseries{this}} is initialized. 
+
+
+
+Definition at line 43 of file sleighbase.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{class_sleigh_base_a20fd6cc75489602f9dbb0cd272a7832c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_sleigh_base_a8d6034782b1d4ada68289054d4cdf8c3}\label{class_sleigh_base_a8d6034782b1d4ada68289054d4cdf8c3}} 
+\index{SleighBase@{SleighBase}!reregisterContext@{reregisterContext}}
+\index{reregisterContext@{reregisterContext}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{reregisterContext()}{reregisterContext()}}
+{\footnotesize\ttfamily void Sleigh\+Base\+::reregister\+Context (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Reregister context fields for a new executable. 
+
+If {\bfseries{this}} \mbox{\hyperlink{class_sleigh_base}{Sleigh\+Base}} is being reused with a new program, the context variables need to be registered with the new program\textquotesingle{}s database 
+
+Definition at line 69 of file sleighbase.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base_a8d6034782b1d4ada68289054d4cdf8c3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{class_sleigh_base_a8d6034782b1d4ada68289054d4cdf8c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_sleigh_base_a4f2cd05135b68d2bafb549cfe87d3be5}\label{class_sleigh_base_a4f2cd05135b68d2bafb549cfe87d3be5}} 
+\index{SleighBase@{SleighBase}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Sleigh\+Base\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Read a S\+L\+E\+I\+GH specification from X\+ML. 
+
+This parses the main $<$sleigh$>$ tag (from a .sla file), which includes the description of address spaces and the symbol table, with its associated decoding tables 
+\begin{DoxyParams}{Parameters}
+{\em el} & is the root X\+ML element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 180 of file sleighbase.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base_a4f2cd05135b68d2bafb549cfe87d3be5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_sleigh_base_a4f2cd05135b68d2bafb549cfe87d3be5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_sleigh_base_a2231c60a93b577e7bd844b97ac0ef60f}\label{class_sleigh_base_a2231c60a93b577e7bd844b97ac0ef60f}} 
+\index{SleighBase@{SleighBase}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Sleigh\+Base\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Write out the S\+L\+E\+I\+GH specification as an X\+ML $<$sleigh$>$ tag. 
+
+This does the bulk of the work of creating a .sla file 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 145 of file sleighbase.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sleigh_base_a2231c60a93b577e7bd844b97ac0ef60f_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sleigh_base_aeaa260676163d56933c45d67243b74c3}\label{class_sleigh_base_aeaa260676163d56933c45d67243b74c3}} 
+\index{SleighBase@{SleighBase}!maxdelayslotbytes@{maxdelayslotbytes}}
+\index{maxdelayslotbytes@{maxdelayslotbytes}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{maxdelayslotbytes}{maxdelayslotbytes}}
+{\footnotesize\ttfamily uint4 Sleigh\+Base\+::maxdelayslotbytes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Maximum number of bytes in a delay-\/slot directive. 
+
+
+
+Definition at line 35 of file sleighbase.\+hh.
+
+\mbox{\Hypertarget{class_sleigh_base_ad2fa79db86516492f21ed6d826e7b2c4}\label{class_sleigh_base_ad2fa79db86516492f21ed6d826e7b2c4}} 
+\index{SleighBase@{SleighBase}!numSections@{numSections}}
+\index{numSections@{numSections}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{numSections}{numSections}}
+{\footnotesize\ttfamily uint4 Sleigh\+Base\+::num\+Sections\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Number of {\itshape named} sections. 
+
+
+
+Definition at line 37 of file sleighbase.\+hh.
+
+\mbox{\Hypertarget{class_sleigh_base_a63699520bf1186106cf8200718b51039}\label{class_sleigh_base_a63699520bf1186106cf8200718b51039}} 
+\index{SleighBase@{SleighBase}!root@{root}}
+\index{root@{root}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_subtable_symbol}{Subtable\+Symbol}}$\ast$ Sleigh\+Base\+::root\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The root S\+L\+E\+I\+GH decoding symbol. 
+
+
+
+Definition at line 33 of file sleighbase.\+hh.
+
+\mbox{\Hypertarget{class_sleigh_base_ab7bf39a81c8133d7b21d491257b2627d}\label{class_sleigh_base_ab7bf39a81c8133d7b21d491257b2627d}} 
+\index{SleighBase@{SleighBase}!symtab@{symtab}}
+\index{symtab@{symtab}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{symtab}{symtab}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_symbol_table}{Symbol\+Table}} Sleigh\+Base\+::symtab\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The S\+L\+E\+I\+GH symbol table. 
+
+
+
+Definition at line 34 of file sleighbase.\+hh.
+
+\mbox{\Hypertarget{class_sleigh_base_a846f60e02230c33557328d9e0d7f8914}\label{class_sleigh_base_a846f60e02230c33557328d9e0d7f8914}} 
+\index{SleighBase@{SleighBase}!unique\_allocatemask@{unique\_allocatemask}}
+\index{unique\_allocatemask@{unique\_allocatemask}!SleighBase@{SleighBase}}
+\subsubsection{\texorpdfstring{unique\_allocatemask}{unique\_allocatemask}}
+{\footnotesize\ttfamily uint4 Sleigh\+Base\+::unique\+\_\+allocatemask\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Bits that are guaranteed to be zero in the unique allocation scheme. 
+
+
+
+Definition at line 36 of file sleighbase.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{sleighbase_8hh}{sleighbase.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{sleighbase_8cc}{sleighbase.\+cc}}\end{DoxyCompactItemize}

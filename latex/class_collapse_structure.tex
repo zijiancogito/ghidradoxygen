@@ -1,0 +1,121 @@
+\hypertarget{class_collapse_structure}{}\section{Collapse\+Structure Class Reference}
+\label{class_collapse_structure}\index{CollapseStructure@{CollapseStructure}}
+
+
+Build a code structure from a control-\/flow graph (\mbox{\hyperlink{class_block_graph}{Block\+Graph}}).  
+
+
+
+
+{\ttfamily \#include $<$blockaction.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collapse_structure_a86b3b578cba8a83f7c75dc28e95f39e0}{Collapse\+Structure}} (\mbox{\hyperlink{class_block_graph}{Block\+Graph}} \&g)
+\begin{DoxyCompactList}\small\item\em Construct given a control-\/flow graph. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_collapse_structure_a075bcd360eb6a82c92689fc18f1fcc1e}{get\+Change\+Count}} (void) const
+\begin{DoxyCompactList}\small\item\em Get number of data-\/flow changes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_collapse_structure_a5e36c78c71bf1ded2090424af870b7a0}{collapse\+All}} (void)
+\begin{DoxyCompactList}\small\item\em Run the whole algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Build a code structure from a control-\/flow graph (\mbox{\hyperlink{class_block_graph}{Block\+Graph}}). 
+
+This class manages the main control-\/flow structuring algorithm for the decompiler. In short\+:
+\begin{DoxyItemize}
+\item Start with a control-\/flow graph of basic blocks.
+\item Repeatedly apply\+:
+\begin{DoxyItemize}
+\item Search for sub-\/graphs matching specific code structure elements.
+\item Note the structure element and collapse the component nodes to a single node.
+\end{DoxyItemize}
+\item If the process gets stuck, remove appropriate edges, marking them as unstructured. 
+\end{DoxyItemize}
+
+Definition at line 190 of file blockaction.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collapse_structure_a86b3b578cba8a83f7c75dc28e95f39e0}\label{class_collapse_structure_a86b3b578cba8a83f7c75dc28e95f39e0}} 
+\index{CollapseStructure@{CollapseStructure}!CollapseStructure@{CollapseStructure}}
+\index{CollapseStructure@{CollapseStructure}!CollapseStructure@{CollapseStructure}}
+\subsubsection{\texorpdfstring{CollapseStructure()}{CollapseStructure()}}
+{\footnotesize\ttfamily Collapse\+Structure\+::\+Collapse\+Structure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_block_graph}{Block\+Graph}} \&}]{g }\end{DoxyParamCaption})}
+
+
+
+Construct given a control-\/flow graph. 
+
+The initial \mbox{\hyperlink{class_block_graph}{Block\+Graph}} should be a copy of the permanent control-\/flow graph. In particular the \mbox{\hyperlink{class_flow_block}{Flow\+Block}} nodes should be \mbox{\hyperlink{class_block_copy}{Block\+Copy}} instances. 
+\begin{DoxyParams}{Parameters}
+{\em g} & is the (copy of the) control-\/flow graph \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1848 of file blockaction.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collapse_structure_a5e36c78c71bf1ded2090424af870b7a0}\label{class_collapse_structure_a5e36c78c71bf1ded2090424af870b7a0}} 
+\index{CollapseStructure@{CollapseStructure}!collapseAll@{collapseAll}}
+\index{collapseAll@{collapseAll}!CollapseStructure@{CollapseStructure}}
+\subsubsection{\texorpdfstring{collapseAll()}{collapseAll()}}
+{\footnotesize\ttfamily void Collapse\+Structure\+::collapse\+All (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Run the whole algorithm. 
+
+Collapse everything in the control-\/flow graph to isolated blocks with no inputs and outputs. 
+
+Definition at line 1855 of file blockaction.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collapse_structure_a5e36c78c71bf1ded2090424af870b7a0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{class_collapse_structure_a5e36c78c71bf1ded2090424af870b7a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_collapse_structure_a075bcd360eb6a82c92689fc18f1fcc1e}\label{class_collapse_structure_a075bcd360eb6a82c92689fc18f1fcc1e}} 
+\index{CollapseStructure@{CollapseStructure}!getChangeCount@{getChangeCount}}
+\index{getChangeCount@{getChangeCount}!CollapseStructure@{CollapseStructure}}
+\subsubsection{\texorpdfstring{getChangeCount()}{getChangeCount()}}
+{\footnotesize\ttfamily int4 Collapse\+Structure\+::get\+Change\+Count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get number of data-\/flow changes. 
+
+
+
+Definition at line 222 of file blockaction.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{class_collapse_structure_a075bcd360eb6a82c92689fc18f1fcc1e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8hh}{blockaction.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{blockaction_8cc}{blockaction.\+cc}}\end{DoxyCompactItemize}

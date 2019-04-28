@@ -1,0 +1,106 @@
+.TH "ghidra.app.decompiler.parallel.ParallelDecompiler" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.parallel.ParallelDecompiler
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static< R > \fBList\fP< R > \fBdecompileFunctions\fP (QCallback< Function, R > callback, Program program, AddressSetView addresses, TaskMonitor monitor)  throws InterruptedException, Exception "
+.br
+.ti -1c
+.RI "static< R > \fBList\fP< R > \fBdecompileFunctions\fP (QCallback< Function, R > callback, Program program, Collection< Function > functions, TaskMonitor monitor)  throws InterruptedException, Exception "
+.br
+.ti -1c
+.RI "static< R > \fBChunkingParallelDecompiler\fP< R > \fBcreateChunkingParallelDecopmiler\fP (QCallback< Function, R > callback, TaskMonitor monitor)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 27 of file ParallelDecompiler\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static <R> \fBChunkingParallelDecompiler\fP<R> ghidra\&.app\&.decompiler\&.parallel\&.ParallelDecompiler\&.createChunkingParallelDecopmiler (QCallback< Function, R > callback, TaskMonitor monitor)\fC [inline]\fP, \fC [static]\fP"
+Creates an object that can be used to perform decompilation of a limited number of functions at a time, as opposed to working over an entire range of functions at once\&. \fBdecompileFunctions(QCallback, Program, AddressSetView, TaskMonitor)\fP will create and tear down concurrent data structures on each use, making repeated calls less efficient\&. You would use this method when you wish to perform periodic work as results are returned \fBand when using the callback mechanism is not sufficient\fP such as when ordering of results is required\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP the callback required to perform work\&. 
+.br
+\fImonitor\fP the monitor used to report progress and to cancel 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the parallel decompiler used for decompiling\&. 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file ParallelDecompiler\&.java\&.
+.SS "static <R> \fBList\fP<R> ghidra\&.app\&.decompiler\&.parallel\&.ParallelDecompiler\&.decompileFunctions (QCallback< Function, R > callback, Program program, AddressSetView addresses, TaskMonitor monitor) throws InterruptedException, Exception\fC [inline]\fP, \fC [static]\fP"
+Decompile the given functions using multiple decompilers
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP the callback to be called for each that is processed 
+.br
+\fIprogram\fP the program 
+.br
+\fIaddresses\fP the addresses restricting which functions to decompile 
+.br
+\fImonitor\fP the task monitor 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the list of client results 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInterruptedException\fP if interrupted 
+.br
+\fIException\fP if any other exception occurs 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file ParallelDecompiler\&.java\&.
+.SS "static <R> \fBList\fP<R> ghidra\&.app\&.decompiler\&.parallel\&.ParallelDecompiler\&.decompileFunctions (QCallback< Function, R > callback, Program program, Collection< Function > functions, TaskMonitor monitor) throws InterruptedException, Exception\fC [inline]\fP, \fC [static]\fP"
+Decompile the given functions using multiple decompilers
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP the callback to be called for each that is processed 
+.br
+\fIprogram\fP the program 
+.br
+\fIfunctions\fP the functions to decompile 
+.br
+\fImonitor\fP the task monitor 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the list of client results 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInterruptedException\fP if interrupted 
+.br
+\fIException\fP if any other exception occurs 
+.RE
+.PP
+
+.PP
+Definition at line 64 of file ParallelDecompiler\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,119 @@
+.TH "ParamMeasure" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParamMeasure
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <paramid\&.hh>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBWalkState\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBParamIDIO\fP { \fBINPUT\fP = 0, \fBOUTPUT\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBParamRank\fP { \fBBESTRANK\fP = 1, \fBDIRECTWRITEWITHOUTREAD\fP = 1, \fBDIRECTREAD\fP = 2, \fBDIRECTWRITEWITHREAD\fP = 2, \fBDIRECTWRITEUNKNOWNREAD\fP = 3, \fBSUBFNPARAM\fP = 4, \fBTHISFNPARAM\fP = 4, \fBSUBFNRETURN\fP = 5, \fBTHISFNRETURN\fP = 5, \fBINDIRECT\fP = 6, \fBWORSTRANK\fP = 7 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParamMeasure\fP (const \fBAddress\fP &addr, int4 sz, \fBDatatype\fP *dt, \fBParamIDIO\fP io_in)"
+.br
+.ti -1c
+.RI "void \fBcalculateRank\fP (bool best, \fBVarnode\fP *basevn, \fBPcodeOp\fP *ignoreop)"
+.br
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s, string tag, bool moredetail) const"
+.br
+.ti -1c
+.RI "void \fBsavePretty\fP (ostream &s, bool moredetail) const"
+.br
+.ti -1c
+.RI "int4 \fBgetMeasure\fP (void) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 21 of file paramid\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBParamMeasure::ParamIDIO\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIINPUT \fP\fP
+.TP
+\fB\fIOUTPUT \fP\fP
+.PP
+Definition at line 23 of file paramid\&.hh\&.
+.SS "enum \fBParamMeasure::ParamRank\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBESTRANK \fP\fP
+.TP
+\fB\fIDIRECTWRITEWITHOUTREAD \fP\fP
+.TP
+\fB\fIDIRECTREAD \fP\fP
+.TP
+\fB\fIDIRECTWRITEWITHREAD \fP\fP
+.TP
+\fB\fIDIRECTWRITEUNKNOWNREAD \fP\fP
+.TP
+\fB\fISUBFNPARAM \fP\fP
+.TP
+\fB\fITHISFNPARAM \fP\fP
+.TP
+\fB\fISUBFNRETURN \fP\fP
+.TP
+\fB\fITHISFNRETURN \fP\fP
+.TP
+\fB\fIINDIRECT \fP\fP
+.TP
+\fB\fIWORSTRANK \fP\fP
+.PP
+Definition at line 27 of file paramid\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParamMeasure::ParamMeasure (const \fBAddress\fP & addr, int4 sz, \fBDatatype\fP * dt, \fBParamIDIO\fP io_in)\fC [inline]\fP"
+
+.PP
+Definition at line 56 of file paramid\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ParamMeasure::calculateRank (bool best, \fBVarnode\fP * basevn, \fBPcodeOp\fP * ignoreop)"
+
+.PP
+Definition at line 135 of file paramid\&.cc\&.
+.SS "int4 ParamMeasure::getMeasure (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 61 of file paramid\&.hh\&.
+.SS "void ParamMeasure::savePretty (ostream & s, bool moredetail) const"
+
+.PP
+Definition at line 170 of file paramid\&.cc\&.
+.SS "void ParamMeasure::saveXml (ostream & s, string tag, bool moredetail) const"
+
+.PP
+Definition at line 155 of file paramid\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

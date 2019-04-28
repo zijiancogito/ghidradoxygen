@@ -1,0 +1,102 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator}{}\section{ghidra.\+app.\+decompiler.\+component.\+Basic\+Decompiler\+Field\+Panel\+Coordinator Class Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator}\index{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator@{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator}}
+
+
+Inheritance diagram for ghidra.\+app.\+decompiler.\+component.\+Basic\+Decompiler\+Field\+Panel\+Coordinator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ghidra.\+app.\+decompiler.\+component.\+Basic\+Decompiler\+Field\+Panel\+Coordinator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_a2764c8c272893858f249414c9cc0938e}{Basic\+Decompiler\+Field\+Panel\+Coordinator}} (\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_code_comparison_panel}{Basic\+Decompiler\+Code\+Comparison\+Panel}} dual\+Decompiler\+Panel, boolean sync\+Line\+Location)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_ae1809e04fb7067bf6734d34129071183}{left\+Location\+Changed}} (Program\+Location left\+Program\+Location)
+\item 
+void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_a6db30490ab0fa6ececbfa6e079677b9c}{right\+Location\+Changed}} (Program\+Location right\+Program\+Location)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A basic coordinator that locks two decompiler panels together at the first line so that scrolling one side also scrolls the other. It also allows the cursor locations to track together based on the line number or to move independent of each other. 
+
+Definition at line 26 of file Basic\+Decompiler\+Field\+Panel\+Coordinator.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_a2764c8c272893858f249414c9cc0938e}\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_a2764c8c272893858f249414c9cc0938e}} 
+\index{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator@{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator}!BasicDecompilerFieldPanelCoordinator@{BasicDecompilerFieldPanelCoordinator}}
+\index{BasicDecompilerFieldPanelCoordinator@{BasicDecompilerFieldPanelCoordinator}!ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator@{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator}}
+\subsubsection{\texorpdfstring{BasicDecompilerFieldPanelCoordinator()}{BasicDecompilerFieldPanelCoordinator()}}
+{\footnotesize\ttfamily ghidra.\+app.\+decompiler.\+component.\+Basic\+Decompiler\+Field\+Panel\+Coordinator.\+Basic\+Decompiler\+Field\+Panel\+Coordinator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_code_comparison_panel}{Basic\+Decompiler\+Code\+Comparison\+Panel}}}]{dual\+Decompiler\+Panel,  }\item[{boolean}]{sync\+Line\+Location }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructs a dual decompiler coordinator that scrolls the two panels together so that they are locked together at the first line. 
+\begin{DoxyParams}{Parameters}
+{\em dual\+Decompiler\+Panel} & the dual decompiler panel being controlled by this coordinator \\
+\hline
+{\em sync\+Line\+Location} & true means synchronize the cursors in the two decompiler panels to the same line number and offset if possible. false means the the cursors move independently of each other. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 39 of file Basic\+Decompiler\+Field\+Panel\+Coordinator.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_ae1809e04fb7067bf6734d34129071183}\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_ae1809e04fb7067bf6734d34129071183}} 
+\index{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator@{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator}!leftLocationChanged@{leftLocationChanged}}
+\index{leftLocationChanged@{leftLocationChanged}!ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator@{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator}}
+\subsubsection{\texorpdfstring{leftLocationChanged()}{leftLocationChanged()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+component.\+Basic\+Decompiler\+Field\+Panel\+Coordinator.\+left\+Location\+Changed (\begin{DoxyParamCaption}\item[{Program\+Location}]{left\+Program\+Location }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 47 of file Basic\+Decompiler\+Field\+Panel\+Coordinator.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_ae1809e04fb7067bf6734d34129071183_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_a6db30490ab0fa6ececbfa6e079677b9c}\label{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_a6db30490ab0fa6ececbfa6e079677b9c}} 
+\index{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator@{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator}!rightLocationChanged@{rightLocationChanged}}
+\index{rightLocationChanged@{rightLocationChanged}!ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator@{ghidra.app.decompiler.component.BasicDecompilerFieldPanelCoordinator}}
+\subsubsection{\texorpdfstring{rightLocationChanged()}{rightLocationChanged()}}
+{\footnotesize\ttfamily void ghidra.\+app.\+decompiler.\+component.\+Basic\+Decompiler\+Field\+Panel\+Coordinator.\+right\+Location\+Changed (\begin{DoxyParamCaption}\item[{Program\+Location}]{right\+Program\+Location }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 67 of file Basic\+Decompiler\+Field\+Panel\+Coordinator.\+java.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1component_1_1_basic_decompiler_field_panel_coordinator_a6db30490ab0fa6ececbfa6e079677b9c_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/component/\mbox{\hyperlink{_basic_decompiler_field_panel_coordinator_8java}{Basic\+Decompiler\+Field\+Panel\+Coordinator.\+java}}\end{DoxyCompactItemize}

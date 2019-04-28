@@ -1,0 +1,68 @@
+\hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer}{}\section{ghidra.\+app.\+decompiler.\+Decompiler\+Disposer Class Reference}
+\label{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer}\index{ghidra.app.decompiler.DecompilerDisposer@{ghidra.app.decompiler.DecompilerDisposer}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_ab905d5a11a054fb5df7b96b15e45ccc5}{dispose}} (Process process, Output\+Stream ouput\+Stream, Input\+Stream input\+Stream)
+\item 
+static void \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_a4bd490c8e90e1e320da1d0e16bc4025a}{dispose}} (\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}} decompiler)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 24 of file Decompiler\+Disposer.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_ab905d5a11a054fb5df7b96b15e45ccc5}\label{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_ab905d5a11a054fb5df7b96b15e45ccc5}} 
+\index{ghidra.app.decompiler.DecompilerDisposer@{ghidra.app.decompiler.DecompilerDisposer}!dispose@{dispose}}
+\index{dispose@{dispose}!ghidra.app.decompiler.DecompilerDisposer@{ghidra.app.decompiler.DecompilerDisposer}}
+\subsubsection{\texorpdfstring{dispose()}{dispose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static void ghidra.\+app.\+decompiler.\+Decompiler\+Disposer.\+dispose (\begin{DoxyParamCaption}\item[{Process}]{process,  }\item[{Output\+Stream}]{ouput\+Stream,  }\item[{Input\+Stream}]{input\+Stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Disposes the given Process and related streams from a background thread. This is necessary due to a low-\/probability deadlock that occurs in the J\+VM.
+
+
+\begin{DoxyParams}{Parameters}
+{\em process} & The process to destroy. \\
+\hline
+{\em ouput\+Stream} & The output stream to close \\
+\hline
+{\em input\+Stream} & The input stream to close \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 46 of file Decompiler\+Disposer.\+java.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_ab905d5a11a054fb5df7b96b15e45ccc5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_a4bd490c8e90e1e320da1d0e16bc4025a}\label{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_a4bd490c8e90e1e320da1d0e16bc4025a}} 
+\index{ghidra.app.decompiler.DecompilerDisposer@{ghidra.app.decompiler.DecompilerDisposer}!dispose@{dispose}}
+\index{dispose@{dispose}!ghidra.app.decompiler.DecompilerDisposer@{ghidra.app.decompiler.DecompilerDisposer}}
+\subsubsection{\texorpdfstring{dispose()}{dispose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static void ghidra.\+app.\+decompiler.\+Decompiler\+Disposer.\+dispose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}}}]{decompiler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Calls dispose in the given decompiler from a background thread. 
+
+Note\+:~\newline
+ A class to handle the rare case where the \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}}\textquotesingle{}s synchronized methods are blocking while a decompile operation has died and maintained the lock. In that scenario, calling dispose on this class will eventually try to enter a synchronized method that will remain blocked forever. 
+
+I examined the uses of \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_ab905d5a11a054fb5df7b96b15e45ccc5}{dispose()}} on the \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decomp_interface}{Decomp\+Interface}} and determined that calling \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_ab905d5a11a054fb5df7b96b15e45ccc5}{dispose()}} is a final operation, which means that you don\textquotesingle{}t have to wait. Further, after calling \mbox{\hyperlink{classghidra_1_1app_1_1decompiler_1_1_decompiler_disposer_ab905d5a11a054fb5df7b96b15e45ccc5}{dispose()}} on this class, you should no longer use it. 
+
+Definition at line 67 of file Decompiler\+Disposer.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/main/java/ghidra/app/decompiler/\mbox{\hyperlink{_decompiler_disposer_8java}{Decompiler\+Disposer.\+java}}\end{DoxyCompactItemize}

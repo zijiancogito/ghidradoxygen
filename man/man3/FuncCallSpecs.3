@@ -1,0 +1,738 @@
+.TH "FuncCallSpecs" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FuncCallSpecs \- A class for analyzing parameters to a sub-function call\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherits \fBFuncProto\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBoffset_unknown\fP = 0xBADBEEF }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFuncCallSpecs\fP (\fBPcodeOp\fP *call_op)"
+.br
+.RI "Construct based on CALL or CALLIND\&. "
+.ti -1c
+.RI "void \fBsetAddress\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Set (override) the callee's entry address\&. "
+.ti -1c
+.RI "\fBPcodeOp\fP * \fBgetOp\fP (void) const"
+.br
+.RI "Get the CALL or CALLIND corresponding to \fBthis\fP\&. "
+.ti -1c
+.RI "\fBFuncdata\fP * \fBgetFuncdata\fP (void) const"
+.br
+.RI "Get the \fBFuncdata\fP object associated with the called function\&. "
+.ti -1c
+.RI "void \fBsetFuncdata\fP (\fBFuncdata\fP *f)"
+.br
+.RI "Set the \fBFuncdata\fP object associated with the called function\&. "
+.ti -1c
+.RI "\fBFuncCallSpecs\fP * \fBclone\fP (\fBPcodeOp\fP *newop) const"
+.br
+.RI "Clone \fBthis\fP given the mirrored p-code CALL\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the function name associated with the callee\&. "
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetEntryAddress\fP (void) const"
+.br
+.RI "Get the entry address of the callee\&. "
+.ti -1c
+.RI "void \fBsetEffectiveExtraPop\fP (int4 epop)"
+.br
+.RI "Set the specific \fIextrapop\fP associate with \fBthis\fP call site\&. "
+.ti -1c
+.RI "int4 \fBgetEffectiveExtraPop\fP (void) const"
+.br
+.RI "Get the specific \fIextrapop\fP associate with \fBthis\fP call site\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBgetSpacebaseOffset\fP (void) const"
+.br
+.RI "Get the stack-pointer relative offset at the point of \fBthis\fP call site\&. "
+.ti -1c
+.RI "void \fBsetParamshift\fP (int4 val)"
+.br
+.RI "Set a parameter shift for this call site\&. "
+.ti -1c
+.RI "int4 \fBgetParamshift\fP (void) const"
+.br
+.RI "Get the parameter shift for this call site\&. "
+.ti -1c
+.RI "int4 \fBgetMatchCallCount\fP (void) const"
+.br
+.RI "Get the number of calls the caller makes to \fBthis\fP sub-function\&. "
+.ti -1c
+.RI "int4 \fBgetStackPlaceholderSlot\fP (void) const"
+.br
+.RI "Get the slot of the stack-pointer placeholder\&. "
+.ti -1c
+.RI "void \fBsetStackPlaceholderSlot\fP (int4 slot)"
+.br
+.RI "Set the slot of the stack-pointer placeholder\&. "
+.ti -1c
+.RI "void \fBclearStackPlaceholderSlot\fP (void)"
+.br
+.RI "Release the stack-pointer placeholder\&. "
+.ti -1c
+.RI "void \fBinitActiveInput\fP (void)"
+.br
+.RI "Turn on analysis recovering input parameters\&. "
+.ti -1c
+.RI "void \fBclearActiveInput\fP (void)"
+.br
+.RI "Turn off analysis recovering input parameters\&. "
+.ti -1c
+.RI "void \fBinitActiveOutput\fP (void)"
+.br
+.RI "Turn on analysis recovering the return value\&. "
+.ti -1c
+.RI "void \fBclearActiveOutput\fP (void)"
+.br
+.RI "Turn off analysis recovering the return value\&. "
+.ti -1c
+.RI "bool \fBisInputActive\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if input parameter recovery analysis is active\&. "
+.ti -1c
+.RI "bool \fBisOutputActive\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if return value recovery analysis is active\&. "
+.ti -1c
+.RI "void \fBsetBadJumpTable\fP (bool val)"
+.br
+.RI "Toggle whether \fBcall\fP site looked like an indirect jump\&. "
+.ti -1c
+.RI "bool \fBisBadJumpTable\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP call site looked like an indirect jump\&. "
+.ti -1c
+.RI "\fBParamActive\fP * \fBgetActiveInput\fP (void)"
+.br
+.RI "Get the analysis object for input parameter recovery\&. "
+.ti -1c
+.RI "\fBParamActive\fP * \fBgetActiveOutput\fP (void)"
+.br
+.RI "Get the analysis object for return value recovery\&. "
+.ti -1c
+.RI "bool \fBcheckInputJoin\fP (int4 slot1, bool ishislot, \fBVarnode\fP *vn1, \fBVarnode\fP *vn2) const"
+.br
+.RI "Check if adjacent parameter trials can be combined into a single logical parameter\&. "
+.ti -1c
+.RI "void \fBdoInputJoin\fP (int4 slot1, bool ishislot)"
+.br
+.RI "Join two parameter trials\&. "
+.ti -1c
+.RI "bool \fBlateRestriction\fP (const \fBFuncProto\fP &restrictedProto, vector< \fBVarnode\fP * > &newinput, \fBVarnode\fP *&newoutput)"
+.br
+.RI "Update \fBthis\fP prototype to match a given (more specialized) prototype\&. "
+.ti -1c
+.RI "void \fBdeindirect\fP (\fBFuncdata\fP &data, \fBFuncdata\fP *newfd)"
+.br
+.RI "Convert \fBthis\fP call site from an indirect to a direct function call\&. "
+.ti -1c
+.RI "void \fBforceSet\fP (\fBFuncdata\fP &data, const \fBFuncProto\fP &fp)"
+.br
+.RI "Force a more restrictive prototype on \fBthis\fP call site\&. "
+.ti -1c
+.RI "void \fBinsertPcode\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Inject any \fIupon-return\fP p-code at \fBthis\fP call site\&. "
+.ti -1c
+.RI "void \fBresolveSpacebaseRelative\fP (\fBFuncdata\fP &data, \fBVarnode\fP *phvn)"
+.br
+.RI "Calculate the stack offset of \fBthis\fP call site\&. "
+.ti -1c
+.RI "void \fBabortSpacebaseRelative\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Abort the attempt to recover the relative stack offset for \fBthis\fP function\&. "
+.ti -1c
+.RI "void \fBfinalInputCheck\fP (void)"
+.br
+.RI "Make final activity check on trials that might have been affected by conditional execution\&. "
+.ti -1c
+.RI "void \fBcheckInputTrialUse\fP (\fBFuncdata\fP &data, \fBAliasChecker\fP &aliascheck)"
+.br
+.RI "Mark if input trials are being actively used\&. "
+.ti -1c
+.RI "void \fBcheckOutputTrialUse\fP (\fBFuncdata\fP &data, vector< \fBVarnode\fP * > &trialvn)"
+.br
+.RI "Mark if output trials are being actively used\&. "
+.ti -1c
+.RI "void \fBbuildInputFromTrials\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Set the final input Varnodes to \fBthis\fP CALL based on \fBParamActive\fP analysis\&. "
+.ti -1c
+.RI "void \fBbuildOutputFromTrials\fP (\fBFuncdata\fP &data, vector< \fBVarnode\fP * > &trialvn)"
+.br
+.RI "Set the final output \fBVarnode\fP of \fBthis\fP CALL based on \fBParamActive\fP analysis of trials\&. "
+.ti -1c
+.RI "void \fBparamshiftModifyStart\fP (void)"
+.br
+.RI "Prepend any extra parameters if a paramshift is required\&. "
+.ti -1c
+.RI "bool \fBparamshiftModifyStop\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Throw out any paramshift parameters\&. "
+.ti -1c
+.RI "uint4 \fBhasEffectTranslate\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Calculate type of side-effect for a given storage location (with caller translation) "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBVarnode\fP * \fBfindPreexistingWhole\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2)"
+.br
+.RI "Check if given two Varnodes are merged into a whole\&. "
+.ti -1c
+.RI "static \fBFuncCallSpecs\fP * \fBgetFspecFromConst\fP (const \fBAddress\fP &addr)"
+.br
+.RI "Convert \fBFspecSpace\fP addresses to the underlying \fBFuncCallSpecs\fP object\&. "
+.ti -1c
+.RI "static bool \fBcompareByEntryAddress\fP (const \fBFuncCallSpecs\fP *a, const \fBFuncCallSpecs\fP *b)"
+.br
+.RI "Compare \fBFuncCallSpecs\fP by function entry address\&. "
+.ti -1c
+.RI "static void \fBcountMatchingCalls\fP (const vector< \fBFuncCallSpecs\fP * > &qlst)"
+.br
+.RI "Calculate the number of times an individual sub-function is called\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A class for analyzing parameters to a sub-function call\&. 
+
+This can be viewed as a function prototype that evolves over the course of analysis\&. It derives off of \fBFuncProto\fP and includes facilities for analyzing data-flow for parameter information\&. This is the high-level object managing the examination of data-flow to recover a working prototype (\fBParamActive\fP), holding a stack-pointer placeholder to facilitate stack analysis, and deciding on the working \fIextrapop\fP for the CALL\&.
+.PP
+A \fBstack-pointer\fP \fBplaceholder\fP is a temporary \fBVarnode\fP in the input operands of the CALL or CALLIND that is defined by a LOAD from the stack-pointer\&. By examining the pointer, the exact value of the stack-pointer (relative to its incoming value) can be computed at the point of the CALL\&. The temporary can arise naturally if stack parameters are a possibility, otherwise a placeholder temporary is artificially inserted into the CALL input\&. At the time heritage of the stack space is computed, the placeholder is examined to read off the active stack-pointer offset for the CALL and the placeholder is removed\&. 
+.PP
+Definition at line 1328 of file fspec\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIoffset_unknown \fP\fP
+'Magic' stack offset indicating the offset is unknown 
+.PP
+Definition at line 1353 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FuncCallSpecs::FuncCallSpecs (\fBPcodeOp\fP * call_op)"
+
+.PP
+Construct based on CALL or CALLIND\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcall_op\fP is the representative call site within the data-flow 
+.RE
+.PP
+
+.PP
+Definition at line 3768 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void FuncCallSpecs::abortSpacebaseRelative (\fBFuncdata\fP & data)"
+
+.PP
+Abort the attempt to recover the relative stack offset for \fBthis\fP function\&. Any stack-pointer \fIplaceholder\fP is removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.RE
+.PP
+
+.PP
+Definition at line 3758 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::buildInputFromTrials (\fBFuncdata\fP & data)"
+
+.PP
+Set the final input Varnodes to \fBthis\fP CALL based on \fBParamActive\fP analysis\&. Varnodes that don't look like parameters are removed\&. Parameters that are unreferenced are filled in\&. Other \fBVarnode\fP inputs may be truncated or extended\&. This prototype itself is unchanged\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.RE
+.PP
+
+.PP
+Definition at line 4486 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::buildOutputFromTrials (\fBFuncdata\fP & data, vector< \fBVarnode\fP * > & trialvn)"
+
+.PP
+Set the final output \fBVarnode\fP of \fBthis\fP CALL based on \fBParamActive\fP analysis of trials\&. If it exists, the active output trial is moved to be the output \fBVarnode\fP of \fBthis\fP CALL\&. If there are two active trials, they are merged as a single output of the CALL\&. Any INDIRECT ops that were holding the active trials are removed\&. This prototype itself is unchanged\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.br
+\fItrialvn\fP is the list of Varnodes associated with trials 
+.RE
+.PP
+
+.PP
+Definition at line 4565 of file fspec\&.cc\&.
+.SS "bool FuncCallSpecs::checkInputJoin (int4 slot1, bool ishislot, \fBVarnode\fP * vn1, \fBVarnode\fP * vn2) const"
+
+.PP
+Check if adjacent parameter trials can be combined into a single logical parameter\&. A slot must be provided indicating the trial and the only following it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslot1\fP is the first trial slot 
+.br
+\fIishislot\fP is \fBtrue\fP if the first slot will be the most significant piece 
+.br
+\fIvn1\fP is the \fBVarnode\fP corresponding to the first trial 
+.br
+\fIvn2\fP is the \fBVarnode\fP corresponding to the second trial 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the trials can be combined 
+.RE
+.PP
+
+.PP
+Definition at line 4159 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::checkInputTrialUse (\fBFuncdata\fP & data, \fBAliasChecker\fP & aliascheck)"
+
+.PP
+Mark if input trials are being actively used\&. Run through each input trial and try to make a determination if the trial is \fIactive\fP or not, meaning basically that a write has occurred on the trial with no intervening reads between the write and the call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.br
+\fIaliascheck\fP holds local aliasing information about the function 
+.RE
+.PP
+
+.PP
+Definition at line 4386 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::checkOutputTrialUse (\fBFuncdata\fP & data, vector< \fBVarnode\fP * > & trialvn)"
+
+.PP
+Mark if output trials are being actively used\&. Run through each output trial and try to make a determination if the trial is \fIactive\fP or not, meaning basically that the first occurrence of a trial after the call is a read\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.br
+\fItrialvn\fP will hold Varnodes corresponding to the trials 
+.RE
+.PP
+
+.PP
+Definition at line 4462 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::clearActiveInput (void)\fC [inline]\fP"
+
+.PP
+Turn off analysis recovering input parameters\&. 
+.PP
+Definition at line 1377 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::clearActiveOutput (void)\fC [inline]\fP"
+
+.PP
+Turn off analysis recovering the return value\&. 
+.PP
+Definition at line 1379 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::clearStackPlaceholderSlot (void)\fC [inline]\fP"
+
+.PP
+Release the stack-pointer placeholder\&. 
+.PP
+Definition at line 1373 of file fspec\&.hh\&.
+.SS "\fBFuncCallSpecs\fP * FuncCallSpecs::clone (\fBPcodeOp\fP * newop) const"
+
+.PP
+Clone \fBthis\fP given the mirrored p-code CALL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewop\fP replaces the CALL or CALLIND op in the clone 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBFuncCallSpecs\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3807 of file fspec\&.cc\&.
+.SS "static bool FuncCallSpecs::compareByEntryAddress (const \fBFuncCallSpecs\fP * a, const \fBFuncCallSpecs\fP * b)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Compare \fBFuncCallSpecs\fP by function entry address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBFuncCallSpecs\fP to compare 
+.br
+\fIb\fP is the second to compare 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the first should be ordered before the second 
+.RE
+.PP
+
+.PP
+Definition at line 1416 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::countMatchingCalls (const vector< \fBFuncCallSpecs\fP * > & qlst)\fC [static]\fP"
+
+.PP
+Calculate the number of times an individual sub-function is called\&. Provided a list of all call sites for a calling function, tally the number of calls to the same sub-function\&. Update the \fBmatchCallCount\fP field of each \fBFuncCallSpecs\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqlst\fP is the list of call sites (\fBFuncCallSpecs\fP) for the calling function 
+.RE
+.PP
+
+.PP
+Definition at line 4700 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::deindirect (\fBFuncdata\fP & data, \fBFuncdata\fP * newfd)"
+
+.PP
+Convert \fBthis\fP call site from an indirect to a direct function call\&. This call site must be a CALLIND, and the function that it is actually calling must be provided\&. The method makes a determination if the current state of data-flow allows converting to the prototype of the new function without dropping information due to inaccurate dead-code elimination\&. If conversion is safe, it is performed immediately\&. Otherwise a \fIrestart\fP directive issued to force decompilation to restart from scratch (now with the direct function in hand) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.br
+\fInewfd\fP is the \fBFuncdata\fP object that we know is the destination of \fBthis\fP CALLIND 
+.RE
+.PP
+
+.PP
+Definition at line 4251 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::doInputJoin (int4 slot1, bool ishislot)"
+
+.PP
+Join two parameter trials\&. We assume \fBcheckInputJoin()\fP has returned \fBtrue\fP\&. Perform the join, replacing the given adjacent trials with a single merged parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIslot1\fP is the trial slot of the first trial 
+.br
+\fIishislot\fP is \fBtrue\fP if the first slot will be the most significant piece 
+.RE
+.PP
+
+.PP
+Definition at line 4186 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::finalInputCheck (void)"
+
+.PP
+Make final activity check on trials that might have been affected by conditional execution\&. The activity level a trial may change once conditional execution has been analyzed\&. This routine (re)checks trials that might be affected by this, which may then be converted to \fInot\fP \fIused\fP\&. 
+.PP
+Definition at line 4365 of file fspec\&.cc\&.
+.SS "\fBVarnode\fP * FuncCallSpecs::findPreexistingWhole (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2)\fC [static]\fP"
+
+.PP
+Check if given two Varnodes are merged into a whole\&. If the Varnodes are merged immediately into a common whole and aren't used for anything else, return the whole \fBVarnode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn1\fP is the first given \fBVarnode\fP 
+.br
+\fIvn2\fP is the second given \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the combined \fBVarnode\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 4545 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::forceSet (\fBFuncdata\fP & data, const \fBFuncProto\fP & fp)"
+
+.PP
+Force a more restrictive prototype on \fBthis\fP call site\&. A new prototype must be given, typically recovered from a function pointer data-type that has been propagated to \fBthis\fP call site\&. The method makes a determination if the current state of data-flow allows converting to the new prototype without dropping information due to inaccurate dead-code elimination\&. If conversion is safe, it is performed immediately\&. Otherwise a \fIrestart\fP directive issued to force decompilation to restart from scratch (now with the new prototype in hand) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.br
+\fIfp\fP is the new (more restrictive) function prototype 
+.RE
+.PP
+
+.PP
+Definition at line 4289 of file fspec\&.cc\&.
+.SS "\fBParamActive\fP* FuncCallSpecs::getActiveInput (void)\fC [inline]\fP"
+
+.PP
+Get the analysis object for input parameter recovery\&. 
+.PP
+Definition at line 1384 of file fspec\&.hh\&.
+.SS "\fBParamActive\fP* FuncCallSpecs::getActiveOutput (void)\fC [inline]\fP"
+
+.PP
+Get the analysis object for return value recovery\&. 
+.PP
+Definition at line 1385 of file fspec\&.hh\&.
+.SS "int4 FuncCallSpecs::getEffectiveExtraPop (void) const\fC [inline]\fP"
+
+.PP
+Get the specific \fIextrapop\fP associate with \fBthis\fP call site\&. 
+.PP
+Definition at line 1365 of file fspec\&.hh\&.
+.SS "const \fBAddress\fP& FuncCallSpecs::getEntryAddress (void) const\fC [inline]\fP"
+
+.PP
+Get the entry address of the callee\&. 
+.PP
+Definition at line 1363 of file fspec\&.hh\&.
+.SS "static \fBFuncCallSpecs\fP* FuncCallSpecs::getFspecFromConst (const \fBAddress\fP & addr)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Convert \fBFspecSpace\fP addresses to the underlying \fBFuncCallSpecs\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given \fIfspec\fP address 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBFuncCallSpecs\fP object 
+.RE
+.PP
+
+.PP
+Definition at line 1409 of file fspec\&.hh\&.
+.SS "\fBFuncdata\fP* FuncCallSpecs::getFuncdata (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBFuncdata\fP object associated with the called function\&. 
+.PP
+Definition at line 1359 of file fspec\&.hh\&.
+.SS "int4 FuncCallSpecs::getMatchCallCount (void) const\fC [inline]\fP"
+
+.PP
+Get the number of calls the caller makes to \fBthis\fP sub-function\&. 
+.PP
+Definition at line 1369 of file fspec\&.hh\&.
+.SS "const string& FuncCallSpecs::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the function name associated with the callee\&. 
+.PP
+Definition at line 1362 of file fspec\&.hh\&.
+.SS "\fBPcodeOp\fP* FuncCallSpecs::getOp (void) const\fC [inline]\fP"
+
+.PP
+Get the CALL or CALLIND corresponding to \fBthis\fP\&. 
+.PP
+Definition at line 1358 of file fspec\&.hh\&.
+.SS "int4 FuncCallSpecs::getParamshift (void) const\fC [inline]\fP"
+
+.PP
+Get the parameter shift for this call site\&. 
+.PP
+Definition at line 1368 of file fspec\&.hh\&.
+.SS "\fBuintb\fP FuncCallSpecs::getSpacebaseOffset (void) const\fC [inline]\fP"
+
+.PP
+Get the stack-pointer relative offset at the point of \fBthis\fP call site\&. 
+.PP
+Definition at line 1366 of file fspec\&.hh\&.
+.SS "int4 FuncCallSpecs::getStackPlaceholderSlot (void) const\fC [inline]\fP"
+
+.PP
+Get the slot of the stack-pointer placeholder\&. 
+.PP
+Definition at line 1370 of file fspec\&.hh\&.
+.SS "uint4 FuncCallSpecs::hasEffectTranslate (const \fBAddress\fP & addr, int4 size) const"
+
+.PP
+Calculate type of side-effect for a given storage location (with caller translation) Stack locations should be provided from the caller's perspective\&. They are automatically translated to the callee's perspective before making the underlying query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the starting address of the storage location 
+.br
+\fIsize\fP is the number of bytes in the storage 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the effect type 
+.RE
+.PP
+
+.PP
+Definition at line 4684 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::initActiveInput (void)"
+
+.PP
+Turn on analysis recovering input parameters\&. 
+.PP
+Definition at line 4141 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::initActiveOutput (void)\fC [inline]\fP"
+
+.PP
+Turn on analysis recovering the return value\&. 
+.PP
+Definition at line 1378 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::insertPcode (\fBFuncdata\fP & data)"
+
+.PP
+Inject any \fIupon-return\fP p-code at \fBthis\fP call site\&. This function prototype may trigger injection of p-code immediately after the CALL or CALLIND to mimic a portion of the callee that decompilation of the caller otherwise wouldn't see\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.RE
+.PP
+
+.PP
+Definition at line 4318 of file fspec\&.cc\&.
+.SS "bool FuncCallSpecs::isBadJumpTable (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP call site looked like an indirect jump\&. 
+.PP
+Definition at line 1383 of file fspec\&.hh\&.
+.SS "bool FuncCallSpecs::isInputActive (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if input parameter recovery analysis is active\&. 
+.PP
+Definition at line 1380 of file fspec\&.hh\&.
+.SS "bool FuncCallSpecs::isOutputActive (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if return value recovery analysis is active\&. 
+.PP
+Definition at line 1381 of file fspec\&.hh\&.
+.SS "bool FuncCallSpecs::lateRestriction (const \fBFuncProto\fP & restrictedProto, vector< \fBVarnode\fP * > & newinput, \fBVarnode\fP *& newoutput)"
+
+.PP
+Update \fBthis\fP prototype to match a given (more specialized) prototype\&. This method assumes that \fBthis\fP prototype is in some intermediate state during the parameter recovery process and that a new definitive (locked) prototype is discovered for \fBthis\fP call site\&. This method checks to see if \fBthis\fP can be updated to match the new prototype without missing any data-flow\&. If so, \fBthis\fP is updated, and new input and output Varnodes for the CALL are passed back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrestrictedProto\fP is the new definitive function prototype 
+.br
+\fInewinput\fP will hold the new list of input Varnodes for the CALL 
+.br
+\fInewoutput\fP will hold the new output \fBVarnode\fP or NULL 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP can be fully converted 
+.RE
+.PP
+
+.PP
+Definition at line 4218 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::paramshiftModifyStart (void)"
+
+.PP
+Prepend any extra parameters if a paramshift is required\&. 
+.PP
+Definition at line 4651 of file fspec\&.cc\&.
+.SS "bool FuncCallSpecs::paramshiftModifyStop (\fBFuncdata\fP & data)"
+
+.PP
+Throw out any paramshift parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if a change was made 
+.RE
+.PP
+
+.PP
+Definition at line 4661 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::resolveSpacebaseRelative (\fBFuncdata\fP & data, \fBVarnode\fP * phvn)"
+
+.PP
+Calculate the stack offset of \fBthis\fP call site\&. The given \fBVarnode\fP must be the input to the CALL in the \fIplaceholder\fP slot and must be defined by a COPY from a \fBVarnode\fP in the stack space\&. Calculate the offset of the stack-pointer at the point of \fBthis\fP CALL, relative to the incoming stack-pointer value\&. This can be obtained either be looking at a stack parameter, or if there is no stack parameter, the stack-pointer \fIplaceholder\fP can be used\&. If the \fIplaceholder\fP has no other purpose, remove it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the calling function 
+.br
+\fIphvn\fP is the \fBVarnode\fP in the \fIplaceholder\fP slot for \fBthis\fP CALL 
+.RE
+.PP
+
+.PP
+Definition at line 3717 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::setAddress (const \fBAddress\fP & addr)\fC [inline]\fP"
+
+.PP
+Set (override) the callee's entry address\&. 
+.PP
+Definition at line 1357 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::setBadJumpTable (bool val)\fC [inline]\fP"
+
+.PP
+Toggle whether \fBcall\fP site looked like an indirect jump\&. 
+.PP
+Definition at line 1382 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::setEffectiveExtraPop (int4 epop)\fC [inline]\fP"
+
+.PP
+Set the specific \fIextrapop\fP associate with \fBthis\fP call site\&. 
+.PP
+Definition at line 1364 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::setFuncdata (\fBFuncdata\fP * f)"
+
+.PP
+Set the \fBFuncdata\fP object associated with the called function\&. 
+.PP
+Definition at line 3792 of file fspec\&.cc\&.
+.SS "void FuncCallSpecs::setParamshift (int4 val)\fC [inline]\fP"
+
+.PP
+Set a parameter shift for this call site\&. 
+.PP
+Definition at line 1367 of file fspec\&.hh\&.
+.SS "void FuncCallSpecs::setStackPlaceholderSlot (int4 slot)\fC [inline]\fP"
+
+.PP
+Set the slot of the stack-pointer placeholder\&. 
+.PP
+Definition at line 1371 of file fspec\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

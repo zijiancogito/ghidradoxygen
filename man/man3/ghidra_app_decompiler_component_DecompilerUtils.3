@@ -1,0 +1,175 @@
+.TH "ghidra.app.decompiler.component.DecompilerUtils" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.DecompilerUtils
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBVarnode\fP \fBgetVarnodeRef\fP (\fBClangToken\fP vartoken)"
+.br
+.ti -1c
+.RI "static Set< \fBVarnode\fP > \fBgetForwardSlice\fP (\fBVarnode\fP seed)"
+.br
+.ti -1c
+.RI "static Set< \fBVarnode\fP > \fBgetBackwardSlice\fP (\fBVarnode\fP seed)"
+.br
+.ti -1c
+.RI "static Set< \fBPcodeOp\fP > \fBgetForwardSliceToPCodeOps\fP (\fBVarnode\fP seed)"
+.br
+.ti -1c
+.RI "static Set< \fBPcodeOp\fP > \fBgetBackwardSliceToPCodeOps\fP (\fBVarnode\fP seed)"
+.br
+.ti -1c
+.RI "static Function \fBgetFunction\fP (Program program, \fBClangFuncNameToken\fP token)"
+.br
+.ti -1c
+.RI "static int \fBfindIndexOfFirstField\fP (\fBList\fP< \fBClangToken\fP > tokenlist, Field[] fields)"
+.br
+.ti -1c
+.RI "static \fBList\fP< \fBClangToken\fP > \fBgetTokens\fP (\fBClangNode\fP root, AddressSetView addressSet)"
+.br
+.ti -1c
+.RI "static \fBList\fP< \fBClangToken\fP > \fBgetTokens\fP (\fBClangNode\fP root, \fBAddress\fP address)"
+.br
+.ti -1c
+.RI "static \fBAddress\fP \fBgetClosestAddress\fP (\fBClangToken\fP token)"
+.br
+.ti -1c
+.RI "static AddressSet \fBfindClosestAddressSet\fP (Program program, AddressSpace functionSpace, \fBList\fP< \fBClangToken\fP > tokenList)"
+.br
+.ti -1c
+.RI "static FieldSelection \fBgetFieldSelection\fP (\fBList\fP< \fBClangToken\fP > tokens)"
+.br
+.ti -1c
+.RI "static \fBList\fP< \fBClangToken\fP > \fBgetTokensInSelection\fP (FieldSelection selection, Field[] lines)"
+.br
+.ti -1c
+.RI "static \fBAddress\fP \fBfindAddressBefore\fP (Field[] lines, \fBClangToken\fP token)"
+.br
+.ti -1c
+.RI "static ArrayList< \fBClangLine\fP > \fBtoLines\fP (\fBClangTokenGroup\fP group)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 28 of file DecompilerUtils\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBAddress\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.findAddressBefore (Field [] lines, \fBClangToken\fP token)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 501 of file DecompilerUtils\&.java\&.
+.SS "static AddressSet ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.findClosestAddressSet (Program program, AddressSpace functionSpace, \fBList\fP< \fBClangToken\fP > tokenList)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 341 of file DecompilerUtils\&.java\&.
+.SS "static int ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.findIndexOfFirstField (\fBList\fP< \fBClangToken\fP > tokenlist, Field [] fields)\fC [inline]\fP, \fC [static]\fP"
+Find index of first field containing a \fBClangNode\fP in tokenList 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItokenlist\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+index of field, or -1 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file DecompilerUtils\&.java\&.
+.SS "static Set<\fBVarnode\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getBackwardSlice (\fBVarnode\fP seed)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 99 of file DecompilerUtils\&.java\&.
+.SS "static Set<\fBPcodeOp\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getBackwardSliceToPCodeOps (\fBVarnode\fP seed)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 171 of file DecompilerUtils\&.java\&.
+.SS "static \fBAddress\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getClosestAddress (\fBClangToken\fP token)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 329 of file DecompilerUtils\&.java\&.
+.SS "static FieldSelection ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getFieldSelection (\fBList\fP< \fBClangToken\fP > tokens)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 421 of file DecompilerUtils\&.java\&.
+.SS "static Set<\fBVarnode\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getForwardSlice (\fBVarnode\fP seed)\fC [inline]\fP, \fC [static]\fP"
+Construct the set of varnodes making up a simple forward slice of seed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseed\fP \fBVarnode\fP where the slice starts 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+set of Varnodes in the slice 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file DecompilerUtils\&.java\&.
+.SS "static Set<\fBPcodeOp\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getForwardSliceToPCodeOps (\fBVarnode\fP seed)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 133 of file DecompilerUtils\&.java\&.
+.SS "static Function ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getFunction (Program program, \fBClangFuncNameToken\fP token)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+the function referenced by the given token 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file DecompilerUtils\&.java\&.
+.SS "static \fBList\fP<\fBClangToken\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getTokens (\fBClangNode\fP root, AddressSetView addressSet)\fC [inline]\fP, \fC [static]\fP"
+Find all ClangNodes that have a minimum address in the AddressSetView 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreslist\fP is resulting list of found ClangNodes 
+.br
+\fIparentNode\fP is root of node tree to search 
+.br
+\fIaset\fP is the AddressSetView to match 
+.RE
+.PP
+
+.PP
+Definition at line 261 of file DecompilerUtils\&.java\&.
+.SS "static \fBList\fP<\fBClangToken\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getTokens (\fBClangNode\fP root, \fBAddress\fP address)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 267 of file DecompilerUtils\&.java\&.
+.SS "static \fBList\fP<\fBClangToken\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getTokensInSelection (FieldSelection selection, Field [] lines)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 432 of file DecompilerUtils\&.java\&.
+.SS "static \fBVarnode\fP ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.getVarnodeRef (\fBClangToken\fP vartoken)\fC [inline]\fP, \fC [static]\fP"
+If the token refers to an individual \fBVarnode\fP, return it\&. Otherwise return null; 
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBVarnode\fP or null otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file DecompilerUtils\&.java\&.
+.SS "static ArrayList<\fBClangLine\fP> ghidra\&.app\&.decompiler\&.component\&.DecompilerUtils\&.toLines (\fBClangTokenGroup\fP group)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 515 of file DecompilerUtils\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

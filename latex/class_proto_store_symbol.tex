@@ -1,0 +1,427 @@
+\hypertarget{class_proto_store_symbol}{}\section{Proto\+Store\+Symbol Class Reference}
+\label{class_proto_store_symbol}\index{ProtoStoreSymbol@{ProtoStoreSymbol}}
+
+
+A collection of parameter descriptions backed by \mbox{\hyperlink{class_symbol}{Symbol}} information.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+
+
+Inheritance diagram for Proto\+Store\+Symbol\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_proto_store_symbol__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Proto\+Store\+Symbol\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_proto_store_symbol__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_proto_store_symbol_ac124539bc8682646d3cd44dcb84ee960}{Proto\+Store\+Symbol}} (\mbox{\hyperlink{class_scope}{Scope}} $\ast$sc, const \mbox{\hyperlink{class_address}{Address}} \&usepoint)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_constructor}{Constructor}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_proto_store_symbol_aa9b1e5730ea26546b4cb1ef587e16daf}{$\sim$\+Proto\+Store\+Symbol}} (void)
+\item 
+virtual \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ \mbox{\hyperlink{class_proto_store_symbol_af9e24d39271ea90fc074010e4b24a2b1}{set\+Input}} (int4 i, const string \&nm, const \mbox{\hyperlink{struct_parameter_pieces}{Parameter\+Pieces}} \&pieces)
+\begin{DoxyCompactList}\small\item\em Establish name, data-\/type, storage of a specific input parameter. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_proto_store_symbol_aa36f84c14205c90e18708858a3ae4ae5}{clear\+Input}} (int4 i)
+\begin{DoxyCompactList}\small\item\em Clear the input parameter at the specified slot. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_proto_store_symbol_a4542dcfd95d5a0e225c327e40208ea71}{clear\+All\+Inputs}} (void)
+\begin{DoxyCompactList}\small\item\em Clear all input parameters (and any backing symbols) \end{DoxyCompactList}\item 
+virtual int4 \mbox{\hyperlink{class_proto_store_symbol_a26d8910259e3965c4491048935c277ec}{get\+Num\+Inputs}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of input parameters for {\bfseries{this}} prototype. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ \mbox{\hyperlink{class_proto_store_symbol_a55788c21f1b3699731f1956d75ef1d45}{get\+Input}} (int4 i)
+\begin{DoxyCompactList}\small\item\em Get the i-\/th input parameter (or N\+U\+LL if it doesn\textquotesingle{}t exist) \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ \mbox{\hyperlink{class_proto_store_symbol_a06c54299b4b14b6b41a26cdcee6d5484}{set\+Output}} (const \mbox{\hyperlink{struct_parameter_pieces}{Parameter\+Pieces}} \&piece)
+\begin{DoxyCompactList}\small\item\em Establish the data-\/type and storage of the return value. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_proto_store_symbol_aadbd3a9fba172e28405eeb0001292bff}{clear\+Output}} (void)
+\begin{DoxyCompactList}\small\item\em Clear the return value to T\+Y\+P\+E\+\_\+\+V\+O\+ID. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ \mbox{\hyperlink{class_proto_store_symbol_a19fe1743657cce5d27aec73bf9056566}{get\+Output}} (void)
+\begin{DoxyCompactList}\small\item\em Get the return-\/value description. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_proto_store}{Proto\+Store}} $\ast$ \mbox{\hyperlink{class_proto_store_symbol_aa6631290325889edb7ef7699fdd8a90f}{clone}} (void) const
+\begin{DoxyCompactList}\small\item\em Clone the entire collection of parameter descriptions. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_proto_store_symbol_a0989f9e72831242facf0f4d1b563ec38}{save\+Xml}} (ostream \&s) const
+\begin{DoxyCompactList}\small\item\em Save any parameters that are not backed by symbols to an X\+ML stream. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_proto_store_symbol_a6438185b37fc367226073f194a38d110}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, \mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$model)
+\begin{DoxyCompactList}\small\item\em Restore any internal parameter descriptions from an X\+ML stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A collection of parameter descriptions backed by \mbox{\hyperlink{class_symbol}{Symbol}} information. 
+
+Input parameters are determined by symbols a function \mbox{\hyperlink{class_scope}{Scope}} (category 0). Information about the return-\/value is stored internally. \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} objects are constructed on the fly as requested and cached. 
+
+Definition at line 988 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_proto_store_symbol_ac124539bc8682646d3cd44dcb84ee960}\label{class_proto_store_symbol_ac124539bc8682646d3cd44dcb84ee960}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{ProtoStoreSymbol()}{ProtoStoreSymbol()}}
+{\footnotesize\ttfamily Proto\+Store\+Symbol\+::\+Proto\+Store\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scope}{Scope}} $\ast$}]{sc,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{usepoint }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_constructor}{Constructor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sc} & is the function \mbox{\hyperlink{class_scope}{Scope}} that will back {\bfseries{this}} store \\
+\hline
+{\em usepoint} & is the starting address of the function (-\/1) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2276 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_ac124539bc8682646d3cd44dcb84ee960_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_ac124539bc8682646d3cd44dcb84ee960_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_aa9b1e5730ea26546b4cb1ef587e16daf}\label{class_proto_store_symbol_aa9b1e5730ea26546b4cb1ef587e16daf}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!````~ProtoStoreSymbol@{$\sim$ProtoStoreSymbol}}
+\index{````~ProtoStoreSymbol@{$\sim$ProtoStoreSymbol}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{$\sim$ProtoStoreSymbol()}{~ProtoStoreSymbol()}}
+{\footnotesize\ttfamily Proto\+Store\+Symbol\+::$\sim$\+Proto\+Store\+Symbol (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 2288 of file fspec.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_proto_store_symbol_a4542dcfd95d5a0e225c327e40208ea71}\label{class_proto_store_symbol_a4542dcfd95d5a0e225c327e40208ea71}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!clearAllInputs@{clearAllInputs}}
+\index{clearAllInputs@{clearAllInputs}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{clearAllInputs()}{clearAllInputs()}}
+{\footnotesize\ttfamily void Proto\+Store\+Symbol\+::clear\+All\+Inputs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear all input parameters (and any backing symbols) 
+
+
+
+Implements \mbox{\hyperlink{class_proto_store_a2b2eab8f123a06bb4f4619e039bb1106}{Proto\+Store}}.
+
+
+
+Definition at line 2387 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_a4542dcfd95d5a0e225c327e40208ea71_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_aa36f84c14205c90e18708858a3ae4ae5}\label{class_proto_store_symbol_aa36f84c14205c90e18708858a3ae4ae5}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!clearInput@{clearInput}}
+\index{clearInput@{clearInput}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{clearInput()}{clearInput()}}
+{\footnotesize\ttfamily void Proto\+Store\+Symbol\+::clear\+Input (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear the input parameter at the specified slot. 
+
+The parameter is excised, any following parameters are shifted to fill its spot. If there is a backing \mbox{\hyperlink{class_symbol}{Symbol}}, it is removed from the \mbox{\hyperlink{class_symbol_table}{Symbol\+Table}} 
+\begin{DoxyParams}{Parameters}
+{\em i} & is the specified parameter slot to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_proto_store_afa6361ac313cdd2ccef1531209389cdc}{Proto\+Store}}.
+
+
+
+Definition at line 2370 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_aa36f84c14205c90e18708858a3ae4ae5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_aadbd3a9fba172e28405eeb0001292bff}\label{class_proto_store_symbol_aadbd3a9fba172e28405eeb0001292bff}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!clearOutput@{clearOutput}}
+\index{clearOutput@{clearOutput}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{clearOutput()}{clearOutput()}}
+{\footnotesize\ttfamily void Proto\+Store\+Symbol\+::clear\+Output (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear the return value to T\+Y\+P\+E\+\_\+\+V\+O\+ID. 
+
+
+
+Implements \mbox{\hyperlink{class_proto_store_a02928f3bab6c98f728a1759e3127e5c4}{Proto\+Store}}.
+
+
+
+Definition at line 2419 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_aadbd3a9fba172e28405eeb0001292bff_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_aa6631290325889edb7ef7699fdd8a90f}\label{class_proto_store_symbol_aa6631290325889edb7ef7699fdd8a90f}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!clone@{clone}}
+\index{clone@{clone}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_store}{Proto\+Store}} $\ast$ Proto\+Store\+Symbol\+::clone (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clone the entire collection of parameter descriptions. 
+
+
+
+Implements \mbox{\hyperlink{class_proto_store_aaefd44fa7803bbeb4d91059cc6480419}{Proto\+Store}}.
+
+
+
+Definition at line 2434 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_aa6631290325889edb7ef7699fdd8a90f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_a55788c21f1b3699731f1956d75ef1d45}\label{class_proto_store_symbol_a55788c21f1b3699731f1956d75ef1d45}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!getInput@{getInput}}
+\index{getInput@{getInput}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{getInput()}{getInput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ Proto\+Store\+Symbol\+::get\+Input (\begin{DoxyParamCaption}\item[{int4}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the i-\/th input parameter (or N\+U\+LL if it doesn\textquotesingle{}t exist) 
+
+
+
+Implements \mbox{\hyperlink{class_proto_store_a97623d0ed5720f94d7c671edccbd9142}{Proto\+Store}}.
+
+
+
+Definition at line 2399 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_a55788c21f1b3699731f1956d75ef1d45_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_a26d8910259e3965c4491048935c277ec}\label{class_proto_store_symbol_a26d8910259e3965c4491048935c277ec}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!getNumInputs@{getNumInputs}}
+\index{getNumInputs@{getNumInputs}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{getNumInputs()}{getNumInputs()}}
+{\footnotesize\ttfamily int4 Proto\+Store\+Symbol\+::get\+Num\+Inputs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the number of input parameters for {\bfseries{this}} prototype. 
+
+
+
+Implements \mbox{\hyperlink{class_proto_store_a641e1b680e3a7c67b65a964d06d60187}{Proto\+Store}}.
+
+
+
+Definition at line 2393 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_a26d8910259e3965c4491048935c277ec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_a19fe1743657cce5d27aec73bf9056566}\label{class_proto_store_symbol_a19fe1743657cce5d27aec73bf9056566}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!getOutput@{getOutput}}
+\index{getOutput@{getOutput}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{getOutput()}{getOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ Proto\+Store\+Symbol\+::get\+Output (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the return-\/value description. 
+
+
+
+Implements \mbox{\hyperlink{class_proto_store_aeb240f8e1b797060196c4bb7be000197}{Proto\+Store}}.
+
+
+
+Definition at line 2428 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_proto_store_symbol_a6438185b37fc367226073f194a38d110}\label{class_proto_store_symbol_a6438185b37fc367226073f194a38d110}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Proto\+Store\+Symbol\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{\mbox{\hyperlink{class_proto_model}{Proto\+Model}} $\ast$}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restore any internal parameter descriptions from an X\+ML stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em el} & is a root $<$internallist$>$ element containing $<$param$>$ and $<$retparam$>$ sub-\/tags. \\
+\hline
+{\em model} & is prototype model for determining storage for unassigned parameters \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_proto_store_a7311214c33205be191361836d716f99b}{Proto\+Store}}.
+
+
+
+Definition at line 2453 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_proto_store_symbol_a0989f9e72831242facf0f4d1b563ec38}\label{class_proto_store_symbol_a0989f9e72831242facf0f4d1b563ec38}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Proto\+Store\+Symbol\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Save any parameters that are not backed by symbols to an X\+ML stream. 
+
+Symbols are stored elsewhere, so symbol backed parameters are not serialized. If there are any internal parameters an $<$internallist$>$ tag is emitted. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is the output stream \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_proto_store_ac6e8cc6bfcb10d84a69c3f6011c5de06}{Proto\+Store}}.
+
+
+
+Definition at line 2447 of file fspec.\+cc.
+
+\mbox{\Hypertarget{class_proto_store_symbol_af9e24d39271ea90fc074010e4b24a2b1}\label{class_proto_store_symbol_af9e24d39271ea90fc074010e4b24a2b1}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!setInput@{setInput}}
+\index{setInput@{setInput}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{setInput()}{setInput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ Proto\+Store\+Symbol\+::set\+Input (\begin{DoxyParamCaption}\item[{int4}]{i,  }\item[{const string \&}]{nm,  }\item[{const \mbox{\hyperlink{struct_parameter_pieces}{Parameter\+Pieces}} \&}]{pieces }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Establish name, data-\/type, storage of a specific input parameter. 
+
+This either allocates a new parameter or replaces the existing one at the specified input slot. If there is a backing symbol table, a \mbox{\hyperlink{class_symbol}{Symbol}} is created or modified. 
+\begin{DoxyParams}{Parameters}
+{\em i} & is the specified input slot \\
+\hline
+{\em nm} & is the (optional) name of the parameter \\
+\hline
+{\em pieces} & holds the raw storage address and data-\/type to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new/modified \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_proto_store_af24924b3d08fedff7e55788f2b7a0043}{Proto\+Store}}.
+
+
+
+Definition at line 2320 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_af9e24d39271ea90fc074010e4b24a2b1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_proto_store_symbol_a06c54299b4b14b6b41a26cdcee6d5484}\label{class_proto_store_symbol_a06c54299b4b14b6b41a26cdcee6d5484}} 
+\index{ProtoStoreSymbol@{ProtoStoreSymbol}!setOutput@{setOutput}}
+\index{setOutput@{setOutput}!ProtoStoreSymbol@{ProtoStoreSymbol}}
+\subsubsection{\texorpdfstring{setOutput()}{setOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} $\ast$ Proto\+Store\+Symbol\+::set\+Output (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_parameter_pieces}{Parameter\+Pieces}} \&}]{piece }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Establish the data-\/type and storage of the return value. 
+
+This either allocates a new parameter or replaces the existing one. A {\itshape void} return value can be specified with an {\itshape invalid} address and T\+Y\+P\+E\+\_\+\+V\+O\+ID data-\/type. 
+\begin{DoxyParams}{Parameters}
+{\em piece} & holds the raw storage address and data-\/type to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new/modified \mbox{\hyperlink{class_proto_parameter}{Proto\+Parameter}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_proto_store_a51a4d28fac8dc3ba5037190ed0cc0edc}{Proto\+Store}}.
+
+
+
+Definition at line 2410 of file fspec.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_proto_store_symbol_a06c54299b4b14b6b41a26cdcee6d5484_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

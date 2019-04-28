@@ -1,0 +1,56 @@
+.TH "AncestorRealistic" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AncestorRealistic \- Helper class for determining if Varnodes can trace their value from a legitimate source\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <funcdata\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBexecute\fP (\fBPcodeOp\fP *op, int4 slot, \fBParamTrial\fP *t, bool allowFail)"
+.br
+.RI "Perform a full ancestor check on a given parameter trial\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class for determining if Varnodes can trace their value from a legitimate source\&. 
+
+Try to determine if a \fBVarnode\fP (expressed as a particular input to a CALL, CALLIND, or RETURN op) makes sense as parameter passing (or return value) storage by examining the \fBVarnode\fP's ancestors\&. If it has ancestors that are \fIunaffected\fP, \fIabnormal\fP inputs, or \fIkilledbycall\fP, then this is a sign that the \fBVarnode\fP doesn't make a good parameter\&. 
+.PP
+Definition at line 539 of file funcdata\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool AncestorRealistic::execute (\fBPcodeOp\fP * op, int4 slot, \fBParamTrial\fP * t, bool allowFail)"
+
+.PP
+Perform a full ancestor check on a given parameter trial\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the CALL or RETURN to test parameter passing for 
+.br
+\fIslot\fP is the index of the particular input varnode to test 
+.br
+\fIt\fP is the \fBParamTrial\fP object corresponding to the varnode 
+.br
+\fIallowFailingPath\fP is true if we allow and test for failing paths due to conditional execution 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the varnode has realistic ancestors for a parameter passing location 
+.RE
+.PP
+
+.PP
+Definition at line 1520 of file funcdata_varnode\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

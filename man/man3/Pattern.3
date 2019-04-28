@@ -1,0 +1,125 @@
+.TH "Pattern" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Pattern
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slghpattern\&.hh>\fP
+.PP
+Inherited by \fBDisjointPattern\fP, and \fBOrPattern\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~Pattern\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBsimplifyClone\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBshiftInstruction\fP (int4 sa)=0"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoOr\fP (const \fBPattern\fP *b, int4 sa) const =0"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBdoAnd\fP (const \fBPattern\fP *b, int4 sa) const =0"
+.br
+.ti -1c
+.RI "virtual \fBPattern\fP * \fBcommonSubPattern\fP (const \fBPattern\fP *b, int4 sa) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBisMatch\fP (\fBParserWalker\fP &walker) const =0"
+.br
+.ti -1c
+.RI "virtual int4 \fBnumDisjoint\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual \fBDisjointPattern\fP * \fBgetDisjoint\fP (int4 i) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysTrue\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysFalse\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBalwaysInstructionTrue\fP (void) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 51 of file slghpattern\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Pattern::~Pattern (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 53 of file slghpattern\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool Pattern::alwaysFalse (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual bool Pattern::alwaysInstructionTrue (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual bool Pattern::alwaysTrue (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual \fBPattern\fP* Pattern::commonSubPattern (const \fBPattern\fP * b, int4 sa) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual \fBPattern\fP* Pattern::doAnd (const \fBPattern\fP * b, int4 sa) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual \fBPattern\fP* Pattern::doOr (const \fBPattern\fP * b, int4 sa) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual \fBDisjointPattern\fP* Pattern::getDisjoint (int4 i) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, and \fBDisjointPattern\fP\&.
+.SS "virtual bool Pattern::isMatch (\fBParserWalker\fP & walker) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual int4 Pattern::numDisjoint (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, and \fBDisjointPattern\fP\&.
+.SS "virtual void Pattern::restoreXml (const \fBElement\fP * el)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual void Pattern::saveXml (ostream & s) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual void Pattern::shiftInstruction (int4 sa)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+.SS "virtual \fBPattern\fP* Pattern::simplifyClone (void) const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBOrPattern\fP, \fBCombinePattern\fP, \fBContextPattern\fP, and \fBInstructionPattern\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

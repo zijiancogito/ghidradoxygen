@@ -1,0 +1,226 @@
+.TH "ActionDatabase" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ActionDatabase \- \fBDatabase\fP of root \fBAction\fP objects that can be used to transform a function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <action\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionDatabase\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "\fB~ActionDatabase\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBregisterUniversal\fP (\fBAction\fP *act)"
+.br
+.RI "Register the \fIuniversal\fP root \fBAction\fP\&. "
+.ti -1c
+.RI "\fBAction\fP * \fBgetCurrent\fP (void) const"
+.br
+.RI "Get the current \fIroot\fP \fBAction\fP\&. "
+.ti -1c
+.RI "const string & \fBgetCurrentName\fP (void) const"
+.br
+.RI "Get the name of the current \fIroot\fP \fBAction\fP\&. "
+.ti -1c
+.RI "const \fBActionGroupList\fP & \fBgetGroup\fP (const string &grp) const"
+.br
+.RI "Get a specific grouplist by name\&. "
+.ti -1c
+.RI "\fBAction\fP * \fBsetCurrent\fP (const string &actname)"
+.br
+.RI "Set the current \fIroot\fP \fBAction\fP\&. "
+.ti -1c
+.RI "\fBAction\fP * \fBtoggleAction\fP (const string &grp, const string &basegrp, bool val)"
+.br
+.RI "Toggle a group of Actions with a \fIroot\fP \fBAction\fP\&. "
+.ti -1c
+.RI "void \fBsetGroup\fP (const string &grp, const char **argv)"
+.br
+.RI "Establish a new \fIroot\fP \fBAction\fP\&. "
+.ti -1c
+.RI "void \fBcloneGroup\fP (const string &oldname, const string &newname)"
+.br
+.RI "Clone a \fIroot\fP \fBAction\fP\&. "
+.ti -1c
+.RI "bool \fBaddToGroup\fP (const string &grp, const string &basegroup)"
+.br
+.RI "Add a group to a \fIroot\fP \fBAction\fP\&. "
+.ti -1c
+.RI "bool \fBremoveFromGroup\fP (const string &grp, const string &basegroup)"
+.br
+.RI "Remove a group from a \fIroot\fP \fBAction\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBDatabase\fP of root \fBAction\fP objects that can be used to transform a function\&. 
+
+This is a container for \fBAction\fP objects\&. It also manages \fBroot\fP \fBAction\fP objects, which encapsulate a complete transformation system that can be applied to functions\&. \fIRoot\fP \fBAction\fP objects are derived from a single \fBuniversal\fP \fBAction\fP object that has every possible sub-action within it\&. A \fIroot\fP \fBAction\fP has its own name and is derived from the \fIuniversal\fP via a grouplist, which lists a particular subset of \fBAction\fP and \fBRule\fP groups to use for the root\&. A new \fIroot\fP \fBAction\fP is created by providing a new grouplist via \fBsetGroup()\fP or modifying an existing grouplist\&. This class is intended to be instantiated as a singleton and keeps track of the \fIcurrent\fP root \fBAction\fP, which is the one that will be actively applied to functions\&. 
+.PP
+Definition at line 294 of file action\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ActionDatabase::ActionDatabase (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 304 of file action\&.hh\&.
+.SS "ActionDatabase::~ActionDatabase (void)"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 950 of file action\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool ActionDatabase::addToGroup (const string & grp, const string & basegroup)"
+
+.PP
+Add a group to a \fIroot\fP \fBAction\fP\&. Add a group to the grouplist for a particular \fIroot\fP \fBAction\fP\&. Do not use to redefine a \fIroot\fP \fBAction\fP that has already been instantiated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrp\fP is the name of the \fIroot\fP \fBAction\fP 
+.br
+\fIbasegroup\fP is the group to add 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP for a new addition, \fBfalse\fP is the group was already present 
+.RE
+.PP
+
+.PP
+Definition at line 1048 of file action\&.cc\&.
+.SS "void ActionDatabase::cloneGroup (const string & oldname, const string & newname)"
+
+.PP
+Clone a \fIroot\fP \fBAction\fP\&. Copy an existing \fIroot\fP \fBAction\fP by copying its grouplist, giving it a new name\&. This is suitable for a copy then modify strategy to create a new \fIroot\fP \fBAction\fP\&. Do not use to redefine a \fIroot\fP \fBAction\fP that has already been instantiated 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldname\fP is the name of an existing \fIroot\fP \fBAction\fP 
+.br
+\fInewname\fP is the name of the copy 
+.RE
+.PP
+
+.PP
+Definition at line 1036 of file action\&.cc\&.
+.SS "\fBAction\fP* ActionDatabase::getCurrent (void) const\fC [inline]\fP"
+
+.PP
+Get the current \fIroot\fP \fBAction\fP\&. 
+.PP
+Definition at line 307 of file action\&.hh\&.
+.SS "const string& ActionDatabase::getCurrentName (void) const\fC [inline]\fP"
+
+.PP
+Get the name of the current \fIroot\fP \fBAction\fP\&. 
+.PP
+Definition at line 308 of file action\&.hh\&.
+.SS "const \fBActionGroupList\fP & ActionDatabase::getGroup (const string & grp) const"
+
+.PP
+Get a specific grouplist by name\&. 
+.PP
+Definition at line 967 of file action\&.cc\&.
+.SS "void ActionDatabase::registerUniversal (\fBAction\fP * act)"
+
+.PP
+Register the \fIuniversal\fP root \fBAction\fP\&. This provides the database with the single \fBAction\fP from which all other \fIroot\fP Actions are derived\&. The \fBAction\fP has a reserved name 'universal' 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIact\fP is the universal \fBAction\fP 
+.RE
+.PP
+
+.PP
+Definition at line 961 of file action\&.cc\&.
+.SS "bool ActionDatabase::removeFromGroup (const string & grp, const string & basegrp)"
+
+.PP
+Remove a group from a \fIroot\fP \fBAction\fP\&. The group is removed from the grouplist of a \fIroot\fP \fBAction\fP\&. Do not use to redefine a \fIroot\fP \fBAction\fP that has already been instantiated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrp\fP is the name of the \fIroot\fP \fBAction\fP 
+.br
+\fIbasegrp\fP is the group to remove 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the group existed and was removed 
+.RE
+.PP
+
+.PP
+Definition at line 1059 of file action\&.cc\&.
+.SS "\fBAction\fP * ActionDatabase::setCurrent (const string & actname)"
+
+.PP
+Set the current \fIroot\fP \fBAction\fP\&. The \fBAction\fP is specified by name\&. A grouplist must already exist for this name\&. If the \fBAction\fP doesn't already exist, it will be derived from the \fIuniversal\fP action via this grouplist\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactname\fP is the name of the \fIroot\fP \fBAction\fP 
+.RE
+.PP
+
+.PP
+Definition at line 982 of file action\&.cc\&.
+.SS "void ActionDatabase::setGroup (const string & grp, const char ** argv)"
+
+.PP
+Establish a new \fIroot\fP \fBAction\fP\&. (Re)set the grouplist for a particular \fIroot\fP \fBAction\fP\&. Do not use this routine to redefine an existing \fIroot\fP \fBAction\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrp\fP is the name of the \fIroot\fP \fBAction\fP 
+.br
+\fIargv\fP is a list of static char pointers, which must end with a NULL pointer, or a zero length string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1020 of file action\&.cc\&.
+.SS "\fBAction\fP * ActionDatabase::toggleAction (const string & grp, const string & basegrp, bool val)"
+
+.PP
+Toggle a group of Actions with a \fIroot\fP \fBAction\fP\&. A particular group is either added or removed from the grouplist defining a particular \fIroot\fP \fBAction\fP\&. The \fIroot\fP \fBAction\fP is then (re)derived from the universal 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrp\fP is the name of the \fIroot\fP \fBAction\fP 
+.br
+\fIbasegrp\fP is name of group (within the grouplist) to toggle 
+.br
+\fIval\fP is \fBtrue\fP if the group should be added or \fBfalse\fP if it should be removed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the modified \fIroot\fP \fBAction\fP 
+.RE
+.PP
+
+.PP
+Definition at line 997 of file action\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

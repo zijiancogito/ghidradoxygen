@@ -1,0 +1,335 @@
+.TH "TypeArray" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeArray \- \fBDatatype\fP object representing an array of elements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <type\&.hh>\fP
+.PP
+Inherits \fBDatatype\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeArray\fP (const \fBTypeArray\fP &op)"
+.br
+.RI "Construct from another \fBTypeArray\fP\&. "
+.ti -1c
+.RI "\fBTypeArray\fP (int4 n, \fBDatatype\fP *ao)"
+.br
+.RI "Construct given an array size and element data-type\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetBase\fP (void) const"
+.br
+.RI "Get the element data-type\&. "
+.ti -1c
+.RI "int4 \fBnumElements\fP (void) const"
+.br
+.RI "Get the number of elements\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetSubEntry\fP (int4 off, int4 sz, int4 *newoff, int4 *el) const"
+.br
+.RI "Figure out what a byte range overlaps\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s) const"
+.br
+.RI "Print a description of the type to stream\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetSubType\fP (\fBuintb\fP off, \fBuintb\fP *newoff) const"
+.br
+.RI "Recover component data-type one-level down\&. "
+.ti -1c
+.RI "virtual int4 \fBnumDepend\fP (void) const"
+.br
+.RI "Return number of component sub-types\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetDepend\fP (int4 index) const"
+.br
+.RI "Return the i-th component sub-type\&. "
+.ti -1c
+.RI "virtual void \fBprintNameBase\fP (ostream &s) const"
+.br
+.RI "Print name as short prefix\&. "
+.ti -1c
+.RI "virtual int4 \fBcompare\fP (const \fBDatatype\fP &op, int4 level) const"
+.br
+.RI "Compare for functional equivalence\&. "
+.ti -1c
+.RI "virtual int4 \fBcompareDependency\fP (const \fBDatatype\fP &op) const"
+.br
+.RI "Compare for storage in tree structure\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Serialize the data-type to XML\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBTypeFactory\fP &typegrp)"
+.br
+.RI "Restore data-type from XML\&. "
+.ti -1c
+.RI "\fBTypeArray\fP (void)"
+.br
+.RI "Internal constructor for restoreXml\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBDatatype\fP * \fBarrayof\fP"
+.br
+.RI "type of which we have an array "
+.ti -1c
+.RI "int4 \fBarraysize\fP"
+.br
+.RI "Number of elements in the array\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBDatatype\fP object representing an array of elements\&. 
+.PP
+Definition at line 244 of file type\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeArray::TypeArray (void)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Internal constructor for restoreXml\&. 
+.PP
+Definition at line 251 of file type\&.hh\&.
+.SS "TypeArray::TypeArray (const \fBTypeArray\fP & op)\fC [inline]\fP"
+
+.PP
+Construct from another \fBTypeArray\fP\&. 
+.PP
+Definition at line 254 of file type\&.hh\&.
+.SS "TypeArray::TypeArray (int4 n, \fBDatatype\fP * ao)\fC [inline]\fP"
+
+.PP
+Construct given an array size and element data-type\&. 
+.PP
+Definition at line 256 of file type\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBDatatype\fP* TypeArray::clone (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Clone the data-type\&. 
+.PP
+Implements \fBDatatype\fP\&.
+.PP
+Definition at line 268 of file type\&.hh\&.
+.SS "int4 TypeArray::compare (const \fBDatatype\fP & op, int4 level) const\fC [virtual]\fP"
+
+.PP
+Compare for functional equivalence\&. Compare \fBthis\fP with another data-type\&. 0 (equality) means the data-types are functionally equivalent (even if names differ) Smaller types come earlier\&. More specific types come earlier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.br
+\fIlevel\fP is maximum level to descend when recursively comparing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 453 of file type\&.cc\&.
+.SS "int4 TypeArray::compareDependency (const \fBDatatype\fP & op) const\fC [virtual]\fP"
+
+.PP
+Compare for storage in tree structure\&. Ordering of data-types for the main \fBTypeFactory\fP container\&. Comparison only goes down one-level in the component structure, before just comparing pointers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the data-type to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+negative, 0, positive depending on ordering of types 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 469 of file type\&.cc\&.
+.SS "\fBDatatype\fP* TypeArray::getBase (void) const\fC [inline]\fP"
+
+.PP
+Get the element data-type\&. 
+.PP
+Definition at line 258 of file type\&.hh\&.
+.SS "virtual \fBDatatype\fP* TypeArray::getDepend (int4 index) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return the i-th component sub-type\&. 
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 264 of file type\&.hh\&.
+.SS "\fBDatatype\fP * TypeArray::getSubEntry (int4 off, int4 sz, int4 * newoff, int4 * el) const"
+
+.PP
+Figure out what a byte range overlaps\&. Given some contiguous piece of the array, figure out which element overlaps the piece, and pass back the element index and the renormalized offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset into the array 
+.br
+\fIsz\fP is the size of the piece (in bytes) 
+.br
+\fInewoff\fP is a pointer to the renormalized offset to pass back 
+.br
+\fIel\fP is a pointer to the array index to pass back 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the element data-type or NULL if the piece overlaps more than one 
+.RE
+.PP
+
+.PP
+Definition at line 495 of file type\&.cc\&.
+.SS "\fBDatatype\fP * TypeArray::getSubType (\fBuintb\fP off, \fBuintb\fP * newoff) const\fC [virtual]\fP"
+
+.PP
+Recover component data-type one-level down\&. Given an offset into \fBthis\fP data-type, return the component data-type at that offset\&. Also, pass back a 'renormalized' offset suitable for recursize \fBgetSubType()\fP calls: i\&.e\&. if the original offset hits the exact start of the sub-type, 0 is passed back\&. If there is no valid component data-type at the offset, return NULL and pass back the original offset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoff\fP is the offset into \fBthis\fP data-type 
+.br
+\fInewoff\fP is a pointer to the passed-back offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to the component data-type or NULL 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 481 of file type\&.cc\&.
+.SS "virtual int4 TypeArray::numDepend (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Return number of component sub-types\&. 
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 263 of file type\&.hh\&.
+.SS "int4 TypeArray::numElements (void) const\fC [inline]\fP"
+
+.PP
+Get the number of elements\&. 
+.PP
+Definition at line 259 of file type\&.hh\&.
+.SS "virtual void TypeArray::printNameBase (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Print name as short prefix\&. 
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 265 of file type\&.hh\&.
+.SS "void TypeArray::printRaw (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print a description of the type to stream\&. Print a raw description of the type to stream\&. Intended for debugging\&. Not intended to produce parsable C\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 446 of file type\&.cc\&.
+.SS "void TypeArray::restoreXml (const \fBElement\fP * el, \fBTypeFactory\fP & typegrp)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Restore data-type from XML\&. Restore a \fBDatatype\fP object from an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fItypegrp\fP is the underlying \fBTypeFactory\fP that will hold the new object 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 518 of file type\&.cc\&.
+.SS "void TypeArray::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Serialize the data-type to XML\&. Write out a formal description of the data-type as an XML <type> tag\&. For composite data-types, the description goes down one level, describing the component types only by reference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream to write to 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDatatype\fP\&.
+.PP
+Definition at line 507 of file type\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBTypeFactory\fP\fC [friend]\fP"
+
+.PP
+Definition at line 246 of file type\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBDatatype\fP* TypeArray::arrayof\fC [protected]\fP"
+
+.PP
+type of which we have an array 
+.PP
+Definition at line 247 of file type\&.hh\&.
+.SS "int4 TypeArray::arraysize\fC [protected]\fP"
+
+.PP
+Number of elements in the array\&. 
+.PP
+Definition at line 248 of file type\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

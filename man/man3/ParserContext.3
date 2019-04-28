@@ -1,0 +1,270 @@
+.TH "ParserContext" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ParserContext
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <context\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBuninitialized\fP = 0, \fBdisassembly\fP = 1, \fBpcode\fP = 2 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParserContext\fP (\fBContextCache\fP *ccache)"
+.br
+.ti -1c
+.RI "\fB~ParserContext\fP (void)"
+.br
+.ti -1c
+.RI "uint1 * \fBgetBuffer\fP (void)"
+.br
+.ti -1c
+.RI "void \fBinitialize\fP (int4 maxstate, int4 maxparam, \fBAddrSpace\fP *spc)"
+.br
+.ti -1c
+.RI "int4 \fBgetParserState\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetParserState\fP (int4 st)"
+.br
+.ti -1c
+.RI "void \fBdeallocateState\fP (\fBParserWalkerChange\fP &walker)"
+.br
+.ti -1c
+.RI "void \fBallocateOperand\fP (int4 i, \fBParserWalkerChange\fP &walker)"
+.br
+.ti -1c
+.RI "void \fBsetAddr\fP (const \fBAddress\fP &ad)"
+.br
+.ti -1c
+.RI "void \fBsetNaddr\fP (const \fBAddress\fP &ad)"
+.br
+.ti -1c
+.RI "void \fBsetCalladdr\fP (const \fBAddress\fP &ad)"
+.br
+.ti -1c
+.RI "void \fBaddCommit\fP (\fBTripleSymbol\fP *sym, int4 num, uintm mask, bool flow, \fBConstructState\fP *point)"
+.br
+.ti -1c
+.RI "void \fBclearCommits\fP (void)"
+.br
+.ti -1c
+.RI "void \fBapplyCommits\fP (void)"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetAddr\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetNaddr\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetDestAddr\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBAddress\fP & \fBgetRefAddr\fP (void) const"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetCurSpace\fP (void) const"
+.br
+.ti -1c
+.RI "\fBAddrSpace\fP * \fBgetConstSpace\fP (void) const"
+.br
+.ti -1c
+.RI "uintm \fBgetInstructionBytes\fP (int4 byteoff, int4 numbytes, uint4 off) const"
+.br
+.ti -1c
+.RI "uintm \fBgetContextBytes\fP (int4 byteoff, int4 numbytes) const"
+.br
+.ti -1c
+.RI "uintm \fBgetInstructionBits\fP (int4 startbit, int4 size, uint4 off) const"
+.br
+.ti -1c
+.RI "uintm \fBgetContextBits\fP (int4 startbit, int4 size) const"
+.br
+.ti -1c
+.RI "void \fBsetContextWord\fP (int4 i, uintm val, uintm mask)"
+.br
+.ti -1c
+.RI "void \fBloadContext\fP (void)"
+.br
+.ti -1c
+.RI "int4 \fBgetLength\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBsetDelaySlot\fP (int4 val)"
+.br
+.ti -1c
+.RI "int4 \fBgetDelaySlot\fP (void) const"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBParserWalker\fP"
+.br
+.ti -1c
+.RI "class \fBParserWalkerChange\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 68 of file context\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIuninitialized \fP\fP
+.TP
+\fB\fIdisassembly \fP\fP
+.TP
+\fB\fIpcode \fP\fP
+.PP
+Definition at line 72 of file context\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ParserContext::ParserContext (\fBContextCache\fP * ccache)"
+
+.PP
+Definition at line 20 of file context\&.cc\&.
+.SS "ParserContext::~ParserContext (void)\fC [inline]\fP"
+
+.PP
+Definition at line 94 of file context\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ParserContext::addCommit (\fBTripleSymbol\fP * sym, int4 num, uintm mask, bool flow, \fBConstructState\fP * point)"
+
+.PP
+Definition at line 119 of file context\&.cc\&.
+.SS "void ParserContext::allocateOperand (int4 i, \fBParserWalkerChange\fP & walker)\fC [inline]\fP"
+
+.PP
+Definition at line 186 of file context\&.hh\&.
+.SS "void ParserContext::applyCommits (void)"
+
+.PP
+Definition at line 133 of file context\&.cc\&.
+.SS "void ParserContext::clearCommits (void)\fC [inline]\fP"
+
+.PP
+Definition at line 105 of file context\&.hh\&.
+.SS "void ParserContext::deallocateState (\fBParserWalkerChange\fP & walker)\fC [inline]\fP"
+
+.PP
+Definition at line 180 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserContext::getAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 107 of file context\&.hh\&.
+.SS "uint1* ParserContext::getBuffer (void)\fC [inline]\fP"
+
+.PP
+Definition at line 95 of file context\&.hh\&.
+.SS "\fBAddrSpace\fP* ParserContext::getConstSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 112 of file context\&.hh\&.
+.SS "uintm ParserContext::getContextBits (int4 startbit, int4 size) const"
+
+.PP
+Definition at line 100 of file context\&.cc\&.
+.SS "uintm ParserContext::getContextBytes (int4 byteoff, int4 numbytes) const"
+
+.PP
+Definition at line 81 of file context\&.cc\&.
+.SS "\fBAddrSpace\fP* ParserContext::getCurSpace (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 111 of file context\&.hh\&.
+.SS "int4 ParserContext::getDelaySlot (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 121 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserContext::getDestAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 109 of file context\&.hh\&.
+.SS "uintm ParserContext::getInstructionBits (int4 startbit, int4 size, uint4 off) const"
+
+.PP
+Definition at line 62 of file context\&.cc\&.
+.SS "uintm ParserContext::getInstructionBytes (int4 byteoff, int4 numbytes, uint4 off) const"
+
+.PP
+Definition at line 46 of file context\&.cc\&.
+.SS "int4 ParserContext::getLength (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 119 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserContext::getNaddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 108 of file context\&.hh\&.
+.SS "int4 ParserContext::getParserState (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 97 of file context\&.hh\&.
+.SS "const \fBAddress\fP& ParserContext::getRefAddr (void) const\fC [inline]\fP"
+
+.PP
+Definition at line 110 of file context\&.hh\&.
+.SS "void ParserContext::initialize (int4 maxstate, int4 maxparam, \fBAddrSpace\fP * spc)"
+
+.PP
+Definition at line 35 of file context\&.cc\&.
+.SS "void ParserContext::loadContext (void)\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file context\&.hh\&.
+.SS "void ParserContext::setAddr (const \fBAddress\fP & ad)\fC [inline]\fP"
+
+.PP
+Definition at line 101 of file context\&.hh\&.
+.SS "void ParserContext::setCalladdr (const \fBAddress\fP & ad)\fC [inline]\fP"
+
+.PP
+Definition at line 103 of file context\&.hh\&.
+.SS "void ParserContext::setContextWord (int4 i, uintm val, uintm mask)\fC [inline]\fP"
+
+.PP
+Definition at line 117 of file context\&.hh\&.
+.SS "void ParserContext::setDelaySlot (int4 val)\fC [inline]\fP"
+
+.PP
+Definition at line 120 of file context\&.hh\&.
+.SS "void ParserContext::setNaddr (const \fBAddress\fP & ad)\fC [inline]\fP"
+
+.PP
+Definition at line 102 of file context\&.hh\&.
+.SS "void ParserContext::setParserState (int4 st)\fC [inline]\fP"
+
+.PP
+Definition at line 98 of file context\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBParserWalker\fP\fC [friend]\fP"
+
+.PP
+Definition at line 69 of file context\&.hh\&.
+.SS "friend class \fBParserWalkerChange\fP\fC [friend]\fP"
+
+.PP
+Definition at line 70 of file context\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

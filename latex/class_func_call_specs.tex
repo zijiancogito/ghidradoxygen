@@ -1,0 +1,1438 @@
+\hypertarget{class_func_call_specs}{}\section{Func\+Call\+Specs Class Reference}
+\label{class_func_call_specs}\index{FuncCallSpecs@{FuncCallSpecs}}
+
+
+A class for analyzing parameters to a sub-\/function call.  
+
+
+
+
+{\ttfamily \#include $<$fspec.\+hh$>$}
+
+
+
+Inheritance diagram for Func\+Call\+Specs\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_func_call_specs__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Func\+Call\+Specs\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_func_call_specs__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_func_call_specs_a5f7aaec10dc1e68d73a07eaf4cac2542a584ec7401809588c22798803bff5b796}{offset\+\_\+unknown}} = 0x\+B\+A\+D\+B\+E\+EF
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_func_call_specs_a96cbd6a1b0311883aeb840f47e4a0ec7}{Func\+Call\+Specs}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$call\+\_\+op)
+\begin{DoxyCompactList}\small\item\em Construct based on C\+A\+LL or C\+A\+L\+L\+I\+ND. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a9dbc2ae7d43e62971751d96cbddf1b32}{set\+Address}} (const \mbox{\hyperlink{class_address}{Address}} \&addr)
+\begin{DoxyCompactList}\small\item\em Set (override) the callee\textquotesingle{}s entry address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_func_call_specs_ad88ee3058ece9a8b19f4e25566c03121}{get\+Op}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the C\+A\+LL or C\+A\+L\+L\+I\+ND corresponding to {\bfseries{this}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$ \mbox{\hyperlink{class_func_call_specs_a860b42c7f272e40dae078854e101b6bc}{get\+Funcdata}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_funcdata}{Funcdata}} object associated with the called function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_ae2f63fcf31daa5cc5663df227a813f0a}{set\+Funcdata}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{class_funcdata}{Funcdata}} object associated with the called function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$ \mbox{\hyperlink{class_func_call_specs_ac649b58eb85cf052096ac32e5ced8607}{clone}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$newop) const
+\begin{DoxyCompactList}\small\item\em Clone {\bfseries{this}} given the mirrored p-\/code C\+A\+LL. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_func_call_specs_a5c5bb2445140cdde864320679ba347b0}{get\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the function name associated with the callee. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_func_call_specs_a0a5d18be6037559397af11e6764abbcd}{get\+Entry\+Address}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the entry address of the callee. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a41d9cc82055fdcbc01f0a37ae3a56a01}{set\+Effective\+Extra\+Pop}} (int4 epop)
+\begin{DoxyCompactList}\small\item\em Set the specific {\itshape extrapop} associate with {\bfseries{this}} call site. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_func_call_specs_ade3352e35ffd4ed59bbc78f4b43c2998}{get\+Effective\+Extra\+Pop}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the specific {\itshape extrapop} associate with {\bfseries{this}} call site. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_func_call_specs_ad8990f080a96809b347656d7331236c5}{get\+Spacebase\+Offset}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the stack-\/pointer relative offset at the point of {\bfseries{this}} call site. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_ac1c86fdb931fd085ca45ff39a091552a}{set\+Paramshift}} (int4 val)
+\begin{DoxyCompactList}\small\item\em Set a parameter shift for this call site. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_func_call_specs_adc330a0897cbe51cd961095d77d7a6f0}{get\+Paramshift}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the parameter shift for this call site. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_func_call_specs_a3eae717564dd4884c28623d4a7a7b182}{get\+Match\+Call\+Count}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the number of calls the caller makes to {\bfseries{this}} sub-\/function. \end{DoxyCompactList}\item 
+int4 \mbox{\hyperlink{class_func_call_specs_abfda84c2a3919927503193ce9595efd6}{get\+Stack\+Placeholder\+Slot}} (void) const
+\begin{DoxyCompactList}\small\item\em Get the slot of the stack-\/pointer placeholder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_ab398038b75b6f13b865384da3fd143b9}{set\+Stack\+Placeholder\+Slot}} (int4 slot)
+\begin{DoxyCompactList}\small\item\em Set the slot of the stack-\/pointer placeholder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a571062bec4389e2602577b6eed10cbf5}{clear\+Stack\+Placeholder\+Slot}} (void)
+\begin{DoxyCompactList}\small\item\em Release the stack-\/pointer placeholder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a0b481b6be0cc41e4f1b35089fc5f192b}{init\+Active\+Input}} (void)
+\begin{DoxyCompactList}\small\item\em Turn on analysis recovering input parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_af24a93644abe9ee56a9aa86ba4cb0c9f}{clear\+Active\+Input}} (void)
+\begin{DoxyCompactList}\small\item\em Turn off analysis recovering input parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a87904aacb6678c8bde4c0c2c781db830}{init\+Active\+Output}} (void)
+\begin{DoxyCompactList}\small\item\em Turn on analysis recovering the return value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a5c13854db24718357b5ce7de7802b4ed}{clear\+Active\+Output}} (void)
+\begin{DoxyCompactList}\small\item\em Turn off analysis recovering the return value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_func_call_specs_a4145c5e63b80ece45a2a4f0fd5949138}{is\+Input\+Active}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if input parameter recovery analysis is active. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_func_call_specs_a81e8386ebb901a273ef40d8e8430fb57}{is\+Output\+Active}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if return value recovery analysis is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_abe07c5f01eaa2171a4d8c4c832910022}{set\+Bad\+Jump\+Table}} (bool val)
+\begin{DoxyCompactList}\small\item\em Toggle whether {\bfseries{call}} site looked like an indirect jump. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_func_call_specs_ae9f1afc18ffb30d43e25b0065823f366}{is\+Bad\+Jump\+Table}} (void) const
+\begin{DoxyCompactList}\small\item\em Return {\bfseries{true}} if {\bfseries{this}} call site looked like an indirect jump. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$ \mbox{\hyperlink{class_func_call_specs_a32432a6c7b201dc160ae0b2480a1b8b9}{get\+Active\+Input}} (void)
+\begin{DoxyCompactList}\small\item\em Get the analysis object for input parameter recovery. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_param_active}{Param\+Active}} $\ast$ \mbox{\hyperlink{class_func_call_specs_a866e9a9406614829224612035f28d311}{get\+Active\+Output}} (void)
+\begin{DoxyCompactList}\small\item\em Get the analysis object for return value recovery. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_func_call_specs_a808f3d0c962701b6c98bca1792e86908}{check\+Input\+Join}} (int4 slot1, bool ishislot, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn1, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn2) const
+\begin{DoxyCompactList}\small\item\em Check if adjacent parameter trials can be combined into a single logical parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a489441d9d77d08bdf87eff937e8ef5b8}{do\+Input\+Join}} (int4 slot1, bool ishislot)
+\begin{DoxyCompactList}\small\item\em Join two parameter trials. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_func_call_specs_ab55b52b70e4def9167d06709746635e9}{late\+Restriction}} (const \mbox{\hyperlink{class_func_proto}{Func\+Proto}} \&restricted\+Proto, vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&newinput, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$\&newoutput)
+\begin{DoxyCompactList}\small\item\em Update {\bfseries{this}} prototype to match a given (more specialized) prototype. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_aad64d557811baf4602afcefb2746f7be}{deindirect}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$newfd)
+\begin{DoxyCompactList}\small\item\em Convert {\bfseries{this}} call site from an indirect to a direct function call. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a8bc0ef657c876530f21a6ae60458eb35}{force\+Set}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, const \mbox{\hyperlink{class_func_proto}{Func\+Proto}} \&fp)
+\begin{DoxyCompactList}\small\item\em Force a more restrictive prototype on {\bfseries{this}} call site. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_aae6a890aaa82deca59ec7c57c92629aa}{insert\+Pcode}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Inject any {\itshape upon-\/return} p-\/code at {\bfseries{this}} call site. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a5ad2a3f374049dec6fdf0f9d20295305}{resolve\+Spacebase\+Relative}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$phvn)
+\begin{DoxyCompactList}\small\item\em Calculate the stack offset of {\bfseries{this}} call site. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_ad3c3231b5c523e491d65f31ddb688cc1}{abort\+Spacebase\+Relative}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Abort the attempt to recover the relative stack offset for {\bfseries{this}} function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a48998cb808c1feedcad257f0984317ed}{final\+Input\+Check}} (void)
+\begin{DoxyCompactList}\small\item\em Make final activity check on trials that might have been affected by conditional execution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_ab49917128896eb002c816e361f875943}{check\+Input\+Trial\+Use}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, \mbox{\hyperlink{class_alias_checker}{Alias\+Checker}} \&aliascheck)
+\begin{DoxyCompactList}\small\item\em Mark if input trials are being actively used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a82c50f8299ce305411880fc61b8b1907}{check\+Output\+Trial\+Use}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&trialvn)
+\begin{DoxyCompactList}\small\item\em Mark if output trials are being actively used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a1bb49b65cf036e8bc8b398e549b26a9c}{build\+Input\+From\+Trials}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Set the final input Varnodes to {\bfseries{this}} C\+A\+LL based on \mbox{\hyperlink{class_param_active}{Param\+Active}} analysis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_a15f172165e29fbabfbb02be245ee1c98}{build\+Output\+From\+Trials}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data, vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&trialvn)
+\begin{DoxyCompactList}\small\item\em Set the final output \mbox{\hyperlink{class_varnode}{Varnode}} of {\bfseries{this}} C\+A\+LL based on \mbox{\hyperlink{class_param_active}{Param\+Active}} analysis of trials. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_func_call_specs_aac7bcd5ea5ed14adbe74b4ca4c7e0814}{paramshift\+Modify\+Start}} (void)
+\begin{DoxyCompactList}\small\item\em Prepend any extra parameters if a paramshift is required. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_func_call_specs_a01e16ebebb71bdc63fb884c8d0e3b7e3}{paramshift\+Modify\+Stop}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} \&data)
+\begin{DoxyCompactList}\small\item\em Throw out any paramshift parameters. \end{DoxyCompactList}\item 
+uint4 \mbox{\hyperlink{class_func_call_specs_a37a11cd8c631ed5b643eaf259b2ae49b}{has\+Effect\+Translate}} (const \mbox{\hyperlink{class_address}{Address}} \&addr, int4 size) const
+\begin{DoxyCompactList}\small\item\em Calculate type of side-\/effect for a given storage location (with caller translation) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ \mbox{\hyperlink{class_func_call_specs_a9a59b9321b66bc9f23e69d2ef729258c}{find\+Preexisting\+Whole}} (\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn1, \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$vn2)
+\begin{DoxyCompactList}\small\item\em Check if given two Varnodes are merged into a whole. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$ \mbox{\hyperlink{class_func_call_specs_aa1d084c81a9ae8656d7ef79c84398dc8}{get\+Fspec\+From\+Const}} (const \mbox{\hyperlink{class_address}{Address}} \&addr)
+\begin{DoxyCompactList}\small\item\em Convert \mbox{\hyperlink{class_fspec_space}{Fspec\+Space}} addresses to the underlying \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} object. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_func_call_specs_a57f3844d92136d3ab6b67ea9ea316aa7}{compare\+By\+Entry\+Address}} (const \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$a, const \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Compare \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} by function entry address. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_func_call_specs_aab6fc72a11289af288ec65f216d7a45b}{count\+Matching\+Calls}} (const vector$<$ \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$ $>$ \&qlst)
+\begin{DoxyCompactList}\small\item\em Calculate the number of times an individual sub-\/function is called. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A class for analyzing parameters to a sub-\/function call. 
+
+This can be viewed as a function prototype that evolves over the course of analysis. It derives off of \mbox{\hyperlink{class_func_proto}{Func\+Proto}} and includes facilities for analyzing data-\/flow for parameter information. This is the high-\/level object managing the examination of data-\/flow to recover a working prototype (\mbox{\hyperlink{class_param_active}{Param\+Active}}), holding a stack-\/pointer placeholder to facilitate stack analysis, and deciding on the working {\itshape extrapop} for the C\+A\+LL.
+
+A {\bfseries{stack-\/pointer}} {\bfseries{placeholder}} is a temporary \mbox{\hyperlink{class_varnode}{Varnode}} in the input operands of the C\+A\+LL or C\+A\+L\+L\+I\+ND that is defined by a L\+O\+AD from the stack-\/pointer. By examining the pointer, the exact value of the stack-\/pointer (relative to its incoming value) can be computed at the point of the C\+A\+LL. The temporary can arise naturally if stack parameters are a possibility, otherwise a placeholder temporary is artificially inserted into the C\+A\+LL input. At the time heritage of the stack space is computed, the placeholder is examined to read off the active stack-\/pointer offset for the C\+A\+LL and the placeholder is removed. 
+
+Definition at line 1328 of file fspec.\+hh.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_func_call_specs_a5f7aaec10dc1e68d73a07eaf4cac2542}\label{class_func_call_specs_a5f7aaec10dc1e68d73a07eaf4cac2542}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{offset\_unknown@{offset\_unknown}!FuncCallSpecs@{FuncCallSpecs}}\index{FuncCallSpecs@{FuncCallSpecs}!offset\_unknown@{offset\_unknown}}}\mbox{\Hypertarget{class_func_call_specs_a5f7aaec10dc1e68d73a07eaf4cac2542a584ec7401809588c22798803bff5b796}\label{class_func_call_specs_a5f7aaec10dc1e68d73a07eaf4cac2542a584ec7401809588c22798803bff5b796}} 
+offset\+\_\+unknown&\char`\"{}\+Magic\char`\"{} stack offset indicating the offset is unknown \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 1353 of file fspec.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_func_call_specs_a96cbd6a1b0311883aeb840f47e4a0ec7}\label{class_func_call_specs_a96cbd6a1b0311883aeb840f47e4a0ec7}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!FuncCallSpecs@{FuncCallSpecs}}
+\index{FuncCallSpecs@{FuncCallSpecs}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{FuncCallSpecs()}{FuncCallSpecs()}}
+{\footnotesize\ttfamily Func\+Call\+Specs\+::\+Func\+Call\+Specs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{call\+\_\+op }\end{DoxyParamCaption})}
+
+
+
+Construct based on C\+A\+LL or C\+A\+L\+L\+I\+ND. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em call\+\_\+op} & is the representative call site within the data-\/flow \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 3768 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a96cbd6a1b0311883aeb840f47e4a0ec7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a96cbd6a1b0311883aeb840f47e4a0ec7_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_func_call_specs_ad3c3231b5c523e491d65f31ddb688cc1}\label{class_func_call_specs_ad3c3231b5c523e491d65f31ddb688cc1}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!abortSpacebaseRelative@{abortSpacebaseRelative}}
+\index{abortSpacebaseRelative@{abortSpacebaseRelative}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{abortSpacebaseRelative()}{abortSpacebaseRelative()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::abort\+Spacebase\+Relative (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Abort the attempt to recover the relative stack offset for {\bfseries{this}} function. 
+
+Any stack-\/pointer {\itshape placeholder} is removed. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 3758 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ad3c3231b5c523e491d65f31ddb688cc1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a1bb49b65cf036e8bc8b398e549b26a9c}\label{class_func_call_specs_a1bb49b65cf036e8bc8b398e549b26a9c}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!buildInputFromTrials@{buildInputFromTrials}}
+\index{buildInputFromTrials@{buildInputFromTrials}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{buildInputFromTrials()}{buildInputFromTrials()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::build\+Input\+From\+Trials (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Set the final input Varnodes to {\bfseries{this}} C\+A\+LL based on \mbox{\hyperlink{class_param_active}{Param\+Active}} analysis. 
+
+Varnodes that don\textquotesingle{}t look like parameters are removed. Parameters that are unreferenced are filled in. Other \mbox{\hyperlink{class_varnode}{Varnode}} inputs may be truncated or extended. This prototype itself is unchanged. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4486 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a1bb49b65cf036e8bc8b398e549b26a9c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a1bb49b65cf036e8bc8b398e549b26a9c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a15f172165e29fbabfbb02be245ee1c98}\label{class_func_call_specs_a15f172165e29fbabfbb02be245ee1c98}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!buildOutputFromTrials@{buildOutputFromTrials}}
+\index{buildOutputFromTrials@{buildOutputFromTrials}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{buildOutputFromTrials()}{buildOutputFromTrials()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::build\+Output\+From\+Trials (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&}]{trialvn }\end{DoxyParamCaption})}
+
+
+
+Set the final output \mbox{\hyperlink{class_varnode}{Varnode}} of {\bfseries{this}} C\+A\+LL based on \mbox{\hyperlink{class_param_active}{Param\+Active}} analysis of trials. 
+
+If it exists, the active output trial is moved to be the output \mbox{\hyperlink{class_varnode}{Varnode}} of {\bfseries{this}} C\+A\+LL. If there are two active trials, they are merged as a single output of the C\+A\+LL. Any I\+N\+D\+I\+R\+E\+CT ops that were holding the active trials are removed. This prototype itself is unchanged. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+{\em trialvn} & is the list of Varnodes associated with trials \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4565 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a15f172165e29fbabfbb02be245ee1c98_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a15f172165e29fbabfbb02be245ee1c98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a808f3d0c962701b6c98bca1792e86908}\label{class_func_call_specs_a808f3d0c962701b6c98bca1792e86908}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!checkInputJoin@{checkInputJoin}}
+\index{checkInputJoin@{checkInputJoin}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{checkInputJoin()}{checkInputJoin()}}
+{\footnotesize\ttfamily bool Func\+Call\+Specs\+::check\+Input\+Join (\begin{DoxyParamCaption}\item[{int4}]{slot1,  }\item[{bool}]{ishislot,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn2 }\end{DoxyParamCaption}) const}
+
+
+
+Check if adjacent parameter trials can be combined into a single logical parameter. 
+
+A slot must be provided indicating the trial and the only following it. 
+\begin{DoxyParams}{Parameters}
+{\em slot1} & is the first trial slot \\
+\hline
+{\em ishislot} & is {\bfseries{true}} if the first slot will be the most significant piece \\
+\hline
+{\em vn1} & is the \mbox{\hyperlink{class_varnode}{Varnode}} corresponding to the first trial \\
+\hline
+{\em vn2} & is the \mbox{\hyperlink{class_varnode}{Varnode}} corresponding to the second trial \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the trials can be combined 
+\end{DoxyReturn}
+
+
+Definition at line 4159 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a808f3d0c962701b6c98bca1792e86908_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a808f3d0c962701b6c98bca1792e86908_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ab49917128896eb002c816e361f875943}\label{class_func_call_specs_ab49917128896eb002c816e361f875943}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!checkInputTrialUse@{checkInputTrialUse}}
+\index{checkInputTrialUse@{checkInputTrialUse}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{checkInputTrialUse()}{checkInputTrialUse()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::check\+Input\+Trial\+Use (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_alias_checker}{Alias\+Checker}} \&}]{aliascheck }\end{DoxyParamCaption})}
+
+
+
+Mark if input trials are being actively used. 
+
+Run through each input trial and try to make a determination if the trial is {\itshape active} or not, meaning basically that a write has occurred on the trial with no intervening reads between the write and the call. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+{\em aliascheck} & holds local aliasing information about the function \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4386 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ab49917128896eb002c816e361f875943_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ab49917128896eb002c816e361f875943_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a82c50f8299ce305411880fc61b8b1907}\label{class_func_call_specs_a82c50f8299ce305411880fc61b8b1907}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!checkOutputTrialUse@{checkOutputTrialUse}}
+\index{checkOutputTrialUse@{checkOutputTrialUse}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{checkOutputTrialUse()}{checkOutputTrialUse()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::check\+Output\+Trial\+Use (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&}]{trialvn }\end{DoxyParamCaption})}
+
+
+
+Mark if output trials are being actively used. 
+
+Run through each output trial and try to make a determination if the trial is {\itshape active} or not, meaning basically that the first occurrence of a trial after the call is a read. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+{\em trialvn} & will hold Varnodes corresponding to the trials \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4462 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a82c50f8299ce305411880fc61b8b1907_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a82c50f8299ce305411880fc61b8b1907_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_af24a93644abe9ee56a9aa86ba4cb0c9f}\label{class_func_call_specs_af24a93644abe9ee56a9aa86ba4cb0c9f}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!clearActiveInput@{clearActiveInput}}
+\index{clearActiveInput@{clearActiveInput}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{clearActiveInput()}{clearActiveInput()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::clear\+Active\+Input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Turn off analysis recovering input parameters. 
+
+
+
+Definition at line 1377 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_af24a93644abe9ee56a9aa86ba4cb0c9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a5c13854db24718357b5ce7de7802b4ed}\label{class_func_call_specs_a5c13854db24718357b5ce7de7802b4ed}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!clearActiveOutput@{clearActiveOutput}}
+\index{clearActiveOutput@{clearActiveOutput}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{clearActiveOutput()}{clearActiveOutput()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::clear\+Active\+Output (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Turn off analysis recovering the return value. 
+
+
+
+Definition at line 1379 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a5c13854db24718357b5ce7de7802b4ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a571062bec4389e2602577b6eed10cbf5}\label{class_func_call_specs_a571062bec4389e2602577b6eed10cbf5}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!clearStackPlaceholderSlot@{clearStackPlaceholderSlot}}
+\index{clearStackPlaceholderSlot@{clearStackPlaceholderSlot}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{clearStackPlaceholderSlot()}{clearStackPlaceholderSlot()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::clear\+Stack\+Placeholder\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Release the stack-\/pointer placeholder. 
+
+
+
+Definition at line 1373 of file fspec.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a571062bec4389e2602577b6eed10cbf5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a571062bec4389e2602577b6eed10cbf5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ac649b58eb85cf052096ac32e5ced8607}\label{class_func_call_specs_ac649b58eb85cf052096ac32e5ced8607}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!clone@{clone}}
+\index{clone@{clone}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$ Func\+Call\+Specs\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{newop }\end{DoxyParamCaption}) const}
+
+
+
+Clone {\bfseries{this}} given the mirrored p-\/code C\+A\+LL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newop} & replaces the C\+A\+LL or C\+A\+L\+L\+I\+ND op in the clone \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cloned \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} 
+\end{DoxyReturn}
+
+
+Definition at line 3807 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ac649b58eb85cf052096ac32e5ced8607_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ac649b58eb85cf052096ac32e5ced8607_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a57f3844d92136d3ab6b67ea9ea316aa7}\label{class_func_call_specs_a57f3844d92136d3ab6b67ea9ea316aa7}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!compareByEntryAddress@{compareByEntryAddress}}
+\index{compareByEntryAddress@{compareByEntryAddress}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{compareByEntryAddress()}{compareByEntryAddress()}}
+{\footnotesize\ttfamily static bool Func\+Call\+Specs\+::compare\+By\+Entry\+Address (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$}]{a,  }\item[{const \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Compare \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} by function entry address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the first \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} to compare \\
+\hline
+{\em b} & is the second to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the first should be ordered before the second 
+\end{DoxyReturn}
+
+
+Definition at line 1416 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a57f3844d92136d3ab6b67ea9ea316aa7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_aab6fc72a11289af288ec65f216d7a45b}\label{class_func_call_specs_aab6fc72a11289af288ec65f216d7a45b}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!countMatchingCalls@{countMatchingCalls}}
+\index{countMatchingCalls@{countMatchingCalls}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{countMatchingCalls()}{countMatchingCalls()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::count\+Matching\+Calls (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} $\ast$ $>$ \&}]{qlst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Calculate the number of times an individual sub-\/function is called. 
+
+Provided a list of all call sites for a calling function, tally the number of calls to the same sub-\/function. Update the {\bfseries{match\+Call\+Count}} field of each \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} 
+\begin{DoxyParams}{Parameters}
+{\em qlst} & is the list of call sites (\mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}}) for the calling function \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4700 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_aab6fc72a11289af288ec65f216d7a45b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_aad64d557811baf4602afcefb2746f7be}\label{class_func_call_specs_aad64d557811baf4602afcefb2746f7be}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!deindirect@{deindirect}}
+\index{deindirect@{deindirect}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{deindirect()}{deindirect()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::deindirect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{newfd }\end{DoxyParamCaption})}
+
+
+
+Convert {\bfseries{this}} call site from an indirect to a direct function call. 
+
+This call site must be a C\+A\+L\+L\+I\+ND, and the function that it is actually calling must be provided. The method makes a determination if the current state of data-\/flow allows converting to the prototype of the new function without dropping information due to inaccurate dead-\/code elimination. If conversion is safe, it is performed immediately. Otherwise a {\itshape restart} directive issued to force decompilation to restart from scratch (now with the direct function in hand) 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+{\em newfd} & is the \mbox{\hyperlink{class_funcdata}{Funcdata}} object that we know is the destination of {\bfseries{this}} C\+A\+L\+L\+I\+ND \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4251 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_aad64d557811baf4602afcefb2746f7be_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_aad64d557811baf4602afcefb2746f7be_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a489441d9d77d08bdf87eff937e8ef5b8}\label{class_func_call_specs_a489441d9d77d08bdf87eff937e8ef5b8}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!doInputJoin@{doInputJoin}}
+\index{doInputJoin@{doInputJoin}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{doInputJoin()}{doInputJoin()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::do\+Input\+Join (\begin{DoxyParamCaption}\item[{int4}]{slot1,  }\item[{bool}]{ishislot }\end{DoxyParamCaption})}
+
+
+
+Join two parameter trials. 
+
+We assume \mbox{\hyperlink{class_func_call_specs_a808f3d0c962701b6c98bca1792e86908}{check\+Input\+Join()}} has returned {\bfseries{true}}. Perform the join, replacing the given adjacent trials with a single merged parameter. 
+\begin{DoxyParams}{Parameters}
+{\em slot1} & is the trial slot of the first trial \\
+\hline
+{\em ishislot} & is {\bfseries{true}} if the first slot will be the most significant piece \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4186 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a489441d9d77d08bdf87eff937e8ef5b8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a489441d9d77d08bdf87eff937e8ef5b8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a48998cb808c1feedcad257f0984317ed}\label{class_func_call_specs_a48998cb808c1feedcad257f0984317ed}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!finalInputCheck@{finalInputCheck}}
+\index{finalInputCheck@{finalInputCheck}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{finalInputCheck()}{finalInputCheck()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::final\+Input\+Check (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Make final activity check on trials that might have been affected by conditional execution. 
+
+The activity level a trial may change once conditional execution has been analyzed. This routine (re)checks trials that might be affected by this, which may then be converted to {\itshape not} {\itshape used}. 
+
+Definition at line 4365 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a48998cb808c1feedcad257f0984317ed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_func_call_specs_a48998cb808c1feedcad257f0984317ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a9a59b9321b66bc9f23e69d2ef729258c}\label{class_func_call_specs_a9a59b9321b66bc9f23e69d2ef729258c}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!findPreexistingWhole@{findPreexistingWhole}}
+\index{findPreexistingWhole@{findPreexistingWhole}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{findPreexistingWhole()}{findPreexistingWhole()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ Func\+Call\+Specs\+::find\+Preexisting\+Whole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn1,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{vn2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if given two Varnodes are merged into a whole. 
+
+If the Varnodes are merged immediately into a common whole and aren\textquotesingle{}t used for anything else, return the whole \mbox{\hyperlink{class_varnode}{Varnode}}. 
+\begin{DoxyParams}{Parameters}
+{\em vn1} & is the first given \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+{\em vn2} & is the second given \mbox{\hyperlink{class_varnode}{Varnode}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the combined \mbox{\hyperlink{class_varnode}{Varnode}} or N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 4545 of file fspec.\+cc.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a9a59b9321b66bc9f23e69d2ef729258c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a8bc0ef657c876530f21a6ae60458eb35}\label{class_func_call_specs_a8bc0ef657c876530f21a6ae60458eb35}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!forceSet@{forceSet}}
+\index{forceSet@{forceSet}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{forceSet()}{forceSet()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::force\+Set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{const \mbox{\hyperlink{class_func_proto}{Func\+Proto}} \&}]{fp }\end{DoxyParamCaption})}
+
+
+
+Force a more restrictive prototype on {\bfseries{this}} call site. 
+
+A new prototype must be given, typically recovered from a function pointer data-\/type that has been propagated to {\bfseries{this}} call site. The method makes a determination if the current state of data-\/flow allows converting to the new prototype without dropping information due to inaccurate dead-\/code elimination. If conversion is safe, it is performed immediately. Otherwise a {\itshape restart} directive issued to force decompilation to restart from scratch (now with the new prototype in hand) 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+{\em fp} & is the new (more restrictive) function prototype \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4289 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a8bc0ef657c876530f21a6ae60458eb35_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a8bc0ef657c876530f21a6ae60458eb35_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a32432a6c7b201dc160ae0b2480a1b8b9}\label{class_func_call_specs_a32432a6c7b201dc160ae0b2480a1b8b9}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getActiveInput@{getActiveInput}}
+\index{getActiveInput@{getActiveInput}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getActiveInput()}{getActiveInput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_param_active}{Param\+Active}}$\ast$ Func\+Call\+Specs\+::get\+Active\+Input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the analysis object for input parameter recovery. 
+
+
+
+Definition at line 1384 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a32432a6c7b201dc160ae0b2480a1b8b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a866e9a9406614829224612035f28d311}\label{class_func_call_specs_a866e9a9406614829224612035f28d311}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getActiveOutput@{getActiveOutput}}
+\index{getActiveOutput@{getActiveOutput}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getActiveOutput()}{getActiveOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_param_active}{Param\+Active}}$\ast$ Func\+Call\+Specs\+::get\+Active\+Output (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the analysis object for return value recovery. 
+
+
+
+Definition at line 1385 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{class_func_call_specs_a866e9a9406614829224612035f28d311_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ade3352e35ffd4ed59bbc78f4b43c2998}\label{class_func_call_specs_ade3352e35ffd4ed59bbc78f4b43c2998}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getEffectiveExtraPop@{getEffectiveExtraPop}}
+\index{getEffectiveExtraPop@{getEffectiveExtraPop}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getEffectiveExtraPop()}{getEffectiveExtraPop()}}
+{\footnotesize\ttfamily int4 Func\+Call\+Specs\+::get\+Effective\+Extra\+Pop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the specific {\itshape extrapop} associate with {\bfseries{this}} call site. 
+
+
+
+Definition at line 1365 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ade3352e35ffd4ed59bbc78f4b43c2998_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a0a5d18be6037559397af11e6764abbcd}\label{class_func_call_specs_a0a5d18be6037559397af11e6764abbcd}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getEntryAddress@{getEntryAddress}}
+\index{getEntryAddress@{getEntryAddress}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getEntryAddress()}{getEntryAddress()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Func\+Call\+Specs\+::get\+Entry\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the entry address of the callee. 
+
+
+
+Definition at line 1363 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a0a5d18be6037559397af11e6764abbcd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_aa1d084c81a9ae8656d7ef79c84398dc8}\label{class_func_call_specs_aa1d084c81a9ae8656d7ef79c84398dc8}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getFspecFromConst@{getFspecFromConst}}
+\index{getFspecFromConst@{getFspecFromConst}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getFspecFromConst()}{getFspecFromConst()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}}$\ast$ Func\+Call\+Specs\+::get\+Fspec\+From\+Const (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Convert \mbox{\hyperlink{class_fspec_space}{Fspec\+Space}} addresses to the underlying \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the given {\itshape fspec} address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \mbox{\hyperlink{class_func_call_specs}{Func\+Call\+Specs}} object 
+\end{DoxyReturn}
+
+
+Definition at line 1409 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_aa1d084c81a9ae8656d7ef79c84398dc8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a860b42c7f272e40dae078854e101b6bc}\label{class_func_call_specs_a860b42c7f272e40dae078854e101b6bc}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getFuncdata@{getFuncdata}}
+\index{getFuncdata@{getFuncdata}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getFuncdata()}{getFuncdata()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_funcdata}{Funcdata}}$\ast$ Func\+Call\+Specs\+::get\+Funcdata (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the \mbox{\hyperlink{class_funcdata}{Funcdata}} object associated with the called function. 
+
+
+
+Definition at line 1359 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a860b42c7f272e40dae078854e101b6bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a3eae717564dd4884c28623d4a7a7b182}\label{class_func_call_specs_a3eae717564dd4884c28623d4a7a7b182}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getMatchCallCount@{getMatchCallCount}}
+\index{getMatchCallCount@{getMatchCallCount}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getMatchCallCount()}{getMatchCallCount()}}
+{\footnotesize\ttfamily int4 Func\+Call\+Specs\+::get\+Match\+Call\+Count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of calls the caller makes to {\bfseries{this}} sub-\/function. 
+
+
+
+Definition at line 1369 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_func_call_specs_a5c5bb2445140cdde864320679ba347b0}\label{class_func_call_specs_a5c5bb2445140cdde864320679ba347b0}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getName@{getName}}
+\index{getName@{getName}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const string\& Func\+Call\+Specs\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the function name associated with the callee. 
+
+
+
+Definition at line 1362 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a5c5bb2445140cdde864320679ba347b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ad88ee3058ece9a8b19f4e25566c03121}\label{class_func_call_specs_ad88ee3058ece9a8b19f4e25566c03121}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getOp@{getOp}}
+\index{getOp@{getOp}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getOp()}{getOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Func\+Call\+Specs\+::get\+Op (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the C\+A\+LL or C\+A\+L\+L\+I\+ND corresponding to {\bfseries{this}}. 
+
+
+
+Definition at line 1358 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ad88ee3058ece9a8b19f4e25566c03121_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_adc330a0897cbe51cd961095d77d7a6f0}\label{class_func_call_specs_adc330a0897cbe51cd961095d77d7a6f0}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getParamshift@{getParamshift}}
+\index{getParamshift@{getParamshift}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getParamshift()}{getParamshift()}}
+{\footnotesize\ttfamily int4 Func\+Call\+Specs\+::get\+Paramshift (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the parameter shift for this call site. 
+
+
+
+Definition at line 1368 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_func_call_specs_ad8990f080a96809b347656d7331236c5}\label{class_func_call_specs_ad8990f080a96809b347656d7331236c5}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getSpacebaseOffset@{getSpacebaseOffset}}
+\index{getSpacebaseOffset@{getSpacebaseOffset}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getSpacebaseOffset()}{getSpacebaseOffset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Func\+Call\+Specs\+::get\+Spacebase\+Offset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the stack-\/pointer relative offset at the point of {\bfseries{this}} call site. 
+
+
+
+Definition at line 1366 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ad8990f080a96809b347656d7331236c5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_abfda84c2a3919927503193ce9595efd6}\label{class_func_call_specs_abfda84c2a3919927503193ce9595efd6}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!getStackPlaceholderSlot@{getStackPlaceholderSlot}}
+\index{getStackPlaceholderSlot@{getStackPlaceholderSlot}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{getStackPlaceholderSlot()}{getStackPlaceholderSlot()}}
+{\footnotesize\ttfamily int4 Func\+Call\+Specs\+::get\+Stack\+Placeholder\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the slot of the stack-\/pointer placeholder. 
+
+
+
+Definition at line 1370 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_func_call_specs_a37a11cd8c631ed5b643eaf259b2ae49b}\label{class_func_call_specs_a37a11cd8c631ed5b643eaf259b2ae49b}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!hasEffectTranslate@{hasEffectTranslate}}
+\index{hasEffectTranslate@{hasEffectTranslate}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{hasEffectTranslate()}{hasEffectTranslate()}}
+{\footnotesize\ttfamily uint4 Func\+Call\+Specs\+::has\+Effect\+Translate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr,  }\item[{int4}]{size }\end{DoxyParamCaption}) const}
+
+
+
+Calculate type of side-\/effect for a given storage location (with caller translation) 
+
+Stack locations should be provided from the caller\textquotesingle{}s perspective. They are automatically translated to the callee\textquotesingle{}s perspective before making the underlying query. 
+\begin{DoxyParams}{Parameters}
+{\em addr} & is the starting address of the storage location \\
+\hline
+{\em size} & is the number of bytes in the storage \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the effect type 
+\end{DoxyReturn}
+
+
+Definition at line 4684 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a37a11cd8c631ed5b643eaf259b2ae49b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a0b481b6be0cc41e4f1b35089fc5f192b}\label{class_func_call_specs_a0b481b6be0cc41e4f1b35089fc5f192b}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!initActiveInput@{initActiveInput}}
+\index{initActiveInput@{initActiveInput}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{initActiveInput()}{initActiveInput()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::init\+Active\+Input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Turn on analysis recovering input parameters. 
+
+
+
+Definition at line 4141 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a0b481b6be0cc41e4f1b35089fc5f192b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a87904aacb6678c8bde4c0c2c781db830}\label{class_func_call_specs_a87904aacb6678c8bde4c0c2c781db830}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!initActiveOutput@{initActiveOutput}}
+\index{initActiveOutput@{initActiveOutput}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{initActiveOutput()}{initActiveOutput()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::init\+Active\+Output (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Turn on analysis recovering the return value. 
+
+
+
+Definition at line 1378 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_func_call_specs_aae6a890aaa82deca59ec7c57c92629aa}\label{class_func_call_specs_aae6a890aaa82deca59ec7c57c92629aa}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!insertPcode@{insertPcode}}
+\index{insertPcode@{insertPcode}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{insertPcode()}{insertPcode()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::insert\+Pcode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Inject any {\itshape upon-\/return} p-\/code at {\bfseries{this}} call site. 
+
+This function prototype may trigger injection of p-\/code immediately after the C\+A\+LL or C\+A\+L\+L\+I\+ND to mimic a portion of the callee that decompilation of the caller otherwise wouldn\textquotesingle{}t see. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4318 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_aae6a890aaa82deca59ec7c57c92629aa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_aae6a890aaa82deca59ec7c57c92629aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ae9f1afc18ffb30d43e25b0065823f366}\label{class_func_call_specs_ae9f1afc18ffb30d43e25b0065823f366}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!isBadJumpTable@{isBadJumpTable}}
+\index{isBadJumpTable@{isBadJumpTable}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{isBadJumpTable()}{isBadJumpTable()}}
+{\footnotesize\ttfamily bool Func\+Call\+Specs\+::is\+Bad\+Jump\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if {\bfseries{this}} call site looked like an indirect jump. 
+
+
+
+Definition at line 1383 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_func_call_specs_a4145c5e63b80ece45a2a4f0fd5949138}\label{class_func_call_specs_a4145c5e63b80ece45a2a4f0fd5949138}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!isInputActive@{isInputActive}}
+\index{isInputActive@{isInputActive}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{isInputActive()}{isInputActive()}}
+{\footnotesize\ttfamily bool Func\+Call\+Specs\+::is\+Input\+Active (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if input parameter recovery analysis is active. 
+
+
+
+Definition at line 1380 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a4145c5e63b80ece45a2a4f0fd5949138_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a81e8386ebb901a273ef40d8e8430fb57}\label{class_func_call_specs_a81e8386ebb901a273ef40d8e8430fb57}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!isOutputActive@{isOutputActive}}
+\index{isOutputActive@{isOutputActive}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{isOutputActive()}{isOutputActive()}}
+{\footnotesize\ttfamily bool Func\+Call\+Specs\+::is\+Output\+Active (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return {\bfseries{true}} if return value recovery analysis is active. 
+
+
+
+Definition at line 1381 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a81e8386ebb901a273ef40d8e8430fb57_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ab55b52b70e4def9167d06709746635e9}\label{class_func_call_specs_ab55b52b70e4def9167d06709746635e9}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!lateRestriction@{lateRestriction}}
+\index{lateRestriction@{lateRestriction}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{lateRestriction()}{lateRestriction()}}
+{\footnotesize\ttfamily bool Func\+Call\+Specs\+::late\+Restriction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_func_proto}{Func\+Proto}} \&}]{restricted\+Proto,  }\item[{vector$<$ \mbox{\hyperlink{class_varnode}{Varnode}} $\ast$ $>$ \&}]{newinput,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$\&}]{newoutput }\end{DoxyParamCaption})}
+
+
+
+Update {\bfseries{this}} prototype to match a given (more specialized) prototype. 
+
+This method assumes that {\bfseries{this}} prototype is in some intermediate state during the parameter recovery process and that a new definitive (locked) prototype is discovered for {\bfseries{this}} call site. This method checks to see if {\bfseries{this}} can be updated to match the new prototype without missing any data-\/flow. If so, {\bfseries{this}} is updated, and new input and output Varnodes for the C\+A\+LL are passed back. 
+\begin{DoxyParams}{Parameters}
+{\em restricted\+Proto} & is the new definitive function prototype \\
+\hline
+{\em newinput} & will hold the new list of input Varnodes for the C\+A\+LL \\
+\hline
+{\em newoutput} & will hold the new output \mbox{\hyperlink{class_varnode}{Varnode}} or N\+U\+LL \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} can be fully converted 
+\end{DoxyReturn}
+
+
+Definition at line 4218 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ab55b52b70e4def9167d06709746635e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ab55b52b70e4def9167d06709746635e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_aac7bcd5ea5ed14adbe74b4ca4c7e0814}\label{class_func_call_specs_aac7bcd5ea5ed14adbe74b4ca4c7e0814}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!paramshiftModifyStart@{paramshiftModifyStart}}
+\index{paramshiftModifyStart@{paramshiftModifyStart}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{paramshiftModifyStart()}{paramshiftModifyStart()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::paramshift\+Modify\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Prepend any extra parameters if a paramshift is required. 
+
+
+
+Definition at line 4651 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_aac7bcd5ea5ed14adbe74b4ca4c7e0814_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a01e16ebebb71bdc63fb884c8d0e3b7e3}\label{class_func_call_specs_a01e16ebebb71bdc63fb884c8d0e3b7e3}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!paramshiftModifyStop@{paramshiftModifyStop}}
+\index{paramshiftModifyStop@{paramshiftModifyStop}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{paramshiftModifyStop()}{paramshiftModifyStop()}}
+{\footnotesize\ttfamily bool Func\+Call\+Specs\+::paramshift\+Modify\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Throw out any paramshift parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if a change was made 
+\end{DoxyReturn}
+
+
+Definition at line 4661 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a01e16ebebb71bdc63fb884c8d0e3b7e3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a5ad2a3f374049dec6fdf0f9d20295305}\label{class_func_call_specs_a5ad2a3f374049dec6fdf0f9d20295305}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!resolveSpacebaseRelative@{resolveSpacebaseRelative}}
+\index{resolveSpacebaseRelative@{resolveSpacebaseRelative}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{resolveSpacebaseRelative()}{resolveSpacebaseRelative()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::resolve\+Spacebase\+Relative (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} \&}]{data,  }\item[{\mbox{\hyperlink{class_varnode}{Varnode}} $\ast$}]{phvn }\end{DoxyParamCaption})}
+
+
+
+Calculate the stack offset of {\bfseries{this}} call site. 
+
+The given \mbox{\hyperlink{class_varnode}{Varnode}} must be the input to the C\+A\+LL in the {\itshape placeholder} slot and must be defined by a C\+O\+PY from a \mbox{\hyperlink{class_varnode}{Varnode}} in the stack space. Calculate the offset of the stack-\/pointer at the point of {\bfseries{this}} C\+A\+LL, relative to the incoming stack-\/pointer value. This can be obtained either be looking at a stack parameter, or if there is no stack parameter, the stack-\/pointer {\itshape placeholder} can be used. If the {\itshape placeholder} has no other purpose, remove it. 
+\begin{DoxyParams}{Parameters}
+{\em data} & is the calling function \\
+\hline
+{\em phvn} & is the \mbox{\hyperlink{class_varnode}{Varnode}} in the {\itshape placeholder} slot for {\bfseries{this}} C\+A\+LL \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 3717 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a5ad2a3f374049dec6fdf0f9d20295305_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a5ad2a3f374049dec6fdf0f9d20295305_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_a9dbc2ae7d43e62971751d96cbddf1b32}\label{class_func_call_specs_a9dbc2ae7d43e62971751d96cbddf1b32}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!setAddress@{setAddress}}
+\index{setAddress@{setAddress}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{setAddress()}{setAddress()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::set\+Address (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set (override) the callee\textquotesingle{}s entry address. 
+
+
+
+Definition at line 1357 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a9dbc2ae7d43e62971751d96cbddf1b32_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_abe07c5f01eaa2171a4d8c4c832910022}\label{class_func_call_specs_abe07c5f01eaa2171a4d8c4c832910022}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!setBadJumpTable@{setBadJumpTable}}
+\index{setBadJumpTable@{setBadJumpTable}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{setBadJumpTable()}{setBadJumpTable()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::set\+Bad\+Jump\+Table (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Toggle whether {\bfseries{call}} site looked like an indirect jump. 
+
+
+
+Definition at line 1382 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_func_call_specs_a41d9cc82055fdcbc01f0a37ae3a56a01}\label{class_func_call_specs_a41d9cc82055fdcbc01f0a37ae3a56a01}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!setEffectiveExtraPop@{setEffectiveExtraPop}}
+\index{setEffectiveExtraPop@{setEffectiveExtraPop}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{setEffectiveExtraPop()}{setEffectiveExtraPop()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::set\+Effective\+Extra\+Pop (\begin{DoxyParamCaption}\item[{int4}]{epop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the specific {\itshape extrapop} associate with {\bfseries{this}} call site. 
+
+
+
+Definition at line 1364 of file fspec.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_a41d9cc82055fdcbc01f0a37ae3a56a01_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ae2f63fcf31daa5cc5663df227a813f0a}\label{class_func_call_specs_ae2f63fcf31daa5cc5663df227a813f0a}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!setFuncdata@{setFuncdata}}
+\index{setFuncdata@{setFuncdata}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{setFuncdata()}{setFuncdata()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::set\+Funcdata (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Set the \mbox{\hyperlink{class_funcdata}{Funcdata}} object associated with the called function. 
+
+
+
+Definition at line 3792 of file fspec.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ae2f63fcf31daa5cc5663df227a813f0a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ae2f63fcf31daa5cc5663df227a813f0a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_func_call_specs_ac1c86fdb931fd085ca45ff39a091552a}\label{class_func_call_specs_ac1c86fdb931fd085ca45ff39a091552a}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!setParamshift@{setParamshift}}
+\index{setParamshift@{setParamshift}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{setParamshift()}{setParamshift()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::set\+Paramshift (\begin{DoxyParamCaption}\item[{int4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a parameter shift for this call site. 
+
+
+
+Definition at line 1367 of file fspec.\+hh.
+
+\mbox{\Hypertarget{class_func_call_specs_ab398038b75b6f13b865384da3fd143b9}\label{class_func_call_specs_ab398038b75b6f13b865384da3fd143b9}} 
+\index{FuncCallSpecs@{FuncCallSpecs}!setStackPlaceholderSlot@{setStackPlaceholderSlot}}
+\index{setStackPlaceholderSlot@{setStackPlaceholderSlot}!FuncCallSpecs@{FuncCallSpecs}}
+\subsubsection{\texorpdfstring{setStackPlaceholderSlot()}{setStackPlaceholderSlot()}}
+{\footnotesize\ttfamily void Func\+Call\+Specs\+::set\+Stack\+Placeholder\+Slot (\begin{DoxyParamCaption}\item[{int4}]{slot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the slot of the stack-\/pointer placeholder. 
+
+
+
+Definition at line 1371 of file fspec.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_func_call_specs_ab398038b75b6f13b865384da3fd143b9_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8hh}{fspec.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{fspec_8cc}{fspec.\+cc}}\end{DoxyCompactItemize}

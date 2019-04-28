@@ -1,0 +1,86 @@
+.TH "F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.hh" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/re/ghidra_sourcecode/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/block.hh \- Classes related to \fIbasic\fP \fIblocks\fP and control-flow structuring\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'jumptable\&.hh'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBBlockEdge\fP"
+.br
+.RI "A control-flow edge between blocks (\fBFlowBlock\fP) "
+.ti -1c
+.RI "class \fBFlowBlock\fP"
+.br
+.RI "Description of a control-flow block containing PcodeOps\&. "
+.ti -1c
+.RI "class \fBBlockGraph\fP"
+.br
+.RI "A control-flow block built out of sub-components\&. "
+.ti -1c
+.RI "class \fBBlockBasic\fP"
+.br
+.RI "A basic block for p-code operations\&. "
+.ti -1c
+.RI "class \fBBlockCopy\fP"
+.br
+.RI "This class is used to mirror the \fBBlockBasic\fP objects in the fixed control-flow graph for a function\&. "
+.ti -1c
+.RI "class \fBBlockGoto\fP"
+.br
+.RI "A block that terminates with an unstructured (goto) branch to another block\&. "
+.ti -1c
+.RI "class \fBBlockMultiGoto\fP"
+.br
+.RI "A block with multiple edges out, at least one of which is an unstructured (goto) branch\&. "
+.ti -1c
+.RI "class \fBBlockList\fP"
+.br
+.RI "A series of blocks that execute in sequence\&. "
+.ti -1c
+.RI "class \fBBlockCondition\fP"
+.br
+.RI "Two conditional blocks combined into one conditional using BOOL_AND or BOOL_OR\&. "
+.ti -1c
+.RI "class \fBBlockIf\fP"
+.br
+.RI "A basic 'if' block\&. "
+.ti -1c
+.RI "class \fBBlockWhileDo\fP"
+.br
+.RI "A loop structure where the condition is checked at the top\&. "
+.ti -1c
+.RI "class \fBBlockDoWhile\fP"
+.br
+.RI "A loop structure where the condition is checked at the bottom\&. "
+.ti -1c
+.RI "class \fBBlockInfLoop\fP"
+.br
+.RI "An infinite loop structure\&. "
+.ti -1c
+.RI "class \fBBlockSwitch\fP"
+.br
+.RI "A structured \fIswitch\fP construction\&. "
+.ti -1c
+.RI "class \fBBlockMap\fP"
+.br
+.RI "Helper class for resolving cross-references while deserializing \fBBlockGraph\fP objects\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classes related to \fIbasic\fP \fIblocks\fP and control-flow structuring\&. 
+
+
+.PP
+Definition in file \fBblock\&.hh\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

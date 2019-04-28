@@ -1,0 +1,109 @@
+.TH "TypeOpReturn" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeOpReturn \- Information about the RETURN op-code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typeop\&.hh>\fP
+.PP
+Inherits \fBTypeOp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeOpReturn\fP (\fBTypeFactory\fP *t)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual void \fBpush\fP (\fBPrintLanguage\fP *lng, const \fBPcodeOp\fP *op) const"
+.br
+.RI "Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, const \fBPcodeOp\fP *op)"
+.br
+.RI "Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetInputLocal\fP (const \fBPcodeOp\fP *op, int4 slot) const"
+.br
+.RI "Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Information about the RETURN op-code\&. 
+.PP
+Definition at line 292 of file typeop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeOpReturn::TypeOpReturn (\fBTypeFactory\fP * t)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 739 of file typeop\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDatatype\fP * TypeOpReturn::getInputLocal (const \fBPcodeOp\fP * op, int4 slot) const\fC [virtual]\fP"
+
+.PP
+Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. The result should depend only on the op-code itself (and the size of the input) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP being considered 
+.br
+\fIslot\fP is the input being considered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeOp\fP\&.
+.PP
+Definition at line 765 of file typeop\&.cc\&.
+.SS "void TypeOpReturn::printRaw (ostream & s, const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP to print 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Definition at line 746 of file typeop\&.cc\&.
+.SS "virtual void TypeOpReturn::push (\fBPrintLanguage\fP * lng, const \fBPcodeOp\fP * op) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Push the specific \fBPcodeOp\fP to the emitter's RPN stack\&. Given a specific language and \fBPcodeOp\fP, emit the expression rooted at the operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlng\fP is the \fBPrintLanguage\fP to emit 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Definition at line 295 of file typeop\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,277 @@
+.TH "ProtoParameter" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ProtoParameter \- A function parameter viewed as a name, data-type, and storage address\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherited by \fBParameterBasic\fP, and \fBParameterSymbol\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProtoParameter\fP (void)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~ProtoParameter\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual const string & \fBgetName\fP (void) const =0"
+.br
+.RI "Get the name of the parameter ('' for return value) "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetType\fP (void) const =0"
+.br
+.RI "Get the data-type associate with \fBthis\fP\&. "
+.ti -1c
+.RI "virtual \fBAddress\fP \fBgetAddress\fP (void) const =0"
+.br
+.RI "Get the storage address for \fBthis\fP parameter\&. "
+.ti -1c
+.RI "virtual int4 \fBgetSize\fP (void) const =0"
+.br
+.RI "Get the number of bytes occupied by \fBthis\fP parameter\&. "
+.ti -1c
+.RI "virtual bool \fBisTypeLocked\fP (void) const =0"
+.br
+.RI "Is the parameter data-type locked\&. "
+.ti -1c
+.RI "virtual bool \fBisNameLocked\fP (void) const =0"
+.br
+.RI "Is the parameter name locked\&. "
+.ti -1c
+.RI "virtual bool \fBisSizeTypeLocked\fP (void) const =0"
+.br
+.RI "Is the size of the parameter locked\&. "
+.ti -1c
+.RI "virtual bool \fBisIndirectStorage\fP (void) const =0"
+.br
+.RI "Is \fBthis\fP really a pointer to the true parameter\&. "
+.ti -1c
+.RI "virtual bool \fBisHiddenReturn\fP (void) const =0"
+.br
+.RI "Is \fBthis\fP a pointer to storage for a return value\&. "
+.ti -1c
+.RI "virtual bool \fBisNameUndefined\fP (void) const =0"
+.br
+.RI "Is the name of \fBthis\fP parameter undefined\&. "
+.ti -1c
+.RI "virtual void \fBsetTypeLock\fP (bool val)=0"
+.br
+.RI "Toggle the lock on the data-type\&. "
+.ti -1c
+.RI "virtual void \fBsetNameLock\fP (bool val)=0"
+.br
+.RI "Toggle the lock on the name\&. "
+.ti -1c
+.RI "virtual void \fBoverrideSizeLockType\fP (\fBDatatype\fP *ct)=0"
+.br
+.RI "Change (override) the data-type of a \fIsize-locked\fP parameter\&. "
+.ti -1c
+.RI "virtual void \fBresetSizeLockType\fP (\fBTypeFactory\fP *factory)=0"
+.br
+.RI "Clear \fBthis\fP parameter's data-type preserving any \fIsize-lock\fP\&. "
+.ti -1c
+.RI "virtual \fBProtoParameter\fP * \fBclone\fP (void) const =0"
+.br
+.RI "Clone the parameter\&. "
+.ti -1c
+.RI "virtual \fBSymbol\fP * \fBgetSymbol\fP (void) const =0"
+.br
+.RI "Retrieve the formal \fBSymbol\fP associated with \fBthis\fP parameter\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBProtoParameter\fP &op2) const"
+.br
+.RI "Compare storage location and data-type for equality\&. "
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBProtoParameter\fP &op2) const"
+.br
+.RI "Compare storage location and data-type for inequality\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A function parameter viewed as a name, data-type, and storage address\&. 
+
+This is the base class, with derived classes determining what is backing up the information, whether is it a formal \fBSymbol\fP or just internal storage\&. Both input parameters and return values can be represented with this object\&. 
+.PP
+Definition at line 811 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ProtoParameter::ProtoParameter (void)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 813 of file fspec\&.hh\&.
+.SS "virtual ProtoParameter::~ProtoParameter (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 814 of file fspec\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBProtoParameter\fP* ProtoParameter::clone (void) const\fC [pure virtual]\fP"
+
+.PP
+Clone the parameter\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual \fBAddress\fP ProtoParameter::getAddress (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the storage address for \fBthis\fP parameter\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual const string& ProtoParameter::getName (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the name of the parameter ('' for return value) 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual int4 ProtoParameter::getSize (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the number of bytes occupied by \fBthis\fP parameter\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual \fBSymbol\fP* ProtoParameter::getSymbol (void) const\fC [pure virtual]\fP"
+
+.PP
+Retrieve the formal \fBSymbol\fP associated with \fBthis\fP parameter\&. If there is no backing symbol an exception is thrown 
+.PP
+\fBReturns:\fP
+.RS 4
+the backing \fBSymbol\fP object 
+.RE
+.PP
+
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual \fBDatatype\fP* ProtoParameter::getType (void) const\fC [pure virtual]\fP"
+
+.PP
+Get the data-type associate with \fBthis\fP\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual bool ProtoParameter::isHiddenReturn (void) const\fC [pure virtual]\fP"
+
+.PP
+Is \fBthis\fP a pointer to storage for a return value\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual bool ProtoParameter::isIndirectStorage (void) const\fC [pure virtual]\fP"
+
+.PP
+Is \fBthis\fP really a pointer to the true parameter\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual bool ProtoParameter::isNameLocked (void) const\fC [pure virtual]\fP"
+
+.PP
+Is the parameter name locked\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual bool ProtoParameter::isNameUndefined (void) const\fC [pure virtual]\fP"
+
+.PP
+Is the name of \fBthis\fP parameter undefined\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual bool ProtoParameter::isSizeTypeLocked (void) const\fC [pure virtual]\fP"
+
+.PP
+Is the size of the parameter locked\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual bool ProtoParameter::isTypeLocked (void) const\fC [pure virtual]\fP"
+
+.PP
+Is the parameter data-type locked\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "bool ProtoParameter::operator!= (const \fBProtoParameter\fP & op2) const\fC [inline]\fP"
+
+.PP
+Compare storage location and data-type for inequality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the parameter to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the parameters do not share a data-type and storage location 
+.RE
+.PP
+
+.PP
+Definition at line 863 of file fspec\&.hh\&.
+.SS "bool ProtoParameter::operator== (const \fBProtoParameter\fP & op2) const\fC [inline]\fP"
+
+.PP
+Compare storage location and data-type for equality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop2\fP is the parameter to compare with \fBthis\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the parameters share a data-type and storage location 
+.RE
+.PP
+
+.PP
+Definition at line 853 of file fspec\&.hh\&.
+.SS "virtual void ProtoParameter::overrideSizeLockType (\fBDatatype\fP * ct)\fC [pure virtual]\fP"
+
+.PP
+Change (override) the data-type of a \fIsize-locked\fP parameter\&. The original parameter must have a \fItype-lock\fP and TYPE_UNKNOWN data-type\&. The \fIsize-lock\fP is preserved and \fBthis\fP can be cleared back to its TYPE_UNKNOWN state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIct\fP is the overriding data-type 
+.RE
+.PP
+
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual void ProtoParameter::resetSizeLockType (\fBTypeFactory\fP * factory)\fC [pure virtual]\fP"
+
+.PP
+Clear \fBthis\fP parameter's data-type preserving any \fIsize-lock\fP\&. The data-type is converted to a TYPE_UNKNOWN of the same size 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP is the \fBTypeFactory\fP that will construct the unknown data-type 
+.RE
+.PP
+
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual void ProtoParameter::setNameLock (bool val)\fC [pure virtual]\fP"
+
+.PP
+Toggle the lock on the name\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+.SS "virtual void ProtoParameter::setTypeLock (bool val)\fC [pure virtual]\fP"
+
+.PP
+Toggle the lock on the data-type\&. 
+.PP
+Implemented in \fBParameterSymbol\fP, and \fBParameterBasic\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

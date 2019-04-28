@@ -1,0 +1,696 @@
+.TH "Action" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Action \- Large scale transformations applied to the varnode/op graph\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <action\&.hh>\fP
+.PP
+Inherited by \fBActionActiveParam\fP, \fBActionActiveReturn\fP, \fBActionAssignHigh\fP, \fBActionBlockStructure\fP, \fBActionConditionalConst\fP, \fBActionConditionalExe\fP, \fBActionConstantPtr\fP, \fBActionConstbase\fP, \fBActionCopyMarker\fP, \fBActionDeadCode\fP, \fBActionDefaultParams\fP, \fBActionDeindirect\fP, \fBActionDeterminedBranch\fP, \fBActionDirectWrite\fP, \fBActionDoNothing\fP, \fBActionDynamicMapping\fP, \fBActionDynamicSymbols\fP, \fBActionExtraPopSetup\fP, \fBActionFinalStructure\fP, \fBActionForceGoto\fP, \fBActionFuncLink\fP, \fBActionFuncLinkOutOnly\fP, \fBActionGroup\fP, \fBActionHeritage\fP, \fBActionHideShadow\fP, \fBActionInferTypes\fP, \fBActionInputPrototype\fP, \fBActionLikelyTrash\fP, \fBActionMapGlobals\fP, \fBActionMarkExplicit\fP, \fBActionMarkImplied\fP, \fBActionMarkIndirectOnly\fP, \fBActionMergeAdjacent\fP, \fBActionMergeCopy\fP, \fBActionMergeRequired\fP, \fBActionMergeType\fP, \fBActionMultiCse\fP, \fBActionNameVars\fP, \fBActionNodeJoin\fP, \fBActionNonzeroMask\fP, \fBActionNormalizeBranches\fP, \fBActionNormalizeSetup\fP, \fBActionOutputPrototype\fP, \fBActionParamDouble\fP, \fBActionPool\fP, \fBActionPreferComplement\fP, \fBActionPrototypeTypes\fP, \fBActionPrototypeWarnings\fP, \fBActionRedundBranch\fP, \fBActionRestrictLocal\fP, \fBActionRestructureHigh\fP, \fBActionRestructureVarnode\fP, \fBActionReturnRecovery\fP, \fBActionReturnSplit\fP, \fBActionSegmentize\fP, \fBActionSetCasts\fP, \fBActionShadowVar\fP, \fBActionSpacebase\fP, \fBActionStackPtrFlow\fP, \fBActionStart\fP, \fBActionStartCleanUp\fP, \fBActionStartTypes\fP, \fBActionStop\fP, \fBActionSwitchNorm\fP, \fBActionUnjustifiedParams\fP, \fBActionUnreachable\fP, and \fBActionVarnodeProps\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBruleflags\fP { \fBrule_repeatapply\fP = 4, \fBrule_onceperfunc\fP = 8, \fBrule_oneactperfunc\fP = 16, \fBrule_debug\fP = 32, \fBrule_warnings_on\fP = 64, \fBrule_warnings_given\fP = 128 }"
+.br
+.RI "Boolean behavior properties governing this particular \fBAction\fP\&. "
+.ti -1c
+.RI "enum \fBstatusflags\fP { \fBstatus_start\fP =1, \fBstatus_breakstarthit\fP =2, \fBstatus_repeat\fP =4, \fBstatus_mid\fP =8, \fBstatus_end\fP =16, \fBstatus_actionbreak\fP =32 }"
+.br
+.RI "Boolean properties describing the \fIstatus\fP of an action\&. "
+.ti -1c
+.RI "enum \fBbreakflags\fP { \fBbreak_start\fP = 1, \fBtmpbreak_start\fP = 2, \fBbreak_action\fP = 4, \fBtmpbreak_action\fP = 8 }"
+.br
+.RI "Break points associated with an \fBAction\fP\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAction\fP (uint4 f, const string &nm, const string &g)"
+.br
+.RI "Base constructor for an \fBAction\fP\&. "
+.ti -1c
+.RI "virtual \fB~Action\fP (void)"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBprintStatistics\fP (ostream &s) const"
+.br
+.RI "Dump statistics to stream\&. "
+.ti -1c
+.RI "int4 \fBperform\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Perform this action (if necessary) "
+.ti -1c
+.RI "bool \fBsetBreakPoint\fP (uint4 tp, const string &specify)"
+.br
+.RI "Set a breakpoint on this action\&. "
+.ti -1c
+.RI "bool \fBsetWarning\fP (bool val, const string &specify)"
+.br
+.RI "Set a warning on this action\&. "
+.ti -1c
+.RI "bool \fBdisableRule\fP (const string &specify)"
+.br
+.RI "Disable a specific \fBRule\fP within \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBenableRule\fP (const string &specify)"
+.br
+.RI "Enable a specific \fBRule\fP within \fBthis\fP\&. "
+.ti -1c
+.RI "const string & \fBgetName\fP (void) const"
+.br
+.RI "Get the \fBAction\fP's name\&. "
+.ti -1c
+.RI "const string & \fBgetGroup\fP (void) const"
+.br
+.RI "Get the \fBAction\fP's group\&. "
+.ti -1c
+.RI "uint4 \fBgetStatus\fP (void) const"
+.br
+.RI "Get the current status of \fBthis\fP \fBAction\fP\&. "
+.ti -1c
+.RI "uint4 \fBgetNumTests\fP (void)"
+.br
+.RI "Get the number of times \fBapply()\fP was invoked\&. "
+.ti -1c
+.RI "uint4 \fBgetNumApply\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBAction\fP * \fBclone\fP (const \fBActionGroupList\fP &grouplist) const =0"
+.br
+.RI "Clone the \fBAction\fP\&. "
+.ti -1c
+.RI "virtual void \fBreset\fP (\fBFuncdata\fP &data)"
+.br
+.RI "Reset the \fBAction\fP for a new function\&. "
+.ti -1c
+.RI "virtual void \fBresetStats\fP (void)"
+.br
+.RI "Reset all the counts to zero\&. "
+.ti -1c
+.RI "virtual int4 \fBapply\fP (\fBFuncdata\fP &data)=0"
+.br
+.RI "Make a single attempt to apply \fBthis\fP \fBAction\fP\&. "
+.ti -1c
+.RI "virtual int4 \fBprint\fP (ostream &s, int4 num, int4 depth) const"
+.br
+.RI "Print a description of this \fBAction\fP to stream\&. "
+.ti -1c
+.RI "virtual void \fBprintState\fP (ostream &s) const"
+.br
+.RI "Print status to stream\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save specifics of this action to stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBFuncdata\fP *fd)"
+.br
+.RI "Load specifics of action from XML\&. "
+.ti -1c
+.RI "virtual \fBAction\fP * \fBgetSubAction\fP (const string &specify)"
+.br
+.RI "Retrieve a specific sub-action by name\&. "
+.ti -1c
+.RI "virtual \fBRule\fP * \fBgetSubRule\fP (const string &specify)"
+.br
+.RI "Retrieve a specific sub-rule by name\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBissueWarning\fP (\fBArchitecture\fP *glb)"
+.br
+.RI "Warn that this \fBAction\fP has applied\&. "
+.ti -1c
+.RI "bool \fBcheckStartBreak\fP (void)"
+.br
+.RI "Check start breakpoint\&. "
+.ti -1c
+.RI "bool \fBcheckActionBreak\fP (void)"
+.br
+.RI "Check action breakpoint\&. "
+.ti -1c
+.RI "void \fBturnOnWarnings\fP (void)"
+.br
+.RI "Enable warnings for this \fBAction\fP\&. "
+.ti -1c
+.RI "void \fBturnOffWarnings\fP (void)"
+.br
+.RI "Disable warnings for this \fBAction\fP\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int4 \fBlcount\fP"
+.br
+.RI "Changes not including last call to \fBapply()\fP "
+.ti -1c
+.RI "int4 \fBcount\fP"
+.br
+.RI "Number of changes made by this action so far\&. "
+.ti -1c
+.RI "uint4 \fBstatus\fP"
+.br
+.RI "Current status\&. "
+.ti -1c
+.RI "uint4 \fBbreakpoint\fP"
+.br
+.RI "Breakpoint properties\&. "
+.ti -1c
+.RI "uint4 \fBflags\fP"
+.br
+.RI "Behavior properties\&. "
+.ti -1c
+.RI "uint4 \fBcount_tests\fP"
+.br
+.RI "Number of times \fBapply()\fP has been called\&. "
+.ti -1c
+.RI "uint4 \fBcount_apply\fP"
+.br
+.RI "Number of times \fBapply()\fP made changes\&. "
+.ti -1c
+.RI "string \fBname\fP"
+.br
+.RI "Name of the action\&. "
+.ti -1c
+.RI "string \fBbasegroup\fP"
+.br
+.RI "Base group this action belongs to\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Large scale transformations applied to the varnode/op graph\&. 
+
+The base for objects that make changes to the syntax tree of a \fBFuncdata\fP The action is invoked through the \fBapply(Funcdata &data)\fP method\&. This base class keeps track of basic statistics about how the action is being applied\&. Derived classes indicate that a change has been applied by incrementing the \fBcount\fP field\&. With OPACTION_DEBUG macro defined, actions support a break point debugging in console mode\&. 
+.PP
+Definition at line 50 of file action\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBAction::breakflags\fP"
+
+.PP
+Break points associated with an \fBAction\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIbreak_start \fP\fP
+Break at beginning of action\&. 
+.TP
+\fB\fItmpbreak_start \fP\fP
+Temporary break at start of action\&. 
+.TP
+\fB\fIbreak_action \fP\fP
+Break if a change has been made\&. 
+.TP
+\fB\fItmpbreak_action \fP\fP
+.PP
+Definition at line 71 of file action\&.hh\&.
+.SS "enum \fBAction::ruleflags\fP"
+
+.PP
+Boolean behavior properties governing this particular \fBAction\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIrule_repeatapply \fP\fP
+Apply rule repeatedly until no change\&. 
+.TP
+\fB\fIrule_onceperfunc \fP\fP
+Apply rule once per function\&. 
+.TP
+\fB\fIrule_oneactperfunc \fP\fP
+Makes a change only once per function\&. 
+.TP
+\fB\fIrule_debug \fP\fP
+Print debug messages specifically for this action\&. 
+.TP
+\fB\fIrule_warnings_on \fP\fP
+If this action makes a change, issue a warning\&. 
+.TP
+\fB\fIrule_warnings_given \fP\fP
+A warning has been issued for this action\&. 
+.PP
+Definition at line 53 of file action\&.hh\&.
+.SS "enum \fBAction::statusflags\fP"
+
+.PP
+Boolean properties describing the \fIstatus\fP of an action\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIstatus_start \fP\fP
+At start of action\&. 
+.TP
+\fB\fIstatus_breakstarthit \fP\fP
+At start after breakpoint\&. 
+.TP
+\fB\fIstatus_repeat \fP\fP
+Repeating the same action\&. 
+.TP
+\fB\fIstatus_mid \fP\fP
+In middle of action (use subclass status) 
+.TP
+\fB\fIstatus_end \fP\fP
+getFuncdata has completed once (for onceperfunc) 
+.TP
+\fB\fIstatus_actionbreak \fP\fP
+Completed full action last time but indicated action break\&. 
+.PP
+Definition at line 62 of file action\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Action::Action (uint4 f, const string & nm, const string & g)"
+
+.PP
+Base constructor for an \fBAction\fP\&. Specify the name, group, and properties of the \fBAction\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP is the collection of property flags 
+.br
+\fInm\fP is the \fBAction\fP name 
+.br
+\fIg\fP is the \fBAction\fP group 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file action\&.cc\&.
+.SS "virtual Action::~Action (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destructor\&. 
+.PP
+Definition at line 94 of file action\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int4 Action::apply (\fBFuncdata\fP & data)\fC [pure virtual]\fP"
+
+.PP
+Make a single attempt to apply \fBthis\fP \fBAction\fP\&. This is the main entry point for applying changes to a function that are specific to \fBthis\fP \fBAction\fP\&. The method can inspect whatever it wants to decide if the \fBAction\fP does or does not apply\&. Changes are indicated by incrementing the \fBcount\fP field\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function to inspect/modify 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 for a complete application, -1 for a partial completion (due to breakpoint) 
+.RE
+.PP
+
+.PP
+Implemented in \fBActionPrototypeWarnings\fP, \fBActionDynamicSymbols\fP, \fBActionDynamicMapping\fP, \fBActionCopyMarker\fP, \fBActionHideShadow\fP, \fBActionInferTypes\fP, \fBActionUnjustifiedParams\fP, \fBActionOutputPrototype\fP, \fBActionInputPrototype\fP, \fBActionMapGlobals\fP, \fBActionRestructureHigh\fP, \fBActionRestructureVarnode\fP, \fBActionLikelyTrash\fP, \fBActionRestrictLocal\fP, \fBActionReturnRecovery\fP, \fBActionActiveReturn\fP, \fBActionActiveParam\fP, \fBActionParamDouble\fP, \fBActionFuncLinkOutOnly\fP, \fBActionFuncLink\fP, \fBActionExtraPopSetup\fP, \fBActionDefaultParams\fP, \fBActionPrototypeTypes\fP, \fBActionNormalizeSetup\fP, \fBActionSwitchNorm\fP, \fBActionConditionalConst\fP, \fBActionDeadCode\fP, \fBActionDeterminedBranch\fP, \fBActionRedundBranch\fP, \fBActionDoNothing\fP, \fBActionUnreachable\fP, \fBActionNameVars\fP, \fBActionMarkImplied\fP, \fBActionMarkExplicit\fP, \fBActionMergeType\fP, \fBActionMergeCopy\fP, \fBActionNodeJoin\fP, \fBActionMergeAdjacent\fP, \fBActionReturnSplit\fP, \fBActionMergeRequired\fP, \fBActionMarkIndirectOnly\fP, \fBActionFinalStructure\fP, \fBActionAssignHigh\fP, \fBActionBlockStructure\fP, \fBActionSetCasts\fP, \fBActionPreferComplement\fP, \fBActionNormalizeBranches\fP, \fBActionPool\fP, \fBActionNonzeroMask\fP, \fBActionHeritage\fP, \fBActionSpacebase\fP, \fBActionConstbase\fP, \fBActionDirectWrite\fP, \fBActionVarnodeProps\fP, \fBActionDeindirect\fP, \fBActionRestartGroup\fP, \fBActionConditionalExe\fP, \fBActionConstantPtr\fP, \fBActionShadowVar\fP, \fBActionGroup\fP, \fBActionMultiCse\fP, \fBActionForceGoto\fP, \fBActionSegmentize\fP, \fBActionStackPtrFlow\fP, \fBActionStartTypes\fP, \fBActionStartCleanUp\fP, \fBActionStop\fP, and \fBActionStart\fP\&.
+.SS "bool Action::checkActionBreak (void)\fC [protected]\fP"
+
+.PP
+Check action breakpoint\&. Check if there was an active \fIaction\fP breakpoint on this \fBAction\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+true if there was an action breakpoint 
+.RE
+.PP
+
+.PP
+Definition at line 115 of file action\&.cc\&.
+.SS "bool Action::checkStartBreak (void)\fC [protected]\fP"
+
+.PP
+Check start breakpoint\&. Check if there was an active \fIstart\fP break point on this action 
+.PP
+\fBReturns:\fP
+.RS 4
+true if there was a start breakpoint 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file action\&.cc\&.
+.SS "virtual \fBAction\fP* Action::clone (const \fBActionGroupList\fP & grouplist) const\fC [pure virtual]\fP"
+
+.PP
+Clone the \fBAction\fP\&. If \fBthis\fP \fBAction\fP is a member of one of the groups in the grouplist, this returns a clone of the \fBAction\fP, otherwise NULL is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrouplist\fP is the list of groups being cloned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the cloned \fBAction\fP or NULL 
+.RE
+.PP
+
+.PP
+Implemented in \fBActionPrototypeWarnings\fP, \fBActionDynamicSymbols\fP, \fBActionDynamicMapping\fP, \fBActionCopyMarker\fP, \fBActionHideShadow\fP, \fBActionInferTypes\fP, \fBActionUnjustifiedParams\fP, \fBActionOutputPrototype\fP, \fBActionInputPrototype\fP, \fBActionMapGlobals\fP, \fBActionRestructureHigh\fP, \fBActionRestructureVarnode\fP, \fBActionLikelyTrash\fP, \fBActionRestrictLocal\fP, \fBActionReturnRecovery\fP, \fBActionActiveReturn\fP, \fBActionActiveParam\fP, \fBActionParamDouble\fP, \fBActionFuncLinkOutOnly\fP, \fBActionFuncLink\fP, \fBActionExtraPopSetup\fP, \fBActionDefaultParams\fP, \fBActionPrototypeTypes\fP, \fBActionNormalizeSetup\fP, \fBActionSwitchNorm\fP, \fBActionConditionalConst\fP, \fBActionDeadCode\fP, \fBActionDeterminedBranch\fP, \fBActionRedundBranch\fP, \fBActionDoNothing\fP, \fBActionUnreachable\fP, \fBActionNameVars\fP, \fBActionMarkImplied\fP, \fBActionMarkExplicit\fP, \fBActionMergeType\fP, \fBActionMergeCopy\fP, \fBActionNodeJoin\fP, \fBActionMergeAdjacent\fP, \fBActionReturnSplit\fP, \fBActionMergeRequired\fP, \fBActionMarkIndirectOnly\fP, \fBActionFinalStructure\fP, \fBActionAssignHigh\fP, \fBActionBlockStructure\fP, \fBActionSetCasts\fP, \fBActionPreferComplement\fP, \fBActionNormalizeBranches\fP, \fBActionPool\fP, \fBActionNonzeroMask\fP, \fBActionHeritage\fP, \fBActionSpacebase\fP, \fBActionConstbase\fP, \fBActionDirectWrite\fP, \fBActionVarnodeProps\fP, \fBActionDeindirect\fP, \fBActionRestartGroup\fP, \fBActionConditionalExe\fP, \fBActionConstantPtr\fP, \fBActionShadowVar\fP, \fBActionGroup\fP, \fBActionMultiCse\fP, \fBActionForceGoto\fP, \fBActionSegmentize\fP, \fBActionStackPtrFlow\fP, \fBActionStartTypes\fP, \fBActionStartCleanUp\fP, \fBActionStop\fP, and \fBActionStart\fP\&.
+.SS "bool Action::disableRule (const string & specify)"
+
+.PP
+Disable a specific \fBRule\fP within \fBthis\fP\&. An individual \fBRule\fP can be disabled by name, within \fBthis\fP \fBAction\fP\&. It must be specified by a ':' separated name \fIpath\fP, from the root \fBAction\fP down to the specific \fBRule\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecify\fP is the name path 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBRule\fP is successfully disabled 
+.RE
+.PP
+
+.PP
+Definition at line 218 of file action\&.cc\&.
+.SS "bool Action::enableRule (const string & specify)"
+
+.PP
+Enable a specific \fBRule\fP within \fBthis\fP\&. An individual \fBRule\fP can be enabled by name, within \fBthis\fP \fBAction\fP\&. It must be specified by a ':' separated name \fIpath\fP, from the root \fBAction\fP down to the specific \fBRule\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecify\fP is the name path 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the \fBRule\fP is successfully enabled 
+.RE
+.PP
+
+.PP
+Definition at line 234 of file action\&.cc\&.
+.SS "const string& Action::getGroup (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBAction\fP's group\&. 
+.PP
+Definition at line 106 of file action\&.hh\&.
+.SS "const string& Action::getName (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBAction\fP's name\&. 
+.PP
+Definition at line 105 of file action\&.hh\&.
+.SS "uint4 Action::getNumApply (void)\fC [inline]\fP"
+Get the number of times \fBapply()\fP made changes 
+.PP
+Definition at line 109 of file action\&.hh\&.
+.SS "uint4 Action::getNumTests (void)\fC [inline]\fP"
+
+.PP
+Get the number of times \fBapply()\fP was invoked\&. 
+.PP
+Definition at line 108 of file action\&.hh\&.
+.SS "uint4 Action::getStatus (void) const\fC [inline]\fP"
+
+.PP
+Get the current status of \fBthis\fP \fBAction\fP\&. 
+.PP
+Definition at line 107 of file action\&.hh\&.
+.SS "\fBAction\fP * Action::getSubAction (const string & specify)\fC [virtual]\fP"
+
+.PP
+Retrieve a specific sub-action by name\&. If this \fBAction\fP matches the given name, it is returned\&. If the name matches a sub-action, this is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecify\fP is the action name to match 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching \fBAction\fP or sub-action 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBActionGroup\fP\&.
+.PP
+Definition at line 267 of file action\&.cc\&.
+.SS "\fBRule\fP * Action::getSubRule (const string & specify)\fC [virtual]\fP"
+
+.PP
+Retrieve a specific sub-rule by name\&. Find a \fBRule\fP, as a component of \fBthis\fP \fBAction\fP, with the given name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecify\fP is the name of the rule 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the matching sub-rule 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBActionPool\fP, and \fBActionGroup\fP\&.
+.PP
+Definition at line 277 of file action\&.cc\&.
+.SS "void Action::issueWarning (\fBArchitecture\fP * glb)\fC [protected]\fP"
+
+.PP
+Warn that this \fBAction\fP has applied\&. If enabled, issue a warning that this \fBAction\fP has been applied 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIglb\fP is the controlling \fBArchitecture\fP 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file action\&.cc\&.
+.SS "int4 Action::perform (\fBFuncdata\fP & data)"
+
+.PP
+Perform this action (if necessary) Run \fBthis\fP \fBAction\fP until completion or a breakpoint occurs\&. Depending on the behavior properties of this instance, the \fBapply()\fP method may get called many times or none\&. Generally the number of changes made by the action is returned, but if a breakpoint occurs -1 is returned\&. A successive call to \fBperform()\fP will 'continue' from the break point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the function being acted on 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of changes or -1 
+.RE
+.PP
+
+.PP
+Definition at line 290 of file action\&.cc\&.
+.SS "int4 Action::print (ostream & s, int4 num, int4 depth) const\fC [virtual]\fP"
+
+.PP
+Print a description of this \fBAction\fP to stream\&. The description is suitable for a console mode listing of actions 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fInum\fP is a starting index to associate with the action (and its sub-actions) 
+.br
+\fIdepth\fP is amount of indent necessary before printing 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next available index 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBActionPool\fP, and \fBActionGroup\fP\&.
+.PP
+Definition at line 130 of file action\&.cc\&.
+.SS "void Action::printState (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Print status to stream\&. This will the \fBAction\fP name and the next step to execute 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBActionPool\fP, and \fBActionGroup\fP\&.
+.PP
+Definition at line 146 of file action\&.cc\&.
+.SS "void Action::printStatistics (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Dump statistics to stream\&. Print out the collected statistics for the \fBAction\fP to stream 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBActionPool\fP, and \fBActionGroup\fP\&.
+.PP
+Definition at line 91 of file action\&.cc\&.
+.SS "void Action::reset (\fBFuncdata\fP & data)\fC [virtual]\fP"
+
+.PP
+Reset the \fBAction\fP for a new function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP is the new function \fBthis\fP \fBAction\fP may affect 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBActionInferTypes\fP, \fBActionRestructureVarnode\fP, \fBActionPool\fP, \fBActionRestartGroup\fP, \fBActionConstantPtr\fP, \fBActionGroup\fP, \fBActionSegmentize\fP, and \fBActionStackPtrFlow\fP\&.
+.PP
+Definition at line 98 of file action\&.cc\&.
+.SS "void Action::resetStats (void)\fC [virtual]\fP"
+
+.PP
+Reset all the counts to zero\&. Reset the statistics 
+.PP
+Reimplemented in \fBActionPool\fP, and \fBActionGroup\fP\&.
+.PP
+Definition at line 106 of file action\&.cc\&.
+.SS "virtual void Action::restoreXml (const \fBElement\fP * el, \fBFuncdata\fP * fd)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Load specifics of action from XML\&. 
+.PP
+Definition at line 131 of file action\&.hh\&.
+.SS "virtual void Action::saveXml (ostream & s) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Save specifics of this action to stream\&. 
+.PP
+Definition at line 130 of file action\&.hh\&.
+.SS "bool Action::setBreakPoint (uint4 tp, const string & specify)"
+
+.PP
+Set a breakpoint on this action\&. A breakpoint can be placed on \fBthis\fP \fBAction\fP or some sub-action by properly specifying the (sub)action name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItp\fP is the type of breakpoint (\fIbreak_start\fP, break_action, etc\&.) 
+.br
+\fIspecify\fP is the (possibly sub)action to apply the break point to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a breakpoint was successfully set 
+.RE
+.PP
+
+.PP
+Definition at line 169 of file action\&.cc\&.
+.SS "bool Action::setWarning (bool val, const string & specify)"
+
+.PP
+Set a warning on this action\&. If enabled, a warning will be printed whenever this action applies\&. The warning can be toggled for \fBthis\fP \fBAction\fP or some sub-action by specifying its name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the toggle value for the warning 
+.br
+\fIspecify\fP is the name of the action or sub-action to toggle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the warning was successfully toggled 
+.RE
+.PP
+
+.PP
+Definition at line 191 of file action\&.cc\&.
+.SS "void Action::turnOffWarnings (void)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Disable warnings for this \fBAction\fP\&. 
+.PP
+Definition at line 91 of file action\&.hh\&.
+.SS "void Action::turnOnWarnings (void)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Enable warnings for this \fBAction\fP\&. 
+.PP
+Definition at line 90 of file action\&.hh\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "string Action::basegroup\fC [protected]\fP"
+
+.PP
+Base group this action belongs to\&. 
+.PP
+Definition at line 86 of file action\&.hh\&.
+.SS "uint4 Action::breakpoint\fC [protected]\fP"
+
+.PP
+Breakpoint properties\&. 
+.PP
+Definition at line 81 of file action\&.hh\&.
+.SS "int4 Action::count\fC [protected]\fP"
+
+.PP
+Number of changes made by this action so far\&. 
+.PP
+Definition at line 79 of file action\&.hh\&.
+.SS "uint4 Action::count_apply\fC [protected]\fP"
+
+.PP
+Number of times \fBapply()\fP made changes\&. 
+.PP
+Definition at line 84 of file action\&.hh\&.
+.SS "uint4 Action::count_tests\fC [protected]\fP"
+
+.PP
+Number of times \fBapply()\fP has been called\&. 
+.PP
+Definition at line 83 of file action\&.hh\&.
+.SS "uint4 Action::flags\fC [protected]\fP"
+
+.PP
+Behavior properties\&. 
+.PP
+Definition at line 82 of file action\&.hh\&.
+.SS "int4 Action::lcount\fC [protected]\fP"
+
+.PP
+Changes not including last call to \fBapply()\fP 
+.PP
+Definition at line 78 of file action\&.hh\&.
+.SS "string Action::name\fC [protected]\fP"
+
+.PP
+Name of the action\&. 
+.PP
+Definition at line 85 of file action\&.hh\&.
+.SS "uint4 Action::status\fC [protected]\fP"
+
+.PP
+Current status\&. 
+.PP
+Definition at line 80 of file action\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

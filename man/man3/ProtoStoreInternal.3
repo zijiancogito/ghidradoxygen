@@ -1,0 +1,239 @@
+.TH "ProtoStoreInternal" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ProtoStoreInternal \- A collection of parameter descriptions without backing symbols\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fspec\&.hh>\fP
+.PP
+Inherits \fBProtoStore\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProtoStoreInternal\fP (\fBDatatype\fP *vt)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~ProtoStoreInternal\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBProtoParameter\fP * \fBsetInput\fP (int4 i, const string &nm, const \fBParameterPieces\fP &pieces)"
+.br
+.RI "Establish name, data-type, storage of a specific input parameter\&. "
+.ti -1c
+.RI "virtual void \fBclearInput\fP (int4 i)"
+.br
+.RI "Clear the input parameter at the specified slot\&. "
+.ti -1c
+.RI "virtual void \fBclearAllInputs\fP (void)"
+.br
+.RI "Clear all input parameters (and any backing symbols) "
+.ti -1c
+.RI "virtual int4 \fBgetNumInputs\fP (void) const"
+.br
+.RI "Get the number of input parameters for \fBthis\fP prototype\&. "
+.ti -1c
+.RI "virtual \fBProtoParameter\fP * \fBgetInput\fP (int4 i)"
+.br
+.RI "Get the i-th input parameter (or NULL if it doesn't exist) "
+.ti -1c
+.RI "virtual \fBProtoParameter\fP * \fBsetOutput\fP (const \fBParameterPieces\fP &piece)"
+.br
+.RI "Establish the data-type and storage of the return value\&. "
+.ti -1c
+.RI "virtual void \fBclearOutput\fP (void)"
+.br
+.RI "Clear the return value to TYPE_VOID\&. "
+.ti -1c
+.RI "virtual \fBProtoParameter\fP * \fBgetOutput\fP (void)"
+.br
+.RI "Get the return-value description\&. "
+.ti -1c
+.RI "virtual \fBProtoStore\fP * \fBclone\fP (void) const"
+.br
+.RI "Clone the entire collection of parameter descriptions\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Save any parameters that are not backed by symbols to an XML stream\&. "
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el, \fBProtoModel\fP *model)"
+.br
+.RI "Restore any internal parameter descriptions from an XML stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A collection of parameter descriptions without backing symbols\&. 
+
+Parameter descriptions are stored internally to the object and are not mirrored by a symbol table\&. 
+.PP
+Definition at line 1014 of file fspec\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ProtoStoreInternal::ProtoStoreInternal (\fBDatatype\fP * vt)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvt\fP is the \fBvoid\fP data-type used for an unspecified return value 
+.RE
+.PP
+
+.PP
+Definition at line 2460 of file fspec\&.cc\&.
+.SS "ProtoStoreInternal::~ProtoStoreInternal (void)\fC [virtual]\fP"
+
+.PP
+Definition at line 2471 of file fspec\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ProtoStoreInternal::clearAllInputs (void)\fC [virtual]\fP"
+
+.PP
+Clear all input parameters (and any backing symbols) 
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2510 of file fspec\&.cc\&.
+.SS "void ProtoStoreInternal::clearInput (int4 i)\fC [virtual]\fP"
+
+.PP
+Clear the input parameter at the specified slot\&. The parameter is excised, any following parameters are shifted to fill its spot\&. If there is a backing \fBSymbol\fP, it is removed from the \fBSymbolTable\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the specified parameter slot to remove 
+.RE
+.PP
+
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2494 of file fspec\&.cc\&.
+.SS "void ProtoStoreInternal::clearOutput (void)\fC [virtual]\fP"
+
+.PP
+Clear the return value to TYPE_VOID\&. 
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2543 of file fspec\&.cc\&.
+.SS "\fBProtoStore\fP * ProtoStoreInternal::clone (void) const\fC [virtual]\fP"
+
+.PP
+Clone the entire collection of parameter descriptions\&. 
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2557 of file fspec\&.cc\&.
+.SS "\fBProtoParameter\fP * ProtoStoreInternal::getInput (int4 i)\fC [virtual]\fP"
+
+.PP
+Get the i-th input parameter (or NULL if it doesn't exist) 
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2526 of file fspec\&.cc\&.
+.SS "int4 ProtoStoreInternal::getNumInputs (void) const\fC [virtual]\fP"
+
+.PP
+Get the number of input parameters for \fBthis\fP prototype\&. 
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2520 of file fspec\&.cc\&.
+.SS "\fBProtoParameter\fP * ProtoStoreInternal::getOutput (void)\fC [virtual]\fP"
+
+.PP
+Get the return-value description\&. 
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2551 of file fspec\&.cc\&.
+.SS "void ProtoStoreInternal::restoreXml (const \fBElement\fP * el, \fBProtoModel\fP * model)\fC [virtual]\fP"
+
+.PP
+Restore any internal parameter descriptions from an XML stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is a root <internallist> element containing <param> and <retparam> sub-tags\&. 
+.br
+\fImodel\fP is prototype model for determining storage for unassigned parameters 
+.RE
+.PP
+
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2613 of file fspec\&.cc\&.
+.SS "void ProtoStoreInternal::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Save any parameters that are not backed by symbols to an XML stream\&. Symbols are stored elsewhere, so symbol backed parameters are not serialized\&. If there are any internal parameters an <internallist> tag is emitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2575 of file fspec\&.cc\&.
+.SS "\fBProtoParameter\fP * ProtoStoreInternal::setInput (int4 i, const string & nm, const \fBParameterPieces\fP & pieces)\fC [virtual]\fP"
+
+.PP
+Establish name, data-type, storage of a specific input parameter\&. This either allocates a new parameter or replaces the existing one at the specified input slot\&. If there is a backing symbol table, a \fBSymbol\fP is created or modified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the specified input slot 
+.br
+\fInm\fP is the (optional) name of the parameter 
+.br
+\fIpieces\fP holds the raw storage address and data-type to set 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new/modified \fBProtoParameter\fP 
+.RE
+.PP
+
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2483 of file fspec\&.cc\&.
+.SS "\fBProtoParameter\fP * ProtoStoreInternal::setOutput (const \fBParameterPieces\fP & piece)\fC [virtual]\fP"
+
+.PP
+Establish the data-type and storage of the return value\&. This either allocates a new parameter or replaces the existing one\&. A \fIvoid\fP return value can be specified with an \fIinvalid\fP address and TYPE_VOID data-type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpiece\fP holds the raw storage address and data-type to set 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the new/modified \fBProtoParameter\fP 
+.RE
+.PP
+
+.PP
+Implements \fBProtoStore\fP\&.
+.PP
+Definition at line 2534 of file fspec\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

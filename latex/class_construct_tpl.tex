@@ -1,0 +1,457 @@
+\hypertarget{class_construct_tpl}{}\section{Construct\+Tpl Class Reference}
+\label{class_construct_tpl}\index{ConstructTpl@{ConstructTpl}}
+
+
+{\ttfamily \#include $<$semantics.\+hh$>$}
+
+
+
+Collaboration diagram for Construct\+Tpl\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{class_construct_tpl__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_construct_tpl_ac48c40e9b9528d5116efd5a5ce4dd0a7}{Construct\+Tpl}} (void)
+\item 
+\mbox{\hyperlink{class_construct_tpl_ab0140ce80792d6d6a4544d9395ab3d9d}{$\sim$\+Construct\+Tpl}} (void)
+\item 
+uint4 \mbox{\hyperlink{class_construct_tpl_abf2e39342736d2c1d79c8f4bee68dc3a}{delay\+Slot}} (void) const
+\item 
+uint4 \mbox{\hyperlink{class_construct_tpl_aae30d682cb8171ae594cd9e031b39061}{num\+Labels}} (void) const
+\item 
+const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \& \mbox{\hyperlink{class_construct_tpl_acc7cf7bb955ba28c5e93c11e56fbd0ae}{get\+Opvec}} (void) const
+\item 
+\mbox{\hyperlink{class_handle_tpl}{Handle\+Tpl}} $\ast$ \mbox{\hyperlink{class_construct_tpl_a1d7e73bdea2a98c688276a87fc18f614}{get\+Result}} (void) const
+\item 
+bool \mbox{\hyperlink{class_construct_tpl_a7a29a748cbd83165ae89751a7f2b7814}{add\+Op}} (\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ot)
+\item 
+bool \mbox{\hyperlink{class_construct_tpl_a1744c9bd849faf17b5a68519fcaa58eb}{add\+Op\+List}} (const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&oplist)
+\item 
+void \mbox{\hyperlink{class_construct_tpl_af07c1652b17290409b235a235001424f}{set\+Result}} (\mbox{\hyperlink{class_handle_tpl}{Handle\+Tpl}} $\ast$t)
+\item 
+int4 \mbox{\hyperlink{class_construct_tpl_a917003d51923a5e694cc489ed5b96c06}{fillin\+Build}} (vector$<$ int4 $>$ \&check, \mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$const\+\_\+space)
+\item 
+void \mbox{\hyperlink{class_construct_tpl_a6748ce8632e758aabf9b0d5a252fad5f}{change\+Handle\+Index}} (const vector$<$ int4 $>$ \&handmap)
+\item 
+void \mbox{\hyperlink{class_construct_tpl_a081103bb58d0e252b4b5b482c49113c6}{set\+Input}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$vn, int4 index, int4 slot)
+\item 
+void \mbox{\hyperlink{class_construct_tpl_a7c917fe6ab8eea662f8d2c8818f11104}{set\+Output}} (\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$vn, int4 index)
+\item 
+void \mbox{\hyperlink{class_construct_tpl_aa14ea1a30814a8f8a2ae074b46562734}{delete\+Ops}} (const vector$<$ int4 $>$ \&indices)
+\item 
+void \mbox{\hyperlink{class_construct_tpl_af26ca1f89d087ed17c153b0fefdb8a14}{save\+Xml}} (ostream \&s, int4 sectionid) const
+\item 
+int4 \mbox{\hyperlink{class_construct_tpl_a0e22f6df1e5fb8ab5fe763b3f68dd1fa}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el, const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$manage)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_construct_tpl_afc7e7717c6b970b32c0306c94ecdfeec}{set\+Opvec}} (vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&opvec)
+\item 
+void \mbox{\hyperlink{class_construct_tpl_a23f7a20bd1a914bcc439a79767c2bd6f}{set\+Num\+Labels}} (uint4 val)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint4 \mbox{\hyperlink{class_construct_tpl_a5db8bfa128cfbf7955169d18cf9510cd}{delayslot}}
+\item 
+uint4 \mbox{\hyperlink{class_construct_tpl_a493c686762fdacfa88a7508a9cd87896}{numlabels}}
+\item 
+vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \mbox{\hyperlink{class_construct_tpl_a253e9fe8590d5675395612f7afb3f5f1}{vec}}
+\item 
+\mbox{\hyperlink{class_handle_tpl}{Handle\+Tpl}} $\ast$ \mbox{\hyperlink{class_construct_tpl_a81f6345fc9882da42d0960f11634c2d9}{result}}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_construct_tpl_a327c0b989084ddb923468b1440a055de}{Sleigh\+Compile}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 161 of file semantics.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_construct_tpl_ac48c40e9b9528d5116efd5a5ce4dd0a7}\label{class_construct_tpl_ac48c40e9b9528d5116efd5a5ce4dd0a7}} 
+\index{ConstructTpl@{ConstructTpl}!ConstructTpl@{ConstructTpl}}
+\index{ConstructTpl@{ConstructTpl}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{ConstructTpl()}{ConstructTpl()}}
+{\footnotesize\ttfamily Construct\+Tpl\+::\+Construct\+Tpl (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 171 of file semantics.\+hh.
+
+\mbox{\Hypertarget{class_construct_tpl_ab0140ce80792d6d6a4544d9395ab3d9d}\label{class_construct_tpl_ab0140ce80792d6d6a4544d9395ab3d9d}} 
+\index{ConstructTpl@{ConstructTpl}!````~ConstructTpl@{$\sim$ConstructTpl}}
+\index{````~ConstructTpl@{$\sim$ConstructTpl}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{$\sim$ConstructTpl()}{~ConstructTpl()}}
+{\footnotesize\ttfamily Construct\+Tpl\+::$\sim$\+Construct\+Tpl (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 737 of file semantics.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_construct_tpl_a7a29a748cbd83165ae89751a7f2b7814}\label{class_construct_tpl_a7a29a748cbd83165ae89751a7f2b7814}} 
+\index{ConstructTpl@{ConstructTpl}!addOp@{addOp}}
+\index{addOp@{addOp}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{addOp()}{addOp()}}
+{\footnotesize\ttfamily bool Construct\+Tpl\+::add\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$}]{ot }\end{DoxyParamCaption})}
+
+
+
+Definition at line 747 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_construct_tpl_a7a29a748cbd83165ae89751a7f2b7814_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_construct_tpl_a7a29a748cbd83165ae89751a7f2b7814_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_a1744c9bd849faf17b5a68519fcaa58eb}\label{class_construct_tpl_a1744c9bd849faf17b5a68519fcaa58eb}} 
+\index{ConstructTpl@{ConstructTpl}!addOpList@{addOpList}}
+\index{addOpList@{addOpList}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{addOpList()}{addOpList()}}
+{\footnotesize\ttfamily bool Construct\+Tpl\+::add\+Op\+List (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&}]{oplist }\end{DoxyParamCaption})}
+
+
+
+Definition at line 761 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_a1744c9bd849faf17b5a68519fcaa58eb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_a6748ce8632e758aabf9b0d5a252fad5f}\label{class_construct_tpl_a6748ce8632e758aabf9b0d5a252fad5f}} 
+\index{ConstructTpl@{ConstructTpl}!changeHandleIndex@{changeHandleIndex}}
+\index{changeHandleIndex@{changeHandleIndex}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{changeHandleIndex()}{changeHandleIndex()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::change\+Handle\+Index (\begin{DoxyParamCaption}\item[{const vector$<$ int4 $>$ \&}]{handmap }\end{DoxyParamCaption})}
+
+
+
+Definition at line 800 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_a6748ce8632e758aabf9b0d5a252fad5f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_abf2e39342736d2c1d79c8f4bee68dc3a}\label{class_construct_tpl_abf2e39342736d2c1d79c8f4bee68dc3a}} 
+\index{ConstructTpl@{ConstructTpl}!delaySlot@{delaySlot}}
+\index{delaySlot@{delaySlot}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{delaySlot()}{delaySlot()}}
+{\footnotesize\ttfamily uint4 Construct\+Tpl\+::delay\+Slot (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 173 of file semantics.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_abf2e39342736d2c1d79c8f4bee68dc3a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_aa14ea1a30814a8f8a2ae074b46562734}\label{class_construct_tpl_aa14ea1a30814a8f8a2ae074b46562734}} 
+\index{ConstructTpl@{ConstructTpl}!deleteOps@{deleteOps}}
+\index{deleteOps@{deleteOps}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{deleteOps()}{deleteOps()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::delete\+Ops (\begin{DoxyParamCaption}\item[{const vector$<$ int4 $>$ \&}]{indices }\end{DoxyParamCaption})}
+
+
+
+Definition at line 842 of file semantics.\+cc.
+
+\mbox{\Hypertarget{class_construct_tpl_a917003d51923a5e694cc489ed5b96c06}\label{class_construct_tpl_a917003d51923a5e694cc489ed5b96c06}} 
+\index{ConstructTpl@{ConstructTpl}!fillinBuild@{fillinBuild}}
+\index{fillinBuild@{fillinBuild}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{fillinBuild()}{fillinBuild()}}
+{\footnotesize\ttfamily int4 Construct\+Tpl\+::fillin\+Build (\begin{DoxyParamCaption}\item[{vector$<$ int4 $>$ \&}]{check,  }\item[{\mbox{\hyperlink{class_addr_space}{Addr\+Space}} $\ast$}]{const\+\_\+space }\end{DoxyParamCaption})}
+
+
+
+Definition at line 770 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_construct_tpl_a917003d51923a5e694cc489ed5b96c06_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_acc7cf7bb955ba28c5e93c11e56fbd0ae}\label{class_construct_tpl_acc7cf7bb955ba28c5e93c11e56fbd0ae}} 
+\index{ConstructTpl@{ConstructTpl}!getOpvec@{getOpvec}}
+\index{getOpvec@{getOpvec}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{getOpvec()}{getOpvec()}}
+{\footnotesize\ttfamily const vector$<$\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$$>$\& Construct\+Tpl\+::get\+Opvec (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 175 of file semantics.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_acc7cf7bb955ba28c5e93c11e56fbd0ae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_a1d7e73bdea2a98c688276a87fc18f614}\label{class_construct_tpl_a1d7e73bdea2a98c688276a87fc18f614}} 
+\index{ConstructTpl@{ConstructTpl}!getResult@{getResult}}
+\index{getResult@{getResult}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{getResult()}{getResult()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_handle_tpl}{Handle\+Tpl}}$\ast$ Construct\+Tpl\+::get\+Result (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 176 of file semantics.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_a1d7e73bdea2a98c688276a87fc18f614_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_aae30d682cb8171ae594cd9e031b39061}\label{class_construct_tpl_aae30d682cb8171ae594cd9e031b39061}} 
+\index{ConstructTpl@{ConstructTpl}!numLabels@{numLabels}}
+\index{numLabels@{numLabels}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{numLabels()}{numLabels()}}
+{\footnotesize\ttfamily uint4 Construct\+Tpl\+::num\+Labels (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 174 of file semantics.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_aae30d682cb8171ae594cd9e031b39061_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_a0e22f6df1e5fb8ab5fe763b3f68dd1fa}\label{class_construct_tpl_a0e22f6df1e5fb8ab5fe763b3f68dd1fa}} 
+\index{ConstructTpl@{ConstructTpl}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily int4 Construct\+Tpl\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el,  }\item[{const \mbox{\hyperlink{class_addr_space_manager}{Addr\+Space\+Manager}} $\ast$}]{manage }\end{DoxyParamCaption})}
+
+
+
+Definition at line 881 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_a0e22f6df1e5fb8ab5fe763b3f68dd1fa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_a0e22f6df1e5fb8ab5fe763b3f68dd1fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_af26ca1f89d087ed17c153b0fefdb8a14}\label{class_construct_tpl_af26ca1f89d087ed17c153b0fefdb8a14}} 
+\index{ConstructTpl@{ConstructTpl}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s,  }\item[{int4}]{sectionid }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 861 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_af26ca1f89d087ed17c153b0fefdb8a14_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{class_construct_tpl_af26ca1f89d087ed17c153b0fefdb8a14_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_a081103bb58d0e252b4b5b482c49113c6}\label{class_construct_tpl_a081103bb58d0e252b4b5b482c49113c6}} 
+\index{ConstructTpl@{ConstructTpl}!setInput@{setInput}}
+\index{setInput@{setInput}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{setInput()}{setInput()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::set\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{vn,  }\item[{int4}]{index,  }\item[{int4}]{slot }\end{DoxyParamCaption})}
+
+
+
+Definition at line 820 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{class_construct_tpl_a081103bb58d0e252b4b5b482c49113c6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_a23f7a20bd1a914bcc439a79767c2bd6f}\label{class_construct_tpl_a23f7a20bd1a914bcc439a79767c2bd6f}} 
+\index{ConstructTpl@{ConstructTpl}!setNumLabels@{setNumLabels}}
+\index{setNumLabels@{setNumLabels}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{setNumLabels()}{setNumLabels()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::set\+Num\+Labels (\begin{DoxyParamCaption}\item[{uint4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 169 of file semantics.\+hh.
+
+\mbox{\Hypertarget{class_construct_tpl_afc7e7717c6b970b32c0306c94ecdfeec}\label{class_construct_tpl_afc7e7717c6b970b32c0306c94ecdfeec}} 
+\index{ConstructTpl@{ConstructTpl}!setOpvec@{setOpvec}}
+\index{setOpvec@{setOpvec}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{setOpvec()}{setOpvec()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::set\+Opvec (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$ $>$ \&}]{opvec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 168 of file semantics.\+hh.
+
+\mbox{\Hypertarget{class_construct_tpl_a7c917fe6ab8eea662f8d2c8818f11104}\label{class_construct_tpl_a7c917fe6ab8eea662f8d2c8818f11104}} 
+\index{ConstructTpl@{ConstructTpl}!setOutput@{setOutput}}
+\index{setOutput@{setOutput}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{setOutput()}{setOutput()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::set\+Output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_varnode_tpl}{Varnode\+Tpl}} $\ast$}]{vn,  }\item[{int4}]{index }\end{DoxyParamCaption})}
+
+
+
+Definition at line 831 of file semantics.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_construct_tpl_a7c917fe6ab8eea662f8d2c8818f11104_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_construct_tpl_af07c1652b17290409b235a235001424f}\label{class_construct_tpl_af07c1652b17290409b235a235001424f}} 
+\index{ConstructTpl@{ConstructTpl}!setResult@{setResult}}
+\index{setResult@{setResult}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{setResult()}{setResult()}}
+{\footnotesize\ttfamily void Construct\+Tpl\+::set\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_handle_tpl}{Handle\+Tpl}} $\ast$}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 179 of file semantics.\+hh.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_construct_tpl_af07c1652b17290409b235a235001424f_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_construct_tpl_a327c0b989084ddb923468b1440a055de}\label{class_construct_tpl_a327c0b989084ddb923468b1440a055de}} 
+\index{ConstructTpl@{ConstructTpl}!SleighCompile@{SleighCompile}}
+\index{SleighCompile@{SleighCompile}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{SleighCompile}{SleighCompile}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_sleigh_compile}{Sleigh\+Compile}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 162 of file semantics.\+hh.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_construct_tpl_a5db8bfa128cfbf7955169d18cf9510cd}\label{class_construct_tpl_a5db8bfa128cfbf7955169d18cf9510cd}} 
+\index{ConstructTpl@{ConstructTpl}!delayslot@{delayslot}}
+\index{delayslot@{delayslot}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{delayslot}{delayslot}}
+{\footnotesize\ttfamily uint4 Construct\+Tpl\+::delayslot\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 164 of file semantics.\+hh.
+
+\mbox{\Hypertarget{class_construct_tpl_a493c686762fdacfa88a7508a9cd87896}\label{class_construct_tpl_a493c686762fdacfa88a7508a9cd87896}} 
+\index{ConstructTpl@{ConstructTpl}!numlabels@{numlabels}}
+\index{numlabels@{numlabels}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{numlabels}{numlabels}}
+{\footnotesize\ttfamily uint4 Construct\+Tpl\+::numlabels\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 165 of file semantics.\+hh.
+
+\mbox{\Hypertarget{class_construct_tpl_a81f6345fc9882da42d0960f11634c2d9}\label{class_construct_tpl_a81f6345fc9882da42d0960f11634c2d9}} 
+\index{ConstructTpl@{ConstructTpl}!result@{result}}
+\index{result@{result}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_handle_tpl}{Handle\+Tpl}}$\ast$ Construct\+Tpl\+::result\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 167 of file semantics.\+hh.
+
+\mbox{\Hypertarget{class_construct_tpl_a253e9fe8590d5675395612f7afb3f5f1}\label{class_construct_tpl_a253e9fe8590d5675395612f7afb3f5f1}} 
+\index{ConstructTpl@{ConstructTpl}!vec@{vec}}
+\index{vec@{vec}!ConstructTpl@{ConstructTpl}}
+\subsubsection{\texorpdfstring{vec}{vec}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_op_tpl}{Op\+Tpl}} $\ast$$>$ Construct\+Tpl\+::vec\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 166 of file semantics.\+hh.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{semantics_8hh}{semantics.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{semantics_8cc}{semantics.\+cc}}\end{DoxyCompactItemize}

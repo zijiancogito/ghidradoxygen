@@ -1,0 +1,41 @@
+.TH "ScopeGhidraNamespace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScopeGhidraNamespace \- A global \fInamespace\fP \fBScope\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database_ghidra\&.hh>\fP
+.PP
+Inherits \fBScopeInternal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScopeGhidraNamespace\fP (const string &nm, \fBArchitecture\fP *g)"
+.br
+.RI "\fBConstructor\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A global \fInamespace\fP \fBScope\fP\&. 
+
+The only difference between \fBthis\fP and a \fBScopeInternal\fP is that this scope builds up its \fIownership\fP range with the symbols that are placed in it\&. This allows \fBDatabase::mapScope()\fP to recover the \fInamespace\fP \fBScope\fP for symbols that have been placed in it\&. Queries for \fInamespace\fP symbols that haven't been cached yet percolate up to the global scope, which must be a \fBScopeGhidra\fP\&. This will query the Ghidra client on behalf of the \fInamespace\fP and register any new symbols with \fBthis\fP \fBScope\fP\&. 
+.PP
+Definition at line 126 of file database_ghidra\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ScopeGhidraNamespace::ScopeGhidraNamespace (const string & nm, \fBArchitecture\fP * g)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 130 of file database_ghidra\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

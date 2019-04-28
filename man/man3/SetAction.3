@@ -1,0 +1,93 @@
+.TH "SetAction" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SetAction \- Command to \fBset\fP the \fIroot\fP \fBAction\fP used by the decompiler or \fBtoggle\fP output components\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ghidra_process\&.hh>\fP
+.PP
+Inherits \fBGhidraCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrawAction\fP (void)"
+.br
+.RI "Perform the action of the command\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBres\fP"
+.br
+.RI "Set to \fBtrue\fP if the configuration action was successful\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Command to \fBset\fP the \fIroot\fP \fBAction\fP used by the decompiler or \fBtoggle\fP output components\&. 
+
+The command expects 3 string parameters, the encoded integer id of the program being decompiled, the \fIroot\fP action name, and the name of the output \fIprinting\fP configuration\&. If the \fIroot\fP action name is empty, no change is made to the \fIroot\fP action\&. If the \fIprinting\fP name is empty, no change is made to what gets output\&. The \fIroot\fP action name can be:
+.IP "\(bu" 2
+decompile -- The main decompiler action
+.IP "\(bu" 2
+normalize -- Decompilation tuned for normalization
+.IP "\(bu" 2
+jumptable -- Simplify just enough to recover a jump-table
+.IP "\(bu" 2
+paramid -- Simplify enough to recover function parameters
+.IP "\(bu" 2
+register -- Perform one analysis pass on registers, without stack variables
+.IP "\(bu" 2
+firstpass -- Construct the initial raw syntax tree, with no simplification
+.PP
+.PP
+The \fIprinting\fP configuration can be:
+.IP "\(bu" 2
+tree -- Send data-flow and control-flow structures
+.IP "\(bu" 2
+notree -- Do \fInot\fP send data-flow and control-flow
+.IP "\(bu" 2
+c -- Send recovered source code
+.IP "\(bu" 2
+noc -- Do \fInot\fP send recovered source code
+.IP "\(bu" 2
+parammeasures -- Send parameter measures
+.IP "\(bu" 2
+noparammeasures -- Do \fInot\fP send parameter measures
+.IP "\(bu" 2
+jumpload -- Send addresses of jump-table entries, when recovering switch destinations
+.IP "\(bu" 2
+nojumpload -- Do \fInot\fP send addresses of jump-table entries
+.PP
+.PP
+The command returns a single character message, 't' or 'f', indicating whether the action succeeded\&. 
+.PP
+Definition at line 203 of file ghidra_process\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SetAction::rawAction (void)\fC [virtual]\fP"
+
+.PP
+Perform the action of the command\&. Configuration is assumed to have happened, and \fBthis\fP object can immediately begin examining and manipulating data under the active \fBArchitecture\fP object to perform the command\&. 
+.PP
+Implements \fBGhidraCommand\fP\&.
+.PP
+Definition at line 366 of file ghidra_process\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool SetAction::res"
+
+.PP
+Set to \fBtrue\fP if the configuration action was successful\&. 
+.PP
+Definition at line 209 of file ghidra_process\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

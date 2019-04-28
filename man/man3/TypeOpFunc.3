@@ -1,0 +1,116 @@
+.TH "TypeOpFunc" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TypeOpFunc \- A generic functional operator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <typeop\&.hh>\fP
+.PP
+Inherits \fBTypeOp\fP\&.
+.PP
+Inherited by \fBTypeOpFloatAbs\fP, \fBTypeOpFloatCeil\fP, \fBTypeOpFloatFloat2Float\fP, \fBTypeOpFloatFloor\fP, \fBTypeOpFloatInt2Float\fP, \fBTypeOpFloatNan\fP, \fBTypeOpFloatRound\fP, \fBTypeOpFloatSqrt\fP, \fBTypeOpFloatTrunc\fP, \fBTypeOpIntCarry\fP, \fBTypeOpIntSborrow\fP, \fBTypeOpIntScarry\fP, \fBTypeOpIntSext\fP, \fBTypeOpIntZext\fP, \fBTypeOpPiece\fP, and \fBTypeOpSubpiece\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeOpFunc\fP (\fBTypeFactory\fP *t, \fBOpCode\fP opc, const string &n, \fBtype_metatype\fP mout, \fBtype_metatype\fP min)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetOutputLocal\fP (const \fBPcodeOp\fP *op) const"
+.br
+.RI "Find the minimal (or suggested) data-type of an output to \fBthis\fP op-code\&. "
+.ti -1c
+.RI "virtual \fBDatatype\fP * \fBgetInputLocal\fP (const \fBPcodeOp\fP *op, int4 slot) const"
+.br
+.RI "Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. "
+.ti -1c
+.RI "virtual void \fBprintRaw\fP (ostream &s, const \fBPcodeOp\fP *op)"
+.br
+.RI "Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A generic functional operator\&. 
+
+The operator takes one or more inputs (with the same data-type by default) and produces one output with specific data-type 
+.PP
+Definition at line 189 of file typeop\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TypeOpFunc::TypeOpFunc (\fBTypeFactory\fP * t, \fBOpCode\fP opc, const string & n, \fBtype_metatype\fP mout, \fBtype_metatype\fP min)\fC [inline]\fP"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+Definition at line 195 of file typeop\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDatatype\fP * TypeOpFunc::getInputLocal (const \fBPcodeOp\fP * op, int4 slot) const\fC [virtual]\fP"
+
+.PP
+Find the minimal (or suggested) data-type of an input to \fBthis\fP op-code\&. The result should depend only on the op-code itself (and the size of the input) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP being considered 
+.br
+\fIslot\fP is the input being considered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeOp\fP\&.
+.PP
+Definition at line 307 of file typeop\&.cc\&.
+.SS "\fBDatatype\fP * TypeOpFunc::getOutputLocal (const \fBPcodeOp\fP * op) const\fC [virtual]\fP"
+
+.PP
+Find the minimal (or suggested) data-type of an output to \fBthis\fP op-code\&. The result should depend only on the op-code itself (and the size of the output) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP is the \fBPcodeOp\fP being considered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the data-type 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBTypeOp\fP\&.
+.PP
+Definition at line 301 of file typeop\&.cc\&.
+.SS "void TypeOpFunc::printRaw (ostream & s, const \fBPcodeOp\fP * op)\fC [virtual]\fP"
+
+.PP
+Print (for debugging purposes) \fBthis\fP specific \fBPcodeOp\fP to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.br
+\fIop\fP is the specific \fBPcodeOp\fP to print 
+.RE
+.PP
+
+.PP
+Implements \fBTypeOp\fP\&.
+.PP
+Definition at line 313 of file typeop\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

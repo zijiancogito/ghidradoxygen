@@ -1,0 +1,326 @@
+.TH "RangeList" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RangeList \- A disjoint set of Ranges, possibly across multiple address spaces\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <address\&.hh>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRangeList\fP (const \fBRangeList\fP &op2)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "\fBRangeList\fP (void)"
+.br
+.RI "Construct an empty container\&. "
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "Clear \fBthis\fP container to empty\&. "
+.ti -1c
+.RI "bool \fBempty\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is empty\&. "
+.ti -1c
+.RI "set< \fBRange\fP >::const_iterator \fBbegin\fP (void) const"
+.br
+.RI "Get iterator to beginning \fBRange\fP\&. "
+.ti -1c
+.RI "set< \fBRange\fP >::const_iterator \fBend\fP (void) const"
+.br
+.RI "Get iterator to ending \fBRange\fP\&. "
+.ti -1c
+.RI "int4 \fBnumRanges\fP (void) const"
+.br
+.RI "Return the number of \fBRange\fP objects in container\&. "
+.ti -1c
+.RI "const \fBRange\fP * \fBgetFirstRange\fP (void) const"
+.br
+.RI "Get the first \fBRange\fP\&. "
+.ti -1c
+.RI "const \fBRange\fP * \fBgetLastRange\fP (void) const"
+.br
+.RI "Get the last \fBRange\fP\&. "
+.ti -1c
+.RI "const \fBRange\fP * \fBgetLastSignedRange\fP (\fBAddrSpace\fP *spaceid) const"
+.br
+.RI "Get the last \fBRange\fP viewing offsets as signed\&. "
+.ti -1c
+.RI "const \fBRange\fP * \fBgetRange\fP (\fBAddrSpace\fP *spaceid, \fBuintb\fP offset) const"
+.br
+.RI "Get \fBRange\fP containing the given byte\&. "
+.ti -1c
+.RI "void \fBinsertRange\fP (\fBAddrSpace\fP *spc, \fBuintb\fP first, \fBuintb\fP last)"
+.br
+.RI "Insert a range of addresses\&. "
+.ti -1c
+.RI "void \fBremoveRange\fP (\fBAddrSpace\fP *spc, \fBuintb\fP first, \fBuintb\fP last)"
+.br
+.RI "Remove a range of addresses\&. "
+.ti -1c
+.RI "void \fBmerge\fP (const \fBRangeList\fP &op2)"
+.br
+.RI "\fBMerge\fP another \fBRangeList\fP into \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBinRange\fP (const \fBAddress\fP &addr, int4 size) const"
+.br
+.RI "Check containment an address range\&. "
+.ti -1c
+.RI "\fBuintb\fP \fBlongestFit\fP (const \fBAddress\fP &addr, \fBuintb\fP maxsize) const"
+.br
+.RI "Find size of biggest \fBRange\fP containing given address\&. "
+.ti -1c
+.RI "void \fBprintBounds\fP (ostream &s) const"
+.br
+.RI "Print a description of \fBthis\fP \fBRangeList\fP to stream\&. "
+.ti -1c
+.RI "void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write \fBthis\fP \fBRangeList\fP to an XML stream\&. "
+.ti -1c
+.RI "void \fBrestoreXml\fP (const \fBElement\fP *el, const \fBAddrSpaceManager\fP *manage)"
+.br
+.RI "Restore \fBthis\fP \fBRangeList\fP from an XML stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A disjoint set of Ranges, possibly across multiple address spaces\&. 
+
+This is a container for addresses\&. It maintains a disjoint list of Ranges that cover all the addresses in the container\&. Ranges can be inserted and removed, but overlapping/adjacent ranges will get merged\&. 
+.PP
+Definition at line 201 of file address\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RangeList::RangeList (const \fBRangeList\fP & op2)\fC [inline]\fP"
+
+.PP
+Copy constructor\&. 
+.PP
+Definition at line 204 of file address\&.hh\&.
+.SS "RangeList::RangeList (void)\fC [inline]\fP"
+
+.PP
+Construct an empty container\&. 
+.PP
+Definition at line 205 of file address\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "set<\fBRange\fP>::const_iterator RangeList::begin (void) const\fC [inline]\fP"
+
+.PP
+Get iterator to beginning \fBRange\fP\&. 
+.PP
+Definition at line 208 of file address\&.hh\&.
+.SS "void RangeList::clear (void)\fC [inline]\fP"
+
+.PP
+Clear \fBthis\fP container to empty\&. 
+.PP
+Definition at line 206 of file address\&.hh\&.
+.SS "bool RangeList::empty (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is empty\&. 
+.PP
+Definition at line 207 of file address\&.hh\&.
+.SS "set<\fBRange\fP>::const_iterator RangeList::end (void) const\fC [inline]\fP"
+
+.PP
+Get iterator to ending \fBRange\fP\&. 
+.PP
+Definition at line 209 of file address\&.hh\&.
+.SS "const \fBRange\fP * RangeList::getFirstRange (void) const"
+
+.PP
+Get the first \fBRange\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the first contiguous range of addresses or NULL if empty 
+.RE
+.PP
+
+.PP
+Definition at line 450 of file address\&.cc\&.
+.SS "const \fBRange\fP * RangeList::getLastRange (void) const"
+
+.PP
+Get the last \fBRange\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the last contiguous range of addresses or NULL if empty 
+.RE
+.PP
+
+.PP
+Definition at line 458 of file address\&.cc\&.
+.SS "const \fBRange\fP * RangeList::getLastSignedRange (\fBAddrSpace\fP * spaceid) const"
+
+.PP
+Get the last \fBRange\fP viewing offsets as signed\&. Treating offsets with their high-bits set as coming \fIbefore\fP offset where the high-bit is clear, return the last/latest contiguous \fBRange\fP within the given address space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspaceid\fP is the given address space 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+indicated \fBRange\fP or NULL if empty 
+.RE
+.PP
+
+.PP
+Definition at line 472 of file address\&.cc\&.
+.SS "const \fBRange\fP * RangeList::getRange (\fBAddrSpace\fP * spaceid, \fBuintb\fP offset) const"
+
+.PP
+Get \fBRange\fP containing the given byte\&. If \fBthis\fP \fBRangeList\fP contains the specific address (spaceid,offset), return it 
+.PP
+\fBReturns:\fP
+.RS 4
+the containing \fBRange\fP or NULL 
+.RE
+.PP
+
+.PP
+Definition at line 401 of file address\&.cc\&.
+.SS "bool RangeList::inRange (const \fBAddress\fP & addr, int4 size) const"
+
+.PP
+Check containment an address range\&. Make sure indicated range of addresses is \fIcontained\fP in \fBthis\fP \fBRangeList\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the first \fBAddress\fP in the target range 
+.br
+\fIsize\fP is the number of bytes in the target range 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP is the range is fully contained by this \fBRangeList\fP 
+.RE
+.PP
+
+.PP
+Definition at line 378 of file address\&.cc\&.
+.SS "void RangeList::insertRange (\fBAddrSpace\fP * spc, \fBuintb\fP first, \fBuintb\fP last)"
+
+.PP
+Insert a range of addresses\&. Insert a new \fBRange\fP merging as appropriate to maintain the disjoint cover 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space containing the new range 
+.br
+\fIfirst\fP is the offset of the first byte in the new range 
+.br
+\fIlast\fP is the offset of the last byte in the new range 
+.RE
+.PP
+
+.PP
+Definition at line 293 of file address\&.cc\&.
+.SS "\fBuintb\fP RangeList::longestFit (const \fBAddress\fP & addr, \fBuintb\fP maxsize) const"
+
+.PP
+Find size of biggest \fBRange\fP containing given address\&. Return the size of the biggest contiguous sequence of addresses in \fBthis\fP \fBRangeList\fP which contain the given address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP is the given address 
+.br
+\fImaxsize\fP is the large range to consider before giving up 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the size (in bytes) of the biggest range 
+.RE
+.PP
+
+.PP
+Definition at line 422 of file address\&.cc\&.
+.SS "void RangeList::merge (const \fBRangeList\fP & op2)"
+
+.PP
+\fBMerge\fP another \fBRangeList\fP into \fBthis\fP\&. 
+.PP
+Definition at line 361 of file address\&.cc\&.
+.SS "int4 RangeList::numRanges (void) const\fC [inline]\fP"
+
+.PP
+Return the number of \fBRange\fP objects in container\&. 
+.PP
+Definition at line 210 of file address\&.hh\&.
+.SS "void RangeList::printBounds (ostream & s) const"
+
+.PP
+Print a description of \fBthis\fP \fBRangeList\fP to stream\&. Print a one line description of each disjoint \fBRange\fP making up \fBthis\fP \fBRangeList\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 498 of file address\&.cc\&.
+.SS "void RangeList::removeRange (\fBAddrSpace\fP * spc, \fBuintb\fP first, \fBuintb\fP last)"
+
+.PP
+Remove a range of addresses\&. Remove/narrow/split existing \fBRange\fP objects to eliminate the indicated addresses while still maintaining a disjoint cover\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspc\fP is the address space of the address range to remove 
+.br
+\fIfirst\fP is the offset of the first byte of the range 
+.br
+\fIlast\fP is the offset of the last byte of the range 
+.RE
+.PP
+
+.PP
+Definition at line 327 of file address\&.cc\&.
+.SS "void RangeList::restoreXml (const \fBElement\fP * el, const \fBAddrSpaceManager\fP * manage)"
+
+.PP
+Restore \fBthis\fP \fBRangeList\fP from an XML stream\&. Recover each individual disjoint \fBRange\fP for \fBthis\fP \fBRangeList\fP as encoded in a <rangelist> tag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIel\fP is the XML element 
+.br
+\fImanage\fP is manager for retrieving address spaces 
+.RE
+.PP
+
+.PP
+Definition at line 530 of file address\&.cc\&.
+.SS "void RangeList::saveXml (ostream & s) const"
+
+.PP
+Write \fBthis\fP \fBRangeList\fP to an XML stream\&. Serialize this object to an XML <rangelist> tag 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 514 of file address\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,516 @@
+\hypertarget{class_jump_table}{}\section{Jump\+Table Class Reference}
+\label{class_jump_table}\index{JumpTable@{JumpTable}}
+
+
+{\ttfamily \#include $<$jumptable.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jump_table_a319075559bee7b7d3ae6b0485965a14e}{Jump\+Table}} (\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$g, \mbox{\hyperlink{class_address}{Address}} ad=\mbox{\hyperlink{class_address}{Address}}())
+\item 
+\mbox{\hyperlink{class_jump_table_a5dc7b9ca334dba4d61a615f7a016b820}{Jump\+Table}} (const \mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$op2)
+\item 
+\mbox{\hyperlink{class_jump_table_a03847c123233a3f60e923fa6ae27af88}{$\sim$\+Jump\+Table}} (void)
+\item 
+bool \mbox{\hyperlink{class_jump_table_a667875c89b0b8c73b76c1cb09f9917d5}{is\+Switched\+Over}} (void) const
+\item 
+bool \mbox{\hyperlink{class_jump_table_ab745ea6bfd38b7cdd5812d360290a570}{is\+Recovered}} (void) const
+\item 
+bool \mbox{\hyperlink{class_jump_table_a23d6ce09d425674cbdc41cfb082b1937}{is\+Labelled}} (void) const
+\item 
+bool \mbox{\hyperlink{class_jump_table_af02131615a17c9fa6ee4693c3988eb5a}{is\+Override}} (void) const
+\item 
+bool \mbox{\hyperlink{class_jump_table_a9550d6bef76cc325b16f7b1baa829f9b}{is\+Possible\+Multistage}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_jump_table_a52203c6582b2b49390ba3815e1377c5a}{get\+Stage}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_jump_table_a41c4acebed672cc4e66e6d03c35aecaa}{num\+Entries}} (void) const
+\item 
+int4 \mbox{\hyperlink{class_jump_table_a0c76ef1e110791cd1175ba1c6b9d5c82}{get\+Most\+Common}} (void) const
+\item 
+const \mbox{\hyperlink{class_address}{Address}} \& \mbox{\hyperlink{class_jump_table_a98e5d9d6c61755969ae9c32eb3013af4}{get\+Op\+Address}} (void) const
+\item 
+\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ \mbox{\hyperlink{class_jump_table_a0edd5fb3fed20b0f5b62b10eb45d7acf}{get\+Indirect\+Op}} (void) const
+\item 
+void \mbox{\hyperlink{class_jump_table_a999b901e638cfc2243b0e7578355c662}{set\+Indirect\+Op}} (\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$ind)
+\item 
+void \mbox{\hyperlink{class_jump_table_a402a16fcfbb3f1aa4e18e92e449299d0}{set\+Max\+Table\+Size}} (uint4 val)
+\item 
+void \mbox{\hyperlink{class_jump_table_a436e2a0d77555f2f69edc3e7c0ca5227}{set\+Norm\+Max}} (uint4 maddsub, uint4 mleftright, uint4 mext)
+\item 
+void \mbox{\hyperlink{class_jump_table_a3e013d86f11f8df367c3979dd6310163}{set\+Override}} (const vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&addrtable, const \mbox{\hyperlink{class_address}{Address}} \&naddr, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} h, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} sv)
+\item 
+int4 \mbox{\hyperlink{class_jump_table_a3ff393c996f2c495f86917927c451dfe}{num\+Indices\+By\+Block}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl) const
+\item 
+int4 \mbox{\hyperlink{class_jump_table_abc8399a772fe0bd6bbcb94304af98d5b}{get\+Index\+By\+Block}} (const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$bl, int4 i) const
+\item 
+\mbox{\hyperlink{class_address}{Address}} \mbox{\hyperlink{class_jump_table_ab55c26932c2133039fa2cce13ba3742b}{get\+Address\+By\+Index}} (int4 index) const
+\item 
+void \mbox{\hyperlink{class_jump_table_a0537814cab892d9a6fa6342cd4b2f1fd}{set\+Most\+Common\+Index}} (uint4 tableind)
+\item 
+void \mbox{\hyperlink{class_jump_table_ae0dbbb3a114d754264eb2b45ee243b32}{set\+Most\+Common\+Block}} (uint4 bl)
+\item 
+void \mbox{\hyperlink{class_jump_table_a837e0e4ccf4f0be70df4f9b55106305a}{set\+Load\+Collect}} (bool val)
+\item 
+void \mbox{\hyperlink{class_jump_table_a0cb2459aa5c38bda12cfb8be1ac6fcfe}{add\+Block\+To\+Switch}} (\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$bl, \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} lab)
+\item 
+void \mbox{\hyperlink{class_jump_table_a421a6817e059ff862b9e057701da8f01}{switch\+Over}} (const \mbox{\hyperlink{class_flow_info}{Flow\+Info}} \&flow)
+\item 
+\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} \mbox{\hyperlink{class_jump_table_ac0524721754a4e17fcccd2e66278c65c}{get\+Label\+By\+Index}} (int4 index) const
+\item 
+void \mbox{\hyperlink{class_jump_table_adce4756430ff5677d7acbe42ffe28775}{fold\+In\+Normalization}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\item 
+bool \mbox{\hyperlink{class_jump_table_a93527eafa438cf24fb5ee796e7bb1ba6}{fold\+In\+Guards}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{class_jump_table_a98aaa32e26ede9547d5979cab872322c}{recover\+Addresses}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{class_jump_table_afba6e59f39d15b0f5b231ef9d849625e}{recover\+Multistage}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\item 
+bool \mbox{\hyperlink{class_jump_table_aa104a5da577eb8a1a5ab9aa30bbc7210}{recover\+Labels}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\item 
+bool \mbox{\hyperlink{class_jump_table_a738bcb6e673e65e1d054d102da1cbdc5}{check\+For\+Multistage}} (\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{class_jump_table_a99d3224b0c24b9ef1140f86fe372879d}{clear}} (void)
+\item 
+void \mbox{\hyperlink{class_jump_table_a314231b6a4d240c21de28f39fd0a8b57}{save\+Xml}} (ostream \&s) const
+\item 
+void \mbox{\hyperlink{class_jump_table_a6c61097c622f85e04db056d9613e94f1}{restore\+Xml}} (const \mbox{\hyperlink{class_element}{Element}} $\ast$el)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 351 of file jumptable.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_jump_table_a319075559bee7b7d3ae6b0485965a14e}\label{class_jump_table_a319075559bee7b7d3ae6b0485965a14e}} 
+\index{JumpTable@{JumpTable}!JumpTable@{JumpTable}}
+\index{JumpTable@{JumpTable}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{JumpTable()}{JumpTable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Jump\+Table\+::\+Jump\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_architecture}{Architecture}} $\ast$}]{g,  }\item[{\mbox{\hyperlink{class_address}{Address}}}]{ad = {\ttfamily \mbox{\hyperlink{class_address}{Address}}()} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_jump_table_a5dc7b9ca334dba4d61a615f7a016b820}\label{class_jump_table_a5dc7b9ca334dba4d61a615f7a016b820}} 
+\index{JumpTable@{JumpTable}!JumpTable@{JumpTable}}
+\index{JumpTable@{JumpTable}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{JumpTable()}{JumpTable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Jump\+Table\+::\+Jump\+Table (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_jump_table}{Jump\+Table}} $\ast$}]{op2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1969 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_a03847c123233a3f60e923fa6ae27af88}\label{class_jump_table_a03847c123233a3f60e923fa6ae27af88}} 
+\index{JumpTable@{JumpTable}!````~JumpTable@{$\sim$JumpTable}}
+\index{````~JumpTable@{$\sim$JumpTable}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{$\sim$JumpTable()}{~JumpTable()}}
+{\footnotesize\ttfamily Jump\+Table\+::$\sim$\+Jump\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1991 of file jumptable.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_jump_table_a0cb2459aa5c38bda12cfb8be1ac6fcfe}\label{class_jump_table_a0cb2459aa5c38bda12cfb8be1ac6fcfe}} 
+\index{JumpTable@{JumpTable}!addBlockToSwitch@{addBlockToSwitch}}
+\index{addBlockToSwitch@{addBlockToSwitch}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{addBlockToSwitch()}{addBlockToSwitch()}}
+{\footnotesize\ttfamily void Jump\+Table\+::add\+Block\+To\+Switch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_block_basic}{Block\+Basic}} $\ast$}]{bl,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{lab }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2058 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_a0cb2459aa5c38bda12cfb8be1ac6fcfe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_a738bcb6e673e65e1d054d102da1cbdc5}\label{class_jump_table_a738bcb6e673e65e1d054d102da1cbdc5}} 
+\index{JumpTable@{JumpTable}!checkForMultistage@{checkForMultistage}}
+\index{checkForMultistage@{checkForMultistage}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{checkForMultistage()}{checkForMultistage()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::check\+For\+Multistage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2329 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_a738bcb6e673e65e1d054d102da1cbdc5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_a99d3224b0c24b9ef1140f86fe372879d}\label{class_jump_table_a99d3224b0c24b9ef1140f86fe372879d}} 
+\index{JumpTable@{JumpTable}!clear@{clear}}
+\index{clear@{clear}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Jump\+Table\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2230 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_a93527eafa438cf24fb5ee796e7bb1ba6}\label{class_jump_table_a93527eafa438cf24fb5ee796e7bb1ba6}} 
+\index{JumpTable@{JumpTable}!foldInGuards@{foldInGuards}}
+\index{foldInGuards@{foldInGuards}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{foldInGuards()}{foldInGuards()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::fold\+In\+Guards (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 401 of file jumptable.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_a93527eafa438cf24fb5ee796e7bb1ba6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_adce4756430ff5677d7acbe42ffe28775}\label{class_jump_table_adce4756430ff5677d7acbe42ffe28775}} 
+\index{JumpTable@{JumpTable}!foldInNormalization@{foldInNormalization}}
+\index{foldInNormalization@{foldInNormalization}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{foldInNormalization()}{foldInNormalization()}}
+{\footnotesize\ttfamily void Jump\+Table\+::fold\+In\+Normalization (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 400 of file jumptable.\+hh.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_adce4756430ff5677d7acbe42ffe28775_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_ab55c26932c2133039fa2cce13ba3742b}\label{class_jump_table_ab55c26932c2133039fa2cce13ba3742b}} 
+\index{JumpTable@{JumpTable}!getAddressByIndex@{getAddressByIndex}}
+\index{getAddressByIndex@{getAddressByIndex}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{getAddressByIndex()}{getAddressByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_address}{Address}} Jump\+Table\+::get\+Address\+By\+Index (\begin{DoxyParamCaption}\item[{int4}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 393 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_abc8399a772fe0bd6bbcb94304af98d5b}\label{class_jump_table_abc8399a772fe0bd6bbcb94304af98d5b}} 
+\index{JumpTable@{JumpTable}!getIndexByBlock@{getIndexByBlock}}
+\index{getIndexByBlock@{getIndexByBlock}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{getIndexByBlock()}{getIndexByBlock()}}
+{\footnotesize\ttfamily int4 Jump\+Table\+::get\+Index\+By\+Block (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl,  }\item[{int4}]{i }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 2035 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_a0edd5fb3fed20b0f5b62b10eb45d7acf}\label{class_jump_table_a0edd5fb3fed20b0f5b62b10eb45d7acf}} 
+\index{JumpTable@{JumpTable}!getIndirectOp@{getIndirectOp}}
+\index{getIndirectOp@{getIndirectOp}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{getIndirectOp()}{getIndirectOp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pcode_op}{Pcode\+Op}}$\ast$ Jump\+Table\+::get\+Indirect\+Op (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 385 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_ac0524721754a4e17fcccd2e66278c65c}\label{class_jump_table_ac0524721754a4e17fcccd2e66278c65c}} 
+\index{JumpTable@{JumpTable}!getLabelByIndex@{getLabelByIndex}}
+\index{getLabelByIndex@{getLabelByIndex}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{getLabelByIndex()}{getLabelByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}} Jump\+Table\+::get\+Label\+By\+Index (\begin{DoxyParamCaption}\item[{int4}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 399 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a0c76ef1e110791cd1175ba1c6b9d5c82}\label{class_jump_table_a0c76ef1e110791cd1175ba1c6b9d5c82}} 
+\index{JumpTable@{JumpTable}!getMostCommon@{getMostCommon}}
+\index{getMostCommon@{getMostCommon}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{getMostCommon()}{getMostCommon()}}
+{\footnotesize\ttfamily int4 Jump\+Table\+::get\+Most\+Common (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 383 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a98e5d9d6c61755969ae9c32eb3013af4}\label{class_jump_table_a98e5d9d6c61755969ae9c32eb3013af4}} 
+\index{JumpTable@{JumpTable}!getOpAddress@{getOpAddress}}
+\index{getOpAddress@{getOpAddress}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{getOpAddress()}{getOpAddress()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_address}{Address}}\& Jump\+Table\+::get\+Op\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 384 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a52203c6582b2b49390ba3815e1377c5a}\label{class_jump_table_a52203c6582b2b49390ba3815e1377c5a}} 
+\index{JumpTable@{JumpTable}!getStage@{getStage}}
+\index{getStage@{getStage}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{getStage()}{getStage()}}
+{\footnotesize\ttfamily int4 Jump\+Table\+::get\+Stage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 381 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a23d6ce09d425674cbdc41cfb082b1937}\label{class_jump_table_a23d6ce09d425674cbdc41cfb082b1937}} 
+\index{JumpTable@{JumpTable}!isLabelled@{isLabelled}}
+\index{isLabelled@{isLabelled}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{isLabelled()}{isLabelled()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::is\+Labelled (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 378 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_af02131615a17c9fa6ee4693c3988eb5a}\label{class_jump_table_af02131615a17c9fa6ee4693c3988eb5a}} 
+\index{JumpTable@{JumpTable}!isOverride@{isOverride}}
+\index{isOverride@{isOverride}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{isOverride()}{isOverride()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::is\+Override (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 2014 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_a9550d6bef76cc325b16f7b1baa829f9b}\label{class_jump_table_a9550d6bef76cc325b16f7b1baa829f9b}} 
+\index{JumpTable@{JumpTable}!isPossibleMultistage@{isPossibleMultistage}}
+\index{isPossibleMultistage@{isPossibleMultistage}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{isPossibleMultistage()}{isPossibleMultistage()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::is\+Possible\+Multistage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 380 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_ab745ea6bfd38b7cdd5812d360290a570}\label{class_jump_table_ab745ea6bfd38b7cdd5812d360290a570}} 
+\index{JumpTable@{JumpTable}!isRecovered@{isRecovered}}
+\index{isRecovered@{isRecovered}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{isRecovered()}{isRecovered()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::is\+Recovered (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 377 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a667875c89b0b8c73b76c1cb09f9917d5}\label{class_jump_table_a667875c89b0b8c73b76c1cb09f9917d5}} 
+\index{JumpTable@{JumpTable}!isSwitchedOver@{isSwitchedOver}}
+\index{isSwitchedOver@{isSwitchedOver}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{isSwitchedOver()}{isSwitchedOver()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::is\+Switched\+Over (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 376 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a41c4acebed672cc4e66e6d03c35aecaa}\label{class_jump_table_a41c4acebed672cc4e66e6d03c35aecaa}} 
+\index{JumpTable@{JumpTable}!numEntries@{numEntries}}
+\index{numEntries@{numEntries}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{numEntries()}{numEntries()}}
+{\footnotesize\ttfamily int4 Jump\+Table\+::num\+Entries (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 382 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a3ff393c996f2c495f86917927c451dfe}\label{class_jump_table_a3ff393c996f2c495f86917927c451dfe}} 
+\index{JumpTable@{JumpTable}!numIndicesByBlock@{numIndicesByBlock}}
+\index{numIndicesByBlock@{numIndicesByBlock}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{numIndicesByBlock()}{numIndicesByBlock()}}
+{\footnotesize\ttfamily int4 Jump\+Table\+::num\+Indices\+By\+Block (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_block}{Flow\+Block}} $\ast$}]{bl }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 2000 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_a98aaa32e26ede9547d5979cab872322c}\label{class_jump_table_a98aaa32e26ede9547d5979cab872322c}} 
+\index{JumpTable@{JumpTable}!recoverAddresses@{recoverAddresses}}
+\index{recoverAddresses@{recoverAddresses}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{recoverAddresses()}{recoverAddresses()}}
+{\footnotesize\ttfamily void Jump\+Table\+::recover\+Addresses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2120 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_aa104a5da577eb8a1a5ab9aa30bbc7210}\label{class_jump_table_aa104a5da577eb8a1a5ab9aa30bbc7210}} 
+\index{JumpTable@{JumpTable}!recoverLabels@{recoverLabels}}
+\index{recoverLabels@{recoverLabels}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{recoverLabels()}{recoverLabels()}}
+{\footnotesize\ttfamily bool Jump\+Table\+::recover\+Labels (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2181 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_aa104a5da577eb8a1a5ab9aa30bbc7210_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_afba6e59f39d15b0f5b231ef9d849625e}\label{class_jump_table_afba6e59f39d15b0f5b231ef9d849625e}} 
+\index{JumpTable@{JumpTable}!recoverMultistage@{recoverMultistage}}
+\index{recoverMultistage@{recoverMultistage}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{recoverMultistage()}{recoverMultistage()}}
+{\footnotesize\ttfamily void Jump\+Table\+::recover\+Multistage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_funcdata}{Funcdata}} $\ast$}]{fd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2144 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_afba6e59f39d15b0f5b231ef9d849625e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_a6c61097c622f85e04db056d9613e94f1}\label{class_jump_table_a6c61097c622f85e04db056d9613e94f1}} 
+\index{JumpTable@{JumpTable}!restoreXml@{restoreXml}}
+\index{restoreXml@{restoreXml}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{restoreXml()}{restoreXml()}}
+{\footnotesize\ttfamily void Jump\+Table\+::restore\+Xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_element}{Element}} $\ast$}]{el }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2281 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_a6c61097c622f85e04db056d9613e94f1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_a314231b6a4d240c21de28f39fd0a8b57}\label{class_jump_table_a314231b6a4d240c21de28f39fd0a8b57}} 
+\index{JumpTable@{JumpTable}!saveXml@{saveXml}}
+\index{saveXml@{saveXml}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{saveXml()}{saveXml()}}
+{\footnotesize\ttfamily void Jump\+Table\+::save\+Xml (\begin{DoxyParamCaption}\item[{ostream \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 2251 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_a314231b6a4d240c21de28f39fd0a8b57_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_jump_table_a999b901e638cfc2243b0e7578355c662}\label{class_jump_table_a999b901e638cfc2243b0e7578355c662}} 
+\index{JumpTable@{JumpTable}!setIndirectOp@{setIndirectOp}}
+\index{setIndirectOp@{setIndirectOp}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{setIndirectOp()}{setIndirectOp()}}
+{\footnotesize\ttfamily void Jump\+Table\+::set\+Indirect\+Op (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pcode_op}{Pcode\+Op}} $\ast$}]{ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 386 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a837e0e4ccf4f0be70df4f9b55106305a}\label{class_jump_table_a837e0e4ccf4f0be70df4f9b55106305a}} 
+\index{JumpTable@{JumpTable}!setLoadCollect@{setLoadCollect}}
+\index{setLoadCollect@{setLoadCollect}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{setLoadCollect()}{setLoadCollect()}}
+{\footnotesize\ttfamily void Jump\+Table\+::set\+Load\+Collect (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 396 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a402a16fcfbb3f1aa4e18e92e449299d0}\label{class_jump_table_a402a16fcfbb3f1aa4e18e92e449299d0}} 
+\index{JumpTable@{JumpTable}!setMaxTableSize@{setMaxTableSize}}
+\index{setMaxTableSize@{setMaxTableSize}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{setMaxTableSize()}{setMaxTableSize()}}
+{\footnotesize\ttfamily void Jump\+Table\+::set\+Max\+Table\+Size (\begin{DoxyParamCaption}\item[{uint4}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 387 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_ae0dbbb3a114d754264eb2b45ee243b32}\label{class_jump_table_ae0dbbb3a114d754264eb2b45ee243b32}} 
+\index{JumpTable@{JumpTable}!setMostCommonBlock@{setMostCommonBlock}}
+\index{setMostCommonBlock@{setMostCommonBlock}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{setMostCommonBlock()}{setMostCommonBlock()}}
+{\footnotesize\ttfamily void Jump\+Table\+::set\+Most\+Common\+Block (\begin{DoxyParamCaption}\item[{uint4}]{bl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 395 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a0537814cab892d9a6fa6342cd4b2f1fd}\label{class_jump_table_a0537814cab892d9a6fa6342cd4b2f1fd}} 
+\index{JumpTable@{JumpTable}!setMostCommonIndex@{setMostCommonIndex}}
+\index{setMostCommonIndex@{setMostCommonIndex}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{setMostCommonIndex()}{setMostCommonIndex()}}
+{\footnotesize\ttfamily void Jump\+Table\+::set\+Most\+Common\+Index (\begin{DoxyParamCaption}\item[{uint4}]{tableind }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2052 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_a436e2a0d77555f2f69edc3e7c0ca5227}\label{class_jump_table_a436e2a0d77555f2f69edc3e7c0ca5227}} 
+\index{JumpTable@{JumpTable}!setNormMax@{setNormMax}}
+\index{setNormMax@{setNormMax}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{setNormMax()}{setNormMax()}}
+{\footnotesize\ttfamily void Jump\+Table\+::set\+Norm\+Max (\begin{DoxyParamCaption}\item[{uint4}]{maddsub,  }\item[{uint4}]{mleftright,  }\item[{uint4}]{mext }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 388 of file jumptable.\+hh.
+
+\mbox{\Hypertarget{class_jump_table_a3e013d86f11f8df367c3979dd6310163}\label{class_jump_table_a3e013d86f11f8df367c3979dd6310163}} 
+\index{JumpTable@{JumpTable}!setOverride@{setOverride}}
+\index{setOverride@{setOverride}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{setOverride()}{setOverride()}}
+{\footnotesize\ttfamily void Jump\+Table\+::set\+Override (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_address}{Address}} $>$ \&}]{addrtable,  }\item[{const \mbox{\hyperlink{class_address}{Address}} \&}]{naddr,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{h,  }\item[{\mbox{\hyperlink{types_8h_a2db313c5d32a12b01d26ac9b3bca178f}{uintb}}}]{sv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2022 of file jumptable.\+cc.
+
+\mbox{\Hypertarget{class_jump_table_a421a6817e059ff862b9e057701da8f01}\label{class_jump_table_a421a6817e059ff862b9e057701da8f01}} 
+\index{JumpTable@{JumpTable}!switchOver@{switchOver}}
+\index{switchOver@{switchOver}!JumpTable@{JumpTable}}
+\subsubsection{\texorpdfstring{switchOver()}{switchOver()}}
+{\footnotesize\ttfamily void Jump\+Table\+::switch\+Over (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flow_info}{Flow\+Info}} \&}]{flow }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2067 of file jumptable.\+cc.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_jump_table_a421a6817e059ff862b9e057701da8f01_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{jumptable_8hh}{jumptable.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{jumptable_8cc}{jumptable.\+cc}}\end{DoxyCompactItemize}

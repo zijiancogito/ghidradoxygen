@@ -1,0 +1,84 @@
+.TH "UniqueSpace" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UniqueSpace \- The pool of temporary storage registers\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <space\&.hh>\fP
+.PP
+Inherits \fBAddrSpace\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUniqueSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t, const string &nm, int4 ind, uint4 fl)"
+.br
+.ti -1c
+.RI "\fBUniqueSpace\fP (\fBAddrSpaceManager\fP *m, const \fBTranslate\fP *t)"
+.br
+.RI "For use with restoreXml\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.RI "Write the details of this space as XML\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The pool of temporary storage registers\&. 
+
+It is convenient both for modelling processor instructions in an RTL and for later transforming of the RTL to have a pool of temporary registers that can hold data but that aren't a formal part of the state of the processor\&. The \fBUniqueSpace\fP provides a specific location for this pool\&. The analysis engine always creates exactly one of these spaces named \fBunique\fP\&. 
+.PP
+Definition at line 184 of file space\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "UniqueSpace::UniqueSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t, const string & nm, int4 ind, uint4 fl)"
+This is the constructor for the \fBunique\fP space, which is automatically constructed by the analysis engine, and constructed only once\&. The name should always be \fBunique\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the associated address space manager 
+.br
+\fIt\fP is the associated processor translator 
+.br
+\fInm\fP is the name of the space 
+.br
+\fIind\fP is the integer identifier 
+.br
+\fIfl\fP are attribute flags (currently unused) 
+.RE
+.PP
+
+.PP
+Definition at line 446 of file space\&.cc\&.
+.SS "UniqueSpace::UniqueSpace (\fBAddrSpaceManager\fP * m, const \fBTranslate\fP * t)"
+
+.PP
+For use with restoreXml\&. 
+.PP
+Definition at line 453 of file space\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void UniqueSpace::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Write the details of this space as XML\&. Write a tag fully describing the details of this space suitable for later recovery via restoreXml\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the stream being written 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBAddrSpace\fP\&.
+.PP
+Definition at line 459 of file space\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

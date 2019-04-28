@@ -1,0 +1,87 @@
+.TH "FunctionSymbol" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FunctionSymbol \- A \fBSymbol\fP representing an executable function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <database\&.hh>\fP
+.PP
+Inherits Symbol\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFunctionSymbol\fP (\fBScope\fP *sc, const string &nm, int4 size)"
+.br
+.RI "Construct given the name\&. "
+.ti -1c
+.RI "\fBFunctionSymbol\fP (\fBScope\fP *sc, int4 size)"
+.br
+.RI "\fBConstructor\fP for use with restoreXml\&. "
+.ti -1c
+.RI "\fBFuncdata\fP * \fBgetFunction\fP (void)"
+.br
+.RI "Get the underlying \fBFuncdata\fP object\&. "
+.ti -1c
+.RI "virtual void \fBsaveXml\fP (ostream &s) const"
+.br
+.ti -1c
+.RI "virtual void \fBrestoreXml\fP (const \fBElement\fP *el)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBSymbol\fP representing an executable function\&. 
+
+This \fBSymbol\fP owns the \fBFuncdata\fP object for the function it represents\&. The formal \fBSymbol\fP is thus associated with all the meta-data about the function\&. 
+.PP
+Definition at line 236 of file database\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FunctionSymbol::FunctionSymbol (\fBScope\fP * sc, const string & nm, int4 size)"
+
+.PP
+Construct given the name\&. Build a function \fIshell\fP, made up of just the name of the function and a placeholder data-type, without the underlying \fBFuncdata\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsc\fP is the \fBScope\fP that will contain the new \fBSymbol\fP 
+.br
+\fInm\fP is the name of the new \fBSymbol\fP 
+.br
+\fIsize\fP is the number of bytes the \fBSymbol\fP should consume 
+.RE
+.PP
+
+.PP
+Definition at line 432 of file database\&.cc\&.
+.SS "FunctionSymbol::FunctionSymbol (\fBScope\fP * sc, int4 size)"
+
+.PP
+\fBConstructor\fP for use with restoreXml\&. 
+.PP
+Definition at line 440 of file database\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFuncdata\fP * FunctionSymbol::getFunction (void)"
+
+.PP
+Get the underlying \fBFuncdata\fP object\&. 
+.PP
+Definition at line 452 of file database\&.cc\&.
+.SS "void FunctionSymbol::restoreXml (const \fBElement\fP * el)\fC [virtual]\fP"
+
+.PP
+Definition at line 473 of file database\&.cc\&.
+.SS "void FunctionSymbol::saveXml (ostream & s) const\fC [virtual]\fP"
+
+.PP
+Definition at line 461 of file database\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,91 @@
+.TH "ExecutablePcode" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ExecutablePcode \- A snippet of p-code that can be executed outside of normal analysis\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pcodeinject\&.hh>\fP
+.PP
+Inherits InjectPayload\&.
+.PP
+Inherited by \fBExecutablePcodeGhidra\fP, and \fBExecutablePcodeSleigh\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExecutablePcode\fP (\fBArchitecture\fP *g, const string &src, const string &nm)"
+.br
+.RI "\fBConstructor\fP\&. "
+.ti -1c
+.RI "virtual \fB~ExecutablePcode\fP (void)"
+.br
+.ti -1c
+.RI "virtual string \fBgetSource\fP (void) const"
+.br
+.ti -1c
+.RI "\fBuintb\fP \fBevaluate\fP (const vector< \fBuintb\fP > &input)"
+.br
+.RI "Evaluate the snippet on the given inputs\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A snippet of p-code that can be executed outside of normal analysis\&. 
+
+Essentially a p-code script\&. The p-code contained in this snippet needs to be processor agnostic, so any register Varnodes must be temporary (out of the \fIunique\fP space) and any control-flow operations must be contained within the snippet (p-code relative addressing)\&. Input and output to the snippet/script is provided by standard injection parameters\&. The class contains, as a field, a stripped down emulator to run the script and a convenience method \fBevaluate()\fP to feed in concrete values to the input parameters and return a value from a single output parameter\&. 
+.PP
+Definition at line 132 of file pcodeinject\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ExecutablePcode::ExecutablePcode (\fBArchitecture\fP * g, const string & src, const string & nm)"
+
+.PP
+\fBConstructor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIg\fP is the \fBArchitecture\fP owning \fBsnippet\fP 
+.br
+\fIsrc\fP is a string describing the \fIsource\fP of the snippet 
+.br
+\fInm\fP is the formal name of the snippet 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file pcodeinject\&.cc\&.
+.SS "virtual ExecutablePcode::~ExecutablePcode (void)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 143 of file pcodeinject\&.hh\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuintb\fP ExecutablePcode::evaluate (const vector< \fBuintb\fP > & input)"
+
+.PP
+Evaluate the snippet on the given inputs\&. The caller provides a list of concrete values that are assigned to the input parameters\&. The number of values and input parameters must match, and values are assigned in order\&. Input parameter order is determined either by the order of tags in the defining XML\&. This method assumes there is exactly 1 relevant output parameter\&. Once the snippet is executed the value of this parameter is read from the emulator state and returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP is the ordered list of input values to feed to \fBthis\fP script 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value of the output parameter after script execution 
+.RE
+.PP
+
+.PP
+Definition at line 157 of file pcodeinject\&.cc\&.
+.SS "virtual string ExecutablePcode::getSource (void) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 144 of file pcodeinject\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

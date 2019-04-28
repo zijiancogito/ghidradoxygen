@@ -1,0 +1,440 @@
+.TH "ghidra.app.decompiler.component.DecompilerCodeComparisonPanel< T extends DualDecompilerFieldPanelCoordinator >" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ghidra.app.decompiler.component.DecompilerCodeComparisonPanel< T extends DualDecompilerFieldPanelCoordinator >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits CodeComparisonPanel< DualDecompilerFieldPanelCoordinator >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDecompilerCodeComparisonPanel\fP (String owner, PluginTool tool)"
+.br
+.ti -1c
+.RI "JComponent \fBgetComponent\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetTitle\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetVisible\fP (boolean aFlag)"
+.br
+.ti -1c
+.RI "void \fBsetLeftTitle\fP (String leftTitle)"
+.br
+.ti -1c
+.RI "void \fBsetRightTitle\fP (String rightTitle)"
+.br
+.ti -1c
+.RI "boolean \fBisMatchingConstantsExactly\fP ()"
+.br
+.ti -1c
+.RI "void \fBloadFunctions\fP (Function leftFunction, Function rightFunction)"
+.br
+.ti -1c
+.RI "boolean \fBaddDualDecompileResultsListener\fP (\fBDualDecompileResultsListener\fP listener)"
+.br
+.ti -1c
+.RI "boolean \fBremoveDualDecompileResultsListener\fP (\fBDualDecompileResultsListener\fP listener)"
+.br
+.ti -1c
+.RI "void \fBsetHighlightControllers\fP (\fBClangHighlightController\fP leftHighlightController, \fBClangHighlightController\fP rightHighlightController)"
+.br
+.ti -1c
+.RI "void \fBsetFieldPanelCoordinator\fP (\fBDualDecompilerFieldPanelCoordinator\fP fieldPanelCoordinator)"
+.br
+.ti -1c
+.RI "void \fBsetTopComponent\fP (JComponent comp)"
+.br
+.ti -1c
+.RI "void \fBsetBottomComponent\fP (JComponent comp)"
+.br
+.ti -1c
+.RI "\fBCDisplayPanel\fP \fBgetFocusedDecompilerPanel\fP ()"
+.br
+.ti -1c
+.RI "\fBCDisplayPanel\fP \fBgetLeftPanel\fP ()"
+.br
+.ti -1c
+.RI "\fBCDisplayPanel\fP \fBgetRightPanel\fP ()"
+.br
+.ti -1c
+.RI "void \fBdispose\fP ()"
+.br
+.ti -1c
+.RI "void \fBfocusGained\fP (FocusEvent e)"
+.br
+.ti -1c
+.RI "void \fBsetMouseNavigationEnabled\fP (boolean enabled)"
+.br
+.ti -1c
+.RI "void \fBloadData\fP (Data leftData, Data rightData)"
+.br
+.ti -1c
+.RI "void \fBloadAddresses\fP (Program leftProgram, Program rightProgram, AddressSetView leftAddresses, AddressSetView rightAddresses)"
+.br
+.ti -1c
+.RI "\fBDecompilerPanel\fP \fBgetLeftDecompilerPanel\fP ()"
+.br
+.ti -1c
+.RI "\fBDecompilerPanel\fP \fBgetRightDecompilerPanel\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateActionEnablement\fP ()"
+.br
+.ti -1c
+.RI "DockingAction [] \fBgetActions\fP ()"
+.br
+.ti -1c
+.RI "abstract Class<? extends \fBDecompilerCodeComparisonPanel\fP<? extends FieldPanelCoordinator > > \fBgetPanelThisSupersedes\fP ()"
+.br
+.ti -1c
+.RI "ActionContext \fBgetActionContext\fP (ComponentProvider provider, MouseEvent event)"
+.br
+.ti -1c
+.RI "void \fBprogramRestored\fP (Program program)"
+.br
+.ti -1c
+.RI "void \fBrefreshLeftPanel\fP ()"
+.br
+.ti -1c
+.RI "void \fBrefreshRightPanel\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBleftPanelHasFocus\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetTitlePrefixes\fP (String leftTitlePrefix, String rightTitlePrefix)"
+.br
+.ti -1c
+.RI "AddressSetView \fBgetLeftAddresses\fP ()"
+.br
+.ti -1c
+.RI "AddressSetView \fBgetRightAddresses\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBrightDecompileDataSet\fP (\fBDecompileData\fP decompileData)"
+.br
+.ti -1c
+.RI "void \fBleftDecompileDataSet\fP (\fBDecompileData\fP decompileData)"
+.br
+.ti -1c
+.RI "void \fBsetPrograms\fP (Program leftProgram, Program rightProgram)"
+.br
+.ti -1c
+.RI "void \fBcreateActions\fP ()"
+.br
+.ti -1c
+.RI "FieldPanel \fBgetLeftFieldPanel\fP ()"
+.br
+.ti -1c
+.RI "FieldPanel \fBgetRightFieldPanel\fP ()"
+.br
+.ti -1c
+.RI "abstract \fBDualDecompilerFieldPanelCoordinator\fP \fBcreateFieldPanelCoordinator\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Panel that displays two decompilers for comparison\&. 
+.PP
+Definition at line 45 of file DecompilerCodeComparisonPanel\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.\fBDecompilerCodeComparisonPanel\fP (String owner, PluginTool tool)\fC [inline]\fP"
+Creates a comparison panel with two decompilers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIowner\fP the owner of this panel 
+.br
+\fItool\fP the tool displaying this panel 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file DecompilerCodeComparisonPanel\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "boolean \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.addDualDecompileResultsListener (\fBDualDecompileResultsListener\fP listener)\fC [inline]\fP"
+Adds the indicated listener to be notified when the decompile results have completed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlistener\fP the listener 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the listener was added\&. 
+.RE
+.PP
+
+.PP
+Definition at line 281 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.createActions ()\fC [inline]\fP, \fC [protected]\fP"
+Creates the actions provided by this panel\&. 
+.PP
+Definition at line 504 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "abstract \fBDualDecompilerFieldPanelCoordinator\fP \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.createFieldPanelCoordinator ()\fC [abstract]\fP, \fC [protected]\fP"
+
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.dispose ()\fC [inline]\fP"
+
+.PP
+Definition at line 412 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.focusGained (FocusEvent e)\fC [inline]\fP"
+
+.PP
+Definition at line 419 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "ActionContext \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getActionContext (ComponentProvider provider, MouseEvent event)\fC [inline]\fP"
+
+.PP
+Definition at line 524 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "DockingAction [] \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getActions ()\fC [inline]\fP"
+
+.PP
+Definition at line 509 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "JComponent \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getComponent ()\fC [inline]\fP"
+
+.PP
+Definition at line 100 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "\fBCDisplayPanel\fP \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getFocusedDecompilerPanel ()\fC [inline]\fP"
+Gets the display panel from the left or right side that has or last had focus\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the last C display panel with focus 
+.RE
+.PP
+
+.PP
+Definition at line 391 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "AddressSetView \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getLeftAddresses ()\fC [inline]\fP"
+
+.PP
+Definition at line 612 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "\fBDecompilerPanel\fP \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getLeftDecompilerPanel ()\fC [inline]\fP"
+Gets the left side's decompiler panel\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the left decompiler panel 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "FieldPanel \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getLeftFieldPanel ()\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 677 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "\fBCDisplayPanel\fP \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getLeftPanel ()\fC [inline]\fP"
+Gets the left side's C display panel\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the left C display panel 
+.RE
+.PP
+
+.PP
+Definition at line 399 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "abstract Class<? extends \fBDecompilerCodeComparisonPanel\fP<? extends FieldPanelCoordinator> > \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getPanelThisSupersedes ()\fC [abstract]\fP"
+
+.SS "AddressSetView \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getRightAddresses ()\fC [inline]\fP"
+
+.PP
+Definition at line 617 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "\fBDecompilerPanel\fP \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getRightDecompilerPanel ()\fC [inline]\fP"
+Gets the right side's decompiler panel\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the right decompiler panel 
+.RE
+.PP
+
+.PP
+Definition at line 490 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "FieldPanel \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getRightFieldPanel ()\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 682 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "\fBCDisplayPanel\fP \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getRightPanel ()\fC [inline]\fP"
+Gets the right side's C display panel\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the right C display panel 
+.RE
+.PP
+
+.PP
+Definition at line 407 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "String \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.getTitle ()\fC [inline]\fP"
+
+.PP
+Definition at line 105 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "boolean \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.isMatchingConstantsExactly ()\fC [inline]\fP"
+
+.PP
+Definition at line 166 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.leftDecompileDataSet (\fBDecompileData\fP decompileData)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 345 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "boolean \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.leftPanelHasFocus ()\fC [inline]\fP"
+
+.PP
+Definition at line 600 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.loadAddresses (Program leftProgram, Program rightProgram, AddressSetView leftAddresses, AddressSetView rightAddresses)\fC [inline]\fP"
+
+.PP
+Definition at line 473 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.loadData (Data leftData, Data rightData)\fC [inline]\fP"
+
+.PP
+Definition at line 468 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.loadFunctions (Function leftFunction, Function rightFunction)\fC [inline]\fP"
+
+.PP
+Definition at line 171 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.programRestored (Program program)\fC [inline]\fP"
+
+.PP
+Definition at line 537 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.refreshLeftPanel ()\fC [inline]\fP"
+Refreshes the left side of this panel\&. 
+.PP
+Definition at line 587 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.refreshRightPanel ()\fC [inline]\fP"
+Refreshes the right side of this panel\&. 
+.PP
+Definition at line 595 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "boolean \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.removeDualDecompileResultsListener (\fBDualDecompileResultsListener\fP listener)\fC [inline]\fP"
+Removes the indicated listener from being notified about decompile results\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlistener\fP the listener 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the listener was removed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 290 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.rightDecompileDataSet (\fBDecompileData\fP decompileData)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 340 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setBottomComponent (JComponent comp)\fC [inline]\fP"
+Sets the component displayed in the bottom of this panel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomp\fP the component\&. 
+.RE
+.PP
+
+.PP
+Definition at line 372 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setFieldPanelCoordinator (\fBDualDecompilerFieldPanelCoordinator\fP fieldPanelCoordinator)\fC [inline]\fP"
+Sets the coordinator for the two decompiler panels within this code comparison panel\&. It coordinates their scrolling and location synchronization\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfieldPanelCoordinator\fP the coordinator for the two decompiler panels 
+.RE
+.PP
+
+.PP
+Definition at line 314 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setHighlightControllers (\fBClangHighlightController\fP leftHighlightController, \fBClangHighlightController\fP rightHighlightController)\fC [inline]\fP"
+Sets the highlight controllers for both decompiler panels\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleftHighlightController\fP the left side's highlight controller 
+.br
+\fIrightHighlightController\fP the right side's highlight controller 
+.RE
+.PP
+
+.PP
+Definition at line 299 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setLeftTitle (String leftTitle)\fC [inline]\fP"
+Sets the title for the left side's decompiler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleftTitle\fP the title 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setMouseNavigationEnabled (boolean enabled)\fC [inline]\fP"
+Disable mouse navigation from within this dual decompiler panel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIenabled\fP false disables navigation 
+.RE
+.PP
+
+.PP
+Definition at line 445 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setPrograms (Program leftProgram, Program rightProgram)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 451 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setRightTitle (String rightTitle)\fC [inline]\fP"
+Sets the title for the right side's decompiler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrightTitle\fP the title 
+.RE
+.PP
+
+.PP
+Definition at line 148 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setTitlePrefixes (String leftTitlePrefix, String rightTitlePrefix)\fC [inline]\fP"
+
+.PP
+Definition at line 605 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setTopComponent (JComponent comp)\fC [inline]\fP"
+Sets the component displayed in the top of this panel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomp\fP the component\&. 
+.RE
+.PP
+
+.PP
+Definition at line 354 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.setVisible (boolean aFlag)\fC [inline]\fP"
+
+.PP
+Definition at line 110 of file DecompilerCodeComparisonPanel\&.java\&.
+.SS "void \fBghidra\&.app\&.decompiler\&.component\&.DecompilerCodeComparisonPanel\fP< T extends \fBDualDecompilerFieldPanelCoordinator\fP >\&.updateActionEnablement ()\fC [inline]\fP"
+
+.PP
+Definition at line 495 of file DecompilerCodeComparisonPanel\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.

@@ -1,0 +1,75 @@
+\hypertarget{class_scope_key}{}\section{Scope\+Key Class Reference}
+\label{class_scope_key}\index{ScopeKey@{ScopeKey}}
+
+
+A key for looking up child symbol scopes within a parent, based on name.  
+
+
+
+
+{\ttfamily \#include $<$database.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scope_key_a247f7b15475ffd5ac58320ab12d6e303}{Scope\+Key}} (const string \&nm, uint4 id)
+\begin{DoxyCompactList}\small\item\em Construct given a name and id. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_scope_key_ad94de9bdec99a5a642a7c7d7f5b6b5ab}{operator$<$}} (const \mbox{\hyperlink{class_scope_key}{Scope\+Key}} \&op2) const
+\begin{DoxyCompactList}\small\item\em Comparison operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A key for looking up child symbol scopes within a parent, based on name. 
+
+A key for mapping from name to \mbox{\hyperlink{class_scope}{Scope}}. The class includes a deduplication component if Scopes with the same name are allowed. 
+
+Definition at line 366 of file database.\+hh.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_scope_key_a247f7b15475ffd5ac58320ab12d6e303}\label{class_scope_key_a247f7b15475ffd5ac58320ab12d6e303}} 
+\index{ScopeKey@{ScopeKey}!ScopeKey@{ScopeKey}}
+\index{ScopeKey@{ScopeKey}!ScopeKey@{ScopeKey}}
+\subsubsection{\texorpdfstring{ScopeKey()}{ScopeKey()}}
+{\footnotesize\ttfamily Scope\+Key\+::\+Scope\+Key (\begin{DoxyParamCaption}\item[{const string \&}]{nm,  }\item[{uint4}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct given a name and id. 
+
+
+
+Definition at line 370 of file database.\+hh.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scope_key_ad94de9bdec99a5a642a7c7d7f5b6b5ab}\label{class_scope_key_ad94de9bdec99a5a642a7c7d7f5b6b5ab}} 
+\index{ScopeKey@{ScopeKey}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!ScopeKey@{ScopeKey}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Scope\+Key\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_scope_key}{Scope\+Key}} \&}]{op2 }\end{DoxyParamCaption}) const}
+
+
+
+Comparison operator. 
+
+Sort first on name, then on dedup\+Id 
+\begin{DoxyParams}{Parameters}
+{\em op2} & is the key to compare with {\bfseries{this}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if {\bfseries{this}} should be ordered before the other key 
+\end{DoxyReturn}
+
+
+Definition at line 666 of file database.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8hh}{database.\+hh}}\item 
+F\+:/re/ghidra\+\_\+sourcecode/ghidra/\+Ghidra/\+Features/\+Decompiler/src/decompile/cpp/\mbox{\hyperlink{database_8cc}{database.\+cc}}\end{DoxyCompactItemize}

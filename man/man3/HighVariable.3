@@ -1,0 +1,571 @@
+.TH "HighVariable" 3 "Sun Apr 14 2019" "decompile" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HighVariable \- A high-level variable modeled as a list of low-level variables, each written once\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <variable\&.hh>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBflagsdirty\fP = 1, \fBtypedirty\fP = 2, \fBcoverdirty\fP = 4 }"
+.br
+.RI "Dirtiness flags for a \fBHighVariable\fP\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHighVariable\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Construct a \fBHighVariable\fP with a single member \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBDatatype\fP * \fBgetType\fP (void) const"
+.br
+.RI "Get the data-type\&. "
+.ti -1c
+.RI "void \fBsetSymbol\fP (\fBSymbol\fP *sym, int4 off) const"
+.br
+.RI "Set the \fBSymbol\fP associated with \fBthis\fP \fBHighVariable\fP\&. "
+.ti -1c
+.RI "\fBSymbol\fP * \fBgetSymbol\fP (void) const"
+.br
+.RI "Get the \fBSymbol\fP associated with \fBthis\fP\&. "
+.ti -1c
+.RI "int4 \fBgetSymbolOffset\fP (void) const"
+.br
+.RI "Get the \fBSymbol\fP offset associated with \fBthis\fP\&. "
+.ti -1c
+.RI "int4 \fBnumInstances\fP (void) const"
+.br
+.RI "Get the number of member Varnodes \fBthis\fP has\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetInstance\fP (int4 i) const"
+.br
+.RI "Get the i-th member \fBVarnode\fP\&. "
+.ti -1c
+.RI "void \fBflagsDirty\fP (void) const"
+.br
+.RI "Mark the boolean properties as \fIdirty\fP\&. "
+.ti -1c
+.RI "void \fBcoverDirty\fP (void) const"
+.br
+.RI "Mark the cover as \fIdirty\fP\&. "
+.ti -1c
+.RI "void \fBtypeDirty\fP (void) const"
+.br
+.RI "Mark the data-type as \fIdirty\fP\&. "
+.ti -1c
+.RI "void \fBremove\fP (\fBVarnode\fP *vn)"
+.br
+.RI "Remove a member \fBVarnode\fP from \fBthis\fP\&. "
+.ti -1c
+.RI "void \fBprintCover\fP (ostream &s) const"
+.br
+.RI "Print details of the cover for \fBthis\fP (for debug purposes) "
+.ti -1c
+.RI "void \fBprintInfo\fP (ostream &s) const"
+.br
+.RI "Print information about \fBthis\fP \fBHighVariable\fP to stream\&. "
+.ti -1c
+.RI "bool \fBhasName\fP (void) const"
+.br
+.RI "Check if \fBthis\fP \fBHighVariable\fP can be named\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetTiedVarnode\fP (void) const"
+.br
+.RI "Find the first address tied member \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetInputVarnode\fP (void) const"
+.br
+.RI "Find (the) input member \fBVarnode\fP\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetTypeRepresentative\fP (void) const"
+.br
+.RI "Get a member \fBVarnode\fP with the strongest data-type\&. "
+.ti -1c
+.RI "\fBVarnode\fP * \fBgetNameRepresentative\fP (void) const"
+.br
+.RI "Get a member \fBVarnode\fP that dictates the naming of \fBthis\fP \fBHighVariable\fP\&. "
+.ti -1c
+.RI "void \fBmerge\fP (\fBHighVariable\fP *tv2, bool isspeculative)"
+.br
+.RI "\fBMerge\fP another \fBHighVariable\fP into \fBthis\fP\&. "
+.ti -1c
+.RI "bool \fBisMapped\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is mapped\&. "
+.ti -1c
+.RI "bool \fBisPersist\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is a global variable\&. "
+.ti -1c
+.RI "bool \fBisAddrTied\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is \fIaddress\fP \fIties\fP\&. "
+.ti -1c
+.RI "bool \fBisInput\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is an input variable\&. "
+.ti -1c
+.RI "bool \fBisImplied\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is an implied variable\&. "
+.ti -1c
+.RI "bool \fBisSpacebase\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is a \fIspacebase\fP\&. "
+.ti -1c
+.RI "bool \fBisConstant\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is a constant\&. "
+.ti -1c
+.RI "bool \fBisUnaffected\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is an \fIunaffected\fP register\&. "
+.ti -1c
+.RI "bool \fBisExtraOut\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is an extra output\&. "
+.ti -1c
+.RI "void \fBsetMark\fP (void) const"
+.br
+.RI "Set the mark on this variable\&. "
+.ti -1c
+.RI "void \fBclearMark\fP (void) const"
+.br
+.RI "Clear the mark on this variable\&. "
+.ti -1c
+.RI "bool \fBisMark\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is marked\&. "
+.ti -1c
+.RI "bool \fBhasCover\fP (void) const"
+.br
+.RI "Determine if \fBthis\fP \fBHighVariable\fP has an associated cover\&. "
+.ti -1c
+.RI "bool \fBisUnattached\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP has no member \fBVarnode\fP\&. "
+.ti -1c
+.RI "bool \fBisTypeLock\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is \fItypelocked\fP\&. "
+.ti -1c
+.RI "bool \fBisNameLock\fP (void) const"
+.br
+.RI "Return \fBtrue\fP if \fBthis\fP is \fInamelocked\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBcompareName\fP (\fBVarnode\fP *vn1, \fBVarnode\fP *vn2)"
+.br
+.RI "Determine which given \fBVarnode\fP is most nameable\&. "
+.ti -1c
+.RI "static bool \fBcompareJustLoc\fP (const \fBVarnode\fP *a, const \fBVarnode\fP *b)"
+.br
+.RI "Compare based on storage location\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBMerge\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A high-level variable modeled as a list of low-level variables, each written once\&. 
+
+In the Static Single Assignment (SSA) representation of a function's data-flow, the \fBVarnode\fP object represents a variable node\&. This is a \fBlow-level\fP \fBvariable:\fP it is written to at most once, and there is 1 or more reads\&. A \fBhigh-level\fP \fBvariable\fP, in the source language may be written to multiple times\&. We model this idea as a list of \fBVarnode\fP objects, where a different \fBVarnode\fP holds the value of the variable for different parts of the code\&. The range(s) of code for which a single \fBVarnode\fP holds the high-level variable's value is the \fBcover\fP or \fBrange\fP of that \fBVarnode\fP and is modeled by the class \fBCover\fP\&. Within a high-level variable, \fBHighVariable\fP, the covers of member \fBVarnode\fP objects should not intersect, as that represents the variable holding two or more different values at the same place in the code\&. The \fBHighVariable\fP inherits a cover which is the union of the covers of its Varnodes\&. 
+.PP
+Definition at line 38 of file variable\&.hh\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+Dirtiness flags for a \fBHighVariable\fP\&. The \fBHighVariable\fP inherits its \fBCover\fP, its data-type, and other boolean properties from its Varnodes\&. The object holds these explicitly, but the values may become stale as the data-flow transforms\&. So we keep track of when these inherited values are \fIdirty\fP 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIflagsdirty \fP\fP
+Boolean properties for the \fBHighVariable\fP are dirty\&. 
+.TP
+\fB\fItypedirty \fP\fP
+The data-type for the \fBHighVariable\fP is dirty\&. 
+.TP
+\fB\fIcoverdirty \fP\fP
+The cover for the \fBHighVariable\fP is dirty\&. 
+.PP
+Definition at line 45 of file variable\&.hh\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HighVariable::HighVariable (\fBVarnode\fP * vn)"
+
+.PP
+Construct a \fBHighVariable\fP with a single member \fBVarnode\fP\&. The new instance starts off with no associate \fBSymbol\fP and all properties marked as \fIdirty\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the single \fBVarnode\fP member 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file variable\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void HighVariable::clearMark (void) const\fC [inline]\fP"
+
+.PP
+Clear the mark on this variable\&. 
+.PP
+Definition at line 109 of file variable\&.hh\&.
+.SS "bool HighVariable::compareJustLoc (const \fBVarnode\fP * a, const \fBVarnode\fP * b)\fC [static]\fP"
+
+.PP
+Compare based on storage location\&. Compare two \fBVarnode\fP objects based just on their storage address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP is the first \fBVarnode\fP to compare 
+.br
+\fIb\fP is the second \fBVarnode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the first \fBVarnode\fP should be ordered before the second 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file variable\&.cc\&.
+.SS "bool HighVariable::compareName (\fBVarnode\fP * vn1, \fBVarnode\fP * vn2)\fC [static]\fP"
+
+.PP
+Determine which given \fBVarnode\fP is most nameable\&. Given two \fBVarnode\fP (members), sort them based on naming properties:
+.IP "\(bu" 2
+A \fBVarnode\fP with an assigned name is preferred
+.IP "\(bu" 2
+An \fIunaffected\fP \fBVarnode\fP is preferred
+.IP "\(bu" 2
+A global \fBVarnode\fP is preferred
+.IP "\(bu" 2
+An \fIinput\fP \fBVarnode\fP is preferred
+.IP "\(bu" 2
+An \fIaddress\fP \fItied\fP \fBVarnode\fP is preferred
+.IP "\(bu" 2
+A non-temporary \fBVarnode\fP is preferred
+.IP "\(bu" 2
+A written \fBVarnode\fP is preferred
+.IP "\(bu" 2
+An earlier \fBVarnode\fP is preferred
+.PP
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if the second \fBVarnode\fP's name would override the first's 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file variable\&.cc\&.
+.SS "void HighVariable::coverDirty (void) const\fC [inline]\fP"
+
+.PP
+Mark the cover as \fIdirty\fP\&. 
+.PP
+Definition at line 83 of file variable\&.hh\&.
+.SS "void HighVariable::flagsDirty (void) const\fC [inline]\fP"
+
+.PP
+Mark the boolean properties as \fIdirty\fP\&. 
+.PP
+Definition at line 82 of file variable\&.hh\&.
+.SS "\fBVarnode\fP * HighVariable::getInputVarnode (void) const"
+
+.PP
+Find (the) input member \fBVarnode\fP\&. This should only be called if \fBisInput()\fP returns \fBtrue\fP\&. If there is no input member, this will throw an exception\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the input \fBVarnode\fP member 
+.RE
+.PP
+
+.PP
+Definition at line 299 of file variable\&.cc\&.
+.SS "\fBVarnode\fP* HighVariable::getInstance (int4 i) const\fC [inline]\fP"
+
+.PP
+Get the i-th member \fBVarnode\fP\&. 
+.PP
+Definition at line 81 of file variable\&.hh\&.
+.SS "\fBVarnode\fP * HighVariable::getNameRepresentative (void) const"
+
+.PP
+Get a member \fBVarnode\fP that dictates the naming of \fBthis\fP \fBHighVariable\fP\&. Members are scored based the properties that are most dominating in choosing a name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the highest scoring \fBVarnode\fP member 
+.RE
+.PP
+
+.PP
+Definition at line 167 of file variable\&.cc\&.
+.SS "\fBSymbol\fP* HighVariable::getSymbol (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBSymbol\fP associated with \fBthis\fP\&. 
+.PP
+Definition at line 78 of file variable\&.hh\&.
+.SS "int4 HighVariable::getSymbolOffset (void) const\fC [inline]\fP"
+
+.PP
+Get the \fBSymbol\fP offset associated with \fBthis\fP\&. 
+.PP
+Definition at line 79 of file variable\&.hh\&.
+.SS "\fBVarnode\fP * HighVariable::getTiedVarnode (void) const"
+
+.PP
+Find the first address tied member \fBVarnode\fP\&. This should only be called if \fBisAddrTied()\fP returns \fBtrue\fP\&. If there is no address tied member, this will throw an exception\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the first address tied member 
+.RE
+.PP
+
+.PP
+Definition at line 284 of file variable\&.cc\&.
+.SS "\fBDatatype\fP* HighVariable::getType (void) const\fC [inline]\fP"
+
+.PP
+Get the data-type\&. 
+.PP
+Definition at line 66 of file variable\&.hh\&.
+.SS "\fBVarnode\fP * HighVariable::getTypeRepresentative (void) const"
+
+.PP
+Get a member \fBVarnode\fP with the strongest data-type\&. Using \fBDatatype::typeOrder\fP, find the member \fBVarnode\fP with the most specific data-type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the representative member 
+.RE
+.PP
+
+.PP
+Definition at line 73 of file variable\&.cc\&.
+.SS "bool HighVariable::hasCover (void) const\fC [inline]\fP"
+
+.PP
+Determine if \fBthis\fP \fBHighVariable\fP has an associated cover\&. Constant and annotation variables do not have a cover 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP has a cover 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file variable\&.hh\&.
+.SS "bool HighVariable::hasName (void) const"
+
+.PP
+Check if \fBthis\fP \fBHighVariable\fP can be named\&. All \fBVarnode\fP objects are assigned a \fBHighVariable\fP, including those that don't get names like indirect variables, constants, and annotations\&. Determine if \fBthis\fP, as inherited from its member Varnodes, can have a name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBtrue\fP if \fBthis\fP can have a name 
+.RE
+.PP
+
+.PP
+Definition at line 250 of file variable\&.cc\&.
+.SS "bool HighVariable::isAddrTied (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is \fIaddress\fP \fIties\fP\&. 
+.PP
+Definition at line 101 of file variable\&.hh\&.
+.SS "bool HighVariable::isConstant (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is a constant\&. 
+.PP
+Definition at line 105 of file variable\&.hh\&.
+.SS "bool HighVariable::isExtraOut (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is an extra output\&. 
+.PP
+Definition at line 107 of file variable\&.hh\&.
+.SS "bool HighVariable::isImplied (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is an implied variable\&. 
+.PP
+Definition at line 103 of file variable\&.hh\&.
+.SS "bool HighVariable::isInput (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is an input variable\&. 
+.PP
+Definition at line 102 of file variable\&.hh\&.
+.SS "bool HighVariable::isMapped (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is mapped\&. 
+.PP
+Definition at line 99 of file variable\&.hh\&.
+.SS "bool HighVariable::isMark (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is marked\&. 
+.PP
+Definition at line 110 of file variable\&.hh\&.
+.SS "bool HighVariable::isNameLock (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is \fInamelocked\fP\&. 
+.PP
+Definition at line 122 of file variable\&.hh\&.
+.SS "bool HighVariable::isPersist (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is a global variable\&. 
+.PP
+Definition at line 100 of file variable\&.hh\&.
+.SS "bool HighVariable::isSpacebase (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is a \fIspacebase\fP\&. 
+.PP
+Definition at line 104 of file variable\&.hh\&.
+.SS "bool HighVariable::isTypeLock (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is \fItypelocked\fP\&. 
+.PP
+Definition at line 121 of file variable\&.hh\&.
+.SS "bool HighVariable::isUnaffected (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP is an \fIunaffected\fP register\&. 
+.PP
+Definition at line 106 of file variable\&.hh\&.
+.SS "bool HighVariable::isUnattached (void) const\fC [inline]\fP"
+
+.PP
+Return \fBtrue\fP if \fBthis\fP has no member \fBVarnode\fP\&. 
+.PP
+Definition at line 120 of file variable\&.hh\&.
+.SS "void HighVariable::merge (\fBHighVariable\fP * tv2, bool isspeculative)"
+
+.PP
+\fBMerge\fP another \fBHighVariable\fP into \fBthis\fP\&. The lists of members are merged and the other \fBHighVariable\fP is deleted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItv2\fP is the other \fBHighVariable\fP to merge into \fBthis\fP 
+.br
+\fIisspeculative\fP is \fBtrue\fP to keep the new members in separate \fImerge\fP classes 
+.RE
+.PP
+
+.PP
+Definition at line 204 of file variable\&.cc\&.
+.SS "int4 HighVariable::numInstances (void) const\fC [inline]\fP"
+
+.PP
+Get the number of member Varnodes \fBthis\fP has\&. 
+.PP
+Definition at line 80 of file variable\&.hh\&.
+.SS "void HighVariable::printCover (ostream & s) const\fC [inline]\fP"
+
+.PP
+Print details of the cover for \fBthis\fP (for debug purposes) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file variable\&.hh\&.
+.SS "void HighVariable::printInfo (ostream & s) const"
+
+.PP
+Print information about \fBthis\fP \fBHighVariable\fP to stream\&. This is generally used for debug purposes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the output stream 
+.RE
+.PP
+
+.PP
+Definition at line 310 of file variable\&.cc\&.
+.SS "void HighVariable::remove (\fBVarnode\fP * vn)"
+
+.PP
+Remove a member \fBVarnode\fP from \fBthis\fP\&. Search for the given \fBVarnode\fP and cut it out of the list, marking all properties as \fIdirty\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvn\fP is the given \fBVarnode\fP member to remove 
+.RE
+.PP
+
+.PP
+Definition at line 186 of file variable\&.cc\&.
+.SS "void HighVariable::setMark (void) const\fC [inline]\fP"
+
+.PP
+Set the mark on this variable\&. 
+.PP
+Definition at line 108 of file variable\&.hh\&.
+.SS "void HighVariable::setSymbol (\fBSymbol\fP * sym, int4 off) const\fC [inline]\fP"
+
+.PP
+Set the \fBSymbol\fP associated with \fBthis\fP \fBHighVariable\fP\&. This \fBHighVariable\fP does not need to be associated with the whole symbol\&. It can be associated with a part, like a sub-field, if the size of the member Varnodes and the \fBSymbol\fP don't match\&. In this case a non-zero offset may be passed in with the \fBSymbol\fP to indicate what part is represented by the \fBthis\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsym\fP is the \fBSymbol\fP to associate with \fBthis\fP 
+.br
+\fIoff\fP is the offset in bytes, relative to the \fBSymbol\fP, where \fBthis\fP \fBHighVariable\fP starts 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file variable\&.hh\&.
+.SS "void HighVariable::typeDirty (void) const\fC [inline]\fP"
+
+.PP
+Mark the data-type as \fIdirty\fP\&. 
+.PP
+Definition at line 84 of file variable\&.hh\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBMerge\fP\fC [friend]\fP"
+
+.PP
+Definition at line 51 of file variable\&.hh\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for decompile from the source code\&.
